@@ -154,7 +154,12 @@ rule <domain_declaration>
     $]$ ;
     $;$ ;
   end repeat ;
-  @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap !domainModifierMap] ;
+  @AC_galgasType t := [@typeGalgasDomainType new
+    !domainTypeName
+    !attributeMap
+    !domainModifierMap
+    !relationMap
+  ] ;
   @AC_semanticsEntity theEntity := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !domainTypeName !theEntity] ;
   $}$ ;

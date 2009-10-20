@@ -1,10 +1,67 @@
 semantics grammarComputationsWithBDDs :
 
+#---------------------------------------------------------------------------*
+#                                                                           *
+# D O M A I N    F O R    G R A M M A R    C O M P U T A T I O N S          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
 domain @grammarDomain (V) { 
  nonterminalsWithEmptyProduction [V] ;
  nonterminalsWithOneElementProduction [V, V] ;
  nonterminalsWithTwoElementProduction [V, V, V] ;
 
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# V O C A B U L A R Y   M A P                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @vocabularyMap {
+  @uint mIndex ;
+  insert insertKey error message "the '@%K' symbol has been already declared in %L" ;
+  search searchKey error message "the '@%K' symbol is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# P R O D U C T I O N   L I S T    M A P                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @derivationList {
+  @uint64 mLeftTerminalIndex ;
+  @uint mProductionIndex ;
+  @uint64list mDerivation ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @productionListMap (@derivationList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# G R A M M A R    A N A L Y S I S                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine newGrammarAnalyzer
+  ?@lstring inGrammarName
+  ?@uint inStartSymbolIndex
+  ?@string inLexiqueName
+  ??@vocabularyMap inNonterminalMap
+  ??@vocabularyMap inTerminalMap
+  ??@productionListMap inProductionListMap
+  ??@uintlist inUnusedNonterminalSymbolList
+  !@string outHTMLFileHeader
+  !@string outHTMLFileContents
+:
+  outHTMLFileHeader := "" ;
+  outHTMLFileContents := "" ;
+end routine ;
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

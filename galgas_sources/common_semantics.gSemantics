@@ -507,12 +507,12 @@ abstract class @AC_galgasType feature generatedInSeparateFile {
 
 #--- By default, class does not accept reader instruction call
   method handleMethodInstructionCall
-    ??@lstring inReaderName
+    ??@lstring inMethodName
     ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outMethodSignature
     !@string outCategoryMethodClassBaseName
   :
-    error inReaderName :
+    error inMethodName :
        "variables of this type do not support method call instruction"
        -> outMethodSignature, outCategoryMethodClassBaseName ;
   end method ;
@@ -933,29 +933,29 @@ class @typeGalgas_string extends @AC_galgasType {
 #--- By default, class does not accept method instruction call
   override
   method handleMethodInstructionCall
-    ??@lstring inReaderName
+    ??@lstring inMethodName
     ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
     outCategoryMethodClassBaseName := "" ;
-    if [inReaderName string] == "writeToFile" then
+    if [inMethodName string] == "writeToFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
-    elsif [inReaderName string] == "writeToFileWhenDifferentContents" then
+    elsif [inMethodName string] == "writeToFileWhenDifferentContents" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
       outReaderSignature += ![@typeGalgas_bool new] ![@EXformalArgumentPassingMode argumentOut] ;
-   elsif [inReaderName string] == "writeToExecutableFile" then
+   elsif [inMethodName string] == "writeToExecutableFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
-    elsif [inReaderName string] == "makeDirectoryAndWriteToFile" then
+    elsif [inMethodName string] == "makeDirectoryAndWriteToFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
-    elsif [inReaderName string] == "makeDirectory" then
+    elsif [inMethodName string] == "makeDirectory" then
       outReaderSignature := [@L_EXsignature emptyList] ;
     else
-      error inReaderName: "this method is not defined (writeToFile, makeDirectoryAndWriteToFile"
+      error inMethodName: "this method is not defined (writeToFile, makeDirectoryAndWriteToFile"
       . " and makeDirectory methods are defined on @string objects) " -> outReaderSignature ;
     end if ;
   end method ;
@@ -2054,13 +2054,13 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 #--- By default, class does not accept reader instruction call
   override method handleMethodInstructionCall
-    ??@lstring inReaderName
+    ??@lstring inMethodName
     ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
     outCategoryMethodClassBaseName := "" ;
-    [mReadersInInstructionMap searchKey !inReaderName ?outReaderSignature] ;
+    [mReadersInInstructionMap searchKey !inMethodName ?outReaderSignature] ;
   end method ;
 
 #--- Handle operator "+=" call
@@ -2513,14 +2513,14 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- List accept 'first' and last' reader in instruction
   override
   method handleMethodInstructionCall
-    ??@lstring inReaderName
+    ??@lstring inMethodName
     ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
     outCategoryMethodClassBaseName := "" ;
-    if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
-      error inReaderName: "a list accepts only 'first' and 'last' methods" ;
+    if ([inMethodName string] != "first") & ([inMethodName string] != "last") then
+      error inMethodName: "a list accepts only 'first' and 'last' methods" ;
     end if ;
     outReaderSignature := mExtractSignature ;
   end method ;
@@ -2830,6 +2830,14 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+map @domainRelationMap {
+  @stringlist mDomains ;
+  insert insertKey error message "the '%K' domain relation has been already declared in %L" ;
+  search searchKey error message "the '%K' domain relation is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @domainModifierMap {
   @L_EXsignature mFormalParametersList ;
   insert insertKey error message "the '%K' domain modifier has been already declared in %L" ;
@@ -2839,7 +2847,6 @@ map @domainModifierMap {
 #---------------------------------------------------------------------------*
 
 map @domainAttributeMap {
-
   insert insertKey error message "an attribute named '%K' is already declared in %L" ;
   search searchKey error message "there is no attribute named '%K'" ;
 }
@@ -2849,24 +2856,28 @@ map @domainAttributeMap {
 class @typeGalgasDomainType extends @AC_galgasType {
   @lstring mDomainTypeName feature nogetter ;
   @domainAttributeMap mAttributeMap feature nogetter ;
-  @domainModifierMap mDomainModifierMap feature nogetter ;
+  @domainModifierMap mDomainModifierMap ;
+  @domainRelationMap mDomainRelationMap ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := [mDomainTypeName string] ;
   end method ;
 
-#--- A domain accepts 'emptyDomain' constructor
+#--- A domain accepts 'domainWithNames' constructor
   override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
   :
     outHasLexiqueAndLocationArguments := true ;
-    if [inClassMethodName string] == "emptyDomain" then
+    if [inClassMethodName string] == "domainWithNames" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      foreach mAttributeMap do
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      end foreach ;
     else
-      error inClassMethodName : "a domain only accepts 'emptyDomain' constructor" -> outAccessorTypesList ;
+      error inClassMethodName : "a domain only accepts 'domainWithNames' constructor" -> outAccessorTypesList ;
     end if ;
   end method ;
 
@@ -2948,14 +2959,14 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 #--- List accept 'smallest' and greatest' reader in instruction
   override
   method handleMethodInstructionCall
-    ??@lstring inReaderName
+    ??@lstring inMethodName
     ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
     outCategoryMethodClassBaseName := "" ;
-    if ([inReaderName string] != "smallest") & ([inReaderName string] != "greatest") then
-      error inReaderName: "a sorted list accepts only 'smallest' and 'greatest' methods" ;
+    if ([inMethodName string] != "smallest") & ([inMethodName string] != "greatest") then
+      error inMethodName: "a sorted list accepts only 'smallest' and 'greatest' methods" ;
     end if ;
     outReaderSignature := mExtractSignature ;
   end method ;
@@ -3096,13 +3107,13 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Methods are search methods (when map defines no automaton)
   override
   method handleMethodInstructionCall
-    ??@lstring inReaderName
+    ??@lstring inMethodName
     ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
     outCategoryMethodClassBaseName := "" ;
-    [mReaderMethodMap searchKey !inReaderName ?outReaderSignature] ;
+    [mReaderMethodMap searchKey !inMethodName ?outReaderSignature] ;
   end method ;
 
 
@@ -3204,13 +3215,13 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
 #--- mapindex accept method calls corresponding to search declarations
   override
   method handleMethodInstructionCall
-    ??@lstring inReaderName
+    ??@lstring inMethodName
     ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
     outCategoryMethodClassBaseName := "" ;
-    [mMapIndexSearchReaderMap searchKey !inReaderName ?*] ;
+    [mMapIndexSearchReaderMap searchKey !inMethodName ?*] ;
     outReaderSignature := [@L_EXsignature listWithValue
       ![@typeGalgas_lstring new]
       ![@EXformalArgumentPassingMode argumentOut]
@@ -3968,6 +3979,20 @@ routine handleReaderCall
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   else
     cast inReceiverType :
+    when >= @typeGalgasDomainType t do
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      build_stringlist_type  ?outReturnedType ;
+      @bool found := false ;
+      @string s := "" ;
+      foreach [t mDomainRelationMap] while not found do
+        s .= " " . [key string] . "StringValueList" ;
+        if [inReaderName string] == ([key string] . "StringValueList") then
+          found := [mDomains length] == 1 ;
+        end if ;
+      end foreach ;
+      if not found then
+        error inReaderName:"this domain accepts the following readers:" . s ;
+      end if ;
     when >= @typeGalgas_filewrapper do
       if [inReaderName string] == "allFilePathes" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
