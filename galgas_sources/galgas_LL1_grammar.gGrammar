@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar galgas_LL1_grammar "LR1" :
+grammar galgas_LL1_grammar "SLR" :
   with "grammar_parser.gSyntax" ;
   with "ggs_LL1_compile_component.gSyntax" ;
   with "galgas_start.gSyntax" ;

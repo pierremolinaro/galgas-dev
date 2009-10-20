@@ -107,12 +107,6 @@ rule <galgas_component>
     $identifier$ ? * ;
   end select ;
   $:$ ;
-  repeat
-  while
-    $import$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -187,12 +181,6 @@ label importLexique
     $identifier$ ? * ;
   end select ;
   $:$ ;
-  repeat
-  while
-    $import$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -268,12 +256,6 @@ label importSyntax
     $identifier$ ? * ;
   end select ;
   $:$ ;
-  repeat
-  while
-    $import$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -350,12 +332,6 @@ label importSemantics
     $identifier$ ? * ;
   end select ;
   $:$ ;
-  repeat
-  while
-    $import$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -432,12 +408,6 @@ label importGrammarForSemantics
     $identifier$ ? * ;
   end select ;
   $:$ ;
-  repeat
-  while
-    $import$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -511,12 +481,6 @@ label importOptions
     $identifier$ ? * ;
   end select ;
   $:$ ;
-  repeat
-  while
-    $import$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
