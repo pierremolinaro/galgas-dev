@@ -1567,9 +1567,8 @@ rule <output_expression_list>
   elsif [inFormalAttributesList length] > [effectiveTypesList length] then
     error endOfListLocation : "one or more expressions missing" ;
   else
-    foreach inFormalAttributesList (@AC_galgasType kFormalType @lstring kFormalParameterName),
-            effectiveTypesList (@AC_galgasType kEffectiveType @location kErrorLocation) do
-      checkAssignmentTypesCompatibility !kFormalType !kEffectiveType !kErrorLocation !true ;
+    foreach inFormalAttributesList, effectiveTypesList do
+      checkAssignmentTypesCompatibility !mAttributType !mType !mEndOfExpressionLocation !true ;
     end foreach ;
   end if ;
 end rule ;

@@ -203,7 +203,7 @@ override reader @lexicalSendTerminalByDefault generateCocoaDefaultSendCode
   ?@string inScannerClassName
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "mTokenCode = " . inScannerClassName . "_1_" . mDefaultSentTerminal . " ;\n" ;
+  outGeneratedCode := "mTokenCode = " . inScannerClassName . "_1_" . [mDefaultSentTerminal identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -343,7 +343,7 @@ override reader @lexicalDropInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "mTokenCode = " . inScannerClassName . "_1_" . mTerminalName . " ;\n" ;
+  outGeneratedCode := "mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

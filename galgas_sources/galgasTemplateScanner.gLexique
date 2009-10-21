@@ -108,6 +108,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "or",
   "override",
   "parse",
+  "prefixedby",
   "project",
   "program",
   "reader",
@@ -246,7 +247,7 @@ end rule ;
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
   "*",     "|",    ",",      "+",     "--",
-  "::",    ">",    ";",      ":",     "`",
+  "::",    ">",    ";",      ":",
   "-",     "(",    ")",     "->",      "?",
   "==",   "??",    "!",     ":=",     "++",
   "[",     "]",   "+=",     "?!",     "!?",

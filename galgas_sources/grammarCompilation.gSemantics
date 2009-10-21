@@ -82,33 +82,30 @@ routine handleNonTerminalDeclarations
           . " labels."
         ;
       else
-        foreach mLabels, labels (@lstring labelName @formalParameterList formalParameters) do
-          if [mLabelName string] != [labelName string] then
+        foreach mLabels, labels prefixedby others_ do
+          if [mLabelName string] != [others_mLabelName string] then
             error mLabelName: "this label should be identical to the label '"
-            . labelName
+            . others_mLabelName
             . "' declared in " 
-            . [[labelName location] locationString]
+            . [[others_mLabelName location] locationString]
             ;
           end if ;
-          foreach mFormalParameters, formalParameters (@formalArgumentPassingMode formalParameterPassingMode
-                                                       @lstring formalParameterTypeName
-                                                       *
-                                                       *) do
+          foreach mFormalParameters, others_mFormalParameters prefixedby others_ do
             
-            if mFormalParameterPassingMode != formalParameterPassingMode then
+            if mFormalParameterPassingMode != others_mFormalParameterPassingMode then
               error mFormalParameterName: "the passing mode ("
               . [mFormalParameterPassingMode string]
               . ") for this parameter should be identical to the passing mode ("
-              . [formalParameterPassingMode string]
+              . [others_mFormalParameterPassingMode string]
               . ") of the parameter declared in"
-              . [[labelName location] locationString]
+              . [[others_mLabelName location] locationString]
               ;
             end if ;
-            if [mFormalParameterTypeName string] != [formalParameterTypeName string] then
+            if [mFormalParameterTypeName string] != [others_mFormalParameterTypeName string] then
               error mFormalParameterTypeName: "this type name should be identical to the '@"
-              . formalParameterTypeName
+              . others_mFormalParameterTypeName
               . "' type name used in " 
-              . [[formalParameterTypeName location] locationString]
+              . [[others_mFormalParameterTypeName location] locationString]
               ;
             end if ;
           end foreach ;
