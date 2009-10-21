@@ -788,10 +788,10 @@ routine compileLexiqueComponent
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;
     end if ;
     @lexicalSentValueList argumentTypeList [emptyList] ;
-    foreach mSentAttributeList (@lstring kAttributeName) do
+    foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [[lexiqueAnalysisContext  mLexicalAttributeMap] searchKey !kAttributeName ?attributeLexicalType] ;
-      argumentTypeList += ![kAttributeName string] !attributeLexicalType ;
+      [[lexiqueAnalysisContext  mLexicalAttributeMap] searchKey !mValue ?attributeLexicalType] ;
+      argumentTypeList += ![mValue string] !attributeLexicalType ;
     end foreach ;
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList] ;
     @bool isEndOfTemplateMark := false ;
@@ -818,10 +818,10 @@ routine compileLexiqueComponent
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;
     end if ;
     @lexicalSentValueList argumentTypeList [emptyList] ;
-    foreach mSentAttributeList (@lstring kAttributeName) do
+    foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [[lexiqueAnalysisContext mLexicalAttributeMap] searchKey !kAttributeName ?attributeLexicalType] ;
-      argumentTypeList += ![kAttributeName string] !attributeLexicalType ;
+      [[lexiqueAnalysisContext mLexicalAttributeMap] searchKey !mValue ?attributeLexicalType] ;
+      argumentTypeList += ![mValue string] !attributeLexicalType ;
     end foreach ;
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
     @tokenSortedlist tokenSortedlist [emptySortedList] ;

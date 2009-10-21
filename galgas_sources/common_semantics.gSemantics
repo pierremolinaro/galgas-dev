@@ -3699,17 +3699,17 @@ routine verifierCompatibiliteSignatures
   elsif [signatureReference length] > [signatureTestee length] then
     error ouSignalerErreur : "one or more parameters missing" ;
   else 
-    foreach signatureReference (@AC_galgasType attTypeG @EXformalArgumentPassingMode passingMode1),
-            signatureTestee (@AC_galgasType attTypeD @EXformalArgumentPassingMode passingMode2) do
+    foreach signatureReference,
+            signatureTestee prefixedby other_ do
       checkAssignmentTypesCompatibility
-         !attTypeG
-         !attTypeD
+         !mType
+         !other_mType
          !ouSignalerErreur
          !false
       ;
-      if passingMode1 != passingMode2 then
-        error ouSignalerErreur : [passingMode2 formalArgumentMessage] . " is not compatible with " .
-                                [passingMode2 formalArgumentMessage] ;
+      if mFormalArgumentPassingMode != other_mFormalArgumentPassingMode then
+        error ouSignalerErreur : [mFormalArgumentPassingMode formalArgumentMessage] . " is not compatible with " .
+                                [other_mFormalArgumentPassingMode formalArgumentMessage] ;
       end if ;
     end foreach ;
   end if ;
@@ -4689,9 +4689,9 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @bool found := false ;
-      foreach [t mAttributeList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
-        outReturnedType := kAttributType ;
-        found := [inReaderName string] == [kNomAttribut string] ;
+      foreach [t mAttributeList] while not found do
+        outReturnedType := mAttributType ;
+        found := [inReaderName string] == [mAttributeName string] ;
       end foreach ;
       if not found then
         error inReaderName: "this reader is not defined (you can name as reader any struct attribute)" ;
@@ -4750,26 +4750,26 @@ routine importSemanticsComponent
   #--- Add Imported metamodels
     ioAlreadyImportedMetamodelComponents := ioAlreadyImportedMetamodelComponents | importedMetamodelComponents ;
   #--- Recursively import other semantics components
-    foreach importedSemanticsComponents (@string kKey) do
+    foreach importedSemanticsComponents do
       importSemanticsComponent
         !?ioSemanticsComponentsMap
         !?ioModelMap
         !?ioActionMap
         !?ioAlreadyImportedSemanticsComponents
         !?ioAlreadyImportedMetamodelComponents
-        ![@lstring new !kKey !here]
+        ![@lstring new !key !here]
       ;
     end foreach ;
   #--- Add imported types
-    foreach modelMap (@lstring kKey @TypeModel kType) do
-      if not [ioModelMap hasKey ![kKey string]] then
-        [!?ioModelMap insertKey !kKey !kType] ;
+    foreach modelMap do
+      if not [ioModelMap hasKey ![key string]] then
+        [!?ioModelMap insertKey !key !mType] ;
       end if ;
     end foreach ;
   #--- Add actions
-    foreach actionMap (@lstring kKey @L_signature kSignature @bool kIsExtern) do
-      if not [ioActionMap hasKey ![kKey string]] then
-        [!?ioActionMap insertKey !kKey !kSignature !kIsExtern] ;
+    foreach actionMap do
+      if not [ioActionMap hasKey ![key string]] then
+        [!?ioActionMap insertKey !key !mSignature !mIsExtern] ;
       end if ;
     end foreach ;
   #--- Flag component as imported
