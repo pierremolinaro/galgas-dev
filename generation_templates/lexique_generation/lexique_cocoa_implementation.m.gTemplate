@@ -86,7 +86,7 @@
 %
 
 %
-  foreach `tokenList_ [LEXIQUE_ANALYSIS_CONTEXT mLexicalTokenListMap] do
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalTokenListMap] prefixedby tokenList_ do
     if tokenList_mShouldBeGenerated then
       %//---------------------------------------------------------------------------*\n%
       %//                                                                           *\n%

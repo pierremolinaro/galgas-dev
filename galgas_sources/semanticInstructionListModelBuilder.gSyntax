@@ -556,11 +556,11 @@ end rule ;
 
 rule <semantic_instruction> !@semanticInstruction outInstruction :
   $with$ ;
-  @lstring prefix ;
+  @lstring withPrefix ;
   select
-    prefix := [@lstring new !"" !here] ;
+    withPrefix := [@lstring new !"" !here] ;
   or
-    $identifier$ ? prefix ;
+    $identifier$ ? withPrefix ;
     $:$ ;
   end select ;
   $!?$ ;
@@ -587,7 +587,7 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
     <semantic_instruction_list> ? mElseBranchInstructions ;
   end select ;
   outInstruction := [@withInstruction new
-    !prefix
+    !withPrefix
     !mTargetObjectName
     !structAttributeList
     !mSearchMethodName

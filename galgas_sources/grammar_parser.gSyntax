@@ -202,23 +202,23 @@ rule <galgas_component>
                               !importedProductionRulesList
                               !syntaxComponentName ;
     #--- Build nonterminal symbol map for grammar
-      foreach importedNonterminalSymbolsMap (@lstring ntSymbol @M_nonterminalSymbolAltsForGrammar importedAltSignaturesMap) do
-        if [nonterminalSymbolsMapForGrammar hasKey ![ntSymbol string]] then
+      foreach importedNonterminalSymbolsMap do
+        if [nonterminalSymbolsMapForGrammar hasKey ![key string]] then
           @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
-          [nonterminalSymbolsMapForGrammar searchKey !ntSymbol ?altSignatureMap] ;
-          foreach altSignatureMap (@lstring altName @L_signature altSignature) do
-            @M_nonterminalSymbolAltsForGrammar temp := importedAltSignaturesMap ;
+          [nonterminalSymbolsMapForGrammar searchKey !key ?altSignatureMap] ;
+          foreach altSignatureMap do
+            @M_nonterminalSymbolAltsForGrammar temp := mNonterminalSymbolParametersMap ;
             @L_signature importedAltSignature ;
-            [temp searchKey !altName ?importedAltSignature] ;
-            checkSignature_ForGrammarComponent !importedAltSignature !altSignature ![ntSymbol location] ![altName location] ;
+            [temp searchKey !key ?importedAltSignature] ;
+            checkSignature_ForGrammarComponent !importedAltSignature !mFormalParametersList ![key location] ![key location] ;
           end foreach ;
-          foreach importedAltSignaturesMap (@lstring importedAltName @L_signature importedAltSignature) do
-            if [importedAltName string] != "parse" then
-              [altSignatureMap searchKey !importedAltName ?*] ;
+          foreach mNonterminalSymbolParametersMap prefixedby others_ do
+            if [others_key string] != "parse" then
+              [altSignatureMap searchKey !others_key ?*] ;
             end if ;
           end foreach ;
         else
-          [!?nonterminalSymbolsMapForGrammar insertKey !ntSymbol !importedAltSignaturesMap] ;
+          [!?nonterminalSymbolsMapForGrammar insertKey !key !mNonterminalSymbolParametersMap] ;
         end if ;
       end foreach ;
     end select ;
@@ -245,13 +245,13 @@ rule <galgas_component>
   @luint startSymbolIndex ;
   [nonterminalSymbolsMapForGrammar searchKeyGetID !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
 #--- Check signatures (added 8/13/2004)
-  foreach startSymbolAltMap (@lstring cstAltName @L_signature cstAltMap) do
+  foreach startSymbolAltMap do
     @L_signature altMap ;
-    [grammarAltMap searchKey !cstAltName ?altMap] ;
-    checkSignature_ForGrammarComponent !cstAltMap !altMap !here ![cstAltName location] ;
+    [grammarAltMap searchKey !key ?altMap] ;
+    checkSignature_ForGrammarComponent !mFormalParametersList !altMap !here ![key location] ;
   end foreach ;
-  foreach grammarAltMap (@lstring cstAltName ...) do
-    [startSymbolAltMap searchKey !cstAltName ?*] ;
+  foreach grammarAltMap do
+    [startSymbolAltMap searchKey !key ?*] ;
   end foreach ;
 #--- Unused symbols declaration
   @M_unusedNonTerminalSymbolsForGrammar unusedNonTerminalSymbolsForGrammar [emptyMap] ;

@@ -48,13 +48,13 @@ listmap @productionListMap (@derivationList) ;
 #---------------------------------------------------------------------------*
 
 routine newGrammarAnalyzer
-  ?@lstring inGrammarName
-  ?@uint inStartSymbolIndex
-  ?@string inLexiqueName
-  ??@vocabularyMap inNonterminalMap
-  ??@vocabularyMap inTerminalMap
-  ??@productionListMap inProductionListMap
-  ??@uintlist inUnusedNonterminalSymbolList
+  ?@lstring unused inGrammarName
+  ?@uint unused inStartSymbolIndex
+  ?@string unused inLexiqueName
+  ??@vocabularyMap unused inNonterminalMap
+  ??@vocabularyMap unused inTerminalMap
+  ??@productionListMap unused inProductionListMap
+  ??@uintlist unused inUnusedNonterminalSymbolList
   !@string outHTMLFileHeader
   !@string outHTMLFileContents
 :

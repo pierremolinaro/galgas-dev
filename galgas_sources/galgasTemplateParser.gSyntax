@@ -178,14 +178,6 @@ rule <template_instruction>
   ?!@templateInstructionList ioResultingInstructionList
 :
   $foreach$ ;
-  @string prefix ;
-  select
-    prefix := "" ;
-  or
-    $`$ ;
-    $identifier$ ? @lstring prefixString ;
-    prefix := [prefixString string] ;
-  end select ;
   @bool ascending ;
   select
     ascending := true ;
@@ -206,6 +198,14 @@ rule <template_instruction>
     ?expression
     ?expressionType
   ;
+  @string foreachPrefix ;
+  select
+    foreachPrefix := "" ;
+  or
+    $prefixedby$ ;
+    $identifier$ ? @lstring prefixString ;
+    foreachPrefix := [prefixString string] ;
+  end select ;
 #---
   @string cppExpressionTypeName ;
   [expressionType getTypeName ?cppExpressionTypeName] ;
@@ -245,15 +245,15 @@ rule <template_instruction>
     #--- Build enumeration variables
       @bool mapStyle := localConstantBuildStyleEnum != [@localConstantBuildStyleEnum listStyle] ;
       @bool firstOne := true ;
-      foreach formalEnumerationList (@AC_galgasType type @lstring attributeName) do
+      foreach formalEnumerationList do
         @typeCplusPlusName cppName ;
         if (localConstantBuildStyleEnum == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
           cppName := [@typeKeyName new !instructionLocation !iteratorNewStyle] ;
         else
-          cppName := [@typeOperandName new !instructionLocation ![attributeName string] !mapStyle !iteratorNewStyle] ;
+          cppName := [@typeOperandName new !instructionLocation ![mAttributeName string] !mapStyle !iteratorNewStyle] ;
         end if ;
-        @lstring implicitVariableName [new !prefix . attributeName ! [attributeName location]] ;
-        [!?ioTemplateVariableMap insertUsedConstInArgument !implicitVariableName !type !cppName] ;
+        @lstring implicitVariableName [new !foreachPrefix . mAttributeName ! [mAttributeName location]] ;
+        [!?ioTemplateVariableMap insertUsedConstInArgument !implicitVariableName !mAttributType !cppName] ;
         firstOne := false ;
       end foreach ;
       $do$ ;

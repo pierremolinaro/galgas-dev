@@ -120,7 +120,7 @@ appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 inTerminalIndex,
   end foreach
 %
 %
-  foreach `tokenList_ LEXICAL_TOKEN_LIST_MAP do
+  foreach LEXICAL_TOKEN_LIST_MAP prefixedby tokenList_ do
     %//---------------------------------------------------------------------------*\n%
     %//                                                                           *\n%
     %//             Key words table '%![tokenList_key string]%'                            *\n%

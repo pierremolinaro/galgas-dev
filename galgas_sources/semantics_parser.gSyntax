@@ -4773,8 +4773,8 @@ rule <semantic_instruction>
   select
     prefixString := "" ;
   or
-    $identifier$ ? @lstring prefix ;
-    prefixString := [prefix string] ;
+    $identifier$ ? @lstring thePrefix ;
+    prefixString := [thePrefix string] ;
     $:$ ;
   end select ;
 #--- Map object reference
@@ -4920,6 +4920,12 @@ rule <constant_while_before_in_foreach_instruction>
     end select ;
   #--- Source expression
     <expression> parse ;
+  #--- Prefix
+    select
+    or
+      $prefixedby$ ;
+      $identifier$ ? * ;
+    end select ;
   #--- Parse effective input attribute list
     select
       <parse_effective_input_parameters_list> parse ;
@@ -4980,7 +4986,7 @@ label secondPhase
   #--- Parse enumerated variables
     outForeachEnumerationList := [@foreachEnumerationList emptyList] ;
     repeat
-      @location magicNumber := here ;
+      const @location magicNumber := here ;
     #--- Ascending or descending ?
       @bool ascending ;
       select
@@ -5017,6 +5023,15 @@ label secondPhase
     #--- Extract type name
       @string typeName ;
       [sourceExpressionType getTypeName ?typeName] ;
+    #--- Prefix
+      @string prefix ;
+      select
+        prefix := "" ;
+      or
+        $prefixedby$ ;
+        $identifier$ ? @lstring prefixString ;
+        prefix := [prefixString string] ;
+      end select ;
     #--- Parse effective input attribute list
       select
         <parse_effective_input_parameters_list>
@@ -5027,6 +5042,11 @@ label secondPhase
           !iteratorNewStyle
           ?*
         ;
+        @string listOfAttributes := "" ;
+        foreach formalEnumerationList do
+          listOfAttributes .= " " . prefix. mAttributeName ;
+        end foreach ;
+        warning here:"deprecated construct; now use implicitly declared constants:" . listOfAttributes ;
       or
         @bool mapStyle := localConstantBuildStyleEnum != [@localConstantBuildStyleEnum listStyle] ;
         @bool firstOne := true ;
@@ -5037,7 +5057,7 @@ label secondPhase
           else
             cppName := [@typeOperandName new !magicNumber ![attributeName string] !mapStyle !iteratorNewStyle] ;
           end if ;
-          [!?ioVariablesMap insertUsedConstInArgument !attributeName !type !cppName] ;
+          [!?ioVariablesMap insertUsedConstInArgument ![@lstring new !prefix . [attributeName string] !here] !type !cppName] ;
           firstOne := false ;
         end foreach ;
       end select ;

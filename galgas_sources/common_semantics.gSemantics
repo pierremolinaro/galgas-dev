@@ -2175,14 +2175,14 @@ routine checkSignature_ForGrammarComponent
   elsif [inFormalReferenceSignature length] > [inFormalTestedSignature length] then
     error inFormalTestedLocation : "too much formal parameters (from prototype in " . [inFormalReferenceLocation locationString] . ")" ;
   else
-    foreach inFormalReferenceSignature (@EXformalArgumentPassingMode passingMode1 @lstring kType1),
-            inFormalTestedSignature  (@EXformalArgumentPassingMode passingMode2 @lstring kType2) do
-      if passingMode1 != passingMode2 then
-        error kType2 : "Prototype has " . [passingMode1 formalArgumentMessage] .
-                       ", and " . [passingMode1 formalArgumentMessage] . " has been found" ;
+    foreach inFormalReferenceSignature,
+            inFormalTestedSignature prefixedby others_ do
+      if mFormalArgumentPassingMode != others_mFormalArgumentPassingMode then
+        error others_mGalgasTypeName : "Prototype has " . [mFormalArgumentPassingMode formalArgumentMessage] .
+                       ", and " . [mFormalArgumentPassingMode formalArgumentMessage] . " has been found" ;
       end if ;
-      if [kType1 string] != [kType2 string] then
-        error kType2 :  "I was expecting the '@" . [kType1 string] . "' type, I have got the '@" . [kType2 string] . "' type" ;
+      if [mGalgasTypeName string] != [others_mGalgasTypeName string] then
+        error others_mGalgasTypeName :  "I was expecting the '@" . [mGalgasTypeName string] . "' type, I have got the '@" . [others_mGalgasTypeName string] . "' type" ;
       end if ;
     end foreach ;
   end if ;
@@ -3226,8 +3226,8 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
       ![@typeGalgas_lstring new]
       ![@EXformalArgumentPassingMode argumentOut]
     ] ;
-    foreach mMapAttributesList (@AC_galgasType kAttributType *) do
-      outReaderSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+    foreach mMapAttributesList do
+      outReaderSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
     end foreach ;
   end method ;
 
