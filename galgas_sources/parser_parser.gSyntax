@@ -362,9 +362,9 @@ rule <galgas_component>
     ;
   end repeat ;
 #--- Check that all routines have been implemented
-  foreach tableNomRoutinesDeclarees (@lstring nomRoutine) do
-    if not [tableRoutinesAimplementer hasKey ![nomRoutine string]] then
-      error nomRoutine : "the routine '" . [nomRoutine string] .
+  foreach tableNomRoutinesDeclarees do
+    if not [tableRoutinesAimplementer hasKey ![key string]] then
+      error key : "the routine '" . [key string] .
                          "' is not implemented within the component" ;
     end if ;
   end foreach ;
@@ -1647,9 +1647,9 @@ rule <syntax_declaration>
 #--- Check if all label rules have the same syntax signature
   checkLabelSignatures !?altProductionsMap ;
 #--- Check that all label rules are implemented
-  foreach nonterminalSymbolAltMap (@lstring nonTerminalAltName @L_EXsignature altSignature) do
-    if [nonTerminalAltName string] != "parse" & not [altProductionsMap hasKey ![nonTerminalAltName string]] then
-      error here : "the '" . [nonTerminalAltName string] . "' label is not implemented within the rule" ;
+  foreach nonterminalSymbolAltMap do
+    if [key string] != "parse" & not [altProductionsMap hasKey ![key string]] then
+      error here : "the '" . [key string] . "' label is not implemented within the rule" ;
     end if ;
   end foreach ;
 #--- Generate production
@@ -2202,8 +2202,8 @@ rule <syntax_instruction>
     ;
     branchList += !firstBranchInstructionsList ;
     parse_rewind_signature_list += !firstBranchSyntaxSignature !instructionStartLocation ;
-    foreach firstBranchSyntaxSignature (@AC_instruction_ForGrammar grammarInstruction) do
-      ioSyntaxSignature += !grammarInstruction ;
+    foreach firstBranchSyntaxSignature do
+      ioSyntaxSignature += !mInstruction ;
     end foreach ;
   #--- One or more 'rewind' branches
     repeat
@@ -2294,8 +2294,8 @@ rule <syntax_instruction>
           !inSemanticContext
         ;
         parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
-        foreach syntaxSignature (@AC_instruction_ForGrammar grammarInstruction) do
-          ioSyntaxSignature += !grammarInstruction ;
+        foreach syntaxSignature do
+          ioSyntaxSignature += !mInstruction ;
         end foreach ;
       end block (!here) ;
     end block () ;

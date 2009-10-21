@@ -672,9 +672,9 @@ rule <galgas_component>
   $semantics$ ;
   $;$ ;
 #--- Check that all routines have been implemented
-  foreach tableNomRoutinesDeclarees (@lstring nomRoutine) do
-    if not [tableRoutinesAimplementer hasKey ![nomRoutine string]] then
-      error nomRoutine : "the routine '" . [nomRoutine string] .
+  foreach tableNomRoutinesDeclarees do
+    if not [tableRoutinesAimplementer hasKey ![key string]] then
+      error key : "the routine '" . [key string] .
                          "' is not implemented in the component" ;
     end if ;
   end foreach ;
@@ -1964,9 +1964,9 @@ rule <class_declaration>
       error here: "this class should defined a class message, as it inherits from a class that does" ;
     end if ;
   #--- Verify that all inherited messages are defined
-    foreach inheritedMessageMap (@lstring nomMessageAbstrait) do
-      if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
-        error here : "the message '" . [nomMessageAbstrait string] . "' is not defined" ;
+    foreach inheritedMessageMap do
+      if not [tableMessagesClasseConcrete hasKey ![key string]] then
+        error here : "the message '" . [key string] . "' is not defined" ;
       end if ;
   end foreach ;
   #--- Inserer dans la map des classes utilisables
@@ -2192,9 +2192,9 @@ label importSemantics
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
-    foreach inheritedMessageMap (@lstring nomMessageAbstrait) do
-      if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
-        error here : "the message '" .  [nomMessageAbstrait string] . "' is not defined" ;
+    foreach inheritedMessageMap do
+      if not [tableMessagesClasseConcrete hasKey ![key string]] then
+        error here : "the message '" .  [key string] . "' is not defined" ;
       end if ;
   end foreach ;
   #--- Inserer dans la map des classes utilisables
@@ -4465,8 +4465,8 @@ rule <semantic_instruction>
   $end$ ;
 #--- Check all constant are named
   @stringset missingConstants := [enumConstantesMap allKeys] - allBranchConstantSet ;
-  foreach missingConstants (@string kConstant) do
-    error here: "the '" . kConstant . "' is not used in switch instruction" ;
+  foreach missingConstants do
+    error here: "the '" . key . "' is not used in switch instruction" ;
   end foreach ;
 #--- Generate instruction
   @typeInstruction instruction ;
@@ -7670,18 +7670,18 @@ routine recursivelyEnumerateDirectories
 #--- Enumerates regular files
   @stringlist files := [inAbsoluteSourcePath regularFiles !false] ;
   outWrapperFileSortedList := [@wrapperFileSortedList emptySortedList] ;
-  foreach files (@string kFile) do
-    if [inExtensionMap hasKey ![kFile pathExtension]] then
-      @string absoluteFilePath := inAbsoluteSourcePath . "/" . kFile ;
+  foreach files do
+    if [inExtensionMap hasKey ![mValue pathExtension]] then
+      @string absoluteFilePath := inAbsoluteSourcePath . "/" . mValue ;
       #log absoluteFilePath ;
       outWrapperFileSortedList +=
-        !kFile
+        !mValue
         !absoluteFilePath
         !currentDirectoryIndex
         !ioWrapperFileIndex
       ;
       [!?ioRegularFileMap insertKey
-        ![@lstring new !inPathInWrapper . kFile !here]
+        ![@lstring new !inPathInWrapper . mValue !here]
         !currentDirectoryIndex
         !ioWrapperFileIndex
       ] ;
@@ -7691,13 +7691,13 @@ routine recursivelyEnumerateDirectories
 #--- Enumerates regular directories
   @stringlist directories := [inAbsoluteSourcePath directories !false] ;
   outWrapperDirectorySortedList := [@wrapperDirectorySortedList emptySortedList] ;
-  foreach directories (@string kDirectory) do
+  foreach directories do
     @wrapperFileSortedList internalWrapperFileSortedList ;
     @wrapperDirectorySortedList internalWrapperDirectorySortedList ;
     @uint theDirectoryIndex := ioWrapperDirectoryIndex ;
     recursivelyEnumerateDirectories
-      !inAbsoluteSourcePath . "/" . kDirectory
-      !inPathInWrapper . kDirectory . "/"
+      !inAbsoluteSourcePath . "/" . mValue
+      !inPathInWrapper . mValue . "/"
       !inExtensionMap
       ?internalWrapperFileSortedList
       ?internalWrapperDirectorySortedList
@@ -7706,7 +7706,7 @@ routine recursivelyEnumerateDirectories
       !?ioRegularFileMap
     ;
     outWrapperDirectorySortedList +=
-      !kDirectory
+      !mValue
       !internalWrapperFileSortedList
       !internalWrapperDirectorySortedList
       !theDirectoryIndex
@@ -8737,9 +8737,9 @@ rule <semantics_declaration>
     while
     end repeat ;
    #--- Check all enum values are used for source
-    foreach constantMap (@lstring inConstant *) do
-      if not [definedSourceMap hasKey ![inConstant string]] then
-        error here: "The '" . [inConstant string] . "' is not handled" ;
+    foreach constantMap do
+      if not [definedSourceMap hasKey ![key string]] then
+        error here: "The '" . [key string] . "' is not handled" ;
       end if ;
     end foreach ;
   #--- Enter in action map
@@ -8810,9 +8810,9 @@ rule <semantics_declaration>
     while
     end repeat ;
    #--- Check all enum values are used for source
-    foreach constantMap (@lstring inConstant *) do
-      if not [definedSourceMap hasKey ![inConstant string]] then
-        error here: "The '" . [inConstant string] . "' is not handled" ;
+    foreach constantMap do
+      if not [definedSourceMap hasKey ![key string]] then
+        error here: "The '" . [key string] . "' is not handled" ;
       end if ;
     end foreach ;
   #--- Enter in action map
@@ -8839,8 +8839,8 @@ rule <semantics_declaration>
     $;$ ;
   #--- Build message string list
     @lstringlist messageStringList [emptyList] ;
-    foreach constantMap (@lstring constantName *) do
-      @lstring name := [@lstring new ![constantName string] !here] ;
+    foreach constantMap do
+      @lstring name := [@lstring new ![key string] !here] ;
       @lstring cstString ;
       [cstMessageStringMap searchKey !name ?cstString] ;
       messageStringList += !cstString ;

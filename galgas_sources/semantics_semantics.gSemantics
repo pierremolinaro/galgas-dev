@@ -815,21 +815,21 @@ routine buildMapWithLocalConstants
 :
   @bool mapStyle := inLocalConstantStyle != [@localConstantBuildStyleEnum listStyle] ;
   @bool firstOne := true ;
-  foreach inLocalDeclarationsList (@lstring typeNameInDeclaration @lstring cstName),
-          inSemanticAttributsList (@AC_galgasType type @lstring attributeName) do
-    if [cstName string] != "" then
+  foreach inLocalDeclarationsList,
+          inSemanticAttributsList do
+    if [mType string] != "" then
       @string typeName ;
-      [type getTypeName ? typeName] ;
-      if [typeNameInDeclaration string] == typeName then
+      [mAttributType getTypeName ? typeName] ;
+      if [mType string] == typeName then
         @typeCplusPlusName cppName ;
         if (inLocalConstantStyle == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
           cppName := [@typeKeyName new !inLocation !inEnumeratorNewStyle] ;
         else
-          cppName := [@typeOperandName new !inLocation ![attributeName string] !mapStyle !inEnumeratorNewStyle] ;
+          cppName := [@typeOperandName new !inLocation ![mAttributeName string] !mapStyle !inEnumeratorNewStyle] ;
         end if ;
-        [!?ioVariablesMap insertUsedConstInArgument !cstName !type !cppName] ;
+        [!?ioVariablesMap insertUsedConstInArgument !mName !mAttributType !cppName] ;
       else
-        error typeNameInDeclaration : "I have found the '@" . [typeNameInDeclaration string]
+        error mType : "I have found the '@" . [mType string]
           . "' type, I was expected the '@" . typeName . "' type" ;
       end if ;
     end if ;
@@ -918,17 +918,16 @@ routine verifierCompatibiliteArgEffectifsSignature
   #--- Build expression list
     @typeExpressionList expressionList := ioExpressionList ;
     ioExpressionList := [@typeExpressionList emptyList] ;
-    foreach signatureReference (@AC_galgasType attSignatureType *),
-            expressionList (@typeExpression attExpressionType) do
-      cast attExpressionType :
+    foreach signatureReference, expressionList do
+      cast mExpression :
       when >= @typeJokerInExpression do
         @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !here ![@uint sequenceNumber]] ;
         @typeExpression e := [@typeVarInExpression new !cppVarName ![@lstringlist emptyList]] ;
         ioExpressionList += !e ;
-        @typeInstruction i := [@typeInstructionDeclarationVarLocale new !cppVarName !attSignatureType] ;
+        @typeInstruction i := [@typeInstructionDeclarationVarLocale new !cppVarName !mType] ;
         ioInstructionsList += !i ;
       else
-        ioExpressionList += !attExpressionType ;
+        ioExpressionList += !mExpression ;
       end cast ;
     end foreach ;
   end if ;
