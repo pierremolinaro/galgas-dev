@@ -954,15 +954,15 @@ rule <import_headers_semantics_and_grammars>
       @lstring lexiqueClassName ;
       [grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?lexiqueClassName ?*] ;
       @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
-      foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature) do
+      foreach nonterminalSymbolParametersMap do
         @L_EXsignature formalParametersList [emptyList] ;
-        foreach signature (@EXformalArgumentPassingMode passingMode @lstring typeName) do
+        foreach mFormalParametersList do
           @AC_semanticsEntity e ;
-          [ioComponentSemanticsEntitiesMap searchKey !typeName ?e] ;
-          @AC_galgasType type := [(cast e if >= @typeEntiteType else error typeName) aDefType] ;
-          formalParametersList += !type !passingMode ;
+          [ioComponentSemanticsEntitiesMap searchKey !mGalgasTypeName ?e] ;
+          @AC_galgasType type := [(cast e if >= @typeEntiteType else error mGalgasTypeName) aDefType] ;
+          formalParametersList += !type !mFormalArgumentPassingMode ;
         end foreach ;
-        [!?grammarAltMap insertKey !altName !formalParametersList] ;
+        [!?grammarAltMap insertKey !key !formalParametersList] ;
       end foreach ;
       @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap !lexiqueClassName] ;
       [!?ioComponentSemanticsEntitiesMap insertKey !grammarComponentName !e] ;
@@ -971,16 +971,13 @@ rule <import_headers_semantics_and_grammars>
       @lstring fileNameWithPath ;
       buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
       outInclusionsForImplementationFile += ![fileNameWithPath string] ;
-      foreach grammarComponentsMap (@lstring kKey
-                                    @M_nonterminalSymbolAltsForGrammar kNonterminalSymbolParametersMap
-                                    @lstring kLexiqueName
-                                    @M_optionComponents kOptionsMap) do
-        if not [ioGrammarComponentsMap hasKey ![kKey string]] then
+      foreach grammarComponentsMap do
+        if not [ioGrammarComponentsMap hasKey ![key string]] then
           [!?ioGrammarComponentsMap insertKey
-            !kKey
-            !kNonterminalSymbolParametersMap
-            !kLexiqueName
-            !kOptionsMap
+            !key
+            !mNonterminalSymbolParametersMap
+            !mLexiqueName
+            !mOptionsMap
           ] ;
         end if ;
       end foreach ;
@@ -1004,16 +1001,16 @@ rule <import_headers_semantics_and_grammars>
         @M_semanticsEntitiesForUse importedEntities ;
         @M_optionComponents importedOptionsComponentsMap ;
         [ioSemanticsComponentsMap searchKey !componentName ?5* ?importedOptionsComponentsMap ?importedEntities] ;
-        foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) do
-          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
-            [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
+        foreach importedEntities do
+          if not [ioComponentSemanticsEntitiesMap hasKey ![key string]] then
+            [!?ioComponentSemanticsEntitiesMap insertKey !key !aDefEntite] ;
           end if ;
         end foreach ;
 #        message "'IMPORTING '" . sourceFile . "' DONE\n" ;
       #--- Check that every used option component is already declared
-        foreach importedOptionsComponentsMap (@lstring optionComponentMap ...) do
-          if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap string]] then
-            error here: "the '" . [optionComponentMap string] . "' option component must have been imported" ;
+        foreach importedOptionsComponentsMap do
+          if not [ioOptionsComponentsMapForUse hasKey ![key string]] then
+            error here: "the '" . [key string] . "' option component must have been imported" ;
           end if ;
         end foreach ;
       end if ;
@@ -1082,9 +1079,9 @@ label importSemantics
       ;
       @M_semanticsEntitiesForUse importedEntities ;
       [ioSemanticsComponentsMap searchKey !componentName ?5* ?* ?importedEntities] ;
-      foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) do
-        if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
-          [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
+      foreach importedEntities do
+        if not [ioComponentSemanticsEntitiesMap hasKey ![key string]] then
+          [!?ioComponentSemanticsEntitiesMap insertKey !key !aDefEntite] ;
         end if ;
       end foreach ;
     #--- Import semantics component
@@ -1719,9 +1716,9 @@ rule <lazy_reader>
 :
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
-  foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType ...) do
-    @typeCplusPlusName nomCpp := [@typeDirectName new ![kKey location] ![kKey string]] ;
-    [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
+  foreach tableAttributsHerites do
+    @typeCplusPlusName nomCpp := [@typeDirectName new ![key location] ![key string]] ;
+    [!?methodLocalVariablesMap insertUsedConstInArgument !key !mAttributType !nomCpp] ;
   end foreach ;
 #--- Header
   $lazy$ ;
@@ -2280,9 +2277,9 @@ rule <parse_method>
   $identifier$ ? outMethodName ;
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
-  foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType ...) do
-    @typeCplusPlusName nomCpp := [@typeDirectName new ![kKey location] ![kKey string]] ;
-    [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
+  foreach tableAttributsHerites do
+    @typeCplusPlusName nomCpp := [@typeDirectName new ![key location] ![key string]] ;
+    [!?methodLocalVariablesMap insertUsedConstInArgument !key !mAttributType !nomCpp] ;
   end foreach ;
 #--- Insert the predefined "self" variable
   @AC_galgasType typeDefinition := [@typeGalgasClassType new 
@@ -2810,9 +2807,9 @@ rule <instruction_beginning_with_identifier>
     structAttributeList += !structAttributeName ;
     @typeGalgasStructType structType := (cast targetType if >= @typeGalgasStructType else error structAttributeName) ;
     @bool found := false ;
-    foreach [structType mAttributeList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
-      found := [kAttributeName string] == [structAttributeName string] ;
-      targetType := kAttributType ;
+    foreach [structType mAttributeList] while not found do
+      found := [mAttributeName string] == [structAttributeName string] ;
+      targetType := mAttributType ;
     end foreach ;
     if not found then
       error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
@@ -2985,10 +2982,9 @@ rule <input_parameters_list>
   else
     listeAffectationParametresEffectifs := [@L_assignedVariables emptyList] ;
     outAllVariablesList := [@typeCplusPlusNameList emptyList] ;
-    foreach listeAttributsSemantiques (@AC_galgasType attTypeAttribut @lstring attNomAttribut),
-            listeCibles (@typeCible attCible) do
-      @lstring nomAttributSource := attNomAttribut ;
-      [attCible verifierType !attTypeAttribut !?nomAttributSource !?listeAffectationParametresEffectifs !?outAllVariablesList] ;
+    foreach listeAttributsSemantiques, listeCibles do
+      @lstring nomAttributSource := mAttributeName ;
+      [aCible verifierType !mAttributType !?nomAttributSource !?listeAffectationParametresEffectifs !?outAllVariablesList] ;
     end foreach ;
   end if ;
 #--- Append Joker if needed
@@ -3035,9 +3031,9 @@ rule <instruction_beginning_with_identifier>
     structAttributeList += !structAttributeName ;
     @typeGalgasStructType structType := (cast targetType if >= @typeGalgasStructType else error structAttributeName) ;
     @bool found := false ;
-    foreach [structType mAttributeList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
-      found := [kAttributeName string] == [structAttributeName string] ;
-      targetType := kAttributType ;
+    foreach [structType mAttributeList] while not found do
+      found := [mAttributeName string] == [structAttributeName string] ;
+      targetType := mAttributType ;
     end foreach ;
     if not found then
       error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
@@ -3103,12 +3099,11 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   if [formalParametersList length] != [typeList length] then
     error here : [[typeList length] string] . " argument(s), while " . [[formalParametersList length] string] . " are needed" ;
   else
-    foreach formalParametersList (@AC_galgasType formalType @lstring formalName),
-            typeList (@AC_galgasType effectiveType @location kErrorLocation) do
+    foreach formalParametersList, typeList do
       checkAssignmentTypesCompatibility
-        !formalType
-        !effectiveType
-        !kErrorLocation
+        !mAttributType
+        !mType
+        !mEndOfExpressionLocation
         !true
       ;
     end foreach ;
@@ -3162,12 +3157,11 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   if [formalParametersList length] != [typeList length] then
     error here : [[typeList length] string] . " argument(s), while " . [[formalParametersList length] string] . " are needed" ;
   else
-    foreach formalParametersList (@AC_galgasType formalType @lstring formalName),
-            typeList (@AC_galgasType effectiveType @location kErrorLocation) do
+    foreach formalParametersList, typeList do
       checkAssignmentTypesCompatibility
-        !formalType
-        !effectiveType
-        !kErrorLocation
+        !mAttributType
+        !mType
+        !mEndOfExpressionLocation
         !true
       ;
     end foreach ;
@@ -3965,9 +3959,9 @@ rule <semantic_instruction>
       structAttributeList += !structAttributeName ;
       @typeGalgasStructType structType := (cast variableType if >= @typeGalgasStructType else error structAttributeName) ;
       @bool found := false ;
-      foreach [structType mAttributeList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
-        found := [kAttributeName string] == [structAttributeName string] ;
-        variableType := kAttributType ;
+      foreach [structType mAttributeList] while not found do
+        found := [mAttributeName string] == [structAttributeName string] ;
+        variableType := mAttributType ;
       end foreach ;
       if not found then
         error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
@@ -4797,9 +4791,9 @@ rule <semantic_instruction>
     instructionLocation := [structAttributeName location] ;
     @typeGalgasStructType structType := (cast targetType if >= @typeGalgasStructType else error structAttributeName) ;
     @bool found := false ;
-    foreach [structType mAttributeList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
-      found := [kAttributeName string] == [structAttributeName string] ;
-      targetType := kAttributType ;
+    foreach [structType mAttributeList] while not found do
+      found := [mAttributeName string] == [structAttributeName string] ;
+      targetType := mAttributType ;
     end foreach ;
     if not found then
       error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
@@ -4920,15 +4914,12 @@ rule <constant_while_before_in_foreach_instruction>
     end select ;
   #--- Source expression
     <expression> parse ;
-  #--- Prefix
-    select
-    or
-      $prefixedby$ ;
-      $identifier$ ? * ;
-    end select ;
   #--- Parse effective input attribute list
     select
       <parse_effective_input_parameters_list> parse ;
+    or
+      $prefixedby$ ;
+      $identifier$ ? * ;
     or
     end select ;
   while
@@ -5023,15 +5014,6 @@ label secondPhase
     #--- Extract type name
       @string typeName ;
       [sourceExpressionType getTypeName ?typeName] ;
-    #--- Prefix
-      @string prefix ;
-      select
-        prefix := "" ;
-      or
-        $prefixedby$ ;
-        $identifier$ ? @lstring prefixString ;
-        prefix := [prefixString string] ;
-      end select ;
     #--- Parse effective input attribute list
       select
         <parse_effective_input_parameters_list>
@@ -5042,22 +5024,37 @@ label secondPhase
           !iteratorNewStyle
           ?*
         ;
-        @string listOfAttributes := "" ;
-        foreach formalEnumerationList do
-          listOfAttributes .= " " . prefix. mAttributeName ;
-        end foreach ;
-        warning here:"deprecated construct; now use implicitly declared constants:" . listOfAttributes ;
+#        @string listOfAttributes := "" ;
+#        foreach formalEnumerationList do
+#          listOfAttributes .= " " . mAttributeName ;
+#        end foreach ;
+#        warning here:"deprecated construct; now use implicitly declared constants:" . listOfAttributes ;
       or
+        $prefixedby$ ;
+        $identifier$ ? @lstring prefix ;
         @bool mapStyle := localConstantBuildStyleEnum != [@localConstantBuildStyleEnum listStyle] ;
         @bool firstOne := true ;
-        foreach formalEnumerationList (@AC_galgasType type @lstring attributeName) do
+        foreach formalEnumerationList do
           @typeCplusPlusName cppName ;
           if (localConstantBuildStyleEnum == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
             cppName := [@typeKeyName new !magicNumber !iteratorNewStyle] ;
           else
-            cppName := [@typeOperandName new !magicNumber ![attributeName string] !mapStyle !iteratorNewStyle] ;
+            cppName := [@typeOperandName new !magicNumber ![mAttributeName string] !mapStyle !iteratorNewStyle] ;
           end if ;
-          [!?ioVariablesMap insertUsedConstInArgument ![@lstring new !prefix . [attributeName string] !here] !type !cppName] ;
+          [!?ioVariablesMap insertUsedConstInArgument ![@lstring new ![prefix string] . [mAttributeName string] !here] !mAttributType !cppName] ;
+          firstOne := false ;
+        end foreach ;
+      or
+        @bool mapStyle := localConstantBuildStyleEnum != [@localConstantBuildStyleEnum listStyle] ;
+        @bool firstOne := true ;
+        foreach formalEnumerationList do
+          @typeCplusPlusName cppName ;
+          if (localConstantBuildStyleEnum == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
+            cppName := [@typeKeyName new !magicNumber !iteratorNewStyle] ;
+          else
+            cppName := [@typeOperandName new !magicNumber ![mAttributeName string] !mapStyle !iteratorNewStyle] ;
+          end if ;
+          [!?ioVariablesMap insertUsedConstInArgument ![@lstring new ![mAttributeName string] !here] !mAttributType !cppName] ;
           firstOne := false ;
         end foreach ;
       end select ;
@@ -5801,40 +5798,40 @@ rule <semantics_declaration>
     @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
-    foreach insertMethodList (@lstring kKey ...) do
+    foreach insertMethodList do
     #--- Insert Methods
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !inPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !inPassingMode ;      
       end foreach ;
-      [!?mapModifierMethodMap insertKey !kKey !methodSignature] ;
+      [!?mapModifierMethodMap insertKey !mMethodName !methodSignature] ;
     #--- Insert Get Index Methods
       methodSignature := [@L_EXsignature emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !inPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !inPassingMode ;      
       end foreach ;
-      @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
+      @lstring insertKeyAndGetIndexName [new ![mMethodName string] . "GetIndex" ![mMethodName location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
-    foreach searchMethodList (@lstring kKey ...) do
+    foreach searchMethodList do
    #--- insert method
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !outPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
-      [!?mapModifierMethodMap insertKey !kKey !methodSignature] ;
+      [!?mapModifierMethodMap insertKey !mMethodName !methodSignature] ;
    #--- insert method GetIndex
       methodSignature := [@L_EXsignature emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !outPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
-      @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
+      @lstring insertKeyAndGetIndexName [new ![mMethodName string] . "GetIndex" ![mMethodName location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
   #--- Insertion dans la map des entites utilisables
@@ -5907,8 +5904,8 @@ rule <semantics_declaration>
     #--- Insert method
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !outPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
       removeMethodList += !methodName ![errorMessage string] !false !"" ;
@@ -5917,8 +5914,8 @@ rule <semantics_declaration>
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-          getIndexMethodSignature += !kAttributType !outPassingMode ;      
+        foreach listeTousAttributsSemantiques do
+          getIndexMethodSignature += !mAttributType !outPassingMode ;      
         end foreach ;
         [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
         removeMethodList += !getIndexMethodName ![errorMessage string] !true !"" ;
@@ -5944,8 +5941,8 @@ rule <semantics_declaration>
     #--- Insert method
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !inPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
       insertMethodList += !methodName ![errorMessage string] !false !shadowErrorMessage ;
@@ -5954,8 +5951,8 @@ rule <semantics_declaration>
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-          getIndexMethodSignature += !kAttributType !inPassingMode ;      
+        foreach listeTousAttributsSemantiques do
+          getIndexMethodSignature += !mAttributType !inPassingMode ;      
         end foreach ;
         [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
         insertMethodList += !getIndexMethodName ![errorMessage string] !true !shadowErrorMessage ;
@@ -5971,8 +5968,8 @@ rule <semantics_declaration>
     #--- Insert search method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !outPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
       searchMethodList += !methodName ![errorMessage string] !false !"" ;
@@ -5981,8 +5978,8 @@ rule <semantics_declaration>
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-         getIndexMethodSignature += !kAttributType !outPassingMode ;      
+        foreach listeTousAttributsSemantiques do
+         getIndexMethodSignature += !mAttributType !outPassingMode ;      
         end foreach ;
         [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
         searchMethodList += !getIndexMethodName ![errorMessage string] !true !"" ;
@@ -6120,40 +6117,40 @@ label importSemantics
     @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
-    foreach insertMethodList (@lstring kKey ...) do
+    foreach insertMethodList do
     #--- Insert Methods
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !inPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !inPassingMode ;      
       end foreach ;
-      [!?mapModifierMethodMap insertKey !kKey !methodSignature] ;
+      [!?mapModifierMethodMap insertKey !mMethodName !methodSignature] ;
     #--- Insert Get Index Methods
       methodSignature := [@L_EXsignature emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !inPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !inPassingMode ;      
       end foreach ;
-      @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
+      @lstring insertKeyAndGetIndexName [new ![mMethodName string] . "GetIndex" ![mMethodName location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
-    foreach searchMethodList (@lstring kKey ...) do
+    foreach searchMethodList do
     #--- Search Methods
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !outPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
-      [!?mapModifierMethodMap insertKey !kKey !methodSignature] ;
+      [!?mapModifierMethodMap insertKey !mMethodName !methodSignature] ;
     #--- Search Get Index Methods
       methodSignature := [@L_EXsignature emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !outPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
-      @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
+      @lstring insertKeyAndGetIndexName [new ![mMethodName string] . "GetIndex" ![mMethodName location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
   #--- Insertion dans la map des entites utilisables
@@ -6211,8 +6208,8 @@ label importSemantics
     #--- Enter insert method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !outPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
     #--- Enter 'GetIndex' insert method in modifier map (if any)
@@ -6220,8 +6217,8 @@ label importSemantics
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-          getIndexMethodSignature += !kAttributType !outPassingMode ;      
+        foreach listeTousAttributsSemantiques do
+          getIndexMethodSignature += !mAttributType !outPassingMode ;      
         end foreach ;
         [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
       end if ;
@@ -6239,8 +6236,8 @@ label importSemantics
     #--- Enter insert method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !inPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
     #--- Enter 'GetIndex' insert method in modifier map (if any)
@@ -6248,8 +6245,8 @@ label importSemantics
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-          getIndexMethodSignature += !kAttributType !inPassingMode ;      
+        foreach listeTousAttributsSemantiques do
+          getIndexMethodSignature += !mAttributType !inPassingMode ;      
         end foreach ;
         [!?mapModifierMethodMap insertKey !getIndexMethodName ! getIndexMethodSignature] ;
       end if ;
@@ -6262,8 +6259,8 @@ label importSemantics
     #--- Enter search method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ; # Key
-      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-        methodSignature += !kAttributType !outPassingMode ;      
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
     #--- Enter 'Get Index' search method in modifier map (if any)
@@ -6271,8 +6268,8 @@ label importSemantics
         @L_EXsignature getIndexMethodSignature := [@L_EXsignature emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ; # Key
         getIndexMethodSignature += !luintType !outPassingMode ; # Returned Index
-        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) do
-          getIndexMethodSignature += !kAttributType !outPassingMode ;      
+        foreach listeTousAttributsSemantiques do
+          getIndexMethodSignature += !mAttributType !outPassingMode ;      
         end foreach ;
         [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
       end if ;
@@ -7208,9 +7205,9 @@ rule <semantics_declaration>
     ;
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
-    foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      extractSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
-      inputSignature += !kAttributType ![@EXformalArgumentPassingMode argumentIn] ;
+    foreach listeTousAttributsSemantiques do
+      extractSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+      inputSignature += !mAttributType ![@EXformalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7263,9 +7260,9 @@ label importSemantics
     ;
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
-    foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      extractSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
-      inputSignature += !kAttributType ![@EXformalArgumentPassingMode argumentIn] ;
+    foreach listeTousAttributsSemantiques do
+      extractSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+      inputSignature += !mAttributType ![@EXformalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7322,8 +7319,8 @@ rule <semantics_declaration>
       !?ioComponentSemanticsEntitiesMap
     ;
     @L_EXsignature extractSignature [emptyList] ;
-    foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      extractSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+    foreach listeTousAttributsSemantiques do
+      extractSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7403,8 +7400,8 @@ label importSemantics
       !?ioComponentSemanticsEntitiesMap
     ;
     @L_EXsignature extractSignature [emptyList] ;
-    foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      extractSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+    foreach listeTousAttributsSemantiques do
+      extractSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;

@@ -864,12 +864,11 @@ routine verifierCompatibiliteTypes
   elsif [t1 length] > [t2 length] then
     error inErrorLocation : "too much identifiers" ;
   else
-    foreach t1 (@AC_galgasType attTypeEffectif @lstring attNomVariableEffectif),
-            t2 (@AC_galgasType attTypeAttributFormel @lstring attNomAttributFormel) do
+    foreach t1, t2 do
       checkAssignmentTypesCompatibility
-        !attTypeEffectif
-        !attTypeAttributFormel
-        ![attNomVariableEffectif location]
+        !mType
+        !mAttributType
+        ![mGalgasVariableName location]
         !false
       ;
     end foreach ;
@@ -895,24 +894,24 @@ routine verifierCompatibiliteArgEffectifsSignature
     error inErrorLocation : "too much arguments" ;
   else
   #--- Check signatures
-    foreach signatureReference (@AC_galgasType attSignatureType @EXformalArgumentPassingMode formalArgPassingMode),
-            inEffectiveArgumentsSignature (@AC_galgasType attEffectiveType @EXactualParametersPassingMode parameterPassingMode) do
-      match formalArgPassingMode::parameterPassingMode :
+    foreach signatureReference,
+            inEffectiveArgumentsSignature prefixedby other_ do
+      match mFormalArgumentPassingMode::other_mFormalArgumentPassingMode :
       when argumentConstantIn :: parameterOut :
-        checkAssignmentTypesCompatibility !attSignatureType !attEffectiveType !inErrorLocation !true ;
+        checkAssignmentTypesCompatibility !mType !other_mType !inErrorLocation !true ;
       when argumentIn :: parameterOut :
-        checkAssignmentTypesCompatibility !attSignatureType !attEffectiveType !inErrorLocation !true ;
+        checkAssignmentTypesCompatibility !mType !other_mType !inErrorLocation !true ;
       when argumentInOut :: parameterOutIn :
-        checkAssignmentTypesCompatibility !attSignatureType !attEffectiveType !inErrorLocation !false ;
+        checkAssignmentTypesCompatibility !mType !other_mType !inErrorLocation !false ;
       when argumentOut :: parameterIn :
-        cast attEffectiveType :
+        cast other_mType :
         when >= @typeGalgas_jokerInParameterList do
         else
-          checkAssignmentTypesCompatibility !attSignatureType !attEffectiveType !inErrorLocation !false ;
+          checkAssignmentTypesCompatibility !mType !other_mType !inErrorLocation !false ;
         end cast ;
       else
-        error inErrorLocation : [parameterPassingMode actualArgumentMessage] . " is not compatible with " .
-                                [formalArgPassingMode formalArgumentMessage] ;
+        error inErrorLocation : [other_mFormalArgumentPassingMode actualArgumentMessage] . " is not compatible with " .
+                                [mFormalArgumentPassingMode formalArgumentMessage] ;
       end match ;
     end foreach ;
   #--- Build expression list
