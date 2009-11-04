@@ -3369,10 +3369,10 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
       [mMethodMap searchKey !inMethodName ?outMethodSignature] ;
     else
       outMethodSignature := [@L_EXsignature emptyList] ;
-      @lstring key [new ![mClassTypeName string] . ":" . [inMethodName string] ![inMethodName location]] ;
-      if [inCategoryMethodMap hasKey ![key string]] then
+      const @lstring kKey [new ![mClassTypeName string] . ":" . [inMethodName string] ![inMethodName location]] ;
+      if [inCategoryMethodMap hasKey ![kKey string]] then
         @categoryMethodKind categoryMethodKind ;
-        [inCategoryMethodMap searchKey !key ?categoryMethodKind ?outMethodSignature] ;
+        [inCategoryMethodMap searchKey !kKey ?categoryMethodKind ?outMethodSignature] ;
         if categoryMethodKind != [@categoryMethodKind overridingMethod] then
           outCategoryMethodClassBaseName := [mClassTypeName string] ;
         end if ;
@@ -4657,10 +4657,10 @@ routine handleReaderCall
         if not found then
           @L_EXsignature signature [emptyList] ;
           @string className := [[t mClassTypeName] string] ;
-          @lstring key [new !className . ":" . [inReaderName string] ![inReaderName location]] ;
-          if [inCategoryReaderMap hasKey ![key string]] then
+          @lstring kKey [new !className . ":" . [inReaderName string] ![inReaderName location]] ;
+          if [inCategoryReaderMap hasKey ![kKey string]] then
             @categoryMethodKind categoryMethodKind ;
-            [inCategoryReaderMap searchKey !key ?categoryMethodKind ?signature ?outReturnedType] ;
+            [inCategoryReaderMap searchKey !kKey ?categoryMethodKind ?signature ?outReturnedType] ;
             if categoryMethodKind != [@categoryMethodKind overridingMethod] then
               outCategoryReaderClassBaseName := className ;
             end if ;

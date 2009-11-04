@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -20,7 +20,9 @@
    <p><strong>GALGAS ChangeLog</strong></p>
    <p>1.9.3</p>
    <ul>
-    <li>Command line tools run on 10.4.x, Intel or PPC (this was broken from 1.9.0);</li>
+    <li><span class="hilite">SYNTAX CHANGE</span>: function call uses <a href="http://galgas.rts-software.org/doku.php?id=expression#function_call">'[' and ']', instead of '(' and ')'</a>;</li>
+    <li><a href="http://galgas.rts-software.org/doku.php?id=local_constant_declaration">constants can be declared in GALGAS</a>, with the new <span class="hilite">const</span> keyword;</li>
+    <li>Command line tools now run on 10.4.x, Intel or PPC (this was broken from 1.9.0);</li>
     <li>Command line option <code>--detailled-error-message</code> has been suppressed: use <code>--verbose</code> (or <code>-v</code>) instead;</li>
     <li>Bug fix: LR1 grammar analysis conflict detection was buggy and did not detect any conflict at all (!): this has been fixed;</li>
     <li>New @string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#htmlrepresentation">HTMLRepresentation</a>;</li>
@@ -286,7 +288,7 @@
     <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), the <span class="api">Update from File System</span> operation can lead to an infinite loop;</li>
     <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), changing a lexical color can lead to an infinite loop;</li>
     <li>new feature for GALGAS generated Cocoa application: definition pop up button management: see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.4">1.6.4 release notes</a>];</li>
-    <li>New <span class="api">description</span> key word: it can be used in pseudo-reader call <em>[<i>expression</i> <strong>description</strong>]</em>, ensuring source compatibility from previous releases;</li>
+    <li>New <span class="api">description</span> key word: it can be used in pseudo-reader call <em>[expression <strong>description</strong>]</em>, ensuring source compatibility from previous releases;</li>
     <li>New <span class="api">@lstringlist</span> type: see <a href="http://galgas.rts-software.org/doku.php?id=lstringlist_type"><span class="api">@lstringlist</span> definition</a>;</li>
     <li>New <span class="api">map</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=map_types#keylist"><span class="api">keyList</span></a> that returns a list built with the key values of all entries;</li>
     <li>New <span class="api">@binaryset</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#containsvalue"><span class="api">containsValue</span></a> that tests if a binary set contains a given value;</li>
@@ -501,7 +503,7 @@
          added 'setWithString' constructor, added '-=' operator (that removes a string from a string set);</li>
      <li>on user defined map type: fixed bug on 'allkeys accessor',
          suppressed 'empty' constructor (use 'emptyMap' constructor instead),
-         search methods on map are now <i>readers</i> (instead of <i>modifiers</i>);</li>
+         search methods on map are now <strong>readers</strong> (instead of <strong>modifiers</strong>);</li>
      <li>on user defined list type: suppressed 'empty' constructor  (use 'emptyList' constructor instead)</li>
      <li>--create-project Command Line Option replaces --create Command Line Option: now generates Win32 Code::Blocks project;</li>
    </ul>

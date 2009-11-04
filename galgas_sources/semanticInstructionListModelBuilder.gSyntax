@@ -197,6 +197,33 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $const$ ;
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
+  select
+    $:=$ ;
+    @semanticExpression sourceExpression ;
+    <expression> ? sourceExpression ;
+    outInstruction := [@localConstantDeclarationWithSourceExpression new !typeName !variableName !sourceExpression] ;
+  or
+    $[$ ;
+    @lstring constructorName ;
+    $identifier$ ? constructorName ;
+    @outExpressionList expressionList ;
+    <output_expression_list> ? expressionList ;
+    outInstruction := [@localConstantDeclarationWithConstructorCall new !typeName !variableName !constructorName !expressionList] ;
+    $]$ ;
+  end select ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    A S S I G N M E N T    I N S T R U C T I O N                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -268,9 +295,16 @@ rule <foreach_enumerated_object>
   <expression> ? mEnumeratedExpression ;
   @foreachInstructionEnumeratedObjectElementList mElementList [emptyList] ;
   @bool mEndsWithEllipsis ;
+  @lstring prefix ;
   select
     mEndsWithEllipsis := false ;
+    prefix := [@lstring new !"" !here] ;
   or
+    $prefixedby$ ;
+    $identifier$ ? prefix ;
+    mEndsWithEllipsis := false ;
+  or
+    prefix := [@lstring new !"" !here] ;
     $($ ;
     repeat
     while
@@ -310,6 +344,7 @@ rule <foreach_enumerated_object>
     !mEnumeratedExpression
     !mElementList
     !mEndsWithEllipsis
+    !prefix
   ;
 end rule ;
 

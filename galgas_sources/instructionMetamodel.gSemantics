@@ -122,6 +122,23 @@ class @localVariableDeclarationWithAssignment extends @semanticInstruction {
 }
 
 #---------------------------------------------------------------------------*
+
+class @localConstantDeclarationWithSourceExpression extends @semanticInstruction {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+  @semanticExpression mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @localConstantDeclarationWithConstructorCall extends @semanticInstruction {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+  @lstring mConstructorName ;
+  @outExpressionList mConstructorArguments ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  A S S I G N M E N T    I N S T R U C T I O N                             *
 #                                                                           *
@@ -192,6 +209,7 @@ list @foreachInstructionEnumeratedObjectList {
   @semanticExpression mEnumeratedExpression ;
   @foreachInstructionEnumeratedObjectElementList mElementList ;
   @bool mEndsWithEllipsis ;
+  @lstring mPrefix ;
 }
 
 #---------------------------------------------------------------------------*

@@ -208,25 +208,25 @@ rule <galgas_component>
     end if ;
   #--- Compile file
     if (sourceFileKind == [@EXsourceFileKind optionSourceFile]) & ([fileName pathExtension] == "gOption") then
-      @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
+      @string s2 := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
       @parsedComponentStruct parsedComponentStruct [new
         ![@parsedSemanticsComponentMap emptyMap]
         ![@parsedLexiqueComponentMap emptyMap]
         ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
       ] ;
-      compileOptionComponent !fileName !s !?parsedComponentStruct ;
+      compileOptionComponent !fileName !s2 !?parsedComponentStruct ;
     elsif (sourceFileKind == [@EXsourceFileKind lexiqueSourceFile]) & ([fileName pathExtension] == "gLexique") then
-      @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
+      @string s2 := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
       @parsedComponentStruct parsedComponentStruct [new
         ![@parsedSemanticsComponentMap emptyMap]
         ![@parsedLexiqueComponentMap emptyMap]
         ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
       ] ;
-      compileLexiqueComponent !fileName !s !?parsedComponentStruct ;
+      compileLexiqueComponent !fileName !s2 !?parsedComponentStruct ;
     elsif (sourceFileKind == [@EXsourceFileKind guiSourceFile]) & ([fileName pathExtension] == "gGui") then
-      @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
+      @string s2 := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
       @parsedComponentStruct parsedComponentStruct [new
         ![@parsedSemanticsComponentMap emptyMap]
         ![@parsedLexiqueComponentMap emptyMap]
@@ -234,7 +234,7 @@ rule <galgas_component>
         ![@parsedOptionComponentMap emptyMap]
       ] ;
       @string absoluteFilePath := [fileName absolutePathFromPath ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]] ;
-      compileGuiComponent ![@lstring new !absoluteFilePath ![fileName location]] !s !?parsedComponentStruct ;
+      compileGuiComponent ![@lstring new !absoluteFilePath ![fileName location]] !s2 !?parsedComponentStruct ;
     elsif sourceFileKind != [@EXsourceFileKind externSourceFile] then
       grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "DEPENDENCIES" ;
     end if ;

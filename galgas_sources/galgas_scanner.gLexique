@@ -80,6 +80,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "import",
   "import__",
   "in",
+  "index",
   "insert",
   "label",
   "lazy",

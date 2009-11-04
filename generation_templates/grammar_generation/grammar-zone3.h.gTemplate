@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 
-class %!GRAMMAR_NAME% : %:COLUMN_CLASS_DECLARATION
+class %!GRAMMAR_NAME% : %?COLUMN_CLASS_DECLARATION
 foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
   do %public % ![[mValue string] stringByDeletingPathExtension]
   between %,\n%!COLUMN_CLASS_DECLARATION
@@ -9,13 +9,13 @@ end foreach
 %
 foreach NON_TERMINAL_MAP do
   foreach mLabels do
-    %  public : virtual void nt_%![key string]%_%![mLabelName string]% (%:COLUMN1 !LEXIQUE_CLASS% &%
+    %  public : virtual void nt_%![key string]%_%![mLabelName string]% (%?COLUMN1 !LEXIQUE_CLASS% &%
     foreach mFormalParameters do
         %,\n%!COLUMN1 ![mFormalParameterPassingMode generation1ForFormalParameter]%GGS_%![mFormalParameterTypeName string] ![mFormalParameterPassingMode generation2ForFormalParameter]
     end foreach
     %) ;\n\n%
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbol] string] == [key string] then
-      %  public : static void _performSourceFileParsing_%![mLabelName string]% (%:COLUMN2%C_Compiler & inCompiler,\n%
+      %  public : static void _performSourceFileParsing_%![mLabelName string]% (%?COLUMN2%C_Compiler & inCompiler,\n%
       !COLUMN2%const C_String & inDependancyExtension,\n%
       !COLUMN2%const C_String & inDependancyPath,\n%
       !COLUMN2%GGS_string * inSentStringPtr,\n%
@@ -24,7 +24,7 @@ foreach NON_TERMINAL_MAP do
         %,\n%!COLUMN2 ![mFormalParameterPassingMode generation1ForFormalParameter]%GGS_%![mFormalParameterTypeName string] ![mFormalParameterPassingMode generation2ForFormalParameter]
       end foreach
       %\n%!COLUMN2%COMMA_LOCATION_ARGS) ;\n\n%
-      %  public : static void _performSourceStringParsing_%![mLabelName string]% (%:COLUMN3%C_Compiler & inCompiler,\n%
+      %  public : static void _performSourceStringParsing_%![mLabelName string]% (%?COLUMN3%C_Compiler & inCompiler,\n%
       !COLUMN3%GGS_string * inSentStringPtr,\n%
       !COLUMN3%const GGS_string inSourceString%
       foreach mFormalParameters do

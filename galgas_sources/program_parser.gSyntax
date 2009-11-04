@@ -132,7 +132,7 @@ rule <galgas_component>
   @stringset inclusionsForImplementationFile ;
   @M_semanticsEntitiesForUse componentEntitiesMap ;
   @stringset classNamesSet [emptySet] ;
-  @typeTableEnAvant tableEnAvant [emptyMap] ;
+  @typeTableEnAvant tableEnAvant0 [emptyMap] ;
   @stringset includedSemanticsComponents ;
   @stringset includedOptionComponents ;
   @stringset includedMetamodelComponents ;
@@ -153,7 +153,7 @@ rule <galgas_component>
     ?modelMap
     ?actionMap
     ?componentEntitiesMap
-    ?tableEnAvant
+    ?tableEnAvant0
     !?ioSemanticContext
   ;
   inclusionsForImplementationFile += ![nomPRGMprincipal string] . ".h" ;
@@ -208,13 +208,13 @@ rule <galgas_component>
     if [[sourceExtension string] length] == 0 then
       error sourceExtension: "the source extension should not be empty" ;
     else
-      @uint index := 0 ;
+      @uint idx := 0 ;
       @bool ok := true ;
       loop [[sourceExtension string] length] + 1 :
-      while (index < [[sourceExtension string] length]) & ok do
-        @char c := [[sourceExtension string] characterAtIndex !index] ;
+      while (idx < [[sourceExtension string] length]) & ok do
+        @char c := [[sourceExtension string] characterAtIndex !idx] ;
         ok := ((c >= 'a') & (c <= 'z')) | ((c >= 'A') & (c <= 'Z')) | ((c >= '0') & (c <= '9')) | (c == '_') ;
-        index ++ ;
+        idx ++ ;
       end loop ;
       if not ok then
         error sourceExtension: "the source extension should contains only lower case letters, upper case letters, digits and underscore characters" ;

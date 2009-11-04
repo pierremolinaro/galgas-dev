@@ -3606,7 +3606,6 @@ rule <semantic_instruction>
   @lstring sourceExpressionTypeName := [sourceClassType mClassTypeName] ;
   @string sourceClassMessage := [sourceClassType mClassMessage] ;
 #--- When branches
-  @typeInstructionList elseBranchInstructionsList [emptyList] ;
   @typeStructuredCastBranchList branchList [emptyList] ;
   $:$ ;
   block ioVariablesMap.testBloc () :
@@ -4616,7 +4615,7 @@ rule <semantic_instruction>
         ?depFileExpressionType
       ;
       dependancyFileDefinitionLocation := here ;
-      @typeGalgas_string gs := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
+      @typeGalgas_string gss := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
       $in$ ;
       <expression>
         !ioComponentSemanticsEntitiesMap
@@ -4626,8 +4625,7 @@ rule <semantic_instruction>
         ?depFilePath
         ?depFileExpressionType
       ;
-      gs := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
-#      warning here:"dep" ;
+      gss := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
       hasDependancyFile := true ;
     end select ;
   or
@@ -5024,11 +5022,6 @@ label secondPhase
           !iteratorNewStyle
           ?*
         ;
-#        @string listOfAttributes := "" ;
-#        foreach formalEnumerationList do
-#          listOfAttributes .= " " . mAttributeName ;
-#        end foreach ;
-#        warning here:"deprecated construct; now use implicitly declared constants:" . listOfAttributes ;
       or
         $prefixedby$ ;
         $identifier$ ? @lstring prefix ;
@@ -6363,8 +6356,8 @@ rule <semantics_declaration_beginning_by_abstract>
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-  @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  const @lstring kKey [new ![className string] . ":" . [methodName string] ![methodName location]] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -6465,8 +6458,8 @@ rule <semantics_declaration>
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-  @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  const @lstring kKey [new ![className string] . ":" . [methodName string] ![methodName location]] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -6483,15 +6476,15 @@ rule <semantics_declaration>
       baseClassName := [key string] ;
       found := [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] ;
       if found then
-        @categoryMethodKind categoryMethodKind ;
+        @categoryMethodKind localCategoryMethodKind ;
         @L_EXsignature listeDeTypesPrecedenteDeclaration ;
-        [[ioSemanticContext mCategoryMethodMap] searchKey ![@lstring new !keyClassMethod !here] ?categoryMethodKind ?listeDeTypesPrecedenteDeclaration] ;
+        [[ioSemanticContext mCategoryMethodMap] searchKey ![@lstring new !keyClassMethod !here] ?localCategoryMethodKind ?listeDeTypesPrecedenteDeclaration] ;
         verifierCompatibiliteSignatures
           !listeDeTypesPrecedenteDeclaration
           !listeDeTypes
           !here
         ;
-        found := categoryMethodKind != [@categoryMethodKind overridingMethod] ;
+        found := localCategoryMethodKind != [@categoryMethodKind overridingMethod] ;
       end if ;
     end foreach ;
     if not found then
@@ -6628,8 +6621,8 @@ rule <semantics_declaration_beginning_by_abstract>
   [ioComponentSemanticsEntitiesMap searchKey !returnedTypeName ?theEntity] ;
   @AC_galgasType returnedType := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
 #---- Insert in category reader map ----------------------------
-  @lstring key [new ![className string] . ":" . [readerName string] ![readerName location]] ;
-  [!?ioSemanticContext. mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
+  const @lstring kKey [new ![className string] . ":" . [readerName string] ![readerName location]] ;
+  [!?ioSemanticContext. mCategoryReaderMap insertKey !kKey !categoryMethodKind !listeDeTypes !returnedType] ;
 #---- Get class attribute list ---------------------------------
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
   @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
@@ -6750,8 +6743,8 @@ rule <semantics_declaration>
   @typeCplusPlusName returnedCppVarName := [@typeAutomaticName new ![returnedVariableName location] ![returnedVariableName string]] ;
   [!?methodLocalVariablesMap insertOutArgument !returnedVariableName !returnedType !returnedCppVarName] ;
 #---- Insert in category reader map ----------------------------
-  @lstring key [new ![className string] . ":" . [readerName string] ![readerName location]] ;
-  [!?ioSemanticContext. mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
+  const @lstring kKey [new ![className string] . ":" . [readerName string] ![readerName location]] ;
+  [!?ioSemanticContext. mCategoryReaderMap insertKey !kKey !categoryMethodKind !listeDeTypes !returnedType] ;
 #---- Get class attribute list ---------------------------------
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
   @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
@@ -6767,12 +6760,12 @@ rule <semantics_declaration>
       baseClassName := [key string] ;
       found := [[ioSemanticContext mCategoryReaderMap] hasKey !keyClassMethod] ;
       if found then
-        @categoryMethodKind categoryMethodKind ;
+        @categoryMethodKind localCategoryMethodKind ;
         @L_EXsignature listeDeTypesPrecedenteDeclaration ;
         @AC_galgasType returnedTypePreviousDeclaration ;
         [[ioSemanticContext mCategoryReaderMap] searchKey
            ![@lstring new !keyClassMethod !here]
-           ?categoryMethodKind
+           ?localCategoryMethodKind
            ?listeDeTypesPrecedenteDeclaration
            ?returnedTypePreviousDeclaration
         ] ;
@@ -6787,7 +6780,7 @@ rule <semantics_declaration>
            ![returnedVariableName location]
            !false
         ;
-        found := categoryMethodKind != [@categoryMethodKind overridingMethod] ;
+        found := localCategoryMethodKind != [@categoryMethodKind overridingMethod] ;
       end if ;
     end foreach ;
     if not found then
@@ -6926,8 +6919,8 @@ rule <semantics_declaration_beginning_by_abstract>
     ?signatureForGrammarComponent
   ;
 #---- Insert in category reader map ----------------------------
-  @lstring key [new ![className string] . ":" . [templateName string] ![templateName location]] ;
-  [!?ioSemanticContext.mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  @lstring kKey [new ![className string] . ":" . [templateName string] ![templateName location]] ;
+  [!?ioSemanticContext.mCategoryTemplateMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -7029,8 +7022,8 @@ rule <semantics_declaration>
     ?signatureForGrammarComponent
   ;
 #---- Insert in template reader map ----------------------------
-  @lstring key [new ![className string] . ":" . [templateName string] ![templateName location]] ;
-  [!?ioSemanticContext.mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  const @lstring kKey [new ![className string] . ":" . [templateName string] ![templateName location]] ;
+  [!?ioSemanticContext.mCategoryTemplateMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -7047,11 +7040,11 @@ rule <semantics_declaration>
       baseClassName := [key string] ;
       found := [[ioSemanticContext mCategoryTemplateMap] hasKey !keyClassMethod] ;
       if found then
-        @categoryMethodKind categoryMethodKind ;
+        @categoryMethodKind localCategoryMethodKind ;
         @L_EXsignature listeDeTypesPrecedenteDeclaration ;
         [[ioSemanticContext mCategoryTemplateMap] searchKey
            ![@lstring new !keyClassMethod !here]
-           ?categoryMethodKind
+           ?localCategoryMethodKind
            ?listeDeTypesPrecedenteDeclaration
         ] ;
         verifierCompatibiliteSignatures
@@ -7059,7 +7052,7 @@ rule <semantics_declaration>
           !listeDeTypes
           ![templateName location]
         ;
-        found := categoryMethodKind != [@categoryMethodKind overridingMethod] ;
+        found := localCategoryMethodKind != [@categoryMethodKind overridingMethod] ;
       end if ;
     end foreach ;
     if not found then

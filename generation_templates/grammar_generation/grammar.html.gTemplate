@@ -129,9 +129,9 @@ span.galgas_nonterminal {
 </table>
 <p>Listing of the %![[PURE_SYNTAX_RULE_LIST length] string]% BNF productions :</p>
 <table class="result">
-% foreach PURE_SYNTAX_RULE_LIST do ??index :
+% foreach PURE_SYNTAX_RULE_LIST do index idx
   %<tr class="result_line">%
-    %<td class="result_line">%![index string]%</td>%
+    %<td class="result_line">%![idx string]%</td>%
     %<td class="result_line">rule <code>&lt;%![mLeftNonTerminal string]%&gt;</code><br>%![mLeftNonTerminal locationString]%</td>%
     %<td><code>%
       foreach mSyntaxInstructionList

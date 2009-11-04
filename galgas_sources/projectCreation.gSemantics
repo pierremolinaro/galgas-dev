@@ -156,12 +156,12 @@ routine projectCreation
     message "*** PERFORM PROJECT CREATION (--create-project=" .inProjectName ." option) ***\n" ;
   #--- First check the project name is correct (not empty, only letters, digits and '_')
     @bool ok := [[inProjectName characterAtIndex !0] isalpha] ;
-    @uint index := 1 ;
+    @uint idx := 1 ;
     loop [inProjectName length] :
-    while (index < [inProjectName length]) & ok do
-      @char c := [inProjectName characterAtIndex !index] ;
+    while (idx < [inProjectName length]) & ok do
+      @char c := [inProjectName characterAtIndex !idx] ;
       ok := [c isalnum] | (c == '_') ;
-      index ++ ;
+      idx ++ ;
     end loop ;
     if not ok then
       message "** Cannot create GALGAS project: the project name '"
