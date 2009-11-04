@@ -1,4 +1,5 @@
 semantics grammarComputationsWithBDDs :
+import option galgas_cli_options in "galgas_cli_options.gOption" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -8,8 +9,8 @@ semantics grammarComputationsWithBDDs :
 
 domain @grammarDomain (V) { 
  nonterminalsWithEmptyProduction [V] ;
- nonterminalsWithOneElementProduction [V, V] ;
- nonterminalsWithTwoElementProduction [V, V, V] ;
+ nonterminalsWithOneElementProduction [V, V] ; # relation (NT, V) : NT ::= V
+ nonterminalsWithTwoElementProduction [V, V, V] ; # relation (NT, V1, V2) : NT ::= V1 V2
 
 }
 
@@ -43,6 +44,26 @@ listmap @productionListMap (@derivationList) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  G E N E R A T I O N    F I L E W R A P P E R S                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper grammarComputationTemplates in "../generation_templates/grammar_generation" {
+} {
+  template html "grammarComputations.html.gTemplate"
+    ?@stringlist ALL_VOCABULARY_FOR_BDD
+    ?@uint TERMINAL_COUNT
+    ?@uint NON_TERMINAL_COUNT
+    ?@uint ADDITIONAL_NON_TERMINAL_COUNT_FOR_BDD
+    ?@stringlist NON_TERMINAL_WITH_EMPTY_PRODUCTION_LIST
+    ?@relationStringList NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST
+    ?@relationStringList NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST
+    ?@stringlist unused USELESS_NON_TERMINAL_SYMBOL_LIST
+  ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 # G R A M M A R    A N A L Y S I S                                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -51,6 +72,7 @@ routine newGrammarAnalyzer
   ?@lstring unused inGrammarName
   ?@uint unused inStartSymbolIndex
   ?@string unused inLexiqueName
+  ?@stringlist inVocabularyListForDisplaying
   ??@vocabularyMap inNonterminalMap
   ??@vocabularyMap inTerminalMap
   ??@productionListMap inProductionListMap
@@ -61,15 +83,7 @@ routine newGrammarAnalyzer
   outHTMLFileHeader := "" ;
   outHTMLFileContents := "" ;
 #---------------------------------------------------------- Compute vocabulary
-  @stringlist vocabularyListForDisplaying [emptyList] ;
-#--- Terminal symbol
-  foreach inTerminalMap do
-    vocabularyListForDisplaying += !"$" . [key string] . "$" ;
-  end foreach ;
-#--- Non terminal symbols
-  foreach inNonterminalMap do
-    vocabularyListForDisplaying += !"<" . [key string] . ">" ;
-  end foreach ;
+  @stringlist vocabularyListForDisplaying := inVocabularyListForDisplaying ;
 #--- Symbols added for BDD handling
   @uint additionalNonTerminalSymbolsForPureBDDrules := 0 ;
   foreach inProductionListMap do
@@ -133,6 +147,20 @@ routine newGrammarAnalyzer
       end if ;
     end foreach ;
   end foreach ;
+#---------------------------------------------------------- Output HTML file
+  if [option galgas_cli_options.outputHTMLgrammarFile] then
+    outHTMLFileContents := [filewrapper grammarComputationTemplates.html
+      !vocabularyListForDisplaying
+      ![inTerminalMap count]
+      ![inNonterminalMap count]
+      !additionalNonTerminalSymbolsForPureBDDrules
+      ![grammarComputations nonterminalsWithEmptyProductionStringValueList]
+      ![grammarComputations nonterminalsWithOneElementProductionRelationStringValueList]
+#      ![@relationStringList emptyList]
+      ![@relationStringList emptyList]
+      ![@stringlist emptyList]
+    ] ;
+  end if ; 
 end routine ;
 
 #---------------------------------------------------------------------------*
