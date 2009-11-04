@@ -1360,11 +1360,10 @@ rule <syntax_declaration>
     end loop ;
     #--- Nonterminal <Expression__n+1>
       @L_signature signatureForGrammar [emptyList] ;
-      @L_EXsignature listeDeTypesFormels [emptyList] ;
       @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
       @M_nonterminalSymbolAltsForGrammar parametersMapForGrammar [emptyMap] ;
       @lstring emptyId := [@lstring new !"" !here] ;
-      [!?parametersMap insertKey !emptyId !listeDeTypesFormels] ;
+      [!?parametersMap insertKey !emptyId ![@L_EXsignature emptyList]] ;
       [!?parametersMapForGrammar insertKey
         !emptyId
         !signatureForGrammar
@@ -1378,22 +1377,21 @@ rule <syntax_declaration>
       @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !actualRuleName !parametersMap !inLexiqueClassName] ;
       listeEntitesAengendrer += !ea ;
   or
-    @L_EXsignature listeDeTypesFormels ;
-    @typeVariablesMap tableArgumentsMethode [emptyMap] ;
-    @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+    @L_EXsignature listeDeTypesFormels0 ;
+    @typeVariablesMap tableArgumentsMethode0 [emptyMap] ;
     @L_signature signatureForGrammar ;
     @M_nonterminalSymbolAltsForGrammar parametersMapForGrammar [emptyMap] ;
     @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
     <formal_arguments_list>
       !ioEntitiesMap
-      ?listeDeTypesFormels 
-      !?tableArgumentsMethode
-      ?listeTypeEtNomsArguments
+      ?listeDeTypesFormels0
+      !?tableArgumentsMethode0
+      ?*
       !?tableEnAvant
       ?signatureForGrammar
     ;
     @lstring emptyId := [@lstring new !"" !here] ;
-    [!?parametersMap insertKey !emptyId !listeDeTypesFormels] ;
+    [!?parametersMap insertKey !emptyId !listeDeTypesFormels0] ;
     [!?parametersMapForGrammar insertKey
       !emptyId
       !signatureForGrammar
@@ -1403,10 +1401,9 @@ rule <syntax_declaration>
       $label$ ;
       select
         $parse$ ;
-        @L_EXsignature listeDeTypesFormels [emptyList] ;
         @L_signature signatureForGrammarComponent [emptyList] ;
         @lstring altName [new !"parse" !here] ;
-        [!?parametersMap insertKey !altName !listeDeTypesFormels] ;
+        [!?parametersMap insertKey !altName ![@L_EXsignature emptyList]] ;
         [!?parametersMapForGrammar insertKey
           !altName
           !signatureForGrammarComponent
@@ -1473,22 +1470,21 @@ label importSyntax
     [!?ioNonTerminalSymbolsMap insertKey !actualRuleName !nonterminalSymbolParametersMap] ;
   or
     @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap [emptyMap] ;
-    @L_signature signature ;
-    <formal_arguments_list> importGrammarForSemantics ?signature ;
+    @L_signature signature0 ;
+    <formal_arguments_list> importGrammarForSemantics ?signature0 ;
     @lstring altName := [@lstring new !"" !here] ;
     [!?nonterminalSymbolParametersMap insertKey
       !altName
-      !signature
+      !signature0
     ] ;
     repeat
     while
       $label$ ;
       select
         $parse$ ;
-        @L_signature signature [emptyList] ;
         [!?nonterminalSymbolParametersMap insertKey
           ![@lstring new !"parse" !here] # Label 'parse'
-          !signature
+          ![@L_signature emptyList]
         ] ;
       or
         $identifier$ ?altName ;

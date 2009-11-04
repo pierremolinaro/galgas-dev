@@ -1498,7 +1498,7 @@ rule <factor>
   foreach signatureRoutine do
     listeAttributsSemantiques += !mType ![@lstring new !"" !here] ;
   end foreach ;
-  $($ ;
+  $[$ ;
   <output_expression_list>
     ?expressionList
     !inSemanticContext
@@ -1507,7 +1507,7 @@ rule <factor>
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
   ;
-  $)$ ;
+  $]$ ;
   outExpression := [@typeFunctionCall new !functionName !expressionList] ;
 end rule ;
 

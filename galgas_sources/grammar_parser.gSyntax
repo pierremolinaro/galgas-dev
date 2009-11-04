@@ -202,23 +202,23 @@ rule <galgas_component>
                               !importedProductionRulesList
                               !syntaxComponentName ;
     #--- Build nonterminal symbol map for grammar
-      foreach importedNonterminalSymbolsMap do
-        if [nonterminalSymbolsMapForGrammar hasKey ![key string]] then
+      foreach importedNonterminalSymbolsMap prefixedby first_ do
+        if [nonterminalSymbolsMapForGrammar hasKey ![first_key string]] then
           @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
-          [nonterminalSymbolsMapForGrammar searchKey !key ?altSignatureMap] ;
+          [nonterminalSymbolsMapForGrammar searchKey !first_key ?altSignatureMap] ;
           foreach altSignatureMap do
-            @M_nonterminalSymbolAltsForGrammar temp := mNonterminalSymbolParametersMap ;
+            @M_nonterminalSymbolAltsForGrammar temp := first_mNonterminalSymbolParametersMap ;
             @L_signature importedAltSignature ;
             [temp searchKey !key ?importedAltSignature] ;
             checkSignature_ForGrammarComponent !importedAltSignature !mFormalParametersList ![key location] ![key location] ;
           end foreach ;
-          foreach mNonterminalSymbolParametersMap prefixedby others_ do
+          foreach first_mNonterminalSymbolParametersMap prefixedby others_ do
             if [others_key string] != "parse" then
               [altSignatureMap searchKey !others_key ?*] ;
             end if ;
           end foreach ;
         else
-          [!?nonterminalSymbolsMapForGrammar insertKey !key !mNonterminalSymbolParametersMap] ;
+          [!?nonterminalSymbolsMapForGrammar insertKey !first_key !first_mNonterminalSymbolParametersMap] ;
         end if ;
       end foreach ;
     end select ;

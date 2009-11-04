@@ -91,26 +91,7 @@ rule <template_instruction>
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
 :
-  @lstring parameterName ;
-  $identifier$ ? parameterName ;
-  warning parameterName:" old style construct, for GALGAS 1.9.3 and later, use '!' prefix" ;
-  @AC_galgasType type ;
-  @typeCplusPlusName cppName ;
-  [!?ioTemplateVariableMap searchForReadOnlyAccess !parameterName ?type ?cppName] ;
-  @typeGalgas_string x := (cast type if >= @typeGalgas_string else error parameterName) ;
-  ioResultingInstructionList += ![@templateInstructionConstant new !cppName] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <template_instruction>
-  ?!@typeVariablesMap ioTemplateVariableMap
-  ??@EXsemanticContext unused inSemanticContext
-  ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ?!@templateInstructionList ioResultingInstructionList
-:
-  $:$ ;
+  $?$ ;
   @lstring columnConstantName ;
   $identifier$ ? columnConstantName ;
   @typeCplusPlusName cppName := [@typeAutomaticName new ![columnConstantName location] ![columnConstantName string]] ;
@@ -261,11 +242,10 @@ rule <template_instruction>
       select
         indexIdentifier := [@lstring new !"" !here] ;
       or
-        $??$ ;
+        $index$ ;
         $identifier$ ? indexIdentifier ;
         @typeCplusPlusName cppName := [@typeAutomaticName new ![indexIdentifier location] ![indexIdentifier string]] ;
         [!?ioTemplateVariableMap insertConstInArgument !indexIdentifier ![@typeGalgas_uint new] !cppName] ;
-        $:$ ;
       end select ;
       @templateInstructionList doInstructionList [emptyList] ;
       enterTemplateString !?doInstructionList ;

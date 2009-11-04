@@ -206,8 +206,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "    const C_BDD value_" << cStringWithSigned (idx)
                 << " = C_BDD::varCompareConst (idx, mBDDVariableCountForDomain_" << currentDomainRelation._mValue (HERE)
                 << ", C_BDD::kEqual, inValue_" << cStringWithSigned (idx) << ".uintValue ()) ;\n"
-                << "    idx += mBDDVariableCountForDomain_" << currentDomainRelation._mValue (HERE)
-                << " ;\n" ;
+                << "    idx = (PMUInt16) (idx + mBDDVariableCountForDomain_" << currentDomainRelation._mValue (HERE)
+                << ") ;\n" ;
       idx ++ ;
       currentDomainRelation.next () ;
     }
