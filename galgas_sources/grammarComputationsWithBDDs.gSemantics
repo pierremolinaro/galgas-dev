@@ -32,9 +32,9 @@ map @vocabularyMap {
 #---------------------------------------------------------------------------*
 
 list @derivationList {
-  @uint64 mLeftTerminalIndex ;
+  @uint mLeftTerminalIndex ;
   @uint mProductionIndex ;
-  @uint64list mDerivation ;
+  @uintlist mDerivation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -51,15 +51,88 @@ routine newGrammarAnalyzer
   ?@lstring unused inGrammarName
   ?@uint unused inStartSymbolIndex
   ?@string unused inLexiqueName
-  ??@vocabularyMap unused inNonterminalMap
-  ??@vocabularyMap unused inTerminalMap
-  ??@productionListMap unused inProductionListMap
+  ??@vocabularyMap inNonterminalMap
+  ??@vocabularyMap inTerminalMap
+  ??@productionListMap inProductionListMap
   ??@uintlist unused inUnusedNonterminalSymbolList
   !@string outHTMLFileHeader
   !@string outHTMLFileContents
 :
   outHTMLFileHeader := "" ;
   outHTMLFileContents := "" ;
+#---------------------------------------------------------- Compute vocabulary
+  @stringlist vocabularyListForDisplaying [emptyList] ;
+#--- Terminal symbol
+  foreach inTerminalMap do
+    vocabularyListForDisplaying += !"$" . [key string] . "$" ;
+  end foreach ;
+#--- Non terminal symbols
+  foreach inNonterminalMap do
+    vocabularyListForDisplaying += !"<" . [key string] . ">" ;
+  end foreach ;
+#--- Symbols added for BDD handling
+  @uint additionalNonTerminalSymbolsForPureBDDrules := 0 ;
+  foreach inProductionListMap do
+    foreach object do
+      if [mDerivation length] > 2 then
+        additionalNonTerminalSymbolsForPureBDDrules := additionalNonTerminalSymbolsForPureBDDrules + [mDerivation length] - 2 ;
+      end if ;
+    end foreach ;
+  end foreach ;
+  @uint ntIndex := 0 ;
+  loop additionalNonTerminalSymbolsForPureBDDrules :
+  while ntIndex < additionalNonTerminalSymbolsForPureBDDrules  do
+    vocabularyListForDisplaying += !"<" . [ntIndex string] . ">" ;
+    ntIndex ++ ;
+  end loop ;
+#--- Constants
+#  const @uint terminalCount := [inTerminalMap count] ;
+#  const @uint startSymbolIndexForBDD := terminalCount + [inNonterminalMap count] - 1 ;
+  @grammarDomain grammarComputations [domainWithNames !vocabularyListForDisplaying] ;
+#---------------------------------------------------------- Building pure BDD rules
+  @uint addedNonTerminalIndex := [inTerminalMap count] + [inNonterminalMap count] ;
+  foreach inProductionListMap do
+    @uint nonterminalIndex ;
+    [inNonterminalMap searchKey ![@lstring new !key !here] ?nonterminalIndex] ;
+    foreach object do
+      if [mDerivation length] == 0 then # Empty derivation
+        [!?grammarComputations addToNonterminalsWithEmptyProduction !nonterminalIndex] ;
+      elsif [mDerivation length] == 1 then # Single derivation
+        const @uint derivation0 := [mDerivation mValueAtIndex !0] ;
+        [!?grammarComputations addToNonterminalsWithOneElementProduction !nonterminalIndex !derivation0] ;
+      elsif [mDerivation length] == 2 then # Double derivation
+        const @uint derivation0 := [mDerivation mValueAtIndex !0] ;
+        const @uint derivation1 := [mDerivation mValueAtIndex !1] ;
+        [!?grammarComputations addToNonterminalsWithTwoElementProduction
+          !nonterminalIndex
+          !derivation0
+          !derivation1
+        ] ;
+      else
+        @uint currentLeftNonTerminal := nonterminalIndex ;
+        foreach mDerivation :idx do
+          if idx < ([mDerivation length] - 2) then
+            const @uint derivation := [mDerivation mValueAtIndex !idx] ;
+            [!?grammarComputations addToNonterminalsWithTwoElementProduction
+              !nonterminalIndex
+              !derivation
+              !addedNonTerminalIndex
+            ] ;
+            currentLeftNonTerminal := addedNonTerminalIndex ;
+            addedNonTerminalIndex ++ ;
+          elsif idx == ([mDerivation length] - 2) then
+            const @uint derivation0 := [mDerivation mValueAtIndex !idx] ;
+            const @uint derivation1 := [mDerivation mValueAtIndex !idx+1] ;
+            [!?grammarComputations addToNonterminalsWithTwoElementProduction
+              !nonterminalIndex
+              !derivation0
+              !derivation1
+            ] ;
+           end if ;
+        end foreach ;
+      end if ;
+    end foreach ;
+  end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*
