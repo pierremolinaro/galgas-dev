@@ -3982,13 +3982,18 @@ routine handleReaderCall
     cast inReceiverType :
     when >= @typeGalgasDomainType t do
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      build_stringlist_type  ?outReturnedType ;
+      build_stringlist_type ?outReturnedType ; # any value
       @bool found := false ;
       @string s := "" ;
       foreach [t mDomainRelationMap] while not found do
-        s .= " " . [key string] . "StringValueList" ;
-        if [inReaderName string] == ([key string] . "StringValueList") then
-          found := [mDomains length] == 1 ;
+        if [mDomains length] == 1 then
+          s .= " " . [key string] . "StringValueList" ;
+          found := [inReaderName string] == ([key string] . "StringValueList") ;
+          build_stringlist_type ?outReturnedType ;
+        elsif [mDomains length] == 2 then
+          s .= " " . [key string] . "RelationStringValueList" ;
+          found := [inReaderName string] == ([key string] . "RelationStringValueList") ;
+          build_relationStringList_type ?outReturnedType ;
         end if ;
       end foreach ;
       if not found then
