@@ -2873,8 +2873,9 @@ class @typeGalgasDomainType extends @AC_galgasType {
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "domainWithNames" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @AC_galgasType t ; build_stringlist_type ?t ;
       foreach mAttributeMap do
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+        outAccessorTypesList += !t ![@lstring new !"" !here] ;
       end foreach ;
     else
       error inClassMethodName : "a domain only accepts 'domainWithNames' constructor" -> outAccessorTypesList ;

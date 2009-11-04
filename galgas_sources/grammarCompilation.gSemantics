@@ -400,7 +400,7 @@ end method ;
 abstract method @syntaxInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uint64list unused ioRightDerivation
+  ?!@uintlist unused ioRightDerivation
   ?!@stringlist unused ioVocabularyListForDisplaying
 ;
 
@@ -409,7 +409,7 @@ abstract method @syntaxInstruction enterNonTerminalSymbolIntoVocabulary
 override method @semanticInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uint64list unused ioRightDerivation
+  ?!@uintlist unused ioRightDerivation
   ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
@@ -419,7 +419,7 @@ end method ;
 override method @nonterminalCallInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap ioNonTerminalMap
   ??@vocabularyMap inTerminalMap
-  ?!@uint64list ioRightDerivation
+  ?!@uintlist ioRightDerivation
   ?!@stringlist ioVocabularyListForDisplaying
 :
   if not [ioNonTerminalMap hasKey ![mNonterminalName string]] then
@@ -428,7 +428,7 @@ override method @nonterminalCallInstruction enterNonTerminalSymbolIntoVocabulary
   end if ;
   @uint nonterminalIndex ;
   [ioNonTerminalMap searchKey !mNonterminalName ?nonterminalIndex] ;
-  ioRightDerivation += ![nonterminalIndex uint64] ;
+  ioRightDerivation += !nonterminalIndex ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -436,12 +436,12 @@ end method ;
 override method @terminalCheckInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap inTerminalMap
-  ?!@uint64list ioRightDerivation
+  ?!@uintlist ioRightDerivation
   ?!@stringlist unused ioVocabularyListForDisplaying
 :
   @uint terminalIndex ;
   [inTerminalMap searchKey !mTerminalName ?terminalIndex] ;
-  ioRightDerivation += ![terminalIndex uint64] ;
+  ioRightDerivation += !terminalIndex ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -449,7 +449,7 @@ end method ;
 override method @repeatInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uint64list unused ioRightDerivation
+  ?!@uintlist unused ioRightDerivation
   ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
@@ -459,7 +459,7 @@ end method ;
 override method @selectInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uint64list unused ioRightDerivation
+  ?!@uintlist unused ioRightDerivation
   ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
@@ -469,7 +469,7 @@ end method ;
 override method @parseDoInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uint64list unused ioRightDerivation
+  ?!@uintlist unused ioRightDerivation
   ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
@@ -479,7 +479,7 @@ end method ;
 override method @blockInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uint64list unused ioRightDerivation
+  ?!@uintlist unused ioRightDerivation
   ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
@@ -678,7 +678,7 @@ routine compileGrammarComponent
     if [mSyntaxInstructionList length] > 2 then
       additionalNonTerminalSymbolsForPureBDDrules := additionalNonTerminalSymbolsForPureBDDrules + [mSyntaxInstructionList length] - 2 ;
     end if ;
-    @uint64list rightDerivation [emptyList] ;
+    @uintlist rightDerivation [emptyList] ;
     foreach mSyntaxInstructionList do
       [mInstruction enterNonTerminalSymbolIntoVocabulary !?nonterminalMap !terminalMap !?rightDerivation !?vocabularyListForDisplaying] ;
     end foreach ;
@@ -708,7 +708,7 @@ routine compileGrammarComponent
     if ok then
       @uint leftTerminalIndex ;
       [nonterminalMap searchKey !mLeftNonTerminal ?leftTerminalIndex] ;
-      productionListMap += ![mLeftNonTerminal string] ![leftTerminalIndex uint64] !idx !rightDerivation ;
+      productionListMap += ![mLeftNonTerminal string] !leftTerminalIndex !idx !rightDerivation ;
     end if ;
   end foreach ;
   if [option .verbose_output] & ([identicalDerivationErrorMessageList length] == 0) then
