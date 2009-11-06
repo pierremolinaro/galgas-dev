@@ -147,7 +147,6 @@ routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"OC_Token" ;
   append_m_h_files !?fileList !"OC_Lexique" ;
   append_m_h_files !?fileList !"OC_GGS_BuildWindowController" ;
-  append_m_h_files !?fileList !"OC_GGS_BuildResult" ;
   append_m_h_files !?fileList !"OC_GGS_CommandLineOption" ;
   append_m_h_files !?fileList !"enterDefaultCommandLineOptions" ;
   append_m_h_files !?fileList !"OC_GGS_Document" ;
@@ -734,7 +733,6 @@ routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"OC_Lexique.m" ;
   fileList += !"unicode_character_m.m" ;
   fileList += !"OC_GGS_BuildWindowController.m" ;
-  fileList += !"OC_GGS_BuildResult.m" ;
   fileList += !"OC_GGS_CommandLineOption.m" ;
   fileList += !"enterDefaultCommandLineOptions.m" ;
   fileList += !"OC_GGS_Document.m" ;
