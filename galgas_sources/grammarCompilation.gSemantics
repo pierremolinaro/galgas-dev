@@ -658,7 +658,7 @@ routine compileGrammarComponent
   @uint terminalSymbolCount := [terminalMap count] ;
 #--- Enter non terminal symbols
   @vocabularyMap nonterminalMap [emptyMap] ;
-  foreach pureSyntaxRuleListForGrammar :idx do
+  foreach pureSyntaxRuleListForGrammar index idx do
     if not [nonterminalMap hasKey ![mLeftNonTerminal string]] then
       [!?nonterminalMap insertKey !mLeftNonTerminal ![terminalMap count] + [nonterminalMap count]] ;
       vocabularyListForDisplaying += !"<" . mLeftNonTerminal . ">" ;

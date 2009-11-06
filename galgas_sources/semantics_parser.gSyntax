@@ -4927,7 +4927,7 @@ rule <constant_while_before_in_foreach_instruction>
   select
     outIndexVariable := [@typeNullName new !here] ;
   or
-    $:$ ;
+    $index$ ;
     @lstring indexVariableName ;
     $identifier$ ? indexVariableName ;
     outIndexVariable := [@typeAutomaticName new ![indexVariableName location] ![indexVariableName string]] ;
@@ -5058,7 +5058,7 @@ label secondPhase
   #--- Optional index
     select
     or
-      $:$ ;
+      $index$ ;
       @lstring indexVariableName ;
       $identifier$ ? indexVariableName ;
       @typeCplusPlusName indexVariable := [@typeAutomaticName new ![indexVariableName location] ![indexVariableName string]] ;

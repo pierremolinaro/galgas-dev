@@ -124,7 +124,7 @@ routine newGrammarAnalyzer
         ] ;
       else
         @uint currentLeftNonTerminal := nonterminalIndex ;
-        foreach mDerivation :idx do
+        foreach mDerivation index idx do
           if idx < ([mDerivation length] - 2) then
             const @uint derivation := [mDerivation mValueAtIndex !idx] ;
             [!?grammarComputations addToNonterminalsWithTwoElementProduction
