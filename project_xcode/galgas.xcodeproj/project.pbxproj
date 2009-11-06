@@ -722,9 +722,6 @@
 		CFCF13181020BB91003E9964 /* GGS_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF13141020BB91003E9964 /* GGS_data.cpp */; };
 		CFCF13191020BB91003E9964 /* GGS_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF13141020BB91003E9964 /* GGS_data.cpp */; };
 		CFCF131A1020BB91003E9964 /* GGS_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF13141020BB91003E9964 /* GGS_data.cpp */; };
-		CFCF62EB0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCF62EA0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m */; };
-		CFCF62EC0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCF62EA0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m */; };
-		CFCF62ED0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCF62EA0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m */; };
 		CFCF63270FFEA33800EF3A10 /* I_Orange14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63250FFEA33800EF3A10 /* I_Orange14.png */; };
 		CFCF63280FFEA33800EF3A10 /* I_Red14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63260FFEA33800EF3A10 /* I_Red14.png */; };
 		CFCF63290FFEA33800EF3A10 /* I_Orange14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63250FFEA33800EF3A10 /* I_Orange14.png */; };
@@ -1601,8 +1598,6 @@
 		CFCF13131020BB91003E9964 /* GGS_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGS_data.h; sourceTree = "<group>"; };
 		CFCF13141020BB91003E9964 /* GGS_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_data.cpp; sourceTree = "<group>"; };
 		CFCF13621020D283003E9964 /* include_typeGalgas_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_data.h; sourceTree = "<group>"; };
-		CFCF62E90FFE9EBE00EF3A10 /* OC_GGS_BuildResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResult.h; sourceTree = "<group>"; };
-		CFCF62EA0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildResult.m; sourceTree = "<group>"; };
 		CFCF63250FFEA33800EF3A10 /* I_Orange14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Orange14.png; sourceTree = "<group>"; };
 		CFCF63260FFEA33800EF3A10 /* I_Red14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Red14.png; sourceTree = "<group>"; };
 		CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_io.cpp; sourceTree = "<group>"; };
@@ -2168,8 +2163,6 @@
 				CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */,
 				CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */,
 				CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */,
-				CFCF62E90FFE9EBE00EF3A10 /* OC_GGS_BuildResult.h */,
-				CFCF62EA0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m */,
 				CF82597308536A130077AEAF /* OC_GGS_Document.h */,
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
 				CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */,
@@ -3335,7 +3328,6 @@
 				CFECE4670FEFA5270031D087 /* OC_Lexique.m in Sources */,
 				CF7FD6AD0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */,
 				CF9E55FB0FF5372D007692D1 /* OC_Token.m in Sources */,
-				CFCF62EC0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m in Sources */,
 				CFAE5AA010021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1B10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCBA1003CC160096A8E5 /* cocoaGalgas.m in Sources */,
@@ -3895,7 +3887,6 @@
 				CF7FD6AE0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */,
 				CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */,
 				CF9E55FC0FF5372D007692D1 /* OC_Token.m in Sources */,
-				CFCF62EB0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m in Sources */,
 				CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCB91003CC160096A8E5 /* cocoaGalgas.m in Sources */,
@@ -4455,7 +4446,6 @@
 				CFECE4660FEFA5270031D087 /* OC_Lexique.m in Sources */,
 				CF7FD6AF0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */,
 				CF9E55FD0FF5372D007692D1 /* OC_Token.m in Sources */,
-				CFCF62ED0FFE9EBE00EF3A10 /* OC_GGS_BuildResult.m in Sources */,
 				CFAE5AA210021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1D10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCB81003CC160096A8E5 /* cocoaGalgas.m in Sources */,
