@@ -10,8 +10,9 @@ sed "s/UINTLIST/uintlist/g" GALGAS_OUTPUT/temp2 > GALGAS_OUTPUT/temp &&
 sed "s/LSTRINGLIST/lstringlist/g" GALGAS_OUTPUT/temp > GALGAS_OUTPUT/temp2 &&
 sed "s/CHARLIST/charlist/g" GALGAS_OUTPUT/temp2 > GALGAS_OUTPUT/temp &&
 sed "s/LCHARLIST/lcharlist/g" GALGAS_OUTPUT/temp > GALGAS_OUTPUT/temp2 &&
-sed "s/RELATIONSTRINGLIST/relationStringList/g" GALGAS_OUTPUT/temp2 > GALGAS_OUTPUT/temp &&
-sed "s/STRINGLIST/stringlist/g" GALGAS_OUTPUT/temp > predefined_types.h &&
+sed "s/STRING3LIST/string3list/g" GALGAS_OUTPUT/temp2 > GALGAS_OUTPUT/temp &&
+sed "s/STRING2LIST/string2list/g" GALGAS_OUTPUT/temp > GALGAS_OUTPUT/temp2 &&
+sed "s/STRINGLIST/stringlist/g" GALGAS_OUTPUT/temp2 > predefined_types.h &&
 #--- Use sed for renaming implementation file
 sed "s/UINT64LIST/uint64list/g" GALGAS_OUTPUT/predefined_types.cpp > GALGAS_OUTPUT/temp &&
 sed "s/LUINTLIST/luintlist/g" GALGAS_OUTPUT/temp > GALGAS_OUTPUT/temp2 &&
@@ -19,8 +20,9 @@ sed "s/UINTLIST/uintlist/g" GALGAS_OUTPUT/temp2 > GALGAS_OUTPUT/temp &&
 sed "s/LSTRINGLIST/lstringlist/g" GALGAS_OUTPUT/temp > GALGAS_OUTPUT/temp2 &&
 sed "s/CHARLIST/charlist/g" GALGAS_OUTPUT/temp2 > GALGAS_OUTPUT/temp &&
 sed "s/LCHARLIST/lcharlist/g" GALGAS_OUTPUT/temp > GALGAS_OUTPUT/temp2 &&
-sed "s/RELATIONSTRINGLIST/relationStringList/g" GALGAS_OUTPUT/temp2 > GALGAS_OUTPUT/temp &&
-sed "s/STRINGLIST/stringlist/g" GALGAS_OUTPUT/temp > predefined_types.cpp &&
+sed "s/STRING3LIST/string3list/g" GALGAS_OUTPUT/temp2 > GALGAS_OUTPUT/temp &&
+sed "s/STRING2LIST/string2list/g" GALGAS_OUTPUT/temp > GALGAS_OUTPUT/temp2 &&
+sed "s/STRINGLIST/stringlist/g" GALGAS_OUTPUT/temp2 > predefined_types.cpp &&
 #---Remove temp files
 rm GALGAS_OUTPUT/temp &&
 rm GALGAS_OUTPUT/temp2 &&

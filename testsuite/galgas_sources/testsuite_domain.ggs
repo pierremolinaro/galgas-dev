@@ -1,0 +1,80 @@
+semantics testsuite_domain :
+
+#-----------------------------------------------------------------------------
+
+domain @MyDomain (A, B, C) {
+  myRelation [A, B] ;
+  myTriple [A, B, C] ;
+
+}
+
+#-----------------------------------------------------------------------------
+
+routine testsuite_domain :
+message "*************************************** begin of domain test\n" ;
+#--- A domain
+  @stringlist listA [emptyList] ;
+  listA += !"A0" ;
+  listA += !"A1" ;
+  listA += !"A2" ;
+  listA += !"A3" ;
+  listA += !"A4" ;
+  listA += !"A5" ;
+  listA += !"A6" ;
+  listA += !"A7" ;
+  listA += !"A8" ;
+  listA += !"A9" ;
+  listA += !"A10" ;
+  listA += !"A11" ;
+  listA += !"A12" ;
+  listA += !"A13" ;
+  listA += !"A14" ;
+  listA += !"A15" ;
+  listA += !"A16" ;
+#--- B domain
+  @stringlist listB [emptyList] ;
+  listB += !"B0" ;
+  listB += !"B1" ;
+  listB += !"B2" ;
+  listB += !"B3" ;
+  listB += !"B4" ;
+  listB += !"B5" ;
+  listB += !"B6" ;
+  listB += !"B7" ;
+#--- C domain
+  @stringlist listC [emptyList] ;
+  listC += !"C0" ;
+  listC += !"C1" ;
+  listC += !"C2" ;
+  listC += !"C3" ;
+#--- Creating domain
+  @MyDomain d [domainWithNames !listA !listB !listC] ;
+#--- Relation
+  message "--- relation\n" ;
+  [!?d addToMyRelation !0 !1] ;
+  [!?d addToMyRelation !0 !2] ;
+  [!?d addToMyRelation !2 !0] ;
+  [!?d addToMyRelation !2 !5] ;
+  [!?d addToMyRelation !2 !7] ;
+  [!?d addToMyRelation !16 !7] ;
+  const @string2list r2 := [d myRelationStringValueList] ;
+  foreach r2 do
+    message "  " . mValue0 . " " . mValue1 . "\n" ;
+  end foreach ;
+#--- Relation
+  message "--- triple\n" ;
+  [!?d addToMyTriple !0 !1 !0] ;
+  [!?d addToMyTriple !0 !2 !1] ;
+  [!?d addToMyTriple !2 !0 !2] ;
+  [!?d addToMyTriple !2 !5 !3] ;
+  [!?d addToMyTriple !2 !7 !0] ;
+  [!?d addToMyTriple !16 !7 !1] ;
+  const @string3list r3 := [d myTripleStringValueList] ;
+  foreach r3 do
+    message "  " . mValue0 . " " . mValue1 . " " . mValue2 . "\n" ;
+  end foreach ;
+end routine ;
+
+#-----------------------------------------------------------------------------
+
+end semantics ;

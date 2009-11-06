@@ -57,21 +57,21 @@ routine testsuite_foreach_instruction :
   end foreach ;
   message "--- begin of foreach instruction test 5\n" ;
   foreach < strList (@string s)
-  :index
+  index idx
   before
-    message "  before (index: " . [index string] . ")\n" ;
+    message "  before (idx: " . [idx string] . ")\n" ;
   do
-    message "  do '" . s . "' (index: " . [index string] . ")\n" ;
+    message "  do '" . s . "' (idx: " . [idx string] . ")\n" ;
   between
-    message "  between (index: " . [index string] . ")\n" ;
+    message "  between (idx: " . [idx string] . ")\n" ;
   after
-    message "  after (index: " . [index string] . ")\n" ;
+    message "  after (idx: " . [idx string] . ")\n" ;
   end foreach ;
   message "--- begin of foreach instruction test 6\n" ;
   foreach < strList (@string s)
-  :index
+  index idx
   do
-    message "  do '" . s . "' (index: " . [index string] . ")\n" ;
+    message "  do '" . s . "' (idx: " . [idx string] . ")\n" ;
   end foreach ;
 end routine ;
 

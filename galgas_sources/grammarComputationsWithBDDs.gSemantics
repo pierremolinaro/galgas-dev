@@ -56,8 +56,8 @@ filewrapper grammarComputationTemplates in "../generation_templates/grammar_gene
     ?@uint NON_TERMINAL_COUNT
     ?@uint ADDITIONAL_NON_TERMINAL_COUNT_FOR_BDD
     ?@stringlist NON_TERMINAL_WITH_EMPTY_PRODUCTION_LIST
-    ?@relationStringList NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST
-    ?@relationStringList NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST
+    ?@string2list NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST
+    ?@string3list NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST
     ?@stringlist unused USELESS_NON_TERMINAL_SYMBOL_LIST
   ;
 }
@@ -128,7 +128,7 @@ routine newGrammarAnalyzer
           if idx < ([mDerivation length] - 2) then
             const @uint derivation := [mDerivation mValueAtIndex !idx] ;
             [!?grammarComputations addToNonterminalsWithTwoElementProduction
-              !nonterminalIndex
+              !currentLeftNonTerminal
               !derivation
               !addedNonTerminalIndex
             ] ;
@@ -138,7 +138,7 @@ routine newGrammarAnalyzer
             const @uint derivation0 := [mDerivation mValueAtIndex !idx] ;
             const @uint derivation1 := [mDerivation mValueAtIndex !idx+1] ;
             [!?grammarComputations addToNonterminalsWithTwoElementProduction
-              !nonterminalIndex
+              !currentLeftNonTerminal
               !derivation0
               !derivation1
             ] ;
@@ -155,9 +155,8 @@ routine newGrammarAnalyzer
       ![inNonterminalMap count]
       !additionalNonTerminalSymbolsForPureBDDrules
       ![grammarComputations nonterminalsWithEmptyProductionStringValueList]
-      ![grammarComputations nonterminalsWithOneElementProductionRelationStringValueList]
-#      ![@relationStringList emptyList]
-      ![@relationStringList emptyList]
+      ![grammarComputations nonterminalsWithOneElementProductionStringValueList]
+      ![grammarComputations nonterminalsWithTwoElementProductionStringValueList]
       ![@stringlist emptyList]
     ] ;
   end if ; 

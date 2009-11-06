@@ -2777,26 +2777,55 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   G A L G A S    r e l a t i o n S t r i n g L i s t    T Y P E           *
+#   G A L G A S    s t r i n g 2 l i s t    T Y P E                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine build_relationStringList_type !@AC_galgasType outType :
+routine build_string2list_type !@AC_galgasType outType :
   @typeListeAttributsSemantiques attributesList [emptyList] ;
-  attributesList += ![@typeGalgas_string new] ![@lstring new !"mLeftOperand" !here] ;
-  @AC_galgasType stringlistType ; build_stringlist_type ?stringlistType ;
-  attributesList += !stringlistType ![@lstring new !"mRightList" !here] ;
+  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue0" !here] ;
+  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue1" !here] ;
 
   @L_EXsignature extractSignature [emptyList] ;
   extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
-  extractSignature += !stringlistType ![@EXformalArgumentPassingMode argumentOut] ;
+  extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
 
   @L_EXsignature inputSignature [emptyList] ;
   inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
-  inputSignature += !stringlistType ![@EXformalArgumentPassingMode argumentConstantIn] ;
+  inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
 
   outType := [@typeGalgasListType new
-    ![@lstring new !"relationStringList" !here]
+    ![@lstring new !"string2list" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    s t r i n g 2 l i s t    T Y P E                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_string3list_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue0" !here] ;
+  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue1" !here] ;
+  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue2" !here] ;
+
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
+  extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
+  extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
+
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+  inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+  inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+
+  outType := [@typeGalgasListType new
+    ![@lstring new !"string3list" !here]
     !attributesList
     !extractSignature
     !inputSignature
@@ -3991,9 +4020,13 @@ routine handleReaderCall
           found := [inReaderName string] == ([key string] . "StringValueList") ;
           build_stringlist_type ?outReturnedType ;
         elsif [mDomains length] == 2 then
-          s .= " " . [key string] . "RelationStringValueList" ;
-          found := [inReaderName string] == ([key string] . "RelationStringValueList") ;
-          build_relationStringList_type ?outReturnedType ;
+          s .= " " . [key string] . "StringValueList" ;
+          found := [inReaderName string] == ([key string] . "StringValueList") ;
+          build_string2list_type ?outReturnedType ;
+        elsif [mDomains length] == 3 then
+          s .= " " . [key string] . "StringValueList" ;
+          found := [inReaderName string] == ([key string] . "StringValueList") ;
+          build_string3list_type ?outReturnedType ;
         end if ;
       end foreach ;
       if not found then
@@ -4130,12 +4163,6 @@ routine handleReaderCall
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         build_stringlist_type ?outReturnedType ;
         outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
-      elsif ([inReaderName string] == "relationStringListWithNameList") | ([inReaderName string] == "tripleRelationStringListWithNameList") then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        @AC_galgasType t ; build_stringlist_type ?t ;
-        outAccessorTypesList += !t ![@lstring new !"" !here] ;
-        build_relationStringList_type ?outReturnedType ;
       elsif [inReaderName string] == "predicateStringValue" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
@@ -4875,9 +4902,13 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"lstringlist" !here] !e] ;
 
-  build_relationStringList_type ?t ;
+  build_string2list_type ?t ;
   e := [@typeEntiteType new !t] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"relationStringList" !here] !e] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"string2list" !here] !e] ;
+
+  build_string3list_type ?t ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"string3list" !here] !e] ;
 
 end routine ;
 
