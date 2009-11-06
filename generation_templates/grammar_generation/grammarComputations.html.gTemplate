@@ -35,25 +35,36 @@
 %
 </table>
 
-<p>%![[NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST length] string] % non terminal %if [NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST length] > 1 then %symbols have% else %symbol has% end if % a one element production:</p>
+<p>
+%
+if [NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST length] > 1 then
+ ![[NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST length] string] % rules with a one element derivation:%
+else
+ ![[NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST length] string] % rule with a one element derivation:%
+end if
+%
+</p>
 <table class="result">
 %
   foreach NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST do
-    foreach mRightList do
-      %<tr class="result_line"><td class="result_line"><code>%![mValue HTMLRepresentation]% ::= %![mLeftOperand HTMLRepresentation]%</code></td></tr>%
-    end foreach
+    %<tr class="result_line"><td class="result_line"><code>%![mValue0 HTMLRepresentation]% ::= %![mValue1 HTMLRepresentation]%</code></td></tr>%
   end foreach
 %
 </table>
 
 
-<p>%![[NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST length] string] % non terminal %if [NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST length] > 1 then %symbols have% else %symbol has% end if % a two element production:</p>
+<p>
+%if [NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST length] > 1 then
+ ![[NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST length] string] % rules with a two element derivation:%
+else
+ ![[NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST length] string] % rule with a two element derivation:%
+end if
+%
+</p>
 <table class="result">
 %
   foreach NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST do
-    foreach mRightList do
-      %<tr class="result_line"><td class="result_line"><code>%![mLeftOperand HTMLRepresentation]% ::= %![mValue HTMLRepresentation]%</code></td></tr>%
-    end foreach
+    %<tr class="result_line"><td class="result_line"><code>%![mValue0 HTMLRepresentation]% ::= %![mValue1 HTMLRepresentation] % % ![mValue2 HTMLRepresentation] %</code></td></tr>%
   end foreach
 %
 </table>

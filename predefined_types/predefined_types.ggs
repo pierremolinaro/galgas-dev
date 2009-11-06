@@ -16,6 +16,17 @@ list @STRINGLIST {
   @string mValue ;
 }
 
+list @STRING2LIST {
+  @string mValue0 ;
+  @string mValue1 ;
+}
+
+list @STRING3LIST {
+  @string mValue0 ;
+  @string mValue1 ;
+  @string mValue2 ;
+}
+
 list @LSTRINGLIST {
   @lstring mValue ;
 }
@@ -26,11 +37,6 @@ list @CHARLIST {
 
 list @LCHARLIST {
   @lchar mValue ;
-}
-
-list @RELATIONSTRINGLIST {
-  @string mLeftOperand ;
-  @STRINGLIST mRightList ;
 }
 
 end semantics ;

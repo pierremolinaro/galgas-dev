@@ -76,9 +76,15 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                  "\n"
                  "                                    COMMA_LOCATION_ARGS) const ;\n\n" ;
     }else if (currentDomainRelation.count () == 2) {
-      inHfile << "  public : GGS_relationStringList reader_"
+      inHfile << "  public : GGS_string2list reader_"
               << currentRelation._key (HERE)
-              << "RelationStringValueList (C_Compiler & inLexique"
+              << "StringValueList (C_Compiler & inLexique"
+                 "\n"
+                 "                                    COMMA_LOCATION_ARGS) const ;\n\n" ;
+    }else if (currentDomainRelation.count () == 3) {
+      inHfile << "  public : GGS_string3list reader_"
+              << currentRelation._key (HERE)
+              << "StringValueList (C_Compiler & inLexique"
                  "\n"
                  "                                    COMMA_LOCATION_ARGS) const ;\n\n" ;
     }
@@ -276,13 +282,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }else if (currentDomainRelation.count () == 2) {
       currentDomainRelation.rewind () ;
       inCppFile.appendCppHyphenLineComment () ;
-      inCppFile << "GGS_relationStringList GGS_" << mDomainName << "::\n"
+      inCppFile << "GGS_string2list GGS_" << mDomainName << "::\n"
                    "reader_"
                 << currentRelation._key (HERE)
-                << "RelationStringValueList (C_Compiler & inLexique"
+                << "StringValueList (C_Compiler & inLexique"
                    "\n"
                    "                                    COMMA_LOCATION_ARGS) const {\n"
-                   "  GGS_relationStringList result ;\n"
+                   "  GGS_string2list result ;\n"
                    "  if (isBuilt ()) {\n"
                    "    const PMUInt16 variableCount = (PMUInt16) (mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE)
                 << " + mBDDVariableCountForDomain_" << domainRelationNames (1 COMMA_HERE) << ") ;\n"
@@ -290,27 +296,51 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                    "    mBDDForRelation_"
                 << currentRelation._key (HERE)
                 << ".buildValueArray (valuesArray, variableCount) ;\n"
-                   "    result = GGS_relationStringList::constructor_emptyList () ;\n"
-                   "    if (valuesArray.count () > 0) {\n"
-                   "      const PMUInt64 rightOperandMask = (1ULL << mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << ") - 1ULL ;\n"
-                   "      const PMUInt64 leftOperandMask = rightOperandMask << mBDDVariableCountForDomain_" << domainRelationNames (1 COMMA_HERE) << " ;\n"
-                   "      GGS_stringlist subList = GGS_stringlist::constructor_emptyList () ;\n"
-                   "      const PMUInt64 v0 = valuesArray (0 COMMA_HERE) ;\n"
-                   "      PMUInt64 currentLeftOperand = v0 & leftOperandMask ;\n"
-                   "      subList.addAssign_operation (mDomain_" << domainRelationNames (0 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, (PMUInt32) (v0 & rightOperandMask) COMMA_THERE)) ;\n"
-                   "      for (PMSInt32 i=1 ; i<valuesArray.count () ; i++) {\n"
-                   "        const PMUInt64 v = valuesArray (i COMMA_HERE) ;\n"
-                   "        if ((v & leftOperandMask) != currentLeftOperand) {\n"
-                   "          result.addAssign_operation (mDomain_" << domainRelationNames (0 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, GGS_uint64 (true, currentLeftOperand >> mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << ").reader_uint (inLexique COMMA_THERE) COMMA_THERE),\n"
-                   "                                      subList) ;\n"
-                   "          subList = GGS_stringlist::constructor_emptyList () ;\n"
-                   "          currentLeftOperand = v & leftOperandMask ;\n"
-                   "        }\n"
-                   "        subList.addAssign_operation (mDomain_" << domainRelationNames (0 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, GGS_uint64 (true, v & rightOperandMask).reader_uint (inLexique COMMA_THERE) COMMA_THERE)) ;\n"
-                   "      }\n"
-                   "      result.addAssign_operation (mDomain_" << domainRelationNames (0 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, GGS_uint64 (true, currentLeftOperand >> mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << ").reader_uint (inLexique COMMA_THERE) COMMA_THERE),\n"
-                   "                                  subList) ;\n"
-                   "      subList = GGS_stringlist::constructor_emptyList () ;\n"
+                   "    result = GGS_string2list::constructor_emptyList () ;\n"
+                   "    const PMUInt64 mask0 = (1ULL << mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << ") - 1ULL ;\n"
+                   "    const PMUInt64 mask1 = ((1ULL << mBDDVariableCountForDomain_" << domainRelationNames (1 COMMA_HERE) << ") - 1ULL) << mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << " ;\n"
+                   "    for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {\n"
+                   "      const PMUInt64 v = valuesArray (i COMMA_HERE) ;\n"
+                   "      const PMUInt64 v0 = v & mask0 ;\n"
+                   "      const PMUInt64 v1 = (v & mask1) >> mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << " ;\n"
+                   "      const GGS_string s0 = mDomain_" << domainRelationNames (0 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, GGS_uint (true, (PMUInt32) v0) COMMA_THERE) ;\n"
+                   "      const GGS_string s1 = mDomain_" << domainRelationNames (1 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, GGS_uint (true, (PMUInt32) v1) COMMA_THERE) ;\n"
+                   "      result.addAssign_operation (s0, s1) ;\n"
+                   "    }\n"
+                   "  }\n"
+                   "  return result ;\n"
+                   "}\n\n" ;
+    }else if (currentDomainRelation.count () == 3) {
+      currentDomainRelation.rewind () ;
+      inCppFile.appendCppHyphenLineComment () ;
+      inCppFile << "GGS_string3list GGS_" << mDomainName << "::\n"
+                   "reader_"
+                << currentRelation._key (HERE)
+                << "StringValueList (C_Compiler & inLexique"
+                   "\n"
+                   "                                    COMMA_LOCATION_ARGS) const {\n"
+                   "  GGS_string3list result ;\n"
+                   "  if (isBuilt ()) {\n"
+                   "    const PMUInt32 variable01Count = mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE)
+                << " + mBDDVariableCountForDomain_" << domainRelationNames (1 COMMA_HERE) << " ;\n"
+                   "    const PMUInt16 variableCount = (PMUInt16) (variable01Count + mBDDVariableCountForDomain_" << domainRelationNames (2 COMMA_HERE) << ") ;\n"
+                   "    TC_UniqueArray <PMUInt64> valuesArray ;\n"
+                   "    mBDDForRelation_"
+                << currentRelation._key (HERE)
+                << ".buildValueArray (valuesArray, variableCount) ;\n"
+                   "    result = GGS_string3list::constructor_emptyList () ;\n"
+                   "    const PMUInt64 mask0 = (1ULL << mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << ") - 1ULL ;\n"
+                   "    const PMUInt64 mask1 = ((1ULL << mBDDVariableCountForDomain_" << domainRelationNames (1 COMMA_HERE) << ") - 1ULL) << mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << " ;\n"
+                   "    const PMUInt64 mask2 = ((1ULL << mBDDVariableCountForDomain_" << domainRelationNames (2 COMMA_HERE) << ") - 1ULL) << variable01Count ;\n"
+                   "    for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {\n"
+                   "      const PMUInt64 v = valuesArray (i COMMA_HERE) ;\n"
+                   "      const PMUInt64 v0 = v & mask0 ;\n"
+                   "      const PMUInt64 v1 = (v & mask1) >> mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE) << " ;\n"
+                   "      const PMUInt64 v2 = (v & mask2) >> variable01Count ;\n"
+                   "      const GGS_string s0 = mDomain_" << domainRelationNames (0 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, GGS_uint (true, (PMUInt32) v0) COMMA_THERE) ;\n"
+                   "      const GGS_string s1 = mDomain_" << domainRelationNames (1 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, GGS_uint (true, (PMUInt32) v1) COMMA_THERE) ;\n"
+                   "      const GGS_string s2 = mDomain_" << domainRelationNames (2 COMMA_HERE) << ".reader_mValueAtIndex (inLexique, GGS_uint (true, (PMUInt32) v2) COMMA_THERE) ;\n"
+                   "      result.addAssign_operation (s0, s1, s2) ;\n"
                    "    }\n"
                    "  }\n"
                    "  return result ;\n"

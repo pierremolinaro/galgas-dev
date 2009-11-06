@@ -1,7 +1,7 @@
 semantics testsuite_map :
 
 map @aMap {
-  @uint value ;
+  @uint value feature setter ;
   insert insertKey error message "the '%K' key is already inserted" ;
 }
 

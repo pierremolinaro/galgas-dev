@@ -1,5 +1,5 @@
 syntax testsuite_syntax :
-import lexique testsuite_lexique in "testsuite_lexique.ggs" ;
+import lexique testsuite_lexique in "testsuite_lexique.gLexique" ;
 
 # ADD YOUR CODE HERE
 

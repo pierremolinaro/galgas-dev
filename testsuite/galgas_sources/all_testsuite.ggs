@@ -1,5 +1,5 @@
-project
-  lexique "testsuite_lexique.ggs" : makefile ;
+project all_testsuite :
+  lexique "testsuite_lexique.gLexique" : makefile ;
   syntax "testsuite_syntax.ggs" : makefile ;
   grammar "testsuite_grammar.ggs" : makefile ;
   semantics "testsuite_foreach_instruction.ggs" : makefile ;
@@ -8,6 +8,7 @@ project
   semantics "testsuite_listmap.ggs" : makefile ;
   semantics "testsuite_map.ggs" : makefile ;
   semantics "testsuite_functions.ggs" : makefile ;
+  semantics "testsuite_domain.ggs" : makefile ;
 
   program "testsuite_program.ggs" : makefile ;
 
