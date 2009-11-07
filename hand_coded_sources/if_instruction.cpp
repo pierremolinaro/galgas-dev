@@ -1917,32 +1917,52 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_C_if_instruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & inTargetFileName,
-                       PMSInt32 & ioPrototypeIndex,
-                       const bool inGenerateDebug,
-                       const bool inGenerateSemanticInstructions) const {
+                     const C_String & inTargetFileName,
+                     PMSInt32 & ioPrototypeIndex,
+                     const bool inGenerateDebug,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
+    PMSInt32 currentLocation = 0 ;
     bool first = true ;
     while (currentBranch.hasCurrentObject ()) {
       if (first) {
         first = false ;
       }else{
-        ioCppFile << "}else " ;
+        ioCppFile << "}else if (cond_" << cStringWithSigned (currentLocation) << ".isBuiltAndFalse ()) {\n" ;
+        ioCppFile.incIndentation (+2) ;
       }
-      ioCppFile << "if ((" ;
+      currentLocation = currentBranch._mLocation (HERE).location () ;
+      ioCppFile << "const GGS_bool cond_"
+                << cStringWithSigned (currentLocation)
+                << " = " ;
       currentBranch._mIFexpression (HERE) (HERE)->generateExpression (ioCppFile) ;
-      ioCppFile << ").isBuiltAndTrue ()) {\n" ;
-      generateInstructionListForList (currentBranch._mInstructionList (HERE), ioCppFile, inTargetFileName, ioPrototypeIndex,
-                                      inGenerateDebug, true) ;
+      ioCppFile << " ;\n"
+                   "if (cond_" << cStringWithSigned (currentLocation) << ".isBuiltAndTrue ()) {\n" ;
+      generateInstructionListForList (currentBranch._mInstructionList (HERE),
+                                      ioCppFile,
+                                      inTargetFileName,
+                                      ioPrototypeIndex,
+                                      inGenerateDebug,
+                                      true) ;
       currentBranch.next () ;
     }
     if (mElseInstructionsList.count () > 0) {
-      ioCppFile << "}else{\n" ;
-      generateInstructionListForList (mElseInstructionsList, ioCppFile, inTargetFileName, ioPrototypeIndex,
-                                      inGenerateDebug, true) ;
+      ioCppFile << "}else if (cond_" << cStringWithSigned (currentLocation) << ".isBuiltAndFalse ()) {\n" ;
+      generateInstructionListForList (mElseInstructionsList,
+                                      ioCppFile,
+                                      inTargetFileName,
+                                      ioPrototypeIndex,
+                                      inGenerateDebug,
+                                      true) ;
     }
-    ioCppFile << "}\n" ;
+    ioCppFile.incIndentation (+2) ;
+    currentBranch.rewind () ;
+    while (currentBranch.hasCurrentObject ()) {
+      ioCppFile.incIndentation (-2) ;
+      ioCppFile << "}\n" ;
+      currentBranch.next () ;
+    }
   }
 }
 
