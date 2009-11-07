@@ -150,5 +150,17 @@ class @syntaxComponentRoot {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#      Terminal symbols map (for using in a syntax component)               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @M_terminalSymbolsMapForGrammarAnalysis {
+  @uint mTerminalIndex ;
+  insert insertKey error message "the terminal symbol '$%K$' is already declared in %L" ;
+  search searchKey error message "the terminal symbol '$%K$' is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

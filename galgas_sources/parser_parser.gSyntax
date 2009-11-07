@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS parser component parser definition                                *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -22,6 +22,7 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics parser_semantics in "parser_semantics.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -51,6 +52,8 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importForGrammarAnalysis
+  ?!@syntaxRuleList ioSyntaxRuleList
 ;
 
 nonterminal <semantics_declaration>
@@ -87,6 +90,8 @@ nonterminal <syntax_declaration>
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
 label parse
 ;
 
@@ -150,6 +155,8 @@ nonterminal <syntax_instruction>
   ??@EXsemanticContext inSemanticContext
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 label parse
 ;
 
@@ -212,6 +219,8 @@ nonterminal <syntax_instructions_list>
   ??@EXsemanticContext inSemanticContext
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 label parse
 ;
  
@@ -230,6 +239,8 @@ nonterminal <syntax_instructions_list_no_verif>
   ??@EXsemanticContext inSemanticContext
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 label parse
 ;
 
@@ -565,6 +576,30 @@ label importOptions
   $end$ ;
   $syntax$ ;
   $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList ioSyntaxRuleList
+:
+  $syntax$ ;
+  $identifier$ ? * ;
+  $:$ ;
+#--- Ignore new importation syntax
+  select
+  or
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end select ;
+  <get_lexique_infos> parse ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <syntax_declaration> importForGrammarAnalysis !?ioSyntaxRuleList ;
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $syntax$ ;
+  $;$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -722,6 +757,24 @@ label importSyntax
   $)$ ;
   $:$ ;
   <syntax_instructions_list_no_verif> importSyntax !?ioInstructionList ;
+  $end$ ;
+  $block$ ;
+  $($ ;
+  <actual_parameters_list> parse ;
+  $)$ ;
+  $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
+:
+  $block$ ;
+  $identifier$ ? * ;
+  $.$ ;
+  $identifier$ ? * ;
+  $($ ;
+  <actual_parameters_list> parse ;
+  $)$ ;
+  $:$ ;
+  <syntax_instructions_list_no_verif> importForGrammarAnalysis !?ioSyntaxInstructionList ;
   $end$ ;
   $block$ ;
   $($ ;
@@ -1314,6 +1367,15 @@ label importSyntax
     !0 # leftNonterminalSymbolIndex
     !syntaxSignature
   ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
+:
+  $operator$ ;
+  $literal_string$ ? * ;
+  $terminal$ ? * ;
+  $non_terminal_symbol$ ? * ;
+  $unsigned_literal_integer$ ? * ;
+  $;$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -1497,6 +1559,28 @@ label importSyntax
      end select ; 
    end repeat ;
     [!?ioNonTerminalSymbolsMap insertKey !nonterminalSymbolName !nonterminalSymbolParametersMap] ;
+  end select ;
+  $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
+:
+  $nonterminal$ ;
+  $non_terminal_symbol$ ? * ;
+  select
+    $unsigned_literal_integer$ ? * ;
+  or
+    <formal_arguments_list> parse ;
+    repeat
+    while
+      $label$ ;
+      select
+        $parse$ ;
+      or
+        $identifier$ ?* ;
+        @L_signature signature ;
+        <formal_arguments_list> parse ;
+     end select ; 
+   end repeat ;
   end select ;
   $;$ ;
 end rule ;
@@ -1698,6 +1782,43 @@ label importSyntax
   $end$ ;
   $rule$ ;
   $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
+:
+  $rule$ ;
+  @lstring nonterminalSymbolName ;
+  $non_terminal_symbol$ ? nonterminalSymbolName ;
+#  @L_signature signature ;
+#  <formal_arguments_list> importGrammarForSemantics ?signature ;
+  <formal_arguments_list> parse ;
+  select
+  or
+    $tag$ ;
+    $literal_string$ ? * ;
+  end select ;
+  $:$ ;
+#  @L_ruleSyntaxSignature instructionsList [emptyList] ;
+#  <syntax_instructions_list> importSyntax !?instructionsList ;
+  @syntaxInstructionList syntaxInstructionList [emptyList] ;
+  <syntax_instructions_list> importForGrammarAnalysis !?syntaxInstructionList ;
+  repeat
+  while
+    $label$ ;
+    $identifier$ ? * ;
+    <formal_arguments_list> parse ;
+    $:$ ;
+    @syntaxInstructionList syntaxInstructionList0 [emptyList] ;
+    <syntax_instructions_list> importForGrammarAnalysis !?syntaxInstructionList0 ;
+  end repeat ;
+#  @uint leftNonterminalSymbolIndex := 0 ;
+#  ioProductionRulesListForGrammar +=
+#    !nonterminalSymbolName
+#    !leftNonterminalSymbolIndex
+#    !instructionsList
+#  ;
+  $end$ ;
+  $rule$ ;
+  $;$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -1739,6 +1860,11 @@ label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 :
   <syntax_instructions_list_no_verif> importSyntax !?ioInstructionList ;
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
+:
+  <syntax_instructions_list_no_verif> importForGrammarAnalysis !?ioSyntaxInstructionList ;
+
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -1761,7 +1887,7 @@ rule <syntax_instruction>
 :
   $terminal$ ?@lstring terminalSymbolName ;
   @typeListeAttributsSemantiques listeDesAttributsFormels ;
-  [tableTerminaux searchKey !terminalSymbolName ?listeDesAttributsFormels] ;
+  [tableTerminaux searchKey !terminalSymbolName ?listeDesAttributsFormels ?*] ;
   @L_assignedVariables listeTypeEffectifs ;
   @typeCplusPlusNameList allVariablesList ;
   <input_parameters_list>
@@ -1793,6 +1919,17 @@ label importSyntax
     !0 # terminalSymbolIndex
   ] ;
   ioInstructionList += ! instruction ;
+  $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
+:
+  @lstring terminalSymbolName ;
+  $terminal$ ? terminalSymbolName ;
+  <input_parameters_list> parse ;
+  ioSyntaxInstructionList += ![@terminalCheckInstruction new
+    !terminalSymbolName
+    ![@actualInputParameterList emptyList]
+  ] ;
   $;$ ;
 end rule ;
 
@@ -1884,6 +2021,24 @@ label importSyntax
     !0 # nonterminalSymbolIndex
   ] ;
   ioInstructionList += ! instruction ;
+  $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
+:
+  @lstring nonterminalSymbolName ;
+  $non_terminal_symbol$ ? nonterminalSymbolName ;
+  select
+  or
+    $parse$ ;
+  or
+    $identifier$ ? * ;
+  end select ;
+  <actual_parameters_list> parse ;
+  ioSyntaxInstructionList += ![@nonterminalCallInstruction new
+    !nonterminalSymbolName
+    ![@lstring new !"" !here]
+    ![@actualParameterList emptyList]
+  ] ;
   $;$ ;
 end rule ;
 
@@ -1990,6 +2145,30 @@ label importSyntax
   @uint v := 0 ;
   i := [@T_selectInstruction_forGrammarComponent new !positionDebut !selectList !v] ;
   ioInstructionList += !i ;
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
+:
+  $select$ ;
+  @location positionDebut := here ;
+  @listOfSyntaxInstructionList selectList [emptyList] ;
+  @syntaxInstructionList syntaxSignature [emptyList] ;
+  <syntax_instructions_list_no_verif> importForGrammarAnalysis !?syntaxSignature ;
+  selectList += !syntaxSignature ;
+  $or$ ;
+  repeat
+    @syntaxInstructionList syntaxSignature2 [emptyList] ;
+    <syntax_instructions_list_no_verif> importForGrammarAnalysis !?syntaxSignature2 ;
+    selectList += !syntaxSignature2 ;
+  while
+    $or$ ;
+  end repeat ;
+  $end$ ;
+  $select$ ;
+  $;$ ;
+  ioSyntaxInstructionList += ![@selectInstruction new
+    !positionDebut
+    !selectList
+  ] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -2095,6 +2274,30 @@ label importSyntax
   @uint v := 0 ;
   i := [@T_repeatInstruction_forGrammarComponent new !positionDebut !repeatList !v] ;
   ioInstructionList += !i ;
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
+:
+  $repeat$ ;
+  @location positionDebut := here ;
+  @syntaxInstructionList repeatedInstructionList [emptyList] ;
+  <syntax_instructions_list_no_verif> importForGrammarAnalysis !?repeatedInstructionList ;
+  @listOfSyntaxInstructionList repeatList [emptyList] ;
+  $while$ ;
+  repeat
+    @syntaxInstructionList syntaxSignature [emptyList] ;
+    <syntax_instructions_list_no_verif> importForGrammarAnalysis !?syntaxSignature ;
+    repeatList += !syntaxSignature ;
+  while
+    $while$ ;
+  end repeat ;
+  $end$ ;
+  $repeat$ ;
+  $;$ ;
+  ioSyntaxInstructionList += ![@repeatInstruction new
+    !positionDebut
+    !repeatedInstructionList
+    !repeatList
+  ] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -2337,6 +2540,39 @@ label importSyntax
   $end$ ;
   $parse$ ;
   $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
+:
+  $parse$ ;
+  select
+    $loop$ ;
+    <expression> parse ;
+    $while$ ;
+    <expression> parse ;
+    $do$ ;
+    <syntax_instructions_list_no_verif> importForGrammarAnalysis !?ioSyntaxInstructionList ;
+  or
+    $do$ ;
+    <syntax_instructions_list_no_verif> importForGrammarAnalysis !?ioSyntaxInstructionList ;
+    repeat
+      $rewind$ ;
+      <syntax_instructions_list_no_verif> parse ;
+    while
+    end repeat ;
+  or
+    repeat
+      $when$ ;
+      <expression> parse ;
+      $:$ ;
+      <syntax_instructions_list_no_verif> parse ;
+    while
+    end repeat ;
+    $else$ ;
+    <syntax_instructions_list_no_verif> importForGrammarAnalysis !?ioSyntaxInstructionList ;
+  end select ;
+  $end$ ;
+  $parse$ ;
+  $;$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -2388,6 +2624,15 @@ label importSyntax
   repeat
   while
     <syntax_instruction> importSyntax !?ioInstructionList ;
+  while
+    <semantic_instruction> parse ;
+  end repeat ;
+label importForGrammarAnalysis
+  ?!@syntaxInstructionList ioSyntaxInstructionList
+:
+  repeat
+  while
+    <syntax_instruction> importForGrammarAnalysis !?ioSyntaxInstructionList ;
   while
     <semantic_instruction> parse ;
   end repeat ;

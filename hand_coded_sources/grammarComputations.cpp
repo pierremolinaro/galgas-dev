@@ -295,7 +295,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
 
 static void
 fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList,
-                            cInfo & inInfo,
+                            const cInfo & inInfo,
                             C_Compiler & inLexique,
                             bool & ioOk) {
   GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inInstructionsList, true) ;
@@ -309,7 +309,7 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
 //---------------------------------------------------------------------------*
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
-fixInfos (cInfo & inInfo,
+fixInfos (const cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
   GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
@@ -325,7 +325,7 @@ fixInfos (cInfo & inInfo,
 //---------------------------------------------------------------------------*
 
 void cPtr_T_selectInstruction_forGrammarComponent::
-fixInfos (cInfo & inInfo,
+fixInfos (const cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
   GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
@@ -341,7 +341,7 @@ fixInfos (cInfo & inInfo,
 //---------------------------------------------------------------------------*
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
-fixInfos (cInfo & inInfo,
+fixInfos (const cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
   GGS_luint index ;
@@ -357,12 +357,12 @@ fixInfos (cInfo & inInfo,
 //---------------------------------------------------------------------------*
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
-fixInfos (cInfo & inInfo,
+fixInfos (const cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
-  GGS_luint index ;
+  GGS_uint index ;
   GGS_typeListeAttributsSemantiques unusedArg ;
-  inInfo.mTerminalSymbolMap.method_searchKeyGetID (inLexique, mTerminalSymbolName, index, unusedArg COMMA_HERE) ;
+  inInfo.mTerminalSymbolMap.method_searchKey (inLexique, mTerminalSymbolName, unusedArg, index COMMA_HERE) ;
   if (! index.isBuilt ()) {
     ioOk = false ;
   }
@@ -590,9 +590,9 @@ analyzeGrammar (C_Compiler & inLexique,
       co << "  Building pure BNF productions... " ;
     }
   //--- Build vocabulary
-    vocabulary.build (inTerminalSymbolMap,
-                      inNonterminalSymbolsMapForGrammar,
-                      inOriginalGrammarStartSymbol.uintValue ()) ;
+    vocabulary.buildVocabulary (inTerminalSymbolMap,
+                                inNonterminalSymbolsMapForGrammar,
+                                inOriginalGrammarStartSymbol.uintValue ()) ;
   
   //--- Build pure BNFproductions, add new non terminal symbols from 'repeat' and 'select' instructions
     buildPureBNFgrammar (inSyntaxComponentsList,
@@ -910,7 +910,7 @@ routine_analyzeGrammar (C_Compiler & inLexique,
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
     #endif
-   //--- Fix info about terminal and nonterminal symbols
+  //------------------------------------------------- Fix info about terminal and nonterminal symbols
     bool ok = true ;
     cInfo symbolsInfo ;
     symbolsInfo.mTerminalSymbolMap = inTerminalSymbolMap ;

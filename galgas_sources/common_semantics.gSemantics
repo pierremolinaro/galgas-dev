@@ -2089,8 +2089,9 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 map @M_terminalSymbolsMapForUse {
   @typeListeAttributsSemantiques aListeDesAttributs ;
+  @uint mTerminalIndex ;
   insert insertKey error message "the terminal symbol '$%K$' is already declared in %L" ;
-  search searchKey, searchKeyGetID error message "the terminal symbol '$%K$' is not declared" ;
+  search searchKey error message "the terminal symbol '$%K$' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
