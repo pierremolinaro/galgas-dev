@@ -56,9 +56,9 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                      true) ;
   ioCount ++ ;
 
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
-    fixNewNonterminalSymbolsForList (currentBranch._mInstructionList (HERE),
+    fixNewNonterminalSymbolsForList (currentBranch._mSyntaxInstructionList (HERE),
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
@@ -80,9 +80,9 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                      true) ;
   ioCount ++ ;
 
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
-    fixNewNonterminalSymbolsForList (currentBranch._mInstructionList (HERE),
+    fixNewNonterminalSymbolsForList (currentBranch._mSyntaxInstructionList (HERE),
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
@@ -145,8 +145,8 @@ buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
 void cPtr_T_repeatInstruction_forGrammarComponent::
 buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
                       TC_UniqueArray <PMSInt16> & ioInstructionsList) {
-  GGS_L_branchList_ForGrammarComponent::cEnumerator firstBranch (mRepeatList, true) ;
-  GGS_L_ruleSyntaxSignature::cEnumerator instruction (firstBranch._mInstructionList (HERE), true) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator firstBranch (mRepeatBranchList, true) ;
+  GGS_L_ruleSyntaxSignature::cEnumerator instruction (firstBranch._mSyntaxInstructionList (HERE), true) ;
   while (instruction.hasCurrentObject ()) {
     instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, ioInstructionsList) ;
     instruction.next () ;
@@ -176,10 +176,10 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
 //          <W> = Z, ...
 //     la production analysee devient : A ; <W> ; B
 
- GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
+ GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
     TC_UniqueArray <PMSInt16> derivation ;
-    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mInstructionList (HERE), true) ;
+    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
        instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
        instruction.next () ;
@@ -197,7 +197,7 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
 //--- Construire les productions issues des instructions choix et repeter
   currentBranch.rewind () ;
   while (currentBranch.hasCurrentObject ()) {
-    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mInstructionList (HERE), true) ;
+    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
       instruction._mInstruction (HERE) (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                                                      inSyntaxComponentName,
@@ -238,19 +238,19 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
   }
 
 //--- Insert a new production for every 'while' branch
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatBranchList, true) ;
   currentBranch.next () ;
   while (currentBranch.hasCurrentObject ()) {
     TC_UniqueArray <PMSInt16> derivation ;
   //--- insert branch instructions
-    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mInstructionList (HERE), true) ;
+    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
        instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
        instruction.next () ;
     }
   //--- insert sequence from X
-    GGS_L_branchList_ForGrammarComponent::cEnumerator firstBranch (mRepeatList, true) ;
-    GGS_L_ruleSyntaxSignature::cEnumerator firstBranchInstruction (firstBranch._mInstructionList (HERE), true) ;
+    GGS_L_branchList_ForGrammarComponent::cEnumerator firstBranch (mRepeatBranchList, true) ;
+    GGS_L_ruleSyntaxSignature::cEnumerator firstBranchInstruction (firstBranch._mSyntaxInstructionList (HERE), true) ;
 //    instruction = firstBranch->mInstructionList.firstObject () ;
     while (firstBranchInstruction.hasCurrentObject ()) {
       firstBranchInstruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
@@ -271,7 +271,7 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
 //--- Construire les productions issues des instructions choix et repeter
   currentBranch.rewind () ;
   while (currentBranch.hasCurrentObject ()) {
-    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mInstructionList (HERE), true) ;
+    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
       instruction._mInstruction (HERE) (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                                                      inSyntaxComponentName,

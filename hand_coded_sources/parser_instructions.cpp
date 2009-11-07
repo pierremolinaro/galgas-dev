@@ -78,11 +78,11 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
     errorMessage << "syntax signature error : a repeat instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }else{
-    GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mRepeatList, true) ;
-    GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mRepeatList, true) ;
+    GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mRepeatBranchList, true) ;
+    GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mRepeatBranchList, true) ;
     while (currentReferenceBranch.hasCurrentObject () && currentOperandBranch.hasCurrentObject () && sameSignature) {
-      sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mInstructionList (HERE),
-                                                                currentOperandBranch._mInstructionList (HERE), inEndOfInstructionListLocation) ;
+      sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mSyntaxInstructionList (HERE),
+                                                                currentOperandBranch._mSyntaxInstructionList (HERE), inEndOfInstructionListLocation) ;
       currentReferenceBranch.next () ;
       currentOperandBranch.next () ;
     }
@@ -114,11 +114,11 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
     errorMessage << "syntax signature error: a select instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }else{
-    GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mSelectList, true) ;
-    GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mSelectList, true) ;
+    GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mSelectBranchList, true) ;
+    GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mSelectBranchList, true) ;
     while (currentReferenceBranch.hasCurrentObject () && currentOperandBranch.hasCurrentObject () && sameSignature) {
-      sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mInstructionList (HERE),
-                                                                currentOperandBranch._mInstructionList (HERE), inEndOfInstructionListLocation) ;
+      sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mSyntaxInstructionList (HERE),
+                                                                currentOperandBranch._mSyntaxInstructionList (HERE), inEndOfInstructionListLocation) ;
       currentReferenceBranch.next () ;
       currentOperandBranch.next () ;
     }

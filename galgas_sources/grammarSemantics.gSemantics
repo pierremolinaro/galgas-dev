@@ -1,0 +1,36 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Grammar Semantics                                                        *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics grammarSemantics :
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      Terminal symbols map (for using in a syntax component)               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @M_terminalSymbolsMapForGrammarAnalysis {
+  @uint mTerminalIndex ;
+  insert insertKey error message "the terminal symbol '$%K$' is already declared in %L" ;
+  search searchKey error message "the terminal symbol '$%K$' is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

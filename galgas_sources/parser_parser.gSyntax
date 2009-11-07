@@ -1887,7 +1887,7 @@ rule <syntax_instruction>
 :
   $terminal$ ?@lstring terminalSymbolName ;
   @typeListeAttributsSemantiques listeDesAttributsFormels ;
-  [tableTerminaux searchKey !terminalSymbolName ?listeDesAttributsFormels ?*] ;
+  [tableTerminaux searchKey !terminalSymbolName ?listeDesAttributsFormels] ;
   @L_assignedVariables listeTypeEffectifs ;
   @typeCplusPlusNameList allVariablesList ;
   <input_parameters_list>

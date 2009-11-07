@@ -2,7 +2,7 @@
 //                                                                           *
 //  This file handles all computations performed on grammars                 *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -53,7 +53,7 @@
 //---------------------------------------------------------------------------*
 
 class cInfo {
-  public : GGS_M_terminalSymbolsMapForUse mTerminalSymbolMap ;
+  public : GGS_M_terminalSymbolsMapForGrammarAnalysis mTerminalSymbolMap ;
   public : GGS_M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMapForGrammar ;
   
   public : cInfo (void) ;
@@ -312,9 +312,9 @@ void cPtr_T_repeatInstruction_forGrammarComponent::
 fixInfos (const cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
-    fixInfoForInstructionsList (currentBranch._mInstructionList (HERE),
+    fixInfoForInstructionsList (currentBranch._mSyntaxInstructionList (HERE),
                                 inInfo,
                                 inLexique,
                                 ioOk) ;
@@ -328,9 +328,9 @@ void cPtr_T_selectInstruction_forGrammarComponent::
 fixInfos (const cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
-    fixInfoForInstructionsList (currentBranch._mInstructionList (HERE),
+    fixInfoForInstructionsList (currentBranch._mSyntaxInstructionList (HERE),
                                 inInfo,
                                 inLexique,
                                 ioOk) ;
@@ -361,10 +361,12 @@ fixInfos (const cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
   GGS_uint index ;
-  GGS_typeListeAttributsSemantiques unusedArg ;
-  inInfo.mTerminalSymbolMap.method_searchKey (inLexique, mTerminalSymbolName, unusedArg, index COMMA_HERE) ;
+  inInfo.mTerminalSymbolMap.method_searchKey (inLexique, mTerminalSymbolName, index COMMA_HERE) ;
   if (! index.isBuilt ()) {
     ioOk = false ;
+  }
+  if (mTerminalSymbolIndex.mValue != index.uintValue ()) {
+    printf ("FIX ERROR: %d != %d\n", mTerminalSymbolIndex.mValue, index.uintValue ()) ;
   }
   mTerminalSymbolIndex.mValue = index.uintValue () ;
 }
@@ -493,7 +495,7 @@ analyzeGrammar (C_Compiler & inLexique,
                 const GGS_luint & inOriginalGrammarStartSymbol,
                 const GGS_lstring & inLexiqueName,
                 const GGS_location & errorLocation,
-                const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
+                const GGS_M_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                 const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                 const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
   bool warningFlag = false ;
@@ -892,12 +894,12 @@ analyzeGrammar (C_Compiler & inLexique,
 
 void
 routine_analyzeGrammar (C_Compiler & inLexique,
-                        GGS_lstring & inTargetFileName,
+                        const GGS_lstring inTargetFileName,
                         const GGS_lstring inGrammarClass,
-                        GGS_luint & inOriginalGrammarStartSymbol,
-                        GGS_lstring & inLexiqueName,
+                        const GGS_luint inOriginalGrammarStartSymbol,
+                        const GGS_lstring inLexiqueName,
                         const GGS_location errorLocation,
-                        const GGS_M_terminalSymbolsMapForUse inTerminalSymbolMap,
+                        const GGS_M_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
                         const GGS_L_syntaxComponents_ForGrammar inSyntaxComponentsList,
                         const GGS_M_nonTerminalSymbolsForGrammar inNonterminalSymbolsMapForGrammar,
                         const GGS_M_unusedNonTerminalSymbolsForGrammar inUnusedNonTerminalSymbolsForGrammar

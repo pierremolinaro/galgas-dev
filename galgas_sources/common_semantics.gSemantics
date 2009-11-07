@@ -2089,7 +2089,6 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 map @M_terminalSymbolsMapForUse {
   @typeListeAttributsSemantiques aListeDesAttributs ;
-  @uint mTerminalIndex ;
   insert insertKey error message "the terminal symbol '$%K$' is already declared in %L" ;
   search searchKey error message "the terminal symbol '$%K$' is not declared" ;
 }
@@ -2264,7 +2263,7 @@ map @M_nonTerminalSymbolsForGrammar {
 #---------------------------------------------------------------------------*
 
 map @M_unusedNonTerminalSymbolsForGrammar {
-  @luint mSymbolIndex ;
+  @luint mNonTerminalIndex ;
   insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L" ;
 }
 
@@ -2311,7 +2310,7 @@ class @T_nonterminalInstruction_forGrammarComponent extends @AC_instruction_ForG
 #---------------------------------------------------------------------------*
 
 list @L_branchList_ForGrammarComponent {
-  @L_ruleSyntaxSignature mInstructionList ;
+  @L_ruleSyntaxSignature mSyntaxInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2321,7 +2320,7 @@ list @L_branchList_ForGrammarComponent {
 #---------------------------------------------------------------------------*
 
 class @T_selectInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
-  @L_branchList_ForGrammarComponent mSelectList feature nogetter ;
+  @L_branchList_ForGrammarComponent mSelectBranchList feature nogetter ;
   @uint mAddedNonterminalmSymbolIndex feature nogetter ;
 }
 
@@ -2332,7 +2331,7 @@ class @T_selectInstruction_forGrammarComponent extends @AC_instruction_ForGramma
 #---------------------------------------------------------------------------*
 
 class @T_repeatInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
-  @L_branchList_ForGrammarComponent mRepeatList feature nogetter ;
+  @L_branchList_ForGrammarComponent mRepeatBranchList feature nogetter ;
   @uint mAddedNonterminalmSymbolIndex feature nogetter ;
 }
 
@@ -2343,7 +2342,6 @@ class @T_repeatInstruction_forGrammarComponent extends @AC_instruction_ForGramma
 #---------------------------------------------------------------------------*
 
 list @L_syntaxComponents_ForGrammar {
-  @M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMap ;
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
   @lstring mSyntaxComponentName ;
 }
