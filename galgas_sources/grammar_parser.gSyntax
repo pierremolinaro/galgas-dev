@@ -23,6 +23,7 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -48,6 +49,8 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
 ;
 
 nonterminal <get_lexique_infos>
@@ -112,7 +115,7 @@ rule <galgas_component>
   $identifier$ ? grammarName ;
   @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
   if [grammarName string] != basename then
-    warning grammarName: "GALGAS 1.7.5 and later checks "
+    error grammarName: "GALGAS 1.7.5 and later checks "
       "the component name ('" . [grammarName string]
     . "') against the source file base name ('" . basename . "'): they should be identical"
     ;
@@ -268,6 +271,11 @@ rule <galgas_component>
    end repeat ;
    $;$ ;
   end repeat ;
+#--- Build actual terminal symbol map from actually used terminal symbols
+  @M_terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
+  foreach terminalSymbolMap do
+    [!?actuallyUsedTerminalSymbolMap insertKey !key ![actuallyUsedTerminalSymbolMap count]] ;
+  end foreach ;
 #--- Analyze grammar
   analyzeGrammar
     !?grammarName
@@ -569,6 +577,68 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $grammar$ ;
+  $identifier$ ? * ;
+  $literal_string$ ? * ;
+  $:$ ;
+#--- Ignore new importation syntax
+  repeat
+  while
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
+  <get_lexique_infos> parse ;
+  repeat
+    $import$ ;
+    select
+      $option$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_option_component_for_importing> parse ;
+      end select ;
+      $;$ ;
+    or
+      $syntax$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_syntax_for_importing> parse ;
+      end select ;
+      $;$ ;
+    end select ;
+  while
+  end repeat ;
+  $root$ ;
+  $non_terminal_symbol$ ? * ;
+  repeat
+    <formal_arguments_list> parse ;
+  while
+    $label$ ;
+    $identifier$ ? * ;
+  end repeat ;
+  $;$ ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? * ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
+  $end$ ;
+  $grammar$ ;
+  $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
 :
   $grammar$ ;
   $identifier$ ? * ;

@@ -23,6 +23,7 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics scanner_semantics in "scanner_semantics.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #-------------------------------------------------------------------*
 
@@ -48,6 +49,8 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importForGrammarAnalysis
+  ?!@syntaxRuleList ioSyntaxRuleList
 ;
 
 nonterminal <style_declaration>
@@ -470,6 +473,39 @@ label importOptions
   $end$ ;
   $lexique$ ;
   $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
+:
+  select
+  or
+    $template$ ;
+  end select ;
+  $lexique$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  repeat
+  while 
+    <extern_routine_or_function_declaration> ;
+  while 
+    <style_declaration> parse ;
+  while
+    <template_declaration> parse ;
+  while
+    <replace_declaration> parse ;
+  while
+    <attribute_or_terminal_symbol_declaration> parse ;
+  while
+    <key_words_list_declaration> parse ;
+  while
+    <lexical_error_message_declaration> parse ;
+  while
+    $rule$ ;
+    <lexical_rule> parse ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $lexique$ ;
+  $;$ ;
 end rule ;
 
 #-------------------------------------------------------------------*
@@ -594,7 +630,7 @@ rule <attribute_or_terminal_symbol_declaration>
     $error$ ;
     $message$ ;
     $literal_string$ ? errorMessage ;
-    [!?ioTerminalSymbolsMapForUse insertKey !nomTerminal ! attributeList] ;
+    [!?ioTerminalSymbolsMapForUse insertKey !nomTerminal ! attributeList ![ioTerminalSymbolsMapForUse count]] ;
   #--- Style ?
     @lstring styleName ;
     select
@@ -710,7 +746,7 @@ rule <key_words_list_declaration>
       !styleIndex
       !isTemplateEndMark
     ] ;
-    [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributeList] ;
+    [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributeList ![ioTerminalSymbolsMapForUse count]] ;
   #--- Insert entry in the entries map
     [!?entriesMap insertKey !listEntry !terminalSymbolName] ;
   while

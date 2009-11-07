@@ -66,7 +66,7 @@ grammar galgas_LL1_grammar "SLR" :
   label importOptions
     ?!@M_optionComponents ioOptionsComponentsMap
   label compileFile
-  ; # LL1
+  label importForGrammarAnalysis    ?!@syntaxRuleList ioSyntaxRuleList  ;
 end grammar ;
 
 #---------------------------------------------------------------------------*

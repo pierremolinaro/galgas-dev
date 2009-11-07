@@ -27,6 +27,7 @@ import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics guiCompilation in "guiCompilation.gSemantics" ;
 import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
 import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
@@ -75,6 +76,8 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importForGrammarAnalysis
+  ?!@syntaxRuleList ioSyntaxRuleList
 ;
 
 nonterminal <parse_lexique_for_importing>
@@ -593,6 +596,46 @@ label importOptions
   $end$ ;
   $project$ ;
   $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
+:
+  $project$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  repeat
+  while
+    select
+      $extern$ ;
+    or
+      $gui$ ;
+    or
+      $lexique$ ;
+    or
+      $option$ ;
+    or
+      $semantics$ ;
+    or
+      $syntax$ ;
+    or
+      $grammar$ ;
+    or
+      $program$ ;
+    end select ;
+    $literal_string$ ? * ;
+    select
+    or
+      $:$ ;
+      repeat
+        $identifier$ ?* ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $project$ ;
+  $;$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -648,6 +691,12 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $compile$ ;
+  $literal_string$ ? * ;
+  $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
 :
   $compile$ ;
   $literal_string$ ? * ;

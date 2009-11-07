@@ -35,7 +35,7 @@ class cPtr_AC_instruction_ForGrammar : public cPtr__AC_galgas_class {
   public : virtual void buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
                                            const C_String & inSyntaxComponentName,
                                            cPureBNFproductionsList & ioProductions) = 0 ;
-  public : virtual void fixInfos (class cInfo & inInfo,
+  public : virtual void fixInfos (const class cInfo & inInfo,
                                   C_Compiler & inLexique,
                                   bool & ioOk) = 0 ;
 

@@ -43,9 +43,9 @@ class cVocabulary {
   public : virtual ~cVocabulary (void) ;
 
 //--- Build vocabulary from original grammar
-  public : void build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
-                       const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                       const PMUInt32 inOriginalGrammarStartSymbol) ;
+  public : void buildVocabulary (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
+                                 const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+                                 const PMUInt32 inOriginalGrammarStartSymbol) ;
 
 //--- Add a new non terminal symbol
   public : void addNonTerminalSymbol (const char * inPrefix,

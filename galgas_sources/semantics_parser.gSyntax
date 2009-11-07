@@ -22,6 +22,7 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
@@ -55,6 +56,8 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importForGrammarAnalysis
+  ?!@syntaxRuleList ioSyntaxRuleList
 ;
 
 nonterminal <parse_grammar_component_for_importing>
@@ -799,6 +802,20 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $semantics$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $semantics$ ;
+  $;$ ;
+label importForGrammarAnalysis
+  ?!@syntaxRuleList unused ioSyntaxRuleList
 :
   $semantics$ ;
   $identifier$ ? * ;

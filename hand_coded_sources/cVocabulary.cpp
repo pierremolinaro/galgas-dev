@@ -44,9 +44,9 @@ cVocabulary::~cVocabulary (void) {
 //---------------------------------------------------------------------------*
 
 void cVocabulary::
-build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
-       const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-       const PMUInt32 inOriginalGrammarStartSymbol) {
+buildVocabulary (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
+                 const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+                 const PMUInt32 inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;

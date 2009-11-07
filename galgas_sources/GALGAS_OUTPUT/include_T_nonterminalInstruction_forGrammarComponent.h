@@ -33,7 +33,7 @@ class cPtr_T_nonterminalInstruction_forGrammarComponent : public cPtr_AC_instruc
   public : virtual void buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
                                            const C_String & inSyntaxComponentName,
                                            cPureBNFproductionsList & ioProductions) ;
-  public : virtual void fixInfos (cInfo & inInfo,
+  public : virtual void fixInfos (const cInfo & inInfo,
                                   C_Compiler & inLexique,
                                   bool & ioOk) ;
 
