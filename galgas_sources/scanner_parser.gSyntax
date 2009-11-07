@@ -630,7 +630,7 @@ rule <attribute_or_terminal_symbol_declaration>
     $error$ ;
     $message$ ;
     $literal_string$ ? errorMessage ;
-    [!?ioTerminalSymbolsMapForUse insertKey !nomTerminal ! attributeList ![ioTerminalSymbolsMapForUse count]] ;
+    [!?ioTerminalSymbolsMapForUse insertKey !nomTerminal ! attributeList] ;
   #--- Style ?
     @lstring styleName ;
     select
@@ -746,7 +746,7 @@ rule <key_words_list_declaration>
       !styleIndex
       !isTemplateEndMark
     ] ;
-    [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributeList ![ioTerminalSymbolsMapForUse count]] ;
+    [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributeList] ;
   #--- Insert entry in the entries map
     [!?entriesMap insertKey !listEntry !terminalSymbolName] ;
   while

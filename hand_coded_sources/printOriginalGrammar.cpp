@@ -44,7 +44,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
   inHTMLfile.outputRawData ("</span>") ;
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatBranchList, true) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -55,7 +55,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
       inHTMLfile.outputRawData ("</span>") ;
     }
     inHTMLfile.outputRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch._mInstructionList (HERE), inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch._mSyntaxInstructionList (HERE), inHTMLfile) ;
     inHTMLfile.outputRawData ("</span>") ;
     currentBranch.next () ;
   }
@@ -72,7 +72,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
   inHTMLfile.outputRawData ("</span>") ;
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectBranchList, true) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -83,7 +83,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
       inHTMLfile.outputRawData ("</span>") ;
     }
     inHTMLfile.outputRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch._mInstructionList (HERE), inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch._mSyntaxInstructionList (HERE), inHTMLfile) ;
     inHTMLfile.outputRawData ("</span>") ;
     currentBranch.next () ;
   }

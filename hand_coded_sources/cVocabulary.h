@@ -30,6 +30,7 @@
 
 class C_TextFileWrite ;
 class GGS_L_productionRules_ForGrammarComponent ;
+class GGS_M_terminalSymbolsMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -43,7 +44,7 @@ class cVocabulary {
   public : virtual ~cVocabulary (void) ;
 
 //--- Build vocabulary from original grammar
-  public : void buildVocabulary (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
+  public : void buildVocabulary (const GGS_M_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                                  const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                                  const PMUInt32 inOriginalGrammarStartSymbol) ;
 

@@ -264,6 +264,12 @@
 		CF580BDD0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
 		CF580BDE0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
 		CF580BDF0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
+		CF585E5810A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
+		CF585E5910A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
+		CF585E5A10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
+		CF585E5B10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
+		CF585E5C10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
+		CF585E5D10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
 		CF59F05D0D71CB6000427156 /* wrapper_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */; };
 		CF59F05F0D71CB6000427156 /* wrapper_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */; };
 		CF59F0620D71CB6000427156 /* wrapper_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */; };
@@ -1369,6 +1375,8 @@
 		CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint64.h; sourceTree = "<group>"; };
 		CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateExpressionParser.cpp; sourceTree = "<group>"; };
 		CF580BD90FDE862F003EBACF /* templateExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateExpressionParser.h; sourceTree = "<group>"; };
+		CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarSemantics.cpp; sourceTree = "<group>"; };
+		CF585E5710A5FBF100A5A69A /* grammarSemantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarSemantics.h; sourceTree = "<group>"; };
 		CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_wrapperToImplement.h; sourceTree = "<group>"; };
 		CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrapper_generation.cpp; sourceTree = "<group>"; };
 		CF5E74F407B00EA600858338 /* common_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = common_semantics.cpp; sourceTree = "<group>"; };
@@ -2082,6 +2090,8 @@
 		CF9040E3057F26B5007362F4 /* Grammar Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */,
+				CF585E5710A5FBF100A5A69A /* grammarSemantics.h */,
 				CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */,
 				CFDD938A108B77D4000E7857 /* grammarComputationsWithBDDs.h */,
 				CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */,
@@ -3504,6 +3514,7 @@
 				CF2B9F5A1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BB91080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 				CFDD938B108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
+				CF585E5810A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3683,6 +3694,7 @@
 				CF2B9F5C1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBB1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 				CFDD938D108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
+				CF585E5A10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3862,6 +3874,7 @@
 				CF2B9F5D1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBC1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 				CFDD938E108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
+				CF585E5B10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4063,6 +4076,7 @@
 				CF2B9F5B1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBA1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 				CFDD938C108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
+				CF585E5910A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4242,6 +4256,7 @@
 				CF2B9F5E1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBD1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 				CFDD938F108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
+				CF585E5C10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4421,6 +4436,7 @@
 				CF2B9F5F1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBE1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 				CFDD9390108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
+				CF585E5D10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4679,9 +4695,9 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_VERSION = 4.0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = galgasI386;
-				SDKROOT = macosx10.4;
+				SDKROOT = macosx10.6;
 			};
 			name = Default;
 		};
@@ -4692,11 +4708,11 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
-				GCC_VERSION = 4.0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebugI386;
-				SDKROOT = macosx10.4;
+				SDKROOT = macosx10.6;
 			};
 			name = Default;
 		};
@@ -4719,6 +4735,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-Wall";
 				PRODUCT_NAME = cocoaGalgasI386;
+				SDKROOT = macosx10.5;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;

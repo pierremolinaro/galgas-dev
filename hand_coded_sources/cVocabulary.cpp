@@ -25,6 +25,7 @@
 
 #include "cVocabulary.h"
 #include "common_semantics.h"
+#include "grammarSemantics.h"
 
 //---------------------------------------------------------------------------*
 
@@ -44,13 +45,13 @@ cVocabulary::~cVocabulary (void) {
 //---------------------------------------------------------------------------*
 
 void cVocabulary::
-buildVocabulary (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
+buildVocabulary (const GGS_M_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                  const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                  const PMUInt32 inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
-  GGS_M_terminalSymbolsMapForUse::cEnumerator t (inTerminalSymbolMap) ;
+  GGS_M_terminalSymbolsMapForGrammarAnalysis::cEnumerator t (inTerminalSymbolMap) ;
   while (t.hasCurrentObject ()) {
     mStringsArray.addObject (t._key (HERE)) ;  
     t.next () ;
