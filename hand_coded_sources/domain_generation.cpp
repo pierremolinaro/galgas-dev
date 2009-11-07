@@ -321,8 +321,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                    "                                    COMMA_LOCATION_ARGS) const {\n"
                    "  GGS_string3list result ;\n"
                    "  if (isBuilt ()) {\n"
-                   "    const PMUInt32 variable01Count = mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE)
-                << " + mBDDVariableCountForDomain_" << domainRelationNames (1 COMMA_HERE) << " ;\n"
+                   "    const PMUInt32 variable01Count = (PMUInt32) (mBDDVariableCountForDomain_" << domainRelationNames (0 COMMA_HERE)
+                << " + mBDDVariableCountForDomain_" << domainRelationNames (1 COMMA_HERE) << ") ;\n"
                    "    const PMUInt16 variableCount = (PMUInt16) (variable01Count + mBDDVariableCountForDomain_" << domainRelationNames (2 COMMA_HERE) << ") ;\n"
                    "    TC_UniqueArray <PMUInt64> valuesArray ;\n"
                    "    mBDDForRelation_"

@@ -751,6 +751,7 @@ class @C_while_instruction extends @typeInstruction {
 list @L_expression_instructionsList_list {
   @typeExpression mIFexpression ;
   @typeInstructionList mInstructionList ;
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*

@@ -4357,7 +4357,7 @@ rule <semantic_instruction>
           !?listeInstructionsBrancheTest
           !inSemanticContext
         ;
-        listeBranchesTest += !testBranche !listeInstructionsBrancheTest ;
+        listeBranchesTest += !testBranche !listeInstructionsBrancheTest !here ;
       end block (!here) ;
     while
       $elsif$ ;

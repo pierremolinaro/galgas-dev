@@ -2265,7 +2265,7 @@ rule <syntax_instruction>
             !inIsInvokedWithinParseLoopInstruction
             !inSemanticContext
           ;
-          branchList += !expression !instructionsList ;
+          branchList += !expression !instructionsList !here ;
           parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
         end block (!here) ;
       while
