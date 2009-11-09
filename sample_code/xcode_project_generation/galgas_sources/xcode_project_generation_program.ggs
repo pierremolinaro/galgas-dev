@@ -5,7 +5,7 @@ import semantics generateEmptyProject in "generateEmptyProject.ggs" ;
 import semantics generateProjectWithGroupsAndFiles in "generateProjectWithGroupsAndFiles.ggs" ;
 import semantics generateCommandLineToolTarget in "generateCommandLineToolTarget.ggs" ;
 import semantics xcode_project_generation_semantics in "xcode_project_generation_semantics.ggs" ;
-import grammar xcode_project_generation_grammar in "xcode_project_generation_grammar.ggs" ;
+import grammar xcode_project_generation_grammar in "xcode_project_generation_grammar.gGrammar" ;
 
 
 #--- Prologue routine

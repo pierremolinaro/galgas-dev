@@ -1,4 +1,5 @@
 grammar xcode_project_generation_grammar "LL1":
+with "xcode_project_generation_syntax.ggs" ;
 import lexique xcode_project_generation_lexique in "xcode_project_generation_lexique.gLexique" ;
 import option xcode_project_generation_options in "xcode_project_generation_options.gOption" ;
 import syntax xcode_project_generation_syntax in "xcode_project_generation_syntax.ggs" ;

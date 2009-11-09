@@ -10,7 +10,7 @@ rm -f ${DIR}/actual_templates/project/galgas_sources/* &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/build.bat > ${DIR}/actual_templates/project/galgas_sources/build.bat.txt &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/all_PROJECT.ggs > ${DIR}/actual_templates/project/galgas_sources/all_PROJECT.ggs &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_cocoa.gGui > ${DIR}/actual_templates/project/galgas_sources/PROJECT_cocoa.gGui &&
-sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_grammar.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_grammar.ggs &&
+sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_grammar.gGrammar > ${DIR}/actual_templates/project/galgas_sources/PROJECT_grammar.gGrammar &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_lexique.gLexique > ${DIR}/actual_templates/project/galgas_sources/PROJECT_lexique.gLexique &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_options.gOption > ${DIR}/actual_templates/project/galgas_sources/PROJECT_options.gOption &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_program.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_program.ggs &&

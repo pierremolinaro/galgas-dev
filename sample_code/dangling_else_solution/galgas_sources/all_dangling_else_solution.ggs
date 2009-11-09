@@ -3,7 +3,7 @@ project all_dangling_else_solution:
   option "dangling_else_solution_options.gOption" : makefile, xcode_tool, xcode_app ;
   semantics "dangling_else_solution_semantics.ggs" : makefile, xcode_tool ;
   syntax "dangling_else_solution_syntax.ggs" : makefile, xcode_tool ;
-  grammar "dangling_else_solution_grammar.ggs" : makefile, xcode_tool ;
+  grammar "dangling_else_solution_grammar.gGrammar" : makefile, xcode_tool ;
   gui "dangling_else_solution_cocoa.gGui" : xcode_tool, xcode_app ;
   program "dangling_else_solution_program.ggs" : makefile, xcode_tool ;
 end project ;

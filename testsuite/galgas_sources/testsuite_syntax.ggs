@@ -1,4 +1,6 @@
 syntax testsuite_syntax :
+with "testsuite_lexique.gLexique" ;
+
 import lexique testsuite_lexique in "testsuite_lexique.gLexique" ;
 
 # ADD YOUR CODE HERE

@@ -1,7 +1,7 @@
 project all_testsuite :
   lexique "testsuite_lexique.gLexique" : makefile ;
   syntax "testsuite_syntax.ggs" : makefile ;
-  grammar "testsuite_grammar.ggs" : makefile ;
+  grammar "testsuite_grammar.gGrammar" : makefile ;
   semantics "testsuite_foreach_instruction.ggs" : makefile ;
   semantics "testsuite_list.ggs" : makefile ;
   semantics "testsuite_struct.ggs" : makefile ;

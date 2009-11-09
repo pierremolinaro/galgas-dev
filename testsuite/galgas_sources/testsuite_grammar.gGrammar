@@ -1,4 +1,5 @@
 grammar testsuite_grammar "LL1":
+with "testsuite_syntax.ggs" ;
 import lexique testsuite_lexique in "testsuite_lexique.gLexique" ;
 import syntax testsuite_syntax in "testsuite_syntax.ggs" ;
 

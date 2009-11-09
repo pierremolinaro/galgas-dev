@@ -1,5 +1,5 @@
 program LL1_expression_program "version 1.0.0":
-import grammar LL1_expression_grammar in "LL1_expression_grammar.ggs" ;
+import grammar LL1_expression_grammar in "LL1_expression_grammar.gGrammar" ;
 
 before {
 }
