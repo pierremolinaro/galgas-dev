@@ -88,7 +88,7 @@ class @C_repeat_instruction extends @typeParserInstruction {
 #---------------------------------------------------------------------------*
 
 list @L_parse_rewind_signature_list {
-  @L_ruleSyntaxSignature mSignature ;
+  @syntaxInstructionListForGrammarAnalysis mSignature ;
   @location mErrorLocation ;
 }
 
@@ -136,7 +136,7 @@ class @typeNonterminalToGenerate extends @typeEntityToGenerate {
 map @typeAltProductionsMap {
   @typeListeTypesEtNomsArgMethode aListeDeTypesEffectifs ;
   @typeInstructionList mAllInstructionsList ;
-  @L_ruleSyntaxSignature mSyntaxSignature ;
+  @syntaxInstructionListForGrammarAnalysis mSyntaxSignature ;
   @location mEndOfInstructionListLocation ;
   insert insertKey error message "the '%K' label has been already declared in %L" ;
   search searchKey error message "the '%K' label is not declared" ;

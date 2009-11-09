@@ -103,7 +103,7 @@ rule <domain_declaration>
   @L_EXsignature domainModifierAttributeList [emptyList] ;
   domainModifierAttributeList +=
     ![@typeGalgas_string new]
-    ![@EXformalArgumentPassingMode argumentConstantIn]
+    ![@formalArgumentPassingMode argumentConstantIn]
   ;
   @domainRelationMap relationMap [emptyMap] ;
   repeat
@@ -136,7 +136,7 @@ rule <domain_declaration>
       domains += ![attributeName string] ;
       relationModifierAttributeList +=
         ![@typeGalgas_uint new]
-        ![@EXformalArgumentPassingMode argumentConstantIn]
+        ![@formalArgumentPassingMode argumentConstantIn]
       ;
     while
       $,$ ;

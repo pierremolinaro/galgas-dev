@@ -31,12 +31,12 @@ nonterminal <grammar_component_start_symbol>
 
 nonterminal <grammar_start_symbol_label>
   ??@lstring inLabelName
-  ?!@grammarLabelList ioLabelList
+  ?!@nonTerminalLabelList ioLabelList
 ;
 
 nonterminal <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
 ;
 
 #---------------------------------------------------------------------------*
@@ -85,7 +85,7 @@ rule <grammar_component_start_symbol>
   $root$ ;
   $non_terminal_symbol$ ?@lstring  mStartSymbol ;
   @lstring labelName [new !"" !here] ;
-  @grammarLabelList mLabelList [emptyList] ;
+  @nonTerminalLabelList mLabelList [emptyList] ;
   repeat
     <grammar_start_symbol_label> !labelName !? mLabelList ;
   while
@@ -108,8 +108,6 @@ rule <grammar_component_start_symbol>
   end repeat ;
 #---
   $end$ ;
-  $grammar$ ;
-  $;$ ;
   outGrammarComponentRoot := [@grammarComponentRoot new
     !mGrammarName
     !mGrammarClass
@@ -117,17 +115,20 @@ rule <grammar_component_start_symbol>
     !mStartSymbol
     !mLabelList
     !mUnusedNonterminalList
+    !here
   ] ;
+  $grammar$ ;
+  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
 rule <grammar_start_symbol_label>
   ??@lstring inLabelName
-  ?!@grammarLabelList ioLabelList
+  ?!@nonTerminalLabelList ioLabelList
 :
   @stringset argumentNameSet [emptySet] ;
-  @startSymbolLabelFormalParameterList mFormalParameterList [emptyList] ;
+  @formalParameterList mFormalParameterList [emptyList] ;
   repeat
   while
     @lstring argumentName ;
@@ -144,7 +145,7 @@ end rule ;
 
 rule <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
 :
   $?$ ;
   $type_name$ ?@lstring mTypeName ;
@@ -157,6 +158,7 @@ rule <label_formal_parameter>
     ![@formalArgumentPassingMode argumentIn]
     !mTypeName
     !outArgumentName
+    !false
   ;
 end rule ;
 
@@ -164,7 +166,7 @@ end rule ;
 
 rule <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
 :
   $??$ ;
   $type_name$ ?@lstring mTypeName ;
@@ -177,6 +179,7 @@ rule <label_formal_parameter>
     ![@formalArgumentPassingMode argumentConstantIn]
     !mTypeName
     !outArgumentName
+    !false
   ;
 end rule ;
 
@@ -184,7 +187,7 @@ end rule ;
 
 rule <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
 :
   $?!$ ;
   $type_name$ ?@lstring mTypeName ;
@@ -197,6 +200,7 @@ rule <label_formal_parameter>
     ![@formalArgumentPassingMode argumentInOut]
     !mTypeName
     !outArgumentName
+    !false
   ;
 end rule ;
 
@@ -204,7 +208,7 @@ end rule ;
 
 rule <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
 :
   $!$ ;
   $type_name$ ?@lstring mTypeName ;
@@ -213,6 +217,7 @@ rule <label_formal_parameter>
     ![@formalArgumentPassingMode argumentOut]
     !mTypeName
     !outArgumentName
+    !false
   ;
 end rule ;
 

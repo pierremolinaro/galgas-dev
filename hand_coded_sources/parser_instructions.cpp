@@ -30,12 +30,12 @@
 
 static bool
 instructionsListHaveSameSyntaxSignatures (C_Compiler & inLexique,
-                                          const GGS_L_ruleSyntaxSignature & inReferenceList,
-                                          const GGS_L_ruleSyntaxSignature & inOtherList,
+                                          const GGS_syntaxInstructionListForGrammarAnalysis & inReferenceList,
+                                          const GGS_syntaxInstructionListForGrammarAnalysis & inOtherList,
                                           const GGS_location & inEndOfInstructionListLocation) {
   bool sameSignature = true ;
-  GGS_L_ruleSyntaxSignature::cEnumerator currentReferenceInstruction (inReferenceList, true) ;
-  GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inOtherList, true) ;
+  GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator currentReferenceInstruction (inReferenceList, true) ;
+  GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator currentInstruction (inOtherList, true) ;
   while (currentReferenceInstruction.hasCurrentObject () && currentInstruction.hasCurrentObject () && sameSignature) {
     sameSignature = currentReferenceInstruction._mInstruction (HERE) (HERE)->isSameSyntaxInstructionThan (inLexique, currentInstruction._mInstruction (HERE) (HERE), inEndOfInstructionListLocation) ;
     currentReferenceInstruction.next () ;
@@ -67,19 +67,19 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_T_repeatInstruction_forGrammarComponent::
+bool cPtr_repeatInstructionForGrammarAnalysis::
 isSameSyntaxInstructionThan (C_Compiler & inLexique,
-                             cPtr_AC_instruction_ForGrammar * inInstruction,
+                             cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
-  const cPtr_T_repeatInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_repeatInstruction_forGrammarComponent *> (inInstruction) ;
+  const cPtr_repeatInstructionForGrammarAnalysis * p = dynamic_cast <const cPtr_repeatInstructionForGrammarAnalysis *> (inInstruction) ;
   bool sameSignature = p != NULL ;
   if (! sameSignature) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : a repeat instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }else{
-    GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mRepeatBranchList, true) ;
-    GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mRepeatBranchList, true) ;
+    GGS_branchListForGrammarAnalysis::cEnumerator currentReferenceBranch (mRepeatBranchList, true) ;
+    GGS_branchListForGrammarAnalysis::cEnumerator currentOperandBranch (p->mRepeatBranchList, true) ;
     while (currentReferenceBranch.hasCurrentObject () && currentOperandBranch.hasCurrentObject () && sameSignature) {
       sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mSyntaxInstructionList (HERE),
                                                                 currentOperandBranch._mSyntaxInstructionList (HERE), inEndOfInstructionListLocation) ;
@@ -103,19 +103,19 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_T_selectInstruction_forGrammarComponent::
+bool cPtr_selectInstructionForGrammarAnalysis::
 isSameSyntaxInstructionThan (C_Compiler & inLexique,
-                             cPtr_AC_instruction_ForGrammar * inInstruction,
+                             cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
-  const cPtr_T_selectInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_selectInstruction_forGrammarComponent *> (inInstruction) ;
+  const cPtr_selectInstructionForGrammarAnalysis * p = dynamic_cast <const cPtr_selectInstructionForGrammarAnalysis *> (inInstruction) ;
   bool sameSignature = p != NULL ;
   if (! sameSignature) {
     C_String errorMessage ;
     errorMessage << "syntax signature error: a select instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }else{
-    GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mSelectBranchList, true) ;
-    GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mSelectBranchList, true) ;
+    GGS_branchListForGrammarAnalysis::cEnumerator currentReferenceBranch (mSelectBranchList, true) ;
+    GGS_branchListForGrammarAnalysis::cEnumerator currentOperandBranch (p->mSelectBranchList, true) ;
     while (currentReferenceBranch.hasCurrentObject () && currentOperandBranch.hasCurrentObject () && sameSignature) {
       sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mSyntaxInstructionList (HERE),
                                                                 currentOperandBranch._mSyntaxInstructionList (HERE), inEndOfInstructionListLocation) ;
@@ -139,11 +139,11 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_T_nonterminalInstruction_forGrammarComponent::
+bool cPtr_nonTerminalInstructionForGrammarAnalysis::
 isSameSyntaxInstructionThan (C_Compiler & inLexique,
-                             cPtr_AC_instruction_ForGrammar * inInstruction,
+                             cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
-  const cPtr_T_nonterminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_nonterminalInstruction_forGrammarComponent *> (inInstruction) ;
+  const cPtr_nonTerminalInstructionForGrammarAnalysis * p = dynamic_cast <const cPtr_nonTerminalInstructionForGrammarAnalysis *> (inInstruction) ;
   if ((p == NULL) || (p->mNonterminalSymbolName.compare (mNonterminalSymbolName) != 0)) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : <" << mNonterminalSymbolName << "> non terminal is expected here" ;
@@ -155,11 +155,11 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_T_terminalInstruction_forGrammarComponent::
+bool cPtr_terminalInstructionForGrammarAnalysis::
 isSameSyntaxInstructionThan (C_Compiler & inLexique,
-                             cPtr_AC_instruction_ForGrammar * inInstruction,
+                             cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
-  const cPtr_T_terminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_terminalInstruction_forGrammarComponent *> (inInstruction) ;
+  const cPtr_terminalInstructionForGrammarAnalysis * p = dynamic_cast <const cPtr_terminalInstructionForGrammarAnalysis *> (inInstruction) ;
   if ((p == NULL) || (p->mTerminalSymbolName.compare (mTerminalSymbolName) != 0)) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : $" << mTerminalSymbolName << "$ terminal is expected here" ;
@@ -177,7 +177,7 @@ routine_checkLabelSignatures (C_Compiler & inLexique,
                               COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeAltProductionsMap::cEnumerator current (inAltProductionMap, true) ;
   if (current.hasCurrentObject ()) { // current may be NULL in case of error
-    GGS_L_ruleSyntaxSignature referenceSyntaxList = current._mSyntaxSignature (HERE) ;
+    GGS_syntaxInstructionListForGrammarAnalysis referenceSyntaxList = current._mSyntaxSignature (HERE) ;
     current.next () ;
     while (current.hasCurrentObject ()) {
       instructionsListHaveSameSyntaxSignatures (inLexique, referenceSyntaxList,
@@ -195,7 +195,7 @@ routine_checkParseRewindSignatures (C_Compiler & inLexique,
                                     GGS_L_parse_rewind_signature_list & inParseRewindSignatureList
                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_L_parse_rewind_signature_list::cEnumerator current (inParseRewindSignatureList, true) ;
-  GGS_L_ruleSyntaxSignature referenceList = current._mSignature (HERE) ;
+  GGS_syntaxInstructionListForGrammarAnalysis referenceList = current._mSignature (HERE) ;
   current.next () ;
   while (current.hasCurrentObject ()) {
     instructionsListHaveSameSyntaxSignatures (inLexique, referenceList,

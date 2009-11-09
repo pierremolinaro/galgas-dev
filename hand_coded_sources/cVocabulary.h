@@ -29,8 +29,8 @@
 //---------------------------------------------------------------------------*
 
 class C_TextFileWrite ;
-class GGS_L_productionRules_ForGrammarComponent ;
-class GGS_M_terminalSymbolsMapForGrammarAnalysis ;
+class GGS_productionRuleListForGrammarAnalysis ;
+class GGS_terminalSymbolsMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -44,8 +44,8 @@ class cVocabulary {
   public : virtual ~cVocabulary (void) ;
 
 //--- Build vocabulary from original grammar
-  public : void buildVocabulary (const GGS_M_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                                 const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+  public : void buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                                  const PMUInt32 inOriginalGrammarStartSymbol) ;
 
 //--- Add a new non terminal symbol

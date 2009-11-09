@@ -24,44 +24,54 @@ import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 import semantics grammarSemantics in "grammarSemantics.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
-#                     fixSyntaxInstructionList                              *
+#                     fixSyntaxInstructionList_V1                           *
 #---------------------------------------------------------------------------*
 
-abstract method @AC_instruction_ForGrammar fixSyntaxInstructionList
-  ?!@M_terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ?!@L_ruleSyntaxSignature ioSyntaxInstructionList
+abstract method @abstractSyntaxInstructionForGrammarAnalysis fixSyntaxInstructionList_V1
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 ;
 
 #---------------------------------------------------------------------------*
 
-routine fixSyntaxInstructionList
-  ??@L_ruleSyntaxSignature inInstructionList
-  ?!@M_terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  !@L_ruleSyntaxSignature outSyntaxInstructionList
+routine fixSyntaxInstructionList_V1
+  ??@syntaxInstructionListForGrammarAnalysis inInstructionList
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  !@syntaxInstructionListForGrammarAnalysis outSyntaxInstructionList
 :
-  outSyntaxInstructionList := [@L_ruleSyntaxSignature emptyList] ;
+  outSyntaxInstructionList := [@syntaxInstructionListForGrammarAnalysis emptyList] ;
   foreach inInstructionList do
-    [mInstruction fixSyntaxInstructionList !?ioActuallyUsedTerminalSymbolMap !?outSyntaxInstructionList] ;
+    [mInstruction fixSyntaxInstructionList_V1
+      !?ioActuallyUsedTerminalSymbolMap
+      !inNonTerminalSymbolMap
+      !?ioAddedNonTerminalIndex
+      !?outSyntaxInstructionList
+   ] ;
   end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-override method @T_terminalInstruction_forGrammarComponent fixSyntaxInstructionList
-  ?!@M_terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ?!@L_ruleSyntaxSignature ioSyntaxInstructionList
+override method @terminalInstructionForGrammarAnalysis fixSyntaxInstructionList_V1
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+  ?!@uint unused ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   @uint terminalSymbolIndex ;
-  with !?ioActuallyUsedTerminalSymbolMap searchKey !mTerminalSymbolName do
+  with !?ioActuallyUsedTerminalSymbolMap hasKey ![mTerminalSymbolName string] do
     terminalSymbolIndex := mTerminalIndex ;
   else
     terminalSymbolIndex := [ioActuallyUsedTerminalSymbolMap count] ;
     [!?ioActuallyUsedTerminalSymbolMap insertKey !mTerminalSymbolName !terminalSymbolIndex] ;
   end with ;
-  ioSyntaxInstructionList += ![@T_terminalInstruction_forGrammarComponent new
+  ioSyntaxInstructionList += ![@terminalInstructionForGrammarAnalysis new
     !mStartLocation
     !mTerminalSymbolName
     !terminalSymbolIndex
@@ -70,56 +80,76 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @T_nonterminalInstruction_forGrammarComponent fixSyntaxInstructionList
-  ?!@M_terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
-  ?!@L_ruleSyntaxSignature ioSyntaxInstructionList
+override method @nonTerminalInstructionForGrammarAnalysis fixSyntaxInstructionList_V1
+  ?!@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint unused ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
-  ioSyntaxInstructionList += !self ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @T_repeatInstruction_forGrammarComponent fixSyntaxInstructionList
-  ?!@M_terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ?!@L_ruleSyntaxSignature ioSyntaxInstructionList
-:
-  @L_branchList_ForGrammarComponent repeatBranchList [emptyList] ;
-  foreach mRepeatBranchList do
-    @L_ruleSyntaxSignature syntaxInstructionList ;
-    fixSyntaxInstructionList
-      !mSyntaxInstructionList
-      !?ioActuallyUsedTerminalSymbolMap
-      ?syntaxInstructionList
-    ;
-    repeatBranchList += !syntaxInstructionList ;
-  end foreach ;
-  ioSyntaxInstructionList += ![@T_repeatInstruction_forGrammarComponent new
+  @uint nonTerminalSymbolIndex ;
+  [inNonTerminalSymbolMap searchKey !mNonterminalSymbolName ?nonTerminalSymbolIndex ?*] ;
+  ioSyntaxInstructionList += ![@nonTerminalInstructionForGrammarAnalysis new
     !mStartLocation
-    !repeatBranchList
-    !mAddedNonterminalmSymbolIndex
+    !mNonterminalSymbolName
+    !nonTerminalSymbolIndex
   ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @T_selectInstruction_forGrammarComponent fixSyntaxInstructionList
-  ?!@M_terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ?!@L_ruleSyntaxSignature ioSyntaxInstructionList
+override method @repeatInstructionForGrammarAnalysis fixSyntaxInstructionList_V1
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
-  @L_branchList_ForGrammarComponent selectBranchList [emptyList] ;
-  foreach mSelectBranchList do
-    @L_ruleSyntaxSignature syntaxInstructionList ;
-    fixSyntaxInstructionList
+  const @uint addedNonTerminalIndex := ioAddedNonTerminalIndex ;
+  ioAddedNonTerminalIndex ++ ;
+  @branchListForGrammarAnalysis repeatBranchList [emptyList] ;
+  foreach mRepeatBranchList do
+    @syntaxInstructionListForGrammarAnalysis syntaxInstructionList ;
+    fixSyntaxInstructionList_V1
       !mSyntaxInstructionList
       !?ioActuallyUsedTerminalSymbolMap
+      !inNonTerminalSymbolMap
+      !?ioAddedNonTerminalIndex
+      ?syntaxInstructionList
+    ;
+    repeatBranchList += !syntaxInstructionList ;
+  end foreach ;
+  ioSyntaxInstructionList += ![@repeatInstructionForGrammarAnalysis new
+    !mStartLocation
+    !repeatBranchList
+    !addedNonTerminalIndex
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selectInstructionForGrammarAnalysis fixSyntaxInstructionList_V1
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
+:
+  const @uint addedNonTerminalIndex := ioAddedNonTerminalIndex ;
+  ioAddedNonTerminalIndex ++ ;
+  @branchListForGrammarAnalysis selectBranchList [emptyList] ;
+  foreach mSelectBranchList do
+    @syntaxInstructionListForGrammarAnalysis syntaxInstructionList ;
+    fixSyntaxInstructionList_V1
+      !mSyntaxInstructionList
+      !?ioActuallyUsedTerminalSymbolMap
+      !inNonTerminalSymbolMap
+      !?ioAddedNonTerminalIndex
       ?syntaxInstructionList
     ;
     selectBranchList += !syntaxInstructionList ;
   end foreach ;
-  ioSyntaxInstructionList += ![@T_selectInstruction_forGrammarComponent new
+  ioSyntaxInstructionList += ![@selectInstructionForGrammarAnalysis new
     !mStartLocation
     !selectBranchList
-    !mAddedNonterminalmSymbolIndex
+    !addedNonTerminalIndex
   ] ;
 end method ;
 
@@ -147,8 +177,6 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importForGrammarAnalysis
-  ?!@syntaxRuleList unused ioSyntaxRuleList
 ;
 
 nonterminal <get_lexique_infos>
@@ -166,9 +194,9 @@ nonterminal <formal_arguments_list>
   ?!@typeVariablesMap tableArgumentsMethode
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeTableEnAvant tableEnAvant
-  !@L_signature outSignature
+  !@signatureForGrammarAnalysis outSignature
 label importGrammarForSemantics
-  !@L_signature outSignature
+  !@signatureForGrammarAnalysis outSignature
 label parse
 ;
 
@@ -183,18 +211,6 @@ nonterminal <parse_option_component_for_importing>
   ??@lstring inFileName
   ?!@M_optionComponents ioOptionsComponentsMap
 label parse
-;
-
-extern routine analyzeGrammar
-  ??@lstring inGrammarName
-  ??@lstring inGrammarClass
-  ??@luint startSymbolIndex
-  ??@lstring inLexiqueName
-  ??@location endOfSourceFile
-  ??@M_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap
-  ??@L_syntaxComponents_ForGrammar ioSyntaxComponentsList
-  ??@M_nonTerminalSymbolsForGrammar ioNonterminalSymbolsMapForGrammar
-  ??@M_unusedNonTerminalSymbolsForGrammar inUnusedNonTerminalSymbolsForGrammar
 ;
 
 #---------------------------------------------------------------------------*
@@ -238,8 +254,8 @@ rule <galgas_component>
   ;
 #--- Parse syntax components references
   @stringset classesNamesSet [emptySet] ;
-  @L_syntaxComponents_ForGrammar syntaxComponentsList [emptyList] ;
-  @M_nonTerminalSymbolsForGrammar nonterminalSymbolsMapForGrammar [emptyMap] ;
+  @syntaxComponentListForGrammarAnalysis syntaxComponentsList [emptyList] ;
+  @nonTerminalSymbolMapForGrammarAnalysis nonterminalSymbolsMapForGrammar [emptyMap] ;
   repeat
     $import$ ;
     select
@@ -286,8 +302,8 @@ rule <galgas_component>
       end select ;
       $;$ ;
     #--- Search for syntax component
-      @M_nonTerminalSymbolsForGrammar importedNonterminalSymbolsMap ;
-      @L_productionRules_ForGrammarComponent importedProductionRulesList ;
+      @nonTerminalSymbolMapForGrammarAnalysis importedNonterminalSymbolsMap ;
+      @productionRuleListForGrammarAnalysis importedProductionRulesList ;
       @lstring importedLexiqueComponentName ;
       [syntaxComponentsMap searchKey !syntaxComponentName
         ?importedNonterminalSymbolsMap
@@ -306,11 +322,11 @@ rule <galgas_component>
     #--- Build nonterminal symbol map for grammar
       foreach importedNonterminalSymbolsMap prefixedby first_ do
         if [nonterminalSymbolsMapForGrammar hasKey ![first_key string]] then
-          @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
-          [nonterminalSymbolsMapForGrammar searchKey !first_key ?altSignatureMap] ;
+          @nonterminalSymbolLabelMapForGrammarAnalysis altSignatureMap ;
+          [nonterminalSymbolsMapForGrammar searchKey !first_key ?* ?altSignatureMap] ;
           foreach altSignatureMap do
-            @M_nonterminalSymbolAltsForGrammar temp := first_mNonterminalSymbolParametersMap ;
-            @L_signature importedAltSignature ;
+            @nonterminalSymbolLabelMapForGrammarAnalysis temp := first_mNonterminalSymbolParametersMap ;
+            @signatureForGrammarAnalysis importedAltSignature ;
             [temp searchKey !key ?importedAltSignature] ;
             checkSignature_ForGrammarComponent !importedAltSignature !mFormalParametersList ![key location] ![key location] ;
           end foreach ;
@@ -320,7 +336,7 @@ rule <galgas_component>
             end if ;
           end foreach ;
         else
-          [!?nonterminalSymbolsMapForGrammar insertKey !first_key !first_mNonterminalSymbolParametersMap] ;
+          [!?nonterminalSymbolsMapForGrammar insertKey !first_key ![nonterminalSymbolsMapForGrammar count] !first_mNonterminalSymbolParametersMap] ;
         end if ;
       end foreach ;
     end select ;
@@ -331,10 +347,10 @@ rule <galgas_component>
   @lstring startSymbolName ;
   $non_terminal_symbol$ ? startSymbolName ;
 #--- (added 8/13/2004, modified 3/19/2006)
-  @M_nonterminalSymbolAltsForGrammar grammarAltMap [emptyMap] ;
+  @nonterminalSymbolLabelMapForGrammarAnalysis grammarAltMap [emptyMap] ;
   @lstring altName [new !"" !here] ;
   repeat
-    @L_signature signature ;
+    @signatureForGrammarAnalysis signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
     [!?grammarAltMap insertKey !altName !signature] ;
   while
@@ -342,53 +358,26 @@ rule <galgas_component>
     $identifier$ ? altName ;
   end repeat ;
   $;$ ;
-#--- Search start symbol in non terminal map
-  @M_nonterminalSymbolAltsForGrammar startSymbolAltMap ;
-  @luint startSymbolIndex ;
-  [nonterminalSymbolsMapForGrammar searchKeyGetID !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
-#--- Check signatures (added 8/13/2004)
-  foreach startSymbolAltMap do
-    @L_signature altMap ;
-    [grammarAltMap searchKey !key ?altMap] ;
-    checkSignature_ForGrammarComponent !mFormalParametersList !altMap !here ![key location] ;
-  end foreach ;
-  foreach grammarAltMap do
-    [startSymbolAltMap searchKey !key ?*] ;
-  end foreach ;
-#--- Unused symbols declaration
-  @M_unusedNonTerminalSymbolsForGrammar unusedNonTerminalSymbolsForGrammar [emptyMap] ;
-  repeat
-  while
-   $unused$ ;
-   repeat
-     $non_terminal_symbol$ ? @lstring nonterminalSymbolName ;
-     @luint nonterminalIndex ;
-     [nonterminalSymbolsMapForGrammar searchKeyGetID !nonterminalSymbolName ?nonterminalIndex ?*] ;
-     [!?unusedNonTerminalSymbolsForGrammar insertKey !nonterminalSymbolName !nonterminalIndex] ;
-   while
-     $,$ ;
-   end repeat ;
-   $;$ ;
-  end repeat ;
-#--- Build actual terminal symbol map from actually used terminal symbols
-  @M_terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
-  foreach terminalSymbolMap do
-    [!?actuallyUsedTerminalSymbolMap insertKey !key ![actuallyUsedTerminalSymbolMap count]] ;
-  end foreach ;
 #--- Fix terminal and non terminal infos in production rules
-  @L_syntaxComponents_ForGrammar syntaxComponentsListWithFixedInfos [emptyList] ;
+  @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
+  @uint addedNonTerminalCount := 0 ;
+  @syntaxComponentListForGrammarAnalysis syntaxComponentsListWithFixedInfos [emptyList] ;
   foreach syntaxComponentsList do
-    @L_productionRules_ForGrammarComponent fixedProductionRuleList [emptyList] ;
+    @productionRuleListForGrammarAnalysis fixedProductionRuleList [emptyList] ;
     foreach mProductionRulesList do
-      @L_ruleSyntaxSignature fixedInstructionList ;
-      fixSyntaxInstructionList
+      @syntaxInstructionListForGrammarAnalysis fixedInstructionList ;
+      fixSyntaxInstructionList_V1
         !mInstructionList
         !?actuallyUsedTerminalSymbolMap
+        !nonterminalSymbolsMapForGrammar
+        !?addedNonTerminalCount
         ?fixedInstructionList
       ;
+      @uint nonTerminalIndex ;
+      [nonterminalSymbolsMapForGrammar searchKey !mLeftNonterminalSymbol ?nonTerminalIndex ?*] ;
       fixedProductionRuleList +=
         !mLeftNonterminalSymbol
-        !mLeftNonterminalSymbolIndex
+        !nonTerminalIndex
         !fixedInstructionList
       ;
     end foreach ;
@@ -397,17 +386,46 @@ rule <galgas_component>
       !mSyntaxComponentName
     ;
   end foreach ;
+#--- Search start symbol in non terminal map
+  @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap ;
+  @uint startSymbolIndex ;
+  [nonterminalSymbolsMapForGrammar searchKey !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
+#--- Check signatures (added 8/13/2004)
+  foreach startSymbolAltMap do
+    @signatureForGrammarAnalysis altMap ;
+    [grammarAltMap searchKey !key ?altMap] ;
+    checkSignature_ForGrammarComponent !mFormalParametersList !altMap !here ![key location] ;
+  end foreach ;
+  foreach grammarAltMap do
+    [startSymbolAltMap searchKey !key ?*] ;
+  end foreach ;
+#--- Unused symbols declaration
+  @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar [emptyMap] ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? @lstring nonterminalSymbolName ;
+     @uint nonterminalIndex ;
+     [nonterminalSymbolsMapForGrammar searchKey !nonterminalSymbolName ?nonterminalIndex ?*] ;
+     [!?unusedNonTerminalSymbolsForGrammar insertKey !nonterminalSymbolName !nonterminalIndex] ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
 #--- Analyze grammar
   analyzeGrammar
     !grammarName
     !grammarClass
     !startSymbolIndex
-    !lexiqueName
+    ![lexiqueName string]
     !here
     !actuallyUsedTerminalSymbolMap
     !syntaxComponentsListWithFixedInfos
     !nonterminalSymbolsMapForGrammar
     !unusedNonTerminalSymbolsForGrammar
+    ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]
   ;
 #--- insert grammar in grammars map
   [!?ioGrammarComponentsMap insertKey
@@ -627,7 +645,7 @@ label importGrammarForSemantics
   end repeat ;
    @lstring lexiqueName ;
   <get_lexique_infos> getLexiqueName ?lexiqueName ;
-  @M_nonterminalSymbolAltsForGrammar grammarAltMap [emptyMap] ;
+  @nonterminalSymbolLabelMapForGrammarAnalysis grammarAltMap [emptyMap] ;
   repeat
     $import$ ;
     select
@@ -671,7 +689,7 @@ label importGrammarForSemantics
   $non_terminal_symbol$ ? * ;
   @lstring altName := [@lstring new !"" !here] ;
   repeat
-    @L_signature signature ;
+    @signatureForGrammarAnalysis signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
     [!?grammarAltMap insertKey
       !altName
@@ -698,68 +716,6 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
-:
-  $grammar$ ;
-  $identifier$ ? * ;
-  $literal_string$ ? * ;
-  $:$ ;
-#--- Ignore new importation syntax
-  repeat
-  while
-    $with$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;
-  <get_lexique_infos> parse ;
-  repeat
-    $import$ ;
-    select
-      $option$ ;
-      $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ? * ;
-        <parse_option_component_for_importing> parse ;
-      end select ;
-      $;$ ;
-    or
-      $syntax$ ;
-      $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ? * ;
-        <parse_syntax_for_importing> parse ;
-      end select ;
-      $;$ ;
-    end select ;
-  while
-  end repeat ;
-  $root$ ;
-  $non_terminal_symbol$ ? * ;
-  repeat
-    <formal_arguments_list> parse ;
-  while
-    $label$ ;
-    $identifier$ ? * ;
-  end repeat ;
-  $;$ ;
-  repeat
-  while
-   $unused$ ;
-   repeat
-     $non_terminal_symbol$ ? * ;
-   while
-     $,$ ;
-   end repeat ;
-   $;$ ;
-  end repeat ;
-  $end$ ;
-  $grammar$ ;
-  $;$ ;
-label importForGrammarAnalysis
-  ?!@syntaxRuleList unused ioSyntaxRuleList
 :
   $grammar$ ;
   $identifier$ ? * ;

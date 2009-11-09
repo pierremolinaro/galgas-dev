@@ -19,17 +19,181 @@
 
 semantics grammarSemantics :
 
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+
 #---------------------------------------------------------------------------*
 #                                                                           *
-#      Terminal symbols map (for using in a syntax component)               *
+#   A C T I O N ,    M E T H O D    S I G N A T U R E                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_terminalSymbolsMapForGrammarAnalysis {
+list @signatureForGrammarAnalysis {
+  @formalArgumentPassingMode mFormalArgumentPassingModeForGrammarAnalysis ;
+  @lstring mGalgasTypeNameForGrammarAnalysis ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  N O N    T E R M I N A L    S Y M B O L    M A P                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @nonterminalSymbolLabelMapForGrammarAnalysis {
+  @signatureForGrammarAnalysis mFormalParametersList ;
+
+  insert insertKey error message "the rule label '%K' has been already declared in %L" ;
+  search searchKey error message "the rule label '%K' is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#         Instruction abstract class for grammar component                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @abstractSyntaxInstructionForGrammarAnalysis feature generatedInSeparateFile {
+  @location mStartLocation feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        Syntax signature                                                   *
+#      (sequence of terminal, nonterminal, select and repeat)               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @syntaxInstructionListForGrammarAnalysis {
+  @abstractSyntaxInstructionForGrammarAnalysis mInstruction ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Production rules list (for a grammar component)                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @productionRuleListForGrammarAnalysis {
+  @lstring mLeftNonterminalSymbol ;
+  @uint mLeftNonterminalSymbolIndex ;
+  @syntaxInstructionListForGrammarAnalysis mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @unusedNonTerminalSymbolMapForGrammarAnalysis {
+  @uint mNonTerminalIndex ;
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#             nonterminal symbols map                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @nonTerminalSymbolMapForGrammarAnalysis {
+  @uint mNonTerminalIndex ;
+  @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap ;
+
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared in %L" ;
+  search searchKey error message "the '<%K>' non terminal symbol is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Terminal call instruction                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @terminalInstructionForGrammarAnalysis extends @abstractSyntaxInstructionForGrammarAnalysis {
+  @lstring mTerminalSymbolName feature nogetter ;
+  @uint mTerminalSymbolIndex feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Nonterminal call instruction                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @nonTerminalInstructionForGrammarAnalysis extends @abstractSyntaxInstructionForGrammarAnalysis {
+  @lstring mNonterminalSymbolName feature nogetter ;
+  @uint mNonterminalSymbolIndex feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# Liste of branches of a 'select' or 'repeat' instruction                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @branchListForGrammarAnalysis {
+  @syntaxInstructionListForGrammarAnalysis mSyntaxInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   select instruction (for a grammar component)                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selectInstructionForGrammarAnalysis extends @abstractSyntaxInstructionForGrammarAnalysis {
+  @branchListForGrammarAnalysis mSelectBranchList feature nogetter ;
+  @uint mAddedNonTerminalSymbolIndex feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   repeat instruction                                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @repeatInstructionForGrammarAnalysis extends @abstractSyntaxInstructionForGrammarAnalysis {
+  @branchListForGrammarAnalysis mRepeatBranchList feature nogetter ;
+  @uint mAddedNonTerminalSymbolIndex feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    List of syntax components For Grammar                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @syntaxComponentListForGrammarAnalysis {
+  @productionRuleListForGrammarAnalysis mProductionRulesList ;
+  @lstring mSyntaxComponentName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      Terminal symbol map                                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @terminalSymbolsMapForGrammarAnalysis {
   @uint mTerminalIndex ;
   insert insertKey error message "the terminal symbol '$%K$' is already declared in %L" ;
   search searchKey error message "the terminal symbol '$%K$' is not declared" ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Extern routine that performs grammar analysis                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+extern routine analyzeGrammar
+  ??@lstring inGrammarName
+  ??@lstring inGrammarClass
+  ??@uint startSymbolIndex
+  ??@string inLexiqueName
+  ??@location endOfSourceFile
+  ??@terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap
+  ??@syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList
+  ??@nonTerminalSymbolMapForGrammarAnalysis ioNonterminalSymbolsMapForGrammar
+  ??@unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
+  ??@string inOutputDirectory
+;
 
 #---------------------------------------------------------------------------*
 

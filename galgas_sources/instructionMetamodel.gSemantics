@@ -25,6 +25,7 @@ import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSema
 #---------------------------------------------------------------------------*
 
 abstract class @syntaxInstruction {
+  @location mStartLocation feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

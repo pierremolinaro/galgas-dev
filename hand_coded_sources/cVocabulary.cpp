@@ -45,13 +45,13 @@ cVocabulary::~cVocabulary (void) {
 //---------------------------------------------------------------------------*
 
 void cVocabulary::
-buildVocabulary (const GGS_M_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                 const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                 const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                  const PMUInt32 inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
-  GGS_M_terminalSymbolsMapForGrammarAnalysis::cEnumerator t (inTerminalSymbolMap) ;
+  GGS_terminalSymbolsMapForGrammarAnalysis::cEnumerator t (inTerminalSymbolMap) ;
   while (t.hasCurrentObject ()) {
     mStringsArray.addObject (t._key (HERE)) ;  
     t.next () ;
@@ -60,7 +60,7 @@ buildVocabulary (const GGS_M_terminalSymbolsMapForGrammarAnalysis & inTerminalSy
   mStringsArray.addObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
-  GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
+  GGS_nonTerminalSymbolMapForGrammarAnalysis::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
   while (nonTerminal.hasCurrentObject ()) {
     mStringsArray.addObject (nonTerminal._key (HERE)) ;  
     nonTerminal.next () ;

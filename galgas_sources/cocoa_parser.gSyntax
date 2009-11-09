@@ -23,7 +23,6 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics common_semantics in "common_semantics.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #--------------------------------------------------------------------------------*
 
@@ -49,8 +48,6 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importForGrammarAnalysis
-  ?!@syntaxRuleList ioSyntaxRuleList
 ;
 
 nonterminal <import_headers_semantics_and_grammars>
@@ -474,80 +471,6 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
-:
-  $gui$ ;
-  $identifier$ ? * ;
-  $literal_string$ ? * ;
-  select
-  or
-    $grammar$ ;
-    $identifier$ ? * ;
-  end select ;
-  $:$ ;
-  <import_headers_semantics_and_grammars> parse ;
-  select
-  or
-    $import__$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-    <parse_lexique_for_importing> parse ;
-  end select ;
-#--- Assignment list
-  repeat
-  while
-    $label$ ;
-    $terminal$ ? * ;
-    $,$ ;
-    $terminal$ ? * ;
-    $;$ ;
-  while
-    $identifier$ ? * ;
-    select
-    or
-      $literal_string$ ? * ;
-    end select ;
-    $:$ ;
-    repeat
-      $literal_string$ ? * ;
-    while
-    end repeat ;
-    $;$ ;
-  while
-    $with$ ;
-    $lexique$ ;
-    $literal_string$ ?* ;
-    ${$ ;
-    repeat
-    while
-      $label$ ;
-      repeat
-        $terminal$ ? * ;
-      while
-        $,$ ;
-      end repeat ;
-      $;$ ;
-    while
-      $identifier$ ?* ;
-      $literal_string$ ?* ;
-      $:$ ;
-      repeat
-        $literal_string$ ?* ;
-      while
-      end repeat ;
-      $;$ ;
-    while
-      $identifier$ ?* ;
-      $:$ ;
-      $literal_string$ ?* ;
-      $;$ ;
-    end repeat ;
-    $}$ ;    
-  end repeat ;
-  $end$ ;
-  $gui$ ;
-  $;$ ;
-label importForGrammarAnalysis
-  ?!@syntaxRuleList unused ioSyntaxRuleList
 :
   $gui$ ;
   $identifier$ ? * ;
