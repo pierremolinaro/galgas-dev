@@ -9,8 +9,8 @@ project all_xcode_project_generation:
   option    "xcode_project_generation_options.gOption" : makefile, xcode_tool, xcode_app ;
   semantics "xcode_project_generation_semantics.ggs" : makefile, xcode_tool ;
   syntax    "xcode_project_generation_syntax.ggs" : makefile, xcode_tool ;
-  grammar   "xcode_project_generation_grammar.ggs" : makefile, xcode_tool ;
-  gui       "xcode_project_generation_cocoa.ggs" : xcode_tool, xcode_app ;
+  grammar   "xcode_project_generation_grammar.gGrammar" : makefile, xcode_tool ;
+  gui       "xcode_project_generation_cocoa.gGui" : xcode_tool, xcode_app ;
   program   "xcode_project_generation_program.ggs" : makefile, xcode_tool ;
   extern    "xcode_project_generation_computations.cpp" : makefile, xcode_tool ;
 end project ;

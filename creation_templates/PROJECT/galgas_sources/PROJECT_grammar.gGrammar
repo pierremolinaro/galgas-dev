@@ -1,4 +1,5 @@
 grammar PROJECT_grammar "LL1":
+with "PROJECT_syntax.ggs" ;
 import lexique PROJECT_lexique in "PROJECT_lexique.gLexique" ;
 import option PROJECT_options in "PROJECT_options.gOption" ;
 import syntax PROJECT_syntax in "PROJECT_syntax.ggs" ;

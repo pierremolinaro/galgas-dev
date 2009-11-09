@@ -3,7 +3,7 @@ project all_PROJECT :
   option "PROJECT_options.gOption" : makefile, xcode_tool, xcode_app ;
   semantics "PROJECT_semantics.ggs" : makefile, xcode_tool ;
   syntax "PROJECT_syntax.ggs" : makefile, xcode_tool ;
-  grammar "PROJECT_grammar.ggs" : makefile, xcode_tool ;
+  grammar "PROJECT_grammar.gGrammar" : makefile, xcode_tool ;
   gui "PROJECT_cocoa.gGui" : xcode_tool, xcode_app ;
   program "PROJECT_program.ggs" : makefile, xcode_tool ;
   extern "../hand_coded_sources/PROJECT_computations.cpp" : makefile, xcode_tool ;

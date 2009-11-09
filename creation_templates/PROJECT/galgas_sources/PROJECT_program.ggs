@@ -2,7 +2,7 @@ program PROJECT_program "version 1.0.0":
 
 #--- Import clauses
 import semantics PROJECT_semantics in "PROJECT_semantics.ggs" ;
-import grammar PROJECT_grammar in "PROJECT_grammar.ggs" ;
+import grammar PROJECT_grammar in "PROJECT_grammar.gGrammar" ;
 
 #--- Prologue routine
 before {

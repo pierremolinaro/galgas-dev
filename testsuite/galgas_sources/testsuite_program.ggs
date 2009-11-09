@@ -9,7 +9,7 @@ import semantics testsuite_map in "testsuite_map.ggs" ;
 import semantics testsuite_functions in "testsuite_functions.ggs" ;
 import semantics testsuite_domain in "testsuite_domain.ggs" ;
 
-import grammar testsuite_grammar in "testsuite_grammar.ggs" ;
+import grammar testsuite_grammar in "testsuite_grammar.gGrammar" ;
 
 #--- Prologue routine
 before {
