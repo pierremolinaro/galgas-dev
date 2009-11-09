@@ -45,6 +45,7 @@ void LR1_computations (C_Compiler & inLexique,
                        const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                        const PMUInt32 inOriginalGrammarStartSymbol,
                        const C_String & inTargetFileName,
+                       const C_String & inOutputDirectoryForCppFiles,
                        const C_String & inLexiqueName,
                        bool & outOk,
                        const bool inVerboseOptionOn) ;

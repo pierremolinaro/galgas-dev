@@ -1121,7 +1121,8 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                                const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                                const PMUInt32 inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
-                               const C_String & inTargetFileName) {
+                               const C_String & inTargetFileName,
+                               const C_String & inOutputDirectoryForCppFiles) {
 //--- Generate header file inclusion -----------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -1502,12 +1503,16 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   generatedZone3.appendCppHyphenLineComment () ;
 
 //--- Generate file
-  inLexique.generateFile ("//",
-                          inTargetFileName + ".cpp",
-                          "\n\n", // User Zone 1
-                          generatedZone2,
-                          "\n\n", // User Zone 2
-                          generatedZone3) ;
+  TC_UniqueArray <C_String> directoriesToExclude ;
+  directoriesToExclude.addObject ("DEPENDENCIES") ;
+  inLexique.generateFileFromPathes (inOutputDirectoryForCppFiles,
+                                    directoriesToExclude,
+                                    "//",
+                                    inTargetFileName + ".cpp",
+                                    "\n\n", // User Zone 1
+                                    generatedZone2,
+                                    "\n\n", // User Zone 2
+                                    generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1570,6 +1575,7 @@ LR1_computations (C_Compiler & inLexique,
                   const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                   const PMUInt32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
+                  const C_String & inOutputDirectoryForCppFiles,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn) {
@@ -1796,7 +1802,8 @@ LR1_computations (C_Compiler & inLexique,
                                    inNonterminalSymbolsMapForGrammar,
                                    inOriginalGrammarStartSymbol,
                                    inLexiqueName,
-                                   inTargetFileName) ;
+                                   inTargetFileName,
+                                   inOutputDirectoryForCppFiles) ;
 
   }
   macroMyDelete (LR1_items_sets_collection, c_LR1_items_sets_collection) ;

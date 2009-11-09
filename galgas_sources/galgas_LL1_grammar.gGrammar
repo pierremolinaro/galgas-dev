@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  GALGAS grammar definition (LR 1 grammar)                                 *
+#  GALGAS grammar definition (SLR grammar)                                  *
 #                                                                           *
 #  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *

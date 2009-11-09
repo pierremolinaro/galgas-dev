@@ -32,6 +32,8 @@ import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
+nonterminal <expression> !@semanticExpression outExpression ;
+
 nonterminal <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoot ;
 
 nonterminal <nonterminal_declaration> ?!@nonterminalDeclarationList ioNonterminalDeclarationList ;
@@ -376,6 +378,68 @@ rule <syntax_instruction> !@syntaxInstruction outInstruction :
   outInstruction := [@parseDoInstruction new
     !instructionLocation
     !mParseDoBranchList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E    W H E N    I N S T R U C T I O N                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <syntax_instruction> !@syntaxInstruction outInstruction :
+  $parse$ ;
+  const @location instructionLocation := here ;
+  @whenBranchList whenBranchList [emptyList] ;
+  repeat
+    $when$ ;
+    @semanticExpression whenExpression ;
+    <expression> ? whenExpression ;
+    $:$ ;
+    @syntaxInstructionList instructionList ;
+    <syntax_instruction_list> ? instructionList ;
+    whenBranchList += !whenExpression !instructionList ;
+  while
+  end repeat ;
+  $else$ ;
+  @syntaxInstructionList elseInstructionList ;
+  <syntax_instruction_list> ? elseInstructionList ;
+  $end$ ;
+  $parse$ ;
+  $;$ ;
+  outInstruction := [@parseWhenInstruction new
+    !instructionLocation
+    !whenBranchList
+    !elseInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E    L O O P    I N S T R U C T I O N                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <syntax_instruction> !@syntaxInstruction outInstruction :
+  $parse$ ;
+  const @location instructionLocation := here ;
+  $loop$ ;
+  @semanticExpression variantExpression ;
+  <expression> ? variantExpression ;
+  $while$ ;
+  @semanticExpression whileExpression ;
+  <expression> ? whileExpression ;
+  $do$ ;
+  @syntaxInstructionList instructionList ;
+  <syntax_instruction_list> ? instructionList ;
+  $end$ ;
+  $parse$ ;
+  $;$ ;
+  outInstruction := [@parseLoopInstruction new
+    !instructionLocation
+    !variantExpression
+    !whileExpression
+    !instructionList
   ] ;
 end rule ;
 

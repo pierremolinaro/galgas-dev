@@ -112,6 +112,26 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    R O U T I N E    P R O T O T Y P E    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $routine$ ;
+  $identifier$ ? @lstring mActionName ;
+  @formalParameterList mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $;$ ;
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@routinePrototypeDeclaration new
+    !mActionName
+    !mFormalParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    F U N C T I O N    D E C L A R A T I O N                               *
 #                                                                           *
 #---------------------------------------------------------------------------*

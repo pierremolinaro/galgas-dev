@@ -464,6 +464,30 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
+#   F A C T O R    :    if exp then exp else exp end                           *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpression outExpression :
+  $if$ ;
+  @semanticExpression ifExpression ;
+  <expression> ? ifExpression ;
+  $then$ ;
+  @semanticExpression thenExpression ;
+  <expression> ? thenExpression ;
+  $else$ ;
+  @semanticExpression elseExpression ;
+  <expression> ? elseExpression ;
+  $end$ ;
+  outExpression := [@ifExpression new
+    !ifExpression
+    !thenExpression
+    !elseExpression
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
 #                         F A C T O R                                          *
 #   description         :   [expression description]                           *
 #   reader call         :   [expression reader !... ]                          *
@@ -550,6 +574,26 @@ rule <factor> !@semanticExpression outExpression :
       end select ;
     end select ;
   end select ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#                                                                              *
+#   function call        :   function_name [!... ]                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpression outExpression :
+  $identifier$ ? @lstring functionName ;
+  $[$ ;
+  @outExpressionList expressionList ;
+  <output_expression_list> ? expressionList ;
+  outExpression := [@functionCallExpression new
+    !functionName
+    !expressionList
+  ] ;
   $]$ ;
 end rule ;
 

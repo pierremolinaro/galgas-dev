@@ -2,7 +2,7 @@
 #                                                                           *
 #  metamodel that defines expression                                        *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -283,6 +283,21 @@ class @notExpression extends @semanticExpression {
 class @negateExpression extends @semanticExpression {
   @location mOperatorLocation ;
   @semanticExpression mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @ifExpression extends @semanticExpression {
+  @semanticExpression mIfExpression ;
+  @semanticExpression mThenExpression ;
+  @semanticExpression mElseExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @functionCallExpression extends @semanticExpression {
+  @lstring mFunctionName ;
+  @outExpressionList mExpressions ;
 }
 
 #---------------------------------------------------------------------------*

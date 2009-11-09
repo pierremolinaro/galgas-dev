@@ -18,9 +18,8 @@
 
 semantics grammarCompilation :
 import "grammarMetamodel.gSemantics" ;
+import "grammarSemantics.gSemantics" ;
 import "galgas_cli_options.gOption" ;
-import "buildPureBNFproductions.gSemantics" ;
-
 
 import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 import semantics grammarSemantics in "grammarSemantics.gSemantics" ;
@@ -153,6 +152,16 @@ abstract method @syntaxInstruction transformInstruction
   ?!@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 ;
+
+#---------------------------------------------------------------------------*
+
+override method @semanticInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+  ?!@uint unused ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList
+:
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -305,6 +314,40 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @parseWhenInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
+:
+  transformInstructionList
+    !mElseInstructionList
+    !?ioActuallyUsedTerminalSymbolMap
+    !inNonTerminalSymbolMap
+    !?ioAddedNonTerminalIndex
+    !?ioSyntaxInstructionList
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @parseLoopInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
+:
+  transformInstructionList
+    !mDoInstructionList
+    !?ioActuallyUsedTerminalSymbolMap
+    !inNonTerminalSymbolMap
+    !?ioAddedNonTerminalIndex
+    !?ioSyntaxInstructionList
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @blockInstruction transformInstruction
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
@@ -363,7 +406,8 @@ end routine ;
 
 routine compileGrammarComponent
   ??@lstring inSourceFile
-  ??@string inOutputDirectory
+  ??@string inOutputDirectoryForCppFiles
+  ??@string inOutputDirectoryForHTMLFile
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
   @grammarComponentRoot grammarComponentRoot ;
@@ -384,8 +428,8 @@ routine compileGrammarComponent
   @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis [emptyList] ;
   @uint addedNonTerminalCount := 0 ;
   foreach [grammarComponentRoot mSyntaxComponents] do
-    if [mValue pathExtension] != "gSyntax" then
-      error mValue: "a syntax component file should have '.gSyntax' as path extension" ;
+    if ([mValue pathExtension] != "gSyntax") & ([mValue pathExtension] != "ggs") then
+      error mValue: "a syntax component file should have '.ggs' or '.gSyntax' as path extension" ;
     else
       @string syntaxComponentName := [[mValue lastPathComponent] stringByDeletingPathExtension] ;
       @syntaxComponentRoot syntaxComponentRoot ;
@@ -452,7 +496,8 @@ routine compileGrammarComponent
     !syntaxComponentListForGrammarAnalysis
     !nonTerminalMapForGrammarAnalysis
     !unusedNonTerminalSymbolsForGrammar
-    !inOutputDirectory
+    !inOutputDirectoryForCppFiles
+    !inOutputDirectoryForHTMLFile
   ;
 end routine ;
 

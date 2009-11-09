@@ -227,6 +227,7 @@ rule <galgas_component>
 #--- Grammar name
   @lstring grammarName ;
   $identifier$ ? grammarName ;
+  warning here: "in GALGAS 1.9.3 and later, uses '.gGrammar' extension instead of '.ggs'" ;
   @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
   if [grammarName string] != basename then
     error grammarName: "GALGAS 1.7.5 and later checks "
@@ -425,6 +426,7 @@ rule <galgas_component>
     !syntaxComponentsListWithFixedInfos
     !nonterminalSymbolsMapForGrammar
     !unusedNonTerminalSymbolsForGrammar
+    ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT"
     ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]
   ;
 #--- insert grammar in grammars map

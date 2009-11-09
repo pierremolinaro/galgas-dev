@@ -25,6 +25,7 @@ import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 import semantics optionCompilation in "optionCompilation.gSemantics" ;
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics guiCompilation in "guiCompilation.gSemantics" ;
+import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
 import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
 import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
 
@@ -235,6 +236,21 @@ rule <galgas_component>
       ] ;
       @string absoluteFilePath := [fileName absolutePathFromPath ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]] ;
       compileGuiComponent ![@lstring new !absoluteFilePath ![fileName location]] !s2 !?parsedComponentStruct ;
+    elsif (sourceFileKind == [@EXsourceFileKind grammarSourceFile]) & ([fileName pathExtension] == "gGrammar") then
+      const @string s2 := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
+      @parsedComponentStruct parsedComponentStruct [new
+        ![@parsedSemanticsComponentMap emptyMap]
+        ![@parsedLexiqueComponentMap emptyMap]
+        ![@parsedSyntaxComponentMap emptyMap]
+        ![@parsedOptionComponentMap emptyMap]
+      ] ;
+      const @string absoluteFilePath := [fileName absolutePathFromPath ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]] ;
+      compileGrammarComponent
+        ![@lstring new !absoluteFilePath ![fileName location]]
+        !s2
+        ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]
+        !?parsedComponentStruct
+      ;
     elsif sourceFileKind != [@EXsourceFileKind externSourceFile] then
       grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "DEPENDENCIES" ;
     end if ;

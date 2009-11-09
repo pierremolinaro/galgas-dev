@@ -125,6 +125,36 @@ class @parseDoInstruction extends @syntaxInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   P A R S E   L O O P    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseLoopInstruction extends @syntaxInstruction {
+  @semanticExpression mVariantExpression ;
+  @semanticExpression mWhileExpression ;
+  @syntaxInstructionList mDoInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E   W H E N    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @whenBranchList {
+  @semanticExpression mWhenExpression ;
+  @syntaxInstructionList mParseDoBranchList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @parseWhenInstruction extends @syntaxInstruction {
+  @whenBranchList mWhenBranchList ;
+  @syntaxInstructionList mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   B L O C K   I N S T R U C T I O N                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
