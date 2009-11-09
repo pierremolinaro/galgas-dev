@@ -2,7 +2,7 @@
 #                                                                           *
 #  metamodel that defines expression                                        *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -38,6 +38,13 @@ enum @formalArgumentPassingMode {
     argumentIn -> "an input (?) formal argument" ;
     argumentOut -> "an output (!) formal argument" ;
     argumentInOut -> "an input/output (?!) argument" ;
+  end reader ;
+
+  reader formalArgumentString :
+    argumentConstantIn -> "'??'" ;
+    argumentIn -> "'?'" ;
+    argumentOut -> "'!'" ;
+    argumentInOut -> "'?!'" ;
   end reader ;
 
   reader string :

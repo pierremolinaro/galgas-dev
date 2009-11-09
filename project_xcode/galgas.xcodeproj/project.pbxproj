@@ -185,12 +185,6 @@
 		CF2A8852058CCF53003EF2F4 /* GGS_luint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53893057A558F00854C83 /* GGS_luint.cpp */; };
 		CF2A8854058CCF55003EF2F4 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CF2A8856058CCF56003EF2F4 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
-		CF2B9F5A1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
-		CF2B9F5B1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
-		CF2B9F5C1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
-		CF2B9F5D1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
-		CF2B9F5E1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
-		CF2B9F5F1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
 		CF31B5400DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5420DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5440DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
@@ -814,12 +808,6 @@
 		CFDD30AD0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
 		CFDD30AF0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFDD30B10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
-		CFDD938B108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */; };
-		CFDD938C108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */; };
-		CFDD938D108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */; };
-		CFDD938E108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */; };
-		CFDD938F108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */; };
-		CFDD9390108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */; };
 		CFE1544D0C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
 		CFE1544F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
 		CFE154510C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
@@ -1309,8 +1297,11 @@
 		CF2B86690FD2EF4E00C5160F /* include_typeWithInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWithInstruction.h; sourceTree = "<group>"; };
 		CF2B9F231080A61C0081CD13 /* grammar.html.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grammar.html.gTemplate; sourceTree = "<group>"; };
 		CF2B9F241080A61C0081CD13 /* lexiqueLL1grammar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lexiqueLL1grammar.html; sourceTree = "<group>"; };
-		CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildPureBNFproductions.cpp; sourceTree = "<group>"; };
-		CF2B9F591080B6350081CD13 /* buildPureBNFproductions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildPureBNFproductions.h; sourceTree = "<group>"; };
+		CF2F1CF410A70B300035C560 /* include_repeatInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_repeatInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF2F1D0E10A7101E0035C560 /* include_nonTerminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_nonTerminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF2F1D1810A7122D0035C560 /* include_selectInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_selectInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF2F1D1F10A713D90035C560 /* include_terminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_terminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF2F1D2610A715A90035C560 /* include_abstractSyntaxInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_abstractSyntaxInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
 		CF33992D0EDDC2A900F0330E /* include_typeEntiteFonction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonction.h; sourceTree = "<group>"; };
@@ -1612,7 +1603,6 @@
 		CFCF92090B6E41B000747AC6 /* C_galgas_io.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_galgas_io.h; sourceTree = "<group>"; };
 		CFD1939909FCFC0300920886 /* include_typeAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAddOperation.h; sourceTree = "<group>"; };
 		CFD2149B0913BE2E0011F11E /* include_AC_galgasType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_galgasType.h; sourceTree = "<group>"; };
-		CFD2149C0913BE2E0011F11E /* include_AC_instruction_ForGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_instruction_ForGrammar.h; sourceTree = "<group>"; };
 		CFD2149D0913BE2E0011F11E /* include_AC_semanticsEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_semanticsEntity.h; sourceTree = "<group>"; };
 		CFD2149E0913BE2E0011F11E /* include_AC_typeForGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_typeForGrammarComponent.h; sourceTree = "<group>"; };
 		CFD2149F0913BE2E0011F11E /* include_C_assignmentInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_assignmentInstruction.h; sourceTree = "<group>"; };
@@ -1628,10 +1618,6 @@
 		CFD214A90913BE2E0011F11E /* include_C_repeat_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_repeat_instruction.h; sourceTree = "<group>"; };
 		CFD214AA0913BE2E0011F11E /* include_C_select_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_select_instruction.h; sourceTree = "<group>"; };
 		CFD214AB0913BE2E0011F11E /* include_enumGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_enumGalgasType.h; sourceTree = "<group>"; };
-		CFD214AC0913BE2E0011F11E /* include_T_nonterminalInstruction_forGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_T_nonterminalInstruction_forGrammarComponent.h; sourceTree = "<group>"; };
-		CFD214AD0913BE2E0011F11E /* include_T_repeatInstruction_forGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_T_repeatInstruction_forGrammarComponent.h; sourceTree = "<group>"; };
-		CFD214AE0913BE2E0011F11E /* include_T_selectInstruction_forGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_T_selectInstruction_forGrammarComponent.h; sourceTree = "<group>"; };
-		CFD214AF0913BE2E0011F11E /* include_T_terminalInstruction_forGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_T_terminalInstruction_forGrammarComponent.h; sourceTree = "<group>"; };
 		CFD214B20913BE2E0011F11E /* include_typeAndOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAndOperation.h; sourceTree = "<group>"; };
 		CFD214B30913BE2E0011F11E /* include_typeAppendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAppendInstruction.h; sourceTree = "<group>"; };
 		CFD214B50913BE2E0011F11E /* include_typeArgumentAttribut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentAttribut.h; sourceTree = "<group>"; };
@@ -1790,8 +1776,6 @@
 		CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarMetamodel.h; sourceTree = "<group>"; };
 		CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = grammarModelBuilder.cpp; sourceTree = "<group>"; };
 		CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarModelBuilder.h; sourceTree = "<group>"; };
-		CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarComputationsWithBDDs.cpp; sourceTree = "<group>"; };
-		CFDD938A108B77D4000E7857 /* grammarComputationsWithBDDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarComputationsWithBDDs.h; sourceTree = "<group>"; };
 		CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentBuilder.cpp; sourceTree = "<group>"; };
 		CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentBuilder.h; sourceTree = "<group>"; };
 		CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentMetamodel.cpp; sourceTree = "<group>"; };
@@ -2092,10 +2076,6 @@
 			children = (
 				CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */,
 				CF585E5710A5FBF100A5A69A /* grammarSemantics.h */,
-				CFDD9389108B77D4000E7857 /* grammarComputationsWithBDDs.cpp */,
-				CFDD938A108B77D4000E7857 /* grammarComputationsWithBDDs.h */,
-				CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */,
-				CF2B9F591080B6350081CD13 /* buildPureBNFproductions.h */,
 				CF0EA2F81065320F00679ABC /* grammarCompilation.cpp */,
 				CF0EA2F91065320F00679ABC /* grammarCompilation.h */,
 				CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */,
@@ -2222,6 +2202,11 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF2F1D2610A715A90035C560 /* include_abstractSyntaxInstructionForGrammarAnalysis.h */,
+				CF2F1D1F10A713D90035C560 /* include_terminalInstructionForGrammarAnalysis.h */,
+				CF2F1D1810A7122D0035C560 /* include_selectInstructionForGrammarAnalysis.h */,
+				CF2F1D0E10A7101E0035C560 /* include_nonTerminalInstructionForGrammarAnalysis.h */,
+				CF2F1CF410A70B300035C560 /* include_repeatInstructionForGrammarAnalysis.h */,
 				CF6839F41083B4F40094EC81 /* include_C_constantDeclarationInstruction.h */,
 				CFF2219A1083AD2E004254CC /* include_typeIfThenElseExpression.h */,
 				CFB12CF11080FC8900B4E336 /* include_templateInstructionColumnString.h */,
@@ -2321,7 +2306,6 @@
 				CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */,
 				CFCAABD909BCD3FF0042E80C /* include_typeStringOption.h */,
 				CFD220470913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h */,
-				CFD2149C0913BE2E0011F11E /* include_AC_instruction_ForGrammar.h */,
 				CFD2149D0913BE2E0011F11E /* include_AC_semanticsEntity.h */,
 				CFD2149E0913BE2E0011F11E /* include_AC_typeForGrammarComponent.h */,
 				CFD2149F0913BE2E0011F11E /* include_C_assignmentInstruction.h */,
@@ -2337,10 +2321,6 @@
 				CFD214A90913BE2E0011F11E /* include_C_repeat_instruction.h */,
 				CFD214AA0913BE2E0011F11E /* include_C_select_instruction.h */,
 				CFD214AB0913BE2E0011F11E /* include_enumGalgasType.h */,
-				CFD214AC0913BE2E0011F11E /* include_T_nonterminalInstruction_forGrammarComponent.h */,
-				CFD214AD0913BE2E0011F11E /* include_T_repeatInstruction_forGrammarComponent.h */,
-				CFD214AE0913BE2E0011F11E /* include_T_selectInstruction_forGrammarComponent.h */,
-				CFD214AF0913BE2E0011F11E /* include_T_terminalInstruction_forGrammarComponent.h */,
 				CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */,
 				CFD214B20913BE2E0011F11E /* include_typeAndOperation.h */,
 				CFD214B30913BE2E0011F11E /* include_typeAppendInstruction.h */,
@@ -3348,6 +3328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2A87CD058CCEB0003EF2F4 /* buildPureBNFgrammar.cpp in Sources */,
 				CF2A87B9058CCE6B003EF2F4 /* expression_parser.cpp in Sources */,
 				CF2A87BA058CCE6E003EF2F4 /* galgas_LL1_grammar.cpp in Sources */,
 				CF2A87BD058CCE82003EF2F4 /* galgas_LL1_prgm.cpp in Sources */,
@@ -3362,7 +3343,6 @@
 				CF2A87CA058CCE92003EF2F4 /* semantics_parser.cpp in Sources */,
 				CF2A87CB058CCE92003EF2F4 /* semantics_semantics.cpp in Sources */,
 				CF2A87CC058CCEAF003EF2F4 /* assignment_instructions.cpp in Sources */,
-				CF2A87CD058CCEB0003EF2F4 /* buildPureBNFgrammar.cpp in Sources */,
 				CF2A87CE058CCEB1003EF2F4 /* call_instructions.cpp in Sources */,
 				CF2A87CF058CCEB2003EF2F4 /* class_generation.cpp in Sources */,
 				CF2A87D0058CCEB3003EF2F4 /* cVocabulary.cpp in Sources */,
@@ -3511,9 +3491,7 @@
 				CFCD022D106641B900EA0463 /* parameterArgumentMetamodel.cpp in Sources */,
 				CFCD0230106641DF00EA0463 /* expressionModelBuilder.cpp in Sources */,
 				CFCD0233106641F900EA0463 /* semanticInstructionListModelBuilder.cpp in Sources */,
-				CF2B9F5A1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BB91080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
-				CFDD938B108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
 				CF585E5810A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3522,6 +3500,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF6DF13409E3F23700506859 /* buildPureBNFgrammar.cpp in Sources */,
+				CF6DF14709E3F23700506859 /* printOriginalGrammar.cpp in Sources */,
 				CF6DF12609E3F23700506859 /* expression_parser.cpp in Sources */,
 				CF6DF12909E3F23700506859 /* galgas_start.cpp in Sources */,
 				CF6DF12B09E3F23700506859 /* grammar_parser.cpp in Sources */,
@@ -3533,7 +3513,6 @@
 				CF6DF13109E3F23700506859 /* semantics_parser.cpp in Sources */,
 				CF6DF13209E3F23700506859 /* semantics_semantics.cpp in Sources */,
 				CF6DF13309E3F23700506859 /* assignment_instructions.cpp in Sources */,
-				CF6DF13409E3F23700506859 /* buildPureBNFgrammar.cpp in Sources */,
 				CF6DF13509E3F23700506859 /* call_instructions.cpp in Sources */,
 				CF6DF13609E3F23700506859 /* class_generation.cpp in Sources */,
 				CF6DF13709E3F23700506859 /* cVocabulary.cpp in Sources */,
@@ -3551,7 +3530,6 @@
 				CF6DF14309E3F23700506859 /* parser_generation.cpp in Sources */,
 				CF6DF14409E3F23700506859 /* parser_instructions.cpp in Sources */,
 				CF6DF14509E3F23700506859 /* prgm_generation.cpp in Sources */,
-				CF6DF14709E3F23700506859 /* printOriginalGrammar.cpp in Sources */,
 				CF6DF14909E3F23700506859 /* semantics_generation.cpp in Sources */,
 				CF6DF14A09E3F23700506859 /* semantics_instructions.cpp in Sources */,
 				CF6DF14B09E3F23700506859 /* SLR_computations.cpp in Sources */,
@@ -3691,9 +3669,7 @@
 				CFCF13171020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FC1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32810654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
-				CF2B9F5C1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBB1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
-				CFDD938D108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
 				CF585E5A10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3871,9 +3847,7 @@
 				CFCF13181020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FD1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32910654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
-				CF2B9F5D1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBC1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
-				CFDD938E108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
 				CF585E5B10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4073,9 +4047,7 @@
 				CFCD023F1066421E00EA0463 /* syntaxSLRgrammar.cpp in Sources */,
 				CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */,
 				CFCD02411066422000EA0463 /* grammarModelBuilder.cpp in Sources */,
-				CF2B9F5B1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBA1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
-				CFDD938C108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
 				CF585E5910A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4253,9 +4225,7 @@
 				CFCF13191020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FE1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32A10654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
-				CF2B9F5E1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBD1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
-				CFDD938F108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
 				CF585E5C10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4433,9 +4403,7 @@
 				CFCF131A1020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FF1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32B10654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
-				CF2B9F5F1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
 				CF4F2BBE1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
-				CFDD9390108B77D4000E7857 /* grammarComputationsWithBDDs.cpp in Sources */,
 				CF585E5D10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

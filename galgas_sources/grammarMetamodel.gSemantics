@@ -31,20 +31,14 @@ list @startSymbolLabelFormalParameterList {
 
 #---------------------------------------------------------------------------*
 
-list @grammarLabelList {
-  @lstring mLabelName ;
-  @startSymbolLabelFormalParameterList mFormalParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @grammarComponentRoot {
   @lstring mGrammarName ;
   @lstring mGrammarClass ;
   @lstringlist mSyntaxComponents ;
-  @lstring mStartSymbol ;
-  @grammarLabelList mLabelList ;
+  @lstring mStartSymbolName ;
+  @nonTerminalLabelList mStartSymbolLabelList ;
   @lstringlist mUnusedNonterminalList ;
+  @location mEndOfSourceText ;
 }
 
 #---------------------------------------------------------------------------*

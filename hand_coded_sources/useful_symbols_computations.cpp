@@ -94,7 +94,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 
 static bool
 displayUnusefulSymbols (C_Compiler & inLexique,
-                        const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
+                        const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                         const C_BDD_Set1 & inUsefulSymbols,
                         const PMUInt16 inBDDBitCount,
                         C_HTML_FileWrite * inHTMLfile,
@@ -102,7 +102,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
                         const PMSInt32 inIterationCount,
                         const bool inVerboseOptionOn) {
   TC_UniqueArray <PMUInt32> unusedNonTerminalArray ;
-  GGS_M_unusedNonTerminalSymbolsForGrammar::cEnumerator currentNT (inUnusedNonTerminalSymbolsForGrammar) ;
+  GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::cEnumerator currentNT (inUnusedNonTerminalSymbolsForGrammar) ;
   while (currentNT.hasCurrentObject ()) {
     const PMUInt32 nt = currentNT._mNonTerminalIndex (HERE).uintValue () + inVocabulary.getTerminalSymbolsCount () ;
     unusedNonTerminalArray.addObject (nt) ;
@@ -245,7 +245,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
 
 void
 useful_symbols_computations (C_Compiler & inLexique,
-                             const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
+                             const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
                              const PMUInt16 inBDDBitCount,
                              const cVocabulary & inVocabulary,

@@ -22,7 +22,6 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
@@ -56,8 +55,6 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importForGrammarAnalysis
-  ?!@syntaxRuleList ioSyntaxRuleList
 ;
 
 nonterminal <parse_grammar_component_for_importing>
@@ -476,9 +473,9 @@ nonterminal <formal_arguments_list>
   ?!@typeVariablesMap tableArgumentsMethode
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeTableEnAvant tableEnAvant
-  !@L_signature outSignature
+  !@signatureForGrammarAnalysis outSignature
 label importGrammarForSemantics
-  !@L_signature outSignature
+  !@signatureForGrammarAnalysis outSignature
 label parse
 ;
 
@@ -488,9 +485,9 @@ nonterminal <formal_input_arguments_list>
   ?!@typeVariablesMap tableArgumentsMethode
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeTableEnAvant tableEnAvant
-  !@L_signature outSignature
+  !@signatureForGrammarAnalysis outSignature
 label importGrammarForSemantics
-  !@L_signature outSignature
+  !@signatureForGrammarAnalysis outSignature
 label parse
 ;
 
@@ -814,20 +811,6 @@ label importOptions
   $end$ ;
   $semantics$ ;
   $;$ ;
-label importForGrammarAnalysis
-  ?!@syntaxRuleList unused ioSyntaxRuleList
-:
-  $semantics$ ;
-  $identifier$ ? * ;
-  $:$ ;
-  <import_headers_semantics_and_grammars> parse ;
-  repeat
-  while
-    <semantics_declaration> parse ;
-  end repeat ;
-  $end$ ;
-  $semantics$ ;
-  $;$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -967,7 +950,7 @@ rule <import_headers_semantics_and_grammars>
         !?ioOptionsComponentsMapForUse
         !?ioSemanticContext
       ;
-      @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
+      @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap ;
       @lstring lexiqueClassName ;
       [grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?lexiqueClassName ?*] ;
       @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
@@ -975,9 +958,9 @@ rule <import_headers_semantics_and_grammars>
         @L_EXsignature formalParametersList [emptyList] ;
         foreach mFormalParametersList do
           @AC_semanticsEntity e ;
-          [ioComponentSemanticsEntitiesMap searchKey !mGalgasTypeName ?e] ;
-          @AC_galgasType type := [(cast e if >= @typeEntiteType else error mGalgasTypeName) aDefType] ;
-          formalParametersList += !type !mFormalArgumentPassingMode ;
+          [ioComponentSemanticsEntitiesMap searchKey !mGalgasTypeNameForGrammarAnalysis ?e] ;
+          @AC_galgasType type := [(cast e if >= @typeEntiteType else error mGalgasTypeNameForGrammarAnalysis) aDefType] ;
+          formalParametersList += !type !mFormalArgumentPassingModeForGrammarAnalysis ;
         end foreach ;
         [!?grammarAltMap insertKey !key !formalParametersList] ;
       end foreach ;
@@ -1207,7 +1190,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap localVariableMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signature ;
+  @signatureForGrammarAnalysis signature ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -1284,7 +1267,7 @@ rule <semantics_declaration>
   @L_EXsignature returnedTypes [emptyList] ;
   $->$ ;
 #--- Parse result
-  @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -1367,7 +1350,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap localVariableMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signature ;
+  @signatureForGrammarAnalysis signature ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -1379,7 +1362,7 @@ label importSemantics
 #---- Function return value -----------------------------------------
   @L_EXsignature returnedTypes [emptyList] ;
   $->$ ;
-  @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -2253,7 +2236,7 @@ rule <abstract_method>
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -2327,7 +2310,7 @@ rule <parse_method>
   ] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"super" !here] !typeDefinition ![@typeCppInheritedName new !here]] ;
 #--- Parse formal arguments
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?outMethodSignature
@@ -2475,15 +2458,15 @@ rule <formal_arguments_list>
   ?!@typeVariablesMap tableArgumentsMethode
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeTableEnAvant tableEnAvant
-  !@L_signature outSignatureForGrammar
+  !@signatureForGrammarAnalysis outSignatureForGrammar
 :
   listeDeTypes := [@L_EXsignature emptyList] ;
   listeTypeEtNomsArguments := [@typeListeTypesEtNomsArgMethode emptyList] ;
-  outSignatureForGrammar := [@L_signature emptyList] ;
+  outSignatureForGrammar := [@signatureForGrammarAnalysis emptyList] ;
   repeat
   while
     $??$ ; # '??'  : constant input formal parameter
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentConstantIn] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2510,7 +2493,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $?$ ; # '?'  : input formal parameter
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentIn] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2537,7 +2520,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $?!$ ; # '?!' : input/output formal parameter
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentInOut] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2563,7 +2546,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $!$ ; # '!' : output formal parameter
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2582,13 +2565,13 @@ rule <formal_arguments_list>
     [!?tableArgumentsMethode insertOutArgument !nomArgument !type_semantique !natureNom] ;
   end repeat ;
 label importGrammarForSemantics
-  !@L_signature outSignature
+  !@signatureForGrammarAnalysis outSignature
 :
-  outSignature := [@L_signature emptyList] ;
+  outSignature := [@signatureForGrammarAnalysis emptyList] ;
   repeat
   while
     $??$ ;
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentConstantIn] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2600,7 +2583,7 @@ label importGrammarForSemantics
     end select ;
   while
     $?$ ;
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentIn] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2612,7 +2595,7 @@ label importGrammarForSemantics
     end select ;
   while
     $?!$ ;
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentInOut] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2624,7 +2607,7 @@ label importGrammarForSemantics
     end select ;
   while
     $!$ ;
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2642,15 +2625,15 @@ rule <formal_input_arguments_list>
   ?!@typeVariablesMap tableArgumentsMethode
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeTableEnAvant tableEnAvant
-  !@L_signature outSignatureForGrammar
+  !@signatureForGrammarAnalysis outSignatureForGrammar
 :
   listeDeTypes := [@L_EXsignature emptyList] ;
   listeTypeEtNomsArguments := [@typeListeTypesEtNomsArgMethode emptyList] ;
-  outSignatureForGrammar := [@L_signature emptyList] ;
+  outSignatureForGrammar := [@signatureForGrammarAnalysis emptyList] ;
   repeat
   while
     $??$ ; # '??'  : constant input formal parameter
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentConstantIn] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2677,7 +2660,7 @@ rule <formal_input_arguments_list>
     end select ;
   while
     $?$ ; # '?'  : input formal parameter
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentIn] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2704,13 +2687,13 @@ rule <formal_input_arguments_list>
     end select ;
   end repeat ;
 label importGrammarForSemantics
-  !@L_signature outSignature
+  !@signatureForGrammarAnalysis outSignature
 :
-  outSignature := [@L_signature emptyList] ;
+  outSignature := [@signatureForGrammarAnalysis emptyList] ;
   repeat
   while
     $??$ ;
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentConstantIn] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2722,7 +2705,7 @@ label importGrammarForSemantics
     end select ;
   while
     $?$ ;
-    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentIn] ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -5762,7 +5745,7 @@ rule <semantics_declaration>
       @typeVariablesMap tableDebut [emptyMap] ;
       @typeListeTypesEtNomsArgMethode listeTypesEtNomsArgMethodeDebut ; 
       $($ ;
-      @L_signature signatureForGrammarComponent ; # Not used here
+      @signatureForGrammarAnalysis signatureForGrammarComponent ; # Not used here
       <formal_arguments_list>
         !ioComponentSemanticsEntitiesMap
         ?signatureDebut
@@ -5804,8 +5787,8 @@ rule <semantics_declaration>
     ;
   #--- Build insert and search method map
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @EXformalArgumentPassingMode inPassingMode [argumentIn] ;
-    @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
+    @formalArgumentPassingMode inPassingMode [argumentIn] ;
+    @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodList do
@@ -5896,8 +5879,8 @@ rule <semantics_declaration>
     @insertOrSearchMethodList removeMethodList [emptyList] ;
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
-    @EXformalArgumentPassingMode inPassingMode [argumentIn] ;
-    @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
+    @formalArgumentPassingMode inPassingMode [argumentIn] ;
+    @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
@@ -6081,7 +6064,7 @@ label importSemantics
       @typeVariablesMap tableDebut [emptyMap] ;
       @typeListeTypesEtNomsArgMethode listeTypesEtNomsArgMethodeDebut ; 
       $($ ;
-      @L_signature signatureForGrammarComponent ; # Not used here
+      @signatureForGrammarAnalysis signatureForGrammarComponent ; # Not used here
       <formal_arguments_list>
         !ioComponentSemanticsEntitiesMap
         ?signatureDebut
@@ -6123,8 +6106,8 @@ label importSemantics
     ;
   #--- Build insert and search method map
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @EXformalArgumentPassingMode inPassingMode [argumentIn] ;
-    @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
+    @formalArgumentPassingMode inPassingMode [argumentIn] ;
+    @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodList do
@@ -6202,8 +6185,8 @@ label importSemantics
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
-    @EXformalArgumentPassingMode inPassingMode [argumentIn] ;
-    @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
+    @formalArgumentPassingMode inPassingMode [argumentIn] ;
+    @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
@@ -6364,7 +6347,7 @@ rule <semantics_declaration_beginning_by_abstract>
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @L_EXsignature listeDeTypes ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6421,7 +6404,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6466,7 +6449,7 @@ rule <semantics_declaration>
   @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
   @L_EXsignature listeDeTypes ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6576,7 +6559,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6620,7 +6603,7 @@ rule <semantics_declaration_beginning_by_abstract>
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @L_EXsignature listeDeTypes ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6687,7 +6670,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6740,7 +6723,7 @@ rule <semantics_declaration>
   @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
   @L_EXsignature listeDeTypes ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6874,7 +6857,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6926,7 +6909,7 @@ rule <semantics_declaration_beginning_by_abstract>
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @L_EXsignature listeDeTypes ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -6983,7 +6966,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -7029,7 +7012,7 @@ rule <semantics_declaration>
   @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
   @L_EXsignature listeDeTypes ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -7149,7 +7132,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
+  @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -7216,8 +7199,8 @@ rule <semantics_declaration>
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques do
-      extractSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
-      inputSignature += !mAttributType ![@EXformalArgumentPassingMode argumentIn] ;
+      extractSignature += !mAttributType ![@formalArgumentPassingMode argumentOut] ;
+      inputSignature += !mAttributType ![@formalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7271,8 +7254,8 @@ label importSemantics
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques do
-      extractSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
-      inputSignature += !mAttributType ![@EXformalArgumentPassingMode argumentIn] ;
+      extractSignature += !mAttributType ![@formalArgumentPassingMode argumentOut] ;
+      inputSignature += !mAttributType ![@formalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7330,7 +7313,7 @@ rule <semantics_declaration>
     ;
     @L_EXsignature extractSignature [emptyList] ;
     foreach listeTousAttributsSemantiques do
-      extractSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+      extractSignature += !mAttributType ![@formalArgumentPassingMode argumentOut] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7411,7 +7394,7 @@ label importSemantics
     ;
     @L_EXsignature extractSignature [emptyList] ;
     foreach listeTousAttributsSemantiques do
-      extractSignature += !mAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+      extractSignature += !mAttributType ![@formalArgumentPassingMode argumentOut] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7829,7 +7812,7 @@ rule <semantics_declaration>
       @lstring parameterName ;
       $identifier$ ? parameterName ;
       @typeCplusPlusName cppName := [@typeAutomaticName new ![parameterName location] ![parameterName string]] ;
-      templateArgumentTypesList += !type_semantique ![@EXformalArgumentPassingMode argumentConstantIn] !cppName !true !parameterName ;
+      templateArgumentTypesList += !type_semantique ![@formalArgumentPassingMode argumentConstantIn] !cppName !true !parameterName ;
       if parameterIsUsed then
         [!?templateVariableMap insertConstInArgument !parameterName !type_semantique !cppName] ;
       else
@@ -8053,7 +8036,7 @@ rule <semantics_declaration_begining_by_extern>
     @L_EXsignature listeDeTypes ;
     @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
     @typeVariablesMap tableArgumentsMethode [emptyMap] ;
-    @L_signature signatureForGrammarComponent ; # Not used here
+    @signatureForGrammarAnalysis signatureForGrammarComponent ; # Not used here
     <formal_arguments_list>
       !ioComponentSemanticsEntitiesMap
       ?listeDeTypes
@@ -8074,7 +8057,7 @@ rule <semantics_declaration_begining_by_extern>
       @L_EXsignature listeDeTypes ;
       @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
       @typeVariablesMap tableArgumentsMethode [emptyMap] ;
-      @L_signature signatureForGrammarComponent ; # Not used here
+      @signatureForGrammarAnalysis signatureForGrammarComponent ; # Not used here
       <formal_arguments_list>
         !ioComponentSemanticsEntitiesMap
         ?listeDeTypes
@@ -8190,7 +8173,7 @@ label importSemantics
     @L_EXsignature listeDeTypes ;
     @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
     @typeVariablesMap tableArgumentsMethode [emptyMap] ;
-    @L_signature signature ;
+    @signatureForGrammarAnalysis signature ;
     <formal_arguments_list>
       !ioComponentSemanticsEntitiesMap
       ?listeDeTypes
@@ -8212,7 +8195,7 @@ label importSemantics
       @L_EXsignature listeDeTypes ;
       @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
       @typeVariablesMap tableArgumentsMethode [emptyMap] ;
-      @L_signature signature ;
+      @signatureForGrammarAnalysis signature ;
       <formal_arguments_list>
         !ioComponentSemanticsEntitiesMap
         ?listeDeTypes
@@ -8414,7 +8397,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signature ;
+  @signatureForGrammarAnalysis signature ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -8463,14 +8446,14 @@ rule <semantics_declaration_begining_by_extern>
   $->$ ;
 #--- Check all arguments are input or const input
   foreach listeTypeEtNomsArguments do
-    if mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentOut] then
+    if mFormalArgumentPassingMode == [@formalArgumentPassingMode argumentOut] then
       error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
-    elsif mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentInOut] then
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingMode argumentInOut] then
       error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
     end if ;
   end foreach ;
 #--- Parse result
-  @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -8503,7 +8486,7 @@ label importSemantics
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signature ;
+  @signatureForGrammarAnalysis signature ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -8517,14 +8500,14 @@ label importSemantics
   $->$ ;
 #--- Check all arguments are input or const input
   foreach listeTypeEtNomsArguments do
-    if mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentOut] then
+    if mFormalArgumentPassingMode == [@formalArgumentPassingMode argumentOut] then
       error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
-    elsif mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentInOut] then
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingMode argumentInOut] then
       error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
     end if ;
   end foreach ;
 #--- Parse result
-  @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -8608,7 +8591,7 @@ rule <semantics_declaration>
         error typeName:"the type should be '@location'" ;
       end if ;
       @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @EXformalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
       select
         $unused$ ;
         @lstring nomArgument ;
@@ -8691,7 +8674,7 @@ rule <semantics_declaration>
         error typeName:"the type should be '@location'" ;
       end if ;
       @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @EXformalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
       select
         $unused$ ;
         @lstring nomArgument ;
@@ -8768,7 +8751,7 @@ rule <semantics_declaration>
         error typeName:"the type should be '@location'" ;
       end if ;
       @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @EXformalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
       select
         $unused$ ;
         @lstring nomArgument ;
@@ -8937,7 +8920,7 @@ label importSemantics
         error typeName:"the type should be '@location'" ;
       end if ;
       @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @EXformalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
       select
         $unused$ ;
         @lstring nomArgument ;
@@ -9000,7 +8983,7 @@ label importSemantics
     @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
     select
     or
-      signature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+      signature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentConstantIn] ;
       $??$ ;
       @lstring typeName ;
       $type_name$ ? typeName ;
@@ -9044,7 +9027,7 @@ label importSemantics
     @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
     select
     or
-      signature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+      signature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentConstantIn] ;
       $??$ ;
       @lstring typeName ;
       $type_name$ ? typeName ;

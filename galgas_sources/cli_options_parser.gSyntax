@@ -23,7 +23,6 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics common_semantics in "common_semantics.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #-------------------------------------------------------------------*
 
@@ -49,8 +48,6 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importForGrammarAnalysis
-  ?!@syntaxRuleList ioSyntaxRuleList
 ;
 
 #-------------------------------------------------------------------*
@@ -223,27 +220,6 @@ label importOptions
   $option$ ;
   $;$ ;
   [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
-label importForGrammarAnalysis
-  ?!@syntaxRuleList unused ioSyntaxRuleList
-:
-  $option$ ;
-  $identifier$ ? * ;
-  $:$ ;
-  repeat
-  while 
-    $type_name$ ?*  ;
-    $identifier$ ? * ;
-    $:$ ;
-    $literal_char$ ? * ;
-    $,$ ;
-    $literal_string$ ? * ;
-    $->$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;
-  $end$ ;
-  $option$ ;
-  $;$ ;
 end rule ;
 
 #-------------------------------------------------------------------*

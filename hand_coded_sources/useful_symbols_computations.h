@@ -30,13 +30,13 @@ class cVocabulary ;
 class C_HTML_FileWrite ;
 class C_BDD_Set1 ;
 class C_Compiler ;
-class GGS_M_unusedNonTerminalSymbolsForGrammar ;
+class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
 void
 useful_symbols_computations (C_Compiler & inLexique,
-                             const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
+                             const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
                              const PMUInt16 inBDDBitCount,
                              const cVocabulary & inVocabulary,

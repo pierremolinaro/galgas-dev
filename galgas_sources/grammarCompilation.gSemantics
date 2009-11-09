@@ -23,515 +23,340 @@ import "buildPureBNFproductions.gSemantics" ;
 
 
 import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
-import semantics buildPureBNFproductions in "buildPureBNFproductions.gSemantics" ;
-import semantics grammarComputationsWithBDDs in "grammarComputationsWithBDDs.gSemantics" ;
+import semantics grammarSemantics in "grammarSemantics.gSemantics" ;
 import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
 import option galgas_cli_options in "galgas_cli_options.gOption" ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#  N O N    T E R M I N A L   M A P                                         *
-#                                                                           *
-#---------------------------------------------------------------------------*
 
-map @nonTerminalMap {
-  @nonTerminalLabelList mLabels ;
-  @bool mHasParseLabel ;
-  insert insertKey error message "the '@%K' non terminal has been already declared in %L" ;
-  search searchKey error message "the '@%K' non terminal is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  H A N D L E    N O N    T E R M I N A L   D E C L A R A T I O N S        *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine handleNonTerminalDeclarations
-  ?!@nonTerminalMap ioNonTerminalMap
-  ??@nonterminalDeclarationList inNonterminalDeclarationList
+function transformLabelMap
+  ??@nonTerminalLabelList inLabels
+  ??@bool inHasParseLabel
+  -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
 :
-  foreach inNonterminalDeclarationList do
-    if [ioNonTerminalMap hasKey ![mNonterminalName string]] then
-      @nonTerminalLabelList labels ;
-      @bool hasParseLabel ;
-      [ioNonTerminalMap searchKey
-        !mNonterminalName
-        ?labels
-        ?hasParseLabel
-      ] ;
-     #--- Compare 'parse' label
-      if mHasParseLabel & not hasParseLabel then
-        error mNonterminalName: "this declaration has a 'parse' label, but declaration of the same non terminal in " 
-        . [[ioNonTerminalMap locationForKey ![mNonterminalName string]] locationString]
-        . " does not have a 'parse' label" ;
-      elsif (not mHasParseLabel) &  hasParseLabel then
-        error mNonterminalName: "this declaration has no 'parse' label, but declaration of the same non terminal in " 
-        . [[ioNonTerminalMap locationForKey ![mNonterminalName string]] locationString]
-        . " has a 'parse' label" ;
-      end if ;
-    #--- Compare regular labels
-      if [labels length] != [mLabels length] then
-        error mNonterminalName: "this declaration names " 
-          . [[mLabels length] string]
-          . " labels, but declaration of the same non terminal in " 
-          . [[ioNonTerminalMap locationForKey ![mNonterminalName string]] locationString]
-          . " names"
-          . [[labels length] string]
-          . " labels."
-        ;
-      else
-        foreach mLabels, labels prefixedby others_ do
-          if [mLabelName string] != [others_mLabelName string] then
-            error mLabelName: "this label should be identical to the label '"
-            . others_mLabelName
-            . "' declared in " 
-            . [[others_mLabelName location] locationString]
-            ;
-          end if ;
-          foreach mFormalParameters, others_mFormalParameters prefixedby others_ do
-            
-            if mFormalParameterPassingMode != others_mFormalParameterPassingMode then
-              error mFormalParameterName: "the passing mode ("
-              . [mFormalParameterPassingMode string]
-              . ") for this parameter should be identical to the passing mode ("
-              . [others_mFormalParameterPassingMode string]
-              . ") of the parameter declared in"
-              . [[others_mLabelName location] locationString]
-              ;
-            end if ;
-            if [mFormalParameterTypeName string] != [others_mFormalParameterTypeName string] then
-              error mFormalParameterTypeName: "this type name should be identical to the '@"
-              . others_mFormalParameterTypeName
-              . "' type name used in " 
-              . [[others_mFormalParameterTypeName location] locationString]
-              ;
-            end if ;
-          end foreach ;
-        end foreach ;
-      end if ;
+  outNonterminalSymbolLabelMapForGrammarAnalysis := [@nonterminalSymbolLabelMapForGrammarAnalysis emptyMap] ;
+  foreach inLabels do
+    @signatureForGrammarAnalysis formalParametersList [emptyList] ;
+    foreach mFormalParameters do
+      formalParametersList += !mFormalParameterPassingMode !mFormalParameterTypeName ;
+    end foreach ;
+    [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
+      !mLabelName
+      !formalParametersList
+    ] ;
+  end foreach ;
+  if inHasParseLabel then
+    [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
+      ![@lstring new !"parse" !here] # Label 'parse'
+      ![@signatureForGrammarAnalysis emptyList]
+    ] ;
+  end if ;
+end function ;
+
+
+#---------------------------------------------------------------------------*
+
+routine checkLabelMap
+  ??@location inNonTerminalLocation
+  ??@nonTerminalLabelList inLabels
+  ??@bool inHasParseLabel
+  ??@location inOriginalNonTerminalLocation
+  ??@nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
+:
+  @stringset labelStringSet [emptySet] ;
+  foreach inLabels do
+    labelStringSet += ![mLabelName string] ;
+    @signatureForGrammarAnalysis formalParametersList ;
+    [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?formalParametersList] ;
+    if [mFormalParameters length] != [formalParametersList length] then
+      error mLabelName: [[mFormalParameters length] string]
+        . " formal parameter"
+        . if [mFormalParameters length] > 1 then "s" else "" end
+        . " declared here, but declaration at "
+        . [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
+        . "names " . [[formalParametersList length] string] . "parameter"
+        . if [formalParametersList length] > 1 then "s" else "" end ;
     else
-      [!?ioNonTerminalMap insertKey
-        !mNonterminalName
-        !mLabels
-        !mHasParseLabel
-      ] ;
+      foreach mFormalParameters, formalParametersList do
+        if mFormalArgumentPassingModeForGrammarAnalysis != mFormalParameterPassingMode then
+          error mGalgasTypeNameForGrammarAnalysis :
+            " this formal parameter is declared with "
+          . [mFormalArgumentPassingModeForGrammarAnalysis formalArgumentString]
+          . " passing mode, but declaration at "
+          . [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
+          . " is declared with " . [mFormalParameterPassingMode formalArgumentString] . " passing mode" ;
+        end if ;
+        if [mGalgasTypeNameForGrammarAnalysis string] != [mFormalParameterTypeName string] then
+          error mGalgasTypeNameForGrammarAnalysis :
+            " this formal parameter is declared of '@"
+          . mGalgasTypeNameForGrammarAnalysis
+          . "' type, but declaration at "
+          . [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
+          . " is declared with '@" . mFormalParameterTypeName . "' type" ;
+        end if ;
+      end foreach ;
+    end if ;
+  end foreach ;
+  if inHasParseLabel then
+    labelStringSet += !"parse" ;
+    if not [inNonterminalSymbolLabelMapForGrammarAnalysis hasKey !"parse"] then
+      error inNonTerminalLocation :
+        "this non terminal is declared with 'parse' label, but declaration at "
+          . [inOriginalNonTerminalLocation locationString]
+          . " does not declare 'parse' label" ;
+    end if ;
+  end if ;
+#---
+  foreach inNonterminalSymbolLabelMapForGrammarAnalysis do
+    if not [labelStringSet hasKey ![key string]] then
+      error inNonTerminalLocation :
+        "this non terminal does not declare the '" . key . "' label, but declaration at "
+          . [inOriginalNonTerminalLocation locationString]
+          . " does" ;
     end if ;
   end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*
-#                     buildSyntaxInstructionList                            *
-#---------------------------------------------------------------------------*
 
-abstract method @syntaxInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList unused ioSyntaxInstructionList
-;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  B U I L D    S Y N T A X    I N S T R U C T I O N    L I S T             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine buildSyntaxInstructionList
-  ??@syntaxInstructionList inInstructionList
-  !@syntaxInstructionList outSyntaxInstructionList
+routine handleNonTerminalDeclarations
+  ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
+  ??@nonterminalDeclarationList inNonterminalDeclarationList
 :
-  outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
-  foreach inInstructionList do
-    [mInstruction buildSyntaxInstructionList !?outSyntaxInstructionList] ;
+  foreach inNonterminalDeclarationList do
+    with !?ioNonTerminalMapForGrammarAnalysis hasKey ![mNonterminalName string] do
+      checkLabelMap
+        ![mNonterminalName location]
+        !mLabels
+        !mHasParseLabel
+        ![ioNonTerminalMapForGrammarAnalysis locationForKey ![mNonterminalName string]]
+        !mNonterminalSymbolParametersMap
+      ;
+    else
+      [!?ioNonTerminalMapForGrammarAnalysis insertKey
+        !mNonterminalName
+        ![ioNonTerminalMapForGrammarAnalysis count]
+        !transformLabelMap [!mLabels !mHasParseLabel]
+      ] ;
+    end with ;  
   end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*
-#                     buildSyntaxInstructionList                            *
+#                     transformInstructionList                              *
 #---------------------------------------------------------------------------*
 
-override method @semanticInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+abstract method @syntaxInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
+;
+
+#---------------------------------------------------------------------------*
+
+routine transformInstructionList
+  ??@syntaxInstructionList inInstructionList
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
+  foreach inInstructionList do
+    [mInstruction transformInstruction
+      !?ioActuallyUsedTerminalSymbolMap
+      !inNonTerminalSymbolMap
+      !?ioAddedNonTerminalIndex
+      !?ioSyntaxInstructionList
+   ] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+override method @terminalCheckInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+  ?!@uint unused ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
+:
+  @uint terminalSymbolIndex ;
+  with !?ioActuallyUsedTerminalSymbolMap hasKey ![mTerminalName string] do
+    terminalSymbolIndex := mTerminalIndex ;
+  else
+    terminalSymbolIndex := [ioActuallyUsedTerminalSymbolMap count] ;
+    [!?ioActuallyUsedTerminalSymbolMap insertKey !mTerminalName !terminalSymbolIndex] ;
+  end with ;
+  ioSyntaxInstructionList += ![@terminalInstructionForGrammarAnalysis new
+    !mStartLocation
+    !mTerminalName
+    !terminalSymbolIndex
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @nonterminalCallInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList ioSyntaxInstructionList
+override method @nonterminalCallInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint unused ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
-  ioSyntaxInstructionList += !self ;
+  @uint nonTerminalSymbolIndex ;
+  [inNonTerminalSymbolMap searchKey !mNonterminalName ?nonTerminalSymbolIndex ?*] ;
+  ioSyntaxInstructionList += ![@nonTerminalInstructionForGrammarAnalysis new
+    !mStartLocation
+    !mNonterminalName
+    !nonTerminalSymbolIndex
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @terminalCheckInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList ioSyntaxInstructionList
+override method @repeatInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
-  ioSyntaxInstructionList += !self ;
-end method ;
+  const @uint addedNonTerminalIndex := ioAddedNonTerminalIndex ;
+  ioAddedNonTerminalIndex ++ ;
 
-#---------------------------------------------------------------------------*
+  @syntaxInstructionListForGrammarAnalysis repeatedInstructionList [emptyList] ;
+  transformInstructionList
+    !mRepeatedInstructionList
+    !?ioActuallyUsedTerminalSymbolMap
+    !inNonTerminalSymbolMap
+    !?ioAddedNonTerminalIndex
+    !?repeatedInstructionList
+  ;
+  @branchListForGrammarAnalysis repeatBranchList [listWithValue !repeatedInstructionList] ;
 
-override method @repeatInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList ioSyntaxInstructionList
-:
-  @syntaxInstructionList repeatedInstructionList ;
-  buildSyntaxInstructionList !mRepeatedInstructionList ?repeatedInstructionList ;
-  @listOfSyntaxInstructionList repeatBranchList [emptyList] ;
   foreach mRepeatBranchList do
-    @syntaxInstructionList syntaxInstructionList ;
-    buildSyntaxInstructionList !mSyntaxInstructionList ?syntaxInstructionList ;
+    @syntaxInstructionListForGrammarAnalysis syntaxInstructionList [emptyList] ;
+    transformInstructionList
+      !mSyntaxInstructionList
+      !?ioActuallyUsedTerminalSymbolMap
+      !inNonTerminalSymbolMap
+      !?ioAddedNonTerminalIndex
+      !?syntaxInstructionList
+    ;
     repeatBranchList += !syntaxInstructionList ;
   end foreach ;
-  @repeatInstruction ri [new
-    !mRepeatInstructionLocation
-    !repeatedInstructionList
+
+  ioSyntaxInstructionList += ![@repeatInstructionForGrammarAnalysis new
+    !mStartLocation
     !repeatBranchList
+    !addedNonTerminalIndex
   ] ;
-  ioSyntaxInstructionList += !ri ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @selectInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList ioSyntaxInstructionList
+override method @selectInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
-  @listOfSyntaxInstructionList selectBranchList [emptyList] ;
+  const @uint addedNonTerminalIndex := ioAddedNonTerminalIndex ;
+  ioAddedNonTerminalIndex ++ ;
+
+  @branchListForGrammarAnalysis selectBranchList [emptyList] ;
   foreach mSelectBranchList do
-    @syntaxInstructionList syntaxInstructionList ;
-    buildSyntaxInstructionList !mSyntaxInstructionList ?syntaxInstructionList ;
+    @syntaxInstructionListForGrammarAnalysis syntaxInstructionList [emptyList] ;
+    transformInstructionList
+      !mSyntaxInstructionList
+      !?ioActuallyUsedTerminalSymbolMap
+      !inNonTerminalSymbolMap
+      !?ioAddedNonTerminalIndex
+      !?syntaxInstructionList
+    ;
     selectBranchList += !syntaxInstructionList ;
   end foreach ;
-  @selectInstruction si [new
-    !mSelectInstructionLocation
+
+  ioSyntaxInstructionList += ![@selectInstructionForGrammarAnalysis new
+    !mStartLocation
     !selectBranchList
+    !addedNonTerminalIndex
   ] ;
-  ioSyntaxInstructionList += !si ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @parseDoInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList ioSyntaxInstructionList
+override method @parseDoInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
-  @syntaxInstructionList instructionList ;
-  [mParseDoBranchList first ?instructionList] ;
-  foreach instructionList do
-    [mInstruction buildSyntaxInstructionList !?ioSyntaxInstructionList] ;
-  end foreach ;
-end method ;
+  @syntaxInstructionList syntaxInstructionList ;
+  [mParseDoBranchList first ?syntaxInstructionList] ;
 
-#---------------------------------------------------------------------------*
-
-override method @blockInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList ioSyntaxInstructionList
-:
-  foreach mInstructionList do
-    [mInstruction buildSyntaxInstructionList !?ioSyntaxInstructionList] ;
-  end foreach ;
-end method ;
-
-#---------------------------------------------------------------------------*
-#                     buildSyntaxInstructionList                            *
-#---------------------------------------------------------------------------*
-
-abstract reader @syntaxInstruction htmlListing
-  -> @string outListing
-;
-
-#---------------------------------------------------------------------------*
-
-override reader @semanticInstruction htmlListing
-  -> @string outListing
-:
-  outListing := "" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @nonterminalCallInstruction htmlListing
-  -> @string outListing
-:
-  outListing := "<span class=\"galgas_nonterminal\">&lt;" . mNonterminalName . "&gt;</span>" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @terminalCheckInstruction htmlListing
-  -> @string outListing
-:
-  outListing := "<span class=\"galgas_terminal\">$" . [mTerminalName HTMLRepresentation] . "$</span>" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @repeatInstruction htmlListing
-  -> @string outListing
-:
-  outListing := "<span class=\"galgas_structure\">"
-  . "<span class=\"galgas_keyword\">repeat</span>"
-  . "<span class=\"within_galgas_structure\">" ;
-  foreach mRepeatedInstructionList do
-    outListing .= [mInstruction htmlListing] ;
-  end foreach ;
-  outListing .= "</span>" ;
-  foreach mRepeatBranchList do
-    outListing .= "<span class=\"galgas_keyword\">while</span>" ;
-    outListing .= "<span class=\"within_galgas_structure\">" ;
-    foreach mSyntaxInstructionList do
-      outListing .= [mInstruction htmlListing] ;
-    end foreach ;
-    outListing .= "</span>" ;
-  end foreach ;
-  outListing .= "<span class=\"galgas_keyword\">end repeat</span>"
-  . "</span>" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @selectInstruction htmlListing
-  -> @string outListing
-:
-  outListing := "<span class=\"galgas_structure\">"
-  . "<span class=\"galgas_keyword\">select</span>" ;
-  foreach mSelectBranchList
-  do
-    outListing .= "<span class=\"within_galgas_structure\">" ;
-    foreach mSyntaxInstructionList do
-      outListing .= [mInstruction htmlListing] ;
-    end foreach ;
-    outListing .= "</span>" ;
-  between 
-   outListing .= "<span class=\"galgas_keyword\">or</span>" ;
-  end foreach ;
-  outListing .= "<span class=\"galgas_keyword\">end select</span>"
-  . "</span>" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @parseDoInstruction htmlListing
-  -> @string outListing
-:
-  outListing := "[Parse do]" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @blockInstruction htmlListing
-  -> @string outListing
-:
-  outListing := "[block]" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                 enterTerminalSymbolIntoVocabulary                         *
-#---------------------------------------------------------------------------*
-
-abstract method @syntaxInstruction enterTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioVocabularyMap
-  ?!@stringlist unused ioVocabularyListForDisplaying
-;
-
-#---------------------------------------------------------------------------*
-
-override method @semanticInstruction enterTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioVocabularyMap
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @nonterminalCallInstruction enterTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioVocabularyMap
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @terminalCheckInstruction enterTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap ioVocabularyMap
-  ?!@stringlist ioVocabularyListForDisplaying
-:
-  if not [ioVocabularyMap hasKey ![mTerminalName string]] then
-    [!?ioVocabularyMap insertKey !mTerminalName ![ioVocabularyMap count]] ;
-    ioVocabularyListForDisplaying += !"$" . mTerminalName . "$" ;
-  end if ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @repeatInstruction enterTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioVocabularyMap
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @selectInstruction enterTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioVocabularyMap
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @parseDoInstruction enterTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioVocabularyMap
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @blockInstruction enterTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioVocabularyMap
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-#               enterNonTerminalSymbolIntoVocabulary                        *
-#---------------------------------------------------------------------------*
-
-abstract method @syntaxInstruction enterNonTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioNonTerminalMap
-  ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
-  ?!@stringlist unused ioVocabularyListForDisplaying
-;
-
-#---------------------------------------------------------------------------*
-
-override method @semanticInstruction enterNonTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioNonTerminalMap
-  ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @nonterminalCallInstruction enterNonTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap ioNonTerminalMap
-  ??@vocabularyMap inTerminalMap
-  ?!@uintlist ioRightDerivation
-  ?!@stringlist ioVocabularyListForDisplaying
-:
-  if not [ioNonTerminalMap hasKey ![mNonterminalName string]] then
-    [!?ioNonTerminalMap insertKey !mNonterminalName ![ioNonTerminalMap count] + [inTerminalMap count]] ;
-    ioVocabularyListForDisplaying += !"<" . mNonterminalName . ">" ;
-  end if ;
-  @uint nonterminalIndex ;
-  [ioNonTerminalMap searchKey !mNonterminalName ?nonterminalIndex] ;
-  ioRightDerivation += !nonterminalIndex ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @terminalCheckInstruction enterNonTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioNonTerminalMap
-  ??@vocabularyMap inTerminalMap
-  ?!@uintlist ioRightDerivation
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-  @uint terminalIndex ;
-  [inTerminalMap searchKey !mTerminalName ?terminalIndex] ;
-  ioRightDerivation += !terminalIndex ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @repeatInstruction enterNonTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioNonTerminalMap
-  ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @selectInstruction enterNonTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioNonTerminalMap
-  ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @parseDoInstruction enterNonTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioNonTerminalMap
-  ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @blockInstruction enterNonTerminalSymbolIntoVocabulary
-  ?!@vocabularyMap unused ioNonTerminalMap
-  ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
-  ?!@stringlist unused ioVocabularyListForDisplaying
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  G E N E R A T I O N    F I L E W R A P P E R S                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-filewrapper grammarGenerationTemplates in "../generation_templates/grammar_generation" {
-} {
-  template html "grammar.html.gTemplate"
-    ?@string GRAMMAR_NAME
-    ?@syntaxRuleListForGrammar SYNTAX_RULE_LIST
-    ?@syntaxRuleListForGrammar PURE_SYNTAX_RULE_LIST
-    ?@stringlist IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST
-    ?@string HTML_FILE_HEADER
-    ?@string HTML_FILE_CONTENTS
+  transformInstructionList
+    !syntaxInstructionList
+    !?ioActuallyUsedTerminalSymbolMap
+    !inNonTerminalSymbolMap
+    !?ioAddedNonTerminalIndex
+    !?ioSyntaxInstructionList
   ;
-  template optionHeaderZone2 "grammar-zone2.h.gTemplate"
-    ?@string GRAMMAR_NAME
-    ?@grammarComponentRoot GRAMMAR_COMPONENT_ROOT
-  ;
-  template optionHeaderZone3 "grammar-zone3.h.gTemplate"
-    ?@string GRAMMAR_NAME
-    ?@grammarComponentRoot GRAMMAR_COMPONENT_ROOT
-    ?@nonTerminalMap NON_TERMINAL_MAP
-    ?@string LEXIQUE_CLASS
-    ?@stringlist ADDED_NON_TERMINAL_LIST
-  ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#  B U I L D    R U L E    L I S T                                          *
-#                                                                           *
+
+override method @blockInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
+:
+  transformInstructionList
+    !mInstructionList
+    !?ioActuallyUsedTerminalSymbolMap
+    !inNonTerminalSymbolMap
+    !?ioAddedNonTerminalIndex
+    !?ioSyntaxInstructionList
+  ;
+end method ;
+
 #---------------------------------------------------------------------------*
 
 routine buildRuleList
-  ??@string inSyntaxComponentName
+  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
+  ??@lstring inSyntaxComponentName
   ??@syntaxRuleList inRuleList
-  ?!@syntaxRuleListForGrammar ioSyntaxRuleListForGrammar
+  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis
+  ?!@uint ioAddedNonTerminalCount
 :
+  @productionRuleListForGrammarAnalysis productionRulesList [emptyList] ;
   foreach inRuleList do
-  #--- We get only the first label (all syntax signatures are the same)
-    @syntaxInstructionList instructionList ;
-    [mLabelList first ?* ?* ?instructionList] ;
-    @syntaxInstructionList syntaxInstructionList ;
-    buildSyntaxInstructionList !instructionList ?syntaxInstructionList ;
-    ioSyntaxRuleListForGrammar += !inSyntaxComponentName !mNonterminalName !syntaxInstructionList ;
+    @uint nonTerminalIndex ;
+    @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap ;
+    [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?nonTerminalIndex ?nonterminalSymbolParametersMap] ;
+  #--- Retrieve instruction list from first label
+    @syntaxInstructionList parsedSyntaxInstructionList ; [mLabelList first ?* ?* ?parsedSyntaxInstructionList] ;
+  #--- Transform instruction list
+    @syntaxInstructionListForGrammarAnalysis instructionList [emptyList] ;
+    transformInstructionList
+      !parsedSyntaxInstructionList
+      !?ioActuallyUsedTerminalSymbolMap
+      !inNonTerminalMapForGrammarAnalysis
+      !?ioAddedNonTerminalCount
+      !?instructionList
+    ; 
+  #---
+    productionRulesList +=
+      !mNonterminalName
+      !nonTerminalIndex
+      !instructionList
+    ;
   end foreach ;
+  ioSyntaxComponentListForGrammarAnalysis +=
+    !productionRulesList
+    !inSyntaxComponentName
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -553,9 +378,11 @@ routine compileGrammarComponent
     ;
   end if ;
 #---------------------------------------------------------- Parse syntax components
-  @nonTerminalMap nonTerminalMap [emptyMap] ;
+  @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
+  @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis [emptyMap] ;
   @string lexiqueComponentName := "" ; # Empty string means unknown
-  @syntaxRuleListForGrammar syntaxRuleListForGrammar [emptyList] ;
+  @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis [emptyList] ;
+  @uint addedNonTerminalCount := 0 ;
   foreach [grammarComponentRoot mSyntaxComponents] do
     if [mValue pathExtension] != "gSyntax" then
       error mValue: "a syntax component file should have '.gSyntax' as path extension" ;
@@ -580,355 +407,53 @@ routine compileGrammarComponent
       end if ;
     #--- Handle non terminal declarations
       handleNonTerminalDeclarations
-        !?nonTerminalMap
+        !?nonTerminalMapForGrammarAnalysis
         ![syntaxComponentRoot mNonterminalDeclarationList]
       ;
     #--- Handle syntax rules
       buildRuleList
-        !syntaxComponentName
+        !nonTerminalMapForGrammarAnalysis
+        ![syntaxComponentRoot mSyntaxComponentName]
         ![syntaxComponentRoot mRuleList]
-        !?syntaxRuleListForGrammar
+        !?actuallyUsedTerminalSymbolMap
+        !?syntaxComponentListForGrammarAnalysis
+        !?addedNonTerminalCount
       ;
     end if ;
   end foreach ;
-#---------------------------------------------------------- Build pure BNF productions
-  @syntaxRuleListForGrammar pureSyntaxRuleListForGrammar [emptyList] ;
-  @syntaxRuleListForGrammar addedPureSyntaxRuleListForGrammar [emptyList] ;
-  @stringlist addedNonTerminalList [emptyList] ;
-  @string currentSyntaxComponentName := "" ;
-  @uint addedRuleIndex := 0 ;
-  foreach syntaxRuleListForGrammar do
-    if currentSyntaxComponentName != mSyntaxComponentName then
-      currentSyntaxComponentName := mSyntaxComponentName  ;
-      addedRuleIndex := 0 ;
-    end if ;
-    @syntaxInstructionList pureSyntaxInstructionList ;
-    buildPureSyntaxInstructionList
-      !mSyntaxComponentName
-      !mSyntaxInstructionList
-      ?pureSyntaxInstructionList
-      !?addedPureSyntaxRuleListForGrammar
-      !?addedNonTerminalList
-      !?addedRuleIndex
-    ;
-    pureSyntaxRuleListForGrammar +=
-      !mSyntaxComponentName
-      !mLeftNonTerminal
-      !pureSyntaxInstructionList
-    ;
-  end foreach ;
-#--- Append added production
-  pureSyntaxRuleListForGrammar .= addedPureSyntaxRuleListForGrammar ;
-#--- Append production for start symbol <>
-  @syntaxInstructionList syntaxInstructionList [emptyList] ;
-  syntaxInstructionList += ![@nonterminalCallInstruction new
-    ![grammarComponentRoot mStartSymbol]
-    ![@lstring new !"" !here] # no Label
-    ![@actualParameterList emptyList]
-  ] ;
-  syntaxInstructionList += ![@terminalCheckInstruction new
-    ![@lstring new !"" !here] # The terminal symbol is $$
-    ![@actualInputParameterList emptyList]
-  ] ;
-  pureSyntaxRuleListForGrammar +=
-    !""
-    ![@lstring new !"" !here] # Start symbol is <>
-    !syntaxInstructionList
-  ;
-  if [option .verbose_output] then
-    message "  Building pure BNF productions... " . [[pureSyntaxRuleListForGrammar length] string] . " productions\n" ;
-  end if ;  
-#---------------------------------------------------------- Build Vocabulary...
-#                                                   ... and  production list map
-  if [option .verbose_output] then
-    message "  Checking all productions are differents..." ;
-  end if ;  
-  @string htmlOutputFileName := [inSourceFile stringByDeletingPathExtension] . ".html" ;
-  @productionListMap productionListMap [emptyMap] ;
-  @stringlist identicalDerivationErrorMessageList [emptyList] ;
-  @stringlist vocabularyListForDisplaying [emptyList] ;
-  @uint additionalNonTerminalSymbolsForPureBDDrules := 0 ;
-#--- Enter terminal symbols
-  @vocabularyMap terminalMap [emptyMap] ;
-  foreach pureSyntaxRuleListForGrammar do
-    foreach mSyntaxInstructionList do
-      [mInstruction enterTerminalSymbolIntoVocabulary !?terminalMap !?vocabularyListForDisplaying] ;
-    end foreach ;
-  end foreach ;
-  @uint terminalSymbolCount := [terminalMap count] ;
-#--- Enter non terminal symbols
-  @vocabularyMap nonterminalMap [emptyMap] ;
-  foreach pureSyntaxRuleListForGrammar index idx do
-    if not [nonterminalMap hasKey ![mLeftNonTerminal string]] then
-      [!?nonterminalMap insertKey !mLeftNonTerminal ![terminalMap count] + [nonterminalMap count]] ;
-      vocabularyListForDisplaying += !"<" . mLeftNonTerminal . ">" ;
-    end if ;
-    if [mSyntaxInstructionList length] > 2 then
-      additionalNonTerminalSymbolsForPureBDDrules := additionalNonTerminalSymbolsForPureBDDrules + [mSyntaxInstructionList length] - 2 ;
-    end if ;
-    @uintlist rightDerivation [emptyList] ;
-    foreach mSyntaxInstructionList do
-      [mInstruction enterNonTerminalSymbolIntoVocabulary !?nonterminalMap !terminalMap !?rightDerivation !?vocabularyListForDisplaying] ;
-    end foreach ;
-  #--- Check production is dictinct from previous ones
-    @derivationList previousDerivations := [productionListMap listForKey ![mLeftNonTerminal string]] ;
-    @bool ok := true ;
-    foreach previousDerivations while ok do
-      if mDerivation == rightDerivation then
-        ok := false ;
-        if [option .verbose_output] & ([identicalDerivationErrorMessageList length] == 0) then
-          message " error\n" ;
-        end if ;  
-        @string errorMessage := "for <"
-        . mLeftNonTerminal
-        . "> non terminal, productions "
-        . [mProductionIndex string]
-        . " and " . [idx string] . " are identical" ;
-        identicalDerivationErrorMessageList += !errorMessage ;
-        if [option galgas_cli_options.outputHTMLgrammarFile] then
-          errorMessage .= " (for details, see " . htmlOutputFileName . " file)" ;
-        else
-          errorMessage .= " (for details, turn on '--output-html-grammar-file' option and see " . htmlOutputFileName . " file)" ;
-        end if ;
-        error mLeftNonTerminal:errorMessage ;
-      end if ;
-    end foreach ;
-    if ok then
-      @uint leftTerminalIndex ;
-      [nonterminalMap searchKey !mLeftNonTerminal ?leftTerminalIndex] ;
-      productionListMap += ![mLeftNonTerminal string] !leftTerminalIndex !idx !rightDerivation ;
-    end if ;
-  end foreach ;
-  if [option .verbose_output] & ([identicalDerivationErrorMessageList length] == 0) then
-    message " ok\n" ;
-  end if ;  
-#---------------------------------------------------------- Symbols declared unused
-  @uintlist unusedNonterminalSymbolList [emptyList] ;
-  foreach [grammarComponentRoot mUnusedNonterminalList] do
-    with !?nonterminalMap searchKey !mValue do
-      unusedNonterminalSymbolList += !mIndex ;
-    else
-      error mValue : "the '<" . mValue . ">' non terminal is not declared by syntax components" ;
-    end with ;
-  end foreach ;
 #---------------------------------------------------------- Start symbol
+#--- Search start symbol in non terminal map
+  @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap ;
   @uint startSymbolIndex ;
-  with !?nonterminalMap searchKey ![grammarComponentRoot mStartSymbol] do
-    startSymbolIndex := mIndex ;
-  else
-    error [grammarComponentRoot mStartSymbol] : "the '<" . [grammarComponentRoot mStartSymbol]
-    . ">' non terminal is not declared by syntax components, it cannot be used as start symbol"
-    -> startSymbolIndex ;
-  end with ;
+  [nonTerminalMapForGrammarAnalysis searchKey ![grammarComponentRoot mStartSymbolName] ?startSymbolIndex ?startSymbolAltMap] ;
+#--- Check signatures
+  checkLabelMap
+    ![[grammarComponentRoot mStartSymbolName] location]
+    ![grammarComponentRoot mStartSymbolLabelList]
+    !false # No parse label
+    ![nonTerminalMapForGrammarAnalysis locationForKey ![[grammarComponentRoot mStartSymbolName] string]]
+    !startSymbolAltMap
+  ;
+#---------------------------------------------------------- Unused Non Terminal Symbols
+  @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar [emptyMap] ;
+  foreach [grammarComponentRoot mUnusedNonterminalList] do
+    @uint nonterminalIndex ;
+    [nonTerminalMapForGrammarAnalysis searchKey !mValue ?nonterminalIndex ?*] ;
+    [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex] ;
+  end foreach ;
 #---------------------------------------------------------- Analyze grammar
-  @string HTMLFileHeader ;
-  @string HTMLFileContents ;
-  newGrammarAnalyzer
-    !grammarComponentName
+  analyzeGrammar
+    ![grammarComponentRoot mGrammarName]
+    ![grammarComponentRoot mGrammarClass]
     !startSymbolIndex
     !lexiqueComponentName
-    !vocabularyListForDisplaying
-    !nonterminalMap
-    !terminalMap
-    !productionListMap
-    !unusedNonterminalSymbolList
-    ?HTMLFileHeader
-    ?HTMLFileContents
+    ![grammarComponentRoot mEndOfSourceText]
+    !actuallyUsedTerminalSymbolMap
+    !syntaxComponentListForGrammarAnalysis
+    !nonTerminalMapForGrammarAnalysis
+    !unusedNonTerminalSymbolsForGrammar
+    !inOutputDirectory
   ;
-##---------------------------------------------------------- BDD parameters
-#  const @uint terminalCount := [terminalMap count] ;
-#  const @uint vocabularyCount := terminalCount + [nonterminalMap count] + additionalNonTerminalSymbolsForPureBDDrules ;
-#  const @uint startSymbolIndexForBDD := terminalCount + [nonterminalMap count] - 1 ;
-#  const @uint bitCountForBDDs := [vocabularyCount significantBitCount] ;
-##  log additionalNonTerminalSymbolsForPureBDDrules ;
-#  @uint idx := 0 ;
-#  loop additionalNonTerminalSymbolsForPureBDDrules :
-#  while idx < additionalNonTerminalSymbolsForPureBDDrules  do
-#    vocabularyListForDisplaying += !"<" . [idx string] . ">" ;
-#    idx ++ ;
-#  end loop ;
-#  
-##---------------------------------------------------------- Building pure BDD rules
-#  @binaryset nonTerminalsWithEmptyProduction [emptyBinarySet] ; # Set of <T>, with <T> ::= ^ rule
-#  @binaryset productionsWithSingleDerivation [emptyBinarySet] ; # Set of (T, X), with <T> ::= X rule
-#  @binaryset productionsWithDoubleDerivation [emptyBinarySet] ; # Set of (T, X, Y), with <T> ::= X Y rule
-#  @uint64 addedNonTerminalIndex := [terminalCount + [nonterminalMap count] uint64] ;
-#  foreach productionListMap do
-#    @uint nonterminalIndex ;
-#    [nonterminalMap searchKey ![@lstring new !key !here] ?nonterminalIndex] ;
-#    foreach object do
-#      if [mDerivation length] == 0 then # Empty derivation
-#        nonTerminalsWithEmptyProduction := nonTerminalsWithEmptyProduction |
-#          [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonterminalIndex uint64]]
-#        ;
-#      elsif [mDerivation length] == 1 then # Single derivation
-#        const @uint64 derivation0 := [mDerivation mValueAtIndex !0] ;
-#        productionsWithSingleDerivation := productionsWithSingleDerivation
-#         | ([@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs ![nonterminalIndex uint64]]
-#          & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !derivation0]
-#           ) ;
-#      elsif [mDerivation length] == 2 then # Double derivation
-#        const @uint64 derivation0 := [mDerivation mValueAtIndex !0] ;
-#        const @uint64 derivation1 := [mDerivation mValueAtIndex !1] ;
-#        productionsWithDoubleDerivation := productionsWithDoubleDerivation
-#         | ([@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs ![nonterminalIndex uint64]]
-#          & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation0]
-#          & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !derivation1]
-#           ) ;
-#      else
-#        @uint64 currentLeftNonTerminal := [nonterminalIndex uint64] ;
-#        foreach mDerivation :idx do
-#          if idx < ([mDerivation length] - 2) then
-#            const @uint64 derivation := [mDerivation mValueAtIndex !idx] ;
-#            productionsWithDoubleDerivation := productionsWithDoubleDerivation
-#             | ([@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !currentLeftNonTerminal]
-#                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation]
-#                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs !addedNonTerminalIndex]
-#               ) ;
-#            currentLeftNonTerminal := addedNonTerminalIndex ;
-#            addedNonTerminalIndex ++ ;
-#          elsif idx == ([mDerivation length] - 2) then
-#            const @uint64 derivation0 := [mDerivation mValueAtIndex !idx] ;
-#            const @uint64 derivation1 := [mDerivation mValueAtIndex !idx+1] ;
-#            productionsWithDoubleDerivation := productionsWithDoubleDerivation
-#             | ([@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !currentLeftNonTerminal]
-#                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation0]
-#                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs !derivation1]
-#               ) ;
-#           end if ;
-#        end foreach ;
-#      end if ;
-#    end foreach ;
-#  end foreach ;
-##---------------------------------------------------------- Computing useful vocabulary
-#  if [option .verbose_output] then
-#    message "  Checking all non terminal symbols are useful..." ;
-#  end if ;
-##--- elementaryUtility (X, Y) : if X is useful, then Y is useful
-#  @binaryset elementaryUtility := productionsWithSingleDerivation ; # Single derivations are useful
-##--- Double derivation T ::= X Y : Add (T, X)
-#  elementaryUtility := elementaryUtility | [productionsWithDoubleDerivation existOnBitIndexAndBeyond!bitCountForBDDs + bitCountForBDDs] ;
-#  elementaryUtility := elementaryUtility | [[productionsWithDoubleDerivation swap132 !bitCountForBDDs !bitCountForBDDs !bitCountForBDDs] existOnBitIndexAndBeyond!bitCountForBDDs + bitCountForBDDs] ;
-##--- Double derivation T ::= X Y : Add (T, Y)
-##  foreach productionListMap do
-##    @binaryset derivation [emptyBinarySet] ;
-##    foreach object do
-##      foreach mDerivation do
-##        derivation := derivation | [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !mValue] ;
-##      end foreach ;
-##    end foreach ;
-##    @uint nonterminalIndex ;
-##    [nonterminalMap searchKey ![@lstring new !key !here] ?nonterminalIndex] ;
-##    derivation := derivation & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonterminalIndex uint64]] ;
-##    elementaryUtility := elementaryUtility | derivation ;
-##  end foreach ;
-##--- Computing transitive closure
-#  const @binaryset startSymbol [binarySetWithEqualToConstant !0 !bitCountForBDDs ![startSymbolIndexForBDD uint64]] ;
-#  const @binaryset usefulSymbols := [elementaryUtility accessibleStates !startSymbol !bitCountForBDDs] ;
-##--- Compute and display useless symbols
-#  const @binaryset allSymbols [binarySetWithLowerOrEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
-#  const @binaryset unusefulSymbols := allSymbols & ~ usefulSymbols ;
-#  @binaryset unusefulNonTerminals := unusefulSymbols & [@binaryset binarySetWithGreaterOrEqualToConstant !0 !bitCountForBDDs ![terminalCount uint64]] ;
-#  foreach [grammarComponentRoot mUnusedNonterminalList] do
-#    @uint nonTerminalSymbolIndex ;
-#    [nonterminalMap searchKey !mValue ?nonTerminalSymbolIndex] ;
-#    unusefulNonTerminals := unusefulNonTerminals & ~ [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonTerminalSymbolIndex uint64]] ;
-#  end foreach ;
-#  const @stringlist unusefulNonTerminalList := [unusefulNonTerminals stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
-#  if [option .verbose_output] then
-#    message if [unusefulNonTerminalList length] == 0 then " ok\n" else " warning\n" end ;
-#  end if ;
-#  if [unusefulNonTerminalList length] > 0 then
-#    @string errorMessage := "the grammar contains "
-#    . [[unusefulNonTerminalList length] string]
-#    . " useless symbol" . if [unusefulNonTerminalList length] > 1 then "s" else "" end . ": " ;
-#    foreach unusefulNonTerminalList
-#    do errorMessage .= mValue ;
-#    between errorMessage .= ", " ;
-#    end foreach ;
-#    warning here: errorMessage ;
-#  end if ;
-##---------------------------------------------------------- Check nonterminal symbols declared as useless are actually useless
-#  foreach [grammarComponentRoot mUnusedNonterminalList] do
-#    @uint nonTerminalSymbolIndex ;
-#    [nonterminalMap searchKey !mValue ?nonTerminalSymbolIndex] ;
-#    if [usefulSymbols containsValue ![nonTerminalSymbolIndex uint64] !0 !bitCountForBDDs] then
-#      warning mValue : "the '<" . mValue . ">' non terminal is declared as unused, but it is actually useful" ;
-#    end if ;
-#  end foreach ;
-##---------------------------------------------------------- Symbols deriving in empty string
-#  @binaryset symbolsDirectlyDerivingInEmptyString [emptyBinarySet] ;
-#  foreach productionListMap do
-#    foreach object do
-#      if [mDerivation length] == 0 then
-#        symbolsDirectlyDerivingInEmptyString := symbolsDirectlyDerivingInEmptyString
-#          | [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !mLeftTerminalIndex] ;
-#      end if ;
-#    end foreach ;
-#  end foreach ;
-##---------------------------------------------------------- Computing FIRST set
-#  @binaryset elementaryFIRSTset [emptyBinarySet] ;
-#  foreach productionListMap do
-#    @binaryset elementaryFIRSTsetForNonTerminal [emptyBinarySet] ;
-#    @uint64 leftNonTerminalIndex := 0L ;
-#    foreach object do
-#      if [mDerivation length] > 0 then
-#        leftNonTerminalIndex := mLeftTerminalIndex ;
-#        @uint64 firstSymbol ;
-#        [mDerivation first ?firstSymbol] ;
-#        elementaryFIRSTsetForNonTerminal := elementaryFIRSTsetForNonTerminal | [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !firstSymbol] ;
-#      end if ;
-#    end foreach ;
-#    elementaryFIRSTset := elementaryFIRSTset | (elementaryFIRSTsetForNonTerminal & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !leftNonTerminalIndex]) ;
-#  end foreach ;
-#---------------------------------------------------------- Build HTML file
-  if [option galgas_cli_options.outputHTMLgrammarFile] then
-#    const @stringlist listOfSymbolsDirectlyDerivingInEmptyString := [symbolsDirectlyDerivingInEmptyString stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
-    @string s := [filewrapper grammarGenerationTemplates.html
-      ![grammarComponentName string]
-      !syntaxRuleListForGrammar
-      !pureSyntaxRuleListForGrammar
-      !identicalDerivationErrorMessageList
-      !HTMLFileHeader
-      !HTMLFileContents
-#      !vocabularyListForDisplaying
-#      !terminalMap
-#      !additionalNonTerminalSymbolsForPureBDDrules
-#      !nonterminalMap
-#      !bitCountForBDDs
-#      ![nonTerminalsWithEmptyProduction stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
-#      ![productionsWithSingleDerivation relationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
-#      ![productionsWithDoubleDerivation tripleRelationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
-#      !unusefulNonTerminalList
-#      !listOfSymbolsDirectlyDerivingInEmptyString
-#      ![elementaryFIRSTset relationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
-#      ![elementaryFIRSTset valueCount !bitCountForBDDs + bitCountForBDDs]
-    ] ;
-    [s writeToFileWhenDifferentContents !htmlOutputFileName ?*] ;
-  else
-    [@string deleteFileIfExists !htmlOutputFileName] ;
-  end if ;
-#---------------------------------------------------------- Generate Header file
-  if [@uint errorCount] == 0 then
-    [@string generateFile
-      !inOutputDirectory
-      ![grammarComponentName string] . ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper grammarGenerationTemplates.optionHeaderZone2
-        ![grammarComponentName string]
-        !grammarComponentRoot
-      ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper grammarGenerationTemplates.optionHeaderZone3
-        ![grammarComponentName string]
-        !grammarComponentRoot
-        !nonTerminalMap
-        !lexiqueComponentName
-        !addedNonTerminalList
-      ]
-    ] ;
-  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

@@ -52,22 +52,6 @@
 
 //---------------------------------------------------------------------------*
 
-class cInfo {
-  public : GGS_M_terminalSymbolsMapForGrammarAnalysis mTerminalSymbolMap ;
-  public : GGS_M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMapForGrammar ;
-  
-  public : cInfo (void) ;
-} ;
-
-//---------------------------------------------------------------------------*
-
-cInfo::cInfo (void) :
-mTerminalSymbolMap (),
-mNonterminalSymbolsMapForGrammar () {
-}
-
-//---------------------------------------------------------------------------*
-
 cProduction::cProduction (void) :
 mSourceFileName (),
 aLigneDefinition (0),
@@ -172,8 +156,8 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
 
 static void
 generateGrammarHeaderFile (C_Compiler & inLexique,
-                           const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                           const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
+                           const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                           const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                            const C_String & inLexiqueName,
                            const PMUInt32 inOriginalGrammarStartSymbol,
                            const C_String & inTargetFileName,
@@ -184,7 +168,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   
 //--- Engendrer les inclusions --------------------------------------------------------------
   generatedZone2.appendCppHyphenLineComment () ;
-  GGS_L_syntaxComponents_ForGrammar::cEnumerator component (inSyntaxComponentsList, true) ;
+  GGS_syntaxComponentListForGrammarAnalysis::cEnumerator component (inSyntaxComponentsList, true) ;
   while (component.hasCurrentObject ()) {
     generatedZone2 << "#include \"" << component._mSyntaxComponentName (HERE) << ".h\"\n" ;
     component.next () ;
@@ -210,18 +194,18 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   }
   generatedZone3 << " {\n" ;
 //--- declaration des non-terminaux de la grammaire d'origine
-  GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
+  GGS_nonTerminalSymbolMapForGrammarAnalysis::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
   while (nonTerminal.hasCurrentObject ()) {
-    GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
+    GGS_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       generatedZone3 << "  public : virtual " ;
       generatedZone3 << "void " ;
       generatedZone3 << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                      << " (" << inLexiqueName << " &" ;
-      GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
+      GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
       while (parametre.hasCurrentObject ()) {
         generatedZone3 << ",\n                                " ;
-        generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
+        generateFormalArgumentFromTypeName (parametre._mGalgasTypeNameForGrammarAnalysis (HERE), parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE), generatedZone3) ;
         parametre.next () ;
       }
       generatedZone3 << ") ;\n" ; 
@@ -240,7 +224,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
         parametre.rewind () ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
-          generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
+          generateFormalArgumentFromTypeName (parametre._mGalgasTypeNameForGrammarAnalysis (HERE), parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE), generatedZone3) ;
           parametre.next () ;
         }
         generatedZone3 << "\n                                "
@@ -256,7 +240,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
         parametre.rewind () ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
-          generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
+          generateFormalArgumentFromTypeName (parametre._mGalgasTypeNameForGrammarAnalysis (HERE), parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE), generatedZone3) ;
           parametre.next () ;
         }
         generatedZone3 << "\n                                "
@@ -289,86 +273,6 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
                           generatedZone2,
                           "\n\n", // User Zone 2
                           generatedZone3) ;
-}
-
-//---------------------------------------------------------------------------*
-
-static void
-fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList,
-                            const cInfo & inInfo,
-                            C_Compiler & inLexique,
-                            bool & ioOk) {
-  GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inInstructionsList, true) ;
-  while (currentInstruction.hasCurrentObject ()) {
-    currentInstruction._mInstruction (HERE) (HERE)->fixInfos (inInfo, inLexique, ioOk) ;
-
-    currentInstruction.next () ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_T_repeatInstruction_forGrammarComponent::
-fixInfos (const cInfo & inInfo,
-          C_Compiler & inLexique,
-          bool & ioOk) {
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatBranchList, true) ;
-  while (currentBranch.hasCurrentObject ()) {
-    fixInfoForInstructionsList (currentBranch._mSyntaxInstructionList (HERE),
-                                inInfo,
-                                inLexique,
-                                ioOk) ;
-    currentBranch.next () ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_T_selectInstruction_forGrammarComponent::
-fixInfos (const cInfo & inInfo,
-          C_Compiler & inLexique,
-          bool & ioOk) {
-  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectBranchList, true) ;
-  while (currentBranch.hasCurrentObject ()) {
-    fixInfoForInstructionsList (currentBranch._mSyntaxInstructionList (HERE),
-                                inInfo,
-                                inLexique,
-                                ioOk) ;
-    currentBranch.next () ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_T_nonterminalInstruction_forGrammarComponent::
-fixInfos (const cInfo & inInfo,
-          C_Compiler & inLexique,
-          bool & ioOk) {
-  GGS_luint index ;
-  GGS_M_nonterminalSymbolAltsForGrammar unusedParameter ;
-  inInfo.mNonterminalSymbolsMapForGrammar.method_searchKeyGetID (inLexique, mNonterminalSymbolName,
-                                            index, unusedParameter COMMA_HERE) ;
-  if (! index.isBuilt ()) {
-    ioOk = false ;
-  }
-  mNonterminalSymbolIndex.mValue = index.uintValue () ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_T_terminalInstruction_forGrammarComponent::
-fixInfos (const cInfo & inInfo,
-          C_Compiler & inLexique,
-          bool & ioOk) {
-  GGS_uint index ;
-  inInfo.mTerminalSymbolMap.method_searchKey (inLexique, mTerminalSymbolName, index COMMA_HERE) ;
-  if (! index.isBuilt ()) {
-    ioOk = false ;
-  }
-  if (mTerminalSymbolIndex.mValue != index.uintValue ()) {
-    printf ("FIX ERROR: %d != %d\n", mTerminalSymbolIndex.mValue, index.uintValue ()) ;
-  }
-  mTerminalSymbolIndex.mValue = index.uintValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -489,15 +393,16 @@ static PMUInt16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
 
 static void
 analyzeGrammar (C_Compiler & inLexique,
-                const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
+                const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GGS_lstring & inTargetFileName,
                 const GGS_lstring & inGrammarClass,
-                const GGS_luint & inOriginalGrammarStartSymbol,
-                const GGS_lstring & inLexiqueName,
+                const GGS_uint & inOriginalGrammarStartSymbol,
+                const C_String & inLexiqueName,
                 const GGS_location & errorLocation,
-                const GGS_M_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
-                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
+                const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
+                const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                const C_String & inOutputDirectoryForHTLMFile) {
   bool warningFlag = false ;
 
 //--- Create GALGAS_OUTPUT directory
@@ -529,13 +434,17 @@ analyzeGrammar (C_Compiler & inLexique,
   const bool outputHTMLfile = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
 //--- If 'HTMLfileName' is the empty string, no file is created
 
-//--- Create output HTML file (if file is the empty string, no file is created)
+//--- Create output HTML file
+  /* printf ("inOutputDirectoryForHTLMFile '%s'\n", inOutputDirectoryForHTLMFile.cString (HERE)) ;
   C_String directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent () ;
   if (directory.length () > 0) {
     directory << "/" ;
   }
   const C_String HTMLfileName = directory + inTargetFileName + ".html" ;
-  C_HTML_FileWrite  * HTMLfile = NULL ;
+   */
+  inOutputDirectoryForHTLMFile.makeDirectoryIfDoesNotExists () ;
+  const C_String HTMLfileName = inOutputDirectoryForHTLMFile + "/" + inTargetFileName + ".html" ;
+  C_HTML_FileWrite * HTMLfile = NULL ;
   if (outputHTMLfile && inLexique.mPerformGeneration) {
     C_String s ;
     s << "'" << inTargetFileName << "' grammar" ;
@@ -896,13 +805,14 @@ void
 routine_analyzeGrammar (C_Compiler & inLexique,
                         const GGS_lstring inTargetFileName,
                         const GGS_lstring inGrammarClass,
-                        const GGS_luint inOriginalGrammarStartSymbol,
-                        const GGS_lstring inLexiqueName,
-                        const GGS_location errorLocation,
-                        const GGS_M_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
-                        const GGS_L_syntaxComponents_ForGrammar inSyntaxComponentsList,
-                        const GGS_M_nonTerminalSymbolsForGrammar inNonterminalSymbolsMapForGrammar,
-                        const GGS_M_unusedNonTerminalSymbolsForGrammar inUnusedNonTerminalSymbolsForGrammar
+                        const GGS_uint inOriginalGrammarStartSymbol,
+                        const GGS_string inLexiqueName,
+                        const GGS_location inErrorLocation,
+                        const GGS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
+                        const GGS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
+                        const GGS_nonTerminalSymbolMapForGrammarAnalysis inNonterminalSymbolsMapForGrammar,
+                        const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
+                        const GGS_string inOutputDirectoryForHTLMFile
                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
     #ifdef LOG_GRAMMAR_COMPUTATIONS
@@ -912,42 +822,17 @@ routine_analyzeGrammar (C_Compiler & inLexique,
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
     #endif
-  //------------------------------------------------- Fix info about terminal and nonterminal symbols
-    bool ok = true ;
-    cInfo symbolsInfo ;
-    symbolsInfo.mTerminalSymbolMap = inTerminalSymbolMap ;
-    symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
-    GGS_L_syntaxComponents_ForGrammar::cEnumerator currentSyntaxComponent (inSyntaxComponentsList, true) ;
-    while (currentSyntaxComponent.hasCurrentObject ()) {
-      GGS_L_productionRules_ForGrammarComponent::cEnumerator currentRule (currentSyntaxComponent._mProductionRulesList (HERE), true) ;
-      while (currentRule.hasCurrentObject ()) {
-        GGS_luint index ;
-        GGS_M_nonterminalSymbolAltsForGrammar unused ;
-        inNonterminalSymbolsMapForGrammar.method_searchKeyGetID (inLexique, currentRule._mLeftNonterminalSymbol (HERE),
-                                                  index, unused COMMA_HERE) ;
-        currentRule._mLeftNonterminalSymbolIndex (HERE).mValue = index.uintValue () ;
-      //--- Fix, for each rule, left nonterminal symbol index
-        fixInfoForInstructionsList (currentRule._mInstructionList (HERE),
-                                    symbolsInfo,
-                                    inLexique,
-                                    ok) ;
-      //--- Next rule
-        currentRule.next() ;
-      }
-      currentSyntaxComponent.next () ;
-    }
-    if (ok) {
-      analyzeGrammar (inLexique,
-                      inUnusedNonTerminalSymbolsForGrammar,
-                      inTargetFileName,
-                      inGrammarClass,
-                      inOriginalGrammarStartSymbol,
-                      inLexiqueName,
-                      errorLocation,
-                      inTerminalSymbolMap,
-                      inSyntaxComponentsList,
-                      inNonterminalSymbolsMapForGrammar) ;
-    }
+    analyzeGrammar (inLexique,
+                    inUnusedNonTerminalSymbolsForGrammar,
+                    inTargetFileName,
+                    inGrammarClass,
+                    inOriginalGrammarStartSymbol,
+                    inLexiqueName.string (),
+                    inErrorLocation,
+                    inTerminalSymbolMap,
+                    inSyntaxComponentsList,
+                    inNonterminalSymbolsMapForGrammar,
+                    inOutputDirectoryForHTLMFile.string ()) ;
   }
 }
 

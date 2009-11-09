@@ -23,7 +23,6 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #--------------------------------------------------------------------------------*
 
@@ -49,8 +48,6 @@ label importGrammarForSemantics
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importForGrammarAnalysis
-  ?!@syntaxRuleList unused ioSyntaxRuleList
 ;
 
 nonterminal <import_headers_semantics_and_grammars>
@@ -567,71 +564,6 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
-:
-  $program$ ;
-  $identifier$ ? * ;
-  $literal_string$ ? * ;
-  $:$ ;
-#--- Import clauses
-  <import_headers_semantics_and_grammars> parse ;
-#--- Max errors count
-  select
-    $error$ ;
-    $unsigned_literal_integer$ ? * ;
-    $;$ ;
-  or
-  end select ;
-#--- Max warnings count
-  select
-    $warning$ ;
-    $unsigned_literal_integer$ ? * ;
-    $;$ ;
-  or
-  end select ;
-#--- prologue routine
-  select
-    $before$ ;
-  or
-    $routine$ ;
-  end select ;
-  ${$ ;
-  <semantic_instructions_list> parse ;
-  $}$ ;
-#--- when clauses
-  $when$ ;
-  repeat
-  #--- Source file extension definition
-    $.$ ;
-    $literal_string$ ? * ; # Source file extension
-  #--- Help message
-    $message$ ;
-    $literal_string$ ? * ;
-  #--- Argument
-    $??$ ;
-    $type_name$ ? * ;
-    $identifier$ ? * ;
-  #--- Instruction list
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ; 
-  while
-    $when$ ;
-  end repeat ;
-#--- epilogue routine
-  select
-    $after$ ;
-  or
-    $routine$ ;
-  end select ;
-  ${$ ;
-  <semantic_instructions_list> parse ;
-  $}$ ;
-#--- End program
-  $end$ ;
-  $program$ ;
-  $;$ ;
-label importForGrammarAnalysis
-  ?!@syntaxRuleList unused ioSyntaxRuleList
 :
   $program$ ;
   $identifier$ ? * ;
