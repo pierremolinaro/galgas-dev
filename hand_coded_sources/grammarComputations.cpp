@@ -161,7 +161,8 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
                            const C_String & inLexiqueName,
                            const PMUInt32 inOriginalGrammarStartSymbol,
                            const C_String & inTargetFileName,
-                           const cVocabulary & inVocabulary) {
+                           const cVocabulary & inVocabulary,
+                           const C_String & inOutputDirectoryForCppFiles) {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n"
                     "#define GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n\n" ;
@@ -267,12 +268,18 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  inLexique.generateFile ("//",
-                          inTargetFileName + ".h",
-                          "\n\n", // User Zone 1
-                          generatedZone2,
-                          "\n\n", // User Zone 2
-                          generatedZone3) ;
+  // printf ("inOutputDirectoryForCppFiles '%s'\n", inOutputDirectoryForCppFiles.cString (HERE)) ;
+  // printf ("inTargetFileName '%s'\n", inTargetFileName.cString (HERE)) ;
+  TC_UniqueArray <C_String> directoriesToExclude ;
+  directoriesToExclude.addObject ("DEPENDENCIES") ;
+  inLexique.generateFileFromPathes (inOutputDirectoryForCppFiles,
+                                    directoriesToExclude,
+                                    "//",
+                                    inTargetFileName + ".h",
+                                    "\n\n", // User Zone 1
+                                    generatedZone2,
+                                    "\n\n", // User Zone 2
+                                    generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -402,7 +409,8 @@ analyzeGrammar (C_Compiler & inLexique,
                 const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                 const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                 const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
-                const C_String & inOutputDirectoryForHTLMFile) {
+                const C_String & inOutputDirectoryForCppFiles,
+                const C_String & inOutputDirectoryForHTMLFile) {
   bool warningFlag = false ;
 
 //--- Create GALGAS_OUTPUT directory
@@ -435,15 +443,8 @@ analyzeGrammar (C_Compiler & inLexique,
 //--- If 'HTMLfileName' is the empty string, no file is created
 
 //--- Create output HTML file
-  /* printf ("inOutputDirectoryForHTLMFile '%s'\n", inOutputDirectoryForHTLMFile.cString (HERE)) ;
-  C_String directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent () ;
-  if (directory.length () > 0) {
-    directory << "/" ;
-  }
-  const C_String HTMLfileName = directory + inTargetFileName + ".html" ;
-   */
-  inOutputDirectoryForHTLMFile.makeDirectoryIfDoesNotExists () ;
-  const C_String HTMLfileName = inOutputDirectoryForHTLMFile + "/" + inTargetFileName + ".html" ;
+  inOutputDirectoryForHTMLFile.makeDirectoryIfDoesNotExists () ;
+  const C_String HTMLfileName = inOutputDirectoryForHTMLFile + "/" + inTargetFileName + ".html" ;
   C_HTML_FileWrite * HTMLfile = NULL ;
   if (outputHTMLfile && inLexique.mPerformGeneration) {
     C_String s ;
@@ -679,6 +680,7 @@ analyzeGrammar (C_Compiler & inLexique,
                       inNonterminalSymbolsMapForGrammar,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
+                      inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
                       verboseOptionOn) ;
@@ -699,6 +701,7 @@ analyzeGrammar (C_Compiler & inLexique,
                       inNonterminalSymbolsMapForGrammar,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
+                      inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
                       verboseOptionOn) ;
@@ -723,6 +726,7 @@ analyzeGrammar (C_Compiler & inLexique,
                       inNonterminalSymbolsMapForGrammar,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
+                      inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
                       verboseOptionOn) ;
@@ -741,7 +745,8 @@ analyzeGrammar (C_Compiler & inLexique,
                                inLexiqueName,
                                inOriginalGrammarStartSymbol.uintValue (),
                                inTargetFileName,
-                               vocabulary) ;
+                               vocabulary,
+                               inOutputDirectoryForCppFiles) ;
   }
 //--- END -------------------------------------------------------------------------------------------------------
   C_BDD::markAndSweepUnusedNodes () ;
@@ -812,7 +817,8 @@ routine_analyzeGrammar (C_Compiler & inLexique,
                         const GGS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
                         const GGS_nonTerminalSymbolMapForGrammarAnalysis inNonterminalSymbolsMapForGrammar,
                         const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
-                        const GGS_string inOutputDirectoryForHTLMFile
+                        const GGS_string inOutputDirectoryForCppFiles,
+                        const GGS_string inOutputDirectoryForHTMLFile
                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
     #ifdef LOG_GRAMMAR_COMPUTATIONS
@@ -832,7 +838,8 @@ routine_analyzeGrammar (C_Compiler & inLexique,
                     inTerminalSymbolMap,
                     inSyntaxComponentsList,
                     inNonterminalSymbolsMapForGrammar,
-                    inOutputDirectoryForHTLMFile.string ()) ;
+                    inOutputDirectoryForCppFiles.string (),
+                    inOutputDirectoryForHTMLFile.string ()) ;
   }
 }
 

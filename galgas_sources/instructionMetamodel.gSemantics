@@ -63,11 +63,20 @@ class @externRoutineDeclaration extends @semanticDeclaration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    R O U T I N E    P R O T O T Y P E    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routinePrototypeDeclaration extends @externRoutineDeclaration {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    R O U T I N E    D E C L A R A T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @routineDeclaration extends @externRoutineDeclaration {
+class @routineDeclaration extends @routinePrototypeDeclaration {
   @semanticInstructionList mRoutineInstructionList ;
 }
 

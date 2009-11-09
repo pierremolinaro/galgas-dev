@@ -409,6 +409,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                                const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                                const PMUInt32 inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
+                               const C_String & inOutputDirectoryForCppFiles,
                                const C_String & inLexiqueName,
                                const cVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions) {
@@ -729,12 +730,16 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   generatedZone3.appendCppHyphenLineComment () ;
 
 //--- Generate file
-  inLexique.generateFile ("//",
-                          inTargetFileName + ".cpp",
-                          "\n\n", // User Zone 1
-                          generatedZone2,
-                          "\n\n", // User Zone 2
-                          generatedZone3) ;
+  TC_UniqueArray <C_String> directoriesToExclude ;
+  directoriesToExclude.addObject ("DEPENDENCIES") ;
+  inLexique.generateFileFromPathes (inOutputDirectoryForCppFiles,
+                                    directoriesToExclude,
+                                    "//",
+                                    inTargetFileName + ".cpp",
+                                    "\n\n", // User Zone 1
+                                    generatedZone2,
+                                    "\n\n", // User Zone 2
+                                    generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -750,6 +755,7 @@ LL1_computations (C_Compiler & inLexique,
                   const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForOriginalGrammar,
                   const PMUInt32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
+                  const C_String & inOutputDirectoryForCppFiles,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn) {
@@ -778,6 +784,7 @@ LL1_computations (C_Compiler & inLexique,
                                    inNonterminalSymbolsMapForOriginalGrammar,
                                    inOriginalGrammarStartSymbol,
                                    inTargetFileName,
+                                   inOutputDirectoryForCppFiles,
                                    inLexiqueName,
                                    inVocabulary,
                                    inPureBNFproductions) ;

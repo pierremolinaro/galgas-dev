@@ -18,6 +18,8 @@
 #---------------------------------------------------------------------------*
 
 syntax galgasTemplateParser :
+with "galgasTemplateScanner.gLexique" ;
+
 import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 

@@ -18,7 +18,6 @@
 #---------------------------------------------------------------------------*
 
 project all_galgas:
-  semantics "grammarCompilation.gSemantics" : makefile ;
 #--- Temporary Program for PPC and i386 Cocoa GALGAS Only
   program "mda_galgas_prgm.gProgram" ;
 
@@ -94,6 +93,7 @@ project all_galgas:
   syntax    "grammarModelBuilder.gSyntax" : makefile ;
   grammar   "grammarLL1grammar.gGrammar" : makefile ;
   semantics "grammarSemantics.gSemantics" : makefile ;
+  semantics "grammarCompilation.gSemantics" : makefile ;
 
 #--- Program component
   semantics "programMetamodel.gSemantics" : makefile ;
@@ -109,7 +109,6 @@ project all_galgas:
   grammar   "projectLL1grammar.gGrammar" : makefile ;
 
 #--- Old style components
-  syntax    "grammar_parser.gSyntax" : makefile ;
   semantics "common_semantics.gSemantics" : makefile ;
   semantics "semantics_semantics.gSemantics" : makefile ;
   syntax    "expression_parser.gSyntax" : makefile ;
@@ -121,6 +120,7 @@ project all_galgas:
   syntax    "cocoa_parser.gSyntax" : makefile ;
   syntax    "cli_options_parser.gSyntax" : makefile ;
   syntax    "scanner_parser.gSyntax" : makefile ;
+  syntax    "grammar_parser.gSyntax" : makefile ;
   syntax    "program_parser.gSyntax" : makefile ;
   syntax    "ggs_LL1_compile_component.gSyntax" : makefile ;
   syntax    "galgas_start.gSyntax" : makefile ;

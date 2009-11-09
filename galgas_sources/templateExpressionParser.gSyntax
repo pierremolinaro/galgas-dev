@@ -18,6 +18,7 @@
 #---------------------------------------------------------------------------*
 
 syntax templateExpressionParser :
+with "galgasTemplateScanner.gLexique" ;
 
 import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
 

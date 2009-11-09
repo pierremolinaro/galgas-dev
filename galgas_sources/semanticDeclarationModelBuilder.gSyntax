@@ -429,6 +429,17 @@ rule <semantic_declaration>
     $extends$ ;
     $type_name$ ? mSuperClassName ;
   end select ;
+  @lstringlist classFeatureList [emptyList] ;
+  select
+  or
+    $feature$ ;
+    repeat
+      $identifier$ ? @lstring classFeatureName ;
+      classFeatureList += !classFeatureName ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
   ${$ ;
   @string mClassMessage := "" ;
 #--- Class properties
@@ -469,6 +480,7 @@ rule <semantic_declaration>
     !mIsAbstract
     !mClassTypeName
     !mSuperClassName # Empty if no super class
+    !classFeatureList
     !mAttributeList
     !mAbstractMethodList
     !mOverridenMethodList

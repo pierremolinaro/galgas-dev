@@ -147,7 +147,11 @@ message "a GALGAS grammar source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileGrammarComponent !inSourceFile !outputDirectoryTEMP [!inSourceFile] !?parsedComponentStruct;
+  compileGrammarComponent
+    !inSourceFile
+    !outputDirectory [!inSourceFile]
+    ![inSourceFile stringByDeletingLastPathComponent]
+    !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -254,7 +258,12 @@ message "a GALGAS project source file"
       end if ;
     when grammarSourceFile :
       if extension == "gGrammar" then
-        compileGrammarComponent !fullFilePath !outputDirectoryTEMP [!inSourceFile] !?parsedComponentStruct;
+        compileGrammarComponent
+          !fullFilePath
+          !outputDirectory [!inSourceFile]
+          ![inSourceFile stringByDeletingLastPathComponent]
+          !?parsedComponentStruct
+        ;
       else
         error mFilePath:"extension of a grammar component should be '.gGrammar'." ;
       end if ;

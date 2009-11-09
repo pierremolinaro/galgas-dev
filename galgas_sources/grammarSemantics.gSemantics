@@ -192,7 +192,8 @@ extern routine analyzeGrammar
   ??@syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList
   ??@nonTerminalSymbolMapForGrammarAnalysis ioNonterminalSymbolsMapForGrammar
   ??@unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
-  ??@string inOutputDirectory
+  ??@string inOutputDirectoryForCppFiles
+  ??@string inOutputDirectoryForHTMLfile
 ;
 
 #---------------------------------------------------------------------------*
