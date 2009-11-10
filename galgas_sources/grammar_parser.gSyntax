@@ -227,7 +227,7 @@ rule <galgas_component>
 #--- Grammar name
   @lstring grammarName ;
   $identifier$ ? grammarName ;
-  warning here: "in GALGAS 1.9.3 and later, uses '.gGrammar' extension instead of '.ggs'" ;
+  error here: "in GALGAS 1.9.3 and later, uses '.gGrammar' extension instead of '.ggs'" ;
   @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
   if [grammarName string] != basename then
     error grammarName: "GALGAS 1.7.5 and later checks "
@@ -347,16 +347,27 @@ rule <galgas_component>
   $root$ ;
   @lstring startSymbolName ;
   $non_terminal_symbol$ ? startSymbolName ;
-#--- (added 8/13/2004, modified 3/19/2006)
+#---
+  @bool startSymbolHasParseLabel := false ;
   @nonterminalSymbolLabelMapForGrammarAnalysis grammarAltMap [emptyMap] ;
-  @lstring altName [new !"" !here] ;
+  @signatureForGrammarAnalysis signature ;
+  <formal_arguments_list> importGrammarForSemantics ?signature ;
+  [!?grammarAltMap insertKey ![@lstring new !"" !here] !signature] ;
   repeat
-    @signatureForGrammarAnalysis signature ;
-    <formal_arguments_list> importGrammarForSemantics ?signature ;
-    [!?grammarAltMap insertKey !altName !signature] ;
   while
     $label$ ;
-    $identifier$ ? altName ;
+    select
+      $identifier$ ?@lstring altName ;
+      @signatureForGrammarAnalysis labelSignature ;
+      <formal_arguments_list> importGrammarForSemantics ?labelSignature ;
+      [!?grammarAltMap insertKey !altName !labelSignature] ;
+    or
+      $parse$ ;
+      if startSymbolHasParseLabel then
+        error here : "'parse' label has been already declared" ;
+      end if ;
+      startSymbolHasParseLabel := true ;
+    end select ;
   end repeat ;
   $;$ ;
 #--- Fix terminal and non terminal infos in production rules
@@ -481,11 +492,16 @@ label importLexique
   end repeat ;
   $root$ ;
   $non_terminal_symbol$ ? * ;
+  <formal_arguments_list> parse ;
   repeat
-    <formal_arguments_list> parse ;
   while
     $label$ ;
-    $identifier$ ? * ;
+    select
+      $identifier$ ? * ;
+      <formal_arguments_list> parse ;
+    or
+      $parse$ ;
+    end select ;
   end repeat ;
   $;$ ;
   repeat
@@ -544,11 +560,16 @@ label importSyntax
   end repeat ;
   $root$ ;
   $non_terminal_symbol$ ? * ;
+  <formal_arguments_list> parse ;
   repeat
-    <formal_arguments_list> parse ;
   while
     $label$ ;
-    $identifier$ ? * ;
+    select
+      $identifier$ ? * ;
+      <formal_arguments_list> parse ;
+    or
+      $parse$ ;
+    end select ;
   end repeat ;
   $;$ ;
   repeat
@@ -608,11 +629,16 @@ label importSemantics
   end repeat ;
   $root$ ;
   $non_terminal_symbol$ ? * ;
+  <formal_arguments_list> parse ;
   repeat
-    <formal_arguments_list> parse ;
   while
     $label$ ;
-    $identifier$ ? * ;
+    select
+      $identifier$ ? * ;
+      <formal_arguments_list> parse ;
+    or
+      $parse$ ;
+    end select ;
   end repeat ;
   $;$ ;
   repeat
@@ -689,19 +715,35 @@ label importGrammarForSemantics
   end repeat ;
   $root$ ;
   $non_terminal_symbol$ ? * ;
-  @lstring altName := [@lstring new !"" !here] ;
+  @bool startSymbolHasParseLabel := false ;
+  @signatureForGrammarAnalysis signature ;
+  <formal_arguments_list> importGrammarForSemantics ?signature ;
+  [!?grammarAltMap insertKey
+    ![@lstring new !"" !here]
+    !signature
+  ] ;
   repeat
+  while
+    $label$ ;
+    select
+    $identifier$ ? @lstring altName ;
     @signatureForGrammarAnalysis signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
     [!?grammarAltMap insertKey
       !altName
       !signature
     ] ;
-  while
-    $label$ ;
-    $identifier$ ? altName ;
+    or
+      $parse$ ;
+      startSymbolHasParseLabel := true ;
+    end select ;
   end repeat ;
-  [!?ioGrammarComponentsMap insertKey !grammarName !grammarAltMap !lexiqueName !ioOptionsComponentsMap] ;
+  [!?ioGrammarComponentsMap insertKey
+    !grammarName
+    !grammarAltMap
+    !lexiqueName
+    !ioOptionsComponentsMap
+  ] ;
   $;$ ;
   repeat
   while
@@ -758,11 +800,16 @@ label importOptions
   end repeat ;
   $root$ ;
   $non_terminal_symbol$ ? * ;
+  <formal_arguments_list> parse ;
   repeat
-    <formal_arguments_list> parse ;
   while
     $label$ ;
-    $identifier$ ? * ;
+    select
+      $identifier$ ? * ;
+      <formal_arguments_list> parse ;
+    or
+      $parse$ ;
+    end select ;
   end repeat ;
   $;$ ;
   repeat

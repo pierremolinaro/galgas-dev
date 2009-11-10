@@ -37,6 +37,7 @@ class @grammarComponentRoot {
   @lstringlist mSyntaxComponents ;
   @lstring mStartSymbolName ;
   @nonTerminalLabelList mStartSymbolLabelList ;
+  @bool mStartSymbolHasParseLabel ;
   @lstringlist mUnusedNonterminalList ;
   @location mEndOfSourceText ;
 }

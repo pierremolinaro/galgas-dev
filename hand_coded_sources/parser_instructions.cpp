@@ -476,7 +476,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      PMSInt32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
-    inHfile << "  protected : virtual PMSInt16 select_repeat_" << inTargetFileName
+    inHfile << "  protected : virtual PMSInt16 select_" << inTargetFileName
             << "_" << cStringWithSigned (ioPrototypeIndex)
             << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
@@ -510,7 +510,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, inGenerateSemanticInstructions) ;
-  inCppFile << "switch (select_repeat_" << inTargetFileName
+  inCppFile << "switch (select_" << inTargetFileName
            << "_" << cStringWithSigned (prototypeIndex)
            << " (inLexique)) {\n" ;
   currentBranch.next () ;
