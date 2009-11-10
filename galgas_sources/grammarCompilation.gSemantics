@@ -474,7 +474,7 @@ routine compileGrammarComponent
   checkLabelMap
     ![[grammarComponentRoot mStartSymbolName] location]
     ![grammarComponentRoot mStartSymbolLabelList]
-    !false # No parse label
+    ![grammarComponentRoot mStartSymbolHasParseLabel]
     ![nonTerminalMapForGrammarAnalysis locationForKey ![[grammarComponentRoot mStartSymbolName] string]]
     !startSymbolAltMap
   ;

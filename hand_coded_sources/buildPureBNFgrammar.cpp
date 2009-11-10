@@ -50,7 +50,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::
 fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                           const C_String & inSyntaxComponentName,
                           PMSInt32 & ioCount) {
-  ioVocabulary.addNonTerminalSymbol ("select_repeat_",
+  ioVocabulary.addNonTerminalSymbol ("select_",
                                      inSyntaxComponentName,
                                      ioCount,
                                      true) ;

@@ -84,13 +84,22 @@ rule <grammar_component_start_symbol>
 #--- Root symbol
   $root$ ;
   $non_terminal_symbol$ ?@lstring  mStartSymbol ;
-  @lstring labelName [new !"" !here] ;
+  @bool startSymbolHasParseLabel := false ;
   @nonTerminalLabelList mLabelList [emptyList] ;
+  <grammar_start_symbol_label> ![@lstring new !"" !here] !?mLabelList ;
   repeat
-    <grammar_start_symbol_label> !labelName !? mLabelList ;
   while
     $label$ ;
-    $identifier$ ? labelName ;
+    select
+      $identifier$ ?@lstring labelName ;
+      <grammar_start_symbol_label> !labelName !?mLabelList ;
+    or
+      $parse$ ;
+      if startSymbolHasParseLabel then
+        error here : "'parse' label has been already declared" ;
+      end if ;
+      startSymbolHasParseLabel := true ;
+    end select ;
   end repeat ;
   $;$ ;
 #--- Unused non terminal symbols
@@ -114,6 +123,7 @@ rule <grammar_component_start_symbol>
     !syntaxComponents
     !mStartSymbol
     !mLabelList
+    !startSymbolHasParseLabel
     !mUnusedNonterminalList
     !here
   ] ;
