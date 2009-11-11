@@ -250,6 +250,13 @@ end rule ;
 
 rule <semantic_instruction> !@semanticInstruction outInstruction :
   $identifier$ ?@lstring mTargetVariableName ;
+  @lstringlist mStructAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    $identifier$ ? @lstring attributeName ;
+    mStructAttributeList += !attributeName ;
+  end repeat ;
   $:=$ ;
   @semanticExpression mSourceExpression ;
   <expression> ? mSourceExpression ;
@@ -257,6 +264,7 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
   outInstruction := [@assignmentInstruction new
     ![mTargetVariableName location]
     !mTargetVariableName
+    !mStructAttributeList
     !mSourceExpression
   ] ;
 end rule ;
