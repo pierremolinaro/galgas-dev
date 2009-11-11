@@ -156,6 +156,7 @@ class @localConstantDeclarationWithConstructorCall extends @semanticInstruction 
 
 class @assignmentInstruction extends @semanticInstruction {
   @lstring mTargetVariableName ;
+  @lstringlist mStructAttributeList ;
   @semanticExpression mSourceExpression ;
 }
 

@@ -747,12 +747,15 @@ generateInstruction (AC_OutputStream & inCppFile,
     }
     if (mElseInstructionsList.count () > 0) {
       inCppFile << "}else{\n" ;
-      PMSInt32 localPrototypeIndex = kPrototypeIndex ;
       generateInstructionListForList (mElseInstructionsList, inCppFile,
-                                      inTargetFileName, localPrototypeIndex,
+                                      inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
     }
     inCppFile << "}\n" ;
+  }else{
+    generateInstructionListForList (mElseInstructionsList, inCppFile,
+                                    inTargetFileName, ioPrototypeIndex,
+                                    inGenerateDebug, inGenerateSemanticInstructions) ;
   }
 }
 
