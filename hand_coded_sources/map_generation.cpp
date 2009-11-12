@@ -374,7 +374,8 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_mapindexToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Map index '@") + mMapindexTypeName + "'") ;
-
+  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mMapindexTypeName << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << mMapindexTypeName << " : public AC_galgas_mapindex {\n"
              "//--- 'null' constructor\n"
              "  public : static GGS_" << mMapindexTypeName << "\n"
@@ -460,6 +461,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("map index '@") + mMapindexTypeName + "'") ;
+  inCppFile << "const C_galgas_type_reference kTypeReference_" << mMapindexTypeName << " (\"" << mMapindexTypeName << "\") ;\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mMapindexTypeName << " GGS_" << mMapindexTypeName << "::\n"
                "constructor_null (C_Compiler & /* inLexique */\n"
                "                  COMMA_UNUSED_LOCATION_ARGS) {\n"
@@ -653,6 +656,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Map '@") + mMapTypeName + "'") ;
 
   inHfile << "class elementOf_GGS_" << mMapTypeName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mMapTypeName << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << mMapTypeName << " : public AC_galgas_map {\n" ;
   inHfile << "//--- Element Class\n"
              "  public : typedef elementOf_GGS_" << mMapTypeName << " cElement ;\n\n"
@@ -927,6 +932,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
 
   inCppFile.appendCppTitleComment (C_String ("class map '@") + mMapTypeName + "'") ;
+
+  inCppFile << "const C_galgas_type_reference kTypeReference_" << mMapTypeName << " (\"" << mMapTypeName << "\") ;\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Constructor for type element
   inCppFile << "elementOf_GGS_" << mMapTypeName << "::\n"

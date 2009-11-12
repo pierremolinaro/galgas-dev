@@ -620,9 +620,9 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeCppThisName::
+void cPtr_typeCppStarThisName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "(*this) /* self */" ;
+  inFile << "GGS_" << mGalgasTypeName << " (this) /*self*/" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -710,9 +710,9 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeCppThisName::
+void cPtr_typeCppStarThisName::
 generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "this" ;
+  inFile << "this /* self */" ;
 }
 
 //---------------------------------------------------------------------------*

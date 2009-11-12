@@ -117,7 +117,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
         ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
                   << cStringWithSigned (mMethodName.lineNumber ())
                   << ")) ;\n" ;
-      }else if (dynamic_cast <cPtr_typeCppThisName *> (varInExpression->mCppVarName (HERE)) != NULL) {
+      }else if (dynamic_cast <cPtr_typeCppStarThisName *> (varInExpression->mCppVarName (HERE)) != NULL) {
         handled = true ;
         ioCppFile << "method_" << mMethodName << " (inLexique"  ;
         GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;

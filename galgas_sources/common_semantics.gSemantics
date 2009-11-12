@@ -488,14 +488,16 @@ abstract class @AC_galgasType feature generatedInSeparateFile {
   end method ;
 
 #--- By default, class does not accept constructor call
-  method handleConstructorCall
+  method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     error inClassMethodName : "This constructor is not defined"
-      -> outAccessorTypesList, outHasLexiqueAndLocationArguments
+      -> outAccessorTypesList, outHasLexiqueAndLocationArguments, outReturnedType
     ;
   end method ;
 
@@ -589,9 +591,10 @@ class @typeCurrentObjectName extends @typeCplusPlusName {
 }
 
 #---------------------------------------------------------------------------*
-# C++ name is implicit (used for local method call)
+# C++ name is implicit (used for local method call): it is *this
 
-class @typeCppThisName extends @typeCplusPlusName {
+class @typeCppStarThisName extends @typeCplusPlusName {
+  @string mGalgasTypeName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -822,11 +825,13 @@ class @typeGalgas_uint extends @AC_galgasType {
   end method ;
 
 #--- Class accepts constructor 'max'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if ([inClassMethodName string] == "max") |
        ([inClassMethodName string] == "sequenceNumber") |  
@@ -861,11 +866,13 @@ class @typeGalgas_char extends @AC_galgasType {
   end method ;
 
 #--- Class accepts constructor 'max'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     if ([inClassMethodName string] == "replacementCharacter") then
       outHasLexiqueAndLocationArguments := false ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -931,11 +938,13 @@ class @typeGalgas_string extends @AC_galgasType {
   end method ;
 
 #--- string accepts constructors
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "stringWithVersionString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1069,11 +1078,13 @@ class @typeGalgas_sint extends @AC_galgasType {
   end method ;
 
 #--- Class accepts constructors 'min' and 'max'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "min" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1115,11 +1126,13 @@ class @typeGalgas_sint64 extends @AC_galgasType {
   end method ;
 
 #--- Class accepts constructors 'min' and 'max'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "min" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1161,11 +1174,13 @@ class @typeGalgas_uint64 extends @AC_galgasType {
   end method ;
 
 #--- Class accepts constructor 'max'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "max" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1219,11 +1234,13 @@ class @typeGalgas_binaryset extends @AC_galgasType {
   end method ;
 
 #--- Class accepts constructor 'max'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "binarySetWithBit" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1354,11 +1371,13 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
   end method ;
 
 #--- Class accepts class method call 'new'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1406,11 +1425,13 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
   end method ;
 
 #--- Class accepts class method call 'new'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1458,11 +1479,13 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
   end method ;
 
 #--- Class accepts class method call 'new'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1509,11 +1532,13 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
   end method ;
 
 #--- Class accepts class method call 'new'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1560,11 +1585,13 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
   end method ;
 
 #--- Class accepts class method call 'new'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1611,11 +1638,13 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
   end method ;
 
 #--- Class accepts class method call 'new'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1662,11 +1691,13 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
   end method ;
 
 #--- Class accepts class method call 'new'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1713,11 +1744,13 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
   end method ;
 
 #--- Class accepts class method call 'new'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1768,11 +1801,13 @@ class @typeGalgas_stringset extends @AC_galgasType {
   end method ;
 
 #--- stringset accepts constructor call 'emptySet'
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptySet" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1871,11 +1906,13 @@ class @typeGalgas_data extends @AC_galgasType {
   end method ;
 
 #--- Constructor
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptyData" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2005,11 +2042,13 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
   @typeListeAttributsSemantiques mAddAssignOperatorCallTypeList feature nogetter ;
 
 #--- Constructors
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     [mConstructorMap searchKey !inClassMethodName ?outAccessorTypesList] ;
   end method ;
@@ -2358,11 +2397,13 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
   end method ;
 
 #--- A list accepts 'emptyList' and 'listWithValue' constructors
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptyList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2393,11 +2434,13 @@ class @typeGalgasStructType extends @AC_galgasType {
   end method ;
 
 #--- A struct accepts 'new' constructor
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := mAttributeList ;
@@ -2446,11 +2489,13 @@ class @typeGalgasListmapType extends @AC_galgasType {
   end method ;
 
 #--- A listmap accepts 'emptyMap' constructor
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptyMap" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2718,11 +2763,13 @@ class @typeGalgasDomainType extends @AC_galgasType {
   end method ;
 
 #--- A domain accepts 'domainWithNames' constructor
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "domainWithNames" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2834,11 +2881,13 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
   end method ;
 
 #--- A list accepts 'emptyList' and 'listWithValue' constructors
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptySortedList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2988,11 +3037,13 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   end method ;
 
 #--- A map accepts 'emptyMap' constructor
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "emptyMap" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3025,11 +3076,13 @@ class @typeGalgasUndefinedMapindexType extends @AC_galgasType {
   end method ;
 
 #--- A mapindex accepts 'null' constructor
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "null" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3249,11 +3302,13 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
   end method ;
 
 #--- Class accepts class method call 'new' if it is not abstract
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if mClassIsAbstract then
       error inClassMethodName : "an abstract class cannot be instancied" -> outAccessorTypesList ;
@@ -3384,11 +3439,13 @@ class @typeGalgas_enum extends @AC_galgasType {
   end method ;
 
 #--- Class accepts class method with constant names
-  override method handleConstructorCall
+  override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
   :
+    outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     @bool hasConstructor ;
     [mEnumConstantesMap searchKey !inClassMethodName ?hasConstructor] ;

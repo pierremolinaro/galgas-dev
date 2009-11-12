@@ -1628,7 +1628,7 @@ end rule ;
 #                                                                              *
 #                         F A C T O R                                          *
 #                                                                              *
-#   constructor call     :   [@class constructor !... ]                        *
+#   constructor call     :   [@type constructor !... ]                         *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -1642,17 +1642,17 @@ rule <factor>
 :
   $[$ ;
 #--- Class name
-  @lstring className ;
-  $type_name$ ?className ;
+  @lstring typeName ;
+  $type_name$ ?typeName ;
+  @AC_semanticsEntity e ;
+  [inEntitiesMap searchKey !typeName ?e] ;
+  @AC_galgasType type := [(cast e if >= @typeEntiteType else error typeName) aDefType] ;
 #--- Class method name
   @lstring mClassMethodName ;
   $identifier$ ? mClassMethodName ;
-  @AC_semanticsEntity e ;
-  [inEntitiesMap searchKey !className ?e] ;
-  outResultType := [(cast e if >= @typeEntiteType else error className) aDefType] ;
   @typeListeAttributsSemantiques listeAttributsSemantiques ;
   @bool hasLexiqueAndLocationArguments ;
-  [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments] ;
+  [type handleConstructorInvocation !mClassMethodName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments ?outResultType] ;
 #--- Actual arguments
   @typeExpressionList expressionList ;
   <output_expression_list>
@@ -1664,7 +1664,7 @@ rule <factor>
     !?ioVariablesMap
   ;
   outExpression := [@typeConstructorExpression new
-    !outResultType
+    !type
     ![mClassMethodName string]
     !hasLexiqueAndLocationArguments
     !expressionList

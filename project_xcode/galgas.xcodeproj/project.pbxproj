@@ -1652,7 +1652,6 @@
 		CFD214C30913BE2E0011F11E /* include_typeConstructorExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeConstructorExpression.h; sourceTree = "<group>"; };
 		CFD214C40913BE2E0011F11E /* include_typeCplusPlusName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCplusPlusName.h; sourceTree = "<group>"; };
 		CFD214C50913BE2E0011F11E /* include_typeCppInheritedName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCppInheritedName.h; sourceTree = "<group>"; };
-		CFD214C60913BE2E0011F11E /* include_typeCppThisName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCppThisName.h; sourceTree = "<group>"; };
 		CFD214C90913BE2E0011F11E /* include_typeDefEntiteUtilisable.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDefEntiteUtilisable.h; sourceTree = "<group>"; };
 		CFD214CA0913BE2E0011F11E /* include_typeDefinitionTableAimplementer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDefinitionTableAimplementer.h; sourceTree = "<group>"; };
 		CFD214CB0913BE2E0011F11E /* include_typeDirectName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDirectName.h; sourceTree = "<group>"; };
@@ -1792,6 +1791,7 @@
 		CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarModelBuilder.h; sourceTree = "<group>"; };
 		CFDF289D10AC508400056291 /* galgas_introspection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_introspection.cpp; sourceTree = "<group>"; };
 		CFDF289E10AC508400056291 /* galgas_introspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas_introspection.h; sourceTree = "<group>"; };
+		CFE0077610AC830A00CD35E8 /* include_typeCppStarThisName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCppStarThisName.h; sourceTree = "<group>"; };
 		CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentBuilder.cpp; sourceTree = "<group>"; };
 		CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentBuilder.h; sourceTree = "<group>"; };
 		CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentMetamodel.cpp; sourceTree = "<group>"; };
@@ -2218,6 +2218,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFE0077610AC830A00CD35E8 /* include_typeCppStarThisName.h */,
 				CF2F1D2610A715A90035C560 /* include_abstractSyntaxInstructionForGrammarAnalysis.h */,
 				CF2F1D1F10A713D90035C560 /* include_terminalInstructionForGrammarAnalysis.h */,
 				CF2F1D1810A7122D0035C560 /* include_selectInstructionForGrammarAnalysis.h */,
@@ -2356,7 +2357,6 @@
 				CFD214C30913BE2E0011F11E /* include_typeConstructorExpression.h */,
 				CFD214C40913BE2E0011F11E /* include_typeCplusPlusName.h */,
 				CFD214C50913BE2E0011F11E /* include_typeCppInheritedName.h */,
-				CFD214C60913BE2E0011F11E /* include_typeCppThisName.h */,
 				CFD214C90913BE2E0011F11E /* include_typeDefEntiteUtilisable.h */,
 				CFD214CA0913BE2E0011F11E /* include_typeDefinitionTableAimplementer.h */,
 				CFD214CB0913BE2E0011F11E /* include_typeDirectName.h */,
@@ -4696,6 +4696,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				PRODUCT_NAME = galgasI386;
 				SDKROOT = macosx10.6;
 			};
@@ -4710,6 +4711,7 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebugI386;
 				SDKROOT = macosx10.6;

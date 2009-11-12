@@ -1753,7 +1753,7 @@ rule <lazy_reader>
     !false
     !lazyAttributeListForSelfAndSuper
   ] ;
-  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !typeDefinition ![@typeCppThisName new !here]] ;
+  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !typeDefinition ![@typeCppStarThisName new !here ![inCurrentClassName string]]] ;
 #--- Insert the predefined "super" variable
   typeDefinition := [@typeGalgasClassType new 
            !inCurrentClassName
@@ -2294,7 +2294,7 @@ rule <parse_method>
            !false
         !inLazyAttributeListToImplement
   ] ;
-  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !typeDefinition ![@typeCppThisName new !here]] ;
+  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !typeDefinition ![@typeCppStarThisName new !here ![inCurrentClassName string]]] ;
 #--- Insert the predefined "super" variable
   typeDefinition := [@typeGalgasClassType new 
            !inCurrentClassName
@@ -4071,7 +4071,13 @@ rule <semantic_instruction>
     $identifier$ ? constructorName ;
     @typeListeAttributsSemantiques listeAttributsSemantiques ;
     @bool hasLexiqueAndLocationArguments ;
-    [targetVarType handleConstructorCall !constructorName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments] ;
+    @AC_galgasType returnedType ;
+    [targetVarType handleConstructorInvocation !constructorName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments ?returnedType] ;
+  #--- Check returned type is the same as constant type
+    if targetVarType != returnedType then
+      @string typeName ; [returnedType getTypeName ?typeName] ;
+      error constructorName:"this constructor returns an other type: '@" . typeName . "'" ;
+    end if ;
   #--- Actual arguments
     @typeExpressionList expressionList ;
     <output_expression_list>
@@ -5528,7 +5534,13 @@ rule <optional_assignment>
   $identifier$ ? constructorName ;
   @typeListeAttributsSemantiques listeAttributsSemantiques ;
   @bool hasLexiqueAndLocationArguments ;
-  [inVariableType handleConstructorCall !constructorName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments] ;
+  @AC_galgasType returnedType ;
+  [inVariableType handleConstructorInvocation !constructorName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments ?returnedType] ;
+#--- Check returned type is the same as constant type
+  if inVariableType != returnedType then
+    @string typeName ; [returnedType getTypeName ?typeName] ;
+    error constructorName:"this constructor returns an other type: '@" . typeName . "'" ;
+  end if ;
 #--- Actual arguments
   @typeExpressionList expressionList ;
   <output_expression_list>
