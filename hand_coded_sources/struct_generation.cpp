@@ -37,6 +37,8 @@ void cPtr_C_structToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
   inHfile.appendCppTitleComment (C_String ("Declarations for '") + mStructName + "' struct") ;
+  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mStructName << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << mStructName << " {\n"
              "//--- Default constructor\n"
              "  public : GGS_" << mStructName << " (void) ;\n\n"
@@ -124,6 +126,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of '") + mStructName + "' struct") ;
+  inCppFile << "const C_galgas_type_reference kTypeReference_" << mStructName << " (\"" << mStructName << "\") ;\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) :\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
   bool first = true ;

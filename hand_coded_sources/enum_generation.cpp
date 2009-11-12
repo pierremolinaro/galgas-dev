@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate enum class                                                      *
 //                                                                           *
-//  Copyright (C) 2004, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 2004, ..., 2009 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -52,6 +52,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   
   inHfile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
+
+  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mEnumTypeName << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
+
   
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
@@ -197,7 +201,10 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                                 PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
-  
+
+  inCppFile << "const C_galgas_type_reference kTypeReference_" << mEnumTypeName << " (\"" << mEnumTypeName << "\") ;\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+
   inCppFile << "bool GGS_" << mEnumTypeName
             << "::\n"
                "isBuilt (void) const {\n"
