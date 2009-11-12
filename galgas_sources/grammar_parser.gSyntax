@@ -225,8 +225,7 @@ rule <galgas_component>
 :
   $grammar$ ;
 #--- Grammar name
-  @lstring grammarName ;
-  $identifier$ ? grammarName ;
+  $identifier$ ? @lstring grammarName ;
   error here: "in GALGAS 1.9.3 and later, uses '.gGrammar' extension instead of '.ggs'" ;
   @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
   if [grammarName string] != basename then
