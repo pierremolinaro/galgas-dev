@@ -47,7 +47,8 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_typeGalgasListmapToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Map list '@") + mListmapTypeName + "'") ;
-
+  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mListmapTypeName << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << mListmapTypeName << " : public AC_galgas_listmap {\n"
              "//--- Node class\n"
              "  public : class cElement : public cPtrListMapObject {\n"
@@ -151,6 +152,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
 
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_reference kTypeReference_" << mListmapTypeName << " (\"" << mListmapTypeName << "\") ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mListmapTypeName << "::cElement::cElement (LOCATION_ARGS) :\n"
                "cPtrListMapObject (THERE),\n"

@@ -110,9 +110,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //----------------------- List class declaration ----------------  
   inHfile.appendCppTitleComment (C_String ("list '@") + aNomListe + "'") ;
 
-  inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
-             "\n"
-             "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
+  inHfile << "class elementOf_GGS_" << aNomListe << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
+  inHfile << "extern const C_galgas_type_reference kTypeReference_" << aNomListe << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
+  inHfile << "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n\n"
 
 //--- Constructor 'emptyList'
@@ -459,9 +461,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }else{
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                  "appendForDescription (C_Compiler & inLexique,\n"
-                 "                          C_String & ioString,\n"
-                 "                          const PMSInt32 inIndentation\n"
-                 "                          COMMA_LOCATION_ARGS) const {\n" ;
+                 "                      C_String & ioString,\n"
+                 "                      const PMSInt32 inIndentation\n"
+                 "                      COMMA_LOCATION_ARGS) const {\n" ;
     numeroVariable = 0 ;
     while (current.hasCurrentObject ()) {
       inCppFile << "  ioString << \"\\n\" ;\n"
@@ -477,6 +479,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 // ------------- List Implementation -----------------
   inCppFile.appendCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
+
+  inCppFile << "const C_galgas_type_reference kTypeReference_" << aNomListe << " (\"" << aNomListe << "\") ;\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Engendrer la methode _internalAppendValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -1139,8 +1144,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //----------------------- List class declaration ----------------  
   inHfile.appendCppTitleComment (C_String ("sorted list '@") + aNomListe + "'") ;
 
-  inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
-             "\n"
+  inHfile << "class elementOf_GGS_" << aNomListe << " ;\n" ;
+  inHfile.appendCppHyphenLineComment () ;
+  inHfile << "extern const C_galgas_type_reference kTypeReference_" << aNomListe << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
+  inHfile << "\n"
              "class GGS_" << aNomListe << " : public AC_galgas_sortedlist {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n"
 //--- Constructors and assignment operator declaration
@@ -1447,7 +1455,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "}\n\n" ;
 
 // ------------- List Implementation -----------------
-  inCppFile.appendCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("Sorted list '@") + aNomListe + "'") ;
+
+  inCppFile << "const C_galgas_type_reference kTypeReference_" << aNomListe << " (\"" << aNomListe << "\") ;\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Generate default constructor
   inCppFile << "GGS_" << aNomListe
