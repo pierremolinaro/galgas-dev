@@ -1491,6 +1491,27 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
+#   F A C T O R    :    `@type                                                 *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ??@EXsemanticContext unused inSemanticContext
+  ?!@typeVariablesMap unused ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  $`$ ;
+  $type_name$ ? @lstring typeName ;
+  [inEntitiesMap searchKey !typeName ?*] ;
+  outExpression := [@typeClassToTypeOperand new !typeName] ;
+  outResultType := [@typeGalgas_type new] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
 #   F A C T O R    :    if cond1 then exp1 elsif cond2 exp2 ... else exp3 end  *
 #                                                                              *
 #------------------------------------------------------------------------------*

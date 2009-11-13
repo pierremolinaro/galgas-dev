@@ -1979,6 +1979,23 @@ class @typeGalgas_data extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    ' T Y P E '    T Y P E                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_type extends @AC_galgasType {
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := "type" ;
+  end method ;
+
+#--- Error message
+  message "a '@type' type" ;
+  message messageGalgasType "a '@type' type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   M E T H O D S    M A P                                                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3498,6 +3515,7 @@ routine checkAssignmentTypesCompatibility
   ??@bool inAcceptPolymorphism
 :
   match inFormalType :: inEffectiveType :
+  when @typeGalgas_type ()         :: @typeGalgas_type () :
   when @typeGalgas_binaryset ()    :: @typeGalgas_binaryset () :
   when @typeGalgas_stringset ()    :: @typeGalgas_stringset () :
   when @typeGalgas_data ()         :: @typeGalgas_data () :
@@ -4774,6 +4792,9 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
 
   e := [@typeEntiteType new ![@typeGalgas_data new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"data" !here] !e] ;
+
+  e := [@typeEntiteType new ![@typeGalgas_type new]] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"type" !here] !e] ;
 
   @AC_galgasType t ; build_uintlist_type ?t ;
   e := [@typeEntiteType new !t] ;

@@ -77,6 +77,42 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+void cPtr_typeClassToTypeOperand::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "GGS_type  (& kTypeReference_" << mTypeName << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeClassToTypeOperand::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeClassToTypeOperand::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeClassToTypeOperand::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 void cPtr_typeCastInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_" << mCastTypeName <<"::castFrom (inLexique, " ;
