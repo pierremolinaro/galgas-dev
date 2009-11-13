@@ -668,6 +668,12 @@ class @typeRightShiftOperation extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+
+class @typeClassToTypeOperand extends @typeExpression {
+  @lstring mTypeName ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   C A L L    T E S T    M E T H O D    F O R    M A P                     *
 #---------------------------------------------------------------------------*
 

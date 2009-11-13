@@ -1610,6 +1610,8 @@
 		CFCB125A0D9D74330016BE3F /* galgasTemplateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgasTemplateParser.h; sourceTree = "<group>"; };
 		CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgasTemplateScanner.cpp; sourceTree = "<group>"; };
 		CFCB125C0D9D74330016BE3F /* galgasTemplateScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgasTemplateScanner.h; sourceTree = "<group>"; };
+		CFCC80AD10AD65B000C72F26 /* include_typeGalgas_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_type.h; sourceTree = "<group>"; };
+		CFCC80C710AD684800C72F26 /* include_typeClassToTypeOperand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeClassToTypeOperand.h; sourceTree = "<group>"; };
 		CFCF13131020BB91003E9964 /* GGS_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGS_data.h; sourceTree = "<group>"; };
 		CFCF13141020BB91003E9964 /* GGS_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_data.cpp; sourceTree = "<group>"; };
 		CFCF13621020D283003E9964 /* include_typeGalgas_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_data.h; sourceTree = "<group>"; };
@@ -2218,6 +2220,8 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFCC80AD10AD65B000C72F26 /* include_typeGalgas_type.h */,
+				CFCC80C710AD684800C72F26 /* include_typeClassToTypeOperand.h */,
 				CFE0077610AC830A00CD35E8 /* include_typeCppStarThisName.h */,
 				CF2F1D2610A715A90035C560 /* include_abstractSyntaxInstructionForGrammarAnalysis.h */,
 				CF2F1D1F10A713D90035C560 /* include_terminalInstructionForGrammarAnalysis.h */,

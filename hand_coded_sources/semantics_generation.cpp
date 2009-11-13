@@ -487,6 +487,7 @@ generate_header_file (C_Compiler & inLexique,
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
                     "#include \"galgas/GGS_location.h\"\n"
                     "#include \"galgas/GGS_data.h\"\n"
+                    "#include \"galgas/GGS_type.h\"\n"
                     "#include \"galgas/GGS_lbool.h\"\n"
                     "#include \"galgas/GGS_lchar.h\"\n"
                     "#include \"galgas/GGS_lstring.h\"\n"
@@ -885,6 +886,20 @@ generateCppClassName (AC_OutputStream & inFile) const {
 void cPtr_typeGalgas_data::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_data" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_type::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_type" ;
 }
 
 //---------------------------------------------------------------------------*
