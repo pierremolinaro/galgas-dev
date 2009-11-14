@@ -79,7 +79,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeClassToTypeOperand::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_type  (& kTypeReference_" << mTypeName << ")" ;
+  ioCppFile << "GGS_type  (& kTypeDescriptor_GGS_" << mTypeName << ")" ;
 }
 
 //---------------------------------------------------------------------------*

@@ -39,4 +39,12 @@ list @LCHARLIST {
   @lchar mValue ;
 }
 
+list @TYPELIST {
+  @type mValue ;
+}
+
+list @FUNCTIONLIST {
+  @function mValue ;
+}
+
 end semantics ;

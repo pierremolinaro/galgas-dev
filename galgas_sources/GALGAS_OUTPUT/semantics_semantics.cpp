@@ -87,12 +87,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeCplusPlusNameList ("typeCplusPlusNameList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeCplusPlusNameList ("typeCplusPlusNameList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeCplusPlusNameList::
-_internalAppendValues (const GGS_typeCplusPlusName & argument_0
+internalAppendValues (const GGS_typeCplusPlusName & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -103,7 +103,7 @@ _internalAppendValues (const GGS_typeCplusPlusName & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeCplusPlusNameList::
-_internalPrependValues (const GGS_typeCplusPlusName & argument_0
+internalPrependValues (const GGS_typeCplusPlusName & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -116,8 +116,8 @@ _internalPrependValues (const GGS_typeCplusPlusName & argument_0
 void GGS_typeCplusPlusNameList::
 addAssign_operation (const GGS_typeCplusPlusName & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -140,12 +140,12 @@ dotAssign_operation (const GGS_typeCplusPlusNameList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeCplusPlusNameList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeCplusPlusName  p_0 = p->mCppName ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -160,8 +160,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeCplusPlusName & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -169,13 +169,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeCplusPlusNameList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mCppName
+      internalAppendValues (ptr->mCppName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -324,7 +324,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mCppName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -346,7 +346,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mCppName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -405,7 +405,7 @@ mMessage () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeClassMessagesMap ("typeClassMessagesMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeClassMessagesMap ("typeClassMessagesMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -807,12 +807,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeSemanticsTypesList ("typeSemanticsTypesList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeSemanticsTypesList ("typeSemanticsTypesList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeSemanticsTypesList::
-_internalAppendValues (const GGS_AC_galgasType & argument_0,
+internalAppendValues (const GGS_AC_galgasType & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -825,7 +825,7 @@ _internalAppendValues (const GGS_AC_galgasType & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeSemanticsTypesList::
-_internalPrependValues (const GGS_AC_galgasType & argument_0,
+internalPrependValues (const GGS_AC_galgasType & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -841,8 +841,8 @@ void GGS_typeSemanticsTypesList::
 addAssign_operation (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -866,13 +866,13 @@ dotAssign_operation (const GGS_typeSemanticsTypesList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeSemanticsTypesList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_AC_galgasType  p_0 = p->mType ;
           GGS_lstring  p_1 = p->mGalgasVariableName ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -888,8 +888,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -898,13 +898,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeSemanticsTypesList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mType,
+      internalAppendValues (ptr->mType,
                                 ptr->mGalgasVariableName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -1063,7 +1063,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mType ;
     _out_1 = ptr->mGalgasVariableName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1088,7 +1088,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mType ;
     _out_1 = ptr->mGalgasVariableName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1722,12 +1722,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_L_assignedVariables ("L_assignedVariables") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_L_assignedVariables ("L_assignedVariables") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_assignedVariables::
-_internalAppendValues (const GGS_typeCplusPlusName & argument_0,
+internalAppendValues (const GGS_typeCplusPlusName & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1740,7 +1740,7 @@ _internalAppendValues (const GGS_typeCplusPlusName & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_assignedVariables::
-_internalPrependValues (const GGS_typeCplusPlusName & argument_0,
+internalPrependValues (const GGS_typeCplusPlusName & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1756,8 +1756,8 @@ void GGS_L_assignedVariables::
 addAssign_operation (const GGS_typeCplusPlusName & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1781,13 +1781,13 @@ dotAssign_operation (const GGS_L_assignedVariables inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_L_assignedVariables * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeCplusPlusName  p_0 = p->aNomVariableCible ;
           GGS_lstring  p_1 = p->aNomAttributSource ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1803,8 +1803,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1813,13 +1813,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_L_assignedVariables::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->aNomVariableCible,
+      internalAppendValues (ptr->aNomVariableCible,
                                 ptr->aNomAttributSource
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -1978,7 +1978,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->aNomVariableCible ;
     _out_1 = ptr->aNomAttributSource ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2003,7 +2003,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->aNomVariableCible ;
     _out_1 = ptr->aNomAttributSource ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -2150,7 +2150,7 @@ AC_galgasClassRunTimeInformation * cPtr_typeCible::galgasRTTI (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeCible ("typeCible") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeCible ("typeCible") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2259,12 +2259,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeListeCibles ("typeListeCibles") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeListeCibles ("typeListeCibles") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeCibles::
-_internalAppendValues (const GGS_typeCible & argument_0
+internalAppendValues (const GGS_typeCible & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -2275,7 +2275,7 @@ _internalAppendValues (const GGS_typeCible & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeCibles::
-_internalPrependValues (const GGS_typeCible & argument_0
+internalPrependValues (const GGS_typeCible & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -2288,8 +2288,8 @@ _internalPrependValues (const GGS_typeCible & argument_0
 void GGS_typeListeCibles::
 addAssign_operation (const GGS_typeCible & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -2312,12 +2312,12 @@ dotAssign_operation (const GGS_typeListeCibles inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeListeCibles * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeCible  p_0 = p->aCible ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2332,8 +2332,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeCible & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -2341,13 +2341,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeCibles::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->aCible
+      internalAppendValues (ptr->aCible
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -2496,7 +2496,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->aCible ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2518,7 +2518,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->aCible ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -2613,12 +2613,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_L_nameWithType ("L_nameWithType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_L_nameWithType ("L_nameWithType") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_nameWithType::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -2631,7 +2631,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_nameWithType::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -2647,8 +2647,8 @@ void GGS_L_nameWithType::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -2672,13 +2672,13 @@ dotAssign_operation (const GGS_L_nameWithType inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_L_nameWithType * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mType ;
           GGS_lstring  p_1 = p->mName ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2694,8 +2694,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -2704,13 +2704,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_L_nameWithType::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mType,
+      internalAppendValues (ptr->mType,
                                 ptr->mName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -2869,7 +2869,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mType ;
     _out_1 = ptr->mName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2894,7 +2894,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mType ;
     _out_1 = ptr->mName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3130,12 +3130,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeExpressionList ("typeExpressionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeExpressionList ("typeExpressionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeExpressionList::
-_internalAppendValues (const GGS_typeExpression & argument_0
+internalAppendValues (const GGS_typeExpression & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -3146,7 +3146,7 @@ _internalAppendValues (const GGS_typeExpression & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeExpressionList::
-_internalPrependValues (const GGS_typeExpression & argument_0
+internalPrependValues (const GGS_typeExpression & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -3159,8 +3159,8 @@ _internalPrependValues (const GGS_typeExpression & argument_0
 void GGS_typeExpressionList::
 addAssign_operation (const GGS_typeExpression & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -3183,12 +3183,12 @@ dotAssign_operation (const GGS_typeExpressionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeExpressionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeExpression  p_0 = p->mExpression ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3203,8 +3203,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeExpression & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -3212,13 +3212,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeExpressionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mExpression
+      internalAppendValues (ptr->mExpression
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -3367,7 +3367,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mExpression ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3389,7 +3389,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mExpression ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3477,12 +3477,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_varToDropList ("varToDropList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_varToDropList ("varToDropList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_varToDropList::
-_internalAppendValues (const GGS_typeCplusPlusName & argument_0
+internalAppendValues (const GGS_typeCplusPlusName & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -3493,7 +3493,7 @@ _internalAppendValues (const GGS_typeCplusPlusName & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_varToDropList::
-_internalPrependValues (const GGS_typeCplusPlusName & argument_0
+internalPrependValues (const GGS_typeCplusPlusName & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -3506,8 +3506,8 @@ _internalPrependValues (const GGS_typeCplusPlusName & argument_0
 void GGS_varToDropList::
 addAssign_operation (const GGS_typeCplusPlusName & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -3530,12 +3530,12 @@ dotAssign_operation (const GGS_varToDropList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_varToDropList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeCplusPlusName  p_0 = p->mVarToDrop ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3550,8 +3550,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeCplusPlusName & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -3559,13 +3559,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_varToDropList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mVarToDrop
+      internalAppendValues (ptr->mVarToDrop
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -3714,7 +3714,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mVarToDrop ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3736,7 +3736,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mVarToDrop ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3882,7 +3882,7 @@ cPtr__AC_galgas_class * cPtr_typeErrorInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeErrorInstruction ("typeErrorInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeErrorInstruction ("typeErrorInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4100,7 +4100,7 @@ cPtr__AC_galgas_class * cPtr_typeSendInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeSendInstruction ("typeSendInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeSendInstruction ("typeSendInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4298,7 +4298,7 @@ cPtr__AC_galgas_class * cPtr_typeWithInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeWithInstruction ("typeWithInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeWithInstruction ("typeWithInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4588,7 +4588,7 @@ cPtr__AC_galgas_class * cPtr_typeWarningInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeWarningInstruction ("typeWarningInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeWarningInstruction ("typeWarningInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4794,7 +4794,7 @@ cPtr__AC_galgas_class * cPtr_typeMessageInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeMessageInstruction ("typeMessageInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMessageInstruction ("typeMessageInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4996,7 +4996,7 @@ cPtr__AC_galgas_class * cPtr_typeMethodCallInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeMethodCallInstruction ("typeMethodCallInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMethodCallInstruction ("typeMethodCallInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5238,7 +5238,7 @@ cPtr__AC_galgas_class * cPtr_typeCallOfTypeMethodInstruction::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeCallOfTypeMethodInstruction ("typeCallOfTypeMethodInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeCallOfTypeMethodInstruction ("typeCallOfTypeMethodInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5452,7 +5452,7 @@ cPtr__AC_galgas_class * cPtr_typeModifierCallInstruction::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeModifierCallInstruction ("typeModifierCallInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeModifierCallInstruction ("typeModifierCallInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5678,7 +5678,7 @@ cPtr__AC_galgas_class * cPtr_typeInstructionAppelMethodeListe::makeClone (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeInstructionAppelMethodeListe ("typeInstructionAppelMethodeListe") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeInstructionAppelMethodeListe ("typeInstructionAppelMethodeListe") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5884,7 +5884,7 @@ cPtr__AC_galgas_class * cPtr_typeInstructionDeclarationVarLocale::makeClone (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeInstructionDeclarationVarLocale ("typeInstructionDeclarationVarLocale") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeInstructionDeclarationVarLocale ("typeInstructionDeclarationVarLocale") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6078,7 +6078,7 @@ cPtr__AC_galgas_class * cPtr_typeMapBlockPrologueInstruction::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeMapBlockPrologueInstruction ("typeMapBlockPrologueInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMapBlockPrologueInstruction ("typeMapBlockPrologueInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6288,7 +6288,7 @@ cPtr__AC_galgas_class * cPtr_typeMapBlockEpilogueInstruction::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeMapBlockEpilogueInstruction ("typeMapBlockEpilogueInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMapBlockEpilogueInstruction ("typeMapBlockEpilogueInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6506,7 +6506,7 @@ cPtr__AC_galgas_class * cPtr_typeReaderCallInExpression::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeReaderCallInExpression ("typeReaderCallInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeReaderCallInExpression ("typeReaderCallInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6744,7 +6744,7 @@ cPtr__AC_galgas_class * cPtr_typeFileWrapperWithStaticPath::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeFileWrapperWithStaticPath ("typeFileWrapperWithStaticPath") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeFileWrapperWithStaticPath ("typeFileWrapperWithStaticPath") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6938,7 +6938,7 @@ cPtr__AC_galgas_class * cPtr_typeFileWrapperTemplateCall::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeFileWrapperTemplateCall ("typeFileWrapperTemplateCall") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeFileWrapperTemplateCall ("typeFileWrapperTemplateCall") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7152,7 +7152,7 @@ cPtr__AC_galgas_class * cPtr_typeCategoryTemplateCall::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeCategoryTemplateCall ("typeCategoryTemplateCall") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeCategoryTemplateCall ("typeCategoryTemplateCall") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7370,7 +7370,7 @@ cPtr__AC_galgas_class * cPtr_typeFileWrapperObjectInstanciation::makeClone (void
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeFileWrapperObjectInstanciation ("typeFileWrapperObjectInstanciation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeFileWrapperObjectInstanciation ("typeFileWrapperObjectInstanciation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7544,7 +7544,7 @@ cPtr__AC_galgas_class * cPtr_typeDescriptionInExpression::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeDescriptionInExpression ("typeDescriptionInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeDescriptionInExpression ("typeDescriptionInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7742,7 +7742,7 @@ cPtr__AC_galgas_class * cPtr_typeCastInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeCastInExpression ("typeCastInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeCastInExpression ("typeCastInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7968,7 +7968,7 @@ cPtr__AC_galgas_class * cPtr_typeAndOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeAndOperation ("typeAndOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeAndOperation ("typeAndOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8178,7 +8178,7 @@ cPtr__AC_galgas_class * cPtr_typeOrOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeOrOperation ("typeOrOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeOrOperation ("typeOrOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8388,7 +8388,7 @@ cPtr__AC_galgas_class * cPtr_typeXorOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeXorOperation ("typeXorOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeXorOperation ("typeXorOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8598,7 +8598,7 @@ cPtr__AC_galgas_class * cPtr_typeConcatOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeConcatOperation ("typeConcatOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeConcatOperation ("typeConcatOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8783,7 +8783,7 @@ AC_galgasClassRunTimeInformation * cPtr_typeTrueBool::galgasRTTI (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeTrueBool ("typeTrueBool") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeTrueBool ("typeTrueBool") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8935,7 +8935,7 @@ AC_galgasClassRunTimeInformation * cPtr_typeFalseBool::galgasRTTI (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeFalseBool ("typeFalseBool") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeFalseBool ("typeFalseBool") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9104,7 +9104,7 @@ cPtr__AC_galgas_class * cPtr_typeLiteralStringExpression::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLiteralStringExpression ("typeLiteralStringExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLiteralStringExpression ("typeLiteralStringExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9274,7 +9274,7 @@ cPtr__AC_galgas_class * cPtr_typeLiteralUIntExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLiteralUIntExpression ("typeLiteralUIntExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLiteralUIntExpression ("typeLiteralUIntExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9444,7 +9444,7 @@ cPtr__AC_galgas_class * cPtr_typeLiteralSIntExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLiteralSIntExpression ("typeLiteralSIntExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLiteralSIntExpression ("typeLiteralSIntExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9614,7 +9614,7 @@ cPtr__AC_galgas_class * cPtr_typeLiteralUInt64Expression::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLiteralUInt64Expression ("typeLiteralUInt64Expression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLiteralUInt64Expression ("typeLiteralUInt64Expression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9784,7 +9784,7 @@ cPtr__AC_galgas_class * cPtr_typeLiteralSInt64Expression::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLiteralSInt64Expression ("typeLiteralSInt64Expression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLiteralSInt64Expression ("typeLiteralSInt64Expression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9954,7 +9954,7 @@ cPtr__AC_galgas_class * cPtr_typeLiteralCharExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLiteralCharExpression ("typeLiteralCharExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLiteralCharExpression ("typeLiteralCharExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10124,7 +10124,7 @@ cPtr__AC_galgas_class * cPtr_typeLiteralDoubleExpression::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLiteralDoubleExpression ("typeLiteralDoubleExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLiteralDoubleExpression ("typeLiteralDoubleExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10277,7 +10277,7 @@ AC_galgasClassRunTimeInformation * cPtr_typeHereExpression::galgasRTTI (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeHereExpression ("typeHereExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeHereExpression ("typeHereExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10458,7 +10458,7 @@ cPtr__AC_galgas_class * cPtr_typeConstructorExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeConstructorExpression ("typeConstructorExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeConstructorExpression ("typeConstructorExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10684,7 +10684,7 @@ cPtr__AC_galgas_class * cPtr_typeIfThenElseExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeIfThenElseExpression ("typeIfThenElseExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeIfThenElseExpression ("typeIfThenElseExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10890,7 +10890,7 @@ cPtr__AC_galgas_class * cPtr_typeTestComplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeTestComplement ("typeTestComplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeTestComplement ("typeTestComplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11080,7 +11080,7 @@ cPtr__AC_galgas_class * cPtr_typeLogicalNegate::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLogicalNegate ("typeLogicalNegate") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLogicalNegate ("typeLogicalNegate") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11270,7 +11270,7 @@ cPtr__AC_galgas_class * cPtr_typeBoolOption::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeBoolOption ("typeBoolOption") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeBoolOption ("typeBoolOption") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11460,7 +11460,7 @@ cPtr__AC_galgas_class * cPtr_typeUIntOption::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeUIntOption ("typeUIntOption") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeUIntOption ("typeUIntOption") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11650,7 +11650,7 @@ cPtr__AC_galgas_class * cPtr_typeStringOption::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeStringOption ("typeStringOption") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeStringOption ("typeStringOption") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11840,7 +11840,7 @@ cPtr__AC_galgas_class * cPtr_typeFunctionCall::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeFunctionCall ("typeFunctionCall") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeFunctionCall ("typeFunctionCall") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12030,7 +12030,7 @@ cPtr__AC_galgas_class * cPtr_typeVarInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeVarInExpression ("typeVarInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeVarInExpression ("typeVarInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12199,7 +12199,7 @@ AC_galgasClassRunTimeInformation * cPtr_typeJokerInExpression::galgasRTTI (void)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeJokerInExpression ("typeJokerInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeJokerInExpression ("typeJokerInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12376,7 +12376,7 @@ cPtr__AC_galgas_class * cPtr_typeAddOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeAddOperation ("typeAddOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeAddOperation ("typeAddOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12586,7 +12586,7 @@ cPtr__AC_galgas_class * cPtr_typeSubOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeSubOperation ("typeSubOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeSubOperation ("typeSubOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12796,7 +12796,7 @@ cPtr__AC_galgas_class * cPtr_typeMultiplyOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeMultiplyOperation ("typeMultiplyOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMultiplyOperation ("typeMultiplyOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -13006,7 +13006,7 @@ cPtr__AC_galgas_class * cPtr_typeDivideOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeDivideOperation ("typeDivideOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeDivideOperation ("typeDivideOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -13216,7 +13216,7 @@ cPtr__AC_galgas_class * cPtr_typeModuloOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeModuloOperation ("typeModuloOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeModuloOperation ("typeModuloOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -13422,7 +13422,7 @@ cPtr__AC_galgas_class * cPtr_typeUnaryMinusOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeUnaryMinusOperation ("typeUnaryMinusOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeUnaryMinusOperation ("typeUnaryMinusOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -13616,7 +13616,7 @@ cPtr__AC_galgas_class * cPtr_typeEqualTest::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeEqualTest ("typeEqualTest") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeEqualTest ("typeEqualTest") ;
 
 //---------------------------------------------------------------------------*
 
@@ -13826,7 +13826,7 @@ cPtr__AC_galgas_class * cPtr_typeNonEqualTest::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeNonEqualTest ("typeNonEqualTest") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeNonEqualTest ("typeNonEqualTest") ;
 
 //---------------------------------------------------------------------------*
 
@@ -14036,7 +14036,7 @@ cPtr__AC_galgas_class * cPtr_typeStrictInfTest::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeStrictInfTest ("typeStrictInfTest") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeStrictInfTest ("typeStrictInfTest") ;
 
 //---------------------------------------------------------------------------*
 
@@ -14246,7 +14246,7 @@ cPtr__AC_galgas_class * cPtr_typeInfOrEqualTest::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeInfOrEqualTest ("typeInfOrEqualTest") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeInfOrEqualTest ("typeInfOrEqualTest") ;
 
 //---------------------------------------------------------------------------*
 
@@ -14456,7 +14456,7 @@ cPtr__AC_galgas_class * cPtr_typeStrictSupTest::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeStrictSupTest ("typeStrictSupTest") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeStrictSupTest ("typeStrictSupTest") ;
 
 //---------------------------------------------------------------------------*
 
@@ -14666,7 +14666,7 @@ cPtr__AC_galgas_class * cPtr_typeSupOrEqualTest::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeSupOrEqualTest ("typeSupOrEqualTest") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeSupOrEqualTest ("typeSupOrEqualTest") ;
 
 //---------------------------------------------------------------------------*
 
@@ -14876,7 +14876,7 @@ cPtr__AC_galgas_class * cPtr_typeLeftShiftOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLeftShiftOperation ("typeLeftShiftOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLeftShiftOperation ("typeLeftShiftOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -15086,7 +15086,7 @@ cPtr__AC_galgas_class * cPtr_typeRightShiftOperation::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeRightShiftOperation ("typeRightShiftOperation") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeRightShiftOperation ("typeRightShiftOperation") ;
 
 //---------------------------------------------------------------------------*
 
@@ -15288,7 +15288,7 @@ cPtr__AC_galgas_class * cPtr_typeClassToTypeOperand::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeClassToTypeOperand ("typeClassToTypeOperand") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeClassToTypeOperand ("typeClassToTypeOperand") ;
 
 //---------------------------------------------------------------------------*
 
@@ -15466,7 +15466,7 @@ cPtr__AC_galgas_class * cPtr_typeTextTableCall::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeTextTableCall ("typeTextTableCall") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeTextTableCall ("typeTextTableCall") ;
 
 //---------------------------------------------------------------------------*
 
@@ -15676,7 +15676,7 @@ cPtr__AC_galgas_class * cPtr_C_assignmentInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_assignmentInstruction ("C_assignmentInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_assignmentInstruction ("C_assignmentInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -15886,7 +15886,7 @@ cPtr__AC_galgas_class * cPtr_C_constantDeclarationInstruction::makeClone (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_constantDeclarationInstruction ("C_constantDeclarationInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_constantDeclarationInstruction ("C_constantDeclarationInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -16100,7 +16100,7 @@ cPtr__AC_galgas_class * cPtr_C_dotEqualInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_dotEqualInstruction ("C_dotEqualInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_dotEqualInstruction ("C_dotEqualInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -16326,7 +16326,7 @@ cPtr__AC_galgas_class * cPtr_C_declarationInstructionWithAssignment::makeClone (
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_declarationInstructionWithAssignment ("C_declarationInstructionWithAssignment") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_declarationInstructionWithAssignment ("C_declarationInstructionWithAssignment") ;
 
 //---------------------------------------------------------------------------*
 
@@ -16544,7 +16544,7 @@ cPtr__AC_galgas_class * cPtr_C_while_instruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_while_instruction ("C_while_instruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_while_instruction ("C_while_instruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -16746,12 +16746,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_L_expression_instructionsList_list ("L_expression_instructionsList_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_L_expression_instructionsList_list ("L_expression_instructionsList_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_expression_instructionsList_list::
-_internalAppendValues (const GGS_typeExpression & argument_0,
+internalAppendValues (const GGS_typeExpression & argument_0,
                     const GGS_typeInstructionList & argument_1,
                     const GGS_location & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -16766,7 +16766,7 @@ _internalAppendValues (const GGS_typeExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_expression_instructionsList_list::
-_internalPrependValues (const GGS_typeExpression & argument_0,
+internalPrependValues (const GGS_typeExpression & argument_0,
                     const GGS_typeInstructionList & argument_1,
                     const GGS_location & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -16785,8 +16785,8 @@ addAssign_operation (const GGS_typeExpression & argument_0,
                                 const GGS_typeInstructionList & argument_1,
                                 const GGS_location & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -16811,14 +16811,14 @@ dotAssign_operation (const GGS_L_expression_instructionsList_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_L_expression_instructionsList_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeExpression  p_0 = p->mIFexpression ;
           GGS_typeInstructionList  p_1 = p->mInstructionList ;
           GGS_location  p_2 = p->mLocation ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -16835,8 +16835,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_location & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -16846,13 +16846,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_L_expression_instructionsList_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mIFexpression,
+      internalAppendValues (ptr->mIFexpression,
                                 ptr->mInstructionList,
                                 ptr->mLocation
                                 COMMA_HERE) ;
@@ -17021,7 +17021,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mIFexpression ;
     _out_1 = ptr->mInstructionList ;
     _out_2 = ptr->mLocation ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -17049,7 +17049,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mIFexpression ;
     _out_1 = ptr->mInstructionList ;
     _out_2 = ptr->mLocation ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -17261,7 +17261,7 @@ cPtr__AC_galgas_class * cPtr_C_if_instruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_if_instruction ("C_if_instruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_if_instruction ("C_if_instruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -17408,12 +17408,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_L_switchBranchlist ("L_switchBranchlist") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_L_switchBranchlist ("L_switchBranchlist") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_switchBranchlist::
-_internalAppendValues (const GGS_stringset & argument_0,
+internalAppendValues (const GGS_stringset & argument_0,
                     const GGS_typeInstructionList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -17426,7 +17426,7 @@ _internalAppendValues (const GGS_stringset & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_switchBranchlist::
-_internalPrependValues (const GGS_stringset & argument_0,
+internalPrependValues (const GGS_stringset & argument_0,
                     const GGS_typeInstructionList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -17442,8 +17442,8 @@ void GGS_L_switchBranchlist::
 addAssign_operation (const GGS_stringset & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -17467,13 +17467,13 @@ dotAssign_operation (const GGS_L_switchBranchlist inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_L_switchBranchlist * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_stringset  p_0 = p->mConstantSet ;
           GGS_typeInstructionList  p_1 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -17489,8 +17489,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeInstructionList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -17499,13 +17499,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_L_switchBranchlist::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mConstantSet,
+      internalAppendValues (ptr->mConstantSet,
                                 ptr->mInstructionList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -17664,7 +17664,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mConstantSet ;
     _out_1 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -17689,7 +17689,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mConstantSet ;
     _out_1 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -17868,7 +17868,7 @@ cPtr__AC_galgas_class * cPtr_C_switch_instruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_switch_instruction ("C_switch_instruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_switch_instruction ("C_switch_instruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -17985,7 +17985,7 @@ C_galgasClassRunTimeInformation gClassInfoFor__C_switch_instruction ("C_switch_i
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeTableRoutinesAimplementer ("typeTableRoutinesAimplementer") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeTableRoutinesAimplementer ("typeTableRoutinesAimplementer") ;
 
 //---------------------------------------------------------------------------*
 
@@ -18279,7 +18279,7 @@ mAttributType () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeTableAttributsSemantiques ("typeTableAttributsSemantiques") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeTableAttributsSemantiques ("typeTableAttributsSemantiques") ;
 
 //---------------------------------------------------------------------------*
 
@@ -18941,7 +18941,7 @@ AC_galgasClassRunTimeInformation * cPtr_typeJoker::galgasRTTI (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeJoker ("typeJoker") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeJoker ("typeJoker") ;
 
 //---------------------------------------------------------------------------*
 
@@ -19131,7 +19131,7 @@ cPtr__AC_galgas_class * cPtr_typeEntiteDest::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeEntiteDest ("typeEntiteDest") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeEntiteDest ("typeEntiteDest") ;
 
 //---------------------------------------------------------------------------*
 
@@ -19258,7 +19258,7 @@ mAltParametersMap () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_M_nonTerminalSymbolForSyntax ("M_nonTerminalSymbolForSyntax") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_M_nonTerminalSymbolForSyntax ("M_nonTerminalSymbolForSyntax") ;
 
 //---------------------------------------------------------------------------*
 
@@ -19755,7 +19755,7 @@ cPtr__AC_galgas_class * cPtr_C_grammarInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_grammarInstruction ("C_grammarInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_grammarInstruction ("C_grammarInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -20061,7 +20061,7 @@ cPtr__AC_galgas_class * cPtr_typeAppendInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeAppendInstruction ("typeAppendInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeAppendInstruction ("typeAppendInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -20271,7 +20271,7 @@ cPtr__AC_galgas_class * cPtr_typeRemoveInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeRemoveInstruction ("typeRemoveInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeRemoveInstruction ("typeRemoveInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -20481,7 +20481,7 @@ cPtr__AC_galgas_class * cPtr_typeIncrementInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeIncrementInstruction ("typeIncrementInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeIncrementInstruction ("typeIncrementInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -20691,7 +20691,7 @@ cPtr__AC_galgas_class * cPtr_typeDecrementInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeDecrementInstruction ("typeDecrementInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeDecrementInstruction ("typeDecrementInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -20861,12 +20861,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_L_matchInstructionCasesList ("L_matchInstructionCasesList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_L_matchInstructionCasesList ("L_matchInstructionCasesList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_matchInstructionCasesList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_typeInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -20881,7 +20881,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_matchInstructionCasesList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_typeInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -20900,8 +20900,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_typeInstructionList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -20926,14 +20926,14 @@ dotAssign_operation (const GGS_L_matchInstructionCasesList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_L_matchInstructionCasesList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mCase1_name ;
           GGS_lstring  p_1 = p->mCase2_name ;
           GGS_typeInstructionList  p_2 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -20950,8 +20950,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeInstructionList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -20961,13 +20961,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_L_matchInstructionCasesList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mCase1_name,
+      internalAppendValues (ptr->mCase1_name,
                                 ptr->mCase2_name,
                                 ptr->mInstructionList
                                 COMMA_HERE) ;
@@ -21136,7 +21136,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mCase1_name ;
     _out_1 = ptr->mCase2_name ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -21164,7 +21164,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mCase1_name ;
     _out_1 = ptr->mCase2_name ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -21408,7 +21408,7 @@ cPtr__AC_galgas_class * cPtr_typeMatchInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeMatchInstruction ("typeMatchInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMatchInstruction ("typeMatchInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -21704,12 +21704,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_foreachEnumerationList ("foreachEnumerationList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_foreachEnumerationList ("foreachEnumerationList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_foreachEnumerationList::
-_internalAppendValues (const GGS_bool& argument_0,
+internalAppendValues (const GGS_bool& argument_0,
                     const GGS_typeExpression & argument_1,
                     const GGS_location & argument_2,
                     const GGS_string& argument_3,
@@ -21728,7 +21728,7 @@ _internalAppendValues (const GGS_bool& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_foreachEnumerationList::
-_internalPrependValues (const GGS_bool& argument_0,
+internalPrependValues (const GGS_bool& argument_0,
                     const GGS_typeExpression & argument_1,
                     const GGS_location & argument_2,
                     const GGS_string& argument_3,
@@ -21753,8 +21753,8 @@ addAssign_operation (const GGS_bool& argument_0,
                                 const GGS_string& argument_3,
                                 const GGS_bool& argument_4) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()&& argument_4.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -21781,7 +21781,7 @@ dotAssign_operation (const GGS_foreachEnumerationList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_foreachEnumerationList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -21790,7 +21790,7 @@ dotAssign_operation (const GGS_foreachEnumerationList inOperand) {
           GGS_location  p_2 = p->mLocationOffset ;
           GGS_string p_3 = p->mCppTypeName ;
           GGS_bool p_4 = p->mAscending ;
-          _internalAppendValues (p_0, p_1, p_2, p_3, p_4 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3, p_4 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -21809,8 +21809,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_bool& argument_4
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -21822,13 +21822,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_foreachEnumerationList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mNewStyle,
+      internalAppendValues (ptr->mNewStyle,
                                 ptr->mSourceExpression,
                                 ptr->mLocationOffset,
                                 ptr->mCppTypeName,
@@ -22017,7 +22017,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_2 = ptr->mLocationOffset ;
     _out_3 = ptr->mCppTypeName ;
     _out_4 = ptr->mAscending ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -22051,7 +22051,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_2 = ptr->mLocationOffset ;
     _out_3 = ptr->mCppTypeName ;
     _out_4 = ptr->mAscending ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -22357,7 +22357,7 @@ cPtr__AC_galgas_class * cPtr_typeForeachInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeForeachInstruction ("typeForeachInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeForeachInstruction ("typeForeachInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -22639,7 +22639,7 @@ cPtr__AC_galgas_class * cPtr_typeSimpleExtractInstruction::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeSimpleExtractInstruction ("typeSimpleExtractInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeSimpleExtractInstruction ("typeSimpleExtractInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -22848,12 +22848,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeStructuredExtractCasesList ("typeStructuredExtractCasesList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeStructuredExtractCasesList ("typeStructuredExtractCasesList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeStructuredExtractCasesList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_location & argument_1,
                     const GGS_typeInstructionList & argument_2,
                     const GGS_bool& argument_3
@@ -22870,7 +22870,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeStructuredExtractCasesList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_location & argument_1,
                     const GGS_typeInstructionList & argument_2,
                     const GGS_bool& argument_3
@@ -22892,8 +22892,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_2,
                                 const GGS_bool& argument_3) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -22919,7 +22919,7 @@ dotAssign_operation (const GGS_typeStructuredExtractCasesList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeStructuredExtractCasesList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -22927,7 +22927,7 @@ dotAssign_operation (const GGS_typeStructuredExtractCasesList inOperand) {
           GGS_location  p_1 = p->mResultVarID ;
           GGS_typeInstructionList  p_2 = p->mInstructionList ;
           GGS_bool p_3 = p->mNoUsedParameter ;
-          _internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -22945,8 +22945,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_bool& argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -22957,13 +22957,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeStructuredExtractCasesList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mClassName,
+      internalAppendValues (ptr->mClassName,
                                 ptr->mResultVarID,
                                 ptr->mInstructionList,
                                 ptr->mNoUsedParameter
@@ -23142,7 +23142,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_1 = ptr->mResultVarID ;
     _out_2 = ptr->mInstructionList ;
     _out_3 = ptr->mNoUsedParameter ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -23173,7 +23173,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_1 = ptr->mResultVarID ;
     _out_2 = ptr->mInstructionList ;
     _out_3 = ptr->mNoUsedParameter ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -23426,7 +23426,7 @@ cPtr__AC_galgas_class * cPtr_typeStructuredExtractInstructionWithElse::makeClone
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeStructuredExtractInstructionWithElse ("typeStructuredExtractInstructionWithElse") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeStructuredExtractInstructionWithElse ("typeStructuredExtractInstructionWithElse") ;
 
 //---------------------------------------------------------------------------*
 
@@ -23604,7 +23604,7 @@ AC_galgasClassRunTimeInformation * cPtr_AC_elseOrDefaultForCastInstruction::galg
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_AC_elseOrDefaultForCastInstruction ("AC_elseOrDefaultForCastInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_AC_elseOrDefaultForCastInstruction ("AC_elseOrDefaultForCastInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -23759,7 +23759,7 @@ cPtr__AC_galgas_class * cPtr_C_elseForCastInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_elseForCastInstruction ("C_elseForCastInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_elseForCastInstruction ("C_elseForCastInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -23933,7 +23933,7 @@ cPtr__AC_galgas_class * cPtr_C_defaultForCastInstruction::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_defaultForCastInstruction ("C_defaultForCastInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_defaultForCastInstruction ("C_defaultForCastInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -24094,12 +24094,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeStructuredCastBranchList ("typeStructuredCastBranchList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeStructuredCastBranchList ("typeStructuredCastBranchList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeStructuredCastBranchList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_bool& argument_1,
                     const GGS_typeCplusPlusNameList & argument_2,
                     const GGS_typeInstructionList & argument_3
@@ -24116,7 +24116,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeStructuredCastBranchList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_bool& argument_1,
                     const GGS_typeCplusPlusNameList & argument_2,
                     const GGS_typeInstructionList & argument_3
@@ -24138,8 +24138,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_typeCplusPlusNameList & argument_2,
                                 const GGS_typeInstructionList & argument_3) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -24165,7 +24165,7 @@ dotAssign_operation (const GGS_typeStructuredCastBranchList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeStructuredCastBranchList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -24173,7 +24173,7 @@ dotAssign_operation (const GGS_typeStructuredCastBranchList inOperand) {
           GGS_bool p_1 = p->mCheckForKindOfClass ;
           GGS_typeCplusPlusNameList  p_2 = p->mLocalConstantName ;
           GGS_typeInstructionList  p_3 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -24191,8 +24191,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeInstructionList & argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -24203,13 +24203,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeStructuredCastBranchList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mCastClassName,
+      internalAppendValues (ptr->mCastClassName,
                                 ptr->mCheckForKindOfClass,
                                 ptr->mLocalConstantName,
                                 ptr->mInstructionList
@@ -24388,7 +24388,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_1 = ptr->mCheckForKindOfClass ;
     _out_2 = ptr->mLocalConstantName ;
     _out_3 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -24419,7 +24419,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_1 = ptr->mCheckForKindOfClass ;
     _out_2 = ptr->mLocalConstantName ;
     _out_3 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -24680,7 +24680,7 @@ cPtr__AC_galgas_class * cPtr_typeStructuredCastInstruction::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeStructuredCastInstruction ("typeStructuredCastInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeStructuredCastInstruction ("typeStructuredCastInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -24926,7 +24926,7 @@ cPtr__AC_galgas_class * cPtr_typeRoutineCallInstruction::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeRoutineCallInstruction ("typeRoutineCallInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeRoutineCallInstruction ("typeRoutineCallInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -25148,7 +25148,7 @@ cPtr__AC_galgas_class * cPtr_typeLogInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeLogInstruction ("typeLogInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeLogInstruction ("typeLogInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -25334,7 +25334,7 @@ cPtr__AC_galgas_class * cPtr_typeDropInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeDropInstruction ("typeDropInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeDropInstruction ("typeDropInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -25419,7 +25419,7 @@ C_galgasClassRunTimeInformation gClassInfoFor__typeDropInstruction ("typeDropIns
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeTableNomRoutinesDeclarees ("typeTableNomRoutinesDeclarees") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeTableNomRoutinesDeclarees ("typeTableNomRoutinesDeclarees") ;
 
 //---------------------------------------------------------------------------*
 
@@ -25763,7 +25763,7 @@ AC_galgasClassRunTimeInformation * cPtr_typeEntityToGenerate::galgasRTTI (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeEntityToGenerate ("typeEntityToGenerate") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeEntityToGenerate ("typeEntityToGenerate") ;
 
 //---------------------------------------------------------------------------*
 
@@ -25938,7 +25938,7 @@ cPtr__AC_galgas_class * cPtr_typeExternTypeToGenerate::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeExternTypeToGenerate ("typeExternTypeToGenerate") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeExternTypeToGenerate ("typeExternTypeToGenerate") ;
 
 //---------------------------------------------------------------------------*
 
@@ -26112,7 +26112,7 @@ cPtr__AC_galgas_class * cPtr_typeRoutineAengendrer::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeRoutineAengendrer ("typeRoutineAengendrer") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeRoutineAengendrer ("typeRoutineAengendrer") ;
 
 //---------------------------------------------------------------------------*
 
@@ -26288,7 +26288,7 @@ cPtr__AC_galgas_class * cPtr_typeFonctionAengendrer::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeFonctionAengendrer ("typeFonctionAengendrer") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeFonctionAengendrer ("typeFonctionAengendrer") ;
 
 //---------------------------------------------------------------------------*
 
@@ -26476,7 +26476,7 @@ cPtr__AC_galgas_class * cPtr_categoryMethodToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_categoryMethodToImplement ("categoryMethodToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_categoryMethodToImplement ("categoryMethodToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -26676,7 +26676,7 @@ cPtr__AC_galgas_class * cPtr_categoryReaderToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_categoryReaderToImplement ("categoryReaderToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_categoryReaderToImplement ("categoryReaderToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -26872,7 +26872,7 @@ cPtr__AC_galgas_class * cPtr_categoryTemplateToImplement::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_categoryTemplateToImplement ("categoryTemplateToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_categoryTemplateToImplement ("categoryTemplateToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -27044,7 +27044,7 @@ cPtr__AC_galgas_class * cPtr_C_listTypeToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_listTypeToImplement ("C_listTypeToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_listTypeToImplement ("C_listTypeToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -27163,12 +27163,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_EXsortDescriptorList ("EXsortDescriptorList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_EXsortDescriptorList ("EXsortDescriptorList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_EXsortDescriptorList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_bool& argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -27181,7 +27181,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_EXsortDescriptorList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_bool& argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -27197,8 +27197,8 @@ void GGS_EXsortDescriptorList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -27222,13 +27222,13 @@ dotAssign_operation (const GGS_EXsortDescriptorList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_EXsortDescriptorList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mSortAttribute ;
           GGS_bool p_1 = p->mAscendingOrder ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -27244,8 +27244,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_bool& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -27254,13 +27254,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_EXsortDescriptorList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSortAttribute,
+      internalAppendValues (ptr->mSortAttribute,
                                 ptr->mAscendingOrder
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -27419,7 +27419,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mSortAttribute ;
     _out_1 = ptr->mAscendingOrder ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -27444,7 +27444,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mSortAttribute ;
     _out_1 = ptr->mAscendingOrder ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -27623,7 +27623,7 @@ cPtr__AC_galgas_class * cPtr_C_sortedListTypeToImplement::makeClone (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_sortedListTypeToImplement ("C_sortedListTypeToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_sortedListTypeToImplement ("C_sortedListTypeToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -27803,7 +27803,7 @@ cPtr__AC_galgas_class * cPtr_typeDefinitionTableAimplementer::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeDefinitionTableAimplementer ("typeDefinitionTableAimplementer") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeDefinitionTableAimplementer ("typeDefinitionTableAimplementer") ;
 
 //---------------------------------------------------------------------------*
 
@@ -27997,7 +27997,7 @@ cPtr__AC_galgas_class * cPtr_C_mapToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_mapToImplement ("C_mapToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_mapToImplement ("C_mapToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -28215,7 +28215,7 @@ cPtr__AC_galgas_class * cPtr_C_classToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_classToImplement ("C_classToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_classToImplement ("C_classToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -28407,7 +28407,7 @@ cPtr__AC_galgas_class * cPtr_C_mapindexToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_mapindexToImplement ("C_mapindexToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_mapindexToImplement ("C_mapindexToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -28577,7 +28577,7 @@ cPtr__AC_galgas_class * cPtr_C_domainToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_domainToImplement ("C_domainToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_domainToImplement ("C_domainToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -28751,7 +28751,7 @@ cPtr__AC_galgas_class * cPtr_typeEntiteRoutineExterne::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeEntiteRoutineExterne ("typeEntiteRoutineExterne") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeEntiteRoutineExterne ("typeEntiteRoutineExterne") ;
 
 //---------------------------------------------------------------------------*
 
@@ -28955,7 +28955,7 @@ cPtr__AC_galgas_class * cPtr_typeEntiteFonctionExterne::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeEntiteFonctionExterne ("typeEntiteFonctionExterne") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeEntiteFonctionExterne ("typeEntiteFonctionExterne") ;
 
 //---------------------------------------------------------------------------*
 
@@ -29161,7 +29161,7 @@ cPtr__AC_galgas_class * cPtr_typeRoutineExterneAengendrer::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeRoutineExterneAengendrer ("typeRoutineExterneAengendrer") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeRoutineExterneAengendrer ("typeRoutineExterneAengendrer") ;
 
 //---------------------------------------------------------------------------*
 
@@ -29327,7 +29327,7 @@ cPtr__AC_galgas_class * cPtr_typeFonctionExterneAengendrer::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeFonctionExterneAengendrer ("typeFonctionExterneAengendrer") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeFonctionExterneAengendrer ("typeFonctionExterneAengendrer") ;
 
 //---------------------------------------------------------------------------*
 
@@ -29441,12 +29441,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeEntitiesToGenerateList ("typeEntitiesToGenerateList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeEntitiesToGenerateList ("typeEntitiesToGenerateList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeEntitiesToGenerateList::
-_internalAppendValues (const GGS_typeEntityToGenerate & argument_0
+internalAppendValues (const GGS_typeEntityToGenerate & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -29457,7 +29457,7 @@ _internalAppendValues (const GGS_typeEntityToGenerate & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeEntitiesToGenerateList::
-_internalPrependValues (const GGS_typeEntityToGenerate & argument_0
+internalPrependValues (const GGS_typeEntityToGenerate & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -29470,8 +29470,8 @@ _internalPrependValues (const GGS_typeEntityToGenerate & argument_0
 void GGS_typeEntitiesToGenerateList::
 addAssign_operation (const GGS_typeEntityToGenerate & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -29494,12 +29494,12 @@ dotAssign_operation (const GGS_typeEntitiesToGenerateList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeEntitiesToGenerateList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeEntityToGenerate  p_0 = p->mEntityToGenerate ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -29514,8 +29514,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeEntityToGenerate & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -29523,13 +29523,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeEntitiesToGenerateList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mEntityToGenerate
+      internalAppendValues (ptr->mEntityToGenerate
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -29678,7 +29678,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mEntityToGenerate ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -29700,7 +29700,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mEntityToGenerate ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -29842,7 +29842,7 @@ cPtr__AC_galgas_class * cPtr_typeGalgasListmapToImplement::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeGalgasListmapToImplement ("typeGalgasListmapToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeGalgasListmapToImplement ("typeGalgasListmapToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -29927,7 +29927,7 @@ mMessageString () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeEnumCstMessageStringMap ("typeEnumCstMessageStringMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeEnumCstMessageStringMap ("typeEnumCstMessageStringMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -30414,7 +30414,7 @@ cPtr__AC_galgas_class * cPtr_enumGalgasType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumGalgasType ("enumGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumGalgasType ("enumGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -30555,12 +30555,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_ruleDescriptorForProgramList ("ruleDescriptorForProgramList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_ruleDescriptorForProgramList ("ruleDescriptorForProgramList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_ruleDescriptorForProgramList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_string& argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_typeInstructionList & argument_3
@@ -30577,7 +30577,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_ruleDescriptorForProgramList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_string& argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_typeInstructionList & argument_3
@@ -30599,8 +30599,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_typeInstructionList & argument_3) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -30626,7 +30626,7 @@ dotAssign_operation (const GGS_ruleDescriptorForProgramList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_ruleDescriptorForProgramList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -30634,7 +30634,7 @@ dotAssign_operation (const GGS_ruleDescriptorForProgramList inOperand) {
           GGS_string p_1 = p->mHelpMessage ;
           GGS_lstring  p_2 = p->mSourceFileName ;
           GGS_typeInstructionList  p_3 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -30652,8 +30652,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeInstructionList & argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -30664,13 +30664,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_ruleDescriptorForProgramList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSourceExtension,
+      internalAppendValues (ptr->mSourceExtension,
                                 ptr->mHelpMessage,
                                 ptr->mSourceFileName,
                                 ptr->mInstructionList
@@ -30849,7 +30849,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_1 = ptr->mHelpMessage ;
     _out_2 = ptr->mSourceFileName ;
     _out_3 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -30880,7 +30880,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_1 = ptr->mHelpMessage ;
     _out_2 = ptr->mSourceFileName ;
     _out_3 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -31107,7 +31107,7 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_wrapperFileSortedList ("wrapperFileSortedList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_wrapperFileSortedList ("wrapperFileSortedList") ;
 
 //---------------------------------------------------------------------------*
 
@@ -31137,7 +31137,7 @@ operator_isNotEqual (const GGS_wrapperFileSortedList & inOperand) const {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperFileSortedList::
-_internalAppendValues (const GGS_string& argument_0,
+internalAppendValues (const GGS_string& argument_0,
                     const GGS_string& argument_1,
                     const GGS_uint & argument_2,
                     const GGS_uint & argument_3) {
@@ -31157,8 +31157,8 @@ addAssign_operation (const GGS_string& argument_0,
                                 const GGS_uint & argument_2,
                                 const GGS_uint & argument_3) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3) ;
@@ -31183,7 +31183,7 @@ dotAssign_operation (const GGS_wrapperFileSortedList inOperand) {
       *this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_wrapperFileSortedList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -31191,7 +31191,7 @@ dotAssign_operation (const GGS_wrapperFileSortedList inOperand) {
           GGS_string p_1 = p->mAbsoluteFilePath ;
           GGS_uint  p_2 = p->mWrapperDirectoryIndex ;
           GGS_uint  p_3 = p->mWrapperFileIndex ;
-          _internalAppendValues (p_0, p_1, p_2, p_3) ;
+          internalAppendValues (p_0, p_1, p_2, p_3) ;
           p = p->nextObject () ;
         }
       }
@@ -31202,13 +31202,13 @@ dotAssign_operation (const GGS_wrapperFileSortedList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperFileSortedList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mRegularFileName,
+      internalAppendValues (ptr->mRegularFileName,
                                 ptr->mAbsoluteFilePath,
                                 ptr->mWrapperDirectoryIndex,
                                 ptr->mWrapperFileIndex) ;
@@ -31327,7 +31327,7 @@ modifier_popSmallest (C_Compiler & inLexique,
     _out_1 = ptr->mAbsoluteFilePath ;
     _out_2 = ptr->mWrapperDirectoryIndex ;
     _out_3 = ptr->mWrapperFileIndex ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveSmallest () ;
   }else{
     _out_0.drop () ;
@@ -31358,7 +31358,7 @@ modifier_popGreatest (C_Compiler & inLexique,
     _out_1 = ptr->mAbsoluteFilePath ;
     _out_2 = ptr->mWrapperDirectoryIndex ;
     _out_3 = ptr->mWrapperFileIndex ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveGreatest () ;
   }else{
     _out_0.drop () ;
@@ -31469,7 +31469,7 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_wrapperDirectorySortedList ("wrapperDirectorySortedList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_wrapperDirectorySortedList ("wrapperDirectorySortedList") ;
 
 //---------------------------------------------------------------------------*
 
@@ -31499,7 +31499,7 @@ operator_isNotEqual (const GGS_wrapperDirectorySortedList & inOperand) const {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperDirectorySortedList::
-_internalAppendValues (const GGS_string& argument_0,
+internalAppendValues (const GGS_string& argument_0,
                     const GGS_wrapperFileSortedList & argument_1,
                     const GGS_wrapperDirectorySortedList & argument_2,
                     const GGS_uint & argument_3) {
@@ -31519,8 +31519,8 @@ addAssign_operation (const GGS_string& argument_0,
                                 const GGS_wrapperDirectorySortedList & argument_2,
                                 const GGS_uint & argument_3) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3) ;
@@ -31545,7 +31545,7 @@ dotAssign_operation (const GGS_wrapperDirectorySortedList inOperand) {
       *this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_wrapperDirectorySortedList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -31553,7 +31553,7 @@ dotAssign_operation (const GGS_wrapperDirectorySortedList inOperand) {
           GGS_wrapperFileSortedList  p_1 = p->mRegularFileSortedList ;
           GGS_wrapperDirectorySortedList  p_2 = p->mDirectorySortedList ;
           GGS_uint  p_3 = p->mWrapperDirectoryIndex ;
-          _internalAppendValues (p_0, p_1, p_2, p_3) ;
+          internalAppendValues (p_0, p_1, p_2, p_3) ;
           p = p->nextObject () ;
         }
       }
@@ -31564,13 +31564,13 @@ dotAssign_operation (const GGS_wrapperDirectorySortedList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperDirectorySortedList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mDirectoryName,
+      internalAppendValues (ptr->mDirectoryName,
                                 ptr->mRegularFileSortedList,
                                 ptr->mDirectorySortedList,
                                 ptr->mWrapperDirectoryIndex) ;
@@ -31689,7 +31689,7 @@ modifier_popSmallest (C_Compiler & inLexique,
     _out_1 = ptr->mRegularFileSortedList ;
     _out_2 = ptr->mDirectorySortedList ;
     _out_3 = ptr->mWrapperDirectoryIndex ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveSmallest () ;
   }else{
     _out_0.drop () ;
@@ -31720,7 +31720,7 @@ modifier_popGreatest (C_Compiler & inLexique,
     _out_1 = ptr->mRegularFileSortedList ;
     _out_2 = ptr->mDirectorySortedList ;
     _out_3 = ptr->mWrapperDirectoryIndex ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveGreatest () ;
   }else{
     _out_0.drop () ;
@@ -31764,7 +31764,7 @@ modifier_popGreatest (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_wrapperExtensionMap ("wrapperExtensionMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_wrapperExtensionMap ("wrapperExtensionMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -32150,7 +32150,7 @@ cPtr__AC_galgas_class * cPtr_C_wrapperToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_wrapperToImplement ("C_wrapperToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_wrapperToImplement ("C_wrapperToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -32318,7 +32318,7 @@ cPtr__AC_galgas_class * cPtr_C_structToImplement::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_structToImplement ("C_structToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_structToImplement ("C_structToImplement") ;
 
 //---------------------------------------------------------------------------*
 
@@ -32488,7 +32488,7 @@ cPtr__AC_galgas_class * cPtr_C_filewrapperTemplateToImplement::makeClone (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_filewrapperTemplateToImplement ("C_filewrapperTemplateToImplement") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_filewrapperTemplateToImplement ("C_filewrapperTemplateToImplement") ;
 
 //---------------------------------------------------------------------------*
 

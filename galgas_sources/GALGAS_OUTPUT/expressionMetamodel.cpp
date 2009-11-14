@@ -109,7 +109,7 @@ AC_galgasClassRunTimeInformation * cPtr_semanticExpression::galgasRTTI (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_semanticExpression ("semanticExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticExpression ("semanticExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -218,12 +218,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_semanticExpressionList ("semanticExpressionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticExpressionList ("semanticExpressionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-_internalAppendValues (const GGS_semanticExpression & argument_0
+internalAppendValues (const GGS_semanticExpression & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -234,7 +234,7 @@ _internalAppendValues (const GGS_semanticExpression & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-_internalPrependValues (const GGS_semanticExpression & argument_0
+internalPrependValues (const GGS_semanticExpression & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -247,8 +247,8 @@ _internalPrependValues (const GGS_semanticExpression & argument_0
 void GGS_semanticExpressionList::
 addAssign_operation (const GGS_semanticExpression & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -271,12 +271,12 @@ dotAssign_operation (const GGS_semanticExpressionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_semanticExpressionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_semanticExpression  p_0 = p->mExpression ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -291,8 +291,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_semanticExpression & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -300,13 +300,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mExpression
+      internalAppendValues (ptr->mExpression
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -455,7 +455,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mExpression ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -477,7 +477,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mExpression ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -615,7 +615,7 @@ cPtr__AC_galgas_class * cPtr_outExpressionList::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_outExpressionList ("outExpressionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_outExpressionList ("outExpressionList") ;
 
 //---------------------------------------------------------------------------*
 
@@ -811,7 +811,7 @@ cPtr__AC_galgas_class * cPtr_variableExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_variableExpression ("variableExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_variableExpression ("variableExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -964,7 +964,7 @@ AC_galgasClassRunTimeInformation * cPtr_selfInExpression::galgasRTTI (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_selfInExpression ("selfInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_selfInExpression ("selfInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1116,7 +1116,7 @@ AC_galgasClassRunTimeInformation * cPtr_hereExpression::galgasRTTI (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_hereExpression ("hereExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_hereExpression ("hereExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1268,7 +1268,7 @@ AC_galgasClassRunTimeInformation * cPtr_trueExpression::galgasRTTI (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_trueExpression ("trueExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_trueExpression ("trueExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1420,7 +1420,7 @@ AC_galgasClassRunTimeInformation * cPtr_falseExpression::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_falseExpression ("falseExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_falseExpression ("falseExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1589,7 +1589,7 @@ cPtr__AC_galgas_class * cPtr_literalCharExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_literalCharExpression ("literalCharExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_literalCharExpression ("literalCharExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1759,7 +1759,7 @@ cPtr__AC_galgas_class * cPtr_literalStringExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_literalStringExpression ("literalStringExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_literalStringExpression ("literalStringExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1929,7 +1929,7 @@ cPtr__AC_galgas_class * cPtr_literalDoubleExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_literalDoubleExpression ("literalDoubleExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_literalDoubleExpression ("literalDoubleExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2099,7 +2099,7 @@ cPtr__AC_galgas_class * cPtr_literalUIntExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_literalUIntExpression ("literalUIntExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_literalUIntExpression ("literalUIntExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2269,7 +2269,7 @@ cPtr__AC_galgas_class * cPtr_literalUInt64Expression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_literalUInt64Expression ("literalUInt64Expression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_literalUInt64Expression ("literalUInt64Expression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2439,7 +2439,7 @@ cPtr__AC_galgas_class * cPtr_literalSIntExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_literalSIntExpression ("literalSIntExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_literalSIntExpression ("literalSIntExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2609,7 +2609,7 @@ cPtr__AC_galgas_class * cPtr_literalSInt64Expression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_literalSInt64Expression ("literalSInt64Expression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_literalSInt64Expression ("literalSInt64Expression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2787,7 +2787,7 @@ cPtr__AC_galgas_class * cPtr_constructorExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_constructorExpression ("constructorExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_constructorExpression ("constructorExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2997,7 +2997,7 @@ cPtr__AC_galgas_class * cPtr_readerCallExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_readerCallExpression ("readerCallExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_readerCallExpression ("readerCallExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3203,7 +3203,7 @@ cPtr__AC_galgas_class * cPtr_optionExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_optionExpression ("optionExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_optionExpression ("optionExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3397,7 +3397,7 @@ cPtr__AC_galgas_class * cPtr_concatExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_concatExpression ("concatExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_concatExpression ("concatExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3607,7 +3607,7 @@ cPtr__AC_galgas_class * cPtr_orExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_orExpression ("orExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_orExpression ("orExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3817,7 +3817,7 @@ cPtr__AC_galgas_class * cPtr_xorExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_xorExpression ("xorExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_xorExpression ("xorExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4027,7 +4027,7 @@ cPtr__AC_galgas_class * cPtr_andExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_andExpression ("andExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_andExpression ("andExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4237,7 +4237,7 @@ cPtr__AC_galgas_class * cPtr_equalExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_equalExpression ("equalExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_equalExpression ("equalExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4447,7 +4447,7 @@ cPtr__AC_galgas_class * cPtr_notEqualExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_notEqualExpression ("notEqualExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_notEqualExpression ("notEqualExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4657,7 +4657,7 @@ cPtr__AC_galgas_class * cPtr_lowerOrEqualExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lowerOrEqualExpression ("lowerOrEqualExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lowerOrEqualExpression ("lowerOrEqualExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4867,7 +4867,7 @@ cPtr__AC_galgas_class * cPtr_greaterOrEqualExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_greaterOrEqualExpression ("greaterOrEqualExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_greaterOrEqualExpression ("greaterOrEqualExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5077,7 +5077,7 @@ cPtr__AC_galgas_class * cPtr_strictGreaterExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_strictGreaterExpression ("strictGreaterExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_strictGreaterExpression ("strictGreaterExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5287,7 +5287,7 @@ cPtr__AC_galgas_class * cPtr_strictLowerExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_strictLowerExpression ("strictLowerExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_strictLowerExpression ("strictLowerExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5497,7 +5497,7 @@ cPtr__AC_galgas_class * cPtr_rightShiftExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_rightShiftExpression ("rightShiftExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_rightShiftExpression ("rightShiftExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5707,7 +5707,7 @@ cPtr__AC_galgas_class * cPtr_leftShiftExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_leftShiftExpression ("leftShiftExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_leftShiftExpression ("leftShiftExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5917,7 +5917,7 @@ cPtr__AC_galgas_class * cPtr_addExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_addExpression ("addExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_addExpression ("addExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6127,7 +6127,7 @@ cPtr__AC_galgas_class * cPtr_subExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_subExpression ("subExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_subExpression ("subExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6337,7 +6337,7 @@ cPtr__AC_galgas_class * cPtr_multiplicationExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_multiplicationExpression ("multiplicationExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_multiplicationExpression ("multiplicationExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6547,7 +6547,7 @@ cPtr__AC_galgas_class * cPtr_divisionExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_divisionExpression ("divisionExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_divisionExpression ("divisionExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6757,7 +6757,7 @@ cPtr__AC_galgas_class * cPtr_moduloExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_moduloExpression ("moduloExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_moduloExpression ("moduloExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6963,7 +6963,7 @@ cPtr__AC_galgas_class * cPtr_unaryMinusExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_unaryMinusExpression ("unaryMinusExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_unaryMinusExpression ("unaryMinusExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7153,7 +7153,7 @@ cPtr__AC_galgas_class * cPtr_notExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_notExpression ("notExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_notExpression ("notExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7343,7 +7343,7 @@ cPtr__AC_galgas_class * cPtr_negateExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_negateExpression ("negateExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_negateExpression ("negateExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7537,7 +7537,7 @@ cPtr__AC_galgas_class * cPtr_ifExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_ifExpression ("ifExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_ifExpression ("ifExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7743,7 +7743,7 @@ cPtr__AC_galgas_class * cPtr_functionCallExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_functionCallExpression ("functionCallExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_functionCallExpression ("functionCallExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7929,7 +7929,7 @@ cPtr__AC_galgas_class * cPtr_varInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_varInExpression ("varInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_varInExpression ("varInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8103,7 +8103,7 @@ cPtr__AC_galgas_class * cPtr_descriptionInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_descriptionInExpression ("descriptionInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_descriptionInExpression ("descriptionInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8301,7 +8301,7 @@ cPtr__AC_galgas_class * cPtr_castInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_castInExpression ("castInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_castInExpression ("castInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8519,7 +8519,7 @@ cPtr__AC_galgas_class * cPtr_filewrapperObjectInstanciationInExpression::makeClo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_filewrapperObjectInstanciationInExpression ("filewrapperObjectInstanciationInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperObjectInstanciationInExpression ("filewrapperObjectInstanciationInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8693,7 +8693,7 @@ cPtr__AC_galgas_class * cPtr_filewrapperInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_filewrapperInExpression ("filewrapperInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperInExpression ("filewrapperInExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8887,7 +8887,7 @@ cPtr__AC_galgas_class * cPtr_filewrapperTemplateInExpression::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_filewrapperTemplateInExpression ("filewrapperTemplateInExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperTemplateInExpression ("filewrapperTemplateInExpression") ;
 
 //---------------------------------------------------------------------------*
 

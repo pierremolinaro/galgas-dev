@@ -1,0 +1,33 @@
+semantics testsuite_introspection :
+
+#-----------------------------------------------------------------------------
+
+routine testsuite_introspection :
+message "*************************************** begin of introspection test\n" ;
+#--- List of types
+  const @typelist typeList := [@type typeList] ;
+  message "--- Type list (" . [[typeList length] string] . " types)\n" ;
+  foreach typeList do
+    message "  @" . [mValue name] . "\n" ;
+  end foreach ;
+#--- List of functions
+  const @functionlist functionList := [@function functionList] ;
+  message "--- Function list (" . [[functionList length] string]
+  . " function" . if [functionList length] > 1 then "s" else "" end . ")\n" ;
+  foreach functionList do
+    @string s := "" ;
+    foreach [mValue formalParameterTypeList]
+    do s .= "?@" . [mValue name] ;
+    between s .= " " ;
+    end foreach ;
+    message "  " . [mValue name] . " [" . s . "] -> @" . [[mValue resultType] name] . "\n" ;
+  end foreach ;
+  const @bool b1 := [@function functionIsDefined !"foo"] ;
+  const @bool b2 := [@function functionIsDefined !"functionTest"] ;
+  message "Function 'foo' exists:" . [b1 cString] . "\n" ;
+  message "Function 'functionTest' exists:" . [b2 cString] . "\n" ;
+end routine ;
+
+#-----------------------------------------------------------------------------
+
+end semantics ;

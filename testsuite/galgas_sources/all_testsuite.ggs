@@ -9,6 +9,7 @@ project all_testsuite :
   semantics "testsuite_map.ggs" : makefile ;
   semantics "testsuite_functions.ggs" : makefile ;
   semantics "testsuite_domain.ggs" : makefile ;
+  semantics "testsuite_introspection.ggs" : makefile ;
 
   program "testsuite_program.ggs" : makefile ;
 

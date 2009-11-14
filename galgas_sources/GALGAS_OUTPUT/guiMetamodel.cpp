@@ -94,12 +94,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_guiSimpleAttributeList ("guiSimpleAttributeList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_guiSimpleAttributeList ("guiSimpleAttributeList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_guiSimpleAttributeList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -112,7 +112,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_guiSimpleAttributeList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -128,8 +128,8 @@ void GGS_guiSimpleAttributeList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -153,13 +153,13 @@ dotAssign_operation (const GGS_guiSimpleAttributeList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_guiSimpleAttributeList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mKey ;
           GGS_lstring  p_1 = p->mValue ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -175,8 +175,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -185,13 +185,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_guiSimpleAttributeList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mKey,
+      internalAppendValues (ptr->mKey,
                                 ptr->mValue
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -350,7 +350,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mKey ;
     _out_1 = ptr->mValue ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -375,7 +375,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mKey ;
     _out_1 = ptr->mValue ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -514,12 +514,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_guiCompoundAttributeList ("guiCompoundAttributeList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_guiCompoundAttributeList ("guiCompoundAttributeList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_guiCompoundAttributeList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -534,7 +534,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_guiCompoundAttributeList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -553,8 +553,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -579,14 +579,14 @@ dotAssign_operation (const GGS_guiCompoundAttributeList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_guiCompoundAttributeList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mKey ;
           GGS_lstring  p_1 = p->mAttributeName ;
           GGS_lstring  p_2 = p->mValue ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -603,8 +603,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -614,13 +614,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_guiCompoundAttributeList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mKey,
+      internalAppendValues (ptr->mKey,
                                 ptr->mAttributeName,
                                 ptr->mValue
                                 COMMA_HERE) ;
@@ -789,7 +789,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mKey ;
     _out_1 = ptr->mAttributeName ;
     _out_2 = ptr->mValue ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -817,7 +817,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mKey ;
     _out_1 = ptr->mAttributeName ;
     _out_2 = ptr->mValue ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -986,12 +986,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_guiLabelList ("guiLabelList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_guiLabelList ("guiLabelList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_guiLabelList::
-_internalAppendValues (const GGS_lstringlist & argument_0,
+internalAppendValues (const GGS_lstringlist & argument_0,
                     const GGS_location & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1004,7 +1004,7 @@ _internalAppendValues (const GGS_lstringlist & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_guiLabelList::
-_internalPrependValues (const GGS_lstringlist & argument_0,
+internalPrependValues (const GGS_lstringlist & argument_0,
                     const GGS_location & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1020,8 +1020,8 @@ void GGS_guiLabelList::
 addAssign_operation (const GGS_lstringlist & argument_0,
                                 const GGS_location & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1045,13 +1045,13 @@ dotAssign_operation (const GGS_guiLabelList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_guiLabelList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstringlist  p_0 = p->mTerminalList ;
           GGS_location  p_1 = p->mLocation ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1067,8 +1067,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_location & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1077,13 +1077,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_guiLabelList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mTerminalList,
+      internalAppendValues (ptr->mTerminalList,
                                 ptr->mLocation
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -1242,7 +1242,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mTerminalList ;
     _out_1 = ptr->mLocation ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1267,7 +1267,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mTerminalList ;
     _out_1 = ptr->mLocation ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1413,12 +1413,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_withLexiqueList ("withLexiqueList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_withLexiqueList ("withLexiqueList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_withLexiqueList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_guiLabelList & argument_1,
                     const GGS_guiSimpleAttributeList & argument_2,
                     const GGS_guiCompoundAttributeList & argument_3
@@ -1435,7 +1435,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_withLexiqueList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_guiLabelList & argument_1,
                     const GGS_guiSimpleAttributeList & argument_2,
                     const GGS_guiCompoundAttributeList & argument_3
@@ -1457,8 +1457,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_guiSimpleAttributeList & argument_2,
                                 const GGS_guiCompoundAttributeList & argument_3) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -1484,7 +1484,7 @@ dotAssign_operation (const GGS_withLexiqueList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_withLexiqueList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -1492,7 +1492,7 @@ dotAssign_operation (const GGS_withLexiqueList inOperand) {
           GGS_guiLabelList  p_1 = p->mLabels ;
           GGS_guiSimpleAttributeList  p_2 = p->mSimpleAttributes ;
           GGS_guiCompoundAttributeList  p_3 = p->mCompoundAttributes ;
-          _internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1510,8 +1510,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_guiCompoundAttributeList & argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -1522,13 +1522,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_withLexiqueList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLexiqueFileName,
+      internalAppendValues (ptr->mLexiqueFileName,
                                 ptr->mLabels,
                                 ptr->mSimpleAttributes,
                                 ptr->mCompoundAttributes
@@ -1707,7 +1707,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_1 = ptr->mLabels ;
     _out_2 = ptr->mSimpleAttributes ;
     _out_3 = ptr->mCompoundAttributes ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1738,7 +1738,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_1 = ptr->mLabels ;
     _out_2 = ptr->mSimpleAttributes ;
     _out_3 = ptr->mCompoundAttributes ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1999,7 +1999,7 @@ cPtr__AC_galgas_class * cPtr_guiComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_guiComponentRoot ("guiComponentRoot") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_guiComponentRoot ("guiComponentRoot") ;
 
 //---------------------------------------------------------------------------*
 

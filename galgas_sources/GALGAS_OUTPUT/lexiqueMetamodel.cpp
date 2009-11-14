@@ -109,7 +109,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalExpression::galgasRTTI (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalExpression ("lexicalExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExpression ("lexicalExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -240,7 +240,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalInstruction::galgasRTTI (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalInstruction ("lexicalInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalInstruction ("lexicalInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -349,12 +349,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalInstructionList ("lexicalInstructionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalInstructionList ("lexicalInstructionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-_internalAppendValues (const GGS_lexicalInstruction & argument_0
+internalAppendValues (const GGS_lexicalInstruction & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -365,7 +365,7 @@ _internalAppendValues (const GGS_lexicalInstruction & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-_internalPrependValues (const GGS_lexicalInstruction & argument_0
+internalPrependValues (const GGS_lexicalInstruction & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -378,8 +378,8 @@ _internalPrependValues (const GGS_lexicalInstruction & argument_0
 void GGS_lexicalInstructionList::
 addAssign_operation (const GGS_lexicalInstruction & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -402,12 +402,12 @@ dotAssign_operation (const GGS_lexicalInstructionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalInstructionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lexicalInstruction  p_0 = p->mInstruction ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -422,8 +422,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lexicalInstruction & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -431,13 +431,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mInstruction
+      internalAppendValues (ptr->mInstruction
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -586,7 +586,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mInstruction ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -608,7 +608,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mInstruction ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -710,12 +710,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_metamodelTemplateDelimitorList ("metamodelTemplateDelimitorList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_metamodelTemplateDelimitorList ("metamodelTemplateDelimitorList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_metamodelTemplateDelimitorList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstringlist & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -730,7 +730,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_metamodelTemplateDelimitorList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstringlist & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -749,8 +749,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -775,14 +775,14 @@ dotAssign_operation (const GGS_metamodelTemplateDelimitorList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_metamodelTemplateDelimitorList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mStartString ;
           GGS_lstringlist  p_1 = p->mOptionList ;
           GGS_lstring  p_2 = p->mEndString ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -799,8 +799,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -810,13 +810,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_metamodelTemplateDelimitorList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mStartString,
+      internalAppendValues (ptr->mStartString,
                                 ptr->mOptionList,
                                 ptr->mEndString
                                 COMMA_HERE) ;
@@ -985,7 +985,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mStartString ;
     _out_1 = ptr->mOptionList ;
     _out_2 = ptr->mEndString ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1013,7 +1013,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mStartString ;
     _out_1 = ptr->mOptionList ;
     _out_2 = ptr->mEndString ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1189,12 +1189,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_templateReplacementList ("templateReplacementList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_templateReplacementList ("templateReplacementList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -1209,7 +1209,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -1228,8 +1228,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -1254,14 +1254,14 @@ dotAssign_operation (const GGS_templateReplacementList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_templateReplacementList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mMatchString ;
           GGS_lstring  p_1 = p->mReplacementString ;
           GGS_lstring  p_2 = p->mReplacementFunction ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1278,8 +1278,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -1289,13 +1289,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMatchString,
+      internalAppendValues (ptr->mMatchString,
                                 ptr->mReplacementString,
                                 ptr->mReplacementFunction
                                 COMMA_HERE) ;
@@ -1464,7 +1464,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mMatchString ;
     _out_1 = ptr->mReplacementString ;
     _out_2 = ptr->mReplacementFunction ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1492,7 +1492,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mMatchString ;
     _out_1 = ptr->mReplacementString ;
     _out_2 = ptr->mReplacementFunction ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1676,7 +1676,7 @@ AC_galgasClassRunTimeInformation * cPtr_abstractLexicalRule::galgasRTTI (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_abstractLexicalRule ("abstractLexicalRule") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractLexicalRule ("abstractLexicalRule") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1785,12 +1785,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalRuleList ("lexicalRuleList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRuleList ("lexicalRuleList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRuleList::
-_internalAppendValues (const GGS_abstractLexicalRule & argument_0
+internalAppendValues (const GGS_abstractLexicalRule & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -1801,7 +1801,7 @@ _internalAppendValues (const GGS_abstractLexicalRule & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRuleList::
-_internalPrependValues (const GGS_abstractLexicalRule & argument_0
+internalPrependValues (const GGS_abstractLexicalRule & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -1814,8 +1814,8 @@ _internalPrependValues (const GGS_abstractLexicalRule & argument_0
 void GGS_lexicalRuleList::
 addAssign_operation (const GGS_abstractLexicalRule & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -1838,12 +1838,12 @@ dotAssign_operation (const GGS_lexicalRuleList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalRuleList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_abstractLexicalRule  p_0 = p->mLexicalRule ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1858,8 +1858,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_abstractLexicalRule & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -1867,13 +1867,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRuleList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLexicalRule
+      internalAppendValues (ptr->mLexicalRule
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -2022,7 +2022,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mLexicalRule ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2044,7 +2044,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mLexicalRule ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -2178,7 +2178,7 @@ cPtr__AC_galgas_class * cPtr_lexicalImplicitRule::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalImplicitRule ("lexicalImplicitRule") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalImplicitRule ("lexicalImplicitRule") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2352,7 +2352,7 @@ cPtr__AC_galgas_class * cPtr_lexicalExplicitRule::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalExplicitRule ("lexicalExplicitRule") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExplicitRule ("lexicalExplicitRule") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2499,12 +2499,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalMessageDeclarationList ("lexicalMessageDeclarationList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalMessageDeclarationList ("lexicalMessageDeclarationList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageDeclarationList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -2517,7 +2517,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageDeclarationList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -2533,8 +2533,8 @@ void GGS_lexicalMessageDeclarationList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -2558,13 +2558,13 @@ dotAssign_operation (const GGS_lexicalMessageDeclarationList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalMessageDeclarationList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mMessageName ;
           GGS_lstring  p_1 = p->mMessageValue ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2580,8 +2580,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -2590,13 +2590,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageDeclarationList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMessageName,
+      internalAppendValues (ptr->mMessageName,
                                 ptr->mMessageValue
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -2755,7 +2755,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mMessageName ;
     _out_1 = ptr->mMessageValue ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2780,7 +2780,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mMessageName ;
     _out_1 = ptr->mMessageValue ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -2912,12 +2912,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalAttributeList ("lexicalAttributeList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeList ("lexicalAttributeList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -2930,7 +2930,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -2946,8 +2946,8 @@ void GGS_lexicalAttributeList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -2971,13 +2971,13 @@ dotAssign_operation (const GGS_lexicalAttributeList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalAttributeList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mTypeName ;
           GGS_lstring  p_1 = p->mName ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2993,8 +2993,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3003,13 +3003,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mTypeName,
+      internalAppendValues (ptr->mTypeName,
                                 ptr->mName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -3168,7 +3168,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mTypeName ;
     _out_1 = ptr->mName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3193,7 +3193,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mTypeName ;
     _out_1 = ptr->mName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3325,12 +3325,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalStyleList ("lexicalStyleList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStyleList ("lexicalStyleList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3343,7 +3343,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3359,8 +3359,8 @@ void GGS_lexicalStyleList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3384,13 +3384,13 @@ dotAssign_operation (const GGS_lexicalStyleList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalStyleList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mName ;
           GGS_lstring  p_1 = p->mComment ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3406,8 +3406,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3416,13 +3416,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mName,
+      internalAppendValues (ptr->mName,
                                 ptr->mComment
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -3581,7 +3581,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mName ;
     _out_1 = ptr->mComment ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3606,7 +3606,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mName ;
     _out_1 = ptr->mComment ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3759,12 +3759,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_terminalDeclarationList ("terminalDeclarationList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalDeclarationList ("terminalDeclarationList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstringlist & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_lstring & argument_3,
@@ -3783,7 +3783,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstringlist & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_lstring & argument_3,
@@ -3808,8 +3808,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_3,
                                 const GGS_lstringlist & argument_4) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()&& argument_4.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -3836,7 +3836,7 @@ dotAssign_operation (const GGS_terminalDeclarationList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_terminalDeclarationList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -3845,7 +3845,7 @@ dotAssign_operation (const GGS_terminalDeclarationList inOperand) {
           GGS_lstring  p_2 = p->mSyntaxErrorMessage ;
           GGS_lstring  p_3 = p->mStyle ;
           GGS_lstringlist  p_4 = p->mOptionList ;
-          _internalAppendValues (p_0, p_1, p_2, p_3, p_4 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3, p_4 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3864,8 +3864,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstringlist & argument_4
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -3877,13 +3877,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mName,
+      internalAppendValues (ptr->mName,
                                 ptr->mSentAttributeList,
                                 ptr->mSyntaxErrorMessage,
                                 ptr->mStyle,
@@ -4072,7 +4072,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_2 = ptr->mSyntaxErrorMessage ;
     _out_3 = ptr->mStyle ;
     _out_4 = ptr->mOptionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -4106,7 +4106,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_2 = ptr->mSyntaxErrorMessage ;
     _out_3 = ptr->mStyle ;
     _out_4 = ptr->mOptionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -4356,12 +4356,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalListEntryList ("lexicalListEntryList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalListEntryList ("lexicalListEntryList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstringlist & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -4376,7 +4376,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstringlist & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -4395,8 +4395,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -4421,14 +4421,14 @@ dotAssign_operation (const GGS_lexicalListEntryList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalListEntryList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mEntrySpelling ;
           GGS_lstring  p_1 = p->mTerminalSpelling ;
           GGS_lstringlist  p_2 = p->mFeatureList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -4445,8 +4445,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstringlist & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -4456,13 +4456,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mEntrySpelling,
+      internalAppendValues (ptr->mEntrySpelling,
                                 ptr->mTerminalSpelling,
                                 ptr->mFeatureList
                                 COMMA_HERE) ;
@@ -4631,7 +4631,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mEntrySpelling ;
     _out_1 = ptr->mTerminalSpelling ;
     _out_2 = ptr->mFeatureList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -4659,7 +4659,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mEntrySpelling ;
     _out_1 = ptr->mTerminalSpelling ;
     _out_2 = ptr->mFeatureList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -4849,12 +4849,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalListDeclarationList ("lexicalListDeclarationList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalListDeclarationList ("lexicalListDeclarationList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_lstringlist & argument_3,
@@ -4873,7 +4873,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_lstringlist & argument_3,
@@ -4898,8 +4898,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_3,
                                 const GGS_lexicalListEntryList & argument_4) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()&& argument_4.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -4926,7 +4926,7 @@ dotAssign_operation (const GGS_lexicalListDeclarationList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalListDeclarationList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -4935,7 +4935,7 @@ dotAssign_operation (const GGS_lexicalListDeclarationList inOperand) {
           GGS_lstring  p_2 = p->mSyntaxErrorMessage ;
           GGS_lstringlist  p_3 = p->mSentAttributeList ;
           GGS_lexicalListEntryList  p_4 = p->mEntryList ;
-          _internalAppendValues (p_0, p_1, p_2, p_3, p_4 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3, p_4 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -4954,8 +4954,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lexicalListEntryList & argument_4
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -4967,13 +4967,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mName,
+      internalAppendValues (ptr->mName,
                                 ptr->mStyle,
                                 ptr->mSyntaxErrorMessage,
                                 ptr->mSentAttributeList,
@@ -5162,7 +5162,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_2 = ptr->mSyntaxErrorMessage ;
     _out_3 = ptr->mSentAttributeList ;
     _out_4 = ptr->mEntryList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -5196,7 +5196,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_2 = ptr->mSyntaxErrorMessage ;
     _out_3 = ptr->mSentAttributeList ;
     _out_4 = ptr->mEntryList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -5482,7 +5482,7 @@ cPtr__AC_galgas_class * cPtr_lexicalOrExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalOrExpression ("lexicalOrExpression") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalOrExpression ("lexicalOrExpression") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5668,7 +5668,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCharacterSetMatch::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalCharacterSetMatch ("lexicalCharacterSetMatch") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterSetMatch ("lexicalCharacterSetMatch") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5838,7 +5838,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCharacterMatch::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalCharacterMatch ("lexicalCharacterMatch") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterMatch ("lexicalCharacterMatch") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6012,7 +6012,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCharacterIntervalMatch::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalCharacterIntervalMatch ("lexicalCharacterIntervalMatch") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterIntervalMatch ("lexicalCharacterIntervalMatch") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6198,7 +6198,7 @@ cPtr__AC_galgas_class * cPtr_lexicalStringMatch::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalStringMatch ("lexicalStringMatch") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStringMatch ("lexicalStringMatch") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6372,7 +6372,7 @@ cPtr__AC_galgas_class * cPtr_lexicalStringNotMatch::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalStringNotMatch ("lexicalStringNotMatch") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStringNotMatch ("lexicalStringNotMatch") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6519,12 +6519,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalSendSearchList ("lexicalSendSearchList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendSearchList ("lexicalSendSearchList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -6537,7 +6537,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -6553,8 +6553,8 @@ void GGS_lexicalSendSearchList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -6578,13 +6578,13 @@ dotAssign_operation (const GGS_lexicalSendSearchList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalSendSearchList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mAttributeName ;
           GGS_lstring  p_1 = p->mSearchListName ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -6600,8 +6600,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -6610,13 +6610,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mAttributeName,
+      internalAppendValues (ptr->mAttributeName,
                                 ptr->mSearchListName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -6775,7 +6775,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mAttributeName ;
     _out_1 = ptr->mSearchListName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -6800,7 +6800,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mAttributeName ;
     _out_1 = ptr->mSearchListName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -6947,7 +6947,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalSendDefaultAction::galgasRTTI (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalSendDefaultAction ("lexicalSendDefaultAction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendDefaultAction ("lexicalSendDefaultAction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7106,7 +7106,7 @@ cPtr__AC_galgas_class * cPtr_lexicalStructuredSendInstruction::makeClone (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalStructuredSendInstruction ("lexicalStructuredSendInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStructuredSendInstruction ("lexicalStructuredSendInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7292,7 +7292,7 @@ cPtr__AC_galgas_class * cPtr_lexicalSimpleSendInstruction::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalSimpleSendInstruction ("lexicalSimpleSendInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSimpleSendInstruction ("lexicalSimpleSendInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7462,7 +7462,7 @@ cPtr__AC_galgas_class * cPtr_lexicalSendTerminalByDefault::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalSendTerminalByDefault ("lexicalSendTerminalByDefault") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendTerminalByDefault ("lexicalSendTerminalByDefault") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7632,7 +7632,7 @@ cPtr__AC_galgas_class * cPtr_lexicalErrorByDefault::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalErrorByDefault ("lexicalErrorByDefault") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalErrorByDefault ("lexicalErrorByDefault") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7763,12 +7763,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalWhileBranchList ("lexicalWhileBranchList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalWhileBranchList ("lexicalWhileBranchList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-_internalAppendValues (const GGS_lexicalExpression & argument_0,
+internalAppendValues (const GGS_lexicalExpression & argument_0,
                     const GGS_lexicalInstructionList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -7781,7 +7781,7 @@ _internalAppendValues (const GGS_lexicalExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-_internalPrependValues (const GGS_lexicalExpression & argument_0,
+internalPrependValues (const GGS_lexicalExpression & argument_0,
                     const GGS_lexicalInstructionList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -7797,8 +7797,8 @@ void GGS_lexicalWhileBranchList::
 addAssign_operation (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -7822,13 +7822,13 @@ dotAssign_operation (const GGS_lexicalWhileBranchList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalWhileBranchList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lexicalExpression  p_0 = p->mWhileExpression ;
           GGS_lexicalInstructionList  p_1 = p->mWhileInstructionList ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -7844,8 +7844,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lexicalInstructionList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -7854,13 +7854,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mWhileExpression,
+      internalAppendValues (ptr->mWhileExpression,
                                 ptr->mWhileInstructionList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -8019,7 +8019,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mWhileExpression ;
     _out_1 = ptr->mWhileInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -8044,7 +8044,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mWhileExpression ;
     _out_1 = ptr->mWhileInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -8219,7 +8219,7 @@ cPtr__AC_galgas_class * cPtr_lexicalRepeatInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalRepeatInstruction ("lexicalRepeatInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRepeatInstruction ("lexicalRepeatInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8366,12 +8366,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalSelectBranchList ("lexicalSelectBranchList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSelectBranchList ("lexicalSelectBranchList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-_internalAppendValues (const GGS_lexicalExpression & argument_0,
+internalAppendValues (const GGS_lexicalExpression & argument_0,
                     const GGS_lexicalInstructionList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -8384,7 +8384,7 @@ _internalAppendValues (const GGS_lexicalExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-_internalPrependValues (const GGS_lexicalExpression & argument_0,
+internalPrependValues (const GGS_lexicalExpression & argument_0,
                     const GGS_lexicalInstructionList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -8400,8 +8400,8 @@ void GGS_lexicalSelectBranchList::
 addAssign_operation (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -8425,13 +8425,13 @@ dotAssign_operation (const GGS_lexicalSelectBranchList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalSelectBranchList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lexicalExpression  p_0 = p->mSelectExpression ;
           GGS_lexicalInstructionList  p_1 = p->mSelectInstructionList ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -8447,8 +8447,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lexicalInstructionList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -8457,13 +8457,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSelectExpression,
+      internalAppendValues (ptr->mSelectExpression,
                                 ptr->mSelectInstructionList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -8622,7 +8622,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mSelectExpression ;
     _out_1 = ptr->mSelectInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -8647,7 +8647,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mSelectExpression ;
     _out_1 = ptr->mSelectInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -8822,7 +8822,7 @@ cPtr__AC_galgas_class * cPtr_lexicalSelectInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalSelectInstruction ("lexicalSelectInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSelectInstruction ("lexicalSelectInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8987,7 +8987,7 @@ AC_galgasClassRunTimeInformation * cPtr_abstractLexicalRoutineActualArgument::ga
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_abstractLexicalRoutineActualArgument ("abstractLexicalRoutineActualArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument ("abstractLexicalRoutineActualArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9110,12 +9110,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalRoutineCallActualArgumentList ("lexicalRoutineCallActualArgumentList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineCallActualArgumentList ("lexicalRoutineCallActualArgumentList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineCallActualArgumentList::
-_internalAppendValues (const GGS_abstractLexicalRoutineActualArgument & argument_0
+internalAppendValues (const GGS_abstractLexicalRoutineActualArgument & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -9126,7 +9126,7 @@ _internalAppendValues (const GGS_abstractLexicalRoutineActualArgument & argument
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineCallActualArgumentList::
-_internalPrependValues (const GGS_abstractLexicalRoutineActualArgument & argument_0
+internalPrependValues (const GGS_abstractLexicalRoutineActualArgument & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -9139,8 +9139,8 @@ _internalPrependValues (const GGS_abstractLexicalRoutineActualArgument & argumen
 void GGS_lexicalRoutineCallActualArgumentList::
 addAssign_operation (const GGS_abstractLexicalRoutineActualArgument & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -9163,12 +9163,12 @@ dotAssign_operation (const GGS_lexicalRoutineCallActualArgumentList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalRoutineCallActualArgumentList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_abstractLexicalRoutineActualArgument  p_0 = p->mLexicalRoutineActualArgument ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -9183,8 +9183,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_abstractLexicalRoutineActualArgument & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -9192,13 +9192,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineCallActualArgumentList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLexicalRoutineActualArgument
+      internalAppendValues (ptr->mLexicalRoutineActualArgument
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -9347,7 +9347,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mLexicalRoutineActualArgument ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -9369,7 +9369,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mLexicalRoutineActualArgument ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -9511,7 +9511,7 @@ cPtr__AC_galgas_class * cPtr_lexicalRoutineInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalRoutineInstruction ("lexicalRoutineInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineInstruction ("lexicalRoutineInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9716,7 +9716,7 @@ cPtr__AC_galgas_class * cPtr_lexicalAttributeInputOutputArgument::makeClone (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalAttributeInputOutputArgument ("lexicalAttributeInputOutputArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeInputOutputArgument ("lexicalAttributeInputOutputArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9864,7 +9864,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalRoutineOrFunctionFormalInputArgum
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalRoutineOrFunctionFormalInputArgument ("lexicalRoutineOrFunctionFormalInputArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument ("lexicalRoutineOrFunctionFormalInputArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10022,7 +10022,7 @@ cPtr__AC_galgas_class * cPtr_lexicalFormalInputArgument::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalFormalInputArgument ("lexicalFormalInputArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFormalInputArgument ("lexicalFormalInputArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10148,12 +10148,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalFunctionCallActualArgumentList ("lexicalFunctionCallActualArgumentList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionCallActualArgumentList ("lexicalFunctionCallActualArgumentList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionCallActualArgumentList::
-_internalAppendValues (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0
+internalAppendValues (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -10164,7 +10164,7 @@ _internalAppendValues (const GGS_lexicalRoutineOrFunctionFormalInputArgument & a
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionCallActualArgumentList::
-_internalPrependValues (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0
+internalPrependValues (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -10177,8 +10177,8 @@ _internalPrependValues (const GGS_lexicalRoutineOrFunctionFormalInputArgument & 
 void GGS_lexicalFunctionCallActualArgumentList::
 addAssign_operation (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -10201,12 +10201,12 @@ dotAssign_operation (const GGS_lexicalFunctionCallActualArgumentList inOperand) 
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalFunctionCallActualArgumentList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lexicalRoutineOrFunctionFormalInputArgument  p_0 = p->mLexicalActualInputArgument ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -10221,8 +10221,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -10230,13 +10230,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionCallActualArgumentList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLexicalActualInputArgument
+      internalAppendValues (ptr->mLexicalActualInputArgument
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -10385,7 +10385,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mLexicalActualInputArgument ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -10407,7 +10407,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mLexicalActualInputArgument ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -10541,7 +10541,7 @@ cPtr__AC_galgas_class * cPtr_lexicalAttributeInputArgument::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalAttributeInputArgument ("lexicalAttributeInputArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeInputArgument ("lexicalAttributeInputArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10711,7 +10711,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCharacterInputArgument::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalCharacterInputArgument ("lexicalCharacterInputArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterInputArgument ("lexicalCharacterInputArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10881,7 +10881,7 @@ cPtr__AC_galgas_class * cPtr_lexicalUnsignedInputArgument::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalUnsignedInputArgument ("lexicalUnsignedInputArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalUnsignedInputArgument ("lexicalUnsignedInputArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11051,7 +11051,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCurrentCharacterInputArgument::makeClone (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalCurrentCharacterInputArgument ("lexicalCurrentCharacterInputArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCurrentCharacterInputArgument ("lexicalCurrentCharacterInputArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11225,7 +11225,7 @@ cPtr__AC_galgas_class * cPtr_lexicalFunctionInputArgument::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalFunctionInputArgument ("lexicalFunctionInputArgument") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionInputArgument ("lexicalFunctionInputArgument") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11411,7 +11411,7 @@ cPtr__AC_galgas_class * cPtr_lexicalDropInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalDropInstruction ("lexicalDropInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalDropInstruction ("lexicalDropInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11581,7 +11581,7 @@ cPtr__AC_galgas_class * cPtr_lexicalErrorInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalErrorInstruction ("lexicalErrorInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalErrorInstruction ("lexicalErrorInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11751,7 +11751,7 @@ cPtr__AC_galgas_class * cPtr_lexicalWarningInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalWarningInstruction ("lexicalWarningInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalWarningInstruction ("lexicalWarningInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11921,7 +11921,7 @@ cPtr__AC_galgas_class * cPtr_lexicalTagInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalTagInstruction ("lexicalTagInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTagInstruction ("lexicalTagInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12095,7 +12095,7 @@ cPtr__AC_galgas_class * cPtr_lexicalRewindInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalRewindInstruction ("lexicalRewindInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRewindInstruction ("lexicalRewindInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12264,7 +12264,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalLogInstruction::galgasRTTI (void)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalLogInstruction ("lexicalLogInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalLogInstruction ("lexicalLogInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12348,7 +12348,7 @@ C_galgasClassRunTimeInformation gClassInfoFor__lexicalLogInstruction ("lexicalLo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalArgumentMode ("lexicalArgumentMode") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalArgumentMode ("lexicalArgumentMode") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12534,12 +12534,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalExternRoutineFormalArgumentList ("lexicalExternRoutineFormalArgumentList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExternRoutineFormalArgumentList ("lexicalExternRoutineFormalArgumentList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExternRoutineFormalArgumentList::
-_internalAppendValues (const GGS_lexicalArgumentMode& argument_0,
+internalAppendValues (const GGS_lexicalArgumentMode& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -12554,7 +12554,7 @@ _internalAppendValues (const GGS_lexicalArgumentMode& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExternRoutineFormalArgumentList::
-_internalPrependValues (const GGS_lexicalArgumentMode& argument_0,
+internalPrependValues (const GGS_lexicalArgumentMode& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -12573,8 +12573,8 @@ addAssign_operation (const GGS_lexicalArgumentMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -12599,14 +12599,14 @@ dotAssign_operation (const GGS_lexicalExternRoutineFormalArgumentList inOperand)
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalExternRoutineFormalArgumentList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lexicalArgumentMode p_0 = p->mPassingMode ;
           GGS_lstring  p_1 = p->mLexicalTypeName ;
           GGS_lstring  p_2 = p->mFormalArgumentName ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -12623,8 +12623,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -12634,13 +12634,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExternRoutineFormalArgumentList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mPassingMode,
+      internalAppendValues (ptr->mPassingMode,
                                 ptr->mLexicalTypeName,
                                 ptr->mFormalArgumentName
                                 COMMA_HERE) ;
@@ -12809,7 +12809,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mPassingMode ;
     _out_1 = ptr->mLexicalTypeName ;
     _out_2 = ptr->mFormalArgumentName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -12837,7 +12837,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mPassingMode ;
     _out_1 = ptr->mLexicalTypeName ;
     _out_2 = ptr->mFormalArgumentName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -13013,12 +13013,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_externRoutineList ("externRoutineList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_externRoutineList ("externRoutineList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_externRoutineList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lexicalExternRoutineFormalArgumentList & argument_1,
                     const GGS_stringlist & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -13033,7 +13033,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_externRoutineList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lexicalExternRoutineFormalArgumentList & argument_1,
                     const GGS_stringlist & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -13052,8 +13052,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lexicalExternRoutineFormalArgumentList & argument_1,
                                 const GGS_stringlist & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -13078,14 +13078,14 @@ dotAssign_operation (const GGS_externRoutineList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_externRoutineList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mRoutineName ;
           GGS_lexicalExternRoutineFormalArgumentList  p_1 = p->mLexicalRoutineFormalArgumentList ;
           GGS_stringlist  p_2 = p->mErrorMessageList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -13102,8 +13102,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_stringlist & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -13113,13 +13113,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_externRoutineList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mRoutineName,
+      internalAppendValues (ptr->mRoutineName,
                                 ptr->mLexicalRoutineFormalArgumentList,
                                 ptr->mErrorMessageList
                                 COMMA_HERE) ;
@@ -13288,7 +13288,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mRoutineName ;
     _out_1 = ptr->mLexicalRoutineFormalArgumentList ;
     _out_2 = ptr->mErrorMessageList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -13316,7 +13316,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mRoutineName ;
     _out_1 = ptr->mLexicalRoutineFormalArgumentList ;
     _out_2 = ptr->mErrorMessageList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -13485,12 +13485,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexicalExternFunctionFormalArgumentList ("lexicalExternFunctionFormalArgumentList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExternFunctionFormalArgumentList ("lexicalExternFunctionFormalArgumentList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExternFunctionFormalArgumentList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -13503,7 +13503,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExternFunctionFormalArgumentList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -13519,8 +13519,8 @@ void GGS_lexicalExternFunctionFormalArgumentList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -13544,13 +13544,13 @@ dotAssign_operation (const GGS_lexicalExternFunctionFormalArgumentList inOperand
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lexicalExternFunctionFormalArgumentList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mLexicalTypeName ;
           GGS_lstring  p_1 = p->mFormalArgumentName ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -13566,8 +13566,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -13576,13 +13576,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExternFunctionFormalArgumentList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLexicalTypeName,
+      internalAppendValues (ptr->mLexicalTypeName,
                                 ptr->mFormalArgumentName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -13741,7 +13741,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mLexicalTypeName ;
     _out_1 = ptr->mFormalArgumentName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -13766,7 +13766,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mLexicalTypeName ;
     _out_1 = ptr->mFormalArgumentName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -13905,12 +13905,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_externFunctionList ("externFunctionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_externFunctionList ("externFunctionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_externFunctionList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lexicalExternFunctionFormalArgumentList & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -13925,7 +13925,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_externFunctionList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lexicalExternFunctionFormalArgumentList & argument_1,
                     const GGS_lstring & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -13944,8 +13944,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lexicalExternFunctionFormalArgumentList & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -13970,14 +13970,14 @@ dotAssign_operation (const GGS_externFunctionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_externFunctionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mFunctionName ;
           GGS_lexicalExternFunctionFormalArgumentList  p_1 = p->mLexicalFunctionFormalArgumentList ;
           GGS_lstring  p_2 = p->mReturnedTypeName ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -13994,8 +13994,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -14005,13 +14005,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_externFunctionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mFunctionName,
+      internalAppendValues (ptr->mFunctionName,
                                 ptr->mLexicalFunctionFormalArgumentList,
                                 ptr->mReturnedTypeName
                                 COMMA_HERE) ;
@@ -14180,7 +14180,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mFunctionName ;
     _out_1 = ptr->mLexicalFunctionFormalArgumentList ;
     _out_2 = ptr->mReturnedTypeName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -14208,7 +14208,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mFunctionName ;
     _out_1 = ptr->mLexicalFunctionFormalArgumentList ;
     _out_2 = ptr->mReturnedTypeName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -14460,7 +14460,7 @@ cPtr__AC_galgas_class * cPtr_lexiqueComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lexiqueComponentRoot ("lexiqueComponentRoot") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lexiqueComponentRoot ("lexiqueComponentRoot") ;
 
 //---------------------------------------------------------------------------*
 

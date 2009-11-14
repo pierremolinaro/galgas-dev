@@ -140,7 +140,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     ? C_String ()
     : mAncestorClassesMap.lastObject ()->mKey.string () ;
 
-  inHfile << "extern const C_galgas_type_reference kTypeReference_" << aNomClasse << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomClasse << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
 
   inHfile << "class GGS_" << aNomClasse ;
@@ -754,7 +754,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.appendCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
-  inCppFile << "const C_galgas_type_reference kTypeReference_" << aNomClasse << " (\"" << aNomClasse << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomClasse << " (\"" << aNomClasse << "\") ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Pointer assignment constructor

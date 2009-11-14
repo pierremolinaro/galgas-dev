@@ -53,7 +53,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   
   inHfile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
 
-  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mEnumTypeName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mEnumTypeName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
 
   
@@ -202,7 +202,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
 
-  inCppFile << "const C_galgas_type_reference kTypeReference_" << mEnumTypeName << " (\"" << mEnumTypeName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mEnumTypeName << " (\"" << mEnumTypeName << "\") ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "bool GGS_" << mEnumTypeName

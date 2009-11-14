@@ -22,20 +22,20 @@
   do 'b'
   after
 --- begin of foreach instruction test 5
-  before (index: 0)
-  do 'a' (index: 0)
-  between (index: 1)
-  do 'b' (index: 1)
-  between (index: 2)
-  do 'c' (index: 2)
-  between (index: 3)
-  do 'd' (index: 3)
-  after (index: 4)
+  before (idx: 0)
+  do 'a' (idx: 0)
+  between (idx: 1)
+  do 'b' (idx: 1)
+  between (idx: 2)
+  do 'c' (idx: 2)
+  between (idx: 3)
+  do 'd' (idx: 3)
+  after (idx: 4)
 --- begin of foreach instruction test 6
-  do 'a' (index: 0)
-  do 'b' (index: 1)
-  do 'c' (index: 2)
-  do 'd' (index: 3)
+  do 'a' (idx: 0)
+  do 'b' (idx: 1)
+  do 'c' (idx: 2)
+  do 'd' (idx: 3)
 *************************************** begin of list direct access
 LOGGING s: <@string:"a">
 LOGGING s: <@string:"b">
@@ -70,7 +70,7 @@ LOGGING m: <listmap @myListMap (3 objects):
 | >
 >
 LOGGING c: <@uint:3>
-LOGGING s: <@stringset: 'a', 'c', 'd'>
+LOGGING s: <@stringset (3 objects): 'a', 'c', 'd'>
 LOGGING sl: <list @stringlist 3 objects 
 |-at 0 
 | |-<@string:"a">
@@ -205,3 +205,63 @@ LOGGING m: <map @aMap 1 object
 *************************************** begin of function test
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
+*************************************** begin of domain test
+--- relation
+  A2 B0
+  A0 B1
+  A0 B2
+  A2 B5
+  A2 B7
+  A16 B7
+--- triple
+  A0 B1 C0
+  A2 B7 C0
+  A0 B2 C1
+  A16 B7 C1
+  A2 B0 C2
+  A2 B5 C3
+*************************************** begin of introspection test
+--- Type list (39 types)
+  @aMap
+  @myListMap
+  @aList
+  @struct
+  @myList
+  @location
+  @filewrapper
+  @binaryset
+  @stringset
+  @lsint64
+  @luint64
+  @lsint
+  @luint
+  @lstring
+  @ldouble
+  @lchar
+  @lbool
+  @sint64
+  @uint64
+  @sint
+  @uint
+  @string
+  @double
+  @char
+  @bool
+  @data
+  @function
+  @type
+  @functionlist
+  @typelist
+  @lcharlist
+  @charlist
+  @lstringlist
+  @string3list
+  @string2list
+  @stringlist
+  @uint64list
+  @luintlist
+  @uintlist
+--- Function list (1 function)
+  functionTest [?@uint ?@uint] -> @uint
+Function 'foo' exists:false
+Function 'functionTest' exists:true

@@ -94,12 +94,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_XcodeObjectReferenceList ("XcodeObjectReferenceList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_XcodeObjectReferenceList ("XcodeObjectReferenceList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-_internalAppendValues (const GGS_string& argument_0,
+internalAppendValues (const GGS_string& argument_0,
                     const GGS_string& argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -112,7 +112,7 @@ _internalAppendValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-_internalPrependValues (const GGS_string& argument_0,
+internalPrependValues (const GGS_string& argument_0,
                     const GGS_string& argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -128,8 +128,8 @@ void GGS_XcodeObjectReferenceList::
 addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -153,13 +153,13 @@ dotAssign_operation (const GGS_XcodeObjectReferenceList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_XcodeObjectReferenceList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_string p_0 = p->mRefString ;
           GGS_string p_1 = p->mComment ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -175,8 +175,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_string& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -185,13 +185,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mRefString,
+      internalAppendValues (ptr->mRefString,
                                 ptr->mComment
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -350,7 +350,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mRefString ;
     _out_1 = ptr->mComment ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -375,7 +375,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mRefString ;
     _out_1 = ptr->mComment ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -544,7 +544,7 @@ AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_abstract::galgasR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_abstract ("Xcode_PBXFileReference_abstract") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract ("Xcode_PBXFileReference_abstract") ;
 
 //---------------------------------------------------------------------------*
 
@@ -705,7 +705,7 @@ AC_galgasClassRunTimeInformation * cPtr_Xcode_productFileReference::galgasRTTI (
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_productFileReference ("Xcode_productFileReference") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_productFileReference ("Xcode_productFileReference") ;
 
 //---------------------------------------------------------------------------*
 
@@ -869,7 +869,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_CompiledMachOExecutable::mak
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_CompiledMachOExecutable ("Xcode_PBXFileReference_CompiledMachOExecutable") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_CompiledMachOExecutable ("Xcode_PBXFileReference_CompiledMachOExecutable") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1044,7 +1044,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_Application::makeClone (void
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_Application ("Xcode_PBXFileReference_Application") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_Application ("Xcode_PBXFileReference_Application") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1215,7 +1215,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_cppSourceFile::makeClone (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_cppSourceFile ("Xcode_PBXFileReference_cppSourceFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_cppSourceFile ("Xcode_PBXFileReference_cppSourceFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1386,7 +1386,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_hSourceFile::makeClone (void
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_hSourceFile ("Xcode_PBXFileReference_hSourceFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_hSourceFile ("Xcode_PBXFileReference_hSourceFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1557,7 +1557,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_pchSourceFile::makeClone (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_pchSourceFile ("Xcode_PBXFileReference_pchSourceFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_pchSourceFile ("Xcode_PBXFileReference_pchSourceFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1728,7 +1728,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_mSourceFile::makeClone (void
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_mSourceFile ("Xcode_PBXFileReference_mSourceFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_mSourceFile ("Xcode_PBXFileReference_mSourceFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1899,7 +1899,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_mmSourceFile::makeClone (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_mmSourceFile ("Xcode_PBXFileReference_mmSourceFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSourceFile ("Xcode_PBXFileReference_mmSourceFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2070,7 +2070,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_gifFile::makeClone (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_gifFile ("Xcode_PBXFileReference_gifFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_gifFile ("Xcode_PBXFileReference_gifFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2241,7 +2241,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_tiffFile::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_tiffFile ("Xcode_PBXFileReference_tiffFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_tiffFile ("Xcode_PBXFileReference_tiffFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2412,7 +2412,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_pngFile::makeClone (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_pngFile ("Xcode_PBXFileReference_pngFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_pngFile ("Xcode_PBXFileReference_pngFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2583,7 +2583,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_plistFile::makeClone (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_plistFile ("Xcode_PBXFileReference_plistFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_plistFile ("Xcode_PBXFileReference_plistFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2754,7 +2754,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_frameworkFile::makeClone (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_frameworkFile ("Xcode_PBXFileReference_frameworkFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_frameworkFile ("Xcode_PBXFileReference_frameworkFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2925,7 +2925,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_icnsFile::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_icnsFile ("Xcode_PBXFileReference_icnsFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_icnsFile ("Xcode_PBXFileReference_icnsFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3100,7 +3100,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_xibFile::makeClone (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_xibFile ("Xcode_PBXFileReference_xibFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_xibFile ("Xcode_PBXFileReference_xibFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3291,7 +3291,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_plistStringFile::makeClone (
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_plistStringFile ("Xcode_PBXFileReference_plistStringFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_plistStringFile ("Xcode_PBXFileReference_plistStringFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3388,7 +3388,7 @@ mFileReference () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFileReference_map ("Xcode_PBXFileReference_map") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_map ("Xcode_PBXFileReference_map") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3873,7 +3873,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXBuildFile::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXBuildFile ("Xcode_PBXBuildFile") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXBuildFile ("Xcode_PBXBuildFile") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4021,12 +4021,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXBuildFile_list ("Xcode_PBXBuildFile_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXBuildFile_list ("Xcode_PBXBuildFile_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-_internalAppendValues (const GGS_Xcode_PBXBuildFile & argument_0
+internalAppendValues (const GGS_Xcode_PBXBuildFile & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -4037,7 +4037,7 @@ _internalAppendValues (const GGS_Xcode_PBXBuildFile & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-_internalPrependValues (const GGS_Xcode_PBXBuildFile & argument_0
+internalPrependValues (const GGS_Xcode_PBXBuildFile & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -4050,8 +4050,8 @@ _internalPrependValues (const GGS_Xcode_PBXBuildFile & argument_0
 void GGS_Xcode_PBXBuildFile_list::
 addAssign_operation (const GGS_Xcode_PBXBuildFile & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -4074,12 +4074,12 @@ dotAssign_operation (const GGS_Xcode_PBXBuildFile_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_PBXBuildFile_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_Xcode_PBXBuildFile  p_0 = p->mFile ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -4094,8 +4094,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXBuildFile & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -4103,13 +4103,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mFile
+      internalAppendValues (ptr->mFile
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -4258,7 +4258,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mFile ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -4280,7 +4280,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mFile ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -4437,7 +4437,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXSourcesBuildPhase::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXSourcesBuildPhase ("Xcode_PBXSourcesBuildPhase") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase ("Xcode_PBXSourcesBuildPhase") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4601,12 +4601,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXSourcesBuildPhase_list ("Xcode_PBXSourcesBuildPhase_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase_list ("Xcode_PBXSourcesBuildPhase_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-_internalAppendValues (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
+internalAppendValues (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -4617,7 +4617,7 @@ _internalAppendValues (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-_internalPrependValues (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
+internalPrependValues (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -4630,8 +4630,8 @@ _internalPrependValues (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
 void GGS_Xcode_PBXSourcesBuildPhase_list::
 addAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -4654,12 +4654,12 @@ dotAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_PBXSourcesBuildPhase_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_Xcode_PBXSourcesBuildPhase  p_0 = p->mBuildPhase ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -4674,8 +4674,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXSourcesBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -4683,13 +4683,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mBuildPhase
+      internalAppendValues (ptr->mBuildPhase
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -4838,7 +4838,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mBuildPhase ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -4860,7 +4860,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mBuildPhase ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -5017,7 +5017,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXResourcesBuildPhase::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXResourcesBuildPhase ("Xcode_PBXResourcesBuildPhase") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase ("Xcode_PBXResourcesBuildPhase") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5181,12 +5181,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXResourcesBuildPhase_list ("Xcode_PBXResourcesBuildPhase_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase_list ("Xcode_PBXResourcesBuildPhase_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-_internalAppendValues (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
+internalAppendValues (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -5197,7 +5197,7 @@ _internalAppendValues (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-_internalPrependValues (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
+internalPrependValues (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -5210,8 +5210,8 @@ _internalPrependValues (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
 void GGS_Xcode_PBXResourcesBuildPhase_list::
 addAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -5234,12 +5234,12 @@ dotAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_PBXResourcesBuildPhase_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_Xcode_PBXResourcesBuildPhase  p_0 = p->mBuildPhase ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -5254,8 +5254,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXResourcesBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -5263,13 +5263,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mBuildPhase
+      internalAppendValues (ptr->mBuildPhase
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -5418,7 +5418,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mBuildPhase ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -5440,7 +5440,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mBuildPhase ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -5625,7 +5625,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFrameworksBuildPhase::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFrameworksBuildPhase ("Xcode_PBXFrameworksBuildPhase") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase ("Xcode_PBXFrameworksBuildPhase") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5789,12 +5789,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXFrameworksBuildPhase_list ("Xcode_PBXFrameworksBuildPhase_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase_list ("Xcode_PBXFrameworksBuildPhase_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-_internalAppendValues (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
+internalAppendValues (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -5805,7 +5805,7 @@ _internalAppendValues (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-_internalPrependValues (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
+internalPrependValues (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -5818,8 +5818,8 @@ _internalPrependValues (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
 addAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -5842,12 +5842,12 @@ dotAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_Xcode_PBXFrameworksBuildPhase  p_0 = p->mBuildPhase ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -5862,8 +5862,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -5871,13 +5871,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mBuildPhase
+      internalAppendValues (ptr->mBuildPhase
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -6026,7 +6026,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mBuildPhase ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -6048,7 +6048,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mBuildPhase ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -6209,7 +6209,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXGroup::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXGroup ("Xcode_PBXGroup") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXGroup ("Xcode_PBXGroup") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6389,12 +6389,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXGroup_list ("Xcode_PBXGroup_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXGroup_list ("Xcode_PBXGroup_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-_internalAppendValues (const GGS_Xcode_PBXGroup & argument_0
+internalAppendValues (const GGS_Xcode_PBXGroup & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -6405,7 +6405,7 @@ _internalAppendValues (const GGS_Xcode_PBXGroup & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-_internalPrependValues (const GGS_Xcode_PBXGroup & argument_0
+internalPrependValues (const GGS_Xcode_PBXGroup & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -6418,8 +6418,8 @@ _internalPrependValues (const GGS_Xcode_PBXGroup & argument_0
 void GGS_Xcode_PBXGroup_list::
 addAssign_operation (const GGS_Xcode_PBXGroup & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -6442,12 +6442,12 @@ dotAssign_operation (const GGS_Xcode_PBXGroup_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_PBXGroup_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_Xcode_PBXGroup  p_0 = p->mGroup ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -6462,8 +6462,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXGroup & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -6471,13 +6471,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mGroup
+      internalAppendValues (ptr->mGroup
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -6626,7 +6626,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mGroup ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -6648,7 +6648,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mGroup ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -6820,7 +6820,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_XCBuildConfiguration::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_XCBuildConfiguration ("Xcode_XCBuildConfiguration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_XCBuildConfiguration ("Xcode_XCBuildConfiguration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6982,12 +6982,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_XCBuildConfiguration_list ("Xcode_XCBuildConfiguration_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_XCBuildConfiguration_list ("Xcode_XCBuildConfiguration_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-_internalAppendValues (const GGS_Xcode_XCBuildConfiguration & argument_0
+internalAppendValues (const GGS_Xcode_XCBuildConfiguration & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -6998,7 +6998,7 @@ _internalAppendValues (const GGS_Xcode_XCBuildConfiguration & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-_internalPrependValues (const GGS_Xcode_XCBuildConfiguration & argument_0
+internalPrependValues (const GGS_Xcode_XCBuildConfiguration & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -7011,8 +7011,8 @@ _internalPrependValues (const GGS_Xcode_XCBuildConfiguration & argument_0
 void GGS_Xcode_XCBuildConfiguration_list::
 addAssign_operation (const GGS_Xcode_XCBuildConfiguration & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -7035,12 +7035,12 @@ dotAssign_operation (const GGS_Xcode_XCBuildConfiguration_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_XCBuildConfiguration_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_Xcode_XCBuildConfiguration  p_0 = p->mBuildConfig ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -7055,8 +7055,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_XCBuildConfiguration & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -7064,13 +7064,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mBuildConfig
+      internalAppendValues (ptr->mBuildConfig
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -7219,7 +7219,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mBuildConfig ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -7241,7 +7241,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mBuildConfig ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -7378,12 +7378,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXNativeTarget_list ("Xcode_PBXNativeTarget_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXNativeTarget_list ("Xcode_PBXNativeTarget_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-_internalAppendValues (const GGS_string& argument_0,
+internalAppendValues (const GGS_string& argument_0,
                     const GGS_string& argument_1,
                     const GGS_Xcode_XCBuildConfiguration & argument_2,
                     const GGS_string& argument_3,
@@ -7408,7 +7408,7 @@ _internalAppendValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-_internalPrependValues (const GGS_string& argument_0,
+internalPrependValues (const GGS_string& argument_0,
                     const GGS_string& argument_1,
                     const GGS_Xcode_XCBuildConfiguration & argument_2,
                     const GGS_string& argument_3,
@@ -7442,8 +7442,8 @@ addAssign_operation (const GGS_string& argument_0,
                                 const GGS_stringlist & argument_6,
                                 const GGS_stringlist & argument_7) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()&& argument_4.isBuilt ()&& argument_5.isBuilt ()&& argument_6.isBuilt ()&& argument_7.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -7473,7 +7473,7 @@ dotAssign_operation (const GGS_Xcode_PBXNativeTarget_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_PBXNativeTarget_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -7485,7 +7485,7 @@ dotAssign_operation (const GGS_Xcode_PBXNativeTarget_list inOperand) {
           GGS_Xcode_productFileReference  p_5 = p->mProduct ;
           GGS_stringlist  p_6 = p->mBuildPhaseKeyList ;
           GGS_stringlist  p_7 = p->mDependencyKeyList ;
-          _internalAppendValues (p_0, p_1, p_2, p_3, p_4, p_5, p_6, p_7 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3, p_4, p_5, p_6, p_7 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -7507,8 +7507,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_stringlist & argument_7
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -7523,13 +7523,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mTargetKey,
+      internalAppendValues (ptr->mTargetKey,
                                 ptr->mTargetName,
                                 ptr->mTargetConfiguration,
                                 ptr->mProductInstallPath,
@@ -7748,7 +7748,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_5 = ptr->mProduct ;
     _out_6 = ptr->mBuildPhaseKeyList ;
     _out_7 = ptr->mDependencyKeyList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -7791,7 +7791,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_5 = ptr->mProduct ;
     _out_6 = ptr->mBuildPhaseKeyList ;
     _out_7 = ptr->mDependencyKeyList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -8203,7 +8203,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_targetDependencyDescription::makeClone (void)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_targetDependencyDescription ("Xcode_targetDependencyDescription") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_targetDependencyDescription ("Xcode_targetDependencyDescription") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8351,12 +8351,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_targetDependencyDescription_list ("Xcode_targetDependencyDescription_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_targetDependencyDescription_list ("Xcode_targetDependencyDescription_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-_internalAppendValues (const GGS_Xcode_targetDependencyDescription & argument_0
+internalAppendValues (const GGS_Xcode_targetDependencyDescription & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -8367,7 +8367,7 @@ _internalAppendValues (const GGS_Xcode_targetDependencyDescription & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-_internalPrependValues (const GGS_Xcode_targetDependencyDescription & argument_0
+internalPrependValues (const GGS_Xcode_targetDependencyDescription & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -8380,8 +8380,8 @@ _internalPrependValues (const GGS_Xcode_targetDependencyDescription & argument_0
 void GGS_Xcode_targetDependencyDescription_list::
 addAssign_operation (const GGS_Xcode_targetDependencyDescription & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -8404,12 +8404,12 @@ dotAssign_operation (const GGS_Xcode_targetDependencyDescription_list inOperand)
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_targetDependencyDescription_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_Xcode_targetDependencyDescription  p_0 = p->mDependency ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -8424,8 +8424,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_targetDependencyDescription & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -8433,13 +8433,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mDependency
+      internalAppendValues (ptr->mDependency
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -8588,7 +8588,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mDependency ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -8610,7 +8610,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mDependency ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -8712,12 +8712,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_Xcode_PBXVariantGroup_list ("Xcode_PBXVariantGroup_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXVariantGroup_list ("Xcode_PBXVariantGroup_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-_internalAppendValues (const GGS_string& argument_0,
+internalAppendValues (const GGS_string& argument_0,
                     const GGS_string& argument_1,
                     const GGS_string& argument_2
                     COMMA_LOCATION_ARGS) {
@@ -8732,7 +8732,7 @@ _internalAppendValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-_internalPrependValues (const GGS_string& argument_0,
+internalPrependValues (const GGS_string& argument_0,
                     const GGS_string& argument_1,
                     const GGS_string& argument_2
                     COMMA_LOCATION_ARGS) {
@@ -8751,8 +8751,8 @@ addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_string& argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -8777,14 +8777,14 @@ dotAssign_operation (const GGS_Xcode_PBXVariantGroup_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_Xcode_PBXVariantGroup_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_string p_0 = p->mPBXVariantKey ;
           GGS_string p_1 = p->mPBXFileReferenceKey ;
           GGS_string p_2 = p->mName ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -8801,8 +8801,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_string& argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -8812,13 +8812,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mPBXVariantKey,
+      internalAppendValues (ptr->mPBXVariantKey,
                                 ptr->mPBXFileReferenceKey,
                                 ptr->mName
                                 COMMA_HERE) ;
@@ -8987,7 +8987,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mPBXVariantKey ;
     _out_1 = ptr->mPBXFileReferenceKey ;
     _out_2 = ptr->mName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -9015,7 +9015,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mPBXVariantKey ;
     _out_1 = ptr->mPBXFileReferenceKey ;
     _out_2 = ptr->mName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -9138,7 +9138,7 @@ modifier_setMNameAtIndex (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_XcodeProjectDescription ("XcodeProjectDescription") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_XcodeProjectDescription ("XcodeProjectDescription") ;
 
 //---------------------------------------------------------------------------*
 

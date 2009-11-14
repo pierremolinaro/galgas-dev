@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_sourceFileKind ("sourceFileKind") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_sourceFileKind ("sourceFileKind") ;
 
 //---------------------------------------------------------------------------*
 
@@ -204,12 +204,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_projectSourceList ("projectSourceList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_projectSourceList ("projectSourceList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-_internalAppendValues (const GGS_sourceFileKind& argument_0,
+internalAppendValues (const GGS_sourceFileKind& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstringlist & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -224,7 +224,7 @@ _internalAppendValues (const GGS_sourceFileKind& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-_internalPrependValues (const GGS_sourceFileKind& argument_0,
+internalPrependValues (const GGS_sourceFileKind& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstringlist & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -243,8 +243,8 @@ addAssign_operation (const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -269,14 +269,14 @@ dotAssign_operation (const GGS_projectSourceList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_projectSourceList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_sourceFileKind p_0 = p->mSourceKind ;
           GGS_lstring  p_1 = p->mFilePath ;
           GGS_lstringlist  p_2 = p->mTargetList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -293,8 +293,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstringlist & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -304,13 +304,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSourceKind,
+      internalAppendValues (ptr->mSourceKind,
                                 ptr->mFilePath,
                                 ptr->mTargetList
                                 COMMA_HERE) ;
@@ -479,7 +479,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mSourceKind ;
     _out_1 = ptr->mFilePath ;
     _out_2 = ptr->mTargetList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -507,7 +507,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mSourceKind ;
     _out_1 = ptr->mFilePath ;
     _out_2 = ptr->mTargetList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;

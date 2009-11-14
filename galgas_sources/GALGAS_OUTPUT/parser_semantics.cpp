@@ -109,7 +109,7 @@ AC_galgasClassRunTimeInformation * cPtr_typeParserInstruction::galgasRTTI (void)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeParserInstruction ("typeParserInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeParserInstruction ("typeParserInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -262,7 +262,7 @@ cPtr__AC_galgas_class * cPtr_typeInstructionAppelNonTerminal::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeInstructionAppelNonTerminal ("typeInstructionAppelNonTerminal") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeInstructionAppelNonTerminal ("typeInstructionAppelNonTerminal") ;
 
 //---------------------------------------------------------------------------*
 
@@ -472,7 +472,7 @@ cPtr__AC_galgas_class * cPtr_typeInstructionVerifSyntaxique::makeClone (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeInstructionVerifSyntaxique ("typeInstructionVerifSyntaxique") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeInstructionVerifSyntaxique ("typeInstructionVerifSyntaxique") ;
 
 //---------------------------------------------------------------------------*
 
@@ -628,12 +628,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeListeBranchesInstructions ("typeListeBranchesInstructions") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeListeBranchesInstructions ("typeListeBranchesInstructions") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-_internalAppendValues (const GGS_typeInstructionList & argument_0
+internalAppendValues (const GGS_typeInstructionList & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -644,7 +644,7 @@ _internalAppendValues (const GGS_typeInstructionList & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-_internalPrependValues (const GGS_typeInstructionList & argument_0
+internalPrependValues (const GGS_typeInstructionList & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -657,8 +657,8 @@ _internalPrependValues (const GGS_typeInstructionList & argument_0
 void GGS_typeListeBranchesInstructions::
 addAssign_operation (const GGS_typeInstructionList & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -681,12 +681,12 @@ dotAssign_operation (const GGS_typeListeBranchesInstructions inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeListeBranchesInstructions * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeInstructionList  p_0 = p->mInstructionList ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -701,8 +701,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeInstructionList & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -710,13 +710,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mInstructionList
+      internalAppendValues (ptr->mInstructionList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -865,7 +865,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -887,7 +887,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1025,7 +1025,7 @@ cPtr__AC_galgas_class * cPtr_C_select_instruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_select_instruction ("C_select_instruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_select_instruction ("C_select_instruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1215,7 +1215,7 @@ cPtr__AC_galgas_class * cPtr_C_repeat_instruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_repeat_instruction ("C_repeat_instruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_repeat_instruction ("C_repeat_instruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1362,12 +1362,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_L_parse_rewind_signature_list ("L_parse_rewind_signature_list") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_L_parse_rewind_signature_list ("L_parse_rewind_signature_list") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-_internalAppendValues (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0,
+internalAppendValues (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0,
                     const GGS_location & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1380,7 +1380,7 @@ _internalAppendValues (const GGS_syntaxInstructionListForGrammarAnalysis & argum
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-_internalPrependValues (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0,
+internalPrependValues (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0,
                     const GGS_location & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1396,8 +1396,8 @@ void GGS_L_parse_rewind_signature_list::
 addAssign_operation (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0,
                                 const GGS_location & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1421,13 +1421,13 @@ dotAssign_operation (const GGS_L_parse_rewind_signature_list inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_L_parse_rewind_signature_list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_syntaxInstructionListForGrammarAnalysis  p_0 = p->mSignature ;
           GGS_location  p_1 = p->mErrorLocation ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1443,8 +1443,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_location & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1453,13 +1453,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSignature,
+      internalAppendValues (ptr->mSignature,
                                 ptr->mErrorLocation
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -1618,7 +1618,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mSignature ;
     _out_1 = ptr->mErrorLocation ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1643,7 +1643,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mSignature ;
     _out_1 = ptr->mErrorLocation ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1818,7 +1818,7 @@ cPtr__AC_galgas_class * cPtr_C_parse_rewind_instruction::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_parse_rewind_instruction ("C_parse_rewind_instruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_parse_rewind_instruction ("C_parse_rewind_instruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2016,7 +2016,7 @@ cPtr__AC_galgas_class * cPtr_C_parse_loop_instruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_parse_loop_instruction ("C_parse_loop_instruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_parse_loop_instruction ("C_parse_loop_instruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2238,7 +2238,7 @@ cPtr__AC_galgas_class * cPtr_C_parse_when_else_instruction::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_C_parse_when_else_instruction ("C_parse_when_else_instruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_C_parse_when_else_instruction ("C_parse_when_else_instruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2432,7 +2432,7 @@ cPtr__AC_galgas_class * cPtr_typeNonterminalToGenerate::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeNonterminalToGenerate ("typeNonterminalToGenerate") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeNonterminalToGenerate ("typeNonterminalToGenerate") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2562,7 +2562,7 @@ mEndOfInstructionListLocation () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeAltProductionsMap ("typeAltProductionsMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeAltProductionsMap ("typeAltProductionsMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3087,7 +3087,7 @@ cPtr__AC_galgas_class * cPtr_typeProductionAengendrer::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeProductionAengendrer ("typeProductionAengendrer") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeProductionAengendrer ("typeProductionAengendrer") ;
 
 //---------------------------------------------------------------------------*
 

@@ -94,12 +94,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_signatureForGrammarAnalysis ("signatureForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_signatureForGrammarAnalysis ("signatureForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_signatureForGrammarAnalysis::
-_internalAppendValues (const GGS_formalArgumentPassingMode& argument_0,
+internalAppendValues (const GGS_formalArgumentPassingMode& argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -112,7 +112,7 @@ _internalAppendValues (const GGS_formalArgumentPassingMode& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_signatureForGrammarAnalysis::
-_internalPrependValues (const GGS_formalArgumentPassingMode& argument_0,
+internalPrependValues (const GGS_formalArgumentPassingMode& argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -128,8 +128,8 @@ void GGS_signatureForGrammarAnalysis::
 addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -153,13 +153,13 @@ dotAssign_operation (const GGS_signatureForGrammarAnalysis inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_signatureForGrammarAnalysis * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_formalArgumentPassingMode p_0 = p->mFormalArgumentPassingModeForGrammarAnalysis ;
           GGS_lstring  p_1 = p->mGalgasTypeNameForGrammarAnalysis ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -175,8 +175,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -185,13 +185,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_signatureForGrammarAnalysis::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mFormalArgumentPassingModeForGrammarAnalysis,
+      internalAppendValues (ptr->mFormalArgumentPassingModeForGrammarAnalysis,
                                 ptr->mGalgasTypeNameForGrammarAnalysis
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -350,7 +350,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mFormalArgumentPassingModeForGrammarAnalysis ;
     _out_1 = ptr->mGalgasTypeNameForGrammarAnalysis ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -375,7 +375,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mFormalArgumentPassingModeForGrammarAnalysis ;
     _out_1 = ptr->mGalgasTypeNameForGrammarAnalysis ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -471,7 +471,7 @@ mFormalParametersList () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_nonterminalSymbolLabelMapForGrammarAnalysis ("nonterminalSymbolLabelMapForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_nonterminalSymbolLabelMapForGrammarAnalysis ("nonterminalSymbolLabelMapForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
@@ -903,7 +903,7 @@ AC_galgasClassRunTimeInformation * cPtr_abstractSyntaxInstructionForGrammarAnaly
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_abstractSyntaxInstructionForGrammarAnalysis ("abstractSyntaxInstructionForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractSyntaxInstructionForGrammarAnalysis ("abstractSyntaxInstructionForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1012,12 +1012,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_syntaxInstructionListForGrammarAnalysis ("syntaxInstructionListForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxInstructionListForGrammarAnalysis ("syntaxInstructionListForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxInstructionListForGrammarAnalysis::
-_internalAppendValues (const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0
+internalAppendValues (const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -1028,7 +1028,7 @@ _internalAppendValues (const GGS_abstractSyntaxInstructionForGrammarAnalysis & a
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxInstructionListForGrammarAnalysis::
-_internalPrependValues (const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0
+internalPrependValues (const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -1041,8 +1041,8 @@ _internalPrependValues (const GGS_abstractSyntaxInstructionForGrammarAnalysis & 
 void GGS_syntaxInstructionListForGrammarAnalysis::
 addAssign_operation (const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -1065,12 +1065,12 @@ dotAssign_operation (const GGS_syntaxInstructionListForGrammarAnalysis inOperand
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_syntaxInstructionListForGrammarAnalysis * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_abstractSyntaxInstructionForGrammarAnalysis  p_0 = p->mInstruction ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1085,8 +1085,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -1094,13 +1094,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxInstructionListForGrammarAnalysis::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mInstruction
+      internalAppendValues (ptr->mInstruction
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -1249,7 +1249,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mInstruction ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1271,7 +1271,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mInstruction ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1373,12 +1373,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_productionRuleListForGrammarAnalysis ("productionRuleListForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_productionRuleListForGrammarAnalysis ("productionRuleListForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_productionRuleListForGrammarAnalysis::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_uint & argument_1,
                     const GGS_syntaxInstructionListForGrammarAnalysis & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -1393,7 +1393,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_productionRuleListForGrammarAnalysis::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_uint & argument_1,
                     const GGS_syntaxInstructionListForGrammarAnalysis & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -1412,8 +1412,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_uint & argument_1,
                                 const GGS_syntaxInstructionListForGrammarAnalysis & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -1438,14 +1438,14 @@ dotAssign_operation (const GGS_productionRuleListForGrammarAnalysis inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_productionRuleListForGrammarAnalysis * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mLeftNonterminalSymbol ;
           GGS_uint  p_1 = p->mLeftNonterminalSymbolIndex ;
           GGS_syntaxInstructionListForGrammarAnalysis  p_2 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1462,8 +1462,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_syntaxInstructionListForGrammarAnalysis & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -1473,13 +1473,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_productionRuleListForGrammarAnalysis::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLeftNonterminalSymbol,
+      internalAppendValues (ptr->mLeftNonterminalSymbol,
                                 ptr->mLeftNonterminalSymbolIndex,
                                 ptr->mInstructionList
                                 COMMA_HERE) ;
@@ -1648,7 +1648,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mLeftNonterminalSymbol ;
     _out_1 = ptr->mLeftNonterminalSymbolIndex ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1676,7 +1676,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mLeftNonterminalSymbol ;
     _out_1 = ptr->mLeftNonterminalSymbolIndex ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1809,7 +1809,7 @@ mNonTerminalIndex () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_unusedNonTerminalSymbolMapForGrammarAnalysis ("unusedNonTerminalSymbolMapForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_unusedNonTerminalSymbolMapForGrammarAnalysis ("unusedNonTerminalSymbolMapForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2154,7 +2154,7 @@ mNonterminalSymbolParametersMap () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_nonTerminalSymbolMapForGrammarAnalysis ("nonTerminalSymbolMapForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_nonTerminalSymbolMapForGrammarAnalysis ("nonTerminalSymbolMapForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2658,7 +2658,7 @@ cPtr__AC_galgas_class * cPtr_terminalInstructionForGrammarAnalysis::makeClone (v
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_terminalInstructionForGrammarAnalysis ("terminalInstructionForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalInstructionForGrammarAnalysis ("terminalInstructionForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2825,7 +2825,7 @@ cPtr__AC_galgas_class * cPtr_nonTerminalInstructionForGrammarAnalysis::makeClone
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_nonTerminalInstructionForGrammarAnalysis ("nonTerminalInstructionForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_nonTerminalInstructionForGrammarAnalysis ("nonTerminalInstructionForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2939,12 +2939,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_branchListForGrammarAnalysis ("branchListForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_branchListForGrammarAnalysis ("branchListForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_branchListForGrammarAnalysis::
-_internalAppendValues (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0
+internalAppendValues (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -2955,7 +2955,7 @@ _internalAppendValues (const GGS_syntaxInstructionListForGrammarAnalysis & argum
 //---------------------------------------------------------------------------*
 
 void GGS_branchListForGrammarAnalysis::
-_internalPrependValues (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0
+internalPrependValues (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -2968,8 +2968,8 @@ _internalPrependValues (const GGS_syntaxInstructionListForGrammarAnalysis & argu
 void GGS_branchListForGrammarAnalysis::
 addAssign_operation (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -2992,12 +2992,12 @@ dotAssign_operation (const GGS_branchListForGrammarAnalysis inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_branchListForGrammarAnalysis * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_syntaxInstructionListForGrammarAnalysis  p_0 = p->mSyntaxInstructionList ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3012,8 +3012,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_syntaxInstructionListForGrammarAnalysis & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -3021,13 +3021,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_branchListForGrammarAnalysis::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSyntaxInstructionList
+      internalAppendValues (ptr->mSyntaxInstructionList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -3176,7 +3176,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mSyntaxInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3198,7 +3198,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mSyntaxInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3339,7 +3339,7 @@ cPtr__AC_galgas_class * cPtr_selectInstructionForGrammarAnalysis::makeClone (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_selectInstructionForGrammarAnalysis ("selectInstructionForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_selectInstructionForGrammarAnalysis ("selectInstructionForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3506,7 +3506,7 @@ cPtr__AC_galgas_class * cPtr_repeatInstructionForGrammarAnalysis::makeClone (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_repeatInstructionForGrammarAnalysis ("repeatInstructionForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_repeatInstructionForGrammarAnalysis ("repeatInstructionForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3627,12 +3627,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_syntaxComponentListForGrammarAnalysis ("syntaxComponentListForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxComponentListForGrammarAnalysis ("syntaxComponentListForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxComponentListForGrammarAnalysis::
-_internalAppendValues (const GGS_productionRuleListForGrammarAnalysis & argument_0,
+internalAppendValues (const GGS_productionRuleListForGrammarAnalysis & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3645,7 +3645,7 @@ _internalAppendValues (const GGS_productionRuleListForGrammarAnalysis & argument
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxComponentListForGrammarAnalysis::
-_internalPrependValues (const GGS_productionRuleListForGrammarAnalysis & argument_0,
+internalPrependValues (const GGS_productionRuleListForGrammarAnalysis & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3661,8 +3661,8 @@ void GGS_syntaxComponentListForGrammarAnalysis::
 addAssign_operation (const GGS_productionRuleListForGrammarAnalysis & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3686,13 +3686,13 @@ dotAssign_operation (const GGS_syntaxComponentListForGrammarAnalysis inOperand) 
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_syntaxComponentListForGrammarAnalysis * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_productionRuleListForGrammarAnalysis  p_0 = p->mProductionRulesList ;
           GGS_lstring  p_1 = p->mSyntaxComponentName ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3708,8 +3708,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3718,13 +3718,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxComponentListForGrammarAnalysis::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mProductionRulesList,
+      internalAppendValues (ptr->mProductionRulesList,
                                 ptr->mSyntaxComponentName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -3883,7 +3883,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mProductionRulesList ;
     _out_1 = ptr->mSyntaxComponentName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3908,7 +3908,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mProductionRulesList ;
     _out_1 = ptr->mSyntaxComponentName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -4004,7 +4004,7 @@ mTerminalIndex () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_terminalSymbolsMapForGrammarAnalysis ("terminalSymbolsMapForGrammarAnalysis") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalSymbolsMapForGrammarAnalysis ("terminalSymbolsMapForGrammarAnalysis") ;
 
 //---------------------------------------------------------------------------*
 

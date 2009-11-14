@@ -112,7 +112,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "extern const C_galgas_type_reference kTypeReference_" << aNomListe << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n\n"
@@ -271,7 +271,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
              "//--- Internal Methods\n"
-              "  protected : void _internalAppendValues (" ;
+              "  protected : void internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -286,7 +286,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n\n"
-             "  protected : void _internalPrependValues (" ;
+             "  protected : void internalPrependValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -302,7 +302,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n\n"
              "//--- List Insulation\n"
-             "  protected : void _insulateList (void) ;\n\n"
+             "  protected : void insulateList (void) ;\n\n"
              "//--- Reader 'description\n"
              "  public : GGS_string\n"
              "  reader_description (C_Compiler & inLexique\n"
@@ -480,12 +480,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 // ------------- List Implementation -----------------
   inCppFile.appendCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
-  inCppFile << "const C_galgas_type_reference kTypeReference_" << aNomListe << " (\"" << aNomListe << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\") ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
-//--- Engendrer la methode _internalAppendValues
+//--- Engendrer la methode internalAppendValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_internalAppendValues (" ;
+               "internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -519,9 +519,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
 
 
-//--- Engendrer la methode _internalPrependValues
+//--- Engendrer la methode internalPrependValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_internalPrependValues (" ;
+               "internalPrependValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -575,8 +575,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "    _insulateList () ;\n"
-               "    _internalAppendValues (" ;
+               "    insulateList () ;\n"
+               "    internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -617,7 +617,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "      * this = inOperand ;\n"
                "    }else{\n"
                "      if (inOperand.count () > 0) {\n"
-               "        _insulateList () ;\n"
+               "        insulateList () ;\n"
                "        elementOf_GGS_" << aNomListe << " * p = inOperand.firstObject () ;\n"
                "        while (p != NULL) {\n"
                "          macroValidPointer (p) ;\n" ;
@@ -630,7 +630,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
     numeroVariable ++ ;
   }
-  inCppFile << "          _internalAppendValues (" ;
+  inCppFile << "          internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -673,8 +673,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "    _insulateList () ;\n"
-               "    _internalPrependValues (" ;
+               "    insulateList () ;\n"
+               "    internalPrependValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -691,15 +691,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
-//--- Engendrer la methode _insulateList
+//--- Engendrer la methode insulateList
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_insulateList (void) {\n"
+               "insulateList (void) {\n"
                "  if (_shared ()) {\n"
                "    cElement * ptr = firstObject () ;\n"
                "    alloc () ;\n"
                "    while (ptr != NULL) {\n"
                "      macroValidPointer (ptr) ;\n"
-               "      _internalAppendValues (" ;
+               "      internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -952,7 +952,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
     current.next () ;
   }
-  inCppFile << "    _insulateList () ;\n"
+  inCppFile << "    insulateList () ;\n"
                "    _internalRemoveFirst () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
@@ -995,7 +995,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
     current.next () ;
   }
-  inCppFile << "    _insulateList () ;\n"
+  inCppFile << "    insulateList () ;\n"
                "    _internalRemoveLast () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
@@ -1146,7 +1146,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "extern const C_galgas_type_reference kTypeReference_" << aNomListe << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "\n"
              "class GGS_" << aNomListe << " : public AC_galgas_sortedlist {\n"
@@ -1282,7 +1282,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Internal methods
              "//--- Internal Methods\n"
-              "  protected : void _internalAppendValues (" ;
+              "  protected : void internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1297,7 +1297,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << ") ;\n"
              "//--- List Insulation\n"
-             "  protected : void _insulateList (void) ;\n"
+             "  protected : void insulateList (void) ;\n"
              "//--- Reader 'description\n"
              "  public : GGS_string reader_description (C_Compiler & inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
@@ -1457,7 +1457,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 // ------------- List Implementation -----------------
   inCppFile.appendCppTitleComment (C_String ("Sorted list '@") + aNomListe + "'") ;
 
-  inCppFile << "const C_galgas_type_reference kTypeReference_" << aNomListe << " (\"" << aNomListe << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\") ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Generate default constructor
@@ -1487,9 +1487,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
-//--- Engendrer la methode _internalAppendValues
+//--- Engendrer la methode internalAppendValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_internalAppendValues (" ;
+               "internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1533,8 +1533,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << ") {\n"
                "  if (isBuilt ()) {\n"
-               "    _insulateList () ;\n"
-               "    _internalAppendValues (" ;
+               "    insulateList () ;\n"
+               "    internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1563,7 +1563,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "      *this = inOperand ;\n"
                "    }else{\n"
                "      if (inOperand.count () > 0) {\n"
-               "        _insulateList () ;\n"
+               "        insulateList () ;\n"
                "        elementOf_GGS_" << aNomListe << " * p = inOperand.firstObject () ;\n"
                "        while (p != NULL) {\n"
                "          macroValidPointer (p) ;\n" ;
@@ -1576,7 +1576,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
     numeroVariable ++ ;
   }
-  inCppFile << "          _internalAppendValues (" ;
+  inCppFile << "          internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1596,15 +1596,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
-//--- Engendrer la methode _insulateList
+//--- Engendrer la methode insulateList
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_insulateList (void) {\n"
+               "insulateList (void) {\n"
                "  if (_shared ()) {\n"
                "    cElement * ptr = firstObject () ;\n"
                "    alloc () ;\n"
                "    while (ptr != NULL) {\n"
                "      macroValidPointer (ptr) ;\n"
-               "      _internalAppendValues (" ;
+               "      internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1786,7 +1786,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
     current.next () ;
   }
-  inCppFile << "    _insulateList () ;\n"
+  inCppFile << "    insulateList () ;\n"
                "    _internalRemoveSmallest () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
@@ -1829,7 +1829,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
     current.next () ;
   }
-  inCppFile << "    _insulateList () ;\n"
+  inCppFile << "    insulateList () ;\n"
                "    _internalRemoveGreatest () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
