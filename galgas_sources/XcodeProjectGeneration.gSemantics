@@ -3,7 +3,7 @@
 semantics XcodeProjectGeneration :
 
 import "baseForXcodeProjectGeneration.gSemantics" ;
-import semantics baseForXcodeProjectGeneration in "../../libpm/galgas_components/baseForXcodeProjectGeneration.gSemantics" ;
+import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -93,6 +93,7 @@ routine getGALGAS_source_file_list
   out_cpp_and_h_fileList += !"GGS_lstring" ;
   out_cpp_and_h_fileList += !"GGS_luint" ;
   out_cpp_and_h_fileList += !"GGS_type" ;
+  out_cpp_and_h_fileList += !"GGS_function" ;
 end routine ;
 
 #---------------------------------------------------------------------------*

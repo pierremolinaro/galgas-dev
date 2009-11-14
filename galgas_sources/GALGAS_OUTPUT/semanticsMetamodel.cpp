@@ -101,12 +101,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_attributeInCollectionList ("attributeInCollectionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_attributeInCollectionList ("attributeInCollectionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstringlist & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -121,7 +121,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstringlist & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -140,8 +140,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -166,14 +166,14 @@ dotAssign_operation (const GGS_attributeInCollectionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_attributeInCollectionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mAttributeTypeName ;
           GGS_lstring  p_1 = p->mAttributeName ;
           GGS_lstringlist  p_2 = p->mFeatureList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -190,8 +190,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstringlist & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -201,13 +201,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mAttributeTypeName,
+      internalAppendValues (ptr->mAttributeTypeName,
                                 ptr->mAttributeName,
                                 ptr->mFeatureList
                                 COMMA_HERE) ;
@@ -376,7 +376,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mAttributeTypeName ;
     _out_1 = ptr->mAttributeName ;
     _out_2 = ptr->mFeatureList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -404,7 +404,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mAttributeTypeName ;
     _out_1 = ptr->mAttributeName ;
     _out_2 = ptr->mFeatureList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -616,7 +616,7 @@ cPtr__AC_galgas_class * cPtr_listmapDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_listmapDeclaration ("listmapDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_listmapDeclaration ("listmapDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -777,12 +777,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_mapMethodList ("mapMethodList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_mapMethodList ("mapMethodList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_lstring & argument_3
@@ -799,7 +799,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_lstring & argument_3
@@ -821,8 +821,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstring & argument_3) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -848,7 +848,7 @@ dotAssign_operation (const GGS_mapMethodList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_mapMethodList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -856,7 +856,7 @@ dotAssign_operation (const GGS_mapMethodList inOperand) {
           GGS_lstring  p_1 = p->mAlternateMethodName ;
           GGS_lstring  p_2 = p->mErrorMessage ;
           GGS_lstring  p_3 = p->mShadowErrorMessage ;
-          _internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -874,8 +874,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -886,13 +886,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMethodName,
+      internalAppendValues (ptr->mMethodName,
                                 ptr->mAlternateMethodName,
                                 ptr->mErrorMessage,
                                 ptr->mShadowErrorMessage
@@ -1071,7 +1071,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_1 = ptr->mAlternateMethodName ;
     _out_2 = ptr->mErrorMessage ;
     _out_3 = ptr->mShadowErrorMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1102,7 +1102,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_1 = ptr->mAlternateMethodName ;
     _out_2 = ptr->mErrorMessage ;
     _out_3 = ptr->mShadowErrorMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1371,7 +1371,7 @@ cPtr__AC_galgas_class * cPtr_mapDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_mapDeclaration ("mapDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_mapDeclaration ("mapDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1649,7 +1649,7 @@ cPtr__AC_galgas_class * cPtr_mapindexDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_mapindexDeclaration ("mapindexDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_mapindexDeclaration ("mapindexDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1828,12 +1828,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_abstractMethodDefinitionList ("abstractMethodDefinitionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractMethodDefinitionList ("abstractMethodDefinitionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1846,7 +1846,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1862,8 +1862,8 @@ void GGS_abstractMethodDefinitionList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1887,13 +1887,13 @@ dotAssign_operation (const GGS_abstractMethodDefinitionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_abstractMethodDefinitionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mMethodName ;
           GGS_formalParameterList  p_1 = p->mSignature ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1909,8 +1909,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_formalParameterList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1919,13 +1919,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMethodName,
+      internalAppendValues (ptr->mMethodName,
                                 ptr->mSignature
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -2084,7 +2084,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mSignature ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2109,7 +2109,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mSignature ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -2248,12 +2248,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_overridenMethodDefinitionList ("overridenMethodDefinitionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_overridenMethodDefinitionList ("overridenMethodDefinitionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1,
                     const GGS_semanticInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -2268,7 +2268,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1,
                     const GGS_semanticInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -2287,8 +2287,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_semanticInstructionList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -2313,14 +2313,14 @@ dotAssign_operation (const GGS_overridenMethodDefinitionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_overridenMethodDefinitionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mMethodName ;
           GGS_formalParameterList  p_1 = p->mSignature ;
           GGS_semanticInstructionList  p_2 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2337,8 +2337,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_semanticInstructionList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -2348,13 +2348,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMethodName,
+      internalAppendValues (ptr->mMethodName,
                                 ptr->mSignature,
                                 ptr->mInstructionList
                                 COMMA_HERE) ;
@@ -2523,7 +2523,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mSignature ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2551,7 +2551,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mSignature ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -2727,12 +2727,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_methodDefinitionList ("methodDefinitionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_methodDefinitionList ("methodDefinitionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1,
                     const GGS_semanticInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -2747,7 +2747,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1,
                     const GGS_semanticInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -2766,8 +2766,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_semanticInstructionList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -2792,14 +2792,14 @@ dotAssign_operation (const GGS_methodDefinitionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_methodDefinitionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mMethodName ;
           GGS_formalParameterList  p_1 = p->mSignature ;
           GGS_semanticInstructionList  p_2 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2816,8 +2816,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_semanticInstructionList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -2827,13 +2827,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMethodName,
+      internalAppendValues (ptr->mMethodName,
                                 ptr->mSignature,
                                 ptr->mInstructionList
                                 COMMA_HERE) ;
@@ -3002,7 +3002,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mSignature ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3030,7 +3030,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mSignature ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3199,12 +3199,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_classMessageDefinitionList ("classMessageDefinitionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_classMessageDefinitionList ("classMessageDefinitionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3217,7 +3217,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3233,8 +3233,8 @@ void GGS_classMessageDefinitionList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3258,13 +3258,13 @@ dotAssign_operation (const GGS_classMessageDefinitionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_classMessageDefinitionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mMessageName ;
           GGS_lstring  p_1 = p->mMessageValue ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3280,8 +3280,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3290,13 +3290,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMessageName,
+      internalAppendValues (ptr->mMessageName,
                                 ptr->mMessageValue
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -3455,7 +3455,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mMessageName ;
     _out_1 = ptr->mMessageValue ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3480,7 +3480,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mMessageName ;
     _out_1 = ptr->mMessageValue ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3619,12 +3619,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lazyAttributeList ("lazyAttributeList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lazyAttributeList ("lazyAttributeList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-_internalAppendValues (const GGS_location & argument_0,
+internalAppendValues (const GGS_location & argument_0,
                     const GGS_attributeInCollectionList & argument_1,
                     const GGS_semanticInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -3639,7 +3639,7 @@ _internalAppendValues (const GGS_location & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-_internalPrependValues (const GGS_location & argument_0,
+internalPrependValues (const GGS_location & argument_0,
                     const GGS_attributeInCollectionList & argument_1,
                     const GGS_semanticInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -3658,8 +3658,8 @@ addAssign_operation (const GGS_location & argument_0,
                                 const GGS_attributeInCollectionList & argument_1,
                                 const GGS_semanticInstructionList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -3684,14 +3684,14 @@ dotAssign_operation (const GGS_lazyAttributeList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_lazyAttributeList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_location  p_0 = p->mLocationMagicNumber ;
           GGS_attributeInCollectionList  p_1 = p->mAttributeList ;
           GGS_semanticInstructionList  p_2 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3708,8 +3708,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_semanticInstructionList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -3719,13 +3719,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLocationMagicNumber,
+      internalAppendValues (ptr->mLocationMagicNumber,
                                 ptr->mAttributeList,
                                 ptr->mInstructionList
                                 COMMA_HERE) ;
@@ -3894,7 +3894,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mLocationMagicNumber ;
     _out_1 = ptr->mAttributeList ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3922,7 +3922,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mLocationMagicNumber ;
     _out_1 = ptr->mAttributeList ;
     _out_2 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -4170,7 +4170,7 @@ cPtr__AC_galgas_class * cPtr_classDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_classDeclaration ("classDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_classDeclaration ("classDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4504,7 +4504,7 @@ cPtr__AC_galgas_class * cPtr_listDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_listDeclaration ("listDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_listDeclaration ("listDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4694,7 +4694,7 @@ cPtr__AC_galgas_class * cPtr_structDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_structDeclaration ("structDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_structDeclaration ("structDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4841,12 +4841,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_sortedListSortDescriptorList ("sortedListSortDescriptorList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_sortedListSortDescriptorList ("sortedListSortDescriptorList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_bool& argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -4859,7 +4859,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_bool& argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -4875,8 +4875,8 @@ void GGS_sortedListSortDescriptorList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -4900,13 +4900,13 @@ dotAssign_operation (const GGS_sortedListSortDescriptorList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_sortedListSortDescriptorList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mSortedAttributeName ;
           GGS_bool p_1 = p->mAscending ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -4922,8 +4922,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_bool& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -4932,13 +4932,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSortedAttributeName,
+      internalAppendValues (ptr->mSortedAttributeName,
                                 ptr->mAscending
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -5097,7 +5097,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mSortedAttributeName ;
     _out_1 = ptr->mAscending ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -5122,7 +5122,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mSortedAttributeName ;
     _out_1 = ptr->mAscending ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -5301,7 +5301,7 @@ cPtr__AC_galgas_class * cPtr_sortedListDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_sortedListDeclaration ("sortedListDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_sortedListDeclaration ("sortedListDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5464,12 +5464,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumMessageAssociationList ("enumMessageAssociationList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumMessageAssociationList ("enumMessageAssociationList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -5482,7 +5482,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -5498,8 +5498,8 @@ void GGS_enumMessageAssociationList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -5523,13 +5523,13 @@ dotAssign_operation (const GGS_enumMessageAssociationList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_enumMessageAssociationList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mConstantName ;
           GGS_lstring  p_1 = p->mMessage ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -5545,8 +5545,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -5555,13 +5555,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mConstantName,
+      internalAppendValues (ptr->mConstantName,
                                 ptr->mMessage
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -5720,7 +5720,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mConstantName ;
     _out_1 = ptr->mMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -5745,7 +5745,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mConstantName ;
     _out_1 = ptr->mMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -5877,12 +5877,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumMessageList ("enumMessageList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumMessageList ("enumMessageList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_enumMessageAssociationList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -5895,7 +5895,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_enumMessageAssociationList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -5911,8 +5911,8 @@ void GGS_enumMessageList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_enumMessageAssociationList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -5936,13 +5936,13 @@ dotAssign_operation (const GGS_enumMessageList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_enumMessageList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mEnumMessageName ;
           GGS_enumMessageAssociationList  p_1 = p->mMessageAssociationList ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -5958,8 +5958,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_enumMessageAssociationList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -5968,13 +5968,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mEnumMessageName,
+      internalAppendValues (ptr->mEnumMessageName,
                                 ptr->mMessageAssociationList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -6133,7 +6133,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mEnumMessageName ;
     _out_1 = ptr->mMessageAssociationList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -6158,7 +6158,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mEnumMessageName ;
     _out_1 = ptr->mMessageAssociationList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -6312,7 +6312,7 @@ AC_galgasClassRunTimeInformation * cPtr_enumCaseMessage::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumCaseMessage ("enumCaseMessage") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumCaseMessage ("enumCaseMessage") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6459,12 +6459,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumModifierCaseList ("enumModifierCaseList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumModifierCaseList ("enumModifierCaseList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_enumCaseMessage & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -6479,7 +6479,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_enumCaseMessage & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -6498,8 +6498,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_enumCaseMessage & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -6524,14 +6524,14 @@ dotAssign_operation (const GGS_enumModifierCaseList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_enumModifierCaseList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mSourceConstantName ;
           GGS_lstring  p_1 = p->mTargetConstantName ;
           GGS_enumCaseMessage  p_2 = p->mEnumModifierCaseMessage ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -6548,8 +6548,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_enumCaseMessage & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -6559,13 +6559,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSourceConstantName,
+      internalAppendValues (ptr->mSourceConstantName,
                                 ptr->mTargetConstantName,
                                 ptr->mEnumModifierCaseMessage
                                 COMMA_HERE) ;
@@ -6734,7 +6734,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mSourceConstantName ;
     _out_1 = ptr->mTargetConstantName ;
     _out_2 = ptr->mEnumModifierCaseMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -6762,7 +6762,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mSourceConstantName ;
     _out_1 = ptr->mTargetConstantName ;
     _out_2 = ptr->mEnumModifierCaseMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -6938,12 +6938,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumModifierList ("enumModifierList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumModifierList ("enumModifierList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_enumModifierCaseList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -6958,7 +6958,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_enumModifierCaseList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -6977,8 +6977,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_enumModifierCaseList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -7003,14 +7003,14 @@ dotAssign_operation (const GGS_enumModifierList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_enumModifierList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mModifierName ;
           GGS_lstring  p_1 = p->mLocationFormalArgumentName ;
           GGS_enumModifierCaseList  p_2 = p->mEnumModifierCaseList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -7027,8 +7027,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_enumModifierCaseList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -7038,13 +7038,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mModifierName,
+      internalAppendValues (ptr->mModifierName,
                                 ptr->mLocationFormalArgumentName,
                                 ptr->mEnumModifierCaseList
                                 COMMA_HERE) ;
@@ -7213,7 +7213,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mModifierName ;
     _out_1 = ptr->mLocationFormalArgumentName ;
     _out_2 = ptr->mEnumModifierCaseList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -7241,7 +7241,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mModifierName ;
     _out_1 = ptr->mLocationFormalArgumentName ;
     _out_2 = ptr->mEnumModifierCaseList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -7453,7 +7453,7 @@ cPtr__AC_galgas_class * cPtr_enumCaseErrorMessage::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumCaseErrorMessage ("enumCaseErrorMessage") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumCaseErrorMessage ("enumCaseErrorMessage") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7643,7 +7643,7 @@ cPtr__AC_galgas_class * cPtr_enumCaseWarningMessage::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumCaseWarningMessage ("enumCaseWarningMessage") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumCaseWarningMessage ("enumCaseWarningMessage") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7790,12 +7790,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumMethodCaseList ("enumMethodCaseList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumMethodCaseList ("enumMethodCaseList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_enumCaseMessage & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -7808,7 +7808,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_enumCaseMessage & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -7824,8 +7824,8 @@ void GGS_enumMethodCaseList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_enumCaseMessage & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -7849,13 +7849,13 @@ dotAssign_operation (const GGS_enumMethodCaseList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_enumMethodCaseList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mConstantName ;
           GGS_enumCaseMessage  p_1 = p->mEnumMethodCaseMessage ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -7871,8 +7871,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_enumCaseMessage & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -7881,13 +7881,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mConstantName,
+      internalAppendValues (ptr->mConstantName,
                                 ptr->mEnumMethodCaseMessage
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -8046,7 +8046,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mConstantName ;
     _out_1 = ptr->mEnumMethodCaseMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -8071,7 +8071,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mConstantName ;
     _out_1 = ptr->mEnumMethodCaseMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -8210,12 +8210,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumMethodList ("enumMethodList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumMethodList ("enumMethodList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_enumMethodCaseList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -8230,7 +8230,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_enumMethodCaseList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -8249,8 +8249,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_enumMethodCaseList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -8275,14 +8275,14 @@ dotAssign_operation (const GGS_enumMethodList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_enumMethodList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mMethodName ;
           GGS_lstring  p_1 = p->mLocationFormalArgumentName ;
           GGS_enumMethodCaseList  p_2 = p->mEnumMethodCaseList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -8299,8 +8299,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_enumMethodCaseList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -8310,13 +8310,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMethodName,
+      internalAppendValues (ptr->mMethodName,
                                 ptr->mLocationFormalArgumentName,
                                 ptr->mEnumMethodCaseList
                                 COMMA_HERE) ;
@@ -8485,7 +8485,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mLocationFormalArgumentName ;
     _out_2 = ptr->mEnumMethodCaseList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -8513,7 +8513,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mLocationFormalArgumentName ;
     _out_2 = ptr->mEnumMethodCaseList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -8696,12 +8696,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumOperatorCaseList ("enumOperatorCaseList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumOperatorCaseList ("enumOperatorCaseList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_enumCaseMessage & argument_3
@@ -8718,7 +8718,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_enumCaseMessage & argument_3
@@ -8740,8 +8740,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_enumCaseMessage & argument_3) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -8767,7 +8767,7 @@ dotAssign_operation (const GGS_enumOperatorCaseList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_enumOperatorCaseList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -8775,7 +8775,7 @@ dotAssign_operation (const GGS_enumOperatorCaseList inOperand) {
           GGS_lstring  p_1 = p->mRightConstantName ;
           GGS_lstring  p_2 = p->mResultConstantName ;
           GGS_enumCaseMessage  p_3 = p->mEnumOperatorCaseMessage ;
-          _internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -8793,8 +8793,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_enumCaseMessage & argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -8805,13 +8805,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLeftConstantName,
+      internalAppendValues (ptr->mLeftConstantName,
                                 ptr->mRightConstantName,
                                 ptr->mResultConstantName,
                                 ptr->mEnumOperatorCaseMessage
@@ -8990,7 +8990,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_1 = ptr->mRightConstantName ;
     _out_2 = ptr->mResultConstantName ;
     _out_3 = ptr->mEnumOperatorCaseMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -9021,7 +9021,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_1 = ptr->mRightConstantName ;
     _out_2 = ptr->mResultConstantName ;
     _out_3 = ptr->mEnumOperatorCaseMessage ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -9234,12 +9234,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumOperatorList ("enumOperatorList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumOperatorList ("enumOperatorList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_enumOperatorCaseList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -9254,7 +9254,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_enumOperatorCaseList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -9273,8 +9273,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_enumOperatorCaseList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -9299,14 +9299,14 @@ dotAssign_operation (const GGS_enumOperatorList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_enumOperatorList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mOperatorName ;
           GGS_lstring  p_1 = p->mLocationFormalArgumentName ;
           GGS_enumOperatorCaseList  p_2 = p->mEnumOperatorCaseList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -9323,8 +9323,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_enumOperatorCaseList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -9334,13 +9334,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mOperatorName,
+      internalAppendValues (ptr->mOperatorName,
                                 ptr->mLocationFormalArgumentName,
                                 ptr->mEnumOperatorCaseList
                                 COMMA_HERE) ;
@@ -9509,7 +9509,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mOperatorName ;
     _out_1 = ptr->mLocationFormalArgumentName ;
     _out_2 = ptr->mEnumOperatorCaseList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -9537,7 +9537,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mOperatorName ;
     _out_1 = ptr->mLocationFormalArgumentName ;
     _out_2 = ptr->mEnumOperatorCaseList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -9769,7 +9769,7 @@ cPtr__AC_galgas_class * cPtr_enumDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumDeclaration ("enumDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumDeclaration ("enumDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10003,12 +10003,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_filewrapperTemplateList ("filewrapperTemplateList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperTemplateList ("filewrapperTemplateList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_formalInputParameterList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -10023,7 +10023,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_formalInputParameterList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -10042,8 +10042,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_formalInputParameterList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -10068,14 +10068,14 @@ dotAssign_operation (const GGS_filewrapperTemplateList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_filewrapperTemplateList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mFilewrapperTemplateName ;
           GGS_lstring  p_1 = p->mFilewrapperTemplatePath ;
           GGS_formalInputParameterList  p_2 = p->mFilewrapperTemplateFormalInputParameters ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -10092,8 +10092,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_formalInputParameterList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -10103,13 +10103,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mFilewrapperTemplateName,
+      internalAppendValues (ptr->mFilewrapperTemplateName,
                                 ptr->mFilewrapperTemplatePath,
                                 ptr->mFilewrapperTemplateFormalInputParameters
                                 COMMA_HERE) ;
@@ -10278,7 +10278,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mFilewrapperTemplateName ;
     _out_1 = ptr->mFilewrapperTemplatePath ;
     _out_2 = ptr->mFilewrapperTemplateFormalInputParameters ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -10306,7 +10306,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mFilewrapperTemplateName ;
     _out_1 = ptr->mFilewrapperTemplatePath ;
     _out_2 = ptr->mFilewrapperTemplateFormalInputParameters ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -10526,7 +10526,7 @@ cPtr__AC_galgas_class * cPtr_filewrapperDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_filewrapperDeclaration ("filewrapperDeclaration") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperDeclaration ("filewrapperDeclaration") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10756,7 +10756,7 @@ cPtr__AC_galgas_class * cPtr_semanticsComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_semanticsComponentRoot ("semanticsComponentRoot") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticsComponentRoot ("semanticsComponentRoot") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10909,7 +10909,7 @@ mRoot () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_parsedLexiqueComponentMap ("parsedLexiqueComponentMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedLexiqueComponentMap ("parsedLexiqueComponentMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11298,7 +11298,7 @@ mRoot () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_parsedSemanticsComponentMap ("parsedSemanticsComponentMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedSemanticsComponentMap ("parsedSemanticsComponentMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11691,7 +11691,7 @@ mOptionComponentRoot () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_parsedOptionComponentMap ("parsedOptionComponentMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedOptionComponentMap ("parsedOptionComponentMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12078,7 +12078,7 @@ mSyntaxComponentRoot () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_parsedSyntaxComponentMap ("parsedSyntaxComponentMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedSyntaxComponentMap ("parsedSyntaxComponentMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -12455,7 +12455,7 @@ reader_description (C_Compiler & inLexique
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_parsedComponentStruct ("parsedComponentStruct") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedComponentStruct ("parsedComponentStruct") ;
 
 //---------------------------------------------------------------------------*
 

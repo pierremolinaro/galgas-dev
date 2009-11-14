@@ -60,7 +60,7 @@ mComment () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_commandLineOptionMap ("commandLineOptionMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_commandLineOptionMap ("commandLineOptionMap") ;
 
 //---------------------------------------------------------------------------*
 

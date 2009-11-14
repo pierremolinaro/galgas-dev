@@ -24,7 +24,6 @@
 class cPtr_typeCplusPlusName : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual void generateVariableAddress (AC_OutputStream & fichier) const = 0 ;
   public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const = 0 ;
 
   public : virtual bool isCurrentObject (void) const ;

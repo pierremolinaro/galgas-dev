@@ -87,12 +87,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_syntaxInstructionList ("syntaxInstructionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxInstructionList ("syntaxInstructionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxInstructionList::
-_internalAppendValues (const GGS_syntaxInstruction & argument_0
+internalAppendValues (const GGS_syntaxInstruction & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -103,7 +103,7 @@ _internalAppendValues (const GGS_syntaxInstruction & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxInstructionList::
-_internalPrependValues (const GGS_syntaxInstruction & argument_0
+internalPrependValues (const GGS_syntaxInstruction & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -116,8 +116,8 @@ _internalPrependValues (const GGS_syntaxInstruction & argument_0
 void GGS_syntaxInstructionList::
 addAssign_operation (const GGS_syntaxInstruction & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -140,12 +140,12 @@ dotAssign_operation (const GGS_syntaxInstructionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_syntaxInstructionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_syntaxInstruction  p_0 = p->mInstruction ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -160,8 +160,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_syntaxInstruction & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -169,13 +169,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxInstructionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mInstruction
+      internalAppendValues (ptr->mInstruction
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -324,7 +324,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mInstruction ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -346,7 +346,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mInstruction ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -441,12 +441,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_nonTerminalLabelList ("nonTerminalLabelList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_nonTerminalLabelList ("nonTerminalLabelList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalLabelList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -459,7 +459,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalLabelList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -475,8 +475,8 @@ void GGS_nonTerminalLabelList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -500,13 +500,13 @@ dotAssign_operation (const GGS_nonTerminalLabelList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_nonTerminalLabelList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mLabelName ;
           GGS_formalParameterList  p_1 = p->mFormalParameters ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -522,8 +522,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_formalParameterList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -532,13 +532,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalLabelList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLabelName,
+      internalAppendValues (ptr->mLabelName,
                                 ptr->mFormalParameters
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -697,7 +697,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mLabelName ;
     _out_1 = ptr->mFormalParameters ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -722,7 +722,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mLabelName ;
     _out_1 = ptr->mFormalParameters ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -861,12 +861,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_nonterminalDeclarationList ("nonterminalDeclarationList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_nonterminalDeclarationList ("nonterminalDeclarationList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_nonterminalDeclarationList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_nonTerminalLabelList & argument_1,
                     const GGS_bool& argument_2
                     COMMA_LOCATION_ARGS) {
@@ -881,7 +881,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_nonterminalDeclarationList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_nonTerminalLabelList & argument_1,
                     const GGS_bool& argument_2
                     COMMA_LOCATION_ARGS) {
@@ -900,8 +900,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_nonTerminalLabelList & argument_1,
                                 const GGS_bool& argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -926,14 +926,14 @@ dotAssign_operation (const GGS_nonterminalDeclarationList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_nonterminalDeclarationList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mNonterminalName ;
           GGS_nonTerminalLabelList  p_1 = p->mLabels ;
           GGS_bool p_2 = p->mHasParseLabel ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -950,8 +950,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_bool& argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -961,13 +961,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_nonterminalDeclarationList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mNonterminalName,
+      internalAppendValues (ptr->mNonterminalName,
                                 ptr->mLabels,
                                 ptr->mHasParseLabel
                                 COMMA_HERE) ;
@@ -1136,7 +1136,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mNonterminalName ;
     _out_1 = ptr->mLabels ;
     _out_2 = ptr->mHasParseLabel ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1164,7 +1164,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mNonterminalName ;
     _out_1 = ptr->mLabels ;
     _out_2 = ptr->mHasParseLabel ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1340,12 +1340,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_syntaxRuleLabelList ("syntaxRuleLabelList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxRuleLabelList ("syntaxRuleLabelList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxRuleLabelList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1,
                     const GGS_syntaxInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -1360,7 +1360,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxRuleLabelList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_formalParameterList & argument_1,
                     const GGS_syntaxInstructionList & argument_2
                     COMMA_LOCATION_ARGS) {
@@ -1379,8 +1379,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_syntaxInstructionList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -1405,14 +1405,14 @@ dotAssign_operation (const GGS_syntaxRuleLabelList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_syntaxRuleLabelList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mLabelName ;
           GGS_formalParameterList  p_1 = p->mFormalParameters ;
           GGS_syntaxInstructionList  p_2 = p->mSyntaxInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1429,8 +1429,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_syntaxInstructionList & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -1440,13 +1440,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxRuleLabelList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mLabelName,
+      internalAppendValues (ptr->mLabelName,
                                 ptr->mFormalParameters,
                                 ptr->mSyntaxInstructionList
                                 COMMA_HERE) ;
@@ -1615,7 +1615,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mLabelName ;
     _out_1 = ptr->mFormalParameters ;
     _out_2 = ptr->mSyntaxInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1643,7 +1643,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mLabelName ;
     _out_1 = ptr->mFormalParameters ;
     _out_2 = ptr->mSyntaxInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1812,12 +1812,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_syntaxRuleList ("syntaxRuleList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxRuleList ("syntaxRuleList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxRuleList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_syntaxRuleLabelList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1830,7 +1830,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxRuleList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_syntaxRuleLabelList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -1846,8 +1846,8 @@ void GGS_syntaxRuleList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_syntaxRuleLabelList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1871,13 +1871,13 @@ dotAssign_operation (const GGS_syntaxRuleList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_syntaxRuleList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mNonterminalName ;
           GGS_syntaxRuleLabelList  p_1 = p->mLabelList ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -1893,8 +1893,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_syntaxRuleLabelList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -1903,13 +1903,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxRuleList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mNonterminalName,
+      internalAppendValues (ptr->mNonterminalName,
                                 ptr->mLabelList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -2068,7 +2068,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mNonterminalName ;
     _out_1 = ptr->mLabelList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2093,7 +2093,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mNonterminalName ;
     _out_1 = ptr->mLabelList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -2275,7 +2275,7 @@ cPtr__AC_galgas_class * cPtr_nonterminalCallInstruction::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_nonterminalCallInstruction ("nonterminalCallInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_nonterminalCallInstruction ("nonterminalCallInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2486,7 +2486,7 @@ cPtr__AC_galgas_class * cPtr_terminalCheckInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_terminalCheckInstruction ("terminalCheckInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalCheckInstruction ("terminalCheckInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2628,12 +2628,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_listOfSyntaxInstructionList ("listOfSyntaxInstructionList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_listOfSyntaxInstructionList ("listOfSyntaxInstructionList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_listOfSyntaxInstructionList::
-_internalAppendValues (const GGS_syntaxInstructionList & argument_0
+internalAppendValues (const GGS_syntaxInstructionList & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -2644,7 +2644,7 @@ _internalAppendValues (const GGS_syntaxInstructionList & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_listOfSyntaxInstructionList::
-_internalPrependValues (const GGS_syntaxInstructionList & argument_0
+internalPrependValues (const GGS_syntaxInstructionList & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -2657,8 +2657,8 @@ _internalPrependValues (const GGS_syntaxInstructionList & argument_0
 void GGS_listOfSyntaxInstructionList::
 addAssign_operation (const GGS_syntaxInstructionList & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -2681,12 +2681,12 @@ dotAssign_operation (const GGS_listOfSyntaxInstructionList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_listOfSyntaxInstructionList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_syntaxInstructionList  p_0 = p->mSyntaxInstructionList ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2701,8 +2701,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_syntaxInstructionList & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -2710,13 +2710,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_listOfSyntaxInstructionList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSyntaxInstructionList
+      internalAppendValues (ptr->mSyntaxInstructionList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -2865,7 +2865,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mSyntaxInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2887,7 +2887,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mSyntaxInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3028,7 +3028,7 @@ cPtr__AC_galgas_class * cPtr_repeatInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_repeatInstruction ("repeatInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_repeatInstruction ("repeatInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3219,7 +3219,7 @@ cPtr__AC_galgas_class * cPtr_selectInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_selectInstruction ("selectInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_selectInstruction ("selectInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3394,7 +3394,7 @@ cPtr__AC_galgas_class * cPtr_parseDoInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_parseDoInstruction ("parseDoInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_parseDoInstruction ("parseDoInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3577,7 +3577,7 @@ cPtr__AC_galgas_class * cPtr_parseLoopInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_parseLoopInstruction ("parseLoopInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_parseLoopInstruction ("parseLoopInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -3742,12 +3742,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_whenBranchList ("whenBranchList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_whenBranchList ("whenBranchList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_whenBranchList::
-_internalAppendValues (const GGS_semanticExpression & argument_0,
+internalAppendValues (const GGS_semanticExpression & argument_0,
                     const GGS_syntaxInstructionList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3760,7 +3760,7 @@ _internalAppendValues (const GGS_semanticExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_whenBranchList::
-_internalPrependValues (const GGS_semanticExpression & argument_0,
+internalPrependValues (const GGS_semanticExpression & argument_0,
                     const GGS_syntaxInstructionList & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3776,8 +3776,8 @@ void GGS_whenBranchList::
 addAssign_operation (const GGS_semanticExpression & argument_0,
                                 const GGS_syntaxInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3801,13 +3801,13 @@ dotAssign_operation (const GGS_whenBranchList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_whenBranchList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_semanticExpression  p_0 = p->mWhenExpression ;
           GGS_syntaxInstructionList  p_1 = p->mParseDoBranchList ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3823,8 +3823,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_syntaxInstructionList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3833,13 +3833,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_whenBranchList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mWhenExpression,
+      internalAppendValues (ptr->mWhenExpression,
                                 ptr->mParseDoBranchList
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -3998,7 +3998,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mWhenExpression ;
     _out_1 = ptr->mParseDoBranchList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -4023,7 +4023,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mWhenExpression ;
     _out_1 = ptr->mParseDoBranchList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -4201,7 +4201,7 @@ cPtr__AC_galgas_class * cPtr_parseWhenInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_parseWhenInstruction ("parseWhenInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_parseWhenInstruction ("parseWhenInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4408,7 +4408,7 @@ cPtr__AC_galgas_class * cPtr_blockInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_blockInstruction ("blockInstruction") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_blockInstruction ("blockInstruction") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4660,7 +4660,7 @@ cPtr__AC_galgas_class * cPtr_syntaxComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_syntaxComponentRoot ("syntaxComponentRoot") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxComponentRoot ("syntaxComponentRoot") ;
 
 //---------------------------------------------------------------------------*
 

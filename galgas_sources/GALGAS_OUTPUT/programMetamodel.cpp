@@ -108,12 +108,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_programRuleList ("programRuleList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_programRuleList ("programRuleList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_semanticInstructionList & argument_3
@@ -130,7 +130,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_semanticInstructionList & argument_3
@@ -152,8 +152,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_semanticInstructionList & argument_3) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -179,7 +179,7 @@ dotAssign_operation (const GGS_programRuleList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_programRuleList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -187,7 +187,7 @@ dotAssign_operation (const GGS_programRuleList inOperand) {
           GGS_lstring  p_1 = p->mSourceFileHelp ;
           GGS_lstring  p_2 = p->mSourceFileVariableName ;
           GGS_semanticInstructionList  p_3 = p->mInstructionList ;
-          _internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -205,8 +205,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_semanticInstructionList & argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -217,13 +217,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mSourceFileExtension,
+      internalAppendValues (ptr->mSourceFileExtension,
                                 ptr->mSourceFileHelp,
                                 ptr->mSourceFileVariableName,
                                 ptr->mInstructionList
@@ -402,7 +402,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_1 = ptr->mSourceFileHelp ;
     _out_2 = ptr->mSourceFileVariableName ;
     _out_3 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -433,7 +433,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_1 = ptr->mSourceFileHelp ;
     _out_2 = ptr->mSourceFileVariableName ;
     _out_3 = ptr->mInstructionList ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -698,7 +698,7 @@ cPtr__AC_galgas_class * cPtr_programComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_programComponentRoot ("programComponentRoot") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_programComponentRoot ("programComponentRoot") ;
 
 //---------------------------------------------------------------------------*
 

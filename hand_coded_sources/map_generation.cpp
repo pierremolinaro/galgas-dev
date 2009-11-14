@@ -47,7 +47,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_typeGalgasListmapToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Map list '@") + mListmapTypeName + "'") ;
-  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mListmapTypeName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mListmapTypeName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << mListmapTypeName << " : public AC_galgas_listmap {\n"
              "//--- Node class\n"
@@ -153,7 +153,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const bool /* inGenerateDebug */) const {
 
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_type_reference kTypeReference_" << mListmapTypeName << " (\"" << mListmapTypeName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mListmapTypeName << " (\"" << mListmapTypeName << "\") ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mListmapTypeName << "::cElement::cElement (LOCATION_ARGS) :\n"
                "cPtrListMapObject (THERE),\n"
@@ -374,7 +374,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_mapindexToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Map index '@") + mMapindexTypeName + "'") ;
-  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mMapindexTypeName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mMapindexTypeName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << mMapindexTypeName << " : public AC_galgas_mapindex {\n"
              "//--- 'null' constructor\n"
@@ -461,7 +461,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("map index '@") + mMapindexTypeName + "'") ;
-  inCppFile << "const C_galgas_type_reference kTypeReference_" << mMapindexTypeName << " (\"" << mMapindexTypeName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mMapindexTypeName << " (\"" << mMapindexTypeName << "\") ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mMapindexTypeName << " GGS_" << mMapindexTypeName << "::\n"
                "constructor_null (C_Compiler & /* inLexique */\n"
@@ -656,7 +656,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Map '@") + mMapTypeName + "'") ;
 
   inHfile << "class elementOf_GGS_" << mMapTypeName << " ;\n\n" ;
-  inHfile << "extern const C_galgas_type_reference kTypeReference_" << mMapTypeName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mMapTypeName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << mMapTypeName << " : public AC_galgas_map {\n" ;
   inHfile << "//--- Element Class\n"
@@ -933,7 +933,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppTitleComment (C_String ("class map '@") + mMapTypeName + "'") ;
 
-  inCppFile << "const C_galgas_type_reference kTypeReference_" << mMapTypeName << " (\"" << mMapTypeName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mMapTypeName << " (\"" << mMapTypeName << "\") ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Constructor for type element

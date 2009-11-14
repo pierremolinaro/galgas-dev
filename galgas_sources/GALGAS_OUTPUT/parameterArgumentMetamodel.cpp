@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_formalArgumentPassingMode ("formalArgumentPassingMode") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_formalArgumentPassingMode ("formalArgumentPassingMode") ;
 
 //---------------------------------------------------------------------------*
 
@@ -269,12 +269,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_formalParameterList ("formalParameterList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_formalParameterList ("formalParameterList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterList::
-_internalAppendValues (const GGS_formalArgumentPassingMode& argument_0,
+internalAppendValues (const GGS_formalArgumentPassingMode& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_bool& argument_3
@@ -291,7 +291,7 @@ _internalAppendValues (const GGS_formalArgumentPassingMode& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterList::
-_internalPrependValues (const GGS_formalArgumentPassingMode& argument_0,
+internalPrependValues (const GGS_formalArgumentPassingMode& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_bool& argument_3
@@ -313,8 +313,8 @@ addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_bool& argument_3) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -340,7 +340,7 @@ dotAssign_operation (const GGS_formalParameterList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_formalParameterList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
@@ -348,7 +348,7 @@ dotAssign_operation (const GGS_formalParameterList inOperand) {
           GGS_lstring  p_1 = p->mFormalParameterTypeName ;
           GGS_lstring  p_2 = p->mFormalParameterName ;
           GGS_bool p_3 = p->mIsUnused ;
-          _internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2, p_3 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -366,8 +366,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_bool& argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -378,13 +378,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mFormalParameterPassingMode,
+      internalAppendValues (ptr->mFormalParameterPassingMode,
                                 ptr->mFormalParameterTypeName,
                                 ptr->mFormalParameterName,
                                 ptr->mIsUnused
@@ -563,7 +563,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_1 = ptr->mFormalParameterTypeName ;
     _out_2 = ptr->mFormalParameterName ;
     _out_3 = ptr->mIsUnused ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -594,7 +594,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_1 = ptr->mFormalParameterTypeName ;
     _out_2 = ptr->mFormalParameterName ;
     _out_3 = ptr->mIsUnused ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -807,12 +807,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_formalInputParameterList ("formalInputParameterList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_formalInputParameterList ("formalInputParameterList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_formalInputParameterList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_bool& argument_2
                     COMMA_LOCATION_ARGS) {
@@ -827,7 +827,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_formalInputParameterList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_bool& argument_2
                     COMMA_LOCATION_ARGS) {
@@ -846,8 +846,8 @@ addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_bool& argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -872,14 +872,14 @@ dotAssign_operation (const GGS_formalInputParameterList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_formalInputParameterList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mFormalParameterTypeName ;
           GGS_lstring  p_1 = p->mFormalParameterName ;
           GGS_bool p_2 = p->mIsUnused ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -896,8 +896,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_bool& argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -907,13 +907,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_formalInputParameterList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mFormalParameterTypeName,
+      internalAppendValues (ptr->mFormalParameterTypeName,
                                 ptr->mFormalParameterName,
                                 ptr->mIsUnused
                                 COMMA_HERE) ;
@@ -1082,7 +1082,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mFormalParameterTypeName ;
     _out_1 = ptr->mFormalParameterName ;
     _out_2 = ptr->mIsUnused ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -1110,7 +1110,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mFormalParameterTypeName ;
     _out_1 = ptr->mFormalParameterName ;
     _out_2 = ptr->mIsUnused ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -1294,7 +1294,7 @@ AC_galgasClassRunTimeInformation * cPtr_actualParameter::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_actualParameter ("actualParameter") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_actualParameter ("actualParameter") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1449,7 +1449,7 @@ cPtr__AC_galgas_class * cPtr_outputActualParameter::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_outputActualParameter ("outputActualParameter") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_outputActualParameter ("outputActualParameter") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1623,7 +1623,7 @@ cPtr__AC_galgas_class * cPtr_outputInputActualParameter::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_outputInputActualParameter ("outputInputActualParameter") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_outputInputActualParameter ("outputInputActualParameter") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1813,7 +1813,7 @@ cPtr__AC_galgas_class * cPtr_inputActualParameter::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_inputActualParameter ("inputActualParameter") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_inputActualParameter ("inputActualParameter") ;
 
 //---------------------------------------------------------------------------*
 
@@ -1982,7 +1982,7 @@ AC_galgasClassRunTimeInformation * cPtr_inputJokerActualParameter::galgasRTTI (v
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_inputJokerActualParameter ("inputJokerActualParameter") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_inputJokerActualParameter ("inputJokerActualParameter") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2105,12 +2105,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_actualParameterList ("actualParameterList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_actualParameterList ("actualParameterList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_actualParameterList::
-_internalAppendValues (const GGS_actualParameter & argument_0
+internalAppendValues (const GGS_actualParameter & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -2121,7 +2121,7 @@ _internalAppendValues (const GGS_actualParameter & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_actualParameterList::
-_internalPrependValues (const GGS_actualParameter & argument_0
+internalPrependValues (const GGS_actualParameter & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -2134,8 +2134,8 @@ _internalPrependValues (const GGS_actualParameter & argument_0
 void GGS_actualParameterList::
 addAssign_operation (const GGS_actualParameter & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -2158,12 +2158,12 @@ dotAssign_operation (const GGS_actualParameterList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_actualParameterList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_actualParameter  p_0 = p->mActualParameter ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2178,8 +2178,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_actualParameter & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -2187,13 +2187,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_actualParameterList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mActualParameter
+      internalAppendValues (ptr->mActualParameter
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -2342,7 +2342,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mActualParameter ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2364,7 +2364,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mActualParameter ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -2459,12 +2459,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_actualInputParameterList ("actualInputParameterList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_actualInputParameterList ("actualInputParameterList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_actualInputParameterList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -2477,7 +2477,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_actualInputParameterList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -2493,8 +2493,8 @@ void GGS_actualInputParameterList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -2518,13 +2518,13 @@ dotAssign_operation (const GGS_actualInputParameterList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_actualInputParameterList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mActualParameterTypeName ;
           GGS_lstring  p_1 = p->mActualParameterName ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -2540,8 +2540,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -2550,13 +2550,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_actualInputParameterList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mActualParameterTypeName,
+      internalAppendValues (ptr->mActualParameterTypeName,
                                 ptr->mActualParameterName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -2715,7 +2715,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mActualParameterTypeName ;
     _out_1 = ptr->mActualParameterName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -2740,7 +2740,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mActualParameterTypeName ;
     _out_1 = ptr->mActualParameterName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;

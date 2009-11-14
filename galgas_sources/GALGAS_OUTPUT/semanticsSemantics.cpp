@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_variableStateAutomaton ("variableStateAutomaton") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_variableStateAutomaton ("variableStateAutomaton") ;
 
 //---------------------------------------------------------------------------*
 
@@ -661,7 +661,7 @@ reader_description (C_Compiler & /* inLexique */
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_variableMap ("variableMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_variableMap ("variableMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2097,7 +2097,7 @@ AC_galgasClassRunTimeInformation * cPtr_ACGalgasType::galgasRTTI (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_ACGalgasType ("ACGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_ACGalgasType ("ACGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2177,7 +2177,7 @@ mType () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeMap ("typeMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMap ("typeMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2535,7 +2535,7 @@ reader_description (C_Compiler & inLexique
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeMapIndex ("typeMapIndex") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMapIndex ("typeMapIndex") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2731,7 +2731,7 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_sortedTypeList ("sortedTypeList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_sortedTypeList ("sortedTypeList") ;
 
 //---------------------------------------------------------------------------*
 
@@ -2761,7 +2761,7 @@ operator_isNotEqual (const GGS_sortedTypeList & inOperand) const {
 //---------------------------------------------------------------------------*
 
 void GGS_sortedTypeList::
-_internalAppendValues (const GGS_ACGalgasType & argument_0,
+internalAppendValues (const GGS_ACGalgasType & argument_0,
                     const GGS_string& argument_1) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0,
@@ -2775,8 +2775,8 @@ void GGS_sortedTypeList::
 addAssign_operation (const GGS_ACGalgasType & argument_0,
                                 const GGS_string& argument_1) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1) ;
   }
 }
@@ -2799,13 +2799,13 @@ dotAssign_operation (const GGS_sortedTypeList inOperand) {
       *this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_sortedTypeList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_ACGalgasType  p_0 = p->mType ;
           GGS_string p_1 = p->mSortString ;
-          _internalAppendValues (p_0, p_1) ;
+          internalAppendValues (p_0, p_1) ;
           p = p->nextObject () ;
         }
       }
@@ -2816,13 +2816,13 @@ dotAssign_operation (const GGS_sortedTypeList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_sortedTypeList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mType,
+      internalAppendValues (ptr->mType,
                                 ptr->mSortString) ;
       ptr = ptr->nextObject () ;
     }
@@ -2921,7 +2921,7 @@ modifier_popSmallest (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mType ;
     _out_1 = ptr->mSortString ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveSmallest () ;
   }else{
     _out_0.drop () ;
@@ -2946,7 +2946,7 @@ modifier_popGreatest (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mType ;
     _out_1 = ptr->mSortString ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveGreatest () ;
   }else{
     _out_0.drop () ;
@@ -3013,12 +3013,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_typeList ("typeList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_typeList ("typeList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeList::
-_internalAppendValues (const GGS_ACGalgasType & argument_0
+internalAppendValues (const GGS_ACGalgasType & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -3029,7 +3029,7 @@ _internalAppendValues (const GGS_ACGalgasType & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeList::
-_internalPrependValues (const GGS_ACGalgasType & argument_0
+internalPrependValues (const GGS_ACGalgasType & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -3042,8 +3042,8 @@ _internalPrependValues (const GGS_ACGalgasType & argument_0
 void GGS_typeList::
 addAssign_operation (const GGS_ACGalgasType & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -3066,12 +3066,12 @@ dotAssign_operation (const GGS_typeList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_typeList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_ACGalgasType  p_0 = p->mType ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3086,8 +3086,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_ACGalgasType & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -3095,13 +3095,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_typeList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mType
+      internalAppendValues (ptr->mType
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -3250,7 +3250,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mType ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3272,7 +3272,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mType ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3374,12 +3374,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_signature ("signature") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_signature ("signature") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_signature::
-_internalAppendValues (const GGS_typeMapIndex & argument_0,
+internalAppendValues (const GGS_typeMapIndex & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_formalArgumentPassingMode& argument_2
                     COMMA_LOCATION_ARGS) {
@@ -3394,7 +3394,7 @@ _internalAppendValues (const GGS_typeMapIndex & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_signature::
-_internalPrependValues (const GGS_typeMapIndex & argument_0,
+internalPrependValues (const GGS_typeMapIndex & argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_formalArgumentPassingMode& argument_2
                     COMMA_LOCATION_ARGS) {
@@ -3413,8 +3413,8 @@ addAssign_operation (const GGS_typeMapIndex & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_formalArgumentPassingMode& argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -3439,14 +3439,14 @@ dotAssign_operation (const GGS_signature inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_signature * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeMapIndex  p_0 = p->mAttributeTypeIndex ;
           GGS_lstring  p_1 = p->mFormalArgumentName ;
           GGS_formalArgumentPassingMode p_2 = p->mFormalArgumentPassingMode ;
-          _internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1, p_2 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3463,8 +3463,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_formalArgumentPassingMode& argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE) ;
@@ -3474,13 +3474,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_signature::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mAttributeTypeIndex,
+      internalAppendValues (ptr->mAttributeTypeIndex,
                                 ptr->mFormalArgumentName,
                                 ptr->mFormalArgumentPassingMode
                                 COMMA_HERE) ;
@@ -3649,7 +3649,7 @@ modifier_popFirst (C_Compiler & inLexique,
     _out_0 = ptr->mAttributeTypeIndex ;
     _out_1 = ptr->mFormalArgumentName ;
     _out_2 = ptr->mFormalArgumentPassingMode ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -3677,7 +3677,7 @@ modifier_popLast (C_Compiler & inLexique,
     _out_0 = ptr->mAttributeTypeIndex ;
     _out_1 = ptr->mFormalArgumentName ;
     _out_2 = ptr->mFormalArgumentPassingMode ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -3846,12 +3846,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_attributeList ("attributeList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_attributeList ("attributeList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_attributeList::
-_internalAppendValues (const GGS_typeMapIndex & argument_0,
+internalAppendValues (const GGS_typeMapIndex & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3864,7 +3864,7 @@ _internalAppendValues (const GGS_typeMapIndex & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeList::
-_internalPrependValues (const GGS_typeMapIndex & argument_0,
+internalPrependValues (const GGS_typeMapIndex & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -3880,8 +3880,8 @@ void GGS_attributeList::
 addAssign_operation (const GGS_typeMapIndex & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3905,13 +3905,13 @@ dotAssign_operation (const GGS_attributeList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_attributeList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeMapIndex  p_0 = p->mAttributeTypeIndex ;
           GGS_lstring  p_1 = p->mAttributeName ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -3927,8 +3927,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -3937,13 +3937,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mAttributeTypeIndex,
+      internalAppendValues (ptr->mAttributeTypeIndex,
                                 ptr->mAttributeName
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -4102,7 +4102,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mAttributeTypeIndex ;
     _out_1 = ptr->mAttributeName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -4127,7 +4127,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mAttributeTypeIndex ;
     _out_1 = ptr->mAttributeName ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -4281,7 +4281,7 @@ AC_galgasClassRunTimeInformation * cPtr_locationGalgasType::galgasRTTI (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_locationGalgasType ("locationGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_locationGalgasType ("locationGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4433,7 +4433,7 @@ AC_galgasClassRunTimeInformation * cPtr_stringGalgasType::galgasRTTI (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_stringGalgasType ("stringGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_stringGalgasType ("stringGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4585,7 +4585,7 @@ AC_galgasClassRunTimeInformation * cPtr_charGalgasType::galgasRTTI (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_charGalgasType ("charGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_charGalgasType ("charGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4737,7 +4737,7 @@ AC_galgasClassRunTimeInformation * cPtr_boolGalgasType::galgasRTTI (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_boolGalgasType ("boolGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_boolGalgasType ("boolGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -4889,7 +4889,7 @@ AC_galgasClassRunTimeInformation * cPtr_uintGalgasType::galgasRTTI (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_uintGalgasType ("uintGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_uintGalgasType ("uintGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5041,7 +5041,7 @@ AC_galgasClassRunTimeInformation * cPtr_sintGalgasType::galgasRTTI (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_sintGalgasType ("sintGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_sintGalgasType ("sintGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5193,7 +5193,7 @@ AC_galgasClassRunTimeInformation * cPtr_uint64GalgasType::galgasRTTI (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_uint64GalgasType ("uint64GalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_uint64GalgasType ("uint64GalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5345,7 +5345,7 @@ AC_galgasClassRunTimeInformation * cPtr_sint64GalgasType::galgasRTTI (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_sint64GalgasType ("sint64GalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_sint64GalgasType ("sint64GalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5497,7 +5497,7 @@ AC_galgasClassRunTimeInformation * cPtr_doubleGalgasType::galgasRTTI (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_doubleGalgasType ("doubleGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_doubleGalgasType ("doubleGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5649,7 +5649,7 @@ AC_galgasClassRunTimeInformation * cPtr_lstringGalgasType::galgasRTTI (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lstringGalgasType ("lstringGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lstringGalgasType ("lstringGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5801,7 +5801,7 @@ AC_galgasClassRunTimeInformation * cPtr_lcharGalgasType::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lcharGalgasType ("lcharGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lcharGalgasType ("lcharGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -5953,7 +5953,7 @@ AC_galgasClassRunTimeInformation * cPtr_lboolGalgasType::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lboolGalgasType ("lboolGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lboolGalgasType ("lboolGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6105,7 +6105,7 @@ AC_galgasClassRunTimeInformation * cPtr_luintGalgasType::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_luintGalgasType ("luintGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_luintGalgasType ("luintGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6257,7 +6257,7 @@ AC_galgasClassRunTimeInformation * cPtr_lsintGalgasType::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lsintGalgasType ("lsintGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lsintGalgasType ("lsintGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6409,7 +6409,7 @@ AC_galgasClassRunTimeInformation * cPtr_luint64GalgasType::galgasRTTI (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_luint64GalgasType ("luint64GalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_luint64GalgasType ("luint64GalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6561,7 +6561,7 @@ AC_galgasClassRunTimeInformation * cPtr_lsint64GalgasType::galgasRTTI (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_lsint64GalgasType ("lsint64GalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_lsint64GalgasType ("lsint64GalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6713,7 +6713,7 @@ AC_galgasClassRunTimeInformation * cPtr_ldoubleGalgasType::galgasRTTI (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_ldoubleGalgasType ("ldoubleGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_ldoubleGalgasType ("ldoubleGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -6865,7 +6865,7 @@ AC_galgasClassRunTimeInformation * cPtr_stringsetGalgasType::galgasRTTI (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_stringsetGalgasType ("stringsetGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_stringsetGalgasType ("stringsetGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7017,7 +7017,7 @@ AC_galgasClassRunTimeInformation * cPtr_binarysetGalgasType::galgasRTTI (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_binarysetGalgasType ("binarysetGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_binarysetGalgasType ("binarysetGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7147,12 +7147,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_classMethodList ("classMethodList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_classMethodList ("classMethodList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_classMethodList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_signature & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -7165,7 +7165,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_classMethodList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_signature & argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -7181,8 +7181,8 @@ void GGS_classMethodList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_signature & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -7206,13 +7206,13 @@ dotAssign_operation (const GGS_classMethodList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_classMethodList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mMethodName ;
           GGS_signature  p_1 = p->mMethodSignature ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -7228,8 +7228,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_signature & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -7238,13 +7238,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_classMethodList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mMethodName,
+      internalAppendValues (ptr->mMethodName,
                                 ptr->mMethodSignature
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -7403,7 +7403,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mMethodSignature ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -7428,7 +7428,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mMethodName ;
     _out_1 = ptr->mMethodSignature ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -7668,7 +7668,7 @@ cPtr__AC_galgas_class * cPtr_classGalgasType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_classGalgasType ("classGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_classGalgasType ("classGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -7864,7 +7864,7 @@ cPtr__AC_galgas_class * cPtr_listGalgasType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_listGalgasType ("listGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_listGalgasType ("listGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8048,7 +8048,7 @@ cPtr__AC_galgas_class * cPtr_listmapGalgasType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_listmapGalgasType ("listmapGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_listmapGalgasType ("listmapGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8210,7 +8210,7 @@ cPtr__AC_galgas_class * cPtr_structGalgasType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_structGalgasType ("structGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_structGalgasType ("structGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8329,12 +8329,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_sortDescriptorList ("sortDescriptorList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_sortDescriptorList ("sortDescriptorList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_sortDescriptorList::
-_internalAppendValues (const GGS_lstring & argument_0,
+internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_bool& argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -8347,7 +8347,7 @@ _internalAppendValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_sortDescriptorList::
-_internalPrependValues (const GGS_lstring & argument_0,
+internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_bool& argument_1
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
@@ -8363,8 +8363,8 @@ void GGS_sortDescriptorList::
 addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0,
+    insulateList () ;
+    internalAppendValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -8388,13 +8388,13 @@ dotAssign_operation (const GGS_sortDescriptorList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_sortDescriptorList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mAttributeName ;
           GGS_bool p_1 = p->mAscending ;
-          _internalAppendValues (p_0, p_1 COMMA_HERE) ;
+          internalAppendValues (p_0, p_1 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -8410,8 +8410,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_bool& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0,
+    insulateList () ;
+    internalPrependValues (argument_0,
                                 argument_1
                                 COMMA_HERE) ;
   }
@@ -8420,13 +8420,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_sortDescriptorList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mAttributeName,
+      internalAppendValues (ptr->mAttributeName,
                                 ptr->mAscending
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
@@ -8585,7 +8585,7 @@ modifier_popFirst (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mAttributeName ;
     _out_1 = ptr->mAscending ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -8610,7 +8610,7 @@ modifier_popLast (C_Compiler & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mAttributeName ;
     _out_1 = ptr->mAscending ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -8789,7 +8789,7 @@ cPtr__AC_galgas_class * cPtr_sortedlistGalgasType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_sortedlistGalgasType ("sortedlistGalgasType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_sortedlistGalgasType ("sortedlistGalgasType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -8967,7 +8967,7 @@ cPtr__AC_galgas_class * cPtr_mapType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_mapType ("mapType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_mapType ("mapType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9155,7 +9155,7 @@ cPtr__AC_galgas_class * cPtr_mapindexType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_mapindexType ("mapindexType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_mapindexType ("mapindexType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9230,7 +9230,7 @@ C_galgasClassRunTimeInformation gClassInfoFor__mapindexType ("mapindexType", gCl
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumConstructorMap ("enumConstructorMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumConstructorMap ("enumConstructorMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9697,7 +9697,7 @@ cPtr__AC_galgas_class * cPtr_enumType::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_enumType ("enumType") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_enumType ("enumType") ;
 
 //---------------------------------------------------------------------------*
 
@@ -9780,7 +9780,7 @@ mRoutineSignature () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_routineMap ("routineMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_routineMap ("routineMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10155,7 +10155,7 @@ mResultTypeIndex () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_functionMap ("functionMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_functionMap ("functionMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -10582,12 +10582,12 @@ appendForDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_classIndexList ("classIndexList") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_classIndexList ("classIndexList") ;
 
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-_internalAppendValues (const GGS_typeMapIndex & argument_0
+internalAppendValues (const GGS_typeMapIndex & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -10598,7 +10598,7 @@ _internalAppendValues (const GGS_typeMapIndex & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-_internalPrependValues (const GGS_typeMapIndex & argument_0
+internalPrependValues (const GGS_typeMapIndex & argument_0
                     COMMA_LOCATION_ARGS) {
   cElement * nouvelElement = (cElement *) NULL ;
   macroMyNew (nouvelElement, cElement (argument_0
@@ -10611,8 +10611,8 @@ _internalPrependValues (const GGS_typeMapIndex & argument_0
 void GGS_classIndexList::
 addAssign_operation (const GGS_typeMapIndex & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
-    _insulateList () ;
-    _internalAppendValues (argument_0
+    insulateList () ;
+    internalAppendValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -10635,12 +10635,12 @@ dotAssign_operation (const GGS_classIndexList inOperand) {
       * this = inOperand ;
     }else{
       if (inOperand.count () > 0) {
-        _insulateList () ;
+        insulateList () ;
         elementOf_GGS_classIndexList * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_typeMapIndex  p_0 = p->mClassMapindex ;
-          _internalAppendValues (p_0 COMMA_HERE) ;
+          internalAppendValues (p_0 COMMA_HERE) ;
           p = p->nextObject () ;
         }
       }
@@ -10655,8 +10655,8 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeMapIndex & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
-    _insulateList () ;
-    _internalPrependValues (argument_0
+    insulateList () ;
+    internalPrependValues (argument_0
                                 COMMA_HERE) ;
   }
 }
@@ -10664,13 +10664,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-_insulateList (void) {
+insulateList (void) {
   if (_shared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
       macroValidPointer (ptr) ;
-      _internalAppendValues (ptr->mClassMapindex
+      internalAppendValues (ptr->mClassMapindex
                                 COMMA_HERE) ;
       ptr = ptr->nextObject () ;
     }
@@ -10819,7 +10819,7 @@ modifier_popFirst (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mClassMapindex ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
@@ -10841,7 +10841,7 @@ modifier_popLast (C_Compiler & inLexique,
   }
   if (ptr != NULL) {
     _out_0 = ptr->mClassMapindex ;
-    _insulateList () ;
+    insulateList () ;
     _internalRemoveLast () ;
   }else{
     _out_0.drop () ;
@@ -10886,7 +10886,7 @@ modifier_setMClassMapindexAtIndex (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_descendantClassListMap ("descendantClassListMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_descendantClassListMap ("descendantClassListMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -11070,7 +11070,7 @@ _object (LOCATION_ARGS) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_semanticContext ("semanticContext") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticContext ("semanticContext") ;
 
 //---------------------------------------------------------------------------*
 

@@ -232,7 +232,7 @@ template_filewrapper_EXfileListTemplateFileWrapper_EXfileListTemplate (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_EXtargetFileListMap ("EXtargetFileListMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_EXtargetFileListMap ("EXtargetFileListMap") ;
 
 //---------------------------------------------------------------------------*
 
@@ -416,7 +416,7 @@ _object (LOCATION_ARGS) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_EXsourceFileKind ("EXsourceFileKind") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_EXsourceFileKind ("EXsourceFileKind") ;
 
 //---------------------------------------------------------------------------*
 
@@ -530,7 +530,7 @@ mSourceKind () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_reference kTypeReference_EXsourceFileMap ("EXsourceFileMap") ;
+const C_galgas_type_descriptor kTypeDescriptor_GGS_EXsourceFileMap ("EXsourceFileMap") ;
 
 //---------------------------------------------------------------------------*
 

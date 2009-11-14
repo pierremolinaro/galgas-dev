@@ -103,7 +103,7 @@ project all_galgas:
 #--- Project component
   semantics "projectMetamodel.gSemantics" : makefile ;
   semantics "mda_galgas_routines.gSemantics" ;
-  semantics "../../libpm/galgas_components/baseForXcodeProjectGeneration.gSemantics" : makefile ;
+  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
   semantics "XcodeProjectGeneration.gSemantics" : makefile ;
   syntax    "projectModelBuilder.gSyntax" : makefile ;
   grammar   "projectLL1grammar.gGrammar" : makefile ;

@@ -1983,10 +1983,71 @@ class @typeGalgas_data extends @AC_galgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+routine build_typelist_type !@AC_galgasType outType ;
+
 class @typeGalgas_type extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := "type" ;
+  end method ;
+
+#--- Constructor
+  override method handleConstructorInvocation
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+    !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
+  :
+    outHasLexiqueAndLocationArguments := false ;
+    if [inClassMethodName string] == "typeList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      build_typelist_type ?outReturnedType ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  end method ;
+
+#--- Error message
+  message "a '@type' type" ;
+  message messageGalgasType "a '@type' type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    ' F U N C T I O N '    T Y P E                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_functionlist_type !@AC_galgasType outType ;
+
+class @typeGalgas_function extends @AC_galgasType {
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := "function" ;
+  end method ;
+
+#--- Constructor
+  override method handleConstructorInvocation
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+    !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
+  :
+    outReturnedType := self ;
+    outHasLexiqueAndLocationArguments := false ;
+    if [inClassMethodName string] == "functionList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      build_functionlist_type ?outReturnedType ;
+    elsif [inClassMethodName string] == "functionWithName" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"???" !here] ; # Unused second argument
+    elsif [inClassMethodName string] == "functionIsDefined" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"???" !here] ; # Unused second argument
+      outReturnedType := [@typeGalgas_bool new] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList, outReturnedType ;
+    end if ;
   end method ;
 
 #--- Error message
@@ -2733,6 +2794,54 @@ routine build_lstringlist_type !@AC_galgasType outType :
   inputSignature += ![@typeGalgas_lstring new] ![@formalArgumentPassingMode argumentConstantIn] ;
   outType := [@typeGalgasListType new
     ![@lstring new !"lstringlist" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    T Y P E L I S T    T Y P E                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_typelist_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_type new] ![@lstring new !"mValue" !here] ;
+
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_type new] ![@formalArgumentPassingMode argumentOut] ;
+
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_type new] ![@formalArgumentPassingMode argumentConstantIn] ;
+
+  outType := [@typeGalgasListType new
+    ![@lstring new !"typelist" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    F U N C T I O N L I S T    T Y P E                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_functionlist_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_function new] ![@lstring new !"mValue" !here] ;
+
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_function new] ![@formalArgumentPassingMode argumentOut] ;
+
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_function new] ![@formalArgumentPassingMode argumentConstantIn] ;
+
+  outType := [@typeGalgasListType new
+    ![@lstring new !"functionlist" !here]
     !attributesList
     !extractSignature
     !inputSignature
@@ -3516,6 +3625,7 @@ routine checkAssignmentTypesCompatibility
 :
   match inFormalType :: inEffectiveType :
   when @typeGalgas_type ()         :: @typeGalgas_type () :
+  when @typeGalgas_function ()     :: @typeGalgas_function () :
   when @typeGalgas_binaryset ()    :: @typeGalgas_binaryset () :
   when @typeGalgas_stringset ()    :: @typeGalgas_stringset () :
   when @typeGalgas_data ()         :: @typeGalgas_data () :
@@ -4321,6 +4431,28 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
+    when >= @typeGalgas_type do
+      if [inReaderName string] == "name" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inReaderName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when >= @typeGalgas_function do
+      if [inReaderName string] == "name" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inReaderName string] == "resultType" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_type new] ;
+      elsif [inReaderName string] == "formalParameterTypeList" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        build_typelist_type ?outReturnedType ;
+      else
+        error inReaderName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when >= @typeGalgas_double do
       if [inReaderName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -4796,6 +4928,9 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new ![@typeGalgas_type new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"type" !here] !e] ;
 
+  e := [@typeEntiteType new ![@typeGalgas_function new]] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"function" !here] !e] ;
+
   @AC_galgasType t ; build_uintlist_type ?t ;
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uintlist" !here] !e] ;
@@ -4823,6 +4958,14 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   build_string3list_type ?t ;
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"string3list" !here] !e] ;
+
+  build_typelist_type ?t ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"typelist" !here] !e] ;
+
+  build_functionlist_type ?t ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"functionlist" !here] !e] ;
 
 end routine ;
 
