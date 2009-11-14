@@ -47,10 +47,8 @@ class cPtr_typeEntiteFonctionExterne : public cPtr_AC_semanticsEntity {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool

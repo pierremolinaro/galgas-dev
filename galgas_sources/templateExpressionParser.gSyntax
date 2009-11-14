@@ -1395,6 +1395,7 @@ rule <factor>
       @typeListeAttributsSemantiques accessorsTypeList ;
       @string conversionMethod ;
       @string categoryReaderClassBaseName ;
+      @bool hasLexiqueAndLocationArguments ;
       handleReaderCall
         !inEntitiesMap
         ![inSemanticContext mCategoryReaderMap]
@@ -1404,6 +1405,7 @@ rule <factor>
         ?outResultType
         ?conversionMethod
         ?categoryReaderClassBaseName
+        ?hasLexiqueAndLocationArguments
       ;
     #--- Actual parameters
       @typeExpressionList expressionList ;
@@ -1415,7 +1417,14 @@ rule <factor>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
       ;
-      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod !categoryReaderClassBaseName] ;
+      outExpression := [@typeReaderCallInExpression new
+        !expressionValue
+        !methodName
+        !expressionList
+        !conversionMethod
+        !categoryReaderClassBaseName
+        !hasLexiqueAndLocationArguments
+      ] ;
     end select ;
   or
     $option$ ;

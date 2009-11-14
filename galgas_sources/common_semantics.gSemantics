@@ -3878,7 +3878,9 @@ routine handleStringReaderCall
   ??@lstring inReaderName
   !@typeListeAttributsSemantiques outAccessorTypesList
   !@AC_galgasType outReturnedType
+  !@bool outHasLexiqueAndLocationArguments
 :
+  outHasLexiqueAndLocationArguments := false ;
   outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   if [inReaderName string] == "doesEnvironmentVariableExist" then
     outReturnedType := [@typeGalgas_bool new] ;
@@ -3897,6 +3899,7 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "md5" then
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "decimalUnsignedNumber" then
+    outHasLexiqueAndLocationArguments := true ;
     outReturnedType := [@typeGalgas_uint new] ;
   elsif [inReaderName string] == "isDecimalUnsignedNumber" then
     outReturnedType := [@typeGalgas_bool new] ;
@@ -3907,9 +3910,11 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "directoryExists" then
     outReturnedType := [@typeGalgas_bool new] ;
   elsif [inReaderName string] == "characterAtIndex" then
+    outHasLexiqueAndLocationArguments := true ;
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
     outReturnedType := [@typeGalgas_char new] ;
   elsif [inReaderName string] == "stringByRemovingCharacterAtIndex" then
+    outHasLexiqueAndLocationArguments := true ;
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "pathExtension" then
@@ -3959,6 +3964,7 @@ routine handleStringReaderCall
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # @string argument
   elsif [inReaderName string] == "stringByReplacingStringByString" then
+    outHasLexiqueAndLocationArguments := true ;
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
@@ -4010,12 +4016,15 @@ routine handleReaderCall
   !@AC_galgasType outReturnedType
   !@string outCppConversionMethod
   !@string outCategoryReaderClassBaseName
+  !@bool outHasLexiqueAndLocationArguments
 :
+  outHasLexiqueAndLocationArguments := true ;
   outCppConversionMethod := "" ; # Means no conversion needed
   outCategoryReaderClassBaseName := "" ; # Means not a category reader
   if [inReaderName string] == "description" then
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outHasLexiqueAndLocationArguments := false ;
   else
     cast inReceiverType :
     when >= @typeGalgasDomainType t do
@@ -4089,7 +4098,7 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when >= @typeGalgas_string do
-      handleStringReaderCall ! inReaderName ?outAccessorTypesList ?outReturnedType ;
+      handleStringReaderCall !inReaderName ?outAccessorTypesList ?outReturnedType ?outHasLexiqueAndLocationArguments ;
     when >= @typeGalgas_lstring do
       if [inReaderName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -4101,7 +4110,7 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else # Inherited @ string reader ?
-        handleStringReaderCall ! inReaderName ?outAccessorTypesList ?outReturnedType ;
+        handleStringReaderCall ! inReaderName ?outAccessorTypesList ?outReturnedType ?outHasLexiqueAndLocationArguments ;
         outCppConversionMethod := "ggs_string" ;
       end if ;
     when >= @typeGalgas_location do
@@ -4425,6 +4434,7 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgas_data do
       if [inReaderName string] == "length" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       else
@@ -4590,6 +4600,7 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgasListType listType do
       if [inReaderName string] == "length" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       elsif [inReaderName string] == "subListFromIndex" then
@@ -4620,6 +4631,7 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgasSortedListType do
       if [inReaderName string] == "length" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       else
@@ -4628,6 +4640,7 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgasMapType do
       if [inReaderName string] == "hasKey" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_bool new] ;
@@ -4636,6 +4649,7 @@ routine handleReaderCall
         outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_location new] ;
       elsif [inReaderName string] == "count" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       elsif [inReaderName string] == "allKeys" then
@@ -4656,6 +4670,7 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgasListmapType mapType do
       if [inReaderName string] == "hasKey" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_bool new] ;
@@ -4663,6 +4678,7 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_stringset new] ;
       elsif [inReaderName string] == "count" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       elsif [inReaderName string] == "keyList" then
@@ -4678,11 +4694,13 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgas_stringset do
       if [inReaderName string] == "hasKey" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         @AC_galgasType keyType := [@typeGalgas_string new] ;
         outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_bool new] ;
       elsif [inReaderName string] == "count" then
+        outHasLexiqueAndLocationArguments := false ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       elsif [inReaderName string] == "stringList" then

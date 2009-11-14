@@ -314,6 +314,7 @@ class @typeReaderCallInExpression extends @typeExpression {
   @typeExpressionList mExpressionList ;
   @string mConversionMethod ;
   @string mCategoryReaderClassBaseName ;
+  @bool mHasLexiqueAndLocationArguments ;
 }
  
 #---------------------------------------------------------------------------*

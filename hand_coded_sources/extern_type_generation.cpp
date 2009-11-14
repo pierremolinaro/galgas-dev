@@ -59,9 +59,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "  public : GGS_bool operator_isNotEqual (const GGS_" << mGalgasName << " & inOperand) const ;\n\n"
                     "//--- Reader 'description'\n"
                     "  public : GGS_string\n"
-                    "  reader_description (C_Compiler & inLexique\n"
-                    "                      COMMA_LOCATION_ARGS,\n"
-                    "                      const PMSInt32 inIndentation = 0) const ;\n"
+                    "  reader_description (const PMSInt32 inIndentation = 0) const ;\n"
                     "//--- Constructors\n" ;
   GGS_M_externTypeConstructorMap::cEnumerator constructor (mConstructorMap) ;
   while (constructor.hasCurrentObject ()) {

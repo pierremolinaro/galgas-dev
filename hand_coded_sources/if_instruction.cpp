@@ -1471,21 +1471,33 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeReaderCallInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
+  const bool hasLexiqueAndLocationArguments = mHasLexiqueAndLocationArguments.boolValue () ;
   if (mCategoryReaderClassBaseName.string ().length () == 0) {
     mExpressionValue (HERE)->generateExpression (ioCppFile) ;
     if (mConversionMethod.string ().length () > 0) {
       ioCppFile << "." << mConversionMethod << " ()" ;
     }
-    ioCppFile << ".reader_" << mReaderName << " (inLexique" ;
+    ioCppFile << ".reader_" << mReaderName << " (" ;
+    if (hasLexiqueAndLocationArguments) {
+      ioCppFile << "inLexique" ;
+    }
+    bool first = ! hasLexiqueAndLocationArguments ;
     GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
     while (e.hasCurrentObject ()) {
-      ioCppFile << ", " ;
+      if (first) {
+        first = false ;
+      }else{
+        ioCppFile << ", " ;
+      }
       e._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
       e.next () ;
     }
-    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << cStringWithSigned (mReaderName.lineNumber ())
-              << "))" ;
+    if (hasLexiqueAndLocationArguments) {
+      ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+                << cStringWithSigned (mReaderName.lineNumber ())
+                << ")" ;
+    }
+    ioCppFile << ")" ;
   }else{
     ioCppFile << "(findCategoryReader__" << mCategoryReaderClassBaseName << "__" << mReaderName
               << " (" ;
@@ -1541,7 +1553,16 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeReaderCallInExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  bool used = mHasLexiqueAndLocationArguments.boolValue () ;
+  if (! used) {
+    used = mExpressionValue (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  }
+  GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
+  while (e.hasCurrentObject () && ! used) {
+    used = e._mExpression (HERE) (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+    e.next () ;
+  }
+  return used ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1617,9 +1638,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeDescriptionInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".reader_description (inLexique COMMA_SOURCE_FILE_AT_LINE ("
-            << cStringWithSigned (mOperatorLocation.lineNumber ())
-            << "))" ;
+  ioCppFile << ".reader_description ()" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1640,7 +1659,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeDescriptionInExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return false ;
 }
 
 //---------------------------------------------------------------------------*

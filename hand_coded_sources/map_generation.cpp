@@ -58,9 +58,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : cElement (LOCATION_ARGS) ;\n"
              " //--- Description\n"
              "    public : virtual C_String\n"
-             "    _description (C_Compiler & inLexique,\n"
-             "                  const PMSInt32 inIndentation\n"
-             "                  COMMA_LOCATION_ARGS) const ;\n"
+             "    performDescription (const PMSInt32 inIndentation) const ;\n"
              "    public : virtual cPtrObject * _clone (LOCATION_ARGS) ;\n"
              "    public : virtual bool isEqual (const cPtrListMapObject * inOperand) const ;\n"
              "  } ;\n\n"
@@ -176,10 +174,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "C_String GGS_" << mListmapTypeName << "::cElement::\n"
-               "_description (C_Compiler & inLexique,\n"
-               "              const PMSInt32 inIndentation\n"
-               "              COMMA_LOCATION_ARGS) const {\n"
-               "  const GGS_string s = mListObject.reader_description (inLexique COMMA_THERE, inIndentation) ;\n"
+               "performDescription (const PMSInt32 inIndentation) const {\n"
+               "  const GGS_string s = mListObject.reader_description (inIndentation) ;\n"
                "  return s.string () ;\n"
                "}\n\n" ;
  
@@ -386,9 +382,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_bool operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n\n"
              "//--- 'description' reader declaration\n"
              "  public : GGS_string\n"
-             "  reader_description (C_Compiler & inLexique\n"
-             "                      COMMA_LOCATION_ARGS,\n"
-             "                      const PMSInt32 inIndentation = 0) const ;\n\n"
+             "  reader_description (const PMSInt32 inIndentation = 0) const ;\n\n"
              "//--- Type Method 'makeRegularIndex'\n"
              "  public : static void\n"
              "  class_method_makeRegularIndex (C_Compiler & inLexique,\n"
@@ -487,9 +481,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mMapindexTypeName << "::\n"
-               "reader_description (C_Compiler & /* inLexique */\n"
-               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
-               "                    const PMSInt32 /* inIndentation */) const {\n"
+               "reader_description (const PMSInt32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<mapindex @" << mMapindexTypeName << "\" ;\n"
                "  switch (mState) {\n"
@@ -634,11 +626,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Data member\n"
              "  public : e_" << mMapTypeName << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
-             "  public : void appendForMapDescription (C_Compiler & inLexique,\n"
-             "                                         const PMSInt32 inElementIndex,\n"
+             "  public : void appendForMapDescription (const PMSInt32 inElementIndex,\n"
              "                                         C_String & ioString,\n"
-             "                                         const PMSInt32 inIndentation\n"
-             "                                         COMMA_LOCATION_ARGS) const ;\n"
+             "                                         const PMSInt32 inIndentation) const ;\n"
              "} ;\n\n" ;
 }
 
@@ -848,9 +838,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "                                   GGS_luint * outIndex\n"
              "                                   COMMA_LOCATION_ARGS) const ;\n"
 //--- Generate 'description' reader declaration
-             "  public : GGS_string reader_description (C_Compiler & inLexique\n"
-             "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const PMSInt32 inIndentation = 0) const ;\n"
+             "  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
 //--- Generate 'mapWithMapToOverride' constructor declaration
               "  public : static GGS_" << mMapTypeName << " constructor_mapWithMapToOverride (C_Compiler & inLexique,\n"
               "                                            const GGS_" << mMapTypeName << " & inMapToOverride\n"
@@ -948,23 +936,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Method for 'reader' element
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << mMapTypeName << "::\n"
-               "appendForMapDescription (C_Compiler & inLexique,\n"
-               "                         const PMSInt32 inElementIndex,\n"
+               "appendForMapDescription (const PMSInt32 inElementIndex,\n"
                "                         C_String & ioString,\n"
-               "                         const PMSInt32 inIndentation\n"
-               "                         COMMA_LOCATION_ARGS) const {\n"
+               "                         const PMSInt32 inIndentation) const {\n"
                "  ioString << \"\\n\" ;\n"
                "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                "  ioString << \"|-key \" ;\n"
                "  ioString.appendSigned (inElementIndex) ;\n"
-               "  ioString << \":\" << mKey.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+               "  ioString << \":\" << mKey.reader_description (inIndentation + 1) ;\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   while (current.hasCurrentObject ()) {
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                  "  ioString << \"|-value \" ;\n"
                  "  ioString.appendSigned (inElementIndex) ;\n"
-                 "  ioString << \":\" << mInfo." << current._mAttributeName (HERE) << ".reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+                 "  ioString << \":\" << mInfo." << current._mAttributeName (HERE) << ".reader_description (inIndentation + 1) ;\n" ;
     current.next () ;
   }
   inCppFile << "}\n\n" ;
@@ -1441,9 +1427,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Implement reader 'description'
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mMapTypeName << "::\n"
-               "reader_description (C_Compiler & inLexique\n"
-               "                    COMMA_LOCATION_ARGS,\n"
-               "                    const PMSInt32 inIndentation) const {\n"
+               "reader_description (const PMSInt32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << mMapTypeName << " \" ;\n"
                "  if (isBuilt ()) {\n"
@@ -1453,7 +1437,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    PMSInt32 elementID = 0 ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
-               "      p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;\n"
+               "      p->appendForMapDescription (elementID, s, inIndentation) ;\n"
                "      p = p->nextObject () ;\n"
                "      elementID ++ ;\n"
                "    }\n"
@@ -1606,9 +1590,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     currentInsertMethod.next () ;
   }
 //--- Generate 'description' reader declaration
-  inHfile << "  public : GGS_string reader_description (C_Compiler & inLexique\n"
-             "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const PMSInt32 inIndentation = 0) const ;\n"
+  inHfile << "  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
              "} ;\n\n" ;
 }
 
@@ -1829,9 +1811,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Implement reader 'description'
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
-               "reader_description (C_Compiler & /* inLexique */\n"
-               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
-               "                    const PMSInt32 /* inIndentation */) const {\n"
+               "reader_description (const PMSInt32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
                "  if (isBuilt ()) {\n"

@@ -159,9 +159,7 @@ class GGS_guiSimpleAttributeList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -301,9 +299,7 @@ class GGS_guiCompoundAttributeList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -442,9 +438,7 @@ class GGS_guiLabelList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstringlist 
@@ -593,9 +587,7 @@ class GGS_withLexiqueList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -748,10 +740,8 @@ class elementOf_GGS_guiSimpleAttributeList : public AC_galgas_list::cListElement
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_guiSimpleAttributeList ;
@@ -786,10 +776,8 @@ class elementOf_GGS_guiCompoundAttributeList : public AC_galgas_list::cListEleme
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_guiCompoundAttributeList ;
@@ -822,10 +810,8 @@ class elementOf_GGS_guiLabelList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_guiLabelList ;
@@ -862,10 +848,8 @@ class elementOf_GGS_withLexiqueList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_withLexiqueList ;
@@ -905,10 +889,8 @@ class cPtr_guiComponentRoot : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool

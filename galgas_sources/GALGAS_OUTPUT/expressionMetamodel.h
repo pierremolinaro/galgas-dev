@@ -294,9 +294,7 @@ class GGS_semanticExpressionList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_semanticExpression 
@@ -3178,10 +3176,8 @@ class cPtr_semanticExpression : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
   public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
@@ -3212,10 +3208,8 @@ class elementOf_GGS_semanticExpressionList : public AC_galgas_list::cListElement
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_semanticExpressionList ;
@@ -3249,10 +3243,8 @@ class cPtr_outExpressionList : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3292,10 +3284,8 @@ class cPtr_variableExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3333,10 +3323,8 @@ class cPtr_selfInExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3371,10 +3359,8 @@ class cPtr_hereExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3409,10 +3395,8 @@ class cPtr_trueExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3447,10 +3431,8 @@ class cPtr_falseExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3487,10 +3469,8 @@ class cPtr_literalCharExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3530,10 +3510,8 @@ class cPtr_literalStringExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3573,10 +3551,8 @@ class cPtr_literalDoubleExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3616,10 +3592,8 @@ class cPtr_literalUIntExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3659,10 +3633,8 @@ class cPtr_literalUInt64Expression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3702,10 +3674,8 @@ class cPtr_literalSIntExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3745,10 +3715,8 @@ class cPtr_literalSInt64Expression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3792,10 +3760,8 @@ class cPtr_constructorExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3839,10 +3805,8 @@ class cPtr_readerCallExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3884,10 +3848,8 @@ class cPtr_optionExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3931,10 +3893,8 @@ class cPtr_concatExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -3978,10 +3938,8 @@ class cPtr_orExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4025,10 +3983,8 @@ class cPtr_xorExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4072,10 +4028,8 @@ class cPtr_andExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4119,10 +4073,8 @@ class cPtr_equalExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4166,10 +4118,8 @@ class cPtr_notEqualExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4213,10 +4163,8 @@ class cPtr_lowerOrEqualExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4260,10 +4208,8 @@ class cPtr_greaterOrEqualExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4307,10 +4253,8 @@ class cPtr_strictGreaterExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4354,10 +4298,8 @@ class cPtr_strictLowerExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4401,10 +4343,8 @@ class cPtr_rightShiftExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4448,10 +4388,8 @@ class cPtr_leftShiftExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4495,10 +4433,8 @@ class cPtr_addExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4542,10 +4478,8 @@ class cPtr_subExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4589,10 +4523,8 @@ class cPtr_multiplicationExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4636,10 +4568,8 @@ class cPtr_divisionExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4683,10 +4613,8 @@ class cPtr_moduloExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4728,10 +4656,8 @@ class cPtr_unaryMinusExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4773,10 +4699,8 @@ class cPtr_notExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4818,10 +4742,8 @@ class cPtr_negateExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4865,10 +4787,8 @@ class cPtr_ifExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4910,10 +4830,8 @@ class cPtr_functionCallExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4953,10 +4871,8 @@ class cPtr_varInExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -4998,10 +4914,8 @@ class cPtr_descriptionInExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -5047,10 +4961,8 @@ class cPtr_castInExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -5090,10 +5002,8 @@ class cPtr_filewrapperObjectInstanciationInExpression : public cPtr_semanticExpr
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -5135,10 +5045,8 @@ class cPtr_filewrapperInExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool
@@ -5182,10 +5090,8 @@ class cPtr_filewrapperTemplateInExpression : public cPtr_semanticExpression {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool

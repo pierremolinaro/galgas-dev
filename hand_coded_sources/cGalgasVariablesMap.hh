@@ -100,9 +100,7 @@ void cGalgasVariablesMap <INFO>::drop (void) {
 
 template <typename INFO>
 GGS_bool cGalgasVariablesMap <INFO>::
-reader_hasKey (C_Compiler & /* inLexique */,
-               const GGS_string & inKey
-               COMMA_UNUSED_LOCATION_ARGS) const {
+reader_hasKey (const GGS_string & inKey) const {
   const bool allBuilt = isBuilt () && inKey.isBuilt() ;
   bool found = false ;
   if (allBuilt) {

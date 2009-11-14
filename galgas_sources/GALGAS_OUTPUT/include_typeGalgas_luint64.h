@@ -68,10 +68,8 @@ class cPtr_typeGalgas_luint64 : public cPtr_C_galgasPrimitiveType {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Comparison
   public : virtual bool

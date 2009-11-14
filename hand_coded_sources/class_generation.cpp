@@ -388,10 +388,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Method for 'description' reader
   generatedZone3 << "//--- Method for 'description' reader\n"
                     "  public : virtual void\n"
-                    "  appendForDescription (C_Compiler & inLexique,\n"
-                    "                        C_String & ioString,\n"
-                    "                        const PMSInt32 inIndentation\n"
-                    "                        COMMA_LOCATION_ARGS) const ;\n" ;
+                    "  appendForDescription (C_String & ioString,\n"
+                    "                        const PMSInt32 inIndentation) const ;\n" ;
   if (! mIsAbstract.boolValue ()){
     generatedZone3 << "\n"
                       "//--- Comparison\n"
@@ -650,26 +648,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "void cPtr_" << aNomClasse << "::\n"
-               "appendForDescription (C_Compiler & "
-            << ((current == NULL) ? "/* inLexique */" : "inLexique")
-            << ",\n"
-               "                      C_String & ioString,\n"
+               "appendForDescription (C_String & ioString,\n"
                "                      const PMSInt32 "
             << ((current == NULL) ? "/* inIndentation */" : "inIndentation")
-            << "\n"
-               "                      " ;
-  if (current == NULL) {
-    inCppFile << "COMMA_UNUSED_LOCATION_ARGS" ;
-  }else{
-    inCppFile << "COMMA_LOCATION_ARGS" ;
-  }
-  inCppFile << ") const {\n"
+            << ") const {\n"
                "  ioString << \"->@" << aNomClasse << ":\"" ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "\n"
                  "           << " << current->mAttributeName
-              << ".reader_description  (inLexique COMMA_THERE, inIndentation + 1)" ;
+              << ".reader_description (inIndentation + 1)" ;
     current = current->nextObject () ;
   }
   inCppFile << " ;\n"

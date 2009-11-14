@@ -175,9 +175,7 @@ class GGS_signatureForGrammarAnalysis : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_formalArgumentPassingMode
@@ -289,9 +287,7 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_galgas_map {
                                    GGS_signatureForGrammarAnalysis & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & inLexique
-                                          COMMA_LOCATION_ARGS,
-                                          const PMSInt32 inIndentation = 0) const ;
+  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
   public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -459,9 +455,7 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_abstractSyntaxInstructionForGrammarAnalysis 
@@ -593,9 +587,7 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -709,9 +701,7 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_map {
                                    GGS_uint & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & inLexique
-                                          COMMA_LOCATION_ARGS,
-                                          const PMSInt32 inIndentation = 0) const ;
+  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
   public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -814,9 +804,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_map {
                                    GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outParameter1,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & inLexique
-                                          COMMA_LOCATION_ARGS,
-                                          const PMSInt32 inIndentation = 0) const ;
+  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
   public : static GGS_nonTerminalSymbolMapForGrammarAnalysis constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_nonTerminalSymbolMapForGrammarAnalysis & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -1052,9 +1040,7 @@ class GGS_branchListForGrammarAnalysis : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_syntaxInstructionListForGrammarAnalysis 
@@ -1303,9 +1289,7 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_productionRuleListForGrammarAnalysis 
@@ -1417,9 +1401,7 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_galgas_map {
                                    GGS_uint & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & inLexique
-                                          COMMA_LOCATION_ARGS,
-                                          const PMSInt32 inIndentation = 0) const ;
+  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
   public : static GGS_terminalSymbolsMapForGrammarAnalysis constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_terminalSymbolsMapForGrammarAnalysis & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -1483,10 +1465,8 @@ class elementOf_GGS_signatureForGrammarAnalysis : public AC_galgas_list::cListEl
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_signatureForGrammarAnalysis ;
@@ -1520,11 +1500,9 @@ class elementOf_GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_galg
 //--- Data member
   public : e_nonterminalSymbolLabelMapForGrammarAnalysis mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const PMSInt32 inElementIndex,
+  public : void appendForMapDescription (const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const PMSInt32 inIndentation
-                                         COMMA_LOCATION_ARGS) const ;
+                                         const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -1556,10 +1534,8 @@ class elementOf_GGS_syntaxInstructionListForGrammarAnalysis : public AC_galgas_l
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_syntaxInstructionListForGrammarAnalysis ;
@@ -1594,10 +1570,8 @@ class elementOf_GGS_productionRuleListForGrammarAnalysis : public AC_galgas_list
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_productionRuleListForGrammarAnalysis ;
@@ -1631,11 +1605,9 @@ class elementOf_GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_gal
 //--- Data member
   public : e_unusedNonTerminalSymbolMapForGrammarAnalysis mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const PMSInt32 inElementIndex,
+  public : void appendForMapDescription (const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const PMSInt32 inIndentation
-                                         COMMA_LOCATION_ARGS) const ;
+                                         const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -1667,11 +1639,9 @@ class elementOf_GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_ma
 //--- Data member
   public : e_nonTerminalSymbolMapForGrammarAnalysis mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const PMSInt32 inElementIndex,
+  public : void appendForMapDescription (const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const PMSInt32 inIndentation
-                                         COMMA_LOCATION_ARGS) const ;
+                                         const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -1707,10 +1677,8 @@ class elementOf_GGS_branchListForGrammarAnalysis : public AC_galgas_list::cListE
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_branchListForGrammarAnalysis ;
@@ -1751,10 +1719,8 @@ class elementOf_GGS_syntaxComponentListForGrammarAnalysis : public AC_galgas_lis
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_syntaxComponentListForGrammarAnalysis ;
@@ -1788,11 +1754,9 @@ class elementOf_GGS_terminalSymbolsMapForGrammarAnalysis : public AC_galgas_map_
 //--- Data member
   public : e_terminalSymbolsMapForGrammarAnalysis mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const PMSInt32 inElementIndex,
+  public : void appendForMapDescription (const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const PMSInt32 inIndentation
-                                         COMMA_LOCATION_ARGS) const ;
+                                         const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*

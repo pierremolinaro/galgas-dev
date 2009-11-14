@@ -156,9 +156,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- 
   inHfile << "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (C_Compiler & inLexique\n"
-             "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const PMSInt32 inIndentation = 0) const ;\n\n"
+             "  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n\n"
              "//--- Drop operation\n"
              "  public : inline void drop (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
@@ -550,9 +548,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mEnumTypeName
             << "::\n"
-               "reader_description (C_Compiler & /* inLexique */\n"
-               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
-               "                    const PMSInt32 /* inIndentation */) const {\n"
+               "reader_description (const PMSInt32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<enum @" << mEnumTypeName << "\" ;\n"
                "  switch (mValue) {\n" ;

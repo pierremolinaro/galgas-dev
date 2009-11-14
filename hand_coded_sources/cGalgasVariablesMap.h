@@ -173,9 +173,7 @@ template <typename INFO> class cGalgasVariablesMap {
   public : void build (void) ;
 
 //--- Reader 'hasKey"
-  public : GGS_bool reader_hasKey (C_Compiler & inLexique,
-                                   const GGS_string & inKey
-                                   COMMA_LOCATION_ARGS) const ;
+  public : GGS_bool reader_hasKey (const GGS_string & inKey) const ;
 
 //--- This kind of map is always built
   public : bool isBuilt (void) const ;

@@ -193,9 +193,7 @@ class GGS_guiCommandLineOptionList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_string
@@ -325,9 +323,7 @@ class GGS_extensionMap : public AC_galgas_map {
                                    GGS_string& outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & inLexique
-                                          COMMA_LOCATION_ARGS,
-                                          const PMSInt32 inIndentation = 0) const ;
+  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
   public : static GGS_extensionMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_extensionMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -445,9 +441,7 @@ class GGS_nibAndClassList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_string
@@ -578,9 +572,7 @@ class GGS_textMacroList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_string
@@ -738,9 +730,7 @@ class GGS_importedLexiqueList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_string
@@ -845,10 +835,8 @@ class elementOf_GGS_guiCommandLineOptionList : public AC_galgas_list::cListEleme
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_guiCommandLineOptionList ;
@@ -882,11 +870,9 @@ class elementOf_GGS_extensionMap : public AC_galgas_map_element {
 //--- Data member
   public : e_extensionMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const PMSInt32 inElementIndex,
+  public : void appendForMapDescription (const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const PMSInt32 inIndentation
-                                         COMMA_LOCATION_ARGS) const ;
+                                         const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -916,10 +902,8 @@ class elementOf_GGS_nibAndClassList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_nibAndClassList ;
@@ -952,10 +936,8 @@ class elementOf_GGS_textMacroList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_textMacroList ;
@@ -994,10 +976,8 @@ class elementOf_GGS_importedLexiqueList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Friend class declaration
   friend class GGS_importedLexiqueList ;
@@ -1036,9 +1016,7 @@ class GGS_guiAnalysisContext {
 
 //--- Reader 'description'
   public : GGS_string
-  reader_description (C_Compiler & inLexique
-                      COMMA_LOCATION_ARGS,
-                      const PMSInt32 inIndentation = 0) const ;
+  reader_description (const PMSInt32 inIndentation = 0) const ;
 //--- Galgas 'new' destructor
   public : static GGS_guiAnalysisContext constructor_new (const GGS_stringlist & argument_0,
                  const GGS_guiCommandLineOptionList & argument_1,
