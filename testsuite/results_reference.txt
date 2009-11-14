@@ -262,6 +262,7 @@ LOGGING r: <@uint:5>
   @luintlist
   @uintlist
 --- Function list (1 function)
-  functionTest [?@uint ?@uint] -> @uint
+LOGGING mValue: <@function: functionTest [?@uint ?@uint] -> @uint>
+<@function: functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
 Function 'foo' exists:false
 Function 'functionTest' exists:true

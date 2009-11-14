@@ -56,9 +56,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : GGS_bool operator_isNotEqual (const GGS_" << mStructName << " & inOperand) const ;\n\n"
              "//--- Reader 'description'\n"
              "  public : GGS_string\n"
-             "  reader_description (C_Compiler & inLexique\n"
-             "                      COMMA_LOCATION_ARGS,\n"
-             "                      const PMSInt32 inIndentation = 0) const ;\n"
+             "  reader_description (const PMSInt32 inIndentation = 0) const ;\n"
              "//--- Galgas 'new' destructor\n"
              "  public : static GGS_" << mStructName << " constructor_new (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
@@ -238,9 +236,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mStructName << "::\n"
-               "reader_description (C_Compiler & inLexique\n"
-               "                    COMMA_LOCATION_ARGS,\n"
-               "                    const PMSInt32 inIndentation) const {\n"
+               "reader_description (const PMSInt32 inIndentation) const {\n"
                "  C_String _s ;\n"
                "  _s << \"<struct @" << mStructName << "\" ;\n"
                "  if (isBuilt ()) {\n" ;
@@ -249,7 +245,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "    _s << \"\\n\" ;\n"
                  "    _s.writeStringMultiple (\"| \", inIndentation + 1) ;\n"
                  "    _s << \"" << current._mAttributeName (HERE) << " \" ;\n"
-                 "    _s << " << current._mAttributeName (HERE) << ".reader_description (inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+                 "    _s << " << current._mAttributeName (HERE) << ".reader_description (inIndentation + 1) ;\n" ;
     current.next () ;
   }
   inCppFile << "  }else{\n"

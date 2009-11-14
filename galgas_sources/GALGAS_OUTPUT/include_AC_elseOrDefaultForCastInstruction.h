@@ -57,10 +57,8 @@ class cPtr_AC_elseOrDefaultForCastInstruction : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & inLexique,
-                        C_String & ioString,
-                        const PMSInt32 inIndentation
-                        COMMA_LOCATION_ARGS) const ;
+  appendForDescription (C_String & ioString,
+                        const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
   public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;

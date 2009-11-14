@@ -143,9 +143,7 @@ class GGS_commandLineOptionMap : public AC_galgas_map {
                                    GGS_lstring & outParameter2,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & inLexique
-                                          COMMA_LOCATION_ARGS,
-                                          const PMSInt32 inIndentation = 0) const ;
+  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
   public : static GGS_commandLineOptionMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_commandLineOptionMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -201,11 +199,9 @@ class elementOf_GGS_commandLineOptionMap : public AC_galgas_map_element {
 //--- Data member
   public : e_commandLineOptionMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const PMSInt32 inElementIndex,
+  public : void appendForMapDescription (const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const PMSInt32 inIndentation
-                                         COMMA_LOCATION_ARGS) const ;
+                                         const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*

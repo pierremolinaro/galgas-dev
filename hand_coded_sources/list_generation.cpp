@@ -83,10 +83,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void\n"
-             "  appendForDescription (C_Compiler & inLexique,\n"
-             "                        C_String & ioString,\n"
-             "                        const PMSInt32 inIndentation\n"
-             "                        COMMA_LOCATION_ARGS) const ;\n\n" ;
+             "  appendForDescription (C_String & ioString,\n"
+             "                        const PMSInt32 inIndentation) const ;\n\n" ;
 
 //--- Friend declaration
   inHfile << "//--- Friend class declaration\n" 
@@ -305,9 +303,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  protected : void insulateList (void) ;\n\n"
              "//--- Reader 'description\n"
              "  public : GGS_string\n"
-             "  reader_description (C_Compiler & inLexique\n"
-             "                      COMMA_LOCATION_ARGS,\n"
-             "                      const PMSInt32 inIndentation = 0) const ;\n\n" ;
+             "  reader_description (const PMSInt32 inIndentation = 0) const ;\n\n" ;
 
 //--- Direct read access
   inHfile << "//--------------------------------- Direct Read Access\n" ;
@@ -451,28 +447,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "}\n\n" ;
 
   inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
+               "appendForDescription (C_String & ioString,\n"
+               "                      const PMSInt32 inIndentation) const {\n" ;
+  numeroVariable = 0 ;
   current.rewind () ;
-  if (! current.hasCurrentObject ()) {
-    inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-                 "appendForDescription (C_Compiler & /* inLexique */,\n"
-                 "                          C_String & /* ioString */,\n"
-                 "                          const PMSInt32 /* inIndentation */\n"
-                 "                          COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
-  }else{
-    inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-                 "appendForDescription (C_Compiler & inLexique,\n"
-                 "                      C_String & ioString,\n"
-                 "                      const PMSInt32 inIndentation\n"
-                 "                      COMMA_LOCATION_ARGS) const {\n" ;
-    numeroVariable = 0 ;
-    while (current.hasCurrentObject ()) {
-      inCppFile << "  ioString << \"\\n\" ;\n"
-                   "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
-                   "  ioString << \"|-\" ;\n"
-                   "  ioString << " << current._mAttributeName (HERE) << ".reader_description  (inLexique COMMA_THERE, inIndentation) ;\n" ;
-      current.next () ;
-      numeroVariable ++ ;
-    }
+  while (current.hasCurrentObject ()) {
+    inCppFile << "  ioString << \"\\n\" ;\n"
+                 "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+                 "  ioString << \"|-\" ;\n"
+                 "  ioString << " << current._mAttributeName (HERE) << ".reader_description (inIndentation) ;\n" ;
+    current.next () ;
+    numeroVariable ++ ;
   }
   inCppFile << "}\n\n" ;
 
@@ -831,10 +817,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
-               "reader_description (C_Compiler & inLexique\n"
-               "                    COMMA_LOCATION_ARGS,\n"
-               "                    const PMSInt32 inIndentation) const {\n"
-               "  return _description (inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
+               "reader_description (const PMSInt32 inIndentation) const {\n"
+               "  return performDescription (\"@" << aNomListe << "\", inIndentation) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
@@ -1118,10 +1102,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void\n"
-             "  appendForDescription (C_Compiler & inLexique,\n"
-             "                        C_String & ioString,\n"
-             "                        const PMSInt32 inIndentation\n"
-             "                        COMMA_LOCATION_ARGS) const ;\n"
+             "  appendForDescription (C_String & ioString,\n"
+             "                        const PMSInt32 inIndentation) const ;\n"
 
 //--- Friend declaration
              "  friend class GGS_" << aNomListe << " ;\n"
@@ -1299,9 +1281,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- List Insulation\n"
              "  protected : void insulateList (void) ;\n"
              "//--- Reader 'description\n"
-             "  public : GGS_string reader_description (C_Compiler & inLexique\n"
-             "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const PMSInt32 inIndentation = 0) const ;\n"
+             "  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
 
 //--- Enumerator declaration
              "//--------------------------------- Sorted List Enumerator\n"
@@ -1438,17 +1418,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-               "appendForDescription (C_Compiler & inLexique,\n"
-               "                      C_String & ioString,\n"
-               "                      const PMSInt32 inIndentation\n"
-               "                      COMMA_LOCATION_ARGS) const {\n" ;
+               "appendForDescription (C_String & ioString,\n"
+               "                      const PMSInt32 inIndentation) const {\n" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                  "  ioString << \"|-\" ;\n"
-                 "  ioString << " << current._mAttributeName (HERE) << ".reader_description  (inLexique COMMA_THERE, inIndentation) ;\n" ;
+                 "  ioString << " << current._mAttributeName (HERE) << ".reader_description (inIndentation) ;\n" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1665,10 +1643,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
-               "reader_description (C_Compiler & inLexique\n"
-               "                    COMMA_LOCATION_ARGS,\n"
-               "                    const PMSInt32 inIndentation) const {\n"
-               "  return _description (inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
+               "reader_description (const PMSInt32 inIndentation) const {\n"
+               "  return performDescription (\"@" << aNomListe << "\", inIndentation) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 

@@ -20,7 +20,8 @@ message "*************************************** begin of introspection test\n" 
     do s .= "?@" . [mValue name] ;
     between s .= " " ;
     end foreach ;
-    message "  " . [mValue name] . " [" . s . "] -> @" . [[mValue resultType] name] . "\n" ;
+    log mValue ;
+    message [mValue description] . "  " . [mValue name] . " [" . s . "] -> @" . [[mValue resultType] name] . "\n" ;
   end foreach ;
   const @bool b1 := [@function functionIsDefined !"foo"] ;
   const @bool b2 := [@function functionIsDefined !"functionTest"] ;

@@ -298,7 +298,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }else{
     inCppFile << "static const C_galgas_type_descriptor *\n"
                  "kArgumentTypeList_" << mFunctionName << " ["
-              << cStringWithUnsigned (aListeTypeEtNomsArguments.count ()) << "] = {" ;
+              << cStringWithSigned (aListeTypeEtNomsArguments.count ()) << "] = {" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
     bool first = true ;
     while (currentArgument.hasCurrentObject ()) {
@@ -318,7 +318,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                              (void *) function_" << mFunctionName << ",\n"
                  "                              & kTypeDescriptor_" ;
     mReturnedType (HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << ",\n                              " << cStringWithUnsigned (aListeTypeEtNomsArguments.count ()) ;
+    inCppFile << ",\n                              " << cStringWithSigned (aListeTypeEtNomsArguments.count ()) ;
     inCppFile << ",\n                              kArgumentTypeList_" << mFunctionName << ") ;\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
   }
