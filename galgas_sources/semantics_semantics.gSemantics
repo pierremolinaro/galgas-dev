@@ -365,12 +365,22 @@ class @typeDescriptionInExpression extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
-#   C A S T    O P E R A N D                                                *
+#   C L A S S    C A S T    O P E R A N D                                   *
 #---------------------------------------------------------------------------*
 
 class @typeCastInExpression extends @typeExpression {
   @typeExpression mCastedExpression ;
   @bool mCheckForKindOfClass ;
+  @lstring mCastTypeName ;
+  @typeExpression mErrorLocationExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   O B J E C T    C A S T    O P E R A N D                                 *
+#---------------------------------------------------------------------------*
+
+class @objectCastInExpression extends @typeExpression {
+  @typeExpression mCastedExpression ;
   @lstring mCastTypeName ;
   @typeExpression mErrorLocationExpression ;
 }

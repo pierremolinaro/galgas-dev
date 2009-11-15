@@ -39,7 +39,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile.appendCppTitleComment (C_String ("Declarations for '") + mStructName + "' struct") ;
   inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mStructName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "class GGS_" << mStructName << " {\n"
+  inHfile << "class GGS_" << mStructName << " : public GGS__root {\n"
              "//--- Default constructor\n"
              "  public : GGS_" << mStructName << " (void) ;\n\n"
              "//--- Virtual destructor\n"
@@ -47,7 +47,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Handle 'drop' instruction\n"
              "  public : void drop (void) ;\n\n"
              "//--- Method 'isBuilt'\n"
-             "  public : bool isBuilt (void) const ;\n\n"
+             "  public : virtual bool isBuilt (void) const ;\n\n"
              "//--- Support for method call handling in GALGAS\n"
              "  public : inline const GGS_" << mStructName << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "  public : inline GGS_" << mStructName << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n\n"
@@ -55,8 +55,14 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : GGS_bool operator_isEqual (const GGS_" << mStructName << " & inOperand) const ;\n"
              "  public : GGS_bool operator_isNotEqual (const GGS_" << mStructName << " & inOperand) const ;\n\n"
              "//--- Reader 'description'\n"
-             "  public : GGS_string\n"
-             "  reader_description (const PMSInt32 inIndentation = 0) const ;\n"
+             "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
+             "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << mStructName << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Galgas 'new' destructor\n"
              "  public : static GGS_" << mStructName << " constructor_new (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
@@ -124,7 +130,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of '") + mStructName + "' struct") ;
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mStructName << " (\"" << mStructName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mStructName << " (\"" << mStructName << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) :\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
@@ -255,6 +261,37 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  _s.writeStringMultiple (\"| \", inIndentation) ;\n"
                "  _s << \">\" ;\n"
                "  return GGS_string (true, _s) ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << mStructName << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << mStructName << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << mStructName << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mStructName << " GGS_" << mStructName << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << mStructName << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << mStructName << " * p = dynamic_cast <const GGS_" << mStructName << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << mStructName << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << mStructName << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << mStructName << " ;\n"
                "}\n\n" ;
 }  
 

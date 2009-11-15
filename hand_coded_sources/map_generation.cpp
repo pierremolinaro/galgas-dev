@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate map declaration and implementation                              *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -57,8 +57,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              " //--- Constructor\n"
              "    public : cElement (LOCATION_ARGS) ;\n"
              " //--- Description\n"
-             "    public : virtual C_String\n"
-             "    performDescription (const PMSInt32 inIndentation) const ;\n"
+             "    public : virtual C_String performDescription (const PMSInt32 inIndentation) const ;\n"
              "    public : virtual cPtrObject * _clone (LOCATION_ARGS) ;\n"
              "    public : virtual bool isEqual (const cPtrListMapObject * inOperand) const ;\n"
              "  } ;\n\n"
@@ -116,6 +115,15 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  //--- Associated object accessor\n"
              "    public : const GGS_" << mListTypename << " & _object (LOCATION_ARGS) const ;\n"
              "  } ;\n"
+
+//--- Introspection
+             "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << mListmapTypeName << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n"
 //--- End of class declaration
              "} ;\n\n" ;
 }
@@ -151,7 +159,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const bool /* inGenerateDebug */) const {
 
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mListmapTypeName << " (\"" << mListmapTypeName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mListmapTypeName << " (\"" << mListmapTypeName << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mListmapTypeName << "::cElement::cElement (LOCATION_ARGS) :\n"
                "cPtrListMapObject (THERE),\n"
@@ -343,6 +351,37 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return objectPtr->mListObject ;\n"
                "}\n\n" ;
 
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << mListmapTypeName << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << mListmapTypeName << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << mListmapTypeName << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mListmapTypeName << " GGS_" << mListmapTypeName << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << mListmapTypeName << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << mListmapTypeName << " * p = dynamic_cast <const GGS_" << mListmapTypeName << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << mListmapTypeName << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << mListmapTypeName << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << mListmapTypeName << " ;\n"
+               "}\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -381,8 +420,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_bool operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n"
              "  public : GGS_bool operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n\n"
              "//--- 'description' reader declaration\n"
-             "  public : GGS_string\n"
-             "  reader_description (const PMSInt32 inIndentation = 0) const ;\n\n"
+             "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n\n"
+             "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << mMapindexTypeName << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Type Method 'makeRegularIndex'\n"
              "  public : static void\n"
              "  class_method_makeRegularIndex (C_Compiler & inLexique,\n"
@@ -455,7 +500,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("map index '@") + mMapindexTypeName + "'") ;
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mMapindexTypeName << " (\"" << mMapindexTypeName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mMapindexTypeName << " (\"" << mMapindexTypeName << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mMapindexTypeName << " GGS_" << mMapindexTypeName << "::\n"
                "constructor_null (C_Compiler & /* inLexique */\n"
@@ -583,6 +628,37 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "}\n\n" ;
     currentMethod.next () ;
   }
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << mMapindexTypeName << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << mMapindexTypeName << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << mMapindexTypeName << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mMapindexTypeName << " GGS_" << mMapindexTypeName << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << mMapindexTypeName << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << mMapindexTypeName << " * p = dynamic_cast <const GGS_" << mMapindexTypeName << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << mMapindexTypeName << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << mMapindexTypeName << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << mMapindexTypeName << " ;\n"
+               "}\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -657,6 +733,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Comparison methods\n"
              "  public : GGS_bool operator_isEqual (const GGS_" << mMapTypeName << " & inOperand) const ;\n"
              "  public : GGS_bool operator_isNotEqual (const GGS_" << mMapTypeName << " & inOperand) const ;\n\n"
+             "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << mMapTypeName << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Create a new element\n"
              "  protected : virtual AC_galgas_map_element *\n"
              "  new_element (const GGS_lstring & inKey, void * inInfo) ;\n\n"
@@ -838,7 +921,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "                                   GGS_luint * outIndex\n"
              "                                   COMMA_LOCATION_ARGS) const ;\n"
 //--- Generate 'description' reader declaration
-             "  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
+             "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
 //--- Generate 'mapWithMapToOverride' constructor declaration
               "  public : static GGS_" << mMapTypeName << " constructor_mapWithMapToOverride (C_Compiler & inLexique,\n"
               "                                            const GGS_" << mMapTypeName << " & inMapToOverride\n"
@@ -921,7 +1004,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppTitleComment (C_String ("class map '@") + mMapTypeName + "'") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mMapTypeName << " (\"" << mMapTypeName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mMapTypeName << " (\"" << mMapTypeName << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Constructor for type element
@@ -1460,6 +1543,37 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "}\n\n" ;
     current.next() ;
   }
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << mMapTypeName << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << mMapTypeName << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << mMapTypeName << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mMapTypeName << " GGS_" << mMapTypeName << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << mMapTypeName << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << mMapTypeName << " * p = dynamic_cast <const GGS_" << mMapTypeName << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << mMapTypeName << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << mMapTypeName << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << mMapTypeName << " ;\n"
+               "}\n\n" ;
 }
 
 //---------------------------------------------------------------------------*

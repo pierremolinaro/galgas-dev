@@ -520,37 +520,17 @@ generate_header_file (C_Compiler & inLexique,
 
 //--- Include declaration of predefined types
   generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
-                    "#include \"galgas/GGS_location.h\"\n"
-                    "#include \"galgas/GGS_data.h\"\n"
-                    "#include \"galgas/GGS_type.h\"\n"
-                    "#include \"galgas/GGS_function.h\"\n"
-                    "#include \"galgas/GGS_lbool.h\"\n"
-                    "#include \"galgas/GGS_lchar.h\"\n"
-                    "#include \"galgas/GGS_lstring.h\"\n"
-                    "#include \"galgas/GGS_ldouble.h\"\n"
-                    "#include \"galgas/GGS_luint.h\"\n"
-                    "#include \"galgas/GGS_lsint.h\"\n"
-                    "#include \"galgas/GGS_luint64.h\"\n"
-                    "#include \"galgas/GGS_lsint64.h\"\n"
-                    "#include \"galgas/GGS_stringset.h\"\n"
-                    "#include \"galgas/GGS_binaryset.h\"\n"
-                    "#include \"galgas/GGS_filewrapper.h\"\n"
-                    "#include \"galgas/predefined_types.h\"\n"
-                    "#include \"galgas/AC_galgas_class.h\"\n"
-                    "#include \"galgas/AC_galgas_domain.h\"\n"
-                    "#include \"galgas/AC_galgas_mapindex.h\"\n"
-                    "#include \"galgas/AC_galgas_map.h\"\n"
-                    "#include \"galgas/AC_galgas_listmap.h\"\n"
-                    "#include \"galgas/AC_galgas_list.h\"\n"
-                    "#include \"galgas/AC_galgas_sortedlist.h\"\n\n" ;
-  generatedZone2.appendCppHyphenLineComment () ;
+  generatedZone2 << "#include \"galgas/GGS__header.h\"\n" ;
 
 //--- Generate lexique inclusion
   const C_String lexiqueName = inLexiqueName.string () ;
-  generatedZone2 << "#include \""
-        << ((lexiqueName.length () == 0) ? C_String ("galgas/C_Lexique") : lexiqueName)
-        << ".h\"\n\n" ;
+  if (lexiqueName.length () > 0) {
+    generatedZone2 << "#include \""<< lexiqueName << ".h\"\n" ;
+  }
+
+  generatedZone2 << "\n" ;
+  generatedZone2.appendCppHyphenLineComment () ;
+  
 //--- Generate include imported semantics components
   GGS_stringset::cEnumerator fileEnumerator (inIncludesForHeaderFile, true) ;
   if (fileEnumerator. hasCurrentObject ()) {
@@ -819,6 +799,13 @@ generatePublicDeclaration (AC_OutputStream & inHfile,
 void cPtr_typeGalgasDomainType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mDomainTypeName ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_object::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_object" ;
 }
 
 //---------------------------------------------------------------------------*

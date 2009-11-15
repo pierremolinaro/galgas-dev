@@ -1131,8 +1131,7 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    ( EXPRESSION )                                         *
-#                       (cast EXPRESSION if >= @T else error EXPRESSION)       *
+#   F A C T O R    :    (cast EXPRESSION if >= @T else error EXPRESSION)       *
 #                       (cast EXPRESSION if == @T else error EXPRESSION)       *
 #                                                                              *
 #------------------------------------------------------------------------------*
@@ -1146,45 +1145,51 @@ rule <factor>
   !@AC_galgasType outResultType
 :
   $($ ;
+  $cast$ ;
+  @typeExpression castedExpression ;
+  @AC_galgasType castExpressionType ;
+  <expression>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?castedExpression
+    ?castExpressionType
+  ;
+#--- Check the type is a class
+  @string kSourceExpressionClassName ;
+  @bool isObjectCast ;
+  cast castExpressionType :
+  when >= @typeGalgasClassType aClass do
+    kSourceExpressionClassName := [[aClass mClassTypeName] string] ;
+    isObjectCast := false ;
+  when >= @typeGalgas_object do
+    kSourceExpressionClassName := "object" ;
+    isObjectCast := true ;
+  else
+    error here:"the cast expression should be an instance of an object type, or an instance of a class type" -> kSourceExpressionClassName, isObjectCast ;
+  end cast ;
+  $if$ ;
+  @bool checkForKindOfClass ;
   select
-    <expression>
-      !inEntitiesMap
-      !inOptionsComponentsMapForUse
-      !inSemanticContext
-      !?ioVariablesMap
-      ?outExpression
-      ?outResultType
-    ;
+    $>=$ ;
+    checkForKindOfClass := true ;
+    if isObjectCast then
+      error here:"casting an object instance requires the '==' operator" ;
+    end if ;
   or
-    $cast$ ;
-    @typeExpression castedExpression ;
-    @AC_galgasType castExpressionType ;
-    <expression>
-      !inEntitiesMap
-      !inOptionsComponentsMapForUse
-      !inSemanticContext
-      !?ioVariablesMap
-      ?castedExpression
-      ?castExpressionType
-    ;
-  #--- Check the type is a class
-    @lstring kSourceExpresionClassName := [(cast castExpressionType if >= @typeGalgasClassType else error here) mClassTypeName] ;
-    $if$ ;
-    @bool checkForKindOfClass ;
-    select
-      $>=$ ;
-      checkForKindOfClass := true ;
-    or
-      $==$ ;
-      checkForKindOfClass := false ;
-    end select ;
-  #--- Cast type
-    @lstring castedTypeName ;
-    $type_name$ ?castedTypeName ;
-  #--- Check the name 'castedTypeName' refers to a type
-    @AC_semanticsEntity entite ;
-    [inEntitiesMap searchKey !castedTypeName ?entite] ;
-    outResultType := [(cast entite if >= @typeEntiteType else error castedTypeName) aDefType] ;
+    $==$ ;
+    checkForKindOfClass := false ;
+  end select ;
+#--- Cast type
+  @lstring castedTypeName ;
+  $type_name$ ?castedTypeName ;
+#--- Check the name 'castedTypeName' refers to a type
+  @AC_semanticsEntity entite ;
+  [inEntitiesMap searchKey !castedTypeName ?entite] ;
+  outResultType := [(cast entite if >= @typeEntiteType else error castedTypeName) aDefType] ;
+#--- Checking for a class type
+  if not isObjectCast then
   #--- Check the type is a class
     @typeGalgasClassType resultClassType := (cast outResultType if >= @typeGalgasClassType else error castedTypeName) ;
     @typeSuperClassesMap superClassMap := [resultClassType mAncestorClassesMap] ;
@@ -1194,36 +1199,69 @@ rule <factor>
       error castedTypeName: "in order to be used in a cast expression, the '@" . castedTypeName . "' class should define a class message" ;
     end if ;
   #--- Verify class is an heir of variable type
-    @string sourceExpressionTypeNameString := [kSourceExpresionClassName string] ;
     if not checkForKindOfClass then
-      if ([castedTypeName string] != sourceExpressionTypeNameString) & not [superClassMap hasKey ! sourceExpressionTypeNameString] then
-        error castedTypeName : "This class is not '@" . sourceExpressionTypeNameString . "' and does inherit from it" ;
+      if ([castedTypeName string] != kSourceExpressionClassName) & not [superClassMap hasKey ! kSourceExpressionClassName] then
+        error castedTypeName : "This class is not '@" . kSourceExpressionClassName . "' and does inherit from it" ;
       end if ;
-    elsif not [superClassMap hasKey !sourceExpressionTypeNameString] then
-      error castedTypeName : "This class does not inherit from '@" . sourceExpressionTypeNameString . "'" ;
+    elsif not [superClassMap hasKey !kSourceExpressionClassName] then
+      error castedTypeName : "This class does not inherit from '@" . kSourceExpressionClassName . "'" ;
     end if ;
-    $else$ ;
-    $error$ ;
-    @typeExpression errorLocationExpression ;
-    @AC_galgasType errorLocationExpressionType ;
-    <expression>
-      !inEntitiesMap
-      !inOptionsComponentsMapForUse
-      !inSemanticContext
-      !?ioVariablesMap
-      ?errorLocationExpression
-      ?errorLocationExpressionType
-    ;
-  #--- Verifier que la variable est d'une type contenant une location localisant l'error
-    [errorLocationExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
-  #--- Generate instruction
+  end if ;
+  $else$ ;
+  $error$ ;
+  @typeExpression errorLocationExpression ;
+  @AC_galgasType errorLocationExpressionType ;
+  <expression>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?errorLocationExpression
+    ?errorLocationExpressionType
+  ;
+#--- Verifier que la variable est d'une type contenant une location localisant l'error
+  [errorLocationExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
+#--- Generate instruction
+  if isObjectCast then
+    outExpression := [@objectCastInExpression new
+      !castedExpression
+      !castedTypeName
+      !errorLocationExpression
+    ] ;
+  else
     outExpression := [@typeCastInExpression new
       !castedExpression
       !checkForKindOfClass
       !castedTypeName
       !errorLocationExpression
     ] ;
-  end select ;
+  end if ;
+  $)$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    ( EXPRESSION )                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  $($ ;
+  <expression>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?outExpression
+    ?outResultType
+  ;
   $)$ ;
 end rule ;
 
