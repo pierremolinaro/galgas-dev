@@ -293,6 +293,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName
               << " (\"" << mFunctionName << "\",\n"
                  "                              (void *) function_" << mFunctionName << ",\n"
+                 "                              & kTypeDescriptor_" ;
+    mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << ",\n"
                  "                              0,\n"
                  "                              NULL) ;\n\n" ;
   }else{
