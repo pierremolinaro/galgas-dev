@@ -117,7 +117,7 @@ void cPtr_terminalInstructionForGrammarAnalysis::
 buildRightDerivation (const PMSInt32 /* inTerminalSymbolsCount */,
                       const PMSInt32 /* inOriginalGrammarSymbolCount */,
                       TC_UniqueArray <PMSInt16> & ioInstructionsList) {
-  ioInstructionsList.addObject ((PMSInt16) mTerminalSymbolIndex.mValue) ;
+  ioInstructionsList.addObject ((PMSInt16) mTerminalSymbolIndex.uintValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -127,7 +127,7 @@ buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
                       const PMSInt32 /* inOriginalGrammarSymbolCount */,
                       TC_UniqueArray <PMSInt16> & ioInstructionsList) {
 
-  ioInstructionsList.addObject ((PMSInt16) (mNonterminalSymbolIndex.mValue
+  ioInstructionsList.addObject ((PMSInt16) (mNonterminalSymbolIndex.uintValue ()
                                            + inTerminalSymbolsCount)) ;
 }
 
@@ -137,7 +137,7 @@ void cPtr_selectInstructionForGrammarAnalysis::
 buildRightDerivation (const PMSInt32 /* inTerminalSymbolsCount */,
                       const PMSInt32 inOriginalGrammarSymbolCount,
                       TC_UniqueArray <PMSInt16> & ioInstructionsList) {
-  const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.mValue) + inOriginalGrammarSymbolCount ;
+  const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
   ioInstructionsList.addObject ((PMSInt16) idx) ;
 }
 
@@ -153,7 +153,7 @@ buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
     instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, ioInstructionsList) ;
     instruction.next () ;
   }
-  const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.mValue) + inOriginalGrammarSymbolCount ;
+  const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
   ioInstructionsList.addObject ((PMSInt16) idx) ;
 }
 
@@ -191,7 +191,7 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
     p.mSourceFileName = inSyntaxComponentName ;
     p.aLigneDefinition = mStartLocation.lineNumber () ;
     p.aColonneDefinition = mStartLocation.columnNumber () ;
-    const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.mValue) + inOriginalGrammarSymbolCount ;
+    const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
     p.aNumeroNonTerminalGauche = idx ;
     swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
@@ -239,7 +239,7 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
     p.mSourceFileName = inSyntaxComponentName ;
     p.aLigneDefinition = mStartLocation.lineNumber () ;
     p.aColonneDefinition = mStartLocation.columnNumber () ;
-    const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.mValue) + inOriginalGrammarSymbolCount ;
+    const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
     p.aNumeroNonTerminalGauche = idx ;
     ioProductions.insertByExchange (p) ;
   }
@@ -264,7 +264,7 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
       firstBranchInstruction.next () ;
     }
   //--- insert <T> production call
-    const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.mValue) + inOriginalGrammarSymbolCount ;
+    const PMSInt32 idx = ((PMSInt32) mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
     derivation.addObject ((PMSInt16) idx) ;
     cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
@@ -355,7 +355,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
       p.aLigneDefinition = currentRule._mLeftNonterminalSymbol (HERE).lineNumber () ;
       p.aColonneDefinition = currentRule._mLeftNonterminalSymbol (HERE).columnNumber () ;
       p.aNumeroNonTerminalGauche = terminalSymbolsCount
-                                 + (PMSInt32) currentRule._mLeftNonterminalSymbolIndex (HERE).mValue ;
+                                 + (PMSInt32) currentRule._mLeftNonterminalSymbolIndex (HERE).uintValue () ;
       swap (p.aDerivation, derivation) ;
       ioProductions.insertByExchange (p) ;
       currentRule.next () ;

@@ -159,6 +159,50 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+void cPtr_objectCastInExpression::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "GGS_" << mCastTypeName <<"::castFromObject (inLexique, " ;
+  mCastedExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ", " ;
+  mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE (" ;
+  ioCppFile.appendSigned (mCastTypeName.lineNumber ()) ;
+  ioCppFile << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_objectCastInExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mCastedExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+    || mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_objectCastInExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mCastedExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+    || mErrorLocationExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_objectCastInExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 void cPtr_typeUnaryMinusOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;

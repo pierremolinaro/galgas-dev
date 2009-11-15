@@ -27,6 +27,12 @@ message "*************************************** begin of introspection test\n" 
   const @bool b2 := [@function functionIsDefined !"functionTest"] ;
   message "Function 'foo' exists:" . [b1 cString] . "\n" ;
   message "Function 'functionTest' exists:" . [b2 cString] . "\n" ;
+#--- Introspection of an @uint
+  const @sint x := 2S ;
+  @object object := [x object] ;
+  log object ;
+  const @uint y := (cast object if == @uint else error here) ;
+  log y ;
 end routine ;
 
 #-----------------------------------------------------------------------------

@@ -1979,6 +1979,23 @@ class @typeGalgas_data extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    O B J E C T    T Y P E                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_object extends @AC_galgasType {
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := "object" ;
+  end method ;
+
+#--- Error message
+  message "a '@object' type" ;
+  message messageGalgasType "a '@object' type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    ' T Y P E '    T Y P E                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3624,6 +3641,7 @@ routine checkAssignmentTypesCompatibility
   ??@bool inAcceptPolymorphism
 :
   match inFormalType :: inEffectiveType :
+  when @typeGalgas_object ()       :: @typeGalgas_object () :
   when @typeGalgas_type ()         :: @typeGalgas_type () :
   when @typeGalgas_function ()     :: @typeGalgas_function () :
   when @typeGalgas_binaryset ()    :: @typeGalgas_binaryset () :
@@ -4023,6 +4041,14 @@ routine handleReaderCall
   outCategoryReaderClassBaseName := "" ; # Means not a category reader
   if [inReaderName string] == "description" then
     outReturnedType := [@typeGalgas_string new] ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outHasLexiqueAndLocationArguments := false ;
+  elsif [inReaderName string] == "object" then
+    outReturnedType := [@typeGalgas_object new] ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outHasLexiqueAndLocationArguments := false ;
+  elsif [inReaderName string] == "staticType" then
+    outReturnedType := [@typeGalgas_type new] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outHasLexiqueAndLocationArguments := false ;
   else
@@ -4945,6 +4971,9 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
 
   e := [@typeEntiteType new ![@typeGalgas_type new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"type" !here] !e] ;
+
+  e := [@typeEntiteType new ![@typeGalgas_object new]] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"object" !here] !e] ;
 
   e := [@typeEntiteType new ![@typeGalgas_function new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"function" !here] !e] ;

@@ -57,7 +57,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppHyphenLineComment () ;
 
   
-  inHfile << "class GGS_" << mEnumTypeName << " {\n"
+  inHfile << "class GGS_" << mEnumTypeName << " : public GGS__root {\n"
              "//--- Enumeration\n"
              "  public : enum enumeration {kNotBuilt" ;
   GGS_enumConstantMap::cEnumerator constant (mConstantMap, true) ;
@@ -77,7 +77,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Bit count for bdd\n"
              "  public : static inline PMUInt16 bitCount (void) { return " << cStringWithSigned (bitCount) << " ; }\n\n"
              "//--- Is built ?\n"
-             "  public : bool isBuilt (void) const ;\n\n"
+             "  public : virtual bool isBuilt (void) const ;\n\n"
+             "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << mEnumTypeName << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Construction from GALGAS constructor\n" ;
   constant.rewind () ;
   while (constant.hasCurrentObject ()) {
@@ -156,7 +163,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- 
   inHfile << "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n\n"
+             "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n\n"
              "//--- Drop operation\n"
              "  public : inline void drop (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
@@ -200,7 +207,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mEnumTypeName << " (\"" << mEnumTypeName << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mEnumTypeName << " (\"" << mEnumTypeName << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "bool GGS_" << mEnumTypeName
@@ -566,6 +573,37 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
 
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << mEnumTypeName << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << mEnumTypeName << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << mEnumTypeName << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << mEnumTypeName << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << mEnumTypeName << " * p = dynamic_cast <const GGS_" << mEnumTypeName << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << mEnumTypeName << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << mEnumTypeName << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << mEnumTypeName << " ;\n"
+               "}\n\n" ;
 }
 
 //---------------------------------------------------------------------------*

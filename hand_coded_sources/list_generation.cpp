@@ -302,8 +302,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- List Insulation\n"
              "  protected : void insulateList (void) ;\n\n"
              "//--- Reader 'description\n"
-             "  public : GGS_string\n"
-             "  reader_description (const PMSInt32 inIndentation = 0) const ;\n\n" ;
+             "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n\n" ;
 
 //--- Direct read access
   inHfile << "//--------------------------------- Direct Read Access\n" ;
@@ -332,8 +331,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << "\n" ;
 
+  inHfile << "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << aNomListe << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n"
+
 //--- Enumerator declaration
-  inHfile << "//--------------------------------- List Enumerator\n"
+             "//--------------------------------- List Enumerator\n"
              "  public : class cEnumerator : public cAbstractListEnumerator {\n"
              "  //--- Constructor\n"
              "    public : inline cEnumerator (const GGS_" << aNomListe << " & inList,\n"
@@ -466,7 +473,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 // ------------- List Implementation -----------------
   inCppFile.appendCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Engendrer la methode internalAppendValues
@@ -1045,6 +1052,38 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "}\n\n" ;
     current.next () ;
   }
+
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << aNomListe << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << aNomListe << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << aNomListe << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << aNomListe << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << aNomListe << " * p = dynamic_cast <const GGS_" << aNomListe << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << aNomListe << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << aNomListe << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << aNomListe << " ;\n"
+               "}\n\n" ;
 }
 
 
@@ -1281,8 +1320,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- List Insulation\n"
              "  protected : void insulateList (void) ;\n"
              "//--- Reader 'description\n"
-             "  public : GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
-
+             "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
+             "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << aNomListe << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n"
 //--- Enumerator declaration
              "//--------------------------------- Sorted List Enumerator\n"
              "  public : class cEnumerator : public cAbstractSortedListEnumerator {\n"
@@ -1435,7 +1480,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 // ------------- List Implementation -----------------
   inCppFile.appendCppTitleComment (C_String ("Sorted list '@") + aNomListe + "'") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\") ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Generate default constructor
@@ -1829,6 +1874,37 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "}\n\n" ;
     current.next () ;
   }
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << aNomListe << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << aNomListe << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << aNomListe << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << aNomListe << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << aNomListe << " * p = dynamic_cast <const GGS_" << aNomListe << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << aNomListe << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << aNomListe << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << aNomListe << " ;\n"
+               "}\n\n" ;
 }
 
 

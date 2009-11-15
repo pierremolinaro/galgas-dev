@@ -37,6 +37,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & inLexique) const {
   inHfile.appendCppTitleComment (C_String ("Extern type 'GGS_") + mGalgasName + "'") ;
   inHfile << "#include \"GGS_" << mGalgasName << ".h\"\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mGalgasName << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ;
 //--- Generate extern type declaration
   C_String generatedZone2 ;
   generatedZone2 << "class GGS_" << mGalgasName << " {\n"
