@@ -93,7 +93,9 @@ routine getGALGAS_source_file_list
   out_cpp_and_h_fileList += !"GGS_lstring" ;
   out_cpp_and_h_fileList += !"GGS_luint" ;
   out_cpp_and_h_fileList += !"GGS_type" ;
+  out_cpp_and_h_fileList += !"GGS_object" ;
   out_cpp_and_h_fileList += !"GGS_function" ;
+  out_cpp_and_h_fileList += !"GGS__root" ;
 end routine ;
 
 #---------------------------------------------------------------------------*
