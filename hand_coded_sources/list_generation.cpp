@@ -329,9 +329,9 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "                              COMMA_LOCATION_ARGS) const ;\n" ;
     current.next () ;
   }
-  inHfile << "\n" ;
+  inHfile << "\n"
 
-  inHfile << "//--- Introspection\n"
+             "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
              "  public : static GGS_" << aNomListe << " castFromObject (C_Compiler & inLexique,\n"

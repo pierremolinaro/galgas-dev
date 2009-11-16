@@ -41,7 +41,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile.appendCppHyphenLineComment () ;
 //--- Generate extern type declaration
   C_String generatedZone2 ;
-  generatedZone2 << "class GGS_" << mGalgasName << " {\n"
+  generatedZone2 << "class GGS_" << mGalgasName << " : public GGS__root {\n"
                     "//--- Default constructor and virtual destructor\n"
                     "  public : GGS_" << mGalgasName << " (void) ;\n"
                     "  public : virtual ~GGS_" << mGalgasName << " (void) ;\n"
@@ -60,8 +60,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "  public : GGS_bool operator_isEqual (const GGS_" << mGalgasName << " & inOperand) const ;\n"
                     "  public : GGS_bool operator_isNotEqual (const GGS_" << mGalgasName << " & inOperand) const ;\n\n"
                     "//--- Reader 'description'\n"
-                    "  public : GGS_string\n"
-                    "  reader_description (const PMSInt32 inIndentation = 0) const ;\n"
+                    "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
                     "//--- Constructors\n" ;
   GGS_M_externTypeConstructorMap::cEnumerator constructor (mConstructorMap) ;
   while (constructor.hasCurrentObject ()) {
@@ -75,6 +74,13 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     generatedZone2 << "\n                  COMMA_LOCATION_ARGS) ;\n\n" ;
     constructor.next () ;
   }
+  generatedZone2 << "//--- Introspection\n"
+                    "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+                    "  public : GGS_object reader_object (void) const ;\n\n"
+                    "  public : static GGS_" << mGalgasName << " castFromObject (C_Compiler & inLexique,\n"
+                    "                                           const GGS_object & inObject,\n"
+                    "                                           const GGS_location & inErrorLocation\n"
+                    "                                           COMMA_LOCATION_ARGS) ;\n\n" ;
 
   C_String generatedZone3 ;
   generatedZone3 << "} ;\n\n" ;

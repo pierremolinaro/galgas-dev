@@ -42,6 +42,9 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_domainToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
+
+  inHfile.appendCppHyphenLineComment () ;
+  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mDomainName << " ;\n\n" ;
   
   inHfile << "class GGS_" << mDomainName << " : public AC_galgas_domain {\n" ;
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
@@ -104,6 +107,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     currentAttribute.next () ;
   }
   inHfile << "\n                               COMMA_LOCATION_ARGS) ;\n"
+             "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << mDomainName << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n"
              "} ;\n\n" ;
 }
 
@@ -137,6 +147,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   PMSInt32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
+
+  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mDomainName << " (\"" << mDomainName << "\", false, NULL) ;\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Constructor
   inCppFile << "GGS_" << mDomainName << "::GGS_" << mDomainName << " (void) :\n"
@@ -348,6 +361,37 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     currentRelation.next () ;
   }
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << mDomainName << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << mDomainName << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << mDomainName << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mDomainName << " GGS_" << mDomainName << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << mDomainName << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << mDomainName << " * p = dynamic_cast <const GGS_" << mDomainName << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << mDomainName << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << mDomainName << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << mDomainName << " ;\n"
+               "}\n\n" ;
 }
                 
 //---------------------------------------------------------------------------*

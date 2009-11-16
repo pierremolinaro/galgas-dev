@@ -274,6 +274,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;\n\n" ;
   }
 
+  inHfile << "//--- Introspection\n"
+             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : GGS_object reader_object (void) const ;\n\n"
+             "  public : static GGS_" << aNomClasse << " castFromObject (C_Compiler & inLexique,\n"
+             "                                           const GGS_object & inObject,\n"
+             "                                           const GGS_location & inErrorLocation\n"
+             "                                           COMMA_LOCATION_ARGS) ;\n\n" ;
+
 //--- Engendrer la fin de la declaration de la classe
   inHfile << "} ;\n\n" ;
   
@@ -967,6 +975,38 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }else{
     inCppFile << "C_galgasClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", gClassInfoFor__" << superClassName << ") ;\n\n" ;
   }
+
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_object GGS_" << aNomClasse << "::reader_object (void) const {\n"
+               "  GGS_object result ;\n"
+               "  if (isBuilt ()) {\n"
+               "    GGS_" << aNomClasse << " * p = NULL ;\n"
+               "    macroMyNew (p, GGS_" << aNomClasse << " (*this)) ;\n"
+               "    result = GGS_object (p) ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_" << aNomClasse << " GGS_" << aNomClasse << "::castFromObject (C_Compiler & inLexique,\n"
+               "                                   const GGS_object & inObject,\n"
+               "                                   const GGS_location & inErrorLocation\n"
+               "                                   COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << aNomClasse << " result ;\n"
+               "  const GGS__root * embeddedObject = inObject.embeddedObject () ;\n"
+               "  if (NULL != embeddedObject) {\n"
+               "    const GGS_" << aNomClasse << " * p = dynamic_cast <const GGS_" << aNomClasse << " *> (embeddedObject) ;\n"
+               "    if (NULL != p) {\n"
+               "      result = * p ;\n"
+               "    }else{\n"
+               "      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_" << aNomClasse << ", embeddedObject COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_type_descriptor * GGS_" << aNomClasse << "::typeDescriptor (void) const {\n"
+               "  return & kTypeDescriptor_GGS_" << aNomClasse << " ;\n"
+               "}\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
