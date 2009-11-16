@@ -58,7 +58,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : cElement (LOCATION_ARGS) ;\n"
              " //--- Description\n"
              "    public : virtual C_String performDescription (const PMSInt32 inIndentation) const ;\n"
-             "    public : virtual cPtrObject * _clone (LOCATION_ARGS) ;\n"
+             "    public : virtual cPtrObject * cloneObject (LOCATION_ARGS) ;\n"
              "    public : virtual bool isEqual (const cPtrListMapObject * inOperand) const ;\n"
              "  } ;\n\n"
              "//--- 'emptyMap' constructor\n"
@@ -167,7 +167,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "cPtrObject * GGS_" << mListmapTypeName << "::cElement::_clone (LOCATION_ARGS) {\n"
+  inCppFile << "cPtrObject * GGS_" << mListmapTypeName << "::cElement::cloneObject (LOCATION_ARGS) {\n"
                "  cElement * result = NULL ;\n"
                "  macroMyNew (result, cElement (THERE)) ;\n"
                "  result->mListObject = mListObject ;\n"

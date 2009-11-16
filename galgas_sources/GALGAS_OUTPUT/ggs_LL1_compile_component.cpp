@@ -243,7 +243,7 @@ mListObject (GGS_stringlist::constructor_emptyList ()) {
 
 //---------------------------------------------------------------------------*
 
-cPtrObject * GGS_EXtargetFileListMap::cElement::_clone (LOCATION_ARGS) {
+cPtrObject * GGS_EXtargetFileListMap::cElement::cloneObject (LOCATION_ARGS) {
   cElement * result = NULL ;
   macroMyNew (result, cElement (THERE)) ;
   result->mListObject = mListObject ;

@@ -387,7 +387,7 @@ generateInstructions (AC_OutputStream & inCppFile,
   inCppFile << "\n"
                "} ;\n" ;
   mErrorLocationExpression (HERE)->generateExpression (inCppFile) ;
-  inCppFile << "._castDefaultErrorMessage (inLexique, _castBranchDescriptor, "
+  inCppFile << ".castDefaultErrorMessage (inLexique, _castBranchDescriptor, "
             << cStringWithSigned (inBranchList.count ())
             << ", & typeid (* (" << inTemporaryVarName << ".getPtr ())) COMMA_SOURCE_FILE_AT_LINE ("
             << cStringWithSigned (mLocation.lineNumber ())

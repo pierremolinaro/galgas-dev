@@ -11307,7 +11307,7 @@ mListObject (GGS_classIndexList::constructor_emptyList ()) {
 
 //---------------------------------------------------------------------------*
 
-cPtrObject * GGS_descendantClassListMap::cElement::_clone (LOCATION_ARGS) {
+cPtrObject * GGS_descendantClassListMap::cElement::cloneObject (LOCATION_ARGS) {
   cElement * result = NULL ;
   macroMyNew (result, cElement (THERE)) ;
   result->mListObject = mListObject ;

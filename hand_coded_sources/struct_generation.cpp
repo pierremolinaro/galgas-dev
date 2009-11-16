@@ -47,7 +47,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Handle 'drop' instruction\n"
              "  public : void drop (void) ;\n\n"
              "//--- Method 'isBuilt'\n"
-             "  public : virtual bool isBuilt (void) const ;\n\n"
+             "  public : bool isBuilt (void) const ;\n\n"
              "//--- Support for method call handling in GALGAS\n"
              "  public : inline const GGS_" << mStructName << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "  public : inline GGS_" << mStructName << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n\n"

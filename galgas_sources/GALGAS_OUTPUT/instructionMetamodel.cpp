@@ -13350,7 +13350,7 @@ mListObject (GGS_abstractCategoryMethodList::constructor_emptyList ()) {
 
 //---------------------------------------------------------------------------*
 
-cPtrObject * GGS_abstractCategoryMethodListMap::cElement::_clone (LOCATION_ARGS) {
+cPtrObject * GGS_abstractCategoryMethodListMap::cElement::cloneObject (LOCATION_ARGS) {
   cElement * result = NULL ;
   macroMyNew (result, cElement (THERE)) ;
   result->mListObject = mListObject ;
@@ -14078,7 +14078,7 @@ mListObject (GGS_categoryMethodList::constructor_emptyList ()) {
 
 //---------------------------------------------------------------------------*
 
-cPtrObject * GGS_categoryMethodListMap::cElement::_clone (LOCATION_ARGS) {
+cPtrObject * GGS_categoryMethodListMap::cElement::cloneObject (LOCATION_ARGS) {
   cElement * result = NULL ;
   macroMyNew (result, cElement (THERE)) ;
   result->mListObject = mListObject ;
@@ -14807,7 +14807,7 @@ mListObject (GGS_overridingCategoryMethodList::constructor_emptyList ()) {
 
 //---------------------------------------------------------------------------*
 
-cPtrObject * GGS_overridingCategoryMethodListMap::cElement::_clone (LOCATION_ARGS) {
+cPtrObject * GGS_overridingCategoryMethodListMap::cElement::cloneObject (LOCATION_ARGS) {
   cElement * result = NULL ;
   macroMyNew (result, cElement (THERE)) ;
   result->mListObject = mListObject ;
@@ -15536,7 +15536,7 @@ mListObject (GGS_abstractCategoryReaderList::constructor_emptyList ()) {
 
 //---------------------------------------------------------------------------*
 
-cPtrObject * GGS_abstractCategoryReaderListMap::cElement::_clone (LOCATION_ARGS) {
+cPtrObject * GGS_abstractCategoryReaderListMap::cElement::cloneObject (LOCATION_ARGS) {
   cElement * result = NULL ;
   macroMyNew (result, cElement (THERE)) ;
   result->mListObject = mListObject ;
@@ -16397,7 +16397,7 @@ mListObject (GGS_categoryReaderList::constructor_emptyList ()) {
 
 //---------------------------------------------------------------------------*
 
-cPtrObject * GGS_categoryReaderListMap::cElement::_clone (LOCATION_ARGS) {
+cPtrObject * GGS_categoryReaderListMap::cElement::cloneObject (LOCATION_ARGS) {
   cElement * result = NULL ;
   macroMyNew (result, cElement (THERE)) ;
   result->mListObject = mListObject ;
@@ -17260,7 +17260,7 @@ mListObject (GGS_overridingCategoryReaderList::constructor_emptyList ()) {
 
 //---------------------------------------------------------------------------*
 
-cPtrObject * GGS_overridingCategoryReaderListMap::cElement::_clone (LOCATION_ARGS) {
+cPtrObject * GGS_overridingCategoryReaderListMap::cElement::cloneObject (LOCATION_ARGS) {
   cElement * result = NULL ;
   macroMyNew (result, cElement (THERE)) ;
   result->mListObject = mListObject ;
