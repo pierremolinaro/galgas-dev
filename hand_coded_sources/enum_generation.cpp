@@ -77,7 +77,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Bit count for bdd\n"
              "  public : static inline PMUInt16 bitCount (void) { return " << cStringWithSigned (bitCount) << " ; }\n\n"
              "//--- Is built ?\n"
-             "  public : virtual bool isBuilt (void) const ;\n\n"
+             "  public : bool isBuilt (void) const ;\n\n"
              "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"

@@ -131,7 +131,7 @@ class GGS_targetFileListMap : public AC_galgas_listmap {
     public : cElement (LOCATION_ARGS) ;
  //--- Description
     public : virtual C_String performDescription (const PMSInt32 inIndentation) const ;
-    public : virtual cPtrObject * _clone (LOCATION_ARGS) ;
+    public : virtual cPtrObject * cloneObject (LOCATION_ARGS) ;
     public : virtual bool isEqual (const cPtrListMapObject * inOperand) const ;
   } ;
 
