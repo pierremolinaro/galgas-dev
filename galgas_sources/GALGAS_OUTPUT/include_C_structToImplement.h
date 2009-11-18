@@ -67,7 +67,7 @@ class cPtr_C_structToImplement : public cPtr_typeEntityToGenerate {
   public : GGS_lstring  mStructName ;
   public : GGS_typeListeAttributsSemantiques  mAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

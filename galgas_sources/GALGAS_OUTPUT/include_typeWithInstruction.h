@@ -69,7 +69,7 @@ class cPtr_typeWithInstruction : public cPtr_typeInstruction {
   public : GGS_typeInstructionList  mElseBranchInstructionList ;
   public : GGS_location  mInstructionLocation ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -39,7 +39,7 @@ class cPtr_typeInstructionSiLexical : public cPtr_typeInstructionLexicale {
   public : GGS_typeListeTestsEtInstructions  attributListeBranches ;
   public : GGS_tListeInstructionsLexicales  attributBrancheSinon ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

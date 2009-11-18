@@ -63,7 +63,7 @@ class cPtr_typeStructuredCastInstruction : public cPtr_typeInstruction {
   public : GGS_typeStructuredCastBranchList  mBranchList ;
   public : GGS_AC_elseOrDefaultForCastInstruction  mElseOrDefault ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -90,7 +90,7 @@ class cPtr_C_classToImplement : public cPtr_typeEntityToGenerate {
   public : GGS_typeListeAttributsSemantiques  mSetterAttributeModifierToImplementList ;
   public : GGS_typeListeAttributsSemantiques  mGetterAttributeReaderToImplementList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

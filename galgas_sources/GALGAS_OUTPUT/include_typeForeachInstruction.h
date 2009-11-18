@@ -78,7 +78,7 @@ class cPtr_typeForeachInstruction : public cPtr_typeInstruction {
   public : GGS_typeInstructionList  mBetweenInstructionList ;
   public : GGS_typeInstructionList  mAfterInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -1182,7 +1182,7 @@ class cPtr_actualParameter : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -1216,7 +1216,7 @@ class cPtr_outputActualParameter : public cPtr_actualParameter {
 //--- Attributes
   public : GGS_semanticExpression  mOutputActualParameterExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -1259,7 +1259,7 @@ class cPtr_outputInputActualParameter : public cPtr_actualParameter {
   public : GGS_lstring  mOutputInputActualParameterName ;
   public : GGS_lstringlist  mStructAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -1302,7 +1302,7 @@ class cPtr_inputActualParameter : public cPtr_actualParameter {
   public : GGS_lstring  mDeclarationTypeName ;
   public : GGS_lstring  mInputActualParameterName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -1341,7 +1341,7 @@ class cPtr_inputJokerActualParameter : public cPtr_actualParameter {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -39,7 +39,7 @@ class cPtr_typeConditionNonChaine : public cPtr_typeConditionLexicale {
   public : GGS_lstringlist  mStrings ;
   public : GGS_luint  mEndOfFileErrorMessageIndex ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

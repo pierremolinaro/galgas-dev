@@ -58,7 +58,7 @@ public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfi
   public : GGS_L_expression_instructionsList_list  mIFbranchesList ;
   public : GGS_typeInstructionList  mElseInstructionsList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

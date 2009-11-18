@@ -2,6 +2,11 @@ semantics testsuite_introspection :
 
 #-----------------------------------------------------------------------------
 
+class @A {}
+class @B extends @A {}
+
+#-----------------------------------------------------------------------------
+
 routine testsuite_introspection :
 message "*************************************** begin of introspection test\n" ;
 #--- List of types
@@ -28,11 +33,21 @@ message "*************************************** begin of introspection test\n" 
   message "Function 'foo' exists:" . [b1 cString] . "\n" ;
   message "Function 'functionTest' exists:" . [b2 cString] . "\n" ;
 #--- Introspection of an @uint
-  const @sint x := 2S ;
+  const @uint x := 2 ;
   @object object := [x object] ;
   log object ;
   const @uint y := (cast object if == @uint else error here) ;
   log y ;
+#--- Static and dynamic type
+  @type t := [x staticType] ;
+  log t ;
+  t := [x dynamicType] ;
+  log t ;
+  @A a := [@B new] ;
+  t := [a staticType] ;
+  log t ;
+  t := [a dynamicType] ;
+  log t ;
 end routine ;
 
 #-----------------------------------------------------------------------------

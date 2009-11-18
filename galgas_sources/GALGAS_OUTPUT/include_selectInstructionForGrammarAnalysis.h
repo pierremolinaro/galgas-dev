@@ -55,7 +55,7 @@ class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   public : GGS_branchListForGrammarAnalysis  mSelectBranchList ;
   public : GGS_uint  mAddedNonTerminalSymbolIndex ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

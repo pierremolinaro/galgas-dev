@@ -39,7 +39,7 @@ class cPtr_typeInstructionRepetitionLexicale : public cPtr_typeInstructionLexica
   public : GGS_tListeInstructionsLexicales  attributListeInstructionsDebut ;
   public : GGS_typeListeTestsEtInstructions  attributListeBranches ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

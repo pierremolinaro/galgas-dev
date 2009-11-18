@@ -56,7 +56,7 @@ class cPtr_C_defaultForCastInstruction : public cPtr_AC_elseOrDefaultForCastInst
   public : GGS_typeExpression  mErrorLocationExpression ;
   public : GGS_location  mLocation ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

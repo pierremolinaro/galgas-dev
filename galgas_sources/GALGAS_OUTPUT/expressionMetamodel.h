@@ -3605,7 +3605,7 @@ class cPtr_semanticExpression : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3672,7 +3672,7 @@ class cPtr_outExpressionList : public cPtr__AC_galgas_class {
   public : GGS_semanticExpressionList  mExpression ;
   public : GGS_location  mEndOfExpressionLocation ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3713,7 +3713,7 @@ class cPtr_variableExpression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_lstring  mVariableName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3752,7 +3752,7 @@ class cPtr_selfInExpression : public cPtr_semanticExpression {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3788,7 +3788,7 @@ class cPtr_hereExpression : public cPtr_semanticExpression {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3824,7 +3824,7 @@ class cPtr_trueExpression : public cPtr_semanticExpression {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3860,7 +3860,7 @@ class cPtr_falseExpression : public cPtr_semanticExpression {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3898,7 +3898,7 @@ class cPtr_literalCharExpression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_lchar  mCharacter ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3939,7 +3939,7 @@ class cPtr_literalStringExpression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_stringlist  mStringSequence ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3980,7 +3980,7 @@ class cPtr_literalDoubleExpression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_ldouble  mValue ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4021,7 +4021,7 @@ class cPtr_literalUIntExpression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_luint  mValue ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4062,7 +4062,7 @@ class cPtr_literalUInt64Expression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_luint64  mValue ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4103,7 +4103,7 @@ class cPtr_literalSIntExpression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_lsint  mValue ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4144,7 +4144,7 @@ class cPtr_literalSInt64Expression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_lsint64  mValue ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4189,7 +4189,7 @@ class cPtr_constructorExpression : public cPtr_semanticExpression {
   public : GGS_lstring  mConstructorName ;
   public : GGS_outExpressionList  mExpressions ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4234,7 +4234,7 @@ class cPtr_readerCallExpression : public cPtr_semanticExpression {
   public : GGS_lstring  mReaderName ;
   public : GGS_outExpressionList  mExpressions ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4277,7 +4277,7 @@ class cPtr_optionExpression : public cPtr_semanticExpression {
   public : GGS_lstring  mOptionComponentName ;
   public : GGS_lstring  mOptionEntryName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4322,7 +4322,7 @@ class cPtr_concatExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4367,7 +4367,7 @@ class cPtr_orExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4412,7 +4412,7 @@ class cPtr_xorExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4457,7 +4457,7 @@ class cPtr_andExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4502,7 +4502,7 @@ class cPtr_equalExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4547,7 +4547,7 @@ class cPtr_notEqualExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4592,7 +4592,7 @@ class cPtr_lowerOrEqualExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4637,7 +4637,7 @@ class cPtr_greaterOrEqualExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4682,7 +4682,7 @@ class cPtr_strictGreaterExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4727,7 +4727,7 @@ class cPtr_strictLowerExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4772,7 +4772,7 @@ class cPtr_rightShiftExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4817,7 +4817,7 @@ class cPtr_leftShiftExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4862,7 +4862,7 @@ class cPtr_addExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4907,7 +4907,7 @@ class cPtr_subExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4952,7 +4952,7 @@ class cPtr_multiplicationExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4997,7 +4997,7 @@ class cPtr_divisionExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5042,7 +5042,7 @@ class cPtr_moduloExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mLeftExpression ;
   public : GGS_semanticExpression  mRightExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5085,7 +5085,7 @@ class cPtr_unaryMinusExpression : public cPtr_semanticExpression {
   public : GGS_location  mOperatorLocation ;
   public : GGS_semanticExpression  mExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5128,7 +5128,7 @@ class cPtr_notExpression : public cPtr_semanticExpression {
   public : GGS_location  mOperatorLocation ;
   public : GGS_semanticExpression  mExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5171,7 +5171,7 @@ class cPtr_negateExpression : public cPtr_semanticExpression {
   public : GGS_location  mOperatorLocation ;
   public : GGS_semanticExpression  mExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5216,7 +5216,7 @@ class cPtr_ifExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mThenExpression ;
   public : GGS_semanticExpression  mElseExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5259,7 +5259,7 @@ class cPtr_functionCallExpression : public cPtr_semanticExpression {
   public : GGS_lstring  mFunctionName ;
   public : GGS_outExpressionList  mExpressions ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5300,7 +5300,7 @@ class cPtr_varInExpression : public cPtr_semanticExpression {
 //--- Attributes
   public : GGS_lstring  mVarName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5343,7 +5343,7 @@ class cPtr_descriptionInExpression : public cPtr_semanticExpression {
   public : GGS_semanticExpression  mReceiverExpression ;
   public : GGS_location  mLocation ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5390,7 +5390,7 @@ class cPtr_castInExpression : public cPtr_semanticExpression {
   public : GGS_lstring  mTypeName ;
   public : GGS_semanticExpression  mErrorLocationExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5431,7 +5431,7 @@ class cPtr_filewrapperObjectInstanciationInExpression : public cPtr_semanticExpr
 //--- Attributes
   public : GGS_lstring  mFilewrapperName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5474,7 +5474,7 @@ class cPtr_filewrapperInExpression : public cPtr_semanticExpression {
   public : GGS_lstring  mFilewrapperName ;
   public : GGS_lstring  mFilewrapperPath ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5519,7 +5519,7 @@ class cPtr_filewrapperTemplateInExpression : public cPtr_semanticExpression {
   public : GGS_lstring  mFilewrapperTemplateName ;
   public : GGS_outExpressionList  mActualOutputParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

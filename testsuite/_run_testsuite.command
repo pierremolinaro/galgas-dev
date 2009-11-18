@@ -2,7 +2,7 @@
 cd `dirname $0`/makefile_macosx &&
 LIBPM_PATH_ENV_VAR="`dirname $0`/../../libpm" && export LIBPM_PATH_ENV_VAR &&
 galgas `dirname $0`/galgas_sources/all_testsuite.ggs --Werror &&
-make --warn-undefined-variables all &&
+make --warn-undefined-variables all -j 2 &&
 cd `dirname $0` && makefile_macosx/testsuite > results.txt &&
 #cmp results.txt results_reference.txt &&
 opendiff results.txt results_reference.txt &&

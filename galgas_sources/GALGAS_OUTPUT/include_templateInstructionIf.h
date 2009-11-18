@@ -43,7 +43,7 @@ class cPtr_templateInstructionIf : public cPtr_templateInstruction {
   public : GGS_templateInstructionIfBranchList  mTemplateInstructionIfBranchList ;
   public : GGS_templateInstructionList  mElseInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

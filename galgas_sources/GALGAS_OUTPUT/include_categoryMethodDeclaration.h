@@ -46,7 +46,7 @@ class cPtr_categoryMethodDeclaration : public cPtr_semanticDeclaration {
   public : GGS_formalParameterList  mFormalParameterList ;
   public : GGS_semanticInstructionList  mRoutineInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

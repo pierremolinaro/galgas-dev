@@ -3773,7 +3773,7 @@ class cPtr_Xcode_PBXFileReference_abstract : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3811,7 +3811,7 @@ class cPtr_Xcode_productFileReference : public cPtr_Xcode_PBXFileReference_abstr
                                 COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3854,7 +3854,7 @@ class cPtr_Xcode_PBXFileReference_CompiledMachOExecutable : public cPtr_Xcode_pr
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3904,7 +3904,7 @@ class cPtr_Xcode_PBXFileReference_Application : public cPtr_Xcode_productFileRef
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3949,7 +3949,7 @@ class cPtr_Xcode_PBXFileReference_cppSourceFile : public cPtr_Xcode_PBXFileRefer
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -3994,7 +3994,7 @@ class cPtr_Xcode_PBXFileReference_hSourceFile : public cPtr_Xcode_PBXFileReferen
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4039,7 +4039,7 @@ class cPtr_Xcode_PBXFileReference_pchSourceFile : public cPtr_Xcode_PBXFileRefer
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4084,7 +4084,7 @@ class cPtr_Xcode_PBXFileReference_mSourceFile : public cPtr_Xcode_PBXFileReferen
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4129,7 +4129,7 @@ class cPtr_Xcode_PBXFileReference_mmSourceFile : public cPtr_Xcode_PBXFileRefere
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4174,7 +4174,7 @@ class cPtr_Xcode_PBXFileReference_gifFile : public cPtr_Xcode_PBXFileReference_a
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4219,7 +4219,7 @@ class cPtr_Xcode_PBXFileReference_tiffFile : public cPtr_Xcode_PBXFileReference_
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4264,7 +4264,7 @@ class cPtr_Xcode_PBXFileReference_pngFile : public cPtr_Xcode_PBXFileReference_a
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4309,7 +4309,7 @@ class cPtr_Xcode_PBXFileReference_plistFile : public cPtr_Xcode_PBXFileReference
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4354,7 +4354,7 @@ class cPtr_Xcode_PBXFileReference_frameworkFile : public cPtr_Xcode_PBXFileRefer
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4399,7 +4399,7 @@ class cPtr_Xcode_PBXFileReference_icnsFile : public cPtr_Xcode_PBXFileReference_
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4446,7 +4446,7 @@ class cPtr_Xcode_PBXFileReference_xibFile : public cPtr_Xcode_PBXFileReference_a
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4493,7 +4493,7 @@ class cPtr_Xcode_PBXFileReference_plistStringFile : public cPtr_Xcode_PBXFileRef
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4577,7 +4577,7 @@ class cPtr_Xcode_PBXBuildFile : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4657,7 +4657,7 @@ class cPtr_Xcode_PBXSourcesBuildPhase : public cPtr__AC_galgas_class {
   private : void computeOnce11630 (C_Compiler & inLexique) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4737,7 +4737,7 @@ class cPtr_Xcode_PBXResourcesBuildPhase : public cPtr__AC_galgas_class {
   private : void computeOnce12456 (C_Compiler & inLexique) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4822,7 +4822,7 @@ class cPtr_Xcode_PBXFrameworksBuildPhase : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4904,7 +4904,7 @@ class cPtr_Xcode_PBXGroup : public cPtr__AC_galgas_class {
   private : void computeOnce14646 (C_Compiler & inLexique) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4988,7 +4988,7 @@ class cPtr_Xcode_XCBuildConfiguration : public cPtr__AC_galgas_class {
   private : void computeOnce15518 (C_Compiler & inLexique) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5112,7 +5112,7 @@ class cPtr_Xcode_targetDependencyDescription : public cPtr__AC_galgas_class {
   private : void computeOnce16994 (C_Compiler & inLexique) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -41,7 +41,7 @@ class cPtr_templateInstructionString : public cPtr_templateInstruction {
 //--- Attributes
   public : GGS_string mTemplateString ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
