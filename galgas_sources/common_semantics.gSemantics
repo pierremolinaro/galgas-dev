@@ -4051,6 +4051,10 @@ routine handleReaderCall
     outReturnedType := [@typeGalgas_type new] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outHasLexiqueAndLocationArguments := false ;
+  elsif [inReaderName string] == "dynamicType" then
+    outReturnedType := [@typeGalgas_type new] ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outHasLexiqueAndLocationArguments := false ;
   else
     cast inReceiverType :
     when >= @typeGalgasDomainType t do

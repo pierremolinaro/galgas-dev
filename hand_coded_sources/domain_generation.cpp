@@ -107,6 +107,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     currentAttribute.next () ;
   }
   inHfile << "\n                               COMMA_LOCATION_ARGS) ;\n"
+             "//--- 'description' reader\n"
+             "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n\n"
              "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
@@ -391,6 +393,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "const C_galgas_type_descriptor * GGS_" << mDomainName << "::typeDescriptor (void) const {\n"
                "  return & kTypeDescriptor_GGS_" << mDomainName << " ;\n"
+               "}\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "GGS_string GGS_" << mDomainName << "::reader_description (const PMSInt32 /* inIndentation */) const {\n"
+               "  C_String s ;\n"
+               "  s << \"<@" << mDomainName << "\" ;\n"
+               "  if (! isBuilt ()) {\n"
+               "    s << \" (not built)\" ;\n"
+               "  }\n"
+               "  s << \">\" ;\n"
+               "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
 }
                 

@@ -15145,7 +15145,7 @@ class cPtr_TypeModel : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15177,7 +15177,7 @@ class cPtr_BoolModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15213,7 +15213,7 @@ class cPtr_CharModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15249,7 +15249,7 @@ class cPtr_UIntModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15285,7 +15285,7 @@ class cPtr_SIntModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15321,7 +15321,7 @@ class cPtr_UInt64Model : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15357,7 +15357,7 @@ class cPtr_SInt64Model : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15393,7 +15393,7 @@ class cPtr_DoubleModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15429,7 +15429,7 @@ class cPtr_StringModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15465,7 +15465,7 @@ class cPtr_LBoolModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15501,7 +15501,7 @@ class cPtr_LCharModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15537,7 +15537,7 @@ class cPtr_LUIntModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15573,7 +15573,7 @@ class cPtr_LSIntModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15609,7 +15609,7 @@ class cPtr_LUInt64Model : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15645,7 +15645,7 @@ class cPtr_LSInt64Model : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15681,7 +15681,7 @@ class cPtr_LDoubleModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15717,7 +15717,7 @@ class cPtr_LStringModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15753,7 +15753,7 @@ class cPtr_StringsetModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15789,7 +15789,7 @@ class cPtr_LocationModel : public cPtr_TypeModel {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15827,7 +15827,7 @@ class cPtr_ListModel : public cPtr_TypeModel {
 //--- Attributes
   public : GGS_typeListModel  mAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -15868,7 +15868,7 @@ class cPtr_MapModel : public cPtr_TypeModel {
 //--- Attributes
   public : GGS_typeListModel  mAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -16006,7 +16006,7 @@ class cPtr_EnumModel : public cPtr_TypeModel {
   public : GGS_enumConstantMap  mEnumConstantesMap ;
   public : GGS_enumMessageMap  mMessagesMap ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -16152,7 +16152,7 @@ class cPtr_ExternTypeModel : public cPtr_TypeModel {
   public : GGS_modifierMap  mModifierMap ;
   public : GGS_typeListModel  mAddAssignFormalInputArgumentList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -16230,7 +16230,7 @@ class cPtr_ClassModel : public cPtr_TypeModel {
   public : GGS_typeListModel  mAttributeList ;
   public : GGS_classMessageMap  mMessageMap ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

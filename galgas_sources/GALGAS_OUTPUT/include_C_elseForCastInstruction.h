@@ -54,7 +54,7 @@ class cPtr_C_elseForCastInstruction : public cPtr_AC_elseOrDefaultForCastInstruc
 //--- Attributes
   public : GGS_typeInstructionList  mElseInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

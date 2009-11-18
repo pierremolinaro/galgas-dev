@@ -4201,7 +4201,7 @@ class cPtr_listmapDeclaration : public cPtr_semanticDeclaration {
   public : GGS_lstring  mListmapTypeName ;
   public : GGS_lstring  mAssociatedListTypeName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4292,7 +4292,7 @@ class cPtr_mapDeclaration : public cPtr_semanticDeclaration {
   public : GGS_mapMethodList  mSearchMethodList ;
   public : GGS_mapMethodList  mRemoveMethodList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4339,7 +4339,7 @@ class cPtr_mapindexDeclaration : public cPtr_semanticDeclaration {
   public : GGS_lstring  mSearchMethodName ;
   public : GGS_lstring  mSearchMethodErrorMessage ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4576,7 +4576,7 @@ class cPtr_classDeclaration : public cPtr_semanticDeclaration {
   public : GGS_lazyAttributeList  mLazyAttributeList ;
   public : GGS_string mClassMessage ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4619,7 +4619,7 @@ class cPtr_listDeclaration : public cPtr_semanticDeclaration {
   public : GGS_lstring  mListTypeName ;
   public : GGS_attributeInCollectionList  mAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4662,7 +4662,7 @@ class cPtr_structDeclaration : public cPtr_semanticDeclaration {
   public : GGS_lstring  mStructTypeName ;
   public : GGS_attributeInCollectionList  mAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4741,7 +4741,7 @@ class cPtr_sortedListDeclaration : public cPtr_semanticDeclaration {
   public : GGS_attributeInCollectionList  mAttributeList ;
   public : GGS_sortedListSortDescriptorList  mSortDescriptorList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4847,7 +4847,7 @@ class cPtr_enumCaseMessage : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4959,7 +4959,7 @@ class cPtr_enumCaseErrorMessage : public cPtr_enumCaseMessage {
   public : GGS_lstring  mLocationParameterName ;
   public : GGS_lstring  mMessage ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5002,7 +5002,7 @@ class cPtr_enumCaseWarningMessage : public cPtr_enumCaseMessage {
   public : GGS_lstring  mLocationParameterName ;
   public : GGS_lstring  mMessage ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5199,7 +5199,7 @@ class cPtr_enumDeclaration : public cPtr_semanticDeclaration {
   public : GGS_enumMethodList  mEnumMethodList ;
   public : GGS_enumOperatorList  mEnumOperatorList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5282,7 +5282,7 @@ class cPtr_filewrapperDeclaration : public cPtr_semanticDeclaration {
   public : GGS_lstringlist  mFilewrapperExtensionList ;
   public : GGS_filewrapperTemplateList  mFilewrapperTemplateList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5328,7 +5328,7 @@ class cPtr_semanticsComponentRoot : public cPtr__AC_galgas_class {
   public : GGS_semanticDeclarationStruct mSemanticDeclarations ;
   public : GGS_location  mEndOfSourceFile ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -1932,7 +1932,7 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstruction {
   public : GGS_lstring  mLabelName ;
   public : GGS_actualParameterList  mActualParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -1976,7 +1976,7 @@ class cPtr_terminalCheckInstruction : public cPtr_syntaxInstruction {
   public : GGS_lstring  mTerminalName ;
   public : GGS_actualInputParameterList  mActualInputParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -2052,7 +2052,7 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstruction {
   public : GGS_syntaxInstructionList  mRepeatedInstructionList ;
   public : GGS_listOfSyntaxInstructionList  mRepeatBranchList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -2094,7 +2094,7 @@ class cPtr_selectInstruction : public cPtr_syntaxInstruction {
 //--- Attributes
   public : GGS_listOfSyntaxInstructionList  mSelectBranchList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -2136,7 +2136,7 @@ class cPtr_parseDoInstruction : public cPtr_syntaxInstruction {
 //--- Attributes
   public : GGS_listOfSyntaxInstructionList  mParseDoBranchList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -2182,7 +2182,7 @@ class cPtr_parseLoopInstruction : public cPtr_syntaxInstruction {
   public : GGS_semanticExpression  mWhileExpression ;
   public : GGS_syntaxInstructionList  mDoInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -2260,7 +2260,7 @@ class cPtr_parseWhenInstruction : public cPtr_syntaxInstruction {
   public : GGS_whenBranchList  mWhenBranchList ;
   public : GGS_syntaxInstructionList  mElseInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -2310,7 +2310,7 @@ class cPtr_blockInstruction : public cPtr_syntaxInstruction {
   public : GGS_syntaxInstructionList  mInstructionList ;
   public : GGS_actualParameterList  mEpilogActualParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -2358,7 +2358,7 @@ class cPtr_syntaxComponentRoot : public cPtr__AC_galgas_class {
   public : GGS_syntaxRuleList  mRuleList ;
   public : GGS_semanticDeclarationStruct mSemanticDeclarations ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

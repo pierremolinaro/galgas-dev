@@ -390,7 +390,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     messageCourant = messageCourant->nextObject () ;
   }
   generatedZone3 << "//--- Class message\n"
-                    "  public : virtual const char * _message (void) const ;\n"
+                    "  public : virtual const char * instanceMessage (void) const ;\n"
                     "  public : static const char * _static_message (void) ;\n\n" ;
 
 //--- Method for 'description' reader
@@ -695,7 +695,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppTitleComment ("Class message") ;
   inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
-               "_message (void) const {\n"
+               "instanceMessage (void) const {\n"
                "  return " ;
   inCppFile.appendCLiteralStringConstant (mClassMessage.string ()) ;
   inCppFile << " ;\n"
@@ -793,7 +793,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "      inErrorLocation.signalCastError (inLexique,\n"
                "                                       & typeid (cPtr_" << aNomClasse << "),\n"
                "                                       inUseKindOfClass,\n"
-               "                                       inPointer->_message ()\n"
+               "                                       inPointer->instanceMessage ()\n"
                "                                       COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
@@ -971,9 +971,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   if (superClassName.length () == 0) {
-    inCppFile << "C_galgasRootClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\") ;\n\n" ;
+    inCppFile << "C_galgasRootClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", & kTypeDescriptor_GGS_" << aNomClasse << ") ;\n\n" ;
   }else{
-    inCppFile << "C_galgasClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", gClassInfoFor__" << superClassName << ") ;\n\n" ;
+    inCppFile << "C_galgasClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", gClassInfoFor__" << superClassName << ", & kTypeDescriptor_GGS_" << aNomClasse << ") ;\n\n" ;
   }
 
   inCppFile.appendCppHyphenLineComment () ;

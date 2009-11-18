@@ -40,7 +40,7 @@ class cPtr_typeArgumentRoutine : public cPtr_typeArgumentRoutineExterne {
   public : GGS_lstring  attributNomRoutine ;
   public : GGS_typeListeArgumentsRoutExterne  attributListeArguments ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

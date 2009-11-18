@@ -12272,7 +12272,7 @@ class cPtr_typeCible : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -12845,7 +12845,7 @@ class cPtr_typeJoker : public cPtr_typeCible {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -12895,7 +12895,7 @@ class cPtr_typeEntiteDest : public cPtr_typeCible {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -42,7 +42,7 @@ class cPtr_typeEntiteFonctionExterne : public cPtr_AC_semanticsEntity {
   public : virtual const char * message_messageTypeEntite (void) const ;
   public : static const char * static_string_message_messageTypeEntite (void) ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

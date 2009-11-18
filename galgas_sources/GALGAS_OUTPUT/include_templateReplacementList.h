@@ -39,7 +39,7 @@ class cPtr_templateReplacementList : public cPtr__AC_galgas_class {
   public : GGS_lstring  mMatchString ;
   public : GGS_lstring  mReplacementString ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

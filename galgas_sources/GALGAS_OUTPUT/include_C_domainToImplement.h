@@ -69,7 +69,7 @@ class cPtr_C_domainToImplement : public cPtr_typeEntityToGenerate {
   public : GGS_domainAttributeMap  mAttributeMap ;
   public : GGS_domainRelationMap  mRelationMap ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

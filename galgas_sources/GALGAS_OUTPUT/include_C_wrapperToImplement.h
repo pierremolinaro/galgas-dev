@@ -73,7 +73,7 @@ class cPtr_C_wrapperToImplement : public cPtr_typeEntityToGenerate {
   public : GGS_wrapperFileSortedList  mRegularFileSortedList ;
   public : GGS_wrapperDirectorySortedList  mDirectorySortedList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

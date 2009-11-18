@@ -38,7 +38,7 @@ class cPtr_typeLexicalTagInstruction : public cPtr_typeInstructionLexicale {
 //--- Attributes
   public : GGS_lstring  mLexicalTagName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

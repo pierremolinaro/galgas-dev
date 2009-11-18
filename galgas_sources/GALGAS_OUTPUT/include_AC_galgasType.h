@@ -135,7 +135,7 @@ class cPtr_AC_galgasType : public cPtr__AC_galgas_class {
   public : virtual const char * message_messageGalgasType (void) const ;
   public : static const char * static_string_message_messageGalgasType (void) ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

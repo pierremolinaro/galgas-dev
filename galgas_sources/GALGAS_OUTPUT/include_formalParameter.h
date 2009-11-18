@@ -43,7 +43,7 @@ class cPtr_formalParameter : public cPtr__AC_galgas_class {
   public : GGS_lstring  mFormalParameterName ;
   public : GGS_bool mIsUnused ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

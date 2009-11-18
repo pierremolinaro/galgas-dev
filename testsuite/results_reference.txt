@@ -221,7 +221,10 @@ LOGGING r: <@uint:5>
   A2 B0 C2
   A2 B5 C3
 *************************************** begin of introspection test
---- Type list (40 types)
+--- Type list (43 types)
+  @B
+  @A
+  @MyDomain
   @aMap
   @myListMap
   @aList
@@ -267,4 +270,9 @@ LOGGING mValue: <@function: functionTest [?@uint ?@uint] -> @uint>
 <@function: functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
 Function 'foo' exists:false
 Function 'functionTest' exists:true
-LOGGING object: <@type: <@uint:2>>
+LOGGING object: <@object: <@uint:2>>
+LOGGING y: <@uint:2>
+LOGGING t: <@type: @uint>
+LOGGING t: <@type: @uint>
+LOGGING t: <@type: @A>
+LOGGING t: <@type: @B>

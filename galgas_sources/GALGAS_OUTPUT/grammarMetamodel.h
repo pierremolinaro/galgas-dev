@@ -357,7 +357,7 @@ class cPtr_grammarComponentRoot : public cPtr__AC_galgas_class {
   public : GGS_lstringlist  mUnusedNonterminalList ;
   public : GGS_location  mEndOfSourceText ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

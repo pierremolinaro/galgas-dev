@@ -40,7 +40,7 @@ public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const ;
 //--- Attributes
   public : GGS_uint  mSequenceNumber ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

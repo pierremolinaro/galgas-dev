@@ -3957,7 +3957,7 @@ class cPtr_ACGalgasType : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4154,7 +4154,7 @@ class cPtr_locationGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4190,7 +4190,7 @@ class cPtr_stringGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4226,7 +4226,7 @@ class cPtr_charGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4262,7 +4262,7 @@ class cPtr_boolGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4298,7 +4298,7 @@ class cPtr_uintGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4334,7 +4334,7 @@ class cPtr_sintGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4370,7 +4370,7 @@ class cPtr_uint64GalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4406,7 +4406,7 @@ class cPtr_sint64GalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4442,7 +4442,7 @@ class cPtr_doubleGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4478,7 +4478,7 @@ class cPtr_lstringGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4514,7 +4514,7 @@ class cPtr_lcharGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4550,7 +4550,7 @@ class cPtr_lboolGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4586,7 +4586,7 @@ class cPtr_luintGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4622,7 +4622,7 @@ class cPtr_lsintGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4658,7 +4658,7 @@ class cPtr_luint64GalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4694,7 +4694,7 @@ class cPtr_lsint64GalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4730,7 +4730,7 @@ class cPtr_ldoubleGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4766,7 +4766,7 @@ class cPtr_stringsetGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4802,7 +4802,7 @@ class cPtr_binarysetGalgasType : public cPtr_ACGalgasType {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4887,7 +4887,7 @@ class cPtr_classGalgasType : public cPtr_ACGalgasType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4930,7 +4930,7 @@ class cPtr_listGalgasType : public cPtr_ACGalgasType {
   public : GGS_lstring  mListTypeName ;
   public : GGS_attributeList  mAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -4978,7 +4978,7 @@ class cPtr_listmapGalgasType : public cPtr_ACGalgasType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5021,7 +5021,7 @@ class cPtr_structGalgasType : public cPtr_ACGalgasType {
   public : GGS_lstring  mStructTypeName ;
   public : GGS_attributeList  mAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5100,7 +5100,7 @@ class cPtr_sortedlistGalgasType : public cPtr_ACGalgasType {
   public : GGS_attributeList  mAttributeList ;
   public : GGS_sortDescriptorList  mSortDescriptorList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5143,7 +5143,7 @@ class cPtr_mapType : public cPtr_ACGalgasType {
   public : GGS_lstring  mMapTypeName ;
   public : GGS_attributeList  mAttributeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5193,7 +5193,7 @@ class cPtr_mapindexType : public cPtr_ACGalgasType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5267,7 +5267,7 @@ class cPtr_enumType : public cPtr_ACGalgasType {
   public : GGS_lstring  mEnumTypeName ;
   public : GGS_enumConstructorMap  mEnumConstructorMap ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -53,7 +53,7 @@ class cPtr_typeCastInExpression : public cPtr_typeExpression {
   public : GGS_lstring  mCastTypeName ;
   public : GGS_typeExpression  mErrorLocationExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

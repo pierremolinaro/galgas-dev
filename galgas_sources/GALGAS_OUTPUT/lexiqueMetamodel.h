@@ -5565,7 +5565,7 @@ class cPtr_lexicalExpression : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5596,7 +5596,7 @@ class cPtr_lexicalInstruction : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5731,7 +5731,7 @@ class cPtr_abstractLexicalRule : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5797,7 +5797,7 @@ class cPtr_lexicalImplicitRule : public cPtr_abstractLexicalRule {
 //--- Attributes
   public : GGS_lstring  mListName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -5840,7 +5840,7 @@ class cPtr_lexicalExplicitRule : public cPtr_abstractLexicalRule {
   public : GGS_lexicalExpression  mLexicalRuleExpression ;
   public : GGS_lexicalInstructionList  mInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6101,7 +6101,7 @@ class cPtr_lexicalOrExpression : public cPtr_lexicalExpression {
   public : GGS_lexicalExpression  mLeftOperand ;
   public : GGS_lexicalExpression  mRightOperand ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6142,7 +6142,7 @@ class cPtr_lexicalCharacterSetMatch : public cPtr_lexicalExpression {
 //--- Attributes
   public : GGS_lstring  mCharacterSetName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6183,7 +6183,7 @@ class cPtr_lexicalCharacterMatch : public cPtr_lexicalExpression {
 //--- Attributes
   public : GGS_lchar  mCharacter ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6226,7 +6226,7 @@ class cPtr_lexicalCharacterIntervalMatch : public cPtr_lexicalExpression {
   public : GGS_lchar  mLowerBound ;
   public : GGS_lchar  mUpperBound ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6267,7 +6267,7 @@ class cPtr_lexicalStringMatch : public cPtr_lexicalExpression {
 //--- Attributes
   public : GGS_lstring  mString ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6310,7 +6310,7 @@ class cPtr_lexicalStringNotMatch : public cPtr_lexicalExpression {
   public : GGS_lstring  mString ;
   public : GGS_lstring  mErrorMessage ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6382,7 +6382,7 @@ class cPtr_lexicalSendDefaultAction : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6418,7 +6418,7 @@ class cPtr_lexicalStructuredSendInstruction : public cPtr_lexicalInstruction {
   public : GGS_lexicalSendSearchList  mLexicalSendSearchList ;
   public : GGS_lexicalSendDefaultAction  mLexicalSendDefaultAction ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6459,7 +6459,7 @@ class cPtr_lexicalSimpleSendInstruction : public cPtr_lexicalInstruction {
 //--- Attributes
   public : GGS_lstring  mSentTerminal ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6500,7 +6500,7 @@ class cPtr_lexicalSendTerminalByDefault : public cPtr_lexicalSendDefaultAction {
 //--- Attributes
   public : GGS_lstring  mDefaultSentTerminal ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6541,7 +6541,7 @@ class cPtr_lexicalErrorByDefault : public cPtr_lexicalSendDefaultAction {
 //--- Attributes
   public : GGS_lstring  mDefaultErrorMessageName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6618,7 +6618,7 @@ class cPtr_lexicalRepeatInstruction : public cPtr_lexicalInstruction {
   public : GGS_lexicalInstructionList  mRepeatedInstructionList ;
   public : GGS_lexicalWhileBranchList  mLexicalWhileBranchList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6695,7 +6695,7 @@ class cPtr_lexicalSelectInstruction : public cPtr_lexicalInstruction {
   public : GGS_lexicalSelectBranchList  mLexicalSelectBranchList ;
   public : GGS_lexicalInstructionList  mDefaultInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6735,7 +6735,7 @@ class cPtr_abstractLexicalRoutineActualArgument : public cPtr__AC_galgas_class {
 //--- Attributes
   public : GGS_location  mActualPassingModeLocation ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6805,7 +6805,7 @@ class cPtr_lexicalRoutineInstruction : public cPtr_lexicalInstruction {
   public : GGS_lexicalRoutineCallActualArgumentList  mActualArgumentList ;
   public : GGS_lstringlist  mErrorMessageList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6847,7 +6847,7 @@ class cPtr_lexicalAttributeInputOutputArgument : public cPtr_abstractLexicalRout
 //--- Attributes
   public : GGS_lstring  mAttributeName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6885,7 +6885,7 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgument : public cPtr__AC_galgas_
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6920,7 +6920,7 @@ class cPtr_lexicalFormalInputArgument : public cPtr_abstractLexicalRoutineActual
 //--- Attributes
   public : GGS_lexicalRoutineOrFunctionFormalInputArgument  mRoutineOrFunctionFormalInputArgument ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6993,7 +6993,7 @@ class cPtr_lexicalAttributeInputArgument : public cPtr_lexicalRoutineOrFunctionF
 //--- Attributes
   public : GGS_lstring  mAttributeName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7034,7 +7034,7 @@ class cPtr_lexicalCharacterInputArgument : public cPtr_lexicalRoutineOrFunctionF
 //--- Attributes
   public : GGS_lchar  mCharacter ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7075,7 +7075,7 @@ class cPtr_lexicalUnsignedInputArgument : public cPtr_lexicalRoutineOrFunctionFo
 //--- Attributes
   public : GGS_luint  mUnsigned ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7116,7 +7116,7 @@ class cPtr_lexicalCurrentCharacterInputArgument : public cPtr_lexicalRoutineOrFu
 //--- Attributes
   public : GGS_location  mLocation ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7159,7 +7159,7 @@ class cPtr_lexicalFunctionInputArgument : public cPtr_lexicalRoutineOrFunctionFo
   public : GGS_lstring  mFunctionName ;
   public : GGS_lexicalFunctionCallActualArgumentList  mFunctionActualArgumentList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7200,7 +7200,7 @@ class cPtr_lexicalDropInstruction : public cPtr_lexicalInstruction {
 //--- Attributes
   public : GGS_lstring  mTerminalName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7241,7 +7241,7 @@ class cPtr_lexicalErrorInstruction : public cPtr_lexicalInstruction {
 //--- Attributes
   public : GGS_lstring  mErrorMessageName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7282,7 +7282,7 @@ class cPtr_lexicalWarningInstruction : public cPtr_lexicalInstruction {
 //--- Attributes
   public : GGS_lstring  mWarningMessageName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7323,7 +7323,7 @@ class cPtr_lexicalTagInstruction : public cPtr_lexicalInstruction {
 //--- Attributes
   public : GGS_lstring  mLexicalTagName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7366,7 +7366,7 @@ class cPtr_lexicalRewindInstruction : public cPtr_lexicalInstruction {
   public : GGS_lstring  mLexicalTagName ;
   public : GGS_lstring  mTerminalName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7405,7 +7405,7 @@ class cPtr_lexicalLogInstruction : public cPtr_lexicalInstruction {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7606,7 +7606,7 @@ class cPtr_lexiqueComponentRoot : public cPtr__AC_galgas_class {
   public : GGS_externRoutineList  mExternRoutineList ;
   public : GGS_externFunctionList  mExternFunctionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

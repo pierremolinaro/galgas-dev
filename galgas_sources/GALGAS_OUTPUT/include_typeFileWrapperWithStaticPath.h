@@ -51,7 +51,7 @@ class cPtr_typeFileWrapperWithStaticPath : public cPtr_typeExpression {
   public : GGS_lstring  mFileWrapperName ;
   public : GGS_uint  mFileIndex ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

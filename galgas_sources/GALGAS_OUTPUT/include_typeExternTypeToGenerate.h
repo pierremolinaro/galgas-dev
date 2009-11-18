@@ -67,7 +67,7 @@ public : virtual void generateCppClassImplementation (C_Compiler & inLexique,
   public : GGS_bool mAcceptAddAssignOperatorCall ;
   public : GGS_typeListeAttributsSemantiques  mAddAssignOperatorCallTypeList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -37,7 +37,7 @@ class cPtr_typeConditionChaine : public cPtr_typeConditionLexicale {
 //--- Attributes
   public : GGS_lstring  attributChaine ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

@@ -6310,7 +6310,7 @@ class cPtr_syntaxInstruction : public cPtr__AC_galgas_class {
 //--- Attributes
   public : GGS_location  mStartLocation ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6343,7 +6343,7 @@ class cPtr_semanticInstruction : public cPtr_syntaxInstruction {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6406,7 +6406,7 @@ class cPtr_semanticDeclaration : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6474,7 +6474,7 @@ class cPtr_externRoutineDeclaration : public cPtr_semanticDeclaration {
   public : GGS_lstring  mRoutineName ;
   public : GGS_formalParameterList  mFormalParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6515,7 +6515,7 @@ class cPtr_routinePrototypeDeclaration : public cPtr_externRoutineDeclaration {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6558,7 +6558,7 @@ class cPtr_routineDeclaration : public cPtr_routinePrototypeDeclaration {
 //--- Attributes
   public : GGS_semanticInstructionList  mRoutineInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6605,7 +6605,7 @@ class cPtr_externFunctionDeclaration : public cPtr_semanticDeclaration {
   public : GGS_lstring  mResultTypeName ;
   public : GGS_lstring  mResultVariableName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6650,7 +6650,7 @@ class cPtr_functionDeclaration : public cPtr_externFunctionDeclaration {
 //--- Attributes
   public : GGS_semanticInstructionList  mFunctionInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6694,7 +6694,7 @@ class cPtr_localVariableDeclaration : public cPtr_semanticInstruction {
   public : GGS_lstring  mTypeName ;
   public : GGS_lstring  mVariableName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6742,7 +6742,7 @@ class cPtr_localVariableDeclarationWithInitialization : public cPtr_semanticInst
   public : GGS_lstring  mConstructorName ;
   public : GGS_outExpressionList  mConstructorArguments ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6788,7 +6788,7 @@ class cPtr_localVariableDeclarationWithAssignment : public cPtr_semanticInstruct
   public : GGS_lstring  mVariableName ;
   public : GGS_semanticExpression  mSourceExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6834,7 +6834,7 @@ class cPtr_localConstantDeclarationWithSourceExpression : public cPtr_semanticIn
   public : GGS_lstring  mVariableName ;
   public : GGS_semanticExpression  mSourceExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6882,7 +6882,7 @@ class cPtr_localConstantDeclarationWithConstructorCall : public cPtr_semanticIns
   public : GGS_lstring  mConstructorName ;
   public : GGS_outExpressionList  mConstructorArguments ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6928,7 +6928,7 @@ class cPtr_assignmentInstruction : public cPtr_semanticInstruction {
   public : GGS_lstringlist  mStructAttributeList ;
   public : GGS_semanticExpression  mSourceExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -6974,7 +6974,7 @@ class cPtr_appendInstruction : public cPtr_semanticInstruction {
   public : GGS_lstringlist  mStructAttributeList ;
   public : GGS_semanticExpression  mSourceExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7016,7 +7016,7 @@ class cPtr_sendInstruction : public cPtr_semanticInstruction {
 //--- Attributes
   public : GGS_semanticExpression  mSourceExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7054,7 +7054,7 @@ class cPtr_foreachInstructionEnumeratedObjectElement : public cPtr__AC_galgas_cl
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7086,7 +7086,7 @@ class cPtr_foreachInstructionJoker : public cPtr_foreachInstructionEnumeratedObj
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7126,7 +7126,7 @@ class cPtr_foreachInstructionEnumeratedConstant : public cPtr_foreachInstruction
   public : GGS_lstring  mTypeName ;
   public : GGS_lstring  mConstantName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7252,7 +7252,7 @@ class cPtr_foreachInstruction : public cPtr_semanticInstruction {
   public : GGS_semanticInstructionList  mDoInstructionList ;
   public : GGS_semanticInstructionList  mAfterInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7330,7 +7330,7 @@ class cPtr_ifInstruction : public cPtr_semanticInstruction {
   public : GGS_ifBranchList  mBranchList ;
   public : GGS_semanticInstructionList  mElseInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7376,7 +7376,7 @@ class cPtr_methodCallInstruction : public cPtr_semanticInstruction {
   public : GGS_lstring  mMethodName ;
   public : GGS_actualParameterList  mActualParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7424,7 +7424,7 @@ class cPtr_modifierCallInstruction : public cPtr_semanticInstruction {
   public : GGS_lstring  mModifierName ;
   public : GGS_actualParameterList  mActualParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7470,7 +7470,7 @@ class cPtr_errorInstruction : public cPtr_semanticInstruction {
   public : GGS_semanticExpression  mErrorExpression ;
   public : GGS_lstringlist  mBuiltVariableList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7514,7 +7514,7 @@ class cPtr_warningInstruction : public cPtr_semanticInstruction {
   public : GGS_semanticExpression  mReceiverExpression ;
   public : GGS_semanticExpression  mWarningExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7558,7 +7558,7 @@ class cPtr_routineCallInstruction : public cPtr_semanticInstruction {
   public : GGS_lstring  mRoutineName ;
   public : GGS_actualParameterList  mActualParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7596,7 +7596,7 @@ class cPtr_matchEntry : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7662,7 +7662,7 @@ class cPtr_constantMatchEntry : public cPtr_matchEntry {
 //--- Attributes
   public : GGS_lstring  mConstantName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7707,7 +7707,7 @@ class cPtr_classMatchEntry : public cPtr_matchEntry {
   public : GGS_foreachInstructionEnumeratedObjectElementList  mElements ;
   public : GGS_bool mEndsWithEllipsis ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7787,7 +7787,7 @@ class cPtr_matchInstruction : public cPtr_semanticInstruction {
   public : GGS_matchInstructionBranchList  mMatchInstructionBranchList ;
   public : GGS_semanticInstructionList  mElseInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7865,7 +7865,7 @@ class cPtr_elseOrDefaultForCastInstruction : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7899,7 +7899,7 @@ class cPtr_elseForCastInstruction : public cPtr_elseOrDefaultForCastInstruction 
 //--- Attributes
   public : GGS_semanticInstructionList  mElseInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7940,7 +7940,7 @@ class cPtr_defaultForCastInstruction : public cPtr_elseOrDefaultForCastInstructi
 //--- Attributes
   public : GGS_semanticExpression  mErrorLocationExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -7986,7 +7986,7 @@ class cPtr_castInstruction : public cPtr_semanticInstruction {
   public : GGS_castInstructionBranchList  mCastInstructionBranchList ;
   public : GGS_elseOrDefaultForCastInstruction  mElseOrDefault ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8032,7 +8032,7 @@ class cPtr_addInstruction : public cPtr_semanticInstruction {
   public : GGS_lstringlist  mStructAttributeList ;
   public : GGS_outExpressionList  mExpressionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8078,7 +8078,7 @@ class cPtr_removeInstruction : public cPtr_semanticInstruction {
   public : GGS_lstringlist  mStructAttributeList ;
   public : GGS_semanticExpression  mExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8120,7 +8120,7 @@ class cPtr_incrementInstruction : public cPtr_semanticInstruction {
 //--- Attributes
   public : GGS_lstring  mReceiverName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8162,7 +8162,7 @@ class cPtr_decrementInstruction : public cPtr_semanticInstruction {
 //--- Attributes
   public : GGS_lstring  mReceiverName ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8210,7 +8210,7 @@ class cPtr_loopInstruction : public cPtr_semanticInstruction {
   public : GGS_semanticExpression  mLoopExpression ;
   public : GGS_semanticInstructionList  mSecondInstructions ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8252,7 +8252,7 @@ class cPtr_messageInstruction : public cPtr_semanticInstruction {
 //--- Attributes
   public : GGS_semanticExpression  mExpression ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8294,7 +8294,7 @@ class cPtr_logInstruction : public cPtr_semanticInstruction {
 //--- Attributes
   public : GGS_lstringlist  mLoggedVariableList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8344,7 +8344,7 @@ class cPtr_grammarInstruction : public cPtr_semanticInstruction {
   public : GGS_bool mSourceExpressionIsFile ;
   public : GGS_actualParameterList  mActualParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8398,7 +8398,7 @@ class cPtr_withInstruction : public cPtr_semanticInstruction {
   public : GGS_semanticInstructionList  mDoBranchInstructions ;
   public : GGS_semanticInstructionList  mElseBranchInstructions ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8476,7 +8476,7 @@ class cPtr_switchInstruction : public cPtr_semanticInstruction {
   public : GGS_semanticExpression  mSwitchExpression ;
   public : GGS_switchBranches  mBranches ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
@@ -8522,7 +8522,7 @@ class cPtr_typeMethodInstruction : public cPtr_semanticInstruction {
   public : GGS_lstring  mMethodName ;
   public : GGS_actualParameterList  mActualParameterList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

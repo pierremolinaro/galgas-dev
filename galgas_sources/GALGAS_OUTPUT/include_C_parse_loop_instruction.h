@@ -67,7 +67,7 @@ class cPtr_C_parse_loop_instruction : public cPtr_typeParserInstruction {
   public : GGS_typeExpression  mWhileExpression ;
   public : GGS_typeInstructionList  mInstructionList ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

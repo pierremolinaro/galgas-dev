@@ -65,7 +65,7 @@ public : virtual void generateCppClassImplementation (C_Compiler & inLexique,
   public : GGS_string mLexiqueClassName ;
   public : GGS_bool mHasParseLabel ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader

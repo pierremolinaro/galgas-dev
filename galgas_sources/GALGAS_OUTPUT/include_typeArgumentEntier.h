@@ -38,7 +38,7 @@ class cPtr_typeArgumentEntier : public cPtr_typeArgumentRoutineExterne {
 //--- Attributes
   public : GGS_luint  attributValeur ;
 //--- Class message
-  public : virtual const char * _message (void) const ;
+  public : virtual const char * instanceMessage (void) const ;
   public : static const char * _static_message (void) ;
 
 //--- Method for 'description' reader
