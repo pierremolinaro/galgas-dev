@@ -289,43 +289,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of function \"") + mFunctionName + "\"") ;
-  if (aListeTypeEtNomsArguments.count () == 0) {
-    inCppFile << "const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName
-              << " (\"" << mFunctionName << "\",\n"
-                 "                              (void *) function_" << mFunctionName << ",\n"
-                 "                              & kTypeDescriptor_" ;
-    mReturnedType (HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << ",\n"
-                 "                              0,\n"
-                 "                              NULL) ;\n\n" ;
-  }else{
-    inCppFile << "static const C_galgas_type_descriptor *\n"
-                 "kArgumentTypeList_" << mFunctionName << " ["
-              << cStringWithSigned (aListeTypeEtNomsArguments.count ()) << "] = {" ;
-    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
-    bool first = true ;
-    while (currentArgument.hasCurrentObject ()) {
-      if (first) {
-        first = false ;
-      }else{
-        inCppFile << ",\n                              " ;
-      }
-      inCppFile << "& kTypeDescriptor_" ;
-      currentArgument._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
-      currentArgument.next () ;
-    }
-    inCppFile << "} ;\n\n" ;
-    inCppFile << "const C_galgas_function_descriptor\n"
-                 "kFunction_descriptor_" << mFunctionName
-              << " (\"" << mFunctionName << "\",\n"
-                 "                              (void *) function_" << mFunctionName << ",\n"
-                 "                              & kTypeDescriptor_" ;
-    mReturnedType (HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << ",\n                              " << cStringWithSigned (aListeTypeEtNomsArguments.count ()) ;
-    inCppFile << ",\n                              kArgumentTypeList_" << mFunctionName << ") ;\n\n" ;
-    inCppFile.appendCppHyphenLineComment () ;
-  }
-
+//--------------------------------- Function implementation
   mReturnedType (HERE)->generateCppClassName (inCppFile) ;
   inCppFile << " function_" << mFunctionName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
@@ -370,6 +334,75 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << " ;\n" ;  
 //---
   inCppFile << "}\n\n" ;
+
+//--------------------------------- Function call for introspection
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "static GGS_object functionForGenericCall_" << mFunctionName << " (C_Compiler & inLexique,\n"
+               "                           const GGS_object * inEffectiveParameterArray,\n"
+               "                           const GGS_location & inErrorLocation\n"
+               "                           COMMA_LOCATION_ARGS) {\n" ;
+  currentArgument.rewind () ;
+  PMSInt32 idx = 0 ;
+  while (currentArgument.hasCurrentObject ()) {
+    inCppFile << "  const " ;
+    currentArgument._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " arg_" << cStringWithUnsigned (idx) << " = " ;
+    currentArgument._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << "::castFromObject (inLexique, inEffectiveParameterArray [" << cStringWithUnsigned (idx) << "], inErrorLocation COMMA_THERE) ;\n" ;
+    idx ++ ;
+    currentArgument.next () ;
+  }
+  inCppFile << "  const " ;
+  mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+  inCppFile << " result = function_" << mFunctionName << " (inLexique" ;
+  currentArgument.rewind () ;
+  idx = 0 ;
+  while (currentArgument.hasCurrentObject ()) {
+    inCppFile << ",\n                            arg_" << cStringWithUnsigned (idx) ;
+    idx ++ ;
+    currentArgument.next () ;
+  }
+  inCppFile << "\n                            COMMA_THERE) ;\n" 
+               "  return result.reader_object () ;\n"
+               "}\n\n" ;
+
+//--------------------------------- Function implementation
+  inCppFile.appendCppHyphenLineComment () ;
+  if (aListeTypeEtNomsArguments.count () == 0) {
+    inCppFile << "const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName
+              << " (\"" << mFunctionName << "\",\n"
+                 "                              (void *) functionForGenericCall_" << mFunctionName << ",\n"
+                 "                              & kTypeDescriptor_" ;
+    mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << ",\n"
+                 "                              0,\n"
+                 "                              NULL) ;\n\n" ;
+  }else{
+    inCppFile << "static const C_galgas_type_descriptor *\n"
+                 "kArgumentTypeList_" << mFunctionName << " ["
+              << cStringWithSigned (aListeTypeEtNomsArguments.count ()) << "] = {" ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+    bool first = true ;
+    while (currentArgument.hasCurrentObject ()) {
+      if (first) {
+        first = false ;
+      }else{
+        inCppFile << ",\n                              " ;
+      }
+      inCppFile << "& kTypeDescriptor_" ;
+      currentArgument._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+      currentArgument.next () ;
+    }
+    inCppFile << "} ;\n\n" ;
+    inCppFile << "const C_galgas_function_descriptor\n"
+                 "kFunction_descriptor_" << mFunctionName
+              << " (\"" << mFunctionName << "\",\n"
+                 "                              functionForGenericCall_" << mFunctionName << ",\n"
+                 "                              & kTypeDescriptor_" ;
+    mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << ",\n                              " << cStringWithSigned (aListeTypeEtNomsArguments.count ()) ;
+    inCppFile << ",\n                              kArgumentTypeList_" << mFunctionName << ") ;\n\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
