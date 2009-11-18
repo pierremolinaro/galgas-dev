@@ -2843,6 +2843,30 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    O B J E C T L I S T    T Y P E                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_objectlist_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_object new] ![@lstring new !"mValue" !here] ;
+
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_object new] ![@formalArgumentPassingMode argumentOut] ;
+
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_object new] ![@formalArgumentPassingMode argumentConstantIn] ;
+
+  outType := [@typeGalgasListType new
+    ![@lstring new !"objectlist" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    F U N C T I O N L I S T    T Y P E                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -4489,6 +4513,12 @@ routine handleReaderCall
       elsif [inReaderName string] == "formalParameterTypeList" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         build_typelist_type ?outReturnedType ;
+      elsif [inReaderName string] == "invoke" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        @AC_galgasType t ; build_objectlist_type ?t ;
+        outAccessorTypesList += !t ![@lstring new !"" !here] ;
+        outAccessorTypesList += ![@typeGalgas_location new] ![@lstring new !"" !here] ;
+        outReturnedType :=[@typeGalgas_object new] ;
       else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -5013,6 +5043,10 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   build_typelist_type ?t ;
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"typelist" !here] !e] ;
+
+  build_objectlist_type ?t ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"objectlist" !here] !e] ;
 
   build_functionlist_type ?t ;
   e := [@typeEntiteType new !t] ;

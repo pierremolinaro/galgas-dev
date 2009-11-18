@@ -338,8 +338,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--------------------------------- Function call for introspection
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "static GGS_object functionForGenericCall_" << mFunctionName << " (C_Compiler & inLexique,\n"
-               "                           const GGS_object * inEffectiveParameterArray,\n"
-               "                           const GGS_location & inErrorLocation\n"
+               "                           const GGS_objectlist & "
+            << ((aListeTypeEtNomsArguments.count () == 0) ? "/* inEffectiveParameterArray */" : "inEffectiveParameterArray")
+            << ",\n"
+               "                           const GGS_location & "
+            << ((aListeTypeEtNomsArguments.count () == 0) ? "/* inErrorLocation */" : "inErrorLocation")
+            << "\n"
                "                           COMMA_LOCATION_ARGS) {\n" ;
   currentArgument.rewind () ;
   PMSInt32 idx = 0 ;
@@ -348,7 +352,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     currentArgument._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " arg_" << cStringWithUnsigned (idx) << " = " ;
     currentArgument._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << "::castFromObject (inLexique, inEffectiveParameterArray [" << cStringWithUnsigned (idx) << "], inErrorLocation COMMA_THERE) ;\n" ;
+    inCppFile << "::castFromObject (inLexique, inEffectiveParameterArray.reader_mValueAtIndex (inLexique, GGS_uint (" << cStringWithUnsigned (idx) << ") COMMA_THERE), inErrorLocation COMMA_THERE) ;\n" ;
     idx ++ ;
     currentArgument.next () ;
   }
@@ -371,7 +375,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   if (aListeTypeEtNomsArguments.count () == 0) {
     inCppFile << "const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName
               << " (\"" << mFunctionName << "\",\n"
-                 "                              (void *) functionForGenericCall_" << mFunctionName << ",\n"
+                 "                              functionForGenericCall_" << mFunctionName << ",\n"
                  "                              & kTypeDescriptor_" ;
     mReturnedType (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << ",\n"
