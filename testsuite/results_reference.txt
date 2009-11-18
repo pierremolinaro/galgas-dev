@@ -221,7 +221,7 @@ LOGGING r: <@uint:5>
   A2 B0 C2
   A2 B5 C3
 *************************************** begin of introspection test
---- Type list (43 types)
+--- Type list (44 types)
   @B
   @A
   @MyDomain
@@ -254,6 +254,7 @@ LOGGING r: <@uint:5>
   @function
   @type
   @object
+  @objectlist
   @functionlist
   @typelist
   @lcharlist
@@ -276,3 +277,4 @@ LOGGING t: <@type: @uint>
 LOGGING t: <@type: @uint>
 LOGGING t: <@type: @A>
 LOGGING t: <@type: @B>
+LOGGING result: <@object: <@uint:8>>

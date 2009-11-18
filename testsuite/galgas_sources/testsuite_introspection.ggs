@@ -48,6 +48,13 @@ message "*************************************** begin of introspection test\n" 
   log t ;
   t := [a dynamicType] ;
   log t ;
+#--- Function invocation
+  @function f := [@function functionWithName !"functionTest"] ;
+  @objectlist arguments [emptyList] ;
+  arguments += ![2 object] ;
+  arguments += ![6 object] ;
+  const @object result := [f invoke !arguments !here] ;
+  log result ;
 end routine ;
 
 #-----------------------------------------------------------------------------

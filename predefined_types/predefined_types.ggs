@@ -47,4 +47,8 @@ list @FUNCTIONLIST {
   @function mValue ;
 }
 
+list @OBJECTLIST {
+  @object mValue ;
+}
+
 end semantics ;
