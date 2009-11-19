@@ -1383,49 +1383,43 @@ rule <factor>
       ?expressionValue
       ?expressionType
     ;
-    select
-      $description$ ;
-      outExpression := [@typeDescriptionInExpression new !expressionValue !here] ;
-      outResultType := [@typeGalgas_string new] ;
-    or
-    #--- Get reader name
-      @lstring methodName ;
-      $identifier$ ? methodName ;
-    #--- Search reader for getting formal parameters list
-      @typeListeAttributsSemantiques accessorsTypeList ;
-      @string conversionMethod ;
-      @string categoryReaderClassBaseName ;
-      @bool hasLexiqueAndLocationArguments ;
-      handleReaderCall
-        !inEntitiesMap
-        ![inSemanticContext mCategoryReaderMap]
-        !expressionType
-        !methodName
-        ?accessorsTypeList
-        ?outResultType
-        ?conversionMethod
-        ?categoryReaderClassBaseName
-        ?hasLexiqueAndLocationArguments
-      ;
-    #--- Actual parameters
-      @typeExpressionList expressionList ;
-      <output_expression_list>
-        ?expressionList 
-        !inSemanticContext
-        !accessorsTypeList
-        !inEntitiesMap
-        !inOptionsComponentsMapForUse
-        !?ioVariablesMap
-      ;
-      outExpression := [@typeReaderCallInExpression new
-        !expressionValue
-        !methodName
-        !expressionList
-        !conversionMethod
-        !categoryReaderClassBaseName
-        !hasLexiqueAndLocationArguments
-      ] ;
-    end select ;
+  #--- Get reader name
+    @lstring methodName ;
+    $identifier$ ? methodName ;
+  #--- Search reader for getting formal parameters list
+    @typeListeAttributsSemantiques accessorsTypeList ;
+    @string conversionMethod ;
+    @string categoryReaderClassBaseName ;
+    @bool hasLexiqueAndLocationArguments ;
+    handleReaderCall
+      !inEntitiesMap
+      ![inSemanticContext mCategoryReaderMap]
+      !expressionType
+      !methodName
+      ?accessorsTypeList
+      ?outResultType
+      ?conversionMethod
+      ?categoryReaderClassBaseName
+      ?hasLexiqueAndLocationArguments
+    ;
+  #--- Actual parameters
+    @typeExpressionList expressionList ;
+    <output_expression_list>
+      ?expressionList 
+      !inSemanticContext
+      !accessorsTypeList
+      !inEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?ioVariablesMap
+    ;
+    outExpression := [@typeReaderCallInExpression new
+      !expressionValue
+      !methodName
+      !expressionList
+      !conversionMethod
+      !categoryReaderClassBaseName
+      !hasLexiqueAndLocationArguments
+    ] ;
   or
     $option$ ;
     select
