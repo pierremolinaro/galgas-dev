@@ -1295,6 +1295,15 @@ class @typeFonctionAengendrer extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
+class @typeOnceFunctionToGenerate extends @typeEntityToGenerate {
+  @lstring mFunctionName feature nogetter ;
+  @AC_galgasType mReturnedType feature nogetter ;
+  @typeCplusPlusName mReturnedVar feature nogetter ;
+  @typeInstructionList mInstructionList feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @categoryMethodToImplement extends @typeEntityToGenerate {
   @categoryMethodKind mCategoryMethodKind feature nogetter ;
   @string mBaseClassName feature nogetter ;

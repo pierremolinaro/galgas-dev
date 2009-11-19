@@ -24,15 +24,6 @@
 
 //---------------------------------------------------------------------------*
 
-void
-routine_extern_build_stringlist_type (C_Compiler & inLexique,
-                                      GGS_AC_galgasType & outStringListType
-                                      COMMA_LOCATION_ARGS) {
-  routine_build_stringlist_type (inLexique, outStringListType COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------*
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark List Implementation
 #endif
