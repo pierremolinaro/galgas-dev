@@ -3909,8 +3909,221 @@ list @EXtextMacroList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  R E A D E R    M A P                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @EXreaderMap {
+  @typeListeAttributsSemantiques mAccessorTypesList ;
+  @AC_galgasType mReturnedType ;
+  @bool mHasLexiqueAndLocationArguments ;
+  insert insertKey error message "a reader named '%K' is already declared in %L" ;
+  search searchKey error message "the '%K' reader is not defined" ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine enterReaderWithoutArgument
+  ?!@EXreaderMap ioReaderMap
+  ??@string inName
+  ??@AC_galgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    ![@typeListeAttributsSemantiques emptyList]
+    !inReturnedType
+    !inHasLexiqueAndLocationArguments
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterReaderWithStringArgument
+  ?!@EXreaderMap ioReaderMap
+  ??@string inName
+  ??@AC_galgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @typeListeAttributsSemantiques argList [emptyList] ;
+  argList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inReturnedType
+    !inHasLexiqueAndLocationArguments
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterReaderWith2StringArguments
+  ?!@EXreaderMap ioReaderMap
+  ??@string inName
+  ??@AC_galgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @typeListeAttributsSemantiques argList [emptyList] ;
+  argList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+  argList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inReturnedType
+    !inHasLexiqueAndLocationArguments
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterReaderWithBoolArgument
+  ?!@EXreaderMap ioReaderMap
+  ??@string inName
+  ??@AC_galgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @typeListeAttributsSemantiques argList [emptyList] ;
+  argList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inReturnedType
+    !inHasLexiqueAndLocationArguments
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterReaderWithBoolStringlistArguments
+  ?!@EXreaderMap ioReaderMap
+  ??@string inName
+  ??@AC_galgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @typeListeAttributsSemantiques argList [emptyList] ;
+  argList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
+  argList += !build_stringlist_type [] ![@lstring new !"" !here] ;
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inReturnedType
+    !inHasLexiqueAndLocationArguments
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterReaderWithUintArgument
+  ?!@EXreaderMap ioReaderMap
+  ??@string inName
+  ??@AC_galgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @typeListeAttributsSemantiques argList [emptyList] ;
+  argList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inReturnedType
+    !inHasLexiqueAndLocationArguments
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterReaderWith2UintArguments
+  ?!@EXreaderMap ioReaderMap
+  ??@string inName
+  ??@AC_galgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @typeListeAttributsSemantiques argList [emptyList] ;
+  argList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+  argList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inReturnedType
+    !inHasLexiqueAndLocationArguments
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterReaderWithUintCharArguments
+  ?!@EXreaderMap ioReaderMap
+  ??@string inName
+  ??@AC_galgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @typeListeAttributsSemantiques argList [emptyList] ;
+  argList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+  argList += ![@typeGalgas_char new] ![@lstring new !"" !here] ;
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inReturnedType
+    !inHasLexiqueAndLocationArguments
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   H A N D L E    @ S T R I N G    R E A D E R    C A L L                  *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+once stringReaderMap -> @EXreaderMap outMap :
+  outMap := [@EXreaderMap emptyMap] ;
+  enterReaderWithoutArgument !?outMap !"description" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"object" ![@typeGalgas_object new] !false ;
+  enterReaderWithoutArgument !?outMap !"staticType" ![@typeGalgas_type new] !false ;
+  enterReaderWithoutArgument !?outMap !"dynamicType" ![@typeGalgas_type new] !false ;
+  enterReaderWithoutArgument !?outMap !"doesEnvironmentVariableExist" ![@typeGalgas_bool new] !false ;
+  enterReaderWithoutArgument !?outMap !"length" ![@typeGalgas_uint new] !false ;
+  enterReaderWithoutArgument !?outMap !"identifierRepresentation" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"HTMLRepresentation" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"utf8Representation" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"utf32Representation" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"stringByTrimmingWhiteSpaces" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"md5" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"decimalUnsignedNumber" ![@typeGalgas_uint new] !true ;
+  enterReaderWithoutArgument !?outMap !"isDecimalUnsignedNumber" ![@typeGalgas_bool new] !false ;
+  enterReaderWithoutArgument !?outMap !"capacity" ![@typeGalgas_uint new] !false ;
+  enterReaderWithoutArgument !?outMap !"fileExists" ![@typeGalgas_bool new] !false ;
+  enterReaderWithoutArgument !?outMap !"directoryExists" ![@typeGalgas_bool new] !false ;
+  enterReaderWithoutArgument !?outMap !"pathExtension" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"nativePathWithUnixPath" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"unixPathWithNativePath" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"lastPathComponent" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"stringByDeletingPathExtension" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"stringByCapitalizingFirstCharacter" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"firstCharacterOrNul" ![@typeGalgas_char new] !false ;
+  enterReaderWithoutArgument !?outMap !"stringByDeletingLastPathComponent" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"stringByStandardizingPath" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"lowercaseString" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"uppercaseString" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"reversedString" ![@typeGalgas_string new] !false ;
+  enterReaderWithoutArgument !?outMap !"system" ![@typeGalgas_sint new] !false ;
+  enterReaderWithUintArgument !?outMap !"characterAtIndex" ![@typeGalgas_char new] !true ;
+  enterReaderWithUintArgument !?outMap !"stringByRemovingCharacterAtIndex" ![@typeGalgas_string new] !true ;
+  enterReaderWithUintArgument !?outMap !"rightSubString" ![@typeGalgas_string new] !false ;
+  enterReaderWithUintArgument !?outMap !"leftSubString" ![@typeGalgas_string new] !false ;
+  enterReaderWith2UintArguments !?outMap !"subString" ![@typeGalgas_string new] !false ;
+  enterReaderWithStringArgument !?outMap !"absolutePathFromPath" ![@typeGalgas_string new] !false ;
+  enterReaderWithStringArgument !?outMap !"relativePathFromPath" ![@typeGalgas_string new] !false ;
+  enterReaderWithStringArgument !?outMap !"componentsSeparatedByString" !build_stringlist_type [] !false ;
+  enterReaderWithUintCharArguments !?outMap !"stringByLeftPadding" ![@typeGalgas_string new] !false ;
+  enterReaderWithUintCharArguments !?outMap !"stringByRightPadding" ![@typeGalgas_string new] !false ;
+  enterReaderWithUintCharArguments !?outMap !"stringByLeftAndRightPadding" ![@typeGalgas_string new] !false ;
+  enterReaderWith2StringArguments !?outMap !"stringByReplacingStringByString" ![@typeGalgas_string new] !true ;
+  enterReaderWithBoolArgument !?outMap !"regularFiles" !build_stringlist_type [] !false ;
+  enterReaderWithBoolArgument !?outMap !"hiddenFiles" !build_stringlist_type [] !false ;
+  enterReaderWithBoolArgument !?outMap !"directories" !build_stringlist_type [] !false ;
+  enterReaderWithBoolStringlistArguments !?outMap !"directoriesWithExtensions" !build_stringlist_type [] !false ;
+  enterReaderWithBoolStringlistArguments !?outMap !"regularFilesWithExtensions" !build_stringlist_type [] !false ;
+end once ;
+
 #---------------------------------------------------------------------------*
 
 routine handleStringReaderCall
@@ -3919,125 +4132,12 @@ routine handleStringReaderCall
   !@AC_galgasType outReturnedType
   !@bool outHasLexiqueAndLocationArguments
 :
-  outHasLexiqueAndLocationArguments := false ;
-  outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-  if [inReaderName string] == "doesEnvironmentVariableExist" then
-    outReturnedType := [@typeGalgas_bool new] ;
-  elsif [inReaderName string] == "length" then
-    outReturnedType := [@typeGalgas_uint new] ;
-  elsif [inReaderName string] == "identifierRepresentation" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "HTMLRepresentation" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "utf8Representation" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "utf32Representation" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "stringByTrimmingWhiteSpaces" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "md5" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "decimalUnsignedNumber" then
-    outHasLexiqueAndLocationArguments := true ;
-    outReturnedType := [@typeGalgas_uint new] ;
-  elsif [inReaderName string] == "isDecimalUnsignedNumber" then
-    outReturnedType := [@typeGalgas_bool new] ;
-  elsif [inReaderName string] == "capacity" then
-    outReturnedType := [@typeGalgas_uint new] ;
-  elsif [inReaderName string] == "fileExists" then
-    outReturnedType := [@typeGalgas_bool new] ;
-  elsif [inReaderName string] == "directoryExists" then
-    outReturnedType := [@typeGalgas_bool new] ;
-  elsif [inReaderName string] == "characterAtIndex" then
-    outHasLexiqueAndLocationArguments := true ;
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
-    outReturnedType := [@typeGalgas_char new] ;
-  elsif [inReaderName string] == "stringByRemovingCharacterAtIndex" then
-    outHasLexiqueAndLocationArguments := true ;
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "pathExtension" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "rightSubString" then
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "leftSubString" then
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "subString" then
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "nativePathWithUnixPath" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "unixPathWithNativePath" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "lastPathComponent" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "stringByDeletingPathExtension" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "stringByCapitalizingFirstCharacter" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "firstCharacterOrNul" then
-    outReturnedType := [@typeGalgas_char new] ;
-  elsif [inReaderName string] == "stringByDeletingLastPathComponent" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "stringByStandardizingPath" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "stringByLeftPadding" then
-    outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
-    outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
-  elsif [inReaderName string] == "stringByRightPadding" then
-    outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
-    outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
-  elsif [inReaderName string] == "stringByLeftAndRightPadding" then
-    outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
-    outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
-  elsif [inReaderName string] == "absolutePathFromPath" then
-    outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # @string argument
-  elsif [inReaderName string] == "relativePathFromPath" then
-    outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # @string argument
-  elsif [inReaderName string] == "stringByReplacingStringByString" then
-    outHasLexiqueAndLocationArguments := true ;
-    outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
-    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
-  elsif [inReaderName string] == "lowercaseString" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "uppercaseString" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "reversedString" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "componentsSeparatedByString" then
-    outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-    outReturnedType := build_stringlist_type [] ;
-  elsif [inReaderName string] == "regularFiles" then
-    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
-    outReturnedType := build_stringlist_type [] ;
-  elsif [inReaderName string] == "hiddenFiles" then
-    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
-    outReturnedType := build_stringlist_type [] ;
-  elsif [inReaderName string] == "directories" then
-    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
-    outReturnedType := build_stringlist_type [] ;
-  elsif [inReaderName string] == "directoriesWithExtensions" then
-    outReturnedType := build_stringlist_type [] ;
-    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
-    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
-  elsif [inReaderName string] == "regularFilesWithExtensions" then
-    outReturnedType := build_stringlist_type [] ;
-    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
-    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
-  elsif [inReaderName string] == "system" then
-    outReturnedType := [@typeGalgas_sint new] ;
-  else
-    error inReaderName : "the '" . inReaderName . "' reader is not defined" -> outReturnedType ;
-  end if ;
+  [stringReaderMap [] searchKey
+    !inReaderName
+    ?outAccessorTypesList
+    ?outReturnedType
+    ?outHasLexiqueAndLocationArguments
+  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -4060,27 +4160,30 @@ routine handleReaderCall
   outHasLexiqueAndLocationArguments := true ;
   outCppConversionMethod := "" ; # Means no conversion needed
   outCategoryReaderClassBaseName := "" ; # Means not a category reader
-  if [inReaderName string] == "description" then
-    outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    outHasLexiqueAndLocationArguments := false ;
-  elsif [inReaderName string] == "object" then
-    outReturnedType := [@typeGalgas_object new] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    outHasLexiqueAndLocationArguments := false ;
-  elsif [inReaderName string] == "staticType" then
-    outReturnedType := [@typeGalgas_type new] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    outHasLexiqueAndLocationArguments := false ;
-  elsif [inReaderName string] == "dynamicType" then
-    outReturnedType := [@typeGalgas_type new] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    outHasLexiqueAndLocationArguments := false ;
-  else
-    cast inReceiverType :
-    when >= @typeGalgasDomainType t do
+
+  cast inReceiverType :
+  when >= @typeGalgasDomainType t do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := build_stringlist_type [] ;
+    else
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := build_stringlist_type [] ; # Any Value
       @bool found := false ;
       @string s := "" ;
       foreach [t mDomainRelationMap] while not found do
@@ -4101,674 +4204,1153 @@ routine handleReaderCall
       if not found then
         error inReaderName:"this domain accepts the following readers:" . s ;
       end if ;
-    when >= @typeGalgas_filewrapper do
-      if [inReaderName string] == "allFilePathes" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := build_stringlist_type [] ;
-      elsif [inReaderName string] == "allDirectoryPathes" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := build_stringlist_type [] ;
-      elsif [inReaderName string] == "currentDirectory" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "directoryExistsAtPath" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "fileExistsAtPath" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "fileContentsAtPath" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "absolutePathForPath" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgasUndefinedMapindexType do
-      if [inReaderName string] == "isRegular" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isNull" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "key" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_lstring new] ;
-      elsif [inReaderName string] == "isSolved" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_string do
-      handleStringReaderCall !inReaderName ?outAccessorTypesList ?outReturnedType ?outHasLexiqueAndLocationArguments ;
-    when >= @typeGalgas_lstring do
-      if [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inReaderName string] == "locationString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else # Inherited @ string reader ?
-        handleStringReaderCall ! inReaderName ?outAccessorTypesList ?outReturnedType ?outHasLexiqueAndLocationArguments ;
-        outCppConversionMethod := "ggs_string" ;
-      end if ;
-    when >= @typeGalgas_location do
-      if [inReaderName string] == "locationString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "locationIndex" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "line" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "column" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_binaryset do
-      if [inReaderName string] == "isFull" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isEmpty" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "significantVariableCount" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "ITE" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "forAllOnBitIndex" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "forAllOnBitIndexAndBeyond" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "existOnBitIndex" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "existOnBitIndexAndBeyond" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "valueCount" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inReaderName string] == "compressedValueCount" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inReaderName string] == "uint64ValueList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := build_uint64list_type [] ;
-      elsif [inReaderName string] == "stringValueList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := build_stringlist_type [] ;
-      elsif [inReaderName string] == "stringValueListWithNameList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := build_stringlist_type [] ;
-        outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
-      elsif [inReaderName string] == "predicateStringValue" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "compressedStringValueList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := build_stringlist_type [] ;
-      elsif [inReaderName string] == "swap21" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "swap132" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "swap213" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "swap231" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "swap312" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "swap321" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "transitiveClosure" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "accessibleStates" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "equalTo" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "notEqualTo" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "lowerOrEqualTo" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "greaterOrEqualTo" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "greaterThan" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "lowerThan" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "binarySetByTranslatingFromIndex" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "containsValue" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint64 new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "existsOnBitRange" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_uint do
-      if [inReaderName string] == "sint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inReaderName string] == "uint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inReaderName string] == "lsbIndex" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "significantBitCount" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "sint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint64 new] ;
-      elsif [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "hexString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "isUnicodeValueAssigned" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_char do
-      if [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "utf32CharConstantRepresentation" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "uint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "isalnum" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isalpha" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "iscntrl" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isdigit" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "islower" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isupper" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isxdigit" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "uintValue" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "isUnicodeLetter" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isUnicodeMark" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isUnicodeNumber" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isUnicodeSeparator" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isUnicodeCommand" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isUnicodePunctuation" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "isUnicodeSymbol" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "unicodeName" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "unicodeToLower" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_char new] ;
-      elsif [inReaderName string] == "unicodeToUpper" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_char new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_uint64 do
-      if [inReaderName string] == "sint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint64 new] ;
-      elsif [inReaderName string] == "sint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inReaderName string] == "uint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "uintSlice" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "hexString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_sint do
-      if [inReaderName string] == "uint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "uint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inReaderName string] == "sint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint64 new] ;
-      elsif [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_sint64 do
-      if [inReaderName string] == "uint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inReaderName string] == "uint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "sint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_data do
-      if [inReaderName string] == "length" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_type do
-      if [inReaderName string] == "name" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_function do
-      if [inReaderName string] == "name" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "resultType" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_type new] ;
-      elsif [inReaderName string] == "formalParameterTypeList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := build_typelist_type [] ;
-      elsif [inReaderName string] == "invoke" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        @AC_galgasType t := build_objectlist_type [] ;
-        outAccessorTypesList += !t ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_location new] ![@lstring new !"" !here] ;
-        outReturnedType :=[@typeGalgas_object new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_double do
-      if [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_bool do
-      if [inReaderName string] == "cString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "ocString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "uint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "sint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inReaderName string] == "uint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inReaderName string] == "sint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint64 new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_lchar do
-      if [inReaderName string] == "char" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_char new] ;
-      elsif [inReaderName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inReaderName string] == "locationString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_lbool do
-      if [inReaderName string] == "bool" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_luint do
-      if [inReaderName string] == "uint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inReaderName string] == "locationString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_luint64 do
-      if [inReaderName string] == "uint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inReaderName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inReaderName string] == "locationString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_lsint do
-      if [inReaderName string] == "sint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inReaderName string] == "locationString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_lsint64 do
-      if [inReaderName string] == "sint64" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint64 new] ;
-      elsif [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inReaderName string] == "locationString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_ldouble do
-      if [inReaderName string] == "double" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_double new] ;
-      elsif [inReaderName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inReaderName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inReaderName string] == "locationString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgasListType listType do
-      if [inReaderName string] == "length" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "subListFromIndex" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "subListWithRange" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      else
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ; # Temporary
-        @typeListeAttributsSemantiques attributeList := [listType mAttributeList] ;
-        @bool found := false ;
-        foreach attributeList while not found do
-          found := ([mAttributeName string] . "AtIndex") == [inReaderName string] ;
-          if (found) then
-            outReturnedType := mAttributType ;
-          end if ;
-        end foreach ;
-        if not found then
-          error inReaderName :
-           "the '" . [inReaderName string] . "' reader is not supported by a list" ;
+    end if ;
+  when >= @typeGalgas_filewrapper do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "allFilePathes" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := build_stringlist_type [] ;
+    elsif [inReaderName string] == "allDirectoryPathes" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := build_stringlist_type [] ;
+    elsif [inReaderName string] == "currentDirectory" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "directoryExistsAtPath" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "fileExistsAtPath" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "fileContentsAtPath" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "absolutePathForPath" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgasUndefinedMapindexType do
+        if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "isRegular" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isNull" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "key" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_lstring new] ;
+    elsif [inReaderName string] == "isSolved" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_string do
+    handleStringReaderCall !inReaderName ?outAccessorTypesList ?outReturnedType ?outHasLexiqueAndLocationArguments ;
+  when >= @typeGalgas_lstring do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "location" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    elsif [inReaderName string] == "locationString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else # Inherited @ string reader ?
+      handleStringReaderCall ! inReaderName ?outAccessorTypesList ?outReturnedType ?outHasLexiqueAndLocationArguments ;
+      outCppConversionMethod := "ggs_string" ;
+    end if ;
+  when >= @typeGalgas_location do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "locationString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "locationIndex" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "line" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "column" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_binaryset do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "isFull" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isEmpty" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "significantVariableCount" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "ITE" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "forAllOnBitIndex" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "forAllOnBitIndexAndBeyond" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "existOnBitIndex" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "existOnBitIndexAndBeyond" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "valueCount" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_uint64 new] ;
+    elsif [inReaderName string] == "compressedValueCount" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint64 new] ;
+    elsif [inReaderName string] == "uint64ValueList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := build_uint64list_type [] ;
+    elsif [inReaderName string] == "stringValueList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := build_stringlist_type [] ;
+    elsif [inReaderName string] == "stringValueListWithNameList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := build_stringlist_type [] ;
+      outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
+    elsif [inReaderName string] == "predicateStringValue" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "compressedStringValueList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := build_stringlist_type [] ;
+    elsif [inReaderName string] == "swap21" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "swap132" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "swap213" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "swap231" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "swap312" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "swap321" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "transitiveClosure" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "accessibleStates" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "equalTo" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "notEqualTo" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "lowerOrEqualTo" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "greaterOrEqualTo" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "greaterThan" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "lowerThan" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "binarySetByTranslatingFromIndex" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "containsValue" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint64 new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "existsOnBitRange" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_uint do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "sint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint new] ;
+    elsif [inReaderName string] == "uint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint64 new] ;
+    elsif [inReaderName string] == "lsbIndex" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "significantBitCount" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "sint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint64 new] ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "hexString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "isUnicodeValueAssigned" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_char do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "utf32CharConstantRepresentation" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "uint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "isalnum" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isalpha" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "iscntrl" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isdigit" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "islower" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isupper" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isxdigit" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "uintValue" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "isUnicodeLetter" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isUnicodeMark" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isUnicodeNumber" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isUnicodeSeparator" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isUnicodeCommand" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isUnicodePunctuation" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "isUnicodeSymbol" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "unicodeName" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "unicodeToLower" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_char new] ;
+    elsif [inReaderName string] == "unicodeToUpper" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_char new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_uint64 do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "sint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint64 new] ;
+    elsif [inReaderName string] == "sint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint new] ;
+    elsif [inReaderName string] == "uint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "uintSlice" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "hexString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_sint do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "uint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "uint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint64 new] ;
+    elsif [inReaderName string] == "sint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint64 new] ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_sint64 do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "uint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint64 new] ;
+    elsif [inReaderName string] == "uint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "sint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint new] ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_data do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "length" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_object do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "objectStaticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "objectDynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_type do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "name" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_function do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+     elsif [inReaderName string] == "name" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "resultType" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_type new] ;
+    elsif [inReaderName string] == "formalParameterTypeList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := build_typelist_type [] ;
+    elsif [inReaderName string] == "invoke" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @AC_galgasType t := build_objectlist_type [] ;
+      outAccessorTypesList += !t ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_location new] ![@lstring new !"" !here] ;
+      outReturnedType :=[@typeGalgas_object new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_double do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_bool do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "cString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "ocString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "uint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "sint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint new] ;
+    elsif [inReaderName string] == "uint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint64 new] ;
+    elsif [inReaderName string] == "sint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint64 new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_lchar do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "char" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_char new] ;
+    elsif [inReaderName string] == "location" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    elsif [inReaderName string] == "locationString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_lbool do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "bool" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "location" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_luint do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "uint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "location" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    elsif [inReaderName string] == "locationString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_luint64 do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "uint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint64 new] ;
+    elsif [inReaderName string] == "location" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    elsif [inReaderName string] == "locationString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_lsint do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "sint" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint new] ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "location" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    elsif [inReaderName string] == "locationString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_lsint64 do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "sint64" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_sint64 new] ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "location" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    elsif [inReaderName string] == "locationString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_ldouble do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "double" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_double new] ;
+    elsif [inReaderName string] == "string" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    elsif [inReaderName string] == "location" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    elsif [inReaderName string] == "locationString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgasListType listType do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "length" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "subListFromIndex" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    elsif [inReaderName string] == "subListWithRange" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ;
+    else
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+      outReturnedType := inReceiverType ; # Temporary
+      @typeListeAttributsSemantiques attributeList := [listType mAttributeList] ;
+      @bool found := false ;
+      foreach attributeList while not found do
+        found := ([mAttributeName string] . "AtIndex") == [inReaderName string] ;
+        if (found) then
+          outReturnedType := mAttributType ;
         end if ;
-      end if ;
-    when >= @typeGalgasSortedListType do
-      if [inReaderName string] == "length" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      else
+      end foreach ;
+      if not found then
         error inReaderName :
-           "sorted list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
+         "the '" . [inReaderName string] . "' reader is not supported by a list" ;
       end if ;
-    when >= @typeGalgasMapType do
-      if [inReaderName string] == "hasKey" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "locationForKey" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inReaderName string] == "count" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "allKeys" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_stringset new] ;
-      elsif [inReaderName string] == "keyList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := build_lstringlist_type [] ;
-      elsif [inReaderName string] == "unsolvedIndexCount" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "unsolvedIndexKeyStringList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := build_stringlist_type [] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgasListmapType mapType do
-      if [inReaderName string] == "hasKey" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "allKeys" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_stringset new] ;
-      elsif [inReaderName string] == "count" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "keyList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := build_stringlist_type [] ;
-      elsif [inReaderName string] == "listForKey" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
-        outReturnedType := [mapType mListType] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when >= @typeGalgas_stringset do
-      if [inReaderName string] == "hasKey" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        @AC_galgasType keyType := [@typeGalgas_string new] ;
-        outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "count" then
-        outHasLexiqueAndLocationArguments := false ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "stringList" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := build_stringlist_type [] ;
-      else
-        error inReaderName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
+    end if ;
+  when >= @typeGalgasSortedListType do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "length" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    else
+      error inReaderName :
+         "sorted list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgasMapType do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "hasKey" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "locationForKey" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_location new] ;
+    elsif [inReaderName string] == "count" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "allKeys" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_stringset new] ;
+    elsif [inReaderName string] == "keyList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := build_lstringlist_type [] ;
+    elsif [inReaderName string] == "unsolvedIndexCount" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "unsolvedIndexKeyStringList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := build_stringlist_type [] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgasListmapType mapType do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "hasKey" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "allKeys" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_stringset new] ;
+    elsif [inReaderName string] == "count" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "keyList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := build_stringlist_type [] ;
+    elsif [inReaderName string] == "listForKey" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+      outReturnedType := [mapType mListType] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when >= @typeGalgas_stringset do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "hasKey" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @AC_galgasType keyType := [@typeGalgas_string new] ;
+      outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "count" then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inReaderName string] == "stringList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := build_stringlist_type [] ;
+    else
+      error inReaderName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
 
-    when >= @typeGalgasClassType t do
+  when >= @typeGalgasClassType t do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    else
       outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @stringlist acceptedReaderList [emptyList] ;
@@ -4836,7 +5418,25 @@ routine handleReaderCall
           error inReaderName: "this reader is not defined" ;
         end if ;
       end if ;
-    when >= @typeGalgasStructType t do
+    end if ;
+  when >= @typeGalgasStructType t do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    else
       outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @bool found := false ;
@@ -4847,17 +5447,35 @@ routine handleReaderCall
       if not found then
         error inReaderName: "this reader is not defined (you can name as reader any struct attribute)" ;
       end if ;
-    when >= @typeGalgas_enum e do
+    end if ;
+  when >= @typeGalgas_enum e do
+    if [inReaderName string] == "description" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "object" then
+      outReturnedType := [@typeGalgas_object new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "staticType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "dynamicType" then
+      outReturnedType := [@typeGalgas_type new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outHasLexiqueAndLocationArguments := false ;
+    else
       @typeEnumMessageMap kMessagesMap := [e mMessagesMap] ;
       [kMessagesMap searchKey ! inReaderName ?*] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ; #--- No argument
       outReturnedType := [@typeGalgas_string new] ;
-    else
-      error inReaderName :
-         "variables of this type do not support reader call"
-         -> outAccessorTypesList, outReturnedType ;
-    end cast ;
-  end if ;
+    end if ;
+  else
+    error inReaderName :
+       "variables of this type do not support reader call"
+       -> outAccessorTypesList, outReturnedType ;
+  end cast ;
 end routine ;
 
 #---------------------------------------------------------------------------*
