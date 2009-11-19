@@ -308,6 +308,12 @@ class @varInExpression extends @semanticExpression {
 
 #---------------------------------------------------------------------------*
 
+class @literalTypeInExpression extends @semanticExpression {
+  @lstring mVarName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @descriptionInExpression extends @semanticExpression {
   @semanticExpression mReceiverExpression ;
   @location mLocation ;

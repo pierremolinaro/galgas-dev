@@ -313,6 +313,9 @@ routine comparison_types_check
   ??@AC_galgasType inRightExpressionType
 :
   match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_function ()    :: @typeGalgas_function () :
+  when @typeGalgas_type ()        :: @typeGalgas_type () :
+  when @typeGalgas_object ()      :: @typeGalgas_object () :
   when @typeGalgas_binaryset ()   :: @typeGalgas_binaryset () :
   when @typeGalgas_stringset ()   :: @typeGalgas_stringset () :
   when @typeGalgas_bool ()        :: @typeGalgas_bool () :

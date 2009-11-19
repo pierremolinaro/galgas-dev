@@ -346,7 +346,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
             << "\n"
                "                           COMMA_LOCATION_ARGS) {\n" ;
   currentArgument.rewind () ;
-  PMSInt32 idx = 0 ;
+  PMUInt32 idx = 0 ;
   while (currentArgument.hasCurrentObject ()) {
     inCppFile << "  const " ;
     currentArgument._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
@@ -450,7 +450,8 @@ bool cPtr_typeOnceFunctionToGenerate::isCppClassNeeded (void) const {
 
 void cPtr_typeOnceFunctionToGenerate::
 enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
-                             AC_OutputStream & /* inEpilogueActions */) const {
+                             AC_OutputStream & inEpilogueActions) const {
+  inEpilogueActions << "  gCachedResultForOnceFunction_" << mFunctionName << ".drop () ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -493,9 +494,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   mReturnedVar (HERE)->generateCplusPlusName (inCppFile) ;
   inCppFile << " ;\n" ;  
 //--- Engendrer la liste d'instructions
+  inCppFile.incIndentation (+2) ;
   generateInstructionListForList (mInstructionList, inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, true) ;
+  inCppFile.incIndentation (-2) ;
 //--- Fin de la fonction
   inCppFile << "    #ifdef DEBUG_TRACE_ENABLED\n"
                "      printf (\"LEAVE function_" << mFunctionName << "\\n\") ;\n"
@@ -513,15 +516,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--------------------------------- Function call for introspection
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "static GGS_object functionForGenericCall_" << mFunctionName << " (C_Compiler & inLexique,\n"
-               "                           const GGS_objectlist & /* inEffectiveParameterArray */"
-            << ",\n"
-               "                           const GGS_location & /* inErrorLocation */"
-            << "\n"
-               "                           COMMA_LOCATION_ARGS) {\n" ;
-  inCppFile << "  const " ;
+               "                           const GGS_objectlist & /* inEffectiveParameterArray */,\n"
+               "                           const GGS_location & /* inErrorLocation */\n"
+               "                           COMMA_LOCATION_ARGS) {\n"
+               "  const " ;
   mReturnedType (HERE)->generateCppClassName (inCppFile) ;
-  inCppFile << " result = function_" << mFunctionName << " (inLexique" ;
-  inCppFile << "\n                            COMMA_THERE) ;\n" 
+  inCppFile << " result = function_" << mFunctionName << " (inLexique\n"
+               "                            COMMA_THERE) ;\n" 
                "  return result.reader_object () ;\n"
                "}\n\n" ;
 
