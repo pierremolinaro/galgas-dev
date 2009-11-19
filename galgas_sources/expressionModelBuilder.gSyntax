@@ -502,18 +502,13 @@ rule <factor> !@semanticExpression outExpression :
   #--- Get source identity characteristics
     @semanticExpression receiverExpression ;
     <expression> ? receiverExpression ;
-    select
-      $description$ ;
-      outExpression := [@descriptionInExpression new !receiverExpression !here] ;
-    or
-    #--- Get reader name
-      @lstring readerName ;
-      $identifier$ ? readerName ;
-    #--- Actual parameters
-      @outExpressionList expressionList ;
-      <output_expression_list> ? expressionList ;
-      outExpression := [@readerCallExpression new !receiverExpression !readerName !expressionList] ;
-    end select ;
+  #--- Get reader name
+    @lstring readerName ;
+    $identifier$ ? readerName ;
+  #--- Actual parameters
+    @outExpressionList expressionList ;
+    <output_expression_list> ? expressionList ;
+    outExpression := [@readerCallExpression new !receiverExpression !readerName !expressionList] ;
   or
   #--- Class name
     @lstring className ;

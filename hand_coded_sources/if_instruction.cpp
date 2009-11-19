@@ -1674,42 +1674,6 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark 'description' pseudo reader
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeDescriptionInExpression::
-generateExpression (AC_OutputStream & ioCppFile) const {
-  mExpressionValue (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".reader_description ()" ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeDescriptionInExpression::
-formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mExpressionValue (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeDescriptionInExpression::
-formalCurrentObjectArgumentIsUsedForTest (void) const {
-  return mExpressionValue (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeDescriptionInExpression::
-isLexiqueFormalArgumentUsedForTest (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 

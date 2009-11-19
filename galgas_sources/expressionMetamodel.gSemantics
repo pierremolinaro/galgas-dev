@@ -314,13 +314,6 @@ class @literalTypeInExpression extends @semanticExpression {
 
 #---------------------------------------------------------------------------*
 
-class @descriptionInExpression extends @semanticExpression {
-  @semanticExpression mReceiverExpression ;
-  @location mLocation ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @castInExpression extends @semanticExpression {
   @semanticExpression mReceiverExpression ;
   @bool mUseKindOfClass ;

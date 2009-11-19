@@ -1375,7 +1375,6 @@
 		CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeStructuredCastInstruction.h; sourceTree = "<group>"; };
 		CF4895680B66682D005A9E78 /* predefined_types.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = predefined_types.cpp; sourceTree = "<group>"; };
 		CF4895690B66682D005A9E78 /* predefined_types.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = predefined_types.h; sourceTree = "<group>"; };
-		CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDescriptionInExpression.h; sourceTree = "<group>"; };
 		CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarLL1grammar.cpp; sourceTree = "<group>"; };
 		CF4A264A10A9832B00A2A903 /* grammarLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarLL1grammar.h; sourceTree = "<group>"; };
 		CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
@@ -2300,7 +2299,6 @@
 				CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */,
 				CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */,
 				CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */,
-				CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */,
 				CFD2149B0913BE2E0011F11E /* include_AC_galgasType.h */,
 				CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */,
 				CFFC8DBF0B8A253200920BB1 /* include_typeCurrentObjectName.h */,
