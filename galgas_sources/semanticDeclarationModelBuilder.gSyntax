@@ -387,7 +387,7 @@ nonterminal <lazy_attribute_declaration> ?!@lazyAttributeList ioLazyAttributeLis
 #---------------------------------------------------------------------------*
 
 rule <lazy_attribute_declaration> ?!@lazyAttributeList ioLazyAttributeList :
-  $lazy$ ;
+  $once$ ;
   @attributeInCollectionList attributeTypeAndNameList [emptyList] ;
   repeat
     $type_name$ ?@lstring  attributeTypeName ;
@@ -399,7 +399,7 @@ rule <lazy_attribute_declaration> ?!@lazyAttributeList ioLazyAttributeList :
   @semanticInstructionList mInstructionList ;
   <semantic_instruction_list> ? mInstructionList ;
   $end$ ;
-  $lazy$ ;
+  $once$ ;
   $;$ ;
   ioLazyAttributeList +=
     !here

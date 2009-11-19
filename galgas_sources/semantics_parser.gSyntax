@@ -1376,7 +1376,6 @@ label importSemantics
   @typeCplusPlusName returnedVar := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
   [!?localVariableMap insertOutArgument !nomArgument !returnedType !returnedVar] ;
 #--- Inserer dans la map des routines utilisables, -------------------------
-  [!?ioExternActionMap insertKey !routineName !signature !false] ;
 #    or verifier la coherence de la signature
  if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
     @AC_semanticsEntity entite ;
@@ -1394,6 +1393,7 @@ label importSemantics
       !false
      ;
   else
+    [!?ioExternActionMap insertKey !routineName !signature !false] ;
     [!?tableNomRoutinesDeclarees insertKey ! routineName] ;
     @AC_semanticsEntity entite := [@typeEntiteFonction new !listeDeTypes !returnedType] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !routineName !entite] ;
@@ -1409,6 +1409,168 @@ label importSemantics
     $end$ ;
     [!?tableRoutinesAimplementer insertKey !routineName] ;
     $function$ ;
+    $;$ ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O N C E    F U N C T I O N    D E C L A R A T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  $once$ ;
+#---- Nom de la routine -------------------------------------------------------
+  @lstring routineName ;
+  $identifier$ ? routineName ;
+#---- Formal arguments -----------------------------------------
+  const @L_EXsignature listeDeTypes [emptyList] ;
+  @typeVariablesMap localVariableMap [emptyMap] ;
+#---- Function return value -----------------------------------------
+  @L_EXsignature returnedTypes [emptyList] ;
+  $->$ ;
+#--- Parse result
+  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+  @AC_galgasType returnedType ;
+  @lstring galgasTypeName ;
+  <formal_argument_type>
+    !ioComponentSemanticsEntitiesMap
+    ?returnedType
+    !tableEnAvant
+    ?galgasTypeName
+  ;
+  @lstring nomArgument ;
+  $identifier$ ? nomArgument ;
+  @typeCplusPlusName returnedVar := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+  @bool modeIn := false ;
+  [!?localVariableMap insertOutArgument !nomArgument !returnedType !returnedVar] ;
+#--- Inserer dans la map des routines utilisables, -------------------------
+#    or verifier la coherence de la signature
+ if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
+    @AC_semanticsEntity entite ;
+    [ioComponentSemanticsEntitiesMap searchKey !routineName ?entite] ;
+    @typeEntiteFonction precedenteDeclaration := (cast entite if == @typeEntiteFonction else error routineName) ;
+    verifierCompatibiliteSignatures
+      ![precedenteDeclaration aListeArgumentsFormels]
+      !listeDeTypes
+      !here
+     ;
+    checkAssignmentTypesCompatibility
+      ![precedenteDeclaration mReturnedType]
+      !returnedType
+      !here
+      !false
+     ;
+  else
+    [!?tableNomRoutinesDeclarees insertKey !routineName] ;
+    @AC_semanticsEntity entite := [@typeEntiteFonction new !listeDeTypes !returnedType] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !routineName !entite] ;
+  end if ;
+  select
+#---- Declaration anticipee de la routine (prototype) -------------------------
+    $;$ ;
+#---- Implementation de la routine --------------------------------------------
+  or
+   $:$ ;
+  #--- Instructions
+    @typeInstructionList instructionList [emptyList] ;
+    <semantic_instructions_list>
+      !tableEnAvant
+      !ioComponentSemanticsEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?localVariableMap
+      !?instructionList
+      !ioSemanticContext
+    ;
+    $end$ ;
+    $once$ ;
+    $;$ ;
+  #--- Inserer la routine dans la map des routines a implementer
+    @typeEntityToGenerate ea := [@typeOnceFunctionToGenerate new
+      !routineName
+      !returnedType
+      !returnedVar
+      !instructionList
+    ] ;
+    listeEntitesAengendrer += !ea ;
+    [!?tableRoutinesAimplementer insertKey !routineName] ;
+  end select ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext unused ioSemanticContext
+:
+  $once$ ;
+#---- Nom de la routine -------------------------------------------------------
+  @lstring routineName ;
+  $identifier$ ? routineName ;
+#---- Arguments formels de la routine -----------------------------------------
+  const @L_EXsignature listeDeTypes [emptyList] ;
+  @typeVariablesMap localVariableMap [emptyMap] ;
+  const @signatureForGrammarAnalysis signature [emptyList] ;
+#---- Function return value -----------------------------------------
+  @L_EXsignature returnedTypes [emptyList] ;
+  $->$ ;
+  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+  @AC_galgasType returnedType ;
+  @lstring galgasTypeName ;
+  <formal_argument_type>
+    !ioComponentSemanticsEntitiesMap
+    ?returnedType
+    !tableEnAvant
+    ?galgasTypeName
+  ;
+  @lstring nomArgument ;
+  $identifier$ ? nomArgument ;
+  @typeCplusPlusName returnedVar := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+  [!?localVariableMap insertOutArgument !nomArgument !returnedType !returnedVar] ;
+#--- Inserer dans la map des routines utilisables, -------------------------
+#    ou verifier la coherence de la signature
+ if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
+    @AC_semanticsEntity entite ;
+    [ioComponentSemanticsEntitiesMap searchKey ! routineName ?entite] ;
+    @typeEntiteFonction precedenteDeclaration := (cast entite if == @typeEntiteFonction else error routineName) ;
+    verifierCompatibiliteSignatures
+      ![precedenteDeclaration aListeArgumentsFormels]
+      !listeDeTypes
+      !here
+     ;
+    checkAssignmentTypesCompatibility
+      ![precedenteDeclaration mReturnedType]
+      !returnedType
+      !here
+      !false
+     ;
+  else
+    [!?ioExternActionMap insertKey !routineName !signature !false] ;
+    [!?tableNomRoutinesDeclarees insertKey ! routineName] ;
+    @AC_semanticsEntity entite := [@typeEntiteFonction new !listeDeTypes !returnedType] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !routineName !entite] ;
+  end if ;
+  select
+#---- Declaration anticipee de la routine (prototype) -------------------------
+    $;$ ;
+#---- Implementation de la routine --------------------------------------------
+  or
+   $:$ ;
+  #--- Instructions
+    <semantic_instructions_list> parse ;
+    $end$ ;
+    [!?tableRoutinesAimplementer insertKey !routineName] ;
+    $once$ ;
     $;$ ;
   end select ;
 end rule ;
@@ -1680,7 +1842,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal  <lazy_reader>
+nonterminal  <once_reader>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
@@ -1698,7 +1860,7 @@ nonterminal  <lazy_reader>
 label parse
 ;
 
-rule <lazy_reader>
+rule <once_reader>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
@@ -1721,7 +1883,7 @@ rule <lazy_reader>
     [!?methodLocalVariablesMap insertUsedConstInArgument !key !mAttributType !nomCpp] ;
   end foreach ;
 #--- Header
-  $lazy$ ;
+  $once$ ;
   @typeListeAttributsSemantiques computedAttributeTypeAndNameList [emptyList] ;
   repeat
     $type_name$ ?@lstring  attributeTypeName ;
@@ -1785,7 +1947,7 @@ rule <lazy_reader>
   ;
 #--- End
   $end$ ;
-  $lazy$ ;
+  $once$ ;
   $;$ ;
 #--- Enter in implement list
   ioLazyAttributeList +=
@@ -1939,7 +2101,7 @@ rule <class_declaration>
         !onceReaderListToImplement
      ;
     while
-      <lazy_reader>
+      <once_reader>
         !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
@@ -2171,7 +2333,7 @@ label importSemantics
         ! onceReaderListToImplement
      ;
     while
-      <lazy_reader>
+      <once_reader>
         !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques

@@ -22,9 +22,9 @@ list @XcodeObjectReferenceList {
 abstract class @Xcode_PBXFileReference_abstract {
   @string mFileName  ;
 
-  lazy @string PBXFileReferenceKey :
+  once @string PBXFileReferenceKey :
     PBXFileReferenceKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 
   abstract method buildXcodeProject ?!@string outString ;
 }
@@ -229,9 +229,9 @@ map @Xcode_PBXFileReference_map {
 class @Xcode_PBXBuildFile {
   @Xcode_PBXFileReference_abstract mSourceFile  ;
 
-  lazy @string PBXBuildFileKey :
+  once @string PBXBuildFileKey :
     PBXBuildFileKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 
   method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXBuildFileKey] . " /* " . [mSourceFile mFileName] . " */ "
@@ -256,9 +256,9 @@ class @Xcode_PBXSourcesBuildPhase {
   @string mNameForComment  ;
   @Xcode_PBXBuildFile_list mFileReferenceList  ;
 
-  lazy @string PBXSourcesBuildPhaseKey :
+  once @string PBXSourcesBuildPhaseKey :
     PBXSourcesBuildPhaseKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 }
 
 #---------------------------------------------------------------------------*
@@ -277,9 +277,9 @@ class @Xcode_PBXResourcesBuildPhase {
   @string mNameForComment  ;
   @Xcode_PBXBuildFile_list mFileReferenceList  ;
 
-  lazy @string PBXResourcesBuildPhaseKey :
+  once @string PBXResourcesBuildPhaseKey :
     PBXResourcesBuildPhaseKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 }
 
 #---------------------------------------------------------------------------*
@@ -298,9 +298,9 @@ class @Xcode_PBXFrameworksBuildPhase {
   @string mNameForComment ;
   @Xcode_PBXBuildFile_list mFileReferenceList ;
 
-  lazy @string PBXFrameworksBuildPhaseKey :
+  once @string PBXFrameworksBuildPhaseKey :
     PBXFrameworksBuildPhaseKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 
   method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFrameworksBuildPhaseKey] . " /* Frameworks */ = {\n"
@@ -334,9 +334,9 @@ class @Xcode_PBXGroup {
   @string mGroupPath  ;
   @XcodeObjectReferenceList mChildrenGroupList  ;
 
-  lazy @string PBXGroupKey :
+  once @string PBXGroupKey :
     PBXGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 }
 
 #---------------------------------------------------------------------------*
@@ -354,13 +354,13 @@ list @Xcode_PBXGroup_list {
 class @Xcode_XCBuildConfiguration {
   @stringlist mSettings  ;
 
-  lazy @string configurationKey :
+  once @string configurationKey :
     configurationKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 
-  lazy @string XCBuildConfigurationKey :
+  once @string XCBuildConfigurationKey :
     XCBuildConfigurationKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 }
 
 #---------------------------------------------------------------------------*
@@ -395,9 +395,9 @@ list @Xcode_PBXNativeTarget_list {
 class @Xcode_targetDependencyDescription {
   @string mDependencyTarget  ;
 
-  lazy @string PBXTargetDependencyKey :
+  once @string PBXTargetDependencyKey :
     PBXTargetDependencyKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
+  end once ;
 }
 
 #---------------------------------------------------------------------------*

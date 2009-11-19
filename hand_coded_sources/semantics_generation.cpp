@@ -418,6 +418,134 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeOnceFunctionToGenerate::
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         C_Compiler & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeOnceFunctionToGenerate::
+generatePredeclarations (AC_OutputStream & /* inHfile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeOnceFunctionToGenerate::
+generateHdeclarations (AC_OutputStream & inHfile) const {
+  inHfile.appendCppTitleComment (C_String ("Once function '") + mFunctionName + "'") ;
+  inHfile << "extern const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName << " ;\n\n" ;
+  inHfile.appendCppHyphenLineComment () ; 
+  mReturnedType (HERE)->generateCppClassName (inHfile) ;
+  inHfile << " function_" << mFunctionName << " (C_Compiler & COMMA_LOCATION_ARGS) ;\n\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeOnceFunctionToGenerate::isCppClassNeeded (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeOnceFunctionToGenerate::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeOnceFunctionToGenerate::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                               const C_String & /* inTargetFileName */,
+                               PMSInt32 & /* ioPrototypeIndex */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeOnceFunctionToGenerate::
+generateCppClassImplementation (C_Compiler & /* inLexique */,
+                                AC_OutputStream & inCppFile,
+                                const C_String & inTargetFileName,
+                                PMSInt32 & ioPrototypeIndex,
+                                const bool inGenerateDebug) const {
+  inCppFile.appendCppTitleComment (C_String ("Implementation of once function \"") + mFunctionName + "\"") ;
+//--------------------------------- Function implementation
+  inCppFile << "static " ;
+  mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+  inCppFile << " gCachedResultForOnceFunction_" << mFunctionName << " ;\n"
+               "static bool gCacheFlagForOnceFunction_" << mFunctionName << " = false ;\n\n" ;
+  inCppFile.appendCppHyphenLineComment () ;
+  mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+  inCppFile << " function_" << mFunctionName << " (C_Compiler &" ;
+  if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
+    inCppFile << " inLexique" ;
+  }
+  inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  if (! gCacheFlagForOnceFunction_" << mFunctionName << ") {\n"
+               "    #ifdef DEBUG_TRACE_ENABLED\n"
+               "      printf (\"ENTER function_" << mFunctionName << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
+               "    #endif\n" ;
+//--- Déclarer la variable locale utilisée comme résultat
+  inCppFile << "  " ;
+  mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+  inCppFile << " " ;
+  mReturnedVar (HERE)->generateCplusPlusName (inCppFile) ;
+  inCppFile << " ;\n" ;  
+//--- Engendrer la liste d'instructions
+  generateInstructionListForList (mInstructionList, inCppFile,
+                                  inTargetFileName, ioPrototypeIndex,
+                                  inGenerateDebug, true) ;
+//--- Fin de la fonction
+  inCppFile << "    #ifdef DEBUG_TRACE_ENABLED\n"
+               "      printf (\"LEAVE function_" << mFunctionName << "\\n\") ;\n"
+               "    #endif\n"
+               "    gCacheFlagForOnceFunction_" << mFunctionName << " = true ;\n"
+               "    gCachedResultForOnceFunction_" << mFunctionName << " = " ;
+  mReturnedVar (HERE)->generateCplusPlusName (inCppFile) ;
+  inCppFile << " ;\n"
+               "  }\n" ;
+//--- Engendrer l'instruction return
+  inCppFile << "  return gCachedResultForOnceFunction_" << mFunctionName << " ;\n" ;  
+//---
+  inCppFile << "}\n\n" ;
+
+//--------------------------------- Function call for introspection
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "static GGS_object functionForGenericCall_" << mFunctionName << " (C_Compiler & inLexique,\n"
+               "                           const GGS_objectlist & /* inEffectiveParameterArray */"
+            << ",\n"
+               "                           const GGS_location & /* inErrorLocation */"
+            << "\n"
+               "                           COMMA_LOCATION_ARGS) {\n" ;
+  inCppFile << "  const " ;
+  mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+  inCppFile << " result = function_" << mFunctionName << " (inLexique" ;
+  inCppFile << "\n                            COMMA_THERE) ;\n" 
+               "  return result.reader_object () ;\n"
+               "}\n\n" ;
+
+//--------------------------------- Function implementation
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName
+            << " (\"" << mFunctionName << "\",\n"
+               "                              functionForGenericCall_" << mFunctionName << ",\n"
+               "                              & kTypeDescriptor_" ;
+  mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+  inCppFile << ",\n"
+               "                              0,\n"
+               "                              NULL) ;\n\n" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeRoutineExterneAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
                          C_Compiler & /* inLexique */) const {
