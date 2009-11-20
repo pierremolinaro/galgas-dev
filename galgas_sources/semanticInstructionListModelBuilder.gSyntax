@@ -163,6 +163,34 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    O N C E    F U N C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $once$ ;
+  $identifier$ ? @lstring mRoutineName ;
+  $->$ ;
+  $type_name$ ?@lstring resultTypeName ;
+  $identifier$ ?@lstring resultVariableName ;
+  $:$ ;
+  @semanticInstructionList mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  $once$ ;
+  $;$ ;
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@onceFunctionDeclaration new
+    !mRoutineName
+    !resultTypeName
+    !resultVariableName
+    !mRoutineInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
 #                                                                           *
 #---------------------------------------------------------------------------*

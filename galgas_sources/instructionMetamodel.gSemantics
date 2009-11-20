@@ -105,6 +105,19 @@ class @functionDeclaration extends @externFunctionDeclaration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    O N C E    F U N C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @onceFunctionDeclaration extends @semanticDeclaration {
+  @lstring mFunctionName ;
+  @lstring mResultTypeName ;
+  @lstring mResultVariableName ;
+  @semanticInstructionList mFunctionInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
 #                                                                           *
 #---------------------------------------------------------------------------*

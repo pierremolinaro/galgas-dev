@@ -2055,7 +2055,7 @@ class @typeGalgas_function extends @AC_galgasType {
     elsif [inClassMethodName string] == "functionWithName" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"???" !here] ; # Unused second argument
-    elsif [inClassMethodName string] == "functionIsDefined" then
+    elsif [inClassMethodName string] == "isFunctionDefined" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"???" !here] ; # Unused second argument
       outReturnedType := [@typeGalgas_bool new] ;
@@ -4821,6 +4821,18 @@ routine handleReaderCall
     elsif [inReaderName string] == "name" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_string new] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "isClassType" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "hasSuperclass" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+      outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "superclass" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_type new] ;
     else
       error inReaderName : "this reader is not defined"
        -> outAccessorTypesList, outReturnedType ;
@@ -4845,12 +4857,15 @@ routine handleReaderCall
      elsif [inReaderName string] == "name" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_string new] ;
+      outHasLexiqueAndLocationArguments := false ;
     elsif [inReaderName string] == "resultType" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_type new] ;
+      outHasLexiqueAndLocationArguments := false ;
     elsif [inReaderName string] == "formalParameterTypeList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := build_typelist_type [] ;
+      outHasLexiqueAndLocationArguments := false ;
     elsif [inReaderName string] == "invoke" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @AC_galgasType t := build_objectlist_type [] ;

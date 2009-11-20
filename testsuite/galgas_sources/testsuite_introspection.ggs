@@ -28,8 +28,8 @@ message "*************************************** begin of introspection test\n" 
     log mValue ;
     message [mValue description] . "  " . [mValue name] . " [" . s . "] -> @" . [[mValue resultType] name] . "\n" ;
   end foreach ;
-  const @bool b1 := [@function functionIsDefined !"foo"] ;
-  const @bool b2 := [@function functionIsDefined !"functionTest"] ;
+  const @bool b1 := [@function isFunctionDefined !"foo"] ;
+  const @bool b2 := [@function isFunctionDefined !"functionTest"] ;
   message "Function 'foo' exists:" . [b1 cString] . "\n" ;
   message "Function 'functionTest' exists:" . [b2 cString] . "\n" ;
 #--- Introspection of an @uint
