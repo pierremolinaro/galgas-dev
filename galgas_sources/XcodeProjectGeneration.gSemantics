@@ -247,6 +247,7 @@ routine build_LIBPM_COMMAND_LINE_INTERFACE_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"C_CommandLineOption" ;
   append_cpp_h_files !?fileList !"C_BoolCommandLineOption" ;
   append_cpp_h_files !?fileList !"C_UIntCommandLineOption" ;
   append_cpp_h_files !?fileList !"C_StringCommandLineOption" ;

@@ -204,7 +204,7 @@ rule <galgas_component>
         $,$ ;
       end repeat ;
     end select ;
-    if [option.verbose_output] & (sourceFileKind != [@EXsourceFileKind externSourceFile]) then
+    if [option .verbose_output value] & (sourceFileKind != [@EXsourceFileKind externSourceFile]) then
       message "------ Compile file '" . [fileName string] . "'\n" ;
     end if ;
   #--- Compile file
@@ -259,7 +259,7 @@ rule <galgas_component>
   $end$ ;
   $project$ ;
   $;$ ;
-  if [option .verbose_output] then
+  if [option .verbose_output value] then
     message "------ Project\n" ;
   end if ;
 #--- Build galgas_sources/GALGAS_OUTPUT/file_list.mke
@@ -298,7 +298,7 @@ rule <galgas_component>
     [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
   end if ;
 #--- Handle Xcode Project
-  if not [option galgas_cli_options.doNotGenerateXcodeProject] then
+  if not [option galgas_cli_options.doNotGenerateXcodeProject value] then
   @stringlist xcode_tool_files := [targetFileListMap listForKey !"xcode_tool"] ;
   @stringlist xcode_app_files := [targetFileListMap listForKey !"xcode_app"] ;
   if ([@uint errorCount] == 0) & ([xcode_tool_files length] > 0) & ([xcode_app_files length] > 0) then
@@ -629,7 +629,7 @@ rule <galgas_component>
   @lstring fileName ;
   $literal_string$ ? fileName ;
   $;$ ;
-  if [option.verbose_output] then
+  if [option.verbose_output value] then
     message "------ Compile file '" . [fileName string] . "'\n" ;
   end if ;
   grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "DEPENDENCIES" ;

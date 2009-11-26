@@ -530,14 +530,14 @@ rule <factor> !@semanticExpression outExpression :
       $.$ ;
       @lstring optionName ;
       $identifier$ ?optionName ;
-      outExpression := [@optionExpression new ![@lstring new !"generic_galgas_cli_options" !here] !optionName] ;
+      $identifier$ ?@lstring readerName ;
+      outExpression := [@optionExpression new ![@lstring new !"generic_galgas_cli_options" !here] !optionName !readerName] ;
     or
-      @lstring optionComponentName ;
-      $identifier$ ? optionComponentName ;
+      $identifier$ ?@lstring optionComponentName ;
       $.$ ;
-      @lstring optionName ;
-      $identifier$ ?optionName ;
-      outExpression := [@optionExpression new !optionComponentName !optionName] ;
+      $identifier$ ?@lstring optionName ;
+      $identifier$ ?@lstring readerName ;
+      outExpression := [@optionExpression new !optionComponentName !optionName !readerName] ;
     end select ;
   or
     $filewrapper$ ;
