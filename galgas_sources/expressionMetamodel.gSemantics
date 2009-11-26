@@ -126,6 +126,7 @@ class @readerCallExpression extends @semanticExpression {
 class @optionExpression extends @semanticExpression {
   @lstring mOptionComponentName ;
   @lstring mOptionEntryName ;
+  @lstring mOptionReaderName ;
 }
 
 #---------------------------------------------------------------------------*

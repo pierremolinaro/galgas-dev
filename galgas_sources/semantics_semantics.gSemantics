@@ -500,23 +500,10 @@ class @typeLogicalNegate extends @typeExpression {
 
 #---------------------------------------------------------------------------*
 
-class @typeBoolOption extends @typeExpression {
+class @typeOptionAccess extends @typeExpression {
   @string mOptionComponentName ;
   @lstring mOptionName ;
-}
- 
-#---------------------------------------------------------------------------*
-
-class @typeUIntOption extends @typeExpression {
-  @string mOptionComponentName ;
-  @lstring mOptionName ;
-}
- 
-#---------------------------------------------------------------------------*
-
-class @typeStringOption extends @typeExpression {
-  @string mOptionComponentName ;
-  @lstring mOptionName ;
+  @string mAccessorName ;
 }
  
 #---------------------------------------------------------------------------*

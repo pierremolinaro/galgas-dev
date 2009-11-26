@@ -1426,34 +1426,45 @@ rule <factor>
       $.$ ;
       @lstring optionName ;
       $identifier$ ?optionName ;
-      if ([optionName string] != "verbose_output") then
-        error optionName: "this option name does not correspond to a builtin option" ;
+      $identifier$ ?@lstring readerName ;
+      if [readerName string] == "value" then
+        outResultType := [@typeGalgas_bool new] ;
+      elsif [readerName string] == "char" then
+        outResultType := [@typeGalgas_char new] ;
+      elsif [readerName string] == "string" then
+        outResultType := [@typeGalgas_char new] ;
+      else
+        error readerName:"only the 'value', 'char' and 'string' readers are defined" ->outResultType ;
       end if ;
-       outExpression := [@typeBoolOption new !"generic_galgas_cli_options" !optionName] ;
-       outResultType := [@typeGalgas_bool new] ;
+      outExpression := [@typeOptionAccess new !"galgas_cli_options" !optionName ![readerName string]] ;
     or
-      @lstring optionComponentName ;
-      $identifier$ ? optionComponentName ;
+      $identifier$ ?@lstring optionComponentName ;
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
       @M_cli_options stringOptionsMap ;
       [inOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       $.$ ;
-      @lstring optionName ;
-      $identifier$ ?optionName ;
-      if [boolOptionsMap hasKey ![optionName string]] then
-        outExpression := [@typeBoolOption new ![optionComponentName string] !optionName] ;
-        outResultType := [@typeGalgas_bool new] ;
-      elsif [uintOptionsMap hasKey ![optionName string]] then
-        outExpression := [@typeUIntOption new ![optionComponentName string] !optionName] ;
-        outResultType := [@typeGalgas_uint new] ;
-      elsif [stringOptionsMap hasKey ![optionName string]] then
-        outExpression := [@typeStringOption new ![optionComponentName string] !optionName] ;
-        outResultType := [@typeGalgas_string new] ;
+      $identifier$ ?@lstring optionName ;
+      $identifier$ ?@lstring readerName ;
+      if [readerName string] == "value" then
+        if [boolOptionsMap hasKey ![optionName string]] then
+          outResultType := [@typeGalgas_bool new] ;
+        elsif [uintOptionsMap hasKey ![optionName string]] then
+          outResultType := [@typeGalgas_uint new] ;
+        elsif [stringOptionsMap hasKey ![optionName string]] then
+          outResultType := [@typeGalgas_string new] ;
+        else
+          error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
+            -> outResultType ;
+        end if ;
+      elsif [readerName string] == "char" then
+        outResultType := [@typeGalgas_char new] ;
+      elsif [readerName string] == "string" then
+        outResultType := [@typeGalgas_char new] ;
       else
-        error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
-          -> outExpression, outResultType ;
+        error readerName:"only the 'value', 'char' and 'string' readers are defined" ->outResultType ;
       end if ;
+      outExpression := [@typeOptionAccess new ![optionComponentName string] !optionName ![readerName string]] ;
     end select ;
   end select ;
   $]$ ;

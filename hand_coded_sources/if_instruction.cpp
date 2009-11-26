@@ -1790,107 +1790,33 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const {
+void cPtr_typeOptionAccess::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "gOption_"
             << mOptionComponentName.string ().identifierRepresentation ()
             << "_"
             << mOptionName.string ().identifierRepresentation ()
-            << ".value ()" ;
+            << ".reader_"
+            << mAccessorName.string ()
+            << " ()" ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeBoolOption::
+bool cPtr_typeOptionAccess::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeBoolOption::
+bool cPtr_typeOptionAccess::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeBoolOption::
-formalCurrentObjectArgumentIsUsedForTest (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "gOption_"
-            << mOptionComponentName.string ().identifierRepresentation ()
-            << "_"
-            << mOptionName.string ().identifierRepresentation ()
-            << ".value ()" ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeUIntOption::
-formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeUIntOption::
-isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeUIntOption::
-formalCurrentObjectArgumentIsUsedForTest (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "gOption_"
-            << mOptionComponentName.string ().identifierRepresentation ()
-            << "_"
-            << mOptionName.string ().identifierRepresentation ()
-            << ".value ()" ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeStringOption::
-formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeStringOption::
-isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeStringOption::
+bool cPtr_typeOptionAccess::
 formalCurrentObjectArgumentIsUsedForTest (void) const {
   return false ;
 }
