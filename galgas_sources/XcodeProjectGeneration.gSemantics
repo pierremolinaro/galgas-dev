@@ -271,6 +271,7 @@ routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
 :
   @stringlist fileList [emptyList] ;
   fileList += !"C_builtin_CLI_Options.cpp" ;
+  fileList += !"C_CommandLineOption.cpp" ;
   fileList += !"C_BoolCommandLineOption.cpp" ;
   fileList += !"C_UIntCommandLineOption.cpp" ;
   fileList += !"C_StringCommandLineOption.cpp" ;
