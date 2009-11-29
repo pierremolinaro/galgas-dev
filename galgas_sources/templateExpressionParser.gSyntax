@@ -1432,9 +1432,11 @@ rule <factor>
       elsif [readerName string] == "char" then
         outResultType := [@typeGalgas_char new] ;
       elsif [readerName string] == "string" then
-        outResultType := [@typeGalgas_char new] ;
+        outResultType := [@typeGalgas_string new] ;
+      elsif [readerName string] == "comment" then
+        outResultType := [@typeGalgas_string new] ;
       else
-        error readerName:"only the 'value', 'char' and 'string' readers are defined" ->outResultType ;
+        error readerName:"only the 'value', 'char', 'string' and 'comment' readers are defined" ->outResultType ;
       end if ;
       outExpression := [@typeOptionAccess new !"galgas_cli_options" !optionName ![readerName string]] ;
     or
@@ -1460,9 +1462,11 @@ rule <factor>
       elsif [readerName string] == "char" then
         outResultType := [@typeGalgas_char new] ;
       elsif [readerName string] == "string" then
-        outResultType := [@typeGalgas_char new] ;
+        outResultType := [@typeGalgas_string new] ;
+      elsif [readerName string] == "comment" then
+        outResultType := [@typeGalgas_string new] ;
       else
-        error readerName:"only the 'value', 'char' and 'string' readers are defined" ->outResultType ;
+        error readerName:"only the 'value', 'char', 'string' and 'comment' readers are defined" ->outResultType ;
       end if ;
       outExpression := [@typeOptionAccess new ![optionComponentName string] !optionName ![readerName string]] ;
     end select ;
