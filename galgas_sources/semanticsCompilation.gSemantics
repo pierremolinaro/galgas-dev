@@ -297,6 +297,18 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @onceFunctionDeclaration enterType
+  ?!@semanticContext ioSemanticContext
+:
+#--- Result type
+  @typeMapIndex resultTypeIndex ;
+  [@typeMapIndex makeRegularIndex !mResultTypeName !?ioSemanticContext.mTypeMap ?resultTypeIndex] ;
+#--- Enter function in routine map
+  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName ![@signature emptyList] !resultTypeIndex] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @listmapDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
