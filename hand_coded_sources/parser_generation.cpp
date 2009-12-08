@@ -2,7 +2,9 @@
 //                                                                           *
 //  Generate parser instructions                                             *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
+//                                                                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -263,16 +265,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "_" << cStringWithSigned (aNomProduction.lineNumber ())
               << "_" << cStringWithSigned (aNomProduction.columnNumber ())
               << "_parse ("
-              << mLexiqueClassName << " & " ;
-    const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (firstLabelDef._mAllInstructionsList (HERE), false) ;
-    if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
-      inCppFile << "/* " ;
-    }
-    inCppFile << "inLexique" ;
-    if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
-      inCppFile << " */" ;
-    }
-    inCppFile << ") {\n" ;
+              << mLexiqueClassName << " & inLexique) {\n" ;
   //--- Engendrer la liste d'instructions
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
@@ -289,6 +282,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     generateInstructionListForList (firstLabelDef._mAllInstructionsList (HERE), inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, false) ;
+    inCppFile << "  GGS_lstring::constructor_retrieveAndResetTemplateString (inLexique COMMA_HERE) ;\n" ;
+
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
                    "    inLexique.exitProduction () ;\n"
