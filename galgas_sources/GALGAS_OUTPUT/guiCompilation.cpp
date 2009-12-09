@@ -2781,13 +2781,13 @@ static const cDirectoryWrapper * gWrapperAllDirectories_guiGenerationTemplates_0
 
 //--- Directory ''
 
-const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates = {
+const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates (
   "",
   0,
   gWrapperAllFiles_guiGenerationTemplates_0,
   0,
   gWrapperAllDirectories_guiGenerationTemplates_0
-} ;
+) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

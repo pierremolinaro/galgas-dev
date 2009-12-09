@@ -149,13 +149,13 @@ generateWrapperContents (AC_OutputStream & inCppFile,
                  "static const cRegularFileWrapper gWrapperFile_" ;
     inCppFile.appendUnsigned (f._mWrapperFileIndex (HERE).uintValue ()) ;
     inCppFile << "_" << inWrapperName
-              << " = {\n"
+              << " (\n"
               << "  \"" << f._mRegularFileName (HERE) << "\",\n"
               << "  \"" << f._mRegularFileName (HERE).string ().pathExtension () << "\",\n"
                  "  gWrapperFileContent_" ;
     inCppFile.appendUnsigned (f._mWrapperFileIndex (HERE).uintValue ()) ;
     inCppFile << "_" << inWrapperName << "\n"
-                 "} ;\n\n" ;
+                 ") ;\n\n" ;
     f.next () ;  
   }
 //--- Generate all File wrapper list
@@ -197,7 +197,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
                "const cDirectoryWrapper gWrapperDirectory_" ;
   inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
   inCppFile << "_" << inWrapperName
-            << " = {\n"
+            << " (\n"
                "  \"" << inWrapperDirectory << "\",\n"
             << "  " ;
   inCppFile.appendSigned (inRegularFileSortedList.count ()) ;
@@ -213,7 +213,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
             << "_" ;
   inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
   inCppFile << "\n"
-               "} ;\n\n" ;
+               ") ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
