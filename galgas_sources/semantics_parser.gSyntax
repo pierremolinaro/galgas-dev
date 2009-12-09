@@ -3936,8 +3936,8 @@ end rule ;
 
 rule <semantic_instruction>
   ??@typeTableEnAvant unused inTableEnAvant
-  ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ??@EXsemanticContext inSemanticContext

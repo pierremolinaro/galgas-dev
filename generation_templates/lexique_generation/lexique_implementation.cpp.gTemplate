@@ -129,7 +129,7 @@ appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 inTerminalIndex,
     %\nstatic const PMSInt32 ktable_size_%![tokenList_key string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%![tokenList_key string]% [ktable_size_%![tokenList_key string]%] = {\n%
       foreach tokenList_mTokenSortedList
-      do %  {kUnicodeString_%![mName identifierRepresentation]%, %![mLength string]%, %!LEXIQUE_CLASS_NAME%::%!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
+      do %  C_unicode_lexique_table_entry (kUnicodeString_%![mName identifierRepresentation]%, %![mLength string]%, %!LEXIQUE_CLASS_NAME%::%!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%)%
       between %,\n%
       end foreach
     %\n} ;\n\n%
@@ -179,8 +179,8 @@ end foreach
 //---------------------------------------------------------------------------*
 
 % foreach [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList]
-    before %static const templateDelimiterStruct kTemplateDefinitionArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%] = {\n%
-    do %  {kUnicodeString_%![mStartString identifierRepresentation]%, %![[mStartString length] string]%, %
+    before %static const cTemplateDelimiter kTemplateDefinitionArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%] = {\n%
+    do %  cTemplateDelimiter (kUnicodeString_%![mStartString identifierRepresentation]%, %![[mStartString length] string]%, %
       if [mEndString length] == 0 then
         %NULL, 0,%
       else
@@ -188,7 +188,7 @@ end foreach
       end if
       % NULL, %
       ![not mPreservesStartDelimiter cString]
-      %}%
+      %)%
     between %,\n%
     after %\n} ;\n%
   end foreach
@@ -200,16 +200,16 @@ end foreach
 //---------------------------------------------------------------------------*
 
 % foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList]
-    before %static const templateDelimiterStruct kTemplateReplacementArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string]%] = {\n%
+    before %static const cTemplateDelimiter kTemplateReplacementArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string]%] = {\n%
     do
-      %  {kUnicodeString_%![mMatchString identifierRepresentation]%, %![[mMatchString length] string]%, %
+      %  cTemplateDelimiter (kUnicodeString_%![mMatchString identifierRepresentation]%, %![[mMatchString length] string]%, %
       %kUnicodeString_%![mReplacementString identifierRepresentation]%, %![[mReplacementString length] string]%, %
       if [mReplacementFunction length] == 0 then
         %NULL%
       else
         %scanner_routine_%![mReplacementFunction string]
       end if
-      %, true}%
+      %, true)%
     between %,\n%
     after %\n} ;\n%
   end foreach

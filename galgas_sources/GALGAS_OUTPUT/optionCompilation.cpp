@@ -75,13 +75,13 @@ static const cDirectoryWrapper * gWrapperAllDirectories_optionGenerationTemplate
 
 //--- Directory ''
 
-const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates = {
+const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates (
   "",
   0,
   gWrapperAllFiles_optionGenerationTemplates_0,
   0,
   gWrapperAllDirectories_optionGenerationTemplates_0
-} ;
+) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
