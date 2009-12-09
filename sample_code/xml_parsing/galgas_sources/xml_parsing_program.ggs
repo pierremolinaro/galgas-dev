@@ -8,7 +8,7 @@ import grammar xml_parsing_grammar in "xml_parsing_grammar.gGrammar" ;
 
 #--- Prologue routine
 before {
-  if [option xml_parsing_options.dumpUnicode] then
+  if [option xml_parsing_options.dumpUnicode value] then
     listUnicodeCharacterProperties ;
   end if ;
 }

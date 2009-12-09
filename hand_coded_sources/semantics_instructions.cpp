@@ -578,54 +578,6 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "inLexique.printMessage (C_String (\"LOGGING "
-              << mGalgasVariableName << ": \") + " ;
-    mLoggedVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile  << ".reader_description ().string () + \"\\n\""
-                 " COMMA_SOURCE_FILE_AT_LINE ("
-              << cStringWithSigned (mGalgasVariableName.lineNumber ())
-              << ")) ;\n" ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeLogInstruction::
-isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeLogInstruction::
-formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                      const bool /* inGenerateSemanticInstructions */) const {
-  return mLoggedVariable.isSameObjectAs (inArgumentCppName) ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeLogInstruction::
-formalCurrentObjectArgumentIsUsed (void) const {
-  return mLoggedVariable (HERE)->isCurrentObject () ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeExpressionLogInstruction::
-generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inTargetFileName */,
-                     PMSInt32 & /* ioPrototypeIndex */,
-                     const bool /* inGenerateDebug */,
-                     const bool inGenerateSemanticInstructions) const {
-  if (inGenerateSemanticInstructions) {
-    ioCppFile << "inLexique.printMessage (C_String (\"LOGGING "
               << mLogMessage << ": \") + " ;
     mLogExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile  << ".reader_description ().string () + \"\\n\""
@@ -637,14 +589,14 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeExpressionLogInstruction::
+bool cPtr_typeLogInstruction::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeExpressionLogInstruction::
+bool cPtr_typeLogInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   return mLogExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -652,7 +604,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeExpressionLogInstruction::
+bool cPtr_typeLogInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   return mLogExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }

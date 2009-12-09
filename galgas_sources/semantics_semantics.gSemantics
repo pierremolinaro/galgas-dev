@@ -1205,13 +1205,6 @@ class @typeRoutineCallInstruction extends @typeInstruction {
 #---------------------------------------------------------------------------*
 
 class @typeLogInstruction extends @typeInstruction {
-  @lstring mGalgasVariableName ;
-  @typeCplusPlusName mLoggedVariable ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeExpressionLogInstruction extends @typeInstruction {
   @lstring mLogMessage ;
   @typeExpression mLogExpression ;
 }

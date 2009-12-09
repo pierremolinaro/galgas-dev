@@ -3948,7 +3948,10 @@ rule <semantic_instruction>
       $identifier$ ? @lstring galgasVariableName ;
       @typeCplusPlusName nomCppVar ;
       [!?ioVariablesMap searchForReadOnlyAccess !galgasVariableName ?* ?nomCppVar] ;
-      ioInstructionList += ![@typeLogInstruction new !galgasVariableName !nomCppVar] ;
+      ioInstructionList += ![@typeLogInstruction new
+        !galgasVariableName
+        ![@typeVarInExpression new !nomCppVar ![@lstringlist emptyList]]
+      ] ;
     or
       $literal_string$ ? @lstring logMessage ;
       $:$ ;
@@ -3961,7 +3964,7 @@ rule <semantic_instruction>
         ?logExpression
         ?*
       ;
-      ioInstructionList += ![@typeExpressionLogInstruction new
+      ioInstructionList += ![@typeLogInstruction new
         !logMessage
         !logExpression
       ] ;
