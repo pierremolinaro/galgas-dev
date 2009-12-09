@@ -5,6 +5,7 @@ LIBPM_PATH_ENV_VAR="$DIR/../../libpm" && export LIBPM_PATH_ENV_VAR &&
 #----------------- class_sample_language
 galgas -v --Werror ${DIR}/class_sample_language/galgas_sources/all_class_sample_language.ggs &&
 cd ${DIR}/class_sample_language/makefile_macosx && make --warn-undefined-variables all &&
+time ${DIR}/class_sample_language/makefile_macosx/class_sample_language ${DIR}/class_sample_language/samples/100000-classes.class_sample_language &&
 #----------------- dangling_else_solution
 galgas -v --Werror ${DIR}/dangling_else_solution/galgas_sources/all_dangling_else_solution.ggs &&
 cd ${DIR}/dangling_else_solution/makefile_macosx && make --warn-undefined-variables all &&
@@ -20,4 +21,7 @@ cd ${DIR}/LR1_grammar/makefile_macosx && make --warn-undefined-variables all &&
 #----------------- XML Parsing
 galgas -v --Werror ${DIR}/xml_parsing/galgas_sources/all_xml_parsing.ggs &&
 cd ${DIR}/xml_parsing/makefile_macosx && make --warn-undefined-variables all &&
+${DIR}/xml_parsing/makefile_macosx/xml_parsing --help &&
+${DIR}/xml_parsing/makefile_macosx/xml_parsing ${DIR}/xml_parsing/example.xml_file &&
+${DIR}/xml_parsing/makefile_macosx/xml_parsing ${DIR}/xml_parsing/utf8test.xml_file &&
 echo "------------ SUCCESS ----------------------------"

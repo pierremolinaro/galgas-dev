@@ -1853,7 +1853,6 @@
 		CFED68B910ADFD9F0062BA28 /* GGS_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGS_function.h; sourceTree = "<group>"; };
 		CFED68DE10AE04810062BA28 /* include_typeGalgas_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_function.h; sourceTree = "<group>"; };
 		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
-		CFEDCBC810CFDC5900700F95 /* include_typeExpressionLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeExpressionLogInstruction.h; sourceTree = "<group>"; };
 		CFEDF3610C2D161F0038713A /* galgasPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasPPC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEDF4BD0C2D16610038713A /* galgasDebugPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebugPPC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEDF5060C2D16840038713A /* cocoaGalgasPPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgasPPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2245,7 +2244,6 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
-				CFEDCBC810CFDC5900700F95 /* include_typeExpressionLogInstruction.h */,
 				CF82F0FF10BED70D00F40B32 /* include_typeOptionAccess.h */,
 				CF82F0FC10BED6AE00F40B32 /* include_typeDescriptionInExpression.h */,
 				CFD24CF010B54750007DE7CA /* include_typeOnceFunctionToGenerate.h */,
