@@ -382,8 +382,8 @@ generateInstructions (AC_OutputStream & inCppFile,
     }else{
       inCppFile << ",\n" ;
     }
-    inCppFile << "  {& typeid (cPtr_" << p._mCastClassName (HERE) << "), "
-              << (p._mCheckForKindOfClass (HERE).boolValue () ? "true" : "false") << "}" ;
+    inCppFile << "  castBranchDescriptorType (& typeid (cPtr_" << p._mCastClassName (HERE) << "), "
+              << (p._mCheckForKindOfClass (HERE).boolValue () ? "true" : "false") << ")" ;
     p.next () ;
   }
   inCppFile << "\n"
