@@ -1210,6 +1210,13 @@ class @typeLogInstruction extends @typeInstruction {
 }
 
 #---------------------------------------------------------------------------*
+
+class @typeExpressionLogInstruction extends @typeInstruction {
+  @lstring mLogMessage ;
+  @typeExpression mLogExpression ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #                    'drop ...' instruction                                 *
 #                                                                           *
