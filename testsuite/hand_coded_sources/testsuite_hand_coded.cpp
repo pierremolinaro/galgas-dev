@@ -10,25 +10,25 @@ routine_test_dictionary (void) {
   GGS_stringset dictionary (GGS_stringset::constructor_emptySet ()) ;
 //--- First insertion
   for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
-    C_String s ; s << i ;
+    C_String s ; s << cStringWithSigned (i) ;
     dictionary.addAssign_operation (GGS_string (true, s)) ;
   }
   printf ("Insertion Test Done\n") ;
 //--- First remove
   for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
-    C_String s ; s << i ;
+    C_String s ; s << cStringWithSigned (i) ;
     dictionary.minusAssign_operation (GGS_string (true, s)) ;
   }
   printf ("Delete Test Done\n") ;
 //--- Second insertion
   for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
-    C_String s ; s << i ;
+    C_String s ; s << cStringWithSigned (i) ;
     dictionary.addAssign_operation (GGS_string (true, s)) ;
   }
   printf ("Insertion Test Done\n") ;
 //--- Second Remove
   for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
-    C_String s ; s << i ;
+    C_String s ; s << cStringWithSigned (i) ;
     dictionary.minusAssign_operation (GGS_string (true, s)) ;
   }
   printf ("Delete Test Done\n") ;

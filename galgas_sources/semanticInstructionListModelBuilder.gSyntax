@@ -1074,18 +1074,25 @@ end rule ;
 rule <semantic_instruction> !@semanticInstruction outInstruction :
   $log$ ;
   const @location instructionLocation := here ;
-  @lstringlist mLoggedVariableList [emptyList] ;
+  @logList logList [emptyList] ;
   repeat
-    @lstring loggedVariableName ;
-    $identifier$ ? loggedVariableName ;
-    mLoggedVariableList += !loggedVariableName ;
+    select
+      $identifier$ ? @lstring loggedVariableName ;
+      logList += !loggedVariableName ![@varInExpression new !loggedVariableName] ;
+    or
+      $literal_string$ ? @lstring logMessage ;
+      $:$ ;
+      @semanticExpression logExpression ;
+      <expression> ?logExpression ;
+      logList += !logMessage !logExpression ;
+    end select ;
   while
     $,$ ;
   end repeat ;
   $;$ ;
   outInstruction := [@logInstruction new
     !instructionLocation
-    !mLoggedVariableList
+    !logList
   ] ;
 end rule ;
 

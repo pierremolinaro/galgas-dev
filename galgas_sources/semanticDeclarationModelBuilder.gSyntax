@@ -38,8 +38,6 @@ nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList
 
 nonterminal <semantic_instruction_list> !@semanticInstructionList outInstructionsList ;
 
-nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
-
 nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
 
 nonterminal <semantic_declaration>

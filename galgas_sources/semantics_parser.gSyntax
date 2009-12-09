@@ -3930,6 +3930,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 #                                                                           *
 #                    Instruction log variableName, ... ;                    *
+#                    Instruction log "message" : expression ;               *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -3939,16 +3940,32 @@ rule <semantic_instruction>
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@EXsemanticContext unused inSemanticContext
+  ??@EXsemanticContext inSemanticContext
 :
   $log$ ;
   repeat
-    @lstring galgasVariableName ;
-    $identifier$ ? galgasVariableName ;
-    @typeCplusPlusName nomCppVar ;
-    [!?ioVariablesMap searchForReadOnlyAccess !galgasVariableName ?* ?nomCppVar] ;
-    @typeInstruction instruction := [@typeLogInstruction new !galgasVariableName !nomCppVar] ;
-    ioInstructionList += !instruction ;
+    select
+      $identifier$ ? @lstring galgasVariableName ;
+      @typeCplusPlusName nomCppVar ;
+      [!?ioVariablesMap searchForReadOnlyAccess !galgasVariableName ?* ?nomCppVar] ;
+      ioInstructionList += ![@typeLogInstruction new !galgasVariableName !nomCppVar] ;
+    or
+      $literal_string$ ? @lstring logMessage ;
+      $:$ ;
+      @typeExpression logExpression ;
+      <expression>
+        !ioComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !inSemanticContext
+        !?ioVariablesMap
+        ?logExpression
+        ?*
+      ;
+      ioInstructionList += ![@typeExpressionLogInstruction new
+        !logMessage
+        !logExpression
+      ] ;
+    end select ;
   while
     $,$ ;
   end repeat ;

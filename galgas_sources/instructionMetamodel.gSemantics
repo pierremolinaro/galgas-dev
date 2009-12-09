@@ -481,8 +481,15 @@ class @messageInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+list @logList {
+  @lstring mLogMessage ;
+  @semanticExpression mLogExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @logInstruction extends @semanticInstruction {
-  @lstringlist mLoggedVariableList ;
+  @logList mLogList ;
 }
 
 #---------------------------------------------------------------------------*
