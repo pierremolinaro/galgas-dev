@@ -373,6 +373,328 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    I N S T R U C T I O N    S E M A N T I C S    A N A L Y S I S          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @semanticInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationWithInitialization semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationWithAssignment semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+
+#---------------------------------------------------------------------------*
+
+override method @localConstantDeclarationWithSourceExpression semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localConstantDeclarationWithConstructorCall semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @assignmentInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @appendInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sendInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @foreachInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @ifInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @methodCallInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @modifierCallInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @errorInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @warningInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @routineCallInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @matchInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @castInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @addInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @removeInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @incrementInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @decrementInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @loopInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @messageInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @logInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @withInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @switchInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @typeMethodInstruction semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C L A R A T I O N    S E M A N T I C S    A N A L Y S I S          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @semanticDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+;
+
+#---------------------------------------------------------------------------*
+
+override method @mapDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapindexDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+  message "@filewrapperDeclaration.semanticAnalysis [in semanticCompilation.gSemantics]\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @structDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @classDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externRoutineDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @routineDeclaration semanticAnalysis
+  ??@semanticContext inSemanticContext
+:
+  foreach mRoutineInstructionList do
+    [mInstruction semanticAnalysis !inSemanticContext] ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externFunctionDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @functionDeclaration semanticAnalysis
+  ??@semanticContext inSemanticContext
+:
+  foreach mFunctionInstructionList do
+    [mInstruction semanticAnalysis !inSemanticContext] ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @onceFunctionDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listmapDeclaration semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    C O M P I L E    S E M A N T I C S   C O M P O N E N T                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -444,8 +766,8 @@ routine compileSemanticsComponent
     ?semanticsComponentRoot
   ;
 #--- Check component name
-  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  @lstring componentName := [semanticsComponentRoot mSemanticsComponentName] ;
+  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  const @lstring componentName := [semanticsComponentRoot mSemanticsComponentName] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
@@ -466,7 +788,9 @@ routine compileSemanticsComponent
   @semanticContext semanticContext ;
   buildSemanticContext !semanticDeclarationList ![semanticsComponentRoot mEndOfSourceFile] ?semanticContext ;
 #--- Perform semantic analysis
-
+  foreach semanticDeclarationList do
+    [mSemanticDeclaration semanticAnalysis !semanticContext] ;
+  end foreach ;
 #--- Perform Code Generation
 
 end routine ;
