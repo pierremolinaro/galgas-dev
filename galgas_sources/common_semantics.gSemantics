@@ -4077,8 +4077,7 @@ once stringReaderMap -> @EXreaderMap outMap :
   outMap := [@EXreaderMap emptyMap] ;
   enterReaderWithoutArgument !?outMap !"description" ![@typeGalgas_string new] !false ;
   enterReaderWithoutArgument !?outMap !"object" ![@typeGalgas_object new] !false ;
-  enterReaderWithoutArgument !?outMap !"staticType" ![@typeGalgas_type new] !false ;
-  enterReaderWithoutArgument !?outMap !"dynamicType" ![@typeGalgas_type new] !false ;
+  enterReaderWithoutArgument !?outMap !"type" ![@typeGalgas_type new] !false ;
   enterReaderWithoutArgument !?outMap !"doesEnvironmentVariableExist" ![@typeGalgas_bool new] !false ;
   enterReaderWithoutArgument !?outMap !"length" ![@typeGalgas_uint new] !false ;
   enterReaderWithoutArgument !?outMap !"identifierRepresentation" ![@typeGalgas_string new] !false ;
@@ -4171,16 +4170,10 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outReturnedType := build_stringlist_type [] ;
     else
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := build_stringlist_type [] ; # Any Value
@@ -4214,11 +4207,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4260,11 +4249,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4295,11 +4280,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4325,11 +4306,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4358,11 +4335,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4520,11 +4493,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4565,11 +4534,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4649,11 +4614,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4690,11 +4651,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4723,11 +4680,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4756,11 +4709,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4781,19 +4730,11 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "objectStaticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "objectDynamicType" then
+    elsif [inReaderName string] == "objectType" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4810,11 +4751,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4846,11 +4783,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4885,11 +4818,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4909,11 +4838,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4948,11 +4873,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4978,11 +4899,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5005,11 +4922,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5035,11 +4948,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5065,11 +4974,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5098,11 +5003,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5131,11 +5032,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5164,11 +5061,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5211,11 +5104,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5236,11 +5125,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5282,11 +5167,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5322,11 +5203,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5357,11 +5234,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5443,11 +5316,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -5472,11 +5341,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_object new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "staticType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
+    elsif [inReaderName string] == "type" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;

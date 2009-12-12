@@ -70,6 +70,7 @@ routine getGALGAS_source_file_list
   out_cpp_and_h_fileList += !"scanner_actions" ;
   out_cpp_and_h_fileList += !"C_galgas_io" ;
   out_cpp_and_h_fileList += !"galgas_introspection" ;
+  out_cpp_and_h_fileList += !"C_galgas_class_inspector" ;
   out_cpp_and_h_fileList += !"predefined_types" ;
   out_cpp_and_h_fileList += !"GGS_binaryset" ;
   out_cpp_and_h_fileList += !"GGS_stringset" ;
