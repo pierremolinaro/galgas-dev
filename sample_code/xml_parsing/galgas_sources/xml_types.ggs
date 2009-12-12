@@ -22,7 +22,7 @@ list @xmlNodeList ;
 #------------------------------------------------------------*
 
 class @xmlNode {
-  @xmlNodeType type;
+  @xmlNodeType mType;
   @lstring name ;
   @xmlAttributeMap attributeMap ;
   @xmlNodeList nodeList ;
@@ -43,7 +43,7 @@ routine internal_logXMLNodes
 :
   foreach inNodeList do
     ioString .= inIndentationString ;
-    switch [node type]
+    switch [node mType]
     when element :
       ioString.= "ELEMENT '" . [node name] . "' " ;
       ioString .= [[[[node name] location] line] string] ;

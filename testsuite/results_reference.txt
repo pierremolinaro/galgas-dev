@@ -222,49 +222,49 @@ LOGGING r: <@uint:5>
   A2 B5 C3
 *************************************** begin of introspection test
 --- Type list (44 types)
-  @B
   @A
+  @B
   @MyDomain
-  @aMap
-  @myListMap
   @aList
-  @struct
-  @myList
-  @location
-  @filewrapper
+  @aMap
   @binaryset
-  @stringset
-  @lsint64
-  @luint64
-  @lsint
-  @luint
-  @lstring
-  @ldouble
-  @lchar
-  @lbool
-  @sint64
-  @uint64
-  @sint
-  @uint
-  @string
-  @double
-  @char
   @bool
+  @char
+  @charlist
   @data
+  @double
+  @filewrapper
   @function
-  @type
+  @functionlist
+  @lbool
+  @lchar
+  @lcharlist
+  @ldouble
+  @location
+  @lsint
+  @lsint64
+  @lstring
+  @lstringlist
+  @luint
+  @luint64
+  @luintlist
+  @myList
+  @myListMap
   @object
   @objectlist
-  @functionlist
-  @typelist
-  @lcharlist
-  @charlist
-  @lstringlist
-  @string3list
+  @sint
+  @sint64
+  @string
   @string2list
+  @string3list
   @stringlist
+  @stringset
+  @struct
+  @type
+  @typelist
+  @uint
+  @uint64
   @uint64list
-  @luintlist
   @uintlist
 --- Function list (1 function)
 LOGGING mValue: <@function: functionTest [?@uint ?@uint] -> @uint>
@@ -274,7 +274,5 @@ Function 'functionTest' exists:true
 LOGGING object: <@object: <@uint:2>>
 LOGGING y: <@uint:2>
 LOGGING t: <@type: @uint>
-LOGGING t: <@type: @uint>
-LOGGING t: <@type: @A>
 LOGGING t: <@type: @B>
 LOGGING result: <@object: <@uint:8>>
