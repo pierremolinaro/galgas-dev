@@ -4618,7 +4618,7 @@ rule <semantic_instruction>
         @lstring enumConstantName ;
         $identifier$ ? enumConstantName ;
         branchConstantSet += ![enumConstantName string] ;
-        [enumConstantesMap searchKey !enumConstantName ?*] ;
+        [enumConstantesMap searchKey !enumConstantName ?* ?*] ;
         if [allBranchConstantSet hasKey ![enumConstantName string]] then
           error enumConstantName: "this constant is already used in current switch instruction" ;
         end if ;
@@ -5498,7 +5498,7 @@ rule <parse_match_case>
   $identifier$ ? outEnumConstantName ;
 #--- Verify constant belongs to constants map
   if inIsEnumeration then
-    [inEnumMessageMap searchKey !outEnumConstantName ?*] ;
+    [inEnumMessageMap searchKey !outEnumConstantName ?2*] ;
   else
     error outEnumConstantName : "a class that inherit from '@" . [inTypeName string] . "' abstract class is expected here" ;
   end if ;
@@ -6512,7 +6512,7 @@ rule <map_method>
   or
     $,$ ;
     $identifier$ ?getIndexMethodName ;
-#    warning getIndexMethodName : "use alternate method" ;
+    warning getIndexMethodName : "use an alternate method is obsolete" ;
   end select ;
   $error$ ;
   $message$ ;
@@ -8755,7 +8755,7 @@ rule <semantics_declaration>
     repeat
       @lstring constantName ;
       $identifier$ ? constantName ;
-      [!?constantMap insertKey !constantName !hasConstructor] ;
+      [!?constantMap insertKey !constantName ![constantMap count] !hasConstructor] ;
     while
       $,$ ;
     end repeat ;
@@ -8808,18 +8808,18 @@ rule <semantics_declaration>
     repeat
       @lstring leftConstant ;
       $identifier$ ? leftConstant ;
-      @luint leftConstantIndex ;
-      [constantMap searchKeyAndGetIndex !leftConstant ?leftConstantIndex ?*] ;
+      @uint leftConstantIndex ;
+      [constantMap searchKey !leftConstant ?leftConstantIndex ?*] ;
       $,$ ;
       @lstring rightConstant ;
       $identifier$ ? rightConstant ;
-      @luint rightConstantIndex ;
-      [constantMap searchKeyAndGetIndex !rightConstant ?rightConstantIndex ?*] ;
+      @uint rightConstantIndex ;
+      [constantMap searchKey !rightConstant ?rightConstantIndex ?*] ;
       $->$ ;
       @lstring targetConstant ;
       $identifier$ ? targetConstant ;
-      @luint targetConstantIndex ;
-      [constantMap searchKeyAndGetIndex !targetConstant ?targetConstantIndex ?*] ;
+      @uint targetConstantIndex ;
+      [constantMap searchKey !targetConstant ?targetConstantIndex ?*] ;
       @typeInstructionList instructionList [emptyList] ;
       select
         $;$ ;
@@ -8892,12 +8892,12 @@ rule <semantics_declaration>
     repeat
       @lstring sourceName ;
       $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName ?*] ;
+      [constantMap searchKey !sourceName ?2*] ;
       [!?definedSourceMap insertKey !sourceName] ;
       $->$ ;
       @lstring targetName ;
       $identifier$ ? targetName ;
-      [constantMap searchKey !targetName ?*] ;
+      [constantMap searchKey !targetName ?2*] ;
       @typeInstructionList instructionList [emptyList] ;
       select
         $;$ ;
@@ -8969,7 +8969,7 @@ rule <semantics_declaration>
     repeat
       @lstring sourceName ;
       $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName ?*] ;
+      [constantMap searchKey !sourceName ?2*] ;
       [!?definedSourceMap insertKey !sourceName] ;
       @typeInstructionList instructionList [emptyList] ;
       select
@@ -9083,7 +9083,7 @@ label importSemantics
     repeat
       @lstring constantName ;
       $identifier$ ? constantName ;
-      [!?constantMap insertKey !constantName !hasConstructor] ;
+      [!?constantMap insertKey !constantName ![constantMap count] !hasConstructor] ;
     while
       $,$ ;
     end repeat ;
@@ -9137,18 +9137,18 @@ label importSemantics
     repeat
       @lstring leftConstant ;
       $identifier$ ? leftConstant ;
-      @luint leftConstantIndex ;
-      [constantMap searchKeyAndGetIndex !leftConstant ?leftConstantIndex ?*] ;
+      @uint leftConstantIndex ;
+      [constantMap searchKey !leftConstant ?leftConstantIndex ?*] ;
       $,$ ;
       @lstring rightConstant ;
       $identifier$ ? rightConstant ;
-      @luint rightConstantIndex ;
-      [constantMap searchKeyAndGetIndex !rightConstant ?rightConstantIndex ?*] ;
+      @uint rightConstantIndex ;
+      [constantMap searchKey !rightConstant ?rightConstantIndex ?*] ;
       $->$ ;
       @lstring targetConstant ;
       $identifier$ ? targetConstant ;
-      @luint targetConstantIndex ;
-      [constantMap searchKeyAndGetIndex !targetConstant ?targetConstantIndex ?*] ;
+      @uint targetConstantIndex ;
+      [constantMap searchKey !targetConstant ?targetConstantIndex ?*] ;
       @typeInstructionList instructionList [emptyList] ;
       select
         $;$ ;
@@ -9195,12 +9195,12 @@ label importSemantics
     repeat
       @lstring sourceName ;
       $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName ?*] ;
+      [constantMap searchKey !sourceName ?2*] ;
       [!?definedSourceMap insertKey !sourceName] ;
       $->$ ;
       @lstring targetName ;
       $identifier$ ? targetName ;
-      [constantMap searchKey !targetName ?*] ;
+      [constantMap searchKey !targetName ?2*] ;
       select
         $;$ ;
       or
@@ -9239,7 +9239,7 @@ label importSemantics
     repeat
       @lstring sourceName ;
       $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName ?*] ;
+      [constantMap searchKey !sourceName ?2*] ;
       [!?definedSourceMap insertKey !sourceName] ;
       select
         $;$ ;

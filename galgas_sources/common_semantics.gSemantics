@@ -287,9 +287,10 @@ class @MapModel extends @TypeModel {
 #---------------------------------------------------------------------------*
 
 map @enumConstantMap {
+  @uint mConstantIndex ;
   @bool mHasConstructor ;
   insert insertKey error message "the '%K' constant is already declared in %L" ;
-  search searchKey, searchKeyAndGetIndex error message "the '%K' constant is not declared" ;
+  search searchKey error message "the '%K' constant is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -713,7 +714,7 @@ map @EXcategoryMethodMap {
   @categoryMethodKind mCategoryMethodKind ;
   @L_EXsignature aListeArgumentsFormels ;
   insert insertKey error message "the '%K' category method is already declared in %L" ;
-  search searchKey, searchKeyAndGetIndex error message "the '%K' category method is not declared" ;
+  search searchKey error message "the '%K' category method is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -723,7 +724,7 @@ map @EXcategoryReaderMap {
   @L_EXsignature aListeArgumentsFormels ;
   @AC_galgasType mReturnedType ;
   insert insertKey error message "the '%K' category reader is already declared in %L" ;
-  search searchKey, searchKeyAndGetIndex error message "the '%K' category reader is not declared" ;
+  search searchKey error message "the '%K' category reader is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -732,7 +733,7 @@ map @EXcategoryTemplateMap {
   @categoryMethodKind mCategoryMethodKind ;
   @L_EXsignature aListeArgumentsFormels ;
   insert insertKey error message "the '%K' category template is already declared in %L" ;
-  search searchKey, searchKeyAndGetIndex error message "the '%K' category template is not declared" ;
+  search searchKey error message "the '%K' category template is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -834,7 +835,6 @@ class @typeGalgas_uint extends @AC_galgasType {
     outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     if ([inClassMethodName string] == "max") |
-       ([inClassMethodName string] == "sequenceNumber") |  
        ([inClassMethodName string] == "errorCount") |  
        ([inClassMethodName string] == "warningCount") then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -845,9 +845,6 @@ class @typeGalgas_uint extends @AC_galgasType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-    if [inClassMethodName string] == "sequenceNumber" then
-      warning inClassMethodName: "[@uint sequenceNumber] is obsolete in GALGAS 1.9.8 and later" ;
-    end if ; 
   end method ;
 
 #--- Error message
@@ -3543,11 +3540,11 @@ map @enumMethodMap {
 
 list @enumOperatorDefinitionList {
   @lstring mLeftSourceState ;
-  @luint mLeftSourceStateIndex ;
+  @uint mLeftSourceStateIndex ;
   @lstring mRightSourceState ;
-  @luint mRightSourceStateIndex ;
+  @uint mRightSourceStateIndex ;
   @lstring mTargetState ;
-  @luint mTargetStateIndex ;
+  @uint mTargetStateIndex ;
   @typeInstructionList mInstructionList ; # Actually: no instruction, error instruction or warning instruction
 }
 
@@ -3597,7 +3594,7 @@ class @typeGalgas_enum extends @AC_galgasType {
     outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
     @bool hasConstructor ;
-    [mEnumConstantesMap searchKey !inClassMethodName ?hasConstructor] ;
+    [mEnumConstantesMap searchKey !inClassMethodName ?* ?hasConstructor] ;
     if hasConstructor then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     else
