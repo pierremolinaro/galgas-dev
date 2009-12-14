@@ -4719,7 +4719,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "objectType" then
+    elsif [inReaderName string] == "objectDynamicType" then
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
