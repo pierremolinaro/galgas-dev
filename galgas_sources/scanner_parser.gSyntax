@@ -290,7 +290,7 @@ label importLexique
 #-- Styles map
   @M_styles stylesMap [emptyMap] ;
   @lstring defaultStringIdentifier [new !"" !here] ;
-  [!?stylesMap insertKey !defaultStringIdentifier] ;
+  [!?stylesMap insertKey !defaultStringIdentifier ![stylesMap count]] ;
   @styleList styleList [emptyList] ;
   styleList += !"" !"Default style" ;
   repeat
@@ -487,7 +487,7 @@ rule <style_declaration>
     $->$ ;
     @lstring title ;
     $literal_string$ ? title ;
-    [!?ioStylesMap insertKey !styleName] ;
+    [!?ioStylesMap insertKey !styleName ![ioStylesMap count]] ;
     ioStyleList += ![styleName string] ![title string] ;
   while $,$ ;
   end repeat ;
@@ -603,8 +603,8 @@ rule <attribute_or_terminal_symbol_declaration>
       $style$ ;
       $identifier$ ? styleName ;
     end select ;
-    @luint styleIndex ;
-    [ioStylesMap searchKeyGetID !styleName ?styleIndex] ;
+    @uint styleIndex ;
+    [ioStylesMap searchKey !styleName ?styleIndex] ;
     @string errorMessageString := [errorMessage string] ;
    #--- Template End Mark
     @bool isTemplateEndMark ;
@@ -668,8 +668,8 @@ rule <key_words_list_declaration>
     $style$ ;
     $identifier$ ? styleName ;
   end select ;
-  @luint styleIndex ;
-  [ioStylesMap searchKeyGetID !styleName ?styleIndex] ;
+  @uint styleIndex ;
+  [ioStylesMap searchKey !styleName ?styleIndex] ;
 #--- List of entries
   $:$ ;
   repeat
@@ -733,7 +733,7 @@ rule <lexical_error_message_declaration>
   $:$ ;
   @lstring errorMessage ;
   $literal_string$ ?errorMessage ;
-  [!?table_messages insertKey !nom !errorMessage] ;
+  [!?table_messages insertKey !nom ![table_messages count] !errorMessage] ;
   $;$ ;
 end rule ;
 
@@ -764,8 +764,8 @@ rule <while_branches_list>
       $error$ ;
       @lstring errorMessageName ;
       $identifier$ ? errorMessageName ;
-      @luint errorMessageIndex ;
-      [table_des_messages_erreur searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
+      @uint errorMessageIndex ;
+      [table_des_messages_erreur searchKey !errorMessageName ?errorMessageIndex ?*] ;
       ioUsedErrorMessageSet += ![errorMessageName string] ;
       lcl += ![@typeConditionNonChaine new !stringList !errorMessageIndex] ;
       $:$ ;
@@ -1058,8 +1058,8 @@ rule <lexical_instructions_list>
     $error$ ;
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
-    @luint errorMessageIndex ;
-    [table_des_messages_erreur searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
+    @uint errorMessageIndex ;
+    [table_des_messages_erreur searchKey !errorMessageName ?errorMessageIndex ?*] ;
     ioUsedErrorMessageSet += ![errorMessageName string] ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionErreurLexicale new !errorMessageIndex] ;
@@ -1068,8 +1068,8 @@ rule <lexical_instructions_list>
     $warning$ ;
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
-    @luint errorMessageIndex ;
-    [table_des_messages_erreur searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
+    @uint errorMessageIndex ;
+    [table_des_messages_erreur searchKey !errorMessageName ?errorMessageIndex ?*] ;
     ioUsedErrorMessageSet += ![errorMessageName string] ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionLexicalWarning new !errorMessageIndex] ;
@@ -1097,8 +1097,8 @@ rule <lexical_error_messages_list>
   repeat
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
-    @luint errorMessageIndex ;
-    [table_des_messages_erreur searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
+    @uint errorMessageIndex ;
+    [table_des_messages_erreur searchKey !errorMessageName ?errorMessageIndex ?*] ;
     lme += !errorMessageIndex ;
     ioUsedErrorMessageSet += ![errorMessageName string] ;
   while
@@ -1332,8 +1332,8 @@ rule <lexical_send_or_error>
   $error$ ;
   @lstring errorMessageName ;
   $identifier$ ?errorMessageName ;
-  @luint errorMessageIndex ;
-  [tableMessagesErreurs searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
+  @uint errorMessageIndex ;
+  [tableMessagesErreurs searchKey !errorMessageName ?errorMessageIndex ?*] ;
   ioUsedErrorMessageSet += ![errorMessageName string] ;
   emissionParDefaut := [@typeEmissionErreurParDefaut new !errorMessageIndex] ;
 end rule ;

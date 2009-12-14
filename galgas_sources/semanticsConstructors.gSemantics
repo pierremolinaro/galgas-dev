@@ -216,7 +216,6 @@ end reader ;
 once constructorMapFor_uint -> @constructorMap  outMap :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"max" ![@uintGalgasType new] !false ;
-  enterConstructorWithoutArgument !?outMap !"sequenceNumber" ![@uintGalgasType new] !false ;
   enterConstructorWithoutArgument !?outMap !"errorCount" ![@uintGalgasType new] !false ;
   enterConstructorWithoutArgument !?outMap !"warningCount" ![@uintGalgasType new] !false ;
   enterConstructorWith2UintArguments !?outMap !"valueWithMask" ![@uintGalgasType new] !false ;

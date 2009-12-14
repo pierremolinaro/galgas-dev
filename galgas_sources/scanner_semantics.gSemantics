@@ -66,9 +66,10 @@ map @EXLexicalTypeMap {
 #------------------------------------------------------------------*
 
 map @typeTableMessagesErreurs {
+  @uint mMesssageIndex ;
   @lstring mErrorMessage ;
   insert insertKey error message "the error message '%K' is already declared in %L" ;
-  search searchKey, searchKeyGetID error message "the error message '%K' is not declared" ;
+  search searchKey error message "the error message '%K' is not declared" ;
 }
 
 #------------------------------------------------------------------*
@@ -76,8 +77,9 @@ map @typeTableMessagesErreurs {
 #------------------------------------------------------------------*
 
 map @M_styles {
+  @uint mStyleIndex ;
   insert insertKey error message "the '%K' style is already declared in %L" ;
-  search searchKey, searchKeyGetID error message "the '%K' style is not declared" ;
+  search searchKey error message "the '%K' style is not declared" ;
 }
 
 #------------------------------------------------------------------*
@@ -96,7 +98,7 @@ list @styleList {
 map @typeTableDefinitionTerminaux {
   @string mErrorMessage ;
   @typeListeAttributsSemantiques attributListeDesAttributs ;
-  @luint mStyleIndex ;
+  @uint mStyleIndex ;
   @bool mIsEndOfTemplateMark ;
   insert insertKey error message "the terminal symbol '$%K$' is already declared in %L" ;
   search searchKey error message "the terminal symbol '$%K$' is not declared" ;
@@ -137,7 +139,7 @@ class @typeConditionChaine extends @typeConditionLexicale {
 
 class @typeConditionNonChaine extends @typeConditionLexicale {
   @lstringlist mStrings ;
-  @luint mEndOfFileErrorMessageIndex ;
+  @uint mEndOfFileErrorMessageIndex ;
 }
 
 class @typeConditionCaractere extends @typeConditionLexicale {
@@ -206,7 +208,7 @@ class @typeArgumentRoutine extends @typeArgumentRoutineExterne {
 #------------------------------------------------------------------*
 
 list @typeListeMessagesErreur {
-  @luint mErrorMessageIndex ;
+  @uint mErrorMessageIndex ;
 }
 
 #------------------------------------------------------------------*
@@ -221,7 +223,7 @@ class @typeEmissionTerminalParDefaut extends @typeEmissionParDefaut {
 }
 
 class @typeEmissionErreurParDefaut extends @typeEmissionParDefaut {
-  @luint mErrorMessageIndex ;
+  @uint mErrorMessageIndex ;
 }
 
 list @typeListeRecherche {
@@ -275,11 +277,11 @@ class @typeInstructionEmettre extends @typeInstructionLexicale {
 }
 
 class @typeInstructionErreurLexicale extends @typeInstructionLexicale {
-  @luint mErrorMessageIndex ;
+  @uint mErrorMessageIndex ;
 }
 
 class @typeInstructionLexicalWarning extends @typeInstructionLexicale {
-  @luint mErrorMessageIndex ;
+  @uint mErrorMessageIndex ;
 }
 
 #------------------------------------------------------------------*

@@ -253,7 +253,7 @@ map @styleMap {
   @lstring mComment ;
   @uint mStyleIndex ; # Allways > 0
   insert insertKey error message "the '%K' style is already declared in %L" ;
-  search searchKey, searchKeyGetID error message "the '%K' style is not declared" ;
+  search searchKey error message "the '%K' style is not declared" ;
 }
 
 #------------------------------------------------------------------*

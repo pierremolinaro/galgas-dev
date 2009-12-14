@@ -439,7 +439,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                           + (PMSInt32) definition._mRightSourceStateIndex (HERE).uintValue () ;
       resultArray (kIndex COMMA_HERE) = C_String ("enum_") + definition._mTargetState (HERE).string () ;
       if (errorArray (kIndex COMMA_HERE) != -1) { // Currently undefined
-        definition._mLeftSourceStateIndex (HERE).signalSemanticError (inCompiler, "This combination is already defined" COMMA_HERE) ;
+        definition._mLeftSourceState (HERE).signalSemanticError (inCompiler, "This combination is already defined" COMMA_HERE) ;
       }
       if (definition._mInstructionList (HERE).count () == 0) {
         errorArray (kIndex COMMA_HERE) = 0 ; // No Error
