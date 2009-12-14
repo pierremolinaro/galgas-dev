@@ -28,16 +28,6 @@ SOURCES_DIR += ../hand_coded_sources
 
 #---------------------------------------------------------------*
 #                                                               *
-#     Build Options                                             *
-#                                                               *
-#---------------------------------------------------------------*
-
-include $(LIB_PM_PATH)/included_makefiles/default_build_options.mke
-
-C_COMPILER_OPTIONS += -fexceptions
-
-#---------------------------------------------------------------*
-#                                                               *
 #     Source files names list (without their actual path)       *
 #                                                               *
 #---------------------------------------------------------------*
@@ -117,6 +107,10 @@ SOURCES += semanticsMetamodel.cpp
 SOURCES += semanticDeclarationModelBuilder.cpp
 SOURCES += semanticsModelBuilder.cpp
 SOURCES += semanticsSLRgrammar.cpp
+SOURCES += semanticsTypes.cpp
+SOURCES += semanticsConstructors.cpp
+SOURCES += semanticsReaders.cpp
+SOURCES += semanticsModifiers.cpp
 SOURCES += semanticsSemantics.cpp
 SOURCES += semanticsCompilation.cpp
 SOURCES += syntaxMetamodel.cpp

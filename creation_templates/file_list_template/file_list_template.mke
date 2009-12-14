@@ -27,16 +27,6 @@ SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT
 
 #---------------------------------------------------------------*
 #                                                               *
-#     Build Options                                             *
-#                                                               *
-#---------------------------------------------------------------*
-
-include $(LIB_PM_PATH)/included_makefiles/default_build_options.mke
-
-C_COMPILER_OPTIONS += -fexceptions
-
-#---------------------------------------------------------------*
-#                                                               *
 #     Source files names list (without their actual path)       *
 #                                                               *
 #---------------------------------------------------------------*

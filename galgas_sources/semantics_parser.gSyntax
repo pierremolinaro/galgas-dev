@@ -5782,7 +5782,7 @@ rule <semantics_declaration>
     @typeListeAttributsSemantiques mapAttributesList := [mapType mAttributeList] ;
     @typeTableBlocsDeTable tableMethodesSurcharger := [mapType aTableMethodesSurcharger] ;
     @mapModifierMap modifierMethodMap := [mapType mModifierMethodMap] ;
-    @mapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
+    @EXmapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
     $)$ ;
     ${$ ;
     @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
@@ -5848,7 +5848,7 @@ label importSemantics
     @typeListeAttributsSemantiques mapAttributesList := [mapType mAttributeList] ;
     @typeTableBlocsDeTable tableMethodesSurcharger := [mapType aTableMethodesSurcharger] ;
     @mapModifierMap modifierMethodMap := [mapType mModifierMethodMap] ;
-    @mapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
+    @EXmapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
     $)$ ;
     ${$ ;
     @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
@@ -6027,7 +6027,7 @@ rule <semantics_declaration>
       !listeTousAttributsSemantiques
       !tableMethodesBloc
       !mapModifierMethodMap
-      ![@mapMethodMap emptyMap]
+      ![@EXmapMethodMap emptyMap]
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
@@ -6078,7 +6078,7 @@ rule <semantics_declaration>
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @mapMethodMap mapReaderMethodMap [emptyMap] ;
+    @EXmapMethodMap mapReaderMethodMap [emptyMap] ;
     repeat
     while
       $remove$ ;
@@ -6346,7 +6346,7 @@ label importSemantics
       !listeTousAttributsSemantiques
       !tableMethodesBloc
       !mapModifierMethodMap
-      ![@mapMethodMap emptyMap]
+      ![@EXmapMethodMap emptyMap]
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
@@ -6384,7 +6384,7 @@ label importSemantics
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @mapMethodMap mapReaderMethodMap [emptyMap] ;
+    @EXmapMethodMap mapReaderMethodMap [emptyMap] ;
     repeat
     while
       $remove$ ;
@@ -6512,6 +6512,7 @@ rule <map_method>
   or
     $,$ ;
     $identifier$ ?getIndexMethodName ;
+#    warning getIndexMethodName : "use alternate method" ;
   end select ;
   $error$ ;
   $message$ ;
@@ -8327,9 +8328,9 @@ label importSemantics
   @bool acceptAddAssignOperatorCall := false ;
   @typeListeAttributsSemantiques addAssignOperatorCallTypeList [emptyList] ;
   @M_externTypeConstructorMap EXconstructorsMap [emptyMap] ;
-  @constructorMap constructorMap [emptyMap] ;
-  @readerMap readerMap [emptyMap] ;
-  @modifierMap modifierMap [emptyMap] ;
+  @externTypeConstructorMap constructorMap [emptyMap] ;
+  @externTypeReaderMap readerMap [emptyMap] ;
+  @externTypeModifierMap modifierMap [emptyMap] ;
   @typeListModel addAssignFormalInputArgumentList [emptyList] ; # List is empty if += operator is not defined
 #--- Parse class operators and methods
   repeat
@@ -9095,7 +9096,7 @@ label importSemantics
   @typeEnumMessageMap exEnumMessageMap [emptyMap] ;
   @enumModifierMap modifierMap [emptyMap] ;
   @enumMethodMap methodMap [emptyMap] ;
-  @enumMessageMap enumMessageMap [emptyMap] ;
+  @EXenumMessageMap enumMessageMap [emptyMap] ;
   @enumOperatorMap operatorMap [emptyMap] ;
   repeat
   while

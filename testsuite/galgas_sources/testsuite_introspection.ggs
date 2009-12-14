@@ -39,10 +39,10 @@ message "*************************************** begin of introspection test\n" 
   const @uint y := (cast object if == @uint else error here) ;
   log y ;
 #--- Type
-  @type t := [x type] ;
+  @type t := [x dynamicType] ;
   log t ;
   @A a := [@B new] ;
-  t := [a type] ;
+  t := [a dynamicType] ;
   log t ;
 #--- Function invocation
   @function f := [@function functionWithName !"functionTest"] ;

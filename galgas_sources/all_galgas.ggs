@@ -79,6 +79,10 @@ project all_galgas:
   syntax    "semanticDeclarationModelBuilder.gSyntax" : makefile ;
   syntax    "semanticsModelBuilder.gSyntax" : makefile ;
   grammar   "semanticsSLRgrammar.gGrammar" : makefile ;
+  semantics "semanticsTypes.gSemantics" : makefile ;
+  semantics "semanticsConstructors.gSemantics" : makefile ;
+  semantics "semanticsReaders.gSemantics" : makefile ;
+  semantics "semanticsModifiers.gSemantics" : makefile ;
   semantics "semanticsSemantics.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
 

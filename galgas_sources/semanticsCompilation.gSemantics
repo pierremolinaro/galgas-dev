@@ -19,76 +19,16 @@
 semantics semanticsCompilation :
 import "semanticsMetamodel.gSemantics" ;
 import "semanticsSemantics.gSemantics" ;
+import "semanticsReaders.gSemantics" ;
+import "semanticsConstructors.gSemantics" ;
+import "semanticsModifiers.gSemantics" ;
+
 import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
+import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
+import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
 import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    C O N S T R U C T    B U I L T I N     T Y P E    M A P                *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine constructBuiltinTypeMap
-  !@typeMap outTypeMap
-:
-  outTypeMap := [@typeMap emptyMap] ;
-#--- Enter builtin type
-  [!?outTypeMap insertKey ![@lstring new !"string"    !here] ![@stringGalgasType    new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"char"      !here] ![@charGalgasType      new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"bool"      !here] ![@boolGalgasType      new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"uint"      !here] ![@uintGalgasType      new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"sint"      !here] ![@sintGalgasType      new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"uint64"    !here] ![@uint64GalgasType    new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"sint64"    !here] ![@sint64GalgasType    new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"double"    !here] ![@doubleGalgasType    new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"lstring"   !here] ![@lstringGalgasType   new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"lchar"     !here] ![@lcharGalgasType     new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"lbool"     !here] ![@lboolGalgasType     new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"luint"     !here] ![@luintGalgasType     new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"lsint"     !here] ![@lsintGalgasType     new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"luint64"   !here] ![@luint64GalgasType   new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"lsint64"   !here] ![@lsint64GalgasType   new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"ldouble"   !here] ![@ldoubleGalgasType   new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"binaryset" !here] ![@binarysetGalgasType new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"stringset" !here] ![@stringsetGalgasType new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"location"  !here] ![@locationGalgasType  new]] ;
-#--- @lstringlist type
-  @attributeList lstringAttribute [emptyList] ;
-  @typeMapIndex lstringIndex ;
-  [@typeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?outTypeMap ?lstringIndex] ;
-  lstringAttribute += !lstringIndex ![@lstring new !"mValue" !here] ;
-  @lstring lstringlist [new !"lstringlist" !here] ;
-  [!?outTypeMap insertKey !lstringlist ![@listGalgasType new !lstringlist !lstringAttribute]] ;
-#--- @stringlist type
-  @attributeList stringAttribute [emptyList] ;
-  @typeMapIndex stringIndex ;
-  [@typeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?outTypeMap ?stringIndex] ;
-  stringAttribute += !stringIndex ![@lstring new !"mValue" !here] ;
-  @lstring stringlist [new !"stringlist" !here] ;
-  [!?outTypeMap insertKey !stringlist ![@listGalgasType new !stringlist !stringAttribute]] ;
-#--- @uint64list type
-  @attributeList uint64Attribute [emptyList] ;
-  @typeMapIndex uint64Index ;
-  [@typeMapIndex makeRegularIndex ![@lstring new !"uint64" !here] !?outTypeMap ?uint64Index] ;
-  uint64Attribute += !uint64Index ![@lstring new !"mValue" !here] ;
-  @lstring uint64list [new !"uint64list" !here] ;
-  [!?outTypeMap insertKey !uint64list ![@listGalgasType new !uint64list !uint64Attribute]] ;
-#--- @luintlist type
-  @attributeList luintAttribute [emptyList] ;
-  @typeMapIndex luintIndex ;
-  [@typeMapIndex makeRegularIndex ![@lstring new !"luint" !here] !?outTypeMap ?luintIndex] ;
-  luintAttribute += !luintIndex ![@lstring new !"mValue" !here] ;
-  @lstring luintlist [new !"luintlist" !here] ;
-  [!?outTypeMap insertKey !luintlist ![@listGalgasType new !luintlist !luintAttribute]] ;
-#--- @uintlist type
-  @attributeList uintAttribute [emptyList] ;
-  @typeMapIndex uintIndex ;
-  [@typeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?outTypeMap ?uintIndex] ;
-  uintAttribute += !uintIndex ![@lstring new !"mValue" !here] ;
-  @lstring uintlist [new !"uintlist" !here] ;
-  [!?outTypeMap insertKey !uintlist ![@listGalgasType new !uintlist !uintAttribute]] ;
-end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -113,10 +53,41 @@ method @mapDeclaration enterType
     [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
     attributeList += !attributeTypeIndex !mAttributeName ;
   end foreach ;
+#--- Handle insert methods
+  @mapMethodMap insertMethodMap [emptyMap] ;
+  foreach mInsertMethodList do
+    if [insertMethodMap hasKey ![mMethodName string]] then
+      error mMethodName:"the '" . mMethodName . "' insert method is already declared" ;
+    else
+      [!?insertMethodMap insertKey !mMethodName !mErrorMessage] ;
+    end if ;
+  end foreach ;
+#--- Handle remove methods
+  @mapMethodMap removeMethodMap [emptyMap] ;
+  foreach mRemoveMethodList do
+    if [removeMethodMap hasKey ![mMethodName string]] then
+      error mMethodName:"the '" . mMethodName . "' remove method is already declared" ;
+    elsif [insertMethodMap hasKey ![mMethodName string]] then
+      error mMethodName:"the '" . mMethodName . "' method is already declared as insert method" ;
+    else
+      [!?removeMethodMap insertKey !mMethodName !mErrorMessage] ;
+    end if ;
+  end foreach ;
+#--- Check insert and remove methods do not collision with set...Attribute...forKey methods
+  foreach mAttributeList do
+    const @string accessorName := "set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ;
+    if [removeMethodMap hasKey !accessorName] then
+      error mAttributeName:"the '" . accessorName . "' remove method name is incompatible with accessor of '" .mAttributeName . "' attribute" ;
+    elsif [insertMethodMap hasKey !accessorName] then
+      error mAttributeName:"the '" . accessorName . "' insert method name is incompatible with accessor of '" .mAttributeName . "' attribute" ;
+    end if ;
+  end foreach ;
 #--- Enter type in type map
   @ACGalgasType t := [@mapType new
     !mMapTypeName
     !attributeList
+    !insertMethodMap
+    !removeMethodMap
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mMapTypeName !t] ;
 end method ;
@@ -148,10 +119,43 @@ override method @enumDeclaration enterType
   foreach mConstructorConstantList do
     [!?enumConstructorMap insertKey !mValue] ;
   end foreach ;
+#--- Build string set all constants
+  @stringset allConstantSet [emptySet] ;
+  foreach mConstructorConstantList do
+    allConstantSet += ![mValue string] ;
+  end foreach ;
+  foreach mConstantList do
+    if [allConstantSet hasKey ![mValue string]] then
+      error mValue: "the '" . mValue . "' is already defined for this enumeration" ;
+    end if ;
+    allConstantSet += ![mValue string] ;
+  end foreach ;
+#--- Handle messages
+  @enumMessageMap enumMessageMap [emptyMap] ;
+  foreach mEnumMessageList do
+    [!?enumMessageMap insertKey !mEnumMessageName] ;
+   #--- Build set of constants named in this message definition
+    @stringset messageConstantSet [emptySet] ;
+    foreach mMessageAssociationList do
+      if [messageConstantSet hasKey ![mConstantName string]] then
+        error mConstantName: "the '" . mConstantName . "' is already named for this message definition" ;
+      elsif not [allConstantSet hasKey ![mConstantName string]] then
+        error mConstantName: "this constant is not declared"  ;
+      end if ;
+      messageConstantSet += ![mConstantName string] ;
+    end foreach ;
+  #--- Check all constants are named in message definition
+    foreach messageConstantSet do
+      if not [allConstantSet hasKey !key] then
+        error mEnumMessageName: "this message definition does not name the '" . key . "' constant" ;
+      end if ;
+    end foreach ;
+  end foreach ;
 #--- Enter type in type map
   @ACGalgasType t := [@enumType new
     !mEnumTypeName
     !enumConstructorMap
+    !enumMessageMap
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mEnumTypeName !t] ;
 end method ;
@@ -330,8 +334,7 @@ routine buildSemanticContext
   !@semanticContext outSemanticContext
 :
 #--- Builtin types
-  @typeMap typeMap ;
-  constructBuiltinTypeMap ?typeMap ;
+  @typeMap typeMap := constructBuiltinTypeMap [] ;
 #--- Build initial semantic context
   outSemanticContext := [@semanticContext new
     !typeMap
@@ -787,6 +790,14 @@ routine compileSemanticsComponent
 #---- Build semantic context
   @semanticContext semanticContext ;
   buildSemanticContext !semanticDeclarationList ![semanticsComponentRoot mEndOfSourceFile] ?semanticContext ;
+#--- Check type declarations
+  if [@uint errorCount] == 0 then
+    foreach [semanticContext mTypeMap] do
+      @constructorMap constructorMap := [mType constructorMap] ;
+      @readerMap readerMap := [mType readerMap] ;
+      @modifierMap modifierMap := [mType modifierMap] ;
+    end foreach ;
+  end if ;
 #--- Perform semantic analysis
   foreach semanticDeclarationList do
     [mSemanticDeclaration semanticAnalysis !semanticContext] ;

@@ -60,9 +60,9 @@ class @listmapDeclaration extends @semanticDeclaration {
 
 list @mapMethodList {
   @lstring mMethodName ;
-  @lstring mAlternateMethodName ;
+  @lstring mAlternateMethodName ; # §
   @lstring mErrorMessage ;
-  @lstring mShadowErrorMessage ;
+  @lstring mShadowErrorMessage ; # §
 }
 
 #---------------------------------------------------------------------------*
