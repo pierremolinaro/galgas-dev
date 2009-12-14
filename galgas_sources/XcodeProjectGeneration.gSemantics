@@ -1274,7 +1274,7 @@ routine generateXcodeProject
 
 #-------------------------------------------------- Build Project file
   generateXCodeFile
-    !XcodeProjectDescription
+    !?XcodeProjectDescription
     !in_xcodeproj_filePath
     !projectDefaultSettings
     !inReferenceFilePath
