@@ -751,6 +751,7 @@ routine enter_xib_in_group
     ![in_lproj_dir stringByDeletingPathExtension]
     ! in_lproj_dir . "/" . in_xib_fileName
   ] ;
+  ioXcodeProjectDescription.mSequenceNumber ++ ;
   @lstring key [new !in_xib_fileName !here] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
   @string PBXVariantGroupKey := [[[[ioXcodeProjectDescription mSequenceNumber] string] md5] rightSubString!24] ;
