@@ -913,10 +913,12 @@ routine verifierCompatibiliteArgEffectifsSignature
   #--- Build expression list
     @typeExpressionList expressionList := ioExpressionList ;
     ioExpressionList := [@typeExpressionList emptyList] ;
+    @uint sequenceNumber := 0 ;
     foreach signatureReference, expressionList do
       cast mExpression :
       when >= @typeJokerInExpression do
-        @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !here ![@uint sequenceNumber]] ;
+        @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !here !sequenceNumber] ;
+        sequenceNumber ++ ;
         @typeExpression e := [@typeVarInExpression new !cppVarName ![@lstringlist emptyList]] ;
         ioExpressionList += !e ;
         @typeInstruction i := [@typeInstructionDeclarationVarLocale new !cppVarName !mType] ;

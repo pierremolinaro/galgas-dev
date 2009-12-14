@@ -802,6 +802,8 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 void cPtr_typeLocationAutomaticName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "automatic_var_" ;
+  inFile.appendUnsigned (mVariableLocation.location ()) ;
+  inFile << "_" ;
   inFile.appendUnsigned (mSequenceNumber.uintValue ()) ;
 }
 
@@ -809,7 +811,7 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeCppStarThisName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mGalgasTypeName << " (this) /*self*/" ;
+  inFile << "GGS_" << mGalgasTypeName << " (this)" ;
 }
 
 //---------------------------------------------------------------------------*
