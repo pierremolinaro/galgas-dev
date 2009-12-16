@@ -157,7 +157,7 @@ routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"enterDefaultCommandLineOptions" ;
   append_m_h_files !?fileList !"OC_GGS_Document" ;
   append_m_h_files !?fileList !"OC_GGS_PreferencesController" ;
-  append_m_h_files !?fileList !"OC_GGS_RulerView" ;
+  append_m_h_files !?fileList !"OC_GGS_RulerViewForTextView" ;
   append_m_h_files !?fileList !"OC_GGS_TextView" ;
   append_m_h_files !?fileList !"OC_GGS_DelegateForSyntaxColoring" ;
   append_m_h_files !?fileList !"OC_GGS_BuildResultTextView" ;
@@ -771,7 +771,7 @@ routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"enterDefaultCommandLineOptions.m" ;
   fileList += !"OC_GGS_Document.m" ;
   fileList += !"OC_GGS_PreferencesController.m" ;
-  fileList += !"OC_GGS_RulerView.m" ;
+  fileList += !"OC_GGS_RulerViewForTextView.m" ;
   fileList += !"OC_GGS_TextView.m" ;
   fileList += !"OC_GGS_DelegateForSyntaxColoring.m" ;
   fileList += !"OC_GGS_BuildResultTextView.m" ;

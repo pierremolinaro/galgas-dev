@@ -510,7 +510,7 @@
 		CF6DF24109E3F3A700506859 /* OC_GGS_BuildWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */; };
 		CF6DF24209E3F3A700506859 /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CF6DF24309E3F3A700506859 /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
-		CF6DF24409E3F3A700506859 /* OC_GGS_RulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerView.m */; };
+		CF6DF24409E3F3A700506859 /* OC_GGS_RulerViewForTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */; };
 		CF6DF24509E3F3A700506859 /* OC_GGS_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597A08536A130077AEAF /* OC_GGS_TextView.m */; };
 		CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		CF6E113306269BEC001B909F /* GGS_lsint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E112F06269BEC001B909F /* GGS_lsint.cpp */; };
@@ -593,7 +593,7 @@
 		CF82598208536A130077AEAF /* OC_GGS_BuildWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */; };
 		CF82598408536A130077AEAF /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CF82598608536A130077AEAF /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
-		CF82598808536A130077AEAF /* OC_GGS_RulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerView.m */; };
+		CF82598808536A130077AEAF /* OC_GGS_RulerViewForTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */; };
 		CF82598A08536A130077AEAF /* OC_GGS_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597A08536A130077AEAF /* OC_GGS_TextView.m */; };
 		CF8259CA08536A5B0077AEAF /* F_Analyze_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */; };
 		CF8259D408536A5B0077AEAF /* F_Analyze_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */; };
@@ -643,6 +643,9 @@
 		CF8EE15A0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */; };
 		CF8EE15E0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */; };
 		CF8EE1600B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */; };
+		CF94CDB010D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */; };
+		CF94CDB110D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */; };
+		CF94CDB210D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */; };
 		CF96D6B50B1DA4740067E271 /* AC_galgas_sortedlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF96D6B30B1DA4740067E271 /* AC_galgas_sortedlist.cpp */; };
 		CF96D6B70B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF96D6B30B1DA4740067E271 /* AC_galgas_sortedlist.cpp */; };
 		CF96D6C10B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF96D6B30B1DA4740067E271 /* AC_galgas_sortedlist.cpp */; };
@@ -1185,7 +1188,7 @@
 		CFEDF4E40C2D16840038713A /* OC_GGS_BuildWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */; };
 		CFEDF4E50C2D16840038713A /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CFEDF4E60C2D16840038713A /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
-		CFEDF4E70C2D16840038713A /* OC_GGS_RulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerView.m */; };
+		CFEDF4E70C2D16840038713A /* OC_GGS_RulerViewForTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */; };
 		CFEDF4E80C2D16840038713A /* OC_GGS_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597A08536A130077AEAF /* OC_GGS_TextView.m */; };
 		CFEDF4F50C2D16840038713A /* OC_GGS_BuildResultTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.m */; };
 		CFEDF4F70C2D16840038713A /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
@@ -1555,8 +1558,8 @@
 		CF82597408536A130077AEAF /* OC_GGS_Document.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_Document.m; sourceTree = "<group>"; };
 		CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_PreferencesController.h; sourceTree = "<group>"; };
 		CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_PreferencesController.m; sourceTree = "<group>"; };
-		CF82597708536A130077AEAF /* OC_GGS_RulerView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerView.h; sourceTree = "<group>"; };
-		CF82597808536A130077AEAF /* OC_GGS_RulerView.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerView.m; sourceTree = "<group>"; };
+		CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForTextView.h; sourceTree = "<group>"; };
+		CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerViewForTextView.m; sourceTree = "<group>"; };
 		CF82597908536A130077AEAF /* OC_GGS_TextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextView.h; sourceTree = "<group>"; };
 		CF82597A08536A130077AEAF /* OC_GGS_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextView.m; sourceTree = "<group>"; };
 		CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PP_CocoaGalgasPrefix.pch; sourceTree = "<group>"; };
@@ -1612,6 +1615,8 @@
 		CF9040E6057F270E007362F4 /* grammar_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = grammar_parser.cpp; sourceTree = "<group>"; };
 		CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_classToImplement.h; sourceTree = "<group>"; };
 		CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_dotEqualInstruction.h; sourceTree = "<group>"; };
+		CF94CDAE10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForCompileMessageView.h; sourceTree = "<group>"; };
+		CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerViewForCompileMessageView.m; sourceTree = "<group>"; };
 		CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_sortedListTypeToImplement.h; sourceTree = "<group>"; };
 		CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasSortedListType.h; sourceTree = "<group>"; };
 		CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedSortedListType.h; sourceTree = "<group>"; };
@@ -2358,10 +2363,12 @@
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
 				CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */,
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */,
-				CF82597708536A130077AEAF /* OC_GGS_RulerView.h */,
-				CF82597808536A130077AEAF /* OC_GGS_RulerView.m */,
+				CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */,
+				CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */,
 				CF82597908536A130077AEAF /* OC_GGS_TextView.h */,
 				CF82597A08536A130077AEAF /* OC_GGS_TextView.m */,
+				CF94CDAE10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.h */,
+				CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */,
 				CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */,
 				CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
@@ -3530,7 +3537,7 @@
 				CF82598208536A130077AEAF /* OC_GGS_BuildWindowController.m in Sources */,
 				CF82598408536A130077AEAF /* OC_GGS_Document.m in Sources */,
 				CF82598608536A130077AEAF /* OC_GGS_PreferencesController.m in Sources */,
-				CF82598808536A130077AEAF /* OC_GGS_RulerView.m in Sources */,
+				CF82598808536A130077AEAF /* OC_GGS_RulerViewForTextView.m in Sources */,
 				CF82598A08536A130077AEAF /* OC_GGS_TextView.m in Sources */,
 				CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.m in Sources */,
 				CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */,
@@ -3557,6 +3564,7 @@
 				CF4ED39010D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */,
 				CF4ED39110D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */,
 				CF4ED39210D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */,
+				CF94CDB110D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4128,7 +4136,7 @@
 				CF6DF24109E3F3A700506859 /* OC_GGS_BuildWindowController.m in Sources */,
 				CF6DF24209E3F3A700506859 /* OC_GGS_Document.m in Sources */,
 				CF6DF24309E3F3A700506859 /* OC_GGS_PreferencesController.m in Sources */,
-				CF6DF24409E3F3A700506859 /* OC_GGS_RulerView.m in Sources */,
+				CF6DF24409E3F3A700506859 /* OC_GGS_RulerViewForTextView.m in Sources */,
 				CF6DF24509E3F3A700506859 /* OC_GGS_TextView.m in Sources */,
 				CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.m in Sources */,
 				CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */,
@@ -4155,6 +4163,7 @@
 				CF4ED38710D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */,
 				CF4ED38810D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */,
 				CF4ED38910D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */,
+				CF94CDB010D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4726,7 +4735,7 @@
 				CFEDF4E40C2D16840038713A /* OC_GGS_BuildWindowController.m in Sources */,
 				CFEDF4E50C2D16840038713A /* OC_GGS_Document.m in Sources */,
 				CFEDF4E60C2D16840038713A /* OC_GGS_PreferencesController.m in Sources */,
-				CFEDF4E70C2D16840038713A /* OC_GGS_RulerView.m in Sources */,
+				CFEDF4E70C2D16840038713A /* OC_GGS_RulerViewForTextView.m in Sources */,
 				CFEDF4E80C2D16840038713A /* OC_GGS_TextView.m in Sources */,
 				CFEDF4F50C2D16840038713A /* OC_GGS_BuildResultTextView.m in Sources */,
 				CFEDF4F70C2D16840038713A /* PMDownloadData.m in Sources */,
@@ -4753,6 +4762,7 @@
 				CF4ED39910D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */,
 				CF4ED39A10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */,
 				CF4ED39B10D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */,
+				CF94CDB210D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
