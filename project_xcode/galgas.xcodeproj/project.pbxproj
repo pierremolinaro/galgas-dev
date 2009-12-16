@@ -242,6 +242,33 @@
 		CF4A264E10A9832B00A2A903 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */; };
 		CF4A264F10A9832B00A2A903 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */; };
 		CF4A265010A9832B00A2A903 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */; };
+		CF4ED38110D9256F00B4F6AA /* PMArrayControllerDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED36F10D9256F00B4F6AA /* PMArrayControllerDebugCategory.m */; };
+		CF4ED38210D9256F00B4F6AA /* PMArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37110D9256F00B4F6AA /* PMArrayDebugCategory.m */; };
+		CF4ED38310D9256F00B4F6AA /* PMDictionaryDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37410D9256F00B4F6AA /* PMDictionaryDebugCategory.m */; };
+		CF4ED38410D9256F00B4F6AA /* PMMutableArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37610D9256F00B4F6AA /* PMMutableArrayDebugCategory.m */; };
+		CF4ED38510D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37810D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m */; };
+		CF4ED38610D9256F00B4F6AA /* PMMutableSetDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37A10D9256F00B4F6AA /* PMMutableSetDebugCategory.m */; };
+		CF4ED38710D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37C10D9256F00B4F6AA /* PMMutableStringDebugCategory.m */; };
+		CF4ED38810D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */; };
+		CF4ED38910D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */; };
+		CF4ED38A10D9256F00B4F6AA /* PMArrayControllerDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED36F10D9256F00B4F6AA /* PMArrayControllerDebugCategory.m */; };
+		CF4ED38B10D9256F00B4F6AA /* PMArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37110D9256F00B4F6AA /* PMArrayDebugCategory.m */; };
+		CF4ED38C10D9256F00B4F6AA /* PMDictionaryDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37410D9256F00B4F6AA /* PMDictionaryDebugCategory.m */; };
+		CF4ED38D10D9256F00B4F6AA /* PMMutableArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37610D9256F00B4F6AA /* PMMutableArrayDebugCategory.m */; };
+		CF4ED38E10D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37810D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m */; };
+		CF4ED38F10D9256F00B4F6AA /* PMMutableSetDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37A10D9256F00B4F6AA /* PMMutableSetDebugCategory.m */; };
+		CF4ED39010D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37C10D9256F00B4F6AA /* PMMutableStringDebugCategory.m */; };
+		CF4ED39110D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */; };
+		CF4ED39210D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */; };
+		CF4ED39310D9256F00B4F6AA /* PMArrayControllerDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED36F10D9256F00B4F6AA /* PMArrayControllerDebugCategory.m */; };
+		CF4ED39410D9256F00B4F6AA /* PMArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37110D9256F00B4F6AA /* PMArrayDebugCategory.m */; };
+		CF4ED39510D9256F00B4F6AA /* PMDictionaryDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37410D9256F00B4F6AA /* PMDictionaryDebugCategory.m */; };
+		CF4ED39610D9256F00B4F6AA /* PMMutableArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37610D9256F00B4F6AA /* PMMutableArrayDebugCategory.m */; };
+		CF4ED39710D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37810D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m */; };
+		CF4ED39810D9256F00B4F6AA /* PMMutableSetDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37A10D9256F00B4F6AA /* PMMutableSetDebugCategory.m */; };
+		CF4ED39910D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37C10D9256F00B4F6AA /* PMMutableStringDebugCategory.m */; };
+		CF4ED39A10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */; };
+		CF4ED39B10D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */; };
 		CF4F2BB91080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
 		CF4F2BBA1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
 		CF4F2BBB1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
@@ -1426,6 +1453,25 @@
 		CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarLL1grammar.cpp; sourceTree = "<group>"; };
 		CF4A264A10A9832B00A2A903 /* grammarLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarLL1grammar.h; sourceTree = "<group>"; };
 		CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
+		CF4ED36E10D9256F00B4F6AA /* PMArrayControllerDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMArrayControllerDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED36F10D9256F00B4F6AA /* PMArrayControllerDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMArrayControllerDebugCategory.m; sourceTree = "<group>"; };
+		CF4ED37010D9256F00B4F6AA /* PMArrayDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMArrayDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED37110D9256F00B4F6AA /* PMArrayDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMArrayDebugCategory.m; sourceTree = "<group>"; };
+		CF4ED37210D9256F00B4F6AA /* PMCocoaCallsDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCocoaCallsDebug.h; sourceTree = "<group>"; };
+		CF4ED37310D9256F00B4F6AA /* PMDictionaryDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDictionaryDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED37410D9256F00B4F6AA /* PMDictionaryDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDictionaryDebugCategory.m; sourceTree = "<group>"; };
+		CF4ED37510D9256F00B4F6AA /* PMMutableArrayDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMutableArrayDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED37610D9256F00B4F6AA /* PMMutableArrayDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMutableArrayDebugCategory.m; sourceTree = "<group>"; };
+		CF4ED37710D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMutableDictionaryDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED37810D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMutableDictionaryDebugCategory.m; sourceTree = "<group>"; };
+		CF4ED37910D9256F00B4F6AA /* PMMutableSetDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMutableSetDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED37A10D9256F00B4F6AA /* PMMutableSetDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMutableSetDebugCategory.m; sourceTree = "<group>"; };
+		CF4ED37B10D9256F00B4F6AA /* PMMutableStringDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMutableStringDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED37C10D9256F00B4F6AA /* PMMutableStringDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMutableStringDebugCategory.m; sourceTree = "<group>"; };
+		CF4ED37D10D9256F00B4F6AA /* PMPointerArrayDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPointerArrayDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPointerArrayDebugCategory.m; sourceTree = "<group>"; };
+		CF4ED37F10D9256F00B4F6AA /* PMSetDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSetDebugCategory.h; sourceTree = "<group>"; };
+		CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSetDebugCategory.m; sourceTree = "<group>"; };
 		CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticDeclarationModelBuilder.cpp; sourceTree = "<group>"; };
 		CF4F2BB81080E0260053782C /* semanticDeclarationModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticDeclarationModelBuilder.h; sourceTree = "<group>"; };
 		CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_domain.cpp; sourceTree = "<group>"; };
@@ -2152,6 +2198,32 @@
 				CF074C9A1000EFF500F45986 /* C_StringCommandLineOption.h */,
 			);
 			path = command_line_interface;
+			sourceTree = "<group>";
+		};
+		CF4ED36D10D9256F00B4F6AA /* cocoa_debug */ = {
+			isa = PBXGroup;
+			children = (
+				CF4ED36E10D9256F00B4F6AA /* PMArrayControllerDebugCategory.h */,
+				CF4ED36F10D9256F00B4F6AA /* PMArrayControllerDebugCategory.m */,
+				CF4ED37010D9256F00B4F6AA /* PMArrayDebugCategory.h */,
+				CF4ED37110D9256F00B4F6AA /* PMArrayDebugCategory.m */,
+				CF4ED37210D9256F00B4F6AA /* PMCocoaCallsDebug.h */,
+				CF4ED37310D9256F00B4F6AA /* PMDictionaryDebugCategory.h */,
+				CF4ED37410D9256F00B4F6AA /* PMDictionaryDebugCategory.m */,
+				CF4ED37510D9256F00B4F6AA /* PMMutableArrayDebugCategory.h */,
+				CF4ED37610D9256F00B4F6AA /* PMMutableArrayDebugCategory.m */,
+				CF4ED37710D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.h */,
+				CF4ED37810D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m */,
+				CF4ED37910D9256F00B4F6AA /* PMMutableSetDebugCategory.h */,
+				CF4ED37A10D9256F00B4F6AA /* PMMutableSetDebugCategory.m */,
+				CF4ED37B10D9256F00B4F6AA /* PMMutableStringDebugCategory.h */,
+				CF4ED37C10D9256F00B4F6AA /* PMMutableStringDebugCategory.m */,
+				CF4ED37D10D9256F00B4F6AA /* PMPointerArrayDebugCategory.h */,
+				CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */,
+				CF4ED37F10D9256F00B4F6AA /* PMSetDebugCategory.h */,
+				CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */,
+			);
+			path = cocoa_debug;
 			sourceTree = "<group>";
 		};
 		CF7B6B490BADC25D0046EB3A /* MDA LL1 GALGAS */ = {
@@ -2964,6 +3036,7 @@
 		CFF5381C057A545B00854C83 /* libpm */ = {
 			isa = PBXGroup;
 			children = (
+				CF4ED36D10D9256F00B4F6AA /* cocoa_debug */,
 				CFB9E4850DF28AC500885084 /* collections */,
 				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
 				CFF538F7057A560F00854C83 /* BDD */,
@@ -3475,6 +3548,15 @@
 				CFAE5AA010021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1B10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCBA1003CC160096A8E5 /* cocoaGalgas.m in Sources */,
+				CF4ED38A10D9256F00B4F6AA /* PMArrayControllerDebugCategory.m in Sources */,
+				CF4ED38B10D9256F00B4F6AA /* PMArrayDebugCategory.m in Sources */,
+				CF4ED38C10D9256F00B4F6AA /* PMDictionaryDebugCategory.m in Sources */,
+				CF4ED38D10D9256F00B4F6AA /* PMMutableArrayDebugCategory.m in Sources */,
+				CF4ED38E10D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m in Sources */,
+				CF4ED38F10D9256F00B4F6AA /* PMMutableSetDebugCategory.m in Sources */,
+				CF4ED39010D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */,
+				CF4ED39110D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */,
+				CF4ED39210D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4064,6 +4146,15 @@
 				CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCB91003CC160096A8E5 /* cocoaGalgas.m in Sources */,
+				CF4ED38110D9256F00B4F6AA /* PMArrayControllerDebugCategory.m in Sources */,
+				CF4ED38210D9256F00B4F6AA /* PMArrayDebugCategory.m in Sources */,
+				CF4ED38310D9256F00B4F6AA /* PMDictionaryDebugCategory.m in Sources */,
+				CF4ED38410D9256F00B4F6AA /* PMMutableArrayDebugCategory.m in Sources */,
+				CF4ED38510D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m in Sources */,
+				CF4ED38610D9256F00B4F6AA /* PMMutableSetDebugCategory.m in Sources */,
+				CF4ED38710D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */,
+				CF4ED38810D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */,
+				CF4ED38910D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4653,6 +4744,15 @@
 				CFAE5AA210021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1D10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCB81003CC160096A8E5 /* cocoaGalgas.m in Sources */,
+				CF4ED39310D9256F00B4F6AA /* PMArrayControllerDebugCategory.m in Sources */,
+				CF4ED39410D9256F00B4F6AA /* PMArrayDebugCategory.m in Sources */,
+				CF4ED39510D9256F00B4F6AA /* PMDictionaryDebugCategory.m in Sources */,
+				CF4ED39610D9256F00B4F6AA /* PMMutableArrayDebugCategory.m in Sources */,
+				CF4ED39710D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m in Sources */,
+				CF4ED39810D9256F00B4F6AA /* PMMutableSetDebugCategory.m in Sources */,
+				CF4ED39910D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */,
+				CF4ED39A10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */,
+				CF4ED39B10D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4860,6 +4960,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
+				LD_OPENMP_FLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};
