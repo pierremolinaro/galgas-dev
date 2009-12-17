@@ -231,11 +231,11 @@ map @sourceFileMap {
 
 #------------------------------------------------------------------------------*
 
-filewrapper fileListTemplateFileWrapper in "../creation_templates/file_list_template" {
+filewrapper fileListTemplateFileWrapper in "../generation_templates/file_list_template" {
  "mke"
 } {
 #--- Project
-  template fileListTemplate "/file_list_template.mke"
+  template fileListTemplate "/file_list_template.mke.gTemplate"
     ?@string HAND_CODED_SOURCES_SUB_DIRS
     ?@string GALGAS_SOURCE_LIST
     ?@string HAND_CODED_SOURCE_LIST

@@ -37,11 +37,11 @@ import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-filewrapper EXfileListTemplateFileWrapper in "../creation_templates/file_list_template" {
+filewrapper EXfileListTemplateFileWrapper in "../generation_templates/file_list_template" {
  "mke"
 } {
 #--- Project
-  template EXfileListTemplate "/file_list_template.mke"
+  template EXfileListTemplate "/file_list_template.mke.gTemplate"
     ?@string HAND_CODED_SOURCES_SUB_DIRS
     ?@string GALGAS_SOURCE_LIST
     ?@string HAND_CODED_SOURCE_LIST
