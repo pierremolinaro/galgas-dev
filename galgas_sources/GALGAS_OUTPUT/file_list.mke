@@ -111,6 +111,7 @@ SOURCES += semanticsTypes.cpp
 SOURCES += semanticsConstructors.cpp
 SOURCES += semanticsReaders.cpp
 SOURCES += semanticsModifiers.cpp
+SOURCES += generateHeadersOfBuiltinTypes.cpp
 SOURCES += semanticsSemantics.cpp
 SOURCES += semanticsCompilation.cpp
 SOURCES += syntaxMetamodel.cpp
