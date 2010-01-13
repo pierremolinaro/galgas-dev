@@ -607,4 +607,10 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
+function generatedTypeName ??@string inGalgasTypeName -> @string outTypeName :
+  outTypeName := "GALGAS_" . [inGalgasTypeName identifierRepresentation] ;
+end function ;
+  
+#---------------------------------------------------------------------------*
+
 end semantics ;

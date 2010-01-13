@@ -29,6 +29,7 @@ import semantics optionCompilation in "optionCompilation.gSemantics" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics guiCompilation in "guiCompilation.gSemantics" ;
+import semantics generateHeadersOfBuiltinTypes in "generateHeadersOfBuiltinTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #--- Prologue routine 
@@ -39,6 +40,9 @@ before {
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ;
   end if ;
+  generateHeadersOfBuiltinTypes
+    ![option galgas_cli_options.generateHeadersOfBuiltinTypes value]
+  ;
 }
 
 #---------------------------------------------------------------------------*

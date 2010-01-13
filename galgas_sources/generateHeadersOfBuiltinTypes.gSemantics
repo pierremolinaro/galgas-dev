@@ -18,14 +18,41 @@
 #---------------------------------------------------------------------------*
 
 semantics generateHeadersOfBuiltinTypes :
+  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
+} {
+  template header "GALGAS_builtin_type.h.gTemplate"
+    ?@string TYPE
+  ;
+}
 
 #---------------------------------------------------------------------------*
 
 routine generateHeadersOfBuiltinTypes ??@string inDirectory :
-  if not [inDirectory directoryExists] then
-    error here : "the '" . inDirectory . "' directory does not exist" ;
-  else
-  
+  if inDirectory != "" then
+    if not [inDirectory directoryExists] then
+      error here : "the '" . inDirectory . "' directory does not exist" ;
+    else
+      const @typeMap builtinTypeMap := constructBuiltinTypeMap [] ;
+      log builtinTypeMap ;
+      foreach builtinTypeMap do
+        const @string typeName := generatedTypeName [![key string]] ;
+        [@string generateFile
+          !inDirectory
+          !typeName . ".h"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          ![filewrapper builtinTypeGenerationTemplate.header
+            !typeName
+          ]
+          !"\n\n" # Defaut user zone2
+          !""
+        ] ;
+      end foreach ;
+    end if ;
   end if ;
 end routine ;
 
