@@ -46,16 +46,14 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
 #---------------------------------------------------------------------------*
 
 before {
-  @string creationProjectName := [option galgas_cli_options.create_project value] ;
+  const @string creationProjectName := [option galgas_cli_options.create_project value] ;
   projectCreation !creationProjectName ;
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ;
   end if ;
-  if [option galgas_cli_options.generateHeadersOfBuiltinTypes value] != "" then
-    generateHeadersOfBuiltinTypes
-      ![option galgas_cli_options.generateHeadersOfBuiltinTypes value]
-    ;
-  end if ;
+  generateHeadersOfBuiltinTypes
+    ![option galgas_cli_options.generateHeadersOfBuiltinTypes value]
+  ;
 }
 
 #---------------------------------------------------------------------------*
