@@ -1241,6 +1241,12 @@
 		CFF664090B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
 		CFF6640B0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
 		CFF6640F0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF7D49A10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D49810FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp */; };
+		CFF7D49B10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D49810FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp */; };
+		CFF7D49C10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D49810FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp */; };
+		CFF7D49D10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D49810FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp */; };
+		CFF7D49E10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D49810FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp */; };
+		CFF7D49F10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D49810FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp */; };
 		CFF8611E09C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
 		CFF8612609C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
 		CFF9E5420BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5340BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp */; };
@@ -2054,6 +2060,8 @@
 		CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_binaryset.h; sourceTree = "<group>"; };
 		CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_binaryset.cpp; sourceTree = "<group>"; };
 		CFF664020B6769FF00E97917 /* GGS_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_binaryset.h; sourceTree = "<group>"; };
+		CFF7D49810FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = generateHeadersOfBuiltinTypes.cpp; sourceTree = "<group>"; };
+		CFF7D49910FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = generateHeadersOfBuiltinTypes.h; sourceTree = "<group>"; };
 		CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_Object.cpp; sourceTree = "<group>"; };
 		CFF8611D09C0ACF600F90D05 /* C_GGS_Object.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_Object.h; sourceTree = "<group>"; };
 		CFF98D73058CCD4700176BCE /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2892,6 +2900,8 @@
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFF7D49810FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp */,
+				CFF7D49910FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.h */,
 				CF64D65710D550BD00F1F1CF /* semanticsModifiers.cpp */,
 				CF64D65810D550BD00F1F1CF /* semanticsModifiers.h */,
 				CF1109E110D4F09C00E1B8FC /* semanticsReaders.cpp */,
@@ -3767,6 +3777,7 @@
 				CF1109E710D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65D10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55110FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
+				CFF7D49A10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3957,6 +3968,7 @@
 				CF1109E310D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65910D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
+				CFF7D49C10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4147,6 +4159,7 @@
 				CF1109E410D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65A10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55410FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
+				CFF7D49D10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4370,6 +4383,7 @@
 				CF1109E810D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65E10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55210FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
+				CFF7D49B10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4560,6 +4574,7 @@
 				CF1109E510D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65B10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55510FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
+				CFF7D49E10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4750,6 +4765,7 @@
 				CF1109E610D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65C10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55610FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
+				CFF7D49F10FE2F0E0042DDE3 /* generateHeadersOfBuiltinTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

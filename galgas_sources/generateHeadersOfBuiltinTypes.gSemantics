@@ -1,8 +1,9 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  GALGAS Command Line Option Definition                                    *
+#  Generate headers of Builtin types                                        *
 #                                                                           *
-#  Copyright (C) 2004, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -16,14 +17,18 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-option galgas_cli_options :
-  @bool doNotGenerateXcodeProject : '\0', "do-not-generate-xcode-project" -> "Prevent Generation of the corresponding Xcode project" ;
-  @bool warnsShadows         : '\0', "shadow" -> "Warn on declarations that shadow a previously declared object" ;
-  @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
-  @bool generate_debug       : '\0', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols" ;
-  @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
-  @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions" ;
-  @string generateHeadersOfBuiltinTypes: '\0', "generate-builtin-type-headers" -> "Generate header files of builtin types (reserved for GALGAS development)" ;
-end option ;
+semantics generateHeadersOfBuiltinTypes :
 
 #---------------------------------------------------------------------------*
+
+routine generateHeadersOfBuiltinTypes ??@string inDirectory :
+  if not [inDirectory directoryExists] then
+    error here : "the '" . inDirectory . "' directory does not exist" ;
+  else
+  
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
