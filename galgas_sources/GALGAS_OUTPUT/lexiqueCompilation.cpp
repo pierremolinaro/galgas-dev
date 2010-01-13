@@ -3266,7 +3266,7 @@ static void prologueRoutineFor_lexiqueCompilation (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_lexiqueCompilation (prologueRoutineFor_lexiqueCompilation,
+C_PrologueEpilogue prologueEpilogueObjectFor_lexiqueCompilation (prologueRoutineFor_lexiqueCompilation,
                                    NULL) ;
 
 //---------------------------------------------------------------------------*

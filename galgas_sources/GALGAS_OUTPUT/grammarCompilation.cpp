@@ -702,7 +702,7 @@ static void prologueRoutineFor_grammarCompilation (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_grammarCompilation (prologueRoutineFor_grammarCompilation,
+C_PrologueEpilogue prologueEpilogueObjectFor_grammarCompilation (prologueRoutineFor_grammarCompilation,
                                    NULL) ;
 
 //---------------------------------------------------------------------------*

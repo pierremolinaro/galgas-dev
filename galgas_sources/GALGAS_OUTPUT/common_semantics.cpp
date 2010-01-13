@@ -53272,7 +53272,7 @@ static void epilogueRoutineFor_common_semantics (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_common_semantics (NULL,
+C_PrologueEpilogue prologueEpilogueObjectFor_common_semantics (NULL,
                                    epilogueRoutineFor_common_semantics) ;
 
 //---------------------------------------------------------------------------*

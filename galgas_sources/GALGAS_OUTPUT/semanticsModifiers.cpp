@@ -3039,7 +3039,7 @@ static void epilogueRoutineFor_semanticsModifiers (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_semanticsModifiers (prologueRoutineFor_semanticsModifiers,
+C_PrologueEpilogue prologueEpilogueObjectFor_semanticsModifiers (prologueRoutineFor_semanticsModifiers,
                                    epilogueRoutineFor_semanticsModifiers) ;
 
 //---------------------------------------------------------------------------*

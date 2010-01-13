@@ -10905,7 +10905,7 @@ static void epilogueRoutineFor_semanticsTypes (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_semanticsTypes (NULL,
+C_PrologueEpilogue prologueEpilogueObjectFor_semanticsTypes (NULL,
                                    epilogueRoutineFor_semanticsTypes) ;
 
 //---------------------------------------------------------------------------*

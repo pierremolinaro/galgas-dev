@@ -2851,7 +2851,7 @@ static void epilogueRoutineFor_semanticsReaders (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_semanticsReaders (prologueRoutineFor_semanticsReaders,
+C_PrologueEpilogue prologueEpilogueObjectFor_semanticsReaders (prologueRoutineFor_semanticsReaders,
                                    epilogueRoutineFor_semanticsReaders) ;
 
 //---------------------------------------------------------------------------*
