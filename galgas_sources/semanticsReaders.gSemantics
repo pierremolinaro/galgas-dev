@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantics definitions for semantics component                            *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -336,6 +336,7 @@ end reader ;
 
 once readerMapFor_uint -> @readerMap  outMap :
   outMap := commonReaderMapForAllTypes [] ;
+  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
@@ -356,6 +357,7 @@ end reader ;
 
 once readerMapFor_sint ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
+  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
@@ -372,6 +374,7 @@ end reader ;
 
 once readerMapFor_uint64 ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
+  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
@@ -390,6 +393,7 @@ end reader ;
 
 once readerMapFor_sint64 ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
+  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
   enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;

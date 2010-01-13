@@ -4479,6 +4479,9 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "double" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_double new] ;
     elsif [inReaderName string] == "sint" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_sint new] ;
@@ -4600,6 +4603,9 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "double" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_double new] ;
     elsif [inReaderName string] == "sint64" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_sint64 new] ;
@@ -4637,6 +4643,9 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "double" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_double new] ;
     elsif [inReaderName string] == "uint" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_uint new] ;
@@ -4666,6 +4675,9 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_type new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
+    elsif [inReaderName string] == "double" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_double new] ;
     elsif [inReaderName string] == "uint64" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_uint64 new] ;
