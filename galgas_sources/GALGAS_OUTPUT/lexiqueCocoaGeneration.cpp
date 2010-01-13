@@ -1085,7 +1085,7 @@ static void prologueRoutineFor_lexiqueCocoaGeneration (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_lexiqueCocoaGeneration (prologueRoutineFor_lexiqueCocoaGeneration,
+C_PrologueEpilogue prologueEpilogueObjectFor_lexiqueCocoaGeneration (prologueRoutineFor_lexiqueCocoaGeneration,
                                    NULL) ;
 
 //---------------------------------------------------------------------------*

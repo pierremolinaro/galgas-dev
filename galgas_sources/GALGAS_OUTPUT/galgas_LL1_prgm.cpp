@@ -101,7 +101,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   C_BDD::setITEcacheSize (17) ;
   C_BDD::setANDcacheSize (1) ;
   C_BDD::forAllOnBitsGreaterCacheSize (18) ;
-  C_PrologueEpilogueAction::runPrologueActions () ;
+  C_PrologueEpilogue::runPrologueActions () ;
   {
   //--- Input/output parameters
     const char * extensions [] = {"gOption", "gLexique", "gGui", "ggs", NULL} ;
@@ -352,7 +352,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     macroDetachPointer (galgasIOptr, C_galgas_io) ;
     macroDetachPointer (_commonLexique, C_Compiler) ;
   }
-  C_PrologueEpilogueAction::runEpilogueActions () ;
+  C_PrologueEpilogue::runEpilogueActions () ;
   runAllReleaseRoutines () ;
   C_StringCommandLineOption::releaseStrings () ;
   C_String::freeUnusedRegisteredStrings () ;

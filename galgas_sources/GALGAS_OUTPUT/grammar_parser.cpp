@@ -1269,7 +1269,7 @@ static void prologueRoutineFor_grammar_parser (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_grammar_parser (prologueRoutineFor_grammar_parser,
+C_PrologueEpilogue prologueEpilogueObjectFor_grammar_parser (prologueRoutineFor_grammar_parser,
                                    NULL) ;
 
 //---------------------------------------------------------------------------*

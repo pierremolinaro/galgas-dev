@@ -329,6 +329,12 @@
 		CF63AD280EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63AD290EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63AD2A0EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
+		CF63B55110FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
+		CF63B55210FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
+		CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
+		CF63B55410FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
+		CF63B55510FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
+		CF63B55610FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
 		CF64D65910D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF64D65710D550BD00F1F1CF /* semanticsModifiers.cpp */; };
 		CF64D65A10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF64D65710D550BD00F1F1CF /* semanticsModifiers.cpp */; };
 		CF64D65B10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF64D65710D550BD00F1F1CF /* semanticsModifiers.cpp */; };
@@ -1505,6 +1511,8 @@
 		CF5E74F507B00EA600858338 /* common_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = common_semantics.h; sourceTree = "<group>"; };
 		CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectMetamodel.cpp; sourceTree = "<group>"; };
 		CF63AD240EE04C0A00220E75 /* projectMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectMetamodel.h; sourceTree = "<group>"; };
+		CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrologueEpilogue.cpp; sourceTree = "<group>"; };
+		CF63B55010FC6A5E00B5E41F /* C_PrologueEpilogue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_PrologueEpilogue.h; sourceTree = "<group>"; };
 		CF64D65710D550BD00F1F1CF /* semanticsModifiers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsModifiers.cpp; sourceTree = "<group>"; };
 		CF64D65810D550BD00F1F1CF /* semanticsModifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsModifiers.h; sourceTree = "<group>"; };
 		CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSemantics.cpp; sourceTree = "<group>"; };
@@ -3074,6 +3082,8 @@
 		CFF5381F057A549B00854C83 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */,
+				CF63B55010FC6A5E00B5E41F /* C_PrologueEpilogue.h */,
 				CF0676430E7EE037008B9D1F /* md5.cpp */,
 				CF0676080E7EDE29008B9D1F /* md5.h */,
 				CF825A6908536B780077AEAF /* C_Exception.cpp */,
@@ -3756,6 +3766,7 @@
 				CFA2F01410D4220E0008DA86 /* semanticsConstructors.cpp in Sources */,
 				CF1109E710D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65D10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
+				CF63B55110FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3945,6 +3956,7 @@
 				CFA2F01010D4220E0008DA86 /* semanticsConstructors.cpp in Sources */,
 				CF1109E310D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65910D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
+				CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4134,6 +4146,7 @@
 				CFA2F01110D4220E0008DA86 /* semanticsConstructors.cpp in Sources */,
 				CF1109E410D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65A10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
+				CF63B55410FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4356,6 +4369,7 @@
 				CFA2F01510D4220E0008DA86 /* semanticsConstructors.cpp in Sources */,
 				CF1109E810D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65E10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
+				CF63B55210FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4545,6 +4559,7 @@
 				CFA2F01210D4220E0008DA86 /* semanticsConstructors.cpp in Sources */,
 				CF1109E510D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65B10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
+				CF63B55510FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4734,6 +4749,7 @@
 				CFA2F01310D4220E0008DA86 /* semanticsConstructors.cpp in Sources */,
 				CF1109E610D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */,
 				CF64D65C10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
+				CF63B55610FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

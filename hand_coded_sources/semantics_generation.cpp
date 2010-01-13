@@ -1339,7 +1339,7 @@ generate_cpp_file (C_Compiler & inLexique,
                      << "}\n\n" ;
       generatedZone3.appendCppHyphenLineComment () ;
     }
-    generatedZone3 << "C_PrologueEpilogueAction prologueEpilogueObjectFor_" << nomComposant << " (" ;
+    generatedZone3 << "C_PrologueEpilogue prologueEpilogueObjectFor_" << nomComposant << " (" ;
     if (prologueActions.length () > 0) {
       generatedZone3 << "prologueRoutineFor_" << nomComposant ;
     }else{

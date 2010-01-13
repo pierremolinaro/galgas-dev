@@ -460,6 +460,7 @@ routine build_LIBPM_UTILITIES_group
   append_cpp_h_files !?fileList !"F_DisplayException" ;
   append_cpp_h_files !?fileList !"MF_Assert" ;
   append_cpp_h_files !?fileList !"MF_MemoryControl" ;
+  append_cpp_h_files !?fileList !"C_PrologueEpilogue" ;
   fileList += !"M_SourceLocation.h" ;
   fileList += !"TF_inf.h" ;
   fileList += !"TF_sup.h" ;
@@ -485,6 +486,7 @@ routine build_LIBPM_UTILITIES_files_for_sources_build_phase
   fileList += !"F_DisplayException.cpp" ;
   fileList += !"MF_Assert.cpp" ;
   fileList += !"MF_MemoryControl.cpp" ;
+  fileList += !"C_PrologueEpilogue.cpp" ;
 #---
   enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription

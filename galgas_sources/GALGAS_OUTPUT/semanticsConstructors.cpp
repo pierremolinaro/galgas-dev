@@ -2330,7 +2330,7 @@ static void epilogueRoutineFor_semanticsConstructors (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_semanticsConstructors (prologueRoutineFor_semanticsConstructors,
+C_PrologueEpilogue prologueEpilogueObjectFor_semanticsConstructors (prologueRoutineFor_semanticsConstructors,
                                    epilogueRoutineFor_semanticsConstructors) ;
 
 //---------------------------------------------------------------------------*

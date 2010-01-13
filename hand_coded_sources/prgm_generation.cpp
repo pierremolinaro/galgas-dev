@@ -163,7 +163,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  C_BDD::setITEcacheSize (17) ;\n"
                     "  C_BDD::setANDcacheSize (1) ;\n"
                     "  C_BDD::forAllOnBitsGreaterCacheSize (18) ;\n"
-                    "  C_PrologueEpilogueAction::runPrologueActions () ;\n"
+                    "  C_PrologueEpilogue::runPrologueActions () ;\n"
                     "  {\n"
                     "  //--- Input/output parameters\n"
                     "    const char * extensions [] = {" ;
@@ -310,7 +310,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    macroDetachPointer (galgasIOptr, C_galgas_io) ;\n"
                     "    macroDetachPointer (_commonLexique, C_Compiler) ;\n"
                     "  }\n"
-                    "  C_PrologueEpilogueAction::runEpilogueActions () ;\n"
+                    "  C_PrologueEpilogue::runEpilogueActions () ;\n"
                     "  runAllReleaseRoutines () ;\n"
                     "  C_StringCommandLineOption::releaseStrings () ;\n"
                     "  C_String::freeUnusedRegisteredStrings () ;\n"

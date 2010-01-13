@@ -472,6 +472,8 @@ routine addition_types_check
     outResultType := inLeftExpressionType ;
   when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
     outResultType := inLeftExpressionType ;
+  when @typeGalgas_double ()    :: @typeGalgas_double () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "addition between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
@@ -502,6 +504,8 @@ routine substraction_types_check
     outResultType := inLeftExpressionType ;
   when @typeGalgas_stringset () :: @typeGalgas_stringset () :
     outResultType := inLeftExpressionType ;
+  when @typeGalgas_double ()    :: @typeGalgas_double () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "substraction between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
@@ -530,6 +534,8 @@ routine multiply_types_check
     outResultType := inLeftExpressionType ;
   when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
     outResultType := inLeftExpressionType ;
+  when @typeGalgas_double ()    :: @typeGalgas_double () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "multiplication between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
@@ -557,6 +563,8 @@ routine divide_types_check
   when @typeGalgas_uint64 ()    :: @typeGalgas_uint64 () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_double ()    :: @typeGalgas_double () :
     outResultType := inLeftExpressionType ;
   else
     error here : "division between " . [inLeftExpressionType messageGalgasType]
@@ -608,6 +616,8 @@ routine unary_minus_type_check
   when >= @typeGalgas_sint do
     outResultType := inExpressionType ;
   when >= @typeGalgas_sint64 do
+    outResultType := inExpressionType ;
+  when >= @typeGalgas_double do
     outResultType := inExpressionType ;
   else
     error here : "unary minus for " . [inExpressionType messageGalgasType]

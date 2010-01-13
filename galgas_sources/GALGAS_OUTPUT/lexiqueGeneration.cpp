@@ -1080,7 +1080,7 @@ static void prologueRoutineFor_lexiqueGeneration (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_lexiqueGeneration (prologueRoutineFor_lexiqueGeneration,
+C_PrologueEpilogue prologueEpilogueObjectFor_lexiqueGeneration (prologueRoutineFor_lexiqueGeneration,
                                    NULL) ;
 
 //---------------------------------------------------------------------------*

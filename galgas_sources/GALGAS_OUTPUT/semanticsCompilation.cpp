@@ -1510,7 +1510,7 @@ static void prologueRoutineFor_semanticsCompilation (void) {
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogueAction prologueEpilogueObjectFor_semanticsCompilation (prologueRoutineFor_semanticsCompilation,
+C_PrologueEpilogue prologueEpilogueObjectFor_semanticsCompilation (prologueRoutineFor_semanticsCompilation,
                                    NULL) ;
 
 //---------------------------------------------------------------------------*
