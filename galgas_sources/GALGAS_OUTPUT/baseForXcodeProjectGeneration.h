@@ -104,7 +104,7 @@ class elementOf_GGS_XcodeObjectReferenceList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_XcodeObjectReferenceList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_XcodeObjectReferenceList ;
 
 //---------------------------------------------------------------------------*
 
@@ -208,7 +208,7 @@ class GGS_XcodeObjectReferenceList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -240,7 +240,7 @@ class GGS_XcodeObjectReferenceList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract ;
 
 //---------------------------------------------------------------------------*
 
@@ -289,10 +289,10 @@ class GGS_Xcode_PBXFileReference_abstract : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -305,7 +305,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_abstract ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_abstract ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -313,7 +313,7 @@ extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_productFileReference ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_productFileReference ;
 
 //---------------------------------------------------------------------------*
 
@@ -358,7 +358,7 @@ class GGS_Xcode_productFileReference : public GGS_Xcode_PBXFileReference_abstrac
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -371,7 +371,7 @@ class GGS_Xcode_productFileReference : public GGS_Xcode_PBXFileReference_abstrac
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_productFileReference ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_productFileReference ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -379,7 +379,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_productFileReference
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_CompiledMachOExecutable ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_CompiledMachOExecutable ;
 
 //---------------------------------------------------------------------------*
 
@@ -430,7 +430,7 @@ class GGS_Xcode_PBXFileReference_CompiledMachOExecutable : public GGS_Xcode_prod
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -443,7 +443,7 @@ class GGS_Xcode_PBXFileReference_CompiledMachOExecutable : public GGS_Xcode_prod
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_CompiledMachOExecutable ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_CompiledMachOExecutable ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -451,7 +451,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_Com
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_Application ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_Application ;
 
 //---------------------------------------------------------------------------*
 
@@ -502,7 +502,7 @@ class GGS_Xcode_PBXFileReference_Application : public GGS_Xcode_productFileRefer
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -515,7 +515,7 @@ class GGS_Xcode_PBXFileReference_Application : public GGS_Xcode_productFileRefer
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_Application ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_Application ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -523,7 +523,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_App
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_cppSourceFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_cppSourceFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -574,7 +574,7 @@ class GGS_Xcode_PBXFileReference_cppSourceFile : public GGS_Xcode_PBXFileReferen
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -587,7 +587,7 @@ class GGS_Xcode_PBXFileReference_cppSourceFile : public GGS_Xcode_PBXFileReferen
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_cppSourceFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_cppSourceFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -595,7 +595,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_cpp
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_hSourceFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_hSourceFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -646,7 +646,7 @@ class GGS_Xcode_PBXFileReference_hSourceFile : public GGS_Xcode_PBXFileReference
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -659,7 +659,7 @@ class GGS_Xcode_PBXFileReference_hSourceFile : public GGS_Xcode_PBXFileReference
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_hSourceFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_hSourceFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -667,7 +667,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_hSo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_pchSourceFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_pchSourceFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -718,7 +718,7 @@ class GGS_Xcode_PBXFileReference_pchSourceFile : public GGS_Xcode_PBXFileReferen
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -731,7 +731,7 @@ class GGS_Xcode_PBXFileReference_pchSourceFile : public GGS_Xcode_PBXFileReferen
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_pchSourceFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_pchSourceFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -739,7 +739,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_pch
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_mSourceFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_mSourceFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -790,7 +790,7 @@ class GGS_Xcode_PBXFileReference_mSourceFile : public GGS_Xcode_PBXFileReference
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -803,7 +803,7 @@ class GGS_Xcode_PBXFileReference_mSourceFile : public GGS_Xcode_PBXFileReference
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_mSourceFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_mSourceFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -811,7 +811,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_mSo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSourceFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSourceFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -862,7 +862,7 @@ class GGS_Xcode_PBXFileReference_mmSourceFile : public GGS_Xcode_PBXFileReferenc
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -875,7 +875,7 @@ class GGS_Xcode_PBXFileReference_mmSourceFile : public GGS_Xcode_PBXFileReferenc
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_mmSourceFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_mmSourceFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -883,7 +883,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_mmS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_gifFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_gifFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -934,7 +934,7 @@ class GGS_Xcode_PBXFileReference_gifFile : public GGS_Xcode_PBXFileReference_abs
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -947,7 +947,7 @@ class GGS_Xcode_PBXFileReference_gifFile : public GGS_Xcode_PBXFileReference_abs
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_gifFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_gifFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -955,7 +955,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_gif
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_tiffFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_tiffFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -1006,7 +1006,7 @@ class GGS_Xcode_PBXFileReference_tiffFile : public GGS_Xcode_PBXFileReference_ab
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1019,7 +1019,7 @@ class GGS_Xcode_PBXFileReference_tiffFile : public GGS_Xcode_PBXFileReference_ab
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_tiffFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_tiffFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1027,7 +1027,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_tif
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_pngFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_pngFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -1078,7 +1078,7 @@ class GGS_Xcode_PBXFileReference_pngFile : public GGS_Xcode_PBXFileReference_abs
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1091,7 +1091,7 @@ class GGS_Xcode_PBXFileReference_pngFile : public GGS_Xcode_PBXFileReference_abs
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_pngFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_pngFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1099,7 +1099,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_png
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_plistFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_plistFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -1150,7 +1150,7 @@ class GGS_Xcode_PBXFileReference_plistFile : public GGS_Xcode_PBXFileReference_a
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1163,7 +1163,7 @@ class GGS_Xcode_PBXFileReference_plistFile : public GGS_Xcode_PBXFileReference_a
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_plistFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_plistFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1171,7 +1171,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_pli
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_frameworkFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_frameworkFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -1222,7 +1222,7 @@ class GGS_Xcode_PBXFileReference_frameworkFile : public GGS_Xcode_PBXFileReferen
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1235,7 +1235,7 @@ class GGS_Xcode_PBXFileReference_frameworkFile : public GGS_Xcode_PBXFileReferen
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_frameworkFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_frameworkFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1243,7 +1243,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_fra
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_icnsFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_icnsFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -1294,7 +1294,7 @@ class GGS_Xcode_PBXFileReference_icnsFile : public GGS_Xcode_PBXFileReference_ab
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1307,7 +1307,7 @@ class GGS_Xcode_PBXFileReference_icnsFile : public GGS_Xcode_PBXFileReference_ab
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_icnsFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_icnsFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1315,7 +1315,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_icn
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_xibFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_xibFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -1368,7 +1368,7 @@ class GGS_Xcode_PBXFileReference_xibFile : public GGS_Xcode_PBXFileReference_abs
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1381,7 +1381,7 @@ class GGS_Xcode_PBXFileReference_xibFile : public GGS_Xcode_PBXFileReference_abs
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_xibFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_xibFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1389,7 +1389,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_xib
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_plistStringFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_plistStringFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -1442,7 +1442,7 @@ class GGS_Xcode_PBXFileReference_plistStringFile : public GGS_Xcode_PBXFileRefer
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1455,7 +1455,7 @@ class GGS_Xcode_PBXFileReference_plistStringFile : public GGS_Xcode_PBXFileRefer
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_plistStringFile ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_plistStringFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1465,7 +1465,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_pli
 
 class elementOf_GGS_Xcode_PBXFileReference_map ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_map ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_map ;
 
 //---------------------------------------------------------------------------*
 
@@ -1482,7 +1482,7 @@ class GGS_Xcode_PBXFileReference_map : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_Xcode_PBXFileReference_map & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1572,7 +1572,7 @@ class GGS_Xcode_PBXFileReference_map : public AC_galgas_map {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXBuildFile ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXBuildFile ;
 
 //---------------------------------------------------------------------------*
 
@@ -1627,10 +1627,10 @@ class GGS_Xcode_PBXBuildFile : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1643,7 +1643,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXBuildFile ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXBuildFile ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1655,7 +1655,7 @@ class elementOf_GGS_Xcode_PBXBuildFile_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXBuildFile_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXBuildFile_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -1743,7 +1743,7 @@ class GGS_Xcode_PBXBuildFile_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1774,7 +1774,7 @@ class GGS_Xcode_PBXBuildFile_list : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase ;
 
 //---------------------------------------------------------------------------*
 
@@ -1831,10 +1831,10 @@ class GGS_Xcode_PBXSourcesBuildPhase : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1847,7 +1847,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXSourcesBuildPhase ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXSourcesBuildPhase ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1859,7 +1859,7 @@ class elementOf_GGS_Xcode_PBXSourcesBuildPhase_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -1947,7 +1947,7 @@ class GGS_Xcode_PBXSourcesBuildPhase_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1978,7 +1978,7 @@ class GGS_Xcode_PBXSourcesBuildPhase_list : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase ;
 
 //---------------------------------------------------------------------------*
 
@@ -2035,10 +2035,10 @@ class GGS_Xcode_PBXResourcesBuildPhase : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2051,7 +2051,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXResourcesBuildPhase ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXResourcesBuildPhase ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2063,7 +2063,7 @@ class elementOf_GGS_Xcode_PBXResourcesBuildPhase_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -2151,7 +2151,7 @@ class GGS_Xcode_PBXResourcesBuildPhase_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2182,7 +2182,7 @@ class GGS_Xcode_PBXResourcesBuildPhase_list : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase ;
 
 //---------------------------------------------------------------------------*
 
@@ -2239,10 +2239,10 @@ class GGS_Xcode_PBXFrameworksBuildPhase : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2255,7 +2255,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXFrameworksBuildPhase ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFrameworksBuildPhase ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2267,7 +2267,7 @@ class elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -2355,7 +2355,7 @@ class GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2386,7 +2386,7 @@ class GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXGroup ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXGroup ;
 
 //---------------------------------------------------------------------------*
 
@@ -2445,10 +2445,10 @@ class GGS_Xcode_PBXGroup : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2461,7 +2461,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXGroup ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXGroup ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2473,7 +2473,7 @@ class elementOf_GGS_Xcode_PBXGroup_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXGroup_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXGroup_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -2561,7 +2561,7 @@ class GGS_Xcode_PBXGroup_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2592,7 +2592,7 @@ class GGS_Xcode_PBXGroup_list : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_XCBuildConfiguration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_XCBuildConfiguration ;
 
 //---------------------------------------------------------------------------*
 
@@ -2651,10 +2651,10 @@ class GGS_Xcode_XCBuildConfiguration : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2667,7 +2667,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_XCBuildConfiguration ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_XCBuildConfiguration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2679,7 +2679,7 @@ class elementOf_GGS_Xcode_XCBuildConfiguration_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_XCBuildConfiguration_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_XCBuildConfiguration_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -2767,7 +2767,7 @@ class GGS_Xcode_XCBuildConfiguration_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2802,7 +2802,7 @@ class elementOf_GGS_Xcode_PBXNativeTarget_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXNativeTarget_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXNativeTarget_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -3002,7 +3002,7 @@ class GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3040,7 +3040,7 @@ class GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_targetDependencyDescription ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_targetDependencyDescription ;
 
 //---------------------------------------------------------------------------*
 
@@ -3095,10 +3095,10 @@ class GGS_Xcode_targetDependencyDescription : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3111,7 +3111,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_targetDependencyDescription ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_targetDependencyDescription ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3123,7 +3123,7 @@ class elementOf_GGS_Xcode_targetDependencyDescription_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_targetDependencyDescription_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_targetDependencyDescription_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -3211,7 +3211,7 @@ class GGS_Xcode_targetDependencyDescription_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3246,7 +3246,7 @@ class elementOf_GGS_Xcode_PBXVariantGroup_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXVariantGroup_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXVariantGroup_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -3366,7 +3366,7 @@ class GGS_Xcode_PBXVariantGroup_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3816,7 +3816,7 @@ class cPtr_Xcode_PBXFileReference_abstract : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -3855,7 +3855,7 @@ class cPtr_Xcode_productFileReference : public cPtr_Xcode_PBXFileReference_abstr
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -3903,7 +3903,7 @@ class cPtr_Xcode_PBXFileReference_CompiledMachOExecutable : public cPtr_Xcode_pr
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -3954,7 +3954,7 @@ class cPtr_Xcode_PBXFileReference_Application : public cPtr_Xcode_productFileRef
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4000,7 +4000,7 @@ class cPtr_Xcode_PBXFileReference_cppSourceFile : public cPtr_Xcode_PBXFileRefer
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4046,7 +4046,7 @@ class cPtr_Xcode_PBXFileReference_hSourceFile : public cPtr_Xcode_PBXFileReferen
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4092,7 +4092,7 @@ class cPtr_Xcode_PBXFileReference_pchSourceFile : public cPtr_Xcode_PBXFileRefer
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4138,7 +4138,7 @@ class cPtr_Xcode_PBXFileReference_mSourceFile : public cPtr_Xcode_PBXFileReferen
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4184,7 +4184,7 @@ class cPtr_Xcode_PBXFileReference_mmSourceFile : public cPtr_Xcode_PBXFileRefere
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4230,7 +4230,7 @@ class cPtr_Xcode_PBXFileReference_gifFile : public cPtr_Xcode_PBXFileReference_a
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4276,7 +4276,7 @@ class cPtr_Xcode_PBXFileReference_tiffFile : public cPtr_Xcode_PBXFileReference_
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4322,7 +4322,7 @@ class cPtr_Xcode_PBXFileReference_pngFile : public cPtr_Xcode_PBXFileReference_a
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4368,7 +4368,7 @@ class cPtr_Xcode_PBXFileReference_plistFile : public cPtr_Xcode_PBXFileReference
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4414,7 +4414,7 @@ class cPtr_Xcode_PBXFileReference_frameworkFile : public cPtr_Xcode_PBXFileRefer
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4460,7 +4460,7 @@ class cPtr_Xcode_PBXFileReference_icnsFile : public cPtr_Xcode_PBXFileReference_
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4508,7 +4508,7 @@ class cPtr_Xcode_PBXFileReference_xibFile : public cPtr_Xcode_PBXFileReference_a
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4556,7 +4556,7 @@ class cPtr_Xcode_PBXFileReference_plistStringFile : public cPtr_Xcode_PBXFileRef
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4642,7 +4642,7 @@ class cPtr_Xcode_PBXBuildFile : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4724,7 +4724,7 @@ class cPtr_Xcode_PBXSourcesBuildPhase : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4806,7 +4806,7 @@ class cPtr_Xcode_PBXResourcesBuildPhase : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4893,7 +4893,7 @@ class cPtr_Xcode_PBXFrameworksBuildPhase : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -4977,7 +4977,7 @@ class cPtr_Xcode_PBXGroup : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -5065,7 +5065,7 @@ class cPtr_Xcode_XCBuildConfiguration : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -5191,7 +5191,7 @@ class cPtr_Xcode_targetDependencyDescription : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -5271,7 +5271,7 @@ class elementOf_GGS_Xcode_PBXVariantGroup_list : public AC_galgas_list::cListEle
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_XcodeProjectDescription ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_XcodeProjectDescription ;
 
 //---------------------------------------------------------------------------*
 
@@ -5299,7 +5299,7 @@ class GGS_XcodeProjectDescription : public GGS__root {
 //--- Reader 'description'
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 

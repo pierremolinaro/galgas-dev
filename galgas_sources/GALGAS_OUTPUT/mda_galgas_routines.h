@@ -118,7 +118,7 @@ void routine_performProjectGlobalCheckings (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_targetFileListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_targetFileListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -178,7 +178,7 @@ class GGS_targetFileListMap : public AC_galgas_listmap {
     public : const GGS_stringlist & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -197,7 +197,7 @@ class GGS_targetFileListMap : public AC_galgas_listmap {
 
 class elementOf_GGS_sourceFileMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_sourceFileMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sourceFileMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -214,7 +214,7 @@ class GGS_sourceFileMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_sourceFileMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 

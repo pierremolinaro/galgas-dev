@@ -62,7 +62,7 @@ enterCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstr
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1
-findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

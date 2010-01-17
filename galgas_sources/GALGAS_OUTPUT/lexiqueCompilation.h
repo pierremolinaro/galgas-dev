@@ -62,7 +62,7 @@ enterCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (typeCa
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction
-findCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -84,7 +84,7 @@ enterCategoryMethod__lexicalExpression__checkLexicalExpression (typeCategoryMeth
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalExpression__checkLexicalExpression
-findCategoryMethod__lexicalExpression__checkLexicalExpression (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__lexicalExpression__checkLexicalExpression (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -107,7 +107,7 @@ enterCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFu
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument
-findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -130,7 +130,7 @@ enterCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRo
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument
-findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -154,7 +154,7 @@ enterCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCa
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument
-findCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -177,7 +177,7 @@ enterCategoryMethod__lexicalInstruction__checkLexicalInstruction (typeCategoryMe
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalInstruction__checkLexicalInstruction
-findCategoryMethod__lexicalInstruction__checkLexicalInstruction (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__lexicalInstruction__checkLexicalInstruction (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -199,7 +199,7 @@ enterCategoryMethod__abstractLexicalRule__checkLexicalRule (typeCategoryMethod__
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__abstractLexicalRule__checkLexicalRule
-findCategoryMethod__abstractLexicalRule__checkLexicalRule (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__abstractLexicalRule__checkLexicalRule (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTypeEnum ("lexicalTypeEnum", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTypeEnum ("lexicalTypeEnum", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -343,7 +343,7 @@ GGS_lexicalTypeEnum GGS_lexicalTypeEnum::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalTypeEnum::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalTypeEnum::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalTypeEnum ;
 }
 
@@ -390,7 +390,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTypeList ("lexicalTypeList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTypeList ("lexicalTypeList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -723,7 +723,7 @@ GGS_lexicalTypeList GGS_lexicalTypeList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalTypeList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalTypeList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalTypeList ;
 }
 
@@ -743,7 +743,7 @@ mLexicalType () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTypeMap ("lexicalTypeMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTypeMap ("lexicalTypeMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1126,7 +1126,7 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalTypeMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalTypeMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalTypeMap ;
 }
 
@@ -1146,7 +1146,7 @@ mLexicalType () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeMap ("lexicalAttributeMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeMap ("lexicalAttributeMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1551,7 +1551,7 @@ GGS_lexicalAttributeMap GGS_lexicalAttributeMap::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalAttributeMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalAttributeMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalAttributeMap ;
 }
 
@@ -1605,7 +1605,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSentValueList ("lexicalSentValueList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSentValueList ("lexicalSentValueList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1997,7 +1997,7 @@ GGS_lexicalSentValueList GGS_lexicalSentValueList::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalSentValueList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalSentValueList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalSentValueList ;
 }
 
@@ -2017,7 +2017,7 @@ mSentAttributeList () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalMap ("terminalMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalMap ("terminalMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2404,7 +2404,7 @@ GGS_terminalMap GGS_terminalMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_terminalMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_terminalMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_terminalMap ;
 }
 
@@ -2479,7 +2479,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalList ("terminalList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalList ("terminalList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3048,7 +3048,7 @@ GGS_terminalList GGS_terminalList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_terminalList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_terminalList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_terminalList ;
 }
 
@@ -3069,7 +3069,7 @@ mFeatureList () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExplicitTokenListMap ("lexicalExplicitTokenListMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExplicitTokenListMap ("lexicalExplicitTokenListMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3484,7 +3484,7 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::castFromObject 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalExplicitTokenListMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalExplicitTokenListMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalExplicitTokenListMap ;
 }
 
@@ -3555,7 +3555,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_tokenSortedlist ("tokenSortedlist", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_tokenSortedlist ("tokenSortedlist", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3849,7 +3849,7 @@ GGS_tokenSortedlist GGS_tokenSortedlist::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_tokenSortedlist::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_tokenSortedlist::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_tokenSortedlist ;
 }
 
@@ -3871,7 +3871,7 @@ mShouldBeGenerated () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExplicitTokenListMapMap ("lexicalExplicitTokenListMapMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExplicitTokenListMapMap ("lexicalExplicitTokenListMapMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4328,7 +4328,7 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::castFromO
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalExplicitTokenListMapMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalExplicitTokenListMapMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalExplicitTokenListMapMap ;
 }
 
@@ -4349,7 +4349,7 @@ mMessageIsUsed () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalMessageMap ("lexicalMessageMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalMessageMap ("lexicalMessageMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4756,7 +4756,7 @@ GGS_lexicalMessageMap GGS_lexicalMessageMap::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalMessageMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalMessageMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalMessageMap ;
 }
 
@@ -4817,7 +4817,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineFormalArgumentList ("lexicalRoutineFormalArgumentList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineFormalArgumentList ("lexicalRoutineFormalArgumentList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5268,7 +5268,7 @@ GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::castF
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalRoutineFormalArgumentList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalRoutineFormalArgumentList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalRoutineFormalArgumentList ;
 }
 
@@ -5291,7 +5291,7 @@ mIsExtern () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineMap ("lexicalRoutineMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineMap ("lexicalRoutineMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5752,7 +5752,7 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalRoutineMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalRoutineMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalRoutineMap ;
 }
 
@@ -5806,7 +5806,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionFormalArgumentList ("lexicalFunctionFormalArgumentList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionFormalArgumentList ("lexicalFunctionFormalArgumentList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6198,7 +6198,7 @@ GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::cas
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalFunctionFormalArgumentList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalFunctionFormalArgumentList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalFunctionFormalArgumentList ;
 }
 
@@ -6221,7 +6221,7 @@ mIsExtern () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionMap ("lexicalFunctionMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionMap ("lexicalFunctionMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6684,7 +6684,7 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalFunctionMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalFunctionMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalFunctionMap ;
 }
 
@@ -6745,7 +6745,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_templateDelimitorList ("templateDelimitorList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_templateDelimitorList ("templateDelimitorList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7196,7 +7196,7 @@ GGS_templateDelimitorList GGS_templateDelimitorList::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_templateDelimitorList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_templateDelimitorList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_templateDelimitorList ;
 }
 
@@ -7217,7 +7217,7 @@ mStyleIndex () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_styleMap ("styleMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_styleMap ("styleMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7614,7 +7614,7 @@ GGS_styleMap GGS_styleMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_styleMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_styleMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_styleMap ;
 }
 
@@ -7624,7 +7624,7 @@ const C_galgas_type_descriptor * GGS_styleMap::typeDescriptor (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTagMap ("lexicalTagMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTagMap ("lexicalTagMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8020,7 +8020,7 @@ GGS_lexicalTagMap GGS_lexicalTagMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalTagMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalTagMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalTagMap ;
 }
 
@@ -8030,7 +8030,7 @@ const C_galgas_type_descriptor * GGS_lexicalTagMap::typeDescriptor (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexiqueAnalysisContext ("lexiqueAnalysisContext", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexiqueAnalysisContext ("lexiqueAnalysisContext", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8230,7 +8230,7 @@ GGS_lexiqueAnalysisContext GGS_lexiqueAnalysisContext::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexiqueAnalysisContext::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexiqueAnalysisContext::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexiqueAnalysisContext ;
 }
 

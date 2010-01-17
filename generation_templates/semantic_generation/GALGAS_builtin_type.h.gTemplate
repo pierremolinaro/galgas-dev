@@ -1,0 +1,362 @@
+#ifndef %!TYPE_NAME%_CLASS_DEFINED
+#define %!TYPE_NAME%_CLASS_DEFINED
+
+//---------------------------------------------------------------------------*
+
+#include "galgas2/GALGAS__root.h"
+%
+  if [[TYPE classAttributeCppTypeName] length] > 0 then
+    %#include "%![TYPE classAttributeCppTypeName]%.h"\n%
+  end if
+%
+//---------------------------------------------------------------------------*
+
+%
+  foreach PREDEFINED_TYPE_LIST do
+    %class %!cppTypeNameForGalgasTypeName [![mValue string]]% ;\n%
+  end foreach
+  if [[TYPE pointerAttributeCppTypeName] length] > 0 then
+    %class %![TYPE pointerAttributeCppTypeName]% ;\n%
+  end if
+%
+//---------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_%!TYPE_NAME% ;
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["'" . TYPE_NAME . "' class" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class %!TYPE_NAME% : public GALGAS__root {
+//--------------------------------- Native constructor
+%
+  if [[TYPE scalarAttributeCppTypeName] length] > 0 then
+    %  protected : %!TYPE_NAME% (const %![TYPE scalarAttributeCppTypeName]% inValue COMMA_LOCATION_ARGS) ;\n\n%
+    %  public : static %!TYPE_NAME% * constructor_new (const %![TYPE scalarAttributeCppTypeName]% inValue COMMA_LOCATION_ARGS) ;\n%
+  elsif [[TYPE pointerAttributeCppTypeName] length] > 0 then
+    %  protected : %!TYPE_NAME% (const %![TYPE pointerAttributeCppTypeName]% * inValue COMMA_LOCATION_ARGS) ;\n\n%
+    %  public : static %!TYPE_NAME% * constructor_new (const %![TYPE pointerAttributeCppTypeName]% * inValue COMMA_LOCATION_ARGS) ;\n%
+  elsif [[TYPE classAttributeCppTypeName] length] > 0 then
+    %  protected : %!TYPE_NAME% (const %![TYPE classAttributeCppTypeName]% & inValue COMMA_LOCATION_ARGS) ;\n\n%
+    %  public : static %!TYPE_NAME% * constructor_new (const %![TYPE classAttributeCppTypeName]% & inValue COMMA_LOCATION_ARGS) ;\n%
+  elsif [[TYPE embeddedObjectTypeNames] length] > 0 then
+    %  protected : %!TYPE_NAME% (%?COL1
+      foreach [TYPE embeddedObjectTypeNames]
+      do %const %!cppTypeNameForGalgasTypeName [!mValue]% * in%![mValue stringByCapitalizingFirstCharacter] %Value%
+      between %,\n% !COL1
+      end foreach  
+      %\n% !COL1 %COMMA_LOCATION_ARGS) ;\n\n%
+    %  public : static %!TYPE_NAME% * constructor_new (%?COL2
+      foreach [TYPE embeddedObjectTypeNames] do
+        %const %!cppTypeNameForGalgasTypeName [!mValue]% * in%![mValue stringByCapitalizingFirstCharacter] %Value%
+      between %,\n% !COL2
+      end foreach  
+      %\n% !COL2 %COMMA_LOCATION_ARGS) ;\n%
+  else
+    %  protected : %!TYPE_NAME% (LOCATION_ARGS) ;\n%
+  end if
+
+foreach [TYPE constructorMap]
+before %//--------------------------------- GALGAS constructors\n%
+do
+  %  public : static %!cppTypeName [!mReturnedType]% * constructor_%![key string]% (%?COL
+  foreach mArgumentTypeList
+    do index IDX %const %!cppTypeName [!mType]% * inOperand% ![IDX string]
+    between %,\n% !COL
+  end foreach
+  if [mArgumentTypeList length] == 0 then
+    if mHasLexique then
+      %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+    else
+      %LOCATION_ARGS%
+    end if
+  else
+    if mHasLexique then
+      %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+    else
+      %\n% !COL %COMMA_LOCATION_ARGS%
+    end if
+  end if
+  %) ;\n\n%
+end foreach
+
+%
+//--------------------------------- No copy
+  private : %!TYPE_NAME% (const %!TYPE_NAME% &) ;
+  private : %!TYPE_NAME% & operator = (const %!TYPE_NAME% &) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : virtual void description (C_String & ioString,
+                                     const PMSInt32 inIndentation) const ;
+
+//--------------------------------- Readers
+%
+foreach [TYPE readerMap] do
+  if mQualifier != [@readerQualifier isInherited] then
+    %  protected : virtual % !cppTypeName [!mReturnedType] % * reader_% ![key string] % (%?COL
+    foreach mArgumentTypeList
+      do index IDX %const %!cppTypeName [!mType]% * inOperand% ![IDX string]
+      between %,\n% !COL
+    end foreach
+    if [mArgumentTypeList length] == 0 then
+      if mHasLexiqueArgument then
+        %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+      else
+        %LOCATION_ARGS%
+      end if
+    else
+      if mHasLexiqueArgument then
+        %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+      else
+        %\n% !COL %COMMA_LOCATION_ARGS%
+      end if
+    end if
+    %) const%
+    if mQualifier == [@readerQualifier isAbstract] then
+      % = 0%
+    end if
+    % ;\n\n%
+  end if
+end foreach
+
+if [TYPE accept_and_operator] then
+  %//--------------------------------- & operator\n%
+  %  public : static %!TYPE_NAME% * operator_and (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+  !COL%const %!TYPE_NAME% * inOperand2\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_or_operator] then
+  %//--------------------------------- | operator\n%
+  %  public : static %!TYPE_NAME% * operator_or (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+  !COL%const %!TYPE_NAME% * inOperand2\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_xor_operator] then
+  %//--------------------------------- ^ operator\n%
+  %  public : static %!TYPE_NAME% * operator_xor (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+  !COL%const %!TYPE_NAME% * inOperand2\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_not_operator] then
+  %//--------------------------------- & operator\n%
+  %  public : static %!TYPE_NAME% * operator_not (%?COL%const %!TYPE_NAME% * inOperand\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_tilde_operator] then
+  %//--------------------------------- ~ operator\n%
+  %  public : static %!TYPE_NAME% * operator_tilde (%?COL%const %!TYPE_NAME% * inOperand\n%
+        !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+%//--------------------------------- Comparison\n%
+%  public : static %!cppTypeNameForGalgasTypeName [!"bool"]% * operator_isEqual (%?COL_A%const %!TYPE_NAME% * inOperand1,\n%
+               !COL_A%const %!TYPE_NAME% * inOperand2\n%
+               !COL_A%COMMA_LOCATION_ARGS) ;\n\n%
+
+%  public : static %!cppTypeNameForGalgasTypeName [!"bool"]% * operator_isNotEqual (%?COL_B%const %!TYPE_NAME% * inOperand1,\n%
+               !COL_B%const %!TYPE_NAME% * inOperand2\n%
+               !COL_B%COMMA_LOCATION_ARGS) ;\n\n%
+
+if [TYPE isComparable] then
+  %  public : static %!cppTypeNameForGalgasTypeName [!"bool"]% * operator_infOrEqual (%?COL3%const %!TYPE_NAME% * inOperand1,\n%
+                 !COL3%const %!TYPE_NAME% * inOperand2\n%
+                 !COL3%COMMA_LOCATION_ARGS) ;\n\n%
+  
+  %  public : static %!cppTypeNameForGalgasTypeName [!"bool"]% * operator_supOrEqual (%?COL4%const %!TYPE_NAME% * inOperand1,\n%
+                 !COL4%const %!TYPE_NAME% * inOperand2\n%
+                 !COL4%COMMA_LOCATION_ARGS) ;\n\n%
+  
+  %  public : static %!cppTypeNameForGalgasTypeName [!"bool"]% * operator_strictInf (%?COL5%const %!TYPE_NAME% * inOperand1,\n%
+                 !COL5%const %!TYPE_NAME% * inOperand2\n%
+                 !COL5%COMMA_LOCATION_ARGS) ;\n\n%
+  
+  %  public : static %!cppTypeNameForGalgasTypeName [!"bool"]% * operator_strictSup (%?COL6%const %!TYPE_NAME% * inOperand1,\n%
+                 !COL6%const %!TYPE_NAME% * inOperand2\n%
+                 !COL6%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+
+%  public : virtual PMSInt32 compareForSortedList (const GALGAS__root * inOperand
+                                                   COMMA_LOCATION_ARGS) const ;
+
+//--- Introspection
+  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+
+%
+
+if [TYPE accept_concat_operator] then
+  %//--------------------------------- . (concat) operator\n%
+  %  public : static %!TYPE_NAME% * operator_concat (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+       !COL%const %!TYPE_NAME% * inOperand2\n%
+       !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_add_operator] then
+  %//--------------------------------- + operator\n%
+  %  public : static %!TYPE_NAME% * add_operation (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+  !COL%const %!TYPE_NAME% * inOperand2,\n%
+  !COL%C_Compiler * inCompiler\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_sub_operator] then
+  %//--------------------------------- - operator\n%
+  %  public : static %!TYPE_NAME% * substract_operation (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+  !COL%const %!TYPE_NAME% * inOperand2,\n%
+  !COL%C_Compiler * inCompiler\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_mul_operator] then
+  %//--------------------------------- * operator\n%
+  %  public : static %!TYPE_NAME% * multiply_operation (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+  !COL%const %!TYPE_NAME% * inOperand2,\n%
+  !COL%C_Compiler * inCompiler\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_div_operator] then
+  %//--------------------------------- / operator\n%
+  %  public : static %!TYPE_NAME% * divide_operation (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+  !COL%const %!TYPE_NAME% * inOperand2,\n%
+  !COL%C_Compiler * inCompiler\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_mod_operator] then
+  %//--------------------------------- mod operator\n%
+  %  public : static %!TYPE_NAME% * modulo_operation (%?COL%const %!TYPE_NAME% * inOperand1,\n%
+  !COL%const %!TYPE_NAME% * inOperand2,\n%
+  !COL%C_Compiler * inCompiler\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_unary_minus_operator] then
+  %//--------------------------------- unary - operator\n%
+  %  public : static %!TYPE_NAME% * operator_unary_minus (%?COL%const %!TYPE_NAME% * inOperand,\n%
+  !COL%C_Compiler * inCompiler\n%
+  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_inc_dec_operator] then
+  %//--------------------------------- ++, -- operators\n%
+  %  public : static void increment_operation (%?COL1 !TYPE_NAME% * & ioOperand,\n%
+        !COL1%C_Compiler * inCompiler\n%
+        !COL1%COMMA_LOCATION_ARGS) ;\n\n%
+  %  public : static void decrement_operation (%?COL2 !TYPE_NAME% * & ioOperand,\n%
+        !COL2%C_Compiler * inCompiler\n%
+        !COL2%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_shift_operator] then
+  %//--------------------------------- << and >> shift operators\n%
+  %  public : static %!TYPE_NAME% * left_shift_operation (%?COL1%const %!TYPE_NAME% * inOperand,\n%
+  !COL1%const %!cppTypeNameForGalgasTypeName [!"uint"]% * inShiftOperand,\n%
+  !COL1%C_Compiler * inCompiler\n%
+  !COL1%COMMA_LOCATION_ARGS) ;\n\n%
+  %  public : static %!TYPE_NAME% * right_shift_operation (%?COL2%const %!TYPE_NAME% * inOperand,\n%
+  !COL2%const %!cppTypeNameForGalgasTypeName [!"uint"]% * inShiftOperand,\n%
+  !COL2%C_Compiler * inCompiler\n%
+  !COL2%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+
+if [TYPE accept_inc_dec_operator] then
+  %//--------------------------------- Modifier utility method\n%
+  %  protected : static void insulate (%?COL !TYPE_NAME% * & ioOperand\n%
+        !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [[TYPE scalarAttributeCppTypeName] length] > 0 then
+  %//--------------------------------- Private data member\n%
+  %  private : %![TYPE scalarAttributeCppTypeName]% mValue ;\n%
+  %  public : inline %![TYPE scalarAttributeCppTypeName]% value (void) const { return mValue ; }\n%
+elsif [[TYPE classAttributeCppTypeName] length] > 0 then
+  %//--------------------------------- Private data member\n%
+  %  private : %![TYPE classAttributeCppTypeName]% mValue ;\n%
+  %  public : inline %![TYPE classAttributeCppTypeName]% value (void) const { return mValue ; }\n%
+elsif [[TYPE pointerAttributeCppTypeName] length] > 0 then
+  %//--------------------------------- Private data member\n%
+  %  private : const %![TYPE pointerAttributeCppTypeName]% * mValue ;\n%
+  %  public : inline const %![TYPE pointerAttributeCppTypeName]% * value (void) const { return mValue ; }\n%
+elsif [[TYPE embeddedObjectTypeNames] length] > 0 then
+  %//--------------------------------- Private data members\n%
+    foreach [TYPE embeddedObjectTypeNames] do
+      %  private : const %!cppTypeNameForGalgasTypeName [!mValue]% * m% ![mValue stringByCapitalizingFirstCharacter] %Value ;\n%
+      %  public : inline const %!cppTypeNameForGalgasTypeName [!mValue]% * value (void) const { return m% ![mValue stringByCapitalizingFirstCharacter] %Value ; }\n%
+    end foreach  
+end if
+%//--------------------------------- Friends\n%
+foreach [TYPE readerMap] do
+  if mQualifier == [@readerQualifier isBasic] then
+    %  friend % !cppTypeName [!mReturnedType] % * readerCall_% ![key string] % (%?COL
+    %const %!TYPE_NAME% * inObject%
+    foreach mArgumentTypeList
+      do index IDX %,\n% !COL %const %!cppTypeName [!mType]% * inOperand% ![IDX string]
+    end foreach
+    if mHasLexiqueArgument then
+      %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+    else
+      %\n% !COL %COMMA_LOCATION_ARGS%
+    end if
+    %) ;\n\n%
+  end if
+end foreach
+%} ;
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["'" . TYPE_NAME . "' readers" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+% foreach [TYPE readerMap] do
+  if mQualifier == [@readerQualifier isBasic] then
+    %inline % !cppTypeName [!mReturnedType] % * readerCall_% ![key string] % (%?COL
+    %const %!TYPE_NAME% * inObject%
+    foreach mArgumentTypeList
+      do index IDX %,\n% !COL %const %!cppTypeName [!mType]% * inOperand_% ![IDX string]
+    end foreach
+    if mHasLexiqueArgument then
+      %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+    else
+      %\n% !COL %COMMA_LOCATION_ARGS%
+    end if
+    %) {\n%
+    %  %!cppTypeName [!mReturnedType]% * result = NULL ;\n%
+    %  if (inObject != NULL) {\n%
+    %    result = inObject->reader_%![key string]% (%
+    foreach mArgumentTypeList
+      do index IDX %inOperand_% ![IDX string]
+      between %, %
+    end foreach
+    if [mArgumentTypeList length] > 0 then
+      if mHasLexiqueArgument then
+        %, inCompiler COMMA_THERE%
+      else
+        % COMMA_THERE%
+      end if
+    else
+      if mHasLexiqueArgument then
+        %inCompiler COMMA_THERE%
+      else
+        %THERE%
+      end if
+    end if
+    %) ;\n%
+    %  }\n%
+    %  return result ;\n%
+    %}\n\n%
+    %//---------------------------------------------------------------------------*\n\n%
+  end if
+  end foreach
+%
+
+#endif
+

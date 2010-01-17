@@ -153,7 +153,7 @@ template_filewrapper_EXfileListTemplateFileWrapper_EXfileListTemplate (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_EXtargetFileListMap ("EXtargetFileListMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_EXtargetFileListMap ("EXtargetFileListMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -362,7 +362,7 @@ GGS_EXtargetFileListMap GGS_EXtargetFileListMap::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_EXtargetFileListMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_EXtargetFileListMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_EXtargetFileListMap ;
 }
 
@@ -372,7 +372,7 @@ const C_galgas_type_descriptor * GGS_EXtargetFileListMap::typeDescriptor (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_EXsourceFileKind ("EXsourceFileKind", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_EXsourceFileKind ("EXsourceFileKind", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -500,7 +500,7 @@ GGS_EXsourceFileKind GGS_EXsourceFileKind::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_EXsourceFileKind::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_EXsourceFileKind::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_EXsourceFileKind ;
 }
 
@@ -521,7 +521,7 @@ mSourceKind () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_EXsourceFileMap ("EXsourceFileMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_EXsourceFileMap ("EXsourceFileMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -946,7 +946,7 @@ GGS_EXsourceFileMap GGS_EXsourceFileMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_EXsourceFileMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_EXsourceFileMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_EXsourceFileMap ;
 }
 

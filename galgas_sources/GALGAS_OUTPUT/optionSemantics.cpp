@@ -60,7 +60,7 @@ mComment () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_commandLineOptionMap ("commandLineOptionMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_commandLineOptionMap ("commandLineOptionMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -513,7 +513,7 @@ GGS_commandLineOptionMap GGS_commandLineOptionMap::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_commandLineOptionMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_commandLineOptionMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_commandLineOptionMap ;
 }
 

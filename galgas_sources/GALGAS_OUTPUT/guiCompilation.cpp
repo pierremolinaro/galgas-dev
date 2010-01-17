@@ -120,7 +120,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_guiCommandLineOptionList ("guiCommandLineOptionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiCommandLineOptionList ("guiCommandLineOptionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -689,7 +689,7 @@ GGS_guiCommandLineOptionList GGS_guiCommandLineOptionList::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_guiCommandLineOptionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_guiCommandLineOptionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_guiCommandLineOptionList ;
 }
 
@@ -709,7 +709,7 @@ mLexiqueName () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_extensionMap ("extensionMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_extensionMap ("extensionMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1038,7 +1038,7 @@ GGS_extensionMap GGS_extensionMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_extensionMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_extensionMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_extensionMap ;
 }
 
@@ -1092,7 +1092,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_nibAndClassList ("nibAndClassList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nibAndClassList ("nibAndClassList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1484,7 +1484,7 @@ GGS_nibAndClassList GGS_nibAndClassList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_nibAndClassList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_nibAndClassList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_nibAndClassList ;
 }
 
@@ -1538,7 +1538,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_textMacroList ("textMacroList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_textMacroList ("textMacroList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1930,7 +1930,7 @@ GGS_textMacroList GGS_textMacroList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_textMacroList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_textMacroList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_textMacroList ;
 }
 
@@ -2005,7 +2005,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_importedLexiqueList ("importedLexiqueList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_importedLexiqueList ("importedLexiqueList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2574,7 +2574,7 @@ GGS_importedLexiqueList GGS_importedLexiqueList::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_importedLexiqueList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_importedLexiqueList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_importedLexiqueList ;
 }
 
@@ -2584,7 +2584,7 @@ const C_galgas_type_descriptor * GGS_importedLexiqueList::typeDescriptor (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_guiAnalysisContext ("guiAnalysisContext", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiAnalysisContext ("guiAnalysisContext", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2751,7 +2751,7 @@ GGS_guiAnalysisContext GGS_guiAnalysisContext::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_guiAnalysisContext::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_guiAnalysisContext::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_guiAnalysisContext ;
 }
 

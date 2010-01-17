@@ -50,7 +50,7 @@ class GGS_semanticContext ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_variableStateAutomaton ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_variableStateAutomaton ;
 
 //---------------------------------------------------------------------------*
 
@@ -77,7 +77,7 @@ class GGS_variableStateAutomaton : public GGS__root {
   public : bool isBuilt (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -147,7 +147,7 @@ class GGS_variableStateAutomaton : public GGS__root {
 
 class elementOf_GGS_variableMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_variableMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_variableMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -164,7 +164,7 @@ class GGS_variableMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_variableMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -350,7 +350,7 @@ class GGS_variableMap : public AC_galgas_map {
 
 class elementOf_GGS_routineMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_routineMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_routineMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -367,7 +367,7 @@ class GGS_routineMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_routineMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -459,7 +459,7 @@ class GGS_routineMap : public AC_galgas_map {
 
 class elementOf_GGS_functionMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_functionMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_functionMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -476,7 +476,7 @@ class GGS_functionMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_functionMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -575,7 +575,7 @@ class elementOf_GGS_classIndexList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_classIndexList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classIndexList ;
 
 //---------------------------------------------------------------------------*
 
@@ -663,7 +663,7 @@ class GGS_classIndexList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -694,7 +694,7 @@ class GGS_classIndexList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_descendantClassListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_descendantClassListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -754,7 +754,7 @@ class GGS_descendantClassListMap : public AC_galgas_listmap {
     public : const GGS_classIndexList & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -901,7 +901,7 @@ class elementOf_GGS_classIndexList : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticContext ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticContext ;
 
 //---------------------------------------------------------------------------*
 
@@ -929,7 +929,7 @@ class GGS_semanticContext : public GGS__root {
 //--- Reader 'description'
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 

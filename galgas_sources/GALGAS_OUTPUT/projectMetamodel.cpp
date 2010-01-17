@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_sourceFileKind ("sourceFileKind", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sourceFileKind ("sourceFileKind", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -176,7 +176,7 @@ GGS_sourceFileKind GGS_sourceFileKind::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_sourceFileKind::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_sourceFileKind::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_sourceFileKind ;
 }
 
@@ -237,7 +237,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_projectSourceList ("projectSourceList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_projectSourceList ("projectSourceList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -688,7 +688,7 @@ GGS_projectSourceList GGS_projectSourceList::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_projectSourceList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_projectSourceList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_projectSourceList ;
 }
 

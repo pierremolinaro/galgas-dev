@@ -42,7 +42,7 @@ class GGS_projectSourceList ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_sourceFileKind ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sourceFileKind ;
 
 //---------------------------------------------------------------------------*
 
@@ -69,7 +69,7 @@ class GGS_sourceFileKind : public GGS__root {
   public : bool isBuilt (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -137,7 +137,7 @@ class elementOf_GGS_projectSourceList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_projectSourceList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_projectSourceList ;
 
 //---------------------------------------------------------------------------*
 
@@ -257,7 +257,7 @@ class GGS_projectSourceList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 

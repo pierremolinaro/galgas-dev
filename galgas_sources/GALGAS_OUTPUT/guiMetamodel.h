@@ -50,7 +50,7 @@ class elementOf_GGS_guiSimpleAttributeList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_guiSimpleAttributeList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiSimpleAttributeList ;
 
 //---------------------------------------------------------------------------*
 
@@ -154,7 +154,7 @@ class GGS_guiSimpleAttributeList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -190,7 +190,7 @@ class elementOf_GGS_guiCompoundAttributeList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_guiCompoundAttributeList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiCompoundAttributeList ;
 
 //---------------------------------------------------------------------------*
 
@@ -310,7 +310,7 @@ class GGS_guiCompoundAttributeList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -347,7 +347,7 @@ class elementOf_GGS_guiLabelList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_guiLabelList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiLabelList ;
 
 //---------------------------------------------------------------------------*
 
@@ -451,7 +451,7 @@ class GGS_guiLabelList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -487,7 +487,7 @@ class elementOf_GGS_withLexiqueList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_withLexiqueList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_withLexiqueList ;
 
 //---------------------------------------------------------------------------*
 
@@ -623,7 +623,7 @@ class GGS_withLexiqueList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -657,7 +657,7 @@ class GGS_withLexiqueList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_guiComponentRoot ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiComponentRoot ;
 
 //---------------------------------------------------------------------------*
 
@@ -716,10 +716,10 @@ class GGS_guiComponentRoot : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -732,7 +732,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__guiComponentRoot ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__guiComponentRoot ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -918,7 +918,7 @@ class cPtr_guiComponentRoot : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;

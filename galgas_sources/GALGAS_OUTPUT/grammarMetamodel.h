@@ -50,7 +50,7 @@ class elementOf_GGS_startSymbolLabelFormalParameterList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_startSymbolLabelFormalParameterList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_startSymbolLabelFormalParameterList ;
 
 //---------------------------------------------------------------------------*
 
@@ -170,7 +170,7 @@ class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -203,7 +203,7 @@ class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_grammarComponentRoot ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_grammarComponentRoot ;
 
 //---------------------------------------------------------------------------*
 
@@ -268,10 +268,10 @@ class GGS_grammarComponentRoot : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -284,7 +284,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__grammarComponentRoot ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__grammarComponentRoot ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -370,7 +370,7 @@ class cPtr_grammarComponentRoot : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;

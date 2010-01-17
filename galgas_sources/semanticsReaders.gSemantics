@@ -23,17 +23,28 @@ import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
+enum @readerQualifier {
+  constructor isAbstract ;
+  constructor isBasic ;
+  constructor isInherited ;
+  constructor isOverriding ;
+}{
+}
+
+#---------------------------------------------------------------------------*
+
 map @readerMap {
   @typeList mArgumentTypeList ;
-  @bool mHasLexiqueAndLocationArguments ;
+  @bool mHasLexiqueArgument ;
   @ACGalgasType mReturnedType ;
+  @readerQualifier mQualifier ;
   insert insertKey error message "the '%K' reader has been already defined" ;
   search searchKey error message "the '%K' reader is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWithoutArgument
+routine enterBaseReaderWithoutArgument
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -44,12 +55,30 @@ routine enterReaderWithoutArgument
     ![@typeList emptyList]
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWithStringArgument
+routine enterInheritedReaderWithoutArgument
+  ?!@readerMap ioReaderMap
+  ??@string inName
+  ??@ACGalgasType inReturnedType
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  [!?ioReaderMap insertKey
+    ![@lstring new !inName !here]
+    ![@typeList emptyList]
+    !inHasLexiqueAndLocationArguments
+    !inReturnedType
+    ![@readerQualifier isInherited]
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterBaseReaderWithStringArgument
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -62,12 +91,13 @@ routine enterReaderWithStringArgument
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWith2StringArguments
+routine enterBaseReaderWith2StringArguments
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -81,12 +111,13 @@ routine enterReaderWith2StringArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWithBoolArgument
+routine enterBaseReaderWithBoolArgument
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -99,12 +130,13 @@ routine enterReaderWithBoolArgument
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWithBoolStringlistArguments
+routine enterBaseReaderWithBoolStringlistArguments
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -118,12 +150,13 @@ routine enterReaderWithBoolStringlistArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWithUintArgument
+routine enterBaseReaderWithUintArgument
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -136,12 +169,13 @@ routine enterReaderWithUintArgument
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWith2UintArguments
+routine enterBaseReaderWith2UintArguments
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -155,12 +189,13 @@ routine enterReaderWith2UintArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWith3UintArguments
+routine enterBaseReaderWith3UintArguments
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -175,12 +210,13 @@ routine enterReaderWith3UintArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderWithUintCharArguments
+routine enterBaseReaderWithUintCharArguments
   ?!@readerMap ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
@@ -194,6 +230,7 @@ routine enterReaderWithUintCharArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
@@ -201,9 +238,9 @@ end routine ;
 
 once commonReaderMapForAllTypes ->@readerMap outMap :
   outMap := [@readerMap emptyMap] ;
-  enterReaderWithoutArgument !?outMap !"description" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"object" ![@objectGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"dynamicType" ![@typeGalgasType new] !false ;
+  enterInheritedReaderWithoutArgument !?outMap !"description" ![@stringGalgasType new] !false ;
+  enterInheritedReaderWithoutArgument !?outMap !"object" ![@objectGalgasType new] !false ;
+  enterInheritedReaderWithoutArgument !?outMap !"dynamicType" ![@typeGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -214,10 +251,10 @@ abstract reader @ACGalgasType readerMap ->@readerMap outMap ;
 
 once readerMapFor_location ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationIndex" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"line" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"column" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationIndex" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"line" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"column" ![@uintGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -230,49 +267,49 @@ end reader ;
 
 once readerMapFor_string ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"doesEnvironmentVariableExist" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"identifierRepresentation" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"HTMLRepresentation" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"utf8Representation" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"utf32Representation" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"stringByTrimmingWhiteSpaces" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"md5" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"decimalUnsignedNumber" ![@uintGalgasType new] !true ;
-  enterReaderWithoutArgument !?outMap !"isDecimalUnsignedNumber" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"capacity" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"fileExists" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"directoryExists" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"pathExtension" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"nativePathWithUnixPath" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"unixPathWithNativePath" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"lastPathComponent" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"stringByDeletingPathExtension" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"stringByCapitalizingFirstCharacter" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"firstCharacterOrNul" ![@charGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"stringByDeletingLastPathComponent" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"stringByStandardizingPath" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"lowercaseString" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uppercaseString" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"reversedString" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"system" ![@sintGalgasType new] !false ;
-  enterReaderWithUintArgument !?outMap !"characterAtIndex" ![@charGalgasType new] !true ;
-  enterReaderWithUintArgument !?outMap !"stringByRemovingCharacterAtIndex" ![@stringGalgasType new] !true ;
-  enterReaderWithUintArgument !?outMap !"rightSubString" ![@stringGalgasType new] !false ;
-  enterReaderWithUintArgument !?outMap !"leftSubString" ![@stringGalgasType new] !false ;
-  enterReaderWith2UintArguments !?outMap !"subString" ![@stringGalgasType new] !false ;
-  enterReaderWithStringArgument !?outMap !"absolutePathFromPath" ![@stringGalgasType new] !false ;
-  enterReaderWithStringArgument !?outMap !"relativePathFromPath" ![@stringGalgasType new] !false ;
-  enterReaderWithStringArgument !?outMap !"componentsSeparatedByString" !build_stringlist_type [] !false ;
-  enterReaderWithUintCharArguments !?outMap !"stringByLeftPadding" ![@stringGalgasType new] !false ;
-  enterReaderWithUintCharArguments !?outMap !"stringByRightPadding" ![@stringGalgasType new] !false ;
-  enterReaderWithUintCharArguments !?outMap !"stringByLeftAndRightPadding" ![@stringGalgasType new] !false ;
-  enterReaderWith2StringArguments !?outMap !"stringByReplacingStringByString" ![@stringGalgasType new] !true ;
-  enterReaderWithBoolArgument !?outMap !"regularFiles" !build_stringlist_type [] !false ;
-  enterReaderWithBoolArgument !?outMap !"hiddenFiles" !build_stringlist_type [] !false ;
-  enterReaderWithBoolArgument !?outMap !"directories" !build_stringlist_type [] !false ;
-  enterReaderWithBoolStringlistArguments !?outMap !"directoriesWithExtensions" !build_stringlist_type [] !false ;
-  enterReaderWithBoolStringlistArguments !?outMap !"regularFilesWithExtensions" !build_stringlist_type [] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"doesEnvironmentVariableExist" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"identifierRepresentation" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"HTMLRepresentation" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"utf8Representation" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"utf32Representation" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"stringByTrimmingWhiteSpaces" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"md5" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"decimalUnsignedNumber" ![@uintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"isDecimalUnsignedNumber" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"capacity" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"fileExists" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"directoryExists" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"pathExtension" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"nativePathWithUnixPath" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"unixPathWithNativePath" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"lastPathComponent" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"stringByDeletingPathExtension" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"stringByCapitalizingFirstCharacter" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"firstCharacterOrNul" ![@charGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"stringByDeletingLastPathComponent" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"stringByStandardizingPath" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"lowercaseString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uppercaseString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"reversedString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"system" ![@sintGalgasType new] !false ;
+  enterBaseReaderWithUintArgument !?outMap !"characterAtIndex" ![@charGalgasType new] !true ;
+  enterBaseReaderWithUintArgument !?outMap !"stringByRemovingCharacterAtIndex" ![@stringGalgasType new] !true ;
+  enterBaseReaderWithUintArgument !?outMap !"rightSubString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithUintArgument !?outMap !"leftSubString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWith2UintArguments !?outMap !"subString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithStringArgument !?outMap !"absolutePathFromPath" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithStringArgument !?outMap !"relativePathFromPath" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithStringArgument !?outMap !"componentsSeparatedByString" !build_stringlist_type [] !false ;
+  enterBaseReaderWithUintCharArguments !?outMap !"stringByLeftPadding" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithUintCharArguments !?outMap !"stringByRightPadding" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithUintCharArguments !?outMap !"stringByLeftAndRightPadding" ![@stringGalgasType new] !false ;
+  enterBaseReaderWith2StringArguments !?outMap !"stringByReplacingStringByString" ![@stringGalgasType new] !true ;
+  enterBaseReaderWithBoolArgument !?outMap !"regularFiles" !build_stringlist_type [] !false ;
+  enterBaseReaderWithBoolArgument !?outMap !"hiddenFiles" !build_stringlist_type [] !false ;
+  enterBaseReaderWithBoolArgument !?outMap !"directories" !build_stringlist_type [] !false ;
+  enterBaseReaderWithBoolStringlistArguments !?outMap !"directoriesWithExtensions" !build_stringlist_type [] !false ;
+  enterBaseReaderWithBoolStringlistArguments !?outMap !"regularFilesWithExtensions" !build_stringlist_type [] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -285,27 +322,27 @@ end reader ;
 
 once readerMapFor_char ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"utf32CharConstantRepresentation" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
-  enterReaderWithoutArgument !?outMap !"isalnum" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isalpha" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"iscntrl" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isdigit" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"islower" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isupper" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isxdigit" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uintValue" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isUnicodeLetter" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isUnicodeMark" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isUnicodeNumber" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isUnicodeSeparator" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isUnicodeCommand" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isUnicodePunctuation" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isUnicodeSymbol" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"unicodeName" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"unicodeToLower" ![@charGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"unicodeToUpper" ![@charGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"utf32CharConstantRepresentation" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"isalnum" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isalpha" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"iscntrl" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isdigit" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"islower" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isupper" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isxdigit" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uintValue" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isUnicodeLetter" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isUnicodeMark" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isUnicodeNumber" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isUnicodeSeparator" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isUnicodeCommand" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isUnicodePunctuation" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isUnicodeSymbol" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"unicodeName" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"unicodeToLower" ![@charGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"unicodeToUpper" ![@charGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -318,12 +355,12 @@ end reader ;
 
 once readerMapFor_bool ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"cString" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"ocString" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"cString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"ocString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -336,15 +373,15 @@ end reader ;
 
 once readerMapFor_uint -> @readerMap  outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"lsbIndex" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"significantBitCount" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"hexString" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isUnicodeValueAssigned" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"lsbIndex" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"significantBitCount" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"hexString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isUnicodeValueAssigned" ![@boolGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -357,11 +394,11 @@ end reader ;
 
 once readerMapFor_sint ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -374,13 +411,13 @@ end reader ;
 
 once readerMapFor_uint64 ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
-  enterReaderWith2UintArguments !?outMap !"uintSlice" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"hexString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
+  enterBaseReaderWith2UintArguments !?outMap !"uintSlice" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"hexString" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -393,11 +430,11 @@ end reader ;
 
 once readerMapFor_sint64 ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -410,7 +447,7 @@ end reader ;
 
 once readerMapFor_double ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -423,9 +460,9 @@ end reader ;
 
 once readerMapFor_lstring ->@readerMap outMap :
   outMap := readerMapFor_string [] ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -438,9 +475,9 @@ end reader ;
 
 once readerMapFor_lchar ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"char" ![@charGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"char" ![@charGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -453,8 +490,8 @@ end reader ;
 
 once readerMapFor_lbool ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"bool" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"bool" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -467,9 +504,9 @@ end reader ;
 
 once readerMapFor_luint ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -482,10 +519,10 @@ end reader ;
 
 once readerMapFor_lsint ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -499,9 +536,9 @@ end reader ;
 once readerMapFor_luint64 ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
   @typeList t [emptyList] ;
-  enterReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -514,10 +551,10 @@ end reader ;
 
 once readerMapFor_lsint64 ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -530,10 +567,10 @@ end reader ;
 
 once readerMapFor_ldouble ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -546,9 +583,9 @@ end reader ;
 
 once readerMapFor_stringset ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"count" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"stringList" !build_stringlist_type [] !false ;
+  enterBaseReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"count" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"stringList" !build_stringlist_type [] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -561,52 +598,52 @@ end reader ;
 
 once readerMapFor_binaryset ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"isFull" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isEmpty" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"significantVariableCount" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isFull" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isEmpty" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"significantVariableCount" ![@uintGalgasType new] !false ;
   @typeList t [emptyList] ;
   t += ![@binarysetGalgasType new] ;
   t += ![@binarysetGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"ITE" !here] !t !false ![@binarysetGalgasType new]] ;
-  enterReaderWithUintArgument !?outMap !"forAllOnBitIndex" ![@binarysetGalgasType new] !false ;
-  enterReaderWithUintArgument !?outMap !"forAllOnBitIndexAndBeyond" ![@binarysetGalgasType new] !false ;
-  enterReaderWithUintArgument !?outMap !"existOnBitIndex" ![@binarysetGalgasType new] !false ;
-  enterReaderWithUintArgument !?outMap !"valueCount" ![@uint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"compressedValueCount" ![@uint64GalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"uint64ValueList" !build_uint64list_type [] !false ;
-  enterReaderWithoutArgument !?outMap !"stringValueList" !build_stringlist_type [] !false ;
+  [!?outMap insertKey ![@lstring new !"ITE" !here] !t !false ![@binarysetGalgasType new]![@readerQualifier isBasic]] ;
+  enterBaseReaderWithUintArgument !?outMap !"forAllOnBitIndex" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWithUintArgument !?outMap !"forAllOnBitIndexAndBeyond" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWithUintArgument !?outMap !"existOnBitIndex" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWithUintArgument !?outMap !"valueCount" ![@uint64GalgasType new] !false  ;
+  enterBaseReaderWithoutArgument !?outMap !"compressedValueCount" ![@uint64GalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint64ValueList" !build_uint64list_type [] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"stringValueList" !build_stringlist_type [] !false ;
   t := [@typeList emptyList] ;
   t += ![@uintGalgasType new] ;
   t += !build_stringlist_type [] ;
-  [!?outMap insertKey ![@lstring new !"stringValueListWithNameList" !here] !t !false !build_stringlist_type []] ;
-  enterReaderWithoutArgument !?outMap !"predicateStringValue" ![@stringGalgasType new] !false ;
-  enterReaderWithUintArgument !?outMap !"compressedStringValueList" !build_stringlist_type [] !false ;
-  enterReaderWith2UintArguments !?outMap !"swap21" ![@binarysetGalgasType new] !false ;
-  enterReaderWith3UintArguments !?outMap !"swap132" ![@binarysetGalgasType new] !false ;
-  enterReaderWith3UintArguments !?outMap !"swap213" ![@binarysetGalgasType new] !false ;
-  enterReaderWith3UintArguments !?outMap !"swap231" ![@binarysetGalgasType new] !false ;
-  enterReaderWith3UintArguments !?outMap !"swap312" ![@binarysetGalgasType new] !false ;
-  enterReaderWith3UintArguments !?outMap !"swap321" ![@binarysetGalgasType new] !false ;
-  enterReaderWithUintArgument !?outMap !"transitiveClosure" ![@binarysetGalgasType new] !false ;
+  [!?outMap insertKey ![@lstring new !"stringValueListWithNameList" !here] !t !false !build_stringlist_type []![@readerQualifier isBasic]] ;
+  enterBaseReaderWithoutArgument !?outMap !"predicateStringValue" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithUintArgument !?outMap !"compressedStringValueList" !build_stringlist_type [] !false ;
+  enterBaseReaderWith2UintArguments !?outMap !"swap21" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWith3UintArguments !?outMap !"swap132" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWith3UintArguments !?outMap !"swap213" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWith3UintArguments !?outMap !"swap231" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWith3UintArguments !?outMap !"swap312" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWith3UintArguments !?outMap !"swap321" ![@binarysetGalgasType new] !false ;
+  enterBaseReaderWithUintArgument !?outMap !"transitiveClosure" ![@binarysetGalgasType new] !false ;
   t := [@typeList emptyList] ;
   t += ![@binarysetGalgasType new] ;
   t += ![@uintGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"accessibleStates" !here] !t !false ![@binarysetGalgasType new]] ;
+  [!?outMap insertKey ![@lstring new !"accessibleStates" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
   t := [@typeList emptyList] ;
   t += ![@binarysetGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"equalTo" !here] !t !false ![@binarysetGalgasType new]] ;
-  [!?outMap insertKey ![@lstring new !"notEqualTo" !here] !t !false ![@binarysetGalgasType new]] ;
-  [!?outMap insertKey ![@lstring new !"lowerOrEqualTo" !here] !t !false ![@binarysetGalgasType new]] ;
-  [!?outMap insertKey ![@lstring new !"greaterOrEqualTo" !here] !t !false ![@binarysetGalgasType new]] ;
-  [!?outMap insertKey ![@lstring new !"greaterThan" !here] !t !false ![@binarysetGalgasType new]] ;
-  [!?outMap insertKey ![@lstring new !"lowerThan" !here] !t !false ![@binarysetGalgasType new]] ;
-  enterReaderWith2UintArguments !?outMap !"binarySetByTranslatingFromIndex" ![@binarysetGalgasType new] !false ;
+  [!?outMap insertKey ![@lstring new !"equalTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"notEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"lowerOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"greaterOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"greaterThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"lowerThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  enterBaseReaderWith2UintArguments !?outMap !"binarySetByTranslatingFromIndex" ![@binarysetGalgasType new] !false ;
   t := [@typeList emptyList] ;
   t += ![@uint64GalgasType new] ;
   t += ![@uintGalgasType new] ;
   t += ![@uintGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"containsValue" !here] !t !false ![@binarysetGalgasType new]] ;
-  enterReaderWith2UintArguments !?outMap !"existsOnBitRange" ![@binarysetGalgasType new] !false ;
+  [!?outMap insertKey ![@lstring new !"containsValue" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  enterBaseReaderWith2UintArguments !?outMap !"existsOnBitRange" ![@binarysetGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -619,10 +656,10 @@ end reader ;
 
 once readerMapFor_type ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !true ;
-  enterReaderWithoutArgument !?outMap !"isClassType" ![@boolGalgasType new] !true ;
-  enterReaderWithoutArgument !?outMap !"hasSuperclass" ![@boolGalgasType new] !true ;
-  enterReaderWithoutArgument !?outMap !"superclass" ![@typeGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"isClassType" ![@boolGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"hasSuperclass" ![@boolGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"superclass" ![@typeGalgasType new] !true ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -635,7 +672,7 @@ end reader ;
 
 once readerMapFor_object ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"objectType" ![@typeGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"objectType" ![@typeGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -648,7 +685,7 @@ end reader ;
 
 once readerMapFor_data ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -661,13 +698,13 @@ end reader ;
 
 once readerMapFor_function ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"resultType" ![@typeGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"formalParameterTypeList" !build_typelist_type [] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"resultType" ![@typeGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"formalParameterTypeList" !build_typelist_type [] !false ;
   @typeList typeList [emptyList] ;
   typeList += !build_typelist_type [] ;
   typeList += ![@locationGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"invoke" !here] !typeList !false ![@objectGalgasType new]] ;
+  [!?outMap insertKey ![@lstring new !"invoke" !here] !typeList !false ![@objectGalgasType new] ![@readerQualifier isBasic]] ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -694,6 +731,7 @@ override reader @classGalgasType readerMap ->@readerMap outMap :
       ![@typeList emptyList]
       !false
       !t
+      ![@readerQualifier isBasic]
     ] ;
   end foreach ;
 end reader ;
@@ -702,15 +740,15 @@ end reader ;
 
 once readerMapFor_list ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
 override reader @listGalgasType readerMap ->@readerMap outMap :
   outMap := readerMapFor_list [] ;
-  enterReaderWithUintArgument !?outMap !"subListFromIndex" !self !false ;
-  enterReaderWith2UintArguments !?outMap !"subListWithRange" !self !false ;
+  enterBaseReaderWithUintArgument !?outMap !"subListFromIndex" !self !false ;
+  enterBaseReaderWith2UintArguments !?outMap !"subListWithRange" !self !false ;
   foreach mAttributeList do
     @ACGalgasType t ;
     [mAttributeTypeIndex searchKey ?* ?t] ;
@@ -719,6 +757,7 @@ override reader @listGalgasType readerMap ->@readerMap outMap :
       ![@typeList listWithValue ![@uintGalgasType new]]
       !false
       !t
+      ![@readerQualifier isBasic]
     ] ;
   end foreach ;
 end reader ;
@@ -727,10 +766,10 @@ end reader ;
 
 once readerMapFor_listmap ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"allKeys" ![@stringsetGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"count" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"keyList" !build_stringlist_type [] !false ;
+  enterBaseReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"allKeys" ![@stringsetGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"count" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"keyList" !build_stringlist_type [] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -739,7 +778,7 @@ override reader @listmapGalgasType readerMap ->@readerMap outMap :
   outMap := readerMapFor_listmap [] ;
   @ACGalgasType t ;
   [mAssociatedListTypeIndex searchKey ?* ?t] ;
-  enterReaderWithStringArgument !?outMap !"listForKey" !t !false ;
+  enterBaseReaderWithStringArgument !?outMap !"listForKey" !t !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -754,6 +793,7 @@ override reader @structGalgasType readerMap ->@readerMap outMap :
       ![@typeList emptyList]
       !false
       !t
+      ![@readerQualifier isBasic]
     ] ;
   end foreach ;
 end reader ;
@@ -762,20 +802,20 @@ end reader ;
 
 override reader @sortedlistGalgasType readerMap ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"length" !self !false ;
+  enterBaseReaderWithoutArgument !?outMap !"length" !self !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 once readerMapFor_map ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"locationForKey" ![@locationGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"count" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"allKeys" ![@stringsetGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"keyList" !build_lstringlist_type [] !false ;
-  enterReaderWithoutArgument !?outMap !"unsolvedIndexCount" ![@uintGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"unsolvedIndexKeyStringList" !build_stringlist_type [] !false ;
+  enterBaseReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"locationForKey" ![@locationGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"count" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"allKeys" ![@stringsetGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"keyList" !build_lstringlist_type [] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"unsolvedIndexCount" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"unsolvedIndexKeyStringList" !build_stringlist_type [] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -788,10 +828,10 @@ end reader ;
 
 override reader @mapindexType readerMap ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterReaderWithoutArgument !?outMap !"isRegular" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isNull" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"isSolved" ![@boolGalgasType new] !false ;
-  enterReaderWithoutArgument !?outMap !"key" ![@lstringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isRegular" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isNull" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"isSolved" ![@boolGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"key" ![@lstringGalgasType new] !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -799,7 +839,7 @@ end reader ;
 override reader @enumType readerMap ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
   foreach mEnumMessageMap do
-    enterReaderWithoutArgument !?outMap ![key string] ![@lstringGalgasType new] !false ;
+    enterBaseReaderWithoutArgument !?outMap ![key string] ![@lstringGalgasType new] !false ;
   end foreach ;
 end reader ;
 

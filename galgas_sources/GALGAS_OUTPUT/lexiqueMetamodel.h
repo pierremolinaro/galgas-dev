@@ -130,7 +130,7 @@ class cPtr_lexiqueComponentRoot ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExpression ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExpression ;
 
 //---------------------------------------------------------------------------*
 
@@ -175,10 +175,10 @@ class GGS_lexicalExpression : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -191,7 +191,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalExpression ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexicalExpression ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -199,7 +199,7 @@ extern C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalExpression ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -244,10 +244,10 @@ class GGS_lexicalInstruction : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -260,7 +260,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalInstruction ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexicalInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -272,7 +272,7 @@ class elementOf_GGS_lexicalInstructionList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalInstructionList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalInstructionList ;
 
 //---------------------------------------------------------------------------*
 
@@ -360,7 +360,7 @@ class GGS_lexicalInstructionList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -395,7 +395,7 @@ class elementOf_GGS_metamodelTemplateDelimitorList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_metamodelTemplateDelimitorList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_metamodelTemplateDelimitorList ;
 
 //---------------------------------------------------------------------------*
 
@@ -515,7 +515,7 @@ class GGS_metamodelTemplateDelimitorList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -552,7 +552,7 @@ class elementOf_GGS_templateReplacementList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_templateReplacementList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_templateReplacementList ;
 
 //---------------------------------------------------------------------------*
 
@@ -672,7 +672,7 @@ class GGS_templateReplacementList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -705,7 +705,7 @@ class GGS_templateReplacementList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractLexicalRule ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractLexicalRule ;
 
 //---------------------------------------------------------------------------*
 
@@ -750,10 +750,10 @@ class GGS_abstractLexicalRule : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -766,7 +766,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__abstractLexicalRule ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__abstractLexicalRule ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -778,7 +778,7 @@ class elementOf_GGS_lexicalRuleList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRuleList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRuleList ;
 
 //---------------------------------------------------------------------------*
 
@@ -866,7 +866,7 @@ class GGS_lexicalRuleList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -897,7 +897,7 @@ class GGS_lexicalRuleList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalImplicitRule ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalImplicitRule ;
 
 //---------------------------------------------------------------------------*
 
@@ -948,7 +948,7 @@ class GGS_lexicalImplicitRule : public GGS_abstractLexicalRule {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -961,7 +961,7 @@ class GGS_lexicalImplicitRule : public GGS_abstractLexicalRule {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalImplicitRule ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalImplicitRule ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -969,7 +969,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalImplicitRule ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExplicitRule ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExplicitRule ;
 
 //---------------------------------------------------------------------------*
 
@@ -1022,7 +1022,7 @@ class GGS_lexicalExplicitRule : public GGS_abstractLexicalRule {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1035,7 +1035,7 @@ class GGS_lexicalExplicitRule : public GGS_abstractLexicalRule {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalExplicitRule ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalExplicitRule ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1047,7 +1047,7 @@ class elementOf_GGS_lexicalMessageDeclarationList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalMessageDeclarationList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalMessageDeclarationList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1151,7 +1151,7 @@ class GGS_lexicalMessageDeclarationList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1187,7 +1187,7 @@ class elementOf_GGS_lexicalAttributeList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1291,7 +1291,7 @@ class GGS_lexicalAttributeList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1327,7 +1327,7 @@ class elementOf_GGS_lexicalStyleList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStyleList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStyleList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1431,7 +1431,7 @@ class GGS_lexicalStyleList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1467,7 +1467,7 @@ class elementOf_GGS_terminalDeclarationList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalDeclarationList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalDeclarationList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1619,7 +1619,7 @@ class GGS_terminalDeclarationList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1658,7 +1658,7 @@ class elementOf_GGS_lexicalListEntryList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalListEntryList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalListEntryList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1778,7 +1778,7 @@ class GGS_lexicalListEntryList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1815,7 +1815,7 @@ class elementOf_GGS_lexicalListDeclarationList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalListDeclarationList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalListDeclarationList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1967,7 +1967,7 @@ class GGS_lexicalListDeclarationList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2002,7 +2002,7 @@ class GGS_lexicalListDeclarationList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalOrExpression ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalOrExpression ;
 
 //---------------------------------------------------------------------------*
 
@@ -2055,7 +2055,7 @@ class GGS_lexicalOrExpression : public GGS_lexicalExpression {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2068,7 +2068,7 @@ class GGS_lexicalOrExpression : public GGS_lexicalExpression {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalOrExpression ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalOrExpression ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2076,7 +2076,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalOrExpression ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterSetMatch ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCharacterSetMatch ;
 
 //---------------------------------------------------------------------------*
 
@@ -2127,7 +2127,7 @@ class GGS_lexicalCharacterSetMatch : public GGS_lexicalExpression {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2140,7 +2140,7 @@ class GGS_lexicalCharacterSetMatch : public GGS_lexicalExpression {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterSetMatch ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCharacterSetMatch ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2148,7 +2148,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterSetMatch ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterMatch ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCharacterMatch ;
 
 //---------------------------------------------------------------------------*
 
@@ -2199,7 +2199,7 @@ class GGS_lexicalCharacterMatch : public GGS_lexicalExpression {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2212,7 +2212,7 @@ class GGS_lexicalCharacterMatch : public GGS_lexicalExpression {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterMatch ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCharacterMatch ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2220,7 +2220,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterMatch ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterIntervalMatch ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCharacterIntervalMatch ;
 
 //---------------------------------------------------------------------------*
 
@@ -2273,7 +2273,7 @@ class GGS_lexicalCharacterIntervalMatch : public GGS_lexicalExpression {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2286,7 +2286,7 @@ class GGS_lexicalCharacterIntervalMatch : public GGS_lexicalExpression {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterIntervalMatch ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCharacterIntervalMatch ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2294,7 +2294,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterIntervalMa
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStringMatch ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStringMatch ;
 
 //---------------------------------------------------------------------------*
 
@@ -2345,7 +2345,7 @@ class GGS_lexicalStringMatch : public GGS_lexicalExpression {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2358,7 +2358,7 @@ class GGS_lexicalStringMatch : public GGS_lexicalExpression {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalStringMatch ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalStringMatch ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2366,7 +2366,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalStringMatch ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStringNotMatch ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStringNotMatch ;
 
 //---------------------------------------------------------------------------*
 
@@ -2419,7 +2419,7 @@ class GGS_lexicalStringNotMatch : public GGS_lexicalExpression {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2432,7 +2432,7 @@ class GGS_lexicalStringNotMatch : public GGS_lexicalExpression {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalStringNotMatch ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalStringNotMatch ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2444,7 +2444,7 @@ class elementOf_GGS_lexicalSendSearchList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendSearchList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSendSearchList ;
 
 //---------------------------------------------------------------------------*
 
@@ -2548,7 +2548,7 @@ class GGS_lexicalSendSearchList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2580,7 +2580,7 @@ class GGS_lexicalSendSearchList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendDefaultAction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSendDefaultAction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2625,10 +2625,10 @@ class GGS_lexicalSendDefaultAction : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2641,7 +2641,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalSendDefaultAction ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexicalSendDefaultAction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2649,7 +2649,7 @@ extern C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalSendDefaultActi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStructuredSendInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStructuredSendInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2702,7 +2702,7 @@ class GGS_lexicalStructuredSendInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2715,7 +2715,7 @@ class GGS_lexicalStructuredSendInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalStructuredSendInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalStructuredSendInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2723,7 +2723,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalStructuredSendInstr
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSimpleSendInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSimpleSendInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2774,7 +2774,7 @@ class GGS_lexicalSimpleSendInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2787,7 +2787,7 @@ class GGS_lexicalSimpleSendInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalSimpleSendInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalSimpleSendInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2795,7 +2795,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalSimpleSendInstructi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendTerminalByDefault ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSendTerminalByDefault ;
 
 //---------------------------------------------------------------------------*
 
@@ -2846,7 +2846,7 @@ class GGS_lexicalSendTerminalByDefault : public GGS_lexicalSendDefaultAction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2859,7 +2859,7 @@ class GGS_lexicalSendTerminalByDefault : public GGS_lexicalSendDefaultAction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalSendTerminalByDefault ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalSendTerminalByDefault ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2867,7 +2867,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalSendTerminalByDefau
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalErrorByDefault ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalErrorByDefault ;
 
 //---------------------------------------------------------------------------*
 
@@ -2918,7 +2918,7 @@ class GGS_lexicalErrorByDefault : public GGS_lexicalSendDefaultAction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2931,7 +2931,7 @@ class GGS_lexicalErrorByDefault : public GGS_lexicalSendDefaultAction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalErrorByDefault ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalErrorByDefault ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2943,7 +2943,7 @@ class elementOf_GGS_lexicalWhileBranchList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalWhileBranchList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalWhileBranchList ;
 
 //---------------------------------------------------------------------------*
 
@@ -3047,7 +3047,7 @@ class GGS_lexicalWhileBranchList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3079,7 +3079,7 @@ class GGS_lexicalWhileBranchList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRepeatInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRepeatInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3132,7 +3132,7 @@ class GGS_lexicalRepeatInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3145,7 +3145,7 @@ class GGS_lexicalRepeatInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalRepeatInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalRepeatInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3157,7 +3157,7 @@ class elementOf_GGS_lexicalSelectBranchList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSelectBranchList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSelectBranchList ;
 
 //---------------------------------------------------------------------------*
 
@@ -3261,7 +3261,7 @@ class GGS_lexicalSelectBranchList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3293,7 +3293,7 @@ class GGS_lexicalSelectBranchList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSelectInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSelectInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3346,7 +3346,7 @@ class GGS_lexicalSelectInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3359,7 +3359,7 @@ class GGS_lexicalSelectInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalSelectInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalSelectInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3367,7 +3367,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalSelectInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -3413,10 +3413,10 @@ class GGS_abstractLexicalRoutineActualArgument : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3429,7 +3429,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__abstractLexicalRoutineActualArgument ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__abstractLexicalRoutineActualArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3441,7 +3441,7 @@ class elementOf_GGS_lexicalRoutineCallActualArgumentList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineCallActualArgumentList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineCallActualArgumentList ;
 
 //---------------------------------------------------------------------------*
 
@@ -3529,7 +3529,7 @@ class GGS_lexicalRoutineCallActualArgumentList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3560,7 +3560,7 @@ class GGS_lexicalRoutineCallActualArgumentList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3615,7 +3615,7 @@ class GGS_lexicalRoutineInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3628,7 +3628,7 @@ class GGS_lexicalRoutineInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalRoutineInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalRoutineInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3636,7 +3636,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalRoutineInstruction 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeInputOutputArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeInputOutputArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -3688,7 +3688,7 @@ class GGS_lexicalAttributeInputOutputArgument : public GGS_abstractLexicalRoutin
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3701,7 +3701,7 @@ class GGS_lexicalAttributeInputOutputArgument : public GGS_abstractLexicalRoutin
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalAttributeInputOutputArgument ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalAttributeInputOutputArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3709,7 +3709,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalAttributeInputOutpu
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -3754,10 +3754,10 @@ class GGS_lexicalRoutineOrFunctionFormalInputArgument : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3770,7 +3770,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3778,7 +3778,7 @@ extern C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalRoutineOrFuncti
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFormalInputArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFormalInputArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -3830,7 +3830,7 @@ class GGS_lexicalFormalInputArgument : public GGS_abstractLexicalRoutineActualAr
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3843,7 +3843,7 @@ class GGS_lexicalFormalInputArgument : public GGS_abstractLexicalRoutineActualAr
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalFormalInputArgument ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalFormalInputArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3855,7 +3855,7 @@ class elementOf_GGS_lexicalFunctionCallActualArgumentList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionCallActualArgumentList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionCallActualArgumentList ;
 
 //---------------------------------------------------------------------------*
 
@@ -3943,7 +3943,7 @@ class GGS_lexicalFunctionCallActualArgumentList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3974,7 +3974,7 @@ class GGS_lexicalFunctionCallActualArgumentList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeInputArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeInputArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -4025,7 +4025,7 @@ class GGS_lexicalAttributeInputArgument : public GGS_lexicalRoutineOrFunctionFor
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4038,7 +4038,7 @@ class GGS_lexicalAttributeInputArgument : public GGS_lexicalRoutineOrFunctionFor
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalAttributeInputArgument ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalAttributeInputArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4046,7 +4046,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalAttributeInputArgum
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterInputArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCharacterInputArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -4097,7 +4097,7 @@ class GGS_lexicalCharacterInputArgument : public GGS_lexicalRoutineOrFunctionFor
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4110,7 +4110,7 @@ class GGS_lexicalCharacterInputArgument : public GGS_lexicalRoutineOrFunctionFor
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterInputArgument ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCharacterInputArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4118,7 +4118,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterInputArgum
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalUnsignedInputArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalUnsignedInputArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -4169,7 +4169,7 @@ class GGS_lexicalUnsignedInputArgument : public GGS_lexicalRoutineOrFunctionForm
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4182,7 +4182,7 @@ class GGS_lexicalUnsignedInputArgument : public GGS_lexicalRoutineOrFunctionForm
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalUnsignedInputArgument ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalUnsignedInputArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4190,7 +4190,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalUnsignedInputArgume
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCurrentCharacterInputArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCurrentCharacterInputArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -4241,7 +4241,7 @@ class GGS_lexicalCurrentCharacterInputArgument : public GGS_lexicalRoutineOrFunc
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4254,7 +4254,7 @@ class GGS_lexicalCurrentCharacterInputArgument : public GGS_lexicalRoutineOrFunc
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCurrentCharacterInputArgument ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCurrentCharacterInputArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4262,7 +4262,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalCurrentCharacterInp
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionInputArgument ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionInputArgument ;
 
 //---------------------------------------------------------------------------*
 
@@ -4315,7 +4315,7 @@ class GGS_lexicalFunctionInputArgument : public GGS_lexicalRoutineOrFunctionForm
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4328,7 +4328,7 @@ class GGS_lexicalFunctionInputArgument : public GGS_lexicalRoutineOrFunctionForm
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalFunctionInputArgument ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalFunctionInputArgument ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4336,7 +4336,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalFunctionInputArgume
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalDropInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalDropInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4387,7 +4387,7 @@ class GGS_lexicalDropInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4400,7 +4400,7 @@ class GGS_lexicalDropInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalDropInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalDropInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4408,7 +4408,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalDropInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalErrorInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalErrorInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4459,7 +4459,7 @@ class GGS_lexicalErrorInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4472,7 +4472,7 @@ class GGS_lexicalErrorInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalErrorInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalErrorInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4480,7 +4480,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalErrorInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalWarningInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalWarningInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4531,7 +4531,7 @@ class GGS_lexicalWarningInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4544,7 +4544,7 @@ class GGS_lexicalWarningInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalWarningInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalWarningInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4552,7 +4552,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalWarningInstruction 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTagInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTagInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4603,7 +4603,7 @@ class GGS_lexicalTagInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4616,7 +4616,7 @@ class GGS_lexicalTagInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalTagInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalTagInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4624,7 +4624,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalTagInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRewindInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRewindInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4677,7 +4677,7 @@ class GGS_lexicalRewindInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4690,7 +4690,7 @@ class GGS_lexicalRewindInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalRewindInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalRewindInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4698,7 +4698,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalRewindInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalLogInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalLogInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4747,7 +4747,7 @@ class GGS_lexicalLogInstruction : public GGS_lexicalInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4760,7 +4760,7 @@ class GGS_lexicalLogInstruction : public GGS_lexicalInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalLogInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalLogInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4768,7 +4768,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__lexicalLogInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalArgumentMode ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalArgumentMode ;
 
 //---------------------------------------------------------------------------*
 
@@ -4795,7 +4795,7 @@ class GGS_lexicalArgumentMode : public GGS__root {
   public : bool isBuilt (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4849,7 +4849,7 @@ class elementOf_GGS_lexicalExternRoutineFormalArgumentList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExternRoutineFormalArgumentList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExternRoutineFormalArgumentList ;
 
 //---------------------------------------------------------------------------*
 
@@ -4969,7 +4969,7 @@ class GGS_lexicalExternRoutineFormalArgumentList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5006,7 +5006,7 @@ class elementOf_GGS_externRoutineList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_externRoutineList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_externRoutineList ;
 
 //---------------------------------------------------------------------------*
 
@@ -5126,7 +5126,7 @@ class GGS_externRoutineList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5163,7 +5163,7 @@ class elementOf_GGS_lexicalExternFunctionFormalArgumentList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExternFunctionFormalArgumentList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExternFunctionFormalArgumentList ;
 
 //---------------------------------------------------------------------------*
 
@@ -5267,7 +5267,7 @@ class GGS_lexicalExternFunctionFormalArgumentList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5303,7 +5303,7 @@ class elementOf_GGS_externFunctionList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_externFunctionList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_externFunctionList ;
 
 //---------------------------------------------------------------------------*
 
@@ -5423,7 +5423,7 @@ class GGS_externFunctionList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5456,7 +5456,7 @@ class GGS_externFunctionList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexiqueComponentRoot ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexiqueComponentRoot ;
 
 //---------------------------------------------------------------------------*
 
@@ -5528,10 +5528,10 @@ class GGS_lexiqueComponentRoot : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5544,7 +5544,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__lexiqueComponentRoot ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexiqueComponentRoot ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -5574,7 +5574,7 @@ class cPtr_lexicalExpression : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -5605,7 +5605,7 @@ class cPtr_lexicalInstruction : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -5740,7 +5740,7 @@ class cPtr_abstractLexicalRule : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -5810,7 +5810,7 @@ class cPtr_lexicalImplicitRule : public cPtr_abstractLexicalRule {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -5853,7 +5853,7 @@ class cPtr_lexicalExplicitRule : public cPtr_abstractLexicalRule {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6114,7 +6114,7 @@ class cPtr_lexicalOrExpression : public cPtr_lexicalExpression {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6155,7 +6155,7 @@ class cPtr_lexicalCharacterSetMatch : public cPtr_lexicalExpression {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6196,7 +6196,7 @@ class cPtr_lexicalCharacterMatch : public cPtr_lexicalExpression {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6239,7 +6239,7 @@ class cPtr_lexicalCharacterIntervalMatch : public cPtr_lexicalExpression {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6280,7 +6280,7 @@ class cPtr_lexicalStringMatch : public cPtr_lexicalExpression {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6323,7 +6323,7 @@ class cPtr_lexicalStringNotMatch : public cPtr_lexicalExpression {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6391,7 +6391,7 @@ class cPtr_lexicalSendDefaultAction : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -6431,7 +6431,7 @@ class cPtr_lexicalStructuredSendInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6472,7 +6472,7 @@ class cPtr_lexicalSimpleSendInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6513,7 +6513,7 @@ class cPtr_lexicalSendTerminalByDefault : public cPtr_lexicalSendDefaultAction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6554,7 +6554,7 @@ class cPtr_lexicalErrorByDefault : public cPtr_lexicalSendDefaultAction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6631,7 +6631,7 @@ class cPtr_lexicalRepeatInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6708,7 +6708,7 @@ class cPtr_lexicalSelectInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6744,7 +6744,7 @@ class cPtr_abstractLexicalRoutineActualArgument : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -6818,7 +6818,7 @@ class cPtr_lexicalRoutineInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6860,7 +6860,7 @@ class cPtr_lexicalAttributeInputOutputArgument : public cPtr_abstractLexicalRout
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6894,7 +6894,7 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgument : public cPtr__AC_galgas_
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -6933,7 +6933,7 @@ class cPtr_lexicalFormalInputArgument : public cPtr_abstractLexicalRoutineActual
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7006,7 +7006,7 @@ class cPtr_lexicalAttributeInputArgument : public cPtr_lexicalRoutineOrFunctionF
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7047,7 +7047,7 @@ class cPtr_lexicalCharacterInputArgument : public cPtr_lexicalRoutineOrFunctionF
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7088,7 +7088,7 @@ class cPtr_lexicalUnsignedInputArgument : public cPtr_lexicalRoutineOrFunctionFo
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7129,7 +7129,7 @@ class cPtr_lexicalCurrentCharacterInputArgument : public cPtr_lexicalRoutineOrFu
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7172,7 +7172,7 @@ class cPtr_lexicalFunctionInputArgument : public cPtr_lexicalRoutineOrFunctionFo
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7213,7 +7213,7 @@ class cPtr_lexicalDropInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7254,7 +7254,7 @@ class cPtr_lexicalErrorInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7295,7 +7295,7 @@ class cPtr_lexicalWarningInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7336,7 +7336,7 @@ class cPtr_lexicalTagInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7379,7 +7379,7 @@ class cPtr_lexicalRewindInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7418,7 +7418,7 @@ class cPtr_lexicalLogInstruction : public cPtr_lexicalInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -7619,7 +7619,7 @@ class cPtr_lexiqueComponentRoot : public cPtr__AC_galgas_class {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;

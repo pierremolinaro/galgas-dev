@@ -366,7 +366,8 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
     }
   }
   if (mIndexIdentifier.string ().length () > 0) {
-    ioCppFile << "GGS_uint var_cas_" << mIndexIdentifier << " (true, 0) ;\n" ;
+    ioCppFile << "{ GGS_uint var_cas_" << mIndexIdentifier << " (true, 0) ;\n" ;
+    ioCppFile.incIndentation (-2) ;
   }
   if (mNewEnumerationStyle.boolValue ()) {
     ioCppFile <<  "while (enumerator_" ;
@@ -420,6 +421,10 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
       currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
       currentInstruction.next () ;
     }
+    ioCppFile.incIndentation (-2) ;
+    ioCppFile << "}\n" ;
+  }
+  if (mIndexIdentifier.string ().length () > 0) {
     ioCppFile.incIndentation (-2) ;
     ioCppFile << "}\n" ;
   }

@@ -66,7 +66,7 @@ class elementOf_GGS_signatureForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_signatureForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_signatureForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -170,7 +170,7 @@ class GGS_signatureForGrammarAnalysis : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -204,7 +204,7 @@ class GGS_signatureForGrammarAnalysis : public AC_galgas_list {
 
 class elementOf_GGS_nonterminalSymbolLabelMapForGrammarAnalysis ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_nonterminalSymbolLabelMapForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonterminalSymbolLabelMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -221,7 +221,7 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -311,7 +311,7 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_galgas_map {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractSyntaxInstructionForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractSyntaxInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -356,10 +356,10 @@ class GGS_abstractSyntaxInstructionForGrammarAnalysis : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -372,7 +372,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__abstractSyntaxInstructionForGrammarAnalysis ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__abstractSyntaxInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -384,7 +384,7 @@ class elementOf_GGS_syntaxInstructionListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxInstructionListForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxInstructionListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -472,7 +472,7 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -507,7 +507,7 @@ class elementOf_GGS_productionRuleListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_productionRuleListForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_productionRuleListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -627,7 +627,7 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -662,7 +662,7 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_galgas_list {
 
 class elementOf_GGS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -679,7 +679,7 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -765,7 +765,7 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_map {
 
 class elementOf_GGS_nonTerminalSymbolMapForGrammarAnalysis ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_nonTerminalSymbolMapForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonTerminalSymbolMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -782,7 +782,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_nonTerminalSymbolMapForGrammarAnalysis & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -877,7 +877,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_map {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalInstructionForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -929,7 +929,7 @@ class GGS_terminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstr
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -942,7 +942,7 @@ class GGS_terminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstr
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__terminalInstructionForGrammarAnalysis ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__terminalInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -950,7 +950,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__terminalInstructionForGram
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_nonTerminalInstructionForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonTerminalInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -1002,7 +1002,7 @@ class GGS_nonTerminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxIn
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1015,7 +1015,7 @@ class GGS_nonTerminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxIn
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__nonTerminalInstructionForGrammarAnalysis ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__nonTerminalInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1027,7 +1027,7 @@ class elementOf_GGS_branchListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_branchListForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_branchListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -1115,7 +1115,7 @@ class GGS_branchListForGrammarAnalysis : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1146,7 +1146,7 @@ class GGS_branchListForGrammarAnalysis : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_selectInstructionForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_selectInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -1198,7 +1198,7 @@ class GGS_selectInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1211,7 +1211,7 @@ class GGS_selectInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__selectInstructionForGrammarAnalysis ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__selectInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1219,7 +1219,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__selectInstructionForGramma
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_repeatInstructionForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_repeatInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -1271,7 +1271,7 @@ class GGS_repeatInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1284,7 +1284,7 @@ class GGS_repeatInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__repeatInstructionForGrammarAnalysis ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__repeatInstructionForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1296,7 +1296,7 @@ class elementOf_GGS_syntaxComponentListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxComponentListForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxComponentListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -1400,7 +1400,7 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1434,7 +1434,7 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_galgas_list {
 
 class elementOf_GGS_terminalSymbolsMapForGrammarAnalysis ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalSymbolsMapForGrammarAnalysis ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalSymbolsMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
@@ -1451,7 +1451,7 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_terminalSymbolsMapForGrammarAnalysis & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 

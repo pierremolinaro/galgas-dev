@@ -18,14 +18,229 @@
 #---------------------------------------------------------------------------*
 
 semantics generateHeadersOfBuiltinTypes :
+  import "semanticsTypes.gSemantics" ;
   import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
+  import "semanticsReaders.gSemantics" ;
+  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
+  import "semanticsConstructors.gSemantics" ;
+  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
+  import "semanticsTypeFeatures.gSemantics" ;
+  import semantics semanticsTypeFeatures in "semanticsTypeFeatures.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# S C A L A R    A T T R I B U T E    T Y P E    N A M E                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType scalarAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "" ; # Means no scalar attribute
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @boolGalgasType scalarAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "bool" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @charGalgasType scalarAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "utf32" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @uintGalgasType scalarAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "PMUInt32" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sintGalgasType scalarAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "PMSInt32" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @uint64GalgasType scalarAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "PMUInt64" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sint64GalgasType scalarAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "PMSInt64" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @doubleGalgasType scalarAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "double" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# P O I N T E R    A T T R I B U T E    T Y P E    N A M E                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType pointerAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "" ; # Means no scalar attribute
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @objectGalgasType pointerAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "GALGAS__root" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @typeGalgasType pointerAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "C_galgas_type_descriptor" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C L A S S    A T T R I B U T E    T Y P E    N A M E                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType classAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "" ; # Means no scalar attribute
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringGalgasType classAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "C_String" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# E M B E D D E D   O B J E C T S                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lstringGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+  outTypeList += !"string" ;
+  outTypeList += !"location" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lcharGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+  outTypeList += !"char" ;
+  outTypeList += !"location" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @luintGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+  outTypeList += !"uint" ;
+  outTypeList += !"location" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lsintGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+  outTypeList += !"sint" ;
+  outTypeList += !"location" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @luint64GalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+  outTypeList += !"uint64" ;
+  outTypeList += !"location" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lsint64GalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+  outTypeList += !"sint64" ;
+  outTypeList += !"location" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lboolGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+  outTypeList += !"bool" ;
+  outTypeList += !"location" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @ldoubleGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
+  outTypeList := [@stringlist emptyList] ;
+  outTypeList += !"double" ;
+  outTypeList += !"location" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# G E N E R A T E    C C P    R E A D E R S    A R G U M E N T S            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+function generateCppReaderArguments
+  ??@string inCppTypeNameOfCurrentObject
+  ??@typeList inArgumentTypeList
+  ??@bool inHasLexiqueArgument
+  ??@string inIndentation
+  ->@string outString
+:
+  outString := "" ;
+  @bool first := true ;
+  if inCppTypeNameOfCurrentObject != "" then
+    outString .= "const " . inCppTypeNameOfCurrentObject . " * inObject" ;
+    first := false ;
+  end if ;
+  if inHasLexiqueArgument then
+    if first then
+      first := false ;
+    else
+      outString .= ",\n" . inIndentation ;
+    end if ;
+    outString .= "C_Compiler * inCompiler" ;
+  end if ;
+  foreach inArgumentTypeList index IDX  do
+    if first then
+      first := false ;
+    else
+      outString .= ",\n" . inIndentation ;
+    end if ;
+    outString .= "const " . cppTypeName [!mType] . " * inArgument_" .  [IDX string] ;
+  end foreach ;
+  if first then
+    outString .= "LOCATION_ARGS" ;
+  else
+    outString .= "\n" . inIndentation . "COMMA_LOCATION_ARGS" ;
+  end if ;
+end function ;
 
 #---------------------------------------------------------------------------*
 
 filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
   template header "GALGAS_builtin_type.h.gTemplate"
-    ?@string TYPE
+    ?@lstringlist PREDEFINED_TYPE_LIST
+    ?@string TYPE_NAME
+    ?@ACGalgasType TYPE
   ;
 }
 
@@ -36,17 +251,18 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
     if not [inDirectory directoryExists] then
       error here : "the '" . inDirectory . "' directory does not exist" ;
     else
-      const @typeMap builtinTypeMap := constructBuiltinTypeMap [] ;
-      log builtinTypeMap ;
+      const @typeMap builtinTypeMap := constructPrimitiveTypeMap [] ;
       foreach builtinTypeMap do
-        const @string typeName := generatedTypeName [![key string]] ;
+        const @string typeName := cppTypeName [!mType] ;
         [@string generateFile
           !inDirectory
           !typeName . ".h"
           !"//"
           !"\n\n" # Defaut user zone1
           ![filewrapper builtinTypeGenerationTemplate.header
+            ![constructBuiltinTypeMap [] keyList]
             !typeName
+            !mType
           ]
           !"\n\n" # Defaut user zone2
           !""

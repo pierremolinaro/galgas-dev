@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_variableStateAutomaton ("variableStateAutomaton", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_variableStateAutomaton ("variableStateAutomaton", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -686,7 +686,7 @@ GGS_variableStateAutomaton GGS_variableStateAutomaton::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_variableStateAutomaton::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_variableStateAutomaton::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_variableStateAutomaton ;
 }
 
@@ -696,7 +696,7 @@ const C_galgas_type_descriptor * GGS_variableStateAutomaton::typeDescriptor (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_variableMap ("variableMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_variableMap ("variableMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2059,7 +2059,7 @@ GGS_variableMap GGS_variableMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_variableMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_variableMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_variableMap ;
 }
 
@@ -2079,7 +2079,7 @@ mRoutineSignature () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_routineMap ("routineMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_routineMap ("routineMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2464,7 +2464,7 @@ GGS_routineMap GGS_routineMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_routineMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_routineMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_routineMap ;
 }
 
@@ -2485,7 +2485,7 @@ mResultTypeIndex () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_functionMap ("functionMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_functionMap ("functionMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2894,7 +2894,7 @@ GGS_functionMap GGS_functionMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_functionMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_functionMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_functionMap ;
 }
 
@@ -2941,7 +2941,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_classIndexList ("classIndexList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classIndexList ("classIndexList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3274,13 +3274,13 @@ GGS_classIndexList GGS_classIndexList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_classIndexList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_classIndexList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_classIndexList ;
 }
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_descendantClassListMap ("descendantClassListMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_descendantClassListMap ("descendantClassListMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3489,7 +3489,7 @@ GGS_descendantClassListMap GGS_descendantClassListMap::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_descendantClassListMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_descendantClassListMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_descendantClassListMap ;
 }
 
@@ -3499,7 +3499,7 @@ const C_galgas_type_descriptor * GGS_descendantClassListMap::typeDescriptor (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticContext ("semanticContext", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticContext ("semanticContext", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3633,7 +3633,7 @@ GGS_semanticContext GGS_semanticContext::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_semanticContext::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_semanticContext::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_semanticContext ;
 }
 

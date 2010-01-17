@@ -1613,5 +1613,18 @@ class @C_filewrapperTemplateToImplement extends @typeEntityToGenerate {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  T E M P L A T E    V A R I A B L E    M A P                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @templateVariableMap {
+  @AC_galgasType mArgumentType ;
+  @typeCplusPlusName mCplusPlusName ;
+  insert insertKey error message "the template variable '%K' is already declared" ;
+  search searchKey error message "the template variable '%K' is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

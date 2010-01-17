@@ -26,7 +26,7 @@ grammar galgasTemplateGrammar "SLR" :
   import syntax templateExpressionParser in "templateExpressionParser.gSyntax" ;
 
   root <lexique_component_start_symbol>
-    ?!@typeVariablesMap ioTemplateVariableMap
+    ??@templateVariableMap ioTemplateVariableMap
     ??@EXsemanticContext inSemanticContext
     ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
     ??@M_optionComponents inOptionsComponentsMapForUse

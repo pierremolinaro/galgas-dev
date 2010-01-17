@@ -49,7 +49,7 @@ class elementOf_GGS_formalParameterSignature ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_formalParameterSignature ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalParameterSignature ;
 
 //---------------------------------------------------------------------------*
 
@@ -153,7 +153,7 @@ class GGS_formalParameterSignature : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -187,7 +187,7 @@ class GGS_formalParameterSignature : public AC_galgas_list {
 
 class elementOf_GGS_modifierMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_modifierMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_modifierMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -204,7 +204,7 @@ class GGS_modifierMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_modifierMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -433,7 +433,7 @@ enterCategoryReader__ACGalgasType__modifierMap (typeCategoryReader__ACGalgasType
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__ACGalgasType__modifierMap
-findCategoryReader__ACGalgasType__modifierMap (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__ACGalgasType__modifierMap (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

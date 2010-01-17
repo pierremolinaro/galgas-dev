@@ -43,7 +43,7 @@ class GGS_commandLineOptionMap ;
 
 class elementOf_GGS_commandLineOptionMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_commandLineOptionMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_commandLineOptionMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -60,7 +60,7 @@ class GGS_commandLineOptionMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_commandLineOptionMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 

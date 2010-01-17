@@ -101,7 +101,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << aNomListe << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n\n"
@@ -323,7 +323,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "\n"
 
              "//--- Introspection\n"
-             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
              "  public : static GGS_" << aNomListe << " castFromObject (C_Compiler & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
@@ -464,7 +464,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 // ------------- List Implementation -----------------
   inCppFile.appendCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\", false, NULL) ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Engendrer la methode internalAppendValues
@@ -1072,7 +1072,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_type_descriptor * GGS_" << aNomListe << "::typeDescriptor (void) const {\n"
+  inCppFile << "const C_galgas_type_descriptorEX * GGS_" << aNomListe << "::typeDescriptor (void) const {\n"
                "  return & kTypeDescriptor_GGS_" << aNomListe << " ;\n"
                "}\n\n" ;
 }
@@ -1158,7 +1158,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << aNomListe << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "\n"
              "class GGS_" << aNomListe << " : public AC_galgas_sortedlist {\n"
@@ -1313,7 +1313,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Reader 'description\n"
              "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
              "//--- Introspection\n"
-             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
              "  public : static GGS_" << aNomListe << " castFromObject (C_Compiler & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
@@ -1471,7 +1471,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 // ------------- List Implementation -----------------
   inCppFile.appendCppTitleComment (C_String ("Sorted list '@") + aNomListe + "'") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\", false, NULL) ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << aNomListe << " (\"" << aNomListe << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Generate default constructor
@@ -1893,7 +1893,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_type_descriptor * GGS_" << aNomListe << "::typeDescriptor (void) const {\n"
+  inCppFile << "const C_galgas_type_descriptorEX * GGS_" << aNomListe << "::typeDescriptor (void) const {\n"
                "  return & kTypeDescriptor_GGS_" << aNomListe << " ;\n"
                "}\n\n" ;
 }

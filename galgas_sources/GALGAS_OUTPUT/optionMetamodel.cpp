@@ -113,7 +113,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_commandLineOptionList ("commandLineOptionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_commandLineOptionList ("commandLineOptionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -682,7 +682,7 @@ GGS_commandLineOptionList GGS_commandLineOptionList::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_commandLineOptionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_commandLineOptionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_commandLineOptionList ;
 }
 
@@ -761,7 +761,7 @@ C_galgas_class_inspector _gInspectorFor_optionComponentRoot (& typeid (cPtr_opti
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_optionComponentRoot::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_optionComponentRoot::galgasRTTI (void) const {
   return & gClassInfoFor__optionComponentRoot ;
 }
 
@@ -779,7 +779,7 @@ cPtr__AC_galgas_class * cPtr_optionComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_optionComponentRoot ("optionComponentRoot", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_optionComponentRoot ("optionComponentRoot", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -872,8 +872,8 @@ const char * GGS_optionComponentRoot::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_optionComponentRoot::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_optionComponentRoot::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -882,7 +882,7 @@ AC_galgasClassRunTimeInformation * GGS_optionComponentRoot::galgasObjectRunTimeI
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__optionComponentRoot ("optionComponentRoot", & kTypeDescriptor_GGS_optionComponentRoot) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__optionComponentRoot ("optionComponentRoot", & kTypeDescriptor_GGS_optionComponentRoot) ;
 
 //---------------------------------------------------------------------------*
 
@@ -917,7 +917,7 @@ GGS_optionComponentRoot GGS_optionComponentRoot::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_optionComponentRoot::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_optionComponentRoot::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_optionComponentRoot ;
 }
 

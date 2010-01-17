@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_formalArgumentPassingMode ("formalArgumentPassingMode", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalArgumentPassingMode ("formalArgumentPassingMode", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -234,7 +234,7 @@ GGS_formalArgumentPassingMode GGS_formalArgumentPassingMode::castFromObject (C_C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_formalArgumentPassingMode::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_formalArgumentPassingMode::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_formalArgumentPassingMode ;
 }
 
@@ -302,7 +302,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_formalParameterList ("formalParameterList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalParameterList ("formalParameterList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -812,7 +812,7 @@ GGS_formalParameterList GGS_formalParameterList::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_formalParameterList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_formalParameterList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_formalParameterList ;
 }
 
@@ -873,7 +873,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_formalInputParameterList ("formalInputParameterList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalInputParameterList ("formalInputParameterList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1324,7 +1324,7 @@ GGS_formalInputParameterList GGS_formalInputParameterList::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_formalInputParameterList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_formalInputParameterList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_formalInputParameterList ;
 }
 
@@ -1383,7 +1383,7 @@ C_galgas_class_inspector _gInspectorFor_actualParameter (& typeid (cPtr_actualPa
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_actualParameter::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_actualParameter::galgasRTTI (void) const {
   return & gClassInfoFor__actualParameter ;
 }
 
@@ -1393,7 +1393,7 @@ AC_galgasClassRunTimeInformation * cPtr_actualParameter::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_actualParameter ("actualParameter", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualParameter ("actualParameter", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1445,8 +1445,8 @@ const char * GGS_actualParameter::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_actualParameter::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_actualParameter::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -1455,7 +1455,7 @@ AC_galgasClassRunTimeInformation * GGS_actualParameter::galgasObjectRunTimeInfo 
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__actualParameter ("actualParameter", & kTypeDescriptor_GGS_actualParameter) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__actualParameter ("actualParameter", & kTypeDescriptor_GGS_actualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1490,7 +1490,7 @@ GGS_actualParameter GGS_actualParameter::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_actualParameter::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_actualParameter::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_actualParameter ;
 }
 
@@ -1565,7 +1565,7 @@ C_galgas_class_inspector _gInspectorFor_outputActualParameter (& typeid (cPtr_ou
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_outputActualParameter::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_outputActualParameter::galgasRTTI (void) const {
   return & gClassInfoFor__outputActualParameter ;
 }
 
@@ -1583,7 +1583,7 @@ cPtr__AC_galgas_class * cPtr_outputActualParameter::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_outputActualParameter ("outputActualParameter", true, & kTypeDescriptor_GGS_actualParameter) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_outputActualParameter ("outputActualParameter", true, & kTypeDescriptor_GGS_actualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1660,7 +1660,7 @@ const char * GGS_outputActualParameter::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__outputActualParameter ("outputActualParameter", gClassInfoFor__actualParameter, & kTypeDescriptor_GGS_outputActualParameter) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__outputActualParameter ("outputActualParameter", gClassInfoFor__actualParameter, & kTypeDescriptor_GGS_outputActualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1695,7 +1695,7 @@ GGS_outputActualParameter GGS_outputActualParameter::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_outputActualParameter::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_outputActualParameter::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_outputActualParameter ;
 }
 
@@ -1774,7 +1774,7 @@ C_galgas_class_inspector _gInspectorFor_outputInputActualParameter (& typeid (cP
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_outputInputActualParameter::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_outputInputActualParameter::galgasRTTI (void) const {
   return & gClassInfoFor__outputInputActualParameter ;
 }
 
@@ -1792,7 +1792,7 @@ cPtr__AC_galgas_class * cPtr_outputInputActualParameter::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_outputInputActualParameter ("outputInputActualParameter", true, & kTypeDescriptor_GGS_actualParameter) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_outputInputActualParameter ("outputInputActualParameter", true, & kTypeDescriptor_GGS_actualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1885,7 +1885,7 @@ const char * GGS_outputInputActualParameter::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__outputInputActualParameter ("outputInputActualParameter", gClassInfoFor__actualParameter, & kTypeDescriptor_GGS_outputInputActualParameter) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__outputInputActualParameter ("outputInputActualParameter", gClassInfoFor__actualParameter, & kTypeDescriptor_GGS_outputInputActualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1920,7 +1920,7 @@ GGS_outputInputActualParameter GGS_outputInputActualParameter::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_outputInputActualParameter::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_outputInputActualParameter::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_outputInputActualParameter ;
 }
 
@@ -1999,7 +1999,7 @@ C_galgas_class_inspector _gInspectorFor_inputActualParameter (& typeid (cPtr_inp
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_inputActualParameter::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_inputActualParameter::galgasRTTI (void) const {
   return & gClassInfoFor__inputActualParameter ;
 }
 
@@ -2017,7 +2017,7 @@ cPtr__AC_galgas_class * cPtr_inputActualParameter::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_inputActualParameter ("inputActualParameter", true, & kTypeDescriptor_GGS_actualParameter) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_inputActualParameter ("inputActualParameter", true, & kTypeDescriptor_GGS_actualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2110,7 +2110,7 @@ const char * GGS_inputActualParameter::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__inputActualParameter ("inputActualParameter", gClassInfoFor__actualParameter, & kTypeDescriptor_GGS_inputActualParameter) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__inputActualParameter ("inputActualParameter", gClassInfoFor__actualParameter, & kTypeDescriptor_GGS_inputActualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2145,7 +2145,7 @@ GGS_inputActualParameter GGS_inputActualParameter::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_inputActualParameter::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_inputActualParameter::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_inputActualParameter ;
 }
 
@@ -2211,7 +2211,7 @@ C_galgas_class_inspector _gInspectorFor_inputJokerActualParameter (& typeid (cPt
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_inputJokerActualParameter::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_inputJokerActualParameter::galgasRTTI (void) const {
   return & gClassInfoFor__inputJokerActualParameter ;
 }
 
@@ -2221,7 +2221,7 @@ AC_galgasClassRunTimeInformation * cPtr_inputJokerActualParameter::galgasRTTI (v
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_inputJokerActualParameter ("inputJokerActualParameter", true, & kTypeDescriptor_GGS_actualParameter) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_inputJokerActualParameter ("inputJokerActualParameter", true, & kTypeDescriptor_GGS_actualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2297,7 +2297,7 @@ const char * GGS_inputJokerActualParameter::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__inputJokerActualParameter ("inputJokerActualParameter", gClassInfoFor__actualParameter, & kTypeDescriptor_GGS_inputJokerActualParameter) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__inputJokerActualParameter ("inputJokerActualParameter", gClassInfoFor__actualParameter, & kTypeDescriptor_GGS_inputJokerActualParameter) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2332,7 +2332,7 @@ GGS_inputJokerActualParameter GGS_inputJokerActualParameter::castFromObject (C_C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_inputJokerActualParameter::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_inputJokerActualParameter::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_inputJokerActualParameter ;
 }
 
@@ -2379,7 +2379,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_actualParameterList ("actualParameterList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualParameterList ("actualParameterList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2712,7 +2712,7 @@ GGS_actualParameterList GGS_actualParameterList::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_actualParameterList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_actualParameterList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_actualParameterList ;
 }
 
@@ -2766,7 +2766,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_actualInputParameterList ("actualInputParameterList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualInputParameterList ("actualInputParameterList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3158,7 +3158,7 @@ GGS_actualInputParameterList GGS_actualInputParameterList::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_actualInputParameterList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_actualInputParameterList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_actualInputParameterList ;
 }
 
