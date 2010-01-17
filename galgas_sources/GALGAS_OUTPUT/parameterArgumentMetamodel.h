@@ -58,7 +58,7 @@ class GGS_actualInputParameterList ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_formalArgumentPassingMode ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalArgumentPassingMode ;
 
 //---------------------------------------------------------------------------*
 
@@ -85,7 +85,7 @@ class GGS_formalArgumentPassingMode : public GGS__root {
   public : bool isBuilt (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -146,7 +146,7 @@ class elementOf_GGS_formalParameterList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_formalParameterList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalParameterList ;
 
 //---------------------------------------------------------------------------*
 
@@ -282,7 +282,7 @@ class GGS_formalParameterList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -320,7 +320,7 @@ class elementOf_GGS_formalInputParameterList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_formalInputParameterList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalInputParameterList ;
 
 //---------------------------------------------------------------------------*
 
@@ -440,7 +440,7 @@ class GGS_formalInputParameterList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -473,7 +473,7 @@ class GGS_formalInputParameterList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_actualParameter ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualParameter ;
 
 //---------------------------------------------------------------------------*
 
@@ -518,10 +518,10 @@ class GGS_actualParameter : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -534,7 +534,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__actualParameter ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__actualParameter ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -542,7 +542,7 @@ extern C_galgasRootClassRunTimeInformation gClassInfoFor__actualParameter ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_outputActualParameter ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_outputActualParameter ;
 
 //---------------------------------------------------------------------------*
 
@@ -593,7 +593,7 @@ class GGS_outputActualParameter : public GGS_actualParameter {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -606,7 +606,7 @@ class GGS_outputActualParameter : public GGS_actualParameter {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__outputActualParameter ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__outputActualParameter ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -614,7 +614,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__outputActualParameter ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_outputInputActualParameter ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_outputInputActualParameter ;
 
 //---------------------------------------------------------------------------*
 
@@ -667,7 +667,7 @@ class GGS_outputInputActualParameter : public GGS_actualParameter {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -680,7 +680,7 @@ class GGS_outputInputActualParameter : public GGS_actualParameter {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__outputInputActualParameter ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__outputInputActualParameter ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -688,7 +688,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__outputInputActualParameter
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_inputActualParameter ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_inputActualParameter ;
 
 //---------------------------------------------------------------------------*
 
@@ -741,7 +741,7 @@ class GGS_inputActualParameter : public GGS_actualParameter {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -754,7 +754,7 @@ class GGS_inputActualParameter : public GGS_actualParameter {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__inputActualParameter ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__inputActualParameter ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -762,7 +762,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__inputActualParameter ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_inputJokerActualParameter ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_inputJokerActualParameter ;
 
 //---------------------------------------------------------------------------*
 
@@ -811,7 +811,7 @@ class GGS_inputJokerActualParameter : public GGS_actualParameter {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -824,7 +824,7 @@ class GGS_inputJokerActualParameter : public GGS_actualParameter {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__inputJokerActualParameter ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__inputJokerActualParameter ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -836,7 +836,7 @@ class elementOf_GGS_actualParameterList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_actualParameterList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualParameterList ;
 
 //---------------------------------------------------------------------------*
 
@@ -924,7 +924,7 @@ class GGS_actualParameterList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -959,7 +959,7 @@ class elementOf_GGS_actualInputParameterList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_actualInputParameterList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualInputParameterList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1063,7 +1063,7 @@ class GGS_actualInputParameterList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1191,7 +1191,7 @@ class cPtr_actualParameter : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -1229,7 +1229,7 @@ class cPtr_outputActualParameter : public cPtr_actualParameter {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -1272,7 +1272,7 @@ class cPtr_outputInputActualParameter : public cPtr_actualParameter {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -1315,7 +1315,7 @@ class cPtr_inputActualParameter : public cPtr_actualParameter {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -1354,7 +1354,7 @@ class cPtr_inputJokerActualParameter : public cPtr_actualParameter {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*

@@ -44,7 +44,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
 
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mDomainName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mDomainName << " ;\n\n" ;
   
   inHfile << "class GGS_" << mDomainName << " : public AC_galgas_domain {\n" ;
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
@@ -110,7 +110,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- 'description' reader\n"
              "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n\n"
              "//--- Introspection\n"
-             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
              "  public : static GGS_" << mDomainName << " castFromObject (C_Compiler & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
@@ -150,7 +150,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mDomainName << " (\"" << mDomainName << "\", false, NULL) ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mDomainName << " (\"" << mDomainName << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Constructor
@@ -391,7 +391,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_type_descriptor * GGS_" << mDomainName << "::typeDescriptor (void) const {\n"
+  inCppFile << "const C_galgas_type_descriptorEX * GGS_" << mDomainName << "::typeDescriptor (void) const {\n"
                "  return & kTypeDescriptor_GGS_" << mDomainName << " ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;

@@ -55,7 +55,7 @@ class cPtr_typeCurrentObjectName : public cPtr_typeCplusPlusName {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;

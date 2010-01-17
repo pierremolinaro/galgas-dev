@@ -37,7 +37,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & inLexique) const {
   inHfile.appendCppTitleComment (C_String ("Extern type 'GGS_") + mGalgasName + "'") ;
   inHfile << "#include \"GGS_" << mGalgasName << ".h\"\n\n" ;
-  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mGalgasName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mGalgasName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
 //--- Generate extern type declaration
   C_String generatedZone2 ;
@@ -75,7 +75,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     constructor.next () ;
   }
   generatedZone2 << "//--- Introspection\n"
-                    "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+                    "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
                     "  public : GGS_object reader_object (void) const ;\n\n"
                     "  public : static GGS_" << mGalgasName << " castFromObject (C_Compiler & inLexique,\n"
                     "                                           const GGS_object & inObject,\n"

@@ -64,7 +64,7 @@ public : virtual void generateCppClassImplementation (C_Compiler & inLexique,
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*

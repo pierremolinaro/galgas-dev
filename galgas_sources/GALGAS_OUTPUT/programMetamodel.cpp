@@ -106,7 +106,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_programRuleList ("programRuleList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_programRuleList ("programRuleList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -616,7 +616,7 @@ GGS_programRuleList GGS_programRuleList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_programRuleList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_programRuleList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_programRuleList ;
 }
 
@@ -711,7 +711,7 @@ C_galgas_class_inspector _gInspectorFor_programComponentRoot (& typeid (cPtr_pro
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_programComponentRoot::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_programComponentRoot::galgasRTTI (void) const {
   return & gClassInfoFor__programComponentRoot ;
 }
 
@@ -729,7 +729,7 @@ cPtr__AC_galgas_class * cPtr_programComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_programComponentRoot ("programComponentRoot", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_programComponentRoot ("programComponentRoot", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -886,8 +886,8 @@ const char * GGS_programComponentRoot::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_programComponentRoot::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_programComponentRoot::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -896,7 +896,7 @@ AC_galgasClassRunTimeInformation * GGS_programComponentRoot::galgasObjectRunTime
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__programComponentRoot ("programComponentRoot", & kTypeDescriptor_GGS_programComponentRoot) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__programComponentRoot ("programComponentRoot", & kTypeDescriptor_GGS_programComponentRoot) ;
 
 //---------------------------------------------------------------------------*
 
@@ -931,7 +931,7 @@ GGS_programComponentRoot GGS_programComponentRoot::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_programComponentRoot::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_programComponentRoot::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_programComponentRoot ;
 }
 

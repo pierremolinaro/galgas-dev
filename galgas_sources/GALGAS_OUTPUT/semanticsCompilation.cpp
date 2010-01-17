@@ -68,13 +68,13 @@ enterCategoryMethod__semanticDeclaration__enterType (typeCategoryMethod__semanti
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__semanticDeclaration__enterType
-findCategoryMethod__semanticDeclaration__enterType (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__semanticDeclaration__enterType (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__semanticDeclaration__enterType result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__semanticDeclaration__enterType.count ()) {
     result = gDispatchTableForMethod__semanticDeclaration__enterType (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__semanticDeclaration__enterType (superClassPtr) ;
       gDispatchTableForMethod__semanticDeclaration__enterType.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;
@@ -598,13 +598,13 @@ enterCategoryMethod__semanticInstruction__semanticAnalysis (typeCategoryMethod__
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__semanticInstruction__semanticAnalysis
-findCategoryMethod__semanticInstruction__semanticAnalysis (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__semanticInstruction__semanticAnalysis (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__semanticInstruction__semanticAnalysis result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__semanticInstruction__semanticAnalysis.count ()) {
     result = gDispatchTableForMethod__semanticInstruction__semanticAnalysis (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__semanticInstruction__semanticAnalysis (superClassPtr) ;
       gDispatchTableForMethod__semanticInstruction__semanticAnalysis.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;
@@ -1052,13 +1052,13 @@ enterCategoryMethod__semanticDeclaration__semanticAnalysis (typeCategoryMethod__
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__semanticDeclaration__semanticAnalysis
-findCategoryMethod__semanticDeclaration__semanticAnalysis (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__semanticDeclaration__semanticAnalysis (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__semanticDeclaration__semanticAnalysis result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__semanticDeclaration__semanticAnalysis.count ()) {
     result = gDispatchTableForMethod__semanticDeclaration__semanticAnalysis (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__semanticDeclaration__semanticAnalysis (superClassPtr) ;
       gDispatchTableForMethod__semanticDeclaration__semanticAnalysis.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;

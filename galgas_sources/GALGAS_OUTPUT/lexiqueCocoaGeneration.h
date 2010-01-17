@@ -59,7 +59,7 @@ enterCategoryReader__lexicalExpression__generateCocoaConditionCode (typeCategory
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__lexicalExpression__generateCocoaConditionCode
-findCategoryReader__lexicalExpression__generateCocoaConditionCode (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__lexicalExpression__generateCocoaConditionCode (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -80,7 +80,7 @@ enterCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaR
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRoutineOrFunctionArgument
-findCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRoutineOrFunctionArgument (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRoutineOrFunctionArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -102,7 +102,7 @@ enterCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineA
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineArgument
-findCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineArgument (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -124,7 +124,7 @@ enterCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode (typ
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode
-findCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -147,7 +147,7 @@ enterCategoryReader__lexicalInstruction__generateCocoaInstructionCode (typeCateg
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__lexicalInstruction__generateCocoaInstructionCode
-findCategoryReader__lexicalInstruction__generateCocoaInstructionCode (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__lexicalInstruction__generateCocoaInstructionCode (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -170,7 +170,7 @@ enterCategoryReader__abstractLexicalRule__generateCocoaCode (typeCategoryReader_
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__abstractLexicalRule__generateCocoaCode
-findCategoryReader__abstractLexicalRule__generateCocoaCode (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__abstractLexicalRule__generateCocoaCode (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 

@@ -92,7 +92,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_XcodeObjectReferenceList ("XcodeObjectReferenceList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_XcodeObjectReferenceList ("XcodeObjectReferenceList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -484,7 +484,7 @@ GGS_XcodeObjectReferenceList GGS_XcodeObjectReferenceList::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_XcodeObjectReferenceList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_XcodeObjectReferenceList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_XcodeObjectReferenceList ;
 }
 
@@ -568,7 +568,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_abstract (& typei
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_abstract::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_abstract::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_abstract ;
 }
 
@@ -578,7 +578,7 @@ AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_abstract::galgasR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract ("Xcode_PBXFileReference_abstract", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract ("Xcode_PBXFileReference_abstract", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -672,8 +672,8 @@ const char * GGS_Xcode_PBXFileReference_abstract::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_Xcode_PBXFileReference_abstract::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_Xcode_PBXFileReference_abstract::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -682,7 +682,7 @@ AC_galgasClassRunTimeInformation * GGS_Xcode_PBXFileReference_abstract::galgasOb
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_abstract ("Xcode_PBXFileReference_abstract", & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_abstract ("Xcode_PBXFileReference_abstract", & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -717,7 +717,7 @@ GGS_Xcode_PBXFileReference_abstract GGS_Xcode_PBXFileReference_abstract::castFro
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_abstract::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_abstract::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract ;
 }
 
@@ -780,7 +780,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_productFileReference (& typeid (cP
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_productFileReference::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_productFileReference::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_productFileReference ;
 }
 
@@ -790,7 +790,7 @@ AC_galgasClassRunTimeInformation * cPtr_Xcode_productFileReference::galgasRTTI (
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_productFileReference ("Xcode_productFileReference", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_productFileReference ("Xcode_productFileReference", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -842,7 +842,7 @@ const char * GGS_Xcode_productFileReference::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_productFileReference ("Xcode_productFileReference", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_productFileReference) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_productFileReference ("Xcode_productFileReference", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_productFileReference) ;
 
 //---------------------------------------------------------------------------*
 
@@ -877,7 +877,7 @@ GGS_Xcode_productFileReference GGS_Xcode_productFileReference::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_productFileReference::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_productFileReference::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_productFileReference ;
 }
 
@@ -974,7 +974,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_CompiledMachOExec
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_CompiledMachOExecutable::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_CompiledMachOExecutable::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_CompiledMachOExecutable ;
 }
 
@@ -992,7 +992,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_CompiledMachOExecutable::mak
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_CompiledMachOExecutable ("Xcode_PBXFileReference_CompiledMachOExecutable", true, & kTypeDescriptor_GGS_Xcode_productFileReference) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_CompiledMachOExecutable ("Xcode_PBXFileReference_CompiledMachOExecutable", true, & kTypeDescriptor_GGS_Xcode_productFileReference) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1057,7 +1057,7 @@ const char * GGS_Xcode_PBXFileReference_CompiledMachOExecutable::actualTypeName 
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_CompiledMachOExecutable ("Xcode_PBXFileReference_CompiledMachOExecutable", gClassInfoFor__Xcode_productFileReference, & kTypeDescriptor_GGS_Xcode_PBXFileReference_CompiledMachOExecutable) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_CompiledMachOExecutable ("Xcode_PBXFileReference_CompiledMachOExecutable", gClassInfoFor__Xcode_productFileReference, & kTypeDescriptor_GGS_Xcode_PBXFileReference_CompiledMachOExecutable) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1092,7 +1092,7 @@ GGS_Xcode_PBXFileReference_CompiledMachOExecutable GGS_Xcode_PBXFileReference_Co
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_CompiledMachOExecutable::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_CompiledMachOExecutable::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_CompiledMachOExecutable ;
 }
 
@@ -1189,7 +1189,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_Application (& ty
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_Application::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_Application::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_Application ;
 }
 
@@ -1207,7 +1207,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_Application::makeClone (void
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_Application ("Xcode_PBXFileReference_Application", true, & kTypeDescriptor_GGS_Xcode_productFileReference) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_Application ("Xcode_PBXFileReference_Application", true, & kTypeDescriptor_GGS_Xcode_productFileReference) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1272,7 +1272,7 @@ const char * GGS_Xcode_PBXFileReference_Application::actualTypeName (void) const
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_Application ("Xcode_PBXFileReference_Application", gClassInfoFor__Xcode_productFileReference, & kTypeDescriptor_GGS_Xcode_PBXFileReference_Application) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_Application ("Xcode_PBXFileReference_Application", gClassInfoFor__Xcode_productFileReference, & kTypeDescriptor_GGS_Xcode_PBXFileReference_Application) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1307,7 +1307,7 @@ GGS_Xcode_PBXFileReference_Application GGS_Xcode_PBXFileReference_Application::c
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_Application::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_Application::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_Application ;
 }
 
@@ -1400,7 +1400,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_cppSourceFile (& 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_cppSourceFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_cppSourceFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_cppSourceFile ;
 }
 
@@ -1418,7 +1418,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_cppSourceFile::makeClone (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_cppSourceFile ("Xcode_PBXFileReference_cppSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_cppSourceFile ("Xcode_PBXFileReference_cppSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1483,7 +1483,7 @@ const char * GGS_Xcode_PBXFileReference_cppSourceFile::actualTypeName (void) con
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_cppSourceFile ("Xcode_PBXFileReference_cppSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_cppSourceFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_cppSourceFile ("Xcode_PBXFileReference_cppSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_cppSourceFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1518,7 +1518,7 @@ GGS_Xcode_PBXFileReference_cppSourceFile GGS_Xcode_PBXFileReference_cppSourceFil
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_cppSourceFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_cppSourceFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_cppSourceFile ;
 }
 
@@ -1611,7 +1611,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_hSourceFile (& ty
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_hSourceFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_hSourceFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_hSourceFile ;
 }
 
@@ -1629,7 +1629,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_hSourceFile::makeClone (void
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_hSourceFile ("Xcode_PBXFileReference_hSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_hSourceFile ("Xcode_PBXFileReference_hSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1694,7 +1694,7 @@ const char * GGS_Xcode_PBXFileReference_hSourceFile::actualTypeName (void) const
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_hSourceFile ("Xcode_PBXFileReference_hSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_hSourceFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_hSourceFile ("Xcode_PBXFileReference_hSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_hSourceFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1729,7 +1729,7 @@ GGS_Xcode_PBXFileReference_hSourceFile GGS_Xcode_PBXFileReference_hSourceFile::c
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_hSourceFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_hSourceFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_hSourceFile ;
 }
 
@@ -1822,7 +1822,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_pchSourceFile (& 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_pchSourceFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_pchSourceFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_pchSourceFile ;
 }
 
@@ -1840,7 +1840,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_pchSourceFile::makeClone (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_pchSourceFile ("Xcode_PBXFileReference_pchSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_pchSourceFile ("Xcode_PBXFileReference_pchSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1905,7 +1905,7 @@ const char * GGS_Xcode_PBXFileReference_pchSourceFile::actualTypeName (void) con
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_pchSourceFile ("Xcode_PBXFileReference_pchSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_pchSourceFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_pchSourceFile ("Xcode_PBXFileReference_pchSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_pchSourceFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1940,7 +1940,7 @@ GGS_Xcode_PBXFileReference_pchSourceFile GGS_Xcode_PBXFileReference_pchSourceFil
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_pchSourceFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_pchSourceFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_pchSourceFile ;
 }
 
@@ -2033,7 +2033,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_mSourceFile (& ty
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_mSourceFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_mSourceFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_mSourceFile ;
 }
 
@@ -2051,7 +2051,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_mSourceFile::makeClone (void
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_mSourceFile ("Xcode_PBXFileReference_mSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_mSourceFile ("Xcode_PBXFileReference_mSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2116,7 +2116,7 @@ const char * GGS_Xcode_PBXFileReference_mSourceFile::actualTypeName (void) const
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_mSourceFile ("Xcode_PBXFileReference_mSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_mSourceFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_mSourceFile ("Xcode_PBXFileReference_mSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_mSourceFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2151,7 +2151,7 @@ GGS_Xcode_PBXFileReference_mSourceFile GGS_Xcode_PBXFileReference_mSourceFile::c
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_mSourceFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_mSourceFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_mSourceFile ;
 }
 
@@ -2244,7 +2244,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_mmSourceFile (& t
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_mmSourceFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_mmSourceFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_mmSourceFile ;
 }
 
@@ -2262,7 +2262,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_mmSourceFile::makeClone (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSourceFile ("Xcode_PBXFileReference_mmSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSourceFile ("Xcode_PBXFileReference_mmSourceFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2327,7 +2327,7 @@ const char * GGS_Xcode_PBXFileReference_mmSourceFile::actualTypeName (void) cons
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_mmSourceFile ("Xcode_PBXFileReference_mmSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSourceFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_mmSourceFile ("Xcode_PBXFileReference_mmSourceFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSourceFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2362,7 +2362,7 @@ GGS_Xcode_PBXFileReference_mmSourceFile GGS_Xcode_PBXFileReference_mmSourceFile:
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_mmSourceFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_mmSourceFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSourceFile ;
 }
 
@@ -2455,7 +2455,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_gifFile (& typeid
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_gifFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_gifFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_gifFile ;
 }
 
@@ -2473,7 +2473,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_gifFile::makeClone (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_gifFile ("Xcode_PBXFileReference_gifFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_gifFile ("Xcode_PBXFileReference_gifFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2538,7 +2538,7 @@ const char * GGS_Xcode_PBXFileReference_gifFile::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_gifFile ("Xcode_PBXFileReference_gifFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_gifFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_gifFile ("Xcode_PBXFileReference_gifFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_gifFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2573,7 +2573,7 @@ GGS_Xcode_PBXFileReference_gifFile GGS_Xcode_PBXFileReference_gifFile::castFromO
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_gifFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_gifFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_gifFile ;
 }
 
@@ -2666,7 +2666,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_tiffFile (& typei
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_tiffFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_tiffFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_tiffFile ;
 }
 
@@ -2684,7 +2684,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_tiffFile::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_tiffFile ("Xcode_PBXFileReference_tiffFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_tiffFile ("Xcode_PBXFileReference_tiffFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2749,7 +2749,7 @@ const char * GGS_Xcode_PBXFileReference_tiffFile::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_tiffFile ("Xcode_PBXFileReference_tiffFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_tiffFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_tiffFile ("Xcode_PBXFileReference_tiffFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_tiffFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2784,7 +2784,7 @@ GGS_Xcode_PBXFileReference_tiffFile GGS_Xcode_PBXFileReference_tiffFile::castFro
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_tiffFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_tiffFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_tiffFile ;
 }
 
@@ -2877,7 +2877,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_pngFile (& typeid
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_pngFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_pngFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_pngFile ;
 }
 
@@ -2895,7 +2895,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_pngFile::makeClone (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_pngFile ("Xcode_PBXFileReference_pngFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_pngFile ("Xcode_PBXFileReference_pngFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2960,7 +2960,7 @@ const char * GGS_Xcode_PBXFileReference_pngFile::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_pngFile ("Xcode_PBXFileReference_pngFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_pngFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_pngFile ("Xcode_PBXFileReference_pngFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_pngFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2995,7 +2995,7 @@ GGS_Xcode_PBXFileReference_pngFile GGS_Xcode_PBXFileReference_pngFile::castFromO
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_pngFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_pngFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_pngFile ;
 }
 
@@ -3088,7 +3088,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_plistFile (& type
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_plistFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_plistFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_plistFile ;
 }
 
@@ -3106,7 +3106,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_plistFile::makeClone (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_plistFile ("Xcode_PBXFileReference_plistFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_plistFile ("Xcode_PBXFileReference_plistFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3171,7 +3171,7 @@ const char * GGS_Xcode_PBXFileReference_plistFile::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_plistFile ("Xcode_PBXFileReference_plistFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_plistFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_plistFile ("Xcode_PBXFileReference_plistFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_plistFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3206,7 +3206,7 @@ GGS_Xcode_PBXFileReference_plistFile GGS_Xcode_PBXFileReference_plistFile::castF
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_plistFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_plistFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_plistFile ;
 }
 
@@ -3299,7 +3299,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_frameworkFile (& 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_frameworkFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_frameworkFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_frameworkFile ;
 }
 
@@ -3317,7 +3317,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_frameworkFile::makeClone (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_frameworkFile ("Xcode_PBXFileReference_frameworkFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_frameworkFile ("Xcode_PBXFileReference_frameworkFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3382,7 +3382,7 @@ const char * GGS_Xcode_PBXFileReference_frameworkFile::actualTypeName (void) con
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_frameworkFile ("Xcode_PBXFileReference_frameworkFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_frameworkFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_frameworkFile ("Xcode_PBXFileReference_frameworkFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_frameworkFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3417,7 +3417,7 @@ GGS_Xcode_PBXFileReference_frameworkFile GGS_Xcode_PBXFileReference_frameworkFil
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_frameworkFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_frameworkFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_frameworkFile ;
 }
 
@@ -3510,7 +3510,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_icnsFile (& typei
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_icnsFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_icnsFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_icnsFile ;
 }
 
@@ -3528,7 +3528,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_icnsFile::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_icnsFile ("Xcode_PBXFileReference_icnsFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_icnsFile ("Xcode_PBXFileReference_icnsFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3593,7 +3593,7 @@ const char * GGS_Xcode_PBXFileReference_icnsFile::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_icnsFile ("Xcode_PBXFileReference_icnsFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_icnsFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_icnsFile ("Xcode_PBXFileReference_icnsFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_icnsFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3628,7 +3628,7 @@ GGS_Xcode_PBXFileReference_icnsFile GGS_Xcode_PBXFileReference_icnsFile::castFro
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_icnsFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_icnsFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_icnsFile ;
 }
 
@@ -3725,7 +3725,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_xibFile (& typeid
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_xibFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_xibFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_xibFile ;
 }
 
@@ -3743,7 +3743,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_xibFile::makeClone (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_xibFile ("Xcode_PBXFileReference_xibFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_xibFile ("Xcode_PBXFileReference_xibFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3824,7 +3824,7 @@ const char * GGS_Xcode_PBXFileReference_xibFile::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_xibFile ("Xcode_PBXFileReference_xibFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_xibFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_xibFile ("Xcode_PBXFileReference_xibFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_xibFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3859,7 +3859,7 @@ GGS_Xcode_PBXFileReference_xibFile GGS_Xcode_PBXFileReference_xibFile::castFromO
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_xibFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_xibFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_xibFile ;
 }
 
@@ -3956,7 +3956,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFileReference_plistStringFile (
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFileReference_plistStringFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFileReference_plistStringFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFileReference_plistStringFile ;
 }
 
@@ -3974,7 +3974,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFileReference_plistStringFile::makeClone (
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_plistStringFile ("Xcode_PBXFileReference_plistStringFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_plistStringFile ("Xcode_PBXFileReference_plistStringFile", true, & kTypeDescriptor_GGS_Xcode_PBXFileReference_abstract) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4055,7 +4055,7 @@ const char * GGS_Xcode_PBXFileReference_plistStringFile::actualTypeName (void) c
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__Xcode_PBXFileReference_plistStringFile ("Xcode_PBXFileReference_plistStringFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_plistStringFile) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFileReference_plistStringFile ("Xcode_PBXFileReference_plistStringFile", gClassInfoFor__Xcode_PBXFileReference_abstract, & kTypeDescriptor_GGS_Xcode_PBXFileReference_plistStringFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4090,7 +4090,7 @@ GGS_Xcode_PBXFileReference_plistStringFile GGS_Xcode_PBXFileReference_plistStrin
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_plistStringFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_plistStringFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_plistStringFile ;
 }
 
@@ -4110,7 +4110,7 @@ mFileReference () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFileReference_map ("Xcode_PBXFileReference_map", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_map ("Xcode_PBXFileReference_map", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4499,7 +4499,7 @@ GGS_Xcode_PBXFileReference_map GGS_Xcode_PBXFileReference_map::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFileReference_map::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_map::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFileReference_map ;
 }
 
@@ -4612,7 +4612,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXBuildFile (& typeid (cPtr_Xcode
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXBuildFile::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXBuildFile::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXBuildFile ;
 }
 
@@ -4630,7 +4630,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXBuildFile::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXBuildFile ("Xcode_PBXBuildFile", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXBuildFile ("Xcode_PBXBuildFile", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4737,8 +4737,8 @@ const char * GGS_Xcode_PBXBuildFile::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_Xcode_PBXBuildFile::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_Xcode_PBXBuildFile::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -4747,7 +4747,7 @@ AC_galgasClassRunTimeInformation * GGS_Xcode_PBXBuildFile::galgasObjectRunTimeIn
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXBuildFile ("Xcode_PBXBuildFile", & kTypeDescriptor_GGS_Xcode_PBXBuildFile) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXBuildFile ("Xcode_PBXBuildFile", & kTypeDescriptor_GGS_Xcode_PBXBuildFile) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4782,7 +4782,7 @@ GGS_Xcode_PBXBuildFile GGS_Xcode_PBXBuildFile::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXBuildFile::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXBuildFile::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXBuildFile ;
 }
 
@@ -4829,7 +4829,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXBuildFile_list ("Xcode_PBXBuildFile_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXBuildFile_list ("Xcode_PBXBuildFile_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5162,7 +5162,7 @@ GGS_Xcode_PBXBuildFile_list GGS_Xcode_PBXBuildFile_list::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXBuildFile_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXBuildFile_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXBuildFile_list ;
 }
 
@@ -5264,7 +5264,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXSourcesBuildPhase (& typeid (cP
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXSourcesBuildPhase::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXSourcesBuildPhase::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXSourcesBuildPhase ;
 }
 
@@ -5282,7 +5282,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXSourcesBuildPhase::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase ("Xcode_PBXSourcesBuildPhase", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase ("Xcode_PBXSourcesBuildPhase", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5405,8 +5405,8 @@ const char * GGS_Xcode_PBXSourcesBuildPhase::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_Xcode_PBXSourcesBuildPhase::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_Xcode_PBXSourcesBuildPhase::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -5415,7 +5415,7 @@ AC_galgasClassRunTimeInformation * GGS_Xcode_PBXSourcesBuildPhase::galgasObjectR
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXSourcesBuildPhase ("Xcode_PBXSourcesBuildPhase", & kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXSourcesBuildPhase ("Xcode_PBXSourcesBuildPhase", & kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5450,7 +5450,7 @@ GGS_Xcode_PBXSourcesBuildPhase GGS_Xcode_PBXSourcesBuildPhase::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXSourcesBuildPhase::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXSourcesBuildPhase::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase ;
 }
 
@@ -5497,7 +5497,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase_list ("Xcode_PBXSourcesBuildPhase_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase_list ("Xcode_PBXSourcesBuildPhase_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5830,7 +5830,7 @@ GGS_Xcode_PBXSourcesBuildPhase_list GGS_Xcode_PBXSourcesBuildPhase_list::castFro
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXSourcesBuildPhase_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXSourcesBuildPhase_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase_list ;
 }
 
@@ -5932,7 +5932,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXResourcesBuildPhase (& typeid (
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXResourcesBuildPhase::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXResourcesBuildPhase::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXResourcesBuildPhase ;
 }
 
@@ -5950,7 +5950,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXResourcesBuildPhase::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase ("Xcode_PBXResourcesBuildPhase", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase ("Xcode_PBXResourcesBuildPhase", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6073,8 +6073,8 @@ const char * GGS_Xcode_PBXResourcesBuildPhase::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_Xcode_PBXResourcesBuildPhase::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_Xcode_PBXResourcesBuildPhase::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -6083,7 +6083,7 @@ AC_galgasClassRunTimeInformation * GGS_Xcode_PBXResourcesBuildPhase::galgasObjec
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXResourcesBuildPhase ("Xcode_PBXResourcesBuildPhase", & kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXResourcesBuildPhase ("Xcode_PBXResourcesBuildPhase", & kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6118,7 +6118,7 @@ GGS_Xcode_PBXResourcesBuildPhase GGS_Xcode_PBXResourcesBuildPhase::castFromObjec
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXResourcesBuildPhase::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXResourcesBuildPhase::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase ;
 }
 
@@ -6165,7 +6165,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase_list ("Xcode_PBXResourcesBuildPhase_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase_list ("Xcode_PBXResourcesBuildPhase_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6498,7 +6498,7 @@ GGS_Xcode_PBXResourcesBuildPhase_list GGS_Xcode_PBXResourcesBuildPhase_list::cas
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXResourcesBuildPhase_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXResourcesBuildPhase_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhase_list ;
 }
 
@@ -6628,7 +6628,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXFrameworksBuildPhase (& typeid 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXFrameworksBuildPhase::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXFrameworksBuildPhase::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXFrameworksBuildPhase ;
 }
 
@@ -6646,7 +6646,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXFrameworksBuildPhase::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase ("Xcode_PBXFrameworksBuildPhase", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase ("Xcode_PBXFrameworksBuildPhase", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6769,8 +6769,8 @@ const char * GGS_Xcode_PBXFrameworksBuildPhase::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_Xcode_PBXFrameworksBuildPhase::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_Xcode_PBXFrameworksBuildPhase::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -6779,7 +6779,7 @@ AC_galgasClassRunTimeInformation * GGS_Xcode_PBXFrameworksBuildPhase::galgasObje
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXFrameworksBuildPhase ("Xcode_PBXFrameworksBuildPhase", & kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXFrameworksBuildPhase ("Xcode_PBXFrameworksBuildPhase", & kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6814,7 +6814,7 @@ GGS_Xcode_PBXFrameworksBuildPhase GGS_Xcode_PBXFrameworksBuildPhase::castFromObj
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFrameworksBuildPhase::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFrameworksBuildPhase::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase ;
 }
 
@@ -6861,7 +6861,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase_list ("Xcode_PBXFrameworksBuildPhase_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase_list ("Xcode_PBXFrameworksBuildPhase_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7194,7 +7194,7 @@ GGS_Xcode_PBXFrameworksBuildPhase_list GGS_Xcode_PBXFrameworksBuildPhase_list::c
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXFrameworksBuildPhase_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXFrameworksBuildPhase_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPhase_list ;
 }
 
@@ -7300,7 +7300,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_PBXGroup (& typeid (cPtr_Xcode_PBX
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_PBXGroup::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_PBXGroup::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_PBXGroup ;
 }
 
@@ -7318,7 +7318,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_PBXGroup::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXGroup ("Xcode_PBXGroup", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXGroup ("Xcode_PBXGroup", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7457,8 +7457,8 @@ const char * GGS_Xcode_PBXGroup::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_Xcode_PBXGroup::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_Xcode_PBXGroup::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -7467,7 +7467,7 @@ AC_galgasClassRunTimeInformation * GGS_Xcode_PBXGroup::galgasObjectRunTimeInfo (
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_PBXGroup ("Xcode_PBXGroup", & kTypeDescriptor_GGS_Xcode_PBXGroup) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_PBXGroup ("Xcode_PBXGroup", & kTypeDescriptor_GGS_Xcode_PBXGroup) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7502,7 +7502,7 @@ GGS_Xcode_PBXGroup GGS_Xcode_PBXGroup::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXGroup::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXGroup::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXGroup ;
 }
 
@@ -7549,7 +7549,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXGroup_list ("Xcode_PBXGroup_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXGroup_list ("Xcode_PBXGroup_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7882,7 +7882,7 @@ GGS_Xcode_PBXGroup_list GGS_Xcode_PBXGroup_list::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXGroup_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXGroup_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXGroup_list ;
 }
 
@@ -8003,7 +8003,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_XCBuildConfiguration (& typeid (cP
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_XCBuildConfiguration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_XCBuildConfiguration::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_XCBuildConfiguration ;
 }
 
@@ -8021,7 +8021,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_XCBuildConfiguration::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_XCBuildConfiguration ("Xcode_XCBuildConfiguration", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_XCBuildConfiguration ("Xcode_XCBuildConfiguration", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8158,8 +8158,8 @@ const char * GGS_Xcode_XCBuildConfiguration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_Xcode_XCBuildConfiguration::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_Xcode_XCBuildConfiguration::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -8168,7 +8168,7 @@ AC_galgasClassRunTimeInformation * GGS_Xcode_XCBuildConfiguration::galgasObjectR
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_XCBuildConfiguration ("Xcode_XCBuildConfiguration", & kTypeDescriptor_GGS_Xcode_XCBuildConfiguration) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_XCBuildConfiguration ("Xcode_XCBuildConfiguration", & kTypeDescriptor_GGS_Xcode_XCBuildConfiguration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8203,7 +8203,7 @@ GGS_Xcode_XCBuildConfiguration GGS_Xcode_XCBuildConfiguration::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_XCBuildConfiguration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_XCBuildConfiguration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_XCBuildConfiguration ;
 }
 
@@ -8250,7 +8250,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_XCBuildConfiguration_list ("Xcode_XCBuildConfiguration_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_XCBuildConfiguration_list ("Xcode_XCBuildConfiguration_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8583,7 +8583,7 @@ GGS_Xcode_XCBuildConfiguration_list GGS_Xcode_XCBuildConfiguration_list::castFro
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_XCBuildConfiguration_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_XCBuildConfiguration_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_XCBuildConfiguration_list ;
 }
 
@@ -8679,7 +8679,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXNativeTarget_list ("Xcode_PBXNativeTarget_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXNativeTarget_list ("Xcode_PBXNativeTarget_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9425,7 +9425,7 @@ GGS_Xcode_PBXNativeTarget_list GGS_Xcode_PBXNativeTarget_list::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXNativeTarget_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXNativeTarget_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXNativeTarget_list ;
 }
 
@@ -9523,7 +9523,7 @@ C_galgas_class_inspector _gInspectorFor_Xcode_targetDependencyDescription (& typ
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_Xcode_targetDependencyDescription::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_Xcode_targetDependencyDescription::galgasRTTI (void) const {
   return & gClassInfoFor__Xcode_targetDependencyDescription ;
 }
 
@@ -9541,7 +9541,7 @@ cPtr__AC_galgas_class * cPtr_Xcode_targetDependencyDescription::makeClone (void)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_targetDependencyDescription ("Xcode_targetDependencyDescription", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_targetDependencyDescription ("Xcode_targetDependencyDescription", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9648,8 +9648,8 @@ const char * GGS_Xcode_targetDependencyDescription::actualTypeName (void) const 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_Xcode_targetDependencyDescription::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_Xcode_targetDependencyDescription::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -9658,7 +9658,7 @@ AC_galgasClassRunTimeInformation * GGS_Xcode_targetDependencyDescription::galgas
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__Xcode_targetDependencyDescription ("Xcode_targetDependencyDescription", & kTypeDescriptor_GGS_Xcode_targetDependencyDescription) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__Xcode_targetDependencyDescription ("Xcode_targetDependencyDescription", & kTypeDescriptor_GGS_Xcode_targetDependencyDescription) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9693,7 +9693,7 @@ GGS_Xcode_targetDependencyDescription GGS_Xcode_targetDependencyDescription::cas
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_targetDependencyDescription::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_targetDependencyDescription::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_targetDependencyDescription ;
 }
 
@@ -9740,7 +9740,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_targetDependencyDescription_list ("Xcode_targetDependencyDescription_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_targetDependencyDescription_list ("Xcode_targetDependencyDescription_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10073,7 +10073,7 @@ GGS_Xcode_targetDependencyDescription_list GGS_Xcode_targetDependencyDescription
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_targetDependencyDescription_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_targetDependencyDescription_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_targetDependencyDescription_list ;
 }
 
@@ -10134,7 +10134,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_Xcode_PBXVariantGroup_list ("Xcode_PBXVariantGroup_list", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXVariantGroup_list ("Xcode_PBXVariantGroup_list", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10585,7 +10585,7 @@ GGS_Xcode_PBXVariantGroup_list GGS_Xcode_PBXVariantGroup_list::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_Xcode_PBXVariantGroup_list::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_Xcode_PBXVariantGroup_list::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_Xcode_PBXVariantGroup_list ;
 }
 
@@ -10595,7 +10595,7 @@ const C_galgas_type_descriptor * GGS_Xcode_PBXVariantGroup_list::typeDescriptor 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_XcodeProjectDescription ("XcodeProjectDescription", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_XcodeProjectDescription ("XcodeProjectDescription", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10828,7 +10828,7 @@ GGS_XcodeProjectDescription GGS_XcodeProjectDescription::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_XcodeProjectDescription::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_XcodeProjectDescription::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_XcodeProjectDescription ;
 }
 

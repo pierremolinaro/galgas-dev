@@ -666,11 +666,11 @@ rule <expression>
       ?secondOperandType
     ;
    outExpression := [@typeConcatOperation new !operatorLocation !leftOperand !rightOperand] ;
-    matchConcatOperator
-      !firstOperandType
-      !secondOperandType
-      ?outResultType
-     ;
+   matchConcatOperator
+    !firstOperandType
+    !secondOperandType
+    ?outResultType
+  ;
   end repeat ;
 end rule ;
 
@@ -1495,8 +1495,7 @@ rule <factor>
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
-  @lchar literalChar ;
-  $literal_char$ ?literalChar ;
+  $literal_char$ ?@lchar literalChar ;
   outExpression := [@typeLiteralCharExpression new !literalChar] ;
   outResultType := [@typeGalgas_char new] ;
 end rule ;

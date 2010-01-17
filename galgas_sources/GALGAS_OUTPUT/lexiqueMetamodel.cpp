@@ -97,7 +97,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalExpression (& typeid (cPtr_lexica
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalExpression::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalExpression ;
 }
 
@@ -107,7 +107,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalExpression::galgasRTTI (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExpression ("lexicalExpression", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExpression ("lexicalExpression", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -159,8 +159,8 @@ const char * GGS_lexicalExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_lexicalExpression::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_lexicalExpression::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -169,7 +169,7 @@ AC_galgasClassRunTimeInformation * GGS_lexicalExpression::galgasObjectRunTimeInf
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalExpression ("lexicalExpression", & kTypeDescriptor_GGS_lexicalExpression) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexicalExpression ("lexicalExpression", & kTypeDescriptor_GGS_lexicalExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -204,7 +204,7 @@ GGS_lexicalExpression GGS_lexicalExpression::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalExpression ;
 }
 
@@ -263,7 +263,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalInstruction (& typeid (cPtr_lexic
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalInstruction ;
 }
 
@@ -273,7 +273,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalInstruction::galgasRTTI (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalInstruction ("lexicalInstruction", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalInstruction ("lexicalInstruction", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -325,8 +325,8 @@ const char * GGS_lexicalInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_lexicalInstruction::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_lexicalInstruction::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -335,7 +335,7 @@ AC_galgasClassRunTimeInformation * GGS_lexicalInstruction::galgasObjectRunTimeIn
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalInstruction ("lexicalInstruction", & kTypeDescriptor_GGS_lexicalInstruction) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexicalInstruction ("lexicalInstruction", & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -370,7 +370,7 @@ GGS_lexicalInstruction GGS_lexicalInstruction::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalInstruction ;
 }
 
@@ -417,7 +417,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalInstructionList ("lexicalInstructionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalInstructionList ("lexicalInstructionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -750,7 +750,7 @@ GGS_lexicalInstructionList GGS_lexicalInstructionList::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalInstructionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalInstructionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalInstructionList ;
 }
 
@@ -811,7 +811,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_metamodelTemplateDelimitorList ("metamodelTemplateDelimitorList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_metamodelTemplateDelimitorList ("metamodelTemplateDelimitorList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1262,7 +1262,7 @@ GGS_metamodelTemplateDelimitorList GGS_metamodelTemplateDelimitorList::castFromO
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_metamodelTemplateDelimitorList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_metamodelTemplateDelimitorList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_metamodelTemplateDelimitorList ;
 }
 
@@ -1323,7 +1323,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_templateReplacementList ("templateReplacementList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_templateReplacementList ("templateReplacementList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1774,7 +1774,7 @@ GGS_templateReplacementList GGS_templateReplacementList::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_templateReplacementList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_templateReplacementList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_templateReplacementList ;
 }
 
@@ -1833,7 +1833,7 @@ C_galgas_class_inspector _gInspectorFor_abstractLexicalRule (& typeid (cPtr_abst
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_abstractLexicalRule::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_abstractLexicalRule::galgasRTTI (void) const {
   return & gClassInfoFor__abstractLexicalRule ;
 }
 
@@ -1843,7 +1843,7 @@ AC_galgasClassRunTimeInformation * cPtr_abstractLexicalRule::galgasRTTI (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractLexicalRule ("abstractLexicalRule", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractLexicalRule ("abstractLexicalRule", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1895,8 +1895,8 @@ const char * GGS_abstractLexicalRule::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_abstractLexicalRule::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_abstractLexicalRule::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -1905,7 +1905,7 @@ AC_galgasClassRunTimeInformation * GGS_abstractLexicalRule::galgasObjectRunTimeI
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__abstractLexicalRule ("abstractLexicalRule", & kTypeDescriptor_GGS_abstractLexicalRule) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__abstractLexicalRule ("abstractLexicalRule", & kTypeDescriptor_GGS_abstractLexicalRule) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1940,7 +1940,7 @@ GGS_abstractLexicalRule GGS_abstractLexicalRule::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_abstractLexicalRule::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_abstractLexicalRule::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_abstractLexicalRule ;
 }
 
@@ -1987,7 +1987,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRuleList ("lexicalRuleList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRuleList ("lexicalRuleList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2320,7 +2320,7 @@ GGS_lexicalRuleList GGS_lexicalRuleList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalRuleList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalRuleList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalRuleList ;
 }
 
@@ -2395,7 +2395,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalImplicitRule (& typeid (cPtr_lexi
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalImplicitRule::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalImplicitRule::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalImplicitRule ;
 }
 
@@ -2413,7 +2413,7 @@ cPtr__AC_galgas_class * cPtr_lexicalImplicitRule::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalImplicitRule ("lexicalImplicitRule", true, & kTypeDescriptor_GGS_abstractLexicalRule) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalImplicitRule ("lexicalImplicitRule", true, & kTypeDescriptor_GGS_abstractLexicalRule) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2490,7 +2490,7 @@ const char * GGS_lexicalImplicitRule::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalImplicitRule ("lexicalImplicitRule", gClassInfoFor__abstractLexicalRule, & kTypeDescriptor_GGS_lexicalImplicitRule) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalImplicitRule ("lexicalImplicitRule", gClassInfoFor__abstractLexicalRule, & kTypeDescriptor_GGS_lexicalImplicitRule) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2525,7 +2525,7 @@ GGS_lexicalImplicitRule GGS_lexicalImplicitRule::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalImplicitRule::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalImplicitRule::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalImplicitRule ;
 }
 
@@ -2604,7 +2604,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalExplicitRule (& typeid (cPtr_lexi
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalExplicitRule::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalExplicitRule::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalExplicitRule ;
 }
 
@@ -2622,7 +2622,7 @@ cPtr__AC_galgas_class * cPtr_lexicalExplicitRule::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExplicitRule ("lexicalExplicitRule", true, & kTypeDescriptor_GGS_abstractLexicalRule) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExplicitRule ("lexicalExplicitRule", true, & kTypeDescriptor_GGS_abstractLexicalRule) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2715,7 +2715,7 @@ const char * GGS_lexicalExplicitRule::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalExplicitRule ("lexicalExplicitRule", gClassInfoFor__abstractLexicalRule, & kTypeDescriptor_GGS_lexicalExplicitRule) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalExplicitRule ("lexicalExplicitRule", gClassInfoFor__abstractLexicalRule, & kTypeDescriptor_GGS_lexicalExplicitRule) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2750,7 +2750,7 @@ GGS_lexicalExplicitRule GGS_lexicalExplicitRule::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalExplicitRule::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalExplicitRule::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalExplicitRule ;
 }
 
@@ -2804,7 +2804,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalMessageDeclarationList ("lexicalMessageDeclarationList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalMessageDeclarationList ("lexicalMessageDeclarationList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3196,7 +3196,7 @@ GGS_lexicalMessageDeclarationList GGS_lexicalMessageDeclarationList::castFromObj
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalMessageDeclarationList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalMessageDeclarationList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalMessageDeclarationList ;
 }
 
@@ -3250,7 +3250,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeList ("lexicalAttributeList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeList ("lexicalAttributeList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3642,7 +3642,7 @@ GGS_lexicalAttributeList GGS_lexicalAttributeList::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalAttributeList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalAttributeList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalAttributeList ;
 }
 
@@ -3696,7 +3696,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStyleList ("lexicalStyleList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStyleList ("lexicalStyleList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4088,7 +4088,7 @@ GGS_lexicalStyleList GGS_lexicalStyleList::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalStyleList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalStyleList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalStyleList ;
 }
 
@@ -4163,7 +4163,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalDeclarationList ("terminalDeclarationList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalDeclarationList ("terminalDeclarationList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4732,7 +4732,7 @@ GGS_terminalDeclarationList GGS_terminalDeclarationList::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_terminalDeclarationList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_terminalDeclarationList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_terminalDeclarationList ;
 }
 
@@ -4793,7 +4793,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalListEntryList ("lexicalListEntryList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalListEntryList ("lexicalListEntryList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5244,7 +5244,7 @@ GGS_lexicalListEntryList GGS_lexicalListEntryList::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalListEntryList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalListEntryList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalListEntryList ;
 }
 
@@ -5319,7 +5319,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalListDeclarationList ("lexicalListDeclarationList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalListDeclarationList ("lexicalListDeclarationList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5888,7 +5888,7 @@ GGS_lexicalListDeclarationList GGS_lexicalListDeclarationList::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalListDeclarationList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalListDeclarationList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalListDeclarationList ;
 }
 
@@ -5967,7 +5967,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalOrExpression (& typeid (cPtr_lexi
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalOrExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalOrExpression::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalOrExpression ;
 }
 
@@ -5985,7 +5985,7 @@ cPtr__AC_galgas_class * cPtr_lexicalOrExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalOrExpression ("lexicalOrExpression", true, & kTypeDescriptor_GGS_lexicalExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalOrExpression ("lexicalOrExpression", true, & kTypeDescriptor_GGS_lexicalExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6078,7 +6078,7 @@ const char * GGS_lexicalOrExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalOrExpression ("lexicalOrExpression", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalOrExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalOrExpression ("lexicalOrExpression", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalOrExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6113,7 +6113,7 @@ GGS_lexicalOrExpression GGS_lexicalOrExpression::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalOrExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalOrExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalOrExpression ;
 }
 
@@ -6188,7 +6188,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalCharacterSetMatch (& typeid (cPtr
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalCharacterSetMatch::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalCharacterSetMatch::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalCharacterSetMatch ;
 }
 
@@ -6206,7 +6206,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCharacterSetMatch::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterSetMatch ("lexicalCharacterSetMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCharacterSetMatch ("lexicalCharacterSetMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6283,7 +6283,7 @@ const char * GGS_lexicalCharacterSetMatch::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterSetMatch ("lexicalCharacterSetMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalCharacterSetMatch) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCharacterSetMatch ("lexicalCharacterSetMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalCharacterSetMatch) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6318,7 +6318,7 @@ GGS_lexicalCharacterSetMatch GGS_lexicalCharacterSetMatch::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalCharacterSetMatch::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalCharacterSetMatch::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalCharacterSetMatch ;
 }
 
@@ -6393,7 +6393,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalCharacterMatch (& typeid (cPtr_le
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalCharacterMatch::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalCharacterMatch::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalCharacterMatch ;
 }
 
@@ -6411,7 +6411,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCharacterMatch::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterMatch ("lexicalCharacterMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCharacterMatch ("lexicalCharacterMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6488,7 +6488,7 @@ const char * GGS_lexicalCharacterMatch::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterMatch ("lexicalCharacterMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalCharacterMatch) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCharacterMatch ("lexicalCharacterMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalCharacterMatch) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6523,7 +6523,7 @@ GGS_lexicalCharacterMatch GGS_lexicalCharacterMatch::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalCharacterMatch::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalCharacterMatch::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalCharacterMatch ;
 }
 
@@ -6602,7 +6602,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalCharacterIntervalMatch (& typeid 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalCharacterIntervalMatch::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalCharacterIntervalMatch::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalCharacterIntervalMatch ;
 }
 
@@ -6620,7 +6620,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCharacterIntervalMatch::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterIntervalMatch ("lexicalCharacterIntervalMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCharacterIntervalMatch ("lexicalCharacterIntervalMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6713,7 +6713,7 @@ const char * GGS_lexicalCharacterIntervalMatch::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterIntervalMatch ("lexicalCharacterIntervalMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalCharacterIntervalMatch) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCharacterIntervalMatch ("lexicalCharacterIntervalMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalCharacterIntervalMatch) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6748,7 +6748,7 @@ GGS_lexicalCharacterIntervalMatch GGS_lexicalCharacterIntervalMatch::castFromObj
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalCharacterIntervalMatch::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalCharacterIntervalMatch::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalCharacterIntervalMatch ;
 }
 
@@ -6823,7 +6823,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalStringMatch (& typeid (cPtr_lexic
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalStringMatch::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalStringMatch::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalStringMatch ;
 }
 
@@ -6841,7 +6841,7 @@ cPtr__AC_galgas_class * cPtr_lexicalStringMatch::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStringMatch ("lexicalStringMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStringMatch ("lexicalStringMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6918,7 +6918,7 @@ const char * GGS_lexicalStringMatch::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalStringMatch ("lexicalStringMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalStringMatch) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalStringMatch ("lexicalStringMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalStringMatch) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6953,7 +6953,7 @@ GGS_lexicalStringMatch GGS_lexicalStringMatch::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalStringMatch::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalStringMatch::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalStringMatch ;
 }
 
@@ -7032,7 +7032,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalStringNotMatch (& typeid (cPtr_le
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalStringNotMatch::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalStringNotMatch::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalStringNotMatch ;
 }
 
@@ -7050,7 +7050,7 @@ cPtr__AC_galgas_class * cPtr_lexicalStringNotMatch::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStringNotMatch ("lexicalStringNotMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStringNotMatch ("lexicalStringNotMatch", true, & kTypeDescriptor_GGS_lexicalExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7143,7 +7143,7 @@ const char * GGS_lexicalStringNotMatch::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalStringNotMatch ("lexicalStringNotMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalStringNotMatch) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalStringNotMatch ("lexicalStringNotMatch", gClassInfoFor__lexicalExpression, & kTypeDescriptor_GGS_lexicalStringNotMatch) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7178,7 +7178,7 @@ GGS_lexicalStringNotMatch GGS_lexicalStringNotMatch::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalStringNotMatch::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalStringNotMatch::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalStringNotMatch ;
 }
 
@@ -7232,7 +7232,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendSearchList ("lexicalSendSearchList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSendSearchList ("lexicalSendSearchList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7624,7 +7624,7 @@ GGS_lexicalSendSearchList GGS_lexicalSendSearchList::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalSendSearchList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalSendSearchList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalSendSearchList ;
 }
 
@@ -7683,7 +7683,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalSendDefaultAction (& typeid (cPtr
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalSendDefaultAction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalSendDefaultAction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalSendDefaultAction ;
 }
 
@@ -7693,7 +7693,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalSendDefaultAction::galgasRTTI (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendDefaultAction ("lexicalSendDefaultAction", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSendDefaultAction ("lexicalSendDefaultAction", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7745,8 +7745,8 @@ const char * GGS_lexicalSendDefaultAction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_lexicalSendDefaultAction::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_lexicalSendDefaultAction::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -7755,7 +7755,7 @@ AC_galgasClassRunTimeInformation * GGS_lexicalSendDefaultAction::galgasObjectRun
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalSendDefaultAction ("lexicalSendDefaultAction", & kTypeDescriptor_GGS_lexicalSendDefaultAction) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexicalSendDefaultAction ("lexicalSendDefaultAction", & kTypeDescriptor_GGS_lexicalSendDefaultAction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7790,7 +7790,7 @@ GGS_lexicalSendDefaultAction GGS_lexicalSendDefaultAction::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalSendDefaultAction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalSendDefaultAction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalSendDefaultAction ;
 }
 
@@ -7869,7 +7869,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalStructuredSendInstruction (& type
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalStructuredSendInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalStructuredSendInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalStructuredSendInstruction ;
 }
 
@@ -7887,7 +7887,7 @@ cPtr__AC_galgas_class * cPtr_lexicalStructuredSendInstruction::makeClone (void) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalStructuredSendInstruction ("lexicalStructuredSendInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStructuredSendInstruction ("lexicalStructuredSendInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7980,7 +7980,7 @@ const char * GGS_lexicalStructuredSendInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalStructuredSendInstruction ("lexicalStructuredSendInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalStructuredSendInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalStructuredSendInstruction ("lexicalStructuredSendInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalStructuredSendInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8015,7 +8015,7 @@ GGS_lexicalStructuredSendInstruction GGS_lexicalStructuredSendInstruction::castF
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalStructuredSendInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalStructuredSendInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalStructuredSendInstruction ;
 }
 
@@ -8090,7 +8090,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalSimpleSendInstruction (& typeid (
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalSimpleSendInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalSimpleSendInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalSimpleSendInstruction ;
 }
 
@@ -8108,7 +8108,7 @@ cPtr__AC_galgas_class * cPtr_lexicalSimpleSendInstruction::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSimpleSendInstruction ("lexicalSimpleSendInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSimpleSendInstruction ("lexicalSimpleSendInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8185,7 +8185,7 @@ const char * GGS_lexicalSimpleSendInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalSimpleSendInstruction ("lexicalSimpleSendInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalSimpleSendInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalSimpleSendInstruction ("lexicalSimpleSendInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalSimpleSendInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8220,7 +8220,7 @@ GGS_lexicalSimpleSendInstruction GGS_lexicalSimpleSendInstruction::castFromObjec
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalSimpleSendInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalSimpleSendInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalSimpleSendInstruction ;
 }
 
@@ -8295,7 +8295,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalSendTerminalByDefault (& typeid (
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalSendTerminalByDefault::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalSendTerminalByDefault::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalSendTerminalByDefault ;
 }
 
@@ -8313,7 +8313,7 @@ cPtr__AC_galgas_class * cPtr_lexicalSendTerminalByDefault::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSendTerminalByDefault ("lexicalSendTerminalByDefault", true, & kTypeDescriptor_GGS_lexicalSendDefaultAction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSendTerminalByDefault ("lexicalSendTerminalByDefault", true, & kTypeDescriptor_GGS_lexicalSendDefaultAction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8390,7 +8390,7 @@ const char * GGS_lexicalSendTerminalByDefault::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalSendTerminalByDefault ("lexicalSendTerminalByDefault", gClassInfoFor__lexicalSendDefaultAction, & kTypeDescriptor_GGS_lexicalSendTerminalByDefault) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalSendTerminalByDefault ("lexicalSendTerminalByDefault", gClassInfoFor__lexicalSendDefaultAction, & kTypeDescriptor_GGS_lexicalSendTerminalByDefault) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8425,7 +8425,7 @@ GGS_lexicalSendTerminalByDefault GGS_lexicalSendTerminalByDefault::castFromObjec
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalSendTerminalByDefault::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalSendTerminalByDefault::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalSendTerminalByDefault ;
 }
 
@@ -8500,7 +8500,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalErrorByDefault (& typeid (cPtr_le
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalErrorByDefault::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalErrorByDefault::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalErrorByDefault ;
 }
 
@@ -8518,7 +8518,7 @@ cPtr__AC_galgas_class * cPtr_lexicalErrorByDefault::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalErrorByDefault ("lexicalErrorByDefault", true, & kTypeDescriptor_GGS_lexicalSendDefaultAction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalErrorByDefault ("lexicalErrorByDefault", true, & kTypeDescriptor_GGS_lexicalSendDefaultAction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8595,7 +8595,7 @@ const char * GGS_lexicalErrorByDefault::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalErrorByDefault ("lexicalErrorByDefault", gClassInfoFor__lexicalSendDefaultAction, & kTypeDescriptor_GGS_lexicalErrorByDefault) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalErrorByDefault ("lexicalErrorByDefault", gClassInfoFor__lexicalSendDefaultAction, & kTypeDescriptor_GGS_lexicalErrorByDefault) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8630,7 +8630,7 @@ GGS_lexicalErrorByDefault GGS_lexicalErrorByDefault::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalErrorByDefault::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalErrorByDefault::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalErrorByDefault ;
 }
 
@@ -8684,7 +8684,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalWhileBranchList ("lexicalWhileBranchList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalWhileBranchList ("lexicalWhileBranchList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9076,7 +9076,7 @@ GGS_lexicalWhileBranchList GGS_lexicalWhileBranchList::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalWhileBranchList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalWhileBranchList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalWhileBranchList ;
 }
 
@@ -9155,7 +9155,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalRepeatInstruction (& typeid (cPtr
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalRepeatInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalRepeatInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalRepeatInstruction ;
 }
 
@@ -9173,7 +9173,7 @@ cPtr__AC_galgas_class * cPtr_lexicalRepeatInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRepeatInstruction ("lexicalRepeatInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRepeatInstruction ("lexicalRepeatInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9266,7 +9266,7 @@ const char * GGS_lexicalRepeatInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalRepeatInstruction ("lexicalRepeatInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalRepeatInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalRepeatInstruction ("lexicalRepeatInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalRepeatInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9301,7 +9301,7 @@ GGS_lexicalRepeatInstruction GGS_lexicalRepeatInstruction::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalRepeatInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalRepeatInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalRepeatInstruction ;
 }
 
@@ -9355,7 +9355,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSelectBranchList ("lexicalSelectBranchList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSelectBranchList ("lexicalSelectBranchList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9747,7 +9747,7 @@ GGS_lexicalSelectBranchList GGS_lexicalSelectBranchList::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalSelectBranchList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalSelectBranchList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalSelectBranchList ;
 }
 
@@ -9826,7 +9826,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalSelectInstruction (& typeid (cPtr
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalSelectInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalSelectInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalSelectInstruction ;
 }
 
@@ -9844,7 +9844,7 @@ cPtr__AC_galgas_class * cPtr_lexicalSelectInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSelectInstruction ("lexicalSelectInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSelectInstruction ("lexicalSelectInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9937,7 +9937,7 @@ const char * GGS_lexicalSelectInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalSelectInstruction ("lexicalSelectInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalSelectInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalSelectInstruction ("lexicalSelectInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalSelectInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9972,7 +9972,7 @@ GGS_lexicalSelectInstruction GGS_lexicalSelectInstruction::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalSelectInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalSelectInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalSelectInstruction ;
 }
 
@@ -10034,7 +10034,7 @@ C_galgas_class_inspector _gInspectorFor_abstractLexicalRoutineActualArgument (& 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_abstractLexicalRoutineActualArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_abstractLexicalRoutineActualArgument::galgasRTTI (void) const {
   return & gClassInfoFor__abstractLexicalRoutineActualArgument ;
 }
 
@@ -10044,7 +10044,7 @@ AC_galgasClassRunTimeInformation * cPtr_abstractLexicalRoutineActualArgument::ga
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument ("abstractLexicalRoutineActualArgument", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument ("abstractLexicalRoutineActualArgument", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10110,8 +10110,8 @@ const char * GGS_abstractLexicalRoutineActualArgument::actualTypeName (void) con
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_abstractLexicalRoutineActualArgument::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_abstractLexicalRoutineActualArgument::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -10120,7 +10120,7 @@ AC_galgasClassRunTimeInformation * GGS_abstractLexicalRoutineActualArgument::gal
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__abstractLexicalRoutineActualArgument ("abstractLexicalRoutineActualArgument", & kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__abstractLexicalRoutineActualArgument ("abstractLexicalRoutineActualArgument", & kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10155,7 +10155,7 @@ GGS_abstractLexicalRoutineActualArgument GGS_abstractLexicalRoutineActualArgumen
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_abstractLexicalRoutineActualArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_abstractLexicalRoutineActualArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument ;
 }
 
@@ -10202,7 +10202,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineCallActualArgumentList ("lexicalRoutineCallActualArgumentList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineCallActualArgumentList ("lexicalRoutineCallActualArgumentList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10535,7 +10535,7 @@ GGS_lexicalRoutineCallActualArgumentList GGS_lexicalRoutineCallActualArgumentLis
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalRoutineCallActualArgumentList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalRoutineCallActualArgumentList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalRoutineCallActualArgumentList ;
 }
 
@@ -10618,7 +10618,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalRoutineInstruction (& typeid (cPt
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalRoutineInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalRoutineInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalRoutineInstruction ;
 }
 
@@ -10636,7 +10636,7 @@ cPtr__AC_galgas_class * cPtr_lexicalRoutineInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineInstruction ("lexicalRoutineInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineInstruction ("lexicalRoutineInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10745,7 +10745,7 @@ const char * GGS_lexicalRoutineInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalRoutineInstruction ("lexicalRoutineInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalRoutineInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalRoutineInstruction ("lexicalRoutineInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalRoutineInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10780,7 +10780,7 @@ GGS_lexicalRoutineInstruction GGS_lexicalRoutineInstruction::castFromObject (C_C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalRoutineInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalRoutineInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalRoutineInstruction ;
 }
 
@@ -10858,7 +10858,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalAttributeInputOutputArgument (& t
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalAttributeInputOutputArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalAttributeInputOutputArgument::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalAttributeInputOutputArgument ;
 }
 
@@ -10876,7 +10876,7 @@ cPtr__AC_galgas_class * cPtr_lexicalAttributeInputOutputArgument::makeClone (voi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeInputOutputArgument ("lexicalAttributeInputOutputArgument", true, & kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeInputOutputArgument ("lexicalAttributeInputOutputArgument", true, & kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10955,7 +10955,7 @@ const char * GGS_lexicalAttributeInputOutputArgument::actualTypeName (void) cons
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalAttributeInputOutputArgument ("lexicalAttributeInputOutputArgument", gClassInfoFor__abstractLexicalRoutineActualArgument, & kTypeDescriptor_GGS_lexicalAttributeInputOutputArgument) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalAttributeInputOutputArgument ("lexicalAttributeInputOutputArgument", gClassInfoFor__abstractLexicalRoutineActualArgument, & kTypeDescriptor_GGS_lexicalAttributeInputOutputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10990,7 +10990,7 @@ GGS_lexicalAttributeInputOutputArgument GGS_lexicalAttributeInputOutputArgument:
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalAttributeInputOutputArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalAttributeInputOutputArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalAttributeInputOutputArgument ;
 }
 
@@ -11049,7 +11049,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalRoutineOrFunctionFormalInputArgum
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalRoutineOrFunctionFormalInputArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalRoutineOrFunctionFormalInputArgument::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument ;
 }
 
@@ -11059,7 +11059,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalRoutineOrFunctionFormalInputArgum
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument ("lexicalRoutineOrFunctionFormalInputArgument", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument ("lexicalRoutineOrFunctionFormalInputArgument", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11111,8 +11111,8 @@ const char * GGS_lexicalRoutineOrFunctionFormalInputArgument::actualTypeName (vo
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_lexicalRoutineOrFunctionFormalInputArgument::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_lexicalRoutineOrFunctionFormalInputArgument::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -11121,7 +11121,7 @@ AC_galgasClassRunTimeInformation * GGS_lexicalRoutineOrFunctionFormalInputArgume
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument ("lexicalRoutineOrFunctionFormalInputArgument", & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument ("lexicalRoutineOrFunctionFormalInputArgument", & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11156,7 +11156,7 @@ GGS_lexicalRoutineOrFunctionFormalInputArgument GGS_lexicalRoutineOrFunctionForm
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalRoutineOrFunctionFormalInputArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalRoutineOrFunctionFormalInputArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument ;
 }
 
@@ -11234,7 +11234,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalFormalInputArgument (& typeid (cP
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalFormalInputArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalFormalInputArgument::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalFormalInputArgument ;
 }
 
@@ -11252,7 +11252,7 @@ cPtr__AC_galgas_class * cPtr_lexicalFormalInputArgument::makeClone (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFormalInputArgument ("lexicalFormalInputArgument", true, & kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFormalInputArgument ("lexicalFormalInputArgument", true, & kTypeDescriptor_GGS_abstractLexicalRoutineActualArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11331,7 +11331,7 @@ const char * GGS_lexicalFormalInputArgument::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalFormalInputArgument ("lexicalFormalInputArgument", gClassInfoFor__abstractLexicalRoutineActualArgument, & kTypeDescriptor_GGS_lexicalFormalInputArgument) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalFormalInputArgument ("lexicalFormalInputArgument", gClassInfoFor__abstractLexicalRoutineActualArgument, & kTypeDescriptor_GGS_lexicalFormalInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11366,7 +11366,7 @@ GGS_lexicalFormalInputArgument GGS_lexicalFormalInputArgument::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalFormalInputArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalFormalInputArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalFormalInputArgument ;
 }
 
@@ -11413,7 +11413,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionCallActualArgumentList ("lexicalFunctionCallActualArgumentList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionCallActualArgumentList ("lexicalFunctionCallActualArgumentList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11746,7 +11746,7 @@ GGS_lexicalFunctionCallActualArgumentList GGS_lexicalFunctionCallActualArgumentL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalFunctionCallActualArgumentList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalFunctionCallActualArgumentList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalFunctionCallActualArgumentList ;
 }
 
@@ -11821,7 +11821,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalAttributeInputArgument (& typeid 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalAttributeInputArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalAttributeInputArgument::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalAttributeInputArgument ;
 }
 
@@ -11839,7 +11839,7 @@ cPtr__AC_galgas_class * cPtr_lexicalAttributeInputArgument::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeInputArgument ("lexicalAttributeInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeInputArgument ("lexicalAttributeInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11916,7 +11916,7 @@ const char * GGS_lexicalAttributeInputArgument::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalAttributeInputArgument ("lexicalAttributeInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalAttributeInputArgument) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalAttributeInputArgument ("lexicalAttributeInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalAttributeInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11951,7 +11951,7 @@ GGS_lexicalAttributeInputArgument GGS_lexicalAttributeInputArgument::castFromObj
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalAttributeInputArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalAttributeInputArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalAttributeInputArgument ;
 }
 
@@ -12026,7 +12026,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalCharacterInputArgument (& typeid 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalCharacterInputArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalCharacterInputArgument::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalCharacterInputArgument ;
 }
 
@@ -12044,7 +12044,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCharacterInputArgument::makeClone (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCharacterInputArgument ("lexicalCharacterInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCharacterInputArgument ("lexicalCharacterInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12121,7 +12121,7 @@ const char * GGS_lexicalCharacterInputArgument::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalCharacterInputArgument ("lexicalCharacterInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalCharacterInputArgument) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCharacterInputArgument ("lexicalCharacterInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalCharacterInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12156,7 +12156,7 @@ GGS_lexicalCharacterInputArgument GGS_lexicalCharacterInputArgument::castFromObj
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalCharacterInputArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalCharacterInputArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalCharacterInputArgument ;
 }
 
@@ -12231,7 +12231,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalUnsignedInputArgument (& typeid (
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalUnsignedInputArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalUnsignedInputArgument::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalUnsignedInputArgument ;
 }
 
@@ -12249,7 +12249,7 @@ cPtr__AC_galgas_class * cPtr_lexicalUnsignedInputArgument::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalUnsignedInputArgument ("lexicalUnsignedInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalUnsignedInputArgument ("lexicalUnsignedInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12326,7 +12326,7 @@ const char * GGS_lexicalUnsignedInputArgument::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalUnsignedInputArgument ("lexicalUnsignedInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalUnsignedInputArgument) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalUnsignedInputArgument ("lexicalUnsignedInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalUnsignedInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12361,7 +12361,7 @@ GGS_lexicalUnsignedInputArgument GGS_lexicalUnsignedInputArgument::castFromObjec
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalUnsignedInputArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalUnsignedInputArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalUnsignedInputArgument ;
 }
 
@@ -12436,7 +12436,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalCurrentCharacterInputArgument (& 
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalCurrentCharacterInputArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalCurrentCharacterInputArgument::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalCurrentCharacterInputArgument ;
 }
 
@@ -12454,7 +12454,7 @@ cPtr__AC_galgas_class * cPtr_lexicalCurrentCharacterInputArgument::makeClone (vo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalCurrentCharacterInputArgument ("lexicalCurrentCharacterInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalCurrentCharacterInputArgument ("lexicalCurrentCharacterInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12531,7 +12531,7 @@ const char * GGS_lexicalCurrentCharacterInputArgument::actualTypeName (void) con
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalCurrentCharacterInputArgument ("lexicalCurrentCharacterInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalCurrentCharacterInputArgument) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalCurrentCharacterInputArgument ("lexicalCurrentCharacterInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalCurrentCharacterInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12566,7 +12566,7 @@ GGS_lexicalCurrentCharacterInputArgument GGS_lexicalCurrentCharacterInputArgumen
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalCurrentCharacterInputArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalCurrentCharacterInputArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalCurrentCharacterInputArgument ;
 }
 
@@ -12645,7 +12645,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalFunctionInputArgument (& typeid (
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalFunctionInputArgument::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalFunctionInputArgument::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalFunctionInputArgument ;
 }
 
@@ -12663,7 +12663,7 @@ cPtr__AC_galgas_class * cPtr_lexicalFunctionInputArgument::makeClone (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionInputArgument ("lexicalFunctionInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionInputArgument ("lexicalFunctionInputArgument", true, & kTypeDescriptor_GGS_lexicalRoutineOrFunctionFormalInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12756,7 +12756,7 @@ const char * GGS_lexicalFunctionInputArgument::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalFunctionInputArgument ("lexicalFunctionInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalFunctionInputArgument) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalFunctionInputArgument ("lexicalFunctionInputArgument", gClassInfoFor__lexicalRoutineOrFunctionFormalInputArgument, & kTypeDescriptor_GGS_lexicalFunctionInputArgument) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12791,7 +12791,7 @@ GGS_lexicalFunctionInputArgument GGS_lexicalFunctionInputArgument::castFromObjec
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalFunctionInputArgument::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalFunctionInputArgument::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalFunctionInputArgument ;
 }
 
@@ -12866,7 +12866,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalDropInstruction (& typeid (cPtr_l
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalDropInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalDropInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalDropInstruction ;
 }
 
@@ -12884,7 +12884,7 @@ cPtr__AC_galgas_class * cPtr_lexicalDropInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalDropInstruction ("lexicalDropInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalDropInstruction ("lexicalDropInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12961,7 +12961,7 @@ const char * GGS_lexicalDropInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalDropInstruction ("lexicalDropInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalDropInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalDropInstruction ("lexicalDropInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalDropInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12996,7 +12996,7 @@ GGS_lexicalDropInstruction GGS_lexicalDropInstruction::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalDropInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalDropInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalDropInstruction ;
 }
 
@@ -13071,7 +13071,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalErrorInstruction (& typeid (cPtr_
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalErrorInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalErrorInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalErrorInstruction ;
 }
 
@@ -13089,7 +13089,7 @@ cPtr__AC_galgas_class * cPtr_lexicalErrorInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalErrorInstruction ("lexicalErrorInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalErrorInstruction ("lexicalErrorInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13166,7 +13166,7 @@ const char * GGS_lexicalErrorInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalErrorInstruction ("lexicalErrorInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalErrorInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalErrorInstruction ("lexicalErrorInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalErrorInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13201,7 +13201,7 @@ GGS_lexicalErrorInstruction GGS_lexicalErrorInstruction::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalErrorInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalErrorInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalErrorInstruction ;
 }
 
@@ -13276,7 +13276,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalWarningInstruction (& typeid (cPt
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalWarningInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalWarningInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalWarningInstruction ;
 }
 
@@ -13294,7 +13294,7 @@ cPtr__AC_galgas_class * cPtr_lexicalWarningInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalWarningInstruction ("lexicalWarningInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalWarningInstruction ("lexicalWarningInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13371,7 +13371,7 @@ const char * GGS_lexicalWarningInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalWarningInstruction ("lexicalWarningInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalWarningInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalWarningInstruction ("lexicalWarningInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalWarningInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13406,7 +13406,7 @@ GGS_lexicalWarningInstruction GGS_lexicalWarningInstruction::castFromObject (C_C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalWarningInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalWarningInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalWarningInstruction ;
 }
 
@@ -13481,7 +13481,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalTagInstruction (& typeid (cPtr_le
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalTagInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalTagInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalTagInstruction ;
 }
 
@@ -13499,7 +13499,7 @@ cPtr__AC_galgas_class * cPtr_lexicalTagInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTagInstruction ("lexicalTagInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTagInstruction ("lexicalTagInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13576,7 +13576,7 @@ const char * GGS_lexicalTagInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalTagInstruction ("lexicalTagInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalTagInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalTagInstruction ("lexicalTagInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalTagInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13611,7 +13611,7 @@ GGS_lexicalTagInstruction GGS_lexicalTagInstruction::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalTagInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalTagInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalTagInstruction ;
 }
 
@@ -13690,7 +13690,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalRewindInstruction (& typeid (cPtr
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalRewindInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalRewindInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalRewindInstruction ;
 }
 
@@ -13708,7 +13708,7 @@ cPtr__AC_galgas_class * cPtr_lexicalRewindInstruction::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRewindInstruction ("lexicalRewindInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRewindInstruction ("lexicalRewindInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13801,7 +13801,7 @@ const char * GGS_lexicalRewindInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalRewindInstruction ("lexicalRewindInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalRewindInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalRewindInstruction ("lexicalRewindInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalRewindInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13836,7 +13836,7 @@ GGS_lexicalRewindInstruction GGS_lexicalRewindInstruction::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalRewindInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalRewindInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalRewindInstruction ;
 }
 
@@ -13902,7 +13902,7 @@ C_galgas_class_inspector _gInspectorFor_lexicalLogInstruction (& typeid (cPtr_le
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexicalLogInstruction::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexicalLogInstruction::galgasRTTI (void) const {
   return & gClassInfoFor__lexicalLogInstruction ;
 }
 
@@ -13912,7 +13912,7 @@ AC_galgasClassRunTimeInformation * cPtr_lexicalLogInstruction::galgasRTTI (void)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalLogInstruction ("lexicalLogInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalLogInstruction ("lexicalLogInstruction", true, & kTypeDescriptor_GGS_lexicalInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13988,7 +13988,7 @@ const char * GGS_lexicalLogInstruction::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lexicalLogInstruction ("lexicalLogInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalLogInstruction) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lexicalLogInstruction ("lexicalLogInstruction", gClassInfoFor__lexicalInstruction, & kTypeDescriptor_GGS_lexicalLogInstruction) ;
 
 //---------------------------------------------------------------------------*
 
@@ -14023,7 +14023,7 @@ GGS_lexicalLogInstruction GGS_lexicalLogInstruction::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalLogInstruction::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalLogInstruction::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalLogInstruction ;
 }
 
@@ -14033,7 +14033,7 @@ const C_galgas_type_descriptor * GGS_lexicalLogInstruction::typeDescriptor (void
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalArgumentMode ("lexicalArgumentMode", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalArgumentMode ("lexicalArgumentMode", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -14191,7 +14191,7 @@ GGS_lexicalArgumentMode GGS_lexicalArgumentMode::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalArgumentMode::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalArgumentMode::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalArgumentMode ;
 }
 
@@ -14252,7 +14252,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExternRoutineFormalArgumentList ("lexicalExternRoutineFormalArgumentList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExternRoutineFormalArgumentList ("lexicalExternRoutineFormalArgumentList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -14703,7 +14703,7 @@ GGS_lexicalExternRoutineFormalArgumentList GGS_lexicalExternRoutineFormalArgumen
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalExternRoutineFormalArgumentList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalExternRoutineFormalArgumentList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalExternRoutineFormalArgumentList ;
 }
 
@@ -14764,7 +14764,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_externRoutineList ("externRoutineList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_externRoutineList ("externRoutineList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -15215,7 +15215,7 @@ GGS_externRoutineList GGS_externRoutineList::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_externRoutineList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_externRoutineList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_externRoutineList ;
 }
 
@@ -15269,7 +15269,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExternFunctionFormalArgumentList ("lexicalExternFunctionFormalArgumentList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExternFunctionFormalArgumentList ("lexicalExternFunctionFormalArgumentList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -15661,7 +15661,7 @@ GGS_lexicalExternFunctionFormalArgumentList GGS_lexicalExternFunctionFormalArgum
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexicalExternFunctionFormalArgumentList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexicalExternFunctionFormalArgumentList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexicalExternFunctionFormalArgumentList ;
 }
 
@@ -15722,7 +15722,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_externFunctionList ("externFunctionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_externFunctionList ("externFunctionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -16173,7 +16173,7 @@ GGS_externFunctionList GGS_externFunctionList::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_externFunctionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_externFunctionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_externFunctionList ;
 }
 
@@ -16292,7 +16292,7 @@ C_galgas_class_inspector _gInspectorFor_lexiqueComponentRoot (& typeid (cPtr_lex
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lexiqueComponentRoot::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lexiqueComponentRoot::galgasRTTI (void) const {
   return & gClassInfoFor__lexiqueComponentRoot ;
 }
 
@@ -16310,7 +16310,7 @@ cPtr__AC_galgas_class * cPtr_lexiqueComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lexiqueComponentRoot ("lexiqueComponentRoot", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexiqueComponentRoot ("lexiqueComponentRoot", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -16549,8 +16549,8 @@ const char * GGS_lexiqueComponentRoot::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_lexiqueComponentRoot::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_lexiqueComponentRoot::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -16559,7 +16559,7 @@ AC_galgasClassRunTimeInformation * GGS_lexiqueComponentRoot::galgasObjectRunTime
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__lexiqueComponentRoot ("lexiqueComponentRoot", & kTypeDescriptor_GGS_lexiqueComponentRoot) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__lexiqueComponentRoot ("lexiqueComponentRoot", & kTypeDescriptor_GGS_lexiqueComponentRoot) ;
 
 //---------------------------------------------------------------------------*
 
@@ -16594,7 +16594,7 @@ GGS_lexiqueComponentRoot GGS_lexiqueComponentRoot::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lexiqueComponentRoot::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lexiqueComponentRoot::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lexiqueComponentRoot ;
 }
 

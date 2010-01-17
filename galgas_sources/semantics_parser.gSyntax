@@ -7203,19 +7203,21 @@ rule <semantics_declaration>
   $template$ ;
   $type_name$ ? @lstring className ;
   $identifier$ ? @lstring templateName ;
+  warning templateName:"obsolete construct" ;
 #---- Formal arguments -----------------------------------------
-  @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
+  @typeVariablesMap variableMap [emptyMap] ;
   @L_EXsignature listeDeTypes ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
   @signatureForGrammarAnalysis signatureForGrammarComponent ;
   <formal_input_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
-    !?methodLocalVariablesMap
+    !?variableMap
     ?listeTypeEtNomsArguments
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
+  @templateVariableMap categoryTemplateVariableMap [emptyMap] ;
 #---- Insert in template reader map ----------------------------
   const @lstring kKey [new ![className string] . ":" . [templateName string] ![templateName location]] ;
   [!?ioSemanticContext.mCategoryTemplateMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
@@ -7272,10 +7274,10 @@ rule <semantics_declaration>
       !false # not mapStyle
       !false # not iterator new style
     ] ;
-    [!?methodLocalVariablesMap insertUsedConstInArgument !mAttributeName !mAttributType !cppName] ;
+    [!?categoryTemplateVariableMap insertKey !mAttributeName !mAttributType !cppName] ;
   end foreach ;
 #--- Insert the predefined "self" variable
-  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !classType ![@typeCppThisInCategoryName new ![templateName location]]] ;
+  [!?categoryTemplateVariableMap insertKey ![@lstring new !"self" !here] !classType ![@typeCppThisInCategoryName new ![templateName location]]] ;
 #--- Instructions
   $:$ ;
   @string templateString := "" ;
@@ -7286,7 +7288,7 @@ rule <semantics_declaration>
   end repeat ;
   @templateInstructionList templateInstructionList ;
   grammar galgasTemplateGrammar on templateString
-    !?methodLocalVariablesMap
+    !categoryTemplateVariableMap
     !ioSemanticContext
     !ioComponentSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
@@ -7984,7 +7986,7 @@ rule <semantics_declaration>
   #--- Template formal arguments
     @typeListeTypesEtNomsArgMethode templateArgumentTypesList [emptyList] ;
     @typeListeAttributsSemantiques formalAttributeList [emptyList] ;
-    @typeVariablesMap templateVariableMap [emptyMap] ;
+    @templateVariableMap templateVariableMap [emptyMap] ;
     repeat
     while
       $?$ ;
@@ -8009,15 +8011,15 @@ rule <semantics_declaration>
       @typeCplusPlusName cppName := [@typeAutomaticName new ![parameterName location] ![parameterName string]] ;
       templateArgumentTypesList += !type_semantique ![@formalArgumentPassingMode argumentConstantIn] !cppName !true !parameterName ;
       if parameterIsUsed then
-        [!?templateVariableMap insertConstInArgument !parameterName !type_semantique !cppName] ;
+        [!?templateVariableMap insertKey !parameterName !type_semantique !cppName] ;
       else
-        [!?templateVariableMap insertUnusedConstInArgument !parameterName !type_semantique !cppName] ;
+        [!?templateVariableMap insertKey !parameterName !type_semantique !cppName] ;
       end if ;
     end repeat ;
     [!?templateMap insertKey !templateName !formalAttributeList] ;
     @templateInstructionList templateInstructionList ;
     grammar galgasTemplateGrammar in templateAbsolutePath
-      !?templateVariableMap
+      !templateVariableMap
       !ioSemanticContext
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse

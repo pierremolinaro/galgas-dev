@@ -97,7 +97,7 @@ C_galgas_class_inspector _gInspectorFor_semanticExpression (& typeid (cPtr_seman
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_semanticExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_semanticExpression::galgasRTTI (void) const {
   return & gClassInfoFor__semanticExpression ;
 }
 
@@ -107,7 +107,7 @@ AC_galgasClassRunTimeInformation * cPtr_semanticExpression::galgasRTTI (void) co
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticExpression ("semanticExpression", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticExpression ("semanticExpression", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -159,8 +159,8 @@ const char * GGS_semanticExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_semanticExpression::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_semanticExpression::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -169,7 +169,7 @@ AC_galgasClassRunTimeInformation * GGS_semanticExpression::galgasObjectRunTimeIn
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__semanticExpression ("semanticExpression", & kTypeDescriptor_GGS_semanticExpression) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__semanticExpression ("semanticExpression", & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -204,7 +204,7 @@ GGS_semanticExpression GGS_semanticExpression::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_semanticExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_semanticExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_semanticExpression ;
 }
 
@@ -251,7 +251,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticExpressionList ("semanticExpressionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticExpressionList ("semanticExpressionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -584,7 +584,7 @@ GGS_semanticExpressionList GGS_semanticExpressionList::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_semanticExpressionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_semanticExpressionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_semanticExpressionList ;
 }
 
@@ -663,7 +663,7 @@ C_galgas_class_inspector _gInspectorFor_outExpressionList (& typeid (cPtr_outExp
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_outExpressionList::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_outExpressionList::galgasRTTI (void) const {
   return & gClassInfoFor__outExpressionList ;
 }
 
@@ -681,7 +681,7 @@ cPtr__AC_galgas_class * cPtr_outExpressionList::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_outExpressionList ("outExpressionList", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_outExpressionList ("outExpressionList", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -774,8 +774,8 @@ const char * GGS_outExpressionList::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_outExpressionList::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_outExpressionList::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -784,7 +784,7 @@ AC_galgasClassRunTimeInformation * GGS_outExpressionList::galgasObjectRunTimeInf
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__outExpressionList ("outExpressionList", & kTypeDescriptor_GGS_outExpressionList) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__outExpressionList ("outExpressionList", & kTypeDescriptor_GGS_outExpressionList) ;
 
 //---------------------------------------------------------------------------*
 
@@ -819,7 +819,7 @@ GGS_outExpressionList GGS_outExpressionList::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_outExpressionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_outExpressionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_outExpressionList ;
 }
 
@@ -894,7 +894,7 @@ C_galgas_class_inspector _gInspectorFor_variableExpression (& typeid (cPtr_varia
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_variableExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_variableExpression::galgasRTTI (void) const {
   return & gClassInfoFor__variableExpression ;
 }
 
@@ -912,7 +912,7 @@ cPtr__AC_galgas_class * cPtr_variableExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_variableExpression ("variableExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_variableExpression ("variableExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -989,7 +989,7 @@ const char * GGS_variableExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__variableExpression ("variableExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_variableExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__variableExpression ("variableExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_variableExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1024,7 +1024,7 @@ GGS_variableExpression GGS_variableExpression::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_variableExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_variableExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_variableExpression ;
 }
 
@@ -1090,7 +1090,7 @@ C_galgas_class_inspector _gInspectorFor_selfInExpression (& typeid (cPtr_selfInE
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_selfInExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_selfInExpression::galgasRTTI (void) const {
   return & gClassInfoFor__selfInExpression ;
 }
 
@@ -1100,7 +1100,7 @@ AC_galgasClassRunTimeInformation * cPtr_selfInExpression::galgasRTTI (void) cons
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_selfInExpression ("selfInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_selfInExpression ("selfInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1176,7 +1176,7 @@ const char * GGS_selfInExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__selfInExpression ("selfInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_selfInExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__selfInExpression ("selfInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_selfInExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1211,7 +1211,7 @@ GGS_selfInExpression GGS_selfInExpression::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_selfInExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_selfInExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_selfInExpression ;
 }
 
@@ -1277,7 +1277,7 @@ C_galgas_class_inspector _gInspectorFor_hereExpression (& typeid (cPtr_hereExpre
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_hereExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_hereExpression::galgasRTTI (void) const {
   return & gClassInfoFor__hereExpression ;
 }
 
@@ -1287,7 +1287,7 @@ AC_galgasClassRunTimeInformation * cPtr_hereExpression::galgasRTTI (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_hereExpression ("hereExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_hereExpression ("hereExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1363,7 +1363,7 @@ const char * GGS_hereExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__hereExpression ("hereExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_hereExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__hereExpression ("hereExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_hereExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1398,7 +1398,7 @@ GGS_hereExpression GGS_hereExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_hereExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_hereExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_hereExpression ;
 }
 
@@ -1464,7 +1464,7 @@ C_galgas_class_inspector _gInspectorFor_trueExpression (& typeid (cPtr_trueExpre
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_trueExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_trueExpression::galgasRTTI (void) const {
   return & gClassInfoFor__trueExpression ;
 }
 
@@ -1474,7 +1474,7 @@ AC_galgasClassRunTimeInformation * cPtr_trueExpression::galgasRTTI (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_trueExpression ("trueExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_trueExpression ("trueExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1550,7 +1550,7 @@ const char * GGS_trueExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__trueExpression ("trueExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_trueExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__trueExpression ("trueExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_trueExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1585,7 +1585,7 @@ GGS_trueExpression GGS_trueExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_trueExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_trueExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_trueExpression ;
 }
 
@@ -1651,7 +1651,7 @@ C_galgas_class_inspector _gInspectorFor_falseExpression (& typeid (cPtr_falseExp
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_falseExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_falseExpression::galgasRTTI (void) const {
   return & gClassInfoFor__falseExpression ;
 }
 
@@ -1661,7 +1661,7 @@ AC_galgasClassRunTimeInformation * cPtr_falseExpression::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_falseExpression ("falseExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_falseExpression ("falseExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1737,7 +1737,7 @@ const char * GGS_falseExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__falseExpression ("falseExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_falseExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__falseExpression ("falseExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_falseExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1772,7 +1772,7 @@ GGS_falseExpression GGS_falseExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_falseExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_falseExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_falseExpression ;
 }
 
@@ -1847,7 +1847,7 @@ C_galgas_class_inspector _gInspectorFor_literalCharExpression (& typeid (cPtr_li
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_literalCharExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_literalCharExpression::galgasRTTI (void) const {
   return & gClassInfoFor__literalCharExpression ;
 }
 
@@ -1865,7 +1865,7 @@ cPtr__AC_galgas_class * cPtr_literalCharExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_literalCharExpression ("literalCharExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_literalCharExpression ("literalCharExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1942,7 +1942,7 @@ const char * GGS_literalCharExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__literalCharExpression ("literalCharExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalCharExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__literalCharExpression ("literalCharExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalCharExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1977,7 +1977,7 @@ GGS_literalCharExpression GGS_literalCharExpression::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_literalCharExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_literalCharExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_literalCharExpression ;
 }
 
@@ -2052,7 +2052,7 @@ C_galgas_class_inspector _gInspectorFor_literalStringExpression (& typeid (cPtr_
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_literalStringExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_literalStringExpression::galgasRTTI (void) const {
   return & gClassInfoFor__literalStringExpression ;
 }
 
@@ -2070,7 +2070,7 @@ cPtr__AC_galgas_class * cPtr_literalStringExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_literalStringExpression ("literalStringExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_literalStringExpression ("literalStringExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2147,7 +2147,7 @@ const char * GGS_literalStringExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__literalStringExpression ("literalStringExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalStringExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__literalStringExpression ("literalStringExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalStringExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2182,7 +2182,7 @@ GGS_literalStringExpression GGS_literalStringExpression::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_literalStringExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_literalStringExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_literalStringExpression ;
 }
 
@@ -2257,7 +2257,7 @@ C_galgas_class_inspector _gInspectorFor_literalDoubleExpression (& typeid (cPtr_
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_literalDoubleExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_literalDoubleExpression::galgasRTTI (void) const {
   return & gClassInfoFor__literalDoubleExpression ;
 }
 
@@ -2275,7 +2275,7 @@ cPtr__AC_galgas_class * cPtr_literalDoubleExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_literalDoubleExpression ("literalDoubleExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_literalDoubleExpression ("literalDoubleExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2352,7 +2352,7 @@ const char * GGS_literalDoubleExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__literalDoubleExpression ("literalDoubleExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalDoubleExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__literalDoubleExpression ("literalDoubleExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalDoubleExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2387,7 +2387,7 @@ GGS_literalDoubleExpression GGS_literalDoubleExpression::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_literalDoubleExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_literalDoubleExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_literalDoubleExpression ;
 }
 
@@ -2462,7 +2462,7 @@ C_galgas_class_inspector _gInspectorFor_literalUIntExpression (& typeid (cPtr_li
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_literalUIntExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_literalUIntExpression::galgasRTTI (void) const {
   return & gClassInfoFor__literalUIntExpression ;
 }
 
@@ -2480,7 +2480,7 @@ cPtr__AC_galgas_class * cPtr_literalUIntExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_literalUIntExpression ("literalUIntExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_literalUIntExpression ("literalUIntExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2557,7 +2557,7 @@ const char * GGS_literalUIntExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__literalUIntExpression ("literalUIntExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalUIntExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__literalUIntExpression ("literalUIntExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalUIntExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2592,7 +2592,7 @@ GGS_literalUIntExpression GGS_literalUIntExpression::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_literalUIntExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_literalUIntExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_literalUIntExpression ;
 }
 
@@ -2667,7 +2667,7 @@ C_galgas_class_inspector _gInspectorFor_literalUInt64Expression (& typeid (cPtr_
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_literalUInt64Expression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_literalUInt64Expression::galgasRTTI (void) const {
   return & gClassInfoFor__literalUInt64Expression ;
 }
 
@@ -2685,7 +2685,7 @@ cPtr__AC_galgas_class * cPtr_literalUInt64Expression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_literalUInt64Expression ("literalUInt64Expression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_literalUInt64Expression ("literalUInt64Expression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2762,7 +2762,7 @@ const char * GGS_literalUInt64Expression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__literalUInt64Expression ("literalUInt64Expression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalUInt64Expression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__literalUInt64Expression ("literalUInt64Expression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalUInt64Expression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2797,7 +2797,7 @@ GGS_literalUInt64Expression GGS_literalUInt64Expression::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_literalUInt64Expression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_literalUInt64Expression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_literalUInt64Expression ;
 }
 
@@ -2872,7 +2872,7 @@ C_galgas_class_inspector _gInspectorFor_literalSIntExpression (& typeid (cPtr_li
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_literalSIntExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_literalSIntExpression::galgasRTTI (void) const {
   return & gClassInfoFor__literalSIntExpression ;
 }
 
@@ -2890,7 +2890,7 @@ cPtr__AC_galgas_class * cPtr_literalSIntExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_literalSIntExpression ("literalSIntExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_literalSIntExpression ("literalSIntExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2967,7 +2967,7 @@ const char * GGS_literalSIntExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__literalSIntExpression ("literalSIntExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalSIntExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__literalSIntExpression ("literalSIntExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalSIntExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3002,7 +3002,7 @@ GGS_literalSIntExpression GGS_literalSIntExpression::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_literalSIntExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_literalSIntExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_literalSIntExpression ;
 }
 
@@ -3077,7 +3077,7 @@ C_galgas_class_inspector _gInspectorFor_literalSInt64Expression (& typeid (cPtr_
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_literalSInt64Expression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_literalSInt64Expression::galgasRTTI (void) const {
   return & gClassInfoFor__literalSInt64Expression ;
 }
 
@@ -3095,7 +3095,7 @@ cPtr__AC_galgas_class * cPtr_literalSInt64Expression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_literalSInt64Expression ("literalSInt64Expression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_literalSInt64Expression ("literalSInt64Expression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3172,7 +3172,7 @@ const char * GGS_literalSInt64Expression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__literalSInt64Expression ("literalSInt64Expression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalSInt64Expression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__literalSInt64Expression ("literalSInt64Expression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalSInt64Expression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3207,7 +3207,7 @@ GGS_literalSInt64Expression GGS_literalSInt64Expression::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_literalSInt64Expression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_literalSInt64Expression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_literalSInt64Expression ;
 }
 
@@ -3290,7 +3290,7 @@ C_galgas_class_inspector _gInspectorFor_constructorExpression (& typeid (cPtr_co
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_constructorExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_constructorExpression::galgasRTTI (void) const {
   return & gClassInfoFor__constructorExpression ;
 }
 
@@ -3308,7 +3308,7 @@ cPtr__AC_galgas_class * cPtr_constructorExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_constructorExpression ("constructorExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_constructorExpression ("constructorExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3417,7 +3417,7 @@ const char * GGS_constructorExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__constructorExpression ("constructorExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_constructorExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__constructorExpression ("constructorExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_constructorExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3452,7 +3452,7 @@ GGS_constructorExpression GGS_constructorExpression::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_constructorExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_constructorExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_constructorExpression ;
 }
 
@@ -3535,7 +3535,7 @@ C_galgas_class_inspector _gInspectorFor_readerCallExpression (& typeid (cPtr_rea
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_readerCallExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_readerCallExpression::galgasRTTI (void) const {
   return & gClassInfoFor__readerCallExpression ;
 }
 
@@ -3553,7 +3553,7 @@ cPtr__AC_galgas_class * cPtr_readerCallExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_readerCallExpression ("readerCallExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_readerCallExpression ("readerCallExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3662,7 +3662,7 @@ const char * GGS_readerCallExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__readerCallExpression ("readerCallExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_readerCallExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__readerCallExpression ("readerCallExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_readerCallExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3697,7 +3697,7 @@ GGS_readerCallExpression GGS_readerCallExpression::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_readerCallExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_readerCallExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_readerCallExpression ;
 }
 
@@ -3780,7 +3780,7 @@ C_galgas_class_inspector _gInspectorFor_optionExpression (& typeid (cPtr_optionE
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_optionExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_optionExpression::galgasRTTI (void) const {
   return & gClassInfoFor__optionExpression ;
 }
 
@@ -3798,7 +3798,7 @@ cPtr__AC_galgas_class * cPtr_optionExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_optionExpression ("optionExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_optionExpression ("optionExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3907,7 +3907,7 @@ const char * GGS_optionExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__optionExpression ("optionExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_optionExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__optionExpression ("optionExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_optionExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3942,7 +3942,7 @@ GGS_optionExpression GGS_optionExpression::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_optionExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_optionExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_optionExpression ;
 }
 
@@ -4025,7 +4025,7 @@ C_galgas_class_inspector _gInspectorFor_concatExpression (& typeid (cPtr_concatE
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_concatExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_concatExpression::galgasRTTI (void) const {
   return & gClassInfoFor__concatExpression ;
 }
 
@@ -4043,7 +4043,7 @@ cPtr__AC_galgas_class * cPtr_concatExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_concatExpression ("concatExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_concatExpression ("concatExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4152,7 +4152,7 @@ const char * GGS_concatExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__concatExpression ("concatExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_concatExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__concatExpression ("concatExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_concatExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4187,7 +4187,7 @@ GGS_concatExpression GGS_concatExpression::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_concatExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_concatExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_concatExpression ;
 }
 
@@ -4270,7 +4270,7 @@ C_galgas_class_inspector _gInspectorFor_orExpression (& typeid (cPtr_orExpressio
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_orExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_orExpression::galgasRTTI (void) const {
   return & gClassInfoFor__orExpression ;
 }
 
@@ -4288,7 +4288,7 @@ cPtr__AC_galgas_class * cPtr_orExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_orExpression ("orExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_orExpression ("orExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4397,7 +4397,7 @@ const char * GGS_orExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__orExpression ("orExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_orExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__orExpression ("orExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_orExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4432,7 +4432,7 @@ GGS_orExpression GGS_orExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_orExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_orExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_orExpression ;
 }
 
@@ -4515,7 +4515,7 @@ C_galgas_class_inspector _gInspectorFor_xorExpression (& typeid (cPtr_xorExpress
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_xorExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_xorExpression::galgasRTTI (void) const {
   return & gClassInfoFor__xorExpression ;
 }
 
@@ -4533,7 +4533,7 @@ cPtr__AC_galgas_class * cPtr_xorExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_xorExpression ("xorExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_xorExpression ("xorExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4642,7 +4642,7 @@ const char * GGS_xorExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__xorExpression ("xorExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_xorExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__xorExpression ("xorExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_xorExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4677,7 +4677,7 @@ GGS_xorExpression GGS_xorExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_xorExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_xorExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_xorExpression ;
 }
 
@@ -4760,7 +4760,7 @@ C_galgas_class_inspector _gInspectorFor_andExpression (& typeid (cPtr_andExpress
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_andExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_andExpression::galgasRTTI (void) const {
   return & gClassInfoFor__andExpression ;
 }
 
@@ -4778,7 +4778,7 @@ cPtr__AC_galgas_class * cPtr_andExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_andExpression ("andExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_andExpression ("andExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4887,7 +4887,7 @@ const char * GGS_andExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__andExpression ("andExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_andExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__andExpression ("andExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_andExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4922,7 +4922,7 @@ GGS_andExpression GGS_andExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_andExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_andExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_andExpression ;
 }
 
@@ -5005,7 +5005,7 @@ C_galgas_class_inspector _gInspectorFor_equalExpression (& typeid (cPtr_equalExp
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_equalExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_equalExpression::galgasRTTI (void) const {
   return & gClassInfoFor__equalExpression ;
 }
 
@@ -5023,7 +5023,7 @@ cPtr__AC_galgas_class * cPtr_equalExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_equalExpression ("equalExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_equalExpression ("equalExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5132,7 +5132,7 @@ const char * GGS_equalExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__equalExpression ("equalExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_equalExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__equalExpression ("equalExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_equalExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5167,7 +5167,7 @@ GGS_equalExpression GGS_equalExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_equalExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_equalExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_equalExpression ;
 }
 
@@ -5250,7 +5250,7 @@ C_galgas_class_inspector _gInspectorFor_notEqualExpression (& typeid (cPtr_notEq
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_notEqualExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_notEqualExpression::galgasRTTI (void) const {
   return & gClassInfoFor__notEqualExpression ;
 }
 
@@ -5268,7 +5268,7 @@ cPtr__AC_galgas_class * cPtr_notEqualExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_notEqualExpression ("notEqualExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_notEqualExpression ("notEqualExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5377,7 +5377,7 @@ const char * GGS_notEqualExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__notEqualExpression ("notEqualExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_notEqualExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__notEqualExpression ("notEqualExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_notEqualExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5412,7 +5412,7 @@ GGS_notEqualExpression GGS_notEqualExpression::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_notEqualExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_notEqualExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_notEqualExpression ;
 }
 
@@ -5495,7 +5495,7 @@ C_galgas_class_inspector _gInspectorFor_lowerOrEqualExpression (& typeid (cPtr_l
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_lowerOrEqualExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_lowerOrEqualExpression::galgasRTTI (void) const {
   return & gClassInfoFor__lowerOrEqualExpression ;
 }
 
@@ -5513,7 +5513,7 @@ cPtr__AC_galgas_class * cPtr_lowerOrEqualExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lowerOrEqualExpression ("lowerOrEqualExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lowerOrEqualExpression ("lowerOrEqualExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5622,7 +5622,7 @@ const char * GGS_lowerOrEqualExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__lowerOrEqualExpression ("lowerOrEqualExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_lowerOrEqualExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__lowerOrEqualExpression ("lowerOrEqualExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_lowerOrEqualExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5657,7 +5657,7 @@ GGS_lowerOrEqualExpression GGS_lowerOrEqualExpression::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lowerOrEqualExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lowerOrEqualExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lowerOrEqualExpression ;
 }
 
@@ -5740,7 +5740,7 @@ C_galgas_class_inspector _gInspectorFor_greaterOrEqualExpression (& typeid (cPtr
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_greaterOrEqualExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_greaterOrEqualExpression::galgasRTTI (void) const {
   return & gClassInfoFor__greaterOrEqualExpression ;
 }
 
@@ -5758,7 +5758,7 @@ cPtr__AC_galgas_class * cPtr_greaterOrEqualExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_greaterOrEqualExpression ("greaterOrEqualExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_greaterOrEqualExpression ("greaterOrEqualExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5867,7 +5867,7 @@ const char * GGS_greaterOrEqualExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__greaterOrEqualExpression ("greaterOrEqualExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_greaterOrEqualExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__greaterOrEqualExpression ("greaterOrEqualExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_greaterOrEqualExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5902,7 +5902,7 @@ GGS_greaterOrEqualExpression GGS_greaterOrEqualExpression::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_greaterOrEqualExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_greaterOrEqualExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_greaterOrEqualExpression ;
 }
 
@@ -5985,7 +5985,7 @@ C_galgas_class_inspector _gInspectorFor_strictGreaterExpression (& typeid (cPtr_
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_strictGreaterExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_strictGreaterExpression::galgasRTTI (void) const {
   return & gClassInfoFor__strictGreaterExpression ;
 }
 
@@ -6003,7 +6003,7 @@ cPtr__AC_galgas_class * cPtr_strictGreaterExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_strictGreaterExpression ("strictGreaterExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_strictGreaterExpression ("strictGreaterExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6112,7 +6112,7 @@ const char * GGS_strictGreaterExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__strictGreaterExpression ("strictGreaterExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_strictGreaterExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__strictGreaterExpression ("strictGreaterExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_strictGreaterExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6147,7 +6147,7 @@ GGS_strictGreaterExpression GGS_strictGreaterExpression::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_strictGreaterExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_strictGreaterExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_strictGreaterExpression ;
 }
 
@@ -6230,7 +6230,7 @@ C_galgas_class_inspector _gInspectorFor_strictLowerExpression (& typeid (cPtr_st
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_strictLowerExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_strictLowerExpression::galgasRTTI (void) const {
   return & gClassInfoFor__strictLowerExpression ;
 }
 
@@ -6248,7 +6248,7 @@ cPtr__AC_galgas_class * cPtr_strictLowerExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_strictLowerExpression ("strictLowerExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_strictLowerExpression ("strictLowerExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6357,7 +6357,7 @@ const char * GGS_strictLowerExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__strictLowerExpression ("strictLowerExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_strictLowerExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__strictLowerExpression ("strictLowerExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_strictLowerExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6392,7 +6392,7 @@ GGS_strictLowerExpression GGS_strictLowerExpression::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_strictLowerExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_strictLowerExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_strictLowerExpression ;
 }
 
@@ -6475,7 +6475,7 @@ C_galgas_class_inspector _gInspectorFor_rightShiftExpression (& typeid (cPtr_rig
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_rightShiftExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_rightShiftExpression::galgasRTTI (void) const {
   return & gClassInfoFor__rightShiftExpression ;
 }
 
@@ -6493,7 +6493,7 @@ cPtr__AC_galgas_class * cPtr_rightShiftExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_rightShiftExpression ("rightShiftExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_rightShiftExpression ("rightShiftExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6602,7 +6602,7 @@ const char * GGS_rightShiftExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__rightShiftExpression ("rightShiftExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_rightShiftExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__rightShiftExpression ("rightShiftExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_rightShiftExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6637,7 +6637,7 @@ GGS_rightShiftExpression GGS_rightShiftExpression::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_rightShiftExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_rightShiftExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_rightShiftExpression ;
 }
 
@@ -6720,7 +6720,7 @@ C_galgas_class_inspector _gInspectorFor_leftShiftExpression (& typeid (cPtr_left
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_leftShiftExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_leftShiftExpression::galgasRTTI (void) const {
   return & gClassInfoFor__leftShiftExpression ;
 }
 
@@ -6738,7 +6738,7 @@ cPtr__AC_galgas_class * cPtr_leftShiftExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_leftShiftExpression ("leftShiftExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_leftShiftExpression ("leftShiftExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6847,7 +6847,7 @@ const char * GGS_leftShiftExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__leftShiftExpression ("leftShiftExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_leftShiftExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__leftShiftExpression ("leftShiftExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_leftShiftExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6882,7 +6882,7 @@ GGS_leftShiftExpression GGS_leftShiftExpression::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_leftShiftExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_leftShiftExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_leftShiftExpression ;
 }
 
@@ -6965,7 +6965,7 @@ C_galgas_class_inspector _gInspectorFor_addExpression (& typeid (cPtr_addExpress
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_addExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_addExpression::galgasRTTI (void) const {
   return & gClassInfoFor__addExpression ;
 }
 
@@ -6983,7 +6983,7 @@ cPtr__AC_galgas_class * cPtr_addExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_addExpression ("addExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_addExpression ("addExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7092,7 +7092,7 @@ const char * GGS_addExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__addExpression ("addExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_addExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__addExpression ("addExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_addExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7127,7 +7127,7 @@ GGS_addExpression GGS_addExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_addExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_addExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_addExpression ;
 }
 
@@ -7210,7 +7210,7 @@ C_galgas_class_inspector _gInspectorFor_subExpression (& typeid (cPtr_subExpress
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_subExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_subExpression::galgasRTTI (void) const {
   return & gClassInfoFor__subExpression ;
 }
 
@@ -7228,7 +7228,7 @@ cPtr__AC_galgas_class * cPtr_subExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_subExpression ("subExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_subExpression ("subExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7337,7 +7337,7 @@ const char * GGS_subExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__subExpression ("subExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_subExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__subExpression ("subExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_subExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7372,7 +7372,7 @@ GGS_subExpression GGS_subExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_subExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_subExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_subExpression ;
 }
 
@@ -7455,7 +7455,7 @@ C_galgas_class_inspector _gInspectorFor_multiplicationExpression (& typeid (cPtr
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_multiplicationExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_multiplicationExpression::galgasRTTI (void) const {
   return & gClassInfoFor__multiplicationExpression ;
 }
 
@@ -7473,7 +7473,7 @@ cPtr__AC_galgas_class * cPtr_multiplicationExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_multiplicationExpression ("multiplicationExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_multiplicationExpression ("multiplicationExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7582,7 +7582,7 @@ const char * GGS_multiplicationExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__multiplicationExpression ("multiplicationExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_multiplicationExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__multiplicationExpression ("multiplicationExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_multiplicationExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7617,7 +7617,7 @@ GGS_multiplicationExpression GGS_multiplicationExpression::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_multiplicationExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_multiplicationExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_multiplicationExpression ;
 }
 
@@ -7700,7 +7700,7 @@ C_galgas_class_inspector _gInspectorFor_divisionExpression (& typeid (cPtr_divis
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_divisionExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_divisionExpression::galgasRTTI (void) const {
   return & gClassInfoFor__divisionExpression ;
 }
 
@@ -7718,7 +7718,7 @@ cPtr__AC_galgas_class * cPtr_divisionExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_divisionExpression ("divisionExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_divisionExpression ("divisionExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7827,7 +7827,7 @@ const char * GGS_divisionExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__divisionExpression ("divisionExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_divisionExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__divisionExpression ("divisionExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_divisionExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7862,7 +7862,7 @@ GGS_divisionExpression GGS_divisionExpression::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_divisionExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_divisionExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_divisionExpression ;
 }
 
@@ -7945,7 +7945,7 @@ C_galgas_class_inspector _gInspectorFor_moduloExpression (& typeid (cPtr_moduloE
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_moduloExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_moduloExpression::galgasRTTI (void) const {
   return & gClassInfoFor__moduloExpression ;
 }
 
@@ -7963,7 +7963,7 @@ cPtr__AC_galgas_class * cPtr_moduloExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_moduloExpression ("moduloExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_moduloExpression ("moduloExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8072,7 +8072,7 @@ const char * GGS_moduloExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__moduloExpression ("moduloExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_moduloExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__moduloExpression ("moduloExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_moduloExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8107,7 +8107,7 @@ GGS_moduloExpression GGS_moduloExpression::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_moduloExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_moduloExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_moduloExpression ;
 }
 
@@ -8186,7 +8186,7 @@ C_galgas_class_inspector _gInspectorFor_unaryMinusExpression (& typeid (cPtr_una
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_unaryMinusExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_unaryMinusExpression::galgasRTTI (void) const {
   return & gClassInfoFor__unaryMinusExpression ;
 }
 
@@ -8204,7 +8204,7 @@ cPtr__AC_galgas_class * cPtr_unaryMinusExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_unaryMinusExpression ("unaryMinusExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_unaryMinusExpression ("unaryMinusExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8297,7 +8297,7 @@ const char * GGS_unaryMinusExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__unaryMinusExpression ("unaryMinusExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_unaryMinusExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__unaryMinusExpression ("unaryMinusExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_unaryMinusExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8332,7 +8332,7 @@ GGS_unaryMinusExpression GGS_unaryMinusExpression::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_unaryMinusExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_unaryMinusExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_unaryMinusExpression ;
 }
 
@@ -8411,7 +8411,7 @@ C_galgas_class_inspector _gInspectorFor_notExpression (& typeid (cPtr_notExpress
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_notExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_notExpression::galgasRTTI (void) const {
   return & gClassInfoFor__notExpression ;
 }
 
@@ -8429,7 +8429,7 @@ cPtr__AC_galgas_class * cPtr_notExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_notExpression ("notExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_notExpression ("notExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8522,7 +8522,7 @@ const char * GGS_notExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__notExpression ("notExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_notExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__notExpression ("notExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_notExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8557,7 +8557,7 @@ GGS_notExpression GGS_notExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_notExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_notExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_notExpression ;
 }
 
@@ -8636,7 +8636,7 @@ C_galgas_class_inspector _gInspectorFor_negateExpression (& typeid (cPtr_negateE
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_negateExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_negateExpression::galgasRTTI (void) const {
   return & gClassInfoFor__negateExpression ;
 }
 
@@ -8654,7 +8654,7 @@ cPtr__AC_galgas_class * cPtr_negateExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_negateExpression ("negateExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_negateExpression ("negateExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8747,7 +8747,7 @@ const char * GGS_negateExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__negateExpression ("negateExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_negateExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__negateExpression ("negateExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_negateExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8782,7 +8782,7 @@ GGS_negateExpression GGS_negateExpression::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_negateExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_negateExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_negateExpression ;
 }
 
@@ -8865,7 +8865,7 @@ C_galgas_class_inspector _gInspectorFor_ifExpression (& typeid (cPtr_ifExpressio
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_ifExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_ifExpression::galgasRTTI (void) const {
   return & gClassInfoFor__ifExpression ;
 }
 
@@ -8883,7 +8883,7 @@ cPtr__AC_galgas_class * cPtr_ifExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_ifExpression ("ifExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_ifExpression ("ifExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8992,7 +8992,7 @@ const char * GGS_ifExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__ifExpression ("ifExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_ifExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__ifExpression ("ifExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_ifExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9027,7 +9027,7 @@ GGS_ifExpression GGS_ifExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_ifExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_ifExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_ifExpression ;
 }
 
@@ -9106,7 +9106,7 @@ C_galgas_class_inspector _gInspectorFor_functionCallExpression (& typeid (cPtr_f
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_functionCallExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_functionCallExpression::galgasRTTI (void) const {
   return & gClassInfoFor__functionCallExpression ;
 }
 
@@ -9124,7 +9124,7 @@ cPtr__AC_galgas_class * cPtr_functionCallExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_functionCallExpression ("functionCallExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_functionCallExpression ("functionCallExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9217,7 +9217,7 @@ const char * GGS_functionCallExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__functionCallExpression ("functionCallExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_functionCallExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__functionCallExpression ("functionCallExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_functionCallExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9252,7 +9252,7 @@ GGS_functionCallExpression GGS_functionCallExpression::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_functionCallExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_functionCallExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_functionCallExpression ;
 }
 
@@ -9327,7 +9327,7 @@ C_galgas_class_inspector _gInspectorFor_varInExpression (& typeid (cPtr_varInExp
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_varInExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_varInExpression::galgasRTTI (void) const {
   return & gClassInfoFor__varInExpression ;
 }
 
@@ -9345,7 +9345,7 @@ cPtr__AC_galgas_class * cPtr_varInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_varInExpression ("varInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_varInExpression ("varInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9422,7 +9422,7 @@ const char * GGS_varInExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__varInExpression ("varInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_varInExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__varInExpression ("varInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_varInExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9457,7 +9457,7 @@ GGS_varInExpression GGS_varInExpression::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_varInExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_varInExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_varInExpression ;
 }
 
@@ -9532,7 +9532,7 @@ C_galgas_class_inspector _gInspectorFor_literalTypeInExpression (& typeid (cPtr_
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_literalTypeInExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_literalTypeInExpression::galgasRTTI (void) const {
   return & gClassInfoFor__literalTypeInExpression ;
 }
 
@@ -9550,7 +9550,7 @@ cPtr__AC_galgas_class * cPtr_literalTypeInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_literalTypeInExpression ("literalTypeInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_literalTypeInExpression ("literalTypeInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9627,7 +9627,7 @@ const char * GGS_literalTypeInExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__literalTypeInExpression ("literalTypeInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalTypeInExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__literalTypeInExpression ("literalTypeInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_literalTypeInExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9662,7 +9662,7 @@ GGS_literalTypeInExpression GGS_literalTypeInExpression::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_literalTypeInExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_literalTypeInExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_literalTypeInExpression ;
 }
 
@@ -9749,7 +9749,7 @@ C_galgas_class_inspector _gInspectorFor_castInExpression (& typeid (cPtr_castInE
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_castInExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_castInExpression::galgasRTTI (void) const {
   return & gClassInfoFor__castInExpression ;
 }
 
@@ -9767,7 +9767,7 @@ cPtr__AC_galgas_class * cPtr_castInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_castInExpression ("castInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_castInExpression ("castInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9892,7 +9892,7 @@ const char * GGS_castInExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__castInExpression ("castInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_castInExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__castInExpression ("castInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_castInExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9927,7 +9927,7 @@ GGS_castInExpression GGS_castInExpression::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_castInExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_castInExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_castInExpression ;
 }
 
@@ -10002,7 +10002,7 @@ C_galgas_class_inspector _gInspectorFor_filewrapperObjectInstanciationInExpressi
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_filewrapperObjectInstanciationInExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_filewrapperObjectInstanciationInExpression::galgasRTTI (void) const {
   return & gClassInfoFor__filewrapperObjectInstanciationInExpression ;
 }
 
@@ -10020,7 +10020,7 @@ cPtr__AC_galgas_class * cPtr_filewrapperObjectInstanciationInExpression::makeClo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperObjectInstanciationInExpression ("filewrapperObjectInstanciationInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperObjectInstanciationInExpression ("filewrapperObjectInstanciationInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10097,7 +10097,7 @@ const char * GGS_filewrapperObjectInstanciationInExpression::actualTypeName (voi
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__filewrapperObjectInstanciationInExpression ("filewrapperObjectInstanciationInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_filewrapperObjectInstanciationInExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__filewrapperObjectInstanciationInExpression ("filewrapperObjectInstanciationInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_filewrapperObjectInstanciationInExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10132,7 +10132,7 @@ GGS_filewrapperObjectInstanciationInExpression GGS_filewrapperObjectInstanciatio
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_filewrapperObjectInstanciationInExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_filewrapperObjectInstanciationInExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_filewrapperObjectInstanciationInExpression ;
 }
 
@@ -10211,7 +10211,7 @@ C_galgas_class_inspector _gInspectorFor_filewrapperInExpression (& typeid (cPtr_
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_filewrapperInExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_filewrapperInExpression::galgasRTTI (void) const {
   return & gClassInfoFor__filewrapperInExpression ;
 }
 
@@ -10229,7 +10229,7 @@ cPtr__AC_galgas_class * cPtr_filewrapperInExpression::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperInExpression ("filewrapperInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperInExpression ("filewrapperInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10322,7 +10322,7 @@ const char * GGS_filewrapperInExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__filewrapperInExpression ("filewrapperInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_filewrapperInExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__filewrapperInExpression ("filewrapperInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_filewrapperInExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10357,7 +10357,7 @@ GGS_filewrapperInExpression GGS_filewrapperInExpression::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_filewrapperInExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_filewrapperInExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_filewrapperInExpression ;
 }
 
@@ -10440,7 +10440,7 @@ C_galgas_class_inspector _gInspectorFor_filewrapperTemplateInExpression (& typei
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_filewrapperTemplateInExpression::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_filewrapperTemplateInExpression::galgasRTTI (void) const {
   return & gClassInfoFor__filewrapperTemplateInExpression ;
 }
 
@@ -10458,7 +10458,7 @@ cPtr__AC_galgas_class * cPtr_filewrapperTemplateInExpression::makeClone (void) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperTemplateInExpression ("filewrapperTemplateInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperTemplateInExpression ("filewrapperTemplateInExpression", true, & kTypeDescriptor_GGS_semanticExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10567,7 +10567,7 @@ const char * GGS_filewrapperTemplateInExpression::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__filewrapperTemplateInExpression ("filewrapperTemplateInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_filewrapperTemplateInExpression) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__filewrapperTemplateInExpression ("filewrapperTemplateInExpression", gClassInfoFor__semanticExpression, & kTypeDescriptor_GGS_filewrapperTemplateInExpression) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10602,7 +10602,7 @@ GGS_filewrapperTemplateInExpression GGS_filewrapperTemplateInExpression::castFro
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_filewrapperTemplateInExpression::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_filewrapperTemplateInExpression::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_filewrapperTemplateInExpression ;
 }
 

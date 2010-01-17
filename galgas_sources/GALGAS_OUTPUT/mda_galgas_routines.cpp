@@ -89,7 +89,7 @@ static GGS_object functionForGenericCall_outputDirectoryTEMP (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor *
+static const C_galgas_type_descriptorEX *
 kArgumentTypeList_outputDirectoryTEMP [1] = {& kTypeDescriptor_GGS_lstring } ;
 
 const C_galgas_function_descriptor
@@ -139,7 +139,7 @@ static GGS_object functionForGenericCall_outputDirectory (C_Compiler & inLexique
 
 //---------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor *
+static const C_galgas_type_descriptorEX *
 kArgumentTypeList_outputDirectory [1] = {& kTypeDescriptor_GGS_lstring } ;
 
 const C_galgas_function_descriptor
@@ -373,7 +373,7 @@ void routine_performProjectGlobalCheckings (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_targetFileListMap ("targetFileListMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_targetFileListMap ("targetFileListMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -582,7 +582,7 @@ GGS_targetFileListMap GGS_targetFileListMap::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_targetFileListMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_targetFileListMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_targetFileListMap ;
 }
 
@@ -603,7 +603,7 @@ mSourceKind () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_sourceFileMap ("sourceFileMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sourceFileMap ("sourceFileMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1028,7 +1028,7 @@ GGS_sourceFileMap GGS_sourceFileMap::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_sourceFileMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_sourceFileMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_sourceFileMap ;
 }
 

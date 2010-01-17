@@ -69,13 +69,13 @@ enterCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (typeCa
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction
-findCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalSendDefaultAction__checkLexicalDefaultAction.count ()) {
     result = gDispatchTableForMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (superClassPtr) ;
       gDispatchTableForMethod__lexicalSendDefaultAction__checkLexicalDefaultAction.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;
@@ -142,13 +142,13 @@ enterCategoryMethod__lexicalExpression__checkLexicalExpression (typeCategoryMeth
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalExpression__checkLexicalExpression
-findCategoryMethod__lexicalExpression__checkLexicalExpression (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__lexicalExpression__checkLexicalExpression (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__lexicalExpression__checkLexicalExpression result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalExpression__checkLexicalExpression.count ()) {
     result = gDispatchTableForMethod__lexicalExpression__checkLexicalExpression (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalExpression__checkLexicalExpression (superClassPtr) ;
       gDispatchTableForMethod__lexicalExpression__checkLexicalExpression.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;
@@ -286,13 +286,13 @@ enterCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFu
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument
-findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument.count ()) {
     result = gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument (superClassPtr) ;
       gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;
@@ -459,13 +459,13 @@ enterCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRo
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument
-findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument.count ()) {
     result = gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument (superClassPtr) ;
       gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;
@@ -632,13 +632,13 @@ enterCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCa
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument
-findCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument.count ()) {
     result = gDispatchTableForMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument (superClassPtr) ;
       gDispatchTableForMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;
@@ -725,13 +725,13 @@ enterCategoryMethod__lexicalInstruction__checkLexicalInstruction (typeCategoryMe
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__lexicalInstruction__checkLexicalInstruction
-findCategoryMethod__lexicalInstruction__checkLexicalInstruction (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__lexicalInstruction__checkLexicalInstruction (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__lexicalInstruction__checkLexicalInstruction result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalInstruction__checkLexicalInstruction.count ()) {
     result = gDispatchTableForMethod__lexicalInstruction__checkLexicalInstruction (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalInstruction__checkLexicalInstruction (superClassPtr) ;
       gDispatchTableForMethod__lexicalInstruction__checkLexicalInstruction.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;
@@ -1123,13 +1123,13 @@ enterCategoryMethod__abstractLexicalRule__checkLexicalRule (typeCategoryMethod__
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__abstractLexicalRule__checkLexicalRule
-findCategoryMethod__abstractLexicalRule__checkLexicalRule (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__abstractLexicalRule__checkLexicalRule (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__abstractLexicalRule__checkLexicalRule result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__abstractLexicalRule__checkLexicalRule.count ()) {
     result = gDispatchTableForMethod__abstractLexicalRule__checkLexicalRule (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__abstractLexicalRule__checkLexicalRule (superClassPtr) ;
       gDispatchTableForMethod__abstractLexicalRule__checkLexicalRule.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;

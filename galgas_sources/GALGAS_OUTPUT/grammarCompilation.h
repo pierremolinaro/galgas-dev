@@ -99,7 +99,7 @@ enterCategoryMethod__syntaxInstruction__transformInstruction (typeCategoryMethod
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__syntaxInstruction__transformInstruction
-findCategoryMethod__syntaxInstruction__transformInstruction (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__syntaxInstruction__transformInstruction (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

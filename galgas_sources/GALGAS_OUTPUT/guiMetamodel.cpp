@@ -92,7 +92,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_guiSimpleAttributeList ("guiSimpleAttributeList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiSimpleAttributeList ("guiSimpleAttributeList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -484,7 +484,7 @@ GGS_guiSimpleAttributeList GGS_guiSimpleAttributeList::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_guiSimpleAttributeList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_guiSimpleAttributeList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_guiSimpleAttributeList ;
 }
 
@@ -545,7 +545,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_guiCompoundAttributeList ("guiCompoundAttributeList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiCompoundAttributeList ("guiCompoundAttributeList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -996,7 +996,7 @@ GGS_guiCompoundAttributeList GGS_guiCompoundAttributeList::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_guiCompoundAttributeList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_guiCompoundAttributeList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_guiCompoundAttributeList ;
 }
 
@@ -1050,7 +1050,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_guiLabelList ("guiLabelList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiLabelList ("guiLabelList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1442,7 +1442,7 @@ GGS_guiLabelList GGS_guiLabelList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_guiLabelList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_guiLabelList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_guiLabelList ;
 }
 
@@ -1510,7 +1510,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_withLexiqueList ("withLexiqueList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_withLexiqueList ("withLexiqueList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2020,7 +2020,7 @@ GGS_withLexiqueList GGS_withLexiqueList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_withLexiqueList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_withLexiqueList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_withLexiqueList ;
 }
 
@@ -2111,7 +2111,7 @@ C_galgas_class_inspector _gInspectorFor_guiComponentRoot (& typeid (cPtr_guiComp
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_guiComponentRoot::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_guiComponentRoot::galgasRTTI (void) const {
   return & gClassInfoFor__guiComponentRoot ;
 }
 
@@ -2129,7 +2129,7 @@ cPtr__AC_galgas_class * cPtr_guiComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_guiComponentRoot ("guiComponentRoot", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiComponentRoot ("guiComponentRoot", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2270,8 +2270,8 @@ const char * GGS_guiComponentRoot::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_guiComponentRoot::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_guiComponentRoot::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -2280,7 +2280,7 @@ AC_galgasClassRunTimeInformation * GGS_guiComponentRoot::galgasObjectRunTimeInfo
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__guiComponentRoot ("guiComponentRoot", & kTypeDescriptor_GGS_guiComponentRoot) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__guiComponentRoot ("guiComponentRoot", & kTypeDescriptor_GGS_guiComponentRoot) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2315,7 +2315,7 @@ GGS_guiComponentRoot GGS_guiComponentRoot::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_guiComponentRoot::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_guiComponentRoot::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_guiComponentRoot ;
 }
 

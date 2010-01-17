@@ -99,7 +99,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_startSymbolLabelFormalParameterList ("startSymbolLabelFormalParameterList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_startSymbolLabelFormalParameterList ("startSymbolLabelFormalParameterList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -550,7 +550,7 @@ GGS_startSymbolLabelFormalParameterList GGS_startSymbolLabelFormalParameterList:
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_startSymbolLabelFormalParameterList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_startSymbolLabelFormalParameterList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_startSymbolLabelFormalParameterList ;
 }
 
@@ -653,7 +653,7 @@ C_galgas_class_inspector _gInspectorFor_grammarComponentRoot (& typeid (cPtr_gra
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_grammarComponentRoot::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_grammarComponentRoot::galgasRTTI (void) const {
   return & gClassInfoFor__grammarComponentRoot ;
 }
 
@@ -671,7 +671,7 @@ cPtr__AC_galgas_class * cPtr_grammarComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_grammarComponentRoot ("grammarComponentRoot", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_grammarComponentRoot ("grammarComponentRoot", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -860,8 +860,8 @@ const char * GGS_grammarComponentRoot::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_grammarComponentRoot::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_grammarComponentRoot::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -870,7 +870,7 @@ AC_galgasClassRunTimeInformation * GGS_grammarComponentRoot::galgasObjectRunTime
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__grammarComponentRoot ("grammarComponentRoot", & kTypeDescriptor_GGS_grammarComponentRoot) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__grammarComponentRoot ("grammarComponentRoot", & kTypeDescriptor_GGS_grammarComponentRoot) ;
 
 //---------------------------------------------------------------------------*
 
@@ -905,7 +905,7 @@ GGS_grammarComponentRoot GGS_grammarComponentRoot::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_grammarComponentRoot::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_grammarComponentRoot::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_grammarComponentRoot ;
 }
 

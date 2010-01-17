@@ -140,7 +140,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     ? C_String ()
     : mAncestorClassesMap.lastObject ()->mKey.string () ;
 
-  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomClasse << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << aNomClasse << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
 
   inHfile << "class GGS_" << aNomClasse ;
@@ -271,11 +271,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   if (superClassName.length () == 0) {
     inHfile << "//--- Galgas RTTI\n"
-               "AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;\n\n" ;
+               "AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;\n\n" ;
   }
 
   inHfile << "//--- Introspection\n"
-             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
              "  public : static GGS_" << aNomClasse << " castFromObject (C_Compiler & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
@@ -287,9 +287,9 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   
   inHfile.appendCppHyphenLineComment () ;
   if (superClassName.length () == 0) {
-    inHfile << "extern C_galgasRootClassRunTimeInformation gClassInfoFor__" << aNomClasse << " ;\n\n" ;
+    inHfile << "extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__" << aNomClasse << " ;\n\n" ;
   }else{
-    inHfile << "extern C_galgasClassRunTimeInformation gClassInfoFor__" << aNomClasse << " ;\n\n" ;
+    inHfile << "extern C_galgasClassRunTimeInformationEX gClassInfoFor__" << aNomClasse << " ;\n\n" ;
   }
 }
 
@@ -407,7 +407,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
   generatedZone3 << "\n"
                     "//--- Galgas RTTI\n"
-                    "  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;\n" ;
+                    "  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;\n" ;
 
 //--- Generate 'makeClone' method
   if ((aListeTousAttributsNonExternes.firstObject () != NULL) && ! mIsAbstract.boolValue ()) {
@@ -720,7 +720,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << ") ;\n\n" ;
 
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "AC_galgasClassRunTimeInformation * cPtr_" << aNomClasse << "::galgasRTTI (void) const {\n"
+  inCppFile << "AC_galgasClassRunTimeInformationEX * cPtr_" << aNomClasse << "::galgasRTTI (void) const {\n"
                "  return & gClassInfoFor__" << aNomClasse << " ;\n"
                "}\n\n" ;
 
@@ -750,7 +750,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.appendCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << aNomClasse << " (\"" << aNomClasse << "\", true, " ;
+  inCppFile << "const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << aNomClasse << " (\"" << aNomClasse << "\", true, " ;
   if (superClassName.length () == 0) {
     inCppFile << "NULL" ;
   }else{
@@ -960,8 +960,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   if (superClassName.length () == 0) {
     inCppFile.appendCppHyphenLineComment () ;
-    inCppFile << "AC_galgasClassRunTimeInformation * GGS_" << aNomClasse << "::galgasObjectRunTimeInfo (void) const {\n"
-                 "  AC_galgasClassRunTimeInformation * result = NULL ;\n"
+    inCppFile << "AC_galgasClassRunTimeInformationEX * GGS_" << aNomClasse << "::galgasObjectRunTimeInfo (void) const {\n"
+                 "  AC_galgasClassRunTimeInformationEX * result = NULL ;\n"
                  "  if (mPointer != NULL) {\n"
                  "    result = mPointer->galgasRTTI () ;\n"
                  "  }\n"
@@ -971,9 +971,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   if (superClassName.length () == 0) {
-    inCppFile << "C_galgasRootClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", & kTypeDescriptor_GGS_" << aNomClasse << ") ;\n\n" ;
+    inCppFile << "C_galgasRootClassRunTimeInformationEX gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", & kTypeDescriptor_GGS_" << aNomClasse << ") ;\n\n" ;
   }else{
-    inCppFile << "C_galgasClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", gClassInfoFor__" << superClassName << ", & kTypeDescriptor_GGS_" << aNomClasse << ") ;\n\n" ;
+    inCppFile << "C_galgasClassRunTimeInformationEX gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", gClassInfoFor__" << superClassName << ", & kTypeDescriptor_GGS_" << aNomClasse << ") ;\n\n" ;
   }
 
   inCppFile.appendCppHyphenLineComment () ;
@@ -1004,7 +1004,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_type_descriptor * GGS_" << aNomClasse << "::typeDescriptor (void) const {\n"
+  inCppFile << "const C_galgas_type_descriptorEX * GGS_" << aNomClasse << "::typeDescriptor (void) const {\n"
                "  return & kTypeDescriptor_GGS_" << aNomClasse << " ;\n"
                "}\n\n" ;
 }

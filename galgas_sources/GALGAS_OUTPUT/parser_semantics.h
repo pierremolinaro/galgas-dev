@@ -66,7 +66,7 @@ class cPtr_typeProductionAengendrer ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_typeParserInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeParserInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -111,7 +111,7 @@ class GGS_typeParserInstruction : public GGS_typeInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -124,7 +124,7 @@ class GGS_typeParserInstruction : public GGS_typeInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__typeParserInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__typeParserInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -132,7 +132,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__typeParserInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_typeInstructionAppelNonTerminal ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeInstructionAppelNonTerminal ;
 
 //---------------------------------------------------------------------------*
 
@@ -187,7 +187,7 @@ class GGS_typeInstructionAppelNonTerminal : public GGS_typeParserInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -200,7 +200,7 @@ class GGS_typeInstructionAppelNonTerminal : public GGS_typeParserInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__typeInstructionAppelNonTerminal ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__typeInstructionAppelNonTerminal ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -208,7 +208,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__typeInstructionAppelNonTer
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_typeInstructionVerifSyntaxique ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeInstructionVerifSyntaxique ;
 
 //---------------------------------------------------------------------------*
 
@@ -263,7 +263,7 @@ class GGS_typeInstructionVerifSyntaxique : public GGS_typeParserInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -276,7 +276,7 @@ class GGS_typeInstructionVerifSyntaxique : public GGS_typeParserInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__typeInstructionVerifSyntaxique ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__typeInstructionVerifSyntaxique ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -288,7 +288,7 @@ class elementOf_GGS_typeListeBranchesInstructions ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_typeListeBranchesInstructions ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeListeBranchesInstructions ;
 
 //---------------------------------------------------------------------------*
 
@@ -376,7 +376,7 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -407,7 +407,7 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_C_select_instruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_C_select_instruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -460,7 +460,7 @@ class GGS_C_select_instruction : public GGS_typeParserInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -473,7 +473,7 @@ class GGS_C_select_instruction : public GGS_typeParserInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__C_select_instruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__C_select_instruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -481,7 +481,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__C_select_instruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_C_repeat_instruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_C_repeat_instruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -534,7 +534,7 @@ class GGS_C_repeat_instruction : public GGS_typeParserInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -547,7 +547,7 @@ class GGS_C_repeat_instruction : public GGS_typeParserInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__C_repeat_instruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__C_repeat_instruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -559,7 +559,7 @@ class elementOf_GGS_L_parse_rewind_signature_list ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_L_parse_rewind_signature_list ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_L_parse_rewind_signature_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -663,7 +663,7 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -695,7 +695,7 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_C_parse_rewind_instruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_C_parse_rewind_instruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -748,7 +748,7 @@ class GGS_C_parse_rewind_instruction : public GGS_typeParserInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -761,7 +761,7 @@ class GGS_C_parse_rewind_instruction : public GGS_typeParserInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__C_parse_rewind_instruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__C_parse_rewind_instruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -769,7 +769,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__C_parse_rewind_instruction
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_C_parse_loop_instruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_C_parse_loop_instruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -826,7 +826,7 @@ class GGS_C_parse_loop_instruction : public GGS_typeParserInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -839,7 +839,7 @@ class GGS_C_parse_loop_instruction : public GGS_typeParserInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__C_parse_loop_instruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__C_parse_loop_instruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -847,7 +847,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__C_parse_loop_instruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_C_parse_when_else_instruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_C_parse_when_else_instruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -900,7 +900,7 @@ class GGS_C_parse_when_else_instruction : public GGS_typeParserInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -913,7 +913,7 @@ class GGS_C_parse_when_else_instruction : public GGS_typeParserInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__C_parse_when_else_instruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__C_parse_when_else_instruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -921,7 +921,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__C_parse_when_else_instruct
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_typeNonterminalToGenerate ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeNonterminalToGenerate ;
 
 //---------------------------------------------------------------------------*
 
@@ -976,7 +976,7 @@ class GGS_typeNonterminalToGenerate : public GGS_typeEntityToGenerate {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -989,7 +989,7 @@ class GGS_typeNonterminalToGenerate : public GGS_typeEntityToGenerate {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__typeNonterminalToGenerate ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__typeNonterminalToGenerate ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -999,7 +999,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__typeNonterminalToGenerate 
 
 class elementOf_GGS_typeAltProductionsMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_typeAltProductionsMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeAltProductionsMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -1016,7 +1016,7 @@ class GGS_typeAltProductionsMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_typeAltProductionsMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1121,7 +1121,7 @@ class GGS_typeAltProductionsMap : public AC_galgas_map {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_typeProductionAengendrer ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeProductionAengendrer ;
 
 //---------------------------------------------------------------------------*
 
@@ -1180,7 +1180,7 @@ class GGS_typeProductionAengendrer : public GGS_typeEntityToGenerate {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1193,7 +1193,7 @@ class GGS_typeProductionAengendrer : public GGS_typeEntityToGenerate {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__typeProductionAengendrer ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__typeProductionAengendrer ;
 
 //---------------------------------------------------------------------------*
 

@@ -61,7 +61,7 @@ enterCategoryMethod__semanticDeclaration__enterType (typeCategoryMethod__semanti
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__semanticDeclaration__enterType
-findCategoryMethod__semanticDeclaration__enterType (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__semanticDeclaration__enterType (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -94,7 +94,7 @@ enterCategoryMethod__semanticInstruction__semanticAnalysis (typeCategoryMethod__
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__semanticInstruction__semanticAnalysis
-findCategoryMethod__semanticInstruction__semanticAnalysis (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__semanticInstruction__semanticAnalysis (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -116,7 +116,7 @@ enterCategoryMethod__semanticDeclaration__semanticAnalysis (typeCategoryMethod__
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__semanticDeclaration__semanticAnalysis
-findCategoryMethod__semanticDeclaration__semanticAnalysis (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryMethod__semanticDeclaration__semanticAnalysis (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

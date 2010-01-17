@@ -37,7 +37,7 @@ void cPtr_C_structToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
   inHfile.appendCppTitleComment (C_String ("Declarations for '") + mStructName + "' struct") ;
-  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mStructName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mStructName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "class GGS_" << mStructName << " : public GGS__root {\n"
              "//--- Default constructor\n"
@@ -57,7 +57,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Reader 'description'\n"
              "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
              "//--- Introspection\n"
-             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
              "  public : static GGS_" << mStructName << " castFromObject (C_Compiler & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
@@ -130,7 +130,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of '") + mStructName + "' struct") ;
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mStructName << " (\"" << mStructName << "\", false, NULL) ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mStructName << " (\"" << mStructName << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) :\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
@@ -290,7 +290,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_type_descriptor * GGS_" << mStructName << "::typeDescriptor (void) const {\n"
+  inCppFile << "const C_galgas_type_descriptorEX * GGS_" << mStructName << "::typeDescriptor (void) const {\n"
                "  return & kTypeDescriptor_GGS_" << mStructName << " ;\n"
                "}\n\n" ;
 }  

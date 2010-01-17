@@ -382,7 +382,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                              0,\n"
                  "                              NULL) ;\n\n" ;
   }else{
-    inCppFile << "static const C_galgas_type_descriptor *\n"
+    inCppFile << "static const C_galgas_type_descriptorEX *\n"
                  "kArgumentTypeList_" << mFunctionName << " ["
               << cStringWithSigned (aListeTypeEtNomsArguments.count ()) << "] = {" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;

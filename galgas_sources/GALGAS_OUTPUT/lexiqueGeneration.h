@@ -59,7 +59,7 @@ enterCategoryReader__lexicalExpression__generateConditionCode (typeCategoryReade
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__lexicalExpression__generateConditionCode
-findCategoryReader__lexicalExpression__generateConditionCode (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__lexicalExpression__generateConditionCode (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -80,7 +80,7 @@ enterCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutin
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutineOrFunctionArgument
-findCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutineOrFunctionArgument (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutineOrFunctionArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -101,7 +101,7 @@ enterCategoryReader__abstractLexicalRoutineActualArgument__generateRoutineArgume
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__abstractLexicalRoutineActualArgument__generateRoutineArgument
-findCategoryReader__abstractLexicalRoutineActualArgument__generateRoutineArgument (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__abstractLexicalRoutineActualArgument__generateRoutineArgument (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -123,7 +123,7 @@ enterCategoryReader__lexicalSendDefaultAction__generateDefaultSendCode (typeCate
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__lexicalSendDefaultAction__generateDefaultSendCode
-findCategoryReader__lexicalSendDefaultAction__generateDefaultSendCode (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__lexicalSendDefaultAction__generateDefaultSendCode (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -146,7 +146,7 @@ enterCategoryReader__lexicalInstruction__generateInstructionCode (typeCategoryRe
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__lexicalInstruction__generateInstructionCode
-findCategoryReader__lexicalInstruction__generateInstructionCode (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__lexicalInstruction__generateInstructionCode (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -169,7 +169,7 @@ enterCategoryReader__abstractLexicalRule__generateCode (typeCategoryReader__abst
 //---------------------------------------------------------------------------*
 
 typeCategoryReader__abstractLexicalRule__generateCode
-findCategoryReader__abstractLexicalRule__generateCode (AC_galgasClassRunTimeInformation * inClassPtr) ;
+findCategoryReader__abstractLexicalRule__generateCode (AC_galgasClassRunTimeInformationEX * inClassPtr) ;
 
 //---------------------------------------------------------------------------*
 

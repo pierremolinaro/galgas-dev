@@ -1,10 +1,7 @@
 #!/bin/sh
-set -x
+#set -x
 DIR=`dirname $0` &&
 cd $DIR &&
-#--- Builtin type headers 
-galgas -v --Werror --generate-builtin-type-headers=generated-types
-
 #--- Compile predefined types
 galgas -v --Werror predefined_types.ggs &&
 #--- Use sed for renaming header file
@@ -37,14 +34,15 @@ sed "s/STRINGLIST/stringlist/g"     GALGAS_OUTPUT/temp  > predefined_types.cpp &
 rm GALGAS_OUTPUT/temp &&
 rm GALGAS_OUTPUT/temp2 &&
 #--- Copy files (only if needed)
-for f in predefined_types.cpp predefined_types.h ; do
+COPY_LIST="predefined_types.cpp predefined_types.h" &&
+for f in $COPY_LIST ; do
   if [ ! -e ../../libpm/galgas/${f} ]; then
     echo COPY ${f}
     cp ${f} ../../libpm/galgas/${f}
   else
-    cmp --quiet ../../libpm/galgas/${f} ${f} || {
+    if [ "`cat ../../libpm/galgas/${f}`" != "`cat ${f}`" ]; then
       echo COPY ${f}
       cp ${f} ../../libpm/galgas/${f}
-    }
+    fi
   fi
 done

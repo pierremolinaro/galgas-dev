@@ -61,13 +61,13 @@ enterCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstr
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1
-findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1.count ()) {
     result = gDispatchTableForMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (superClassPtr) ;
       gDispatchTableForMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;

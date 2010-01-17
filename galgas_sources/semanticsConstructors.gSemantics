@@ -24,7 +24,7 @@ import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 map @constructorMap {
   @typeList mArgumentTypeList ;
-  @bool mHasLexiqueAndLocationArguments ;
+  @bool mHasLexique ;
   @ACGalgasType mReturnedType ;
   insert insertKey error message "the '%K' constructor has been already defined" ;
   search searchKey error message "the '%K' constuctor is not declared" ;

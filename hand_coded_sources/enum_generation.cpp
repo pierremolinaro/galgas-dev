@@ -53,7 +53,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   
   inHfile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
 
-  inHfile << "extern const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mEnumTypeName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mEnumTypeName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
 
   
@@ -79,7 +79,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Is built ?\n"
              "  public : bool isBuilt (void) const ;\n\n"
              "//--- Introspection\n"
-             "  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;\n\n"
+             "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
              "  public : static GGS_" << mEnumTypeName << " castFromObject (C_Compiler & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
@@ -207,7 +207,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
 
-  inCppFile << "const C_galgas_type_descriptor kTypeDescriptor_GGS_" << mEnumTypeName << " (\"" << mEnumTypeName << "\", false, NULL) ;\n\n" ;
+  inCppFile << "const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mEnumTypeName << " (\"" << mEnumTypeName << "\", false, NULL) ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "bool GGS_" << mEnumTypeName
@@ -601,7 +601,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_type_descriptor * GGS_" << mEnumTypeName << "::typeDescriptor (void) const {\n"
+  inCppFile << "const C_galgas_type_descriptorEX * GGS_" << mEnumTypeName << "::typeDescriptor (void) const {\n"
                "  return & kTypeDescriptor_GGS_" << mEnumTypeName << " ;\n"
                "}\n\n" ;
 }

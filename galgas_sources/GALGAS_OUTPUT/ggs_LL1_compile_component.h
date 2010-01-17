@@ -53,7 +53,7 @@ class GGS_EXsourceFileMap ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_EXtargetFileListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_EXtargetFileListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -113,7 +113,7 @@ class GGS_EXtargetFileListMap : public AC_galgas_listmap {
     public : const GGS_stringlist & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -130,7 +130,7 @@ class GGS_EXtargetFileListMap : public AC_galgas_listmap {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_EXsourceFileKind ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_EXsourceFileKind ;
 
 //---------------------------------------------------------------------------*
 
@@ -157,7 +157,7 @@ class GGS_EXsourceFileKind : public GGS__root {
   public : bool isBuilt (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -223,7 +223,7 @@ class GGS_EXsourceFileKind : public GGS__root {
 
 class elementOf_GGS_EXsourceFileMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_EXsourceFileMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_EXsourceFileMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -240,7 +240,7 @@ class GGS_EXsourceFileMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_EXsourceFileMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 

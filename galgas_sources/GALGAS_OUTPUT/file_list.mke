@@ -108,6 +108,7 @@ SOURCES += semanticDeclarationModelBuilder.cpp
 SOURCES += semanticsModelBuilder.cpp
 SOURCES += semanticsSLRgrammar.cpp
 SOURCES += semanticsTypes.cpp
+SOURCES += semanticsTypeFeatures.cpp
 SOURCES += semanticsConstructors.cpp
 SOURCES += semanticsReaders.cpp
 SOURCES += semanticsModifiers.cpp

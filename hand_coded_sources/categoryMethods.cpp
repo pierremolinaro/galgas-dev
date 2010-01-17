@@ -71,7 +71,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile.appendCppHyphenLineComment () ;
     inHfile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryMethod__" << mClassName << "__" << mMethodName
-            << " (AC_galgasClassRunTimeInformation * inClassPtr) ;\n\n" ;
+            << " (AC_galgasClassRunTimeInformationEX * inClassPtr) ;\n\n" ;
   }
 }
 
@@ -165,13 +165,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryMethod__" << mClassName << "__" << mMethodName
-              << " (AC_galgasClassRunTimeInformation * inClassPtr) {\n"
+              << " (AC_galgasClassRunTimeInformationEX * inClassPtr) {\n"
                  "  typeCategoryMethod__" << mClassName << "__" << mMethodName << " result = NULL ;\n"
                  "  if (inClassPtr->slotID () < gDispatchTableForMethod__" << mClassName << "__" << mMethodName << ".count ()) {\n"
                  "    result = gDispatchTableForMethod__" << mClassName << "__" << mMethodName << " (inClassPtr->slotID () COMMA_HERE) ;\n"
                  "  }\n"
                  "  if (result == NULL) {\n"
-                 "    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;\n"
+                 "    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;\n"
                  "    if (superClassPtr != NULL) {\n"
                  "      result = findCategoryMethod__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
                  "      gDispatchTableForMethod__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;\n"
@@ -231,7 +231,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile.appendCppHyphenLineComment () ;
     inHfile << "typeCategoryReader__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryReader__" << mClassName << "__" << mMethodName
-            << " (AC_galgasClassRunTimeInformation * inClassPtr) ;\n\n" ;
+            << " (AC_galgasClassRunTimeInformationEX * inClassPtr) ;\n\n" ;
   }
 }
 
@@ -337,7 +337,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "static " ;
     mReturnedType (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << "\n"
-                 "category_reader__" << mClassName << "_defaultReader (C_Compiler &"
+                 "category_reader__" << mClassName << "_defaultReader_" << mMethodName << " (C_Compiler &"
                  ",\n                                "
                  "const cPtr_" << mClassName << " *" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
@@ -357,20 +357,20 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Generate find routine
     inCppFile << "typeCategoryReader__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryReader__" << mClassName << "__" << mMethodName
-              << " (AC_galgasClassRunTimeInformation * inClassPtr) {\n"
+              << " (AC_galgasClassRunTimeInformationEX * inClassPtr) {\n"
                  "  typeCategoryReader__" << mClassName << "__" << mMethodName << " result = NULL ;\n"
                  "  if (inClassPtr->slotID () < gDispatchTableForReader__" << mClassName << "__" << mMethodName << ".count ()) {\n"
                  "    result = gDispatchTableForReader__" << mClassName << "__" << mMethodName << " (inClassPtr->slotID () COMMA_HERE) ;\n"
                  "  }\n"
                  "  if (result == NULL) {\n"
-                 "    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;\n"
+                 "    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;\n"
                  "    if (superClassPtr != NULL) {\n"
                  "      result = findCategoryReader__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
                  "      gDispatchTableForReader__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;\n"
                  "    }\n"
                  "  }\n"
                  "  if (NULL == result) {\n"
-                 "    result = category_reader__" << mClassName << "_defaultReader ;\n"
+                 "    result = category_reader__" << mClassName << "_defaultReader_" << mMethodName << " ;\n"
                  "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;
@@ -426,7 +426,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile.appendCppHyphenLineComment () ;
     inHfile << "typeCategoryTemplate__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryTemplate__" << mClassName << "__" << mMethodName
-            << " (AC_galgasClassRunTimeInformation * inClassPtr) ;\n\n" ;
+            << " (AC_galgasClassRunTimeInformationEX * inClassPtr) ;\n\n" ;
   }
 }
 
@@ -547,13 +547,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Generate find routine
     inCppFile << "typeCategoryTemplate__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryTemplate__" << mClassName << "__" << mMethodName
-              << " (AC_galgasClassRunTimeInformation * inClassPtr) {\n"
+              << " (AC_galgasClassRunTimeInformationEX * inClassPtr) {\n"
                  "  typeCategoryTemplate__" << mClassName << "__" << mMethodName << " result = NULL ;\n"
                  "  if (inClassPtr->slotID () < gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".count ()) {\n"
                  "    result = gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << " (inClassPtr->slotID () COMMA_HERE) ;\n"
                  "  }\n"
                  "  if (result == NULL) {\n"
-                 "    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;\n"
+                 "    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;\n"
                  "    if (superClassPtr != NULL) {\n"
                  "      result = findCategoryTemplate__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
                  "      gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;\n"

@@ -99,7 +99,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_attributeInCollectionList ("attributeInCollectionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_attributeInCollectionList ("attributeInCollectionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -550,7 +550,7 @@ GGS_attributeInCollectionList GGS_attributeInCollectionList::castFromObject (C_C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_attributeInCollectionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_attributeInCollectionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_attributeInCollectionList ;
 }
 
@@ -629,7 +629,7 @@ C_galgas_class_inspector _gInspectorFor_listmapDeclaration (& typeid (cPtr_listm
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_listmapDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_listmapDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__listmapDeclaration ;
 }
 
@@ -647,7 +647,7 @@ cPtr__AC_galgas_class * cPtr_listmapDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_listmapDeclaration ("listmapDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_listmapDeclaration ("listmapDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -740,7 +740,7 @@ const char * GGS_listmapDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__listmapDeclaration ("listmapDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_listmapDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__listmapDeclaration ("listmapDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_listmapDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -775,7 +775,7 @@ GGS_listmapDeclaration GGS_listmapDeclaration::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_listmapDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_listmapDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_listmapDeclaration ;
 }
 
@@ -843,7 +843,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_mapMethodList ("mapMethodList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_mapMethodList ("mapMethodList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1353,7 +1353,7 @@ GGS_mapMethodList GGS_mapMethodList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_mapMethodList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_mapMethodList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_mapMethodList ;
 }
 
@@ -1452,7 +1452,7 @@ C_galgas_class_inspector _gInspectorFor_mapDeclaration (& typeid (cPtr_mapDeclar
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_mapDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_mapDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__mapDeclaration ;
 }
 
@@ -1470,7 +1470,7 @@ cPtr__AC_galgas_class * cPtr_mapDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_mapDeclaration ("mapDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_mapDeclaration ("mapDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1643,7 +1643,7 @@ const char * GGS_mapDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__mapDeclaration ("mapDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_mapDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__mapDeclaration ("mapDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_mapDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1678,7 +1678,7 @@ GGS_mapDeclaration GGS_mapDeclaration::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_mapDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_mapDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_mapDeclaration ;
 }
 
@@ -1765,7 +1765,7 @@ C_galgas_class_inspector _gInspectorFor_mapindexDeclaration (& typeid (cPtr_mapi
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_mapindexDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_mapindexDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__mapindexDeclaration ;
 }
 
@@ -1783,7 +1783,7 @@ cPtr__AC_galgas_class * cPtr_mapindexDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_mapindexDeclaration ("mapindexDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_mapindexDeclaration ("mapindexDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1908,7 +1908,7 @@ const char * GGS_mapindexDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__mapindexDeclaration ("mapindexDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_mapindexDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__mapindexDeclaration ("mapindexDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_mapindexDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -1943,7 +1943,7 @@ GGS_mapindexDeclaration GGS_mapindexDeclaration::castFromObject (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_mapindexDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_mapindexDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_mapindexDeclaration ;
 }
 
@@ -1997,7 +1997,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractMethodDefinitionList ("abstractMethodDefinitionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractMethodDefinitionList ("abstractMethodDefinitionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2389,7 +2389,7 @@ GGS_abstractMethodDefinitionList GGS_abstractMethodDefinitionList::castFromObjec
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_abstractMethodDefinitionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_abstractMethodDefinitionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_abstractMethodDefinitionList ;
 }
 
@@ -2450,7 +2450,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_overridenMethodDefinitionList ("overridenMethodDefinitionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridenMethodDefinitionList ("overridenMethodDefinitionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -2901,7 +2901,7 @@ GGS_overridenMethodDefinitionList GGS_overridenMethodDefinitionList::castFromObj
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_overridenMethodDefinitionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_overridenMethodDefinitionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_overridenMethodDefinitionList ;
 }
 
@@ -2962,7 +2962,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_methodDefinitionList ("methodDefinitionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_methodDefinitionList ("methodDefinitionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3413,7 +3413,7 @@ GGS_methodDefinitionList GGS_methodDefinitionList::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_methodDefinitionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_methodDefinitionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_methodDefinitionList ;
 }
 
@@ -3467,7 +3467,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_classMessageDefinitionList ("classMessageDefinitionList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classMessageDefinitionList ("classMessageDefinitionList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -3859,7 +3859,7 @@ GGS_classMessageDefinitionList GGS_classMessageDefinitionList::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_classMessageDefinitionList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_classMessageDefinitionList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_classMessageDefinitionList ;
 }
 
@@ -3920,7 +3920,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_lazyAttributeList ("lazyAttributeList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lazyAttributeList ("lazyAttributeList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4371,7 +4371,7 @@ GGS_lazyAttributeList GGS_lazyAttributeList::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_lazyAttributeList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_lazyAttributeList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_lazyAttributeList ;
 }
 
@@ -4486,7 +4486,7 @@ C_galgas_class_inspector _gInspectorFor_classDeclaration (& typeid (cPtr_classDe
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_classDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_classDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__classDeclaration ;
 }
 
@@ -4504,7 +4504,7 @@ cPtr__AC_galgas_class * cPtr_classDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_classDeclaration ("classDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classDeclaration ("classDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4741,7 +4741,7 @@ const char * GGS_classDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__classDeclaration ("classDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_classDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__classDeclaration ("classDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_classDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4776,7 +4776,7 @@ GGS_classDeclaration GGS_classDeclaration::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_classDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_classDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_classDeclaration ;
 }
 
@@ -4855,7 +4855,7 @@ C_galgas_class_inspector _gInspectorFor_listDeclaration (& typeid (cPtr_listDecl
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_listDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_listDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__listDeclaration ;
 }
 
@@ -4873,7 +4873,7 @@ cPtr__AC_galgas_class * cPtr_listDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_listDeclaration ("listDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_listDeclaration ("listDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -4966,7 +4966,7 @@ const char * GGS_listDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__listDeclaration ("listDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_listDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__listDeclaration ("listDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_listDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5001,7 +5001,7 @@ GGS_listDeclaration GGS_listDeclaration::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_listDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_listDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_listDeclaration ;
 }
 
@@ -5080,7 +5080,7 @@ C_galgas_class_inspector _gInspectorFor_structDeclaration (& typeid (cPtr_struct
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_structDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_structDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__structDeclaration ;
 }
 
@@ -5098,7 +5098,7 @@ cPtr__AC_galgas_class * cPtr_structDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_structDeclaration ("structDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_structDeclaration ("structDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5191,7 +5191,7 @@ const char * GGS_structDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__structDeclaration ("structDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_structDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__structDeclaration ("structDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_structDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5226,7 +5226,7 @@ GGS_structDeclaration GGS_structDeclaration::castFromObject (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_structDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_structDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_structDeclaration ;
 }
 
@@ -5280,7 +5280,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_sortedListSortDescriptorList ("sortedListSortDescriptorList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sortedListSortDescriptorList ("sortedListSortDescriptorList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5672,7 +5672,7 @@ GGS_sortedListSortDescriptorList GGS_sortedListSortDescriptorList::castFromObjec
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_sortedListSortDescriptorList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_sortedListSortDescriptorList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_sortedListSortDescriptorList ;
 }
 
@@ -5755,7 +5755,7 @@ C_galgas_class_inspector _gInspectorFor_sortedListDeclaration (& typeid (cPtr_so
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_sortedListDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_sortedListDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__sortedListDeclaration ;
 }
 
@@ -5773,7 +5773,7 @@ cPtr__AC_galgas_class * cPtr_sortedListDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_sortedListDeclaration ("sortedListDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sortedListDeclaration ("sortedListDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5882,7 +5882,7 @@ const char * GGS_sortedListDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__sortedListDeclaration ("sortedListDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_sortedListDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__sortedListDeclaration ("sortedListDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_sortedListDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -5917,7 +5917,7 @@ GGS_sortedListDeclaration GGS_sortedListDeclaration::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_sortedListDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_sortedListDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_sortedListDeclaration ;
 }
 
@@ -5971,7 +5971,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumMessageAssociationList ("enumMessageAssociationList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumMessageAssociationList ("enumMessageAssociationList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6363,7 +6363,7 @@ GGS_enumMessageAssociationList GGS_enumMessageAssociationList::castFromObject (C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumMessageAssociationList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumMessageAssociationList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumMessageAssociationList ;
 }
 
@@ -6417,7 +6417,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumMessageList ("enumMessageList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumMessageList ("enumMessageList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6809,7 +6809,7 @@ GGS_enumMessageList GGS_enumMessageList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumMessageList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumMessageList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumMessageList ;
 }
 
@@ -6875,7 +6875,7 @@ C_galgas_class_inspector _gInspectorFor_enumCaseMessage (& typeid (cPtr_enumCase
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_enumCaseMessage::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_enumCaseMessage::galgasRTTI (void) const {
   return & gClassInfoFor__enumCaseMessage ;
 }
 
@@ -6885,7 +6885,7 @@ AC_galgasClassRunTimeInformation * cPtr_enumCaseMessage::galgasRTTI (void) const
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumCaseMessage ("enumCaseMessage", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumCaseMessage ("enumCaseMessage", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -6961,8 +6961,8 @@ const char * GGS_enumCaseMessage::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_enumCaseMessage::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_enumCaseMessage::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -6971,7 +6971,7 @@ AC_galgasClassRunTimeInformation * GGS_enumCaseMessage::galgasObjectRunTimeInfo 
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__enumCaseMessage ("enumCaseMessage", & kTypeDescriptor_GGS_enumCaseMessage) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__enumCaseMessage ("enumCaseMessage", & kTypeDescriptor_GGS_enumCaseMessage) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7006,7 +7006,7 @@ GGS_enumCaseMessage GGS_enumCaseMessage::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumCaseMessage::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumCaseMessage::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumCaseMessage ;
 }
 
@@ -7067,7 +7067,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumModifierCaseList ("enumModifierCaseList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumModifierCaseList ("enumModifierCaseList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -7518,7 +7518,7 @@ GGS_enumModifierCaseList GGS_enumModifierCaseList::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumModifierCaseList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumModifierCaseList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumModifierCaseList ;
 }
 
@@ -7579,7 +7579,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumModifierList ("enumModifierList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumModifierList ("enumModifierList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8030,7 +8030,7 @@ GGS_enumModifierList GGS_enumModifierList::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumModifierList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumModifierList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumModifierList ;
 }
 
@@ -8109,7 +8109,7 @@ C_galgas_class_inspector _gInspectorFor_enumCaseErrorMessage (& typeid (cPtr_enu
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_enumCaseErrorMessage::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_enumCaseErrorMessage::galgasRTTI (void) const {
   return & gClassInfoFor__enumCaseErrorMessage ;
 }
 
@@ -8127,7 +8127,7 @@ cPtr__AC_galgas_class * cPtr_enumCaseErrorMessage::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumCaseErrorMessage ("enumCaseErrorMessage", true, & kTypeDescriptor_GGS_enumCaseMessage) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumCaseErrorMessage ("enumCaseErrorMessage", true, & kTypeDescriptor_GGS_enumCaseMessage) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8220,7 +8220,7 @@ const char * GGS_enumCaseErrorMessage::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__enumCaseErrorMessage ("enumCaseErrorMessage", gClassInfoFor__enumCaseMessage, & kTypeDescriptor_GGS_enumCaseErrorMessage) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__enumCaseErrorMessage ("enumCaseErrorMessage", gClassInfoFor__enumCaseMessage, & kTypeDescriptor_GGS_enumCaseErrorMessage) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8255,7 +8255,7 @@ GGS_enumCaseErrorMessage GGS_enumCaseErrorMessage::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumCaseErrorMessage::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumCaseErrorMessage::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumCaseErrorMessage ;
 }
 
@@ -8334,7 +8334,7 @@ C_galgas_class_inspector _gInspectorFor_enumCaseWarningMessage (& typeid (cPtr_e
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_enumCaseWarningMessage::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_enumCaseWarningMessage::galgasRTTI (void) const {
   return & gClassInfoFor__enumCaseWarningMessage ;
 }
 
@@ -8352,7 +8352,7 @@ cPtr__AC_galgas_class * cPtr_enumCaseWarningMessage::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumCaseWarningMessage ("enumCaseWarningMessage", true, & kTypeDescriptor_GGS_enumCaseMessage) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumCaseWarningMessage ("enumCaseWarningMessage", true, & kTypeDescriptor_GGS_enumCaseMessage) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8445,7 +8445,7 @@ const char * GGS_enumCaseWarningMessage::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__enumCaseWarningMessage ("enumCaseWarningMessage", gClassInfoFor__enumCaseMessage, & kTypeDescriptor_GGS_enumCaseWarningMessage) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__enumCaseWarningMessage ("enumCaseWarningMessage", gClassInfoFor__enumCaseMessage, & kTypeDescriptor_GGS_enumCaseWarningMessage) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8480,7 +8480,7 @@ GGS_enumCaseWarningMessage GGS_enumCaseWarningMessage::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumCaseWarningMessage::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumCaseWarningMessage::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumCaseWarningMessage ;
 }
 
@@ -8534,7 +8534,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumMethodCaseList ("enumMethodCaseList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumMethodCaseList ("enumMethodCaseList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -8926,7 +8926,7 @@ GGS_enumMethodCaseList GGS_enumMethodCaseList::castFromObject (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumMethodCaseList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumMethodCaseList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumMethodCaseList ;
 }
 
@@ -8987,7 +8987,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumMethodList ("enumMethodList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumMethodList ("enumMethodList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -9438,7 +9438,7 @@ GGS_enumMethodList GGS_enumMethodList::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumMethodList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumMethodList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumMethodList ;
 }
 
@@ -9506,7 +9506,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumOperatorCaseList ("enumOperatorCaseList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumOperatorCaseList ("enumOperatorCaseList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10016,7 +10016,7 @@ GGS_enumOperatorCaseList GGS_enumOperatorCaseList::castFromObject (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumOperatorCaseList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumOperatorCaseList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumOperatorCaseList ;
 }
 
@@ -10077,7 +10077,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumOperatorList ("enumOperatorList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumOperatorList ("enumOperatorList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10528,7 +10528,7 @@ GGS_enumOperatorList GGS_enumOperatorList::castFromObject (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumOperatorList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumOperatorList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumOperatorList ;
 }
 
@@ -10627,7 +10627,7 @@ C_galgas_class_inspector _gInspectorFor_enumDeclaration (& typeid (cPtr_enumDecl
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_enumDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_enumDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__enumDeclaration ;
 }
 
@@ -10645,7 +10645,7 @@ cPtr__AC_galgas_class * cPtr_enumDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_enumDeclaration ("enumDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumDeclaration ("enumDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10818,7 +10818,7 @@ const char * GGS_enumDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__enumDeclaration ("enumDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_enumDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__enumDeclaration ("enumDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_enumDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -10853,7 +10853,7 @@ GGS_enumDeclaration GGS_enumDeclaration::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_enumDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_enumDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_enumDeclaration ;
 }
 
@@ -10914,7 +10914,7 @@ appendForDescription (C_String & ioString,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperTemplateList ("filewrapperTemplateList", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperTemplateList ("filewrapperTemplateList", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11365,7 +11365,7 @@ GGS_filewrapperTemplateList GGS_filewrapperTemplateList::castFromObject (C_Compi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_filewrapperTemplateList::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_filewrapperTemplateList::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_filewrapperTemplateList ;
 }
 
@@ -11452,7 +11452,7 @@ C_galgas_class_inspector _gInspectorFor_filewrapperDeclaration (& typeid (cPtr_f
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_filewrapperDeclaration::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_filewrapperDeclaration::galgasRTTI (void) const {
   return & gClassInfoFor__filewrapperDeclaration ;
 }
 
@@ -11470,7 +11470,7 @@ cPtr__AC_galgas_class * cPtr_filewrapperDeclaration::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_filewrapperDeclaration ("filewrapperDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperDeclaration ("filewrapperDeclaration", true, & kTypeDescriptor_GGS_semanticDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11595,7 +11595,7 @@ const char * GGS_filewrapperDeclaration::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_galgasClassRunTimeInformation gClassInfoFor__filewrapperDeclaration ("filewrapperDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_filewrapperDeclaration) ;
+C_galgasClassRunTimeInformationEX gClassInfoFor__filewrapperDeclaration ("filewrapperDeclaration", gClassInfoFor__semanticDeclaration, & kTypeDescriptor_GGS_filewrapperDeclaration) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11630,7 +11630,7 @@ GGS_filewrapperDeclaration GGS_filewrapperDeclaration::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_filewrapperDeclaration::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_filewrapperDeclaration::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_filewrapperDeclaration ;
 }
 
@@ -11717,7 +11717,7 @@ C_galgas_class_inspector _gInspectorFor_semanticsComponentRoot (& typeid (cPtr_s
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * cPtr_semanticsComponentRoot::galgasRTTI (void) const {
+AC_galgasClassRunTimeInformationEX * cPtr_semanticsComponentRoot::galgasRTTI (void) const {
   return & gClassInfoFor__semanticsComponentRoot ;
 }
 
@@ -11735,7 +11735,7 @@ cPtr__AC_galgas_class * cPtr_semanticsComponentRoot::makeClone (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticsComponentRoot ("semanticsComponentRoot", true, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticsComponentRoot ("semanticsComponentRoot", true, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11860,8 +11860,8 @@ const char * GGS_semanticsComponentRoot::actualTypeName (void) const {
 
 //---------------------------------------------------------------------------*
 
-AC_galgasClassRunTimeInformation * GGS_semanticsComponentRoot::galgasObjectRunTimeInfo (void) const {
-  AC_galgasClassRunTimeInformation * result = NULL ;
+AC_galgasClassRunTimeInformationEX * GGS_semanticsComponentRoot::galgasObjectRunTimeInfo (void) const {
+  AC_galgasClassRunTimeInformationEX * result = NULL ;
   if (mPointer != NULL) {
     result = mPointer->galgasRTTI () ;
   }
@@ -11870,7 +11870,7 @@ AC_galgasClassRunTimeInformation * GGS_semanticsComponentRoot::galgasObjectRunTi
 
 //---------------------------------------------------------------------------*
 
-C_galgasRootClassRunTimeInformation gClassInfoFor__semanticsComponentRoot ("semanticsComponentRoot", & kTypeDescriptor_GGS_semanticsComponentRoot) ;
+C_galgasRootClassRunTimeInformationEX gClassInfoFor__semanticsComponentRoot ("semanticsComponentRoot", & kTypeDescriptor_GGS_semanticsComponentRoot) ;
 
 //---------------------------------------------------------------------------*
 
@@ -11905,7 +11905,7 @@ GGS_semanticsComponentRoot GGS_semanticsComponentRoot::castFromObject (C_Compile
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_semanticsComponentRoot::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_semanticsComponentRoot::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_semanticsComponentRoot ;
 }
 
@@ -11925,7 +11925,7 @@ mRoot () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedLexiqueComponentMap ("parsedLexiqueComponentMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedLexiqueComponentMap ("parsedLexiqueComponentMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12327,7 +12327,7 @@ GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::castFromObject (C_C
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_parsedLexiqueComponentMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_parsedLexiqueComponentMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_parsedLexiqueComponentMap ;
 }
 
@@ -12347,7 +12347,7 @@ mRoot () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedSemanticsComponentMap ("parsedSemanticsComponentMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedSemanticsComponentMap ("parsedSemanticsComponentMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -12753,7 +12753,7 @@ GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::castFromObject 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_parsedSemanticsComponentMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_parsedSemanticsComponentMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_parsedSemanticsComponentMap ;
 }
 
@@ -12773,7 +12773,7 @@ mOptionComponentRoot () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedOptionComponentMap ("parsedOptionComponentMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedOptionComponentMap ("parsedOptionComponentMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13173,7 +13173,7 @@ GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_parsedOptionComponentMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_parsedOptionComponentMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_parsedOptionComponentMap ;
 }
 
@@ -13193,7 +13193,7 @@ mSyntaxComponentRoot () {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedSyntaxComponentMap ("parsedSyntaxComponentMap", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedSyntaxComponentMap ("parsedSyntaxComponentMap", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13593,7 +13593,7 @@ GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::castFromObject (C_Com
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_parsedSyntaxComponentMap::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_parsedSyntaxComponentMap::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_parsedSyntaxComponentMap ;
 }
 
@@ -13603,7 +13603,7 @@ const C_galgas_type_descriptor * GGS_parsedSyntaxComponentMap::typeDescriptor (v
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_parsedComponentStruct ("parsedComponentStruct", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedComponentStruct ("parsedComponentStruct", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 
@@ -13737,7 +13737,7 @@ GGS_parsedComponentStruct GGS_parsedComponentStruct::castFromObject (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_parsedComponentStruct::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_parsedComponentStruct::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_parsedComponentStruct ;
 }
 

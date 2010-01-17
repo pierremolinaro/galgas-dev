@@ -108,7 +108,7 @@ static GGS_object functionForGenericCall_transformLabelMap (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor *
+static const C_galgas_type_descriptorEX *
 kArgumentTypeList_transformLabelMap [2] = {& kTypeDescriptor_GGS_nonTerminalLabelList ,
                               & kTypeDescriptor_GGS_bool} ;
 
@@ -245,13 +245,13 @@ enterCategoryMethod__syntaxInstruction__transformInstruction (typeCategoryMethod
 //---------------------------------------------------------------------------*
 
 typeCategoryMethod__syntaxInstruction__transformInstruction
-findCategoryMethod__syntaxInstruction__transformInstruction (AC_galgasClassRunTimeInformation * inClassPtr) {
+findCategoryMethod__syntaxInstruction__transformInstruction (AC_galgasClassRunTimeInformationEX * inClassPtr) {
   typeCategoryMethod__syntaxInstruction__transformInstruction result = NULL ;
   if (inClassPtr->slotID () < gDispatchTableForMethod__syntaxInstruction__transformInstruction.count ()) {
     result = gDispatchTableForMethod__syntaxInstruction__transformInstruction (inClassPtr->slotID () COMMA_HERE) ;
   }
   if (result == NULL) {
-    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;
+    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__syntaxInstruction__transformInstruction (superClassPtr) ;
       gDispatchTableForMethod__syntaxInstruction__transformInstruction.forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;

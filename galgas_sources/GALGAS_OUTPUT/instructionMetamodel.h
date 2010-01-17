@@ -159,7 +159,7 @@ class GGS_semanticDeclarationStruct ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_syntaxInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -204,10 +204,10 @@ class GGS_syntaxInstruction : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -220,7 +220,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__syntaxInstruction ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__syntaxInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -228,7 +228,7 @@ extern C_galgasRootClassRunTimeInformation gClassInfoFor__syntaxInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -273,7 +273,7 @@ class GGS_semanticInstruction : public GGS_syntaxInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -286,7 +286,7 @@ class GGS_semanticInstruction : public GGS_syntaxInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__semanticInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__semanticInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -298,7 +298,7 @@ class elementOf_GGS_semanticInstructionList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticInstructionList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticInstructionList ;
 
 //---------------------------------------------------------------------------*
 
@@ -386,7 +386,7 @@ class GGS_semanticInstructionList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -417,7 +417,7 @@ class GGS_semanticInstructionList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticDeclaration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticDeclaration ;
 
 //---------------------------------------------------------------------------*
 
@@ -462,10 +462,10 @@ class GGS_semanticDeclaration : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -478,7 +478,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__semanticDeclaration ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__semanticDeclaration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -490,7 +490,7 @@ class elementOf_GGS_semanticDeclarationList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticDeclarationList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticDeclarationList ;
 
 //---------------------------------------------------------------------------*
 
@@ -578,7 +578,7 @@ class GGS_semanticDeclarationList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -609,7 +609,7 @@ class GGS_semanticDeclarationList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_externRoutineDeclaration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_externRoutineDeclaration ;
 
 //---------------------------------------------------------------------------*
 
@@ -662,7 +662,7 @@ class GGS_externRoutineDeclaration : public GGS_semanticDeclaration {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -675,7 +675,7 @@ class GGS_externRoutineDeclaration : public GGS_semanticDeclaration {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__externRoutineDeclaration ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__externRoutineDeclaration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -683,7 +683,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__externRoutineDeclaration ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_routinePrototypeDeclaration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_routinePrototypeDeclaration ;
 
 //---------------------------------------------------------------------------*
 
@@ -734,7 +734,7 @@ class GGS_routinePrototypeDeclaration : public GGS_externRoutineDeclaration {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -747,7 +747,7 @@ class GGS_routinePrototypeDeclaration : public GGS_externRoutineDeclaration {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__routinePrototypeDeclaration ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__routinePrototypeDeclaration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -755,7 +755,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__routinePrototypeDeclaratio
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_routineDeclaration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_routineDeclaration ;
 
 //---------------------------------------------------------------------------*
 
@@ -808,7 +808,7 @@ class GGS_routineDeclaration : public GGS_routinePrototypeDeclaration {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -821,7 +821,7 @@ class GGS_routineDeclaration : public GGS_routinePrototypeDeclaration {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__routineDeclaration ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__routineDeclaration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -829,7 +829,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__routineDeclaration ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_externFunctionDeclaration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_externFunctionDeclaration ;
 
 //---------------------------------------------------------------------------*
 
@@ -886,7 +886,7 @@ class GGS_externFunctionDeclaration : public GGS_semanticDeclaration {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -899,7 +899,7 @@ class GGS_externFunctionDeclaration : public GGS_semanticDeclaration {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__externFunctionDeclaration ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__externFunctionDeclaration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -907,7 +907,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__externFunctionDeclaration 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_functionDeclaration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_functionDeclaration ;
 
 //---------------------------------------------------------------------------*
 
@@ -962,7 +962,7 @@ class GGS_functionDeclaration : public GGS_externFunctionDeclaration {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -975,7 +975,7 @@ class GGS_functionDeclaration : public GGS_externFunctionDeclaration {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__functionDeclaration ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__functionDeclaration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -983,7 +983,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__functionDeclaration ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_onceFunctionDeclaration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_onceFunctionDeclaration ;
 
 //---------------------------------------------------------------------------*
 
@@ -1040,7 +1040,7 @@ class GGS_onceFunctionDeclaration : public GGS_semanticDeclaration {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1053,7 +1053,7 @@ class GGS_onceFunctionDeclaration : public GGS_semanticDeclaration {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__onceFunctionDeclaration ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__onceFunctionDeclaration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1061,7 +1061,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__onceFunctionDeclaration ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_localVariableDeclaration ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_localVariableDeclaration ;
 
 //---------------------------------------------------------------------------*
 
@@ -1115,7 +1115,7 @@ class GGS_localVariableDeclaration : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1128,7 +1128,7 @@ class GGS_localVariableDeclaration : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__localVariableDeclaration ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__localVariableDeclaration ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1136,7 +1136,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__localVariableDeclaration ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_localVariableDeclarationWithInitialization ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_localVariableDeclarationWithInitialization ;
 
 //---------------------------------------------------------------------------*
 
@@ -1194,7 +1194,7 @@ class GGS_localVariableDeclarationWithInitialization : public GGS_semanticInstru
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1207,7 +1207,7 @@ class GGS_localVariableDeclarationWithInitialization : public GGS_semanticInstru
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__localVariableDeclarationWithInitialization ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__localVariableDeclarationWithInitialization ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1215,7 +1215,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__localVariableDeclarationWi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_localVariableDeclarationWithAssignment ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_localVariableDeclarationWithAssignment ;
 
 //---------------------------------------------------------------------------*
 
@@ -1271,7 +1271,7 @@ class GGS_localVariableDeclarationWithAssignment : public GGS_semanticInstructio
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1284,7 +1284,7 @@ class GGS_localVariableDeclarationWithAssignment : public GGS_semanticInstructio
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__localVariableDeclarationWithAssignment ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__localVariableDeclarationWithAssignment ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1292,7 +1292,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__localVariableDeclarationWi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_localConstantDeclarationWithSourceExpression ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_localConstantDeclarationWithSourceExpression ;
 
 //---------------------------------------------------------------------------*
 
@@ -1348,7 +1348,7 @@ class GGS_localConstantDeclarationWithSourceExpression : public GGS_semanticInst
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1361,7 +1361,7 @@ class GGS_localConstantDeclarationWithSourceExpression : public GGS_semanticInst
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__localConstantDeclarationWithSourceExpression ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__localConstantDeclarationWithSourceExpression ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1369,7 +1369,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__localConstantDeclarationWi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_localConstantDeclarationWithConstructorCall ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_localConstantDeclarationWithConstructorCall ;
 
 //---------------------------------------------------------------------------*
 
@@ -1427,7 +1427,7 @@ class GGS_localConstantDeclarationWithConstructorCall : public GGS_semanticInstr
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1440,7 +1440,7 @@ class GGS_localConstantDeclarationWithConstructorCall : public GGS_semanticInstr
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__localConstantDeclarationWithConstructorCall ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__localConstantDeclarationWithConstructorCall ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1448,7 +1448,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__localConstantDeclarationWi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_assignmentInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_assignmentInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -1504,7 +1504,7 @@ class GGS_assignmentInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1517,7 +1517,7 @@ class GGS_assignmentInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__assignmentInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__assignmentInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1525,7 +1525,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__assignmentInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_appendInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_appendInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -1581,7 +1581,7 @@ class GGS_appendInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1594,7 +1594,7 @@ class GGS_appendInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__appendInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__appendInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1602,7 +1602,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__appendInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_sendInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sendInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -1654,7 +1654,7 @@ class GGS_sendInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1667,7 +1667,7 @@ class GGS_sendInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__sendInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__sendInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1675,7 +1675,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__sendInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_foreachInstructionEnumeratedObjectElement ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstructionEnumeratedObjectElement ;
 
 //---------------------------------------------------------------------------*
 
@@ -1720,10 +1720,10 @@ class GGS_foreachInstructionEnumeratedObjectElement : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1736,7 +1736,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__foreachInstructionEnumeratedObjectElement ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__foreachInstructionEnumeratedObjectElement ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1744,7 +1744,7 @@ extern C_galgasRootClassRunTimeInformation gClassInfoFor__foreachInstructionEnum
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_foreachInstructionJoker ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstructionJoker ;
 
 //---------------------------------------------------------------------------*
 
@@ -1793,7 +1793,7 @@ class GGS_foreachInstructionJoker : public GGS_foreachInstructionEnumeratedObjec
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1806,7 +1806,7 @@ class GGS_foreachInstructionJoker : public GGS_foreachInstructionEnumeratedObjec
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__foreachInstructionJoker ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__foreachInstructionJoker ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1814,7 +1814,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__foreachInstructionJoker ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_foreachInstructionEnumeratedConstant ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstructionEnumeratedConstant ;
 
 //---------------------------------------------------------------------------*
 
@@ -1867,7 +1867,7 @@ class GGS_foreachInstructionEnumeratedConstant : public GGS_foreachInstructionEn
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1880,7 +1880,7 @@ class GGS_foreachInstructionEnumeratedConstant : public GGS_foreachInstructionEn
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__foreachInstructionEnumeratedConstant ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__foreachInstructionEnumeratedConstant ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1892,7 +1892,7 @@ class elementOf_GGS_foreachInstructionEnumeratedObjectElementList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_foreachInstructionEnumeratedObjectElementList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstructionEnumeratedObjectElementList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1980,7 +1980,7 @@ class GGS_foreachInstructionEnumeratedObjectElementList : public AC_galgas_list 
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2015,7 +2015,7 @@ class elementOf_GGS_foreachInstructionEnumeratedObjectList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_foreachInstructionEnumeratedObjectList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstructionEnumeratedObjectList ;
 
 //---------------------------------------------------------------------------*
 
@@ -2167,7 +2167,7 @@ class GGS_foreachInstructionEnumeratedObjectList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2202,7 +2202,7 @@ class GGS_foreachInstructionEnumeratedObjectList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_foreachInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2266,7 +2266,7 @@ class GGS_foreachInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2279,7 +2279,7 @@ class GGS_foreachInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__foreachInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__foreachInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2291,7 +2291,7 @@ class elementOf_GGS_ifBranchList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_ifBranchList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_ifBranchList ;
 
 //---------------------------------------------------------------------------*
 
@@ -2395,7 +2395,7 @@ class GGS_ifBranchList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2427,7 +2427,7 @@ class GGS_ifBranchList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_ifInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_ifInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2481,7 +2481,7 @@ class GGS_ifInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2494,7 +2494,7 @@ class GGS_ifInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__ifInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__ifInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2502,7 +2502,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__ifInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_methodCallInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_methodCallInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2558,7 +2558,7 @@ class GGS_methodCallInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2571,7 +2571,7 @@ class GGS_methodCallInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__methodCallInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__methodCallInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2579,7 +2579,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__methodCallInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_modifierCallInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_modifierCallInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2637,7 +2637,7 @@ class GGS_modifierCallInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2650,7 +2650,7 @@ class GGS_modifierCallInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__modifierCallInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__modifierCallInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2658,7 +2658,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__modifierCallInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_errorInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_errorInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2714,7 +2714,7 @@ class GGS_errorInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2727,7 +2727,7 @@ class GGS_errorInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__errorInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__errorInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2735,7 +2735,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__errorInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_warningInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_warningInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2789,7 +2789,7 @@ class GGS_warningInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2802,7 +2802,7 @@ class GGS_warningInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__warningInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__warningInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2810,7 +2810,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__warningInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_routineCallInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_routineCallInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -2864,7 +2864,7 @@ class GGS_routineCallInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2877,7 +2877,7 @@ class GGS_routineCallInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__routineCallInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__routineCallInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2885,7 +2885,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__routineCallInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_matchEntry ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_matchEntry ;
 
 //---------------------------------------------------------------------------*
 
@@ -2930,10 +2930,10 @@ class GGS_matchEntry : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2946,7 +2946,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__matchEntry ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__matchEntry ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2958,7 +2958,7 @@ class elementOf_GGS_matchEntryList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_matchEntryList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_matchEntryList ;
 
 //---------------------------------------------------------------------------*
 
@@ -3046,7 +3046,7 @@ class GGS_matchEntryList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3077,7 +3077,7 @@ class GGS_matchEntryList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_constantMatchEntry ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_constantMatchEntry ;
 
 //---------------------------------------------------------------------------*
 
@@ -3128,7 +3128,7 @@ class GGS_constantMatchEntry : public GGS_matchEntry {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3141,7 +3141,7 @@ class GGS_constantMatchEntry : public GGS_matchEntry {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__constantMatchEntry ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__constantMatchEntry ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3149,7 +3149,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__constantMatchEntry ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_classMatchEntry ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classMatchEntry ;
 
 //---------------------------------------------------------------------------*
 
@@ -3204,7 +3204,7 @@ class GGS_classMatchEntry : public GGS_matchEntry {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3217,7 +3217,7 @@ class GGS_classMatchEntry : public GGS_matchEntry {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__classMatchEntry ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__classMatchEntry ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3229,7 +3229,7 @@ class elementOf_GGS_matchInstructionBranchList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_matchInstructionBranchList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_matchInstructionBranchList ;
 
 //---------------------------------------------------------------------------*
 
@@ -3333,7 +3333,7 @@ class GGS_matchInstructionBranchList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3365,7 +3365,7 @@ class GGS_matchInstructionBranchList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_matchInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_matchInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3421,7 +3421,7 @@ class GGS_matchInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3434,7 +3434,7 @@ class GGS_matchInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__matchInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__matchInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3446,7 +3446,7 @@ class elementOf_GGS_castInstructionBranchList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_castInstructionBranchList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_castInstructionBranchList ;
 
 //---------------------------------------------------------------------------*
 
@@ -3598,7 +3598,7 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3633,7 +3633,7 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_elseOrDefaultForCastInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_elseOrDefaultForCastInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3678,10 +3678,10 @@ class GGS_elseOrDefaultForCastInstruction : public AC_galgas_class {
   #endif
 
 //--- Galgas RTTI
-AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
+AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3694,7 +3694,7 @@ AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasRootClassRunTimeInformation gClassInfoFor__elseOrDefaultForCastInstruction ;
+extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__elseOrDefaultForCastInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3702,7 +3702,7 @@ extern C_galgasRootClassRunTimeInformation gClassInfoFor__elseOrDefaultForCastIn
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_elseForCastInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_elseForCastInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3753,7 +3753,7 @@ class GGS_elseForCastInstruction : public GGS_elseOrDefaultForCastInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3766,7 +3766,7 @@ class GGS_elseForCastInstruction : public GGS_elseOrDefaultForCastInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__elseForCastInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__elseForCastInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3774,7 +3774,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__elseForCastInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_defaultForCastInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_defaultForCastInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3825,7 +3825,7 @@ class GGS_defaultForCastInstruction : public GGS_elseOrDefaultForCastInstruction
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3838,7 +3838,7 @@ class GGS_defaultForCastInstruction : public GGS_elseOrDefaultForCastInstruction
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__defaultForCastInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__defaultForCastInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3846,7 +3846,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__defaultForCastInstruction 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_castInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_castInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3902,7 +3902,7 @@ class GGS_castInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3915,7 +3915,7 @@ class GGS_castInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__castInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__castInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -3923,7 +3923,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__castInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_addInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_addInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -3979,7 +3979,7 @@ class GGS_addInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -3992,7 +3992,7 @@ class GGS_addInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__addInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__addInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4000,7 +4000,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__addInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_removeInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_removeInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4056,7 +4056,7 @@ class GGS_removeInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4069,7 +4069,7 @@ class GGS_removeInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__removeInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__removeInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4077,7 +4077,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__removeInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_incrementInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_incrementInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4129,7 +4129,7 @@ class GGS_incrementInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4142,7 +4142,7 @@ class GGS_incrementInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__incrementInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__incrementInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4150,7 +4150,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__incrementInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_decrementInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_decrementInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4202,7 +4202,7 @@ class GGS_decrementInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4215,7 +4215,7 @@ class GGS_decrementInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__decrementInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__decrementInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4223,7 +4223,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__decrementInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_loopInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_loopInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4281,7 +4281,7 @@ class GGS_loopInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4294,7 +4294,7 @@ class GGS_loopInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__loopInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__loopInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4302,7 +4302,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__loopInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_messageInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_messageInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4354,7 +4354,7 @@ class GGS_messageInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4367,7 +4367,7 @@ class GGS_messageInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__messageInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__messageInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4379,7 +4379,7 @@ class elementOf_GGS_logList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_logList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_logList ;
 
 //---------------------------------------------------------------------------*
 
@@ -4483,7 +4483,7 @@ class GGS_logList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4515,7 +4515,7 @@ class GGS_logList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_logInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_logInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4567,7 +4567,7 @@ class GGS_logInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4580,7 +4580,7 @@ class GGS_logInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__logInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__logInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4588,7 +4588,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__logInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_grammarInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_grammarInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4648,7 +4648,7 @@ class GGS_grammarInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4661,7 +4661,7 @@ class GGS_grammarInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__grammarInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__grammarInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4669,7 +4669,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__grammarInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_withInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_withInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4733,7 +4733,7 @@ class GGS_withInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4746,7 +4746,7 @@ class GGS_withInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__withInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__withInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4758,7 +4758,7 @@ class elementOf_GGS_switchBranches ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_switchBranches ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_switchBranches ;
 
 //---------------------------------------------------------------------------*
 
@@ -4862,7 +4862,7 @@ class GGS_switchBranches : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4894,7 +4894,7 @@ class GGS_switchBranches : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_switchInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_switchInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -4948,7 +4948,7 @@ class GGS_switchInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -4961,7 +4961,7 @@ class GGS_switchInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__switchInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__switchInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -4969,7 +4969,7 @@ extern C_galgasClassRunTimeInformation gClassInfoFor__switchInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_typeMethodInstruction ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeMethodInstruction ;
 
 //---------------------------------------------------------------------------*
 
@@ -5025,7 +5025,7 @@ class GGS_typeMethodInstruction : public GGS_semanticInstruction {
   #endif
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5038,7 +5038,7 @@ class GGS_typeMethodInstruction : public GGS_semanticInstruction {
 
 //---------------------------------------------------------------------------*
 
-extern C_galgasClassRunTimeInformation gClassInfoFor__typeMethodInstruction ;
+extern C_galgasClassRunTimeInformationEX gClassInfoFor__typeMethodInstruction ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -5050,7 +5050,7 @@ class elementOf_GGS_abstractCategoryMethodList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractCategoryMethodList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractCategoryMethodList ;
 
 //---------------------------------------------------------------------------*
 
@@ -5154,7 +5154,7 @@ class GGS_abstractCategoryMethodList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5186,7 +5186,7 @@ class GGS_abstractCategoryMethodList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractCategoryMethodListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractCategoryMethodListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -5247,7 +5247,7 @@ class GGS_abstractCategoryMethodListMap : public AC_galgas_listmap {
     public : const GGS_abstractCategoryMethodList & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5268,7 +5268,7 @@ class elementOf_GGS_categoryMethodList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_categoryMethodList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_categoryMethodList ;
 
 //---------------------------------------------------------------------------*
 
@@ -5388,7 +5388,7 @@ class GGS_categoryMethodList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5421,7 +5421,7 @@ class GGS_categoryMethodList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_categoryMethodListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_categoryMethodListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -5483,7 +5483,7 @@ class GGS_categoryMethodListMap : public AC_galgas_listmap {
     public : const GGS_categoryMethodList & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5504,7 +5504,7 @@ class elementOf_GGS_overridingCategoryMethodList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_overridingCategoryMethodList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridingCategoryMethodList ;
 
 //---------------------------------------------------------------------------*
 
@@ -5624,7 +5624,7 @@ class GGS_overridingCategoryMethodList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5657,7 +5657,7 @@ class GGS_overridingCategoryMethodList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_overridingCategoryMethodListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridingCategoryMethodListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -5719,7 +5719,7 @@ class GGS_overridingCategoryMethodListMap : public AC_galgas_listmap {
     public : const GGS_overridingCategoryMethodList & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5740,7 +5740,7 @@ class elementOf_GGS_abstractCategoryReaderList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractCategoryReaderList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractCategoryReaderList ;
 
 //---------------------------------------------------------------------------*
 
@@ -5860,7 +5860,7 @@ class GGS_abstractCategoryReaderList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5893,7 +5893,7 @@ class GGS_abstractCategoryReaderList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_abstractCategoryReaderListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractCategoryReaderListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -5955,7 +5955,7 @@ class GGS_abstractCategoryReaderListMap : public AC_galgas_listmap {
     public : const GGS_abstractCategoryReaderList & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -5976,7 +5976,7 @@ class elementOf_GGS_categoryReaderList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_categoryReaderList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_categoryReaderList ;
 
 //---------------------------------------------------------------------------*
 
@@ -6128,7 +6128,7 @@ class GGS_categoryReaderList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -6163,7 +6163,7 @@ class GGS_categoryReaderList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_categoryReaderListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_categoryReaderListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -6227,7 +6227,7 @@ class GGS_categoryReaderListMap : public AC_galgas_listmap {
     public : const GGS_categoryReaderList & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -6248,7 +6248,7 @@ class elementOf_GGS_overridingCategoryReaderList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_overridingCategoryReaderList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridingCategoryReaderList ;
 
 //---------------------------------------------------------------------------*
 
@@ -6400,7 +6400,7 @@ class GGS_overridingCategoryReaderList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -6435,7 +6435,7 @@ class GGS_overridingCategoryReaderList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_overridingCategoryReaderListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridingCategoryReaderListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -6499,7 +6499,7 @@ class GGS_overridingCategoryReaderListMap : public AC_galgas_listmap {
     public : const GGS_overridingCategoryReaderList & _object (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -6540,7 +6540,7 @@ class cPtr_syntaxInstruction : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -6573,7 +6573,7 @@ class cPtr_semanticInstruction : public cPtr_syntaxInstruction {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -6636,7 +6636,7 @@ class cPtr_semanticDeclaration : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -6708,7 +6708,7 @@ class cPtr_externRoutineDeclaration : public cPtr_semanticDeclaration {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6749,7 +6749,7 @@ class cPtr_routinePrototypeDeclaration : public cPtr_externRoutineDeclaration {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6792,7 +6792,7 @@ class cPtr_routineDeclaration : public cPtr_routinePrototypeDeclaration {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6839,7 +6839,7 @@ class cPtr_externFunctionDeclaration : public cPtr_semanticDeclaration {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6884,7 +6884,7 @@ class cPtr_functionDeclaration : public cPtr_externFunctionDeclaration {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6931,7 +6931,7 @@ class cPtr_onceFunctionDeclaration : public cPtr_semanticDeclaration {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -6975,7 +6975,7 @@ class cPtr_localVariableDeclaration : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7023,7 +7023,7 @@ class cPtr_localVariableDeclarationWithInitialization : public cPtr_semanticInst
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7069,7 +7069,7 @@ class cPtr_localVariableDeclarationWithAssignment : public cPtr_semanticInstruct
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7115,7 +7115,7 @@ class cPtr_localConstantDeclarationWithSourceExpression : public cPtr_semanticIn
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7163,7 +7163,7 @@ class cPtr_localConstantDeclarationWithConstructorCall : public cPtr_semanticIns
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7209,7 +7209,7 @@ class cPtr_assignmentInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7255,7 +7255,7 @@ class cPtr_appendInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7297,7 +7297,7 @@ class cPtr_sendInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7331,7 +7331,7 @@ class cPtr_foreachInstructionEnumeratedObjectElement : public cPtr__AC_galgas_cl
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -7367,7 +7367,7 @@ class cPtr_foreachInstructionJoker : public cPtr_foreachInstructionEnumeratedObj
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -7407,7 +7407,7 @@ class cPtr_foreachInstructionEnumeratedConstant : public cPtr_foreachInstruction
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7533,7 +7533,7 @@ class cPtr_foreachInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7611,7 +7611,7 @@ class cPtr_ifInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7657,7 +7657,7 @@ class cPtr_methodCallInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7705,7 +7705,7 @@ class cPtr_modifierCallInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7751,7 +7751,7 @@ class cPtr_errorInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7795,7 +7795,7 @@ class cPtr_warningInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7839,7 +7839,7 @@ class cPtr_routineCallInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7873,7 +7873,7 @@ class cPtr_matchEntry : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -7943,7 +7943,7 @@ class cPtr_constantMatchEntry : public cPtr_matchEntry {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -7988,7 +7988,7 @@ class cPtr_classMatchEntry : public cPtr_matchEntry {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8068,7 +8068,7 @@ class cPtr_matchInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8142,7 +8142,7 @@ class cPtr_elseOrDefaultForCastInstruction : public cPtr__AC_galgas_class {
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -8180,7 +8180,7 @@ class cPtr_elseForCastInstruction : public cPtr_elseOrDefaultForCastInstruction 
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8221,7 +8221,7 @@ class cPtr_defaultForCastInstruction : public cPtr_elseOrDefaultForCastInstructi
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8267,7 +8267,7 @@ class cPtr_castInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8313,7 +8313,7 @@ class cPtr_addInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8359,7 +8359,7 @@ class cPtr_removeInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8401,7 +8401,7 @@ class cPtr_incrementInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8443,7 +8443,7 @@ class cPtr_decrementInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8491,7 +8491,7 @@ class cPtr_loopInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8533,7 +8533,7 @@ class cPtr_messageInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8609,7 +8609,7 @@ class cPtr_logInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8659,7 +8659,7 @@ class cPtr_grammarInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8713,7 +8713,7 @@ class cPtr_withInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8791,7 +8791,7 @@ class cPtr_switchInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -8837,7 +8837,7 @@ class cPtr_typeMethodInstruction : public cPtr_semanticInstruction {
   isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 
 //--- Make clone
   public : virtual cPtr__AC_galgas_class * makeClone (void) const ;
@@ -9071,7 +9071,7 @@ class elementOf_GGS_overridingCategoryReaderList : public AC_galgas_list::cListE
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_semanticDeclarationStruct ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticDeclarationStruct ;
 
 //---------------------------------------------------------------------------*
 
@@ -9099,7 +9099,7 @@ class GGS_semanticDeclarationStruct : public GGS__root {
 //--- Reader 'description'
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 

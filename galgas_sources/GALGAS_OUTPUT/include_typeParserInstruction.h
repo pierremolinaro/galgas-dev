@@ -46,7 +46,7 @@ public : virtual bool isSyntacticInstruction (void) const { return true ; }
                         const PMSInt32 inIndentation) const ;
 
 //--- Galgas RTTI
-  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;
+  public : virtual AC_galgasClassRunTimeInformationEX * galgasRTTI (void) const ;
 } ;
 
 //---------------------------------------------------------------------------*

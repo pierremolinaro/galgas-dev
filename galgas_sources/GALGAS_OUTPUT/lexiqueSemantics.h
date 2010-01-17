@@ -62,7 +62,7 @@ class GGS_lexiqueAnalysisContext ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTypeEnum ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTypeEnum ;
 
 //---------------------------------------------------------------------------*
 
@@ -89,7 +89,7 @@ class GGS_lexicalTypeEnum : public GGS__root {
   public : bool isBuilt (void) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -164,7 +164,7 @@ class elementOf_GGS_lexicalTypeList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTypeList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTypeList ;
 
 //---------------------------------------------------------------------------*
 
@@ -252,7 +252,7 @@ class GGS_lexicalTypeList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -285,7 +285,7 @@ class GGS_lexicalTypeList : public AC_galgas_list {
 
 class elementOf_GGS_lexicalTypeMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTypeMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTypeMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -302,7 +302,7 @@ class GGS_lexicalTypeMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_lexicalTypeMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -394,7 +394,7 @@ class GGS_lexicalTypeMap : public AC_galgas_map {
 
 class elementOf_GGS_lexicalAttributeMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalAttributeMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -411,7 +411,7 @@ class GGS_lexicalAttributeMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_lexicalAttributeMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -505,7 +505,7 @@ class elementOf_GGS_lexicalSentValueList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalSentValueList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSentValueList ;
 
 //---------------------------------------------------------------------------*
 
@@ -609,7 +609,7 @@ class GGS_lexicalSentValueList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -643,7 +643,7 @@ class GGS_lexicalSentValueList : public AC_galgas_list {
 
 class elementOf_GGS_terminalMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -660,7 +660,7 @@ class GGS_terminalMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_terminalMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -754,7 +754,7 @@ class elementOf_GGS_terminalList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_terminalList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalList ;
 
 //---------------------------------------------------------------------------*
 
@@ -906,7 +906,7 @@ class GGS_terminalList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -943,7 +943,7 @@ class GGS_terminalList : public AC_galgas_list {
 
 class elementOf_GGS_lexicalExplicitTokenListMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExplicitTokenListMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExplicitTokenListMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -960,7 +960,7 @@ class GGS_lexicalExplicitTokenListMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1058,7 +1058,7 @@ class GGS_lexicalExplicitTokenListMap : public AC_galgas_map {
 class elementOf_GGS_tokenSortedlist ;
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_tokenSortedlist ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_tokenSortedlist ;
 
 //---------------------------------------------------------------------------*
 
@@ -1130,7 +1130,7 @@ class GGS_tokenSortedlist : public AC_galgas_sortedlist {
 //--- Reader 'description
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1164,7 +1164,7 @@ class GGS_tokenSortedlist : public AC_galgas_sortedlist {
 
 class elementOf_GGS_lexicalExplicitTokenListMapMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalExplicitTokenListMapMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExplicitTokenListMapMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -1181,7 +1181,7 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1287,7 +1287,7 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_galgas_map {
 
 class elementOf_GGS_lexicalMessageMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalMessageMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalMessageMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -1304,7 +1304,7 @@ class GGS_lexicalMessageMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_lexicalMessageMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1403,7 +1403,7 @@ class elementOf_GGS_lexicalRoutineFormalArgumentList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineFormalArgumentList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineFormalArgumentList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1523,7 +1523,7 @@ class GGS_lexicalRoutineFormalArgumentList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1558,7 +1558,7 @@ class GGS_lexicalRoutineFormalArgumentList : public AC_galgas_list {
 
 class elementOf_GGS_lexicalRoutineMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalRoutineMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -1575,7 +1575,7 @@ class GGS_lexicalRoutineMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_lexicalRoutineMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1684,7 +1684,7 @@ class elementOf_GGS_lexicalFunctionFormalArgumentList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionFormalArgumentList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionFormalArgumentList ;
 
 //---------------------------------------------------------------------------*
 
@@ -1788,7 +1788,7 @@ class GGS_lexicalFunctionFormalArgumentList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1822,7 +1822,7 @@ class GGS_lexicalFunctionFormalArgumentList : public AC_galgas_list {
 
 class elementOf_GGS_lexicalFunctionMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalFunctionMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -1839,7 +1839,7 @@ class GGS_lexicalFunctionMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_lexicalFunctionMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -1948,7 +1948,7 @@ class elementOf_GGS_templateDelimitorList ;
 
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_templateDelimitorList ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_templateDelimitorList ;
 
 //---------------------------------------------------------------------------*
 
@@ -2068,7 +2068,7 @@ class GGS_templateDelimitorList : public AC_galgas_list {
                               COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2103,7 +2103,7 @@ class GGS_templateDelimitorList : public AC_galgas_list {
 
 class elementOf_GGS_styleMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_styleMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_styleMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -2120,7 +2120,7 @@ class GGS_styleMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_styleMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2217,7 +2217,7 @@ class GGS_styleMap : public AC_galgas_map {
 
 class elementOf_GGS_lexicalTagMap ;
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexicalTagMap ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTagMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -2234,7 +2234,7 @@ class GGS_lexicalTagMap : public AC_galgas_map {
   public : GGS_bool operator_isNotEqual (const GGS_lexicalTagMap & inOperand) const ;
 
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
@@ -2904,7 +2904,7 @@ class elementOf_GGS_lexicalTagMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GGS_lexiqueAnalysisContext ;
+extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexiqueAnalysisContext ;
 
 //---------------------------------------------------------------------------*
 
@@ -2932,7 +2932,7 @@ class GGS_lexiqueAnalysisContext : public GGS__root {
 //--- Reader 'description'
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
 //--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
