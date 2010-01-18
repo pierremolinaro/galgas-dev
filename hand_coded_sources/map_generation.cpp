@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate map declaration and implementation                              *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -1516,13 +1516,25 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (isBuilt ()) {\n"
                "    s.appendSigned (count ()) ;\n"
                "    s << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
-               "    cElement * p = firstObject () ;\n"
-               "    PMSInt32 elementID = 0 ;\n"
-               "    while (p != NULL) {\n"
-               "      macroValidPointer (p) ;\n"
-               "      p->appendForMapDescription (elementID, s, inIndentation) ;\n"
-               "      p = p->nextObject () ;\n"
-               "      elementID ++ ;\n"
+               "    cMapRoot * mapRoot = mSharedMapRoot ;\n"
+               "    PMSInt32 level = 0 ;\n"
+               "    while (mapRoot != NULL) {\n"
+               "      if (level > 0) {\n"
+               "        s << \"\\n\" ;\n"
+               "        s.writeStringMultiple (\"| \", inIndentation) ;\n"
+               "        s << \"------- level \" << cStringWithSigned (level) ;\n"
+               "      }\n"
+               "      macroValidPointer (mapRoot) ;\n"
+               "      cElement * p = (cElement *) mapRoot->mFirstItem ;\n"
+               "      PMSInt32 elementID = 0 ;\n"
+               "      while (p != NULL) {\n"
+               "        macroValidPointer (p) ;\n"
+               "        p->appendForMapDescription (elementID, s, inIndentation) ;\n"
+               "        p = p->nextObject () ;\n"
+               "        elementID ++ ;\n"
+               "      }\n"
+               "      mapRoot = mapRoot->mNextMap ;\n"
+               "      level ++ ;\n"
                "    }\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"

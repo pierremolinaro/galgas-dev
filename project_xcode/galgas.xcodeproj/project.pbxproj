@@ -543,9 +543,7 @@
 		CF6E113706269BEC001B909F /* GGS_lsint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E112F06269BEC001B909F /* GGS_lsint.cpp */; };
 		CF6E113906269BEC001B909F /* GGS_sint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E113106269BEC001B909F /* GGS_sint.cpp */; };
 		CF73B20F1103544D001FB104 /* GALGAS_sint_36__34_.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1BCEA410D2B68000A0D648 /* GALGAS_sint_36__34_.cpp */; };
-		CF73B21211035473001FB104 /* GALGAS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1BCEE210D2C1A300A0D648 /* GALGAS_string.cpp */; };
 		CF73B2C911036813001FB104 /* C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF73B2C711036813001FB104 /* C_Array.cpp */; };
-		CF73B3051103770E001FB104 /* GALGAS_stringlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF73B3031103770E001FB104 /* GALGAS_stringlist.cpp */; };
 		CF7A1430058CFF87007126C1 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF7A1431058CFF88007126C1 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF7A1436058CFF94007126C1 /* galgas_start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53806057A53A700854C83 /* galgas_start.cpp */; };
@@ -4229,9 +4227,7 @@
 				CF2DECA9110231D900AE8D35 /* GALGAS_object.cpp in Sources */,
 				CF2DED1511023C5C00AE8D35 /* GALGAS_sint.cpp in Sources */,
 				CFB61BAA1103195600FB8A6B /* GALGAS_sint_36__34_.cpp in Sources */,
-				CF73B21211035473001FB104 /* GALGAS_string.cpp in Sources */,
 				CF73B2C911036813001FB104 /* C_Array.cpp in Sources */,
-				CF73B3051103770E001FB104 /* GALGAS_stringlist.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

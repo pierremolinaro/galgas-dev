@@ -3,6 +3,7 @@ semantics testsuite_map :
 map @aMap {
   @uint value feature setter ;
   insert insertKey error message "the '%K' key is already inserted" ;
+  search searchKey error message "the '%K' key is not inserted" ;
 }
 
 routine testsuite_map :
@@ -11,6 +12,17 @@ routine testsuite_map :
   [!?m insertKey ![@lstring new !"g" !here] !37] ;
   log m ;
   [!?m setValueForKey !56 !"g"] ;
+  log m ;
+  @aMap mm [mapWithMapToOverride !m] ;
+  log mm ;
+  @uint v ;
+  [mm searchKey ![@lstring new !"g" !here] ?v] ;
+  log v ; # Should be 56
+  [!?mm insertKey ![@lstring new !"g" !here] !11] ;
+  log mm ;
+  [mm searchKey ![@lstring new !"g" !here] ?v] ;
+  log v ; # Should be 11
+  m := [mm overriddenMap] ;
   log m ;
 end routine ;
 
