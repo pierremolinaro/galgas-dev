@@ -168,21 +168,25 @@ end reader ;
 once constructorMapFor_string ->@constructorMap outMap :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"stringWithVersionString" ![@stringGalgasType new] !false ;
-  enterConstructorWithoutArgument !?outMap !"stringWithSourceFilePath" ![@stringGalgasType new] !false ;
+  enterConstructorWithoutArgument !?outMap !"stringWithSourceFilePath" ![@stringGalgasType new] !true ;
   enterConstructorWithoutArgument !?outMap !"stringWithCurrentDirectory" ![@stringGalgasType new] !false ;
+  enterConstructorWithoutArgument !?outMap !"stringWithMainFirstArgument" ![@stringGalgasType new] !false ;
   @typeList t [emptyList] ;
   t += ![@charGalgasType new] ;
   t += ![@uintGalgasType new] ;
   [!?outMap insertKey ![@lstring new !"stringWithSequenceOfCharacters" !here] !t !false ![@stringGalgasType new]] ;
-  enterConstructorWithStringArgument !?outMap !"stringWithContentsOfFile" ![@stringGalgasType new] !false ;
+  enterConstructorWithStringArgument !?outMap !"stringWithContentsOfFile" ![@stringGalgasType new] !true ;
   enterConstructorWithoutArgument !?outMap !"stringWithCurrentDateTime" ![@stringGalgasType new] !false ;
-  enterConstructorWithStringArgument !?outMap !"stringWithEnvironmentVariable" ![@stringGalgasType new] !false ;
+  enterConstructorWithStringArgument !?outMap !"stringWithEnvironmentVariable" ![@stringGalgasType new] !true ;
   enterConstructorWithStringArgument !?outMap !"stringWithEnvironmentVariableOrEmpty" ![@stringGalgasType new] !false ;
   enterConstructorWithoutArgument !?outMap !"CppLineComment" ![@stringGalgasType new] !false ;
   enterConstructorWithStringArgument !?outMap !"CppTitleComment" ![@stringGalgasType new] !false ;
   enterConstructorWithStringArgument !?outMap !"CppString" ![@stringGalgasType new] !false ;
   enterConstructorWithCharArgument !?outMap !"CppChar" ![@stringGalgasType new] !false ;
-  [!?outMap insertKey ![@lstring new !"componentsJoinedByString" !here] ![@typeList listWithValue !build_stringlist_type []] !false ![@stringGalgasType new]] ;
+  t := [@typeList emptyList] ;
+  t += !build_stringlist_type [] ;
+  t += ![@stringGalgasType new] ;
+  [!?outMap insertKey ![@lstring new !"componentsJoinedByString" !here] !t !false ![@stringGalgasType new]] ;
 end once ;
 
 #---------------------------------------------------------------------------*
