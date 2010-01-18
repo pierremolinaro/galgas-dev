@@ -17,11 +17,11 @@ routine testsuite_map :
   log mm ;
   @uint v ;
   [mm searchKey ![@lstring new !"g" !here] ?v] ;
-  log v ; # Should be 56
+  log v ; # Displays 56
   [!?mm insertKey ![@lstring new !"g" !here] !11] ;
   log mm ;
   [mm searchKey ![@lstring new !"g" !here] ?v] ;
-  log v ; # Should be 11
+  log v ; # Displays 11
   m := [mm overriddenMap] ;
   log m ;
 end routine ;
