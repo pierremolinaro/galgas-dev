@@ -448,6 +448,10 @@ end reader ;
 once readerMapFor_double ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !true ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -822,6 +826,7 @@ end once ;
 
 override reader @mapType readerMap ->@readerMap outMap :
   outMap := readerMapFor_map [] ;
+  enterBaseReaderWithoutArgument !?outMap !"overriddenMap" !self !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*

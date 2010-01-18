@@ -202,6 +202,24 @@ LOGGING m: <map @aMap 1 object
 |-key 0:<@lstring:'g' at '':1:1>
 |-value 0:<@uint:56>
 >
+LOGGING mm: <map @aMap 1 object 
+------- level 1
+|-key 0:<@lstring:'g' at '':1:1>
+|-value 0:<@uint:56>
+>
+LOGGING v: <@uint:56>
+LOGGING mm: <map @aMap 2 objects 
+|-key 0:<@lstring:'g' at '':1:1>
+|-value 0:<@uint:11>
+------- level 1
+|-key 0:<@lstring:'g' at '':1:1>
+|-value 0:<@uint:56>
+>
+LOGGING v: <@uint:11>
+LOGGING m: <map @aMap 1 object 
+|-key 0:<@lstring:'g' at '':1:1>
+|-value 0:<@uint:56>
+>
 *************************************** begin of function test
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
