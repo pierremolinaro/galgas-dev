@@ -5148,6 +5148,9 @@ routine handleReaderCall
     elsif [inReaderName string] == "unsolvedIndexKeyStringList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := EXbuild_stringlist_type [] ;
+    elsif [inReaderName string] == "overriddenMap" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := inReceiverType ;
     else
       error inReaderName : "this reader is not defined"
        -> outAccessorTypesList, outReturnedType ;
