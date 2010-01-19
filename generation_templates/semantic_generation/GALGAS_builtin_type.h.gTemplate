@@ -29,7 +29,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_%!TYPE_NAME% ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class %!TYPE_NAME% : public GALGAS__root {
+class %!TYPE_NAME% : public AC_GALGAS__root {
 //--------------------------------- Native constructor
 %
   if [[TYPE scalarAttributeCppTypeName] length] > 0 then
@@ -182,7 +182,7 @@ if [TYPE isComparable] then
 end if
 
 
-%  public : virtual PMSInt32 compareForSortedList (const GALGAS__root * inOperand
+%  public : virtual PMSInt32 compareForSortedList (const AC_GALGAS__root * inOperand
                                                    COMMA_LOCATION_ARGS) const ;
 
 //--- Introspection
