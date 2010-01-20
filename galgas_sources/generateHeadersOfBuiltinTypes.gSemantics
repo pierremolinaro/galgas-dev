@@ -199,23 +199,28 @@ end reader ;
 
 filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
-  template primitiveTypeHeaderFile "GALGAS_builtin_type.h.gTemplate"
-    ?@stringlist PREDEFINED_TYPE_LIST
+  template primitiveTypeHeader "GALGAS_builtin_type.h.gTemplate"
     ?@string TYPE_NAME
     ?@ACGalgasType TYPE
   ;
-  template prefinedTypesHeader "predefined_types.h.gTemplate"
-    ?@stringlist PREDEFINED_TYPE_LIST
+  template predefinedTypesHeader "predefined_types.h.gTemplate"
+    ?@typeMap TYPE_MAP
   ;
   template listTypeHeader "GALGAS_list.h.gTemplate"
     ?@string TYPE_NAME
     ?@attributeList ATTRIBUTE_LIST
   ;
+  template listTypeImplementation "GALGAS_list.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@attributeList ATTRIBUTE_LIST
+  ;
+  template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
+  ;
 }
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-# S C A L A R    A T T R I B U T E    T Y P E    N A M E                    *
+# A P P E N D    G E N E R A T E D    H E A D E R                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -224,15 +229,54 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @primitiveGalgasType appendGeneratedHeader ?!@string ioHeader :
+  @ACGalgasType t := self ; # Bug in GALGAS 1
+  ioHeader .= [filewrapper builtinTypeGenerationTemplate.primitiveTypeHeader
+    ![t typeIdentifierRepresentation]
+    !t
+ ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @listGalgasType appendGeneratedHeader ?!@string ioHeader :
   @ACGalgasType t := self ; # Bug in GALGAS 1
   @listGalgasType tt := self ; # Bug in GALGAS 1
   ioHeader .= [filewrapper builtinTypeGenerationTemplate.listTypeHeader
-    ![t typeName]
+    ![t typeIdentifierRepresentation]
     ![tt mAttributeList]
  ] ;
 end method ;
 
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    G E N E R A T E D    I M P L E M E N T A T I O N           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @ACGalgasType appendGeneratedImplementation ?!@string unused ioImplementation :
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @primitiveGalgasType appendGeneratedImplementation ?!@string unused ioImplementation :
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listGalgasType appendGeneratedImplementation ?!@string ioImplementation :
+  @ACGalgasType t := self ; # Bug in GALGAS 1
+  @listGalgasType tt := self ; # Bug in GALGAS 1
+  ioImplementation .= [filewrapper builtinTypeGenerationTemplate.listTypeImplementation
+    ![t typeIdentifierRepresentation]
+    ![tt mAttributeList]
+ ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# G E N E R A T E    B U I L T I N    T Y P E S                             *
+#                                                                           *
 #---------------------------------------------------------------------------*
 
 routine generateHeadersOfBuiltinTypes ??@string inDirectory :
@@ -240,37 +284,12 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
     if not [inDirectory directoryExists] then
       error here : "the '" . inDirectory . "' directory does not exist" ;
     else
-    #--- Build predefined type list
-      @stringlist cppTypeNameList [emptyList] ;
-      foreach constructBuiltinTypeMap [] do
-        cppTypeNameList += !cppTypeNameForGalgasTypeName [![key string]] ;
-      end foreach ;
-    #--- Primitives Types
-      const @typeMap primitiveTypeMap := constructPrimitiveTypeMap [] ;
-      foreach primitiveTypeMap do
-        const @string typeName := cppTypeName [!mType] ;
-        [@string generateFile
-          !inDirectory
-          !typeName . ".h"
-          !"//"
-          !"\n\n" # Defaut user zone1
-          ![filewrapper builtinTypeGenerationTemplate.primitiveTypeHeaderFile
-            !cppTypeNameList
-            !typeName
-            !mType
-           ]
-          !"\n\n" # Defaut user zone2
-          !""
-        ] ;
-      end foreach ;
-    #--- Predefined types
-      @string generatedCode := [filewrapper builtinTypeGenerationTemplate.prefinedTypesHeader
-        !cppTypeNameList
+    #--- Predefined types headers
+      @string generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesHeader
+        !constructBuiltinTypeMap []
       ] ;
       foreach constructBuiltinTypeMap [] do
-        if not [primitiveTypeMap hasKey ![key string]] then
-          [mType appendGeneratedHeader !?generatedCode] ;
-        end if ;
+        [mType appendGeneratedHeader !?generatedCode] ;
       end foreach ;
       [@string generateFile
         !inDirectory
@@ -280,6 +299,21 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
         !generatedCode
         !"\n\n" # Defaut user zone2
         !"#endif\n"
+      ] ;
+    #--- Predefined types implementation
+      generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation
+      ] ;
+      foreach constructBuiltinTypeMap [] do
+        [mType appendGeneratedImplementation !?generatedCode] ;
+      end foreach ;
+      [@string generateFile
+        !inDirectory
+        !"predefinedTypes2.cpp"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !generatedCode
+        !"\n\n" # Defaut user zone2
+        !""
       ] ;
     end if ;
   end if ;

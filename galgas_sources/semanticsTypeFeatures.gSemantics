@@ -30,16 +30,11 @@ abstract reader @ACGalgasType typeName -> @string outTypeName ;
 
 #---------------------------------------------------------------------------*
 
-function cppTypeNameForGalgasTypeName ??@string inTypeName -> @string outTypeName :
-  outTypeName := "GALGAS_" . [inTypeName identifierRepresentation] ;
-end function ;
-  
-#---------------------------------------------------------------------------*
+reader @ACGalgasType typeIdentifierRepresentation -> @string outTypeName :
+  @ACGalgasType t := self ;
+  outTypeName := [[t typeName] identifierRepresentation] ;
+end reader ;
 
-function cppTypeName ??@ACGalgasType inType -> @string outTypeName :
-  outTypeName := cppTypeNameForGalgasTypeName [![inType typeName]] ;
-end function ;
-  
 #---------------------------------------------------------------------------*
 #                                                                           *
 #  D A T A    T Y P E                                                       *

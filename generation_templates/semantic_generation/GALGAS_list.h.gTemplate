@@ -1,5 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
+//%!["'" . TYPE_NAME . "' class" stringByLeftAndRightPadding !75 !' ']%*
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -33,20 +34,15 @@ class GALGAS_%!TYPE_NAME% : public AC_GALGAS_Array {
 //--- Modifier handling
   protected : static void insulate (GALGAS_%!TYPE_NAME% * & ioObject) ;
   
-//--- += operator
-  protected : void addAssign_operation (%?COL2
-  foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
-  between %,\n%!COL2
-  end foreach
-  %) ;
-
 //--- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
 
 //--- Friend
-  friend void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult,
-                                   const GALGAS_string * inOperand0) ;
+  friend void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                                   const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+%) ;
   
   friend void modifier_prependValue (GALGAS_%!TYPE_NAME% * & ioResult,
 %foreach ATTRIBUTE_LIST
@@ -86,10 +82,10 @@ end foreach
 end foreach
 foreach ATTRIBUTE_LIST do
 %
-  friend const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * reader_%![mAttributeName string]%AtIndex (const GALGAS_%!TYPE_NAME% * inList,
-                                                     const GALGAS_uint * inIndex,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+  friend GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * reader_%![mAttributeName string]%AtIndex (const GALGAS_%!TYPE_NAME% * inList,
+                                               const GALGAS_uint * inIndex,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 %
 end foreach
 %
@@ -137,8 +133,11 @@ void dotAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult,
                           const GALGAS_%!TYPE_NAME% * inOperand
                           COMMA_LOCATION_ARGS) ;
 
-void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult,
-                          const GALGAS_string * inOperand0) ;
+void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                          const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+%) ;
 
 void modifier_popFirst (GALGAS_%!TYPE_NAME% * & ioResult,
 %foreach ATTRIBUTE_LIST
@@ -156,8 +155,11 @@ end foreach
 %                       C_Compiler * inCompiler
                        COMMA_LOCATION_ARGS) ;
 
-void modifier_prependValue (GALGAS_%!TYPE_NAME% * & ioResult,
-                            const GALGAS_string * inOperand0
+void modifier_prependValue (GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                          const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+%
                             COMMA_LOCATION_ARGS) ;
 
 void method_first (const GALGAS_%!TYPE_NAME% * inList,
@@ -187,10 +189,10 @@ void modifier_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%
 end foreach
 foreach ATTRIBUTE_LIST do
 %
-const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * reader_%![mAttributeName string]%AtIndex (const GALGAS_%!TYPE_NAME% * inList,
-                                                     const GALGAS_uint * inIndex,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * reader_%![mAttributeName string]%AtIndex (const GALGAS_%!TYPE_NAME% * inList,
+                                               const GALGAS_uint * inIndex,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 %
 end foreach
 %
