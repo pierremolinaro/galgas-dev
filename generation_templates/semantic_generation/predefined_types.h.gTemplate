@@ -1,0 +1,15 @@
+
+#ifndef %!NAME%_DEFINED
+#define %!NAME%_DEFINED
+
+//---------------------------------------------------------------------------*
+
+#include "galgas2/AC_GALGAS__root.h"
+
+//---------------------------------------------------------------------------*
+
+%
+foreach TYPE_NAME_LIST do
+  %class %!mValue% ;\n%
+end foreach
+

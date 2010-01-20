@@ -237,10 +237,14 @@ end function ;
 
 filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
-  template header "GALGAS_builtin_type.h.gTemplate"
+  template primitiveTypeHeaderFile "GALGAS_builtin_type.h.gTemplate"
     ?@lstringlist PREDEFINED_TYPE_LIST
     ?@string TYPE_NAME
     ?@ACGalgasType TYPE
+  ;
+  template prefinedTypesHeader "predefined_types.h.gTemplate"
+    ?@stringlist PREDEFINED_TYPE_LIST
+    ?@string NAME
   ;
 }
 
@@ -251,23 +255,48 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
     if not [inDirectory directoryExists] then
       error here : "the '" . inDirectory . "' directory does not exist" ;
     else
-      const @typeMap builtinTypeMap := constructPrimitiveTypeMap [] ;
-      foreach builtinTypeMap do
+    #--- Build predefined type list
+      @stringlist cppTypeNameList [emptyList] ;
+      foreach constructBuiltinTypeMap [] do
+        cppTypeNameList += !cppTypeNameForGalgasTypeName [![key string]] ;
+      end foreach ;
+    #--- Primitives Types
+      const @typeMap primitiveTypeMap := constructPrimitiveTypeMap [] ;
+      foreach primitiveTypeMap do
         const @string typeName := cppTypeName [!mType] ;
         [@string generateFile
           !inDirectory
           !typeName . ".h"
           !"//"
           !"\n\n" # Defaut user zone1
-          ![filewrapper builtinTypeGenerationTemplate.header
+          ![filewrapper builtinTypeGenerationTemplate.primitiveTypeHeaderFile
             ![constructBuiltinTypeMap [] keyList]
             !typeName
-            !mType
           ]
           !"\n\n" # Defaut user zone2
           !""
         ] ;
       end foreach ;
+    #--- Predefined types
+      @string generatedCode := [filewrapper builtinTypeGenerationTemplate.primitiveTypeHeaderFile
+        !cppTypeNameList
+        !typeName
+        !mType
+      ] ;
+      foreach constructBuiltinTypeMap [] do
+        if not [primitiveTypeMap hasKey ![key string]] then
+          generatedCode .= [key string] . "\n" ;
+        end if ;
+      end foreach ;
+      [@string generateFile
+        !inDirectory
+        !"predefinedTypes2.h"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !generatedCode
+        !"\n\n" # Defaut user zone2
+        !"#endif\n"
+      ] ;
     end if ;
   end if ;
 end routine ;
