@@ -5,12 +5,13 @@
 //---------------------------------------------------------------------------*
 
 #include "galgas2/AC_GALGAS_Array.h"
+#include "strings/C_String.h"
 
 //---------------------------------------------------------------------------*
 
 %
-foreach PREDEFINED_TYPE_LIST do
-  %class %!mValue% ;\n%
+foreach TYPE_MAP do
+  %class GALGAS_%![key identifierRepresentation]% ;\n%
 end foreach
 %class C_Compiler ;
 

@@ -103,11 +103,20 @@ list @attributeList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  P R I M I T I V E    T Y P E                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @primitiveGalgasType extends @ACGalgasType {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  D A T A    T Y P E                                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @dataGalgasType extends @ACGalgasType {
+class @dataGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -116,7 +125,7 @@ class @dataGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgasType extends @ACGalgasType {
+class @typeGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -125,7 +134,7 @@ class @typeGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @objectGalgasType extends @ACGalgasType {
+class @objectGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -134,7 +143,7 @@ class @objectGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @functionGalgasType extends @ACGalgasType {
+class @functionGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -143,7 +152,7 @@ class @functionGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @locationGalgasType extends @ACGalgasType {
+class @locationGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -152,7 +161,7 @@ class @locationGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @stringGalgasType extends @ACGalgasType {
+class @stringGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -161,7 +170,7 @@ class @stringGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @charGalgasType extends @ACGalgasType {
+class @charGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -170,7 +179,7 @@ class @charGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @boolGalgasType extends @ACGalgasType {
+class @boolGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -179,7 +188,7 @@ class @boolGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @uintGalgasType extends @ACGalgasType {
+class @uintGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -188,7 +197,7 @@ class @uintGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @sintGalgasType extends @ACGalgasType {
+class @sintGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -197,7 +206,7 @@ class @sintGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @uint64GalgasType extends @ACGalgasType {
+class @uint64GalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -206,7 +215,7 @@ class @uint64GalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @sint64GalgasType extends @ACGalgasType {
+class @sint64GalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -215,7 +224,7 @@ class @sint64GalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @doubleGalgasType extends @ACGalgasType {
+class @doubleGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -224,7 +233,7 @@ class @doubleGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @lstringGalgasType extends @ACGalgasType {
+class @lstringGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -233,7 +242,7 @@ class @lstringGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @lcharGalgasType extends @ACGalgasType {
+class @lcharGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -242,7 +251,7 @@ class @lcharGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @lboolGalgasType extends @ACGalgasType {
+class @lboolGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -251,7 +260,7 @@ class @lboolGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @luintGalgasType extends @ACGalgasType {
+class @luintGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -260,7 +269,7 @@ class @luintGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @lsintGalgasType extends @ACGalgasType {
+class @lsintGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -269,7 +278,7 @@ class @lsintGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @luint64GalgasType extends @ACGalgasType {
+class @luint64GalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -278,7 +287,7 @@ class @luint64GalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @lsint64GalgasType extends @ACGalgasType {
+class @lsint64GalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -287,7 +296,7 @@ class @lsint64GalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @ldoubleGalgasType extends @ACGalgasType {
+class @ldoubleGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -296,7 +305,7 @@ class @ldoubleGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @stringsetGalgasType extends @ACGalgasType {
+class @stringsetGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -305,7 +314,7 @@ class @stringsetGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @binarysetGalgasType extends @ACGalgasType {
+class @binarysetGalgasType extends @primitiveGalgasType {
 }
 
 #---------------------------------------------------------------------------*
