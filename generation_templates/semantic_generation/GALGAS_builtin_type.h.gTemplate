@@ -13,7 +13,7 @@
 
 %
   foreach PREDEFINED_TYPE_LIST do
-    %class %!cppTypeNameForGalgasTypeName [![mValue string]]% ;\n%
+    %class %!mValue% ;\n%
   end foreach
   if [[TYPE pointerAttributeCppTypeName] length] > 0 then
     %class %![TYPE pointerAttributeCppTypeName]% ;\n%

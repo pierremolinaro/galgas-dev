@@ -1,15 +1,16 @@
 
-#ifndef %!NAME%_DEFINED
-#define %!NAME%_DEFINED
+#ifndef GALGAS2_PREDEFINED_TYPES
+#define GALGAS2_PREDEFINED_TYPES
 
 //---------------------------------------------------------------------------*
 
-#include "galgas2/AC_GALGAS__root.h"
+#include "galgas2/AC_GALGAS_Array.h"
 
 //---------------------------------------------------------------------------*
 
 %
-foreach TYPE_NAME_LIST do
+foreach PREDEFINED_TYPE_LIST do
   %class %!mValue% ;\n%
 end foreach
+%class C_Compiler ;
 
