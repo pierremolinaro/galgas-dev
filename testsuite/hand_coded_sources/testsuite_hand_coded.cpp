@@ -1,6 +1,7 @@
 
 #include "testsuite_list.h"
 #include "galgas/GGS_stringset.h"
+#include "galgas2/GALGAS_uint.h"
 
 //---------------------------------------------------------------------------*
 
@@ -37,8 +38,11 @@ routine_test_dictionary (void) {
 
 //---------------------------------------------------------------------------*
 
-void
-routine_test_array (C_Compiler & /*inLexique */) {
+static void
+routine_test_galgas2 (C_Compiler & /*inLexique */) {
+  GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
+  C_Object::retain (n) ;
+  AC_GALGAS__root::log (n, "n") ;
 /*  const PMSInt32 TEST_SIZE = 5000000 ;
   PM_C_Array array ;
   array._alloc (HERE) ;
@@ -65,7 +69,7 @@ void
 routine_testsuite_hand_coded (C_Compiler & /* inLexique */
                               COMMA_UNUSED_LOCATION_ARGS) {
 //  routine_test_dictionary () ;
- // routine_test_array (inLexique) ;
+  routine_test_galgas2 (inLexique) ;
 }
 
 //---------------------------------------------------------------------------*

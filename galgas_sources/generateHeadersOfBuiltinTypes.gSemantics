@@ -92,7 +92,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @objectGalgasType pointerAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "GALGAS__root" ;
+  outTypeName := "AC_GALGAS__root" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
