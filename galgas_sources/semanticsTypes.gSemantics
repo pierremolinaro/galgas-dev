@@ -375,8 +375,8 @@ class @classGalgasType extends @ACGalgasType {
 #---------------------------------------------------------------------------*
 
 class @listGalgasType extends @ACGalgasType {
-  @lstring mListTypeName feature nogetter ;
-  @attributeList mAttributeList feature nogetter ;
+  @lstring mListTypeName ;
+  @attributeList mAttributeList ;
 }
 
 #---------------------------------------------------------------------------*

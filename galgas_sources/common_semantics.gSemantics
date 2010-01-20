@@ -4223,7 +4223,7 @@ routine handleReaderCall
        -> outAccessorTypesList, outReturnedType ;
     end if ;
   when >= @typeGalgasUndefinedMapindexType do
-        if [inReaderName string] == "description" then
+    if [inReaderName string] == "description" then
       outReturnedType := [@typeGalgas_string new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outHasLexiqueAndLocationArguments := false ;
@@ -4244,6 +4244,9 @@ routine handleReaderCall
     elsif [inReaderName string] == "key" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_lstring new] ;
+    elsif [inReaderName string] == "identifierRepresentation" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
     elsif [inReaderName string] == "isSolved" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_bool new] ;

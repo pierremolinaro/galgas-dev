@@ -193,60 +193,45 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-# G E N E R A T E    C C P    R E A D E R S    A R G U M E N T S            *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-function generateCppReaderArguments
-  ??@string inCppTypeNameOfCurrentObject
-  ??@typeList inArgumentTypeList
-  ??@bool inHasLexiqueArgument
-  ??@string inIndentation
-  ->@string outString
-:
-  outString := "" ;
-  @bool first := true ;
-  if inCppTypeNameOfCurrentObject != "" then
-    outString .= "const " . inCppTypeNameOfCurrentObject . " * inObject" ;
-    first := false ;
-  end if ;
-  if inHasLexiqueArgument then
-    if first then
-      first := false ;
-    else
-      outString .= ",\n" . inIndentation ;
-    end if ;
-    outString .= "C_Compiler * inCompiler" ;
-  end if ;
-  foreach inArgumentTypeList index IDX  do
-    if first then
-      first := false ;
-    else
-      outString .= ",\n" . inIndentation ;
-    end if ;
-    outString .= "const " . cppTypeName [!mType] . " * inArgument_" .  [IDX string] ;
-  end foreach ;
-  if first then
-    outString .= "LOCATION_ARGS" ;
-  else
-    outString .= "\n" . inIndentation . "COMMA_LOCATION_ARGS" ;
-  end if ;
-end function ;
-
 #---------------------------------------------------------------------------*
 
 filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
   template primitiveTypeHeaderFile "GALGAS_builtin_type.h.gTemplate"
-    ?@lstringlist PREDEFINED_TYPE_LIST
+    ?@stringlist PREDEFINED_TYPE_LIST
     ?@string TYPE_NAME
     ?@ACGalgasType TYPE
   ;
   template prefinedTypesHeader "predefined_types.h.gTemplate"
     ?@stringlist PREDEFINED_TYPE_LIST
-    ?@string NAME
+  ;
+  template listTypeHeader "GALGAS_list.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@attributeList ATTRIBUTE_LIST
   ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# S C A L A R    A T T R I B U T E    T Y P E    N A M E                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @ACGalgasType appendGeneratedHeader ?!@string unused ioHeader :
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listGalgasType appendGeneratedHeader ?!@string ioHeader :
+  @ACGalgasType t := self ; # Bug in GALGAS 1
+  @listGalgasType tt := self ; # Bug in GALGAS 1
+  ioHeader .= [filewrapper builtinTypeGenerationTemplate.listTypeHeader
+    ![t typeName]
+    ![tt mAttributeList]
+ ] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -270,22 +255,21 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
           !"//"
           !"\n\n" # Defaut user zone1
           ![filewrapper builtinTypeGenerationTemplate.primitiveTypeHeaderFile
-            ![constructBuiltinTypeMap [] keyList]
+            !cppTypeNameList
             !typeName
-          ]
+            !mType
+           ]
           !"\n\n" # Defaut user zone2
           !""
         ] ;
       end foreach ;
     #--- Predefined types
-      @string generatedCode := [filewrapper builtinTypeGenerationTemplate.primitiveTypeHeaderFile
+      @string generatedCode := [filewrapper builtinTypeGenerationTemplate.prefinedTypesHeader
         !cppTypeNameList
-        !typeName
-        !mType
       ] ;
       foreach constructBuiltinTypeMap [] do
         if not [primitiveTypeMap hasKey ![key string]] then
-          generatedCode .= [key string] . "\n" ;
+          [mType appendGeneratedHeader !?generatedCode] ;
         end if ;
       end foreach ;
       [@string generateFile
