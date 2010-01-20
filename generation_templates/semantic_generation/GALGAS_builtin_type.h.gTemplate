@@ -3,7 +3,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "galgas2/GALGAS__root.h"
+#include "galgas2/AC_GALGAS__root.h"
 %
   if [[TYPE classAttributeCppTypeName] length] > 0 then
     %#include "%![TYPE classAttributeCppTypeName]%.h"\n%

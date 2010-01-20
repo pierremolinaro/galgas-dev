@@ -220,9 +220,9 @@ end reader ;
 once constructorMapFor_uint -> @constructorMap  outMap :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"max" ![@uintGalgasType new] !false ;
-  enterConstructorWithoutArgument !?outMap !"errorCount" ![@uintGalgasType new] !false ;
-  enterConstructorWithoutArgument !?outMap !"warningCount" ![@uintGalgasType new] !false ;
-  enterConstructorWith2UintArguments !?outMap !"valueWithMask" ![@uintGalgasType new] !false ;
+  enterConstructorWithoutArgument !?outMap !"errorCount" ![@uintGalgasType new] !true ;
+  enterConstructorWithoutArgument !?outMap !"warningCount" ![@uintGalgasType new] !true ;
+  enterConstructorWith2UintArguments !?outMap !"valueWithMask" ![@uintGalgasType new] !true ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -250,8 +250,9 @@ end reader ;
 once constructorMapFor_uint64 ->@constructorMap outMap :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"max" ![@uint64GalgasType new] !false ;
-  enterConstructorWithStringArgument !?outMap !"uint64MaskWithCompressedBitString" ![@uint64GalgasType new] !false ;
-  enterConstructorWithStringArgument !?outMap !"uint64WithBitString" ![@uint64GalgasType new] !false ;
+  enterConstructorWithStringArgument !?outMap !"uint64MaskWithCompressedBitString" ![@uint64GalgasType new] !true ;
+  enterConstructorWithStringArgument !?outMap !"uint64BaseValueWithCompressedBitString" ![@uint64GalgasType new] !true ;
+  enterConstructorWithStringArgument !?outMap !"uint64WithBitString" ![@uint64GalgasType new] !true ;
 end once ;
 
 #---------------------------------------------------------------------------*

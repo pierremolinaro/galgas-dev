@@ -374,10 +374,10 @@ end reader ;
 once readerMapFor_uint -> @readerMap  outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
-  enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !true ;
   enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
-  enterBaseReaderWithoutArgument !?outMap !"lsbIndex" ![@uintGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"lsbIndex" ![@uintGalgasType new] !true ;
   enterBaseReaderWithoutArgument !?outMap !"significantBitCount" ![@uintGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"hexString" ![@stringGalgasType new] !false ;
@@ -415,7 +415,7 @@ once readerMapFor_uint64 ->@readerMap outMap :
   enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !true ;
   enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !true ;
   enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
-  enterBaseReaderWith2UintArguments !?outMap !"uintSlice" ![@uintGalgasType new] !false ;
+  enterBaseReaderWith2UintArguments !?outMap !"uintSlice" ![@uintGalgasType new] !true ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"hexString" ![@stringGalgasType new] !false ;
 end once ;
@@ -660,9 +660,8 @@ end reader ;
 
 once readerMapFor_type ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
-  enterBaseReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !true ;
-  enterBaseReaderWithoutArgument !?outMap !"isClassType" ![@boolGalgasType new] !true ;
-  enterBaseReaderWithoutArgument !?outMap !"hasSuperclass" ![@boolGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"hasSuperclass" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"superclass" ![@typeGalgasType new] !true ;
 end once ;
 
