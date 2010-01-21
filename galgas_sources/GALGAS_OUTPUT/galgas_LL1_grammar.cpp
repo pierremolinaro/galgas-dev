@@ -20734,7 +20734,7 @@ nt_galgas_start_symbol_compileFile (galgas_scanner & inLexique) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20781,7 +20781,7 @@ void galgas_LL1_grammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_lexiqueComponents & parameter_1,
@@ -20815,7 +20815,7 @@ void galgas_LL1_grammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceFileParsing_importLexique (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceFileParsing_importLexique (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20857,7 +20857,7 @@ void galgas_LL1_grammar::_performSourceFileParsing_importLexique (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceStringParsing_importLexique (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceStringParsing_importLexique (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_lexiqueComponents & parameter_1
@@ -20886,7 +20886,7 @@ void galgas_LL1_grammar::_performSourceStringParsing_importLexique (C_Compiler &
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceFileParsing_importSyntax (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceFileParsing_importSyntax (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20929,7 +20929,7 @@ void galgas_LL1_grammar::_performSourceFileParsing_importSyntax (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceStringParsing_importSyntax (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceStringParsing_importSyntax (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_syntaxComponents & parameter_1,
@@ -20959,7 +20959,7 @@ void galgas_LL1_grammar::_performSourceStringParsing_importSyntax (C_Compiler & 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceFileParsing_importSemantics (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceFileParsing_importSemantics (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -21003,7 +21003,7 @@ void galgas_LL1_grammar::_performSourceFileParsing_importSemantics (C_Compiler &
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceStringParsing_importSemantics (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceStringParsing_importSemantics (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_semanticsComponents & parameter_1,
@@ -21034,7 +21034,7 @@ void galgas_LL1_grammar::_performSourceStringParsing_importSemantics (C_Compiler
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceFileParsing_importGrammarForSemantics (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceFileParsing_importGrammarForSemantics (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -21078,7 +21078,7 @@ void galgas_LL1_grammar::_performSourceFileParsing_importGrammarForSemantics (C_
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceStringParsing_importGrammarForSemantics (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceStringParsing_importGrammarForSemantics (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_grammarComponents & parameter_1,
@@ -21109,7 +21109,7 @@ void galgas_LL1_grammar::_performSourceStringParsing_importGrammarForSemantics (
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceFileParsing_importOptions (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceFileParsing_importOptions (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -21151,7 +21151,7 @@ void galgas_LL1_grammar::_performSourceFileParsing_importOptions (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceStringParsing_importOptions (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceStringParsing_importOptions (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_optionComponents & parameter_1
@@ -21180,7 +21180,7 @@ void galgas_LL1_grammar::_performSourceStringParsing_importOptions (C_Compiler &
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceFileParsing_compileFile (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceFileParsing_compileFile (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -21221,7 +21221,7 @@ void galgas_LL1_grammar::_performSourceFileParsing_compileFile (C_Compiler & inC
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_grammar::_performSourceStringParsing_compileFile (C_Compiler & inCompiler,
+void galgas_LL1_grammar::_performSourceStringParsing_compileFile (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString
                                 COMMA_UNUSED_LOCATION_ARGS) {

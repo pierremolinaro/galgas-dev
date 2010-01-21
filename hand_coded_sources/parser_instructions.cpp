@@ -29,7 +29,7 @@
 //---------------------------------------------------------------------------*
 
 static bool
-instructionsListHaveSameSyntaxSignatures (C_Compiler & inLexique,
+instructionsListHaveSameSyntaxSignatures (C_CompilerEx & inLexique,
                                           const GGS_syntaxInstructionListForGrammarAnalysis & inReferenceList,
                                           const GGS_syntaxInstructionListForGrammarAnalysis & inOtherList,
                                           const GGS_location & inEndOfInstructionListLocation) {
@@ -68,7 +68,7 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_repeatInstructionForGrammarAnalysis::
-isSameSyntaxInstructionThan (C_Compiler & inLexique,
+isSameSyntaxInstructionThan (C_CompilerEx & inLexique,
                              cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
   const cPtr_repeatInstructionForGrammarAnalysis * p = dynamic_cast <const cPtr_repeatInstructionForGrammarAnalysis *> (inInstruction) ;
@@ -104,7 +104,7 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_selectInstructionForGrammarAnalysis::
-isSameSyntaxInstructionThan (C_Compiler & inLexique,
+isSameSyntaxInstructionThan (C_CompilerEx & inLexique,
                              cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
   const cPtr_selectInstructionForGrammarAnalysis * p = dynamic_cast <const cPtr_selectInstructionForGrammarAnalysis *> (inInstruction) ;
@@ -140,7 +140,7 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_nonTerminalInstructionForGrammarAnalysis::
-isSameSyntaxInstructionThan (C_Compiler & inLexique,
+isSameSyntaxInstructionThan (C_CompilerEx & inLexique,
                              cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_nonTerminalInstructionForGrammarAnalysis * p = dynamic_cast <const cPtr_nonTerminalInstructionForGrammarAnalysis *> (inInstruction) ;
@@ -156,7 +156,7 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_terminalInstructionForGrammarAnalysis::
-isSameSyntaxInstructionThan (C_Compiler & inLexique,
+isSameSyntaxInstructionThan (C_CompilerEx & inLexique,
                              cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_terminalInstructionForGrammarAnalysis * p = dynamic_cast <const cPtr_terminalInstructionForGrammarAnalysis *> (inInstruction) ;
@@ -172,7 +172,7 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_checkLabelSignatures (C_Compiler & inLexique,
+routine_checkLabelSignatures (C_CompilerEx & inLexique,
                               GGS_typeAltProductionsMap & inAltProductionMap
                               COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeAltProductionsMap::cEnumerator current (inAltProductionMap, true) ;
@@ -191,7 +191,7 @@ routine_checkLabelSignatures (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_checkParseRewindSignatures (C_Compiler & inLexique,
+routine_checkParseRewindSignatures (C_CompilerEx & inLexique,
                                     GGS_L_parse_rewind_signature_list & inParseRewindSignatureList
                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_L_parse_rewind_signature_list::cEnumerator current (inParseRewindSignatureList, true) ;

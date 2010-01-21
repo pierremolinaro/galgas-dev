@@ -44,7 +44,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchConcatOperatorForTemplate (C_Compiler &,
+void routine_matchConcatOperatorForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -55,7 +55,7 @@ void routine_matchConcatOperatorForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchAndOperatorForTemplate (C_Compiler &,
+void routine_matchAndOperatorForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -66,7 +66,7 @@ void routine_matchAndOperatorForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchOrOperatorForTemplate (C_Compiler &,
+void routine_matchOrOperatorForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -77,7 +77,7 @@ void routine_matchOrOperatorForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchXorOperatorForTemplate (C_Compiler &,
+void routine_matchXorOperatorForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -88,7 +88,7 @@ void routine_matchXorOperatorForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkNotOperatorForTemplate (C_Compiler &,
+void routine_checkNotOperatorForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
 
@@ -98,7 +98,7 @@ void routine_checkNotOperatorForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkLogicalNegateOperatorForTemplate (C_Compiler &,
+void routine_checkLogicalNegateOperatorForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
 
@@ -108,7 +108,7 @@ void routine_checkLogicalNegateOperatorForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_comparison_types_checkForTemplate (C_Compiler &,
+void routine_comparison_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType   COMMA_LOCATION_ARGS) ;
 
@@ -118,7 +118,7 @@ void routine_comparison_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_magnitude_comparison_types_checkForTemplate (C_Compiler &,
+void routine_magnitude_comparison_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType   COMMA_LOCATION_ARGS) ;
 
@@ -128,7 +128,7 @@ void routine_magnitude_comparison_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_left_shift_types_checkForTemplate (C_Compiler &,
+void routine_left_shift_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -139,7 +139,7 @@ void routine_left_shift_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_right_shift_types_checkForTemplate (C_Compiler &,
+void routine_right_shift_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -150,7 +150,7 @@ void routine_right_shift_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_addition_types_checkForTemplate (C_Compiler &,
+void routine_addition_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -161,7 +161,7 @@ void routine_addition_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_substraction_types_checkForTemplate (C_Compiler &,
+void routine_substraction_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -172,7 +172,7 @@ void routine_substraction_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_multiply_types_checkForTemplate (C_Compiler &,
+void routine_multiply_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -183,7 +183,7 @@ void routine_multiply_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_divide_types_checkForTemplate (C_Compiler &,
+void routine_divide_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -194,7 +194,7 @@ void routine_divide_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_modulo_types_checkForTemplate (C_Compiler &,
+void routine_modulo_types_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
@@ -205,7 +205,7 @@ void routine_modulo_types_checkForTemplate (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_unary_minus_type_checkForTemplate (C_Compiler &,
+void routine_unary_minus_type_checkForTemplate (C_CompilerEx &,
                                 const GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  & COMMA_LOCATION_ARGS) ;
 

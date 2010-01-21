@@ -108,6 +108,12 @@ override reader @functionGalgasType pointerAttributeCppTypeName -> @string outTy
 end reader ;
 
 #---------------------------------------------------------------------------*
+
+override reader @locationGalgasType pointerAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "C_Compiler" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # C L A S S    A T T R I B U T E    T Y P E    N A M E                      *
 #                                                                           *

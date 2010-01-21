@@ -29,7 +29,7 @@
 
 void cPtr_enumGalgasType::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -81,7 +81,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
-             "  public : static GGS_" << mEnumTypeName << " castFromObject (C_Compiler & inLexique,\n"
+             "  public : static GGS_" << mEnumTypeName << " castFromObject (C_CompilerEx & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
              "                                           const GGS_location & inErrorLocation\n"
              "                                           COMMA_LOCATION_ARGS) ;\n\n"
@@ -90,7 +90,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (constant.hasCurrentObject ()) {
     if (constant._mHasConstructor (HERE).boolValue ()) {
       inHfile << "  public : static inline GGS_" << mEnumTypeName
-              << "  constructor_" << constant._key (HERE) << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+              << "  constructor_" << constant._key (HERE) << " (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                  "    return GGS_" << mEnumTypeName << " (enum_" << constant._key (HERE) << ") ;\n"
                  "  }\n" ;
     }
@@ -102,7 +102,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Readers\n" ;
   GGS_typeEnumMessageMap::cEnumerator m (mEnumMessageMap) ;
   while (m.hasCurrentObject ()) {
-    inHfile << "  public : GGS_string reader_" << m._key (HERE) << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    inHfile << "  public : GGS_string reader_" << m._key (HERE) << " (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     m.next () ;
   }
   inHfile << "\n" ;
@@ -111,7 +111,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Modifiers\n" ;
   GGS_enumModifierMap::cEnumerator modifier (mEnumActionMap) ;
   while (modifier.hasCurrentObject ()) {
-    inHfile << "  public : void modifier_" << modifier._key (HERE) << " (C_Compiler & inLexique" ;
+    inHfile << "  public : void modifier_" << modifier._key (HERE) << " (C_CompilerEx & inLexique" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (modifier._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
@@ -128,7 +128,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Methods\n" ;
   GGS_enumMethodMap::cEnumerator method (mMethodMap) ;
   while (method.hasCurrentObject ()) {
-    inHfile << "  public : void method_" << method._key (HERE) << " (C_Compiler & inLexique" ;
+    inHfile << "  public : void method_" << method._key (HERE) << " (C_CompilerEx & inLexique" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (method._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
@@ -147,7 +147,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   GGS_enumOperatorMap::cEnumerator currentOperator (mOperatorMap) ;
   while (currentOperator.hasCurrentObject ()) {
     inHfile << "  public : GGS_" << mEnumTypeName << " operator_" << currentOperator._key (HERE)
-            << " (C_Compiler & inLexique,\n"
+            << " (C_CompilerEx & inLexique,\n"
                "           const GGS_" << mEnumTypeName << " & inOperand" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentOperator._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hasCurrentObject ()) {
@@ -200,7 +200,7 @@ generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_enumGalgasType::
-generateCppClassImplementation (C_Compiler & inCompiler,
+generateCppClassImplementation (C_CompilerEx & inCompiler,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
                                 PMSInt32 & ioPrototypeIndex,
@@ -275,7 +275,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   while (m .hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::\n"
-                 "reader_" << m._key (HERE) << " (C_Compiler & /* inLexique */\n"
+                 "reader_" << m._key (HERE) << " (C_CompilerEx & /* inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  const char * kMessages [" << cStringWithSigned (m._mMessageStringList (HERE).count () + 1) << "] = {\"\"" ;
     GGS_lstringlist::cEnumerator e (m._mMessageStringList (HERE), true) ;
@@ -301,7 +301,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     }
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mEnumTypeName << "::\n"
-                 "modifier_" << modifier._key (HERE) << " (C_Compiler &" ;
+                 "modifier_" << modifier._key (HERE) << " (C_CompilerEx &" ;
     if (lexiqueIsUsed) {
       inCppFile << " inLexique" ;
     }
@@ -363,7 +363,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     }
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mEnumTypeName << "::\n"
-                 "method_" << method._key (HERE) << " (C_Compiler &" ;
+                 "method_" << method._key (HERE) << " (C_CompilerEx &" ;
     if (lexiqueIsUsed) {
       inCppFile << " inLexique" ;
     }
@@ -483,7 +483,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::\n"
                  "operator_" << currentOperator._key (HERE)
-              << " (C_Compiler & inLexique,\n"
+              << " (C_CompilerEx & inLexique,\n"
                  "                                const GGS_" << mEnumTypeName << " & inOperand" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentOperator._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hasCurrentObject ()) {
@@ -584,7 +584,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::castFromObject (C_Compiler & inLexique,\n"
+  inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::castFromObject (C_CompilerEx & inLexique,\n"
                "                                   const GGS_object & inObject,\n"
                "                                   const GGS_location & inErrorLocation\n"
                "                                   COMMA_LOCATION_ARGS) {\n"

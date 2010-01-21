@@ -90,7 +90,7 @@ findCategoryMethod__semanticDeclaration__enterType (AC_galgasClassRunTimeInforma
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapDeclaration__enterType (C_Compiler & inLexique,
+category_method__mapDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_mapDeclaration * operand_2612,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -168,7 +168,7 @@ category_method__mapDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapindexDeclaration__enterType (C_Compiler & inLexique,
+category_method__mapindexDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_mapindexDeclaration * operand_4838,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -187,7 +187,7 @@ category_method__mapindexDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__enumDeclaration__enterType (C_Compiler & inLexique,
+category_method__enumDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_enumDeclaration * operand_5371,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -271,7 +271,7 @@ category_method__enumDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperDeclaration__enterType (C_Compiler & inLexique,
+category_method__filewrapperDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperDeclaration * operand_7318,
                                 GGS_semanticContext & /* var_cas_ioSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -287,7 +287,7 @@ category_method__filewrapperDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sortedListDeclaration__enterType (C_Compiler & inLexique,
+category_method__sortedListDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_sortedListDeclaration * operand_7594,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -315,7 +315,7 @@ category_method__sortedListDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structDeclaration__enterType (C_Compiler & inLexique,
+category_method__structDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_structDeclaration * operand_8280,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -343,7 +343,7 @@ category_method__structDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listDeclaration__enterType (C_Compiler & inLexique,
+category_method__listDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_listDeclaration * operand_8958,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -371,7 +371,7 @@ category_method__listDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__classDeclaration__enterType (C_Compiler & inLexique,
+category_method__classDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_classDeclaration * operand_9631,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -410,7 +410,7 @@ category_method__classDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externRoutineDeclaration__enterType (C_Compiler & inLexique,
+category_method__externRoutineDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_externRoutineDeclaration * operand_10958,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -437,7 +437,7 @@ category_method__externRoutineDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externFunctionDeclaration__enterType (C_Compiler & inLexique,
+category_method__externFunctionDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_externFunctionDeclaration * operand_11659,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -466,7 +466,7 @@ category_method__externFunctionDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__onceFunctionDeclaration__enterType (C_Compiler & inLexique,
+category_method__onceFunctionDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_onceFunctionDeclaration * operand_12533,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -484,7 +484,7 @@ category_method__onceFunctionDeclaration__enterType (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listmapDeclaration__enterType (C_Compiler & inLexique,
+category_method__listmapDeclaration__enterType (C_CompilerEx & inLexique,
                                 const cPtr_listmapDeclaration * operand_13004,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -502,7 +502,7 @@ category_method__listmapDeclaration__enterType (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildSemanticContext (C_Compiler & inLexique,
+void routine_buildSemanticContext (C_CompilerEx & inLexique,
                                 const GGS_semanticDeclarationList   var_cas_inSemanticDeclarationList,
                                 const GGS_location   var_cas_inEndOfSourceFile,
                                 GGS_semanticContext & var_cas_outSemanticContext COMMA_UNUSED_LOCATION_ARGS) {
@@ -620,7 +620,7 @@ findCategoryMethod__semanticInstruction__semanticAnalysis (AC_galgasClassRunTime
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableDeclaration__semanticAnalysis (C_Compiler &,
+category_method__localVariableDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_localVariableDeclaration * operand_15825,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -635,7 +635,7 @@ category_method__localVariableDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableDeclarationWithInitialization__semanticAnalysis (C_Compiler &,
+category_method__localVariableDeclarationWithInitialization__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_localVariableDeclarationWithInitialization * operand_16043,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -650,7 +650,7 @@ category_method__localVariableDeclarationWithInitialization__semanticAnalysis (C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableDeclarationWithAssignment__semanticAnalysis (C_Compiler &,
+category_method__localVariableDeclarationWithAssignment__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_localVariableDeclarationWithAssignment * operand_16257,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -665,7 +665,7 @@ category_method__localVariableDeclarationWithAssignment__semanticAnalysis (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localConstantDeclarationWithSourceExpression__semanticAnalysis (C_Compiler &,
+category_method__localConstantDeclarationWithSourceExpression__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_localConstantDeclarationWithSourceExpression * operand_16478,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -680,7 +680,7 @@ category_method__localConstantDeclarationWithSourceExpression__semanticAnalysis 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localConstantDeclarationWithConstructorCall__semanticAnalysis (C_Compiler &,
+category_method__localConstantDeclarationWithConstructorCall__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_localConstantDeclarationWithConstructorCall * operand_16697,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -695,7 +695,7 @@ category_method__localConstantDeclarationWithConstructorCall__semanticAnalysis (
 //---------------------------------------------------------------------------*
 
 static void
-category_method__assignmentInstruction__semanticAnalysis (C_Compiler &,
+category_method__assignmentInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_assignmentInstruction * operand_16894,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -710,7 +710,7 @@ category_method__assignmentInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__appendInstruction__semanticAnalysis (C_Compiler &,
+category_method__appendInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_appendInstruction * operand_17087,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -725,7 +725,7 @@ category_method__appendInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sendInstruction__semanticAnalysis (C_Compiler &,
+category_method__sendInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_sendInstruction * operand_17278,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -740,7 +740,7 @@ category_method__sendInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__foreachInstruction__semanticAnalysis (C_Compiler &,
+category_method__foreachInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_foreachInstruction * operand_17472,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -755,7 +755,7 @@ category_method__foreachInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__ifInstruction__semanticAnalysis (C_Compiler &,
+category_method__ifInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_ifInstruction * operand_17661,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -770,7 +770,7 @@ category_method__ifInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__methodCallInstruction__semanticAnalysis (C_Compiler &,
+category_method__methodCallInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_methodCallInstruction * operand_17858,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -785,7 +785,7 @@ category_method__methodCallInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__modifierCallInstruction__semanticAnalysis (C_Compiler &,
+category_method__modifierCallInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_modifierCallInstruction * operand_18057,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -800,7 +800,7 @@ category_method__modifierCallInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__errorInstruction__semanticAnalysis (C_Compiler &,
+category_method__errorInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_errorInstruction * operand_18249,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -815,7 +815,7 @@ category_method__errorInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__warningInstruction__semanticAnalysis (C_Compiler &,
+category_method__warningInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_warningInstruction * operand_18443,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -830,7 +830,7 @@ category_method__warningInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__routineCallInstruction__semanticAnalysis (C_Compiler &,
+category_method__routineCallInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_routineCallInstruction * operand_18641,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -845,7 +845,7 @@ category_method__routineCallInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__matchInstruction__semanticAnalysis (C_Compiler &,
+category_method__matchInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_matchInstruction * operand_18833,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -860,7 +860,7 @@ category_method__matchInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__castInstruction__semanticAnalysis (C_Compiler &,
+category_method__castInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_castInstruction * operand_19024,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -875,7 +875,7 @@ category_method__castInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__addInstruction__semanticAnalysis (C_Compiler &,
+category_method__addInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_addInstruction * operand_19214,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -890,7 +890,7 @@ category_method__addInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__removeInstruction__semanticAnalysis (C_Compiler &,
+category_method__removeInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_removeInstruction * operand_19407,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -905,7 +905,7 @@ category_method__removeInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__incrementInstruction__semanticAnalysis (C_Compiler &,
+category_method__incrementInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_incrementInstruction * operand_19603,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -920,7 +920,7 @@ category_method__incrementInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__decrementInstruction__semanticAnalysis (C_Compiler &,
+category_method__decrementInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_decrementInstruction * operand_19799,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -935,7 +935,7 @@ category_method__decrementInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__loopInstruction__semanticAnalysis (C_Compiler &,
+category_method__loopInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_loopInstruction * operand_19990,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -950,7 +950,7 @@ category_method__loopInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__messageInstruction__semanticAnalysis (C_Compiler &,
+category_method__messageInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_messageInstruction * operand_20184,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -965,7 +965,7 @@ category_method__messageInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__logInstruction__semanticAnalysis (C_Compiler &,
+category_method__logInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_logInstruction * operand_20374,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -980,7 +980,7 @@ category_method__logInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__grammarInstruction__semanticAnalysis (C_Compiler &,
+category_method__grammarInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_grammarInstruction * operand_20568,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -995,7 +995,7 @@ category_method__grammarInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__withInstruction__semanticAnalysis (C_Compiler &,
+category_method__withInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_withInstruction * operand_20759,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1010,7 +1010,7 @@ category_method__withInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__switchInstruction__semanticAnalysis (C_Compiler &,
+category_method__switchInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_switchInstruction * operand_20952,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1025,7 +1025,7 @@ category_method__switchInstruction__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__typeMethodInstruction__semanticAnalysis (C_Compiler &,
+category_method__typeMethodInstruction__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_typeMethodInstruction * operand_21149,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1074,7 +1074,7 @@ findCategoryMethod__semanticDeclaration__semanticAnalysis (AC_galgasClassRunTime
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapDeclaration__semanticAnalysis (C_Compiler &,
+category_method__mapDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_mapDeclaration * operand_21833,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1089,7 +1089,7 @@ category_method__mapDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapindexDeclaration__semanticAnalysis (C_Compiler &,
+category_method__mapindexDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_mapindexDeclaration * operand_22028,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1104,7 +1104,7 @@ category_method__mapindexDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__enumDeclaration__semanticAnalysis (C_Compiler &,
+category_method__enumDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_enumDeclaration * operand_22219,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1119,7 +1119,7 @@ category_method__enumDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperDeclaration__semanticAnalysis (C_Compiler & inLexique,
+category_method__filewrapperDeclaration__semanticAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperDeclaration * operand_22417,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1135,7 +1135,7 @@ category_method__filewrapperDeclaration__semanticAnalysis (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sortedListDeclaration__semanticAnalysis (C_Compiler &,
+category_method__sortedListDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_sortedListDeclaration * operand_22707,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1150,7 +1150,7 @@ category_method__sortedListDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structDeclaration__semanticAnalysis (C_Compiler &,
+category_method__structDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_structDeclaration * operand_22900,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1165,7 +1165,7 @@ category_method__structDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listDeclaration__semanticAnalysis (C_Compiler &,
+category_method__listDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_listDeclaration * operand_23091,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1180,7 +1180,7 @@ category_method__listDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__classDeclaration__semanticAnalysis (C_Compiler &,
+category_method__classDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_classDeclaration * operand_23283,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1195,7 +1195,7 @@ category_method__classDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externRoutineDeclaration__semanticAnalysis (C_Compiler &,
+category_method__externRoutineDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_externRoutineDeclaration * operand_23483,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1210,7 +1210,7 @@ category_method__externRoutineDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__routineDeclaration__semanticAnalysis (C_Compiler & inLexique,
+category_method__routineDeclaration__semanticAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_routineDeclaration * operand_23677,
                                 const GGS_semanticContext  var_cas_inSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1239,7 +1239,7 @@ category_method__routineDeclaration__semanticAnalysis (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externFunctionDeclaration__semanticAnalysis (C_Compiler &,
+category_method__externFunctionDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_externFunctionDeclaration * operand_23981,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1254,7 +1254,7 @@ category_method__externFunctionDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__functionDeclaration__semanticAnalysis (C_Compiler & inLexique,
+category_method__functionDeclaration__semanticAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_functionDeclaration * operand_24176,
                                 const GGS_semanticContext  var_cas_inSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1283,7 +1283,7 @@ category_method__functionDeclaration__semanticAnalysis (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__onceFunctionDeclaration__semanticAnalysis (C_Compiler &,
+category_method__onceFunctionDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_onceFunctionDeclaration * operand_24479,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1298,7 +1298,7 @@ category_method__onceFunctionDeclaration__semanticAnalysis (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listmapDeclaration__semanticAnalysis (C_Compiler &,
+category_method__listmapDeclaration__semanticAnalysis (C_CompilerEx &,
                                 const cPtr_listmapDeclaration * operand_24673,
                                 const GGS_semanticContext  /* var_cas_inSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -1312,7 +1312,7 @@ category_method__listmapDeclaration__semanticAnalysis (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parseSemanticComponent (C_Compiler & inLexique,
+void routine_parseSemanticComponent (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct,
                                 GGS_semanticsComponentRoot  & var_cas_outSemanticsComponentRoot COMMA_UNUSED_LOCATION_ARGS) {
@@ -1352,7 +1352,7 @@ void routine_parseSemanticComponent (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivelyImportSemanticComponent (C_Compiler & inLexique,
+void routine_recursivelyImportSemanticComponent (C_CompilerEx & inLexique,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct,
                                 GGS_semanticDeclarationList  & var_cas_ioSemanticDeclarationList,
                                 GGS_stringset  & var_cas_ioParsedFileSet,
@@ -1392,7 +1392,7 @@ void routine_recursivelyImportSemanticComponent (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileSemanticsComponent (C_Compiler & inLexique,
+void routine_compileSemanticsComponent (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 const GGS_string  /* var_cas_inOutputDirectory */,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct COMMA_UNUSED_LOCATION_ARGS) {

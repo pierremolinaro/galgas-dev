@@ -1113,7 +1113,7 @@ class c_LR1_automaton_transition {
 //---------------------------------------------------------------------------*
 
 static void
-generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
+generate_LR1_grammar_cpp_file (C_CompilerEx & inLexique,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
@@ -1345,7 +1345,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "const C_String & inDependancyExtension"
                           ",\n                                "
@@ -1429,7 +1429,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "GGS_string * inSentStringPtr"
                           ",\n                                "
@@ -1566,7 +1566,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 void
-LR1_computations (C_Compiler & inLexique,
+LR1_computations (C_CompilerEx & inLexique,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,

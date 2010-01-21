@@ -93,7 +93,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 //---------------------------------------------------------------------------*
 
 static bool
-displayUnusefulSymbols (C_Compiler & inLexique,
+displayUnusefulSymbols (C_CompilerEx & inLexique,
                         const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                         const C_BDD_Set1 & inUsefulSymbols,
                         const PMUInt16 inBDDBitCount,
@@ -244,7 +244,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-useful_symbols_computations (C_Compiler & inLexique,
+useful_symbols_computations (C_CompilerEx & inLexique,
                              const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
                              const PMUInt16 inBDDBitCount,

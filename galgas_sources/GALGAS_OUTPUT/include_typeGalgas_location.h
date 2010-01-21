@@ -37,17 +37,17 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
 
 //--- Attributes
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'acceptAssignmentFromHere'
-  public : virtual void method_acceptAssignmentFromHere (C_Compiler &,
+  public : virtual void method_acceptAssignmentFromHere (C_CompilerEx &,
                                 GGS_lstring  
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'checkAbilityToBeSilentlyConvertedToLocation'
-  public : virtual void method_checkAbilityToBeSilentlyConvertedToLocation (C_Compiler &
+  public : virtual void method_checkAbilityToBeSilentlyConvertedToLocation (C_CompilerEx &
                                 COMMA_LOCATION_ARGS) const ;
 
   public : virtual const char * message_messageGalgasType (void) const ;

@@ -12,6 +12,9 @@
 %
 foreach TYPE_MAP do
   %class GALGAS_%![key identifierRepresentation]% ;\n%
+  if [[mType pointerAttributeCppTypeName] length] > 0 then
+    %class %![mType pointerAttributeCppTypeName]% ;\n%
+  end if
 end foreach
 %class C_Compiler ;
 

@@ -30,7 +30,7 @@ class cPtr_C_mapindexToImplement : public cPtr_typeEntityToGenerate {
 
   public : virtual void
   generateHdeclarations_2 (AC_OutputStream & inHfile,
-                           C_Compiler & inLexique) const ;
+                           C_CompilerEx & inLexique) const ;
 
   public : virtual bool isCppClassNeeded (void) const ;
 
@@ -44,7 +44,7 @@ class cPtr_C_mapindexToImplement : public cPtr_typeEntityToGenerate {
                                PMSInt32 & /* ioPrototypeIndex */) const ;
 
   public : virtual void
-  generateCppClassImplementation (C_Compiler & inLexique,
+  generateCppClassImplementation (C_CompilerEx & inLexique,
                                   AC_OutputStream & inCppFile,
                                   const C_String & inTargetFileName,
                                   PMSInt32 & ioPrototypeIndex,

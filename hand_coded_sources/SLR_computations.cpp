@@ -640,7 +640,7 @@ mTargetState (inTargetState) {
 //---------------------------------------------------------------------------*
 
 static void
-generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
+generate_SLR_grammar_cpp_file (C_CompilerEx & inLexique,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
@@ -872,7 +872,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "const C_String & inDependancyExtension"
                           ",\n                                "
@@ -957,7 +957,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "GGS_string * inSentStringPtr"
                           ",\n                                "
@@ -1086,7 +1086,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 void
-SLR_computations (C_Compiler & inLexique,
+SLR_computations (C_CompilerEx & inLexique,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,

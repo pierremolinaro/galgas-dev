@@ -82,7 +82,7 @@ findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstru
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_fixSyntaxInstructionList_V1 (C_Compiler & inLexique,
+void routine_fixSyntaxInstructionList_V1 (C_CompilerEx & inLexique,
                                 const GGS_syntaxInstructionListForGrammarAnalysis   var_cas_inInstructionList,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -118,7 +118,7 @@ void routine_fixSyntaxInstructionList_V1 (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__terminalInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (C_Compiler & inLexique,
+category_method__terminalInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (C_CompilerEx & inLexique,
                                 const cPtr_terminalInstructionForGrammarAnalysis * operand_3160,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   /* var_cas_inNonTerminalSymbolMap */,
@@ -145,7 +145,7 @@ category_method__terminalInstructionForGrammarAnalysis__fixSyntaxInstructionList
 //---------------------------------------------------------------------------*
 
 static void
-category_method__nonTerminalInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (C_Compiler & inLexique,
+category_method__nonTerminalInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (C_CompilerEx & inLexique,
                                 const cPtr_nonTerminalInstructionForGrammarAnalysis * operand_4087,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & /* var_cas_ioActuallyUsedTerminalSymbolMap */,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -170,7 +170,7 @@ category_method__nonTerminalInstructionForGrammarAnalysis__fixSyntaxInstructionL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__repeatInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (C_Compiler & inLexique,
+category_method__repeatInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (C_CompilerEx & inLexique,
                                 const cPtr_repeatInstructionForGrammarAnalysis * operand_4803,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -202,7 +202,7 @@ category_method__repeatInstructionForGrammarAnalysis__fixSyntaxInstructionList_V
 //---------------------------------------------------------------------------*
 
 static void
-category_method__selectInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (C_Compiler & inLexique,
+category_method__selectInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (C_CompilerEx & inLexique,
                                 const cPtr_selectInstructionForGrammarAnalysis * operand_5893,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,

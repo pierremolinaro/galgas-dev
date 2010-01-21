@@ -66,14 +66,14 @@ class cTokenFor_galgas_scanner : public cToken {
 
 class galgas_scanner : public C_Lexique {
 //--- Constructors
-  public : galgas_scanner (C_Compiler * inCallerCompiler,
+  public : galgas_scanner (C_CompilerEx * inCallerCompiler,
                        const C_String & inDependencyFileExtension,
                        const C_String & inDependencyFilePath,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public : galgas_scanner (C_Compiler * inCallerCompiler,
+  public : galgas_scanner (C_CompilerEx * inCallerCompiler,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceString,
                        const C_String & inStringForError

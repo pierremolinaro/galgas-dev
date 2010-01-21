@@ -34,7 +34,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 
 void cPtr_typeExternTypeToGenerate::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Compiler & inLexique) const {
+                         C_CompilerEx & inLexique) const {
   inHfile.appendCppTitleComment (C_String ("Extern type 'GGS_") + mGalgasName + "'") ;
   inHfile << "#include \"GGS_" << mGalgasName << ".h\"\n\n" ;
   inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mGalgasName << " ;\n\n" ;
@@ -65,7 +65,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   GGS_M_externTypeConstructorMap::cEnumerator constructor (mConstructorMap) ;
   while (constructor.hasCurrentObject ()) {
     generatedZone2 << "  public : static GGS_" << mGalgasName
-                   << " constructor_" << constructor._key (HERE) << " (C_Compiler & inLexique" ;
+                   << " constructor_" << constructor._key (HERE) << " (C_CompilerEx & inLexique" ;
     GGS_typeListeAttributsSemantiques::cEnumerator arg (constructor._aListeDesAttributs (HERE), true) ;
     while (arg.hasCurrentObject ()) {
       arg._mAttributType (HERE)(HERE)->generatePublicDeclaration (inHfile, arg._mAttributeName (HERE)) ;
@@ -77,7 +77,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone2 << "//--- Introspection\n"
                     "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
                     "  public : GGS_object reader_object (void) const ;\n\n"
-                    "  public : static GGS_" << mGalgasName << " castFromObject (C_Compiler & inLexique,\n"
+                    "  public : static GGS_" << mGalgasName << " castFromObject (C_CompilerEx & inLexique,\n"
                     "                                           const GGS_object & inObject,\n"
                     "                                           const GGS_location & inErrorLocation\n"
                     "                                           COMMA_LOCATION_ARGS) ;\n\n" ;
@@ -123,7 +123,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeExternTypeToGenerate::
-generateCppClassImplementation (C_Compiler & /* inLexique */,
+generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inTargetFileName */,
                                   PMSInt32 & /* ioPrototypeIndex */,

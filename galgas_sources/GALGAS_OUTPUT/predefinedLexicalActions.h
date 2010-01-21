@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildLexicalRoutineMap (C_Compiler &,
+void routine_buildLexicalRoutineMap (C_CompilerEx &,
                                 GGS_lexicalRoutineMap  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -52,7 +52,7 @@ void routine_buildLexicalRoutineMap (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildLexicalFunctionMap (C_Compiler &,
+void routine_buildLexicalFunctionMap (C_CompilerEx &,
                                 GGS_lexicalFunctionMap  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -61,7 +61,7 @@ void routine_buildLexicalFunctionMap (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_printPredefinedLexicalActions (C_Compiler & COMMA_LOCATION_ARGS) ;
+void routine_printPredefinedLexicalActions (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 

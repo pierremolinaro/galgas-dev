@@ -67,7 +67,7 @@ class GGS_constructorMap : public AC_galgas_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_constructorMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_constructorMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -89,7 +89,7 @@ class GGS_constructorMap : public AC_galgas_map {
   public : inline const GGS_constructorMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_constructorMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_constructorMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
@@ -99,7 +99,7 @@ class GGS_constructorMap : public AC_galgas_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_typeList &  inParameter0,
                                 const GGS_bool&  inParameter1,
@@ -108,13 +108,13 @@ class GGS_constructorMap : public AC_galgas_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_typeList   & outParameter0,
                                 GGS_bool  & outParameter1,
                                 GGS_ACGalgasType   & outParameter2 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                    const utf32 * inErrorMessage,
                                    const GGS_lstring & inKey,
                                    const GGS_typeList & inParameter0,
@@ -123,7 +123,7 @@ class GGS_constructorMap : public AC_galgas_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                    const utf32 * inErrorMessage,
                                    const GGS_lstring & inKey,
                                    GGS_typeList & outParameter0,
@@ -132,10 +132,10 @@ class GGS_constructorMap : public AC_galgas_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_constructorMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_constructorMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_constructorMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_constructorMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_constructorMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 //--------------------------------- Map Enumerator
   public : class cEnumerator : public cAbstractMapEnumerator {
@@ -163,7 +163,7 @@ class GGS_constructorMap : public AC_galgas_map {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithoutArgument (C_Compiler &,
+void routine_enterConstructorWithoutArgument (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 const GGS_string ,
                                 const GGS_ACGalgasType  ,
@@ -175,7 +175,7 @@ void routine_enterConstructorWithoutArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithStringArgument (C_Compiler &,
+void routine_enterConstructorWithStringArgument (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 const GGS_string ,
                                 const GGS_ACGalgasType  ,
@@ -187,7 +187,7 @@ void routine_enterConstructorWithStringArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithCharArgument (C_Compiler &,
+void routine_enterConstructorWithCharArgument (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 const GGS_string ,
                                 const GGS_ACGalgasType  ,
@@ -199,7 +199,7 @@ void routine_enterConstructorWithCharArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithUintArgument (C_Compiler &,
+void routine_enterConstructorWithUintArgument (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 const GGS_string ,
                                 const GGS_ACGalgasType  ,
@@ -211,7 +211,7 @@ void routine_enterConstructorWithUintArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith2UintArguments (C_Compiler &,
+void routine_enterConstructorWith2UintArguments (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 const GGS_string ,
                                 const GGS_ACGalgasType  ,
@@ -223,7 +223,7 @@ void routine_enterConstructorWith2UintArguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith3UintArguments (C_Compiler &,
+void routine_enterConstructorWith3UintArguments (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 const GGS_string ,
                                 const GGS_ACGalgasType  ,
@@ -235,7 +235,7 @@ void routine_enterConstructorWith3UintArguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith2UintUint64Arguments (C_Compiler &,
+void routine_enterConstructorWith2UintUint64Arguments (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 const GGS_string ,
                                 const GGS_ACGalgasType  ,
@@ -247,7 +247,7 @@ void routine_enterConstructorWith2UintUint64Arguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_constructorMap  (*typeCategoryReader__ACGalgasType__constructorMap)  (C_Compiler & inLexique,
+typedef GGS_constructorMap  (*typeCategoryReader__ACGalgasType__constructorMap)  (C_CompilerEx & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -272,7 +272,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_string (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_string (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -284,7 +284,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_char (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_char (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -296,7 +296,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_uint (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_uint (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -308,7 +308,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_sint (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_sint (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -320,7 +320,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_uint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_uint64 (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -332,7 +332,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_sint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_sint64 (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -344,7 +344,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lstring (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_lstring (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -356,7 +356,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lchar (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_lchar (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -368,7 +368,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lbool (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_lbool (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -380,7 +380,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_luint (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_luint (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -392,7 +392,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lsint (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_lsint (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -404,7 +404,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_luint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_luint64 (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -416,7 +416,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lsint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_lsint64 (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -428,7 +428,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_ldouble (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_ldouble (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -440,7 +440,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_stringset (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_stringset (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -452,7 +452,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_binaryset (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_binaryset (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -464,7 +464,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_type (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_type (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -476,7 +476,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_data (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_data (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -488,7 +488,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapF
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_function (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_constructorMap  function_constructorMapFor_function (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

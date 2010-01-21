@@ -136,7 +136,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_constructorMap GGS_constructorMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -181,7 +181,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_constructorMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_typeList & inParameter0,
@@ -214,7 +214,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_constructorMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_typeList   & outParameter0,
@@ -292,7 +292,7 @@ const utf32 GGS_constructorMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_constructorMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_typeList   & outParameter0,
                                 GGS_bool  & outParameter1,
@@ -361,7 +361,7 @@ const utf32 GGS_constructorMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_constructorMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_typeList & inParameter0,
                                 const GGS_bool& inParameter1,
@@ -379,7 +379,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_constructorMap GGS_constructorMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_constructorMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap result ; // Not Built
@@ -396,7 +396,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_constructorMap GGS_constructorMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_constructorMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -482,7 +482,7 @@ GGS_object GGS_constructorMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap GGS_constructorMap::castFromObject (C_Compiler & inLexique,
+GGS_constructorMap GGS_constructorMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -511,7 +511,7 @@ const C_galgas_type_descriptorEX * GGS_constructorMap::typeDescriptor (void) con
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithoutArgument (C_Compiler & inLexique,
+void routine_enterConstructorWithoutArgument (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -531,7 +531,7 @@ void routine_enterConstructorWithoutArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithStringArgument (C_Compiler & inLexique,
+void routine_enterConstructorWithStringArgument (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -551,7 +551,7 @@ void routine_enterConstructorWithStringArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithCharArgument (C_Compiler & inLexique,
+void routine_enterConstructorWithCharArgument (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -571,7 +571,7 @@ void routine_enterConstructorWithCharArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithUintArgument (C_Compiler & inLexique,
+void routine_enterConstructorWithUintArgument (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -591,7 +591,7 @@ void routine_enterConstructorWithUintArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith2UintArguments (C_Compiler & inLexique,
+void routine_enterConstructorWith2UintArguments (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -614,7 +614,7 @@ void routine_enterConstructorWith2UintArguments (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith3UintArguments (C_Compiler & inLexique,
+void routine_enterConstructorWith3UintArguments (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -638,7 +638,7 @@ void routine_enterConstructorWith3UintArguments (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith2UintUint64Arguments (C_Compiler & inLexique,
+void routine_enterConstructorWith2UintUint64Arguments (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -675,7 +675,7 @@ enterCategoryReader__ACGalgasType__constructorMap (typeCategoryReader__ACGalgasT
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__ACGalgasType_defaultReader_constructorMap (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_constructorMap (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_constructorMap  () ;
@@ -709,7 +709,7 @@ findCategoryReader__ACGalgasType__constructorMap (AC_galgasClassRunTimeInformati
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__locationGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__locationGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_locationGalgasType * operand_5450
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -730,7 +730,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_string = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_string (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_string (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_string) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_string at %s:%d\n", __FILE__, __LINE__) ;
@@ -768,7 +768,7 @@ GGS_constructorMap  function_constructorMapFor_string (C_Compiler & inLexique CO
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_string (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_string (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -792,7 +792,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_stri
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__stringGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__stringGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_stringGalgasType * operand_7511
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -813,7 +813,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_char = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_char (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_char (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_char) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_char at %s:%d\n", __FILE__, __LINE__) ;
@@ -833,7 +833,7 @@ GGS_constructorMap  function_constructorMapFor_char (C_Compiler & inLexique COMM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_char (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_char (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -857,7 +857,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_char
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__charGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__charGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_charGalgasType * operand_8114
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -874,7 +874,7 @@ category_reader__charGalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__boolGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__boolGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_boolGalgasType * operand_8321
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -895,7 +895,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_uint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_uint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_uint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_uint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_uint at %s:%d\n", __FILE__, __LINE__) ;
@@ -917,7 +917,7 @@ GGS_constructorMap  function_constructorMapFor_uint (C_Compiler & inLexique COMM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_uint (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_uint (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -941,7 +941,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_uint
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__uintGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__uintGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_uintGalgasType * operand_9072
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -962,7 +962,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_sint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_sint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_sint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_sint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_sint at %s:%d\n", __FILE__, __LINE__) ;
@@ -982,7 +982,7 @@ GGS_constructorMap  function_constructorMapFor_sint (C_Compiler & inLexique COMM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_sint (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_sint (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1006,7 +1006,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_sint
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__sintGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__sintGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_sintGalgasType * operand_9630
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1027,7 +1027,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_uint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_uint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_uint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_uint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_uint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1049,7 +1049,7 @@ GGS_constructorMap  function_constructorMapFor_uint64 (C_Compiler & inLexique CO
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_uint64 (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_uint64 (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1073,7 +1073,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_uint
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__uint64GalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__uint64GalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_uint64GalgasType * operand_10451
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1094,7 +1094,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_sint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_sint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_sint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_sint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_sint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1114,7 +1114,7 @@ GGS_constructorMap  function_constructorMapFor_sint64 (C_Compiler & inLexique CO
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_sint64 (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_sint64 (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1138,7 +1138,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_sint
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__sint64GalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__sint64GalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_sint64GalgasType * operand_11019
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1155,7 +1155,7 @@ category_reader__sint64GalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__doubleGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__doubleGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_doubleGalgasType * operand_11230
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1176,7 +1176,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_lstring = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lstring (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_lstring (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_lstring) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_lstring at %s:%d\n", __FILE__, __LINE__) ;
@@ -1199,7 +1199,7 @@ GGS_constructorMap  function_constructorMapFor_lstring (C_Compiler & inLexique C
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_lstring (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_lstring (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1223,7 +1223,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lstr
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__lstringGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__lstringGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_lstringGalgasType * operand_11931
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1244,7 +1244,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_lchar = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lchar (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_lchar (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_lchar) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_lchar at %s:%d\n", __FILE__, __LINE__) ;
@@ -1266,7 +1266,7 @@ GGS_constructorMap  function_constructorMapFor_lchar (C_Compiler & inLexique COM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_lchar (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_lchar (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1290,7 +1290,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lcha
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__lcharGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__lcharGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_lcharGalgasType * operand_12514
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1311,7 +1311,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_lbool = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lbool (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_lbool (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_lbool) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_lbool at %s:%d\n", __FILE__, __LINE__) ;
@@ -1333,7 +1333,7 @@ GGS_constructorMap  function_constructorMapFor_lbool (C_Compiler & inLexique COM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_lbool (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_lbool (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1357,7 +1357,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lboo
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__lboolGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__lboolGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_lboolGalgasType * operand_13095
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1378,7 +1378,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_luint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_luint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_luint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_luint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_luint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1400,7 +1400,7 @@ GGS_constructorMap  function_constructorMapFor_luint (C_Compiler & inLexique COM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_luint (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_luint (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1424,7 +1424,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_luin
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__luintGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__luintGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_luintGalgasType * operand_13676
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1445,7 +1445,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_lsint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lsint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_lsint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_lsint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_lsint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1467,7 +1467,7 @@ GGS_constructorMap  function_constructorMapFor_lsint (C_Compiler & inLexique COM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_lsint (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_lsint (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1491,7 +1491,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lsin
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__lsintGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__lsintGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_lsintGalgasType * operand_14257
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1512,7 +1512,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_luint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_luint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_luint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_luint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_luint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1534,7 +1534,7 @@ GGS_constructorMap  function_constructorMapFor_luint64 (C_Compiler & inLexique C
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_luint64 (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_luint64 (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1558,7 +1558,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_luin
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__luint64GalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__luint64GalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_luint64GalgasType * operand_14846
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1579,7 +1579,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_lsint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_lsint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_lsint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_lsint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_lsint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1601,7 +1601,7 @@ GGS_constructorMap  function_constructorMapFor_lsint64 (C_Compiler & inLexique C
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_lsint64 (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_lsint64 (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1625,7 +1625,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lsin
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__lsint64GalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__lsint64GalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_lsint64GalgasType * operand_15437
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1646,7 +1646,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_ldouble = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_ldouble (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_ldouble (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_ldouble) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_ldouble at %s:%d\n", __FILE__, __LINE__) ;
@@ -1668,7 +1668,7 @@ GGS_constructorMap  function_constructorMapFor_ldouble (C_Compiler & inLexique C
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_ldouble (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_ldouble (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1692,7 +1692,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_ldou
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__ldoubleGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__ldoubleGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_ldoubleGalgasType * operand_16028
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1713,7 +1713,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_stringset = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_stringset (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_stringset (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_stringset) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_stringset at %s:%d\n", __FILE__, __LINE__) ;
@@ -1733,7 +1733,7 @@ GGS_constructorMap  function_constructorMapFor_stringset (C_Compiler & inLexique
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_stringset (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_stringset (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1757,7 +1757,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_stri
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__stringsetGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__stringsetGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_stringsetGalgasType * operand_16627
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1778,7 +1778,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_binaryset = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_binaryset (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_binaryset (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_binaryset) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_binaryset at %s:%d\n", __FILE__, __LINE__) ;
@@ -1817,7 +1817,7 @@ GGS_constructorMap  function_constructorMapFor_binaryset (C_Compiler & inLexique
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_binaryset (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_binaryset (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1841,7 +1841,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_bina
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__binarysetGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__binarysetGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_binarysetGalgasType * operand_19169
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1862,7 +1862,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_type = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_type (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_type (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_type) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_type at %s:%d\n", __FILE__, __LINE__) ;
@@ -1881,7 +1881,7 @@ GGS_constructorMap  function_constructorMapFor_type (C_Compiler & inLexique COMM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_type (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_type (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1905,7 +1905,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_type
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__typeGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__typeGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_typeGalgasType * operand_19656
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1922,7 +1922,7 @@ category_reader__typeGalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__objectGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__objectGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_objectGalgasType * operand_19865
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -1943,7 +1943,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_data = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_data (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_data (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_data) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_data at %s:%d\n", __FILE__, __LINE__) ;
@@ -1962,7 +1962,7 @@ GGS_constructorMap  function_constructorMapFor_data (C_Compiler & inLexique COMM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_data (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_data (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1986,7 +1986,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_data
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__dataGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__dataGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_dataGalgasType * operand_20348
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2007,7 +2007,7 @@ static bool gCacheFlagForOnceFunction_constructorMapFor_function = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_constructorMap  function_constructorMapFor_function (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_constructorMap  function_constructorMapFor_function (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_constructorMapFor_function) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_constructorMapFor_function at %s:%d\n", __FILE__, __LINE__) ;
@@ -2028,7 +2028,7 @@ GGS_constructorMap  function_constructorMapFor_function (C_Compiler & inLexique 
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_constructorMapFor_function (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_constructorMapFor_function (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2052,7 +2052,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_func
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__functionGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__functionGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_functionGalgasType * operand_21047
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2069,7 +2069,7 @@ category_reader__functionGalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__classGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__classGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_classGalgasType * operand_21259
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2106,7 +2106,7 @@ category_reader__classGalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__listGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__listGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_listGalgasType * operand_21866
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2140,7 +2140,7 @@ category_reader__listGalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__listmapGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__listmapGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_listmapGalgasType * operand_22401
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2158,7 +2158,7 @@ category_reader__listmapGalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__structGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__structGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_structGalgasType * operand_22681
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2191,7 +2191,7 @@ category_reader__structGalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__sortedlistGalgasType__constructorMap (C_Compiler & inLexique,
+category_reader__sortedlistGalgasType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_sortedlistGalgasType * operand_23138
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2225,7 +2225,7 @@ category_reader__sortedlistGalgasType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__mapType__constructorMap (C_Compiler & inLexique,
+category_reader__mapType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_mapType * operand_23675
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2244,7 +2244,7 @@ category_reader__mapType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__mapindexType__constructorMap (C_Compiler & inLexique,
+category_reader__mapindexType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_mapindexType * operand_24068
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;
@@ -2262,7 +2262,7 @@ category_reader__mapindexType__constructorMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_constructorMap 
-category_reader__enumType__constructorMap (C_Compiler & inLexique,
+category_reader__enumType__constructorMap (C_CompilerEx & inLexique,
                                 const cPtr_enumType * operand_24336
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_constructorMap  var_cas_outMap ;

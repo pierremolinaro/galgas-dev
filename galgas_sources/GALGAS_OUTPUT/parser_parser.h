@@ -38,10 +38,10 @@
 //---------------------------------------------------------------------------*
 
 
-void routine_checkLabelSignatures (C_Compiler &,
+void routine_checkLabelSignatures (C_CompilerEx &,
                                 GGS_typeAltProductionsMap  & COMMA_LOCATION_ARGS) ;
 
-void routine_checkParseRewindSignatures (C_Compiler &,
+void routine_checkParseRewindSignatures (C_CompilerEx &,
                                 GGS_L_parse_rewind_signature_list  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -50,7 +50,7 @@ void routine_checkParseRewindSignatures (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_implicitDeclaration (C_Compiler &,
+void routine_implicitDeclaration (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_uint  ,
                                 const GGS_string ,
@@ -65,7 +65,7 @@ void routine_implicitDeclaration (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_implicitDeclarationImportSyntax (C_Compiler &,
+void routine_implicitDeclarationImportSyntax (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_uint  ,
                                 GGS_nonTerminalSymbolMapForGrammarAnalysis  &,

@@ -52,7 +52,7 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
                                               COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
-  public : virtual bool isEqualToObject (C_Compiler &, const C_GGS_Object * inOperand COMMA_LOCATION_ARGS) const ;
+  public : virtual bool isEqualToObject (C_CompilerEx &, const C_GGS_Object * inOperand COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

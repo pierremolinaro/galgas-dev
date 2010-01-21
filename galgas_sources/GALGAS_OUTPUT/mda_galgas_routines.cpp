@@ -60,7 +60,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_outputDirectoryTEMP (C_Compiler &,
+GGS_string function_outputDirectoryTEMP (C_CompilerEx &,
                                 const GGS_lstring   var_cas_inSourceFile COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER function_outputDirectoryTEMP at %s:%d\n", __FILE__, __LINE__) ;
@@ -76,7 +76,7 @@ GGS_string function_outputDirectoryTEMP (C_Compiler &,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_outputDirectoryTEMP (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_outputDirectoryTEMP (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -105,7 +105,7 @@ kFunction_descriptor_outputDirectoryTEMP ("outputDirectoryTEMP",
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_outputDirectory (C_Compiler & inLexique,
+GGS_string function_outputDirectory (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER function_outputDirectory at %s:%d\n", __FILE__, __LINE__) ;
@@ -126,7 +126,7 @@ GGS_string function_outputDirectory (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_outputDirectory (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_outputDirectory (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -155,7 +155,7 @@ kFunction_descriptor_outputDirectory ("outputDirectory",
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkCategoryMethodDefinitionForClass (C_Compiler & inLexique,
+void routine_checkCategoryMethodDefinitionForClass (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inClassNameForErrorSignaling,
                                 const GGS_string  var_cas_inClassName,
                                 const GGS_lstring   var_cas_inAbstractCategoryMethodName,
@@ -222,7 +222,7 @@ void routine_checkCategoryMethodDefinitionForClass (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkCategoryReaderDefinitionForClass (C_Compiler & inLexique,
+void routine_checkCategoryReaderDefinitionForClass (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inClassNameForErrorSignaling,
                                 const GGS_string  var_cas_inClassName,
                                 const GGS_lstring   var_cas_inAbstractCategoryReaderName,
@@ -289,7 +289,7 @@ void routine_checkCategoryReaderDefinitionForClass (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_performProjectGlobalCheckings (C_Compiler & inLexique,
+void routine_performProjectGlobalCheckings (C_CompilerEx & inLexique,
                                 const GGS_parsedComponentStruct  var_cas_inParsedComponentStruct,
                                 const GGS_location   var_cas_inEndOfSourceFile COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -482,7 +482,7 @@ addAssign_operation (const GGS_string & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_stringlist GGS_targetFileListMap::
-reader_listForKey (C_Compiler & /* inLexique */,
+reader_listForKey (C_CompilerEx & /* inLexique */,
                    const GGS_string & inKey
                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringlist result ;
@@ -500,7 +500,7 @@ reader_listForKey (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_stringset GGS_targetFileListMap::
-reader_allKeys (C_Compiler & /* inLexique */
+reader_allKeys (C_CompilerEx & /* inLexique */
                 COMMA_UNUSED_LOCATION_ARGS) const {
 
   GGS_stringset result ;
@@ -511,7 +511,7 @@ reader_allKeys (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_stringlist GGS_targetFileListMap::
-reader_keyList (C_Compiler & /* inLexique */
+reader_keyList (C_CompilerEx & /* inLexique */
                 COMMA_UNUSED_LOCATION_ARGS) const {
 
   GGS_stringlist result ;
@@ -563,7 +563,7 @@ GGS_object GGS_targetFileListMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_targetFileListMap GGS_targetFileListMap::castFromObject (C_Compiler & inLexique,
+GGS_targetFileListMap GGS_targetFileListMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -673,7 +673,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_sourceFileMap GGS_sourceFileMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_sourceFileMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -718,7 +718,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_sourceFileMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_string& inParameter0,
@@ -748,7 +748,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_sourceFileMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_string  & outParameter0,
@@ -829,7 +829,7 @@ const utf32 GGS_sourceFileMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_sourceFileMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_string  & outParameter0,
                                 GGS_sourceFileKind  & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -908,7 +908,7 @@ const utf32 GGS_sourceFileMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_sourceFileMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_string& inParameter0,
                                 const GGS_sourceFileKind& inParameter1 COMMA_LOCATION_ARGS) {
@@ -924,7 +924,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_sourceFileMap GGS_sourceFileMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_sourceFileMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_sourceFileMap result ; // Not Built
@@ -941,7 +941,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_sourceFileMap GGS_sourceFileMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_sourceFileMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -1021,7 +1021,7 @@ GGS_object GGS_sourceFileMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_sourceFileMap GGS_sourceFileMap::castFromObject (C_Compiler & inLexique,
+GGS_sourceFileMap GGS_sourceFileMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1085,7 +1085,7 @@ const cDirectoryWrapper gWrapperDirectory_0_fileListTemplateFileWrapper (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_fileListTemplateFileWrapper_fileListTemplate (C_Compiler & /* inLexique */,
+template_filewrapper_fileListTemplateFileWrapper_fileListTemplate (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_HAND_CODED_SOURCES_SUB_DIRS,
                                 const GGS_string& var_cas_GALGAS_SOURCE_LIST,
                                 const GGS_string& var_cas_HAND_CODED_SOURCE_LIST) {

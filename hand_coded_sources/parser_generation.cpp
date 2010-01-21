@@ -45,7 +45,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeNonterminalToGenerate::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -85,7 +85,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate::
-generateCppClassImplementation (C_Compiler & /* inLexique */,
+generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                 const C_String & /* inTargetFileName */,
                                 PMSInt32 & /* ioPrototypeIndex */,
@@ -108,7 +108,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeProductionAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -174,7 +174,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeProductionAengendrer::
-generateCppClassImplementation (C_Compiler & /* inLexique */,
+generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & inTargetFileName,
                                   PMSInt32 & ioPrototypeIndex,

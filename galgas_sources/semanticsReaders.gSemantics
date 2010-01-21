@@ -704,10 +704,10 @@ once readerMapFor_function ->@readerMap outMap :
   enterBaseReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"resultType" ![@typeGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"formalParameterTypeList" !build_typelist_type [] !false ;
-  @typeList typeList [emptyList] ;
-  typeList += !build_typelist_type [] ;
-  typeList += ![@locationGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"invoke" !here] !typeList !false ![@objectGalgasType new] ![@readerQualifier isBasic]] ;
+  @typeList objectList [emptyList] ;
+  objectList += !build_objectlist_type [] ;
+  objectList += ![@locationGalgasType new] ;
+  [!?outMap insertKey ![@lstring new !"invoke" !here] !objectList !true ![@objectGalgasType new] ![@readerQualifier isBasic]] ;
 end once ;
 
 #---------------------------------------------------------------------------*

@@ -323,7 +323,7 @@ pr_galgas_component_semantics_parser_558_23_importSyntax (galgas_scanner & inLex
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parse_semantics_component_for_importing (C_Compiler & inLexique,
+void routine_parse_semantics_component_for_importing (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inFileName,
                                 GGS_M_semanticsComponents  & var_cas_ioSemanticsMapForUse,
                                 GGS_EXsemanticContext & var_cas_ioSemanticContext,
@@ -9039,7 +9039,7 @@ pr_semantics_declaration_semantics_parser_7762_28_parse (galgas_scanner & inLexi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivelyEnumerateDirectories (C_Compiler & inLexique,
+void routine_recursivelyEnumerateDirectories (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inAbsoluteSourcePath,
                                 const GGS_string  var_cas_inPathInWrapper,
                                 const GGS_wrapperExtensionMap   var_cas_inExtensionMap,
