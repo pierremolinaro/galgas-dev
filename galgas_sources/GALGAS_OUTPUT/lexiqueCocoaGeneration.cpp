@@ -68,7 +68,7 @@ enterCategoryReader__lexicalExpression__generateCocoaConditionCode (typeCategory
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalExpression_defaultReader_generateCocoaConditionCode (C_Compiler &,
+category_reader__lexicalExpression_defaultReader_generateCocoaConditionCode (C_CompilerEx &,
                                 const cPtr_lexicalExpression *,
                                 GGS_lexiqueAnalysisContext  
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -103,7 +103,7 @@ findCategoryReader__lexicalExpression__generateCocoaConditionCode (AC_galgasClas
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalOrExpression__generateCocoaConditionCode (C_Compiler & inLexique,
+category_reader__lexicalOrExpression__generateCocoaConditionCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalOrExpression * operand_2309,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -123,7 +123,7 @@ category_reader__lexicalOrExpression__generateCocoaConditionCode (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalCharacterIntervalMatch__generateCocoaConditionCode (C_Compiler & inLexique,
+category_reader__lexicalCharacterIntervalMatch__generateCocoaConditionCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalCharacterIntervalMatch * operand_2776,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -146,7 +146,7 @@ category_reader__lexicalCharacterIntervalMatch__generateCocoaConditionCode (C_Co
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalStringMatch__generateCocoaConditionCode (C_Compiler &,
+category_reader__lexicalStringMatch__generateCocoaConditionCode (C_CompilerEx &,
                                 const cPtr_lexicalStringMatch * operand_3285,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -165,7 +165,7 @@ category_reader__lexicalStringMatch__generateCocoaConditionCode (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalStringNotMatch__generateCocoaConditionCode (C_Compiler &,
+category_reader__lexicalStringNotMatch__generateCocoaConditionCode (C_CompilerEx &,
                                 const cPtr_lexicalStringNotMatch * operand_3659,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -185,7 +185,7 @@ category_reader__lexicalStringNotMatch__generateCocoaConditionCode (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalCharacterMatch__generateCocoaConditionCode (C_Compiler & inLexique,
+category_reader__lexicalCharacterMatch__generateCocoaConditionCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalCharacterMatch * operand_4065,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -205,7 +205,7 @@ category_reader__lexicalCharacterMatch__generateCocoaConditionCode (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalCharacterSetMatch__generateCocoaConditionCode (C_Compiler &,
+category_reader__lexicalCharacterSetMatch__generateCocoaConditionCode (C_CompilerEx &,
                                 const cPtr_lexicalCharacterSetMatch * operand_4454,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -237,7 +237,7 @@ enterCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaR
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalRoutineOrFunctionFormalInputArgument_defaultReader_generateCocoaRoutineOrFunctionArgument (C_Compiler &,
+category_reader__lexicalRoutineOrFunctionFormalInputArgument_defaultReader_generateCocoaRoutineOrFunctionArgument (C_CompilerEx &,
                                 const cPtr_lexicalRoutineOrFunctionFormalInputArgument *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_string () ;
@@ -271,7 +271,7 @@ findCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRo
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalAttributeInputArgument__generateCocoaRoutineOrFunctionArgument (C_Compiler &,
+category_reader__lexicalAttributeInputArgument__generateCocoaRoutineOrFunctionArgument (C_CompilerEx &,
                                 const cPtr_lexicalAttributeInputArgument * operand_5219
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outGeneratedCode ;
@@ -288,7 +288,7 @@ category_reader__lexicalAttributeInputArgument__generateCocoaRoutineOrFunctionAr
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalCharacterInputArgument__generateCocoaRoutineOrFunctionArgument (C_Compiler & inLexique,
+category_reader__lexicalCharacterInputArgument__generateCocoaRoutineOrFunctionArgument (C_CompilerEx & inLexique,
                                 const cPtr_lexicalCharacterInputArgument * operand_5492
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outGeneratedCode ;
@@ -305,7 +305,7 @@ category_reader__lexicalCharacterInputArgument__generateCocoaRoutineOrFunctionAr
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalUnsignedInputArgument__generateCocoaRoutineOrFunctionArgument (C_Compiler & inLexique,
+category_reader__lexicalUnsignedInputArgument__generateCocoaRoutineOrFunctionArgument (C_CompilerEx & inLexique,
                                 const cPtr_lexicalUnsignedInputArgument * operand_5760
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outGeneratedCode ;
@@ -322,7 +322,7 @@ category_reader__lexicalUnsignedInputArgument__generateCocoaRoutineOrFunctionArg
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalCurrentCharacterInputArgument__generateCocoaRoutineOrFunctionArgument (C_Compiler &,
+category_reader__lexicalCurrentCharacterInputArgument__generateCocoaRoutineOrFunctionArgument (C_CompilerEx &,
                                 const cPtr_lexicalCurrentCharacterInputArgument * operand_6028
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outGeneratedCode ;
@@ -339,7 +339,7 @@ category_reader__lexicalCurrentCharacterInputArgument__generateCocoaRoutineOrFun
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalFunctionInputArgument__generateCocoaRoutineOrFunctionArgument (C_Compiler & inLexique,
+category_reader__lexicalFunctionInputArgument__generateCocoaRoutineOrFunctionArgument (C_CompilerEx & inLexique,
                                 const cPtr_lexicalFunctionInputArgument * operand_6278
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outGeneratedCode ;
@@ -385,7 +385,7 @@ enterCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineA
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__abstractLexicalRoutineActualArgument_defaultReader_generateCocoaRoutineArgument (C_Compiler &,
+category_reader__abstractLexicalRoutineActualArgument_defaultReader_generateCocoaRoutineArgument (C_CompilerEx &,
                                 const cPtr_abstractLexicalRoutineActualArgument *,
                                 GGS_lexiqueAnalysisContext  
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -420,7 +420,7 @@ findCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineAr
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalAttributeInputOutputArgument__generateCocoaRoutineArgument (C_Compiler & inLexique,
+category_reader__lexicalAttributeInputOutputArgument__generateCocoaRoutineArgument (C_CompilerEx & inLexique,
                                 const cPtr_lexicalAttributeInputOutputArgument * operand_7176,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -449,7 +449,7 @@ category_reader__lexicalAttributeInputOutputArgument__generateCocoaRoutineArgume
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalFormalInputArgument__generateCocoaRoutineArgument (C_Compiler & inLexique,
+category_reader__lexicalFormalInputArgument__generateCocoaRoutineArgument (C_CompilerEx & inLexique,
                                 const cPtr_lexicalFormalInputArgument * operand_7746,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -479,7 +479,7 @@ enterCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode (typ
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalSendDefaultAction_defaultReader_generateCocoaDefaultSendCode (C_Compiler &,
+category_reader__lexicalSendDefaultAction_defaultReader_generateCocoaDefaultSendCode (C_CompilerEx &,
                                 const cPtr_lexicalSendDefaultAction *,
                                 GGS_string  
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -514,7 +514,7 @@ findCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode (AC_g
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalSendTerminalByDefault__generateCocoaDefaultSendCode (C_Compiler &,
+category_reader__lexicalSendTerminalByDefault__generateCocoaDefaultSendCode (C_CompilerEx &,
                                 const cPtr_lexicalSendTerminalByDefault * operand_8477,
                                 GGS_string  var_cas_inScannerClassName
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -532,7 +532,7 @@ category_reader__lexicalSendTerminalByDefault__generateCocoaDefaultSendCode (C_C
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalErrorByDefault__generateCocoaDefaultSendCode (C_Compiler &,
+category_reader__lexicalErrorByDefault__generateCocoaDefaultSendCode (C_CompilerEx &,
                                 const cPtr_lexicalErrorByDefault * operand_8828,
                                 GGS_string  /* var_cas_inScannerClassName */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -562,7 +562,7 @@ enterCategoryReader__lexicalInstruction__generateCocoaInstructionCode (typeCateg
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalInstruction_defaultReader_generateCocoaInstructionCode (C_Compiler &,
+category_reader__lexicalInstruction_defaultReader_generateCocoaInstructionCode (C_CompilerEx &,
                                 const cPtr_lexicalInstruction *,
                                 GGS_string  ,
                                 GGS_lexiqueAnalysisContext  
@@ -598,7 +598,7 @@ findCategoryReader__lexicalInstruction__generateCocoaInstructionCode (AC_galgasC
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalStructuredSendInstruction__generateCocoaInstructionCode (C_Compiler & inLexique,
+category_reader__lexicalStructuredSendInstruction__generateCocoaInstructionCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalStructuredSendInstruction * operand_9530,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
@@ -637,7 +637,7 @@ category_reader__lexicalStructuredSendInstruction__generateCocoaInstructionCode 
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalSimpleSendInstruction__generateCocoaInstructionCode (C_Compiler &,
+category_reader__lexicalSimpleSendInstruction__generateCocoaInstructionCode (C_CompilerEx &,
                                 const cPtr_lexicalSimpleSendInstruction * operand_10352,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
@@ -656,7 +656,7 @@ category_reader__lexicalSimpleSendInstruction__generateCocoaInstructionCode (C_C
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalRepeatInstruction__generateCocoaInstructionCode (C_Compiler & inLexique,
+category_reader__lexicalRepeatInstruction__generateCocoaInstructionCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalRepeatInstruction * operand_10758,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext
@@ -718,7 +718,7 @@ category_reader__lexicalRepeatInstruction__generateCocoaInstructionCode (C_Compi
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalSelectInstruction__generateCocoaInstructionCode (C_Compiler & inLexique,
+category_reader__lexicalSelectInstruction__generateCocoaInstructionCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalSelectInstruction * operand_12103,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext
@@ -780,7 +780,7 @@ category_reader__lexicalSelectInstruction__generateCocoaInstructionCode (C_Compi
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalRoutineInstruction__generateCocoaInstructionCode (C_Compiler & inLexique,
+category_reader__lexicalRoutineInstruction__generateCocoaInstructionCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalRoutineInstruction * operand_13371,
                                 GGS_string  /* var_cas_inScannerClassName */,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext
@@ -809,7 +809,7 @@ category_reader__lexicalRoutineInstruction__generateCocoaInstructionCode (C_Comp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalDropInstruction__generateCocoaInstructionCode (C_Compiler &,
+category_reader__lexicalDropInstruction__generateCocoaInstructionCode (C_CompilerEx &,
                                 const cPtr_lexicalDropInstruction * operand_13938,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
@@ -828,7 +828,7 @@ category_reader__lexicalDropInstruction__generateCocoaInstructionCode (C_Compile
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalErrorInstruction__generateCocoaInstructionCode (C_Compiler &,
+category_reader__lexicalErrorInstruction__generateCocoaInstructionCode (C_CompilerEx &,
                                 const cPtr_lexicalErrorInstruction * operand_14343,
                                 GGS_string  /* var_cas_inScannerClassName */,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
@@ -847,7 +847,7 @@ category_reader__lexicalErrorInstruction__generateCocoaInstructionCode (C_Compil
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalWarningInstruction__generateCocoaInstructionCode (C_Compiler &,
+category_reader__lexicalWarningInstruction__generateCocoaInstructionCode (C_CompilerEx &,
                                 const cPtr_lexicalWarningInstruction * operand_14682,
                                 GGS_string  /* var_cas_inScannerClassName */,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
@@ -866,7 +866,7 @@ category_reader__lexicalWarningInstruction__generateCocoaInstructionCode (C_Comp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalTagInstruction__generateCocoaInstructionCode (C_Compiler &,
+category_reader__lexicalTagInstruction__generateCocoaInstructionCode (C_CompilerEx &,
                                 const cPtr_lexicalTagInstruction * operand_15018,
                                 GGS_string  /* var_cas_inScannerClassName */,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
@@ -888,7 +888,7 @@ category_reader__lexicalTagInstruction__generateCocoaInstructionCode (C_Compiler
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalRewindInstruction__generateCocoaInstructionCode (C_Compiler &,
+category_reader__lexicalRewindInstruction__generateCocoaInstructionCode (C_CompilerEx &,
                                 const cPtr_lexicalRewindInstruction * operand_15504,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
@@ -912,7 +912,7 @@ category_reader__lexicalRewindInstruction__generateCocoaInstructionCode (C_Compi
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalLogInstruction__generateCocoaInstructionCode (C_Compiler &,
+category_reader__lexicalLogInstruction__generateCocoaInstructionCode (C_CompilerEx &,
                                 const cPtr_lexicalLogInstruction * operand_16007,
                                 GGS_string  /* var_cas_inScannerClassName */,
                                 GGS_lexiqueAnalysisContext  /* var_cas_inLexiqueAnalysisContext */
@@ -943,7 +943,7 @@ enterCategoryReader__abstractLexicalRule__generateCocoaCode (typeCategoryReader_
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__abstractLexicalRule_defaultReader_generateCocoaCode (C_Compiler &,
+category_reader__abstractLexicalRule_defaultReader_generateCocoaCode (C_CompilerEx &,
                                 const cPtr_abstractLexicalRule *,
                                 GGS_string  ,
                                 GGS_lexiqueAnalysisContext  
@@ -979,7 +979,7 @@ findCategoryReader__abstractLexicalRule__generateCocoaCode (AC_galgasClassRunTim
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalImplicitRule__generateCocoaCode (C_Compiler & inLexique,
+category_reader__lexicalImplicitRule__generateCocoaCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalImplicitRule * operand_16765,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext
@@ -1021,7 +1021,7 @@ category_reader__lexicalImplicitRule__generateCocoaCode (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lexicalExplicitRule__generateCocoaCode (C_Compiler & inLexique,
+category_reader__lexicalExplicitRule__generateCocoaCode (C_CompilerEx & inLexique,
                                 const cPtr_lexicalExplicitRule * operand_17569,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext

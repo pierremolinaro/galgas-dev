@@ -34,7 +34,7 @@ class galgasTemplateGrammar : public galgasTemplateParser,
                                 const GGS_M_semanticsEntitiesForUse,
                                 const GGS_M_optionComponents,
                                 GGS_templateInstructionList &) ;
-  public : static void _performSourceFileParsing_ (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -45,7 +45,7 @@ class galgasTemplateGrammar : public galgasTemplateParser,
                                 const GGS_M_optionComponents,
                                 GGS_templateInstructionList &
                                 COMMA_LOCATION_ARGS) ;
-  public : static void _performSourceStringParsing_ (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string inSourceString,
                                 const GGS_templateVariableMap,

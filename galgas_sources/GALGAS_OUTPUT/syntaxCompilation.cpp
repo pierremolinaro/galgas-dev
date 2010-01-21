@@ -55,7 +55,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileSyntaxComponent (C_Compiler & inLexique,
+void routine_compileSyntaxComponent (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 const GGS_string  /* var_cas_inOutputDirectory */,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct COMMA_UNUSED_LOCATION_ARGS) {

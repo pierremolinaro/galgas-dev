@@ -27,7 +27,7 @@
 
 void cPtr_C_domainToImplement::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -60,7 +60,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  protected : C_BDD mBDDForRelation_" << currentRelation._key (HERE) << " ;\n" ;
     inHfile << "  public : void modifier_addTo"
             << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
-            << " (C_Compiler & inLexique" ;
+            << " (C_CompilerEx & inLexique" ;
     for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
       inHfile << ",\n                                    const GGS_uint & inValue_" << cStringWithSigned (i) ;
     }
@@ -68,26 +68,26 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "                                    COMMA_LOCATION_ARGS) ;\n"
                "  public : void modifier_reset"
             << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
-            << " (C_Compiler & inLexique"
+            << " (C_CompilerEx & inLexique"
                "\n"
                "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
     GGS_stringlist::cEnumerator currentDomainRelation (currentRelation._mDomains (HERE), true) ;
     if (currentDomainRelation.count () == 1) {
       inHfile << "  public : GGS_stringlist reader_"
               << currentRelation._key (HERE)
-              << "StringValueList (C_Compiler & inLexique"
+              << "StringValueList (C_CompilerEx & inLexique"
                  "\n"
                  "                                    COMMA_LOCATION_ARGS) const ;\n\n" ;
     }else if (currentDomainRelation.count () == 2) {
       inHfile << "  public : GGS_string2list reader_"
               << currentRelation._key (HERE)
-              << "StringValueList (C_Compiler & inLexique"
+              << "StringValueList (C_CompilerEx & inLexique"
                  "\n"
                  "                                    COMMA_LOCATION_ARGS) const ;\n\n" ;
     }else if (currentDomainRelation.count () == 3) {
       inHfile << "  public : GGS_string3list reader_"
               << currentRelation._key (HERE)
-              << "StringValueList (C_Compiler & inLexique"
+              << "StringValueList (C_CompilerEx & inLexique"
                  "\n"
                  "                                    COMMA_LOCATION_ARGS) const ;\n\n" ;
     }
@@ -99,7 +99,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : virtual ~GGS_" << mDomainName << " (void) ;\n\n"
              "//--- 'domainWithNames' GALGAS constructor\n"
              "  public : static GGS_" << mDomainName << "\n"
-             "  constructor_domainWithNames (C_Compiler & inLexique" ;
+             "  constructor_domainWithNames (C_CompilerEx & inLexique" ;
   currentAttribute.rewind () ;
   while (currentAttribute.hasCurrentObject ()) {
     inHfile << ",\n                               const GGS_stringlist & inDomain_"
@@ -112,7 +112,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
-             "  public : static GGS_" << mDomainName << " castFromObject (C_Compiler & inLexique,\n"
+             "  public : static GGS_" << mDomainName << " castFromObject (C_CompilerEx & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
              "                                           const GGS_location & inErrorLocation\n"
              "                                           COMMA_LOCATION_ARGS) ;\n\n"
@@ -143,7 +143,7 @@ generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_domainToImplement::
-generateCppClassImplementation (C_Compiler & /* inLexique */,
+generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
                                   PMSInt32 & /* ioPrototypeIndex */,
@@ -180,7 +180,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- 'domainWithNames' constructor
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mDomainName << " GGS_" << mDomainName << "::\n"
-               "constructor_domainWithNames (C_Compiler & /* inLexique */" ;
+               "constructor_domainWithNames (C_CompilerEx & /* inLexique */" ;
   currentAttribute.rewind () ;
   while (currentAttribute.hasCurrentObject ()) {
     inCppFile << ",\n                             const GGS_stringlist & inDomain_"
@@ -211,7 +211,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
               << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
-              << " (C_Compiler & /* inLexique */" ;
+              << " (C_CompilerEx & /* inLexique */" ;
     for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
       inCppFile << ",\n                                    const GGS_uint & inValue_" << cStringWithSigned (i) ;
     }
@@ -260,7 +260,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_reset"
               << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
-              << " (C_Compiler & /* inLexique */"
+              << " (C_CompilerEx & /* inLexique */"
                  "\n"
                  "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
                  "  mBDDForRelation_"
@@ -273,7 +273,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "GGS_stringlist GGS_" << mDomainName << "::\n"
                    "reader_"
                 << currentRelation._key (HERE)
-                << "StringValueList (C_Compiler & inLexique"
+                << "StringValueList (C_CompilerEx & inLexique"
                    "\n"
                    "                                    COMMA_LOCATION_ARGS) const {\n"
                    "  GGS_stringlist result ;\n"
@@ -300,7 +300,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "GGS_string2list GGS_" << mDomainName << "::\n"
                    "reader_"
                 << currentRelation._key (HERE)
-                << "StringValueList (C_Compiler & inLexique"
+                << "StringValueList (C_CompilerEx & inLexique"
                    "\n"
                    "                                    COMMA_LOCATION_ARGS) const {\n"
                    "  GGS_string2list result ;\n"
@@ -331,7 +331,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "GGS_string3list GGS_" << mDomainName << "::\n"
                    "reader_"
                 << currentRelation._key (HERE)
-                << "StringValueList (C_Compiler & inLexique"
+                << "StringValueList (C_CompilerEx & inLexique"
                    "\n"
                    "                                    COMMA_LOCATION_ARGS) const {\n"
                    "  GGS_string3list result ;\n"
@@ -374,7 +374,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "GGS_" << mDomainName << " GGS_" << mDomainName << "::castFromObject (C_Compiler & inLexique,\n"
+  inCppFile << "GGS_" << mDomainName << " GGS_" << mDomainName << "::castFromObject (C_CompilerEx & inLexique,\n"
                "                                   const GGS_object & inObject,\n"
                "                                   const GGS_location & inErrorLocation\n"
                "                                   COMMA_LOCATION_ARGS) {\n"

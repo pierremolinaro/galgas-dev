@@ -68,13 +68,13 @@ class GGS_guiSimpleAttributeList : public AC_galgas_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_guiSimpleAttributeList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_guiSimpleAttributeList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -89,22 +89,22 @@ class GGS_guiSimpleAttributeList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_guiSimpleAttributeList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstring & _out_0,
                               GGS_lstring & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstring & _out_0,
                              GGS_lstring & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_lstring & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -116,7 +116,7 @@ class GGS_guiSimpleAttributeList : public AC_galgas_list {
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_guiSimpleAttributeList operator_concat (const GGS_guiSimpleAttributeList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -137,18 +137,18 @@ class GGS_guiSimpleAttributeList : public AC_galgas_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
-  reader_mKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mKeyAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mValueAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mValueAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMKeyAtIndex (C_Compiler & inLexique,
+  modifier_setMKeyAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMValueAtIndex (C_Compiler & inLexique,
+  modifier_setMValueAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -158,7 +158,7 @@ class GGS_guiSimpleAttributeList : public AC_galgas_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_guiSimpleAttributeList castFromObject (C_Compiler & inLexique,
+  public : static GGS_guiSimpleAttributeList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -209,13 +209,13 @@ class GGS_guiCompoundAttributeList : public AC_galgas_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_guiCompoundAttributeList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_guiCompoundAttributeList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -230,25 +230,25 @@ class GGS_guiCompoundAttributeList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_guiCompoundAttributeList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstring & _out_0,
                               GGS_lstring & _out_1,
                               GGS_lstring & _out_2
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstring & _out_0,
                              GGS_lstring & _out_1,
                              GGS_lstring & _out_2
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_lstring & _out_1,
                                 GGS_lstring & _out_2
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_lstring & _out_1,
                                  GGS_lstring & _out_2
@@ -262,7 +262,7 @@ class GGS_guiCompoundAttributeList : public AC_galgas_list {
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator
   public : GGS_guiCompoundAttributeList operator_concat (const GGS_guiCompoundAttributeList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2
@@ -286,25 +286,25 @@ class GGS_guiCompoundAttributeList : public AC_galgas_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
-  reader_mKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mKeyAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mAttributeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mValueAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mValueAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMKeyAtIndex (C_Compiler & inLexique,
+  modifier_setMKeyAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMAttributeNameAtIndex (C_Compiler & inLexique,
+  modifier_setMAttributeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMValueAtIndex (C_Compiler & inLexique,
+  modifier_setMValueAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -314,7 +314,7 @@ class GGS_guiCompoundAttributeList : public AC_galgas_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_guiCompoundAttributeList castFromObject (C_Compiler & inLexique,
+  public : static GGS_guiCompoundAttributeList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -365,13 +365,13 @@ class GGS_guiLabelList : public AC_galgas_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_guiLabelList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_guiLabelList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -386,22 +386,22 @@ class GGS_guiLabelList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_guiLabelList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstringlist & _out_0,
                               GGS_location & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstringlist & _out_0,
                              GGS_location & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstringlist & _out_0,
                                 GGS_location & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstringlist & _out_0,
                                  GGS_location & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -413,7 +413,7 @@ class GGS_guiLabelList : public AC_galgas_list {
                                 const GGS_location & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_guiLabelList operator_concat (const GGS_guiLabelList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstringlist & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -434,18 +434,18 @@ class GGS_guiLabelList : public AC_galgas_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstringlist 
-  reader_mTerminalListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mTerminalListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_location 
-  reader_mLocationAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mLocationAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMTerminalListAtIndex (C_Compiler & inLexique,
+  modifier_setMTerminalListAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMLocationAtIndex (C_Compiler & inLexique,
+  modifier_setMLocationAtIndex (C_CompilerEx & inLexique,
                               const GGS_location  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -455,7 +455,7 @@ class GGS_guiLabelList : public AC_galgas_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_guiLabelList castFromObject (C_Compiler & inLexique,
+  public : static GGS_guiLabelList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -507,13 +507,13 @@ class GGS_withLexiqueList : public AC_galgas_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_withLexiqueList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_withLexiqueList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -528,28 +528,28 @@ class GGS_withLexiqueList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_withLexiqueList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstring & _out_0,
                               GGS_guiLabelList & _out_1,
                               GGS_guiSimpleAttributeList & _out_2,
                               GGS_guiCompoundAttributeList & _out_3
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstring & _out_0,
                              GGS_guiLabelList & _out_1,
                              GGS_guiSimpleAttributeList & _out_2,
                              GGS_guiCompoundAttributeList & _out_3
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_guiLabelList & _out_1,
                                 GGS_guiSimpleAttributeList & _out_2,
                                 GGS_guiCompoundAttributeList & _out_3
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_guiLabelList & _out_1,
                                  GGS_guiSimpleAttributeList & _out_2,
@@ -565,7 +565,7 @@ class GGS_withLexiqueList : public AC_galgas_list {
                                 const GGS_guiCompoundAttributeList & argument_3) ;
 //--- Handling '.' GALGAS operator
   public : GGS_withLexiqueList operator_concat (const GGS_withLexiqueList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_guiLabelList & argument_1,
                                 const GGS_guiSimpleAttributeList & argument_2,
@@ -592,32 +592,32 @@ class GGS_withLexiqueList : public AC_galgas_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
-  reader_mLexiqueFileNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mLexiqueFileNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_guiLabelList 
-  reader_mLabelsAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mLabelsAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_guiSimpleAttributeList 
-  reader_mSimpleAttributesAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSimpleAttributesAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_guiCompoundAttributeList 
-  reader_mCompoundAttributesAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mCompoundAttributesAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMLexiqueFileNameAtIndex (C_Compiler & inLexique,
+  modifier_setMLexiqueFileNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMLabelsAtIndex (C_Compiler & inLexique,
+  modifier_setMLabelsAtIndex (C_CompilerEx & inLexique,
                               const GGS_guiLabelList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMSimpleAttributesAtIndex (C_Compiler & inLexique,
+  modifier_setMSimpleAttributesAtIndex (C_CompilerEx & inLexique,
                               const GGS_guiSimpleAttributeList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMCompoundAttributesAtIndex (C_Compiler & inLexique,
+  modifier_setMCompoundAttributesAtIndex (C_CompilerEx & inLexique,
                               const GGS_guiCompoundAttributeList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -627,7 +627,7 @@ class GGS_withLexiqueList : public AC_galgas_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_withLexiqueList castFromObject (C_Compiler & inLexique,
+  public : static GGS_withLexiqueList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -674,14 +674,14 @@ class GGS_guiComponentRoot : public AC_galgas_class {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_guiComponentRoot
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_guiComponentRoot constructor_new (C_Compiler & inLexique,
+  public : static GGS_guiComponentRoot constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2,
@@ -698,11 +698,11 @@ class GGS_guiComponentRoot : public AC_galgas_class {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mGUIName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mGUIClass (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstringlist  reader_mImportedOptionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_guiSimpleAttributeList  reader_mGlobalSimpleAttributeList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_withLexiqueList  reader_mWithLexiqueList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mGUIName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mGUIClass (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstringlist  reader_mImportedOptionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_guiSimpleAttributeList  reader_mGlobalSimpleAttributeList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_withLexiqueList  reader_mWithLexiqueList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -723,7 +723,7 @@ AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_guiComponentRoot castFromObject (C_Compiler & inLexique,
+  public : static GGS_guiComponentRoot castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;

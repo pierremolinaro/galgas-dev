@@ -168,7 +168,7 @@ dotAssign_operation (const GGS_formalParameterSignature inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterSignature::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_ACGalgasType & argument_0,
                      const GGS_formalArgumentPassingMode& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -241,7 +241,7 @@ internalSubListWithRange (GGS_formalParameterSignature & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_formalParameterSignature GGS_formalParameterSignature::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -261,7 +261,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_formalParameterSignature GGS_formalParameterSignature::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_formalParameterSignature result ;
@@ -286,7 +286,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterSignature::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_ACGalgasType & _out_0,
               GGS_formalArgumentPassingMode& _out_1
               COMMA_LOCATION_ARGS) const {
@@ -309,7 +309,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterSignature::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_ACGalgasType & _out_0,
              GGS_formalArgumentPassingMode& _out_1
              COMMA_LOCATION_ARGS) const {
@@ -332,7 +332,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterSignature::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_ACGalgasType & _out_0,
                  GGS_formalArgumentPassingMode& _out_1
                  COMMA_LOCATION_ARGS) {
@@ -357,7 +357,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterSignature::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_ACGalgasType & _out_0,
                 GGS_formalArgumentPassingMode& _out_1
                 COMMA_LOCATION_ARGS) {
@@ -382,7 +382,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_ACGalgasType  GGS_formalParameterSignature::
-reader_mParameterTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mParameterTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_ACGalgasType  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -396,7 +396,7 @@ reader_mParameterTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex C
 //---------------------------------------------------------------------------*
 
 GGS_formalArgumentPassingMode GGS_formalParameterSignature::
-reader_mFormalParameterPassingModeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mFormalParameterPassingModeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_formalArgumentPassingMode result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -410,7 +410,7 @@ reader_mFormalParameterPassingModeAtIndex (C_Compiler & inLexique, const GGS_uin
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterSignature::
-modifier_setMParameterTypeAtIndex (C_Compiler & inLexique,
+modifier_setMParameterTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_ACGalgasType  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -425,7 +425,7 @@ modifier_setMParameterTypeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterSignature::
-modifier_setMFormalParameterPassingModeAtIndex (C_Compiler & inLexique,
+modifier_setMFormalParameterPassingModeAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalArgumentPassingMode & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -465,7 +465,7 @@ GGS_object GGS_formalParameterSignature::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_formalParameterSignature GGS_formalParameterSignature::castFromObject (C_Compiler & inLexique,
+GGS_formalParameterSignature GGS_formalParameterSignature::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -575,7 +575,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_modifierMap GGS_modifierMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -620,7 +620,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_modifierMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_formalParameterSignature & inParameter0,
@@ -650,7 +650,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_modifierMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_formalParameterSignature   & outParameter0,
@@ -723,7 +723,7 @@ const utf32 GGS_modifierMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_modifierMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_formalParameterSignature   & outParameter0,
                                 GGS_bool  & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -787,7 +787,7 @@ const utf32 GGS_modifierMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_modifierMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterSignature & inParameter0,
                                 const GGS_bool& inParameter1 COMMA_LOCATION_ARGS) {
@@ -803,7 +803,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_modifierMap GGS_modifierMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_modifierMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap result ; // Not Built
@@ -820,7 +820,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_modifierMap GGS_modifierMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_modifierMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -900,7 +900,7 @@ GGS_object GGS_modifierMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap GGS_modifierMap::castFromObject (C_Compiler & inLexique,
+GGS_modifierMap GGS_modifierMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -929,7 +929,7 @@ const C_galgas_type_descriptorEX * GGS_modifierMap::typeDescriptor (void) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithStringInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithStringInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -950,7 +950,7 @@ void routine_enterModifierWithStringInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithLocationInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithLocationInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -971,7 +971,7 @@ void routine_enterModifierWithLocationInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithCharInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithCharInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -992,7 +992,7 @@ void routine_enterModifierWithCharInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithBoolInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithBoolInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -1013,7 +1013,7 @@ void routine_enterModifierWithBoolInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithDataInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithDataInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -1034,7 +1034,7 @@ void routine_enterModifierWithDataInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithUintInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithUintInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -1055,7 +1055,7 @@ void routine_enterModifierWithUintInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithUint64InputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithUint64InputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -1076,7 +1076,7 @@ void routine_enterModifierWithUint64InputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithSintInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithSintInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -1097,7 +1097,7 @@ void routine_enterModifierWithSintInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithSint64InputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithSint64InputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -1118,7 +1118,7 @@ void routine_enterModifierWithSint64InputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithDoubleInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithDoubleInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -1139,7 +1139,7 @@ void routine_enterModifierWithDoubleInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithCharUintInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithCharUintInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_bool  var_cas_inHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
@@ -1174,7 +1174,7 @@ enterCategoryReader__ACGalgasType__modifierMap (typeCategoryReader__ACGalgasType
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__ACGalgasType_defaultReader_modifierMap (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_modifierMap (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_modifierMap  () ;
@@ -1212,7 +1212,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_location = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_location (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_location (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_location) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_location at %s:%d\n", __FILE__, __LINE__) ;
@@ -1230,7 +1230,7 @@ GGS_modifierMap  function_modifierMapFor_location (C_Compiler & inLexique COMMA_
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_location (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_location (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1254,7 +1254,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_locatio
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__locationGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__locationGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_locationGalgasType * operand_8056
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1275,7 +1275,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_string = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_string (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_string (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_string) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_string at %s:%d\n", __FILE__, __LINE__) ;
@@ -1297,7 +1297,7 @@ GGS_modifierMap  function_modifierMapFor_string (C_Compiler & inLexique COMMA_UN
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_string (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_string (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1321,7 +1321,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_string 
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__stringGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__stringGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_stringGalgasType * operand_8798
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1342,7 +1342,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_char = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_char (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_char (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_char) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_char at %s:%d\n", __FILE__, __LINE__) ;
@@ -1360,7 +1360,7 @@ GGS_modifierMap  function_modifierMapFor_char (C_Compiler & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_char (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_char (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1384,7 +1384,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_char ("
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__charGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__charGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_charGalgasType * operand_9208
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1405,7 +1405,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_bool = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_bool (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_bool (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_bool) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_bool at %s:%d\n", __FILE__, __LINE__) ;
@@ -1423,7 +1423,7 @@ GGS_modifierMap  function_modifierMapFor_bool (C_Compiler & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_bool (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_bool (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1447,7 +1447,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_bool ("
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__boolGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__boolGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_boolGalgasType * operand_9616
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1468,7 +1468,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_uint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_uint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_uint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_uint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_uint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1486,7 +1486,7 @@ GGS_modifierMap  function_modifierMapFor_uint (C_Compiler & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_uint (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_uint (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1510,7 +1510,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_uint ("
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__uintGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__uintGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_uintGalgasType * operand_10026
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1531,7 +1531,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_sint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_sint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_sint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_sint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_sint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1549,7 +1549,7 @@ GGS_modifierMap  function_modifierMapFor_sint (C_Compiler & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_sint (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_sint (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1573,7 +1573,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_sint ("
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__sintGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__sintGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_sintGalgasType * operand_10434
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1594,7 +1594,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_uint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_uint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_uint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_uint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_uint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1612,7 +1612,7 @@ GGS_modifierMap  function_modifierMapFor_uint64 (C_Compiler & inLexique COMMA_UN
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_uint64 (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_uint64 (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1636,7 +1636,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_uint64 
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__uint64GalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__uint64GalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_uint64GalgasType * operand_10846
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1657,7 +1657,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_sint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_sint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_sint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_sint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_sint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1675,7 +1675,7 @@ GGS_modifierMap  function_modifierMapFor_sint64 (C_Compiler & inLexique COMMA_UN
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_sint64 (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_sint64 (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1699,7 +1699,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_sint64 
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__sint64GalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__sint64GalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_sint64GalgasType * operand_11260
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1720,7 +1720,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_double = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_double (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_double (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_double) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_double at %s:%d\n", __FILE__, __LINE__) ;
@@ -1738,7 +1738,7 @@ GGS_modifierMap  function_modifierMapFor_double (C_Compiler & inLexique COMMA_UN
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_double (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_double (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1762,7 +1762,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_double 
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__doubleGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__doubleGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_doubleGalgasType * operand_11674
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1783,7 +1783,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_lstring = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lstring (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_lstring (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_lstring) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_lstring at %s:%d\n", __FILE__, __LINE__) ;
@@ -1803,7 +1803,7 @@ GGS_modifierMap  function_modifierMapFor_lstring (C_Compiler & inLexique COMMA_U
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_lstring (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_lstring (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1827,7 +1827,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lstring
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__lstringGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__lstringGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_lstringGalgasType * operand_12250
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1848,7 +1848,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_lchar = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lchar (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_lchar (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_lchar) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_lchar at %s:%d\n", __FILE__, __LINE__) ;
@@ -1868,7 +1868,7 @@ GGS_modifierMap  function_modifierMapFor_lchar (C_Compiler & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_lchar (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_lchar (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1892,7 +1892,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lchar (
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__lcharGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__lcharGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_lcharGalgasType * operand_12819
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1913,7 +1913,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_lbool = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lbool (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_lbool (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_lbool) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_lbool at %s:%d\n", __FILE__, __LINE__) ;
@@ -1933,7 +1933,7 @@ GGS_modifierMap  function_modifierMapFor_lbool (C_Compiler & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_lbool (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_lbool (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1957,7 +1957,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lbool (
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__lboolGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__lboolGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_lboolGalgasType * operand_13386
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -1978,7 +1978,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_luint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_luint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_luint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_luint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_luint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1998,7 +1998,7 @@ GGS_modifierMap  function_modifierMapFor_luint (C_Compiler & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_luint (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_luint (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2022,7 +2022,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_luint (
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__luintGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__luintGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_luintGalgasType * operand_13953
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2043,7 +2043,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_lsint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lsint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_lsint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_lsint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_lsint at %s:%d\n", __FILE__, __LINE__) ;
@@ -2063,7 +2063,7 @@ GGS_modifierMap  function_modifierMapFor_lsint (C_Compiler & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_lsint (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_lsint (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2087,7 +2087,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lsint (
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__lsintGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__lsintGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_lsintGalgasType * operand_14520
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2108,7 +2108,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_luint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_luint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_luint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_luint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_luint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -2128,7 +2128,7 @@ GGS_modifierMap  function_modifierMapFor_luint64 (C_Compiler & inLexique COMMA_U
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_luint64 (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_luint64 (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2152,7 +2152,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_luint64
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__luint64GalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__luint64GalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_luint64GalgasType * operand_15095
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2173,7 +2173,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_lsint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lsint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_lsint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_lsint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_lsint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -2193,7 +2193,7 @@ GGS_modifierMap  function_modifierMapFor_lsint64 (C_Compiler & inLexique COMMA_U
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_lsint64 (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_lsint64 (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2217,7 +2217,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lsint64
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__lsint64GalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__lsint64GalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_lsint64GalgasType * operand_15672
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2238,7 +2238,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_ldouble = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_ldouble (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_ldouble (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_ldouble) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_ldouble at %s:%d\n", __FILE__, __LINE__) ;
@@ -2258,7 +2258,7 @@ GGS_modifierMap  function_modifierMapFor_ldouble (C_Compiler & inLexique COMMA_U
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_ldouble (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_ldouble (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2282,7 +2282,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_ldouble
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__ldoubleGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__ldoubleGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_ldoubleGalgasType * operand_16249
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2303,7 +2303,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_stringset = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_stringset (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_stringset (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_stringset) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_stringset at %s:%d\n", __FILE__, __LINE__) ;
@@ -2321,7 +2321,7 @@ GGS_modifierMap  function_modifierMapFor_stringset (C_Compiler & inLexique COMMA
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_stringset (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_stringset (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2345,7 +2345,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_strings
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__stringsetGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__stringsetGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_stringsetGalgasType * operand_16670
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2366,7 +2366,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_binaryset = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_binaryset (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_binaryset (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_binaryset) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_binaryset at %s:%d\n", __FILE__, __LINE__) ;
@@ -2384,7 +2384,7 @@ GGS_modifierMap  function_modifierMapFor_binaryset (C_Compiler & inLexique COMMA
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_binaryset (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_binaryset (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2408,7 +2408,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_binarys
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__binarysetGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__binarysetGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_binarysetGalgasType * operand_17093
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2429,7 +2429,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_type = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_type (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_type (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_type) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_type at %s:%d\n", __FILE__, __LINE__) ;
@@ -2447,7 +2447,7 @@ GGS_modifierMap  function_modifierMapFor_type (C_Compiler & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_type (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_type (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2471,7 +2471,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_type ("
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__typeGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__typeGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_typeGalgasType * operand_17506
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2492,7 +2492,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_object = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_object (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_object (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_object) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_object at %s:%d\n", __FILE__, __LINE__) ;
@@ -2510,7 +2510,7 @@ GGS_modifierMap  function_modifierMapFor_object (C_Compiler & inLexique COMMA_UN
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_object (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_object (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2534,7 +2534,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_object 
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__objectGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__objectGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_objectGalgasType * operand_17918
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2555,7 +2555,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_data = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_data (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_data (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_data) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_data at %s:%d\n", __FILE__, __LINE__) ;
@@ -2580,7 +2580,7 @@ GGS_modifierMap  function_modifierMapFor_data (C_Compiler & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_data (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_data (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2604,7 +2604,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_data ("
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__dataGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__dataGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_dataGalgasType * operand_18885
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2625,7 +2625,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_function = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_function (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_function (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_function) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_function at %s:%d\n", __FILE__, __LINE__) ;
@@ -2643,7 +2643,7 @@ GGS_modifierMap  function_modifierMapFor_function (C_Compiler & inLexique COMMA_
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_function (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_function (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2667,7 +2667,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_functio
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__functionGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__functionGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_functionGalgasType * operand_19301
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2684,7 +2684,7 @@ category_reader__functionGalgasType__modifierMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__classGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__classGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_classGalgasType * operand_19520
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2729,7 +2729,7 @@ category_reader__classGalgasType__modifierMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__listGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__listGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_listGalgasType * operand_20506
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2787,7 +2787,7 @@ static bool gCacheFlagForOnceFunction_modifierMapFor_listmap = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_listmap (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_modifierMap  function_modifierMapFor_listmap (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_modifierMapFor_listmap) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_modifierMapFor_listmap at %s:%d\n", __FILE__, __LINE__) ;
@@ -2805,7 +2805,7 @@ GGS_modifierMap  function_modifierMapFor_listmap (C_Compiler & inLexique COMMA_U
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_modifierMapFor_listmap (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_modifierMapFor_listmap (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2829,7 +2829,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_listmap
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__listmapGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__listmapGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_listmapGalgasType * operand_22132
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2846,7 +2846,7 @@ category_reader__listmapGalgasType__modifierMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__structGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__structGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_structGalgasType * operand_22351
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2863,7 +2863,7 @@ category_reader__structGalgasType__modifierMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__sortedlistGalgasType__modifierMap (C_Compiler & inLexique,
+category_reader__sortedlistGalgasType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_sortedlistGalgasType * operand_22572
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2897,7 +2897,7 @@ category_reader__sortedlistGalgasType__modifierMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__mapType__modifierMap (C_Compiler & inLexique,
+category_reader__mapType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_mapType * operand_23238
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2953,7 +2953,7 @@ category_reader__mapType__modifierMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__mapindexType__modifierMap (C_Compiler & inLexique,
+category_reader__mapindexType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_mapindexType * operand_24805
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;
@@ -2970,7 +2970,7 @@ category_reader__mapindexType__modifierMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_modifierMap 
-category_reader__enumType__modifierMap (C_Compiler & inLexique,
+category_reader__enumType__modifierMap (C_CompilerEx & inLexique,
                                 const cPtr_enumType * operand_25014
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_modifierMap  var_cas_outModifierMap ;

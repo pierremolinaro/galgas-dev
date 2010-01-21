@@ -3710,7 +3710,7 @@ nt_lexique_component_start_symbol_ (galgasTemplateScanner & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void galgasTemplateGrammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -3758,7 +3758,7 @@ void galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
 
 //---------------------------------------------------------------------------*
 
-void galgasTemplateGrammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void galgasTemplateGrammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 const GGS_templateVariableMap parameter_1,

@@ -35,7 +35,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_C_structToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
   inHfile.appendCppTitleComment (C_String ("Declarations for '") + mStructName + "' struct") ;
   inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mStructName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
@@ -59,7 +59,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
-             "  public : static GGS_" << mStructName << " castFromObject (C_Compiler & inLexique,\n"
+             "  public : static GGS_" << mStructName << " castFromObject (C_CompilerEx & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
              "                                           const GGS_location & inErrorLocation\n"
              "                                           COMMA_LOCATION_ARGS) ;\n\n"
@@ -84,7 +84,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     inHfile << "  public : inline " ;
     current._mAttributType (HERE)(HERE)->generateCppClassName (inHfile) ;
     inHfile << "\n"
-               "  reader_" << current._mAttributeName (HERE) << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+               "  reader_" << current._mAttributeName (HERE) << " (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
                "    return " << current._mAttributeName (HERE) << " ;\n"
                "  }\n\n" ;
     current.next () ;
@@ -124,7 +124,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_structToImplement::
-generateCppClassImplementation (C_Compiler & /* inLexique */,
+generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
                                 PMSInt32 & /* ioPrototypeIndex */,
@@ -273,7 +273,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "GGS_" << mStructName << " GGS_" << mStructName << "::castFromObject (C_Compiler & inLexique,\n"
+  inCppFile << "GGS_" << mStructName << " GGS_" << mStructName << "::castFromObject (C_CompilerEx & inLexique,\n"
                "                                   const GGS_object & inObject,\n"
                "                                   const GGS_location & inErrorLocation\n"
                "                                   COMMA_LOCATION_ARGS) {\n"

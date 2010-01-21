@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildLexicalTypeMap (C_Compiler & inLexique,
+void routine_buildLexicalTypeMap (C_CompilerEx & inLexique,
                                 GGS_EXLexicalTypeMap  & var_cas_outLexicalTypeMap COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_buildLexicalTypeMap at %s:%d\n", __FILE__, __LINE__) ;

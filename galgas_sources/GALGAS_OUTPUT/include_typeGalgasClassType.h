@@ -56,13 +56,13 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
   public : GGS_bool mHasGeneratedInSeparateFileSetting ;
   public : GGS_L_lazyAttributeList  mLazyAttributeList ;
 //--- Method 'handleModifierCall'
-  public : virtual void method_handleModifierCall (C_Compiler &,
+  public : virtual void method_handleModifierCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_L_EXsignature & 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleMethodInstructionCall'
-  public : virtual void method_handleMethodInstructionCall (C_Compiler &,
+  public : virtual void method_handleMethodInstructionCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_EXcategoryMethodMap  ,
                                 GGS_L_EXsignature & ,
@@ -70,7 +70,7 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,

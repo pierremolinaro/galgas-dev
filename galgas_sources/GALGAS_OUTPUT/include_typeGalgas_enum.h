@@ -49,12 +49,12 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
   public : GGS_enumMethodMap  mMethodMap ;
   public : GGS_enumOperatorMap  mOperatorMap ;
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,
@@ -62,13 +62,13 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleModifierCall'
-  public : virtual void method_handleModifierCall (C_Compiler &,
+  public : virtual void method_handleModifierCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_L_EXsignature & 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleMethodInstructionCall'
-  public : virtual void method_handleMethodInstructionCall (C_Compiler &,
+  public : virtual void method_handleMethodInstructionCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_EXcategoryMethodMap  ,
                                 GGS_L_EXsignature & ,

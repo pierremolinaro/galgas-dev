@@ -42,12 +42,12 @@
 		CF03A5740FD9982000D079B7 /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
 		CF03A5750FD9982100D079B7 /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
 		CF03A5760FD9982200D079B7 /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
-		CF041D060F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
-		CF041D070F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
-		CF041D090F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
-		CF041D0A0F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
-		CF041D0C0F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
-		CF041D0D0F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D060F6157720001CEEB /* C_CompilerEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_CompilerEx.cpp */; };
+		CF041D070F6157720001CEEB /* C_CompilerEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_CompilerEx.cpp */; };
+		CF041D090F6157720001CEEB /* C_CompilerEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_CompilerEx.cpp */; };
+		CF041D0A0F6157720001CEEB /* C_CompilerEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_CompilerEx.cpp */; };
+		CF041D0C0F6157720001CEEB /* C_CompilerEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_CompilerEx.cpp */; };
+		CF041D0D0F6157720001CEEB /* C_CompilerEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_CompilerEx.cpp */; };
 		CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF0676440E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
@@ -959,6 +959,8 @@
 		CFE26D280C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
 		CFE3269C110787FD009D1E53 /* predefinedTypes2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE3269B110787FD009D1E53 /* predefinedTypes2.cpp */; };
 		CFE3269D110787FD009D1E53 /* predefinedTypes2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE3269B110787FD009D1E53 /* predefinedTypes2.cpp */; };
+		CFE5B8061108CEE0003E7C8B /* C_galgas_function_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE5B8041108CEE0003E7C8B /* C_galgas_function_descriptor.cpp */; };
+		CFE5B8071108CEE0003E7C8B /* C_galgas_function_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE5B8041108CEE0003E7C8B /* C_galgas_function_descriptor.cpp */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */; };
 		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */; };
 		CFECE4660FEFA5270031D087 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
@@ -1382,8 +1384,8 @@
 		CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_mapIndexProperty.h; sourceTree = "<group>"; };
 		CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleEntity.h; sourceTree = "<group>"; };
 		CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_multipleEntity.h; sourceTree = "<group>"; };
-		CF041D030F6157720001CEEB /* C_Compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Compiler.cpp; sourceTree = "<group>"; };
-		CF041D040F6157720001CEEB /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Compiler.h; sourceTree = "<group>"; };
+		CF041D030F6157720001CEEB /* C_CompilerEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_CompilerEx.cpp; sourceTree = "<group>"; };
+		CF041D040F6157720001CEEB /* C_CompilerEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_CompilerEx.h; sourceTree = "<group>"; };
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		CF0676080E7EDE29008B9D1F /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 		CF0676430E7EE037008B9D1F /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
@@ -2008,6 +2010,10 @@
 		CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TC_prime_cache2.h; path = cache/TC_prime_cache2.h; sourceTree = "<group>"; };
 		CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TC_prime_cache3.h; path = cache/TC_prime_cache3.h; sourceTree = "<group>"; };
 		CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TC_prime_cache4.h; path = cache/TC_prime_cache4.h; sourceTree = "<group>"; };
+		CFE5B8041108CEE0003E7C8B /* C_galgas_function_descriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_function_descriptor.cpp; sourceTree = "<group>"; };
+		CFE5B8051108CEE0003E7C8B /* C_galgas_function_descriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_function_descriptor.h; sourceTree = "<group>"; };
+		CFE5B8811108DFDE003E7C8B /* C_Compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Compiler.cpp; sourceTree = "<group>"; };
+		CFE5B8821108DFDE003E7C8B /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Compiler.h; sourceTree = "<group>"; };
 		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
 		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_DelegateForSyntaxColoring.m; sourceTree = "<group>"; };
 		CFE6706F0FAF6008000DE30B /* include_typeUnicodeCharSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeUnicodeCharSet.h; sourceTree = "<group>"; };
@@ -2379,12 +2385,16 @@
 		CFA5890010D285C800B7E541 /* galgas2 */ = {
 			isa = PBXGroup;
 			children = (
-				CFAAC11C1105A588001B1F5C /* AC_GALGAS_Enumerable.cpp */,
-				CFAAC11D1105A588001B1F5C /* AC_GALGAS_Enumerable.h */,
 				CF2DEB5911020AB900AE8D35 /* C_galgas_type_descriptor.cpp */,
 				CF2DEB5A11020AB900AE8D35 /* C_galgas_type_descriptor.h */,
+				CFE5B8041108CEE0003E7C8B /* C_galgas_function_descriptor.cpp */,
+				CFE5B8051108CEE0003E7C8B /* C_galgas_function_descriptor.h */,
+				CFE5B8811108DFDE003E7C8B /* C_Compiler.cpp */,
+				CFE5B8821108DFDE003E7C8B /* C_Compiler.h */,
 				CFA5890110D285C800B7E541 /* C_Object.cpp */,
 				CFA5890210D285C800B7E541 /* C_Object.h */,
+				CFAAC11C1105A588001B1F5C /* AC_GALGAS_Enumerable.cpp */,
+				CFAAC11D1105A588001B1F5C /* AC_GALGAS_Enumerable.h */,
 				CF73B2C711036813001FB104 /* AC_GALGAS_Array.cpp */,
 				CF73B2C811036813001FB104 /* AC_GALGAS_Array.h */,
 				CFA5896210D2941300B7E541 /* AC_GALGAS__root.cpp */,
@@ -3215,8 +3225,8 @@
 				CF96D6B40B1DA4740067E271 /* AC_galgas_sortedlist.h */,
 				CFD7D48F0910C6AD00B72461 /* GGS_stringset.cpp */,
 				CFD7D4900910C6AD00B72461 /* GGS_stringset.h */,
-				CF041D030F6157720001CEEB /* C_Compiler.cpp */,
-				CF041D040F6157720001CEEB /* C_Compiler.h */,
+				CF041D030F6157720001CEEB /* C_CompilerEx.cpp */,
+				CF041D040F6157720001CEEB /* C_CompilerEx.h */,
 				CF8259F608536AC20077AEAF /* C_Lexique.cpp */,
 				CF8259F708536AC20077AEAF /* C_Lexique.h */,
 				CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */,
@@ -3769,7 +3779,7 @@
 				CF01E4310E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EE70E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD250EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
-				CF041D060F6157720001CEEB /* C_Compiler.cpp in Sources */,
+				CF041D060F6157720001CEEB /* C_CompilerEx.cpp in Sources */,
 				CFD3E85C0FA0C0F800C4995E /* C_String.cpp in Sources */,
 				CFD3E85E0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB576FE0FC340DE000B1844 /* scanner_actions.cpp in Sources */,
@@ -3988,7 +3998,7 @@
 				CF01E4390E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EEB0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD270EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
-				CF041D090F6157720001CEEB /* C_Compiler.cpp in Sources */,
+				CF041D090F6157720001CEEB /* C_CompilerEx.cpp in Sources */,
 				CFD3E8620FA0C0F800C4995E /* C_String.cpp in Sources */,
 				CFD3E8640FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577000FC340DE000B1844 /* scanner_actions.cpp in Sources */,
@@ -4035,6 +4045,7 @@
 				CF0E1962110756EE007B64E7 /* AC_GALGAS_Enumerable.cpp in Sources */,
 				CFE3269D110787FD009D1E53 /* predefinedTypes2.cpp in Sources */,
 				CFD22238110854EF003C83A5 /* GALGAS_type.cpp in Sources */,
+				CFE5B8071108CEE0003E7C8B /* C_galgas_function_descriptor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4193,7 +4204,7 @@
 				CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EED0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD280EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
-				CF041D0A0F6157720001CEEB /* C_Compiler.cpp in Sources */,
+				CF041D0A0F6157720001CEEB /* C_CompilerEx.cpp in Sources */,
 				CFD3E8650FA0C0F800C4995E /* C_String.cpp in Sources */,
 				CFD3E8670FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577010FC340DE000B1844 /* scanner_actions.cpp in Sources */,
@@ -4240,6 +4251,7 @@
 				CFE3269C110787FD009D1E53 /* predefinedTypes2.cpp in Sources */,
 				CFD2221D11085014003C83A5 /* GALGAS_type.cpp in Sources */,
 				CFD2224C11085764003C83A5 /* GGS_function.cpp in Sources */,
+				CFE5B8061108CEE0003E7C8B /* C_galgas_function_descriptor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4404,7 +4416,7 @@
 				CF01E4350E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EE90E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD260EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
-				CF041D070F6157720001CEEB /* C_Compiler.cpp in Sources */,
+				CF041D070F6157720001CEEB /* C_CompilerEx.cpp in Sources */,
 				CFD3E85F0FA0C0F800C4995E /* C_String.cpp in Sources */,
 				CFD3E8610FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB576FF0FC340DE000B1844 /* scanner_actions.cpp in Sources */,
@@ -4624,7 +4636,7 @@
 				CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EEF0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD290EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
-				CF041D0C0F6157720001CEEB /* C_Compiler.cpp in Sources */,
+				CF041D0C0F6157720001CEEB /* C_CompilerEx.cpp in Sources */,
 				CFD3E8680FA0C0F800C4995E /* C_String.cpp in Sources */,
 				CFD3E86A0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577020FC340DE000B1844 /* scanner_actions.cpp in Sources */,
@@ -4817,7 +4829,7 @@
 				CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EF10E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD2A0EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
-				CF041D0D0F6157720001CEEB /* C_Compiler.cpp in Sources */,
+				CF041D0D0F6157720001CEEB /* C_CompilerEx.cpp in Sources */,
 				CFD3E86B0FA0C0F800C4995E /* C_String.cpp in Sources */,
 				CFD3E86D0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577030FC340DE000B1844 /* scanner_actions.cpp in Sources */,

@@ -406,7 +406,7 @@ pr_grammar_component_start_symbol_grammarModelBuilder_48_37_ (inLexique, paramet
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void grammarLL1grammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void grammarLL1grammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -449,7 +449,7 @@ void grammarLL1grammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
 
 //---------------------------------------------------------------------------*
 
-void grammarLL1grammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void grammarLL1grammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_grammarComponentRoot & parameter_1

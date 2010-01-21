@@ -210,7 +210,7 @@ dotAssign_operation (const GGS_commandLineOptionList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_lchar & argument_2,
@@ -295,7 +295,7 @@ internalSubListWithRange (GGS_commandLineOptionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionList GGS_commandLineOptionList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -315,7 +315,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionList GGS_commandLineOptionList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_commandLineOptionList result ;
@@ -340,7 +340,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lchar & _out_2,
@@ -372,7 +372,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lchar & _out_2,
@@ -404,7 +404,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lchar & _out_2,
@@ -438,7 +438,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lchar & _out_2,
@@ -472,7 +472,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_commandLineOptionList::
-reader_mOptionTypeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mOptionTypeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -486,7 +486,7 @@ reader_mOptionTypeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex 
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_commandLineOptionList::
-reader_mOptionInternalNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mOptionInternalNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -500,7 +500,7 @@ reader_mOptionInternalNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 //---------------------------------------------------------------------------*
 
 GGS_lchar  GGS_commandLineOptionList::
-reader_mOptionInvocationLetterAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mOptionInvocationLetterAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lchar  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -514,7 +514,7 @@ reader_mOptionInvocationLetterAtIndex (C_Compiler & inLexique, const GGS_uint & 
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_commandLineOptionList::
-reader_mOptionInvocationStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mOptionInvocationStringAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -528,7 +528,7 @@ reader_mOptionInvocationStringAtIndex (C_Compiler & inLexique, const GGS_uint & 
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_commandLineOptionList::
-reader_mOptionCommentAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mOptionCommentAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -542,7 +542,7 @@ reader_mOptionCommentAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex C
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_setMOptionTypeNameAtIndex (C_Compiler & inLexique,
+modifier_setMOptionTypeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -557,7 +557,7 @@ modifier_setMOptionTypeNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_setMOptionInternalNameAtIndex (C_Compiler & inLexique,
+modifier_setMOptionInternalNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -572,7 +572,7 @@ modifier_setMOptionInternalNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_setMOptionInvocationLetterAtIndex (C_Compiler & inLexique,
+modifier_setMOptionInvocationLetterAtIndex (C_CompilerEx & inLexique,
                               const GGS_lchar  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -587,7 +587,7 @@ modifier_setMOptionInvocationLetterAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_setMOptionInvocationStringAtIndex (C_Compiler & inLexique,
+modifier_setMOptionInvocationStringAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -602,7 +602,7 @@ modifier_setMOptionInvocationStringAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_setMOptionCommentAtIndex (C_Compiler & inLexique,
+modifier_setMOptionCommentAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -663,7 +663,7 @@ GGS_object GGS_commandLineOptionList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_commandLineOptionList GGS_commandLineOptionList::castFromObject (C_Compiler & inLexique,
+GGS_commandLineOptionList GGS_commandLineOptionList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -799,7 +799,7 @@ GGS_optionComponentRoot (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_optionComponentRoot GGS_optionComponentRoot::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -826,7 +826,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_optionComponentRoot GGS_optionComponentRoot::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_commandLineOptionList & argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -839,7 +839,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_optionComponentRoot::
-reader_mOptionComponentName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mOptionComponentName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -853,7 +853,7 @@ reader_mOptionComponentName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionList  GGS_optionComponentRoot::
-reader_mOptions (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mOptions (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_commandLineOptionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -898,7 +898,7 @@ GGS_object GGS_optionComponentRoot::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_optionComponentRoot GGS_optionComponentRoot::castFromObject (C_Compiler & inLexique,
+GGS_optionComponentRoot GGS_optionComponentRoot::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

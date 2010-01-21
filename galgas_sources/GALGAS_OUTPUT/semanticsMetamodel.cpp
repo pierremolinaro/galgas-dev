@@ -182,7 +182,7 @@ dotAssign_operation (const GGS_attributeInCollectionList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_lstringlist & argument_2
@@ -259,7 +259,7 @@ internalSubListWithRange (GGS_attributeInCollectionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_attributeInCollectionList GGS_attributeInCollectionList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -279,7 +279,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_attributeInCollectionList GGS_attributeInCollectionList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_attributeInCollectionList result ;
@@ -304,7 +304,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lstringlist & _out_2
@@ -330,7 +330,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lstringlist & _out_2
@@ -356,7 +356,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstringlist & _out_2
@@ -384,7 +384,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstringlist & _out_2
@@ -412,7 +412,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_attributeInCollectionList::
-reader_mAttributeTypeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mAttributeTypeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -426,7 +426,7 @@ reader_mAttributeTypeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inInd
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_attributeInCollectionList::
-reader_mAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mAttributeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -440,7 +440,7 @@ reader_mAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex C
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_attributeInCollectionList::
-reader_mFeatureListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mFeatureListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstringlist  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -454,7 +454,7 @@ reader_mFeatureListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-modifier_setMAttributeTypeNameAtIndex (C_Compiler & inLexique,
+modifier_setMAttributeTypeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -469,7 +469,7 @@ modifier_setMAttributeTypeNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-modifier_setMAttributeNameAtIndex (C_Compiler & inLexique,
+modifier_setMAttributeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -484,7 +484,7 @@ modifier_setMAttributeNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_attributeInCollectionList::
-modifier_setMFeatureListAtIndex (C_Compiler & inLexique,
+modifier_setMFeatureListAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -531,7 +531,7 @@ GGS_object GGS_attributeInCollectionList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_attributeInCollectionList GGS_attributeInCollectionList::castFromObject (C_Compiler & inLexique,
+GGS_attributeInCollectionList GGS_attributeInCollectionList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -667,7 +667,7 @@ GGS_listmapDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_listmapDeclaration GGS_listmapDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -694,7 +694,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_listmapDeclaration GGS_listmapDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -707,7 +707,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_listmapDeclaration::
-reader_mListmapTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mListmapTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -721,7 +721,7 @@ reader_mListmapTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_listmapDeclaration::
-reader_mAssociatedListTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAssociatedListTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -756,7 +756,7 @@ GGS_object GGS_listmapDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_listmapDeclaration GGS_listmapDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_listmapDeclaration GGS_listmapDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -933,7 +933,7 @@ dotAssign_operation (const GGS_mapMethodList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_lstring & argument_2,
@@ -1014,7 +1014,7 @@ internalSubListWithRange (GGS_mapMethodList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_mapMethodList GGS_mapMethodList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -1034,7 +1034,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_mapMethodList GGS_mapMethodList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_mapMethodList result ;
@@ -1059,7 +1059,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lstring & _out_2,
@@ -1088,7 +1088,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lstring & _out_2,
@@ -1117,7 +1117,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstring & _out_2,
@@ -1148,7 +1148,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstring & _out_2,
@@ -1179,7 +1179,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapMethodList::
-reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMethodNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1193,7 +1193,7 @@ reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapMethodList::
-reader_mAlternateMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mAlternateMethodNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1207,7 +1207,7 @@ reader_mAlternateMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapMethodList::
-reader_mErrorMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mErrorMessageAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1221,7 +1221,7 @@ reader_mErrorMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapMethodList::
-reader_mShadowErrorMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mShadowErrorMessageAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1235,7 +1235,7 @@ reader_mShadowErrorMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
+modifier_setMMethodNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -1250,7 +1250,7 @@ modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-modifier_setMAlternateMethodNameAtIndex (C_Compiler & inLexique,
+modifier_setMAlternateMethodNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -1265,7 +1265,7 @@ modifier_setMAlternateMethodNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-modifier_setMErrorMessageAtIndex (C_Compiler & inLexique,
+modifier_setMErrorMessageAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -1280,7 +1280,7 @@ modifier_setMErrorMessageAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_mapMethodList::
-modifier_setMShadowErrorMessageAtIndex (C_Compiler & inLexique,
+modifier_setMShadowErrorMessageAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -1334,7 +1334,7 @@ GGS_object GGS_mapMethodList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_mapMethodList GGS_mapMethodList::castFromObject (C_Compiler & inLexique,
+GGS_mapMethodList GGS_mapMethodList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1490,7 +1490,7 @@ GGS_mapDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_mapDeclaration GGS_mapDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -1517,7 +1517,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_mapDeclaration GGS_mapDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstring & argument_1,
                  const GGS_lstring & argument_2,
@@ -1540,7 +1540,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapDeclaration::
-reader_mMapTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mMapTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1554,7 +1554,7 @@ reader_mMapTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) co
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapDeclaration::
-reader_mAssociatedEnumTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAssociatedEnumTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1568,7 +1568,7 @@ reader_mAssociatedEnumTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATI
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapDeclaration::
-reader_mAssociatedTerminaisonMethodName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAssociatedTerminaisonMethodName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1582,7 +1582,7 @@ reader_mAssociatedTerminaisonMethodName (C_Compiler & /* inLexique */ COMMA_UNUS
 //---------------------------------------------------------------------------*
 
 GGS_attributeInCollectionList  GGS_mapDeclaration::
-reader_mAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAttributeList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_attributeInCollectionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1596,7 +1596,7 @@ reader_mAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) 
 //---------------------------------------------------------------------------*
 
 GGS_mapMethodList  GGS_mapDeclaration::
-reader_mInsertMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mInsertMethodList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_mapMethodList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1610,7 +1610,7 @@ reader_mInsertMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARG
 //---------------------------------------------------------------------------*
 
 GGS_mapMethodList  GGS_mapDeclaration::
-reader_mSearchMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSearchMethodList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_mapMethodList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1624,7 +1624,7 @@ reader_mSearchMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARG
 //---------------------------------------------------------------------------*
 
 GGS_mapMethodList  GGS_mapDeclaration::
-reader_mRemoveMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mRemoveMethodList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_mapMethodList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1659,7 +1659,7 @@ GGS_object GGS_mapDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_mapDeclaration GGS_mapDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_mapDeclaration GGS_mapDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1803,7 +1803,7 @@ GGS_mapindexDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_mapindexDeclaration GGS_mapindexDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -1830,7 +1830,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_mapindexDeclaration GGS_mapindexDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstring & argument_1,
                  const GGS_lstring & argument_2,
@@ -1847,7 +1847,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapindexDeclaration::
-reader_mMapIndexTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mMapIndexTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1861,7 +1861,7 @@ reader_mMapIndexTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARG
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapindexDeclaration::
-reader_mMapTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mMapTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1875,7 +1875,7 @@ reader_mMapTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) co
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapindexDeclaration::
-reader_mSearchMethodName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSearchMethodName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1889,7 +1889,7 @@ reader_mSearchMethodName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARG
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_mapindexDeclaration::
-reader_mSearchMethodErrorMessage (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSearchMethodErrorMessage (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -1924,7 +1924,7 @@ GGS_object GGS_mapindexDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_mapindexDeclaration GGS_mapindexDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_mapindexDeclaration GGS_mapindexDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2073,7 +2073,7 @@ dotAssign_operation (const GGS_abstractMethodDefinitionList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_formalParameterList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -2146,7 +2146,7 @@ internalSubListWithRange (GGS_abstractMethodDefinitionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_abstractMethodDefinitionList GGS_abstractMethodDefinitionList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -2166,7 +2166,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_abstractMethodDefinitionList GGS_abstractMethodDefinitionList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_abstractMethodDefinitionList result ;
@@ -2191,7 +2191,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_formalParameterList & _out_1
               COMMA_LOCATION_ARGS) const {
@@ -2214,7 +2214,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_formalParameterList & _out_1
              COMMA_LOCATION_ARGS) const {
@@ -2237,7 +2237,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_formalParameterList & _out_1
                  COMMA_LOCATION_ARGS) {
@@ -2262,7 +2262,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_formalParameterList & _out_1
                 COMMA_LOCATION_ARGS) {
@@ -2287,7 +2287,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_abstractMethodDefinitionList::
-reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMethodNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2301,7 +2301,7 @@ reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 GGS_formalParameterList  GGS_abstractMethodDefinitionList::
-reader_mSignatureAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSignatureAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_formalParameterList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2315,7 +2315,7 @@ reader_mSignatureAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
+modifier_setMMethodNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -2330,7 +2330,7 @@ modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_abstractMethodDefinitionList::
-modifier_setMSignatureAtIndex (C_Compiler & inLexique,
+modifier_setMSignatureAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalParameterList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -2370,7 +2370,7 @@ GGS_object GGS_abstractMethodDefinitionList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_abstractMethodDefinitionList GGS_abstractMethodDefinitionList::castFromObject (C_Compiler & inLexique,
+GGS_abstractMethodDefinitionList GGS_abstractMethodDefinitionList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2533,7 +2533,7 @@ dotAssign_operation (const GGS_overridenMethodDefinitionList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_formalParameterList & argument_1,
                      const GGS_semanticInstructionList & argument_2
@@ -2610,7 +2610,7 @@ internalSubListWithRange (GGS_overridenMethodDefinitionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_overridenMethodDefinitionList GGS_overridenMethodDefinitionList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -2630,7 +2630,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_overridenMethodDefinitionList GGS_overridenMethodDefinitionList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_overridenMethodDefinitionList result ;
@@ -2655,7 +2655,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_formalParameterList & _out_1,
               GGS_semanticInstructionList & _out_2
@@ -2681,7 +2681,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_formalParameterList & _out_1,
              GGS_semanticInstructionList & _out_2
@@ -2707,7 +2707,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_formalParameterList & _out_1,
                  GGS_semanticInstructionList & _out_2
@@ -2735,7 +2735,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_formalParameterList & _out_1,
                 GGS_semanticInstructionList & _out_2
@@ -2763,7 +2763,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_overridenMethodDefinitionList::
-reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMethodNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2777,7 +2777,7 @@ reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 GGS_formalParameterList  GGS_overridenMethodDefinitionList::
-reader_mSignatureAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSignatureAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_formalParameterList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2791,7 +2791,7 @@ reader_mSignatureAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 //---------------------------------------------------------------------------*
 
 GGS_semanticInstructionList  GGS_overridenMethodDefinitionList::
-reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_semanticInstructionList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2805,7 +2805,7 @@ reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
+modifier_setMMethodNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -2820,7 +2820,7 @@ modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-modifier_setMSignatureAtIndex (C_Compiler & inLexique,
+modifier_setMSignatureAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalParameterList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -2835,7 +2835,7 @@ modifier_setMSignatureAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_overridenMethodDefinitionList::
-modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
+modifier_setMInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_semanticInstructionList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -2882,7 +2882,7 @@ GGS_object GGS_overridenMethodDefinitionList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_overridenMethodDefinitionList GGS_overridenMethodDefinitionList::castFromObject (C_Compiler & inLexique,
+GGS_overridenMethodDefinitionList GGS_overridenMethodDefinitionList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3045,7 +3045,7 @@ dotAssign_operation (const GGS_methodDefinitionList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_formalParameterList & argument_1,
                      const GGS_semanticInstructionList & argument_2
@@ -3122,7 +3122,7 @@ internalSubListWithRange (GGS_methodDefinitionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_methodDefinitionList GGS_methodDefinitionList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -3142,7 +3142,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_methodDefinitionList GGS_methodDefinitionList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_methodDefinitionList result ;
@@ -3167,7 +3167,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_formalParameterList & _out_1,
               GGS_semanticInstructionList & _out_2
@@ -3193,7 +3193,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_formalParameterList & _out_1,
              GGS_semanticInstructionList & _out_2
@@ -3219,7 +3219,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_formalParameterList & _out_1,
                  GGS_semanticInstructionList & _out_2
@@ -3247,7 +3247,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_formalParameterList & _out_1,
                 GGS_semanticInstructionList & _out_2
@@ -3275,7 +3275,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_methodDefinitionList::
-reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMethodNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -3289,7 +3289,7 @@ reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 GGS_formalParameterList  GGS_methodDefinitionList::
-reader_mSignatureAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSignatureAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_formalParameterList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -3303,7 +3303,7 @@ reader_mSignatureAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 //---------------------------------------------------------------------------*
 
 GGS_semanticInstructionList  GGS_methodDefinitionList::
-reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_semanticInstructionList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -3317,7 +3317,7 @@ reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
+modifier_setMMethodNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3332,7 +3332,7 @@ modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-modifier_setMSignatureAtIndex (C_Compiler & inLexique,
+modifier_setMSignatureAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalParameterList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3347,7 +3347,7 @@ modifier_setMSignatureAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_methodDefinitionList::
-modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
+modifier_setMInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_semanticInstructionList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3394,7 +3394,7 @@ GGS_object GGS_methodDefinitionList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_methodDefinitionList GGS_methodDefinitionList::castFromObject (C_Compiler & inLexique,
+GGS_methodDefinitionList GGS_methodDefinitionList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3543,7 +3543,7 @@ dotAssign_operation (const GGS_classMessageDefinitionList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -3616,7 +3616,7 @@ internalSubListWithRange (GGS_classMessageDefinitionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_classMessageDefinitionList GGS_classMessageDefinitionList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -3636,7 +3636,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_classMessageDefinitionList GGS_classMessageDefinitionList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_classMessageDefinitionList result ;
@@ -3661,7 +3661,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
@@ -3684,7 +3684,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
@@ -3707,7 +3707,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
@@ -3732,7 +3732,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
@@ -3757,7 +3757,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_classMessageDefinitionList::
-reader_mMessageNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMessageNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -3771,7 +3771,7 @@ reader_mMessageNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_classMessageDefinitionList::
-reader_mMessageValueAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMessageValueAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -3785,7 +3785,7 @@ reader_mMessageValueAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-modifier_setMMessageNameAtIndex (C_Compiler & inLexique,
+modifier_setMMessageNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3800,7 +3800,7 @@ modifier_setMMessageNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_classMessageDefinitionList::
-modifier_setMMessageValueAtIndex (C_Compiler & inLexique,
+modifier_setMMessageValueAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3840,7 +3840,7 @@ GGS_object GGS_classMessageDefinitionList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_classMessageDefinitionList GGS_classMessageDefinitionList::castFromObject (C_Compiler & inLexique,
+GGS_classMessageDefinitionList GGS_classMessageDefinitionList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4003,7 +4003,7 @@ dotAssign_operation (const GGS_lazyAttributeList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_location & argument_0,
                      const GGS_attributeInCollectionList & argument_1,
                      const GGS_semanticInstructionList & argument_2
@@ -4080,7 +4080,7 @@ internalSubListWithRange (GGS_lazyAttributeList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lazyAttributeList GGS_lazyAttributeList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -4100,7 +4100,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lazyAttributeList GGS_lazyAttributeList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lazyAttributeList result ;
@@ -4125,7 +4125,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_location & _out_0,
               GGS_attributeInCollectionList & _out_1,
               GGS_semanticInstructionList & _out_2
@@ -4151,7 +4151,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_location & _out_0,
              GGS_attributeInCollectionList & _out_1,
              GGS_semanticInstructionList & _out_2
@@ -4177,7 +4177,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_location & _out_0,
                  GGS_attributeInCollectionList & _out_1,
                  GGS_semanticInstructionList & _out_2
@@ -4205,7 +4205,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_location & _out_0,
                 GGS_attributeInCollectionList & _out_1,
                 GGS_semanticInstructionList & _out_2
@@ -4233,7 +4233,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_location  GGS_lazyAttributeList::
-reader_mLocationMagicNumberAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLocationMagicNumberAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_location  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -4247,7 +4247,7 @@ reader_mLocationMagicNumberAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 //---------------------------------------------------------------------------*
 
 GGS_attributeInCollectionList  GGS_lazyAttributeList::
-reader_mAttributeListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mAttributeListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_attributeInCollectionList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -4261,7 +4261,7 @@ reader_mAttributeListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex C
 //---------------------------------------------------------------------------*
 
 GGS_semanticInstructionList  GGS_lazyAttributeList::
-reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_semanticInstructionList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -4275,7 +4275,7 @@ reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-modifier_setMLocationMagicNumberAtIndex (C_Compiler & inLexique,
+modifier_setMLocationMagicNumberAtIndex (C_CompilerEx & inLexique,
                               const GGS_location  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -4290,7 +4290,7 @@ modifier_setMLocationMagicNumberAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-modifier_setMAttributeListAtIndex (C_Compiler & inLexique,
+modifier_setMAttributeListAtIndex (C_CompilerEx & inLexique,
                               const GGS_attributeInCollectionList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -4305,7 +4305,7 @@ modifier_setMAttributeListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lazyAttributeList::
-modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
+modifier_setMInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_semanticInstructionList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -4352,7 +4352,7 @@ GGS_object GGS_lazyAttributeList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lazyAttributeList GGS_lazyAttributeList::castFromObject (C_Compiler & inLexique,
+GGS_lazyAttributeList GGS_lazyAttributeList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4524,7 +4524,7 @@ GGS_classDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_classDeclaration GGS_classDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -4551,7 +4551,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_classDeclaration GGS_classDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_bool& argument_0,
                  const GGS_lstring & argument_1,
                  const GGS_lstring & argument_2,
@@ -4582,7 +4582,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_classDeclaration::
-reader_mIsAbstract (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mIsAbstract (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4596,7 +4596,7 @@ reader_mIsAbstract (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) con
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_classDeclaration::
-reader_mClassTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mClassTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4610,7 +4610,7 @@ reader_mClassTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) 
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_classDeclaration::
-reader_mSuperClassName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSuperClassName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4624,7 +4624,7 @@ reader_mSuperClassName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_classDeclaration::
-reader_mClassFeatureList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mClassFeatureList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstringlist   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4638,7 +4638,7 @@ reader_mClassFeatureList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARG
 //---------------------------------------------------------------------------*
 
 GGS_attributeInCollectionList  GGS_classDeclaration::
-reader_mAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAttributeList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_attributeInCollectionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4652,7 +4652,7 @@ reader_mAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) 
 //---------------------------------------------------------------------------*
 
 GGS_abstractMethodDefinitionList  GGS_classDeclaration::
-reader_mAbstractMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAbstractMethodList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_abstractMethodDefinitionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4666,7 +4666,7 @@ reader_mAbstractMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_A
 //---------------------------------------------------------------------------*
 
 GGS_overridenMethodDefinitionList  GGS_classDeclaration::
-reader_mOverridenMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mOverridenMethodList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_overridenMethodDefinitionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4680,7 +4680,7 @@ reader_mOverridenMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_
 //---------------------------------------------------------------------------*
 
 GGS_methodDefinitionList  GGS_classDeclaration::
-reader_mMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mMethodList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_methodDefinitionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4694,7 +4694,7 @@ reader_mMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) con
 //---------------------------------------------------------------------------*
 
 GGS_classMessageDefinitionList  GGS_classDeclaration::
-reader_mMessageList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mMessageList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_classMessageDefinitionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4708,7 +4708,7 @@ reader_mMessageList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) co
 //---------------------------------------------------------------------------*
 
 GGS_lazyAttributeList  GGS_classDeclaration::
-reader_mLazyAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mLazyAttributeList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lazyAttributeList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4722,7 +4722,7 @@ reader_mLazyAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_AR
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_classDeclaration::
-reader_mClassMessage (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mClassMessage (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4757,7 +4757,7 @@ GGS_object GGS_classDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_classDeclaration GGS_classDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_classDeclaration GGS_classDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4893,7 +4893,7 @@ GGS_listDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_listDeclaration GGS_listDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -4920,7 +4920,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_listDeclaration GGS_listDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_attributeInCollectionList & argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -4933,7 +4933,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_listDeclaration::
-reader_mListTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mListTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4947,7 +4947,7 @@ reader_mListTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) c
 //---------------------------------------------------------------------------*
 
 GGS_attributeInCollectionList  GGS_listDeclaration::
-reader_mAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAttributeList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_attributeInCollectionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4982,7 +4982,7 @@ GGS_object GGS_listDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_listDeclaration GGS_listDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_listDeclaration GGS_listDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5118,7 +5118,7 @@ GGS_structDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_structDeclaration GGS_structDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -5145,7 +5145,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_structDeclaration GGS_structDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_attributeInCollectionList & argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -5158,7 +5158,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_structDeclaration::
-reader_mStructTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mStructTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5172,7 +5172,7 @@ reader_mStructTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_attributeInCollectionList  GGS_structDeclaration::
-reader_mAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAttributeList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_attributeInCollectionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5207,7 +5207,7 @@ GGS_object GGS_structDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_structDeclaration GGS_structDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_structDeclaration GGS_structDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5356,7 +5356,7 @@ dotAssign_operation (const GGS_sortedListSortDescriptorList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_bool& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -5429,7 +5429,7 @@ internalSubListWithRange (GGS_sortedListSortDescriptorList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_sortedListSortDescriptorList GGS_sortedListSortDescriptorList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -5449,7 +5449,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_sortedListSortDescriptorList GGS_sortedListSortDescriptorList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_sortedListSortDescriptorList result ;
@@ -5474,7 +5474,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_bool& _out_1
               COMMA_LOCATION_ARGS) const {
@@ -5497,7 +5497,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_bool& _out_1
              COMMA_LOCATION_ARGS) const {
@@ -5520,7 +5520,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_bool& _out_1
                  COMMA_LOCATION_ARGS) {
@@ -5545,7 +5545,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_bool& _out_1
                 COMMA_LOCATION_ARGS) {
@@ -5570,7 +5570,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_sortedListSortDescriptorList::
-reader_mSortedAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSortedAttributeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -5584,7 +5584,7 @@ reader_mSortedAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_sortedListSortDescriptorList::
-reader_mAscendingAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mAscendingAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -5598,7 +5598,7 @@ reader_mAscendingAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-modifier_setMSortedAttributeNameAtIndex (C_Compiler & inLexique,
+modifier_setMSortedAttributeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -5613,7 +5613,7 @@ modifier_setMSortedAttributeNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_sortedListSortDescriptorList::
-modifier_setMAscendingAtIndex (C_Compiler & inLexique,
+modifier_setMAscendingAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -5653,7 +5653,7 @@ GGS_object GGS_sortedListSortDescriptorList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_sortedListSortDescriptorList GGS_sortedListSortDescriptorList::castFromObject (C_Compiler & inLexique,
+GGS_sortedListSortDescriptorList GGS_sortedListSortDescriptorList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5793,7 +5793,7 @@ GGS_sortedListDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_sortedListDeclaration GGS_sortedListDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -5820,7 +5820,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_sortedListDeclaration GGS_sortedListDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_attributeInCollectionList & argument_1,
                  const GGS_sortedListSortDescriptorList & argument_2
@@ -5835,7 +5835,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_sortedListDeclaration::
-reader_mSortedListTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSortedListTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5849,7 +5849,7 @@ reader_mSortedListTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_A
 //---------------------------------------------------------------------------*
 
 GGS_attributeInCollectionList  GGS_sortedListDeclaration::
-reader_mAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mAttributeList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_attributeInCollectionList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5863,7 +5863,7 @@ reader_mAttributeList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) 
 //---------------------------------------------------------------------------*
 
 GGS_sortedListSortDescriptorList  GGS_sortedListDeclaration::
-reader_mSortDescriptorList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSortDescriptorList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_sortedListSortDescriptorList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5898,7 +5898,7 @@ GGS_object GGS_sortedListDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_sortedListDeclaration GGS_sortedListDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_sortedListDeclaration GGS_sortedListDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6047,7 +6047,7 @@ dotAssign_operation (const GGS_enumMessageAssociationList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -6120,7 +6120,7 @@ internalSubListWithRange (GGS_enumMessageAssociationList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_enumMessageAssociationList GGS_enumMessageAssociationList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -6140,7 +6140,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumMessageAssociationList GGS_enumMessageAssociationList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_enumMessageAssociationList result ;
@@ -6165,7 +6165,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
@@ -6188,7 +6188,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
@@ -6211,7 +6211,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
@@ -6236,7 +6236,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
@@ -6261,7 +6261,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumMessageAssociationList::
-reader_mConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mConstantNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -6275,7 +6275,7 @@ reader_mConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumMessageAssociationList::
-reader_mMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMessageAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -6289,7 +6289,7 @@ reader_mMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_L
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-modifier_setMConstantNameAtIndex (C_Compiler & inLexique,
+modifier_setMConstantNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -6304,7 +6304,7 @@ modifier_setMConstantNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageAssociationList::
-modifier_setMMessageAtIndex (C_Compiler & inLexique,
+modifier_setMMessageAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -6344,7 +6344,7 @@ GGS_object GGS_enumMessageAssociationList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumMessageAssociationList GGS_enumMessageAssociationList::castFromObject (C_Compiler & inLexique,
+GGS_enumMessageAssociationList GGS_enumMessageAssociationList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6493,7 +6493,7 @@ dotAssign_operation (const GGS_enumMessageList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_enumMessageAssociationList & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -6566,7 +6566,7 @@ internalSubListWithRange (GGS_enumMessageList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_enumMessageList GGS_enumMessageList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -6586,7 +6586,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumMessageList GGS_enumMessageList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_enumMessageList result ;
@@ -6611,7 +6611,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_enumMessageAssociationList & _out_1
               COMMA_LOCATION_ARGS) const {
@@ -6634,7 +6634,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_enumMessageAssociationList & _out_1
              COMMA_LOCATION_ARGS) const {
@@ -6657,7 +6657,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_enumMessageAssociationList & _out_1
                  COMMA_LOCATION_ARGS) {
@@ -6682,7 +6682,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_enumMessageAssociationList & _out_1
                 COMMA_LOCATION_ARGS) {
@@ -6707,7 +6707,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumMessageList::
-reader_mEnumMessageNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEnumMessageNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -6721,7 +6721,7 @@ reader_mEnumMessageNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex
 //---------------------------------------------------------------------------*
 
 GGS_enumMessageAssociationList  GGS_enumMessageList::
-reader_mMessageAssociationListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMessageAssociationListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_enumMessageAssociationList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -6735,7 +6735,7 @@ reader_mMessageAssociationListAtIndex (C_Compiler & inLexique, const GGS_uint & 
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-modifier_setMEnumMessageNameAtIndex (C_Compiler & inLexique,
+modifier_setMEnumMessageNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -6750,7 +6750,7 @@ modifier_setMEnumMessageNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMessageList::
-modifier_setMMessageAssociationListAtIndex (C_Compiler & inLexique,
+modifier_setMMessageAssociationListAtIndex (C_CompilerEx & inLexique,
                               const GGS_enumMessageAssociationList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -6790,7 +6790,7 @@ GGS_object GGS_enumMessageList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumMessageList GGS_enumMessageList::castFromObject (C_Compiler & inLexique,
+GGS_enumMessageList GGS_enumMessageList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6905,7 +6905,7 @@ GGS_enumCaseMessage (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_enumCaseMessage GGS_enumCaseMessage::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -6942,7 +6942,7 @@ static void cleanUp_enumCaseMessage (void) {
 //---------------------------------------------------------------------------*
 
 GGS_enumCaseMessage GGS_enumCaseMessage::
-constructor_new (C_Compiler & /* inLexique */
+constructor_new (C_CompilerEx & /* inLexique */
                                 COMMA_LOCATION_ARGS) {
   GGS_enumCaseMessage result ;
   if (NULL == gSingleton_enumCaseMessage) {
@@ -6987,7 +6987,7 @@ GGS_object GGS_enumCaseMessage::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumCaseMessage GGS_enumCaseMessage::castFromObject (C_Compiler & inLexique,
+GGS_enumCaseMessage GGS_enumCaseMessage::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -7150,7 +7150,7 @@ dotAssign_operation (const GGS_enumModifierCaseList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_enumCaseMessage & argument_2
@@ -7227,7 +7227,7 @@ internalSubListWithRange (GGS_enumModifierCaseList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_enumModifierCaseList GGS_enumModifierCaseList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -7247,7 +7247,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumModifierCaseList GGS_enumModifierCaseList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_enumModifierCaseList result ;
@@ -7272,7 +7272,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_enumCaseMessage & _out_2
@@ -7298,7 +7298,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_enumCaseMessage & _out_2
@@ -7324,7 +7324,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_enumCaseMessage & _out_2
@@ -7352,7 +7352,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_enumCaseMessage & _out_2
@@ -7380,7 +7380,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumModifierCaseList::
-reader_mSourceConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSourceConstantNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7394,7 +7394,7 @@ reader_mSourceConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumModifierCaseList::
-reader_mTargetConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTargetConstantNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7408,7 +7408,7 @@ reader_mTargetConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 //---------------------------------------------------------------------------*
 
 GGS_enumCaseMessage  GGS_enumModifierCaseList::
-reader_mEnumModifierCaseMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEnumModifierCaseMessageAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_enumCaseMessage  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7422,7 +7422,7 @@ reader_mEnumModifierCaseMessageAtIndex (C_Compiler & inLexique, const GGS_uint &
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-modifier_setMSourceConstantNameAtIndex (C_Compiler & inLexique,
+modifier_setMSourceConstantNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7437,7 +7437,7 @@ modifier_setMSourceConstantNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-modifier_setMTargetConstantNameAtIndex (C_Compiler & inLexique,
+modifier_setMTargetConstantNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7452,7 +7452,7 @@ modifier_setMTargetConstantNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierCaseList::
-modifier_setMEnumModifierCaseMessageAtIndex (C_Compiler & inLexique,
+modifier_setMEnumModifierCaseMessageAtIndex (C_CompilerEx & inLexique,
                               const GGS_enumCaseMessage  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7499,7 +7499,7 @@ GGS_object GGS_enumModifierCaseList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumModifierCaseList GGS_enumModifierCaseList::castFromObject (C_Compiler & inLexique,
+GGS_enumModifierCaseList GGS_enumModifierCaseList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -7662,7 +7662,7 @@ dotAssign_operation (const GGS_enumModifierList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_enumModifierCaseList & argument_2
@@ -7739,7 +7739,7 @@ internalSubListWithRange (GGS_enumModifierList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_enumModifierList GGS_enumModifierList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -7759,7 +7759,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumModifierList GGS_enumModifierList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_enumModifierList result ;
@@ -7784,7 +7784,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_enumModifierCaseList & _out_2
@@ -7810,7 +7810,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_enumModifierCaseList & _out_2
@@ -7836,7 +7836,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_enumModifierCaseList & _out_2
@@ -7864,7 +7864,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_enumModifierCaseList & _out_2
@@ -7892,7 +7892,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumModifierList::
-reader_mModifierNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mModifierNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7906,7 +7906,7 @@ reader_mModifierNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumModifierList::
-reader_mLocationFormalArgumentNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLocationFormalArgumentNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7920,7 +7920,7 @@ reader_mLocationFormalArgumentNameAtIndex (C_Compiler & inLexique, const GGS_uin
 //---------------------------------------------------------------------------*
 
 GGS_enumModifierCaseList  GGS_enumModifierList::
-reader_mEnumModifierCaseListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEnumModifierCaseListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_enumModifierCaseList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7934,7 +7934,7 @@ reader_mEnumModifierCaseListAtIndex (C_Compiler & inLexique, const GGS_uint & in
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-modifier_setMModifierNameAtIndex (C_Compiler & inLexique,
+modifier_setMModifierNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7949,7 +7949,7 @@ modifier_setMModifierNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-modifier_setMLocationFormalArgumentNameAtIndex (C_Compiler & inLexique,
+modifier_setMLocationFormalArgumentNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7964,7 +7964,7 @@ modifier_setMLocationFormalArgumentNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierList::
-modifier_setMEnumModifierCaseListAtIndex (C_Compiler & inLexique,
+modifier_setMEnumModifierCaseListAtIndex (C_CompilerEx & inLexique,
                               const GGS_enumModifierCaseList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -8011,7 +8011,7 @@ GGS_object GGS_enumModifierList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumModifierList GGS_enumModifierList::castFromObject (C_Compiler & inLexique,
+GGS_enumModifierList GGS_enumModifierList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8147,7 +8147,7 @@ GGS_enumCaseErrorMessage (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_enumCaseErrorMessage GGS_enumCaseErrorMessage::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -8174,7 +8174,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumCaseErrorMessage GGS_enumCaseErrorMessage::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -8187,7 +8187,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumCaseErrorMessage::
-reader_mLocationParameterName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mLocationParameterName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -8201,7 +8201,7 @@ reader_mLocationParameterName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATIO
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumCaseErrorMessage::
-reader_mMessage (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mMessage (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -8236,7 +8236,7 @@ GGS_object GGS_enumCaseErrorMessage::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumCaseErrorMessage GGS_enumCaseErrorMessage::castFromObject (C_Compiler & inLexique,
+GGS_enumCaseErrorMessage GGS_enumCaseErrorMessage::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8372,7 +8372,7 @@ GGS_enumCaseWarningMessage (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_enumCaseWarningMessage GGS_enumCaseWarningMessage::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -8399,7 +8399,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumCaseWarningMessage GGS_enumCaseWarningMessage::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -8412,7 +8412,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumCaseWarningMessage::
-reader_mLocationParameterName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mLocationParameterName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -8426,7 +8426,7 @@ reader_mLocationParameterName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATIO
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumCaseWarningMessage::
-reader_mMessage (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mMessage (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -8461,7 +8461,7 @@ GGS_object GGS_enumCaseWarningMessage::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumCaseWarningMessage GGS_enumCaseWarningMessage::castFromObject (C_Compiler & inLexique,
+GGS_enumCaseWarningMessage GGS_enumCaseWarningMessage::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8610,7 +8610,7 @@ dotAssign_operation (const GGS_enumMethodCaseList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_enumCaseMessage & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -8683,7 +8683,7 @@ internalSubListWithRange (GGS_enumMethodCaseList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_enumMethodCaseList GGS_enumMethodCaseList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -8703,7 +8703,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumMethodCaseList GGS_enumMethodCaseList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_enumMethodCaseList result ;
@@ -8728,7 +8728,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_enumCaseMessage & _out_1
               COMMA_LOCATION_ARGS) const {
@@ -8751,7 +8751,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_enumCaseMessage & _out_1
              COMMA_LOCATION_ARGS) const {
@@ -8774,7 +8774,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_enumCaseMessage & _out_1
                  COMMA_LOCATION_ARGS) {
@@ -8799,7 +8799,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_enumCaseMessage & _out_1
                 COMMA_LOCATION_ARGS) {
@@ -8824,7 +8824,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumMethodCaseList::
-reader_mConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mConstantNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8838,7 +8838,7 @@ reader_mConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 GGS_enumCaseMessage  GGS_enumMethodCaseList::
-reader_mEnumMethodCaseMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEnumMethodCaseMessageAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_enumCaseMessage  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8852,7 +8852,7 @@ reader_mEnumMethodCaseMessageAtIndex (C_Compiler & inLexique, const GGS_uint & i
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-modifier_setMConstantNameAtIndex (C_Compiler & inLexique,
+modifier_setMConstantNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -8867,7 +8867,7 @@ modifier_setMConstantNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodCaseList::
-modifier_setMEnumMethodCaseMessageAtIndex (C_Compiler & inLexique,
+modifier_setMEnumMethodCaseMessageAtIndex (C_CompilerEx & inLexique,
                               const GGS_enumCaseMessage  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -8907,7 +8907,7 @@ GGS_object GGS_enumMethodCaseList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumMethodCaseList GGS_enumMethodCaseList::castFromObject (C_Compiler & inLexique,
+GGS_enumMethodCaseList GGS_enumMethodCaseList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -9070,7 +9070,7 @@ dotAssign_operation (const GGS_enumMethodList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_enumMethodCaseList & argument_2
@@ -9147,7 +9147,7 @@ internalSubListWithRange (GGS_enumMethodList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_enumMethodList GGS_enumMethodList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -9167,7 +9167,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumMethodList GGS_enumMethodList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_enumMethodList result ;
@@ -9192,7 +9192,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_enumMethodCaseList & _out_2
@@ -9218,7 +9218,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_enumMethodCaseList & _out_2
@@ -9244,7 +9244,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_enumMethodCaseList & _out_2
@@ -9272,7 +9272,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_enumMethodCaseList & _out_2
@@ -9300,7 +9300,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumMethodList::
-reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mMethodNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -9314,7 +9314,7 @@ reader_mMethodNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumMethodList::
-reader_mLocationFormalArgumentNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLocationFormalArgumentNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -9328,7 +9328,7 @@ reader_mLocationFormalArgumentNameAtIndex (C_Compiler & inLexique, const GGS_uin
 //---------------------------------------------------------------------------*
 
 GGS_enumMethodCaseList  GGS_enumMethodList::
-reader_mEnumMethodCaseListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEnumMethodCaseListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_enumMethodCaseList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -9342,7 +9342,7 @@ reader_mEnumMethodCaseListAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
+modifier_setMMethodNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9357,7 +9357,7 @@ modifier_setMMethodNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-modifier_setMLocationFormalArgumentNameAtIndex (C_Compiler & inLexique,
+modifier_setMLocationFormalArgumentNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9372,7 +9372,7 @@ modifier_setMLocationFormalArgumentNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodList::
-modifier_setMEnumMethodCaseListAtIndex (C_Compiler & inLexique,
+modifier_setMEnumMethodCaseListAtIndex (C_CompilerEx & inLexique,
                               const GGS_enumMethodCaseList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9419,7 +9419,7 @@ GGS_object GGS_enumMethodList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumMethodList GGS_enumMethodList::castFromObject (C_Compiler & inLexique,
+GGS_enumMethodList GGS_enumMethodList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -9596,7 +9596,7 @@ dotAssign_operation (const GGS_enumOperatorCaseList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_lstring & argument_2,
@@ -9677,7 +9677,7 @@ internalSubListWithRange (GGS_enumOperatorCaseList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_enumOperatorCaseList GGS_enumOperatorCaseList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -9697,7 +9697,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumOperatorCaseList GGS_enumOperatorCaseList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_enumOperatorCaseList result ;
@@ -9722,7 +9722,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lstring & _out_2,
@@ -9751,7 +9751,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lstring & _out_2,
@@ -9780,7 +9780,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstring & _out_2,
@@ -9811,7 +9811,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstring & _out_2,
@@ -9842,7 +9842,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumOperatorCaseList::
-reader_mLeftConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLeftConstantNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -9856,7 +9856,7 @@ reader_mLeftConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inInde
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumOperatorCaseList::
-reader_mRightConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mRightConstantNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -9870,7 +9870,7 @@ reader_mRightConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inInd
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumOperatorCaseList::
-reader_mResultConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mResultConstantNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -9884,7 +9884,7 @@ reader_mResultConstantNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 //---------------------------------------------------------------------------*
 
 GGS_enumCaseMessage  GGS_enumOperatorCaseList::
-reader_mEnumOperatorCaseMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEnumOperatorCaseMessageAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_enumCaseMessage  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -9898,7 +9898,7 @@ reader_mEnumOperatorCaseMessageAtIndex (C_Compiler & inLexique, const GGS_uint &
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-modifier_setMLeftConstantNameAtIndex (C_Compiler & inLexique,
+modifier_setMLeftConstantNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9913,7 +9913,7 @@ modifier_setMLeftConstantNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-modifier_setMRightConstantNameAtIndex (C_Compiler & inLexique,
+modifier_setMRightConstantNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9928,7 +9928,7 @@ modifier_setMRightConstantNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-modifier_setMResultConstantNameAtIndex (C_Compiler & inLexique,
+modifier_setMResultConstantNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9943,7 +9943,7 @@ modifier_setMResultConstantNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorCaseList::
-modifier_setMEnumOperatorCaseMessageAtIndex (C_Compiler & inLexique,
+modifier_setMEnumOperatorCaseMessageAtIndex (C_CompilerEx & inLexique,
                               const GGS_enumCaseMessage  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9997,7 +9997,7 @@ GGS_object GGS_enumOperatorCaseList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumOperatorCaseList GGS_enumOperatorCaseList::castFromObject (C_Compiler & inLexique,
+GGS_enumOperatorCaseList GGS_enumOperatorCaseList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -10160,7 +10160,7 @@ dotAssign_operation (const GGS_enumOperatorList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_enumOperatorCaseList & argument_2
@@ -10237,7 +10237,7 @@ internalSubListWithRange (GGS_enumOperatorList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_enumOperatorList GGS_enumOperatorList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -10257,7 +10257,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumOperatorList GGS_enumOperatorList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_enumOperatorList result ;
@@ -10282,7 +10282,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_enumOperatorCaseList & _out_2
@@ -10308,7 +10308,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_enumOperatorCaseList & _out_2
@@ -10334,7 +10334,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_enumOperatorCaseList & _out_2
@@ -10362,7 +10362,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_enumOperatorCaseList & _out_2
@@ -10390,7 +10390,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumOperatorList::
-reader_mOperatorNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mOperatorNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -10404,7 +10404,7 @@ reader_mOperatorNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumOperatorList::
-reader_mLocationFormalArgumentNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLocationFormalArgumentNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -10418,7 +10418,7 @@ reader_mLocationFormalArgumentNameAtIndex (C_Compiler & inLexique, const GGS_uin
 //---------------------------------------------------------------------------*
 
 GGS_enumOperatorCaseList  GGS_enumOperatorList::
-reader_mEnumOperatorCaseListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEnumOperatorCaseListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_enumOperatorCaseList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -10432,7 +10432,7 @@ reader_mEnumOperatorCaseListAtIndex (C_Compiler & inLexique, const GGS_uint & in
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-modifier_setMOperatorNameAtIndex (C_Compiler & inLexique,
+modifier_setMOperatorNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -10447,7 +10447,7 @@ modifier_setMOperatorNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-modifier_setMLocationFormalArgumentNameAtIndex (C_Compiler & inLexique,
+modifier_setMLocationFormalArgumentNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -10462,7 +10462,7 @@ modifier_setMLocationFormalArgumentNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorList::
-modifier_setMEnumOperatorCaseListAtIndex (C_Compiler & inLexique,
+modifier_setMEnumOperatorCaseListAtIndex (C_CompilerEx & inLexique,
                               const GGS_enumOperatorCaseList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -10509,7 +10509,7 @@ GGS_object GGS_enumOperatorList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumOperatorList GGS_enumOperatorList::castFromObject (C_Compiler & inLexique,
+GGS_enumOperatorList GGS_enumOperatorList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -10665,7 +10665,7 @@ GGS_enumDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_enumDeclaration GGS_enumDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -10692,7 +10692,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_enumDeclaration GGS_enumDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstringlist & argument_1,
                  const GGS_lstringlist & argument_2,
@@ -10715,7 +10715,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_enumDeclaration::
-reader_mEnumTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mEnumTypeName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -10729,7 +10729,7 @@ reader_mEnumTypeName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) c
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_enumDeclaration::
-reader_mConstructorConstantList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mConstructorConstantList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstringlist   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -10743,7 +10743,7 @@ reader_mConstructorConstantList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCAT
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_enumDeclaration::
-reader_mConstantList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mConstantList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstringlist   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -10757,7 +10757,7 @@ reader_mConstantList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) c
 //---------------------------------------------------------------------------*
 
 GGS_enumMessageList  GGS_enumDeclaration::
-reader_mEnumMessageList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mEnumMessageList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_enumMessageList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -10771,7 +10771,7 @@ reader_mEnumMessageList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS
 //---------------------------------------------------------------------------*
 
 GGS_enumModifierList  GGS_enumDeclaration::
-reader_mEnumModifierList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mEnumModifierList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_enumModifierList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -10785,7 +10785,7 @@ reader_mEnumModifierList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARG
 //---------------------------------------------------------------------------*
 
 GGS_enumMethodList  GGS_enumDeclaration::
-reader_mEnumMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mEnumMethodList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_enumMethodList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -10799,7 +10799,7 @@ reader_mEnumMethodList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_enumOperatorList  GGS_enumDeclaration::
-reader_mEnumOperatorList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mEnumOperatorList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_enumOperatorList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -10834,7 +10834,7 @@ GGS_object GGS_enumDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_enumDeclaration GGS_enumDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_enumDeclaration GGS_enumDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -10997,7 +10997,7 @@ dotAssign_operation (const GGS_filewrapperTemplateList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_formalInputParameterList & argument_2
@@ -11074,7 +11074,7 @@ internalSubListWithRange (GGS_filewrapperTemplateList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperTemplateList GGS_filewrapperTemplateList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -11094,7 +11094,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperTemplateList GGS_filewrapperTemplateList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_filewrapperTemplateList result ;
@@ -11119,7 +11119,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_formalInputParameterList & _out_2
@@ -11145,7 +11145,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_formalInputParameterList & _out_2
@@ -11171,7 +11171,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_formalInputParameterList & _out_2
@@ -11199,7 +11199,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_formalInputParameterList & _out_2
@@ -11227,7 +11227,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_filewrapperTemplateList::
-reader_mFilewrapperTemplateNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mFilewrapperTemplateNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -11241,7 +11241,7 @@ reader_mFilewrapperTemplateNameAtIndex (C_Compiler & inLexique, const GGS_uint &
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_filewrapperTemplateList::
-reader_mFilewrapperTemplatePathAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mFilewrapperTemplatePathAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -11255,7 +11255,7 @@ reader_mFilewrapperTemplatePathAtIndex (C_Compiler & inLexique, const GGS_uint &
 //---------------------------------------------------------------------------*
 
 GGS_formalInputParameterList  GGS_filewrapperTemplateList::
-reader_mFilewrapperTemplateFormalInputParametersAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mFilewrapperTemplateFormalInputParametersAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_formalInputParameterList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -11269,7 +11269,7 @@ reader_mFilewrapperTemplateFormalInputParametersAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-modifier_setMFilewrapperTemplateNameAtIndex (C_Compiler & inLexique,
+modifier_setMFilewrapperTemplateNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -11284,7 +11284,7 @@ modifier_setMFilewrapperTemplateNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-modifier_setMFilewrapperTemplatePathAtIndex (C_Compiler & inLexique,
+modifier_setMFilewrapperTemplatePathAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -11299,7 +11299,7 @@ modifier_setMFilewrapperTemplatePathAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateList::
-modifier_setMFilewrapperTemplateFormalInputParametersAtIndex (C_Compiler & inLexique,
+modifier_setMFilewrapperTemplateFormalInputParametersAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalInputParameterList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -11346,7 +11346,7 @@ GGS_object GGS_filewrapperTemplateList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_filewrapperTemplateList GGS_filewrapperTemplateList::castFromObject (C_Compiler & inLexique,
+GGS_filewrapperTemplateList GGS_filewrapperTemplateList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -11490,7 +11490,7 @@ GGS_filewrapperDeclaration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_filewrapperDeclaration GGS_filewrapperDeclaration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -11517,7 +11517,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperDeclaration GGS_filewrapperDeclaration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstring & argument_1,
                  const GGS_lstringlist & argument_2,
@@ -11534,7 +11534,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_filewrapperDeclaration::
-reader_mFilewrapperName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFilewrapperName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -11548,7 +11548,7 @@ reader_mFilewrapperName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_filewrapperDeclaration::
-reader_mFilewrapperPath (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFilewrapperPath (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -11562,7 +11562,7 @@ reader_mFilewrapperPath (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_filewrapperDeclaration::
-reader_mFilewrapperExtensionList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFilewrapperExtensionList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstringlist   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -11576,7 +11576,7 @@ reader_mFilewrapperExtensionList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCA
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperTemplateList  GGS_filewrapperDeclaration::
-reader_mFilewrapperTemplateList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFilewrapperTemplateList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_filewrapperTemplateList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -11611,7 +11611,7 @@ GGS_object GGS_filewrapperDeclaration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_filewrapperDeclaration GGS_filewrapperDeclaration::castFromObject (C_Compiler & inLexique,
+GGS_filewrapperDeclaration GGS_filewrapperDeclaration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -11755,7 +11755,7 @@ GGS_semanticsComponentRoot (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_semanticsComponentRoot GGS_semanticsComponentRoot::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -11782,7 +11782,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_semanticsComponentRoot GGS_semanticsComponentRoot::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstringlist & argument_1,
                  const GGS_semanticDeclarationStruct& argument_2,
@@ -11799,7 +11799,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_semanticsComponentRoot::
-reader_mSemanticsComponentName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSemanticsComponentName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -11813,7 +11813,7 @@ reader_mSemanticsComponentName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATI
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_semanticsComponentRoot::
-reader_mImportedComponentFileNameList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mImportedComponentFileNameList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstringlist   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -11827,7 +11827,7 @@ reader_mImportedComponentFileNameList (C_Compiler & /* inLexique */ COMMA_UNUSED
 //---------------------------------------------------------------------------*
 
 GGS_semanticDeclarationStruct GGS_semanticsComponentRoot::
-reader_mSemanticDeclarations (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSemanticDeclarations (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_semanticDeclarationStruct  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -11841,7 +11841,7 @@ reader_mSemanticDeclarations (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION
 //---------------------------------------------------------------------------*
 
 GGS_location  GGS_semanticsComponentRoot::
-reader_mEndOfSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mEndOfSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_location   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -11886,7 +11886,7 @@ GGS_object GGS_semanticsComponentRoot::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_semanticsComponentRoot GGS_semanticsComponentRoot::castFromObject (C_Compiler & inLexique,
+GGS_semanticsComponentRoot GGS_semanticsComponentRoot::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -11989,7 +11989,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedLexiqueComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -12034,7 +12034,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedLexiqueComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_lexiqueComponentRoot & inParameter0,
@@ -12061,7 +12061,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedLexiqueComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_lexiqueComponentRoot   & outParameter0,
@@ -12145,7 +12145,7 @@ const utf32 GGS_parsedLexiqueComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedLexiqueComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lexiqueComponentRoot   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -12215,7 +12215,7 @@ const utf32 GGS_parsedLexiqueComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedLexiqueComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lexiqueComponentRoot & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -12229,7 +12229,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedLexiqueComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedLexiqueComponentMap result ; // Not Built
@@ -12246,7 +12246,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedLexiqueComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -12320,7 +12320,7 @@ GGS_object GGS_parsedLexiqueComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -12423,7 +12423,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedSemanticsComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -12468,7 +12468,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSemanticsComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_semanticsComponentRoot & inParameter0,
@@ -12495,7 +12495,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSemanticsComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_semanticsComponentRoot   & outParameter0,
@@ -12581,7 +12581,7 @@ const utf32 GGS_parsedSemanticsComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSemanticsComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_semanticsComponentRoot   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -12653,7 +12653,7 @@ const utf32 GGS_parsedSemanticsComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSemanticsComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_semanticsComponentRoot & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -12667,7 +12667,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedSemanticsComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedSemanticsComponentMap result ; // Not Built
@@ -12684,7 +12684,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedSemanticsComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -12758,7 +12758,7 @@ GGS_object GGS_parsedSemanticsComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -12861,7 +12861,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedOptionComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -12906,7 +12906,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedOptionComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_optionComponentRoot & inParameter0,
@@ -12933,7 +12933,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedOptionComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_optionComponentRoot   & outParameter0,
@@ -13016,7 +13016,7 @@ const utf32 GGS_parsedOptionComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedOptionComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_optionComponentRoot   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -13085,7 +13085,7 @@ const utf32 GGS_parsedOptionComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedOptionComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_optionComponentRoot & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -13099,7 +13099,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedOptionComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedOptionComponentMap result ; // Not Built
@@ -13116,7 +13116,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedOptionComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -13190,7 +13190,7 @@ GGS_object GGS_parsedOptionComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -13293,7 +13293,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedSyntaxComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -13338,7 +13338,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSyntaxComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_syntaxComponentRoot & inParameter0,
@@ -13365,7 +13365,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSyntaxComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_syntaxComponentRoot   & outParameter0,
@@ -13448,7 +13448,7 @@ const utf32 GGS_parsedSyntaxComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSyntaxComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_syntaxComponentRoot   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -13517,7 +13517,7 @@ const utf32 GGS_parsedSyntaxComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSyntaxComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_syntaxComponentRoot & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -13531,7 +13531,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedSyntaxComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedSyntaxComponentMap result ; // Not Built
@@ -13548,7 +13548,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedSyntaxComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -13622,7 +13622,7 @@ GGS_object GGS_parsedSyntaxComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -13766,7 +13766,7 @@ GGS_object GGS_parsedComponentStruct::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedComponentStruct GGS_parsedComponentStruct::castFromObject (C_Compiler & inLexique,
+GGS_parsedComponentStruct GGS_parsedComponentStruct::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

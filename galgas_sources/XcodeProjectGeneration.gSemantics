@@ -65,7 +65,7 @@ routine getGALGAS_source_file_list
   out_cpp_and_h_fileList += !"AC_galgas_class" ;
   out_cpp_and_h_fileList += !"C_GGS_Object" ;
   out_cpp_and_h_fileList += !"C_galgas_CLI_Options" ;
-  out_cpp_and_h_fileList += !"C_Compiler" ;
+  out_cpp_and_h_fileList += !"C_CompilerEx" ;
   out_cpp_and_h_fileList += !"C_Lexique" ;
   out_cpp_and_h_fileList += !"scanner_actions" ;
   out_cpp_and_h_fileList += !"C_galgas_io" ;

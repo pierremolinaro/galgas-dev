@@ -67,7 +67,7 @@
 //---------------------------------------------------------------------------*
 
 static void
-galgas_LL1_prgm_prologue (C_Compiler & inLexique,
+galgas_LL1_prgm_prologue (C_CompilerEx & inLexique,
                      const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {
   GGS_string var_cas_creationProjectName = gOption_galgas_5F_cli_5F_options_create_5F_project.reader_value () ;
   ::routine_projectCreation (inLexique,  var_cas_creationProjectName COMMA_SOURCE_FILE_AT_LINE (39)) ;
@@ -85,7 +85,7 @@ galgas_LL1_prgm_prologue (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-galgas_LL1_prgm_epilogue (C_Compiler & /* inLexique */,
+galgas_LL1_prgm_epilogue (C_CompilerEx & /* inLexique */,
                      const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {
 }
 
@@ -123,8 +123,8 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     C_galgas_io * galgasIOptr = NULL ;
     macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;
   //--- Common lexique object
-    C_Compiler * _commonLexique = NULL ;
-    macroMyNew (_commonLexique, C_Compiler (NULL, "", "", galgasIOptr COMMA_HERE)) ;
+    C_CompilerEx * _commonLexique = NULL ;
+    macroMyNew (_commonLexique, C_CompilerEx (NULL, "", "", galgasIOptr COMMA_HERE)) ;
   //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)
     #ifdef SIOUX_IS_IMPLEMENTED
       SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;
@@ -145,7 +145,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
           const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
           PMSInt16 r = 0 ;
           if (fileExtension.compare ("gOption") == 0) {
-            C_Compiler & inLexique = * _commonLexique ;
+            C_CompilerEx & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
             const GGS_location _here (inLexique) ;
             const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
@@ -184,7 +184,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gLexique") == 0) {
-            C_Compiler & inLexique = * _commonLexique ;
+            C_CompilerEx & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
             const GGS_location _here (inLexique) ;
             const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
@@ -223,7 +223,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gGui") == 0) {
-            C_Compiler & inLexique = * _commonLexique ;
+            C_CompilerEx & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
             const GGS_location _here (inLexique) ;
             const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
@@ -262,7 +262,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("ggs") == 0) {
-            C_Compiler & inLexique = * _commonLexique ;
+            C_CompilerEx & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
             const GGS_location _here (inLexique) ;
             const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
@@ -328,7 +328,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
           if (r != 0) {
             returnCode = r ;
           }
-        }catch (C_ScanOrParseOnlyException) { // Raised when scan only or parse only options are set
+        }catch (C_ScanOrParseOnlyExceptionEX) { // Raised when scan only or parse only options are set
           // Do nothing: accept silently exception
         }
       }
@@ -352,7 +352,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       throw ;
     }
     macroDetachPointer (galgasIOptr, C_galgas_io) ;
-    macroDetachPointer (_commonLexique, C_Compiler) ;
+    macroDetachPointer (_commonLexique, C_CompilerEx) ;
   }
   C_PrologueEpilogue::runEpilogueActions () ;
   runAllReleaseRoutines () ;

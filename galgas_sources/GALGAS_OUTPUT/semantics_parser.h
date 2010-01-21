@@ -38,7 +38,7 @@
 //---------------------------------------------------------------------------*
 
 
-void routine_buildFileNameWithPath (C_Compiler &,
+void routine_buildFileNameWithPath (C_CompilerEx &,
                                 GGS_lstring  &,
                                 GGS_lstring  ,
                                 const GGS_lstring  ,
@@ -50,7 +50,7 @@ void routine_buildFileNameWithPath (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parse_semantics_component_for_importing (C_Compiler &,
+void routine_parse_semantics_component_for_importing (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 GGS_M_semanticsComponents  &,
                                 GGS_EXsemanticContext &,
@@ -62,7 +62,7 @@ void routine_parse_semantics_component_for_importing (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivelyEnumerateDirectories (C_Compiler &,
+void routine_recursivelyEnumerateDirectories (C_CompilerEx &,
                                 const GGS_string ,
                                 const GGS_string ,
                                 const GGS_wrapperExtensionMap  ,

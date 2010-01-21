@@ -57,7 +57,7 @@ mLexicalAttribute_uint64value () {
 //---------------------------------------------------------------------------*
 
 galgas_scanner::
-galgas_scanner (C_Compiler * inCallerCompiler,
+galgas_scanner (C_CompilerEx * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
                 C_galgas_io * inParametersPtr,
@@ -69,7 +69,7 @@ C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, in
 //---------------------------------------------------------------------------*
 
 galgas_scanner::
-galgas_scanner (C_Compiler * inCallerCompiler,
+galgas_scanner (C_CompilerEx * inCallerCompiler,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError
@@ -7155,7 +7155,7 @@ parseLexicalToken (void) {
         token.mTokenCode = galgas_scanner_1__21_ ;
         enterToken (token) ;
       }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
-        const C_LocationInSource locationForTag_onlyInfDelimiter = mCurrentLocation ;
+        const C_LocationInSourceEX locationForTag_onlyInfDelimiter = mCurrentLocation ;
         if (testForInputUTF32Char (TO_UNICODE ('='))) {
           token.mTokenCode = galgas_scanner_1__3C__3D_ ;
           enterToken (token) ;

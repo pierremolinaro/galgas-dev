@@ -75,14 +75,14 @@ class cTokenFor_%!LEXIQUE_CLASS_NAME% : public cToken {
 
 class %!LEXIQUE_CLASS_NAME% : public C_Lexique {
 //--- Constructors
-  public : %!LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
+  public : %!LEXIQUE_CLASS_NAME% (C_CompilerEx * inCallerCompiler,
                        const C_String & inDependencyFileExtension,
                        const C_String & inDependencyFilePath,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public : %!LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
+  public : %!LEXIQUE_CLASS_NAME% (C_CompilerEx * inCallerCompiler,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceString,
                        const C_String & inStringForError

@@ -45,7 +45,7 @@ class cPtr_typeGalgasListType : public cPtr_typeGalgasUndefinedListType {
   public : GGS_L_EXsignature  mExtractSignature ;
   public : GGS_L_EXsignature  mInputSignature ;
 //--- Method 'acceptForeachInstruction'
-  public : virtual void method_acceptForeachInstruction (C_Compiler &,
+  public : virtual void method_acceptForeachInstruction (C_CompilerEx &,
                                 GGS_M_semanticsEntitiesForUse  ,
                                 GGS_location  ,
                                 GGS_typeListeAttributsSemantiques & ,
@@ -54,13 +54,13 @@ class cPtr_typeGalgasListType : public cPtr_typeGalgasUndefinedListType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleModifierCall'
-  public : virtual void method_handleModifierCall (C_Compiler &,
+  public : virtual void method_handleModifierCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_L_EXsignature & 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleMethodInstructionCall'
-  public : virtual void method_handleMethodInstructionCall (C_Compiler &,
+  public : virtual void method_handleMethodInstructionCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_EXcategoryMethodMap  ,
                                 GGS_L_EXsignature & ,
@@ -68,13 +68,13 @@ class cPtr_typeGalgasListType : public cPtr_typeGalgasUndefinedListType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleAddAssignOperatorCall'
-  public : virtual void method_handleAddAssignOperatorCall (C_Compiler &,
+  public : virtual void method_handleAddAssignOperatorCall (C_CompilerEx &,
                                 GGS_location  ,
                                 GGS_typeListeAttributsSemantiques & 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,

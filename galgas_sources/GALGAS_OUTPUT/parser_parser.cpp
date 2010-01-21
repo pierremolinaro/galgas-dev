@@ -571,7 +571,7 @@ pr_syntax_instruction_parser_parser_625_25_parse (galgas_scanner & inLexique) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_implicitDeclaration (C_Compiler & inLexique,
+void routine_implicitDeclaration (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inNonterminalBaseName,
                                 const GGS_uint   var_cas_inLevel,
                                 const GGS_string  var_cas_inLexiqueClassName,
@@ -660,7 +660,7 @@ void routine_implicitDeclaration (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_implicitDeclarationImportSyntax (C_Compiler & inLexique,
+void routine_implicitDeclarationImportSyntax (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inNonterminalBaseName,
                                 const GGS_uint   var_cas_inLevel,
                                 GGS_nonTerminalSymbolMapForGrammarAnalysis  & var_cas_ioNonTerminalSymbolsMap,

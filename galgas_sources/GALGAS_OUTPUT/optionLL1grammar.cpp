@@ -176,7 +176,7 @@ pr_option_component_start_symbol_optionModelBuilder_32_36_ (inLexique, parameter
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void optionLL1grammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void optionLL1grammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -219,7 +219,7 @@ void optionLL1grammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
 
 //---------------------------------------------------------------------------*
 
-void optionLL1grammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void optionLL1grammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_optionComponentRoot & parameter_1

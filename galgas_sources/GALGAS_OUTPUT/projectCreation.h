@@ -40,7 +40,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_performProjectCreation (C_Compiler &,
+void routine_performProjectCreation (C_CompilerEx &,
                                 const GGS_string  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -49,7 +49,7 @@ void routine_performProjectCreation (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_projectCreation (C_Compiler &,
+void routine_projectCreation (C_CompilerEx &,
                                 const GGS_string  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -92,7 +92,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_build_bat (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_build_bat (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -102,7 +102,7 @@ template_filewrapper_projectCreationFileWrapper_build_bat (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_all_ggs (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_all_ggs (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -112,7 +112,7 @@ template_filewrapper_projectCreationFileWrapper_all_ggs (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_PROJECT_cocoa (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_PROJECT_cocoa (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -122,7 +122,7 @@ template_filewrapper_projectCreationFileWrapper_PROJECT_cocoa (C_Compiler & inLe
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_PROJECT_grammar (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_PROJECT_grammar (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -132,7 +132,7 @@ template_filewrapper_projectCreationFileWrapper_PROJECT_grammar (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_PROJECT_lexique (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_PROJECT_lexique (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -142,7 +142,7 @@ template_filewrapper_projectCreationFileWrapper_PROJECT_lexique (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_PROJECT_options (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_PROJECT_options (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -152,7 +152,7 @@ template_filewrapper_projectCreationFileWrapper_PROJECT_options (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_PROJECT_program (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_PROJECT_program (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -162,7 +162,7 @@ template_filewrapper_projectCreationFileWrapper_PROJECT_program (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_PROJECT_semantics (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_PROJECT_semantics (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -172,7 +172,7 @@ template_filewrapper_projectCreationFileWrapper_PROJECT_semantics (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_PROJECT_syntax (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_PROJECT_syntax (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -182,7 +182,7 @@ template_filewrapper_projectCreationFileWrapper_PROJECT_syntax (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_PROJECT_computations (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_PROJECT_computations (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -192,7 +192,7 @@ template_filewrapper_projectCreationFileWrapper_PROJECT_computations (C_Compiler
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -202,7 +202,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile (C_Comp
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile64 (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile64 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -212,7 +212,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile64 (C_Co
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -222,7 +222,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile (C_
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile64 (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile64 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -232,7 +232,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile64 (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -242,7 +242,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile (C
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile64 (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile64 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -252,7 +252,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile64 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefile (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefile (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -262,7 +262,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefi
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefile64 (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefile64 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -272,7 +272,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefi
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_mingw_on_macosx_makefile (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_mingw_on_macosx_makefile (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -282,7 +282,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_mingw_on_macosx_makefil
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_msys_on_win32_makefile (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_msys_on_win32_makefile (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -292,7 +292,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_msys_on_win32_makefile 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -302,7 +302,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile (C_Compil
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile64 (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile64 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -312,7 +312,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile64 (C_Comp
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_makefile_x86linux_on_macosx_makefile (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_makefile_x86linux_on_macosx_makefile (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -322,7 +322,7 @@ template_filewrapper_projectCreationFileWrapper_makefile_x86linux_on_macosx_make
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_info_plist (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_info_plist (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -332,7 +332,7 @@ template_filewrapper_projectCreationFileWrapper_info_plist (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_projectCreationFileWrapper_cocoa_infoPlist_strings (C_Compiler & inLexique,
+template_filewrapper_projectCreationFileWrapper_cocoa_infoPlist_strings (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_PROJECT_NAME) ;
 
 //---------------------------------------------------------------------------*

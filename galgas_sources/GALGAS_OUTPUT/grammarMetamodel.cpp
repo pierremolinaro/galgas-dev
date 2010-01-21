@@ -182,7 +182,7 @@ dotAssign_operation (const GGS_startSymbolLabelFormalParameterList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_formalArgumentPassingMode& argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_lstring & argument_2
@@ -259,7 +259,7 @@ internalSubListWithRange (GGS_startSymbolLabelFormalParameterList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_startSymbolLabelFormalParameterList GGS_startSymbolLabelFormalParameterList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -279,7 +279,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_startSymbolLabelFormalParameterList GGS_startSymbolLabelFormalParameterList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_startSymbolLabelFormalParameterList result ;
@@ -304,7 +304,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_formalArgumentPassingMode& _out_0,
               GGS_lstring & _out_1,
               GGS_lstring & _out_2
@@ -330,7 +330,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_formalArgumentPassingMode& _out_0,
              GGS_lstring & _out_1,
              GGS_lstring & _out_2
@@ -356,7 +356,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_formalArgumentPassingMode& _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstring & _out_2
@@ -384,7 +384,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_formalArgumentPassingMode& _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstring & _out_2
@@ -412,7 +412,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_formalArgumentPassingMode GGS_startSymbolLabelFormalParameterList::
-reader_mFormalAgumentPassingModeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mFormalAgumentPassingModeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_formalArgumentPassingMode result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -426,7 +426,7 @@ reader_mFormalAgumentPassingModeAtIndex (C_Compiler & inLexique, const GGS_uint 
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_startSymbolLabelFormalParameterList::
-reader_mTypeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTypeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -440,7 +440,7 @@ reader_mTypeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_startSymbolLabelFormalParameterList::
-reader_mArgumentNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mArgumentNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -454,7 +454,7 @@ reader_mArgumentNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-modifier_setMFormalAgumentPassingModeAtIndex (C_Compiler & inLexique,
+modifier_setMFormalAgumentPassingModeAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalArgumentPassingMode & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -469,7 +469,7 @@ modifier_setMFormalAgumentPassingModeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-modifier_setMTypeNameAtIndex (C_Compiler & inLexique,
+modifier_setMTypeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -484,7 +484,7 @@ modifier_setMTypeNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-modifier_setMArgumentNameAtIndex (C_Compiler & inLexique,
+modifier_setMArgumentNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -531,7 +531,7 @@ GGS_object GGS_startSymbolLabelFormalParameterList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_startSymbolLabelFormalParameterList GGS_startSymbolLabelFormalParameterList::castFromObject (C_Compiler & inLexique,
+GGS_startSymbolLabelFormalParameterList GGS_startSymbolLabelFormalParameterList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -691,7 +691,7 @@ GGS_grammarComponentRoot (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_grammarComponentRoot GGS_grammarComponentRoot::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -718,7 +718,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_grammarComponentRoot GGS_grammarComponentRoot::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_lstring & argument_0,
                  const GGS_lstring & argument_1,
                  const GGS_lstringlist & argument_2,
@@ -743,7 +743,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_grammarComponentRoot::
-reader_mGrammarName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mGrammarName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -757,7 +757,7 @@ reader_mGrammarName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) co
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_grammarComponentRoot::
-reader_mGrammarClass (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mGrammarClass (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -771,7 +771,7 @@ reader_mGrammarClass (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) c
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_grammarComponentRoot::
-reader_mSyntaxComponents (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSyntaxComponents (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstringlist   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -785,7 +785,7 @@ reader_mSyntaxComponents (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARG
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_grammarComponentRoot::
-reader_mStartSymbolName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mStartSymbolName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstring   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -799,7 +799,7 @@ reader_mStartSymbolName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS
 //---------------------------------------------------------------------------*
 
 GGS_nonTerminalLabelList  GGS_grammarComponentRoot::
-reader_mStartSymbolLabelList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mStartSymbolLabelList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_nonTerminalLabelList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -813,7 +813,7 @@ reader_mStartSymbolLabelList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_grammarComponentRoot::
-reader_mStartSymbolHasParseLabel (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mStartSymbolHasParseLabel (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -827,7 +827,7 @@ reader_mStartSymbolHasParseLabel (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCA
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_grammarComponentRoot::
-reader_mUnusedNonterminalList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mUnusedNonterminalList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lstringlist   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -841,7 +841,7 @@ reader_mUnusedNonterminalList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATIO
 //---------------------------------------------------------------------------*
 
 GGS_location  GGS_grammarComponentRoot::
-reader_mEndOfSourceText (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mEndOfSourceText (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_location   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -886,7 +886,7 @@ GGS_object GGS_grammarComponentRoot::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_grammarComponentRoot GGS_grammarComponentRoot::castFromObject (C_Compiler & inLexique,
+GGS_grammarComponentRoot GGS_grammarComponentRoot::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

@@ -583,6 +583,8 @@ once constructBuiltinTypeMap ->@typeMap outTypeMap :
   addTypeList !"uint" !?outTypeMap ;
 #--- @functionlist type
   addTypeList !"function" !?outTypeMap ;
+#--- @objectlist type
+  addTypeList !"object" !?outTypeMap ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -611,6 +613,13 @@ end once ;
 once build_typelist_type ->@ACGalgasType outType :
   const @typeMap typeMap := constructBuiltinTypeMap [] ;
   [typeMap searchKey ![@lstring new !"typelist" !here] ?outType] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+once build_objectlist_type ->@ACGalgasType outType :
+  const @typeMap typeMap := constructBuiltinTypeMap [] ;
+  [typeMap searchKey ![@lstring new !"objectlist" !here] ?outType] ;
 end once ;
 
 #---------------------------------------------------------------------------*

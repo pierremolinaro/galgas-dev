@@ -405,7 +405,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
 //---------------------------------------------------------------------------*
 
 static void
-generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
+generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
                                const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                                const PMUInt32 inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
@@ -581,7 +581,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "const C_String & inDependancyExtension"
                           ",\n                                "
@@ -667,7 +667,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "GGS_string * inSentStringPtr"
                           ",\n                                "
@@ -745,7 +745,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-LL1_computations (C_Compiler & inLexique,
+LL1_computations (C_CompilerEx & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,

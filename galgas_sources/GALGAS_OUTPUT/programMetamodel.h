@@ -72,13 +72,13 @@ class GGS_programRuleList : public AC_galgas_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_programRuleList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_programRuleList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -93,28 +93,28 @@ class GGS_programRuleList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_programRuleList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstring & _out_0,
                               GGS_lstring & _out_1,
                               GGS_lstring & _out_2,
                               GGS_semanticInstructionList & _out_3
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstring & _out_0,
                              GGS_lstring & _out_1,
                              GGS_lstring & _out_2,
                              GGS_semanticInstructionList & _out_3
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_lstring & _out_1,
                                 GGS_lstring & _out_2,
                                 GGS_semanticInstructionList & _out_3
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_lstring & _out_1,
                                  GGS_lstring & _out_2,
@@ -130,7 +130,7 @@ class GGS_programRuleList : public AC_galgas_list {
                                 const GGS_semanticInstructionList & argument_3) ;
 //--- Handling '.' GALGAS operator
   public : GGS_programRuleList operator_concat (const GGS_programRuleList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
@@ -157,32 +157,32 @@ class GGS_programRuleList : public AC_galgas_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
-  reader_mSourceFileExtensionAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSourceFileExtensionAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mSourceFileHelpAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSourceFileHelpAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mSourceFileVariableNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSourceFileVariableNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_semanticInstructionList 
-  reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMSourceFileExtensionAtIndex (C_Compiler & inLexique,
+  modifier_setMSourceFileExtensionAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMSourceFileHelpAtIndex (C_Compiler & inLexique,
+  modifier_setMSourceFileHelpAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMSourceFileVariableNameAtIndex (C_Compiler & inLexique,
+  modifier_setMSourceFileVariableNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
+  modifier_setMInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_semanticInstructionList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -192,7 +192,7 @@ class GGS_programRuleList : public AC_galgas_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_programRuleList castFromObject (C_Compiler & inLexique,
+  public : static GGS_programRuleList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -239,14 +239,14 @@ class GGS_programComponentRoot : public AC_galgas_class {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_programComponentRoot
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_programComponentRoot constructor_new (C_Compiler & inLexique,
+  public : static GGS_programComponentRoot constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_semanticInstructionList & argument_2,
@@ -264,12 +264,12 @@ class GGS_programComponentRoot : public AC_galgas_class {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mProgramName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mVersionString (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_semanticInstructionList  reader_mPrologueInstructionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_semanticInstructionList  reader_mEpilogueInstructionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_programRuleList  reader_mProgramRules (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_semanticDeclarationStruct reader_mSemanticDeclarations (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mProgramName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mVersionString (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_semanticInstructionList  reader_mPrologueInstructionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_semanticInstructionList  reader_mEpilogueInstructionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_programRuleList  reader_mProgramRules (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_semanticDeclarationStruct reader_mSemanticDeclarations (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -290,7 +290,7 @@ AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_programComponentRoot castFromObject (C_Compiler & inLexique,
+  public : static GGS_programComponentRoot castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;

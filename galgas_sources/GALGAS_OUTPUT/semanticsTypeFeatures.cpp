@@ -61,7 +61,7 @@ enterCategoryReader__ACGalgasType__typeName (typeCategoryReader__ACGalgasType__t
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__ACGalgasType_defaultReader_typeName (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_typeName (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_string () ;
@@ -95,7 +95,7 @@ findCategoryReader__ACGalgasType__typeName (AC_galgasClassRunTimeInformationEX *
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__ACGalgasType__typeIdentifierRepresentation (C_Compiler & inLexique,
+category_reader__ACGalgasType__typeIdentifierRepresentation (C_CompilerEx & inLexique,
                                 const cPtr_ACGalgasType * operand_2047
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -125,7 +125,7 @@ enterCategoryReader__ACGalgasType__typeIdentifierRepresentation (typeCategoryRea
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__ACGalgasType_defaultReader_typeIdentifierRepresentation (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_typeIdentifierRepresentation (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_string () ;
@@ -159,7 +159,7 @@ findCategoryReader__ACGalgasType__typeIdentifierRepresentation (AC_galgasClassRu
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__dataGalgasType__typeName (C_Compiler &,
+category_reader__dataGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_dataGalgasType * operand_2605
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -176,7 +176,7 @@ category_reader__dataGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__typeGalgasType__typeName (C_Compiler &,
+category_reader__typeGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_typeGalgasType * operand_3102
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -193,7 +193,7 @@ category_reader__typeGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__objectGalgasType__typeName (C_Compiler &,
+category_reader__objectGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_objectGalgasType * operand_3601
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -210,7 +210,7 @@ category_reader__objectGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__functionGalgasType__typeName (C_Compiler &,
+category_reader__functionGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_functionGalgasType * operand_4104
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -227,7 +227,7 @@ category_reader__functionGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__locationGalgasType__typeName (C_Compiler &,
+category_reader__locationGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_locationGalgasType * operand_4609
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -244,7 +244,7 @@ category_reader__locationGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__stringGalgasType__typeName (C_Compiler &,
+category_reader__stringGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_stringGalgasType * operand_5112
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -261,7 +261,7 @@ category_reader__stringGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__charGalgasType__typeName (C_Compiler &,
+category_reader__charGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_charGalgasType * operand_5611
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -278,7 +278,7 @@ category_reader__charGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__boolGalgasType__typeName (C_Compiler &,
+category_reader__boolGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_boolGalgasType * operand_6108
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -295,7 +295,7 @@ category_reader__boolGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__uintGalgasType__typeName (C_Compiler &,
+category_reader__uintGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_6605
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -312,7 +312,7 @@ category_reader__uintGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__sintGalgasType__typeName (C_Compiler &,
+category_reader__sintGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_7102
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -329,7 +329,7 @@ category_reader__sintGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__uint64GalgasType__typeName (C_Compiler &,
+category_reader__uint64GalgasType__typeName (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_7601
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -346,7 +346,7 @@ category_reader__uint64GalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__sint64GalgasType__typeName (C_Compiler &,
+category_reader__sint64GalgasType__typeName (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_8102
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -363,7 +363,7 @@ category_reader__sint64GalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__doubleGalgasType__typeName (C_Compiler &,
+category_reader__doubleGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_doubleGalgasType * operand_8603
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -380,7 +380,7 @@ category_reader__doubleGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lstringGalgasType__typeName (C_Compiler &,
+category_reader__lstringGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_lstringGalgasType * operand_9105
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -397,7 +397,7 @@ category_reader__lstringGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lcharGalgasType__typeName (C_Compiler &,
+category_reader__lcharGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_lcharGalgasType * operand_9606
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -414,7 +414,7 @@ category_reader__lcharGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lboolGalgasType__typeName (C_Compiler &,
+category_reader__lboolGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_lboolGalgasType * operand_10105
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -431,7 +431,7 @@ category_reader__lboolGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__luintGalgasType__typeName (C_Compiler &,
+category_reader__luintGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_luintGalgasType * operand_10604
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -448,7 +448,7 @@ category_reader__luintGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lsintGalgasType__typeName (C_Compiler &,
+category_reader__lsintGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_lsintGalgasType * operand_11103
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -465,7 +465,7 @@ category_reader__lsintGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__luint64GalgasType__typeName (C_Compiler &,
+category_reader__luint64GalgasType__typeName (C_CompilerEx &,
                                 const cPtr_luint64GalgasType * operand_11604
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -482,7 +482,7 @@ category_reader__luint64GalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__lsint64GalgasType__typeName (C_Compiler &,
+category_reader__lsint64GalgasType__typeName (C_CompilerEx &,
                                 const cPtr_lsint64GalgasType * operand_12107
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -499,7 +499,7 @@ category_reader__lsint64GalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__ldoubleGalgasType__typeName (C_Compiler &,
+category_reader__ldoubleGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_ldoubleGalgasType * operand_12610
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -516,7 +516,7 @@ category_reader__ldoubleGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__stringsetGalgasType__typeName (C_Compiler &,
+category_reader__stringsetGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_stringsetGalgasType * operand_13115
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -533,7 +533,7 @@ category_reader__stringsetGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__binarysetGalgasType__typeName (C_Compiler &,
+category_reader__binarysetGalgasType__typeName (C_CompilerEx &,
                                 const cPtr_binarysetGalgasType * operand_13622
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -550,7 +550,7 @@ category_reader__binarysetGalgasType__typeName (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__classGalgasType__typeName (C_Compiler & inLexique,
+category_reader__classGalgasType__typeName (C_CompilerEx & inLexique,
                                 const cPtr_classGalgasType * operand_14125
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -567,7 +567,7 @@ category_reader__classGalgasType__typeName (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__listGalgasType__typeName (C_Compiler & inLexique,
+category_reader__listGalgasType__typeName (C_CompilerEx & inLexique,
                                 const cPtr_listGalgasType * operand_14635
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -584,7 +584,7 @@ category_reader__listGalgasType__typeName (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__listmapGalgasType__typeName (C_Compiler & inLexique,
+category_reader__listmapGalgasType__typeName (C_CompilerEx & inLexique,
                                 const cPtr_listmapGalgasType * operand_15151
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -601,7 +601,7 @@ category_reader__listmapGalgasType__typeName (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__structGalgasType__typeName (C_Compiler & inLexique,
+category_reader__structGalgasType__typeName (C_CompilerEx & inLexique,
                                 const cPtr_structGalgasType * operand_15669
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -618,7 +618,7 @@ category_reader__structGalgasType__typeName (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__sortedlistGalgasType__typeName (C_Compiler & inLexique,
+category_reader__sortedlistGalgasType__typeName (C_CompilerEx & inLexique,
                                 const cPtr_sortedlistGalgasType * operand_16190
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -635,7 +635,7 @@ category_reader__sortedlistGalgasType__typeName (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__mapType__typeName (C_Compiler & inLexique,
+category_reader__mapType__typeName (C_CompilerEx & inLexique,
                                 const cPtr_mapType * operand_16696
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -652,7 +652,7 @@ category_reader__mapType__typeName (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__mapindexType__typeName (C_Compiler & inLexique,
+category_reader__mapindexType__typeName (C_CompilerEx & inLexique,
                                 const cPtr_mapindexType * operand_17206
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -669,7 +669,7 @@ category_reader__mapindexType__typeName (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__enumType__typeName (C_Compiler & inLexique,
+category_reader__enumType__typeName (C_CompilerEx & inLexique,
                                 const cPtr_enumType * operand_17717
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outTypeName ;
@@ -686,7 +686,7 @@ category_reader__enumType__typeName (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__isComparable (C_Compiler &,
+category_reader__ACGalgasType__isComparable (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_18223
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -715,7 +715,7 @@ enterCategoryReader__ACGalgasType__isComparable (typeCategoryReader__ACGalgasTyp
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_isComparable (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_isComparable (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -749,7 +749,7 @@ findCategoryReader__ACGalgasType__isComparable (AC_galgasClassRunTimeInformation
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__boolGalgasType__isComparable (C_Compiler &,
+category_reader__boolGalgasType__isComparable (C_CompilerEx &,
                                 const cPtr_boolGalgasType * operand_18404
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -766,7 +766,7 @@ category_reader__boolGalgasType__isComparable (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__isComparable (C_Compiler &,
+category_reader__uintGalgasType__isComparable (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_18585
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -783,7 +783,7 @@ category_reader__uintGalgasType__isComparable (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__isComparable (C_Compiler &,
+category_reader__sintGalgasType__isComparable (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_18766
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -800,7 +800,7 @@ category_reader__sintGalgasType__isComparable (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__isComparable (C_Compiler &,
+category_reader__uint64GalgasType__isComparable (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_18949
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -817,7 +817,7 @@ category_reader__uint64GalgasType__isComparable (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__isComparable (C_Compiler &,
+category_reader__sint64GalgasType__isComparable (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_19132
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -834,7 +834,7 @@ category_reader__sint64GalgasType__isComparable (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__charGalgasType__isComparable (C_Compiler &,
+category_reader__charGalgasType__isComparable (C_CompilerEx &,
                                 const cPtr_charGalgasType * operand_19313
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -851,7 +851,7 @@ category_reader__charGalgasType__isComparable (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__stringGalgasType__isComparable (C_Compiler &,
+category_reader__stringGalgasType__isComparable (C_CompilerEx &,
                                 const cPtr_stringGalgasType * operand_19496
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -868,7 +868,7 @@ category_reader__stringGalgasType__isComparable (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_and_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_and_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_19985
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -897,7 +897,7 @@ enterCategoryReader__ACGalgasType__accept_and_operator (typeCategoryReader__ACGa
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_and_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_and_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -931,7 +931,7 @@ findCategoryReader__ACGalgasType__accept_and_operator (AC_galgasClassRunTimeInfo
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__boolGalgasType__accept_and_operator (C_Compiler &,
+category_reader__boolGalgasType__accept_and_operator (C_CompilerEx &,
                                 const cPtr_boolGalgasType * operand_20174
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -948,7 +948,7 @@ category_reader__boolGalgasType__accept_and_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_and_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_and_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_20362
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -965,7 +965,7 @@ category_reader__uintGalgasType__accept_and_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_and_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_and_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_20550
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -982,7 +982,7 @@ category_reader__sintGalgasType__accept_and_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_and_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_and_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_20740
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -999,7 +999,7 @@ category_reader__uint64GalgasType__accept_and_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_and_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_and_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_20930
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1016,7 +1016,7 @@ category_reader__sint64GalgasType__accept_and_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_or_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_or_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_21418
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1045,7 +1045,7 @@ enterCategoryReader__ACGalgasType__accept_or_operator (typeCategoryReader__ACGal
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_or_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_or_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -1079,7 +1079,7 @@ findCategoryReader__ACGalgasType__accept_or_operator (AC_galgasClassRunTimeInfor
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__boolGalgasType__accept_or_operator (C_Compiler &,
+category_reader__boolGalgasType__accept_or_operator (C_CompilerEx &,
                                 const cPtr_boolGalgasType * operand_21606
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1096,7 +1096,7 @@ category_reader__boolGalgasType__accept_or_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_or_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_or_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_21793
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1113,7 +1113,7 @@ category_reader__uintGalgasType__accept_or_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_or_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_or_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_21980
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1130,7 +1130,7 @@ category_reader__sintGalgasType__accept_or_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_or_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_or_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_22169
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1147,7 +1147,7 @@ category_reader__uint64GalgasType__accept_or_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_or_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_or_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_22358
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1164,7 +1164,7 @@ category_reader__sint64GalgasType__accept_or_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_xor_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_xor_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_22847
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1193,7 +1193,7 @@ enterCategoryReader__ACGalgasType__accept_xor_operator (typeCategoryReader__ACGa
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_xor_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_xor_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -1227,7 +1227,7 @@ findCategoryReader__ACGalgasType__accept_xor_operator (AC_galgasClassRunTimeInfo
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__boolGalgasType__accept_xor_operator (C_Compiler &,
+category_reader__boolGalgasType__accept_xor_operator (C_CompilerEx &,
                                 const cPtr_boolGalgasType * operand_23036
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1244,7 +1244,7 @@ category_reader__boolGalgasType__accept_xor_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_xor_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_xor_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_23224
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1261,7 +1261,7 @@ category_reader__uintGalgasType__accept_xor_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_xor_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_xor_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_23412
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1278,7 +1278,7 @@ category_reader__sintGalgasType__accept_xor_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_xor_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_xor_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_23602
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1295,7 +1295,7 @@ category_reader__uint64GalgasType__accept_xor_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_xor_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_xor_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_23792
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1312,7 +1312,7 @@ category_reader__sint64GalgasType__accept_xor_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_not_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_not_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_24281
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1341,7 +1341,7 @@ enterCategoryReader__ACGalgasType__accept_not_operator (typeCategoryReader__ACGa
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_not_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_not_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -1375,7 +1375,7 @@ findCategoryReader__ACGalgasType__accept_not_operator (AC_galgasClassRunTimeInfo
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__boolGalgasType__accept_not_operator (C_Compiler &,
+category_reader__boolGalgasType__accept_not_operator (C_CompilerEx &,
                                 const cPtr_boolGalgasType * operand_24470
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1392,7 +1392,7 @@ category_reader__boolGalgasType__accept_not_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_add_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_add_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_24959
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1421,7 +1421,7 @@ enterCategoryReader__ACGalgasType__accept_add_operator (typeCategoryReader__ACGa
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_add_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_add_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -1455,7 +1455,7 @@ findCategoryReader__ACGalgasType__accept_add_operator (AC_galgasClassRunTimeInfo
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_add_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_add_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_25148
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1472,7 +1472,7 @@ category_reader__uintGalgasType__accept_add_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_add_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_add_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_25336
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1489,7 +1489,7 @@ category_reader__sintGalgasType__accept_add_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_add_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_add_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_25526
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1506,7 +1506,7 @@ category_reader__uint64GalgasType__accept_add_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_add_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_add_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_25716
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1523,7 +1523,7 @@ category_reader__sint64GalgasType__accept_add_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__doubleGalgasType__accept_add_operator (C_Compiler &,
+category_reader__doubleGalgasType__accept_add_operator (C_CompilerEx &,
                                 const cPtr_doubleGalgasType * operand_25906
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1540,7 +1540,7 @@ category_reader__doubleGalgasType__accept_add_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_sub_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_sub_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_26395
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1569,7 +1569,7 @@ enterCategoryReader__ACGalgasType__accept_sub_operator (typeCategoryReader__ACGa
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_sub_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_sub_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -1603,7 +1603,7 @@ findCategoryReader__ACGalgasType__accept_sub_operator (AC_galgasClassRunTimeInfo
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_sub_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_sub_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_26584
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1620,7 +1620,7 @@ category_reader__uintGalgasType__accept_sub_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_sub_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_sub_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_26772
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1637,7 +1637,7 @@ category_reader__sintGalgasType__accept_sub_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_sub_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_sub_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_26962
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1654,7 +1654,7 @@ category_reader__uint64GalgasType__accept_sub_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_sub_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_sub_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_27152
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1671,7 +1671,7 @@ category_reader__sint64GalgasType__accept_sub_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__doubleGalgasType__accept_sub_operator (C_Compiler &,
+category_reader__doubleGalgasType__accept_sub_operator (C_CompilerEx &,
                                 const cPtr_doubleGalgasType * operand_27342
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1688,7 +1688,7 @@ category_reader__doubleGalgasType__accept_sub_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_mul_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_mul_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_27831
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1717,7 +1717,7 @@ enterCategoryReader__ACGalgasType__accept_mul_operator (typeCategoryReader__ACGa
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_mul_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_mul_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -1751,7 +1751,7 @@ findCategoryReader__ACGalgasType__accept_mul_operator (AC_galgasClassRunTimeInfo
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_mul_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_mul_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_28020
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1768,7 +1768,7 @@ category_reader__uintGalgasType__accept_mul_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_mul_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_mul_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_28208
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1785,7 +1785,7 @@ category_reader__sintGalgasType__accept_mul_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_mul_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_mul_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_28398
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1802,7 +1802,7 @@ category_reader__uint64GalgasType__accept_mul_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_mul_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_mul_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_28588
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1819,7 +1819,7 @@ category_reader__sint64GalgasType__accept_mul_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__doubleGalgasType__accept_mul_operator (C_Compiler &,
+category_reader__doubleGalgasType__accept_mul_operator (C_CompilerEx &,
                                 const cPtr_doubleGalgasType * operand_28778
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1836,7 +1836,7 @@ category_reader__doubleGalgasType__accept_mul_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_div_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_div_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_29267
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1865,7 +1865,7 @@ enterCategoryReader__ACGalgasType__accept_div_operator (typeCategoryReader__ACGa
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_div_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_div_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -1899,7 +1899,7 @@ findCategoryReader__ACGalgasType__accept_div_operator (AC_galgasClassRunTimeInfo
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_div_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_div_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_29456
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1916,7 +1916,7 @@ category_reader__uintGalgasType__accept_div_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_div_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_div_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_29644
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1933,7 +1933,7 @@ category_reader__sintGalgasType__accept_div_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_div_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_div_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_29834
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1950,7 +1950,7 @@ category_reader__uint64GalgasType__accept_div_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_div_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_div_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_30024
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1967,7 +1967,7 @@ category_reader__sint64GalgasType__accept_div_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__doubleGalgasType__accept_div_operator (C_Compiler &,
+category_reader__doubleGalgasType__accept_div_operator (C_CompilerEx &,
                                 const cPtr_doubleGalgasType * operand_30214
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -1984,7 +1984,7 @@ category_reader__doubleGalgasType__accept_div_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_mod_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_mod_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_30703
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2013,7 +2013,7 @@ enterCategoryReader__ACGalgasType__accept_mod_operator (typeCategoryReader__ACGa
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_mod_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_mod_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -2047,7 +2047,7 @@ findCategoryReader__ACGalgasType__accept_mod_operator (AC_galgasClassRunTimeInfo
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_mod_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_mod_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_30892
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2064,7 +2064,7 @@ category_reader__uintGalgasType__accept_mod_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_mod_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_mod_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_31082
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2081,7 +2081,7 @@ category_reader__uint64GalgasType__accept_mod_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_mod_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_mod_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_31270
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2098,7 +2098,7 @@ category_reader__sintGalgasType__accept_mod_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_mod_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_mod_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_31460
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2115,7 +2115,7 @@ category_reader__sint64GalgasType__accept_mod_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_unary_minus_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_unary_minus_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_31957
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2144,7 +2144,7 @@ enterCategoryReader__ACGalgasType__accept_unary_minus_operator (typeCategoryRead
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_unary_minus_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_unary_minus_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -2178,7 +2178,7 @@ findCategoryReader__ACGalgasType__accept_unary_minus_operator (AC_galgasClassRun
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_unary_minus_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_unary_minus_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_32154
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2195,7 +2195,7 @@ category_reader__sintGalgasType__accept_unary_minus_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_unary_minus_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_unary_minus_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_32352
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2212,7 +2212,7 @@ category_reader__sint64GalgasType__accept_unary_minus_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_inc_dec_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_inc_dec_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_32845
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2241,7 +2241,7 @@ enterCategoryReader__ACGalgasType__accept_inc_dec_operator (typeCategoryReader__
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_inc_dec_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_inc_dec_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -2275,7 +2275,7 @@ findCategoryReader__ACGalgasType__accept_inc_dec_operator (AC_galgasClassRunTime
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_inc_dec_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_inc_dec_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_33038
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2292,7 +2292,7 @@ category_reader__uintGalgasType__accept_inc_dec_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_inc_dec_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_inc_dec_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_33232
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2309,7 +2309,7 @@ category_reader__uint64GalgasType__accept_inc_dec_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_inc_dec_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_inc_dec_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_33424
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2326,7 +2326,7 @@ category_reader__sintGalgasType__accept_inc_dec_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_inc_dec_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_inc_dec_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_33618
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2343,7 +2343,7 @@ category_reader__sint64GalgasType__accept_inc_dec_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_shift_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_shift_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_34109
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2372,7 +2372,7 @@ enterCategoryReader__ACGalgasType__accept_shift_operator (typeCategoryReader__AC
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_shift_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_shift_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -2406,7 +2406,7 @@ findCategoryReader__ACGalgasType__accept_shift_operator (AC_galgasClassRunTimeIn
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_shift_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_shift_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_34300
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2423,7 +2423,7 @@ category_reader__uintGalgasType__accept_shift_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_shift_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_shift_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_34492
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2440,7 +2440,7 @@ category_reader__uint64GalgasType__accept_shift_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_shift_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_shift_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_34682
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2457,7 +2457,7 @@ category_reader__sintGalgasType__accept_shift_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_shift_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_shift_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_34874
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2474,7 +2474,7 @@ category_reader__sint64GalgasType__accept_shift_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_tilde_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_tilde_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_35365
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2503,7 +2503,7 @@ enterCategoryReader__ACGalgasType__accept_tilde_operator (typeCategoryReader__AC
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_tilde_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_tilde_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -2537,7 +2537,7 @@ findCategoryReader__ACGalgasType__accept_tilde_operator (AC_galgasClassRunTimeIn
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uintGalgasType__accept_tilde_operator (C_Compiler &,
+category_reader__uintGalgasType__accept_tilde_operator (C_CompilerEx &,
                                 const cPtr_uintGalgasType * operand_35556
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2554,7 +2554,7 @@ category_reader__uintGalgasType__accept_tilde_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__uint64GalgasType__accept_tilde_operator (C_Compiler &,
+category_reader__uint64GalgasType__accept_tilde_operator (C_CompilerEx &,
                                 const cPtr_uint64GalgasType * operand_35748
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2571,7 +2571,7 @@ category_reader__uint64GalgasType__accept_tilde_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sintGalgasType__accept_tilde_operator (C_Compiler &,
+category_reader__sintGalgasType__accept_tilde_operator (C_CompilerEx &,
                                 const cPtr_sintGalgasType * operand_35938
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2588,7 +2588,7 @@ category_reader__sintGalgasType__accept_tilde_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__sint64GalgasType__accept_tilde_operator (C_Compiler &,
+category_reader__sint64GalgasType__accept_tilde_operator (C_CompilerEx &,
                                 const cPtr_sint64GalgasType * operand_36130
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2605,7 +2605,7 @@ category_reader__sint64GalgasType__accept_tilde_operator (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType__accept_concat_operator (C_Compiler &,
+category_reader__ACGalgasType__accept_concat_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType * operand_36622
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -2634,7 +2634,7 @@ enterCategoryReader__ACGalgasType__accept_concat_operator (typeCategoryReader__A
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__ACGalgasType_defaultReader_accept_concat_operator (C_Compiler &,
+category_reader__ACGalgasType_defaultReader_accept_concat_operator (C_CompilerEx &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -2668,7 +2668,7 @@ findCategoryReader__ACGalgasType__accept_concat_operator (AC_galgasClassRunTimeI
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__stringGalgasType__accept_concat_operator (C_Compiler &,
+category_reader__stringGalgasType__accept_concat_operator (C_CompilerEx &,
                                 const cPtr_stringGalgasType * operand_36816
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;

@@ -12084,7 +12084,7 @@ nt_semantics_component_start_symbol_ (galgas_scanner & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void semanticsSLRgrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void semanticsSLRgrammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -12128,7 +12128,7 @@ void semanticsSLRgrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
 
 //---------------------------------------------------------------------------*
 
-void semanticsSLRgrammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void semanticsSLRgrammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_semanticsComponentRoot & parameter_1

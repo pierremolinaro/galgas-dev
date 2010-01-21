@@ -56,7 +56,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_Compiler & inLexique,
+GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_CompilerEx & inLexique,
                                 const GGS_nonTerminalLabelList   var_cas_inLabels,
                                 const GGS_bool  var_cas_inHasParseLabel COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -93,7 +93,7 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_C
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_transformLabelMap (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_transformLabelMap (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -125,7 +125,7 @@ kFunction_descriptor_transformLabelMap ("transformLabelMap",
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkLabelMap (C_Compiler & inLexique,
+void routine_checkLabelMap (C_CompilerEx & inLexique,
                                 const GGS_location   var_cas_inNonTerminalLocation,
                                 const GGS_nonTerminalLabelList   var_cas_inLabels,
                                 const GGS_bool  var_cas_inHasParseLabel,
@@ -202,7 +202,7 @@ void routine_checkLabelMap (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_handleNonTerminalDeclarations (C_Compiler & inLexique,
+void routine_handleNonTerminalDeclarations (C_CompilerEx & inLexique,
                                 GGS_nonTerminalSymbolMapForGrammarAnalysis  & var_cas_ioNonTerminalMapForGrammarAnalysis,
                                 const GGS_nonterminalDeclarationList   var_cas_inNonterminalDeclarationList COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -267,7 +267,7 @@ findCategoryMethod__syntaxInstruction__transformInstruction (AC_galgasClassRunTi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__semanticInstruction__transformInstruction (C_Compiler &,
+category_method__semanticInstruction__transformInstruction (C_CompilerEx &,
                                 const cPtr_semanticInstruction * operand_7384,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & /* var_cas_ioActuallyUsedTerminalSymbolMap */,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   /* var_cas_inNonTerminalSymbolMap */,
@@ -284,7 +284,7 @@ category_method__semanticInstruction__transformInstruction (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_transformInstructionList (C_Compiler & inLexique,
+void routine_transformInstructionList (C_CompilerEx & inLexique,
                                 const GGS_syntaxInstructionList   var_cas_inInstructionList,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -319,7 +319,7 @@ void routine_transformInstructionList (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__terminalCheckInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__terminalCheckInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_terminalCheckInstruction * operand_8459,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   /* var_cas_inNonTerminalSymbolMap */,
@@ -346,7 +346,7 @@ category_method__terminalCheckInstruction__transformInstruction (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__nonterminalCallInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__nonterminalCallInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_nonterminalCallInstruction * operand_9347,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & /* var_cas_ioActuallyUsedTerminalSymbolMap */,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -371,7 +371,7 @@ category_method__nonterminalCallInstruction__transformInstruction (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__repeatInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__repeatInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_repeatInstruction * operand_10026,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -405,7 +405,7 @@ category_method__repeatInstruction__transformInstruction (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 static void
-category_method__selectInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__selectInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_selectInstruction * operand_11401,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -437,7 +437,7 @@ category_method__selectInstruction__transformInstruction (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseDoInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__parseDoInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_parseDoInstruction * operand_12479,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -461,7 +461,7 @@ category_method__parseDoInstruction__transformInstruction (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseWhenInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__parseWhenInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_parseWhenInstruction * operand_13165,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -480,7 +480,7 @@ category_method__parseWhenInstruction__transformInstruction (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseLoopInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__parseLoopInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_parseLoopInstruction * operand_13746,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -499,7 +499,7 @@ category_method__parseLoopInstruction__transformInstruction (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__blockInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__blockInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_blockInstruction * operand_14321,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -517,7 +517,7 @@ category_method__blockInstruction__transformInstruction (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildRuleList (C_Compiler & inLexique,
+void routine_buildRuleList (C_CompilerEx & inLexique,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalMapForGrammarAnalysis,
                                 const GGS_lstring   var_cas_inSyntaxComponentName,
                                 const GGS_syntaxRuleList   var_cas_inRuleList,
@@ -563,7 +563,7 @@ void routine_buildRuleList (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileGrammarComponent (C_Compiler & inLexique,
+void routine_compileGrammarComponent (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 const GGS_string  var_cas_inOutputDirectoryForCppFiles,
                                 const GGS_string  var_cas_inOutputDirectoryForHTMLFile,

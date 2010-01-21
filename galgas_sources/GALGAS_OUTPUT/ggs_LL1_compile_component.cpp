@@ -90,7 +90,7 @@ const cDirectoryWrapper gWrapperDirectory_0_EXfileListTemplateFileWrapper (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_EXfileListTemplateFileWrapper_EXfileListTemplate (C_Compiler & /* inLexique */,
+template_filewrapper_EXfileListTemplateFileWrapper_EXfileListTemplate (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_HAND_CODED_SOURCES_SUB_DIRS,
                                 const GGS_string& var_cas_GALGAS_SOURCE_LIST,
                                 const GGS_string& var_cas_HAND_CODED_SOURCE_LIST) {
@@ -262,7 +262,7 @@ addAssign_operation (const GGS_string & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_stringlist GGS_EXtargetFileListMap::
-reader_listForKey (C_Compiler & /* inLexique */,
+reader_listForKey (C_CompilerEx & /* inLexique */,
                    const GGS_string & inKey
                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringlist result ;
@@ -280,7 +280,7 @@ reader_listForKey (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_stringset GGS_EXtargetFileListMap::
-reader_allKeys (C_Compiler & /* inLexique */
+reader_allKeys (C_CompilerEx & /* inLexique */
                 COMMA_UNUSED_LOCATION_ARGS) const {
 
   GGS_stringset result ;
@@ -291,7 +291,7 @@ reader_allKeys (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_stringlist GGS_EXtargetFileListMap::
-reader_keyList (C_Compiler & /* inLexique */
+reader_keyList (C_CompilerEx & /* inLexique */
                 COMMA_UNUSED_LOCATION_ARGS) const {
 
   GGS_stringlist result ;
@@ -343,7 +343,7 @@ GGS_object GGS_EXtargetFileListMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_EXtargetFileListMap GGS_EXtargetFileListMap::castFromObject (C_Compiler & inLexique,
+GGS_EXtargetFileListMap GGS_EXtargetFileListMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -481,7 +481,7 @@ GGS_object GGS_EXsourceFileKind::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_EXsourceFileKind GGS_EXsourceFileKind::castFromObject (C_Compiler & inLexique,
+GGS_EXsourceFileKind GGS_EXsourceFileKind::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -591,7 +591,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_EXsourceFileMap GGS_EXsourceFileMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_EXsourceFileMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -636,7 +636,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_EXsourceFileMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_string& inParameter0,
@@ -666,7 +666,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_EXsourceFileMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_string  & outParameter0,
@@ -747,7 +747,7 @@ const utf32 GGS_EXsourceFileMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_EXsourceFileMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_string  & outParameter0,
                                 GGS_EXsourceFileKind  & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -826,7 +826,7 @@ const utf32 GGS_EXsourceFileMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_EXsourceFileMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_string& inParameter0,
                                 const GGS_EXsourceFileKind& inParameter1 COMMA_LOCATION_ARGS) {
@@ -842,7 +842,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_EXsourceFileMap GGS_EXsourceFileMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_EXsourceFileMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_EXsourceFileMap result ; // Not Built
@@ -859,7 +859,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_EXsourceFileMap GGS_EXsourceFileMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_EXsourceFileMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -939,7 +939,7 @@ GGS_object GGS_EXsourceFileMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_EXsourceFileMap GGS_EXsourceFileMap::castFromObject (C_Compiler & inLexique,
+GGS_EXsourceFileMap GGS_EXsourceFileMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

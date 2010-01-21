@@ -57,7 +57,7 @@ mLexicalAttribute_uint64value () {
 //---------------------------------------------------------------------------*
 
 galgasTemplateScanner::
-galgasTemplateScanner (C_Compiler * inCallerCompiler,
+galgasTemplateScanner (C_CompilerEx * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
                 C_galgas_io * inParametersPtr,
@@ -70,7 +70,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 //---------------------------------------------------------------------------*
 
 galgasTemplateScanner::
-galgasTemplateScanner (C_Compiler * inCallerCompiler,
+galgasTemplateScanner (C_CompilerEx * inCallerCompiler,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError

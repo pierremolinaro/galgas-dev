@@ -95,14 +95,14 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : void drop (void) ;
   protected : void insulateMap (void) ;
 
-  public : PMSInt32 insertAbstract (C_Compiler & inLexique,
+  public : PMSInt32 insertAbstract (C_CompilerEx & inLexique,
                                   const INFO & info,
                                   const GGS_lstring & clef,
                                   const GGS_location & inLocation,
                                   const char * messageErreurInsertion
                                   COMMA_LOCATION_ARGS) ;
 
-  public : PMSInt32 insertNotAbstract (C_Compiler & inLexique,
+  public : PMSInt32 insertNotAbstract (C_CompilerEx & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                      const GGS_location & inLocation,
