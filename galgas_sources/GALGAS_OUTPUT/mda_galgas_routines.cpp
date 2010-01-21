@@ -92,7 +92,7 @@ static GGS_object functionForGenericCall_outputDirectoryTEMP (C_Compiler & inLex
 static const C_galgas_type_descriptorEX *
 kArgumentTypeList_outputDirectoryTEMP [1] = {& kTypeDescriptor_GGS_lstring } ;
 
-const C_galgas_function_descriptor
+const C_galgas_function_descriptorEX
 kFunction_descriptor_outputDirectoryTEMP ("outputDirectoryTEMP",
                               functionForGenericCall_outputDirectoryTEMP,
                               & kTypeDescriptor_GGS_string,
@@ -142,7 +142,7 @@ static GGS_object functionForGenericCall_outputDirectory (C_Compiler & inLexique
 static const C_galgas_type_descriptorEX *
 kArgumentTypeList_outputDirectory [1] = {& kTypeDescriptor_GGS_lstring } ;
 
-const C_galgas_function_descriptor
+const C_galgas_function_descriptorEX
 kFunction_descriptor_outputDirectory ("outputDirectory",
                               functionForGenericCall_outputDirectory,
                               & kTypeDescriptor_GGS_string,

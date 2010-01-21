@@ -441,7 +441,7 @@ findCategoryReader__ACGalgasType__modifierMap (AC_galgasClassRunTimeInformationE
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_location ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_location ;
 
 //---------------------------------------------------------------------------*
 
@@ -453,7 +453,7 @@ GGS_modifierMap  function_modifierMapFor_location (C_Compiler & COMMA_LOCATION_A
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_string ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_string ;
 
 //---------------------------------------------------------------------------*
 
@@ -465,7 +465,7 @@ GGS_modifierMap  function_modifierMapFor_string (C_Compiler & COMMA_LOCATION_ARG
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_char ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_char ;
 
 //---------------------------------------------------------------------------*
 
@@ -477,7 +477,7 @@ GGS_modifierMap  function_modifierMapFor_char (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_bool ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_bool ;
 
 //---------------------------------------------------------------------------*
 
@@ -489,7 +489,7 @@ GGS_modifierMap  function_modifierMapFor_bool (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_uint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_uint ;
 
 //---------------------------------------------------------------------------*
 
@@ -501,7 +501,7 @@ GGS_modifierMap  function_modifierMapFor_uint (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_sint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_sint ;
 
 //---------------------------------------------------------------------------*
 
@@ -513,7 +513,7 @@ GGS_modifierMap  function_modifierMapFor_sint (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_uint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_uint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -525,7 +525,7 @@ GGS_modifierMap  function_modifierMapFor_uint64 (C_Compiler & COMMA_LOCATION_ARG
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_sint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_sint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -537,7 +537,7 @@ GGS_modifierMap  function_modifierMapFor_sint64 (C_Compiler & COMMA_LOCATION_ARG
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_double ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_double ;
 
 //---------------------------------------------------------------------------*
 
@@ -549,7 +549,7 @@ GGS_modifierMap  function_modifierMapFor_double (C_Compiler & COMMA_LOCATION_ARG
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lstring ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lstring ;
 
 //---------------------------------------------------------------------------*
 
@@ -561,7 +561,7 @@ GGS_modifierMap  function_modifierMapFor_lstring (C_Compiler & COMMA_LOCATION_AR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lchar ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lchar ;
 
 //---------------------------------------------------------------------------*
 
@@ -573,7 +573,7 @@ GGS_modifierMap  function_modifierMapFor_lchar (C_Compiler & COMMA_LOCATION_ARGS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lbool ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lbool ;
 
 //---------------------------------------------------------------------------*
 
@@ -585,7 +585,7 @@ GGS_modifierMap  function_modifierMapFor_lbool (C_Compiler & COMMA_LOCATION_ARGS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_luint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_luint ;
 
 //---------------------------------------------------------------------------*
 
@@ -597,7 +597,7 @@ GGS_modifierMap  function_modifierMapFor_luint (C_Compiler & COMMA_LOCATION_ARGS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lsint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lsint ;
 
 //---------------------------------------------------------------------------*
 
@@ -609,7 +609,7 @@ GGS_modifierMap  function_modifierMapFor_lsint (C_Compiler & COMMA_LOCATION_ARGS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_luint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_luint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -621,7 +621,7 @@ GGS_modifierMap  function_modifierMapFor_luint64 (C_Compiler & COMMA_LOCATION_AR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lsint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lsint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -633,7 +633,7 @@ GGS_modifierMap  function_modifierMapFor_lsint64 (C_Compiler & COMMA_LOCATION_AR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_ldouble ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_ldouble ;
 
 //---------------------------------------------------------------------------*
 
@@ -645,7 +645,7 @@ GGS_modifierMap  function_modifierMapFor_ldouble (C_Compiler & COMMA_LOCATION_AR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_stringset ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_stringset ;
 
 //---------------------------------------------------------------------------*
 
@@ -657,7 +657,7 @@ GGS_modifierMap  function_modifierMapFor_stringset (C_Compiler & COMMA_LOCATION_
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_binaryset ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_binaryset ;
 
 //---------------------------------------------------------------------------*
 
@@ -669,7 +669,7 @@ GGS_modifierMap  function_modifierMapFor_binaryset (C_Compiler & COMMA_LOCATION_
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -681,7 +681,7 @@ GGS_modifierMap  function_modifierMapFor_type (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_object ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_object ;
 
 //---------------------------------------------------------------------------*
 
@@ -693,7 +693,7 @@ GGS_modifierMap  function_modifierMapFor_object (C_Compiler & COMMA_LOCATION_ARG
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_data ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_data ;
 
 //---------------------------------------------------------------------------*
 
@@ -705,7 +705,7 @@ GGS_modifierMap  function_modifierMapFor_data (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_function ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_function ;
 
 //---------------------------------------------------------------------------*
 
@@ -717,7 +717,7 @@ GGS_modifierMap  function_modifierMapFor_function (C_Compiler & COMMA_LOCATION_A
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_listmap ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_listmap ;
 
 //---------------------------------------------------------------------------*
 

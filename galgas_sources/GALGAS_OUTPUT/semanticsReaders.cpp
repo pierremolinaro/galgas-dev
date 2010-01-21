@@ -910,7 +910,7 @@ static GGS_object functionForGenericCall_commonReaderMapForAllTypes (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_commonReaderMapForAllTypes ("commonReaderMapForAllTypes",
+const C_galgas_function_descriptorEX kFunction_descriptor_commonReaderMapForAllTypes ("commonReaderMapForAllTypes",
                               functionForGenericCall_commonReaderMapForAllTypes,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1006,7 +1006,7 @@ static GGS_object functionForGenericCall_readerMapFor_location (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_location ("readerMapFor_location",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_location ("readerMapFor_location",
                               functionForGenericCall_readerMapFor_location,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1112,7 +1112,7 @@ static GGS_object functionForGenericCall_readerMapFor_string (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_string ("readerMapFor_string",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_string ("readerMapFor_string",
                               functionForGenericCall_readerMapFor_string,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1196,7 +1196,7 @@ static GGS_object functionForGenericCall_readerMapFor_char (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_char ("readerMapFor_char",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_char ("readerMapFor_char",
                               functionForGenericCall_readerMapFor_char,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1265,7 +1265,7 @@ static GGS_object functionForGenericCall_readerMapFor_bool (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_bool ("readerMapFor_bool",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_bool ("readerMapFor_bool",
                               functionForGenericCall_readerMapFor_bool,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1337,7 +1337,7 @@ static GGS_object functionForGenericCall_readerMapFor_uint (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_uint ("readerMapFor_uint",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_uint ("readerMapFor_uint",
                               functionForGenericCall_readerMapFor_uint,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1405,7 +1405,7 @@ static GGS_object functionForGenericCall_readerMapFor_sint (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_sint ("readerMapFor_sint",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_sint ("readerMapFor_sint",
                               functionForGenericCall_readerMapFor_sint,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1475,7 +1475,7 @@ static GGS_object functionForGenericCall_readerMapFor_uint64 (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_uint64 ("readerMapFor_uint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_uint64 ("readerMapFor_uint64",
                               functionForGenericCall_readerMapFor_uint64,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1543,7 +1543,7 @@ static GGS_object functionForGenericCall_readerMapFor_sint64 (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_sint64 ("readerMapFor_sint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_sint64 ("readerMapFor_sint64",
                               functionForGenericCall_readerMapFor_sint64,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1611,7 +1611,7 @@ static GGS_object functionForGenericCall_readerMapFor_double (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_double ("readerMapFor_double",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_double ("readerMapFor_double",
                               functionForGenericCall_readerMapFor_double,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1677,7 +1677,7 @@ static GGS_object functionForGenericCall_readerMapFor_lstring (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lstring ("readerMapFor_lstring",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lstring ("readerMapFor_lstring",
                               functionForGenericCall_readerMapFor_lstring,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1743,7 +1743,7 @@ static GGS_object functionForGenericCall_readerMapFor_lchar (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lchar ("readerMapFor_lchar",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lchar ("readerMapFor_lchar",
                               functionForGenericCall_readerMapFor_lchar,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1808,7 +1808,7 @@ static GGS_object functionForGenericCall_readerMapFor_lbool (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lbool ("readerMapFor_lbool",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lbool ("readerMapFor_lbool",
                               functionForGenericCall_readerMapFor_lbool,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1874,7 +1874,7 @@ static GGS_object functionForGenericCall_readerMapFor_luint (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_luint ("readerMapFor_luint",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_luint ("readerMapFor_luint",
                               functionForGenericCall_readerMapFor_luint,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -1941,7 +1941,7 @@ static GGS_object functionForGenericCall_readerMapFor_lsint (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lsint ("readerMapFor_lsint",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lsint ("readerMapFor_lsint",
                               functionForGenericCall_readerMapFor_lsint,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2008,7 +2008,7 @@ static GGS_object functionForGenericCall_readerMapFor_luint64 (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_luint64 ("readerMapFor_luint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_luint64 ("readerMapFor_luint64",
                               functionForGenericCall_readerMapFor_luint64,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2075,7 +2075,7 @@ static GGS_object functionForGenericCall_readerMapFor_lsint64 (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lsint64 ("readerMapFor_lsint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lsint64 ("readerMapFor_lsint64",
                               functionForGenericCall_readerMapFor_lsint64,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2142,7 +2142,7 @@ static GGS_object functionForGenericCall_readerMapFor_ldouble (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_ldouble ("readerMapFor_ldouble",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_ldouble ("readerMapFor_ldouble",
                               functionForGenericCall_readerMapFor_ldouble,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2208,7 +2208,7 @@ static GGS_object functionForGenericCall_readerMapFor_stringset (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_stringset ("readerMapFor_stringset",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_stringset ("readerMapFor_stringset",
                               functionForGenericCall_readerMapFor_stringset,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2317,7 +2317,7 @@ static GGS_object functionForGenericCall_readerMapFor_binaryset (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_binaryset ("readerMapFor_binaryset",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_binaryset ("readerMapFor_binaryset",
                               functionForGenericCall_readerMapFor_binaryset,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2383,7 +2383,7 @@ static GGS_object functionForGenericCall_readerMapFor_type (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_type ("readerMapFor_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_type ("readerMapFor_type",
                               functionForGenericCall_readerMapFor_type,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2447,7 +2447,7 @@ static GGS_object functionForGenericCall_readerMapFor_object (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_object ("readerMapFor_object",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_object ("readerMapFor_object",
                               functionForGenericCall_readerMapFor_object,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2511,7 +2511,7 @@ static GGS_object functionForGenericCall_readerMapFor_data (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_data ("readerMapFor_data",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_data ("readerMapFor_data",
                               functionForGenericCall_readerMapFor_data,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2581,7 +2581,7 @@ static GGS_object functionForGenericCall_readerMapFor_function (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_function ("readerMapFor_function",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_function ("readerMapFor_function",
                               functionForGenericCall_readerMapFor_function,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2687,7 +2687,7 @@ static GGS_object functionForGenericCall_readerMapFor_list (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_list ("readerMapFor_list",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_list ("readerMapFor_list",
                               functionForGenericCall_readerMapFor_list,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2770,7 +2770,7 @@ static GGS_object functionForGenericCall_readerMapFor_listmap (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_listmap ("readerMapFor_listmap",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_listmap ("readerMapFor_listmap",
                               functionForGenericCall_readerMapFor_listmap,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,
@@ -2896,7 +2896,7 @@ static GGS_object functionForGenericCall_readerMapFor_map (C_Compiler & inLexiqu
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_map ("readerMapFor_map",
+const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_map ("readerMapFor_map",
                               functionForGenericCall_readerMapFor_map,
                               & kTypeDescriptor_GGS_readerMap ,
                               0,

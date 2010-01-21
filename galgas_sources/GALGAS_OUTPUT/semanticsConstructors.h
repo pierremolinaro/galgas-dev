@@ -268,7 +268,7 @@ findCategoryReader__ACGalgasType__constructorMap (AC_galgasClassRunTimeInformati
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_string ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_string ;
 
 //---------------------------------------------------------------------------*
 
@@ -280,7 +280,7 @@ GGS_constructorMap  function_constructorMapFor_string (C_Compiler & COMMA_LOCATI
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_char ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_char ;
 
 //---------------------------------------------------------------------------*
 
@@ -292,7 +292,7 @@ GGS_constructorMap  function_constructorMapFor_char (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_uint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_uint ;
 
 //---------------------------------------------------------------------------*
 
@@ -304,7 +304,7 @@ GGS_constructorMap  function_constructorMapFor_uint (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_sint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_sint ;
 
 //---------------------------------------------------------------------------*
 
@@ -316,7 +316,7 @@ GGS_constructorMap  function_constructorMapFor_sint (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_uint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_uint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -328,7 +328,7 @@ GGS_constructorMap  function_constructorMapFor_uint64 (C_Compiler & COMMA_LOCATI
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_sint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_sint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -340,7 +340,7 @@ GGS_constructorMap  function_constructorMapFor_sint64 (C_Compiler & COMMA_LOCATI
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lstring ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lstring ;
 
 //---------------------------------------------------------------------------*
 
@@ -352,7 +352,7 @@ GGS_constructorMap  function_constructorMapFor_lstring (C_Compiler & COMMA_LOCAT
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lchar ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lchar ;
 
 //---------------------------------------------------------------------------*
 
@@ -364,7 +364,7 @@ GGS_constructorMap  function_constructorMapFor_lchar (C_Compiler & COMMA_LOCATIO
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lbool ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lbool ;
 
 //---------------------------------------------------------------------------*
 
@@ -376,7 +376,7 @@ GGS_constructorMap  function_constructorMapFor_lbool (C_Compiler & COMMA_LOCATIO
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_luint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_luint ;
 
 //---------------------------------------------------------------------------*
 
@@ -388,7 +388,7 @@ GGS_constructorMap  function_constructorMapFor_luint (C_Compiler & COMMA_LOCATIO
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lsint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lsint ;
 
 //---------------------------------------------------------------------------*
 
@@ -400,7 +400,7 @@ GGS_constructorMap  function_constructorMapFor_lsint (C_Compiler & COMMA_LOCATIO
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_luint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_luint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -412,7 +412,7 @@ GGS_constructorMap  function_constructorMapFor_luint64 (C_Compiler & COMMA_LOCAT
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lsint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lsint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -424,7 +424,7 @@ GGS_constructorMap  function_constructorMapFor_lsint64 (C_Compiler & COMMA_LOCAT
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_ldouble ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_ldouble ;
 
 //---------------------------------------------------------------------------*
 
@@ -436,7 +436,7 @@ GGS_constructorMap  function_constructorMapFor_ldouble (C_Compiler & COMMA_LOCAT
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_stringset ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_stringset ;
 
 //---------------------------------------------------------------------------*
 
@@ -448,7 +448,7 @@ GGS_constructorMap  function_constructorMapFor_stringset (C_Compiler & COMMA_LOC
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_binaryset ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_binaryset ;
 
 //---------------------------------------------------------------------------*
 
@@ -460,7 +460,7 @@ GGS_constructorMap  function_constructorMapFor_binaryset (C_Compiler & COMMA_LOC
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -472,7 +472,7 @@ GGS_constructorMap  function_constructorMapFor_type (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_data ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_data ;
 
 //---------------------------------------------------------------------------*
 
@@ -484,7 +484,7 @@ GGS_constructorMap  function_constructorMapFor_data (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_function ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_function ;
 
 //---------------------------------------------------------------------------*
 

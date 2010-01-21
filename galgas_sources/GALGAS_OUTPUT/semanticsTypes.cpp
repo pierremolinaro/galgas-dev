@@ -10857,7 +10857,7 @@ static GGS_object functionForGenericCall_constructPrimitiveTypeMap (C_Compiler &
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructPrimitiveTypeMap ("constructPrimitiveTypeMap",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructPrimitiveTypeMap ("constructPrimitiveTypeMap",
                               functionForGenericCall_constructPrimitiveTypeMap,
                               & kTypeDescriptor_GGS_typeMap ,
                               0,
@@ -10910,7 +10910,7 @@ static GGS_object functionForGenericCall_constructBuiltinTypeMap (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructBuiltinTypeMap ("constructBuiltinTypeMap",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructBuiltinTypeMap ("constructBuiltinTypeMap",
                               functionForGenericCall_constructBuiltinTypeMap,
                               & kTypeDescriptor_GGS_typeMap ,
                               0,
@@ -10960,7 +10960,7 @@ static GGS_object functionForGenericCall_build_lstringlist_type (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_build_lstringlist_type ("build_lstringlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_build_lstringlist_type ("build_lstringlist_type",
                               functionForGenericCall_build_lstringlist_type,
                               & kTypeDescriptor_GGS_ACGalgasType ,
                               0,
@@ -11010,7 +11010,7 @@ static GGS_object functionForGenericCall_build_stringlist_type (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_build_stringlist_type ("build_stringlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_build_stringlist_type ("build_stringlist_type",
                               functionForGenericCall_build_stringlist_type,
                               & kTypeDescriptor_GGS_ACGalgasType ,
                               0,
@@ -11060,7 +11060,7 @@ static GGS_object functionForGenericCall_build_uint64list_type (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_build_uint64list_type ("build_uint64list_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_build_uint64list_type ("build_uint64list_type",
                               functionForGenericCall_build_uint64list_type,
                               & kTypeDescriptor_GGS_ACGalgasType ,
                               0,
@@ -11110,7 +11110,7 @@ static GGS_object functionForGenericCall_build_typelist_type (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_build_typelist_type ("build_typelist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_build_typelist_type ("build_typelist_type",
                               functionForGenericCall_build_typelist_type,
                               & kTypeDescriptor_GGS_ACGalgasType ,
                               0,
@@ -11160,7 +11160,7 @@ static GGS_object functionForGenericCall_build_functionlist_type (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_build_functionlist_type ("build_functionlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_build_functionlist_type ("build_functionlist_type",
                               functionForGenericCall_build_functionlist_type,
                               & kTypeDescriptor_GGS_ACGalgasType ,
                               0,

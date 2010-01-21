@@ -779,7 +779,7 @@ static GGS_object functionForGenericCall_constructorMapFor_string (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_string ("constructorMapFor_string",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_string ("constructorMapFor_string",
                               functionForGenericCall_constructorMapFor_string,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -844,7 +844,7 @@ static GGS_object functionForGenericCall_constructorMapFor_char (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_char ("constructorMapFor_char",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_char ("constructorMapFor_char",
                               functionForGenericCall_constructorMapFor_char,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -928,7 +928,7 @@ static GGS_object functionForGenericCall_constructorMapFor_uint (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_uint ("constructorMapFor_uint",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_uint ("constructorMapFor_uint",
                               functionForGenericCall_constructorMapFor_uint,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -993,7 +993,7 @@ static GGS_object functionForGenericCall_constructorMapFor_sint (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_sint ("constructorMapFor_sint",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_sint ("constructorMapFor_sint",
                               functionForGenericCall_constructorMapFor_sint,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1060,7 +1060,7 @@ static GGS_object functionForGenericCall_constructorMapFor_uint64 (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_uint64 ("constructorMapFor_uint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_uint64 ("constructorMapFor_uint64",
                               functionForGenericCall_constructorMapFor_uint64,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1125,7 +1125,7 @@ static GGS_object functionForGenericCall_constructorMapFor_sint64 (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_sint64 ("constructorMapFor_sint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_sint64 ("constructorMapFor_sint64",
                               functionForGenericCall_constructorMapFor_sint64,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1210,7 +1210,7 @@ static GGS_object functionForGenericCall_constructorMapFor_lstring (C_Compiler &
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lstring ("constructorMapFor_lstring",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lstring ("constructorMapFor_lstring",
                               functionForGenericCall_constructorMapFor_lstring,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1277,7 +1277,7 @@ static GGS_object functionForGenericCall_constructorMapFor_lchar (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lchar ("constructorMapFor_lchar",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lchar ("constructorMapFor_lchar",
                               functionForGenericCall_constructorMapFor_lchar,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1344,7 +1344,7 @@ static GGS_object functionForGenericCall_constructorMapFor_lbool (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lbool ("constructorMapFor_lbool",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lbool ("constructorMapFor_lbool",
                               functionForGenericCall_constructorMapFor_lbool,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1411,7 +1411,7 @@ static GGS_object functionForGenericCall_constructorMapFor_luint (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_luint ("constructorMapFor_luint",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_luint ("constructorMapFor_luint",
                               functionForGenericCall_constructorMapFor_luint,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1478,7 +1478,7 @@ static GGS_object functionForGenericCall_constructorMapFor_lsint (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lsint ("constructorMapFor_lsint",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lsint ("constructorMapFor_lsint",
                               functionForGenericCall_constructorMapFor_lsint,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1545,7 +1545,7 @@ static GGS_object functionForGenericCall_constructorMapFor_luint64 (C_Compiler &
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_luint64 ("constructorMapFor_luint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_luint64 ("constructorMapFor_luint64",
                               functionForGenericCall_constructorMapFor_luint64,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1612,7 +1612,7 @@ static GGS_object functionForGenericCall_constructorMapFor_lsint64 (C_Compiler &
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_lsint64 ("constructorMapFor_lsint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_lsint64 ("constructorMapFor_lsint64",
                               functionForGenericCall_constructorMapFor_lsint64,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1679,7 +1679,7 @@ static GGS_object functionForGenericCall_constructorMapFor_ldouble (C_Compiler &
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_ldouble ("constructorMapFor_ldouble",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_ldouble ("constructorMapFor_ldouble",
                               functionForGenericCall_constructorMapFor_ldouble,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1744,7 +1744,7 @@ static GGS_object functionForGenericCall_constructorMapFor_stringset (C_Compiler
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_stringset ("constructorMapFor_stringset",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_stringset ("constructorMapFor_stringset",
                               functionForGenericCall_constructorMapFor_stringset,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1828,7 +1828,7 @@ static GGS_object functionForGenericCall_constructorMapFor_binaryset (C_Compiler
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_binaryset ("constructorMapFor_binaryset",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_binaryset ("constructorMapFor_binaryset",
                               functionForGenericCall_constructorMapFor_binaryset,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1892,7 +1892,7 @@ static GGS_object functionForGenericCall_constructorMapFor_type (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_type ("constructorMapFor_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_type ("constructorMapFor_type",
                               functionForGenericCall_constructorMapFor_type,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -1973,7 +1973,7 @@ static GGS_object functionForGenericCall_constructorMapFor_data (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_data ("constructorMapFor_data",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_data ("constructorMapFor_data",
                               functionForGenericCall_constructorMapFor_data,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,
@@ -2039,7 +2039,7 @@ static GGS_object functionForGenericCall_constructorMapFor_function (C_Compiler 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_constructorMapFor_function ("constructorMapFor_function",
+const C_galgas_function_descriptorEX kFunction_descriptor_constructorMapFor_function ("constructorMapFor_function",
                               functionForGenericCall_constructorMapFor_function,
                               & kTypeDescriptor_GGS_constructorMap ,
                               0,

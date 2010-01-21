@@ -102,6 +102,12 @@ override reader @typeGalgasType pointerAttributeCppTypeName -> @string outTypeNa
 end reader ;
 
 #---------------------------------------------------------------------------*
+
+override reader @functionGalgasType pointerAttributeCppTypeName -> @string outTypeName :
+  outTypeName := "C_galgas_function_descriptor" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # C L A S S    A T T R I B U T E    T Y P E    N A M E                      *
 #                                                                           *

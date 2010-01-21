@@ -9794,7 +9794,7 @@ extern C_galgasClassRunTimeInformationEX gClassInfoFor__typeGalgasListmapType ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_uintlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_uintlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9806,7 +9806,7 @@ GGS_AC_galgasType  function_EXbuild_uintlist_type (C_Compiler & COMMA_LOCATION_A
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_luintlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_luintlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9818,7 +9818,7 @@ GGS_AC_galgasType  function_EXbuild_luintlist_type (C_Compiler & COMMA_LOCATION_
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_uint64list_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_uint64list_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9830,7 +9830,7 @@ GGS_AC_galgasType  function_EXbuild_uint64list_type (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_charlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_charlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9842,7 +9842,7 @@ GGS_AC_galgasType  function_EXbuild_charlist_type (C_Compiler & COMMA_LOCATION_A
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_lcharlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_lcharlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9854,7 +9854,7 @@ GGS_AC_galgasType  function_EXbuild_lcharlist_type (C_Compiler & COMMA_LOCATION_
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_stringlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_stringlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9866,7 +9866,7 @@ GGS_AC_galgasType  function_EXbuild_stringlist_type (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_string2list_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_string2list_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9878,7 +9878,7 @@ GGS_AC_galgasType  function_EXbuild_string2list_type (C_Compiler & COMMA_LOCATIO
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_string3list_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_string3list_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9890,7 +9890,7 @@ GGS_AC_galgasType  function_EXbuild_string3list_type (C_Compiler & COMMA_LOCATIO
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_lstringlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_lstringlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9902,7 +9902,7 @@ GGS_AC_galgasType  function_EXbuild_lstringlist_type (C_Compiler & COMMA_LOCATIO
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_typelist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_typelist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9914,7 +9914,7 @@ GGS_AC_galgasType  function_EXbuild_typelist_type (C_Compiler & COMMA_LOCATION_A
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_objectlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_objectlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -9926,7 +9926,7 @@ GGS_AC_galgasType  function_EXbuild_objectlist_type (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_EXbuild_functionlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_functionlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -14171,7 +14171,7 @@ void routine_EXenterReaderWithUintCharArguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_stringReaderMap ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_stringReaderMap ;
 
 //---------------------------------------------------------------------------*
 

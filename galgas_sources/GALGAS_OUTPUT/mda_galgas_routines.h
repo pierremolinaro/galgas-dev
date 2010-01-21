@@ -56,7 +56,7 @@ class GGS_sourceFileMap ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_outputDirectoryTEMP ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_outputDirectoryTEMP ;
 
 //---------------------------------------------------------------------------*
 
@@ -69,7 +69,7 @@ GGS_string function_outputDirectoryTEMP (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_outputDirectory ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_outputDirectory ;
 
 //---------------------------------------------------------------------------*
 

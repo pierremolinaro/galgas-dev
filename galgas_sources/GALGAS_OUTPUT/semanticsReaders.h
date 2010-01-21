@@ -368,7 +368,7 @@ void routine_enterBaseReaderWithUintCharArguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_commonReaderMapForAllTypes ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_commonReaderMapForAllTypes ;
 
 //---------------------------------------------------------------------------*
 
@@ -401,7 +401,7 @@ findCategoryReader__ACGalgasType__readerMap (AC_galgasClassRunTimeInformationEX 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_location ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_location ;
 
 //---------------------------------------------------------------------------*
 
@@ -413,7 +413,7 @@ GGS_readerMap  function_readerMapFor_location (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_string ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_string ;
 
 //---------------------------------------------------------------------------*
 
@@ -425,7 +425,7 @@ GGS_readerMap  function_readerMapFor_string (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_char ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_char ;
 
 //---------------------------------------------------------------------------*
 
@@ -437,7 +437,7 @@ GGS_readerMap  function_readerMapFor_char (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_bool ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_bool ;
 
 //---------------------------------------------------------------------------*
 
@@ -449,7 +449,7 @@ GGS_readerMap  function_readerMapFor_bool (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_uint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_uint ;
 
 //---------------------------------------------------------------------------*
 
@@ -461,7 +461,7 @@ GGS_readerMap  function_readerMapFor_uint (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_sint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_sint ;
 
 //---------------------------------------------------------------------------*
 
@@ -473,7 +473,7 @@ GGS_readerMap  function_readerMapFor_sint (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_uint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_uint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -485,7 +485,7 @@ GGS_readerMap  function_readerMapFor_uint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_sint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_sint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -497,7 +497,7 @@ GGS_readerMap  function_readerMapFor_sint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_double ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_double ;
 
 //---------------------------------------------------------------------------*
 
@@ -509,7 +509,7 @@ GGS_readerMap  function_readerMapFor_double (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lstring ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lstring ;
 
 //---------------------------------------------------------------------------*
 
@@ -521,7 +521,7 @@ GGS_readerMap  function_readerMapFor_lstring (C_Compiler & COMMA_LOCATION_ARGS) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lchar ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lchar ;
 
 //---------------------------------------------------------------------------*
 
@@ -533,7 +533,7 @@ GGS_readerMap  function_readerMapFor_lchar (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lbool ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lbool ;
 
 //---------------------------------------------------------------------------*
 
@@ -545,7 +545,7 @@ GGS_readerMap  function_readerMapFor_lbool (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_luint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_luint ;
 
 //---------------------------------------------------------------------------*
 
@@ -557,7 +557,7 @@ GGS_readerMap  function_readerMapFor_luint (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lsint ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lsint ;
 
 //---------------------------------------------------------------------------*
 
@@ -569,7 +569,7 @@ GGS_readerMap  function_readerMapFor_lsint (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_luint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_luint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -581,7 +581,7 @@ GGS_readerMap  function_readerMapFor_luint64 (C_Compiler & COMMA_LOCATION_ARGS) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_lsint64 ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lsint64 ;
 
 //---------------------------------------------------------------------------*
 
@@ -593,7 +593,7 @@ GGS_readerMap  function_readerMapFor_lsint64 (C_Compiler & COMMA_LOCATION_ARGS) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_ldouble ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_ldouble ;
 
 //---------------------------------------------------------------------------*
 
@@ -605,7 +605,7 @@ GGS_readerMap  function_readerMapFor_ldouble (C_Compiler & COMMA_LOCATION_ARGS) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_stringset ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_stringset ;
 
 //---------------------------------------------------------------------------*
 
@@ -617,7 +617,7 @@ GGS_readerMap  function_readerMapFor_stringset (C_Compiler & COMMA_LOCATION_ARGS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_binaryset ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_binaryset ;
 
 //---------------------------------------------------------------------------*
 
@@ -629,7 +629,7 @@ GGS_readerMap  function_readerMapFor_binaryset (C_Compiler & COMMA_LOCATION_ARGS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -641,7 +641,7 @@ GGS_readerMap  function_readerMapFor_type (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_object ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_object ;
 
 //---------------------------------------------------------------------------*
 
@@ -653,7 +653,7 @@ GGS_readerMap  function_readerMapFor_object (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_data ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_data ;
 
 //---------------------------------------------------------------------------*
 
@@ -665,7 +665,7 @@ GGS_readerMap  function_readerMapFor_data (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_function ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_function ;
 
 //---------------------------------------------------------------------------*
 
@@ -677,7 +677,7 @@ GGS_readerMap  function_readerMapFor_function (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_list ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_list ;
 
 //---------------------------------------------------------------------------*
 
@@ -689,7 +689,7 @@ GGS_readerMap  function_readerMapFor_list (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_listmap ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_listmap ;
 
 //---------------------------------------------------------------------------*
 
@@ -701,7 +701,7 @@ GGS_readerMap  function_readerMapFor_listmap (C_Compiler & COMMA_LOCATION_ARGS) 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_readerMapFor_map ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_map ;
 
 //---------------------------------------------------------------------------*
 
