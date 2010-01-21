@@ -3740,7 +3740,7 @@ void routine_addTypeList (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructPrimitiveTypeMap ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructPrimitiveTypeMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -3752,7 +3752,7 @@ GGS_typeMap  function_constructPrimitiveTypeMap (C_Compiler & COMMA_LOCATION_ARG
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_constructBuiltinTypeMap ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_constructBuiltinTypeMap ;
 
 //---------------------------------------------------------------------------*
 
@@ -3764,7 +3764,7 @@ GGS_typeMap  function_constructBuiltinTypeMap (C_Compiler & COMMA_LOCATION_ARGS)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_build_lstringlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_build_lstringlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -3776,7 +3776,7 @@ GGS_ACGalgasType  function_build_lstringlist_type (C_Compiler & COMMA_LOCATION_A
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_build_stringlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_build_stringlist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -3788,7 +3788,7 @@ GGS_ACGalgasType  function_build_stringlist_type (C_Compiler & COMMA_LOCATION_AR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_build_uint64list_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_build_uint64list_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -3800,7 +3800,7 @@ GGS_ACGalgasType  function_build_uint64list_type (C_Compiler & COMMA_LOCATION_AR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_build_typelist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_build_typelist_type ;
 
 //---------------------------------------------------------------------------*
 
@@ -3812,7 +3812,7 @@ GGS_ACGalgasType  function_build_typelist_type (C_Compiler & COMMA_LOCATION_ARGS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_build_functionlist_type ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_build_functionlist_type ;
 
 //---------------------------------------------------------------------------*
 

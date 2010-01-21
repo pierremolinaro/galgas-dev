@@ -31762,7 +31762,7 @@ static GGS_object functionForGenericCall_EXbuild_uintlist_type (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_uintlist_type ("EXbuild_uintlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_uintlist_type ("EXbuild_uintlist_type",
                               functionForGenericCall_EXbuild_uintlist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -31814,7 +31814,7 @@ static GGS_object functionForGenericCall_EXbuild_luintlist_type (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_luintlist_type ("EXbuild_luintlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_luintlist_type ("EXbuild_luintlist_type",
                               functionForGenericCall_EXbuild_luintlist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -31866,7 +31866,7 @@ static GGS_object functionForGenericCall_EXbuild_uint64list_type (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_uint64list_type ("EXbuild_uint64list_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_uint64list_type ("EXbuild_uint64list_type",
                               functionForGenericCall_EXbuild_uint64list_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -31918,7 +31918,7 @@ static GGS_object functionForGenericCall_EXbuild_charlist_type (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_charlist_type ("EXbuild_charlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_charlist_type ("EXbuild_charlist_type",
                               functionForGenericCall_EXbuild_charlist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -31970,7 +31970,7 @@ static GGS_object functionForGenericCall_EXbuild_lcharlist_type (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_lcharlist_type ("EXbuild_lcharlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_lcharlist_type ("EXbuild_lcharlist_type",
                               functionForGenericCall_EXbuild_lcharlist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -32022,7 +32022,7 @@ static GGS_object functionForGenericCall_EXbuild_stringlist_type (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_stringlist_type ("EXbuild_stringlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_stringlist_type ("EXbuild_stringlist_type",
                               functionForGenericCall_EXbuild_stringlist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -32077,7 +32077,7 @@ static GGS_object functionForGenericCall_EXbuild_string2list_type (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_string2list_type ("EXbuild_string2list_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_string2list_type ("EXbuild_string2list_type",
                               functionForGenericCall_EXbuild_string2list_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -32135,7 +32135,7 @@ static GGS_object functionForGenericCall_EXbuild_string3list_type (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_string3list_type ("EXbuild_string3list_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_string3list_type ("EXbuild_string3list_type",
                               functionForGenericCall_EXbuild_string3list_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -32187,7 +32187,7 @@ static GGS_object functionForGenericCall_EXbuild_lstringlist_type (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_lstringlist_type ("EXbuild_lstringlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_lstringlist_type ("EXbuild_lstringlist_type",
                               functionForGenericCall_EXbuild_lstringlist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -32239,7 +32239,7 @@ static GGS_object functionForGenericCall_EXbuild_typelist_type (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_typelist_type ("EXbuild_typelist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_typelist_type ("EXbuild_typelist_type",
                               functionForGenericCall_EXbuild_typelist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -32291,7 +32291,7 @@ static GGS_object functionForGenericCall_EXbuild_objectlist_type (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_objectlist_type ("EXbuild_objectlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_objectlist_type ("EXbuild_objectlist_type",
                               functionForGenericCall_EXbuild_objectlist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -32343,7 +32343,7 @@ static GGS_object functionForGenericCall_EXbuild_functionlist_type (C_Compiler &
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_EXbuild_functionlist_type ("EXbuild_functionlist_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_EXbuild_functionlist_type ("EXbuild_functionlist_type",
                               functionForGenericCall_EXbuild_functionlist_type,
                               & kTypeDescriptor_GGS_AC_galgasType ,
                               0,
@@ -48372,7 +48372,7 @@ static GGS_object functionForGenericCall_stringReaderMap (C_Compiler & inLexique
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_stringReaderMap ("stringReaderMap",
+const C_galgas_function_descriptorEX kFunction_descriptor_stringReaderMap ("stringReaderMap",
                               functionForGenericCall_stringReaderMap,
                               & kTypeDescriptor_GGS_EXreaderMap ,
                               0,

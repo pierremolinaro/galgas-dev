@@ -1241,7 +1241,7 @@ static GGS_object functionForGenericCall_modifierMapFor_location (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_location ("modifierMapFor_location",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_location ("modifierMapFor_location",
                               functionForGenericCall_modifierMapFor_location,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1308,7 +1308,7 @@ static GGS_object functionForGenericCall_modifierMapFor_string (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_string ("modifierMapFor_string",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_string ("modifierMapFor_string",
                               functionForGenericCall_modifierMapFor_string,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1371,7 +1371,7 @@ static GGS_object functionForGenericCall_modifierMapFor_char (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_char ("modifierMapFor_char",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_char ("modifierMapFor_char",
                               functionForGenericCall_modifierMapFor_char,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1434,7 +1434,7 @@ static GGS_object functionForGenericCall_modifierMapFor_bool (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_bool ("modifierMapFor_bool",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_bool ("modifierMapFor_bool",
                               functionForGenericCall_modifierMapFor_bool,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1497,7 +1497,7 @@ static GGS_object functionForGenericCall_modifierMapFor_uint (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_uint ("modifierMapFor_uint",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_uint ("modifierMapFor_uint",
                               functionForGenericCall_modifierMapFor_uint,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1560,7 +1560,7 @@ static GGS_object functionForGenericCall_modifierMapFor_sint (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_sint ("modifierMapFor_sint",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_sint ("modifierMapFor_sint",
                               functionForGenericCall_modifierMapFor_sint,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1623,7 +1623,7 @@ static GGS_object functionForGenericCall_modifierMapFor_uint64 (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_uint64 ("modifierMapFor_uint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_uint64 ("modifierMapFor_uint64",
                               functionForGenericCall_modifierMapFor_uint64,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1686,7 +1686,7 @@ static GGS_object functionForGenericCall_modifierMapFor_sint64 (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_sint64 ("modifierMapFor_sint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_sint64 ("modifierMapFor_sint64",
                               functionForGenericCall_modifierMapFor_sint64,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1749,7 +1749,7 @@ static GGS_object functionForGenericCall_modifierMapFor_double (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_double ("modifierMapFor_double",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_double ("modifierMapFor_double",
                               functionForGenericCall_modifierMapFor_double,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1814,7 +1814,7 @@ static GGS_object functionForGenericCall_modifierMapFor_lstring (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lstring ("modifierMapFor_lstring",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lstring ("modifierMapFor_lstring",
                               functionForGenericCall_modifierMapFor_lstring,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1879,7 +1879,7 @@ static GGS_object functionForGenericCall_modifierMapFor_lchar (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lchar ("modifierMapFor_lchar",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lchar ("modifierMapFor_lchar",
                               functionForGenericCall_modifierMapFor_lchar,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -1944,7 +1944,7 @@ static GGS_object functionForGenericCall_modifierMapFor_lbool (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lbool ("modifierMapFor_lbool",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lbool ("modifierMapFor_lbool",
                               functionForGenericCall_modifierMapFor_lbool,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2009,7 +2009,7 @@ static GGS_object functionForGenericCall_modifierMapFor_luint (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_luint ("modifierMapFor_luint",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_luint ("modifierMapFor_luint",
                               functionForGenericCall_modifierMapFor_luint,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2074,7 +2074,7 @@ static GGS_object functionForGenericCall_modifierMapFor_lsint (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lsint ("modifierMapFor_lsint",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lsint ("modifierMapFor_lsint",
                               functionForGenericCall_modifierMapFor_lsint,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2139,7 +2139,7 @@ static GGS_object functionForGenericCall_modifierMapFor_luint64 (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_luint64 ("modifierMapFor_luint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_luint64 ("modifierMapFor_luint64",
                               functionForGenericCall_modifierMapFor_luint64,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2204,7 +2204,7 @@ static GGS_object functionForGenericCall_modifierMapFor_lsint64 (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_lsint64 ("modifierMapFor_lsint64",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_lsint64 ("modifierMapFor_lsint64",
                               functionForGenericCall_modifierMapFor_lsint64,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2269,7 +2269,7 @@ static GGS_object functionForGenericCall_modifierMapFor_ldouble (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_ldouble ("modifierMapFor_ldouble",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_ldouble ("modifierMapFor_ldouble",
                               functionForGenericCall_modifierMapFor_ldouble,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2332,7 +2332,7 @@ static GGS_object functionForGenericCall_modifierMapFor_stringset (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_stringset ("modifierMapFor_stringset",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_stringset ("modifierMapFor_stringset",
                               functionForGenericCall_modifierMapFor_stringset,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2395,7 +2395,7 @@ static GGS_object functionForGenericCall_modifierMapFor_binaryset (C_Compiler & 
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_binaryset ("modifierMapFor_binaryset",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_binaryset ("modifierMapFor_binaryset",
                               functionForGenericCall_modifierMapFor_binaryset,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2458,7 +2458,7 @@ static GGS_object functionForGenericCall_modifierMapFor_type (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_type ("modifierMapFor_type",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_type ("modifierMapFor_type",
                               functionForGenericCall_modifierMapFor_type,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2521,7 +2521,7 @@ static GGS_object functionForGenericCall_modifierMapFor_object (C_Compiler & inL
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_object ("modifierMapFor_object",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_object ("modifierMapFor_object",
                               functionForGenericCall_modifierMapFor_object,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2591,7 +2591,7 @@ static GGS_object functionForGenericCall_modifierMapFor_data (C_Compiler & inLex
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_data ("modifierMapFor_data",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_data ("modifierMapFor_data",
                               functionForGenericCall_modifierMapFor_data,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2654,7 +2654,7 @@ static GGS_object functionForGenericCall_modifierMapFor_function (C_Compiler & i
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_function ("modifierMapFor_function",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_function ("modifierMapFor_function",
                               functionForGenericCall_modifierMapFor_function,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,
@@ -2816,7 +2816,7 @@ static GGS_object functionForGenericCall_modifierMapFor_listmap (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_function_descriptor kFunction_descriptor_modifierMapFor_listmap ("modifierMapFor_listmap",
+const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_listmap ("modifierMapFor_listmap",
                               functionForGenericCall_modifierMapFor_listmap,
                               & kTypeDescriptor_GGS_modifierMap ,
                               0,

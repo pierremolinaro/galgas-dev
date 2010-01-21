@@ -45,7 +45,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const C_galgas_function_descriptor kFunction_descriptor_transformLabelMap ;
+extern const C_galgas_function_descriptorEX kFunction_descriptor_transformLabelMap ;
 
 //---------------------------------------------------------------------------*
 

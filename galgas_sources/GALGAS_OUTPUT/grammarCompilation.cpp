@@ -112,7 +112,7 @@ static const C_galgas_type_descriptorEX *
 kArgumentTypeList_transformLabelMap [2] = {& kTypeDescriptor_GGS_nonTerminalLabelList ,
                               & kTypeDescriptor_GGS_bool} ;
 
-const C_galgas_function_descriptor
+const C_galgas_function_descriptorEX
 kFunction_descriptor_transformLabelMap ("transformLabelMap",
                               functionForGenericCall_transformLabelMap,
                               & kTypeDescriptor_GGS_nonterminalSymbolLabelMapForGrammarAnalysis ,

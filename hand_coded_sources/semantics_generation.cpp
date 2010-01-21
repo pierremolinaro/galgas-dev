@@ -246,7 +246,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_typeFonctionAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Function '") + mFunctionName + "'") ;
-  inHfile << "extern const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_function_descriptorEX kFunction_descriptor_" << mFunctionName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ; 
   mReturnedType (HERE)->generateCppClassName (inHfile) ;
   inHfile << " function_" << mFunctionName << " (C_Compiler &" ;
@@ -373,7 +373,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--------------------------------- Function implementation
   inCppFile.appendCppHyphenLineComment () ;
   if (aListeTypeEtNomsArguments.count () == 0) {
-    inCppFile << "const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName
+    inCppFile << "const C_galgas_function_descriptorEX kFunction_descriptor_" << mFunctionName
               << " (\"" << mFunctionName << "\",\n"
                  "                              functionForGenericCall_" << mFunctionName << ",\n"
                  "                              & kTypeDescriptor_" ;
@@ -398,7 +398,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       currentArgument.next () ;
     }
     inCppFile << "} ;\n\n" ;
-    inCppFile << "const C_galgas_function_descriptor\n"
+    inCppFile << "const C_galgas_function_descriptorEX\n"
                  "kFunction_descriptor_" << mFunctionName
               << " (\"" << mFunctionName << "\",\n"
                  "                              functionForGenericCall_" << mFunctionName << ",\n"
@@ -434,7 +434,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_typeOnceFunctionToGenerate::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Once function '") + mFunctionName + "'") ;
-  inHfile << "extern const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName << " ;\n\n" ;
+  inHfile << "extern const C_galgas_function_descriptorEX kFunction_descriptor_" << mFunctionName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ; 
   mReturnedType (HERE)->generateCppClassName (inHfile) ;
   inHfile << " function_" << mFunctionName << " (C_Compiler & COMMA_LOCATION_ARGS) ;\n\n" ;
@@ -528,7 +528,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--------------------------------- Function implementation
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "const C_galgas_function_descriptor kFunction_descriptor_" << mFunctionName
+  inCppFile << "const C_galgas_function_descriptorEX kFunction_descriptor_" << mFunctionName
             << " (\"" << mFunctionName << "\",\n"
                "                              functionForGenericCall_" << mFunctionName << ",\n"
                "                              & kTypeDescriptor_" ;
