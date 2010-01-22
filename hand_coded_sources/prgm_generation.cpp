@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate main program                                                    *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -312,10 +312,12 @@ generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
                     "  }\n"
                     "  C_PrologueEpilogue::runEpilogueActions () ;\n"
                     "  runAllReleaseRoutines () ;\n"
+                    "  C_Object::garbage () ;\n"
                     "  C_StringCommandLineOption::releaseStrings () ;\n"
                     "  C_String::freeUnusedRegisteredStrings () ;\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "    C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
+                    "    C_Object::checkAllObjectsHaveBeenReleased () ;\n"
                     "  #endif\n"
                     "  if (verboseOptionOn) {\n"
                     "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"

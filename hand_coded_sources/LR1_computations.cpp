@@ -354,7 +354,7 @@ mCapacity (0) {
     MF_AssertThere (inAllocatedSize >= 0, "inAllocatedSize (%ld) < 0", inAllocatedSize, 0) ;
   #endif
   if (inAllocatedSize > 0) {
-    mArray = new const cLR1_items_AVL_tree * [inAllocatedSize] ;
+    macroMyNewTab (mArray, const cLR1_items_AVL_tree *, inAllocatedSize) ;
     for (PMSInt32 i=0 ; i<inAllocatedSize ; i++) {
       mArray [i] = NULL ;
     }
@@ -384,11 +384,12 @@ void cLR1ItemUniqueArray::makeRoom (const PMSInt32 inNewCapacity) {
     while (newCapacity < inNewCapacity) {
       newCapacity <<= 1 ;
     }
-    const cLR1_items_AVL_tree * * newArray = new const cLR1_items_AVL_tree * [newCapacity] ;
+    const cLR1_items_AVL_tree * * newArray = NULL ;
+    macroMyNewTab (newArray, const cLR1_items_AVL_tree *, newCapacity) ;
     for (PMSInt32 i=0 ; i<mCapacity ; i++) {
       newArray [i] = mArray [i] ;
     }
-    delete [] mArray ; mArray = newArray ;
+    macroMyDeleteTab (mArray, const cLR1_items_AVL_tree *) ; mArray = newArray ;
     mCapacity = newCapacity ;
   }
 }
@@ -401,7 +402,7 @@ void cLR1ItemUniqueArray::makeRoom (const PMSInt32 inNewCapacity) {
 
 void cLR1ItemUniqueArray::free (void) {
   mCount = 0 ;
-  delete [] mArray ; mArray = NULL ;
+  macroMyDeleteTab (mArray, const cLR1_items_AVL_tree *) ; mArray = NULL ;
   mCapacity = 0 ;
 }
 
