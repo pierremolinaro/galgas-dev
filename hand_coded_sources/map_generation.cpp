@@ -740,7 +740,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                           const GGS_object & inObject,\n"
              "                                           const GGS_location & inErrorLocation\n"
              "                                           COMMA_LOCATION_ARGS) ;\n\n"
-             "//--- Create a new element\n"
+             "//--- Create an element\n"
              "  protected : virtual AC_galgas_map_element *\n"
              "  new_element (const GGS_lstring & inKey, void * inInfo) ;\n\n"
              "//--- Assign information to an existing element\n"
