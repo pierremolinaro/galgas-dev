@@ -1321,8 +1321,7 @@ generate_cpp_file (C_CompilerEx & inLexique,
   C_String epilogueActions ;
   element.rewind () ;
   while (element.hasCurrentObject ()) {
-    element._mEntityToGenerate (HERE) (HERE)->enterPrologueEpilogueAction (prologueActions,
-                                                                    epilogueActions) ;
+    element._mEntityToGenerate (HERE) (HERE)->enterPrologueEpilogueAction (prologueActions, epilogueActions) ;
     element.next () ;
   }
   if ((prologueActions.length () > 0) || (epilogueActions.length () > 0)) {
@@ -1345,8 +1344,7 @@ generate_cpp_file (C_CompilerEx & inLexique,
     }else{
       generatedZone3 << "NULL" ;
     }
-    generatedZone3 << ",\n"
-                      "                                   " ;
+    generatedZone3 << ", " ;
     if (epilogueActions.length () > 0) {
       generatedZone3 << "epilogueRoutineFor_" << nomComposant ;
     }else{

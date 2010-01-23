@@ -801,7 +801,7 @@ analyzeGrammar (C_CompilerEx & inLexique,
       inLexique.ggs_printWarning (C_String ("Need to write '") + HTMLfileName + "'.\n") ;
     }
   }
-  macroMyDelete (HTMLfile, C_HTML_FileWrite) ;
+  macroMyDelete (HTMLfile) ;
 }
 
 //---------------------------------------------------------------------------*

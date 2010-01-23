@@ -337,8 +337,8 @@ mBalance (0) {
 
 cLR0_items_sets_AVL_tree::
 ~cLR0_items_sets_AVL_tree (void) {
-  macroMyDelete (mPtrToInf, cLR0_items_sets_AVL_tree) ;
-  macroMyDelete (mPtrToSup, cLR0_items_sets_AVL_tree) ;
+  macroMyDelete (mPtrToInf) ;
+  macroMyDelete (mPtrToSup) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -534,7 +534,7 @@ mRoot (NULL) {
 //---------------------------------------------------------------------------*
 
 c_LR0_items_sets_collection::~c_LR0_items_sets_collection (void) {
-  macroMyDelete (mRoot, cLR0_items_sets_AVL_tree) ;
+  macroMyDelete (mRoot) ;
 }
 
 //---------------------------------------------------------------------------*

@@ -61,8 +61,8 @@ mEntryIndex (numeroElement) {
 
 template <typename INFO>
 cElementTableMethodesAimplementer <INFO>::~cElementTableMethodesAimplementer (void) {
-  macroMyDelete (mInfPtr, cElement) ;
-  macroMyDelete (mSupPtr, cElement) ;
+  macroMyDelete (mInfPtr) ;
+  macroMyDelete (mSupPtr) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -129,8 +129,8 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::drop (void) {
   if (mReferenceCountPtr != NULL) {
     macroValidPointer (mReferenceCountPtr) ;
     if ((*mReferenceCountPtr) == 1) {
-      macroMyDelete (mRoot, cElement) ;
-      macroMyDelete (mReferenceCountPtr, PMSInt32) ;
+      macroMyDelete (mRoot) ;
+      macroMyDelete (mReferenceCountPtr) ;
     }else{
       mRoot = (cElement *) NULL ;
       (*mReferenceCountPtr) -- ;

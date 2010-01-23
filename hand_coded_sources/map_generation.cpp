@@ -1176,7 +1176,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "  if (outIndex != NULL) {\n"
                  "    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (PMUInt32) elementID), inKey) ;\n"
                  "  }\n"
-                 "  macroMyDelete (removedElement, cElement) ;\n"
+                 "  macroMyDelete (removedElement) ;\n"
                  "}\n\n" ;
   }
 

@@ -133,8 +133,8 @@ mBalance (0) {
 //---------------------------------------------------------------------------*
 
 cLR1_items_AVL_tree::~cLR1_items_AVL_tree (void) {
-  macroMyDelete (mPtrToInf, cLR1_items_AVL_tree) ;
-  macroMyDelete (mPtrToSup, cLR1_items_AVL_tree) ;
+  macroMyDelete (mPtrToInf) ;
+  macroMyDelete (mPtrToSup) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -354,7 +354,7 @@ mCapacity (0) {
     MF_AssertThere (inAllocatedSize >= 0, "inAllocatedSize (%ld) < 0", inAllocatedSize, 0) ;
   #endif
   if (inAllocatedSize > 0) {
-    macroMyNewTab (mArray, const cLR1_items_AVL_tree *, inAllocatedSize) ;
+    macroMyNewArray (mArray, const cLR1_items_AVL_tree *, inAllocatedSize) ;
     for (PMSInt32 i=0 ; i<inAllocatedSize ; i++) {
       mArray [i] = NULL ;
     }
@@ -385,11 +385,11 @@ void cLR1ItemUniqueArray::makeRoom (const PMSInt32 inNewCapacity) {
       newCapacity <<= 1 ;
     }
     const cLR1_items_AVL_tree * * newArray = NULL ;
-    macroMyNewTab (newArray, const cLR1_items_AVL_tree *, newCapacity) ;
+    macroMyNewArray (newArray, const cLR1_items_AVL_tree *, newCapacity) ;
     for (PMSInt32 i=0 ; i<mCapacity ; i++) {
       newArray [i] = mArray [i] ;
     }
-    macroMyDeleteTab (mArray, const cLR1_items_AVL_tree *) ; mArray = newArray ;
+    macroMyDeleteArray (mArray) ; mArray = newArray ;
     mCapacity = newCapacity ;
   }
 }
@@ -402,7 +402,7 @@ void cLR1ItemUniqueArray::makeRoom (const PMSInt32 inNewCapacity) {
 
 void cLR1ItemUniqueArray::free (void) {
   mCount = 0 ;
-  macroMyDeleteTab (mArray, const cLR1_items_AVL_tree *) ; mArray = NULL ;
+  macroMyDeleteArray (mArray) ; mArray = NULL ;
   mCapacity = 0 ;
 }
 
@@ -563,14 +563,14 @@ mArrayIsSorted (true) {
 //---------------------------------------------------------------------------*
 
 c_LR1_items_set::~c_LR1_items_set (void) {
-  macroMyDelete (mRoot, cLR1_items_AVL_tree) ;
+  macroMyDelete (mRoot) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void c_LR1_items_set::clear (void) {
   mItemsSet.clear () ;
-  macroMyDelete (mRoot, cLR1_items_AVL_tree) ;
+  macroMyDelete (mRoot) ;
   mHashCode = 0 ;
 }
 
@@ -823,8 +823,8 @@ mBalance (0) {
 //---------------------------------------------------------------------------*
 
 cLR1_items_sets_AVL_tree::~cLR1_items_sets_AVL_tree (void) {
-  macroMyDelete (mPtrToInf, cLR1_items_sets_AVL_tree) ;
-  macroMyDelete (mPtrToSup, cLR1_items_sets_AVL_tree) ;
+  macroMyDelete (mPtrToInf) ;
+  macroMyDelete (mPtrToSup) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1019,7 +1019,7 @@ m_LR1_items_sets_array () {
 c_LR1_items_sets_collection::
 ~c_LR1_items_sets_collection (void) {
   for (PMUInt32 i=0 ; i<kSlotCount ; i++) {
-    macroMyDelete (mRoot [i], cLR1_items_sets_AVL_tree) ;
+    macroMyDelete (mRoot [i]) ;
   }
 }
 
@@ -1807,7 +1807,7 @@ LR1_computations (C_CompilerEx & inLexique,
                                    inOutputDirectoryForCppFiles) ;
 
   }
-  macroMyDelete (LR1_items_sets_collection, c_LR1_items_sets_collection) ;
+  macroMyDelete (LR1_items_sets_collection) ;
   outOk = conflictCount == 0 ;
 }
 

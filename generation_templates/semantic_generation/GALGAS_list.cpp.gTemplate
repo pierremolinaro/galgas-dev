@@ -15,7 +15,9 @@ AC_GALGAS_Array (%![[ATTRIBUTE_LIST length] string]% COMMA_THERE) {
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_emptyList (LOCATION_ARGS) {
-  return new GALGAS_%!TYPE_NAME% (THERE) ;
+  GALGAS_%!TYPE_NAME% * result = NULL ;
+  macroMyNew (result, GALGAS_%!TYPE_NAME% (THERE)) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -26,7 +28,7 @@ GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_listWithValue (%?COL0
   between %,\n%!COL0
   end foreach
   %\n%!COL0%COMMA_LOCATION_ARGS) {
-  GALGAS_%!TYPE_NAME% * result = new GALGAS_%!TYPE_NAME% (THERE) ;
+  GALGAS_%!TYPE_NAME% * result = GALGAS_%!TYPE_NAME%::constructor_emptyList (THERE) ;
   const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
   foreach ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]

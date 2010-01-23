@@ -85,15 +85,18 @@ bool cPtr_categoryMethodToImplement::isCppClassNeeded (void) const {
 
 void cPtr_categoryMethodToImplement::
 enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
-                             AC_OutputStream & /* inEpilogueActions */) const {
+                             AC_OutputStream & inEpilogueActions) const {
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
-    inPrologueActions << " enterCategoryMethod__" << mBaseClassName << "__" << mMethodName << " (" ;
+    inPrologueActions << "  enterCategoryMethod__" << mBaseClassName << "__" << mMethodName << " (" ;
     if (mCategoryMethodKind.enumValue () == GGS_categoryMethodKind::enum_overridingMethod) {
       inPrologueActions << "(typeCategoryMethod__" << mBaseClassName << "__" << mMethodName << ") " ;
     }
     inPrologueActions << "category_method__"
                       << mClassName << "__" << mMethodName << ", gClassInfoFor__"
                       << mClassName << ".slotID ()) ;\n" ;
+  }
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
+    inEpilogueActions << "  gDispatchTableForMethod__" << mClassName << "__" << mMethodName << ".free () ;\n" ;
   }
 }
 
@@ -160,7 +163,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "enterCategoryMethod__" << mClassName << "__" << mMethodName
               << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
                  "                     const PMSInt32 inClassID) {\n"
-                 "  gDispatchTableForMethod__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
+                 "  gDispatchTableForMethod__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL COMMA_HERE) ;\n"
                  "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
@@ -174,7 +177,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;\n"
                  "    if (superClassPtr != NULL) {\n"
                  "      result = findCategoryMethod__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
-                 "      gDispatchTableForMethod__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;\n"
+                 "      gDispatchTableForMethod__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL COMMA_HERE) ;\n"
                  "    }\n"
                  "  }\n"
                  "  return result ;\n"
@@ -245,9 +248,9 @@ bool cPtr_categoryReaderToImplement::isCppClassNeeded (void) const {
 
 void cPtr_categoryReaderToImplement::
 enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
-                             AC_OutputStream & /* inEpilogueActions */) const {
+                             AC_OutputStream & inEpilogueActions) const {
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
-    inPrologueActions << " enterCategoryReader__" << mBaseClassName << "__" << mMethodName << " (" ;
+    inPrologueActions << "  enterCategoryReader__" << mBaseClassName << "__" << mMethodName << " (" ;
     if (mCategoryMethodKind.enumValue () == GGS_categoryMethodKind::enum_overridingMethod) {
       inPrologueActions << "(typeCategoryReader__" << mBaseClassName << "__" << mMethodName << ") " ;
     }
@@ -255,6 +258,9 @@ enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
                       << mClassName << "__" << mMethodName << ", gClassInfoFor__"
                       << mClassName << ".slotID ()) ;\n" ;
   }
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
+    inEpilogueActions << "  gDispatchTableForReader__" << mClassName << "__" << mMethodName << ".free () ;\n" ;
+ }
 }
 
 //---------------------------------------------------------------------------*
@@ -330,7 +336,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "enterCategoryReader__" << mClassName << "__" << mMethodName
               << " (typeCategoryReader__" << mClassName << "__" << mMethodName << " inRoutine,\n"
                  "                     const PMSInt32 inClassID) {\n"
-                 "  gDispatchTableForReader__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
+                 "  gDispatchTableForReader__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL COMMA_HERE) ;\n"
                  "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
 //--- Generate default routine
@@ -366,7 +372,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;\n"
                  "    if (superClassPtr != NULL) {\n"
                  "      result = findCategoryReader__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
-                 "      gDispatchTableForReader__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;\n"
+                 "      gDispatchTableForReader__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL COMMA_HERE) ;\n"
                  "    }\n"
                  "  }\n"
                  "  if (NULL == result) {\n"
@@ -440,15 +446,18 @@ bool cPtr_categoryTemplateToImplement::isCppClassNeeded (void) const {
 
 void cPtr_categoryTemplateToImplement::
 enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
-                             AC_OutputStream & /* inEpilogueActions */) const {
+                             AC_OutputStream & inEpilogueActions) const {
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
-    inPrologueActions << " enterCategoryTemplate__" << mBaseClassName << "__" << mMethodName << " (" ;
+    inPrologueActions << "  enterCategoryTemplate__" << mBaseClassName << "__" << mMethodName << " (" ;
     if (mCategoryMethodKind.enumValue () == GGS_categoryMethodKind::enum_overridingMethod) {
       inPrologueActions << "(typeCategoryTemplate__" << mBaseClassName << "__" << mMethodName << ") " ;
     }
     inPrologueActions << "category_template__"
                       << mClassName << "__" << mMethodName << ", gClassInfoFor__"
                       << mClassName << ".slotID ()) ;\n" ;
+  }
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
+    inEpilogueActions << "  gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".free () ;\n" ;
   }
 }
 
@@ -522,7 +531,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "enterCategoryTemplate__" << mClassName << "__" << mMethodName
               << " (typeCategoryTemplate__" << mClassName << "__" << mMethodName << " inRoutine,\n"
                  "                     const PMSInt32 inClassID) {\n"
-                 "  gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
+                 "  gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL COMMA_HERE) ;\n"
                  "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
 //--- Generate default routine
@@ -556,7 +565,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "    AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;\n"
                  "    if (superClassPtr != NULL) {\n"
                  "      result = findCategoryTemplate__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
-                 "      gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;\n"
+                 "      gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL COMMA_HERE) ;\n"
                  "    }\n"
                  "  }\n"
                  "  if (NULL == result) {\n"
