@@ -58,8 +58,8 @@ mIsDeclaredUnused (inIsDeclaredUnused) {
 template <typename INFO>
 cElementTableControlePhase <INFO>::
 ~cElementTableControlePhase (void) {
-  macroMyDelete (mInfPtr, cElement) ;
-  macroMyDelete (mSupPtr, cElement) ;
+  macroMyDelete (mInfPtr) ;
+  macroMyDelete (mSupPtr) ;
   macroVoidPointer (champChainageEtat) ;
 }
 
@@ -93,7 +93,7 @@ void cGalgasVariablesMap <INFO>::build (void) {
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::drop (void) {
   mListLength = 0 ;
-  macroMyDelete (mRoot, cElement) ;
+  macroMyDelete (mRoot) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -815,7 +815,7 @@ void cGalgasVariablesMap <INFO>::dechargerEtatVariables (cElement * element) {
     macroValidPointer (element->champChainageEtat) ;
     element->champEtat = element->champChainageEtat->champEtatApres ;
     agregatChainageEtat * tempo = element->champChainageEtat->mNextItem ;
-    macroMyDelete (element->champChainageEtat, agregatChainageEtat) ;
+    macroMyDelete (element->champChainageEtat) ;
     element->champChainageEtat = tempo ;
     dechargerEtatVariables (element->mSupPtr) ;
   }
@@ -892,7 +892,7 @@ void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_CompilerEx & COMMA_UNUSED_
   macroValidPointer (aListeSurcharges) ;
   mRoot = aListeSurcharges->champTable ;
   typeSurchargeTable * tempo = aListeSurcharges->mNextItem ;
-  macroMyDelete (aListeSurcharges, typeSurchargeTable) ;
+  macroMyDelete (aListeSurcharges) ;
   aListeSurcharges = tempo ;
 }
 
@@ -911,7 +911,7 @@ epilogue_testPart (C_CompilerEx & inLexique,
                    const GGS_location & positionErreur
                    COMMA_LOCATION_ARGS) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
-  macroMyDelete (mRoot, cElement) ;
+  macroMyDelete (mRoot) ;
 //--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
   aListeSurcharges->champCompteur ++ ;
@@ -970,7 +970,7 @@ epilogue_repeatPart (C_CompilerEx & inLexique,
                      const GGS_location & positionErreur
                      COMMA_LOCATION_ARGS) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
-  macroMyDelete (mRoot, cElement) ;
+  macroMyDelete (mRoot) ;
 //--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
   aListeSurcharges->champCompteur ++ ;
