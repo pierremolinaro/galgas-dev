@@ -1,0 +1,61 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["'" . TYPE_NAME . "' class" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ("%![TYPE typeName]%", NULL) ;
+
+//---------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_%!TYPE_NAME%::typeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
+}
+%if [TYPE generate_new_constructor] then%
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_new (%?COL_01
+  foreach [TYPE attributeDescriptionList]
+    do %const % !mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
+    between %,\n%!COL_01
+  end foreach
+  %\n%!COL_01 %COMMA_LOCATION_ARGS) {\n
+  GALGAS_%!TYPE_NAME% * result = NULL ;
+  macroMyNew (result, GALGAS_%!TYPE_NAME% (%
+  foreach [TYPE attributeDescriptionList]
+    do %inOperand_%!mAttributeName
+    between %, %
+  end foreach
+  if [[TYPE attributeDescriptionList] length] == 0 then
+    %THERE%
+  else
+    % COMMA_THERE%
+  end if
+  %)) ;
+  return result ;
+}%
+end if
+
+if [TYPE accept_inc_dec_operator] | [TYPE accept_append_operator] | ([[TYPE modifierMap] count] > 0) then%
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_NAME%::insulate (%?COL_0%GALGAS_%!TYPE_NAME% * & ioOperand
+%                                   !COL_0%COMMA_LOCATION_ARGS) {
+  if (ioOperand->retainCount () > 1) {
+    GALGAS_%!TYPE_NAME% * p = GALGAS_%!TYPE_NAME%::constructor_new (%
+    foreach [TYPE attributeDescriptionList]
+      do %ioOperand->%!mAttributeName
+      between %, %
+    end foreach
+    if [[TYPE attributeDescriptionList] length] == 0 then
+      %THERE%
+    else
+      % COMMA_THERE%
+    end if
+    %) ;
+    macroReleaseObject (ioOperand) ;
+    macroRetainObject (p) ;
+    ioOperand = p ;
+  }
+}%end if%
+

@@ -1,0 +1,69 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticsInstanceMethods :
+import "semanticsModifiers.gSemantics" ;
+import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType instanceMethodMap ->@modifierMap outModifierMap :
+  outModifierMap := [@modifierMap emptyMap] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once instanceMethodMapFor_data ->@modifierMap outModifierMap :
+  outModifierMap := [@modifierMap emptyMap] ;
+  enterModifierWithStringInputArgument !?outModifierMap !"writeToFile" !true ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @dataGalgasType instanceMethodMap ->@modifierMap outModifierMap :
+  outModifierMap := instanceMethodMapFor_data [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once instanceMethodMapFor_string ->@modifierMap outModifierMap :
+  outModifierMap := [@modifierMap emptyMap] ;
+  enterModifierWithStringInputArgument !?outModifierMap !"writeToFile" !true ;
+  enterModifierWithStringInputArgument !?outModifierMap !"writeToExecutableFile" !true ;
+  enterModifierWithStringInputArgument !?outModifierMap !"makeDirectoryAndWriteToFile" !true ;
+  enterModifierWithoutArgument !?outModifierMap !"makeDirectory" !true ;
+  @formalParameterSignature argList [emptyList] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@boolGalgasType new] ![@formalArgumentPassingMode argumentOut] ;
+  [!?outModifierMap insertKey
+    ![@lstring new !"writeToFileWhenDifferentContents" !here]
+    !argList
+    !true
+  ] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringGalgasType instanceMethodMap ->@modifierMap outModifierMap :
+  outModifierMap := instanceMethodMapFor_string [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
