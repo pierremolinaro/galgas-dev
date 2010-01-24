@@ -38,7 +38,7 @@
 //---------------------------------------------------------------------------*
 
 
-void routine_generatePRGM (C_CompilerEx &,
+void routine_generatePRGM (C_Compiler &,
                                 const GGS_lstring  ,
                                 const GGS_lstring  ,
                                 const GGS_typeInstructionList  ,

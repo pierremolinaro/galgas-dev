@@ -1,7 +1,8 @@
 
 #include "testsuite_list.h"
 #include "galgas/GGS_stringset.h"
-#include "galgas2/GALGAS_uint.h"
+#include "galgas/GGS_uint.h"
+#include "galgas2/predefinedTypes2.h"
 
 //---------------------------------------------------------------------------*
 
@@ -39,9 +40,9 @@ routine_test_dictionary (void) {
 //---------------------------------------------------------------------------*
 
 static void
-routine_test_galgas2 (C_Compiler & /*inLexique */) {
+routine_test_galgas2 (C_CompilerEx & /*inLexique */) {
   GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
-  C_Object::retain (n) ;
+  C_Object::retain (n COMMA_HERE) ;
   AC_GALGAS__root::log (n, "n") ;
 /*  const PMSInt32 TEST_SIZE = 5000000 ;
   PM_C_Array array ;
@@ -66,7 +67,7 @@ routine_test_galgas2 (C_Compiler & /*inLexique */) {
 //---------------------------------------------------------------------------*
 
 void
-routine_testsuite_hand_coded (C_Compiler & /* inLexique */
+routine_testsuite_hand_coded (C_CompilerEx & inLexique
                               COMMA_UNUSED_LOCATION_ARGS) {
 //  routine_test_dictionary () ;
   routine_test_galgas2 (inLexique) ;
@@ -75,11 +76,11 @@ routine_testsuite_hand_coded (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_uint
-function_externTestFunction (C_Compiler & _inLexique,
+function_externTestFunction (C_CompilerEx & _inLexique,
                              GGS_uint inArg1,
                              const GGS_uint inArg2
-                             COMMA_UNUSED_LOCATION_ARGS) {
-  return inArg1.add_operation (_inLexique, inArg2 COMMA_HERE) ;
+                             COMMA_LOCATION_ARGS) {
+  return inArg1.add_operation (_inLexique, inArg2 COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*

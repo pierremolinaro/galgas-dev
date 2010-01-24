@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__ACGalgasType__typeName)  (C_CompilerEx & inLexique,
+typedef GGS_string (*typeCategoryReader__ACGalgasType__typeName)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -64,7 +64,7 @@ findCategoryReader__ACGalgasType__typeName (AC_galgasClassRunTimeInformationEX *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__ACGalgasType__typeIdentifierRepresentation)  (C_CompilerEx & inLexique,
+typedef GGS_string (*typeCategoryReader__ACGalgasType__typeIdentifierRepresentation)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -85,7 +85,7 @@ findCategoryReader__ACGalgasType__typeIdentifierRepresentation (AC_galgasClassRu
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__isComparable)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__isComparable)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -106,7 +106,7 @@ findCategoryReader__ACGalgasType__isComparable (AC_galgasClassRunTimeInformation
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_and_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_and_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -127,7 +127,7 @@ findCategoryReader__ACGalgasType__accept_and_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_or_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_or_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -148,7 +148,7 @@ findCategoryReader__ACGalgasType__accept_or_operator (AC_galgasClassRunTimeInfor
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_xor_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_xor_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -169,7 +169,7 @@ findCategoryReader__ACGalgasType__accept_xor_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_not_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_not_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -190,7 +190,7 @@ findCategoryReader__ACGalgasType__accept_not_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_add_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_add_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -211,7 +211,7 @@ findCategoryReader__ACGalgasType__accept_add_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_sub_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_sub_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -232,7 +232,7 @@ findCategoryReader__ACGalgasType__accept_sub_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_mul_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_mul_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -253,7 +253,7 @@ findCategoryReader__ACGalgasType__accept_mul_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_div_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_div_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -274,7 +274,7 @@ findCategoryReader__ACGalgasType__accept_div_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_mod_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_mod_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -295,7 +295,7 @@ findCategoryReader__ACGalgasType__accept_mod_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_unary_minus_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_unary_minus_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -316,7 +316,7 @@ findCategoryReader__ACGalgasType__accept_unary_minus_operator (AC_galgasClassRun
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_inc_dec_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_inc_dec_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -337,7 +337,7 @@ findCategoryReader__ACGalgasType__accept_inc_dec_operator (AC_galgasClassRunTime
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_shift_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_shift_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -358,7 +358,7 @@ findCategoryReader__ACGalgasType__accept_shift_operator (AC_galgasClassRunTimeIn
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_tilde_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_tilde_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -379,7 +379,7 @@ findCategoryReader__ACGalgasType__accept_tilde_operator (AC_galgasClassRunTimeIn
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_concat_operator)  (C_CompilerEx & inLexique,
+typedef GGS_bool (*typeCategoryReader__ACGalgasType__accept_concat_operator)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 

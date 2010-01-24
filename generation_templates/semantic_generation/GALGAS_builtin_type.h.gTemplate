@@ -41,13 +41,13 @@ do
   end foreach
   if [mArgumentTypeList length] == 0 then
     if mHasLexique then
-      %C_CompilerEx * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+      %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
     else
       %LOCATION_ARGS%
     end if
   else
     if mHasLexique then
-      %,\n% !COL %C_CompilerEx * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+      %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
     else
       %\n% !COL %COMMA_LOCATION_ARGS%
     end if
@@ -75,13 +75,13 @@ foreach [TYPE readerMap] do
     end foreach
     if [mArgumentTypeList length] == 0 then
       if mHasLexiqueArgument then
-        %C_CompilerEx * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+        %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
       else
         %LOCATION_ARGS%
       end if
     else
       if mHasLexiqueArgument then
-        %,\n% !COL %C_CompilerEx * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+        %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
       else
         %\n% !COL %COMMA_LOCATION_ARGS%
       end if
@@ -174,7 +174,7 @@ if [TYPE accept_add_operator] then
   %//--------------------------------- + operator\n%
   %  public : static GALGAS_%!TYPE_NAME% * add_operation (%?COL%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
   !COL%const GALGAS_%!TYPE_NAME% * inOperand2,\n%
-  !COL%C_CompilerEx * inCompiler\n%
+  !COL%C_Compiler * inCompiler\n%
   !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
@@ -182,7 +182,7 @@ if [TYPE accept_sub_operator] then
   %//--------------------------------- - operator\n%
   %  public : static GALGAS_%!TYPE_NAME% * substract_operation (%?COL%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
   !COL%const GALGAS_%!TYPE_NAME% * inOperand2,\n%
-  !COL%C_CompilerEx * inCompiler\n%
+  !COL%C_Compiler * inCompiler\n%
   !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
@@ -190,7 +190,7 @@ if [TYPE accept_mul_operator] then
   %//--------------------------------- * operator\n%
   %  public : static GALGAS_%!TYPE_NAME% * multiply_operation (%?COL%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
   !COL%const GALGAS_%!TYPE_NAME% * inOperand2,\n%
-  !COL%C_CompilerEx * inCompiler\n%
+  !COL%C_Compiler * inCompiler\n%
   !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
@@ -198,7 +198,7 @@ if [TYPE accept_div_operator] then
   %//--------------------------------- / operator\n%
   %  public : static GALGAS_%!TYPE_NAME% * divide_operation (%?COL%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
   !COL%const GALGAS_%!TYPE_NAME% * inOperand2,\n%
-  !COL%C_CompilerEx * inCompiler\n%
+  !COL%C_Compiler * inCompiler\n%
   !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
@@ -206,24 +206,24 @@ if [TYPE accept_mod_operator] then
   %//--------------------------------- mod operator\n%
   %  public : static GALGAS_%!TYPE_NAME% * modulo_operation (%?COL%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
   !COL%const GALGAS_%!TYPE_NAME% * inOperand2,\n%
-  !COL%C_CompilerEx * inCompiler\n%
+  !COL%C_Compiler * inCompiler\n%
   !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if [TYPE accept_unary_minus_operator] then
   %//--------------------------------- unary - operator\n%
   %  public : static GALGAS_%!TYPE_NAME% * operator_unary_minus (%?COL%const GALGAS_%!TYPE_NAME% * inOperand,\n%
-  !COL%C_CompilerEx * inCompiler\n%
+  !COL%C_Compiler * inCompiler\n%
   !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if [TYPE accept_inc_dec_operator] then
   %//--------------------------------- ++, -- operators\n%
   %  public : static void increment_operation (%?COL1%GALGAS_%!TYPE_NAME% * & ioOperand,\n%
-        !COL1%C_CompilerEx * inCompiler\n%
+        !COL1%C_Compiler * inCompiler\n%
         !COL1%COMMA_LOCATION_ARGS) ;\n\n%
   %  public : static void decrement_operation (%?COL2%GALGAS_%!TYPE_NAME% * & ioOperand,\n%
-        !COL2%C_CompilerEx * inCompiler\n%
+        !COL2%C_Compiler * inCompiler\n%
         !COL2%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
@@ -231,11 +231,11 @@ if [TYPE accept_shift_operator] then
   %//--------------------------------- << and >> shift operators\n%
   %  public : static GALGAS_%!TYPE_NAME% * left_shift_operation (%?COL1%const GALGAS_%!TYPE_NAME% * inOperand,\n%
   !COL1%const GALGAS_uint * inShiftOperand,\n%
-  !COL1%C_CompilerEx * inCompiler\n%
+  !COL1%C_Compiler * inCompiler\n%
   !COL1%COMMA_LOCATION_ARGS) ;\n\n%
   %  public : static GALGAS_%!TYPE_NAME% * right_shift_operation (%?COL2%const GALGAS_%!TYPE_NAME% * inOperand,\n%
   !COL2%const GALGAS_uint * inShiftOperand,\n%
-  !COL2%C_CompilerEx * inCompiler\n%
+  !COL2%C_Compiler * inCompiler\n%
   !COL2%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
@@ -274,7 +274,7 @@ foreach [TYPE readerMap] do
       do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand% ![IDX string]
     end foreach
     if mHasLexiqueArgument then
-      %,\n% !COL %C_CompilerEx * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+      %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
     else
       %\n% !COL %COMMA_LOCATION_ARGS%
     end if
@@ -293,7 +293,7 @@ end foreach
       do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand_% ![IDX string]
     end foreach
     if mHasLexiqueArgument then
-      %,\n% !COL %C_CompilerEx * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+      %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
     else
       %\n% !COL %COMMA_LOCATION_ARGS%
     end if

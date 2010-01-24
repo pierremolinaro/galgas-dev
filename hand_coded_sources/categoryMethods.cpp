@@ -34,7 +34,7 @@
 
 void cPtr_categoryMethodToImplement::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -50,7 +50,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
     inHfile.appendCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
     inHfile << "typedef void (*typeCategoryMethod__" << mClassName << "__" << mMethodName << ") "
-               " (C_CompilerEx & inLexique"
+               " (C_Compiler & inLexique"
             << ",\n                                "
                "const cPtr_" << mClassName << " * inObjectPtr" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
@@ -111,7 +111,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 //---------------------------------------------------------------------------*
 
 void cPtr_categoryMethodToImplement::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
                                 PMSInt32 & ioPrototypeIndex,
@@ -121,7 +121,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
     inCppFile.appendCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
     inCppFile << "static void\n"
                  "category_method__" << mClassName << "__" << mMethodName
-              << " (C_CompilerEx &" ;
+              << " (C_Compiler &" ;
     if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
       inCppFile << " inLexique" ;
     }
@@ -195,7 +195,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 
 void cPtr_categoryReaderToImplement::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -213,7 +213,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "typedef " ;
     mReturnedType (HERE)->generateCppClassName (inHfile) ;
     inHfile << " (*typeCategoryReader__" << mClassName << "__" << mMethodName << ") "
-               " (C_CompilerEx & inLexique"
+               " (C_Compiler & inLexique"
             << ",\n                                "
                "const cPtr_" << mClassName << " * inObjectPtr" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
@@ -274,7 +274,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 //---------------------------------------------------------------------------*
 
 void cPtr_categoryReaderToImplement::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
                                 PMSInt32 & ioPrototypeIndex,
@@ -286,7 +286,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
     mReturnedType (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << "\n"
                  "category_reader__" << mClassName << "__" << mMethodName
-              << " (C_CompilerEx &" ;
+              << " (C_Compiler &" ;
     if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
       inCppFile << " inLexique" ;
     }
@@ -343,7 +343,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
     inCppFile << "static " ;
     mReturnedType (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << "\n"
-                 "category_reader__" << mClassName << "_defaultReader_" << mMethodName << " (C_CompilerEx &"
+                 "category_reader__" << mClassName << "_defaultReader_" << mMethodName << " (C_Compiler &"
                  ",\n                                "
                  "const cPtr_" << mClassName << " *" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
@@ -393,7 +393,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 
 void cPtr_categoryTemplateToImplement::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -409,7 +409,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
     inHfile.appendCppTitleComment (C_String ("Category template '@") + mClassName + "." + mMethodName + "'") ;
     inHfile << "typedef C_String (*typeCategoryTemplate__" << mClassName << "__" << mMethodName << ") "
-               " (C_CompilerEx & inLexique"
+               " (C_Compiler & inLexique"
             << ",\n                                "
                "const PMSInt32 inIndentation"
             << ",\n                                "
@@ -472,7 +472,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 //---------------------------------------------------------------------------*
 
 void cPtr_categoryTemplateToImplement::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
                                 PMSInt32 & /* ioPrototypeIndex */,
@@ -482,7 +482,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
     inCppFile.appendCppTitleComment (C_String ("Category template '@") + mClassName + "." + mMethodName + "'") ;
     inCppFile << "static C_String\n"
                  "category_template__" << mClassName << "__" << mMethodName
-              << " (C_CompilerEx &" ;
+              << " (C_Compiler &" ;
     if (templateInstructionListUsesLexique (mInstructionList)) {
       inCppFile << " inLexique" ;
     }
@@ -536,7 +536,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
 //--- Generate default routine
     inCppFile << "static C_String\n"
-                 "category_template__" << mClassName << "_defaultTemplate (C_CompilerEx &"
+                 "category_template__" << mClassName << "_defaultTemplate (C_Compiler &"
                  ",\n                                "
                  "const PMSInt32"
                  ",\n                                "

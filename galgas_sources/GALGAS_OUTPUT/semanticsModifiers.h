@@ -67,13 +67,13 @@ class GGS_formalParameterSignature : public AC_galgas_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_formalParameterSignature
-  reader_subListWithRange (C_CompilerEx & inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_formalParameterSignature
-  reader_subListFromIndex (C_CompilerEx & inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -88,22 +88,22 @@ class GGS_formalParameterSignature : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_formalParameterSignature * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_CompilerEx & inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_ACGalgasType & _out_0,
                               GGS_formalArgumentPassingMode& _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_CompilerEx & inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_ACGalgasType & _out_0,
                              GGS_formalArgumentPassingMode& _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_CompilerEx & inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_ACGalgasType & _out_0,
                                 GGS_formalArgumentPassingMode& _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_CompilerEx & inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_ACGalgasType & _out_0,
                                  GGS_formalArgumentPassingMode& _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -115,7 +115,7 @@ class GGS_formalParameterSignature : public AC_galgas_list {
                                 const GGS_formalArgumentPassingMode& argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_formalParameterSignature operator_concat (const GGS_formalParameterSignature & inOperand) const ;
-  public : void modifier_prependValue (C_CompilerEx & inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_ACGalgasType & argument_0,
                                 const GGS_formalArgumentPassingMode& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -136,18 +136,18 @@ class GGS_formalParameterSignature : public AC_galgas_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_ACGalgasType 
-  reader_mParameterTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mParameterTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_formalArgumentPassingMode
-  reader_mFormalParameterPassingModeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mFormalParameterPassingModeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMParameterTypeAtIndex (C_CompilerEx & inLexique,
+  modifier_setMParameterTypeAtIndex (C_Compiler & inLexique,
                               const GGS_ACGalgasType  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMFormalParameterPassingModeAtIndex (C_CompilerEx & inLexique,
+  modifier_setMFormalParameterPassingModeAtIndex (C_Compiler & inLexique,
                               const GGS_formalArgumentPassingMode & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -157,7 +157,7 @@ class GGS_formalParameterSignature : public AC_galgas_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_formalParameterSignature castFromObject (C_CompilerEx & inLexique,
+  public : static GGS_formalParameterSignature castFromObject (C_Compiler & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -208,7 +208,7 @@ class GGS_modifierMap : public AC_galgas_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_modifierMap castFromObject (C_CompilerEx & inLexique,
+  public : static GGS_modifierMap castFromObject (C_Compiler & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -230,7 +230,7 @@ class GGS_modifierMap : public AC_galgas_map {
   public : inline const GGS_modifierMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_modifierMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_modifierMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
@@ -240,7 +240,7 @@ class GGS_modifierMap : public AC_galgas_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_CompilerEx & inLexique,
+  public : void modifier_insertKey (C_Compiler & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterSignature &  inParameter0,
                                 const GGS_bool&  inParameter1 COMMA_LOCATION_ARGS) ;
@@ -248,12 +248,12 @@ class GGS_modifierMap : public AC_galgas_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_CompilerEx & inLexique,
+  public : void method_searchKey (C_Compiler & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_formalParameterSignature   & outParameter0,
                                 GGS_bool  & outParameter1 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_CompilerEx & inLexique,
+  protected : void insertElement (C_Compiler & inLexique,
                                    const utf32 * inErrorMessage,
                                    const GGS_lstring & inKey,
                                    const GGS_formalParameterSignature & inParameter0,
@@ -261,7 +261,7 @@ class GGS_modifierMap : public AC_galgas_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_CompilerEx & inLexique,
+  protected : void searchElement (C_Compiler & inLexique,
                                    const utf32 * inErrorMessage,
                                    const GGS_lstring & inKey,
                                    GGS_formalParameterSignature & outParameter0,
@@ -269,10 +269,10 @@ class GGS_modifierMap : public AC_galgas_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_modifierMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
+  public : static GGS_modifierMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_modifierMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_modifierMap reader_overriddenMap (C_CompilerEx & inLexique
+  public : GGS_modifierMap reader_overriddenMap (C_Compiler & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 //--------------------------------- Map Enumerator
   public : class cEnumerator : public cAbstractMapEnumerator {
@@ -299,7 +299,7 @@ class GGS_modifierMap : public AC_galgas_map {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithStringInputArgument (C_CompilerEx &,
+void routine_enterModifierWithStringInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -310,7 +310,7 @@ void routine_enterModifierWithStringInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithLocationInputArgument (C_CompilerEx &,
+void routine_enterModifierWithLocationInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -321,7 +321,7 @@ void routine_enterModifierWithLocationInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithCharInputArgument (C_CompilerEx &,
+void routine_enterModifierWithCharInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -332,7 +332,7 @@ void routine_enterModifierWithCharInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithBoolInputArgument (C_CompilerEx &,
+void routine_enterModifierWithBoolInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -343,7 +343,7 @@ void routine_enterModifierWithBoolInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithDataInputArgument (C_CompilerEx &,
+void routine_enterModifierWithDataInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -354,7 +354,7 @@ void routine_enterModifierWithDataInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithUintInputArgument (C_CompilerEx &,
+void routine_enterModifierWithUintInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -365,7 +365,7 @@ void routine_enterModifierWithUintInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithUint64InputArgument (C_CompilerEx &,
+void routine_enterModifierWithUint64InputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -376,7 +376,7 @@ void routine_enterModifierWithUint64InputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithSintInputArgument (C_CompilerEx &,
+void routine_enterModifierWithSintInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -387,7 +387,7 @@ void routine_enterModifierWithSintInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithSint64InputArgument (C_CompilerEx &,
+void routine_enterModifierWithSint64InputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -398,7 +398,7 @@ void routine_enterModifierWithSint64InputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithDoubleInputArgument (C_CompilerEx &,
+void routine_enterModifierWithDoubleInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -409,7 +409,7 @@ void routine_enterModifierWithDoubleInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithCharUintInputArgument (C_CompilerEx &,
+void routine_enterModifierWithCharUintInputArgument (C_Compiler &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -420,7 +420,7 @@ void routine_enterModifierWithCharUintInputArgument (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_modifierMap  (*typeCategoryReader__ACGalgasType__modifierMap)  (C_CompilerEx & inLexique,
+typedef GGS_modifierMap  (*typeCategoryReader__ACGalgasType__modifierMap)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -445,7 +445,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_location (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_location (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -457,7 +457,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_string (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_string (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -469,7 +469,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_char (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_char (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -481,7 +481,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_bool (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_bool (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -493,7 +493,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_uint (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_uint (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -505,7 +505,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_sint (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_sint (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -517,7 +517,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_uint64 (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_uint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -529,7 +529,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_sint64 (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_sint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -541,7 +541,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_double (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_double (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -553,7 +553,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lstring (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_lstring (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -565,7 +565,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lchar (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_lchar (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -577,7 +577,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lbool (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_lbool (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -589,7 +589,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_luint (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_luint (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -601,7 +601,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lsint (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_lsint (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -613,7 +613,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_luint64 (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_luint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -625,7 +625,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_lsint64 (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_lsint64 (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -637,7 +637,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_ldouble (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_ldouble (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -649,7 +649,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_stringset (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_stringset (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -661,7 +661,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_binaryset (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_binaryset (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -673,7 +673,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_type (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_type (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -685,7 +685,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_object (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_object (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -697,7 +697,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_data (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_data (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -709,7 +709,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_function (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_function (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -721,7 +721,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_modifierMapFor_
 
 //---------------------------------------------------------------------------*
 
-GGS_modifierMap  function_modifierMapFor_listmap (C_CompilerEx & COMMA_LOCATION_ARGS) ;
+GGS_modifierMap  function_modifierMapFor_listmap (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

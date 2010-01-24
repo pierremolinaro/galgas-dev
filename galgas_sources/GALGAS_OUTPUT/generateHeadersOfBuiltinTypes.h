@@ -46,7 +46,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__ACGalgasType__scalarAttributeCppTypeName)  (C_CompilerEx & inLexique,
+typedef GGS_string (*typeCategoryReader__ACGalgasType__scalarAttributeCppTypeName)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -67,7 +67,7 @@ findCategoryReader__ACGalgasType__scalarAttributeCppTypeName (AC_galgasClassRunT
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__ACGalgasType__pointerAttributeCppTypeName)  (C_CompilerEx & inLexique,
+typedef GGS_string (*typeCategoryReader__ACGalgasType__pointerAttributeCppTypeName)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -88,7 +88,7 @@ findCategoryReader__ACGalgasType__pointerAttributeCppTypeName (AC_galgasClassRun
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__ACGalgasType__classAttributeCppTypeName)  (C_CompilerEx & inLexique,
+typedef GGS_string (*typeCategoryReader__ACGalgasType__classAttributeCppTypeName)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -109,7 +109,7 @@ findCategoryReader__ACGalgasType__classAttributeCppTypeName (AC_galgasClassRunTi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_stringlist  (*typeCategoryReader__ACGalgasType__embeddedObjectTypeNames)  (C_CompilerEx & inLexique,
+typedef GGS_stringlist  (*typeCategoryReader__ACGalgasType__embeddedObjectTypeNames)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -130,7 +130,7 @@ findCategoryReader__ACGalgasType__embeddedObjectTypeNames (AC_galgasClassRunTime
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__ACGalgasType__appendGeneratedHeader)  (C_CompilerEx & inLexique,
+typedef void (*typeCategoryMethod__ACGalgasType__appendGeneratedHeader)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr,
                                 GGS_string & var_cas_ioHeader
                                 COMMA_LOCATION_ARGS) ;
@@ -152,7 +152,7 @@ findCategoryMethod__ACGalgasType__appendGeneratedHeader (AC_galgasClassRunTimeIn
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__ACGalgasType__appendGeneratedImplementation)  (C_CompilerEx & inLexique,
+typedef void (*typeCategoryMethod__ACGalgasType__appendGeneratedImplementation)  (C_Compiler & inLexique,
                                 const cPtr_ACGalgasType * inObjectPtr,
                                 GGS_string & var_cas_ioImplementation
                                 COMMA_LOCATION_ARGS) ;
@@ -174,7 +174,7 @@ findCategoryMethod__ACGalgasType__appendGeneratedImplementation (AC_galgasClassR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_generateHeadersOfBuiltinTypes (C_CompilerEx &,
+void routine_generateHeadersOfBuiltinTypes (C_Compiler &,
                                 const GGS_string  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -192,7 +192,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_builtinTypeGenerationTemplate
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_builtinTypeGenerationTemplate_primitiveTypeHeader (C_CompilerEx & inLexique,
+template_filewrapper_builtinTypeGenerationTemplate_primitiveTypeHeader (C_Compiler & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_ACGalgasType & var_cas_TYPE) ;
 
@@ -203,7 +203,7 @@ template_filewrapper_builtinTypeGenerationTemplate_primitiveTypeHeader (C_Compil
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_builtinTypeGenerationTemplate_predefinedTypesHeader (C_CompilerEx & inLexique,
+template_filewrapper_builtinTypeGenerationTemplate_predefinedTypesHeader (C_Compiler & inLexique,
                                 const GGS_typeMap & var_cas_TYPE_MAP) ;
 
 //---------------------------------------------------------------------------*
@@ -213,7 +213,7 @@ template_filewrapper_builtinTypeGenerationTemplate_predefinedTypesHeader (C_Comp
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_builtinTypeGenerationTemplate_listTypeHeader (C_CompilerEx & inLexique,
+template_filewrapper_builtinTypeGenerationTemplate_listTypeHeader (C_Compiler & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_attributeList & var_cas_ATTRIBUTE_LIST) ;
 
@@ -224,7 +224,7 @@ template_filewrapper_builtinTypeGenerationTemplate_listTypeHeader (C_CompilerEx 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_builtinTypeGenerationTemplate_listTypeImplementation (C_CompilerEx & inLexique,
+template_filewrapper_builtinTypeGenerationTemplate_listTypeImplementation (C_Compiler & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_attributeList & var_cas_ATTRIBUTE_LIST) ;
 
@@ -235,7 +235,7 @@ template_filewrapper_builtinTypeGenerationTemplate_listTypeImplementation (C_Com
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_builtinTypeGenerationTemplate_predefinedTypesImplementation (C_CompilerEx & inLexique) ;
+template_filewrapper_builtinTypeGenerationTemplate_predefinedTypesImplementation (C_Compiler & inLexique) ;
 
 //---------------------------------------------------------------------------*
 

@@ -37,7 +37,7 @@ class C_Lexique ;
 //---------------------------------------------------------------------------*
 
 void
-SLR_computations (C_CompilerEx & inLexique,
+SLR_computations (C_Compiler & inLexique,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,
