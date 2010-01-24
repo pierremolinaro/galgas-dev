@@ -84,6 +84,8 @@ project all_galgas:
   semantics "semanticsConstructors.gSemantics" : makefile ;
   semantics "semanticsReaders.gSemantics" : makefile ;
   semantics "semanticsModifiers.gSemantics" : makefile ;
+  semantics "semanticsInstanceMethods.gSemantics" : makefile ;
+  semantics "semanticsClassMethods.gSemantics" : makefile ;
   semantics "generateHeadersOfBuiltinTypes.gSemantics" : makefile ;
   semantics "semanticsSemantics.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;

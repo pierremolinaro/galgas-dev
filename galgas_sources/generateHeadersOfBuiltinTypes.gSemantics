@@ -26,6 +26,20 @@ semantics generateHeadersOfBuiltinTypes :
   import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
   import "semanticsTypeFeatures.gSemantics" ;
   import semantics semanticsTypeFeatures in "semanticsTypeFeatures.gSemantics" ;
+  import "semanticsClassMethods.gSemantics" ;
+  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
+  import "semanticsInstanceMethods.gSemantics" ;
+  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+list @builtinTypeAttributeList {
+  @string mCppClassName ;
+  @bool mIsPointer ;
+  @string mAttributeName ;
+  @bool mUseReferenceForConstructor ;
+  @string mGetterName ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -33,174 +47,235 @@ semantics generateHeadersOfBuiltinTypes :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType scalarAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "" ; # Means no scalar attribute
+reader @ACGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @boolGalgasType scalarAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "bool" ;
+override reader @boolGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"bool" !false !"mBoolValue" !false !"boolValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @charGalgasType scalarAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "utf32" ;
+override reader @charGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"utf32" !false !"mCharValue" !false !"charValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType scalarAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "PMUInt32" ;
+override reader @stringGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"C_String" !false !"mString" !true !"stringValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType scalarAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "PMSInt32" ;
+override reader @uintGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"PMUInt32" !false !"mUIntValue" !false !"uintValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType scalarAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "PMUInt64" ;
+override reader @sintGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"PMSInt32" !false !"mSIntValue" !false !"sintValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType scalarAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "PMSInt64" ;
+override reader @uint64GalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"PMUInt64" !false !"mUInt64Value" !false !"uint64Value" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @doubleGalgasType scalarAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "double" ;
+override reader @sint64GalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"PMSInt64" !false !"mSInt64Value" !false !"sint64Value" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @doubleGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"double" !false !"mDoubleValue" !false !"doubleValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @locationGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"C_LocationInSource" !false !"mLocationInSource" !true !"location" ;
+  outList += !"C_SourceTextInString" !true !"mSourceText" !false !"sourceText" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @objectGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"AC_GALGAS__root" !true !"mEmbeddedObject" !false !"embeddedObject" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @typeGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"C_galgas_type_descriptor" !true !"mTypeDescriptor" !false !"embeddedTypeDescriptor" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @functionGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"C_galgas_function_descriptor" !true !"mFunctionDescriptor" !false !"functionDescriptor" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lstringGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"GALGAS_string" !true !"mString" !false !"stringValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lcharGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"GALGAS_char" !true !"mChar" !false !"charValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @luintGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"GALGAS_uint" !true !"mUInt" !false !"uintValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lsintGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"GALGAS_sint" !true !"mSInt" !false !"sintValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @luint64GalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"GALGAS_uint_36__34_" !true !"mUInt64" !false !"uint64Value" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lsint64GalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"GALGAS_sint_36__34_" !true !"mSInt64" !false !"sint64Value" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lboolGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"GALGAS_bool" !true !"mBool" !false !"boolValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @ldoubleGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"GALGAS_double" !true !"mDouble" !false !"doubleValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @binarysetGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"C_BDD" !false !"mBDD" !true !"bdd" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @dataGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"uint8UniqueArray" !false !"mData" !true !"" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-# P O I N T E R    A T T R I B U T E    T Y P E    N A M E                  *
+# G E N E R A T E    "    N E W    "    C O N S T R U C T O R               *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType pointerAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "" ; # Means no scalar attribute
+reader @ACGalgasType generate_new_constructor -> @bool outGenerate :
+  outGenerate := true ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @objectGalgasType pointerAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "AC_GALGAS__root" ;
+override reader @lstringGalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @typeGalgasType pointerAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "C_galgas_type_descriptor" ;
+override reader @lboolGalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionGalgasType pointerAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "C_galgas_function_descriptor" ;
+override reader @lcharGalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @locationGalgasType pointerAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "C_Compiler" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# C L A S S    A T T R I B U T E    T Y P E    N A M E                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType classAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "" ; # Means no scalar attribute
+override reader @luintGalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType classAttributeCppTypeName -> @string outTypeName :
-  outTypeName := "C_String" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# E M B E D D E D   O B J E C T S                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
+override reader @lsintGalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lstringGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
-  outTypeList += !"string" ;
-  outTypeList += !"location" ;
+override reader @luint64GalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lcharGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
-  outTypeList += !"char" ;
-  outTypeList += !"location" ;
+override reader @lsint64GalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @luintGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
-  outTypeList += !"uint" ;
-  outTypeList += !"location" ;
+override reader @ldoubleGalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lsintGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
-  outTypeList += !"sint" ;
-  outTypeList += !"location" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @luint64GalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
-  outTypeList += !"uint64" ;
-  outTypeList += !"location" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lsint64GalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
-  outTypeList += !"sint64" ;
-  outTypeList += !"location" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lboolGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
-  outTypeList += !"bool" ;
-  outTypeList += !"location" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @ldoubleGalgasType embeddedObjectTypeNames -> @stringlist outTypeList :
-  outTypeList := [@stringlist emptyList] ;
-  outTypeList += !"double" ;
-  outTypeList += !"location" ;
+override reader @stringsetGalgasType generate_new_constructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -212,6 +287,10 @@ end reader ;
 filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
   template primitiveTypeHeader "GALGAS_builtin_type.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@ACGalgasType TYPE
+  ;
+  template primitiveTypeImplementation "GALGAS_builtin_type.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@ACGalgasType TYPE
   ;
@@ -271,17 +350,22 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @primitiveGalgasType appendGeneratedImplementation ?!@string unused ioImplementation :
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @listGalgasType appendGeneratedImplementation ?!@string ioImplementation :
   @ACGalgasType t := self ; # Bug in GALGAS 1
   @listGalgasType tt := self ; # Bug in GALGAS 1
   ioImplementation .= [filewrapper builtinTypeGenerationTemplate.listTypeImplementation
     ![t typeIdentifierRepresentation]
     ![tt mAttributeList]
+ ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @primitiveGalgasType appendGeneratedImplementation ?!@string ioImplementation :
+  @ACGalgasType t := self ; # Bug in GALGAS 1
+  ioImplementation .= [filewrapper builtinTypeGenerationTemplate.primitiveTypeImplementation
+    ![t typeIdentifierRepresentation]
+    !t
  ] ;
 end method ;
 
@@ -305,7 +389,7 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
       end foreach ;
       [@string generateFile
         !inDirectory
-        !"predefinedTypes2.h"
+        !"predefined-types.h"
         !"//"
         !"\n\n" # Defaut user zone1
         !generatedCode
@@ -320,7 +404,7 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
       end foreach ;
       [@string generateFile
         !inDirectory
-        !"predefinedTypes2.cpp"
+        !"predefined-types.cpp"
         !"//"
         !"\n\n" # Defaut user zone1
         !generatedCode

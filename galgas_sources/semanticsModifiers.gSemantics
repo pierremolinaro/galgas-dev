@@ -32,7 +32,7 @@ list @formalParameterSignature {
 
 map @modifierMap {
   @formalParameterSignature mParameterList ;
-  @bool mHasLexiqueAndLocationArguments ;
+  @bool mHasCompilerArgument ;
   insert insertKey error message "the '%K' modifier has been already defined" ;
   search searchKey error message "the '%K' modifier is not declared" ;
 }
@@ -42,14 +42,28 @@ map @modifierMap {
 routine enterModifierWithStringInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithoutArgument
+  ?!@modifierMap ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    ![@formalParameterSignature emptyList]
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -58,14 +72,14 @@ end routine ;
 routine enterModifierWithLocationInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@locationGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -74,14 +88,14 @@ end routine ;
 routine enterModifierWithCharInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@charGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -90,14 +104,14 @@ end routine ;
 routine enterModifierWithBoolInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@boolGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -106,14 +120,14 @@ end routine ;
 routine enterModifierWithDataInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@dataGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -122,14 +136,14 @@ end routine ;
 routine enterModifierWithUintInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@uintGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -138,14 +152,14 @@ end routine ;
 routine enterModifierWithUint64InputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@uint64GalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -154,14 +168,14 @@ end routine ;
 routine enterModifierWithSintInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@sintGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -170,14 +184,14 @@ end routine ;
 routine enterModifierWithSint64InputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@sint64GalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -186,14 +200,14 @@ end routine ;
 routine enterModifierWithDoubleInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@doubleGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 
@@ -202,7 +216,7 @@ end routine ;
 routine enterModifierWithCharUintInputArgument
   ?!@modifierMap ioModifierMap
   ??@string inName
-  ??@bool inHasLexiqueAndLocationArguments
+  ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   argList += ![@charGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
@@ -210,7 +224,7 @@ routine enterModifierWithCharUintInputArgument
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
-    !inHasLexiqueAndLocationArguments
+    !inHasCompilerArgument
   ] ;
 end routine ;
 

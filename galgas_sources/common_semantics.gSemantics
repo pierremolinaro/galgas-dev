@@ -1012,7 +1012,6 @@ class @typeGalgas_string extends @AC_galgasType {
     end if ;
   end method ;
 
-#--- By default, class does not accept class method call
   override
   method handleClassMethodCall
     ??@lstring inTypeMethodName
@@ -3319,7 +3318,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
         ![@formalArgumentPassingMode argumentOut]
       ;
     else
-      error inTypeMethodName : "a map index only accepts 'regularIndex' type method" -> outTypeMethodSignature ;
+      error inTypeMethodName : "a map index only accepts 'makeRegularIndex' type method" -> outTypeMethodSignature ;
     end if ;
   end method ;
 
