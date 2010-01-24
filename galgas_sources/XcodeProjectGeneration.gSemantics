@@ -185,8 +185,8 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine build_LIBPM_GALGAS_2_files_for_sources_build_phase
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+  ?!@XcodeProjectDescription unused ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list unused ioBuildPhaseList
 :
 #  @stringlist cpp_and_h_fileList ;
 #  getGALGAS_2_source_file_list ?cpp_and_h_fileList ;

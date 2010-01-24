@@ -1,0 +1,90 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticsClassMethods :
+import "semanticsModifiers.gSemantics" ;
+import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType classMethodMap ->@modifierMap outModifierMap :
+  outModifierMap := [@modifierMap emptyMap] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once classMethodMapFor_location ->@modifierMap outModifierMap :
+  outModifierMap := [@modifierMap emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @locationGalgasType classMethodMap ->@modifierMap outModifierMap :
+  outModifierMap := classMethodMapFor_location [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once classMethodMapFor_string ->@modifierMap outModifierMap :
+  outModifierMap := [@modifierMap emptyMap] ;
+  enterModifierWithStringInputArgument !?outModifierMap !"deleteFile" !true ;
+  enterModifierWithStringInputArgument !?outModifierMap !"deleteFileIfExists" !true ;
+  enterModifierWithStringInputArgument !?outModifierMap !"removeEmptyDirectory" !true ;
+  enterModifierWithStringInputArgument !?outModifierMap !"removeDirectoryRecursively" !true ;
+  @formalParameterSignature argList [emptyList] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  [!?outModifierMap insertKey
+    ![@lstring new !"generateFile" !here]
+    !argList
+    !true
+  ] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringGalgasType classMethodMap ->@modifierMap outModifierMap :
+  outModifierMap := classMethodMapFor_string [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapindexType classMethodMap ->@modifierMap outModifierMap :
+  outModifierMap := [@modifierMap emptyMap] ;
+  @formalParameterSignature argList [emptyList] ;
+  @ACGalgasType tSelf := self ;
+  @ACGalgasType t ; [mIndexOfMapType searchKey ?* ?t] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += !t ![@formalArgumentPassingMode argumentInOut] ;
+  argList += !tSelf ![@formalArgumentPassingMode argumentOut] ;
+  [!?outModifierMap insertKey
+    ![@lstring new !"makeRegularIndex" !here]
+    !argList
+    !true
+  ] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

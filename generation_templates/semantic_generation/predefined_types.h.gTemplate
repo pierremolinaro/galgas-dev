@@ -6,15 +6,25 @@
 
 #include "galgas2/AC_GALGAS_Array.h"
 #include "strings/C_String.h"
+#include "collections/TC_UniqueArray.h"
+#include "galgas-utilities/C_LocationInSource.h"
+#include "bdd/C_BDD.h"
+
+//---------------------------------------------------------------------------*
+
+class C_galgas_function_descriptor ;
+class C_galgas_type_descriptor ;
+class C_SourceTextInString ;
+
+//---------------------------------------------------------------------------*
+
+typedef TC_UniqueArray <PMUInt8> uint8UniqueArray ;
 
 //---------------------------------------------------------------------------*
 
 %
 foreach TYPE_MAP do
   %class GALGAS_%![key identifierRepresentation]% ;\n%
-  if [[mType pointerAttributeCppTypeName] length] > 0 then
-    %class %![mType pointerAttributeCppTypeName]% ;\n%
-  end if
 end foreach
 %class C_Compiler ;
 

@@ -11,25 +11,25 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
 class GALGAS_%!TYPE_NAME% : public AC_GALGAS__root {
 //--------------------------------- Native constructor
 %
-  if [[TYPE scalarAttributeCppTypeName] length] > 0 then
-    %  protected : GALGAS_%!TYPE_NAME% (const %![TYPE scalarAttributeCppTypeName]% inValue COMMA_LOCATION_ARGS) ;\n\n%
-    %  public : static GALGAS_%!TYPE_NAME% * constructor_new (const %![TYPE scalarAttributeCppTypeName]% inValue COMMA_LOCATION_ARGS) ;\n%
-  elsif [[TYPE pointerAttributeCppTypeName] length] > 0 then
-    %  protected : GALGAS_%!TYPE_NAME% (const %![TYPE pointerAttributeCppTypeName]% * inValue COMMA_LOCATION_ARGS) ;\n\n%
-    %  public : static GALGAS_%!TYPE_NAME% * constructor_new (const %![TYPE pointerAttributeCppTypeName]% * inValue COMMA_LOCATION_ARGS) ;\n%
-  elsif [[TYPE classAttributeCppTypeName] length] > 0 then
-    %  protected : GALGAS_%!TYPE_NAME% (const %![TYPE classAttributeCppTypeName]% & inValue COMMA_LOCATION_ARGS) ;\n\n%
-    %  public : static GALGAS_%!TYPE_NAME% * constructor_new (const %![TYPE classAttributeCppTypeName]% & inValue COMMA_LOCATION_ARGS) ;\n%
-  elsif [[TYPE embeddedObjectTypeNames] length] > 0 then
-    %  protected : GALGAS_%!TYPE_NAME% (%?COL1
-      foreach [TYPE embeddedObjectTypeNames]
-      do %const GALGAS_%![mValue identifierRepresentation]% * in%![mValue stringByCapitalizingFirstCharacter] %Value%
-      between %,\n% !COL1
-      end foreach  
-      %\n% !COL1 %COMMA_LOCATION_ARGS) ;\n\n%
-  else
-    %  protected : GALGAS_%!TYPE_NAME% (LOCATION_ARGS) ;\n%
-  end if
+%  protected : GALGAS_%!TYPE_NAME% (%?COL_00
+foreach [TYPE attributeDescriptionList]
+  do %const % !mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
+  between %,\n%!COL_00
+end foreach
+if [[TYPE attributeDescriptionList] length] == 0 then
+  %LOCATION_ARGS) ;\n\n%
+else
+  %\n%!COL_00 %COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE generate_new_constructor] then
+  %  public : static GALGAS_%!TYPE_NAME% * constructor_new (%?COL_01
+  foreach [TYPE attributeDescriptionList]
+    do %const % !mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
+    between %,\n%!COL_01
+  end foreach
+  %\n%!COL_01 %COMMA_LOCATION_ARGS) ;\n\n%
+end if
 
 foreach [TYPE constructorMap]
 before %//--------------------------------- GALGAS constructors\n%
@@ -64,6 +64,108 @@ end foreach
   public : virtual void description (C_String & ioString,
                                      const PMSInt32 inIndentation) const ;
 
+//--------------------------------- Modifiers
+%
+foreach [TYPE modifierMap] do
+  %  protected : void modifier_%![key identifierRepresentation]% (%?COL
+  foreach mParameterList do index IDX
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
+    else # argumentIn
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    end if
+  between %,\n%!COL
+  end foreach
+  if [mParameterList length] == 0 then
+    if mHasCompilerArgument then
+      %C_Compiler * inCompiler\n%
+      !COL%COMMA_LOCATION_ARGS%
+    else
+      !COL%LOCATION_ARGS%
+    end if  
+  else
+    if mHasCompilerArgument then
+      %,\n%!COL%C_Compiler * inCompiler\n%
+      !COL%COMMA_LOCATION_ARGS%
+    else
+      %\n%!COL%COMMA_LOCATION_ARGS%
+    end if  
+  end if
+  %) ;\n\n%
+end foreach
+%
+//--------------------------------- Instance Methods
+%
+foreach [TYPE instanceMethodMap] do
+  %  protected : void method_%![key identifierRepresentation]% (%?COL
+  foreach mParameterList do index IDX
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
+    else # argumentIn
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    end if
+  between %,\n%!COL
+  end foreach
+  if [mParameterList length] == 0 then
+    if mHasCompilerArgument then
+      %C_Compiler * inCompiler\n%
+      !COL%COMMA_LOCATION_ARGS%
+    else
+      !COL%LOCATION_ARGS%
+    end if  
+  else
+    if mHasCompilerArgument then
+      %,\n%!COL%C_Compiler * inCompiler\n%
+      !COL%COMMA_LOCATION_ARGS%
+    else
+      %\n%!COL%COMMA_LOCATION_ARGS%
+    end if  
+  end if
+  %) const ;\n\n%
+end foreach
+%
+//--------------------------------- Class Methods
+%
+foreach [TYPE classMethodMap] do
+  %  public : static void class_method_%![key identifierRepresentation]% (%?COL
+  foreach mParameterList do index IDX
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
+    else # argumentIn
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    end if
+  between %,\n%!COL
+  end foreach
+  if [mParameterList length] == 0 then
+    if mHasCompilerArgument then
+      %C_Compiler * inCompiler\n%
+      !COL%COMMA_LOCATION_ARGS%
+    else
+      !COL%LOCATION_ARGS%
+    end if  
+  else
+    if mHasCompilerArgument then
+      %,\n%!COL%C_Compiler * inCompiler\n%
+      !COL%COMMA_LOCATION_ARGS%
+    else
+      %\n%!COL%COMMA_LOCATION_ARGS%
+    end if  
+  end if
+  %) ;\n\n%
+end foreach
+%
 //--------------------------------- Readers
 %
 foreach [TYPE readerMap] do
@@ -240,35 +342,77 @@ if [TYPE accept_shift_operator] then
 end if
 
 
-if [TYPE accept_inc_dec_operator] then
+if [TYPE accept_append_operator] then
+  %//--------------------------------- Append operator\n%
+  %  protected : static GALGAS_%!TYPE_NAME% * dotAssign_operation (%?COL%GALGAS_%!TYPE_NAME% * & ioResult,\n%
+                                                  !COL%const GALGAS_%!TYPE_NAME% * inOperand\n%
+                                                  !COL%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [TYPE accept_inc_dec_operator] | [TYPE accept_append_operator] | ([[TYPE modifierMap] count] > 0) then
   %//--------------------------------- Modifier utility method\n%
   %  protected : static void insulate (%?COL%GALGAS_%!TYPE_NAME% * & ioOperand\n%
         !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
-if [[TYPE scalarAttributeCppTypeName] length] > 0 then
-  %//--------------------------------- Private data member\n%
-  %  private : %![TYPE scalarAttributeCppTypeName]% mValue ;\n%
-  %  public : inline %![TYPE scalarAttributeCppTypeName]% value (void) const { return mValue ; }\n%
-elsif [[TYPE classAttributeCppTypeName] length] > 0 then
-  %//--------------------------------- Private data member\n%
-  %  private : %![TYPE classAttributeCppTypeName]% mValue ;\n%
-  %  public : inline %![TYPE classAttributeCppTypeName]% value (void) const { return mValue ; }\n%
-elsif [[TYPE pointerAttributeCppTypeName] length] > 0 then
-  %//--------------------------------- Private data member\n%
-  %  private : const %![TYPE pointerAttributeCppTypeName]% * mValue ;\n%
-  %  public : inline const %![TYPE pointerAttributeCppTypeName]% * value (void) const { return mValue ; }\n%
-elsif [[TYPE embeddedObjectTypeNames] length] > 0 then
-  %//--------------------------------- Private data members\n%
-    foreach [TYPE embeddedObjectTypeNames] do
-      %  private : const GALGAS_%![mValue identifierRepresentation]% * m% ![mValue stringByCapitalizingFirstCharacter] %Value ;\n%
-      %  public : inline const GALGAS_%![mValue identifierRepresentation]% * %![mValue identifierRepresentation]%Value (void) const { return m% ![mValue stringByCapitalizingFirstCharacter] %Value ; }\n%
-    end foreach  
-end if
-%//--------------------------------- Friends\n%
+%//--------------------------------- Private data member\n%
+foreach [TYPE attributeDescriptionList] do
+  %  private : %if mIsPointer then %const % end if !mCppClassName % % if mIsPointer then %* % end if !mAttributeName% ;\n%
+  if [mGetterName length] > 0 then
+    %  public : inline %if mIsPointer then %const % end if!mCppClassName % % if mIsPointer then % * % end if !mGetterName% (void) const { return %!mAttributeName% ; }\n%
+  end if
+end foreach
+%
+//--------------------------------- Instance Method Invocation\n\n%
+foreach [TYPE instanceMethodMap] do
+  %  friend inline void method_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * inObject%
+  foreach mParameterList do index IDX
+    %,\n%!COL
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
+    else # argumentIn
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    end if
+  end foreach
+  if mHasCompilerArgument then
+    %,\n%!COL%C_Compiler * inCompiler\n%
+    !COL%COMMA_LOCATION_ARGS%
+  else
+    %\n%!COL%COMMA_LOCATION_ARGS%
+  end if  
+  %) ;\n\n%
+end foreach
+%//--------------------------------- Modifier invocation\n%
+foreach [TYPE modifierMap] do
+  %  friend inline void modifier_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach mParameterList do index IDX
+    %,\n%!COL
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
+    else # argumentIn
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    end if
+  end foreach
+  if mHasCompilerArgument then
+    %,\n%!COL%C_Compiler * inCompiler\n%
+    !COL%COMMA_LOCATION_ARGS%
+  else
+    %\n%!COL%COMMA_LOCATION_ARGS%
+  end if  
+  %) ;\n\n%
+end foreach
+%//--------------------------------- Reader invocation\n%
 foreach [TYPE readerMap] do
   if mQualifier == [@readerQualifier isBasic] then
-    %  friend GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * readerCall_% ![key string] % (%?COL
+    %  friend inline GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key string] % (%?COL
     %const GALGAS_%!TYPE_NAME% * inObject%
     foreach mArgumentTypeList
       do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand% ![IDX string]
@@ -283,11 +427,10 @@ foreach [TYPE readerMap] do
 end foreach
 %} ;
 
-//---------------------------------------------------------------------------*
-
 % foreach [TYPE readerMap] do
   if mQualifier == [@readerQualifier isBasic] then
-    %inline GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * readerCall_% ![key string] % (%?COL
+    %//---------------------------------------------------------------------------*\n\n%
+    %inline GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key string] % (%?COL
     %const GALGAS_%!TYPE_NAME% * inObject%
     foreach mArgumentTypeList
       do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand_% ![IDX string]
@@ -324,5 +467,114 @@ end foreach
     %}\n\n%
   end if
 end foreach
-%
+foreach [TYPE modifierMap] do
+  %//---------------------------------------------------------------------------*\n\n%
+  %inline void modifier_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach mParameterList do index IDX
+    %,\n%!COL
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
+    else # argumentIn
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    end if
+  end foreach
+  if mHasCompilerArgument then
+    %,\n%!COL%C_Compiler * inCompiler\n%
+    !COL%COMMA_LOCATION_ARGS%
+  else
+    %\n%!COL%COMMA_LOCATION_ARGS%
+  end if  
+  %) {\n
+  if (ioResult != NULL) {
+    GALGAS_%!TYPE_NAME%::insulate (ioResult COMMA_THERE) ;
+    ioResult->modifier_%![key identifierRepresentation]% (%
+  foreach mParameterList do index IDX
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %outArgument% ![IDX string]
+    else # argumentIn
+      %inArgument% ![IDX string]
+    end if
+    between %, %
+  end foreach
+  if [mParameterList length] > 0 then
+    if mHasCompilerArgument then
+      %, inCompiler COMMA_THERE%
+    else
+      % COMMA_THERE%
+    end if
+  else
+    if mHasCompilerArgument then
+      %inCompiler COMMA_THERE%
+    else
+      %THERE%
+    end if
+  end if
+  %) ;  
+  }
+}\n\n%
+end foreach
 
+foreach [TYPE instanceMethodMap] do
+  %//---------------------------------------------------------------------------*\n\n%
+  %inline void method_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * inObject%
+  foreach mParameterList do index IDX
+    %,\n%!COL
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
+    else # argumentIn
+      %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
+    end if
+  end foreach
+  if mHasCompilerArgument then
+    %,\n%!COL%C_Compiler * inCompiler\n%
+    !COL%COMMA_LOCATION_ARGS%
+  else
+    %\n%!COL%COMMA_LOCATION_ARGS%
+  end if  
+  %) {\n
+  if (inObject != NULL) {
+    macroRetainObjectThere (inObject) ;
+    inObject->method_%![key identifierRepresentation]% (%
+  foreach mParameterList do index IDX
+    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+      %inArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+      %ioArgument% ![IDX string]
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+      %outArgument% ![IDX string]
+    else # argumentIn
+      %inArgument% ![IDX string]
+    end if
+    between %, %
+  end foreach
+  if [mParameterList length] > 0 then
+    if mHasCompilerArgument then
+      %, inCompiler COMMA_THERE%
+    else
+      % COMMA_THERE%
+    end if
+  else
+    if mHasCompilerArgument then
+      %inCompiler COMMA_THERE%
+    else
+      %THERE%
+    end if
+  end if
+  %) ;  
+    macroReleaseObjectThere (inObject) ;
+  }
+}\n\n%
+end foreach
+%

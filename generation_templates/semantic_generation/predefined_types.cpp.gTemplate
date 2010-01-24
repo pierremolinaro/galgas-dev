@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------*
 
-#include "galgas2/predefinedTypes2.h"
+#include "galgas2/predefined-types.h"
 #include "galgas-utilities/C_Compiler.h"
 
