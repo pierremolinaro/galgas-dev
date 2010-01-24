@@ -57,7 +57,7 @@ mLexicalAttribute_uint64value () {
 //---------------------------------------------------------------------------*
 
 galgas_scanner::
-galgas_scanner (C_CompilerEx * inCallerCompiler,
+galgas_scanner (C_Compiler * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
                 C_galgas_io * inParametersPtr,
@@ -69,7 +69,7 @@ C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, in
 //---------------------------------------------------------------------------*
 
 galgas_scanner::
-galgas_scanner (C_CompilerEx * inCallerCompiler,
+galgas_scanner (C_Compiler * inCallerCompiler,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError

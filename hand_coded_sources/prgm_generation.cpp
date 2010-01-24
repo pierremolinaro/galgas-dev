@@ -30,7 +30,7 @@
 //---------------------------------------------------------------------------*
 
 static void
-generate_header_file_for_prgm (C_CompilerEx & inLexique,
+generate_header_file_for_prgm (C_Compiler & inLexique,
                                const C_String & inProgramComponentName,
                                const GGS_M_optionComponents & inOptionsComponentsMap) {
 //--- Write includes
@@ -45,7 +45,7 @@ generate_header_file_for_prgm (C_CompilerEx & inLexique,
   }
   
   generatedZone2 << "#include \"galgas/C_galgas_CLI_Options.h\"\n"
-                    "#include \"galgas/C_Lexique.h\"\n"
+                    "#include \"galgas-utilities/C_Lexique.h\"\n"
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n" ;
 
   generatedZone2 << "\n" ;
@@ -68,7 +68,7 @@ generate_header_file_for_prgm (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
+generate_cpp_file_for_prgm (C_Compiler & inLexique,
                             const C_String & inVersionString,
                             const GGS_typeInstructionList inPrologueInstructionList,
                             const GGS_typeInstructionList inEpilogueInstructionList,
@@ -123,7 +123,7 @@ generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
   generatedZone2.appendCppTitleComment ("P R O G R A M    P R O L O G U E") ;
   const bool lexiqueIsUsedInPrologue = isLexiqueFormalArgumentUsedForList (inPrologueInstructionList, true) ;
   generatedZone2 << "static void\n"
-                 << inProgramComponentName << "_prologue (C_CompilerEx & "
+                 << inProgramComponentName << "_prologue (C_Compiler & "
                  << (lexiqueIsUsedInPrologue ? "inLexique" : "/* inLexique */")
                  << ",\n"
                     "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
@@ -140,7 +140,7 @@ generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
   generatedZone2.appendCppTitleComment ("P R O G R A M    E P I L O G U E") ;
   const bool lexiqueIsUsedInEpilogue = isLexiqueFormalArgumentUsedForList (inEpilogueInstructionList, true) ;
   generatedZone2 << "static void\n"
-                 << inProgramComponentName << "_epilogue (C_CompilerEx & "
+                 << inProgramComponentName << "_epilogue (C_Compiler & "
                  << (lexiqueIsUsedInEpilogue ? "inLexique" : "/* inLexique */")
                  << ",\n"
                     "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
@@ -200,9 +200,11 @@ generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
                     "  //--- Build galgas io object\n"
                     "    C_galgas_io * galgasIOptr = NULL ;\n"
                     "    macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;\n"
+                    "    macroRetainObject (galgasIOptr) ;\n"
                     "  //--- Common lexique object\n"
-                    "    C_CompilerEx * _commonLexique = NULL ;\n"
-                    "    macroMyNew (_commonLexique, C_CompilerEx (NULL, \"\", \"\", galgasIOptr COMMA_HERE)) ;\n"
+                    "    C_Compiler * _commonLexique = NULL ;\n"
+                    "    macroMyNew (_commonLexique, C_Compiler (NULL, \"\", \"\", galgasIOptr COMMA_HERE)) ;\n"
+                    "    macroRetainObject (_commonLexique) ;\n"
                     "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
                     "    #ifdef SIOUX_IS_IMPLEMENTED\n"
                     "      SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;\n"
@@ -231,12 +233,12 @@ generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
     }
     PMSInt32 prototypeIndex = 0 ;
     generatedZone2 << "if (fileExtension.compare (\"" << currentRule._mSourceExtension (HERE) << "\") == 0) {\n"
-                      "  C_CompilerEx & inLexique = * _commonLexique ;\n"
-                      "  const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
+                      "  C_Compiler & inLexique = * _commonLexique ;\n"
+                      "  const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
                       "  const GGS_location _here (inLexique) ;\n"
                       "  const GGS_lstring var_cas_"
                    << currentRule._mSourceFileName (HERE)
-                   << " (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;\n" ;
+                   << " (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;\n" ;
     generateInstructionListForList (currentRule._mInstructionList (HERE),
                                     generatedZone2,
                                     "",
@@ -307,16 +309,14 @@ generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
                     "    }catch (...) {\n"
                     "      throw ;\n"
                     "    }\n"
-                    "    macroDetachPointer (galgasIOptr, C_galgas_io) ;\n"
-                    "    macroDetachPointer (_commonLexique, C_CompilerEx) ;\n"
+                    "    macroReleaseObject (galgasIOptr) ;\n"
+                    "    macroReleaseObject (_commonLexique) ;\n"
                     "  }\n"
                     "  C_PrologueEpilogue::runEpilogueActions () ;\n"
-                    "  runAllReleaseRoutines () ;\n"
                     "  C_Object::garbage () ;\n"
                     "  C_StringCommandLineOption::releaseStrings () ;\n"
                     "  C_String::freeUnusedRegisteredStrings () ;\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "    C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
                     "    C_Object::checkAllObjectsHaveBeenReleased () ;\n"
                     "  #endif\n"
                     "  if (verboseOptionOn) {\n"
@@ -349,7 +349,7 @@ generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_generatePRGM (C_CompilerEx & inLexique,
+routine_generatePRGM (C_Compiler & inLexique,
                       const GGS_lstring inProgramComponentName,
                       const GGS_lstring inVersionString,
                       const GGS_typeInstructionList inPrologueInstructionList,
@@ -376,7 +376,7 @@ routine_generatePRGM (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_fixFileGenerationStartDirectory (C_CompilerEx & inLexique,
+routine_fixFileGenerationStartDirectory (C_Compiler & inLexique,
                                          const GGS_lstring inSourceFile
                                          COMMA_LOCATION_ARGS) {
   inLexique.ioParametersPtr ()->mFileGenerationStartDir = inSourceFile.stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;

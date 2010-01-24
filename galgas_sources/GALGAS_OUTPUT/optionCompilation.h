@@ -45,7 +45,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parseOptionComponent (C_CompilerEx &,
+void routine_parseOptionComponent (C_Compiler &,
                                 const GGS_lstring  ,
                                 GGS_parsedComponentStruct &,
                                 GGS_optionComponentRoot  & COMMA_LOCATION_ARGS) ;
@@ -56,7 +56,7 @@ void routine_parseOptionComponent (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileOptionComponent (C_CompilerEx &,
+void routine_compileOptionComponent (C_Compiler &,
                                 const GGS_lstring  ,
                                 const GGS_string ,
                                 GGS_parsedComponentStruct & COMMA_LOCATION_ARGS) ;
@@ -76,7 +76,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionHeaderZone2 (C_CompilerEx & inLexique,
+template_filewrapper_optionGenerationTemplates_optionHeaderZone2 (C_Compiler & inLexique,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -86,7 +86,7 @@ template_filewrapper_optionGenerationTemplates_optionHeaderZone2 (C_CompilerEx &
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionHeaderZone3 (C_CompilerEx & inLexique,
+template_filewrapper_optionGenerationTemplates_optionHeaderZone3 (C_Compiler & inLexique,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME,
                                 const GGS_commandLineOptionMap & var_cas_BOOL_OPTION_MAP,
                                 const GGS_commandLineOptionMap & var_cas_UINT_OPTION_MAP,
@@ -99,7 +99,7 @@ template_filewrapper_optionGenerationTemplates_optionHeaderZone3 (C_CompilerEx &
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionImplementation (C_CompilerEx & inLexique,
+template_filewrapper_optionGenerationTemplates_optionImplementation (C_Compiler & inLexique,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME,
                                 const GGS_commandLineOptionMap & var_cas_BOOL_OPTION_MAP,
                                 const GGS_commandLineOptionMap & var_cas_UINT_OPTION_MAP,
@@ -112,7 +112,7 @@ template_filewrapper_optionGenerationTemplates_optionImplementation (C_CompilerE
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone2 (C_CompilerEx & inLexique,
+template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone2 (C_Compiler & inLexique,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -122,7 +122,7 @@ template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone2 (C_Compile
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone3 (C_CompilerEx & inLexique,
+template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone3 (C_Compiler & inLexique,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME) ;
 
 //---------------------------------------------------------------------------*
@@ -132,7 +132,7 @@ template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone3 (C_Compile
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionImplementationCocoa (C_CompilerEx & inLexique,
+template_filewrapper_optionGenerationTemplates_optionImplementationCocoa (C_Compiler & inLexique,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME,
                                 const GGS_commandLineOptionMap & var_cas_BOOL_OPTION_MAP,
                                 const GGS_commandLineOptionMap & var_cas_UINT_OPTION_MAP,

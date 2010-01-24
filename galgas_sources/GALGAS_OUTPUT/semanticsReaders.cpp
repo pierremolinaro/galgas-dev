@@ -145,7 +145,7 @@ GGS_object GGS_readerQualifier::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_readerQualifier GGS_readerQualifier::castFromObject (C_CompilerEx & inLexique,
+GGS_readerQualifier GGS_readerQualifier::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -269,7 +269,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_readerMap GGS_readerMap::
-constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -314,7 +314,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_readerMap::
-insertElement (C_CompilerEx & inLexique,
+insertElement (C_Compiler & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_typeList & inParameter0,
@@ -350,7 +350,7 @@ insertElement (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_readerMap::
-searchElement (C_CompilerEx & inLexique,
+searchElement (C_Compiler & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_typeList   & outParameter0,
@@ -427,7 +427,7 @@ const utf32 GGS_readerMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_readerMap::
-method_searchKey (C_CompilerEx & inLexique,
+method_searchKey (C_Compiler & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_typeList   & outParameter0,
                                 GGS_bool  & outParameter1,
@@ -493,7 +493,7 @@ const utf32 GGS_readerMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_readerMap::
-modifier_insertKey (C_CompilerEx & inLexique,
+modifier_insertKey (C_Compiler & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_typeList & inParameter0,
                                 const GGS_bool& inParameter1,
@@ -513,7 +513,7 @@ modifier_insertKey (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_readerMap GGS_readerMap::
-constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
+constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
                                   const GGS_readerMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap result ; // Not Built
@@ -530,7 +530,7 @@ constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_readerMap GGS_readerMap::
-reader_overriddenMap (C_CompilerEx & /* inLexique */
+reader_overriddenMap (C_Compiler & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_readerMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -622,7 +622,7 @@ GGS_object GGS_readerMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap GGS_readerMap::castFromObject (C_CompilerEx & inLexique,
+GGS_readerMap GGS_readerMap::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -651,7 +651,7 @@ const C_galgas_type_descriptorEX * GGS_readerMap::typeDescriptor (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithoutArgument (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWithoutArgument (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -671,7 +671,7 @@ void routine_enterBaseReaderWithoutArgument (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithoutArgument (C_CompilerEx & inLexique,
+void routine_enterInheritedReaderWithoutArgument (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -691,7 +691,7 @@ void routine_enterInheritedReaderWithoutArgument (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithStringArgument (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWithStringArgument (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -713,7 +713,7 @@ void routine_enterBaseReaderWithStringArgument (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith2StringArguments (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWith2StringArguments (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -736,7 +736,7 @@ void routine_enterBaseReaderWith2StringArguments (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithBoolArgument (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWithBoolArgument (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -758,7 +758,7 @@ void routine_enterBaseReaderWithBoolArgument (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithBoolStringlistArguments (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWithBoolStringlistArguments (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -781,7 +781,7 @@ void routine_enterBaseReaderWithBoolStringlistArguments (C_CompilerEx & inLexiqu
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithUintArgument (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWithUintArgument (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -803,7 +803,7 @@ void routine_enterBaseReaderWithUintArgument (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith2UintArguments (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWith2UintArguments (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -826,7 +826,7 @@ void routine_enterBaseReaderWith2UintArguments (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith3UintArguments (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWith3UintArguments (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -850,7 +850,7 @@ void routine_enterBaseReaderWith3UintArguments (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithUintCharArguments (C_CompilerEx & inLexique,
+void routine_enterBaseReaderWithUintCharArguments (C_Compiler & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 const GGS_string  var_cas_inName,
                                 const GGS_ACGalgasType   var_cas_inReturnedType,
@@ -878,7 +878,7 @@ static bool gCacheFlagForOnceFunction_commonReaderMapForAllTypes = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_commonReaderMapForAllTypes (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_commonReaderMapForAllTypes (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_commonReaderMapForAllTypes) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_commonReaderMapForAllTypes at %s:%d\n", __FILE__, __LINE__) ;
@@ -899,7 +899,7 @@ GGS_readerMap  function_commonReaderMapForAllTypes (C_CompilerEx & inLexique COM
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_commonReaderMapForAllTypes (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_commonReaderMapForAllTypes (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -935,7 +935,7 @@ enterCategoryReader__ACGalgasType__readerMap (typeCategoryReader__ACGalgasType__
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__ACGalgasType_defaultReader_readerMap (C_CompilerEx &,
+category_reader__ACGalgasType_defaultReader_readerMap (C_Compiler &,
                                 const cPtr_ACGalgasType *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_readerMap  () ;
@@ -973,7 +973,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_location = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_location (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_location (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_location) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_location at %s:%d\n", __FILE__, __LINE__) ;
@@ -995,7 +995,7 @@ GGS_readerMap  function_readerMapFor_location (C_CompilerEx & inLexique COMMA_UN
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_location (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_location (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1019,7 +1019,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_location 
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__locationGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__locationGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_locationGalgasType * operand_8542
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1040,7 +1040,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_string = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_string (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_string (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_string) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_string at %s:%d\n", __FILE__, __LINE__) ;
@@ -1101,7 +1101,7 @@ GGS_readerMap  function_readerMapFor_string (C_CompilerEx & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_string (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_string (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1125,7 +1125,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_string ("
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__stringGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__stringGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_stringGalgasType * operand_13227
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1146,7 +1146,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_char = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_char (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_char (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_char) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_char at %s:%d\n", __FILE__, __LINE__) ;
@@ -1185,7 +1185,7 @@ GGS_readerMap  function_readerMapFor_char (C_CompilerEx & inLexique COMMA_UNUSED
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_char (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_char (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1209,7 +1209,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_char ("re
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__charGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__charGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_charGalgasType * operand_15495
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1230,7 +1230,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_bool = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_bool (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_bool (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_bool) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_bool at %s:%d\n", __FILE__, __LINE__) ;
@@ -1254,7 +1254,7 @@ GGS_readerMap  function_readerMapFor_bool (C_CompilerEx & inLexique COMMA_UNUSED
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_bool (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_bool (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1278,7 +1278,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_bool ("re
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__boolGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__boolGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_boolGalgasType * operand_16378
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1299,7 +1299,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_uint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_uint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_uint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_uint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_uint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1326,7 +1326,7 @@ GGS_readerMap  function_readerMapFor_uint (C_CompilerEx & inLexique COMMA_UNUSED
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_uint (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_uint (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1350,7 +1350,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_uint ("re
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__uintGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__uintGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_uintGalgasType * operand_17548
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1371,7 +1371,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_sint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_sint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_sint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_sint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_sint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1394,7 +1394,7 @@ GGS_readerMap  function_readerMapFor_sint (C_CompilerEx & inLexique COMMA_UNUSED
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_sint (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_sint (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1418,7 +1418,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_sint ("re
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__sintGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__sintGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_sintGalgasType * operand_18344
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1439,7 +1439,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_uint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_uint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_uint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_uint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_uint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1464,7 +1464,7 @@ GGS_readerMap  function_readerMapFor_uint64 (C_CompilerEx & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_uint64 (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_uint64 (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1488,7 +1488,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_uint64 ("
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__uint64GalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__uint64GalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_uint64GalgasType * operand_19317
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1509,7 +1509,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_sint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_sint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_sint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_sint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_sint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1532,7 +1532,7 @@ GGS_readerMap  function_readerMapFor_sint64 (C_CompilerEx & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_sint64 (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_sint64 (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1556,7 +1556,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_sint64 ("
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__sint64GalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__sint64GalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_sint64GalgasType * operand_20114
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1577,7 +1577,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_double = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_double (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_double (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_double) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_double at %s:%d\n", __FILE__, __LINE__) ;
@@ -1600,7 +1600,7 @@ GGS_readerMap  function_readerMapFor_double (C_CompilerEx & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_double (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_double (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1624,7 +1624,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_double ("
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__doubleGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__doubleGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_doubleGalgasType * operand_20910
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1645,7 +1645,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_lstring = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_lstring (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_lstring (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_lstring) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_lstring at %s:%d\n", __FILE__, __LINE__) ;
@@ -1666,7 +1666,7 @@ GGS_readerMap  function_readerMapFor_lstring (C_CompilerEx & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_lstring (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_lstring (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1690,7 +1690,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lstring (
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__lstringGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__lstringGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_lstringGalgasType * operand_21553
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1711,7 +1711,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_lchar = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_lchar (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_lchar (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_lchar) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_lchar at %s:%d\n", __FILE__, __LINE__) ;
@@ -1732,7 +1732,7 @@ GGS_readerMap  function_readerMapFor_lchar (C_CompilerEx & inLexique COMMA_UNUSE
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_lchar (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_lchar (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1756,7 +1756,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lchar ("r
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__lcharGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__lcharGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_lcharGalgasType * operand_22196
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1777,7 +1777,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_lbool = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_lbool (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_lbool (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_lbool) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_lbool at %s:%d\n", __FILE__, __LINE__) ;
@@ -1797,7 +1797,7 @@ GGS_readerMap  function_readerMapFor_lbool (C_CompilerEx & inLexique COMMA_UNUSE
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_lbool (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_lbool (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1821,7 +1821,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lbool ("r
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__lboolGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__lboolGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_lboolGalgasType * operand_22743
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1842,7 +1842,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_luint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_luint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_luint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_luint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_luint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1863,7 +1863,7 @@ GGS_readerMap  function_readerMapFor_luint (C_CompilerEx & inLexique COMMA_UNUSE
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_luint (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_luint (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1887,7 +1887,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_luint ("r
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__luintGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__luintGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_luintGalgasType * operand_23384
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1908,7 +1908,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_lsint = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_lsint (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_lsint (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_lsint) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_lsint at %s:%d\n", __FILE__, __LINE__) ;
@@ -1930,7 +1930,7 @@ GGS_readerMap  function_readerMapFor_lsint (C_CompilerEx & inLexique COMMA_UNUSE
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_lsint (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_lsint (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -1954,7 +1954,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lsint ("r
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__lsintGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__lsintGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_lsintGalgasType * operand_24111
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -1975,7 +1975,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_luint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_luint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_luint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_luint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_luint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -1997,7 +1997,7 @@ GGS_readerMap  function_readerMapFor_luint64 (C_CompilerEx & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_luint64 (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_luint64 (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2021,7 +2021,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_luint64 (
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__luint64GalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__luint64GalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_luint64GalgasType * operand_24788
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2042,7 +2042,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_lsint64 = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_lsint64 (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_lsint64 (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_lsint64) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_lsint64 at %s:%d\n", __FILE__, __LINE__) ;
@@ -2064,7 +2064,7 @@ GGS_readerMap  function_readerMapFor_lsint64 (C_CompilerEx & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_lsint64 (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_lsint64 (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2088,7 +2088,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_lsint64 (
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__lsint64GalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__lsint64GalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_lsint64GalgasType * operand_25525
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2109,7 +2109,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_ldouble = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_ldouble (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_ldouble (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_ldouble) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_ldouble at %s:%d\n", __FILE__, __LINE__) ;
@@ -2131,7 +2131,7 @@ GGS_readerMap  function_readerMapFor_ldouble (C_CompilerEx & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_ldouble (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_ldouble (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2155,7 +2155,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_ldouble (
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__ldoubleGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__ldoubleGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_ldoubleGalgasType * operand_26262
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2176,7 +2176,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_stringset = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_stringset (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_stringset (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_stringset) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_stringset at %s:%d\n", __FILE__, __LINE__) ;
@@ -2197,7 +2197,7 @@ GGS_readerMap  function_readerMapFor_stringset (C_CompilerEx & inLexique COMMA_U
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_stringset (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_stringset (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2221,7 +2221,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_stringset
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__stringsetGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__stringsetGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_stringsetGalgasType * operand_26908
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2242,7 +2242,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_binaryset = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_binaryset (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_binaryset (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_binaryset) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_binaryset at %s:%d\n", __FILE__, __LINE__) ;
@@ -2306,7 +2306,7 @@ GGS_readerMap  function_readerMapFor_binaryset (C_CompilerEx & inLexique COMMA_U
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_binaryset (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_binaryset (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2330,7 +2330,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_binaryset
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__binarysetGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__binarysetGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_binarysetGalgasType * operand_31131
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2351,7 +2351,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_type = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_type (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_type (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_type) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_type at %s:%d\n", __FILE__, __LINE__) ;
@@ -2372,7 +2372,7 @@ GGS_readerMap  function_readerMapFor_type (C_CompilerEx & inLexique COMMA_UNUSED
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_type (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_type (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2396,7 +2396,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_type ("re
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__typeGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__typeGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_typeGalgasType * operand_31770
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2417,7 +2417,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_object = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_object (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_object (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_object) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_object at %s:%d\n", __FILE__, __LINE__) ;
@@ -2436,7 +2436,7 @@ GGS_readerMap  function_readerMapFor_object (C_CompilerEx & inLexique COMMA_UNUS
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_object (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_object (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2460,7 +2460,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_object ("
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__objectGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__objectGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_objectGalgasType * operand_32234
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2481,7 +2481,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_data = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_data (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_data (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_data) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_data at %s:%d\n", __FILE__, __LINE__) ;
@@ -2500,7 +2500,7 @@ GGS_readerMap  function_readerMapFor_data (C_CompilerEx & inLexique COMMA_UNUSED
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_data (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_data (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2524,7 +2524,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_data ("re
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__dataGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__dataGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_dataGalgasType * operand_32692
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2545,7 +2545,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_function = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_function (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_function (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_function) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_function at %s:%d\n", __FILE__, __LINE__) ;
@@ -2570,7 +2570,7 @@ GGS_readerMap  function_readerMapFor_function (C_CompilerEx & inLexique COMMA_UN
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_function (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_function (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2594,7 +2594,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_function 
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__functionGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__functionGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_functionGalgasType * operand_33600
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2611,7 +2611,7 @@ category_reader__functionGalgasType__readerMap (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__classGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__classGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_classGalgasType * operand_33797
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2657,7 +2657,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_list = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_list (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_list (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_list) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_list at %s:%d\n", __FILE__, __LINE__) ;
@@ -2676,7 +2676,7 @@ GGS_readerMap  function_readerMapFor_list (C_CompilerEx & inLexique COMMA_UNUSED
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_list (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_list (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2700,7 +2700,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_list ("re
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__listGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__listGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_listGalgasType * operand_34699
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2737,7 +2737,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_listmap = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_listmap (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_listmap (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_listmap) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_listmap at %s:%d\n", __FILE__, __LINE__) ;
@@ -2759,7 +2759,7 @@ GGS_readerMap  function_readerMapFor_listmap (C_CompilerEx & inLexique COMMA_UNU
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_listmap (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_listmap (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2783,7 +2783,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_listmap (
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__listmapGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__listmapGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_listmapGalgasType * operand_35923
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2807,7 +2807,7 @@ category_reader__listmapGalgasType__readerMap (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__structGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__structGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_structGalgasType * operand_36258
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2838,7 +2838,7 @@ category_reader__structGalgasType__readerMap (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__sortedlistGalgasType__readerMap (C_CompilerEx & inLexique,
+category_reader__sortedlistGalgasType__readerMap (C_Compiler & inLexique,
                                 const cPtr_sortedlistGalgasType * operand_36714
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2860,7 +2860,7 @@ static bool gCacheFlagForOnceFunction_readerMapFor_map = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_readerMap  function_readerMapFor_map (C_CompilerEx & inLexique COMMA_UNUSED_LOCATION_ARGS) {
+GGS_readerMap  function_readerMapFor_map (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_readerMapFor_map) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_readerMapFor_map at %s:%d\n", __FILE__, __LINE__) ;
@@ -2885,7 +2885,7 @@ GGS_readerMap  function_readerMapFor_map (C_CompilerEx & inLexique COMMA_UNUSED_
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_readerMapFor_map (C_CompilerEx & inLexique,
+static GGS_object functionForGenericCall_readerMapFor_map (C_Compiler & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2909,7 +2909,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_readerMapFor_map ("rea
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__mapType__readerMap (C_CompilerEx & inLexique,
+category_reader__mapType__readerMap (C_Compiler & inLexique,
                                 const cPtr_mapType * operand_37802
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2927,7 +2927,7 @@ category_reader__mapType__readerMap (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__mapindexType__readerMap (C_CompilerEx & inLexique,
+category_reader__mapindexType__readerMap (C_Compiler & inLexique,
                                 const cPtr_mapindexType * operand_38065
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;
@@ -2948,7 +2948,7 @@ category_reader__mapindexType__readerMap (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 static GGS_readerMap 
-category_reader__enumType__readerMap (C_CompilerEx & inLexique,
+category_reader__enumType__readerMap (C_Compiler & inLexique,
                                 const cPtr_enumType * operand_38601
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_readerMap  var_cas_outMap ;

@@ -157,7 +157,7 @@ GGS_object GGS_sourceFileKind::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_sourceFileKind GGS_sourceFileKind::castFromObject (C_CompilerEx & inLexique,
+GGS_sourceFileKind GGS_sourceFileKind::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -246,12 +246,12 @@ internalAppendValues (const GGS_sourceFileKind& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstringlist & argument_2
                     COMMA_LOCATION_ARGS) {
-  cElement * nouvelElement = (cElement *) NULL ;
-  macroMyNew (nouvelElement, cElement (argument_0,
+  cElement * newElement = (cElement *) NULL ;
+  macroMyNew (newElement, cElement (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_THERE)) ;
-  _internalAppendItem (nouvelElement) ;
+  internalAppendItem (newElement) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -261,12 +261,12 @@ internalPrependValues (const GGS_sourceFileKind& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstringlist & argument_2
                     COMMA_LOCATION_ARGS) {
-  cElement * nouvelElement = (cElement *) NULL ;
-  macroMyNew (nouvelElement, cElement (argument_0,
+  cElement * newElement = (cElement *) NULL ;
+  macroMyNew (newElement, cElement (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_THERE)) ;
-  _internalPrependItem (nouvelElement) ;
+  internalPrependItem (newElement) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -320,7 +320,7 @@ dotAssign_operation (const GGS_projectSourceList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-modifier_prependValue (C_CompilerEx & /* inLexique */,
+modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_sourceFileKind& argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_lstringlist & argument_2
@@ -338,7 +338,7 @@ modifier_prependValue (C_CompilerEx & /* inLexique */,
 
 void GGS_projectSourceList::
 insulateList (void) {
-  if (_shared ()) {
+  if (isShared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
@@ -397,7 +397,7 @@ internalSubListWithRange (GGS_projectSourceList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_projectSourceList GGS_projectSourceList::
-reader_subListWithRange (C_CompilerEx & inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -417,7 +417,7 @@ reader_subListWithRange (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_projectSourceList GGS_projectSourceList::
-reader_subListFromIndex (C_CompilerEx & inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_projectSourceList result ;
@@ -442,7 +442,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-method_first (C_CompilerEx & inLexique,
+method_first (C_Compiler & inLexique,
               GGS_sourceFileKind& _out_0,
               GGS_lstring & _out_1,
               GGS_lstringlist & _out_2
@@ -468,7 +468,7 @@ method_first (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-method_last (C_CompilerEx & inLexique,
+method_last (C_Compiler & inLexique,
              GGS_sourceFileKind& _out_0,
              GGS_lstring & _out_1,
              GGS_lstringlist & _out_2
@@ -494,7 +494,7 @@ method_last (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-modifier_popFirst (C_CompilerEx & inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_sourceFileKind& _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstringlist & _out_2
@@ -511,7 +511,7 @@ modifier_popFirst (C_CompilerEx & inLexique,
     _out_1 = ptr->mFilePath ;
     _out_2 = ptr->mTargetList ;
     insulateList () ;
-    _internalRemoveFirst () ;
+    internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -522,7 +522,7 @@ modifier_popFirst (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-modifier_popLast (C_CompilerEx & inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_sourceFileKind& _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstringlist & _out_2
@@ -539,7 +539,7 @@ modifier_popLast (C_CompilerEx & inLexique,
     _out_1 = ptr->mFilePath ;
     _out_2 = ptr->mTargetList ;
     insulateList () ;
-    _internalRemoveLast () ;
+    internalRemoveLast () ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -550,7 +550,7 @@ modifier_popLast (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_sourceFileKind GGS_projectSourceList::
-reader_mSourceKindAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSourceKindAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_sourceFileKind result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -564,7 +564,7 @@ reader_mSourceKindAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_projectSourceList::
-reader_mFilePathAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mFilePathAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -578,7 +578,7 @@ reader_mFilePathAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 GGS_lstringlist  GGS_projectSourceList::
-reader_mTargetListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTargetListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstringlist  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -592,7 +592,7 @@ reader_mTargetListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-modifier_setMSourceKindAtIndex (C_CompilerEx & inLexique,
+modifier_setMSourceKindAtIndex (C_Compiler & inLexique,
                               const GGS_sourceFileKind & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -607,7 +607,7 @@ modifier_setMSourceKindAtIndex (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-modifier_setMFilePathAtIndex (C_CompilerEx & inLexique,
+modifier_setMFilePathAtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -622,7 +622,7 @@ modifier_setMFilePathAtIndex (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-modifier_setMTargetListAtIndex (C_CompilerEx & inLexique,
+modifier_setMTargetListAtIndex (C_Compiler & inLexique,
                               const GGS_lstringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -669,7 +669,7 @@ GGS_object GGS_projectSourceList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_projectSourceList GGS_projectSourceList::castFromObject (C_CompilerEx & inLexique,
+GGS_projectSourceList GGS_projectSourceList::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

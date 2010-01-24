@@ -42,7 +42,7 @@ cTokenFor_%!LEXIQUE_CLASS_NAME%::cTokenFor_%!LEXIQUE_CLASS_NAME% (void)%
 //---------------------------------------------------------------------------*
 
 %!LEXIQUE_CLASS_NAME%::
-%!LEXIQUE_CLASS_NAME% (C_CompilerEx * inCallerCompiler,
+%!LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
                 C_galgas_io * inParametersPtr,
@@ -58,7 +58,7 @@ C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, in
 //---------------------------------------------------------------------------*
 
 %!LEXIQUE_CLASS_NAME%::
-%!LEXIQUE_CLASS_NAME% (C_CompilerEx * inCallerCompiler,
+%!LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError

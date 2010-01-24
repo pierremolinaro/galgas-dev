@@ -104,9 +104,11 @@ void modifier_popFirst (GALGAS_%!TYPE_NAME% * & ioResult,\n%
   end foreach
 %                        C_Compiler * inCompiler
                         COMMA_LOCATION_ARGS) {
-  C_Object::release (outOperand0 COMMA_HERE) ;
-  outOperand0 = NULL ;
-  if (ioResult != NULL) {
+%
+  foreach ATTRIBUTE_LIST
+  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  end foreach
+%  if (ioResult != NULL) {
     GALGAS_%!TYPE_NAME%::insulate (ioResult) ;
     const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
@@ -129,9 +131,11 @@ void modifier_popLast (GALGAS_%!TYPE_NAME% * & ioResult,\n%
   end foreach
 %                       C_Compiler * inCompiler
                        COMMA_LOCATION_ARGS) {
-  C_Object::release (outOperand0 COMMA_HERE) ;
-  outOperand0 = NULL ;
-  if (ioResult != NULL) {
+%
+  foreach ATTRIBUTE_LIST
+  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  end foreach
+%  if (ioResult != NULL) {
     GALGAS_%!TYPE_NAME%::insulate (ioResult) ;
     const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
@@ -154,9 +158,11 @@ void method_first (const GALGAS_%!TYPE_NAME% * inList,\n%
   end foreach
 %                   C_Compiler * inCompiler
                    COMMA_LOCATION_ARGS) {
-  C_Object::release (outOperand0 COMMA_HERE) ;
-  outOperand0 = NULL ;
-  if (inList != NULL) {
+%
+  foreach ATTRIBUTE_LIST
+  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  end foreach
+%  if (inList != NULL) {
     const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
@@ -178,9 +184,11 @@ void method_last (const GALGAS_%!TYPE_NAME% * inList,\n%
   end foreach
 %                  C_Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
-  C_Object::release (outOperand0 COMMA_HERE) ;
-  outOperand0 = NULL ;
-  if (inList != NULL) {
+%
+  foreach ATTRIBUTE_LIST
+  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  end foreach
+%  if (inList != NULL) {
     const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%

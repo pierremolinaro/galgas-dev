@@ -90,7 +90,7 @@ const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionHeaderZone2 (C_CompilerEx & /* inLexique */,
+template_filewrapper_optionGenerationTemplates_optionHeaderZone2 (C_Compiler & /* inLexique */,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME) {
   C_String result ;
   const bool isBuilt = var_cas_OPTION_COMPONENT_NAME.isBuilt () ;
@@ -121,7 +121,7 @@ template_filewrapper_optionGenerationTemplates_optionHeaderZone2 (C_CompilerEx &
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionHeaderZone3 (C_CompilerEx & /* inLexique */,
+template_filewrapper_optionGenerationTemplates_optionHeaderZone3 (C_Compiler & /* inLexique */,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME,
                                 const GGS_commandLineOptionMap & var_cas_BOOL_OPTION_MAP,
                                 const GGS_commandLineOptionMap & var_cas_UINT_OPTION_MAP,
@@ -198,7 +198,7 @@ template_filewrapper_optionGenerationTemplates_optionHeaderZone3 (C_CompilerEx &
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionImplementation (C_CompilerEx & inLexique,
+template_filewrapper_optionGenerationTemplates_optionImplementation (C_Compiler & inLexique,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME,
                                 const GGS_commandLineOptionMap & var_cas_BOOL_OPTION_MAP,
                                 const GGS_commandLineOptionMap & var_cas_UINT_OPTION_MAP,
@@ -331,7 +331,7 @@ template_filewrapper_optionGenerationTemplates_optionImplementation (C_CompilerE
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone2 (C_CompilerEx & /* inLexique */,
+template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone2 (C_Compiler & /* inLexique */,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME) {
   C_String result ;
   const bool isBuilt = var_cas_OPTION_COMPONENT_NAME.isBuilt () ;
@@ -360,7 +360,7 @@ template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone2 (C_Compile
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone3 (C_CompilerEx & /* inLexique */,
+template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone3 (C_Compiler & /* inLexique */,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME) {
   C_String result ;
   const bool isBuilt = var_cas_OPTION_COMPONENT_NAME.isBuilt () ;
@@ -388,7 +388,7 @@ template_filewrapper_optionGenerationTemplates_optionHeaderCocoaZone3 (C_Compile
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_optionGenerationTemplates_optionImplementationCocoa (C_CompilerEx & inLexique,
+template_filewrapper_optionGenerationTemplates_optionImplementationCocoa (C_Compiler & inLexique,
                                 const GGS_string& var_cas_OPTION_COMPONENT_NAME,
                                 const GGS_commandLineOptionMap & var_cas_BOOL_OPTION_MAP,
                                 const GGS_commandLineOptionMap & var_cas_UINT_OPTION_MAP,
@@ -503,7 +503,7 @@ template_filewrapper_optionGenerationTemplates_optionImplementationCocoa (C_Comp
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parseOptionComponent (C_CompilerEx & inLexique,
+void routine_parseOptionComponent (C_Compiler & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct,
                                 GGS_optionComponentRoot  & var_cas_outOptionComponentRoot COMMA_UNUSED_LOCATION_ARGS) {
@@ -542,7 +542,7 @@ void routine_parseOptionComponent (C_CompilerEx & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileOptionComponent (C_CompilerEx & inLexique,
+void routine_compileOptionComponent (C_Compiler & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 const GGS_string  var_cas_inOutputDirectory,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct COMMA_UNUSED_LOCATION_ARGS) {

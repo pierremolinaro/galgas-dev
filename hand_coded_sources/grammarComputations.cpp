@@ -155,7 +155,7 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
 //---------------------------------------------------------------------------*
 
 static void
-generateGrammarHeaderFile (C_CompilerEx & inLexique,
+generateGrammarHeaderFile (C_Compiler & inLexique,
                            const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                            const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                            const C_String & inLexiqueName,
@@ -213,7 +213,7 @@ generateGrammarHeaderFile (C_CompilerEx & inLexique,
       if (nonTerminal._mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
         generatedZone3 << "  public : static "
                           "void _performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_CompilerEx & inCompiler"
+                       << " (C_Compiler & inCompiler"
                           ",\n                                "
                           "const C_String & inDependancyExtension"
                           ",\n                                "
@@ -233,7 +233,7 @@ generateGrammarHeaderFile (C_CompilerEx & inLexique,
         generatedZone3 << "  public : static " ;
         generatedZone3 << "void " ;
         generatedZone3 << "_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_CompilerEx & inCompiler"
+                       << " (C_Compiler & inCompiler"
                           ",\n                                "
                           "GGS_string * inSentStringPtr"
                           ",\n                                "
@@ -399,7 +399,7 @@ static PMUInt16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
 //---------------------------------------------------------------------------*
 
 static void
-analyzeGrammar (C_CompilerEx & inLexique,
+analyzeGrammar (C_Compiler & inLexique,
                 const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GGS_lstring & inTargetFileName,
                 const GGS_lstring & inGrammarClass,
@@ -807,7 +807,7 @@ analyzeGrammar (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_analyzeGrammar (C_CompilerEx & inLexique,
+routine_analyzeGrammar (C_Compiler & inLexique,
                         const GGS_lstring inTargetFileName,
                         const GGS_lstring inGrammarClass,
                         const GGS_uint inOriginalGrammarStartSymbol,

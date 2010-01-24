@@ -45,7 +45,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1)  (C_CompilerEx & inLexique,
+typedef void (*typeCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1)  (C_Compiler & inLexique,
                                 const cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObjectPtr,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -70,7 +70,7 @@ findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstru
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_fixSyntaxInstructionList_V1 (C_CompilerEx &,
+void routine_fixSyntaxInstructionList_V1 (C_Compiler &,
                                 const GGS_syntaxInstructionListForGrammarAnalysis  ,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  &,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis  ,

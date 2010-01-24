@@ -49,7 +49,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_transformLabelM
 
 //---------------------------------------------------------------------------*
 
-GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_CompilerEx &,
+GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_Compiler &,
                                 const GGS_nonTerminalLabelList  ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
 
@@ -59,7 +59,7 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_C
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkLabelMap (C_CompilerEx &,
+void routine_checkLabelMap (C_Compiler &,
                                 const GGS_location  ,
                                 const GGS_nonTerminalLabelList  ,
                                 const GGS_bool ,
@@ -72,7 +72,7 @@ void routine_checkLabelMap (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_handleNonTerminalDeclarations (C_CompilerEx &,
+void routine_handleNonTerminalDeclarations (C_Compiler &,
                                 GGS_nonTerminalSymbolMapForGrammarAnalysis  &,
                                 const GGS_nonterminalDeclarationList   COMMA_LOCATION_ARGS) ;
 
@@ -82,7 +82,7 @@ void routine_handleNonTerminalDeclarations (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__syntaxInstruction__transformInstruction)  (C_CompilerEx & inLexique,
+typedef void (*typeCategoryMethod__syntaxInstruction__transformInstruction)  (C_Compiler & inLexique,
                                 const cPtr_syntaxInstruction * inObjectPtr,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -107,7 +107,7 @@ findCategoryMethod__syntaxInstruction__transformInstruction (AC_galgasClassRunTi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_transformInstructionList (C_CompilerEx &,
+void routine_transformInstructionList (C_Compiler &,
                                 const GGS_syntaxInstructionList  ,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  &,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis  ,
@@ -120,7 +120,7 @@ void routine_transformInstructionList (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildRuleList (C_CompilerEx &,
+void routine_buildRuleList (C_Compiler &,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis  ,
                                 const GGS_lstring  ,
                                 const GGS_syntaxRuleList  ,
@@ -134,7 +134,7 @@ void routine_buildRuleList (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileGrammarComponent (C_CompilerEx &,
+void routine_compileGrammarComponent (C_Compiler &,
                                 const GGS_lstring  ,
                                 const GGS_string ,
                                 const GGS_string ,

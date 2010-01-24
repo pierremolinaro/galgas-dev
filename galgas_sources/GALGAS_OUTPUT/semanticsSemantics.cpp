@@ -108,7 +108,7 @@ operator_strictSup (const GGS_variableStateAutomaton inOperand) const {
 //---------------------------------------------------------------------------*
 
 void GGS_variableStateAutomaton::
-modifier_writeAccess (C_CompilerEx & inLexique,
+modifier_writeAccess (C_Compiler & inLexique,
                                 const GGS_location   var_cas_inErrorLocation
                                 COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -159,7 +159,7 @@ modifier_writeAccess (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableStateAutomaton::
-modifier_readAccess (C_CompilerEx & inLexique,
+modifier_readAccess (C_Compiler & inLexique,
                                 const GGS_location   var_cas_inErrorLocation
                                 COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -210,7 +210,7 @@ modifier_readAccess (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableStateAutomaton::
-modifier_readWriteAccess (C_CompilerEx & inLexique,
+modifier_readWriteAccess (C_Compiler & inLexique,
                                 const GGS_location   var_cas_inErrorLocation
                                 COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -266,7 +266,7 @@ modifier_readWriteAccess (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableStateAutomaton::
-modifier_dropAccess (C_CompilerEx & inLexique,
+modifier_dropAccess (C_Compiler & inLexique,
                                 const GGS_location   var_cas_inErrorLocation
                                 COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -574,7 +574,7 @@ static const PMSInt32 kErrorForvariableStateAutomaton_endOfRepeatedBranch [121] 
 //---------------------------------------------------------------------------*
 
 GGS_variableStateAutomaton GGS_variableStateAutomaton::
-operator_endOfRepeatedBranch (C_CompilerEx & inLexique,
+operator_endOfRepeatedBranch (C_Compiler & inLexique,
                                 const GGS_variableStateAutomaton & inOperand,
                                 const GGS_location   var_cas_inErrorLocation
                                 COMMA_UNUSED_LOCATION_ARGS) const {
@@ -667,7 +667,7 @@ GGS_object GGS_variableStateAutomaton::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_variableStateAutomaton GGS_variableStateAutomaton::castFromObject (C_CompilerEx & inLexique,
+GGS_variableStateAutomaton GGS_variableStateAutomaton::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -753,7 +753,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_variableMap GGS_variableMap::
-constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_variableMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -798,7 +798,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-insertElement (C_CompilerEx & inLexique,
+insertElement (C_Compiler & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 GGS_luint * outIndex
@@ -822,7 +822,7 @@ insertElement (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-searchElement (C_CompilerEx & inLexique,
+searchElement (C_Compiler & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_luint * outIndex
@@ -1094,7 +1094,7 @@ const utf32 GGS_variableMap::kSearchMessage_searchForWriteAccess [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-method_searchForReadOnlyAccess (C_CompilerEx & inLexique,
+method_searchForReadOnlyAccess (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
                   kSearchMessage_searchForReadOnlyAccess,
@@ -1106,7 +1106,7 @@ method_searchForReadOnlyAccess (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-method_searchForDestructiveReadAccess (C_CompilerEx & inLexique,
+method_searchForDestructiveReadAccess (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
                   kSearchMessage_searchForDestructiveReadAccess,
@@ -1118,7 +1118,7 @@ method_searchForDestructiveReadAccess (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-method_searchForReadWriteAccess (C_CompilerEx & inLexique,
+method_searchForReadWriteAccess (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
                   kSearchMessage_searchForReadWriteAccess,
@@ -1130,7 +1130,7 @@ method_searchForReadWriteAccess (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-method_searchForWriteAccess (C_CompilerEx & inLexique,
+method_searchForWriteAccess (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
                   kSearchMessage_searchForWriteAccess,
@@ -1787,7 +1787,7 @@ const utf32 GGS_variableMap::kInsertMessage_insertUnusedInOutArgument [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertListOfEntitiesLocalVariable (C_CompilerEx & inLexique,
+modifier_insertListOfEntitiesLocalVariable (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertListOfEntitiesLocalVariable,
@@ -1799,7 +1799,7 @@ modifier_insertListOfEntitiesLocalVariable (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertSingleEntityLocalVariable (C_CompilerEx & inLexique,
+modifier_insertSingleEntityLocalVariable (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertSingleEntityLocalVariable,
@@ -1811,7 +1811,7 @@ modifier_insertSingleEntityLocalVariable (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertEntityAttributeLocalVariable (C_CompilerEx & inLexique,
+modifier_insertEntityAttributeLocalVariable (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertEntityAttributeLocalVariable,
@@ -1823,7 +1823,7 @@ modifier_insertEntityAttributeLocalVariable (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertInArgument (C_CompilerEx & inLexique,
+modifier_insertInArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertInArgument,
@@ -1835,7 +1835,7 @@ modifier_insertInArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertUnusedInArgument (C_CompilerEx & inLexique,
+modifier_insertUnusedInArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertUnusedInArgument,
@@ -1847,7 +1847,7 @@ modifier_insertUnusedInArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertConstInArgument (C_CompilerEx & inLexique,
+modifier_insertConstInArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertConstInArgument,
@@ -1859,7 +1859,7 @@ modifier_insertConstInArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertUsedConstInArgument (C_CompilerEx & inLexique,
+modifier_insertUsedConstInArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertUsedConstInArgument,
@@ -1871,7 +1871,7 @@ modifier_insertUsedConstInArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertUsedConstInArgumentNoShadow (C_CompilerEx & inLexique,
+modifier_insertUsedConstInArgumentNoShadow (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertUsedConstInArgumentNoShadow,
@@ -1883,7 +1883,7 @@ modifier_insertUsedConstInArgumentNoShadow (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertUnusedConstInArgument (C_CompilerEx & inLexique,
+modifier_insertUnusedConstInArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertUnusedConstInArgument,
@@ -1895,7 +1895,7 @@ modifier_insertUnusedConstInArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertLocalVariable (C_CompilerEx & inLexique,
+modifier_insertLocalVariable (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertLocalVariable,
@@ -1907,7 +1907,7 @@ modifier_insertLocalVariable (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertOutArgument (C_CompilerEx & inLexique,
+modifier_insertOutArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertOutArgument,
@@ -1919,7 +1919,7 @@ modifier_insertOutArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertOutProperty (C_CompilerEx & inLexique,
+modifier_insertOutProperty (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertOutProperty,
@@ -1931,7 +1931,7 @@ modifier_insertOutProperty (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertInOutArgument (C_CompilerEx & inLexique,
+modifier_insertInOutArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertInOutArgument,
@@ -1943,7 +1943,7 @@ modifier_insertInOutArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertUsedInOutArgument (C_CompilerEx & inLexique,
+modifier_insertUsedInOutArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertUsedInOutArgument,
@@ -1955,7 +1955,7 @@ modifier_insertUsedInOutArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertUnusedInOutArgument (C_CompilerEx & inLexique,
+modifier_insertUnusedInOutArgument (C_Compiler & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  kInsertMessage_insertUnusedInOutArgument,
@@ -1967,7 +1967,7 @@ modifier_insertUnusedInOutArgument (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_variableMap GGS_variableMap::
-constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
+constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
                                   const GGS_variableMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_variableMap result ; // Not Built
@@ -1984,7 +1984,7 @@ constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_variableMap GGS_variableMap::
-reader_overriddenMap (C_CompilerEx & /* inLexique */
+reader_overriddenMap (C_Compiler & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_variableMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -2052,7 +2052,7 @@ GGS_object GGS_variableMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_variableMap GGS_variableMap::castFromObject (C_CompilerEx & inLexique,
+GGS_variableMap GGS_variableMap::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2155,7 +2155,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_routineMap GGS_routineMap::
-constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_routineMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -2200,7 +2200,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_routineMap::
-insertElement (C_CompilerEx & inLexique,
+insertElement (C_Compiler & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_signature & inParameter0,
@@ -2227,7 +2227,7 @@ insertElement (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_routineMap::
-searchElement (C_CompilerEx & inLexique,
+searchElement (C_Compiler & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_signature   & outParameter0,
@@ -2296,7 +2296,7 @@ const utf32 GGS_routineMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_routineMap::
-method_searchKey (C_CompilerEx & inLexique,
+method_searchKey (C_Compiler & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_signature   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -2364,7 +2364,7 @@ const utf32 GGS_routineMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_routineMap::
-modifier_insertKey (C_CompilerEx & inLexique,
+modifier_insertKey (C_Compiler & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_signature & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -2378,7 +2378,7 @@ modifier_insertKey (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_routineMap GGS_routineMap::
-constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
+constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
                                   const GGS_routineMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_routineMap result ; // Not Built
@@ -2395,7 +2395,7 @@ constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_routineMap GGS_routineMap::
-reader_overriddenMap (C_CompilerEx & /* inLexique */
+reader_overriddenMap (C_Compiler & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_routineMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -2469,7 +2469,7 @@ GGS_object GGS_routineMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_routineMap GGS_routineMap::castFromObject (C_CompilerEx & inLexique,
+GGS_routineMap GGS_routineMap::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2579,7 +2579,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_functionMap GGS_functionMap::
-constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_functionMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -2624,7 +2624,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_functionMap::
-insertElement (C_CompilerEx & inLexique,
+insertElement (C_Compiler & inLexique,
                 const utf32 * inErrorMessage,
                 const GGS_lstring & inKey,
                 const GGS_signature & inParameter0,
@@ -2654,7 +2654,7 @@ insertElement (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_functionMap::
-searchElement (C_CompilerEx & inLexique,
+searchElement (C_Compiler & inLexique,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
                GGS_signature   & outParameter0,
@@ -2727,7 +2727,7 @@ const utf32 GGS_functionMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_functionMap::
-method_searchKey (C_CompilerEx & inLexique,
+method_searchKey (C_Compiler & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_signature   & outParameter0,
                                 GGS_typeMapIndex   & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -2798,7 +2798,7 @@ const utf32 GGS_functionMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_functionMap::
-modifier_insertKey (C_CompilerEx & inLexique,
+modifier_insertKey (C_Compiler & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_signature & inParameter0,
                                 const GGS_typeMapIndex & inParameter1 COMMA_LOCATION_ARGS) {
@@ -2814,7 +2814,7 @@ modifier_insertKey (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_functionMap GGS_functionMap::
-constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
+constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
                                   const GGS_functionMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_functionMap result ; // Not Built
@@ -2831,7 +2831,7 @@ constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_functionMap GGS_functionMap::
-reader_overriddenMap (C_CompilerEx & /* inLexique */
+reader_overriddenMap (C_Compiler & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_functionMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -2911,7 +2911,7 @@ GGS_object GGS_functionMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_functionMap GGS_functionMap::castFromObject (C_CompilerEx & inLexique,
+GGS_functionMap GGS_functionMap::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2984,10 +2984,10 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classIndexList ("classIndex
 void GGS_classIndexList::
 internalAppendValues (const GGS_typeMapIndex & argument_0
                     COMMA_LOCATION_ARGS) {
-  cElement * nouvelElement = (cElement *) NULL ;
-  macroMyNew (nouvelElement, cElement (argument_0
+  cElement * newElement = (cElement *) NULL ;
+  macroMyNew (newElement, cElement (argument_0
                                 COMMA_THERE)) ;
-  _internalAppendItem (nouvelElement) ;
+  internalAppendItem (newElement) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2995,10 +2995,10 @@ internalAppendValues (const GGS_typeMapIndex & argument_0
 void GGS_classIndexList::
 internalPrependValues (const GGS_typeMapIndex & argument_0
                     COMMA_LOCATION_ARGS) {
-  cElement * nouvelElement = (cElement *) NULL ;
-  macroMyNew (nouvelElement, cElement (argument_0
+  cElement * newElement = (cElement *) NULL ;
+  macroMyNew (newElement, cElement (argument_0
                                 COMMA_THERE)) ;
-  _internalPrependItem (nouvelElement) ;
+  internalPrependItem (newElement) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3046,7 +3046,7 @@ dotAssign_operation (const GGS_classIndexList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-modifier_prependValue (C_CompilerEx & /* inLexique */,
+modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_typeMapIndex & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -3060,7 +3060,7 @@ modifier_prependValue (C_CompilerEx & /* inLexique */,
 
 void GGS_classIndexList::
 insulateList (void) {
-  if (_shared ()) {
+  if (isShared ()) {
     cElement * ptr = firstObject () ;
     alloc () ;
     while (ptr != NULL) {
@@ -3115,7 +3115,7 @@ internalSubListWithRange (GGS_classIndexList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_classIndexList GGS_classIndexList::
-reader_subListWithRange (C_CompilerEx & inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -3135,7 +3135,7 @@ reader_subListWithRange (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_classIndexList GGS_classIndexList::
-reader_subListFromIndex (C_CompilerEx & inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_classIndexList result ;
@@ -3160,7 +3160,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-method_first (C_CompilerEx & inLexique,
+method_first (C_Compiler & inLexique,
               GGS_typeMapIndex & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -3180,7 +3180,7 @@ method_first (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-method_last (C_CompilerEx & inLexique,
+method_last (C_Compiler & inLexique,
              GGS_typeMapIndex & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -3200,7 +3200,7 @@ method_last (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-modifier_popFirst (C_CompilerEx & inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_typeMapIndex & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -3213,7 +3213,7 @@ modifier_popFirst (C_CompilerEx & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mClassMapindex ;
     insulateList () ;
-    _internalRemoveFirst () ;
+    internalRemoveFirst () ;
   }else{
     _out_0.drop () ;
   }
@@ -3222,7 +3222,7 @@ modifier_popFirst (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-modifier_popLast (C_CompilerEx & inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_typeMapIndex & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -3235,7 +3235,7 @@ modifier_popLast (C_CompilerEx & inLexique,
   if (ptr != NULL) {
     _out_0 = ptr->mClassMapindex ;
     insulateList () ;
-    _internalRemoveLast () ;
+    internalRemoveLast () ;
   }else{
     _out_0.drop () ;
   }
@@ -3244,7 +3244,7 @@ modifier_popLast (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_typeMapIndex  GGS_classIndexList::
-reader_mClassMapindexAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mClassMapindexAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_typeMapIndex  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -3258,7 +3258,7 @@ reader_mClassMapindexAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex
 //---------------------------------------------------------------------------*
 
 void GGS_classIndexList::
-modifier_setMClassMapindexAtIndex (C_CompilerEx & inLexique,
+modifier_setMClassMapindexAtIndex (C_Compiler & inLexique,
                               const GGS_typeMapIndex  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3291,7 +3291,7 @@ GGS_object GGS_classIndexList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_classIndexList GGS_classIndexList::castFromObject (C_CompilerEx & inLexique,
+GGS_classIndexList GGS_classIndexList::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3425,7 +3425,7 @@ addAssign_operation (const GGS_string & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_classIndexList GGS_descendantClassListMap::
-reader_listForKey (C_CompilerEx & /* inLexique */,
+reader_listForKey (C_Compiler & /* inLexique */,
                    const GGS_string & inKey
                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_classIndexList result ;
@@ -3443,7 +3443,7 @@ reader_listForKey (C_CompilerEx & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_stringset GGS_descendantClassListMap::
-reader_allKeys (C_CompilerEx & /* inLexique */
+reader_allKeys (C_Compiler & /* inLexique */
                 COMMA_UNUSED_LOCATION_ARGS) const {
 
   GGS_stringset result ;
@@ -3454,7 +3454,7 @@ reader_allKeys (C_CompilerEx & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_stringlist GGS_descendantClassListMap::
-reader_keyList (C_CompilerEx & /* inLexique */
+reader_keyList (C_Compiler & /* inLexique */
                 COMMA_UNUSED_LOCATION_ARGS) const {
 
   GGS_stringlist result ;
@@ -3506,7 +3506,7 @@ GGS_object GGS_descendantClassListMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_descendantClassListMap GGS_descendantClassListMap::castFromObject (C_CompilerEx & inLexique,
+GGS_descendantClassListMap GGS_descendantClassListMap::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3650,7 +3650,7 @@ GGS_object GGS_semanticContext::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_semanticContext GGS_semanticContext::castFromObject (C_CompilerEx & inLexique,
+GGS_semanticContext GGS_semanticContext::castFromObject (C_Compiler & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

@@ -47,7 +47,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticDeclaration__enterType)  (C_CompilerEx & inLexique,
+typedef void (*typeCategoryMethod__semanticDeclaration__enterType)  (C_Compiler & inLexique,
                                 const cPtr_semanticDeclaration * inObjectPtr,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_LOCATION_ARGS) ;
@@ -69,7 +69,7 @@ findCategoryMethod__semanticDeclaration__enterType (AC_galgasClassRunTimeInforma
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildSemanticContext (C_CompilerEx &,
+void routine_buildSemanticContext (C_Compiler &,
                                 const GGS_semanticDeclarationList  ,
                                 const GGS_location  ,
                                 GGS_semanticContext & COMMA_LOCATION_ARGS) ;
@@ -80,7 +80,7 @@ void routine_buildSemanticContext (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticInstruction__semanticAnalysis)  (C_CompilerEx & inLexique,
+typedef void (*typeCategoryMethod__semanticInstruction__semanticAnalysis)  (C_Compiler & inLexique,
                                 const cPtr_semanticInstruction * inObjectPtr,
                                 const GGS_semanticContext  var_cas_inSemanticContext
                                 COMMA_LOCATION_ARGS) ;
@@ -102,7 +102,7 @@ findCategoryMethod__semanticInstruction__semanticAnalysis (AC_galgasClassRunTime
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticDeclaration__semanticAnalysis)  (C_CompilerEx & inLexique,
+typedef void (*typeCategoryMethod__semanticDeclaration__semanticAnalysis)  (C_Compiler & inLexique,
                                 const cPtr_semanticDeclaration * inObjectPtr,
                                 const GGS_semanticContext  var_cas_inSemanticContext
                                 COMMA_LOCATION_ARGS) ;
@@ -124,7 +124,7 @@ findCategoryMethod__semanticDeclaration__semanticAnalysis (AC_galgasClassRunTime
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parseSemanticComponent (C_CompilerEx &,
+void routine_parseSemanticComponent (C_Compiler &,
                                 const GGS_lstring  ,
                                 GGS_parsedComponentStruct &,
                                 GGS_semanticsComponentRoot  & COMMA_LOCATION_ARGS) ;
@@ -135,7 +135,7 @@ void routine_parseSemanticComponent (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivelyImportSemanticComponent (C_CompilerEx &,
+void routine_recursivelyImportSemanticComponent (C_Compiler &,
                                 GGS_parsedComponentStruct &,
                                 GGS_semanticDeclarationList  &,
                                 GGS_stringset  &,
@@ -148,7 +148,7 @@ void routine_recursivelyImportSemanticComponent (C_CompilerEx &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileSemanticsComponent (C_CompilerEx &,
+void routine_compileSemanticsComponent (C_Compiler &,
                                 const GGS_lstring  ,
                                 const GGS_string ,
                                 GGS_parsedComponentStruct & COMMA_LOCATION_ARGS) ;

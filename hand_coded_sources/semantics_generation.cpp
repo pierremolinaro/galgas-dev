@@ -31,7 +31,7 @@
 //---------------------------------------------------------------------------*
 
 void
-routine_check_KL_escapeCharacters (C_CompilerEx & inLexique,
+routine_check_KL_escapeCharacters (C_Compiler & inLexique,
                                    GGS_lstring inString
                                    COMMA_LOCATION_ARGS) {
   if (inString.isBuilt ()) {
@@ -61,7 +61,7 @@ routine_check_KL_escapeCharacters (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_check_K_escapeCharacters (C_CompilerEx & inLexique,
+routine_check_K_escapeCharacters (C_Compiler & inLexique,
                                   GGS_lstring inString
                                   COMMA_LOCATION_ARGS) {
   if (inString.isBuilt ()) {
@@ -91,7 +91,7 @@ routine_check_K_escapeCharacters (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_buildFileNameWithPath (C_CompilerEx &,
+routine_buildFileNameWithPath (C_Compiler &,
                                GGS_lstring & outFileNameWithPath,
                                GGS_lstring inPath,
                                const GGS_lstring inCppClassName,
@@ -108,7 +108,7 @@ routine_buildFileNameWithPath (C_CompilerEx &,
 //---------------------------------------------------------------------------*
 
 void
-routine_appendJokersIfNeeded (C_CompilerEx &,
+routine_appendJokersIfNeeded (C_Compiler &,
                               GGS_typeCplusPlusNameList & ioVariablesList,
                               GGS_uint inEffectiveArgumentsCount,
                               GGS_uint inFormalParametersCount,
@@ -132,7 +132,7 @@ routine_appendJokersIfNeeded (C_CompilerEx &,
 
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -146,7 +146,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Routine '") + mRoutineName + "'") ;
-  inHfile << "void routine_" << mRoutineName << " (C_CompilerEx &" ;
+  inHfile << "void routine_" << mRoutineName << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
   while (currentArgument.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
@@ -180,13 +180,13 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineAengendrer::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
                                 PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + mRoutineName + "\"") ;
-  inCppFile << "void routine_" << mRoutineName << " (C_CompilerEx &" ;
+  inCppFile << "void routine_" << mRoutineName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " inLexique" ;
   }
@@ -232,7 +232,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 
 void cPtr_typeFonctionAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -249,7 +249,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "extern const C_galgas_function_descriptorEX kFunction_descriptor_" << mFunctionName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ; 
   mReturnedType (HERE)->generateCppClassName (inHfile) ;
-  inHfile << " function_" << mFunctionName << " (C_CompilerEx &" ;
+  inHfile << " function_" << mFunctionName << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
   while (currentArgument.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
@@ -283,7 +283,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeFonctionAengendrer::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
                                 PMSInt32 & ioPrototypeIndex,
@@ -291,7 +291,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
   inCppFile.appendCppTitleComment (C_String ("Implementation of function \"") + mFunctionName + "\"") ;
 //--------------------------------- Function implementation
   mReturnedType (HERE)->generateCppClassName (inCppFile) ;
-  inCppFile << " function_" << mFunctionName << " (C_CompilerEx &" ;
+  inCppFile << " function_" << mFunctionName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " inLexique" ;
   }
@@ -337,7 +337,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 
 //--------------------------------- Function call for introspection
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "static GGS_object functionForGenericCall_" << mFunctionName << " (C_CompilerEx & inLexique,\n"
+  inCppFile << "static GGS_object functionForGenericCall_" << mFunctionName << " (C_Compiler & inLexique,\n"
                "                           const GGS_objectlist & "
             << ((aListeTypeEtNomsArguments.count () == 0) ? "/* inEffectiveParameterArray */" : "inEffectiveParameterArray")
             << ",\n"
@@ -420,7 +420,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 
 void cPtr_typeOnceFunctionToGenerate::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -437,7 +437,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "extern const C_galgas_function_descriptorEX kFunction_descriptor_" << mFunctionName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ; 
   mReturnedType (HERE)->generateCppClassName (inHfile) ;
-  inHfile << " function_" << mFunctionName << " (C_CompilerEx & COMMA_LOCATION_ARGS) ;\n\n" ;
+  inHfile << " function_" << mFunctionName << " (C_Compiler & COMMA_LOCATION_ARGS) ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -465,7 +465,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeOnceFunctionToGenerate::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
                                 PMSInt32 & ioPrototypeIndex,
@@ -478,7 +478,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                "static bool gCacheFlagForOnceFunction_" << mFunctionName << " = false ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   mReturnedType (HERE)->generateCppClassName (inCppFile) ;
-  inCppFile << " function_" << mFunctionName << " (C_CompilerEx &" ;
+  inCppFile << " function_" << mFunctionName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " inLexique" ;
   }
@@ -515,7 +515,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 
 //--------------------------------- Function call for introspection
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "static GGS_object functionForGenericCall_" << mFunctionName << " (C_CompilerEx & inLexique,\n"
+  inCppFile << "static GGS_object functionForGenericCall_" << mFunctionName << " (C_Compiler & inLexique,\n"
                "                           const GGS_objectlist & /* inEffectiveParameterArray */,\n"
                "                           const GGS_location & /* inErrorLocation */\n"
                "                           COMMA_LOCATION_ARGS) {\n"
@@ -549,7 +549,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 
 void cPtr_typeRoutineExterneAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -562,7 +562,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeRoutineExterneAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
-  inHfile << "void routine_" << aNomAction << " (C_CompilerEx &" ;
+  inHfile << "void routine_" << aNomAction << " (C_Compiler &" ;
   GGS_L_EXsignature::cEnumerator currentArgument (aSignature, true) ;
   while (currentArgument.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
@@ -596,7 +596,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineExterneAengendrer::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inTargetFileName */,
                                   PMSInt32 & /* ioPrototypeIndex */,
@@ -615,7 +615,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 
 void cPtr_typeFonctionExterneAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -629,7 +629,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_typeFonctionExterneAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   mReturnedType (HERE)->generateCppClassName (inHfile) ;
-  inHfile << " function_" << aNomAction << " (C_CompilerEx &" ;
+  inHfile << " function_" << aNomAction << " (C_Compiler &" ;
   GGS_L_EXsignature::cEnumerator currentArgument (aSignature, true) ;
   while (currentArgument.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
@@ -663,7 +663,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeFonctionExterneAengendrer::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inTargetFileName */,
                                   PMSInt32 & /* ioPrototypeIndex */,
@@ -677,7 +677,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 static void
-generate_header_file (C_CompilerEx & inLexique,
+generate_header_file (C_Compiler & inLexique,
                       const GGS_lstring & nomComposant,
                       const GGS_stringset & inIncludesForHeaderFile,
                       const GGS_string & inLexiqueName,
@@ -1259,7 +1259,7 @@ generateCppClassName (AC_OutputStream & inFile) const {
 //---------------------------------------------------------------------------*
 
 static void
-generate_cpp_file (C_CompilerEx & inLexique,
+generate_cpp_file (C_Compiler & inLexique,
                    GGS_lstring & nomComposant,
                    GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                    GGS_stringset & tableFichiersEnTetePourFichierCPP) {
@@ -1372,7 +1372,7 @@ generate_cpp_file (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_generateSemanticsComponent (C_CompilerEx & inLexique,
+routine_generateSemanticsComponent (C_Compiler & inLexique,
                                     GGS_lstring & nomComposant,
                                     GGS_stringset & includesForHeaderFile,
                                     GGS_string & defLexique,

@@ -197,7 +197,7 @@ void cGalgasVariablesMap <INFO>::rotateRight (cElement * & a) {
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertInArgument (C_CompilerEx & inLexique,
+insertInArgument (C_Compiler & inLexique,
                   const INFO & inInfo,
                   const GGS_lstring & clef,
                   const GGS_location & inLocation,
@@ -211,7 +211,7 @@ insertInArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertUnusedInArgument (C_CompilerEx & inLexique,
+insertUnusedInArgument (C_Compiler & inLexique,
                         const INFO & inInfo,
                         const GGS_lstring & clef,
                         const GGS_location & inLocation,
@@ -225,7 +225,7 @@ insertUnusedInArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertInOutArgument (C_CompilerEx & inLexique,
+insertInOutArgument (C_Compiler & inLexique,
                      const INFO & inInfo,
                      const GGS_lstring & clef,
                      const GGS_location & inLocation,
@@ -239,7 +239,7 @@ insertInOutArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertUsedInOutArgument (C_CompilerEx & inLexique,
+insertUsedInOutArgument (C_Compiler & inLexique,
                          const INFO & inInfo,
                          const GGS_lstring & clef,
                          const GGS_location & inLocation,
@@ -254,7 +254,7 @@ insertUsedInOutArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertUnusedInOutArgument (C_CompilerEx & inLexique,
+insertUnusedInOutArgument (C_Compiler & inLexique,
                            const INFO & inInfo,
                            const GGS_lstring & clef,
                            const GGS_location & inLocation,
@@ -268,7 +268,7 @@ insertUnusedInOutArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertOutArgument (C_CompilerEx & inLexique,
+insertOutArgument (C_Compiler & inLexique,
                    const INFO & inInfo,
                    const GGS_lstring & clef,
                    const GGS_location & inLocation,
@@ -284,7 +284,7 @@ insertOutArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertWithInstructionLocalVariable (C_CompilerEx & inLexique,
+insertWithInstructionLocalVariable (C_Compiler & inLexique,
                                     const INFO & inInfo,
                                     const GGS_lstring & clef,
                                     const GGS_location & inLocation,
@@ -300,7 +300,7 @@ insertWithInstructionLocalVariable (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertLocalVariable (C_CompilerEx & inLexique,
+insertLocalVariable (C_Compiler & inLexique,
                      const INFO & inInfo,
                      const GGS_lstring & clef,
                      const GGS_location & inLocation,
@@ -315,7 +315,7 @@ insertLocalVariable (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertConstInArgument (C_CompilerEx & inLexique,
+insertConstInArgument (C_Compiler & inLexique,
                        const INFO & inInfo,
                        const GGS_lstring & clef,
                        const GGS_location & inLocation,
@@ -330,7 +330,7 @@ insertConstInArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertUsedConstInArgument (C_CompilerEx & inLexique,
+insertUsedConstInArgument (C_Compiler & inLexique,
                            const INFO & inInfo,
                            const GGS_lstring & clef,
                            const GGS_location & inLocation,
@@ -345,7 +345,7 @@ insertUsedConstInArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertUsedConstInArgumentNoShadow (C_CompilerEx & inLexique,
+insertUsedConstInArgumentNoShadow (C_Compiler & inLexique,
                            const INFO & inInfo,
                            const GGS_lstring & clef,
                            const GGS_location & inLocation,
@@ -360,7 +360,7 @@ insertUsedConstInArgumentNoShadow (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertUnusedConstInArgument (C_CompilerEx & inLexique,
+insertUnusedConstInArgument (C_Compiler & inLexique,
                              const INFO & inInfo,
                              const GGS_lstring & clef,
                              const GGS_location & inLocation,
@@ -375,7 +375,7 @@ insertUnusedConstInArgument (C_CompilerEx & inLexique,
 
 template <typename INFO>
 PMSInt32 cGalgasVariablesMap <INFO>::
-insertKey (C_CompilerEx & inLexique,
+insertKey (C_Compiler & inLexique,
            const INFO & inInfo,
            const enumNatureEntite nature,
            const enumEtatVariable etat,
@@ -499,7 +499,7 @@ internalRecursiveInsert (bool & insertionOk,
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-chercherInterne (C_CompilerEx & inLexique,
+chercherInterne (C_Compiler & inLexique,
                  cElement * & resultat,
                  const GGS_lstring & clef,
                  const char * messageErreurRecherche
@@ -553,7 +553,7 @@ chercherInterne (C_CompilerEx & inLexique,
 
 template <typename INFO>
 cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
-searchForReadOnlyAccess (C_CompilerEx & inLexique,
+searchForReadOnlyAccess (C_Compiler & inLexique,
                          const GGS_lstring & clef,
                          const GGS_location & inLocation,
                          const char * messageErreurPhase
@@ -576,7 +576,7 @@ searchForReadOnlyAccess (C_CompilerEx & inLexique,
 
 template <typename INFO>
 cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
-searchForDestructiveReadAccess (C_CompilerEx & inLexique,
+searchForDestructiveReadAccess (C_Compiler & inLexique,
                                 const GGS_lstring & clef,
                                 const GGS_location & inLocation,
                                 const char * messageErreurPhase
@@ -601,7 +601,7 @@ searchForDestructiveReadAccess (C_CompilerEx & inLexique,
 
 template <typename INFO>
 cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
-searchForReadWriteAccess (C_CompilerEx & inLexique,
+searchForReadWriteAccess (C_Compiler & inLexique,
                           const GGS_lstring & clef,
                           const GGS_location & inLocation,
                           const char * messageErreurPhase
@@ -625,7 +625,7 @@ searchForReadWriteAccess (C_CompilerEx & inLexique,
 
 template <typename INFO>
 cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
-searchForWriteAccess (C_CompilerEx & inLexique,
+searchForWriteAccess (C_Compiler & inLexique,
                       const GGS_lstring & clef,
                       const GGS_location & inLocation,
                       const char * messageErreurPhase
@@ -653,14 +653,14 @@ searchForWriteAccess (C_CompilerEx & inLexique,
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-prologue_verifyVariableUsing (C_CompilerEx & COMMA_UNUSED_LOCATION_ARGS) {
+prologue_verifyVariableUsing (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-epilogue_verifyVariableUsing (C_CompilerEx & inLexique,
+epilogue_verifyVariableUsing (C_Compiler & inLexique,
                               const GGS_location & positionErreur
                               COMMA_LOCATION_ARGS) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
@@ -670,7 +670,7 @@ epilogue_verifyVariableUsing (C_CompilerEx & inLexique,
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-verificationRecursiveConsommation (C_CompilerEx & inLexique,
+verificationRecursiveConsommation (C_Compiler & inLexique,
                                    cElement * element,
                                    const GGS_location & positionErreur
                                    COMMA_LOCATION_ARGS) {
@@ -839,7 +839,7 @@ void cGalgasVariablesMap <INFO>::initialiserChampEtatApres (cElement * element) 
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-verifierChampEtatApres (C_CompilerEx & inLexique,
+verifierChampEtatApres (C_Compiler & inLexique,
                         cElement * element,
                         const GGS_location & positionErreur,
                         const char * message1,
@@ -861,7 +861,7 @@ verifierChampEtatApres (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::prologue_testBloc (C_CompilerEx & COMMA_UNUSED_LOCATION_ARGS) {
+void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
   // printf ("cGalgasVariablesMap <INFO>::prologue_testBloc\n") ;
   typeSurchargeTable * tempo = (typeSurchargeTable *) NULL ;
   macroMyNew (tempo, typeSurchargeTable) ;
@@ -881,7 +881,7 @@ void cGalgasVariablesMap <INFO>::prologue_testBloc (C_CompilerEx & COMMA_UNUSED_
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_CompilerEx & COMMA_UNUSED_LOCATION_ARGS) {
+void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
   // printf ("cGalgasVariablesMap <INFO>::epilogue_testBloc\n") ;
   typeSurchargeTable * surchargeCourante = aListeSurcharges ;
   while (surchargeCourante != NULL) {
@@ -899,7 +899,7 @@ void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_CompilerEx & COMMA_UNUSED_
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::prologue_testPart (C_CompilerEx & COMMA_UNUSED_LOCATION_ARGS) {
+void cGalgasVariablesMap <INFO>::prologue_testPart (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
   macroValidPointer (aListeSurcharges) ;
 }
 
@@ -907,7 +907,7 @@ void cGalgasVariablesMap <INFO>::prologue_testPart (C_CompilerEx & COMMA_UNUSED_
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-epilogue_testPart (C_CompilerEx & inLexique,
+epilogue_testPart (C_Compiler & inLexique,
                    const GGS_location & positionErreur
                    COMMA_LOCATION_ARGS) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
@@ -939,7 +939,7 @@ epilogue_testPart (C_CompilerEx & inLexique,
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-prologue_repeatBlock (C_CompilerEx & lexique COMMA_LOCATION_ARGS) {
+prologue_repeatBlock (C_Compiler & lexique COMMA_LOCATION_ARGS) {
   prologue_testBloc (lexique COMMA_THERE) ;
   prologue_testPart (lexique COMMA_THERE) ;
   GGS_location sansImportance ;
@@ -950,7 +950,7 @@ prologue_repeatBlock (C_CompilerEx & lexique COMMA_LOCATION_ARGS) {
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-epilogue_repeatBlock (C_CompilerEx & lexique COMMA_LOCATION_ARGS) {
+epilogue_repeatBlock (C_Compiler & lexique COMMA_LOCATION_ARGS) {
   epilogue_testBloc (lexique COMMA_THERE) ;
 }
 
@@ -958,7 +958,7 @@ epilogue_repeatBlock (C_CompilerEx & lexique COMMA_LOCATION_ARGS) {
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-prologue_repeatPart (C_CompilerEx & COMMA_UNUSED_LOCATION_ARGS) {
+prologue_repeatPart (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
   macroValidPointer (aListeSurcharges) ;
 }
 
@@ -966,7 +966,7 @@ prologue_repeatPart (C_CompilerEx & COMMA_UNUSED_LOCATION_ARGS) {
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-epilogue_repeatPart (C_CompilerEx & inLexique,
+epilogue_repeatPart (C_Compiler & inLexique,
                      const GGS_location & positionErreur
                      COMMA_LOCATION_ARGS) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;

@@ -54,10 +54,10 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_C_filewrapperTemplateToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_CompilerEx & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
   inHfile.appendCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
   inHfile << "GGS_string\n"
-             "template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (C_CompilerEx & inLexique" ;
+             "template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (C_Compiler & inLexique" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator current (mTemplateArgumentList, true) ;
   while (current.hasCurrentObject ()) {
     inHfile << ",\n                                "
@@ -93,14 +93,14 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_filewrapperTemplateToImplement::
-generateCppClassImplementation (C_CompilerEx & /* inLexique */,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & ioCppFile,
                                 const C_String & /* inTargetFileName */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   ioCppFile.appendCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
   ioCppFile << "GGS_string\n"
-               "template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (C_CompilerEx & " ;
+               "template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (C_Compiler & " ;
   if (templateInstructionListUsesLexique (mTemplateInstructionList)) {
     ioCppFile << "inLexique" ;
   }else{

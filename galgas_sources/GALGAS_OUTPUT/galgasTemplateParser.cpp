@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterTemplateString (C_CompilerEx & inLexique,
+void routine_enterTemplateString (C_Compiler & inLexique,
                                 GGS_templateInstructionList  & var_cas_outResultingInstructionList COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_enterTemplateString at %s:%d\n", __FILE__, __LINE__) ;

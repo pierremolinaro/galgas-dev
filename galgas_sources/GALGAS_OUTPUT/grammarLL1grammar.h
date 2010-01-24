@@ -28,14 +28,14 @@
 class grammarLL1grammar : public grammarModelBuilder {
   public : virtual void nt_grammar_component_start_symbol_ (galgas_scanner &,
                                 GGS_grammarComponentRoot &) ;
-  public : static void _performSourceFileParsing_ (C_CompilerEx & inCompiler,
+  public : static void _performSourceFileParsing_ (C_Compiler & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
                                 const GGS_lstring inFileName,
                                 GGS_grammarComponentRoot &
                                 COMMA_LOCATION_ARGS) ;
-  public : static void _performSourceStringParsing_ (C_CompilerEx & inCompiler,
+  public : static void _performSourceStringParsing_ (C_Compiler & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string inSourceString,
                                 GGS_grammarComponentRoot &
