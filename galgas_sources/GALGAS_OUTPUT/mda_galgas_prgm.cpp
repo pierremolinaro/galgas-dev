@@ -25,6 +25,8 @@
 #include "command_line_interface/mainForLIBPM.h"
 #include "utilities/MF_MemoryControl.h"
 #include "command_line_interface/C_StringCommandLineOption.h"
+#include "utilities/cpp-allocation.h"
+#include "utilities/basic-allocation.h"
 
 #ifdef TARGET_API_MAC_CARBON
   #include <SIOUX.H>
@@ -921,23 +923,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     C_Object::checkAllObjectsHaveBeenReleased () ;
   #endif
-  if (verboseOptionOn) {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      const PMUInt64 maxUsedMemorySize = getMaxUsedMemorySize () ;
-      const PMUInt64 oneMegaByte = 1 << 20 ;
-      const PMUInt64 megaBytes = maxUsedMemorySize / oneMegaByte ;
-      const PMUInt64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;
-      co << cStringWithSigned (getCreatedDynamicObjectsTotalCount ())
-         << " C++ objects have been created (" ;
-      co.appendUnsigned64 (megaBytes) ;
-      co << "." ;
-      co.appendUnsignedWithZeroFill ((PMUInt32) fraction, 3) ;
-      co << " MB).\n" ;
-      deactivateMemoryControl () ;
-      display_pointers () ;
-      displayAllocatedBlockSizeStats () ;
-    #endif
-  }
+  displayAllocationStats () ;
+  displayAllocatedBlockSizeStats () ;
+  displayAllocatedBlocksInfo () ;
   return returnCode ;
 }
 
