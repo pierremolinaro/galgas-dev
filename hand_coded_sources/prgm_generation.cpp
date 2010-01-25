@@ -333,6 +333,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "      co << \" MB).\\n\" ;\n"
                     "      deactivateMemoryControl () ;\n"
                     "      display_pointers () ;\n"
+                    "      displayAllocatedBlockSizeStats () ;\n"
                     "    #endif\n"
                     "  }\n"
                     "  return returnCode ;\n"
