@@ -317,7 +317,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  C_PrologueEpilogue::runEpilogueActions () ;\n"
                     "  C_Object::garbage () ;\n"
                     "  C_StringCommandLineOption::releaseStrings () ;\n"
-                    "  C_String::freeUnusedRegisteredStrings () ;\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "    C_Object::checkAllObjectsHaveBeenReleased () ;\n"
                     "  #endif\n"
@@ -368,7 +367,9 @@ void
 routine_fixFileGenerationStartDirectory (C_Compiler & inLexique,
                                          const GGS_lstring inSourceFile
                                          COMMA_LOCATION_ARGS) {
-  inLexique.ioParametersPtr ()->mFileGenerationStartDir = inSourceFile.stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
+  const C_String s = inSourceFile.stringByDeletingLastPathComponent () ;
+  const C_String s1 = s.stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
+  inLexique.ioParametersPtr ()->mFileGenerationStartDir = s1 ;
   const bool ok = inLexique.ioParametersPtr ()->mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
     C_String errorMessage ;

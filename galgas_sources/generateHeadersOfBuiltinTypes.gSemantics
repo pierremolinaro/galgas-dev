@@ -417,4 +417,11 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+class @A {
+
+ method zzz :
+   @A a := self ;
+ end method ;
+
+}
 end semantics ;
