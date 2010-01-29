@@ -440,6 +440,7 @@ class @removeInstruction extends @semanticInstruction {
 
 class @incrementInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -450,6 +451,7 @@ class @incrementInstruction extends @semanticInstruction {
 
 class @decrementInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
