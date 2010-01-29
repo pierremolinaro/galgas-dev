@@ -918,7 +918,6 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   }
   C_PrologueEpilogue::runEpilogueActions () ;
   C_Object::garbage () ;
-  C_StringCommandLineOption::releaseStrings () ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     C_Object::checkAllObjectsHaveBeenReleased () ;
   #endif

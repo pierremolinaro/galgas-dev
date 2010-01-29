@@ -305,9 +305,16 @@ end rule ;
 
 rule <semantic_instruction> !@semanticInstruction outInstruction :
   $identifier$ ? @lstring mReceiverName ;
+  @lstringlist mStructAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    $identifier$ ? @lstring attributeName ;
+    mStructAttributeList += !attributeName ;
+  end repeat ;
   $++$ ;
   $;$ ;
-  outInstruction := [@incrementInstruction new ![mReceiverName location] !mReceiverName] ;
+  outInstruction := [@incrementInstruction new ![mReceiverName location] !mReceiverName !mStructAttributeList] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -318,9 +325,16 @@ end rule ;
 
 rule <semantic_instruction> !@semanticInstruction outInstruction :
   $identifier$ ?@lstring mReceiverName ;
+  @lstringlist mStructAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    $identifier$ ? @lstring attributeName ;
+    mStructAttributeList += !attributeName ;
+  end repeat ;
   $--$ ;
   $;$ ;
-  outInstruction := [@decrementInstruction new ![mReceiverName location] !mReceiverName] ;
+  outInstruction := [@decrementInstruction new ![mReceiverName location] !mReceiverName !mStructAttributeList] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
