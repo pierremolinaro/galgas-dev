@@ -124,21 +124,33 @@ routine compileOptionComponent
         !mOptionInvocationLetter
         !mOptionInvocationString
         !mOptionComment
+        !"false"
       ] ;
+      if mOptionDefaultValueKind != [@optionDefaultValueEnum noDefaultValue] then
+        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)" ;      
+      end if ;
     elsif [mOptionTypeName string] == "uint" then
       [!?uintOptionMap insertKey
         !mOptionInternalName
         !mOptionInvocationLetter
         !mOptionInvocationString
         !mOptionComment
+        !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
       ] ;
+      if mOptionDefaultValueKind == [@optionDefaultValueEnum stringDefaultValue] then
+        error mOptionDefaultValue:"an @uint option default value cannot be an @string value" ;      
+      end if ;
     elsif [mOptionTypeName string] == "string" then
       [!?stringOptionMap insertKey
         !mOptionInternalName
         !mOptionInvocationLetter
         !mOptionInvocationString
         !mOptionComment
+        ![mOptionDefaultValue string]
       ] ;
+      if mOptionDefaultValueKind == [@optionDefaultValueEnum unsignedDefaultValue] then
+        error mOptionDefaultValue:"an @string option default value cannot be an @uint value" ;      
+      end if ;
     else
       error mOptionTypeName: "only the @bool, @uint or @string types are allowed here" ;
     end if ;

@@ -117,6 +117,7 @@ SOURCES += semanticsReaders.cpp
 SOURCES += semanticsModifiers.cpp
 SOURCES += semanticsInstanceMethods.cpp
 SOURCES += semanticsClassMethods.cpp
+SOURCES += semanticsGenerationFilewrappers.cpp
 SOURCES += generateHeadersOfBuiltinTypes.cpp
 SOURCES += semanticsSemantics.cpp
 SOURCES += semanticsCompilation.cpp

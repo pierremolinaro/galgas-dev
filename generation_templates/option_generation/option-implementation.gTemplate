@@ -35,7 +35,8 @@ end foreach
   %                                         %![key utf8Representation]%,\n%
   %                                         %![[[mOptionChar char] uint] string]%,\n%
   %                                         %![mOptionString utf8Representation]%,\n%
-  %                                         %![mComment utf8Representation]%) ;\n\n%
+  %                                         %![mComment utf8Representation]%,\n%
+  %                                         %!mDefaultValue%) ;\n\n%
 end foreach
 %//---------------------------------------------------------------------------*
 //                                                                           *
@@ -48,7 +49,8 @@ end foreach
   %                                         %![key utf8Representation]%,\n%
   %                                         %![[[mOptionChar char] uint] string]%,\n%
   %                                         %![mOptionString utf8Representation]%,\n%
-  %                                         %![mComment utf8Representation]%) ;\n\n%
+  %                                         %![mComment utf8Representation]%,\n%
+  %                                         %![mDefaultValue utf8Representation]%) ;\n\n%
 end foreach
 %//---------------------------------------------------------------------------*
 

@@ -18,18 +18,8 @@
 #---------------------------------------------------------------------------*
 
 semantics generateHeadersOfBuiltinTypes :
-  import "semanticsTypes.gSemantics" ;
-  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
-  import "semanticsReaders.gSemantics" ;
-  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
-  import "semanticsConstructors.gSemantics" ;
-  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
-  import "semanticsTypeFeatures.gSemantics" ;
-  import semantics semanticsTypeFeatures in "semanticsTypeFeatures.gSemantics" ;
-  import "semanticsClassMethods.gSemantics" ;
-  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
-  import "semanticsInstanceMethods.gSemantics" ;
-  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
+  import "semanticsGenerationFilewrappers.gSemantics" ;
+  import semantics semanticsGenerationFilewrappers in "semanticsGenerationFilewrappers.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -297,14 +287,6 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
   template predefinedTypesHeader "predefined_types.h.gTemplate"
     ?@typeMap TYPE_MAP
   ;
-  template listTypeHeader "GALGAS_list.h.gTemplate"
-    ?@string TYPE_NAME
-    ?@attributeList ATTRIBUTE_LIST
-  ;
-  template listTypeImplementation "GALGAS_list.cpp.gTemplate"
-    ?@string TYPE_NAME
-    ?@attributeList ATTRIBUTE_LIST
-  ;
   template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
   ;
 }
@@ -333,7 +315,7 @@ end method ;
 override method @listGalgasType appendGeneratedHeader ?!@string ioHeader :
   @ACGalgasType t := self ; # Bug in GALGAS 1
   @listGalgasType tt := self ; # Bug in GALGAS 1
-  ioHeader .= [filewrapper builtinTypeGenerationTemplate.listTypeHeader
+  ioHeader .= [filewrapper typeGenerationTemplate.listTypeHeader
     ![t typeIdentifierRepresentation]
     ![tt mAttributeList]
  ] ;
@@ -353,7 +335,7 @@ end method ;
 override method @listGalgasType appendGeneratedImplementation ?!@string ioImplementation :
   @ACGalgasType t := self ; # Bug in GALGAS 1
   @listGalgasType tt := self ; # Bug in GALGAS 1
-  ioImplementation .= [filewrapper builtinTypeGenerationTemplate.listTypeImplementation
+  ioImplementation .= [filewrapper typeGenerationTemplate.listTypeImplementation
     ![t typeIdentifierRepresentation]
     ![tt mAttributeList]
  ] ;
@@ -417,11 +399,4 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-class @A {
-
- method zzz :
-   @A a := self ;
- end method ;
-
-}
 end semantics ;

@@ -157,6 +157,12 @@
 		CF21A4F20BAEE75C00C34B66 /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
 		CF21A50F0BAEEB4300C34B66 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF21A5100BAEEB4700C34B66 /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
+		CF25D1611115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF25D15F1115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp */; };
+		CF25D1621115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF25D15F1115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp */; };
+		CF25D1631115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF25D15F1115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp */; };
+		CF25D1641115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF25D15F1115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp */; };
+		CF25D1651115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF25D15F1115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp */; };
+		CF25D1661115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF25D15F1115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp */; };
 		CF2945850E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
 		CF2945870E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
 		CF2945890E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
@@ -1505,6 +1511,8 @@
 		CF1BCEE210D2C1A300A0D648 /* GALGAS_string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_string.cpp; sourceTree = "<group>"; };
 		CF1BD01110D2DBD800A0D648 /* C_galgas_class_inspector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_class_inspector.cpp; sourceTree = "<group>"; };
 		CF1BD01210D2DBD800A0D648 /* C_galgas_class_inspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_class_inspector.h; sourceTree = "<group>"; };
+		CF25D15F1115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsGenerationFilewrappers.cpp; sourceTree = "<group>"; };
+		CF25D1601115C8EE002A9314 /* semanticsGenerationFilewrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsGenerationFilewrappers.h; sourceTree = "<group>"; };
 		CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryMethodDeclaration.h; sourceTree = "<group>"; };
 		CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapToImplement.h; sourceTree = "<group>"; };
 		CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapType.h; sourceTree = "<group>"; };
@@ -3024,6 +3032,8 @@
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF25D15F1115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp */,
+				CF25D1601115C8EE002A9314 /* semanticsGenerationFilewrappers.h */,
 				CFFB8859110CA1C4006248FD /* semanticsInstanceMethods.cpp */,
 				CFFB885A110CA1C4006248FD /* semanticsInstanceMethods.h */,
 				CFFB8826110C99B8006248FD /* semanticsClassMethods.cpp */,
@@ -3941,6 +3951,7 @@
 				CFD396FA110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF51543C110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */,
 				CFADDCCC11133B8300CB800A /* GALGAS_ldouble.cpp in Sources */,
+				CF25D1631115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4157,6 +4168,7 @@
 				CFD396F9110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF51543B110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */,
 				CFADDCCB11133B8300CB800A /* GALGAS_ldouble.cpp in Sources */,
+				CF25D1621115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4373,6 +4385,7 @@
 				CFD396F8110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF51543A110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */,
 				CFADDCCA11133B8300CB800A /* GALGAS_ldouble.cpp in Sources */,
+				CF25D1611115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4610,6 +4623,7 @@
 				CFD396FB110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF51543D110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */,
 				CFADDCCD11133B8300CB800A /* GALGAS_ldouble.cpp in Sources */,
+				CF25D1641115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4814,6 +4828,7 @@
 				CFD396FC110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF51543E110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */,
 				CFADDCCE11133B8300CB800A /* GALGAS_ldouble.cpp in Sources */,
+				CF25D1651115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5018,6 +5033,7 @@
 				CFD396FD110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF51543F110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */,
 				CFADDCCF11133B8300CB800A /* GALGAS_ldouble.cpp in Sources */,
+				CF25D1661115C8EE002A9314 /* semanticsGenerationFilewrappers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

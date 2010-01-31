@@ -46,7 +46,7 @@ with lexique "galgas_scanner.gLexique" {
   label $routine$, $identifier$ ;
   label $function$, $identifier$ ;
   label $once$, $identifier$ ;
-  label $filewrapper$, $identifier$ ;
+  label $filewrapper$, $identifier$, $in$ ;
   label $abstract$, $method$, $type_name$, $identifier$ ;
   label $abstract$, $reader$, $type_name$, $identifier$ ;
   label $override$, $method$, $type_name$, $identifier$ ;

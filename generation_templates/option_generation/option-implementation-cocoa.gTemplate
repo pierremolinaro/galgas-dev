@@ -18,6 +18,7 @@ foreach BOOL_OPTION_MAP do
   %    commandChar:%![[[mOptionChar char] uint] string]%\n%
   %    commandString:@%![mOptionString utf8Representation]%\n%
   %    comment:@%![mComment utf8Representation]%\n%
+  %    defaultValue:@""\n%
   %  ] ;\n%
   %  [ioBoolOptionArray addObject:option] ;\n%
   %  [option release] ;\n%
@@ -29,6 +30,7 @@ foreach UINT_OPTION_MAP do
   %    commandChar:%![[[mOptionChar char] uint] string]%\n%
   %    commandString:@%![mOptionString utf8Representation]%\n%
   %    comment:@%![mComment utf8Representation]%\n%
+  %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
   %  ] ;\n%
   %  [ioUIntOptionArray addObject:option] ;\n%
   %  [option release] ;\n%
@@ -40,6 +42,7 @@ foreach STRING_OPTION_MAP do
   %    commandChar:%![[[mOptionChar char] uint] string]%\n%
   %    commandString:@%![mOptionString utf8Representation]%\n%
   %    comment:@%![mComment utf8Representation]%\n%
+  %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
   %  ] ;\n%
   %  [ioStringOptionArray addObject:option] ;\n%
   %  [option release] ;\n%

@@ -80,6 +80,15 @@ rule <galgas_component>
     $->$ ;
     @lstring optionComment ;
     $literal_string$ ? optionComment ;
+    select
+    or
+      $default$ ;
+      select
+        $literal_string$ ?* ;
+      or
+        $unsigned_literal_integer$ ?* ;
+      end select ;
+    end select ;
     $;$ ;
    end repeat ;
   $end$ ;
@@ -101,6 +110,15 @@ label importLexique
     $literal_string$ ? * ;
     $->$ ;
     $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      select
+        $literal_string$ ?* ;
+      or
+        $unsigned_literal_integer$ ?* ;
+      end select ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -123,6 +141,15 @@ label importSyntax
     $literal_string$ ? * ;
     $->$ ;
     $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      select
+        $literal_string$ ?* ;
+      or
+        $unsigned_literal_integer$ ?* ;
+      end select ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -146,6 +173,15 @@ label importSemantics
     $literal_string$ ? * ;
     $->$ ;
     $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      select
+        $literal_string$ ?* ;
+      or
+        $unsigned_literal_integer$ ?* ;
+      end select ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -169,6 +205,15 @@ label importGrammarForSemantics
     $literal_string$ ? * ;
     $->$ ;
     $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      select
+        $literal_string$ ?* ;
+      or
+        $unsigned_literal_integer$ ?* ;
+      end select ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -202,6 +247,15 @@ label importOptions
     $->$ ;
     @lstring optionComment ;
     $literal_string$ ? optionComment ;
+    select
+    or
+      $default$ ;
+      select
+        $literal_string$ ?* ;
+      or
+        $unsigned_literal_integer$ ?* ;
+      end select ;
+    end select ;
     $;$ ;
     if [optionNameSet hasKey ![optionName string]] then
       error optionName : "the '" . [optionName string] . "' command line option has been already declared" ;

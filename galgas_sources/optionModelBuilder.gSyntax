@@ -62,6 +62,21 @@ rule <option> ?!@commandLineOptionList ioCommandLineOptionList :
   $literal_string$ ?@lstring mOptionInvocationString ;
   $->$ ;
   $literal_string$ ?@lstring mOptionComment ;
+  @lstring defaultValue [new !"" !here] ;
+  @optionDefaultValueEnum optionDefaultValueKind ;
+  select
+    optionDefaultValueKind := [@optionDefaultValueEnum noDefaultValue] ;
+  or
+    $default$ ;
+    select
+      $literal_string$ ? defaultValue ;
+      optionDefaultValueKind := [@optionDefaultValueEnum stringDefaultValue] ;
+    or
+      $unsigned_literal_integer$ ? @luint v ;
+      [!?defaultValue setString ![[v uint] string]] ;
+      optionDefaultValueKind := [@optionDefaultValueEnum unsignedDefaultValue] ;
+    end select ;
+  end select ;
   $;$ ;
   ioCommandLineOptionList +=
     !mOptionTypeName
@@ -69,6 +84,8 @@ rule <option> ?!@commandLineOptionList ioCommandLineOptionList :
     !mOptionInvocationLetter
     !mOptionInvocationString
     !mOptionComment
+    !defaultValue
+    !optionDefaultValueKind
   ;
 end rule ;
 
