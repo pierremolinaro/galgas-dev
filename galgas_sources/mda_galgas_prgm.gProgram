@@ -317,7 +317,7 @@ message "a GALGAS project source file"
         !galgasSourceList
         !externSourceFileList
       ] ;
-      @string fileListPath := outputDirectoryTEMP . "/file_list.mke" ;
+      @string fileListPath := outputDirectory . "/file_list.mke" ;
       [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
     end if ;
   end if ;
@@ -325,8 +325,8 @@ message "a GALGAS project source file"
   @stringlist xcode_tool_files := [targetFileListMap listForKey !"xcode_tool"] ;
   @stringlist xcode_app_files := [targetFileListMap listForKey !"xcode_app"] ;
   if [@uint errorCount] == 0 then
-    @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
-    #log XcodeProjectDir ;
+    @string XcodeProjectDir := [[inSourceFile stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project-2-xcode" ;
+#    log XcodeProjectDir ;
     @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
     @stringlist xcodeProjects := [XcodeProjectDir directoriesWithExtensions !false ![@stringlist listWithValue !"xcodeproj"]] ;
     #log xcodeProjects ;
@@ -338,7 +338,7 @@ message "a GALGAS project source file"
       @string name ; [xcodeProjects first ?name] ;
       @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
     #--- Update intermediate file
-      @string intermediateFilePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/DEPENDENCIES/file_list_for_xcode_project.txt" ;
+      @string intermediateFilePath := outputDirectory . "/file_list_for_xcode_project.txt" ;
     #--- Update Xcode project
       @stringset externSourceSet_tool [emptySet] ;
       @stringset guiSourceSet_tool [emptySet] ;
