@@ -64,9 +64,13 @@ project all_galgas :
   grammar "semanticsSLRgrammar.gGrammar" : makefile ;
   semantics "semanticsSemantics.gSemantics" : makefile ;
   semantics "semanticsTypes.gSemantics" : makefile ;
+  semantics "semanticsTypeFeatures.gSemantics" : makefile ;
   semantics "semanticsConstructors.gSemantics" : makefile ;
   semantics "semanticsReaders.gSemantics" : makefile ;
   semantics "semanticsModifiers.gSemantics" : makefile ;
+  semantics "semanticsInstanceMethods.gSemantics" : makefile ;
+  semantics "semanticsClassMethods.gSemantics" : makefile ;
+  semantics "generateHeadersOfBuiltinTypes.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
 
 #--- Syntax Component

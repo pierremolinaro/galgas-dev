@@ -1,0 +1,7 @@
+#ifndef %!COMPONENT_NAME%_ENTITIES_DEFINED
+#define %!COMPONENT_NAME%_ENTITIES_DEFINED
+
+//---------------------------------------------------------------------------*
+
+#include "galgas2/predefined-types.h"
+

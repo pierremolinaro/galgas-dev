@@ -1842,7 +1842,7 @@ rule <factor>
 #--- Get filewrapper name
   $identifier$ ?@lstring filewrapperName ;
   @M_regularFiles regularFileMap ;
-  @filewrapperTemplateMap templateMap ;
+  @filewrapperTemplateMapEX templateMap ;
   [[inSemanticContext mFilewrappers] searchKey !filewrapperName ?regularFileMap ?templateMap] ;
   select
     outExpression := [@typeFileWrapperObjectInstanciation new !filewrapperName] ;

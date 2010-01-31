@@ -232,6 +232,29 @@ map @functionMap {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  F I L E W R A P P E R   M A P                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @filewrapperTemplateMap {
+  @signature mTemplateSignature ;
+  @lstring mFilewrapperTemplatePath ;
+  insert insertKey error message "the '%K' filewrapper template has been already declared in %L" ;
+  search searchKey error message "the '%K' filewrapper template is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @filewrapperMap {
+  @lstring mFilewrapperPath ;
+  @lstringlist mFilewrapperExtensionList ;
+  @filewrapperTemplateMap mFilewrapperTemplateMap ;
+  insert insertKey error message "the '%K' filewrapper has been already declared in %L" ;
+  search searchKey error message "the '%K' filewrapper is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    D E S C E N D A N T    C L A S S    L I S T M A P                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -255,6 +278,7 @@ struct @semanticContext {
   @routineMap mRoutineMap ;
   @functionMap mFunctionMap ;
   @descendantClassListMap mDescendantClassListMap ;
+  @filewrapperMap mFilewrapperMap ;
 }
 
 #---------------------------------------------------------------------------*

@@ -3849,7 +3849,7 @@ map @M_regularFiles {
 
 #---------------------------------------------------------------------------*
 
-map @filewrapperTemplateMap {
+map @filewrapperTemplateMapEX {
   @typeListeAttributsSemantiques mFormalAttributeList ;
   insert insertKey error message "the '%K' template is already declared in %L" ;
   search searchKey error message "the '%K' template is not declared" ;
@@ -3859,7 +3859,7 @@ map @filewrapperTemplateMap {
 
 map @M_filewrappers {
   @M_regularFiles mRegularFileMap ;
-  @filewrapperTemplateMap mTemplateMap ;
+  @filewrapperTemplateMapEX mTemplateMap ;
   insert insertKey error message "a file wrapper named '%K' is already declared in %L" ;
   search searchKey error message "there is no file wrapper named '%K'" ;
 }

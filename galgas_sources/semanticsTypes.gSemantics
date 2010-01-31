@@ -585,6 +585,15 @@ once constructBuiltinTypeMap ->@typeMap outTypeMap :
   addTypeList !"function" !?outTypeMap ;
 #--- @objectlist type
   addTypeList !"object" !?outTypeMap ;
+#---
+#  @attributeList lstringAttribute [emptyList] ;
+#  @typeMapIndex lstringIndex ;
+#  [@typeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?outTypeMap ?lstringIndex] ;
+#  lstringAttribute += !lstringIndex ![@lstring new !"mString" !here] ;
+#  [@typeMapIndex makeRegularIndex ![@lstring new !"bool" !here] !?outTypeMap ?lstringIndex] ;
+#  lstringAttribute += !lstringIndex ![@lstring new !"mBool" !here] ;
+#  @lstring lstringlist [new !"string_bool_list" !here] ;
+#  [!?outTypeMap insertKey !lstringlist ![@listGalgasType new !lstringlist !lstringAttribute]] ;
 end once ;
 
 #---------------------------------------------------------------------------*

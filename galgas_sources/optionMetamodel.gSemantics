@@ -21,12 +21,23 @@ semantics optionMetamodel :
 
 #---------------------------------------------------------------------------*
 
+enum @optionDefaultValueEnum {
+  constructor noDefaultValue ;
+  constructor unsignedDefaultValue ;
+  constructor stringDefaultValue ;
+}{
+}
+
+#---------------------------------------------------------------------------*
+
 list @commandLineOptionList {
   @lstring mOptionTypeName ;
   @lstring mOptionInternalName ;
   @lchar mOptionInvocationLetter ;
   @lstring mOptionInvocationString ;
   @lstring mOptionComment ;
+  @lstring mOptionDefaultValue ;
+  @optionDefaultValueEnum mOptionDefaultValueKind ;
 }
 
 #---------------------------------------------------------------------------*

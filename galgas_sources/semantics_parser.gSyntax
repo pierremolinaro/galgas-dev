@@ -7968,7 +7968,7 @@ rule <semantics_declaration>
     listeEntitesAengendrer += !w ;
   end if ;
 #--- Parse templates
-  @filewrapperTemplateMap templateMap [emptyMap] ;
+  @filewrapperTemplateMapEX templateMap [emptyMap] ;
   ${$ ;
   repeat
   while
@@ -8094,7 +8094,7 @@ label importSemantics
     end if ;
   end if ;
 #--- Parse templates
-  @filewrapperTemplateMap templateMap [emptyMap] ;
+  @filewrapperTemplateMapEX templateMap [emptyMap] ;
   ${$ ;
   repeat
   while
