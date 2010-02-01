@@ -449,7 +449,6 @@
 		CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
 		CF6DF17009E3F23700506859 /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CF6DF17109E3F23700506859 /* C_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* C_Timer.cpp */; };
-		CF6DF17209E3F23700506859 /* C_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6908536B780077AEAF /* C_Exception.cpp */; };
 		CF6DF17409E3F23700506859 /* F_DisplayException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6D08536B780077AEAF /* F_DisplayException.cpp */; };
 		CF6DF17509E3F23700506859 /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CF6DF17609E3F23700506859 /* MF_Assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* MF_Assert.cpp */; };
@@ -523,7 +522,6 @@
 		CF6DF1E909E3F30400506859 /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
 		CF6DF1EA09E3F30400506859 /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CF6DF1EB09E3F30400506859 /* C_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* C_Timer.cpp */; };
-		CF6DF1EC09E3F30400506859 /* C_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6908536B780077AEAF /* C_Exception.cpp */; };
 		CF6DF1EE09E3F30400506859 /* F_DisplayException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6D08536B780077AEAF /* F_DisplayException.cpp */; };
 		CF6DF1EF09E3F30400506859 /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CF6DF1F009E3F30400506859 /* MF_Assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* MF_Assert.cpp */; };
@@ -647,12 +645,10 @@
 		CF825A5E08536B350077AEAF /* C_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* C_Timer.cpp */; };
 		CF825A6008536B350077AEAF /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CF825A6208536B350077AEAF /* C_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* C_Timer.cpp */; };
-		CF825ABE08536B780077AEAF /* C_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6908536B780077AEAF /* C_Exception.cpp */; };
 		CF825AC208536B780077AEAF /* F_DisplayException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6D08536B780077AEAF /* F_DisplayException.cpp */; };
 		CF825AC408536B780077AEAF /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CF825AC808536B780077AEAF /* MF_Assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* MF_Assert.cpp */; };
 		CF825ACA08536B780077AEAF /* MF_MemoryControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7508536B780077AEAF /* MF_MemoryControl.cpp */; };
-		CF825ACF08536B780077AEAF /* C_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6908536B780077AEAF /* C_Exception.cpp */; };
 		CF825AD308536B780077AEAF /* F_DisplayException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6D08536B780077AEAF /* F_DisplayException.cpp */; };
 		CF825AD508536B780077AEAF /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CF825AD908536B780077AEAF /* MF_Assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* MF_Assert.cpp */; };
@@ -1039,7 +1035,6 @@
 		CFEDF2FD0C2D161F0038713A /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
 		CFEDF2FE0C2D161F0038713A /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CFEDF2FF0C2D161F0038713A /* C_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* C_Timer.cpp */; };
-		CFEDF3000C2D161F0038713A /* C_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6908536B780077AEAF /* C_Exception.cpp */; };
 		CFEDF3020C2D161F0038713A /* F_DisplayException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6D08536B780077AEAF /* F_DisplayException.cpp */; };
 		CFEDF3030C2D161F0038713A /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CFEDF3040C2D161F0038713A /* MF_Assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* MF_Assert.cpp */; };
@@ -1161,7 +1156,6 @@
 		CFEDF45D0C2D16610038713A /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
 		CFEDF45E0C2D16610038713A /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CFEDF45F0C2D16610038713A /* C_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* C_Timer.cpp */; };
-		CFEDF4600C2D16610038713A /* C_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6908536B780077AEAF /* C_Exception.cpp */; };
 		CFEDF4620C2D16610038713A /* F_DisplayException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6D08536B780077AEAF /* F_DisplayException.cpp */; };
 		CFEDF4630C2D16610038713A /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CFEDF4640C2D16610038713A /* MF_Assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* MF_Assert.cpp */; };
@@ -1707,8 +1701,6 @@
 		CF825A4908536B350077AEAF /* C_DateTime.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_DateTime.h; sourceTree = "<group>"; };
 		CF825A4A08536B350077AEAF /* C_Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_Timer.cpp; sourceTree = "<group>"; };
 		CF825A4B08536B350077AEAF /* C_Timer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_Timer.h; sourceTree = "<group>"; };
-		CF825A6908536B780077AEAF /* C_Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 5; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = C_Exception.cpp; sourceTree = "<group>"; };
-		CF825A6A08536B780077AEAF /* C_Exception.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = C_Exception.h; sourceTree = "<group>"; };
 		CF825A6D08536B780077AEAF /* F_DisplayException.cpp */ = {isa = PBXFileReference; fileEncoding = 5; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = F_DisplayException.cpp; sourceTree = "<group>"; };
 		CF825A6E08536B780077AEAF /* F_DisplayException.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = F_DisplayException.h; sourceTree = "<group>"; };
 		CF825A6F08536B780077AEAF /* F_GetPrime.cpp */ = {isa = PBXFileReference; fileEncoding = 5; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = F_GetPrime.cpp; sourceTree = "<group>"; };
@@ -3247,8 +3239,6 @@
 				CF63B55010FC6A5E00B5E41F /* C_PrologueEpilogue.h */,
 				CF0676430E7EE037008B9D1F /* md5.cpp */,
 				CF0676080E7EDE29008B9D1F /* md5.h */,
-				CF825A6908536B780077AEAF /* C_Exception.cpp */,
-				CF825A6A08536B780077AEAF /* C_Exception.h */,
 				CF825A6D08536B780077AEAF /* F_DisplayException.cpp */,
 				CF825A6E08536B780077AEAF /* F_DisplayException.h */,
 				CF825A6F08536B780077AEAF /* F_GetPrime.cpp */,
@@ -3831,7 +3821,6 @@
 				CF825A4608536B150077AEAF /* C_ConsoleOut.cpp in Sources */,
 				CF825A6008536B350077AEAF /* C_DateTime.cpp in Sources */,
 				CF825A6208536B350077AEAF /* C_Timer.cpp in Sources */,
-				CF825ACF08536B780077AEAF /* C_Exception.cpp in Sources */,
 				CF825AD308536B780077AEAF /* F_DisplayException.cpp in Sources */,
 				CF825AD508536B780077AEAF /* F_GetPrime.cpp in Sources */,
 				CF825AD908536B780077AEAF /* MF_Assert.cpp in Sources */,
@@ -4028,7 +4017,6 @@
 				CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */,
 				CF6DF17009E3F23700506859 /* C_DateTime.cpp in Sources */,
 				CF6DF17109E3F23700506859 /* C_Timer.cpp in Sources */,
-				CF6DF17209E3F23700506859 /* C_Exception.cpp in Sources */,
 				CF6DF17409E3F23700506859 /* F_DisplayException.cpp in Sources */,
 				CF6DF17509E3F23700506859 /* F_GetPrime.cpp in Sources */,
 				CF6DF17609E3F23700506859 /* MF_Assert.cpp in Sources */,
@@ -4246,7 +4234,6 @@
 				CF6DF1E909E3F30400506859 /* C_ConsoleOut.cpp in Sources */,
 				CF6DF1EA09E3F30400506859 /* C_DateTime.cpp in Sources */,
 				CF6DF1EB09E3F30400506859 /* C_Timer.cpp in Sources */,
-				CF6DF1EC09E3F30400506859 /* C_Exception.cpp in Sources */,
 				CF6DF1EE09E3F30400506859 /* F_DisplayException.cpp in Sources */,
 				CF6DF1EF09E3F30400506859 /* F_GetPrime.cpp in Sources */,
 				CF6DF1F009E3F30400506859 /* MF_Assert.cpp in Sources */,
@@ -4506,7 +4493,6 @@
 				CF825A4208536B150077AEAF /* C_ConsoleOut.cpp in Sources */,
 				CF825A5C08536B350077AEAF /* C_DateTime.cpp in Sources */,
 				CF825A5E08536B350077AEAF /* C_Timer.cpp in Sources */,
-				CF825ABE08536B780077AEAF /* C_Exception.cpp in Sources */,
 				CF825AC208536B780077AEAF /* F_DisplayException.cpp in Sources */,
 				CF825AC408536B780077AEAF /* F_GetPrime.cpp in Sources */,
 				CF825AC808536B780077AEAF /* MF_Assert.cpp in Sources */,
@@ -4703,7 +4689,6 @@
 				CFEDF2FD0C2D161F0038713A /* C_ConsoleOut.cpp in Sources */,
 				CFEDF2FE0C2D161F0038713A /* C_DateTime.cpp in Sources */,
 				CFEDF2FF0C2D161F0038713A /* C_Timer.cpp in Sources */,
-				CFEDF3000C2D161F0038713A /* C_Exception.cpp in Sources */,
 				CFEDF3020C2D161F0038713A /* F_DisplayException.cpp in Sources */,
 				CFEDF3030C2D161F0038713A /* F_GetPrime.cpp in Sources */,
 				CFEDF3040C2D161F0038713A /* MF_Assert.cpp in Sources */,
@@ -4909,7 +4894,6 @@
 				CFEDF45D0C2D16610038713A /* C_ConsoleOut.cpp in Sources */,
 				CFEDF45E0C2D16610038713A /* C_DateTime.cpp in Sources */,
 				CFEDF45F0C2D16610038713A /* C_Timer.cpp in Sources */,
-				CFEDF4600C2D16610038713A /* C_Exception.cpp in Sources */,
 				CFEDF4620C2D16610038713A /* F_DisplayException.cpp in Sources */,
 				CFEDF4630C2D16610038713A /* F_GetPrime.cpp in Sources */,
 				CFEDF4640C2D16610038713A /* MF_Assert.cpp in Sources */,
