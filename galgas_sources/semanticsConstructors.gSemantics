@@ -289,7 +289,7 @@ once constructorMapFor_lstring ->@constructorMap outMap :
   t += ![@stringGalgasType new] ;
   t += ![@locationGalgasType new] ;
   [!?outMap insertKey ![@lstring new !"new" !here] !t !false ![@lstringGalgasType new]] ;
-  enterConstructorWithoutArgument !?outMap !"retrieveAndResetTemplateString" ![@lstringGalgasType new] !false ;
+  enterConstructorWithoutArgument !?outMap !"retrieveAndResetTemplateString" ![@lstringGalgasType new] !true ;
 end once ;
 
 #---------------------------------------------------------------------------*
