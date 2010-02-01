@@ -324,7 +324,7 @@ once readerMapFor_char ->@readerMap outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"utf32CharConstantRepresentation" ![@stringGalgasType new] !false ;
-  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
+  enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"isalnum" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"isalpha" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"iscntrl" ![@boolGalgasType new] !false ;
