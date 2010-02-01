@@ -31,6 +31,11 @@ if [TYPE generate_new_constructor] then
   %\n%!COL_01 %COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
+if [TYPE generate_virtual_destructor] then
+%//--------------------------------- Virtual destructor
+  protected : virtual ~ GALGAS_%!TYPE_NAME% (void) ;\n\n%
+end if
+
 foreach [TYPE constructorMap]
 before %//--------------------------------- GALGAS constructors\n%
 do
@@ -169,8 +174,8 @@ end foreach
 //--------------------------------- Readers
 %
 foreach [TYPE readerMap] do
-  if mQualifier != [@readerQualifier isInherited] then
-    %  protected : virtual GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key string] % (%?COL
+  if (mQualifier != [@readerQualifier isInherited]) & (mImplicitConversionReader == "") then
+    %  protected : virtual GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key identifierRepresentation] % (%?COL
     foreach mArgumentTypeList
       do index IDX %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand% ![IDX string]
       between %,\n% !COL
@@ -412,7 +417,7 @@ end foreach
 %//--------------------------------- Reader invocation\n%
 foreach [TYPE readerMap] do
   if mQualifier == [@readerQualifier isBasic] then
-    %  friend inline GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key string] % (%?COL
+    %  friend GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key identifierRepresentation] % (%?COL
     %const GALGAS_%!TYPE_NAME% * inObject%
     foreach mArgumentTypeList
       do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand% ![IDX string]
@@ -427,47 +432,7 @@ foreach [TYPE readerMap] do
 end foreach
 %} ;
 
-% foreach [TYPE readerMap] do
-  if mQualifier == [@readerQualifier isBasic] then
-    %//---------------------------------------------------------------------------*\n\n%
-    %inline GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key string] % (%?COL
-    %const GALGAS_%!TYPE_NAME% * inObject%
-    foreach mArgumentTypeList
-      do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand_% ![IDX string]
-    end foreach
-    if mHasLexiqueArgument then
-      %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
-    else
-      %\n% !COL %COMMA_LOCATION_ARGS%
-    end if
-    %) {\n%
-    %  GALGAS_%![mReturnedType typeIdentifierRepresentation]% * result = NULL ;\n%
-    %  if (inObject != NULL) {\n%
-    %    result = inObject->reader_%![key string]% (%
-    foreach mArgumentTypeList
-      do index IDX %inOperand_% ![IDX string]
-      between %, %
-    end foreach
-    if [mArgumentTypeList length] > 0 then
-      if mHasLexiqueArgument then
-        %, inCompiler COMMA_THERE%
-      else
-        % COMMA_THERE%
-      end if
-    else
-      if mHasLexiqueArgument then
-        %inCompiler COMMA_THERE%
-      else
-        %THERE%
-      end if
-    end if
-    %) ;\n%
-    %  }\n%
-    %  return result ;\n%
-    %}\n\n%
-  end if
-end foreach
-foreach [TYPE modifierMap] do
+%foreach [TYPE modifierMap] do
   %//---------------------------------------------------------------------------*\n\n%
   %inline void modifier_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
   foreach mParameterList do index IDX

@@ -57,5 +57,58 @@ void GALGAS_%!TYPE_NAME%::insulate (%?COL_0%GALGAS_%!TYPE_NAME% * & ioOperand
     macroRetainObject (p) ;
     ioOperand = p ;
   }
-}%end if%
+}
+%end if
+foreach [TYPE readerMap] do
+  if mQualifier == [@readerQualifier isBasic] then
+    %//---------------------------------------------------------------------------*\n\n%
+    %GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key identifierRepresentation] % (%?COL
+    %const GALGAS_%!TYPE_NAME% * inObject%
+    foreach mArgumentTypeList
+      do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand_% ![IDX string]
+    end foreach
+    if mHasLexiqueArgument then
+      %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
+    else
+      %\n% !COL %COMMA_LOCATION_ARGS%
+    end if
+    %) {\n%
+    %  GALGAS_%![mReturnedType typeIdentifierRepresentation]% * result = NULL ;\n%
+    %  if (inObject != NULL) {\n%
+    if mImplicitConversionReader == "" then
+      %    result = inObject->reader_%![key identifierRepresentation]% (%
+      foreach mArgumentTypeList
+        do index IDX %inOperand_% ![IDX string]
+        between %, %
+      end foreach
+      if [mArgumentTypeList length] > 0 then
+        if mHasLexiqueArgument then
+          %, inCompiler COMMA_THERE%
+        else
+          % COMMA_THERE%
+        end if
+      else
+        if mHasLexiqueArgument then
+          %inCompiler COMMA_THERE%
+        else
+          %THERE%
+        end if
+      end if
+    else
+      %    result = reader_%![key identifierRepresentation]% (inObject->%!mImplicitConversionReader% ()%
+      foreach mArgumentTypeList
+        do index IDX %, inOperand_% ![IDX string]
+      end foreach
+      if mHasLexiqueArgument then
+        %, inCompiler COMMA_THERE%
+      else
+        % COMMA_THERE%
+      end if
+    end if
+    %) ;\n%
+    %  }\n%
+    %  return result ;\n%
+    %}\n\n%
+  end if
+end foreach
 

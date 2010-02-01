@@ -6,7 +6,7 @@
 
 #include "galgas2/AC_GALGAS_Array.h"
 #include "strings/C_String.h"
-#include "collections/TC_UniqueArray.h"
+#include "collections/TC_Array.h"
 #include "galgas-utilities/C_LocationInSource.h"
 #include "bdd/C_BDD.h"
 
@@ -18,7 +18,7 @@ class C_SourceTextInString ;
 
 //---------------------------------------------------------------------------*
 
-typedef TC_UniqueArray <PMUInt8> uint8UniqueArray ;
+typedef TC_Array <PMUInt8> uint8Array ;
 
 //---------------------------------------------------------------------------*
 

@@ -201,7 +201,7 @@ end reader ;
 
 override reader @dataGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
   outList := [@builtinTypeAttributeList emptyList] ;
-  outList += !"uint8UniqueArray" !false !"mData" !true !"" ;
+  outList += !"uint8Array" !false !"mData" !true !"" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -266,6 +266,22 @@ end reader ;
 
 override reader @stringsetGalgasType generate_new_constructor -> @bool outGenerate  :
   outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# G E N E R A T E    V I R T U A L    D E S T R U C T O R                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType generate_virtual_destructor -> @bool outGenerate :
+  outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @locationGalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := true ;
 end reader ;
 
 #---------------------------------------------------------------------------*

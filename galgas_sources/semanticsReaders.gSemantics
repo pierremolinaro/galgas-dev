@@ -38,6 +38,7 @@ map @readerMap {
   @bool mHasLexiqueArgument ;
   @ACGalgasType mReturnedType ;
   @readerQualifier mQualifier ;
+  @string mImplicitConversionReader ;
   insert insertKey error message "the '%K' reader has been already defined" ;
   search searchKey error message "the '%K' reader is not declared" ;
 }
@@ -56,6 +57,7 @@ routine enterBaseReaderWithoutArgument
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+    !""
   ] ;
 end routine ;
 
@@ -73,6 +75,7 @@ routine enterInheritedReaderWithoutArgument
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isInherited]
+    !""
   ] ;
 end routine ;
 
@@ -92,6 +95,7 @@ routine enterBaseReaderWithStringArgument
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+    !""
   ] ;
 end routine ;
 
@@ -112,6 +116,7 @@ routine enterBaseReaderWith2StringArguments
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+    !""
   ] ;
 end routine ;
 
@@ -131,6 +136,7 @@ routine enterBaseReaderWithBoolArgument
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+    !""
   ] ;
 end routine ;
 
@@ -151,6 +157,7 @@ routine enterBaseReaderWithBoolStringlistArguments
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+    !""
   ] ;
 end routine ;
 
@@ -170,6 +177,7 @@ routine enterBaseReaderWithUintArgument
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+     !""
   ] ;
 end routine ;
 
@@ -190,6 +198,7 @@ routine enterBaseReaderWith2UintArguments
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+     !""
   ] ;
 end routine ;
 
@@ -211,6 +220,7 @@ routine enterBaseReaderWith3UintArguments
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+     !""
   ] ;
 end routine ;
 
@@ -231,6 +241,7 @@ routine enterBaseReaderWithUintCharArguments
     !inHasLexiqueAndLocationArguments
     !inReturnedType
     ![@readerQualifier isBasic]
+     !""
   ] ;
 end routine ;
 
@@ -464,6 +475,11 @@ end reader ;
 
 once readerMapFor_lstring ->@readerMap outMap :
   outMap := readerMapFor_string [] ;
+  foreach [outMap keyList] do
+    with !?outMap searchKey !mValue do
+      mImplicitConversionReader := "stringValue" ;
+    end with ;
+  end foreach ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
@@ -608,7 +624,7 @@ once readerMapFor_binaryset ->@readerMap outMap :
   @typeList t [emptyList] ;
   t += ![@binarysetGalgasType new] ;
   t += ![@binarysetGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"ITE" !here] !t !false ![@binarysetGalgasType new]![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"ITE" !here] !t !false ![@binarysetGalgasType new]![@readerQualifier isBasic] !""] ;
   enterBaseReaderWithUintArgument !?outMap !"forAllOnBitIndex" ![@binarysetGalgasType new] !false ;
   enterBaseReaderWithUintArgument !?outMap !"forAllOnBitIndexAndBeyond" ![@binarysetGalgasType new] !false ;
   enterBaseReaderWithUintArgument !?outMap !"existOnBitIndex" ![@binarysetGalgasType new] !false ;
@@ -619,7 +635,7 @@ once readerMapFor_binaryset ->@readerMap outMap :
   t := [@typeList emptyList] ;
   t += ![@uintGalgasType new] ;
   t += !build_stringlist_type [] ;
-  [!?outMap insertKey ![@lstring new !"stringValueListWithNameList" !here] !t !false !build_stringlist_type []![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"stringValueListWithNameList" !here] !t !false !build_stringlist_type []![@readerQualifier isBasic] !""] ;
   enterBaseReaderWithoutArgument !?outMap !"predicateStringValue" ![@stringGalgasType new] !false ;
   enterBaseReaderWithUintArgument !?outMap !"compressedStringValueList" !build_stringlist_type [] !false ;
   enterBaseReaderWith2UintArguments !?outMap !"swap21" ![@binarysetGalgasType new] !false ;
@@ -632,21 +648,21 @@ once readerMapFor_binaryset ->@readerMap outMap :
   t := [@typeList emptyList] ;
   t += ![@binarysetGalgasType new] ;
   t += ![@uintGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"accessibleStates" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"accessibleStates" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
   t := [@typeList emptyList] ;
   t += ![@binarysetGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"equalTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
-  [!?outMap insertKey ![@lstring new !"notEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
-  [!?outMap insertKey ![@lstring new !"lowerOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
-  [!?outMap insertKey ![@lstring new !"greaterOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
-  [!?outMap insertKey ![@lstring new !"greaterThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
-  [!?outMap insertKey ![@lstring new !"lowerThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"equalTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"notEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"lowerOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"greaterOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"greaterThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"lowerThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
   enterBaseReaderWith2UintArguments !?outMap !"binarySetByTranslatingFromIndex" ![@binarysetGalgasType new] !false ;
   t := [@typeList emptyList] ;
   t += ![@uint64GalgasType new] ;
   t += ![@uintGalgasType new] ;
   t += ![@uintGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"containsValue" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"containsValue" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
   enterBaseReaderWith2UintArguments !?outMap !"existsOnBitRange" ![@binarysetGalgasType new] !false ;
 end once ;
 
@@ -707,7 +723,7 @@ once readerMapFor_function ->@readerMap outMap :
   @typeList objectList [emptyList] ;
   objectList += !build_objectlist_type [] ;
   objectList += ![@locationGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"invoke" !here] !objectList !true ![@objectGalgasType new] ![@readerQualifier isBasic]] ;
+  [!?outMap insertKey ![@lstring new !"invoke" !here] !objectList !true ![@objectGalgasType new] ![@readerQualifier isBasic] !""] ;
 end once ;
 
 #---------------------------------------------------------------------------*
@@ -735,6 +751,7 @@ override reader @classGalgasType readerMap ->@readerMap outMap :
       !false
       !t
       ![@readerQualifier isBasic]
+      !""
     ] ;
   end foreach ;
 end reader ;
@@ -761,6 +778,7 @@ override reader @listGalgasType readerMap ->@readerMap outMap :
       !false
       !t
       ![@readerQualifier isBasic]
+      !""
     ] ;
   end foreach ;
 end reader ;
@@ -797,6 +815,7 @@ override reader @structGalgasType readerMap ->@readerMap outMap :
       !false
       !t
       ![@readerQualifier isBasic]
+      !""
     ] ;
   end foreach ;
 end reader ;
