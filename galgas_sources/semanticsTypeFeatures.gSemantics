@@ -363,6 +363,18 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @dataGalgasType isComparable -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @doubleGalgasType isComparable -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @uintGalgasType isComparable -> @bool outResult :
   outResult := true ;
 end reader ;
@@ -746,6 +758,12 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @sint64GalgasType accept_unary_minus_operator -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @doubleGalgasType accept_unary_minus_operator -> @bool outResult :
   outResult := true ;
 end reader ;
 

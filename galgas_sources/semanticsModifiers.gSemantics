@@ -508,9 +508,9 @@ end reader ;
 
 once modifierMapFor_data ->@modifierMap outModifierMap :
   outModifierMap := [@modifierMap emptyMap] ;
-  enterModifierWithUintInputArgument !?outModifierMap !"appendByte" !false ;
-  enterModifierWithUintInputArgument !?outModifierMap !"appendShortBE" !false ;
-  enterModifierWithUintInputArgument !?outModifierMap !"appendShortLE" !false ;
+  enterModifierWithUintInputArgument !?outModifierMap !"appendByte" !true ;
+  enterModifierWithUintInputArgument !?outModifierMap !"appendShortBE" !true ;
+  enterModifierWithUintInputArgument !?outModifierMap !"appendShortLE" !true ;
   enterModifierWithUintInputArgument !?outModifierMap !"appendUIntBE" !false ;
   enterModifierWithUintInputArgument !?outModifierMap !"appendUIntLE" !false ;
   enterModifierWithStringInputArgument !?outModifierMap !"appendUTF8String" !false ;
