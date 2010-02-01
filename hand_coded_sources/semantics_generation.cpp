@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -27,6 +27,10 @@
 #include "semantics_parser.h"
 #include "parser_generation.h"
 #include "galgas_start.h"
+
+//---------------------------------------------------------------------------*
+
+#include <stdlib.h>
 
 //---------------------------------------------------------------------------*
 
@@ -858,7 +862,8 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeNullName::
 generateCplusPlusName (AC_OutputStream & /* inFile */) const {
-  throw C_Exception ("Internal error", 0, 0 COMMA_HERE) ;
+  printf ("*** Internal fatal error at %s:%d\n", __FILE__, __LINE__) ;
+  exit (1) ;
 }
 
 //---------------------------------------------------------------------------*
