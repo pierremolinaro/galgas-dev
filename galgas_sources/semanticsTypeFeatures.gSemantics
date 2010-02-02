@@ -427,6 +427,12 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @binarysetGalgasType accept_and_operator -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @uintGalgasType accept_and_operator -> @bool outResult :
   outResult := true ;
 end reader ;
@@ -467,6 +473,12 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @binarysetGalgasType accept_or_operator -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @uintGalgasType accept_or_operator -> @bool outResult :
   outResult := true ;
 end reader ;
@@ -502,6 +514,12 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @boolGalgasType accept_xor_operator -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @binarysetGalgasType accept_xor_operator -> @bool outResult :
   outResult := true ;
 end reader ;
 
@@ -813,6 +831,12 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @binarysetGalgasType accept_shift_operator -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @uintGalgasType accept_shift_operator -> @bool outResult :
   outResult := true ;
 end reader ;
@@ -843,6 +867,12 @@ end reader ;
 
 reader @ACGalgasType accept_tilde_operator -> @bool outResult :
   outResult := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @binarysetGalgasType accept_tilde_operator -> @bool outResult :
+  outResult := true ;
 end reader ;
 
 #---------------------------------------------------------------------------*
