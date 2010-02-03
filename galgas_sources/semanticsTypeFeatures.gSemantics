@@ -427,6 +427,12 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @stringsetGalgasType accept_and_operator -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @binarysetGalgasType accept_and_operator -> @bool outResult :
   outResult := true ;
 end reader ;
@@ -468,6 +474,12 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @boolGalgasType accept_or_operator -> @bool outResult :
+  outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringsetGalgasType accept_or_operator -> @bool outResult :
   outResult := true ;
 end reader ;
 
@@ -611,6 +623,12 @@ end reader ;
 
 reader @ACGalgasType accept_sub_operator -> @bool outResult :
   outResult := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringsetGalgasType accept_sub_operator -> @bool outResult :
+  outResult := true ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -929,6 +947,23 @@ end reader ;
 
 override reader @stringGalgasType accept_concat_operator -> @bool outResult :
   outResult := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    += A D D    O P E R A T O R                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType add_assign_operator -> @typeList outResult :
+  outResult := [@typeList emptyList] ; # Means += operator is not accepted 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringsetGalgasType add_assign_operator -> @typeList outResult :
+  outResult := [@typeList emptyList] ;
+  outResult += ![@stringGalgasType new] ;
 end reader ;
 
 #---------------------------------------------------------------------------*

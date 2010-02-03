@@ -68,7 +68,25 @@ end foreach
 //--------------------------------- Implementation of reader 'description'
   public : virtual void description (C_String & ioString,
                                      const PMSInt32 inIndentation) const ;
+%
+if [[TYPE add_assign_operator] length] > 0 then
+%//--------------------------------- += operator
+  friend void addAssign_operation (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach [TYPE add_assign_operator] do index IDX
+    %,\n%!COL%const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+  %) ;
 
+//--------------------------------- -= operator
+  friend void minusAssign_operation (%?COL1%GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach [TYPE add_assign_operator] do index IDX
+    %,\n%!COL1%const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+  %) ;
+%
+end if
+
+%
 //--------------------------------- Modifiers
 %
 foreach [TYPE modifierMap] do
@@ -354,7 +372,7 @@ if [TYPE accept_append_operator] then
                                                   !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
-if [TYPE accept_inc_dec_operator] | [TYPE accept_append_operator] | ([[TYPE modifierMap] count] > 0) then
+if [TYPE accept_inc_dec_operator] | [TYPE accept_append_operator] | ([[TYPE modifierMap] count] > 0) | ([[TYPE add_assign_operator] length] > 0) then
   %//--------------------------------- Modifier utility method\n%
   %  protected : static void insulate (%?COL%GALGAS_%!TYPE_NAME% * & ioOperand\n%
         !COL%COMMA_LOCATION_ARGS) ;\n\n%

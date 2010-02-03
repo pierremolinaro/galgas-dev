@@ -15,6 +15,7 @@
 class C_galgas_function_descriptor ;
 class C_galgas_type_descriptor ;
 class C_SourceTextInString ;
+class cStringsetNode ;
 
 //---------------------------------------------------------------------------*
 
