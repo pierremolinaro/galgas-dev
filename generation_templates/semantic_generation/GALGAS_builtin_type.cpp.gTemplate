@@ -36,7 +36,7 @@ GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_new (%?COL_01
 }%
 end if
 
-if [TYPE accept_inc_dec_operator] | [TYPE accept_append_operator] | ([[TYPE modifierMap] count] > 0) then%
+if [TYPE accept_inc_dec_operator] | [TYPE accept_append_operator] | ([[TYPE modifierMap] count] > 0) | ([[TYPE add_assign_operator] length] > 0) then%
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_NAME%::insulate (%?COL_0%GALGAS_%!TYPE_NAME% * & ioOperand

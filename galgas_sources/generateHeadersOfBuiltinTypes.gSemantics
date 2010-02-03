@@ -50,6 +50,14 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @stringsetGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
+  outList := [@builtinTypeAttributeList emptyList] ;
+  outList += !"cStringsetNode" !true !"mRoot" !false !"" ;
+  outList += !"PMUInt32" !false !"mCount" !false !"count" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @charGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
   outList := [@builtinTypeAttributeList emptyList] ;
   outList += !"utf32" !false !"mCharValue" !false !"charValue" ;
@@ -263,25 +271,55 @@ override reader @ldoubleGalgasType generate_new_constructor -> @bool outGenerate
 end reader ;
 
 #---------------------------------------------------------------------------*
-
-override reader @stringsetGalgasType generate_new_constructor -> @bool outGenerate  :
-  outGenerate := false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 # G E N E R A T E    V I R T U A L    D E S T R U C T O R                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 reader @ACGalgasType generate_virtual_destructor -> @bool outGenerate :
+  outGenerate := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @boolGalgasType generate_virtual_destructor -> @bool outGenerate  :
   outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @locationGalgasType generate_virtual_destructor -> @bool outGenerate  :
-  outGenerate := true ;
+override reader @uintGalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @uint64GalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sintGalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sint64GalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @charGalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @doubleGalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
