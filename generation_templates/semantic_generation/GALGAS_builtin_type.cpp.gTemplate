@@ -112,3 +112,13 @@ foreach [TYPE readerMap] do
   end if
 end foreach
 
+if [[TYPE enumerable] length] > 0 then
+  foreach [TYPE enumerable] do index IDX
+    %//---------------------------------------------------------------------------*\n\n%
+    %const GALGAS_%![mType typeIdentifierRepresentation]% * GALGAS_%!TYPE_NAME%::cEnumerator::attribute_%![mEnumerationName identifierRepresentation]% (void) const {\n%
+    %  const GALGAS_%![mType typeIdentifierRepresentation]% * result = (const GALGAS_%![mType typeIdentifierRepresentation]% *) directAccess (%![IDX string]% COMMA_HERE) ;\n%
+    %  macroValidObject (result, const GALGAS_%![mType typeIdentifierRepresentation]%) ;\n%
+    %  return result ;\n%
+    %}\n\n%
+  end foreach
+end if
