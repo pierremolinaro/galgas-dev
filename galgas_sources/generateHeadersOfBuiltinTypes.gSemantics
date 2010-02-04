@@ -53,7 +53,7 @@ end reader ;
 override reader @stringsetGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
   outList := [@builtinTypeAttributeList emptyList] ;
   outList += !"cStringsetNode" !true !"mRoot" !false !"" ;
-  outList += !"PMUInt32" !false !"mCount" !false !"count" ;
+  outList += !"PMUInt32" !false !"mCount" !false !"" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -283,6 +283,18 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @boolGalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @functionGalgasType generate_virtual_destructor -> @bool outGenerate  :
+  outGenerate := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @typeGalgasType generate_virtual_destructor -> @bool outGenerate  :
   outGenerate := false ;
 end reader ;
 

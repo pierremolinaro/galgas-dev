@@ -347,6 +347,30 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# E N U M E R A B L E                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @enumerableTypeDescriptionList {
+  @ACGalgasType mType ;
+  @string mEnumerationName ;
+}
+
+#---------------------------------------------------------------------------*
+
+reader @ACGalgasType enumerable -> @enumerableTypeDescriptionList outResult :
+  outResult := [@enumerableTypeDescriptionList emptyList] ; # Means this type is not enumerable
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringsetGalgasType enumerable -> @enumerableTypeDescriptionList outResult :
+  outResult := [@enumerableTypeDescriptionList emptyList] ;
+  outResult += ![@stringGalgasType new] !"key" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 # I S    C O M P A R A B L E   (handles '<=', '>=', '<' and '>' operators)  *
 #                                                                           *
 #---------------------------------------------------------------------------*
