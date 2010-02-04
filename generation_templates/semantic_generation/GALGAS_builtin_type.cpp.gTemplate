@@ -95,7 +95,7 @@ foreach [TYPE readerMap] do
         end if
       end if
     else
-      %    result = reader_%![key identifierRepresentation]% (inObject->%!mImplicitConversionReader% ()%
+      %    result = reader_%![key identifierRepresentation]% (inObject->reader_%![mImplicitConversionReader identifierRepresentation]% (THERE)%
       foreach mArgumentTypeList
         do index IDX %, inOperand_% ![IDX string]
       end foreach

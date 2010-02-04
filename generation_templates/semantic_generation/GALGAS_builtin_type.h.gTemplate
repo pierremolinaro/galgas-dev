@@ -8,7 +8,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_NAME% : public AC_GALGAS__root {
+class GALGAS_%!TYPE_NAME% : public %
+if [[TYPE enumerable] length] == 0 then
+  %AC_GALGAS__root%
+else
+  %AC_GALGAS_Enumerable%
+end if
+% {
 //--------------------------------- Native constructor
 %
 %  protected : GALGAS_%!TYPE_NAME% (%?COL_00
@@ -432,7 +438,7 @@ foreach [TYPE modifierMap] do
   end if  
   %) ;\n\n%
 end foreach
-%//--------------------------------- Reader invocation\n%
+%//--------------------------------- Reader invocation declaration\n%
 foreach [TYPE readerMap] do
   if mQualifier == [@readerQualifier isBasic] then
     %  friend GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key identifierRepresentation] % (%?COL
@@ -448,6 +454,24 @@ foreach [TYPE readerMap] do
     %) ;\n\n%
   end if
 end foreach
+if [[TYPE enumerable] length] > 0 then
+%//--------------------------------- Enumeration handling
+  protected : virtual const AC_GALGAS__root * * enumerationArray (const bool inAscending) const ;
+  protected : virtual PMUInt32 count (void) const ;
+
+//--------------------------------- Enumerator declaration
+  public : class cEnumerator : public AC_GALGAS_Enumerator {
+    public : cEnumerator (const GALGAS_%!TYPE_NAME% * inEnumeratedObject,
+                          const bool inAscending) ;
+  
+  //--- Attribute access\n%
+    foreach [TYPE enumerable] do
+%    public : const GALGAS_%![mType typeIdentifierRepresentation]% * attribute_%![mEnumerationName identifierRepresentation]% (void) const ;\n%
+    end foreach%
+  } ;
+%
+end if
+#---------------- END OF CLASS DECLARATION
 %} ;
 
 %foreach [TYPE modifierMap] do

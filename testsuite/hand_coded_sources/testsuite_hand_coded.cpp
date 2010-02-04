@@ -41,27 +41,24 @@ routine_test_dictionary (void) {
 
 static void
 routine_test_galgas2 (C_Compiler & /*inLexique */) {
-  GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
+  /* GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
   C_Object::retain (n COMMA_HERE) ;
   AC_GALGAS__root::log (n, "n") ;
-/*  const PMSInt32 TEST_SIZE = 5000000 ;
-  PM_C_Array array ;
-  array._alloc (HERE) ;
-  for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
-    array._addObject (PM_C_Object ()) ;
+  const PMUInt32 TEST_SIZE = 5000000 ;
+
+  GALGAS_uintlist * aList = GALGAS_uintlist::constructor_emptyList (HERE) ;
+  C_Object::retain (aList COMMA_HERE) ;
+   for (PMUInt32 i=0 ; i<TEST_SIZE ; i++) {
+    addAssign_operation (aList, GALGAS_uint::constructor_new (i COMMA_HERE)) ;
   }
-  for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
-    PM_C_Object object = array._removeLast (HERE) ;
-  }*/
-/*  GGS_stringlist list (GGS_stringlist::constructor_emptyList ()) ;
-  for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
-    list._addAssign_operation (GGS_string (true, "")) ;
-  }
-  for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
-    GGS_string s ;
-    list.modifier_popFirst (inLexique, s COMMA_HERE) ;
-  }*/
-  printf ("Array Test Done\n") ;
+
+  macroReleaseObject (n) ;
+  macroReleaseObject (aList) ;
+  C_Object::garbage () ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    C_Object::checkAllObjectsHaveBeenReleased () ;
+  #endif
+  printf ("GALGAS 2 Test Done\n") ; */
 }
 
 //---------------------------------------------------------------------------*

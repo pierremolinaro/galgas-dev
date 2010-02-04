@@ -265,6 +265,7 @@
 		CF3D5BCF0D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5BC70D9E97E300BE06A6 /* filewrapper_template_generation.cpp */; };
 		CF3D5BD00D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5BC70D9E97E300BE06A6 /* filewrapper_template_generation.cpp */; };
 		CF3D5BD10D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5BC70D9E97E300BE06A6 /* filewrapper_template_generation.cpp */; };
+		CF3DF258111AE3430020D74F /* GALGAS_stringset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0919661118A870009ABB14 /* GALGAS_stringset.cpp */; };
 		CF3F51CE0DFF165E00F008D2 /* categoryMethods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3F51CD0DFF165E00F008D2 /* categoryMethods.cpp */; };
 		CF3F51CF0DFF165E00F008D2 /* categoryMethods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3F51CD0DFF165E00F008D2 /* categoryMethods.cpp */; };
 		CF3F51D00DFF165E00F008D2 /* categoryMethods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3F51CD0DFF165E00F008D2 /* categoryMethods.cpp */; };
@@ -4265,6 +4266,7 @@
 				CF085E4B11176CBE00A23487 /* GALGAS_data.cpp in Sources */,
 				CF085E7F111772A800A23487 /* GALGAS_location.cpp in Sources */,
 				CF0919911118B568009ABB14 /* GALGAS_binaryset.cpp in Sources */,
+				CF3DF258111AE3430020D74F /* GALGAS_stringset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

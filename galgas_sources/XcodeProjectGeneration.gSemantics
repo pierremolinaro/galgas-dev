@@ -65,12 +65,40 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine getGALGAS_2_source_file_list
-  !@stringlist out_cpp_and_h_fileList
+  !@stringlist out_fileList
 :
-  out_cpp_and_h_fileList := [@stringlist emptyList] ;
-  out_cpp_and_h_fileList += !"AC_GALGAS_Enumerable" ;
-  out_cpp_and_h_fileList += !"AC_GALGAS_Array" ;
-  out_cpp_and_h_fileList += !"AC_GALGAS__root" ;
+  out_fileList := [@stringlist emptyList] ;
+  out_fileList += !"AC_GALGAS_Enumerable.cpp" ;
+  out_fileList += !"AC_GALGAS_Enumerable.h" ;
+  out_fileList += !"AC_GALGAS_Array.cpp" ;
+  out_fileList += !"AC_GALGAS_Array.h" ;
+  out_fileList += !"AC_GALGAS__root.cpp" ;
+  out_fileList += !"AC_GALGAS__root.h" ;
+  out_fileList += !"GALGAS_binaryset.cpp" ;
+  out_fileList += !"GALGAS_bool.cpp" ;
+  out_fileList += !"GALGAS_char.cpp" ;
+  out_fileList += !"GALGAS_data.cpp" ;
+  out_fileList += !"GALGAS_double.cpp" ;
+  out_fileList += !"GALGAS_function.cpp" ;
+  out_fileList += !"GALGAS_lbool.cpp" ;
+  out_fileList += !"GALGAS_lchar.cpp" ;
+  out_fileList += !"GALGAS_ldouble.cpp" ;
+  out_fileList += !"GALGAS_location.cpp" ;
+  out_fileList += !"GALGAS_lsint.cpp" ;
+  out_fileList += !"GALGAS_lsint_36__34_.cpp" ;
+  out_fileList += !"GALGAS_lstring.cpp" ;
+  out_fileList += !"GALGAS_luint.cpp" ;
+  out_fileList += !"GALGAS_luint_36__34_.cpp" ;
+  out_fileList += !"GALGAS_object.cpp" ;
+  out_fileList += !"GALGAS_sint.cpp" ;
+  out_fileList += !"GALGAS_sint_36__34_.cpp" ;
+  out_fileList += !"GALGAS_string.cpp" ;
+  out_fileList += !"GALGAS_stringset.cpp" ;
+  out_fileList += !"GALGAS_type.cpp" ;
+  out_fileList += !"GALGAS_uint.cpp" ;
+  out_fileList += !"GALGAS_uint_36__34_.cpp" ;
+  out_fileList += !"predefined-types.cpp" ;
+  out_fileList += !"predefined-types.h" ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -148,12 +176,8 @@ routine build_LIBPM_GALGAS_2_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
-  @stringlist cpp_and_h_fileList ;
-  getGALGAS_2_source_file_list ?cpp_and_h_fileList ;
-  @stringlist fileList [emptyList] ;
-  foreach cpp_and_h_fileList do 
-    append_cpp_h_files !?fileList !mValue ;
-  end foreach ;
+  @stringlist fileList ;
+  getGALGAS_2_source_file_list ?fileList ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -170,14 +194,14 @@ routine build_LIBPM_GALGAS_files_for_sources_build_phase
 :
   @stringlist cpp_and_h_fileList ;
   getGALGAS_source_file_list ?cpp_and_h_fileList ;
-  @stringlist fileList [emptyList] ;
+  @stringlist cppFileList [emptyList] ;
   foreach cpp_and_h_fileList do 
-    fileList += !mValue . ".cpp" ;
+    cppFileList += !mValue . ".cpp" ;
   end foreach ;
 #---
   enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !fileList
+   !cppFileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -185,21 +209,23 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine build_LIBPM_GALGAS_2_files_for_sources_build_phase
-  ?!@XcodeProjectDescription unused ioXcodeProjectDescription
-  ?!@Xcode_PBXBuildFile_list unused ioBuildPhaseList
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-#  @stringlist cpp_and_h_fileList ;
-#  getGALGAS_2_source_file_list ?cpp_and_h_fileList ;
-#  @stringlist fileList [emptyList] ;
-#  foreach cpp_and_h_fileList do 
-#    fileList += !mValue . ".cpp" ;
-#  end foreach ;
-##---
-#  enter_file_list_for_sources_build_phase
-#   !?ioXcodeProjectDescription
-#   !fileList
-#   !?ioBuildPhaseList
-#  ;
+  @stringlist fileList ;
+  getGALGAS_2_source_file_list ?fileList ;
+  @stringlist cppFileList [emptyList] ;
+  foreach fileList do
+    if [mValue pathExtension] == "cpp" then
+      cppFileList += !mValue ;
+    end if ;
+  end foreach ;
+#---
+  enter_file_list_for_sources_build_phase
+   !?ioXcodeProjectDescription
+   !cppFileList
+   !?ioBuildPhaseList
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*
