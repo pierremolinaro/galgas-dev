@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS LL1 routines                                                      *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics mda_galgas_routines :
+semantics galgas_routines :
   import "semanticsCompilation.gSemantics" ;
   import "projectMetamodel.gSemantics" ;
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
