@@ -27,7 +27,7 @@ import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics guiCompilation in "guiCompilation.gSemantics" ;
 import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
 import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
-import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
+import semantics galgas_routines in "galgas_routines.gSemantics" ;
 
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
@@ -608,65 +608,6 @@ label importOptions
   end repeat ;
   $end$ ;
   $project$ ;
-  $;$ ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#          Compile file component                                              *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <galgas_component>
-  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
-  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
-  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
-  ?!@M_grammarComponents unused ioGrammarComponentsMap
-  ?!@M_optionComponents unused ioOptionsComponentsMap
-  ?!@EXsemanticContext unused ioSemanticContext
-:
-  $compile$ ;
-  @lstring fileName ;
-  $literal_string$ ? fileName ;
-  $;$ ;
-  if [option.verbose_output value] then
-    message "------ Compile file '" . [fileName string] . "'\n" ;
-  end if ;
-  grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "DEPENDENCIES" ;
-label importLexique
-  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
-:
-  $compile$ ;
-  $literal_string$ ? * ;
-  $;$ ;
-label importSyntax
-  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
-  ?!@EXsemanticContext unused ioSemanticContext
-:
-  $compile$ ;
-  $literal_string$ ? * ;
-  $;$ ;
-label importSemantics
-  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
-  ?!@EXsemanticContext unused ioSemanticContext
-  ?!@stringset unused ioImportedSemanticsComponentNameSet
-:
-  $compile$ ;
-  $literal_string$ ? * ;
-  $;$ ;
-label importGrammarForSemantics
-  ?!@M_grammarComponents unused ioGrammarComponentsMap
-  ?!@M_optionComponents unused ioOptionsComponentsMap
-  ?!@EXsemanticContext unused ioSemanticContext
-:
-  $compile$ ;
-  $literal_string$ ? * ;
-  $;$ ;
-label importOptions
-  ?!@M_optionComponents unused ioOptionsComponentsMap
-:
-  $compile$ ;
-  $literal_string$ ? * ;
   $;$ ;
 end rule ;
 

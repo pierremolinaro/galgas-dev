@@ -48,7 +48,7 @@ class GALGAS_%!TYPE_NAME% : public AC_GALGAS_Array {
 %foreach ATTRIBUTE_LIST
   do index IDX 
 %                                     const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
-  between %,%
+  between %,\n%
 end foreach%
                                      COMMA_LOCATION_ARGS) ;
 

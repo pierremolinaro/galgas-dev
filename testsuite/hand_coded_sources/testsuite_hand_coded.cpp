@@ -41,9 +41,9 @@ routine_test_dictionary (void) {
 
 static void
 routine_test_galgas2 (C_Compiler & /*inLexique */) {
-  /* GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
+  GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
   C_Object::retain (n COMMA_HERE) ;
-  AC_GALGAS__root::log (n, "n") ;
+  //AC_GALGAS__root::log (n, "n") ;
   const PMUInt32 TEST_SIZE = 5000000 ;
 
   GALGAS_uintlist * aList = GALGAS_uintlist::constructor_emptyList (HERE) ;
@@ -58,7 +58,7 @@ routine_test_galgas2 (C_Compiler & /*inLexique */) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     C_Object::checkAllObjectsHaveBeenReleased () ;
   #endif
-  printf ("GALGAS 2 Test Done\n") ; */
+ // printf ("GALGAS 2 Test Done\n") ;
 }
 
 //---------------------------------------------------------------------------*
