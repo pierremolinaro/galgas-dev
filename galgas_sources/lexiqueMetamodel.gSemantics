@@ -341,8 +341,7 @@ class @lexicalLogInstruction extends @lexicalInstruction {
 #---------------------------------------------------------------------------*
 
 enum @lexicalArgumentMode {
-  constructor lexicalInputMode ;
-  constructor lexicalInputOutputMode ;
+  lexicalInputMode, lexicalInputOutputMode
 }{
   reader lexicalFormalModeName :
     lexicalInputMode       -> "!" ;

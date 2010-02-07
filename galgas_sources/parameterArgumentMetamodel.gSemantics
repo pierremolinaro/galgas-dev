@@ -28,10 +28,7 @@ import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 enum @formalArgumentPassingMode {
-  constructor argumentIn ;
-  constructor argumentOut ;
-  constructor argumentInOut ;
-  constructor argumentConstantIn ;
+  argumentIn, argumentOut, argumentInOut, argumentConstantIn
 }{
   reader formalArgumentMessage :
     argumentConstantIn -> "a constant input (??) formal argument" ;

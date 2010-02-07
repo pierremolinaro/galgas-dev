@@ -4618,7 +4618,7 @@ rule <semantic_instruction>
         @lstring enumConstantName ;
         $identifier$ ? enumConstantName ;
         branchConstantSet += ![enumConstantName string] ;
-        [enumConstantesMap searchKey !enumConstantName ?* ?*] ;
+        [enumConstantesMap searchKey !enumConstantName ?*] ;
         if [allBranchConstantSet hasKey ![enumConstantName string]] then
           error enumConstantName: "this constant is already used in current switch instruction" ;
         end if ;
@@ -5498,7 +5498,7 @@ rule <parse_match_case>
   $identifier$ ? outEnumConstantName ;
 #--- Verify constant belongs to constants map
   if inIsEnumeration then
-    [inEnumMessageMap searchKey !outEnumConstantName ?2*] ;
+    [inEnumMessageMap searchKey !outEnumConstantName ?*] ;
   else
     error outEnumConstantName : "a class that inherit from '@" . [inTypeName string] . "' abstract class is expected here" ;
   end if ;
@@ -8733,11 +8733,11 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ?!@EXsemanticContext ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   $enum$ ;
 #--- Enum type name
@@ -8747,264 +8747,17 @@ rule <semantics_declaration>
 #--- Enum constants
   @enumConstantMap constantMap [emptyMap] ;
   repeat
-    @bool hasConstructor ;
-    select
-      $constructor$ ;
-      hasConstructor := true ;
-    or
-      hasConstructor := false ;
-    end select ;
-    repeat
-      @lstring constantName ;
-      $identifier$ ? constantName ;
-      [!?constantMap insertKey !constantName ![constantMap count] !hasConstructor] ;
-    while
-      $,$ ;
-    end repeat ;
-    $;$ ;
+    @lstring constantName ;
+    $identifier$ ? constantName ;
+    [!?constantMap insertKey !constantName ![constantMap count]] ;
   while
+    $,$ ;
   end repeat ;
   $}$ ;
   ${$ ;
 #--- Enum messages, action messages
   @typeEnumMessageMap enumMessageMap [emptyMap] ;
-  @enumModifierMap modifierMap [emptyMap] ;
-  @enumMethodMap methodMap [emptyMap] ;
-  @enumOperatorMap operatorMap [emptyMap] ;
   repeat
-  while
-    $operator$ ;
-    @lstring operatorName ;
-    $identifier$ ? operatorName ;
-    @L_EXsignature signature [emptyList] ;
-    @typeVariablesMap localVariableMap [emptyMap] ;
-    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
-    select
-    or
-      $??$ ;
-      @lstring typeName ;
-      $type_name$ ? typeName ;
-      if [typeName string] != "location" then
-        error typeName:"the type should be '@location'" ;
-      end if ;
-      @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
-      select
-        $unused$ ;
-        @lstring nomArgument ;
-        $identifier$ ? nomArgument ;
-        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
-        [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
-      or
-        @lstring nomArgument ;
-        $identifier$ ? nomArgument ;
-        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
-        [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
-      end select ;
-      signature += !type_semantique !argumentConstantIn ;
-    end select ;
-    ${$ ;
-    @enumOperatorDefinitionList enumOperatorDefinitionList [emptyList] ;
-    repeat
-      @lstring leftConstant ;
-      $identifier$ ? leftConstant ;
-      @uint leftConstantIndex ;
-      [constantMap searchKey !leftConstant ?leftConstantIndex ?*] ;
-      $,$ ;
-      @lstring rightConstant ;
-      $identifier$ ? rightConstant ;
-      @uint rightConstantIndex ;
-      [constantMap searchKey !rightConstant ?rightConstantIndex ?*] ;
-      $->$ ;
-      @lstring targetConstant ;
-      $identifier$ ? targetConstant ;
-      @uint targetConstantIndex ;
-      [constantMap searchKey !targetConstant ?targetConstantIndex ?*] ;
-      @typeInstructionList instructionList [emptyList] ;
-      select
-        $;$ ;
-      or
-        <error_instruction>
-          !ioComponentSemanticsEntitiesMap
-          !inOptionsComponentsMapForUse
-          !ioSemanticContext
-          !?localVariableMap
-          !?instructionList
-        ;
-      or
-        <warning_instruction>
-          !ioComponentSemanticsEntitiesMap
-          !inOptionsComponentsMapForUse
-          !ioSemanticContext
-          !?localVariableMap
-          !?instructionList
-        ;
-      end select ;
-      enumOperatorDefinitionList +=
-        !leftConstant
-        !leftConstantIndex
-        !rightConstant
-        !rightConstantIndex
-        !targetConstant
-        !targetConstantIndex
-        !instructionList
-      ;
-    while
-    end repeat ;
-    [!?operatorMap insertKey !operatorName !enumOperatorDefinitionList !signature !argumentList] ;
-    $}$ ;
-  while
-    $modifier$ ;
-    @lstring actionName ;
-    $identifier$ ? actionName ;
-    @L_EXsignature signature [emptyList] ;
-    @typeVariablesMap localVariableMap [emptyMap] ;
-    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
-    select
-    or
-      $??$ ;
-      @lstring typeName ;
-      $type_name$ ? typeName ;
-      if [typeName string] != "location" then
-        error typeName:"the type should be '@location'" ;
-      end if ;
-      @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
-      select
-        $unused$ ;
-        @lstring nomArgument ;
-        $identifier$ ? nomArgument ;
-        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
-        [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
-      or
-        @lstring nomArgument ;
-        $identifier$ ? nomArgument ;
-        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
-        [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
-      end select ;
-      signature += !type_semantique !argumentConstantIn ;
-    end select ;
-    ${$ ;
-    @enumUsedConstantMap definedSourceMap [emptyMap] ;
-    @enumModifierDefinitionList enumActionDefinitionList [emptyList] ;
-    repeat
-      @lstring sourceName ;
-      $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName ?2*] ;
-      [!?definedSourceMap insertKey !sourceName] ;
-      $->$ ;
-      @lstring targetName ;
-      $identifier$ ? targetName ;
-      [constantMap searchKey !targetName ?2*] ;
-      @typeInstructionList instructionList [emptyList] ;
-      select
-        $;$ ;
-      or
-        <error_instruction>
-          !ioComponentSemanticsEntitiesMap
-          !inOptionsComponentsMapForUse
-          !ioSemanticContext
-          !?localVariableMap
-          !?instructionList
-        ;
-      or
-        <warning_instruction>
-          !ioComponentSemanticsEntitiesMap
-          !inOptionsComponentsMapForUse
-          !ioSemanticContext
-          !?localVariableMap
-          !?instructionList
-        ;
-      end select ;
-      enumActionDefinitionList += !sourceName !targetName !instructionList ;
-    while
-    end repeat ;
-   #--- Check all enum values are used for source
-    foreach constantMap do
-      if not [definedSourceMap hasKey ![key string]] then
-        error here: "The '" . [key string] . "' is not handled" ;
-      end if ;
-    end foreach ;
-  #--- Enter in action map
-    [!?modifierMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
-    $}$ ;
-  while
-    $method$ ;
-    @lstring actionName ;
-    $identifier$ ? actionName ;
-    @L_EXsignature signature [emptyList] ;
-    @typeVariablesMap localVariableMap [emptyMap] ;
-    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
-    select
-    or
-      $??$ ;
-      @lstring typeName ;
-      $type_name$ ? typeName ;
-      if [typeName string] != "location" then
-        error typeName:"the type should be '@location'" ;
-      end if ;
-      @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
-      select
-        $unused$ ;
-        @lstring nomArgument ;
-        $identifier$ ? nomArgument ;
-        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
-        [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
-      or
-        @lstring nomArgument ;
-        $identifier$ ? nomArgument ;
-        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
-        [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
-      end select ;
-      signature += !type_semantique !argumentConstantIn ;
-    end select ;
-    ${$ ;
-    @enumUsedConstantMap definedSourceMap [emptyMap] ;
-    @enumMethodDefinitionList enumActionDefinitionList [emptyList] ;
-    repeat
-      @lstring sourceName ;
-      $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName ?2*] ;
-      [!?definedSourceMap insertKey !sourceName] ;
-      @typeInstructionList instructionList [emptyList] ;
-      select
-        $;$ ;
-      or
-        <error_instruction>
-          !ioComponentSemanticsEntitiesMap
-          !inOptionsComponentsMapForUse
-          !ioSemanticContext
-          !?localVariableMap
-          !?instructionList
-        ;
-      or
-        <warning_instruction>
-          !ioComponentSemanticsEntitiesMap
-          !inOptionsComponentsMapForUse
-          !ioSemanticContext
-          !?localVariableMap
-          !?instructionList
-        ;
-      end select ;
-      enumActionDefinitionList += !sourceName !instructionList ;
-    while
-    end repeat ;
-   #--- Check all enum values are used for source
-    foreach constantMap do
-      if not [definedSourceMap hasKey ![key string]] then
-        error here: "The '" . [key string] . "' is not handled" ;
-      end if ;
-    end foreach ;
-  #--- Enter in action map
-    [!?methodMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
-    $}$ ;
   while
     $reader$ ;
     @lstring messageName ;
@@ -9042,9 +8795,6 @@ rule <semantics_declaration>
     !enumTypeName
     !constantMap
     !enumMessageMap
-    !modifierMap
-    !methodMap
-    !operatorMap
   ] ;
   listeEntitesAengendrer += !e ;
 #--- Enter enum type into semantic entities map
@@ -9052,9 +8802,6 @@ rule <semantics_declaration>
     !enumTypeName
     !constantMap
     !enumMessageMap
-    !modifierMap
-    !methodMap
-    !operatorMap
   ] ;
   @AC_semanticsEntity ee := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !ee] ;
@@ -9075,187 +8822,18 @@ label importSemantics
 #--- Enum constants
   @enumConstantMap constantMap [emptyMap] ;
   repeat
-    @bool hasConstructor ;
-    select
-      $constructor$ ;
-      hasConstructor := true ;
-    or
-      hasConstructor := false ;
-    end select ;
-    repeat
-      @lstring constantName ;
-      $identifier$ ? constantName ;
-      [!?constantMap insertKey !constantName ![constantMap count] !hasConstructor] ;
-    while
-      $,$ ;
-    end repeat ;
-    $;$ ;
+    @lstring constantName ;
+    $identifier$ ? constantName ;
+    [!?constantMap insertKey !constantName ![constantMap count]] ;
   while
+    $,$ ;
   end repeat ;
   $}$ ;
   ${$ ;
 #--- readers, modifiers map
   @typeEnumMessageMap exEnumMessageMap [emptyMap] ;
-  @enumModifierMap modifierMap [emptyMap] ;
-  @enumMethodMap methodMap [emptyMap] ;
   @EXenumMessageMap enumMessageMap [emptyMap] ;
-  @enumOperatorMap operatorMap [emptyMap] ;
   repeat
-  while
-    $operator$ ;
-    @lstring operatorName ;
-    $identifier$ ? operatorName ;
-    @L_EXsignature signature [emptyList] ;
-    @typeVariablesMap localVariableMap [emptyMap] ;
-    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
-    select
-    or
-      $??$ ;
-      @lstring typeName ;
-      $type_name$ ? typeName ;
-      if [typeName string] != "location" then
-        error typeName:"the type should be '@location'" ;
-      end if ;
-      @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
-      select
-        $unused$ ;
-        @lstring nomArgument ;
-        $identifier$ ? nomArgument ;
-        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
-        [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
-      or
-        @lstring nomArgument ;
-        $identifier$ ? nomArgument ;
-        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
-        [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
-      end select ;
-      signature += !type_semantique !argumentConstantIn ;
-    end select ;
-    ${$ ;
-    @enumOperatorDefinitionList enumOperatorDefinitionList [emptyList] ;
-    repeat
-      @lstring leftConstant ;
-      $identifier$ ? leftConstant ;
-      @uint leftConstantIndex ;
-      [constantMap searchKey !leftConstant ?leftConstantIndex ?*] ;
-      $,$ ;
-      @lstring rightConstant ;
-      $identifier$ ? rightConstant ;
-      @uint rightConstantIndex ;
-      [constantMap searchKey !rightConstant ?rightConstantIndex ?*] ;
-      $->$ ;
-      @lstring targetConstant ;
-      $identifier$ ? targetConstant ;
-      @uint targetConstantIndex ;
-      [constantMap searchKey !targetConstant ?targetConstantIndex ?*] ;
-      @typeInstructionList instructionList [emptyList] ;
-      select
-        $;$ ;
-      or
-        <error_instruction> parse ;
-      or
-        <warning_instruction> parse ;
-      end select ;
-      enumOperatorDefinitionList +=
-        !leftConstant
-        !leftConstantIndex
-        !rightConstant
-        !rightConstantIndex
-        !targetConstant
-        !targetConstantIndex
-        !instructionList
-      ;
-    while
-    end repeat ;
-    [!?operatorMap insertKey !operatorName !enumOperatorDefinitionList !signature !argumentList] ;
-    $}$ ;
-  while
-    $modifier$ ;
-    @lstring actionName ;
-    $identifier$ ? actionName ;
-    @L_EXsignature signature [emptyList] ;
-    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
-    select
-    or
-      signature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentConstantIn] ;
-      $??$ ;
-      @lstring typeName ;
-      $type_name$ ? typeName ;
-      select
-        $unused$ ;
-        $identifier$ ? * ;
-      or
-        $identifier$ ? * ;
-      end select ;
-    end select ;
-    ${$ ;
-    @enumUsedConstantMap definedSourceMap [emptyMap] ;
-    @enumModifierDefinitionList enumActionDefinitionList [emptyList] ;
-    repeat
-      @lstring sourceName ;
-      $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName ?2*] ;
-      [!?definedSourceMap insertKey !sourceName] ;
-      $->$ ;
-      @lstring targetName ;
-      $identifier$ ? targetName ;
-      [constantMap searchKey !targetName ?2*] ;
-      select
-        $;$ ;
-      or
-        <error_instruction> parse ;
-      or
-        <warning_instruction> parse ;
-      end select ;
-      enumActionDefinitionList += !sourceName !targetName ![@typeInstructionList emptyList] ;
-    while
-    end repeat ;
-  #--- Enter in action map
-    [!?modifierMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
-    $}$ ;
-  while
-    $method$ ;
-    @lstring actionName ;
-    $identifier$ ? actionName ;
-    @L_EXsignature signature [emptyList] ;
-    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
-    select
-    or
-      signature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentConstantIn] ;
-      $??$ ;
-      @lstring typeName ;
-      $type_name$ ? typeName ;
-      select
-        $unused$ ;
-        $identifier$ ? * ;
-      or
-        $identifier$ ? * ;
-      end select ;
-    end select ;
-    ${$ ;
-    @enumUsedConstantMap definedSourceMap [emptyMap] ;
-    @enumMethodDefinitionList enumActionDefinitionList [emptyList] ;
-    repeat
-      @lstring sourceName ;
-      $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName ?2*] ;
-      [!?definedSourceMap insertKey !sourceName] ;
-      select
-        $;$ ;
-      or
-        <error_instruction> parse ;
-      or
-        <warning_instruction> parse ;
-      end select ;
-      enumActionDefinitionList += !sourceName ![@typeInstructionList emptyList] ;
-    while
-    end repeat ;
-  #--- Enter in action map
-    [!?methodMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
-    $}$ ;
   while
     $reader$ ;
     @lstring messageName ;
@@ -9282,9 +8860,6 @@ label importSemantics
     !enumTypeName
     !constantMap
     !exEnumMessageMap
-    !modifierMap
-    !methodMap
-    !operatorMap
   ] ;
   @AC_semanticsEntity e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !e] ;

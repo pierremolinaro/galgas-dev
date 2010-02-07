@@ -24,10 +24,7 @@ import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 enum @readerQualifier {
-  constructor isAbstract ;
-  constructor isBasic ;
-  constructor isInherited ;
-  constructor isOverriding ;
+  isAbstract, isBasic, isInherited, isOverriding
 }{
 }
 

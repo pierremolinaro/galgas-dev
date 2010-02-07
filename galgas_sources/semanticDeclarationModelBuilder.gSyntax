@@ -640,195 +640,31 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <enum_case_message> !@enumCaseMessage outCaseMessage ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_case_message> !@enumCaseMessage outCaseMessage :
-  select
-    outCaseMessage := [@enumCaseMessage new] ;
-  or
-    $error$ ;
-    $identifier$ ? @lstring mLocationParameterName ;
-    $:$ ;
-    $literal_string$ ? @lstring mMessage ;
-    outCaseMessage := [@enumCaseErrorMessage new !mLocationParameterName !mMessage] ;
-  or
-    $warning$ ;
-    $identifier$ ? @lstring mLocationParameterName ;
-    $:$ ;
-    $literal_string$ ?@lstring mMessage ;
-    outCaseMessage := [@enumCaseWarningMessage new !mLocationParameterName !mMessage] ;
-  end select ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-nonterminal <enum_modifier> ?!@enumModifierList ioEnumModifierList ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_modifier> ?!@enumModifierList ioEnumModifierList :
-  $modifier$ ;
-  $identifier$ ? @lstring mModifierName ;
-  $??$ ;
-  $type_name$ ? @lstring typeName ;
-  if [typeName string] != "location" then
-    error typeName: "only '@location' type is allowed here" ;
-  end if ;
-  $identifier$ ? @lstring mLocationFormalArgumentName ;
-  ${$ ;
-  @enumModifierCaseList mEnumModifierCaseList [emptyList] ;
-  repeat
-    $identifier$ ? @lstring mSourceConstantName ;
-    $->$ ;
-    $identifier$ ?@lstring mTargetConstantName ;
-    @enumCaseMessage mEnumModifierCaseMessage ;
-    <enum_case_message> ? mEnumModifierCaseMessage ;
-    $;$ ;
-    mEnumModifierCaseList += !mSourceConstantName !mTargetConstantName !mEnumModifierCaseMessage ;
-  while
-  end repeat ;
-  $}$ ;
-  ioEnumModifierList +=
-    !mModifierName
-    !mLocationFormalArgumentName
-    !mEnumModifierCaseList
-  ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-nonterminal <enum_method> ?!@enumMethodList ioEnumMethodList ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_method> ?!@enumMethodList ioEnumMethodList :
-  $method$ ;
-  $identifier$ ? @lstring mMethodName ;
-  $??$ ;
-  $type_name$ ? @lstring typeName ;
-  if [typeName string] != "location" then
-    error typeName: "only '@location' type is allowed here" ;
-  end if ;
-  $identifier$ ? @lstring mLocationFormalArgumentName ;
-  ${$ ;
-  @enumMethodCaseList mEnumMethodCaseList [emptyList] ;
-  repeat
-    $identifier$ ? @lstring mConstantName ;
-    @enumCaseMessage caseMessage ;
-    <enum_case_message> ? caseMessage ;
-    $;$ ;
-    mEnumMethodCaseList += !mConstantName !caseMessage ;
-  while
-  end repeat ;
-  $}$ ;
-  ioEnumMethodList +=
-    !mMethodName
-    !mLocationFormalArgumentName
-    !mEnumMethodCaseList
-  ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-nonterminal <enum_operator> ?!@enumOperatorList ioEnumOperatorList ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_operator> ?!@enumOperatorList ioEnumOperatorList :
-  $operator$ ;
-  $identifier$ ? @lstring mOperatorName ;
-  $??$ ;
-  $type_name$ ? @lstring typeName ;
-  if [typeName string] != "location" then
-    error typeName: "only '@location' type is allowed here" ;
-  end if ;
-  $identifier$ ? @lstring mLocationFormalArgumentName ;
-  ${$ ;
-  @enumOperatorCaseList mEnumOperatorCaseList [emptyList] ;
-  repeat
-    $identifier$ ? @lstring mLeftConstantName ;
-    $,$ ;
-    $identifier$ ? @lstring mRightConstantName ;
-    $->$ ;
-    $identifier$ ? @lstring mResultConstantName ;
-    @enumCaseMessage caseMessage ;
-    <enum_case_message> ? caseMessage ;
-    $;$ ;
-    mEnumOperatorCaseList +=
-     !mLeftConstantName
-     !mRightConstantName
-     !mResultConstantName
-     !caseMessage
-    ;
-  while
-  end repeat ;
-  $}$ ;
-  ioEnumOperatorList +=
-    !mOperatorName
-    !mLocationFormalArgumentName
-    !mEnumOperatorCaseList
-  ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
 rule <semantic_declaration>
  ?!@semanticDeclarationStruct ioSemanticDeclarations
 :
   $enum$ ;
   $type_name$ ? @lstring mEnumTypeName ;
   ${$ ;
-  @lstringlist mConstructorConstantList [emptyList] ;
   @lstringlist mConstantList [emptyList] ;
   repeat
-    select
-      repeat
-        @lstring constantName ;
-        $identifier$ ? constantName ;
-        mConstantList += !constantName ;
-      while
-       $,$ ;
-      end repeat ;
-    or
-      $constructor$ ;
-      repeat
-        @lstring constantName ;
-        $identifier$ ? constantName ;
-        mConstructorConstantList += !constantName ;
-      while
-       $,$ ;
-      end repeat ;
-    end select ;
-    $;$ ;
+    $identifier$ ?@lstring constantName ;
+    mConstantList += !constantName ;
   while
+   $,$ ;
   end repeat ;
   $}$ ;
   ${$ ;
   @enumMessageList mEnumMessageList [emptyList] ;
-  @enumModifierList mEnumModifierList [emptyList] ;
-  @enumMethodList mEnumMethodList [emptyList] ;
-  @enumOperatorList mEnumOperatorList [emptyList] ;
   repeat
   while
     <enum_message_declaration> !? mEnumMessageList ;
-  while
-    <enum_modifier> !? mEnumModifierList ;
-  while
-    <enum_method> !? mEnumMethodList ;
-  while
-    <enum_operator> !? mEnumOperatorList ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations.mSemanticDeclarationList += ![@enumDeclaration new
     !mEnumTypeName
-    !mConstructorConstantList
     !mConstantList
     !mEnumMessageList
-    !mEnumModifierList
-    !mEnumMethodList
-    !mEnumOperatorList
   ] ;
 end rule ;
 

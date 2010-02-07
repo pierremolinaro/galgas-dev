@@ -17,8 +17,8 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsCompilation :
-  import "semanticsGenerationFilewrappers.gSemantics" ;
-  import semantics semanticsGenerationFilewrappers in "semanticsGenerationFilewrappers.gSemantics" ;
+  import "semanticsGeneration.gSemantics" ;
+  import semantics semanticsGeneration in "semanticsGeneration.gSemantics" ;
   import "semanticsSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import "semanticsMetamodel.gSemantics" ;
@@ -112,18 +112,12 @@ override method @enumDeclaration enterType
 :
 #--- Handle attributes
   @enumConstructorMap enumConstructorMap [emptyMap] ;
-  foreach mConstructorConstantList do
+  foreach mConstantList do
     [!?enumConstructorMap insertKey !mValue] ;
   end foreach ;
 #--- Build string set all constants
   @stringset allConstantSet [emptySet] ;
-  foreach mConstructorConstantList do
-    allConstantSet += ![mValue string] ;
-  end foreach ;
   foreach mConstantList do
-    if [allConstantSet hasKey ![mValue string]] then
-      error mValue: "the '" . mValue . "' is already defined for this enumeration" ;
-    end if ;
     allConstantSet += ![mValue string] ;
   end foreach ;
 #--- Handle messages
@@ -631,22 +625,18 @@ end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    D E C L A R A T I O N    S E M A N T I C S    A N A L Y S I S          *
+#    S E M A N T I C S    A N A L Y S I S                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 abstract method @semanticDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @mapDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@mapDeclaration semanticAnalysis\n" ;
 end method ;
@@ -655,8 +645,6 @@ end method ;
 
 override method @mapindexDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@mapindexDeclaration semanticAnalysis\n" ;
 end method ;
@@ -665,28 +653,22 @@ end method ;
 
 override method @enumDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
-  message "@enumDeclaration semanticAnalysis\n" ;
+#--- Nothing to do
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
-  message "@filewrapperDeclaration.semanticAnalysis [in semanticCompilation.gSemantics]\n" ;
+  message "@filewrapperDeclaration.semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@sortedListDeclaration semanticAnalysis\n" ;
 end method ;
@@ -695,8 +677,6 @@ end method ;
 
 override method @structDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@structDeclaration semanticAnalysis\n" ;
 end method ;
@@ -704,36 +684,15 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listDeclaration semanticAnalysis
-  ?!@semanticContext ioSemanticContext
-  ?!@string ioHeaderString
-  ?!@string ioImplementationString
+  ?!@semanticContext unused ioSemanticContext
 :
-  @attributeList attributeList [emptyList] ;
-  foreach mAttributeList do
-    @typeMapIndex attributeTypeIndex ;
-    [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
-    attributeList +=
-      !attributeTypeIndex
-      !mAttributeName
-    ;
-  end foreach ;
-  @listDeclaration tt := self ; # Bug in GALGAS 1
-  ioHeaderString .= [filewrapper typeGenerationTemplate.listTypeHeader
-    ![[tt mListTypeName] identifierRepresentation]
-    !attributeList
- ] ;
-  ioImplementationString .= [filewrapper typeGenerationTemplate.listTypeImplementation
-    ![[tt mListTypeName] identifierRepresentation]
-    !attributeList
- ] ;
+  message "@listDeclaration semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @classDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@classDeclaration semanticAnalysis\n" ;
 end method ;
@@ -742,8 +701,6 @@ end method ;
 
 override method @externRoutineDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@externRoutineDeclaration semanticAnalysis\n" ;
 end method ;
@@ -752,8 +709,6 @@ end method ;
 
 override method @routineDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@routineDeclaration semanticAnalysis\n" ;
 #  foreach mRoutineInstructionList do
@@ -765,8 +720,6 @@ end method ;
 
 override method @externFunctionDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@externFunctionDeclaration semanticAnalysis\n" ;
 end method ;
@@ -775,8 +728,6 @@ end method ;
 
 override method @functionDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@functionDeclaration semanticAnalysis\n" ;
 #  foreach mFunctionInstructionList do
@@ -788,8 +739,6 @@ end method ;
 
 override method @onceFunctionDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@onceFunctionDeclaration semanticAnalysis\n" ;
 end method ;
@@ -798,8 +747,6 @@ end method ;
 
 override method @listmapDeclaration semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
 :
   message "@listmapDeclaration semanticAnalysis\n" ;
 end method ;
@@ -907,20 +854,26 @@ routine compileSemanticsComponent
     end foreach ;
   end if ;
 #--- Perform semantic analysis
+  foreach semanticDeclarationList do
+    [mSemanticDeclaration semanticAnalysis
+      !?semanticContext
+    ] ;
+  end foreach ;
+#--- Perform Code Generation
   @string headerString := [filewrapper typeGenerationTemplate.semanticFileHeader
     ![componentName string]
+    !semanticDeclarationList
   ] ;
   @string implementationString := [filewrapper typeGenerationTemplate.semanticFileImplementation
     ![componentName string]
   ] ;
   foreach semanticDeclarationList do
-    [mSemanticDeclaration semanticAnalysis
+    [mSemanticDeclaration generateCode
       !?semanticContext
       !?headerString
       !?implementationString
     ] ;
   end foreach ;
-#--- Perform Code Generation
   [@string generateFile
     !inOutputDirectory
     ![componentName string] . ".h"
@@ -937,7 +890,7 @@ routine compileSemanticsComponent
     !"\n\n" # Defaut user zone1
     !implementationString
     !"\n\n" # Defaut user zone2
-    !"#endif\n"
+    !"\n"
   ] ;
 end routine ;
 

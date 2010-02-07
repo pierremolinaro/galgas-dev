@@ -62,7 +62,7 @@ void GALGAS_%!TYPE_NAME%::insulate (%?COL_0%GALGAS_%!TYPE_NAME% * & ioOperand
 foreach [TYPE readerMap] do
   if mQualifier == [@readerQualifier isBasic] then
     %//---------------------------------------------------------------------------*\n\n%
-    %GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key identifierRepresentation] % (%?COL
+    %GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * readerCall_% ![key identifierRepresentation] % (%?COL
     %const GALGAS_%!TYPE_NAME% * inObject%
     foreach mArgumentTypeList
       do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand_% ![IDX string]
@@ -95,7 +95,7 @@ foreach [TYPE readerMap] do
         end if
       end if
     else
-      %    result = reader_%![key identifierRepresentation]% (inObject->reader_%![mImplicitConversionReader identifierRepresentation]% (THERE)%
+      %    result = readerCall_%![key identifierRepresentation]% (inObject->reader_%![mImplicitConversionReader identifierRepresentation]% (THERE)%
       foreach mArgumentTypeList
         do index IDX %, inOperand_% ![IDX string]
       end foreach

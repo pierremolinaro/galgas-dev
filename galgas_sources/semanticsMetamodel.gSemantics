@@ -209,81 +209,10 @@ list @enumMessageList {
 
 #---------------------------------------------------------------------------*
 
-class @enumCaseMessage {
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumModifierCaseList {
-  @lstring mSourceConstantName ;
-  @lstring mTargetConstantName ;
-  @enumCaseMessage mEnumModifierCaseMessage ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumModifierList {
-  @lstring mModifierName ;
-  @lstring mLocationFormalArgumentName ;
-  @enumModifierCaseList mEnumModifierCaseList ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @enumCaseErrorMessage extends @enumCaseMessage {
-  @lstring mLocationParameterName ;
-  @lstring mMessage ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @enumCaseWarningMessage extends @enumCaseMessage {
-  @lstring mLocationParameterName ;
-  @lstring mMessage ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumMethodCaseList {
-  @lstring mConstantName ;
-  @enumCaseMessage mEnumMethodCaseMessage ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumMethodList {
-  @lstring mMethodName ;
-  @lstring mLocationFormalArgumentName ;
-  @enumMethodCaseList mEnumMethodCaseList ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumOperatorCaseList {
-  @lstring mLeftConstantName ;
-  @lstring mRightConstantName ;
-  @lstring mResultConstantName ;
-  @enumCaseMessage mEnumOperatorCaseMessage ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumOperatorList {
-  @lstring mOperatorName ;
-  @lstring mLocationFormalArgumentName ;
-  @enumOperatorCaseList mEnumOperatorCaseList ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @enumDeclaration extends @semanticDeclaration {
   @lstring mEnumTypeName ;
-  @lstringlist mConstructorConstantList ;
   @lstringlist mConstantList ;
   @enumMessageList mEnumMessageList ;
-  @enumModifierList mEnumModifierList ;
-  @enumMethodList mEnumMethodList ;
-  @enumOperatorList mEnumOperatorList ;
 }
 
 #---------------------------------------------------------------------------*
