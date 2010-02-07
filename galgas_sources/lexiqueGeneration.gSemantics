@@ -196,10 +196,10 @@ abstract reader @lexicalSendDefaultAction generateDefaultSendCode
 #---------------------------------------------------------------------------*
 
 override reader @lexicalSendTerminalByDefault generateDefaultSendCode
-  ?@string inScannerClassName
+  ?@string unused inScannerClassName
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "token.mTokenCode = " . inScannerClassName . "_1_" . mDefaultSentTerminal . " ;\n" ;
+  outGeneratedCode := "token.mTokenCode = kToken_" . mDefaultSentTerminal . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -243,11 +243,11 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalSimpleSendInstruction generateInstructionCode
-  ?@string inScannerClassName
+  ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "token.mTokenCode = " . inScannerClassName . "_1_" . [mSentTerminal identifierRepresentation] . " ;\n" ;
+  outGeneratedCode := "token.mTokenCode = kToken_" . [mSentTerminal identifierRepresentation] . " ;\n" ;
   outGeneratedCode .= "enterToken (token) ;\n" ;
 end reader ;
 
@@ -380,12 +380,12 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalRewindInstruction generateInstructionCode
-  ?@string inScannerClassName
+  ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
   outGeneratedCode := "mCurrentLocation = locationForTag_" . mLexicalTagName . " ;\n" ;
-  outGeneratedCode .= "token.mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
+  outGeneratedCode .= "token.mTokenCode = kToken_" . [mTerminalName identifierRepresentation] . " ;\n" ;
   outGeneratedCode .= "enterToken (token) ;\n" ;
 end reader ;
 
@@ -412,7 +412,7 @@ abstract reader @abstractLexicalRule generateCode
 #---------------------------------------------------------------------------*
 
 override reader @lexicalImplicitRule generateCode
-  ?@string inScannerClassName
+  ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -425,7 +425,7 @@ override reader @lexicalImplicitRule generateCode
     outGeneratedCode .= ", " ;
     outGeneratedCode .= [[mName length] string] ;
     outGeneratedCode .= ", true)) {\n" ;
-    outGeneratedCode .= "  token.mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
+    outGeneratedCode .= "  token.mTokenCode = kToken_" . [mTerminalName identifierRepresentation] . " ;\n" ;
     outGeneratedCode .= "  enterToken (token) ;\n" ;
     outGeneratedCode .= "}else " ;
   end foreach ;

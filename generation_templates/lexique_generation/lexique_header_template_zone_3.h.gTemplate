@@ -1,8 +1,8 @@
 
 //--- Terminal symbols enumeration
-  public : enum {%!LEXIQUE_CLASS_NAME%_1_%
+  public : enum {kToken_%
     foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
-      %,\n  %!LEXIQUE_CLASS_NAME%_1_% ![[mTerminalName string] identifierRepresentation]
+      %,\n   kToken_% ![[mTerminalName string] identifierRepresentation]
     end foreach
   %} ;
 %
@@ -40,7 +40,7 @@
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 
 //--- Enter Token
-  protected : void enterToken (const cTokenFor_%!LEXIQUE_CLASS_NAME% & inToken) ;
+  protected : void enterToken (const cTokenFor_%!LEXIQUE_IDENTIFIER% & inToken) ;
 } ;
 
 //---------------------------------------------------------------------------*

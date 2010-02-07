@@ -2,7 +2,7 @@
 //                                                                           *
 //  Pure BNF grammar vocabulary                                              *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -118,7 +118,7 @@ void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
                                         const bool inGenerateChoice) {
   C_String nt  ;
   nt << inPrefix
-     << inClassName
+     << inClassName.identifierRepresentation ()
      << "_" ;
   nt.appendSigned (inOrderInSourceFile) ;
   mStringsArray.addObject (nt) ;

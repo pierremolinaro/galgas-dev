@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate call instructions                                               *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -383,7 +383,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << " ;\n"
                    "if (_depExtension.isBuilt () && _depPath.isBuilt ()) {\n  " ;
     }
-    ioCppFile << mGrammarName << "::"
+    ioCppFile << "C_Grammar_" << mGrammarName.identifierRepresentation () << "::"
               << (mSourceIsFile.boolValue () ? "_performSourceFileParsing_" : "_performSourceStringParsing_")
               << mAltSymbol
               << " (inLexique"

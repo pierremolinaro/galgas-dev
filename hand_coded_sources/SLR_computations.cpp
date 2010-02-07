@@ -716,7 +716,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }else{
           generatedZone3 << ", " ;
         }
-        generatedZone3 << inLexiqueName << "::" << inLexiqueName << "_1_"
+        generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << "::kToken_"
                        << inVocabulary.getSymbol (j COMMA_HERE).identifierRepresentation ()
                        << ", " ;
         if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
@@ -823,11 +823,10 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
     GGS_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator currentAltForNonTerminal2 (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
-      generatedZone3 << "void " ;
-      generatedZone3 << inTargetFileName
+      generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                      << "::\n"
                      << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal2._key (HERE)
-                     << " (" << inLexiqueName << " & inLexique" ;
+                     << " (" << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " & inLexique" ;
       const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal._mID (HERE) ;
       const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal2._mFormalParametersList (HERE), true) ;
@@ -869,8 +868,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
-        generatedZone3 << "void " ;
-        generatedZone3 << inTargetFileName
+        generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & inCompiler"
                           ",\n                                "
@@ -896,8 +894,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "    ? _inFileName.string ()\n"
                           "    : inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
-                          "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner_ = NULL ;\n"
+                          "    macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    macroRetainObject (scanner_) ;\n"
                           "    if (scanner_->needsCompiling ()) {\n"
                           "      if (scanner_->sourceText () != NULL) {\n"
@@ -906,7 +904,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "                                                          gActionTableIndex, gSuccessorTable,\n"
                           "                                                          gProductionsTable) ;\n"
                           "        if (ok && ! scanner_->mParseOnlyFlag) {\n"
-                          "          " << inTargetFileName << " _grammar ;\n"
+                          "          C_Grammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
                           "          " ;
         generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
@@ -956,8 +954,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "}\n\n" ;
       //--- Define string parsing static method
         generatedZone3.appendCppHyphenLineComment () ;
-        generatedZone3 << "void " ;
-        generatedZone3 << inTargetFileName
+        generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & inCompiler"
                           ",\n                                "
@@ -975,8 +972,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
-        generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "  macroMyNew (scanner_, " << inLexiqueName << " (& inCompiler, inCompiler.ioParametersPtr (), _inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+        generatedZone3 << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner_ = NULL ;\n"
+                          "  macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (& inCompiler, inCompiler.ioParametersPtr (), _inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  macroRetainObject (scanner_) ;\n"
                           "  if (scanner_->sourceText () != NULL) {\n"
                           "    scanner_->mPerformGeneration = inCompiler.mPerformGeneration ;\n" ;
@@ -984,7 +981,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "                                                      gActionTableIndex, gSuccessorTable,\n"
                           "                                                      gProductionsTable) ;\n"
                           "    if (ok && ! scanner_->mParseOnlyFlag) {\n"
-                          "      " << inTargetFileName << " _grammar ;\n"
+                          "      C_Grammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
                           "      " ;
         generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
@@ -1015,9 +1012,9 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
   for (PMSInt32 ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
     if (inVocabulary.needToGenerateChoice (ts COMMA_HERE)) {
       generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) +"' non terminal implementation") ;
-      generatedZone3 << "PMSInt16 " << inTargetFileName
+      generatedZone3 << "PMSInt16 C_Grammar_" << inTargetFileName.identifierRepresentation ()
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
-              << inLexiqueName << " & inLexique"
+              << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " & inLexique"
               << ") {\n" ;
       generatedZone3 << "// Productions numbers :" ;
 

@@ -418,11 +418,9 @@ list @nonTerminalToAddList {
 filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
 } {
   template oldGrammarZone2Header "grammar-zone2.old.h.gTemplate"
-    ?@string GRAMMAR_NAME
     ?@grammarComponentRoot GRAMMAR_COMPONENT_ROOT
   ;
   template oldGrammarZone3Header "grammar-zone3.old.h.gTemplate"
-    ?@string GRAMMAR_NAME
     ?@string LEXIQUE_CLASS
     ?@grammarComponentRoot GRAMMAR_COMPONENT_ROOT
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
@@ -541,12 +539,10 @@ routine compileGrammarComponent
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
     const @string zone2 := [filewrapper grammarGenerationTemplate.oldGrammarZone2Header
-      ![[grammarComponentRoot mGrammarName] string]
       !grammarComponentRoot
     ] ;
     const @string zone3 := [filewrapper grammarGenerationTemplate.oldGrammarZone3Header
-      ![[grammarComponentRoot mGrammarName] string]
-      !lexiqueComponentName
+      ![lexiqueComponentName identifierRepresentation]
       !grammarComponentRoot
       !nonTerminalMapForGrammarAnalysis
       !nonTerminalToAddList

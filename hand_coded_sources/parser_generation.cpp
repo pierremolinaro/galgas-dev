@@ -70,7 +70,9 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
   GGS_M_nonterminalSymbolAlts::cEnumerator currentAltForNonTerminal (mNonterminalSymbolParametersMap, true) ;
   while (currentAltForNonTerminal.hasCurrentObject ()) {
     inHfile << "  protected : virtual void nt_" << aNomNonTerminal << "_" << currentAltForNonTerminal._key (HERE)
-            << " (" << mLexiqueClassName << " &" ;
+            << " ("
+            << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
+            << " &" ;
     GGS_L_EXsignature::cEnumerator currentArgument (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
     while (currentArgument.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
@@ -142,7 +144,8 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
             << "_" << cStringWithSigned (aNomProduction.lineNumber ())
             << "_" << cStringWithSigned (aNomProduction.columnNumber ())
             << "_" << currentAltForNonTerminal._key (HERE) << " ("
-            << mLexiqueClassName << " &" ;
+            << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
+            << " &" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentAltForNonTerminal._aListeDeTypesEffectifs (HERE), true) ;
     while (currentArgument.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
@@ -150,9 +153,11 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
       currentArgument.next () ;
     }
     inHfile << ") ;\n\n" ;
+    C_String lexiqueIdentifier ;
+    lexiqueIdentifier << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation () ;
     generateSelectAndRepeatPrototypesForList (currentAltForNonTerminal._mAllInstructionsList (HERE),
                                               inHfile,
-                                              mLexiqueClassName.string (),
+                                              lexiqueIdentifier,
                                               inTargetFileName,
                                               ioPrototypeIndex,
                                               prototypesForSelectedAndRepeatNotDeclared) ;
@@ -166,8 +171,8 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
             << "_" << inTargetFileName
             << "_" << cStringWithSigned (aNomProduction.lineNumber ())
             << "_" << cStringWithSigned (aNomProduction.columnNumber ())
-            << "_parse ("
-            << mLexiqueClassName << " & inLexique) ;\n\n" ;
+            << "_parse (C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
+            << " & inLexique) ;\n\n" ;
   }
 }
 
@@ -198,7 +203,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "_" << cStringWithSigned (aNomProduction.lineNumber ())
               << "_" << cStringWithSigned (aNomProduction.columnNumber ())
               << "_" << currentAltForNonTerminal._key (HERE) << " ("
-              << mLexiqueClassName << " & " ;
+              << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
+              << " & " ;
     const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal._mAllInstructionsList (HERE), true) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
@@ -265,7 +271,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "_" << cStringWithSigned (aNomProduction.lineNumber ())
               << "_" << cStringWithSigned (aNomProduction.columnNumber ())
               << "_parse ("
-              << mLexiqueClassName << " & inLexique) {\n" ;
+              << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
+              << " & inLexique) {\n" ;
   //--- Engendrer la liste d'instructions
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
