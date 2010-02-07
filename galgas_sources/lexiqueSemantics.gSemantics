@@ -5,13 +5,9 @@ import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 enum @lexicalTypeEnum {
-  constructor lexicalType_string ;
-  constructor lexicalType_char ;
-  constructor lexicalType_uint ;
-  constructor lexicalType_uint64 ;
-  constructor lexicalType_sint ;
-  constructor lexicalType_sint64 ;
-  constructor lexicalType_double ;
+  lexicalType_string, lexicalType_char, lexicalType_uint,
+  lexicalType_uint64, lexicalType_sint, lexicalType_sint64,
+  lexicalType_double
 }{
   reader lexicalTypeName :
     lexicalType_string -> "@string" ;

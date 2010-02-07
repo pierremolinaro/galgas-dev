@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  Generate headers of Builtin types                                        *
+#  Generate predefined types                                                *
 #                                                                           *
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
 #                                                                           *
@@ -17,9 +17,9 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics generateHeadersOfBuiltinTypes :
-  import "semanticsGenerationFilewrappers.gSemantics" ;
-  import semantics semanticsGenerationFilewrappers in "semanticsGenerationFilewrappers.gSemantics" ;
+semantics generatePredefinedTypes :
+  import "semanticsGeneration.gSemantics" ;
+  import semantics semanticsGeneration in "semanticsGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

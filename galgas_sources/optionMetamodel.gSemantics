@@ -22,9 +22,7 @@ semantics optionMetamodel :
 #---------------------------------------------------------------------------*
 
 enum @optionDefaultValueEnum {
-  constructor noDefaultValue ;
-  constructor unsignedDefaultValue ;
-  constructor stringDefaultValue ;
+  noDefaultValue, unsignedDefaultValue, stringDefaultValue
 }{
 }
 

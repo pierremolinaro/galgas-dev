@@ -1509,9 +1509,6 @@ class @enumGalgasType extends @typeEntityToGenerate {
   @lstring mEnumTypeName feature nogetter ;
   @enumConstantMap mConstantMap feature nogetter ;
   @typeEnumMessageMap mEnumMessageMap feature nogetter ;
-  @enumModifierMap mEnumActionMap feature nogetter ;
-  @enumMethodMap mMethodMap feature nogetter ;
-  @enumOperatorMap mOperatorMap feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

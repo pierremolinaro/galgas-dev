@@ -49,9 +49,7 @@ map @M_semanticsEntitiesForUse {
 #---------------------------------------------------------------------------*
 
 enum @EXactualParametersPassingMode {
-  constructor parameterOut ;
-  constructor parameterOutIn ;
-  constructor parameterIn ;
+  parameterOut, parameterOutIn, parameterIn
 }{
   reader actualArgumentMessage :
     parameterOutIn -> "an output/input (!?) actual parameter" ;
@@ -288,7 +286,6 @@ class @MapModel extends @TypeModel {
 
 map @enumConstantMap {
   @uint mConstantIndex ;
-  @bool mHasConstructor ;
   insert insertKey error message "the '%K' constant is already declared in %L" ;
   search searchKey error message "the '%K' constant is not declared" ;
 }
@@ -409,9 +406,7 @@ map @EXcategoryMethodMap ;
 #---------------------------------------------------------------------------*
 
 enum @localConstantBuildStyleEnum {
-  constructor listStyle ;
-  constructor mapStyle ;
-  constructor firstIsKeyOtherMapStyle ;
+  listStyle, mapStyle, firstIsKeyOtherMapStyle
 }{
 }
 
@@ -704,7 +699,7 @@ list @L_EXsignature {
 #---------------------------------------------------------------------------*
 
 enum @categoryMethodKind {
-  constructor baseMethod, abstractMethod, overridingMethod ;
+  baseMethod, abstractMethod, overridingMethod
 }{
 }
 
@@ -3502,63 +3497,6 @@ map @typeEnumMessageMap {
 
 #---------------------------------------------------------------------------*
 
-list @enumModifierDefinitionList {
-  @lstring mSourceState ;
-  @lstring mTargetState ;
-  @typeInstructionList mInstructionList ; # Actually: no instruction, error instruction or warning instruction
-}
-
-#---------------------------------------------------------------------------*
-
-map @enumModifierMap {
-  @enumModifierDefinitionList mActionDefinitionList ;
-  @L_EXsignature mSignature ;
-  @typeListeTypesEtNomsArgMethode mArgumentTypeAndNameList ;
-  insert insertKey error message "the '%K' modifier is already declared in %L" ;
-  search searchKey error message "the '%K' modifier is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumMethodDefinitionList {
-  @lstring mSourceState ;
-  @typeInstructionList mInstructionList ; # Actually: no instruction, error instruction or warning instruction
-}
-
-#---------------------------------------------------------------------------*
-
-map @enumMethodMap {
-  @enumMethodDefinitionList mActionDefinitionList ;
-  @L_EXsignature mSignature ;
-  @typeListeTypesEtNomsArgMethode mArgumentTypeAndNameList ;
-  insert insertKey error message "the '%K' method is already declared in %L" ;
-  search searchKey error message "the '%K' method is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumOperatorDefinitionList {
-  @lstring mLeftSourceState ;
-  @uint mLeftSourceStateIndex ;
-  @lstring mRightSourceState ;
-  @uint mRightSourceStateIndex ;
-  @lstring mTargetState ;
-  @uint mTargetStateIndex ;
-  @typeInstructionList mInstructionList ; # Actually: no instruction, error instruction or warning instruction
-}
-
-#---------------------------------------------------------------------------*
-
-map @enumOperatorMap {
-  @enumOperatorDefinitionList mActionDefinitionList ;
-  @L_EXsignature mSignature ;
-  @typeListeTypesEtNomsArgMethode mArgumentTypeAndNameList ;
-  insert insertKey error message "the '%K' method is already declared in %L" ;
-  search searchKey error message "the '%K' method is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @typeGalgas_enum extends @AC_galgasType {
 #--- Enumeration name
   @lstring mEnumTypeName ;
@@ -3568,15 +3506,6 @@ class @typeGalgas_enum extends @AC_galgasType {
 
 #--- Messages map
   @typeEnumMessageMap mMessagesMap ;
-
-#--- Modifier map
-  @enumModifierMap mModifierMap feature nogetter ;
-
-#--- Method map
-  @enumMethodMap mMethodMap feature nogetter ;
-
-#--- Operator map
-  @enumOperatorMap mOperatorMap feature nogetter ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -3592,39 +3521,9 @@ class @typeGalgas_enum extends @AC_galgasType {
   :
     outReturnedType := self ;
     outHasLexiqueAndLocationArguments := true ;
-    @bool hasConstructor ;
-    [mEnumConstantesMap searchKey !inClassMethodName ?* ?hasConstructor] ;
-    if hasConstructor then
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    else
-      error inClassMethodName:
-        "the '" . [inClassMethodName string] . "' is not declared as constructor"
-        -> outAccessorTypesList
-      ;
-    end if ;
+    [mEnumConstantesMap searchKey !inClassMethodName ?*] ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   end method ;
-
-#--- Modifiers
-  override
-  method handleModifierCall
-    ??@lstring inModifierName
-    !@L_EXsignature outModifierSignature
-  :
-    [mModifierMap searchKey !inModifierName ?* ?outModifierSignature ?*] ;
-  end method ;
-
-#--- Methods
-  override
-  method handleMethodInstructionCall
-    ??@lstring inMethodName
-    ??@EXcategoryMethodMap unused inCategoryMethodMap
-    !@L_EXsignature outReaderSignature
-    !@string outCategoryMethodClassBaseName
-  :
-    outCategoryMethodClassBaseName := "" ;
-    [mMethodMap searchKey !inMethodName ?* ?outReaderSignature ?*] ;
-  end method ;
-
 
   message "an enum type" ;
   message messageGalgasType "an enum type" ;
@@ -3730,8 +3629,8 @@ routine checkAssignmentTypesCompatibility
                                "' type variable, and I got an extern '@" . [attNomType2 string] . "' type variable" ;
     end if ;
 
-  when @typeGalgas_enum (@lstring aTypeName1 5*)
-    :: @typeGalgas_enum (@lstring aTypeName2 5*) :
+  when @typeGalgas_enum (@lstring aTypeName1 2*)
+    :: @typeGalgas_enum (@lstring aTypeName2 2*) :
     if [aTypeName1 string] != [aTypeName2 string] then
       error inErrorLocation : "I was expecting an enum variable of  '@" . [aTypeName1 string] .
                                 "' type variable, and I got an enum '@" . [aTypeName2 string] . "' type variable" ;

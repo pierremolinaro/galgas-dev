@@ -1,0 +1,355 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Generate headers of Builtin types                                        *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticsGeneration :
+  import "semanticsTypes.gSemantics" ;
+  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
+  import "semanticsReaders.gSemantics" ;
+  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
+  import "semanticsConstructors.gSemantics" ;
+  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
+  import "semanticsTypeFeatures.gSemantics" ;
+  import semantics semanticsTypeFeatures in "semanticsTypeFeatures.gSemantics" ;
+  import "semanticsClassMethods.gSemantics" ;
+  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
+  import "semanticsInstanceMethods.gSemantics" ;
+  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
+  import "semanticsSemantics.gSemantics" ;
+  import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+  import "semanticsMetamodel.gSemantics" ;
+  import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    P R E    D E C L A R A T I O N    G E N E R A T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "class GALGAS_" . [mMapTypeName identifierRepresentation] . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapindexDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "class GALGAS_" . [mMapIndexTypeName identifierRepresentation] . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @enumDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "class GALGAS_" . [mEnumTypeName identifierRepresentation] . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @filewrapperDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sortedListDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "class GALGAS_" . [mSortedListTypeName identifierRepresentation] . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @structDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "class GALGAS_" . [mStructTypeName identifierRepresentation] . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @listDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "class GALGAS_" . [mListTypeName identifierRepresentation] . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @classDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "class GALGAS_" . [mClassTypeName identifierRepresentation] . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @externRoutineDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @routineDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @externFunctionDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @functionDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @onceFunctionDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @listmapDeclaration generatePredeclaration -> @string outPredeclaration :
+  outPredeclaration := "class GALGAS_" . [mListmapTypeName identifierRepresentation] . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper typeGenerationTemplate in "../generation_templates/semantic_generation" {
+} {
+  template semanticFileHeader "semantic-file.h.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@semanticDeclarationList SEMANTIC_DECLARATION_LIST # For generating class predeclarations
+  ;
+  template semanticFileImplementation "semantic-file.cpp.gTemplate"
+    ?@string COMPONENT_NAME
+  ;
+#--- List
+  template listTypeHeader "GALGAS_list.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@attributeList ATTRIBUTE_LIST
+  ;
+  template listTypeImplementation "GALGAS_list.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@attributeList ATTRIBUTE_LIST
+  ;
+#--- enum
+  template enumTypeHeader "GALGAS_enum.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@lstringlist CONSTANT_LIST
+    ?@enumMessageList ENUM_MESSAGE_LIST
+  ;
+  template enumTypeImplementation "GALGAS_enum.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@lstringlist CONSTANT_LIST
+    ?@enumMessageList ENUM_MESSAGE_LIST
+  ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O D E    G E N E R A T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @semanticDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+;
+
+#---------------------------------------------------------------------------*
+
+override method @mapDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@mapDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapindexDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@mapindexDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string ioHeaderString
+  ?!@string ioImplementationString
+:
+  ioHeaderString .= [filewrapper typeGenerationTemplate.enumTypeHeader
+    ![mEnumTypeName identifierRepresentation]
+    !mConstantList
+    !mEnumMessageList
+ ] ;
+  ioImplementationString .= [filewrapper typeGenerationTemplate.enumTypeImplementation
+    ![mEnumTypeName identifierRepresentation]
+    !mConstantList
+    !mEnumMessageList
+ ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@filewrapperDeclaration.semanticAnalysis [in semanticCompilation.gSemantics]\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@sortedListDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @structDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@structDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclaration generateCode
+  ?!@semanticContext ioSemanticContext
+  ?!@string ioHeaderString
+  ?!@string ioImplementationString
+:
+  @attributeList attributeList [emptyList] ;
+  foreach mAttributeList do
+    @typeMapIndex attributeTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    attributeList +=
+      !attributeTypeIndex
+      !mAttributeName
+    ;
+  end foreach ;
+  @listDeclaration tt := self ; # Bug in GALGAS 1
+  ioHeaderString .= [filewrapper typeGenerationTemplate.listTypeHeader
+    ![[tt mListTypeName] identifierRepresentation]
+    !attributeList
+ ] ;
+  ioImplementationString .= [filewrapper typeGenerationTemplate.listTypeImplementation
+    ![[tt mListTypeName] identifierRepresentation]
+    !attributeList
+ ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @classDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@classDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externRoutineDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@externRoutineDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @routineDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@routineDeclaration generateCode\n" ;
+#  foreach mRoutineInstructionList do
+#    [mInstruction instructionSemanticAnalysis !inSemanticContext] ;
+#  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externFunctionDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@externFunctionDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @functionDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@functionDeclaration generateCode\n" ;
+#  foreach mFunctionInstructionList do
+#    [mInstruction instructionSemanticAnalysis !inSemanticContext] ;
+#  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @onceFunctionDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@onceFunctionDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listmapDeclaration generateCode
+  ?!@semanticContext unused ioSemanticContext
+  ?!@string unused ioHeaderString
+  ?!@string unused ioImplementationString
+:
+  message "@listmapDeclaration generateCode\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

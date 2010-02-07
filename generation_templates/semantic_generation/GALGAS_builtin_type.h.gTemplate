@@ -441,7 +441,7 @@ end foreach
 %//--------------------------------- Reader invocation declaration\n%
 foreach [TYPE readerMap] do
   if mQualifier == [@readerQualifier isBasic] then
-    %  friend GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key identifierRepresentation] % (%?COL
+    %  friend GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * readerCall_% ![key identifierRepresentation] % (%?COL
     %const GALGAS_%!TYPE_NAME% * inObject%
     foreach mArgumentTypeList
       do index IDX %,\n% !COL %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand% ![IDX string]

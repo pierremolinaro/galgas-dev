@@ -5,14 +5,8 @@ semantics projectMetamodel :
 #------------------------------------------------------------------------------*
 
 enum @sourceFileKind {
-  constructor externSourceFile ;
-  constructor lexiqueSourceFile ;
-  constructor guiSourceFile ;
-  constructor optionSourceFile ;
-  constructor syntaxSourceFile ;
-  constructor semanticsSourceFile ;
-  constructor grammarSourceFile ;
-  constructor programSourceFile ;
+  externSourceFile, lexiqueSourceFile, guiSourceFile, optionSourceFile,
+  syntaxSourceFile, semanticsSourceFile, grammarSourceFile, programSourceFile
 }{
 }
 

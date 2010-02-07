@@ -336,7 +336,7 @@ routine comparison_types_check
   when @typeGalgas_lstring ()     :: @typeGalgas_lstring () :
   when @typeGalgas_location ()    :: @typeGalgas_location () :
   when @typeGalgas_filewrapper () :: @typeGalgas_filewrapper () :
-  when @typeGalgas_enum (@lstring inTypeName1 5*) :: @typeGalgas_enum (@lstring inTypeName2 5*) :
+  when @typeGalgas_enum (@lstring inTypeName1 2*) :: @typeGalgas_enum (@lstring inTypeName2 2*) :
     if [inTypeName1 string] != [inTypeName2 string] then
       error here : "comparison between an '@" . [inTypeName1 string] .
              "' enumeration and an '@" . [inTypeName2 string] . "' enumeration is not valid"  ;
@@ -385,7 +385,7 @@ routine magnitude_comparison_types_check
   when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
   when @typeGalgas_double ()    :: @typeGalgas_double () :
   when @typeGalgas_string ()    :: @typeGalgas_string () :
-  when @typeGalgas_enum (@lstring inTypeName1 5*) :: @typeGalgas_enum (@lstring inTypeName2 5*) :
+  when @typeGalgas_enum (@lstring inTypeName1 2*) :: @typeGalgas_enum (@lstring inTypeName2 2*) :
     if [inTypeName1 string] != [inTypeName2 string] then
       error here : "comparison between an '@" . [inTypeName1 string] .
              "' enumeration and an '@" . [inTypeName2 string] . "' enumeration is not valid"  ;

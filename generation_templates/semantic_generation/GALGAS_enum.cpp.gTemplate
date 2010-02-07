@@ -1,0 +1,154 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["'" . TYPE_NAME . "' class" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ("%!TYPE_NAME%", NULL) ;
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_NAME%::GALGAS_%!TYPE_NAME% (%?COL0%const enum_%!TYPE_NAME% inValue
+%                                         !COL0%COMMA_LOCATION_ARGS) :
+AC_GALGAS__root (THERE),
+mEnumValue (inValue) {
+}
+
+%
+foreach CONSTANT_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_%![mValue identifierRepresentation]% (LOCATION_ARGS) {\n%
+  %  GALGAS_%!TYPE_NAME% * result = NULL ;\n%
+  %  macroMyNew (result, GALGAS_%!TYPE_NAME% (kEnum_%![mValue identifierRepresentation]% COMMA_THERE)) ;\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach
+
+foreach ENUM_MESSAGE_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_string * GALGAS_%!TYPE_NAME%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) {\n%
+  %  GALGAS_string * result = NULL ;\n%
+  %  switch (mEnumValue) {\n%
+  foreach mMessageAssociationList do
+  %  case kEnum_%![mConstantName identifierRepresentation]%:\n%
+  %    result = GALGAS_string::constructor_new (%![mMessage utf8Representation]% COMMA_THERE) ;\n%
+  %    break ;\n%
+  end foreach
+  %  }\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach
+
+foreach ENUM_MESSAGE_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_string * readerCall_%![mEnumMessageName identifierRepresentation]% (%?COL%const GALGAS_%!TYPE_NAME% * inReceiver\n%
+                                                                               !COL%LOCATION_ARGS) {\n%
+  %  GALGAS_string * result = NULL ;\n%
+  %  if (NULL != inReceiver) {\n%
+  %    result = nReceiver->reader_%![mEnumMessageName identifierRepresentation]% (THERE) ;\n%
+  %  }\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach
+%
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_NAME%::description (%?COL_D%C_String & ioString,
+%                                       !COL_D%const PMSInt32 /* inIndentation */) const {
+  ioString << "<enum @%!TYPE_NAME%: " ;
+  switch (mEnumValue) {\n%
+foreach CONSTANT_LIST do
+%  case kEnum_%![mValue identifierRepresentation]%:\n%
+%    ioString << %![mValue utf8Representation]% ;\n%
+%    break ;\n%
+end foreach
+%  }\n
+}
+
+//---------------------------------------------------------------------------*
+
+PMSInt32 GALGAS_%!TYPE_NAME%::compareForSortedList (%?COL_C%const AC_GALGAS__root * inOperand
+%                                                   !COL_C%COMMA_LOCATION_ARGS) const {
+  const GALGAS_%!TYPE_NAME% * operand = (const GALGAS_%!TYPE_NAME% *) inOperand ;
+  macroValidObjectThere (operand, const GALGAS_%!TYPE_NAME%) ;
+  return ((PMSInt32) mEnumValue) - ((PMSInt32) operand->mEnumValue) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool * GALGAS_%!TYPE_NAME%::operator_isEqual (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                                     const GALGAS_%!TYPE_NAME% * inOperand2
+                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_bool * result = NULL ;
+  if ((NULL != inOperand1) && (NULL != inOperand2)) {
+    result = GALGAS_bool::constructor_new (inOperand1->mEnumValue == inOperand2->mEnumValue COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool * GALGAS_%!TYPE_NAME%::operator_isNotEqual (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                                        const GALGAS_%!TYPE_NAME% * inOperand2
+                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_bool * result = NULL ;
+  if ((NULL != inOperand1) && (NULL != inOperand2)) {
+    result = GALGAS_bool::constructor_new (inOperand1->mEnumValue != inOperand2->mEnumValue COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool * GALGAS_%!TYPE_NAME%::operator_infOrEqual (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                                        const GALGAS_%!TYPE_NAME% * inOperand2
+                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_bool * result = NULL ;
+  if ((NULL != inOperand1) && (NULL != inOperand2)) {
+    result = GALGAS_bool::constructor_new (inOperand1->mEnumValue <= inOperand2->mEnumValue COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool * GALGAS_%!TYPE_NAME%::operator_supOrEqual (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                                        const GALGAS_%!TYPE_NAME% * inOperand2
+                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_bool * result = NULL ;
+  if ((NULL != inOperand1) && (NULL != inOperand2)) {\n
+    result = GALGAS_bool::constructor_new (inOperand1->mEnumValue >= inOperand2->mEnumValue COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool * GALGAS_%!TYPE_NAME%::operator_strictInf (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                                       const GALGAS_%!TYPE_NAME% * inOperand2
+                                                       COMMA_LOCATION_ARGS) {
+  GALGAS_bool * result = NULL ;
+  if ((NULL != inOperand1) && (NULL != inOperand2)) {
+    result = GALGAS_bool::constructor_new (inOperand1->mEnumValue < inOperand2->mEnumValue COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool * GALGAS_%!TYPE_NAME%::operator_strictSup (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                                       const GALGAS_%!TYPE_NAME% * inOperand2
+                                                       COMMA_LOCATION_ARGS) {
+  GALGAS_bool * result = NULL ;
+  if ((NULL != inOperand1) && (NULL != inOperand2)) {
+    result = GALGAS_bool::constructor_new (inOperand1->mEnumValue > inOperand2->mEnumValue COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_%!TYPE_NAME%::typeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
+}
+
