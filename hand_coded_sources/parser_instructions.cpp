@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate parser instructions                                             *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -254,9 +254,8 @@ generateInstruction (AC_OutputStream & inCppFile,
                  "  }\n"
                  "#endif\n" ;
   }
-  inCppFile << "inLexique.acceptTerminal (ACCEPT_TERMINAL (" << mLexiqueClassName << "::"
-            << mLexiqueClassName << "_1_"
-            << aNomTerminal.identifierRepresentation ()
+  inCppFile << "inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
+            << "::kToken_" << aNomTerminal.identifierRepresentation ()
             << ") COMMA_HERE) ;\n" ;
 }
 
@@ -379,7 +378,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      PMSInt32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
-    inHfile << "  protected : virtual PMSInt16 select_" << inTargetFileName
+    inHfile << "  protected : virtual PMSInt16 select_" << inTargetFileName.identifierRepresentation ()
              << "_" << cStringWithSigned (ioPrototypeIndex)
              << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
@@ -404,7 +403,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        PMSInt32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
-  inCppFile << "switch (select_" << inTargetFileName
+  inCppFile << "switch (select_" << inTargetFileName.identifierRepresentation ()
            << "_" << cStringWithSigned (ioPrototypeIndex)
            << " (inLexique)) {\n" ;
   ioPrototypeIndex ++ ;
@@ -476,7 +475,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      PMSInt32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
-    inHfile << "  protected : virtual PMSInt16 select_" << inTargetFileName
+    inHfile << "  protected : virtual PMSInt16 select_" << inTargetFileName.identifierRepresentation ()
             << "_" << cStringWithSigned (ioPrototypeIndex)
             << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
@@ -510,7 +509,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, inGenerateSemanticInstructions) ;
-  inCppFile << "switch (select_" << inTargetFileName
+  inCppFile << "switch (select_" << inTargetFileName.identifierRepresentation ()
            << "_" << cStringWithSigned (prototypeIndex)
            << " (inLexique)) {\n" ;
   currentBranch.next () ;

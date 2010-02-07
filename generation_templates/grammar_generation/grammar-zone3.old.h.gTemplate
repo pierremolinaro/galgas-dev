@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 
-class %!GRAMMAR_NAME% : %?COLUMN_CLASS_DECLARATION
+class C_Grammar_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]% : %?COLUMN_CLASS_DECLARATION
 foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
   do %public % ![[mValue string] stringByDeletingPathExtension]
   between %,\n%!COLUMN_CLASS_DECLARATION
@@ -9,7 +9,7 @@ end foreach
 %
 foreach NON_TERMINAL_MAP do
   foreach mNonterminalSymbolParametersMap prefixedBy label_ do
-    %  public : virtual void nt_%![key string]%_%![label_key string]% (%?COLUMN1 !LEXIQUE_CLASS% &%
+    %  public : virtual void nt_%![key string]%_%![label_key string]% (%?COLUMN1 %C_Lexique_%!LEXIQUE_CLASS% &%
     foreach label_mFormalParametersList do
         %,\n%!COLUMN1 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
     end foreach
@@ -35,7 +35,7 @@ foreach NON_TERMINAL_MAP do
   end foreach
 end foreach
 foreach ADDED_NON_TERMINAL_LIST
-  do %  public : virtual PMSInt16 select_%!mSyntaxComponentName%_%![mNonTerminalToAddCount string]% (%!LEXIQUE_CLASS% &) ;\n%
+  do %  public : virtual PMSInt16 select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (C_Lexique_%!LEXIQUE_CLASS% &) ;\n%
   between %\n%
 end foreach
 %} ;

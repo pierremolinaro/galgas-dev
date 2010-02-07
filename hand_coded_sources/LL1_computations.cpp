@@ -2,8 +2,10 @@
 //                                                                           *
 //  Routines for checking LL(1) condition                                    *
 //                                                                           *
-//  Copyright (C) 1994, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 1994, ..., 2010 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -250,7 +252,7 @@ void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
     mFichierBNF << "\n" ;
     aIndice = 0 ;
   }
-  mFichierBNF << aNomClasseLexique << "::" << aNomClasseLexique << "_1_"
+  mFichierBNF << aNomClasseLexique << "::kToken_"
               << mVocabulary.getSymbol (element COMMA_HERE).identifierRepresentation ()
               << ", " ;
 }
@@ -329,8 +331,8 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
           const PMSInt32 v = p.aDerivation (item COMMA_HERE) ;
           if (v < inVocabulary.getTerminalSymbolsCount ()) {
             inCppFile << "TERMINAL ("
-                    << inLexiqueName << "::" << inLexiqueName
-                    << "_1_"
+                    << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
+                    << "::kToken_"
                     << inVocabulary.getSymbol (v COMMA_HERE).identifierRepresentation ()
                     << ") // $"
                     << inVocabulary.getSymbol (v COMMA_HERE) 
@@ -383,7 +385,8 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         const PMSInt32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
         for (PMSInt32 symbol=0 ; symbol < symbolsCount ; symbol++) {
           if (array (symbol COMMA_HERE)) {
-            inCppFile << inLexiqueName << "::" << inLexiqueName << "_1_"
+            inCppFile << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
+                      << "::kToken_"
                       << inVocabulary.getSymbol (symbol COMMA_HERE).identifierRepresentation ()
                       << ", " ;
           }
@@ -549,11 +552,10 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal._mID (HERE) COMMA_HERE) >= 0 ;
     GGS_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
-      generatedZone3 << "void " ;
-      generatedZone3 << inTargetFileName
+      generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                      << "::\n"
                      << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
-                     << " (" << inLexiqueName << " & " << (existeProduction ? "inLexique" : "") ;
+                     << " (" << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " & " << (existeProduction ? "inLexique" : "") ;
       GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
       PMSInt16 numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
@@ -578,8 +580,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
-        generatedZone3 << "void " ;
-        generatedZone3 << inTargetFileName
+        generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & inCompiler"
                           ",\n                                "
@@ -605,8 +606,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    ? _inFileName.string ()\n"
                           "    : inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
-                          "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner_ = NULL ;\n"
+                          "    macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    macroRetainObject (scanner_) ;\n"
                           "    if (scanner_->needsCompiling ()) {\n"
                           "      if (scanner_->sourceText () != NULL) {\n"
@@ -616,7 +617,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
                           "        if (ok && ! scanner_->mParseOnlyFlag) {\n"
-                          "          " << inTargetFileName << " _grammar ;\n"
+                          "          C_Grammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
                           "          " ;
         generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
@@ -665,8 +666,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "}\n\n" ;
       //--- Define string parsing static method
         generatedZone3.appendCppHyphenLineComment () ;
-        generatedZone3 << "void " ;
-        generatedZone3 << inTargetFileName
+        generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & inCompiler"
                           ",\n                                "
@@ -684,8 +684,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
-        generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "  macroMyNew (scanner_, " << inLexiqueName << " (& inCompiler, inCompiler.ioParametersPtr (), _inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+        generatedZone3 << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner_ = NULL ;\n"
+                          "  macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (& inCompiler, inCompiler.ioParametersPtr (), _inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  macroRetainObject (scanner_) ;\n"
                           "  scanner_->mPerformGeneration = inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
@@ -693,7 +693,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
                           "  if (ok && ! scanner_->mParseOnlyFlag) {\n"
-                          "    " << inTargetFileName << " _grammar ;\n"
+                          "    C_Grammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
                           "    " ;
         generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
@@ -722,9 +722,10 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   for (PMSInt32 nt=inVocabulary.getTerminalSymbolsCount () ; nt<inVocabulary.getAllSymbolsCount () ; nt++) {
     if (inVocabulary.needToGenerateChoice (nt COMMA_HERE)) {
       generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
-      generatedZone3 << "PMSInt16 " << inTargetFileName
+      generatedZone3 << "PMSInt16 C_Grammar_" << inTargetFileName.identifierRepresentation ()
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
-              << " (" << inLexiqueName << " & inLexique) {\n"
+              << " (C_Lexique_" << inLexiqueName.identifierRepresentation ()
+              << " & inLexique) {\n"
                  "  return inLexique.nextProductionIndex () ;\n"
                  "}\n\n" ;
     }

@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate semantics instructions                                          *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *

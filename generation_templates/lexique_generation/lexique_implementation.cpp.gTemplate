@@ -12,7 +12,7 @@
 #include <string.h>
 
 #include "utilities/MF_MemoryControl.h"
-#include "%!LEXIQUE_CLASS_NAME%.h"
+#include "%![[LEXIQUE_COMPONENT_ROOT mLexiqueComponentName] string]%.h"
 
 #include "strings/unicode_character_cpp.h"
 #include "galgas/scanner_actions.h"
@@ -30,7 +30,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-cTokenFor_%!LEXIQUE_CLASS_NAME%::cTokenFor_%!LEXIQUE_CLASS_NAME% (void)%
+cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
   foreach LEXICAL_ATTRIBUTE_MAP
   before % :\n%
   do %mLexicalAttribute_%![key string]% ()%
@@ -41,8 +41,7 @@ cTokenFor_%!LEXIQUE_CLASS_NAME%::cTokenFor_%!LEXIQUE_CLASS_NAME% (void)%
 
 //---------------------------------------------------------------------------*
 
-%!LEXIQUE_CLASS_NAME%::
-%!LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
+C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
                 C_galgas_io * inParametersPtr,
@@ -57,8 +56,7 @@ C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, in
 
 //---------------------------------------------------------------------------*
 
-%!LEXIQUE_CLASS_NAME%::
-%!LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
+C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError
@@ -97,8 +95,7 @@ C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError C
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void %!LEXIQUE_CLASS_NAME%::
-appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 inTerminalIndex,
+void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 inTerminalIndex,
                                            C_String & outSyntaxErrorMessage) {
   static const utf32 * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
   foreach TERMINAL_LIST do
@@ -129,11 +126,11 @@ appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 inTerminalIndex,
     %\nstatic const PMSInt32 ktable_size_%![tokenList_key string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%![tokenList_key string]% [ktable_size_%![tokenList_key string]%] = {\n%
       foreach tokenList_mTokenSortedList
-      do %  C_unicode_lexique_table_entry (kUnicodeString_%![mName identifierRepresentation]%, %![mLength string]%, %!LEXIQUE_CLASS_NAME%::%!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%)%
+      do %  C_unicode_lexique_table_entry (kUnicodeString_%![mName identifierRepresentation]%, %![mLength string]%, C_Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
       between %,\n%
       end foreach
     %\n} ;\n\n%
-    %PMSInt16 %!LEXIQUE_CLASS_NAME%::search_into_%![tokenList_key string]% (const C_String & inSearchedString) {\n%
+    %PMSInt16 C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%![tokenList_key string]% (const C_String & inSearchedString) {\n%
     %  return searchInList (inSearchedString, ktable_for_%![tokenList_key string]%, ktable_size_%![tokenList_key string]%) ;\n%
     %}\n\n%
   end foreach
@@ -144,19 +141,18 @@ appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 inTerminalIndex,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-C_String %!LEXIQUE_CLASS_NAME%::
-getCurrentTokenString (const cToken * inTokenPtr) const {
-  const cTokenFor_%!LEXIQUE_CLASS_NAME% * ptr = (const cTokenFor_%!LEXIQUE_CLASS_NAME% *) inTokenPtr ;
+C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTokenPtr) const {
+  const cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (const cTokenFor_%!LEXIQUE_IDENTIFIER% *) inTokenPtr ;
   C_String s ;
   if (ptr == NULL) {
     s.appendCString("$$") ;
   }else{
     switch (ptr->mTokenCode) {
-    case %!LEXIQUE_CLASS_NAME%_1_:
+    case kToken_:
       s.appendCString("$$") ;
       break ;
 %foreach TERMINAL_LIST do
-   %    case %!LEXIQUE_CLASS_NAME%_1_%![[mTerminalName string] identifierRepresentation]%:\n%
+   %    case kToken_%![[mTerminalName string] identifierRepresentation]%:\n%
    %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
    %      s.appendCString (%![[mTerminalName string] utf8Representation]%) ;\n%
    %      s.appendCString("$ ") ;\n%
@@ -234,9 +230,8 @@ end foreach
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-bool %!LEXIQUE_CLASS_NAME%::
-parseLexicalToken (void) {
-  cTokenFor_%!LEXIQUE_CLASS_NAME% token ;
+bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
+  cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
   mLoop = true ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
@@ -286,11 +281,11 @@ parseLexicalToken (void) {
 %
   block 8 :
     foreach LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
+      ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end foreach
   end block
 %if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
-          token.mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+          token.mTokenCode = kToken_ ; // Empty string code
         }else{ // Unknown input character
           unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
         }
@@ -311,11 +306,11 @@ parseLexicalToken (void) {
 %
   block 6 :
     foreach LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
+      ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end foreach
   end block
 %if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
-        token.mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+        token.mTokenCode = kToken_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
       }
@@ -337,9 +332,9 @@ parseLexicalToken (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void %!LEXIQUE_CLASS_NAME%::enterToken (const cTokenFor_%!LEXIQUE_CLASS_NAME% & inToken) {
-  cTokenFor_%!LEXIQUE_CLASS_NAME% * ptr = NULL ;
-  macroMyNew (ptr, cTokenFor_%!LEXIQUE_CLASS_NAME% ()) ;
+void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDENTIFIER% & inToken) {
+  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = NULL ;
+  macroMyNew (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER% ()) ;
   ptr->mTokenCode = inToken.mTokenCode ;
   ptr->mFirstLocation = mTokenFirstLocation ;
   ptr->mLastLocation = mTokenLastLocation ;
@@ -358,9 +353,8 @@ void %!LEXIQUE_CLASS_NAME%::enterToken (const cTokenFor_%!LEXIQUE_CLASS_NAME% & 
 //---------------------------------------------------------------------------*
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
-    %void %!LEXIQUE_CLASS_NAME%::\n%
-    %assignFromAttribute_%![key string]% (%![mLexicalType exportedCPPTypeName]% & outValue) const {\n%
-    %  cTokenFor_%!LEXIQUE_CLASS_NAME% * ptr = (cTokenFor_%!LEXIQUE_CLASS_NAME% *) mCurrentTokenPtr ;\n%
+    %void C_Lexique_%!LEXIQUE_IDENTIFIER%::assignFromAttribute_%![key string]% (%![mLexicalType exportedCPPTypeName]% & outValue) const {\n%
+    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
     %  outValue = %![mLexicalType exportedCPPTypeName]% (* this, ptr->mLexicalAttribute_%![key string]%) ;\n%
     %}\n\n%
   end foreach
@@ -372,9 +366,8 @@ void %!LEXIQUE_CLASS_NAME%::enterToken (const cTokenFor_%!LEXIQUE_CLASS_NAME% & 
 //---------------------------------------------------------------------------*
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
-    ![mLexicalType cppTypeName]% %!LEXIQUE_CLASS_NAME%::\n%
-    %attributeValue_%![key string]% (void) const {\n%
-    %  cTokenFor_%!LEXIQUE_CLASS_NAME% * ptr = (cTokenFor_%!LEXIQUE_CLASS_NAME% *) mCurrentTokenPtr ;\n%
+    ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![key string]% (void) const {\n%
+    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
     %  return ptr->mLexicalAttribute_%![key string]% ;\n%
     %}\n\n%
   end foreach

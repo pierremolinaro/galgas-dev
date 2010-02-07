@@ -625,17 +625,17 @@ end method ;
 filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
 } {
   template headerZone2 "lexique_header_template_zone_2.h.gTemplate"
-    ?@string LEXIQUE_CLASS_NAME
+    ?@string LEXIQUE_IDENTIFIER
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
   template headerZone3 "lexique_header_template_zone_3.h.gTemplate"
-    ?@string LEXIQUE_CLASS_NAME
+    ?@string LEXIQUE_IDENTIFIER
     ?@lexicalListDeclarationList DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
   ;
   template implementationZone2 "lexique_implementation.cpp.gTemplate"
-    ?@string LEXIQUE_CLASS_NAME
+    ?@string LEXIQUE_IDENTIFIER
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
     ?@terminalList TERMINAL_LIST
@@ -897,13 +897,13 @@ routine compileLexiqueComponent
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.headerZone2
-         !lexiqueClassName
+         ![lexiqueClassName identifierRepresentation]
          !lexiqueAnalysisContext
          !lexiqueComponentRoot
        ]
       !"\n\n" # Defaut user zone2
       ![filewrapper lexiqueGenerationTemplates.headerZone3
-         !lexiqueClassName
+         ![lexiqueClassName identifierRepresentation]
          ![lexiqueComponentRoot mLexicalListDeclarationList]
          !lexiqueAnalysisContext
        ]
@@ -917,7 +917,7 @@ routine compileLexiqueComponent
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.implementationZone2
-         !lexiqueClassName
+         ![lexiqueClassName identifierRepresentation]
          ![lexiqueAnalysisContext mLexicalAttributeMap]
          ![lexiqueAnalysisContext mLexicalMessageMap]
          ![lexiqueAnalysisContext mTerminalList]
