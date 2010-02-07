@@ -404,6 +404,38 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+list @nonTerminalToAddList {
+  @string mSyntaxComponentName ;
+  @uint mNonTerminalToAddCount ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
+} {
+  template oldGrammarZone2Header "grammar-zone2.old.h.gTemplate"
+    ?@string GRAMMAR_NAME
+    ?@grammarComponentRoot GRAMMAR_COMPONENT_ROOT
+  ;
+  template oldGrammarZone3Header "grammar-zone3.old.h.gTemplate"
+    ?@string GRAMMAR_NAME
+    ?@string LEXIQUE_CLASS
+    ?@grammarComponentRoot GRAMMAR_COMPONENT_ROOT
+    ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
+    ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
+  ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      C O M P I L E    G R A M M A R    C O M P O N E N T                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
 routine compileGrammarComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectoryForCppFiles
@@ -426,8 +458,10 @@ routine compileGrammarComponent
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis [emptyMap] ;
   @string lexiqueComponentName := "" ; # Empty string means unknown
   @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis [emptyList] ;
+  @nonTerminalToAddList nonTerminalToAddList [emptyList] ;
   @uint addedNonTerminalCount := 0 ;
   foreach [grammarComponentRoot mSyntaxComponents] do
+    const @uint addedNonTerminalCountRef := addedNonTerminalCount ;
     if ([mValue pathExtension] != "gSyntax") & ([mValue pathExtension] != "ggs") then
       error mValue: "a syntax component file should have '.ggs' or '.gSyntax' as path extension" ;
     else
@@ -463,6 +497,11 @@ routine compileGrammarComponent
         !?syntaxComponentListForGrammarAnalysis
         !?addedNonTerminalCount
       ;
+      @uint i := 0 ;
+      loop addedNonTerminalCount : while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
+        nonTerminalToAddList += !syntaxComponentName !i ;
+        i++ ;
+      end loop ;
     end if ;
   end foreach ;
 #---------------------------------------------------------- Start symbol
@@ -499,6 +538,29 @@ routine compileGrammarComponent
     !inOutputDirectoryForCppFiles
     !inOutputDirectoryForHTMLFile
   ;
+#---------------------------------------------------------- Generate header
+  if [@uint errorCount] == 0 then
+    const @string zone2 := [filewrapper grammarGenerationTemplate.oldGrammarZone2Header
+      ![[grammarComponentRoot mGrammarName] string]
+      !grammarComponentRoot
+    ] ;
+    const @string zone3 := [filewrapper grammarGenerationTemplate.oldGrammarZone3Header
+      ![[grammarComponentRoot mGrammarName] string]
+      !lexiqueComponentName
+      !grammarComponentRoot
+      !nonTerminalMapForGrammarAnalysis
+      !nonTerminalToAddList
+    ] ;
+    [@string generateFile
+      !inOutputDirectoryForCppFiles
+      ![[grammarComponentRoot mGrammarName] string] . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !zone2
+      !"\n\n" # Defaut user zone2
+      !zone3
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

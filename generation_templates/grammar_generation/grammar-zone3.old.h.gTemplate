@@ -1,0 +1,45 @@
+//---------------------------------------------------------------------------*
+
+class %!GRAMMAR_NAME% : %?COLUMN_CLASS_DECLARATION
+foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
+  do %public % ![[mValue string] stringByDeletingPathExtension]
+  between %,\n%!COLUMN_CLASS_DECLARATION
+end foreach
+% {
+%
+foreach NON_TERMINAL_MAP do
+  foreach mNonterminalSymbolParametersMap prefixedBy label_ do
+    %  public : virtual void nt_%![key string]%_%![label_key string]% (%?COLUMN1 !LEXIQUE_CLASS% &%
+    foreach label_mFormalParametersList do
+        %,\n%!COLUMN1 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
+    end foreach
+    %) ;\n\n%
+    if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [key string] then
+      %  public : static void _performSourceFileParsing_%![label_key string]% (%?COLUMN2%C_Compiler & inCompiler,\n%
+      !COLUMN2%const C_String & inDependancyExtension,\n%
+      !COLUMN2%const C_String & inDependancyPath,\n%
+      !COLUMN2%GGS_string * inSentStringPtr,\n%
+      !COLUMN2%const GGS_lstring inFileName%
+      foreach label_mFormalParametersList do
+        %,\n%!COLUMN2 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
+      end foreach
+      %\n%!COLUMN2%COMMA_LOCATION_ARGS) ;\n\n%
+      %  public : static void _performSourceStringParsing_%![label_key string]% (%?COLUMN3%C_Compiler & inCompiler,\n%
+      !COLUMN3%GGS_string * inSentStringPtr,\n%
+      !COLUMN3%const GGS_string inSourceString%
+      foreach label_mFormalParametersList do
+        %,\n%!COLUMN3 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
+      end foreach
+      %\n%!COLUMN3 %COMMA_LOCATION_ARGS) ;\n\n%
+    end if
+  end foreach
+end foreach
+foreach ADDED_NON_TERMINAL_LIST
+  do %  public : virtual PMSInt16 select_%!mSyntaxComponentName%_%![mNonTerminalToAddCount string]% (%!LEXIQUE_CLASS% &) ;\n%
+  between %\n%
+end foreach
+%} ;
+
+//---------------------------------------------------------------------------*
+
+#endif

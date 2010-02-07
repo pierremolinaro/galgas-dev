@@ -2,9 +2,10 @@
 //                                                                           *
 //  This file handles all computations performed on grammars                 *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -150,136 +151,6 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
     inHTMLfile->outputRawData ("</p>") ;
   }
   return ok ;
-}
-
-//---------------------------------------------------------------------------*
-
-static void
-generateGrammarHeaderFile (C_Compiler & inLexique,
-                           const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
-                           const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
-                           const C_String & inLexiqueName,
-                           const PMUInt32 inOriginalGrammarStartSymbol,
-                           const C_String & inTargetFileName,
-                           const cVocabulary & inVocabulary,
-                           const C_String & inOutputDirectoryForCppFiles) {
-  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
-  generatedZone2 << "#ifndef GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n"
-                    "#define GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n\n" ;
-  
-//--- Engendrer les inclusions --------------------------------------------------------------
-  generatedZone2.appendCppHyphenLineComment () ;
-  GGS_syntaxComponentListForGrammarAnalysis::cEnumerator component (inSyntaxComponentsList, true) ;
-  while (component.hasCurrentObject ()) {
-    generatedZone2 << "#include \"" << component._mSyntaxComponentName (HERE) << ".h\"\n" ;
-    component.next () ;
-  }
-  generatedZone2 << "\n" ;
-
-//--- Engendrer la classe de l'analyseur syntaxique ------------------------------------------
-  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "class " << inTargetFileName ;
-  component.rewind () ;
-//--- Liens d'heritage
-  bool premier = true ;
-  while (component.hasCurrentObject ()) {
-    if (premier) {
-      generatedZone3 << " :" ;
-      premier = false ;
-    }else{
-      generatedZone3 << ",\n                                " ;
-    }
-    generatedZone3 << " public " << component._mSyntaxComponentName (HERE) ;
-    component.next () ;
-  }
-  generatedZone3 << " {\n" ;
-//--- declaration des non-terminaux de la grammaire d'origine
-  GGS_nonTerminalSymbolMapForGrammarAnalysis::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
-  while (nonTerminal.hasCurrentObject ()) {
-    GGS_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
-    while (currentAltForNonTerminal.hasCurrentObject ()) {
-      generatedZone3 << "  public : virtual " ;
-      generatedZone3 << "void " ;
-      generatedZone3 << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
-                     << " (" << inLexiqueName << " &" ;
-      GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
-      while (parametre.hasCurrentObject ()) {
-        generatedZone3 << ",\n                                " ;
-        generateFormalArgumentFromTypeName (parametre._mGalgasTypeNameForGrammarAnalysis (HERE), parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE), generatedZone3) ;
-        parametre.next () ;
-      }
-      generatedZone3 << ") ;\n" ; 
-      if (nonTerminal._mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
-        generatedZone3 << "  public : static "
-                          "void _performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & inCompiler"
-                          ",\n                                "
-                          "const C_String & inDependancyExtension"
-                          ",\n                                "
-                          "const C_String & inDependancyPath"
-                          ",\n                                "
-                          "GGS_string * inSentStringPtr"
-                          ",\n                                "
-                          "const GGS_lstring inFileName" ;
-        parametre.rewind () ;
-        while (parametre.hasCurrentObject ()) {
-          generatedZone3 << ",\n                                " ;
-          generateFormalArgumentFromTypeName (parametre._mGalgasTypeNameForGrammarAnalysis (HERE), parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE), generatedZone3) ;
-          parametre.next () ;
-        }
-        generatedZone3 << "\n                                "
-                          "COMMA_LOCATION_ARGS) ;\n" ;
-        generatedZone3 << "  public : static " ;
-        generatedZone3 << "void " ;
-        generatedZone3 << "_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & inCompiler"
-                          ",\n                                "
-                          "GGS_string * inSentStringPtr"
-                          ",\n                                "
-                          "const GGS_string inSourceString" ;
-        parametre.rewind () ;
-        while (parametre.hasCurrentObject ()) {
-          generatedZone3 << ",\n                                " ;
-          generateFormalArgumentFromTypeName (parametre._mGalgasTypeNameForGrammarAnalysis (HERE), parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE), generatedZone3) ;
-          parametre.next () ;
-        }
-        generatedZone3 << "\n                                "
-                          "COMMA_LOCATION_ARGS) ;\n" ;
-      }
-      currentAltForNonTerminal.next () ;
-    }
-  //--- Next non terminal
-    nonTerminal.next () ;
-  }
-//--- declaration des non-terminaux pour les instructions choix et repeter
-  for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
-    if (inVocabulary.needToGenerateChoice (i COMMA_HERE)) {
-      generatedZone3 << "  public : virtual PMSInt16 " << inVocabulary.getSymbol (i COMMA_HERE) << " ("
-            << inLexiqueName << " &) ;\n" ;
-    }
-  }
-
-//--- Fin de la classe
-  generatedZone3 << "} ;\n\n" ;
-
-//--- End of file
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "#endif\n" ;
-
-//--- Generate file
-  // printf ("inOutputDirectoryForCppFiles '%s'\n", inOutputDirectoryForCppFiles.cString (HERE)) ;
-  // printf ("inTargetFileName '%s'\n", inTargetFileName.cString (HERE)) ;
-  TC_UniqueArray <C_String> directoriesToExclude ;
-  directoriesToExclude.addObject ("DEPENDENCIES") ;
-  inLexique.generateFileFromPathes (inOutputDirectoryForCppFiles,
-                                    directoriesToExclude,
-                                    "//",
-                                    inTargetFileName + ".h",
-                                    "\n\n", // User Zone 1
-                                    generatedZone2,
-                                    "\n\n", // User Zone 2
-                                    generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -743,18 +614,7 @@ analyzeGrammar (C_Compiler & inLexique,
     }
   }
 
-//--- Final step : Generation of C++ grammar files ---------------------------------------------------------------------
-  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
-    generateGrammarHeaderFile (inLexique,
-                               inNonterminalSymbolsMapForGrammar,
-                               inSyntaxComponentsList,
-                               inLexiqueName,
-                               inOriginalGrammarStartSymbol.uintValue (),
-                               inTargetFileName,
-                               vocabulary,
-                               inOutputDirectoryForCppFiles) ;
-  }
-//--- END -------------------------------------------------------------------------------------------------------
+//--- Final step ---------------------------------------------------------------------
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
     C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((PMUInt16) errorFlag) ;

@@ -860,38 +860,40 @@ routine compileSemanticsComponent
     ] ;
   end foreach ;
 #--- Perform Code Generation
-  @string headerString := [filewrapper typeGenerationTemplate.semanticFileHeader
-    ![componentName string]
-    !semanticDeclarationList
-  ] ;
-  @string implementationString := [filewrapper typeGenerationTemplate.semanticFileImplementation
-    ![componentName string]
-  ] ;
-  foreach semanticDeclarationList do
-    [mSemanticDeclaration generateCode
-      !?semanticContext
-      !?headerString
-      !?implementationString
+  if [@uint errorCount] == 0 then
+    @string headerString := [filewrapper typeGenerationTemplate.semanticFileHeader
+      ![componentName string]
+      !semanticDeclarationList
     ] ;
-  end foreach ;
-  [@string generateFile
-    !inOutputDirectory
-    ![componentName string] . ".h"
-    !"//"
-    !"\n\n" # Defaut user zone1
-    !headerString
-    !"\n\n" # Defaut user zone2
-    !"#endif\n"
-  ] ;
-  [@string generateFile
-    !inOutputDirectory
-    ![componentName string] . ".cpp"
-    !"//"
-    !"\n\n" # Defaut user zone1
-    !implementationString
-    !"\n\n" # Defaut user zone2
-    !"\n"
-  ] ;
+    @string implementationString := [filewrapper typeGenerationTemplate.semanticFileImplementation
+      ![componentName string]
+    ] ;
+    foreach semanticDeclarationList do
+      [mSemanticDeclaration generateCode
+        !?semanticContext
+        !?headerString
+        !?implementationString
+      ] ;
+    end foreach ;
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !headerString
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ] ;
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !implementationString
+      !"\n\n" # Defaut user zone2
+      !"\n"
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
