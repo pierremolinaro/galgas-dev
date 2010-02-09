@@ -257,39 +257,12 @@ if [TYPE accept_tilde_operator] then
   %  public : static GALGAS_%!TYPE_NAME% * operator_tilde (%?COL%const GALGAS_%!TYPE_NAME% * inOperand\n%
         !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
+%//--------------------------------- Comparison
 
-%//--------------------------------- Comparison\n%
-%  public : static GALGAS_bool * operator_isEqual (%?COL_A%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
-               !COL_A%const GALGAS_%!TYPE_NAME% * inOperand2\n%
-               !COL_A%COMMA_LOCATION_ARGS) ;\n\n%
-
-%  public : static GALGAS_bool * operator_isNotEqual (%?COL_B%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
-               !COL_B%const GALGAS_%!TYPE_NAME% * inOperand2\n%
-               !COL_B%COMMA_LOCATION_ARGS) ;\n\n%
-
-if [TYPE isComparable] then
-  %  public : static GALGAS_bool * operator_infOrEqual (%?COL3%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
-                 !COL3%const GALGAS_%!TYPE_NAME% * inOperand2\n%
-                 !COL3%COMMA_LOCATION_ARGS) ;\n\n%
-  
-  %  public : static GALGAS_bool * operator_supOrEqual (%?COL4%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
-                 !COL4%const GALGAS_%!TYPE_NAME% * inOperand2\n%
-                 !COL4%COMMA_LOCATION_ARGS) ;\n\n%
-  
-  %  public : static GALGAS_bool * operator_strictInf (%?COL5%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
-                 !COL5%const GALGAS_%!TYPE_NAME% * inOperand2\n%
-                 !COL5%COMMA_LOCATION_ARGS) ;\n\n%
-  
-  %  public : static GALGAS_bool * operator_strictSup (%?COL6%const GALGAS_%!TYPE_NAME% * inOperand1,\n%
-                 !COL6%const GALGAS_%!TYPE_NAME% * inOperand2\n%
-                 !COL6%COMMA_LOCATION_ARGS) ;\n\n%
-end if
-
-
-%  public : virtual PMSInt32 compareForSortedList (const AC_GALGAS__root * inOperand
+  public : virtual PMSInt32 compareForSortedList (const AC_GALGAS__root * inOperand
                                                    COMMA_LOCATION_ARGS) const ;
 
-//--- Introspection
+//--------------------------------- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
 
 %
