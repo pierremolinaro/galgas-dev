@@ -9,14 +9,14 @@ enum @lexicalTypeEnum {
   lexicalType_uint64, lexicalType_sint, lexicalType_sint64,
   lexicalType_double
 }{
-  reader lexicalTypeName :
-    lexicalType_string -> "@string" ;
-    lexicalType_char   -> "@char" ;
-    lexicalType_uint   -> "@uint" ;
-    lexicalType_uint64 -> "@uint64" ;
-    lexicalType_sint   -> "@sint" ;
-    lexicalType_sint64 -> "@sint64" ;
-    lexicalType_double -> "@double" ;
+  reader lexicalTypeBaseName :
+    lexicalType_string -> "string" ;
+    lexicalType_char   -> "char" ;
+    lexicalType_uint   -> "uint" ;
+    lexicalType_uint64 -> "uint64" ;
+    lexicalType_sint   -> "sint" ;
+    lexicalType_sint64 -> "sint64" ;
+    lexicalType_double -> "double" ;
   end reader ;
 
   reader cppTypeName :
@@ -47,16 +47,6 @@ enum @lexicalTypeEnum {
     lexicalType_sint   -> "" ;
     lexicalType_sint64 -> "" ;
     lexicalType_double -> "" ;
-  end reader ;
-
-  reader exportedCPPTypeName :
-    lexicalType_string -> "GGS_lstring" ;
-    lexicalType_char   -> "GGS_lchar" ;
-    lexicalType_uint   -> "GGS_luint" ;
-    lexicalType_uint64 -> "GGS_luint64" ;
-    lexicalType_sint   -> "GGS_lsint" ;
-    lexicalType_sint64 -> "GGS_lsint64" ;
-    lexicalType_double -> "GGS_ldouble" ;
   end reader ;
 
   reader initialization :
