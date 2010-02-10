@@ -348,28 +348,41 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//         A S S I G N    F R O M    A T T R I B U T E                       *
-//                                                                           *
-//---------------------------------------------------------------------------*
-%
-  foreach LEXICAL_ATTRIBUTE_MAP do
-    %void C_Lexique_%!LEXIQUE_IDENTIFIER%::assignFromAttribute_%![key string]% (%![mLexicalType exportedCPPTypeName]% & outValue) const {\n%
-    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
-    %  outValue = %![mLexicalType exportedCPPTypeName]% (* this, ptr->mLexicalAttribute_%![key string]%) ;\n%
-    %}\n\n%
-  end foreach
-%
-//---------------------------------------------------------------------------*
-//                                                                           *
 //               A T T R I B U T E   A C C E S S                             *
 //                                                                           *
-//---------------------------------------------------------------------------*
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
+    %//---------------------------------------------------------------------------*\n\n%
     ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![key string]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
     %  return ptr->mLexicalAttribute_%![key string]% ;\n%
     %}\n\n%
   end foreach
+%//---------------------------------------------------------------------------*
+//                                                                           *
+//         A S S I G N    F R O M    A T T R I B U T E    ( V 1 )            *
+//                                                                           *
 %
-//---------------------------------------------------------------------------*
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %//---------------------------------------------------------------------------*\n\n%
+    %void C_Lexique_%!LEXIQUE_IDENTIFIER%::assignFromAttribute_%![key string]% (GGS_l%![mLexicalType lexicalTypeBaseName]% & outValue) const {\n%
+    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
+    %  outValue = GGS_l%![mLexicalType lexicalTypeBaseName]% (* this, ptr->mLexicalAttribute_%![key string]%) ;\n%
+    %}\n\n%
+  end foreach
+%//---------------------------------------------------------------------------*
+//                                                                           *
+//         A S S I G N    F R O M    A T T R I B U T E    ( V 2 )            *
+//                                                                           *
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %//---------------------------------------------------------------------------*\n\n%
+    %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% * C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![key identifierRepresentation]% (void) const {\n%
+    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
+    %  macroValidObject (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER%) ;\n%
+    %  GALGAS_location * currentLocation = GALGAS_location::constructor_new (ptr->mLastLocation, sourceText () COMMA_HERE) ;\n%
+    %  GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% * value = GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (ptr->mLexicalAttribute_%![key string]% COMMA_HERE) ;\n%
+    %  return GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (value, currentLocation COMMA_HERE) ;\n%
+    %}\n\n%
+  end foreach
+%//---------------------------------------------------------------------------*

@@ -475,7 +475,7 @@ routine printPredefinedLexicalActions :
   foreach lexicalRoutineMap do
     s .= key ;
     foreach mLexicalRoutineFormalArgumentList do
-      s .= " " . [mLexicalFormalArgumentMode lexicalFormalModeName] . [mLexicalFormalArgumentType lexicalTypeName] . " " . mArgumentNameForComment ;
+      s .= " " . [mLexicalFormalArgumentMode lexicalFormalModeName] . "@" . [mLexicalFormalArgumentType lexicalTypeBaseName] . " " . mArgumentNameForComment ;
     end foreach ;
     foreach mErrorMessageList
     before s .= " error" ;
@@ -496,9 +496,9 @@ routine printPredefinedLexicalActions :
   foreach lexicalFunctionMap do
     s .= key ;
     foreach mLexicalTypeList do
-      s .= " ?" . [mLexicalType lexicalTypeName]. " " . mArgumentNameForComment ;
+      s .= " ?@" . [mLexicalType lexicalTypeBaseName]. " " . mArgumentNameForComment ;
     end foreach ;
-    s .= " -> " . [mReturnedLexicalType lexicalTypeName] . " ;\n" ;
+    s .= " -> @" . [mReturnedLexicalType lexicalTypeBaseName] . " ;\n" ;
     if mReplacementFunctionName != "" then
       s .= "Note: the '" . key . "' function is obsolete: use '" . mReplacementFunctionName . "' function.\n" ;
     end if ;
