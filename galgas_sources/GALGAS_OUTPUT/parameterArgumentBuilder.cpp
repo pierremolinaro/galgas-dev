@@ -127,7 +127,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_91_28_ (C_Lexique_galgas_5F_sc
               } break ;
             case 2 : {
               GGS_luint  var_cas_count ;
-              inLexique.assignFromAttribute_uint32value (var_cas_count) ;
+              inLexique.assignFromAttribute_uint_33__32_value (var_cas_count) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_HERE) ;
               GGS_uint  var_cas_n = var_cas_count.reader_uint (inLexique COMMA_SOURCE_FILE_AT_LINE (103)) ;

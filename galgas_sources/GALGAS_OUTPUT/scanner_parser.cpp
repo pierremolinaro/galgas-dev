@@ -1830,7 +1830,7 @@ pr_lexical_parameter_scanner_parser_1152_24_ (C_Lexique_galgas_5F_scanner & inLe
                                 GGS_typeArgumentRoutineExterne  &var_cas_a,
                                 GGS_typeLexicalAttributesMap  &/* var_cas_table_attributs */) {
   GGS_luint  var_cas_n ;
-  inLexique.assignFromAttribute_uint32value (var_cas_n) ;
+  inLexique.assignFromAttribute_uint_33__32_value (var_cas_n) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
   var_cas_a = GGS_typeArgumentEntier ::constructor_new (inLexique, var_cas_n COMMA_HERE) ;
 }

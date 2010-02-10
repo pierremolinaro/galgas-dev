@@ -2939,7 +2939,7 @@ pr_input_parameters_list_semantics_parser_3079_28_ (C_Lexique_galgas_5F_scanner 
               } break ;
             case 3 : {
               GGS_luint  var_cas_jokerCountWithLocation ;
-              inLexique.assignFromAttribute_uint32value (var_cas_jokerCountWithLocation) ;
+              inLexique.assignFromAttribute_uint_33__32_value (var_cas_jokerCountWithLocation) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_HERE) ;
               GGS_uint  var_cas_jokerCount = var_cas_jokerCountWithLocation.reader_uint (inLexique COMMA_SOURCE_FILE_AT_LINE (3120)) ;
@@ -3451,7 +3451,7 @@ pr_parse_parameters_list_semantics_parser_3425_28_ (C_Lexique_galgas_5F_scanner 
               } break ;
             case 2 : {
               GGS_luint  var_cas_jokerCountWithLocation ;
-              inLexique.assignFromAttribute_uint32value (var_cas_jokerCountWithLocation) ;
+              inLexique.assignFromAttribute_uint_33__32_value (var_cas_jokerCountWithLocation) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_HERE) ;
               GGS_uint  var_cas_jokerCount = var_cas_jokerCountWithLocation.reader_uint (inLexique COMMA_SOURCE_FILE_AT_LINE (3464)) ;

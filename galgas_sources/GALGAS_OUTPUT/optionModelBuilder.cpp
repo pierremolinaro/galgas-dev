@@ -118,7 +118,7 @@ pr_option_optionModelBuilder_56_13_ (C_Lexique_galgas_5F_scanner & inLexique,
           } break ;
         case 2 : {
           GGS_luint  var_cas_v ;
-          inLexique.assignFromAttribute_uint32value (var_cas_v) ;
+          inLexique.assignFromAttribute_uint_33__32_value (var_cas_v) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
           var_cas_defaultValue.modifier_setString (inLexique, var_cas_v.reader_uint (inLexique COMMA_SOURCE_FILE_AT_LINE (76)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (76)) COMMA_SOURCE_FILE_AT_LINE (76)) ;
           var_cas_optionDefaultValueKind = GGS_optionDefaultValueEnum::constructor_unsignedDefaultValue (inLexique COMMA_HERE) ;

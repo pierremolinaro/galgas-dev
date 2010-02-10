@@ -109,7 +109,8 @@ end reader ;
 
 override reader @locationGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
   outList := [@builtinTypeAttributeList emptyList] ;
-  outList += !"C_LocationInSource" !false !"mLocationInSource" !true !"location" ;
+  outList += !"C_LocationInSource" !false !"mStartLocationInSource" !true !"startLocation" ;
+  outList += !"C_LocationInSource" !false !"mEndLocationInSource" !true !"endLocation" ;
   outList += !"C_SourceTextInString" !true !"mSourceText" !false !"sourceText" ;
 end reader ;
 

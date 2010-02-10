@@ -593,7 +593,7 @@ void lexiqueModelBuilder::
 pr_lexical_output_effective_argument_lexiqueModelBuilder_403_40_ (C_Lexique_galgas_5F_scanner & inLexique,
                                 GGS_lexicalRoutineOrFunctionFormalInputArgument  &var_cas_outEffectiveArgument) {
   GGS_luint  var_cas_unsignedValue ;
-  inLexique.assignFromAttribute_uint32value (var_cas_unsignedValue) ;
+  inLexique.assignFromAttribute_uint_33__32_value (var_cas_unsignedValue) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
   var_cas_outEffectiveArgument = GGS_lexicalUnsignedInputArgument ::constructor_new (inLexique, var_cas_unsignedValue COMMA_HERE) ;
 }
