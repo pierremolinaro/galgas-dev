@@ -121,7 +121,7 @@ abstract reader @lexicalRoutineOrFunctionFormalInputArgument generateRoutineOrFu
 override reader @lexicalAttributeInputArgument generateRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "token.mLexicalAttribute_" . mAttributeName ;
+  outGeneratedCode := "token.mLexicalAttribute_" . [mAttributeName identifierRepresentation] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -173,7 +173,7 @@ abstract reader @abstractLexicalRoutineActualArgument generateRoutineArgument
 override reader @lexicalAttributeInputOutputArgument generateRoutineArgument
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "token.mLexicalAttribute_" . mAttributeName ;
+  outGeneratedCode := "token.mLexicalAttribute_" . [mAttributeName identifierRepresentation] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -231,7 +231,7 @@ override reader @lexicalStructuredSendInstruction generateInstructionCode
   outGeneratedCode := "" ;
   foreach mLexicalSendSearchList do
     outGeneratedCode .= "if (token.mTokenCode == -1) {\n" ;
-    outGeneratedCode .= "  token.mTokenCode = search_into_" . mSearchListName . " (token.mLexicalAttribute_" . mAttributeName . ") ;\n" ;
+    outGeneratedCode .= "  token.mTokenCode = search_into_" . mSearchListName . " (token.mLexicalAttribute_" . [mAttributeName identifierRepresentation] . ") ;\n" ;
     outGeneratedCode .= "}\n" ;
   end foreach ;
   outGeneratedCode .= "if (token.mTokenCode == -1) {\n" ;

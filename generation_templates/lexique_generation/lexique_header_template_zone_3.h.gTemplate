@@ -15,7 +15,7 @@
 //--- Assign from attribute (v1)
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : void assignFromAttribute_%![key string]% (GGS_l%![mLexicalType lexicalTypeBaseName]% & outValue) const ;\n%
+    %  public : void assignFromAttribute_%![key identifierRepresentation]% (GGS_l%![mLexicalType lexicalTypeBaseName]% & outValue) const ;\n%
   end foreach
 %
 
@@ -29,7 +29,7 @@
 //--- Attribute access
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : %![mLexicalType cppTypeName]% attributeValue_%![key string]% (void) const ;\n%
+    %  public : %![mLexicalType cppTypeName]% attributeValue_%![key identifierRepresentation]% (void) const ;\n%
   end foreach
 %
 

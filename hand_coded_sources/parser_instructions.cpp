@@ -234,7 +234,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     GGS_L_assignedVariables::cEnumerator argument (aListeTypeEffectifs, true) ;
     while (argument.hasCurrentObject ()) {
       inCppFile << "inLexique.assignFromAttribute_"
-                << argument._aNomAttributSource (HERE) << " (" ;
+                << argument._aNomAttributSource (HERE).identifierRepresentation () << " (" ;
       argument._aNomVariableCible (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
       inCppFile << ") ;\n" ;
       argument.next () ;

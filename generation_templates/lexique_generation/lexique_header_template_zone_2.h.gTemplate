@@ -65,7 +65,7 @@
 class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : %![mLexicalType cppTypeName]% mLexicalAttribute_%![key string]% ;\n%
+    %  public : %![mLexicalType cppTypeName]% mLexicalAttribute_%![key identifierRepresentation]% ;\n%
   end foreach
 %
   public : cTokenFor_%!LEXIQUE_IDENTIFIER% (void) ;

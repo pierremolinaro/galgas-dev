@@ -730,7 +730,7 @@ pr_syntax_declaration_parser_parser_1008_25_ (C_Lexique_galgas_5F_scanner & inLe
   inLexique.assignFromAttribute_tokenString (var_cas_nonterminalBaseName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_HERE) ;
   GGS_luint  var_cas_operatorPriority ;
-  inLexique.assignFromAttribute_uint32value (var_cas_operatorPriority) ;
+  inLexique.assignFromAttribute_uint_33__32_value (var_cas_operatorPriority) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_HERE) ;
   GGS_typeInstructionList  var_cas_listeInstructions = GGS_typeInstructionList ::constructor_emptyList () ;
@@ -827,7 +827,7 @@ pr_syntax_declaration_parser_parser_1008_25_importSyntax (C_Lexique_galgas_5F_sc
   inLexique.assignFromAttribute_tokenString (var_cas_nonterminalBaseName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_HERE) ;
   GGS_luint  var_cas_operatorPriority ;
-  inLexique.assignFromAttribute_uint32value (var_cas_operatorPriority) ;
+  inLexique.assignFromAttribute_uint_33__32_value (var_cas_operatorPriority) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_HERE) ;
   GGS_syntaxInstructionListForGrammarAnalysis  var_cas_syntaxSignature = GGS_syntaxInstructionListForGrammarAnalysis ::constructor_emptyList () ;
@@ -941,7 +941,7 @@ pr_syntax_declaration_parser_parser_1323_25_ (C_Lexique_galgas_5F_scanner & inLe
       GGS_typeVariablesMap  var_cas_tableArgumentsMethode = GGS_typeVariablesMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
       GGS_typeListeTypesEtNomsArgMethode  var_cas_listeTypeEtNomsArguments = GGS_typeListeTypesEtNomsArgMethode ::constructor_emptyList () ;
       GGS_luint  var_cas_levelCount ;
-      inLexique.assignFromAttribute_uint32value (var_cas_levelCount) ;
+      inLexique.assignFromAttribute_uint_33__32_value (var_cas_levelCount) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
       const GGS_bool cond_48575 = (var_cas_levelCount.reader_uint (inLexique COMMA_SOURCE_FILE_AT_LINE (1344))).operator_isEqual (GGS_uint (0U)) ;
       if (cond_48575.isBuiltAndTrue ()) {
@@ -1045,7 +1045,7 @@ pr_syntax_declaration_parser_parser_1323_25_importSyntax (C_Lexique_galgas_5F_sc
   switch (select_parser_5F_parser_3 (inLexique)) {
     case 1 : {
       GGS_luint  var_cas_levelCount ;
-      inLexique.assignFromAttribute_uint32value (var_cas_levelCount) ;
+      inLexique.assignFromAttribute_uint_33__32_value (var_cas_levelCount) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
       GGS_uint  var_cas_i = GGS_uint (1U) ;
       GGS_uint _variant_52722 = var_cas_levelCount.reader_uint (inLexique COMMA_SOURCE_FILE_AT_LINE (1450)) ;
