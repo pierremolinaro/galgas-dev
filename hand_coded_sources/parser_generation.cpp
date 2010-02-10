@@ -69,7 +69,8 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
                              PMSInt32 & /* ioPrototypeIndex */) const {
   GGS_M_nonterminalSymbolAlts::cEnumerator currentAltForNonTerminal (mNonterminalSymbolParametersMap, true) ;
   while (currentAltForNonTerminal.hasCurrentObject ()) {
-    inHfile << "  protected : virtual void nt_" << aNomNonTerminal << "_" << currentAltForNonTerminal._key (HERE)
+    inHfile << "  protected : virtual void nt_" << aNomNonTerminal.identifierRepresentation ()
+            << "_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
             << " ("
             << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
             << " &" ;
@@ -137,13 +138,10 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
   bool prototypesForSelectedAndRepeatNotDeclared = true ;
   while (currentAltForNonTerminal.hasCurrentObject ()) {
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
-    inHfile << "  protected : " ;
-    inHfile << "void " ;
-    inHfile << "pr_" << aNomProduction 
-            << "_" << inTargetFileName
-            << "_" << cStringWithSigned (aNomProduction.lineNumber ())
-            << "_" << cStringWithSigned (aNomProduction.columnNumber ())
-            << "_" << currentAltForNonTerminal._key (HERE) << " ("
+    inHfile << "  protected : void rule_" << inTargetFileName.identifierRepresentation ()
+            << "_" << aNomProduction.identifierRepresentation ()
+            << "_i" << cStringWithUnsigned (mProductionIndex.uintValue ())
+            << "_" << currentAltForNonTerminal._key (HERE).identifierRepresentation () << " ("
             << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
             << " &" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentAltForNonTerminal._aListeDeTypesEffectifs (HERE), true) ;
@@ -167,10 +165,9 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
 //--- 'parse' label declared ?
   const bool hasParseLabel = mHasParseLabel.boolValue () ;
   if (hasParseLabel) {
-    inHfile << "  protected : void pr_" << aNomProduction 
-            << "_" << inTargetFileName
-            << "_" << cStringWithSigned (aNomProduction.lineNumber ())
-            << "_" << cStringWithSigned (aNomProduction.columnNumber ())
+    inHfile << "  protected : void rule_" << inTargetFileName.identifierRepresentation ()
+            << "_" << aNomProduction.identifierRepresentation ()
+            << "_i" << cStringWithUnsigned (mProductionIndex.uintValue ())
             << "_parse (C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
             << " & inLexique) ;\n\n" ;
   }
@@ -195,14 +192,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }else{
       inCppFile.appendCppHyphenLineComment () ;
     }
-    inCppFile << "void " ;
-    inCppFile << inTargetFileName
-              << "::\n"
-                 "pr_"
-              << aNomProduction << "_" << inTargetFileName
-              << "_" << cStringWithSigned (aNomProduction.lineNumber ())
-              << "_" << cStringWithSigned (aNomProduction.columnNumber ())
-              << "_" << currentAltForNonTerminal._key (HERE) << " ("
+    inCppFile << "void "
+              << inTargetFileName
+              << "::rule_"
+              << inTargetFileName.identifierRepresentation ()
+              << "_" << aNomProduction.identifierRepresentation ()
+              << "_i" << cStringWithSigned (mProductionIndex.uintValue ())
+              << "_" << currentAltForNonTerminal._key (HERE).identifierRepresentation () << " ("
               << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
               << " & " ;
     const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal._mAllInstructionsList (HERE), true) ;
@@ -265,11 +261,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile.appendCppHyphenLineComment () ;
     }
     inCppFile << "void " << inTargetFileName
-              << "::\n"
-                 "pr_"
-              << aNomProduction << "_" << inTargetFileName
-              << "_" << cStringWithSigned (aNomProduction.lineNumber ())
-              << "_" << cStringWithSigned (aNomProduction.columnNumber ())
+              << "::rule_"
+              << inTargetFileName.identifierRepresentation ()
+              << "_" << aNomProduction.identifierRepresentation ()
+              << "_i" << cStringWithSigned (mProductionIndex.uintValue ())
               << "_parse ("
               << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
               << " & inLexique) {\n" ;

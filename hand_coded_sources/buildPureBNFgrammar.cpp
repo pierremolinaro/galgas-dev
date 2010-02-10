@@ -354,6 +354,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
       p.mSourceFileName = currentComponent._mSyntaxComponentName (HERE) ;
       p.aLigneDefinition = currentRule._mLeftNonterminalSymbol (HERE).lineNumber () ;
       p.aColonneDefinition = currentRule._mLeftNonterminalSymbol (HERE).columnNumber () ;
+      p.mProductionIndex = currentRule._mProductionIndex (HERE).uintValue () ;
       p.aNumeroNonTerminalGauche = terminalSymbolsCount
                                  + (PMSInt32) currentRule._mLeftNonterminalSymbolIndex (HERE).uintValue () ;
       swap (p.aDerivation, derivation) ;

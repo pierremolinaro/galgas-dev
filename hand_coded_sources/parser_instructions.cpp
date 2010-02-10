@@ -312,8 +312,8 @@ generateInstruction (AC_OutputStream & inCppFile,
                        PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
-  inCppFile << "nt_" << mNonterminalName << "_"
-            << (inGenerateSemanticInstructions ? mAltName.string () : C_String ("parse"))
+  inCppFile << "nt_" << mNonterminalName.identifierRepresentation () << "_"
+            << (inGenerateSemanticInstructions ? mAltName.string ().identifierRepresentation () : C_String ("parse"))
             << " (inLexique" ;
   if (inGenerateSemanticInstructions) {
     GGS_typeExpressionList::cEnumerator argument (mParametersExpressionList, true) ;

@@ -394,6 +394,7 @@ routine buildRuleList
       !mNonterminalName
       !nonTerminalIndex
       !instructionList
+      ![productionRulesList length]
     ;
   end foreach ;
   ioSyntaxComponentListForGrammarAnalysis +=

@@ -385,7 +385,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     }
     ioCppFile << "C_Grammar_" << mGrammarName.identifierRepresentation () << "::"
               << (mSourceIsFile.boolValue () ? "_performSourceFileParsing_" : "_performSourceStringParsing_")
-              << mAltSymbol
+              << mAltSymbol.identifierRepresentation ()
               << " (inLexique"
                  ",\n                                " ;
     if (mSourceIsFile.boolValue ()) {

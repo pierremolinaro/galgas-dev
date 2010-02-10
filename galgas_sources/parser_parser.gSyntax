@@ -84,9 +84,11 @@ nonterminal <syntax_declaration>
   ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
   ?@lstring inSyntaxComponentName
   ?!@EXsemanticContext ioSemanticContext
+  ?!@uint ioProductionIndex
 label importSyntax
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalSymbolsMap
   ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
+  ?!@uint ioProductionIndex
 label parse
 ;
 
@@ -335,6 +337,7 @@ rule <galgas_component>
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalSymbolsMapForGrammar [emptyMap] ;
   @productionRuleListForGrammarAnalysis productionRulesListForGrammar [emptyList] ;
   @M_nonTerminalSymbolForSyntax nonTerminalSymbolsMapForSyntax [emptyMap] ;
+  @uint productionIndex := 0 ;
   repeat
   while
     <syntax_declaration>
@@ -349,6 +352,7 @@ rule <galgas_component>
       !?productionRulesListForGrammar
       !componentName
       !?ioSemanticContext
+      !?productionIndex
     ;
   while
     <semantics_declaration>
@@ -446,11 +450,13 @@ label importSyntax
 #--- 
   @productionRuleListForGrammarAnalysis productionRulesListForGrammar [emptyList] ;
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalSymbolsMapForGrammar [emptyMap] ;
+  @uint productionIndex := 0 ;
   repeat
   while
     <syntax_declaration> importSyntax
       !?nonTerminalSymbolsMapForGrammar
       !?productionRulesListForGrammar
+      !?productionIndex
     ;
   while
     <semantics_declaration> parse ;
@@ -731,592 +737,6 @@ label importSyntax
 end rule ;
 
 #------------------------------------------------------------------------------*
-#     I M P L I C I T    N O N T E R M I N A L    D E C L A R A T I O N        *
-#------------------------------------------------------------------------------*
-
-routine implicitDeclaration
-  ??@lstring inNonterminalBaseName
-  ??@uint inLevel
-  ??@string inLexiqueClassName
-  ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
-  ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalSymbolsMap
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
-:
-#---
-  @M_nonterminalSymbolAlts parametersMapNoArgument [emptyMap] ;
-  @nonterminalSymbolLabelMapForGrammarAnalysis parametersMapForGrammarNoArgument [emptyMap] ;
-  [!?parametersMapNoArgument insertKey ![@lstring new !"" !here] ![@L_EXsignature emptyList]] ;
-  [!?parametersMapForGrammarNoArgument insertKey
-    ![@lstring new !"" !here] # Empty Id
-    ![@signatureForGrammarAnalysis emptyList]
-  ] ;
-#---
-  @M_nonterminalSymbolAlts parametersMapOneArgument ;
-  @nonterminalSymbolLabelMapForGrammarAnalysis parametersMapForGrammarOneArgument ;
-  parametersMapOneArgument := parametersMapNoArgument ;
-  parametersMapForGrammarOneArgument := parametersMapForGrammarNoArgument ;
-
-#--- Nonterminal <Expression__i>
-  @lstring actualRuleName [new ![inNonterminalBaseName string] . "__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualRuleName ![ioNonTerminalSymbolsMap count] !parametersMapForGrammarNoArgument] ;
-  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualRuleName !parametersMapNoArgument] ;
-  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !actualRuleName !parametersMapNoArgument !inLexiqueClassName] ;
-  listeEntitesAengendrer += !ea ;
-#--- Nonterminal <Expression__prefix__i>
-  @lstring actualPrefixName [new ![inNonterminalBaseName string] . "__prefix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualPrefixName ![ioNonTerminalSymbolsMap count] !parametersMapForGrammarNoArgument] ;
-  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualPrefixName !parametersMapNoArgument] ;
-  ea := [@typeNonterminalToGenerate new !actualPrefixName !parametersMapNoArgument !inLexiqueClassName] ;
-  listeEntitesAengendrer += !ea ;
-#--- Nonterminal <Expression__infix__i>
-  @lstring actualInfixName [new ![inNonterminalBaseName string] . "__infix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualInfixName ![ioNonTerminalSymbolsMap count] !parametersMapForGrammarOneArgument] ;
-  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualInfixName !parametersMapOneArgument] ;
-  ea := [@typeNonterminalToGenerate new !actualInfixName !parametersMapOneArgument !inLexiqueClassName] ;
-  listeEntitesAengendrer += !ea ;
-#--- Nonterminal <Expression__postfix__i>
-  @lstring actualPostfixName [new ![inNonterminalBaseName string] . "__postfix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualPostfixName ![ioNonTerminalSymbolsMap count] !parametersMapForGrammarOneArgument] ;
-   [!?ioNonTerminalSymbolMapForSyntax insertKey !actualPostfixName !parametersMapOneArgument] ;
-   ea := [@typeNonterminalToGenerate new !actualPostfixName !parametersMapOneArgument !inLexiqueClassName] ;
-   listeEntitesAengendrer += !ea ;
-#------------------------------------------ Rule <Expression__i>
-  @typeAltProductionsMap altProductionsMap [emptyMap] ;
-  @typeInstructionList listeInstructions [emptyList] ;
-  @syntaxInstructionListForGrammarAnalysis syntaxSignature [emptyList] ;
-#--- Building instruction list
-  @typeInstruction instruction := [@typeInstructionAppelNonTerminal new
-    !actualPrefixName
-    ![@typeExpressionList emptyList]
-    ![@lstring new !"" !here] #  mAltName
-  ] ;
-  listeInstructions += !instruction ;
-
-  @typeExpressionList effectiveArguments [emptyList] ;
-  instruction := [@typeInstructionAppelNonTerminal new
-    !actualInfixName
-    !effectiveArguments
-    ![@lstring new !"" !here] #  mAltName
-  ] ;
-  listeInstructions += !instruction ;
-
-  effectiveArguments := [@typeExpressionList emptyList] ;
-  instruction := [@typeInstructionAppelNonTerminal new
-    !actualPostfixName
-    !effectiveArguments
-    ![@lstring new !"" !here] #  mAltName
-  ] ;
-  listeInstructions += !instruction ;
-  [!?altProductionsMap insertKey
-    ![@lstring new !"" !here] # Alt Name
-    ![@typeListeTypesEtNomsArgMethode emptyList]
-    !listeInstructions
-    !syntaxSignature
-    !here
-  ] ;
-#--- Generate production
-  ea := [@typeProductionAengendrer new
-    !actualRuleName
-    !altProductionsMap
-    !""
-    !inLexiqueClassName
-    !false
-  ] ;
-  listeEntitesAengendrer += !ea ;
-#--- Generate list for grammar component
-  ioProductionRulesListForGrammar +=
-   !actualRuleName
-   !0 # Rule Index
-   !syntaxSignature
-  ;
-#------------------------------------------ Rule <Expression__prefix__i>
-  altProductionsMap := [@typeAltProductionsMap  emptyMap] ;
-  listeInstructions := [@typeInstructionList emptyList] ;
-  syntaxSignature := [@syntaxInstructionListForGrammarAnalysis emptyList] ;
-  @lstring nextRuleName [new ![inNonterminalBaseName string] . "__" . [inLevel + 1 string] ![inNonterminalBaseName location]] ;
-
-  instruction := [@typeInstructionAppelNonTerminal new
-    !nextRuleName
-    ![@typeExpressionList emptyList]
-    ![@lstring new !"" !here] #  mAltName
-  ] ;
-  listeInstructions += !instruction ;
-  [!?altProductionsMap insertKey
-    ![@lstring new !"" !here] # Alt Name
-    ![@typeListeTypesEtNomsArgMethode emptyList]
-    !listeInstructions
-    !syntaxSignature
-    !here
-  ] ;
-#--- Generate production
-  ea := [@typeProductionAengendrer new
-    !actualPrefixName
-    !altProductionsMap
-    !""
-    !inLexiqueClassName
-    !false
-  ] ;
-  listeEntitesAengendrer += !ea ;
-#--- Generate list for grammar component
-  ioProductionRulesListForGrammar +=
-   !actualPrefixName
-   !0 # Rule Index
-   !syntaxSignature
-  ;
-#------------------------------------------ Rule <Expression__infix__i>
-  altProductionsMap := [@typeAltProductionsMap  emptyMap] ;
-  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments [emptyList] ;
-  listeInstructions := [@typeInstructionList emptyList] ;
-  syntaxSignature := [@syntaxInstructionListForGrammarAnalysis emptyList] ;
-  [!?altProductionsMap insertKey
-    ![@lstring new !"" !here] # Alt Name
-    !listeTypeEtNomsArguments
-    !listeInstructions
-    !syntaxSignature
-    !here
-  ] ;
-#--- Generate production
-  ea := [@typeProductionAengendrer new
-    !actualInfixName
-    !altProductionsMap
-    !""
-    !inLexiqueClassName
-    !false
-  ] ;
-  listeEntitesAengendrer += !ea ;
-#--- Generate list for grammar component
-  ioProductionRulesListForGrammar +=
-   !actualInfixName
-   !0 # Rule Index
-   !syntaxSignature
-  ;
-#------------------------------------------ Rule <Expression__postfix__i>
-  altProductionsMap := [@typeAltProductionsMap  emptyMap] ;
-  syntaxSignature := [@syntaxInstructionListForGrammarAnalysis emptyList] ;
-  [!?altProductionsMap insertKey
-    ![@lstring new !"" !here] # Alt Name
-    !listeTypeEtNomsArguments
-    !listeInstructions
-    !syntaxSignature
-    !here
-  ] ;
-#--- Generate production
-  ea := [@typeProductionAengendrer new
-    !actualPostfixName
-    !altProductionsMap
-    !""
-    !inLexiqueClassName
-    !false
-  ] ;
-  listeEntitesAengendrer += !ea ;
-#--- Generate list for grammar component
-  ioProductionRulesListForGrammar +=
-   !actualPostfixName
-   !0 # Rule Index
-   !syntaxSignature
-  ;
-end routine ;
-
-#------------------------------------------------------------------------------*
-
-routine implicitDeclarationImportSyntax
-  ??@lstring inNonterminalBaseName
-  ??@uint inLevel
-  ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalSymbolsMap
-  ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
-:
-  @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMapNoParameter [emptyMap] ;
-  [!?nonterminalSymbolParametersMapNoParameter insertKey
-    ![@lstring new !"" !here] # Alt Name
-    ![@signatureForGrammarAnalysis emptyList]
-  ] ;
-#--- Nonterminal <Expression__i>
-  @lstring actualRuleName [new ![inNonterminalBaseName string] . "__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualRuleName ![ioNonTerminalSymbolsMap count] !nonterminalSymbolParametersMapNoParameter] ;
-#--- Nonterminal <Expression__prefix__i>
-  @lstring actualPrefixName [new ![inNonterminalBaseName string] . "__prefix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualPrefixName ![ioNonTerminalSymbolsMap count] !nonterminalSymbolParametersMapNoParameter] ;
-#--- Nonterminal <Expression__infix__i>
-  @lstring actualInfixName [new ![inNonterminalBaseName string] . "__infix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualInfixName ![ioNonTerminalSymbolsMap count] ! nonterminalSymbolParametersMapNoParameter] ;
-#--- Nonterminal <Expression__postfix__i>
-  @lstring actualPostfixName [new ![inNonterminalBaseName string] . "__postfix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualPostfixName ![ioNonTerminalSymbolsMap count] ! nonterminalSymbolParametersMapNoParameter] ;
-#------------------------------------------ Rule <Expression__i>
-  @syntaxInstructionListForGrammarAnalysis syntaxSignature [emptyList] ;
-  @abstractSyntaxInstructionForGrammarAnalysis instruction := [@nonTerminalInstructionForGrammarAnalysis new
-    ![actualPrefixName location]
-    !actualPrefixName
-    !0 # nonterminalSymbolIndex
-  ] ;
-  syntaxSignature += ! instruction ;
-
-  instruction := [@nonTerminalInstructionForGrammarAnalysis new
-    ![actualInfixName location]
-    !actualInfixName
-    !0 # nonterminalSymbolIndex
-  ] ;
-  syntaxSignature += ! instruction ;
-
-  instruction := [@nonTerminalInstructionForGrammarAnalysis new
-    ![actualPostfixName location]
-    !actualPostfixName
-    !0 # nonterminalSymbolIndex
-  ] ;
-  syntaxSignature += ! instruction ;
-
-  ioProductionRulesListForGrammar +=
-    !actualRuleName
-    !0 # leftNonterminalSymbolIndex
-    !syntaxSignature
-  ;
-#------------------------------------------ Rule <Expression__prefix__i>
-  syntaxSignature := [@syntaxInstructionListForGrammarAnalysis emptyList] ;
-  @lstring nextRuleName [new ![inNonterminalBaseName string] . "__" . [inLevel + 1 string] ![inNonterminalBaseName location]] ;
-  instruction := [@nonTerminalInstructionForGrammarAnalysis new
-    ![nextRuleName location]
-    !nextRuleName
-    !0 # nonterminalSymbolIndex
-  ] ;
-  syntaxSignature += ! instruction ;
-  ioProductionRulesListForGrammar +=
-    !actualPrefixName
-    !0 # leftNonterminalSymbolIndex
-    !syntaxSignature
-  ;
-#------------------------------------------ Rule <Expression__infix__i>
-  syntaxSignature := [@syntaxInstructionListForGrammarAnalysis emptyList] ;
-  ioProductionRulesListForGrammar +=
-    !actualInfixName
-    !0 # leftNonterminalSymbolIndex
-    !syntaxSignature
-  ;
-#------------------------------------------ Rule <Expression__postfix__i>
-  syntaxSignature := [@syntaxInstructionListForGrammarAnalysis emptyList] ;
-  ioProductionRulesListForGrammar +=
-    !actualPostfixName
-    !0 # leftNonterminalSymbolIndex
-    !syntaxSignature
-  ;
-end routine ;
-
-#------------------------------------------------------------------------------*
-#     O P E R A T O R    D E C L A R A T I O N                                 *
-#------------------------------------------------------------------------------*
-
-rule <syntax_declaration>
-  ??@string inLexiqueClassName
-  ?!@M_nonTerminalSymbolForSyntax unused ioNonTerminalSymbolMapForSyntax
-  ?!@M_semanticsEntitiesForUse unused ioEntitiesMap
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ?!@typeTableEnAvant unused tableEnAvant
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_terminalSymbolsMapForUse unused tableTerminaux
-  ?!@nonTerminalSymbolMapForGrammarAnalysis unused ioNonTerminalSymbolsMap
-  ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
-  ?@lstring unused inSyntaxComponentName
-  ?!@EXsemanticContext unused ioSemanticContext
-:
-  $operator$ ;
-  @lstring operatorAttributes ;
-  $literal_string$ ? operatorAttributes ;
-  @lstring terminalSymbolName ;
-  $terminal$ ? terminalSymbolName ;
-  @lstring nonterminalBaseName ;
-  $non_terminal_symbol$ ? nonterminalBaseName ;
-  @luint operatorPriority ;
-  $unsigned_literal_integer$ ? operatorPriority ;
-  $;$ ;
-
-#--- Generate operator
-  @typeInstructionList listeInstructions [emptyList] ;
-  @typeInstruction instruction :=[@typeInstructionVerifSyntaxique new
-    !terminalSymbolName
-    ![@L_assignedVariables emptyList]
-    !inLexiqueClassName
-  ] ;
-  listeInstructions += !instruction ;
-#---
-  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments [emptyList] ;
-  @lstring leftNonTerminalName ;
-  if [operatorAttributes string] == "multiple prefix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__prefix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@typeInstructionAppelNonTerminal new
-      !calledRuleName
-      ![@typeExpressionList emptyList]
-      ![@lstring new !"" !here] #  mAltName
-    ] ;
-    listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "simple prefix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__prefix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] + 1 string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@typeInstructionAppelNonTerminal new
-      !calledRuleName
-      ![@typeExpressionList emptyList]
-      ![@lstring new !"" !here] #  mAltName
-    ] ;
-    listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "infix" then #--------------------------------------
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] + 1 string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@typeInstructionAppelNonTerminal new
-      !calledRuleName
-      ![@typeExpressionList emptyList]
-      ![@lstring new !"" !here] #  mAltName
-    ] ;
-    listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "right infix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@typeInstructionAppelNonTerminal new
-      !calledRuleName
-      ![@typeExpressionList emptyList]
-      ![@lstring new !"" !here] #  mAltName
-    ] ;
-    listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "left infix" then  #--------------------------------------
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] + 1 string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@typeInstructionAppelNonTerminal new
-      !calledRuleName
-      ![@typeExpressionList emptyList]
-      ![@lstring new !"" !here] #  mAltName
-    ] ;
-    listeInstructions += !instruction ;
-    @typeExpressionList effectiveArguments [emptyList] ;
-    instruction := [@typeInstructionAppelNonTerminal new
-      !leftNonTerminalName
-      !effectiveArguments
-      ![@lstring new !"" !here] #  mAltName
-    ] ;
-    listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "simple postfix" then  #--------------------------------------
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__postfix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-  elsif [operatorAttributes string] == "multiple postfix" then  #--------------------------------------
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__postfix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@typeInstructionAppelNonTerminal new
-      !leftNonTerminalName
-      ![@typeExpressionList emptyList]
-      ![@lstring new !"" !here] #  mAltName
-    ] ;
-    listeInstructions += !instruction ;
-  else
-    error operatorAttributes: "Valid operator attributes are:\n"
-      "  - \"multiple prefix\" ;\n"
-      "  - \"simple prefix\" ;\n"
-      "  - \"multiple postfix\" ;\n"
-      "  - \"simple postfix\" ;\n"
-      "  - \"left infix\" ;\n"
-      "  - \"right infix\" ;\n"
-      "  - \"infix\"."
-    -> leftNonTerminalName
-    ;
-  end if ;
-#---
-  @typeAltProductionsMap altProductionsMap [emptyMap] ;
-  @syntaxInstructionListForGrammarAnalysis syntaxSignature [emptyList] ;
-  [!?altProductionsMap insertKey
-    ![@lstring new !"" !here] # Alt Name
-    !listeTypeEtNomsArguments
-    !listeInstructions
-    !syntaxSignature
-    !here
-  ] ;
-#--- Generate production
-  @typeEntityToGenerate ea := [@typeProductionAengendrer new
-    !leftNonTerminalName
-    !altProductionsMap
-    !""
-    !inLexiqueClassName
-    !false
-  ] ;
-  listeEntitesAengendrer += !ea ;
-#--- Generate list for grammar component
-  ioProductionRulesListForGrammar +=
-   !leftNonTerminalName
-   !0 # Rule Index
-   !syntaxSignature
-  ;
-label importSyntax
-  ?!@nonTerminalSymbolMapForGrammarAnalysis unused ioNonTerminalSymbolsMap
-  ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
-:
-  $operator$ ;
-  @lstring operatorAttributes ;
-  $literal_string$ ? operatorAttributes ;
-  @lstring terminalSymbolName ;
-  $terminal$ ? terminalSymbolName ;
-  @lstring nonterminalBaseName ;
-  $non_terminal_symbol$ ? nonterminalBaseName ;
-  @luint operatorPriority ;
-  $unsigned_literal_integer$ ? operatorPriority ;
-  $;$ ;
-#--- Operator call
-  @syntaxInstructionListForGrammarAnalysis syntaxSignature [emptyList] ;
-
-  @abstractSyntaxInstructionForGrammarAnalysis instruction := [@terminalInstructionForGrammarAnalysis new
-    ![terminalSymbolName location]
-    !terminalSymbolName
-    !0 # terminalSymbolIndex
-  ] ;
-  syntaxSignature += ! instruction ;
-#------------------------------------------ Rule <Expression__prefix__i>
-  @lstring leftNonTerminalName ;
-  if [operatorAttributes string] == "multiple prefix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__prefix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@nonTerminalInstructionForGrammarAnalysis new
-      ![calledRuleName location]
-      !calledRuleName
-      !0 # nonterminalSymbolIndex
-    ] ;
-    syntaxSignature += ! instruction ;
-  elsif [operatorAttributes string] == "simple prefix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__prefix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] + 1 string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@nonTerminalInstructionForGrammarAnalysis new
-      ![calledRuleName location]
-      !calledRuleName
-      !0 # nonterminalSymbolIndex
-    ] ;
-    syntaxSignature += ! instruction ;
-  elsif [operatorAttributes string] == "infix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] + 1 string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@nonTerminalInstructionForGrammarAnalysis new
-      ![calledRuleName location]
-      !calledRuleName
-      !0 # nonterminalSymbolIndex
-    ] ;
-    syntaxSignature += ! instruction ;
-  elsif [operatorAttributes string] == "right infix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@nonTerminalInstructionForGrammarAnalysis new
-      ![calledRuleName location]
-      !calledRuleName
-      !0 # nonterminalSymbolIndex
-    ] ;
-    syntaxSignature += ! instruction ;
-  elsif [operatorAttributes string] == "left infix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    @lstring calledRuleName [new
-      ![nonterminalBaseName string] . "__" . [[operatorPriority uint] + 1 string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@nonTerminalInstructionForGrammarAnalysis new
-      ![calledRuleName location]
-      !calledRuleName
-      !0 # nonterminalSymbolIndex
-    ] ;
-    syntaxSignature += ! instruction ;
-    instruction := [@nonTerminalInstructionForGrammarAnalysis new
-      ![leftNonTerminalName location]
-      !leftNonTerminalName
-      !0 # nonterminalSymbolIndex
-    ] ;
-    syntaxSignature += ! instruction ;
-  elsif [operatorAttributes string] == "simple postfix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__postfix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-  elsif [operatorAttributes string] == "multiple postfix" then
-    leftNonTerminalName := [@lstring new
-      ![nonterminalBaseName string] . "__postfix__" . [[operatorPriority uint] string]
-      ![nonterminalBaseName location]
-    ] ;
-    instruction := [@nonTerminalInstructionForGrammarAnalysis new
-      ![leftNonTerminalName location]
-      !leftNonTerminalName
-      !0 # nonterminalSymbolIndex
-    ] ;
-    syntaxSignature += ! instruction ;
-  else
-    error operatorAttributes: "Valid operator attributes are:\n"
-      "  - \"multiple prefix\" ;\n"
-      "  - \"simple prefix\" ;\n"
-      "  - \"multiple postfix\" ;\n"
-      "  - \"simple postfix\" ;\n"
-      "  - \"left infix\" ;\n"
-      "  - \"right infix\" ;\n"
-      "  - \"infix\"."
-    -> leftNonTerminalName
-    ;
-  end if ;
-  ioProductionRulesListForGrammar +=
-    !leftNonTerminalName
-    !0 # leftNonterminalSymbolIndex
-    !syntaxSignature
-  ;
-end rule ;
-
-#------------------------------------------------------------------------------*
 #     N O N T E R M I N A L    D E C L A R A T I O N                           *
 #------------------------------------------------------------------------------*
 
@@ -1329,175 +749,108 @@ rule <syntax_declaration>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalSymbolsMap
-  ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
+  ?!@productionRuleListForGrammarAnalysis unused ioProductionRulesListForGrammar
   ?@lstring unused inSyntaxComponentName
   ?!@EXsemanticContext unused ioSemanticContext
+  ?!@uint unused ioProductionIndex
 :
   $nonterminal$ ;
   @lstring ruleName ;
   $non_terminal_symbol$ ? ruleName ;
-  select
-    @typeVariablesMap tableArgumentsMethode [emptyMap] ;
-    @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments [emptyList] ;
-    @luint levelCount ;
-    $unsigned_literal_integer$ ? levelCount ;
-    if [levelCount uint] == 0 then
-      error levelCount:"the level count should be > 0" ;
-    end if ;
-    @uint i := 1 ;
-    loop [levelCount uint] :
-      implicitDeclaration
-        !ruleName
-        !i
-        !inLexiqueClassName
-        !?ioNonTerminalSymbolMapForSyntax
-        !?ioNonTerminalSymbolsMap
-        !?listeEntitesAengendrer
-        !?ioProductionRulesListForGrammar
-      ;
-      i ++ ;
-    while i <= [levelCount uint] do
-    end loop ;
-    #--- Nonterminal <Expression__n+1>
-      @signatureForGrammarAnalysis signatureForGrammar [emptyList] ;
-      @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
-      @nonterminalSymbolLabelMapForGrammarAnalysis parametersMapForGrammar [emptyMap] ;
-      @lstring emptyId := [@lstring new !"" !here] ;
-      [!?parametersMap insertKey !emptyId ![@L_EXsignature emptyList]] ;
+  @L_EXsignature listeDeTypesFormels0 ;
+  @typeVariablesMap tableArgumentsMethode0 [emptyMap] ;
+  @signatureForGrammarAnalysis signatureForGrammar ;
+  @nonterminalSymbolLabelMapForGrammarAnalysis parametersMapForGrammar [emptyMap] ;
+  @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
+  <formal_arguments_list>
+    !ioEntitiesMap
+    ?listeDeTypesFormels0
+    !?tableArgumentsMethode0
+    ?*
+    !?tableEnAvant
+    ?signatureForGrammar
+  ;
+  @lstring emptyId := [@lstring new !"" !here] ;
+  [!?parametersMap insertKey !emptyId !listeDeTypesFormels0] ;
+  [!?parametersMapForGrammar insertKey
+    !emptyId
+    !signatureForGrammar
+  ] ;
+  repeat
+  while
+    $label$ ;
+    select
+      $parse$ ;
+      @signatureForGrammarAnalysis signatureForGrammarComponent [emptyList] ;
+      @lstring altName [new !"parse" !here] ;
+      [!?parametersMap insertKey !altName ![@L_EXsignature emptyList]] ;
       [!?parametersMapForGrammar insertKey
-        !emptyId
-        !signatureForGrammar
+        !altName
+        !signatureForGrammarComponent
       ] ;
-      @lstring actualRuleName [new
-        ![ruleName string] . "__" . [[levelCount uint] + 1 string]
-        ![ruleName location]
+    or
+      @lstring altName ;
+      $identifier$ ? altName ;
+      @L_EXsignature listeDeTypesFormels ;
+      @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+      @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+      @signatureForGrammarAnalysis signatureForGrammarComponent ;
+      <formal_arguments_list>
+        !ioEntitiesMap
+        ?listeDeTypesFormels 
+        !?tableArgumentsMethode
+        ?listeTypeEtNomsArguments
+        !?tableEnAvant
+        ?signatureForGrammarComponent
+      ;
+      [!?parametersMap insertKey !altName !listeDeTypesFormels] ;
+      [!?parametersMapForGrammar insertKey
+        !altName
+        !signatureForGrammarComponent
       ] ;
-      [!?ioNonTerminalSymbolsMap insertKey !actualRuleName ![ioNonTerminalSymbolsMap count] !parametersMapForGrammar] ;
-      [!?ioNonTerminalSymbolMapForSyntax insertKey !actualRuleName !parametersMap] ;
-      @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !actualRuleName !parametersMap !inLexiqueClassName] ;
-      listeEntitesAengendrer += !ea ;
-  or
-    @L_EXsignature listeDeTypesFormels0 ;
-    @typeVariablesMap tableArgumentsMethode0 [emptyMap] ;
-    @signatureForGrammarAnalysis signatureForGrammar ;
-    @nonterminalSymbolLabelMapForGrammarAnalysis parametersMapForGrammar [emptyMap] ;
-    @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
-    <formal_arguments_list>
-      !ioEntitiesMap
-      ?listeDeTypesFormels0
-      !?tableArgumentsMethode0
-      ?*
-      !?tableEnAvant
-      ?signatureForGrammar
-    ;
-    @lstring emptyId := [@lstring new !"" !here] ;
-    [!?parametersMap insertKey !emptyId !listeDeTypesFormels0] ;
-    [!?parametersMapForGrammar insertKey
-      !emptyId
-      !signatureForGrammar
-    ] ;
-    repeat
-    while
-      $label$ ;
-      select
-        $parse$ ;
-        @signatureForGrammarAnalysis signatureForGrammarComponent [emptyList] ;
-        @lstring altName [new !"parse" !here] ;
-        [!?parametersMap insertKey !altName ![@L_EXsignature emptyList]] ;
-        [!?parametersMapForGrammar insertKey
-          !altName
-          !signatureForGrammarComponent
-        ] ;
-      or
-        @lstring altName ;
-        $identifier$ ? altName ;
-        @L_EXsignature listeDeTypesFormels ;
-        @typeVariablesMap tableArgumentsMethode [emptyMap] ;
-        @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-        @signatureForGrammarAnalysis signatureForGrammarComponent ;
-        <formal_arguments_list>
-          !ioEntitiesMap
-          ?listeDeTypesFormels 
-          !?tableArgumentsMethode
-          ?listeTypeEtNomsArguments
-          !?tableEnAvant
-          ?signatureForGrammarComponent
-        ;
-        [!?parametersMap insertKey !altName !listeDeTypesFormels] ;
-        [!?parametersMapForGrammar insertKey
-          !altName
-          !signatureForGrammarComponent
-        ] ;
-      end select ;
-    end repeat ;
-    [!?ioNonTerminalSymbolsMap insertKey !ruleName ![ioNonTerminalSymbolsMap count] !parametersMapForGrammar] ;
-    [!?ioNonTerminalSymbolMapForSyntax insertKey !ruleName !parametersMap] ;
-    @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !ruleName !parametersMap !inLexiqueClassName] ;
-    listeEntitesAengendrer += !ea ;
-  end select ;
+    end select ;
+  end repeat ;
+  [!?ioNonTerminalSymbolsMap insertKey !ruleName ![ioNonTerminalSymbolsMap count] !parametersMapForGrammar] ;
+  [!?ioNonTerminalSymbolMapForSyntax insertKey !ruleName !parametersMap] ;
+  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !ruleName !parametersMap !inLexiqueClassName] ;
+  listeEntitesAengendrer += !ea ;
   $;$ ;
 label importSyntax
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalSymbolsMap
-  ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
+  ?!@productionRuleListForGrammarAnalysis unused ioProductionRulesListForGrammar
+  ?!@uint unused ioProductionIndex
 :
   $nonterminal$ ;
   @lstring nonterminalSymbolName ;
   $non_terminal_symbol$ ? nonterminalSymbolName ;
-  select
-    @luint levelCount ;
-    $unsigned_literal_integer$ ? levelCount ;
-    @uint i := 1 ;
-    loop [levelCount uint] :
-      implicitDeclarationImportSyntax
-        !nonterminalSymbolName
-        !i
-        !?ioNonTerminalSymbolsMap
-        !?ioProductionRulesListForGrammar
-      ;
-      i ++ ;
-    while i <= [levelCount uint] do
-    end loop ;
-   #--- Nonterminal <Expression__i>
-    @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap [emptyMap] ;
-    [!?nonterminalSymbolParametersMap insertKey
-      ![@lstring new !"" !here] # Alt Name
-      ![@signatureForGrammarAnalysis emptyList]
-    ] ;
-    @lstring actualRuleName [new
-      ![nonterminalSymbolName string] . "__" . [[levelCount uint] + 1 string]
-      ![nonterminalSymbolName location]
-    ] ;
-    [!?ioNonTerminalSymbolsMap insertKey !actualRuleName ![ioNonTerminalSymbolsMap count] !nonterminalSymbolParametersMap] ;
-  or
-    @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap [emptyMap] ;
-    @signatureForGrammarAnalysis signature0 ;
-    <formal_arguments_list> importGrammarForSemantics ?signature0 ;
-    @lstring altName := [@lstring new !"" !here] ;
-    [!?nonterminalSymbolParametersMap insertKey
-      !altName
-      !signature0
-    ] ;
-    repeat
-    while
-      $label$ ;
-      select
-        $parse$ ;
-        [!?nonterminalSymbolParametersMap insertKey
-          ![@lstring new !"parse" !here] # Label 'parse'
-          ![@signatureForGrammarAnalysis emptyList]
-        ] ;
-      or
-        $identifier$ ?altName ;
-        @signatureForGrammarAnalysis signature ;
-        <formal_arguments_list> importGrammarForSemantics ?signature ;
-        [!?nonterminalSymbolParametersMap insertKey
-          !altName
-          !signature
-        ] ;
-     end select ; 
-   end repeat ;
-    [!?ioNonTerminalSymbolsMap insertKey !nonterminalSymbolName ![ioNonTerminalSymbolsMap count] !nonterminalSymbolParametersMap] ;
-  end select ;
+  @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap [emptyMap] ;
+  @signatureForGrammarAnalysis signature0 ;
+  <formal_arguments_list> importGrammarForSemantics ?signature0 ;
+  @lstring altName := [@lstring new !"" !here] ;
+  [!?nonterminalSymbolParametersMap insertKey
+    !altName
+    !signature0
+  ] ;
+  repeat
+  while
+    $label$ ;
+    select
+      $parse$ ;
+      [!?nonterminalSymbolParametersMap insertKey
+        ![@lstring new !"parse" !here] # Label 'parse'
+        ![@signatureForGrammarAnalysis emptyList]
+      ] ;
+    or
+      $identifier$ ?altName ;
+      @signatureForGrammarAnalysis signature ;
+      <formal_arguments_list> importGrammarForSemantics ?signature ;
+      [!?nonterminalSymbolParametersMap insertKey
+        !altName
+        !signature
+      ] ;
+    end select ; 
+  end repeat ;
+  [!?ioNonTerminalSymbolsMap insertKey !nonterminalSymbolName ![ioNonTerminalSymbolsMap count] !nonterminalSymbolParametersMap] ;
   $;$ ;
 end rule ;
 
@@ -1517,6 +870,7 @@ rule <syntax_declaration>
   ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
   ?@lstring unused inSyntaxComponentName
   ?!@EXsemanticContext ioSemanticContext
+  ?!@uint ioProductionIndex
 :
   $rule$ ;
   @lstring ruleName ;
@@ -1655,18 +1009,22 @@ rule <syntax_declaration>
     !productionTagName
     !inLexiqueClassName
     !hasParseLabel
+    !ioProductionIndex
   ] ;
   listeEntitesAengendrer += !ea ;
 #--- Generate list for grammar component
   @uint ruleIndex := 0 ;
   ioProductionRulesListForGrammar +=
-   !ruleName
-   !ruleIndex
-   !syntaxSignature
+    !ruleName
+    !ruleIndex
+    !syntaxSignature
+    !ioProductionIndex
   ;
+  ioProductionIndex ++ ;
 label importSyntax
   ?!@nonTerminalSymbolMapForGrammarAnalysis unused ioNonTerminalSymbolsMap
   ?!@productionRuleListForGrammarAnalysis ioProductionRulesListForGrammar
+  ?!@uint ioProductionIndex
 :
   $rule$ ;
   @lstring nonterminalSymbolName ;
@@ -1694,7 +1052,9 @@ label importSyntax
     !nonterminalSymbolName
     !leftNonterminalSymbolIndex
     !instructionsList
+    !ioProductionIndex
   ;
+  ioProductionIndex ++ ;
   $end$ ;
   $rule$ ;
   $;$ ;

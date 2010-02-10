@@ -76,6 +76,7 @@ list @productionRuleListForGrammarAnalysis {
   @lstring mLeftNonterminalSymbol ;
   @uint mLeftNonterminalSymbolIndex ;
   @syntaxInstructionListForGrammarAnalysis mInstructionList ;
+  @uint mProductionIndex ;
 }
 
 #---------------------------------------------------------------------------*

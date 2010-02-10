@@ -42,6 +42,7 @@ class cProduction {
   public : PMSInt32 aNumeroNonTerminalGauche ;
   public : TC_UniqueArray <PMSInt16> aDerivation ;
   public : C_BDD_Set1 aPremierDeProduction ;
+  public : PMUInt32 mProductionIndex ;
 
 //--- Constructor
   public : cProduction (void) ;
