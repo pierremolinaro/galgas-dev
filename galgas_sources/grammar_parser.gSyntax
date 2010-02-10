@@ -390,6 +390,7 @@ rule <galgas_component>
         !mLeftNonterminalSymbol
         !nonTerminalIndex
         !fixedInstructionList
+        !mProductionIndex
       ;
     end foreach ;
     syntaxComponentsListWithFixedInfos +=

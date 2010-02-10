@@ -151,6 +151,7 @@ class @typeProductionAengendrer extends @typeEntityToGenerate {
   @string mProductionTagName ;
   @string mLexiqueClassName ;
   @bool mHasParseLabel ;
+  @uint mProductionIndex ;
 }
 
 #---------------------------------------------------------------------------*

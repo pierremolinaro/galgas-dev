@@ -825,7 +825,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                      << "::\n"
-                     << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal2._key (HERE)
+                     << "nt_" << nonTerminal._key (HERE).identifierRepresentation ()
+                     << "_" << currentAltForNonTerminal2._key (HERE).identifierRepresentation ()
                      << " (" << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " & inLexique" ;
       const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal._mID (HERE) ;
       const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
@@ -869,7 +870,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
         generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
-                       << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
+                       << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (C_Compiler & inCompiler"
                           ",\n                                "
                           "const C_String & inDependancyExtension"
@@ -906,7 +907,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "        if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "          C_Grammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
                           "          " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
+        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE).identifierRepresentation ()
+                       << "_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (*scanner_" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -983,7 +985,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "    if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "      C_Grammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
                           "      " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
+        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE).identifierRepresentation ()
+                       << "_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (*scanner_" ;
         parametre.rewind () ;
         numeroParametre = 1 ;

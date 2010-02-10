@@ -59,7 +59,8 @@ aLigneDefinition (0),
 aColonneDefinition (0),
 aNumeroNonTerminalGauche (0),
 aDerivation (),
-aPremierDeProduction () {
+aPremierDeProduction (),
+mProductionIndex (0) {
 }
 
 //---------------------------------------------------------------------------*
@@ -80,11 +81,10 @@ engendrerAppelProduction (const PMSInt16 nombreDeParametres,
                           const cVocabulary & inVocabulary,
                           const C_String & inAltName,
                           AC_OutputStream & fichierCPP) const {
-  fichierCPP << "pr_"
-             << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE)
-             << "_"
-             << mSourceFileName << "_" << cStringWithSigned (aLigneDefinition)
-             << "_" << cStringWithSigned (aColonneDefinition) << "_" << inAltName
+  fichierCPP << "rule_" << mSourceFileName.identifierRepresentation ()
+             << "_" << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE).identifierRepresentation ()
+             << "_i" << cStringWithUnsigned (mProductionIndex)
+             << "_" << inAltName.identifierRepresentation ()
              << " (inLexique" ;
   for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
     fichierCPP << "," ;
@@ -105,6 +105,7 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.aNumeroNonTerminalGauche, ioProduction2.aNumeroNonTerminalGauche) ;
   swap (ioProduction1.aDerivation, ioProduction2.aDerivation) ;
   swap (ioProduction1.aPremierDeProduction, ioProduction2.aPremierDeProduction) ;
+  swap (ioProduction1.mProductionIndex, ioProduction2.mProductionIndex) ;
 }
 
 //---------------------------------------------------------------------------*
