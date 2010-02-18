@@ -29,14 +29,14 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
 } {
 #--- Project
   template build_bat "/galgas_sources/build.bat.txt" ?@string PROJECT_NAME ;
-  template all_ggs "/galgas_sources/all_PROJECT.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_project "/galgas_sources/all_PROJECT.gProject" ?@string PROJECT_NAME ;
   template PROJECT_cocoa "/galgas_sources/PROJECT_cocoa.gGui" ?@string PROJECT_NAME ;
   template PROJECT_grammar "/galgas_sources/PROJECT_grammar.gGrammar" ?@string PROJECT_NAME ;
   template PROJECT_lexique "/galgas_sources/PROJECT_lexique.gLexique" ?@string PROJECT_NAME ;
   template PROJECT_options "/galgas_sources/PROJECT_options.gOption" ?@string PROJECT_NAME ;
-  template PROJECT_program "/galgas_sources/PROJECT_program.ggs" ?@string PROJECT_NAME ;
-  template PROJECT_semantics "/galgas_sources/PROJECT_semantics.ggs" ?@string PROJECT_NAME ;
-  template PROJECT_syntax "/galgas_sources/PROJECT_syntax.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_program "/galgas_sources/PROJECT_program.gProgram" ?@string PROJECT_NAME ;
+  template PROJECT_semantics "/galgas_sources/PROJECT_semantics.gSemantics" ?@string PROJECT_NAME ;
+  template PROJECT_syntax "/galgas_sources/PROJECT_syntax.gSyntax" ?@string PROJECT_NAME ;
   template PROJECT_computations "/hand_coded_sources/PROJECT_computations.cpp" ?@string PROJECT_NAME ;
   template makefile_macosx_makefile "/makefile_macosx/makefile" ?@string PROJECT_NAME ;
   template makefile_macosx_makefile64 "/makefile_macosx/makefile64" ?@string PROJECT_NAME ;
@@ -63,14 +63,14 @@ routine performProjectCreation ??@string inProjectName :
 #--- galgas_sources
   @string galgas_sources_DIR := inProjectName ."/galgas_sources" ;
   [galgas_sources_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.all_ggs !inProjectName] writeToFile !galgas_sources_DIR ."/all_" .inProjectName .".ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_project !inProjectName] writeToFile !galgas_sources_DIR ."/all_" .inProjectName .".gProject"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_cocoa.gGui"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_grammar !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_grammar.gGrammar"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_lexique !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_lexique.gLexique"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_options !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_options.gOption"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_program !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_program.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_semantics.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_syntax.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_program !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_program.gProgram"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_semantics.gSemantics"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_syntax.gSyntax"] ;
   [[filewrapper projectCreationFileWrapper.build_bat !inProjectName] writeToFile !galgas_sources_DIR ."/build.bat"] ;
 #--- hand_coded_sources
   @string hand_coded_sources_DIR := inProjectName ."/hand_coded_sources" ;
