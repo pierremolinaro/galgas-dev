@@ -361,20 +361,3 @@ routine_generatePRGM (C_Compiler & inLexique,
 }
 
 //---------------------------------------------------------------------------*
-
-void
-routine_fixFileGenerationStartDirectory (C_Compiler & inLexique,
-                                         const GGS_lstring inSourceFile
-                                         COMMA_LOCATION_ARGS) {
-  const C_String s = inSourceFile.stringByDeletingLastPathComponent () ;
-  const C_String s1 = s.stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
-  inLexique.ioParametersPtr ()->mFileGenerationStartDir = s1 ;
-  const bool ok = inLexique.ioParametersPtr ()->mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
-  if (! ok) {
-    C_String errorMessage ;
-    errorMessage << "cannot create directory '" << inLexique.ioParametersPtr ()->mFileGenerationStartDir << "'" ;
-    inLexique.ioParametersPtr ()->printFileErrorMessage (inSourceFile, errorMessage COMMA_THERE) ;
-  }
-}
-
-//---------------------------------------------------------------------------*

@@ -1544,12 +1544,6 @@ list @ruleDescriptorForProgramList {
 }
 
 #---------------------------------------------------------------------------*
-
-extern routine fixFileGenerationStartDirectory
-  ??@lstring inSourceFile
-;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #              F I L E    W R A P P E R                                     *
 #                                                                           *

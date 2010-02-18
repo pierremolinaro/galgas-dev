@@ -426,7 +426,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
   }else{
     inHfile << generatedZone2 << generatedZone3 ;
-    const C_String startPath = inLexique.ioParametersPtr ()->mFileGenerationStartDir ;
+    const C_String startPath = inLexique.sourceFileName ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT" ;
     TC_UniqueArray <C_String> directoriesToExclude ;
     const C_String fullPathName = startPath.findFileInDirectory (separateFileName, directoriesToExclude) ;
     if (fullPathName.length () > 0) { // A file has been found

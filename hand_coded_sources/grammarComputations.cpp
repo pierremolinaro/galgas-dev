@@ -285,10 +285,6 @@ analyzeGrammar (C_Compiler & inLexique,
                 const C_String & inOutputDirectoryForHTMLFile) {
   bool warningFlag = false ;
 
-//--- Create GALGAS_OUTPUT directory
-  const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
-  GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
-
 //--- Depending of grammar class, fix operations to perform
   typedef enum {kDefaultBehavior, kLL1grammar, kSLRgrammar, kLR1grammar, kGrammarClassError} enumGrammarClass ;
   enumGrammarClass grammarClass = kGrammarClassError ;
@@ -315,7 +311,7 @@ analyzeGrammar (C_Compiler & inLexique,
 //--- If 'HTMLfileName' is the empty string, no file is created
 
 //--- Create output HTML file
-  inOutputDirectoryForHTMLFile.makeDirectoryIfDoesNotExists () ;
+  inOutputDirectoryForHTMLFile.makeDirectoryIfDoesNotExist () ;
   const C_String HTMLfileName = inOutputDirectoryForHTMLFile + "/" + inTargetFileName + ".html" ;
   C_HTML_FileWrite * HTMLfile = NULL ;
   if (outputHTMLfile && inLexique.mPerformGeneration) {
