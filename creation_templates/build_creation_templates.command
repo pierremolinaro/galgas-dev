@@ -8,14 +8,14 @@ sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/Info.plist > ${DI
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/English.lproj/InfoPlist.strings > ${DIR}/actual_templates/project/project_xcode/English.lproj/InfoPlist.strings &&
 rm -f ${DIR}/actual_templates/project/galgas_sources/* &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/build.bat > ${DIR}/actual_templates/project/galgas_sources/build.bat.txt &&
-sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/all_PROJECT.ggs > ${DIR}/actual_templates/project/galgas_sources/all_PROJECT.ggs &&
+sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/all_PROJECT.gProject > ${DIR}/actual_templates/project/galgas_sources/all_PROJECT.gProject &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_cocoa.gGui > ${DIR}/actual_templates/project/galgas_sources/PROJECT_cocoa.gGui &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_grammar.gGrammar > ${DIR}/actual_templates/project/galgas_sources/PROJECT_grammar.gGrammar &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_lexique.gLexique > ${DIR}/actual_templates/project/galgas_sources/PROJECT_lexique.gLexique &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_options.gOption > ${DIR}/actual_templates/project/galgas_sources/PROJECT_options.gOption &&
-sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_program.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_program.ggs &&
-sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_semantics.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_semantics.ggs &&
-sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_syntax.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_syntax.ggs &&
+sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_program.gProgram > ${DIR}/actual_templates/project/galgas_sources/PROJECT_program.gProgram &&
+sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_semantics.gSemantics > ${DIR}/actual_templates/project/galgas_sources/PROJECT_semantics.gSemantics &&
+sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_syntax.gSyntax > ${DIR}/actual_templates/project/galgas_sources/PROJECT_syntax.gSyntax &&
 rm -f ${DIR}/actual_templates/project/hand_coded_sources/* &&
 sed "s/PROJECT/%!PROJECT_NAME%/g" ${DIR}/PROJECT/hand_coded_sources/PROJECT_computations.cpp > ${DIR}/actual_templates/project/hand_coded_sources/PROJECT_computations.cpp &&
 #--- Makefile makefile_macosx

@@ -1,2 +1,2 @@
-galgas -v all_PROJECT.ggs
+galgas -v all_PROJECT.gProject
 pause
