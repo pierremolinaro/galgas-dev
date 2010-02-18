@@ -446,8 +446,7 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
         !"#endif\n"
       ] ;
     #--- Predefined types implementation
-      generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation
-      ] ;
+      generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation] ;
       foreach constructBuiltinTypeMap [] do
         [mType appendGeneratedImplementation !?generatedCode] ;
       end foreach ;

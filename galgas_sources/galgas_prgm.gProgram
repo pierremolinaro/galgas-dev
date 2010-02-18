@@ -61,7 +61,6 @@ before {
 when . "ggs"
 message "a '.ggs' GALGAS source file"
 ??@lstring inSourceFile {
-  fixFileGenerationStartDirectory !inSourceFile ;
   @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
   @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
   @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
@@ -126,7 +125,6 @@ message "a GALGAS semantics source file"
     ] ;
     compileSemanticsComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
   else
-    fixFileGenerationStartDirectory !inSourceFile ;
     @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
     @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
     @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
@@ -164,7 +162,6 @@ message "a GALGAS syntax source file"
     ] ;
     compileSyntaxComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
   else
-    fixFileGenerationStartDirectory !inSourceFile ;
     @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
     @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
     @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
@@ -229,7 +226,6 @@ message "a GALGAS program source file"
     @programComponentRoot programComponentRoot ;
     grammar programSLRgrammar in inSourceFile ? programComponentRoot ;
   else
-    fixFileGenerationStartDirectory !inSourceFile ;
     @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
     @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
     @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
@@ -324,7 +320,6 @@ message "a GALGAS project source file"
         if [option galgas_cli_options.newCodeGeneration value] then
           compileSemanticsComponent !fullFilePath ! outputDirectory !?parsedComponentStruct ;
         else
-          fixFileGenerationStartDirectory !inSourceFile ;
           @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
           @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
           @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
@@ -354,7 +349,6 @@ message "a GALGAS project source file"
         if [option galgas_cli_options.newCodeGeneration value] then
           compileSyntaxComponent !fullFilePath !outputDirectory [!inSourceFile] !?parsedComponentStruct;
         else
-          fixFileGenerationStartDirectory !inSourceFile ;
           @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
           @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
           @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
@@ -395,7 +389,6 @@ message "a GALGAS project source file"
         if [option galgas_cli_options.newCodeGeneration value] then
   #       compileProgramComponent !fullFilePath ! outputDirectory ;
         else
-          fixFileGenerationStartDirectory !inSourceFile ;
           @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
           @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
           @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
