@@ -1086,7 +1086,7 @@ routine enterProjectDefaultSettings
   end foreach ;
   outProjectDefaultSettings := [@stringlist emptyList] ;
   outProjectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
-  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\tppc,\n\t\t\t\t\ti386,\n\t\t\t\t);" ;
+  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\ti386,\n\t\t\t\t\tppc,\n\t\t\t\t);" ;
   outProjectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
   outProjectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
   outProjectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
