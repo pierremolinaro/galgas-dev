@@ -1282,13 +1282,13 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           << " * 2] = {\n" ;
   for (PMSInt32 p=0 ; p<productionsCount ; p++) {
     if (p > 0) {
-      generatedZone3 << ",\n  " ;
+      generatedZone3 << ",\n" ;
     }
-    generatedZone3 << cStringWithSigned (inProductionRules (p COMMA_HERE).aNumeroNonTerminalGauche - columnsCount)
+    generatedZone3 << "  " << cStringWithSigned (inProductionRules (p COMMA_HERE).aNumeroNonTerminalGauche - columnsCount)
             << ", "
             << cStringWithSigned (inProductionRules (p COMMA_HERE).aDerivation.count ()) ;
   }
-  generatedZone3 << "} ;\n\n" ;
+  generatedZone3 << "\n} ;\n\n" ;
 
 //--- Generate methods, one by non terminal ----------------------------------
   GGS_nonTerminalSymbolMapForGrammarAnalysis::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
