@@ -44,7 +44,7 @@ routine_test_galgas2 (C_Compiler & /*inLexique */) {
   GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
   C_Object::retain (n COMMA_HERE) ;
   //AC_GALGAS__root::log (n, "n") ;
-  const PMUInt32 TEST_SIZE = 5000000 ;
+  const PMUInt32 TEST_SIZE = 5000 ;
 
   GALGAS_uintlist * aList = GALGAS_uintlist::constructor_emptyList (HERE) ;
   C_Object::retain (aList COMMA_HERE) ;
