@@ -1,0 +1,17 @@
+project all_testsuite :
+  lexique "testsuite_lexique.gLexique" : makefile ;
+  syntax "testsuite_syntax.gSyntax" : makefile ;
+  grammar "testsuite_grammar.gGrammar" : makefile ;
+  semantics "testsuite_foreach_instruction.gSemantics" : makefile ;
+  semantics "testsuite_list.gSemantics" : makefile ;
+  semantics "testsuite_struct.gSemantics" : makefile ;
+  semantics "testsuite_listmap.gSemantics" : makefile ;
+  semantics "testsuite_map.gSemantics" : makefile ;
+  semantics "testsuite_functions.gSemantics" : makefile ;
+  semantics "testsuite_domain.gSemantics" : makefile ;
+  semantics "testsuite_introspection.gSemantics" : makefile ;
+
+  program "testsuite_program.gProgram" : makefile ;
+
+  extern "testsuite_hand_coded.cpp" : makefile ;
+end project ;

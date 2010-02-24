@@ -1,7 +1,7 @@
 grammar testsuite_grammar "LL1":
-with "testsuite_syntax.ggs" ;
+with "testsuite_syntax.gSyntax" ;
 import lexique testsuite_lexique in "testsuite_lexique.gLexique" ;
-import syntax testsuite_syntax in "testsuite_syntax.ggs" ;
+import syntax testsuite_syntax in "testsuite_syntax.gSyntax" ;
 
 root <start_symbol> ;
 
