@@ -8746,13 +8746,33 @@ rule <semantics_declaration>
   ${$ ;
 #--- Enum constants
   @enumConstantMap constantMap [emptyMap] ;
-  repeat
-    @lstring constantName ;
-    $identifier$ ? constantName ;
-    [!?constantMap insertKey !constantName ![constantMap count]] ;
-  while
-    $,$ ;
-  end repeat ;
+  select
+    repeat
+      @lstring constantName ;
+      $identifier$ ? constantName ;
+      [!?constantMap insertKey !constantName ![constantMap count]] ;
+    while
+      $,$ ;
+    end repeat ;
+  or
+    repeat
+    while
+      $constructor$ ;
+      repeat
+        $identifier$ ?@lstring constantName ;
+        [!?constantMap insertKey !constantName ![constantMap count]] ;
+      while
+        $,$ ;
+      end repeat ;
+      $;$ ;
+    end repeat ;
+    @string s := "" ;
+    foreach constantMap
+    do s .= [key string] ;
+    between s .= ", " ;
+    end foreach ;
+    warning here : "Old style declaration: now write '... {" . s . "} ..." ;
+  end select ;
   $}$ ;
   ${$ ;
 #--- Enum messages, action messages
@@ -8821,13 +8841,27 @@ label importSemantics
   ${$ ;
 #--- Enum constants
   @enumConstantMap constantMap [emptyMap] ;
-  repeat
-    @lstring constantName ;
-    $identifier$ ? constantName ;
-    [!?constantMap insertKey !constantName ![constantMap count]] ;
-  while
-    $,$ ;
-  end repeat ;
+  select
+    repeat
+      @lstring constantName ;
+      $identifier$ ? constantName ;
+      [!?constantMap insertKey !constantName ![constantMap count]] ;
+    while
+      $,$ ;
+    end repeat ;
+  or
+    repeat
+    while
+      $constructor$ ;
+      repeat
+        $identifier$ ?@lstring constantName ;
+        [!?constantMap insertKey !constantName ![constantMap count]] ;
+      while
+      $,$ ;
+      end repeat ;
+      $;$ ;
+    end repeat ;
+  end select ;
   $}$ ;
   ${$ ;
 #--- readers, modifiers map
