@@ -197,7 +197,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "::rule_"
               << inTargetFileName.identifierRepresentation ()
               << "_" << aNomProduction.identifierRepresentation ()
-              << "_i" << cStringWithSigned (mProductionIndex.uintValue ())
+              << "_i" << cStringWithUnsigned (mProductionIndex.uintValue ())
               << "_" << currentAltForNonTerminal._key (HERE).identifierRepresentation () << " ("
               << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
               << " & " ;
@@ -264,7 +264,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "::rule_"
               << inTargetFileName.identifierRepresentation ()
               << "_" << aNomProduction.identifierRepresentation ()
-              << "_i" << cStringWithSigned (mProductionIndex.uintValue ())
+              << "_i" << cStringWithUnsigned (mProductionIndex.uintValue ())
               << "_parse ("
               << "C_Lexique_" << mLexiqueClassName.string ().identifierRepresentation ()
               << " & inLexique) {\n" ;
