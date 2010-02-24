@@ -289,6 +289,38 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
 
 //---------------------------------------------------------------------------*
 
+class C_ProductionNameDescriptor {
+  public : C_String mName ;
+  public : C_String mFileName ;
+  public : PMUInt32 mLineNumber ;
+  
+  public : C_ProductionNameDescriptor (void) ;
+  
+  public : C_ProductionNameDescriptor (const C_String & inName,
+                                       const C_String & inFileName,
+                                       const PMUInt32 inLineNumber) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+C_ProductionNameDescriptor::C_ProductionNameDescriptor (void) :
+mName (),
+mFileName (),
+mLineNumber (0) {
+} ;
+
+//---------------------------------------------------------------------------*
+
+C_ProductionNameDescriptor::C_ProductionNameDescriptor (const C_String & inName,
+                                                        const C_String & inFileName,
+                                                        const PMUInt32 inLineNumber) :
+mName (inName),
+mFileName (inFileName),
+mLineNumber (inLineNumber) {
+} ;
+
+//---------------------------------------------------------------------------*
+
 static void
 printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                   const cVocabulary & inVocabulary,
@@ -298,6 +330,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                   bool & ioFirst,
                   TC_UniqueArray <PMSInt16> & ioProductionRulesIndex,
                   TC_UniqueArray <C_String> & ioProductionRulesTitle,
+                  TC_UniqueArray <C_ProductionNameDescriptor> & ioProductionRuleDescription,
                   TC_UniqueArray <PMSInt16> & ioFirstProductionRuleIndex,
                   AC_OutputStream & inCppFile) {
   ioFirstProductionRuleIndex.addObject ((PMSInt16) ioProductionRulesIndex.count ()) ;
@@ -309,6 +342,8 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
       cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
       C_String title ;
       inVocabulary.printInFile (title, p.aNumeroNonTerminalGauche COMMA_HERE) ;
+      const C_ProductionNameDescriptor description (title, p.mSourceFileName, ioProductionIndex) ;
+      ioProductionRuleDescription.addObject (description) ;
       title << ", in file '" 
             << p.mSourceFileName
             << ".ggs', line "
@@ -442,6 +477,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   const PMSInt32 productionsCount = inPureBNFproductions.length () ;
   TC_UniqueArray <PMSInt16> productionRulesIndex (500 COMMA_HERE);
   TC_UniqueArray <PMSInt16> firstProductionRuleIndex (500 COMMA_HERE) ;
+  TC_UniqueArray <C_ProductionNameDescriptor> productionRuleDescription ;
   TC_UniqueArray <C_String> productionRulesTitle (500 COMMA_HERE) ;
 
   generatedZone3.appendCppTitleComment ("L L ( 1 )    P R O D U C T I O N    R U L E S") ;
@@ -456,6 +492,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
                       nonTerminal._mID (HERE), productionIndex, first,
                       productionRulesIndex, productionRulesTitle,
+                      productionRuleDescription,
                       firstProductionRuleIndex, generatedZone3) ;
     nonTerminal.next () ;
   }
@@ -465,13 +502,29 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                       i - inVocabulary.getTerminalSymbolsCount (),
                       productionIndex, first,
                       productionRulesIndex, productionRulesTitle,
+                      productionRuleDescription,
                       firstProductionRuleIndex, generatedZone3) ;
   }
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate productions names table
   generatedZone3.appendCppTitleComment ("P R O D U C T I O N    N A M E S") ;
-  generatedZone3 << "static const char * gProductionNames ["
+  generatedZone3 << "static const cProductionNameDescriptor gProductionNames ["
+                 << cStringWithSigned (productionRuleDescription.count ())
+                 << "] = {\n" ;
+  for (PMSInt32 p=0 ; p<productionRuleDescription.count () ; p++) {
+    generatedZone3 << " {\"" << productionRuleDescription (p COMMA_HERE).mName
+                   << "\", \""
+                   << productionRuleDescription (p COMMA_HERE).mFileName
+                   << "\", "
+                   << cStringWithUnsigned (productionRuleDescription (p COMMA_HERE).mLineNumber)
+                   << "}"
+                   << ((p == (productionsCount-1)) ? "" : ",")
+                   << " // at index " << cStringWithSigned (p) << "\n" ;
+  }
+  generatedZone3 << "} ;\n\n" ;
+
+  /* generatedZone3 << "static const char * gProductionNames ["
                  << cStringWithSigned (productionRulesIndex.count ())
                  << "] = {\n" ;
   for (PMSInt32 p=0 ; p<productionRulesIndex.count () ; p++) {
@@ -480,7 +533,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                    << ((p == (productionsCount-1)) ? "" : ",")
                    << " // at index " << cStringWithSigned (p) << "\n" ;
   }
-  generatedZone3 << "} ;\n\n" ;
+  generatedZone3 << "} ;\n\n" ; */
 
 //--- Generate productions indexes table
   generatedZone3.appendCppTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;

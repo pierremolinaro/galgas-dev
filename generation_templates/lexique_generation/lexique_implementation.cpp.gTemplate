@@ -155,7 +155,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * 
    %    case kToken_%![[mTerminalName string] identifierRepresentation]%:\n%
    %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
    %      s.appendCString (%![[mTerminalName string] utf8Representation]%) ;\n%
-   %      s.appendCString("$ ") ;\n%
+   %      s.appendCString("$") ;\n%
    foreach mSentAttributeList do
      %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
    end foreach
