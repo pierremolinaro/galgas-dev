@@ -1,8 +1,8 @@
 #!/bin/sh
 
 LIBPM_PATH_ENV_VAR="`dirname $0`/../../libpm" && export LIBPM_PATH_ENV_VAR &&
-GALGAS_TOOL=`dirname $0`/../project_xcode/build/Default/cocoaGalgasI386.app/Contents/Resources/galgasI386 &&
-cd `dirname $0` && $GALGAS_TOOL galgas_sources/all_testsuite.ggs -v --Werror &&
+GALGAS_TOOL=`dirname $0`/../project-xcode/build/Default/cocoaGalgasI386.app/Contents/Resources/galgasI386 &&
+cd `dirname $0` && $GALGAS_TOOL galgas_sources/all_testsuite.gProject -v --Werror &&
 cd `dirname $0`/makefile_macosx && make --warn-undefined-variables all -j 2 &&
 echo "*** Running test suite" &&
 cd `dirname $0` && makefile_macosx/testsuite > results.txt &&
