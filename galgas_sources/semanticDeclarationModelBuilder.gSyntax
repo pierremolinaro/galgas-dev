@@ -647,12 +647,32 @@ rule <semantic_declaration>
   $type_name$ ? @lstring mEnumTypeName ;
   ${$ ;
   @lstringlist mConstantList [emptyList] ;
-  repeat
-    $identifier$ ?@lstring constantName ;
-    mConstantList += !constantName ;
-  while
-   $,$ ;
-  end repeat ;
+  select
+    repeat
+      $identifier$ ?@lstring constantName ;
+      mConstantList += !constantName ;
+    while
+     $,$ ;
+    end repeat ;
+  or
+    repeat
+    while
+      $constructor$ ;
+      repeat
+        $identifier$ ?@lstring constantName ;
+        mConstantList += !constantName ;
+      while
+      $,$ ;
+      end repeat ;
+      $;$ ;
+    end repeat ;
+#    @string s := "" ;
+#    foreach mConstantList
+#    do s .= [mValue string] ;
+#    between s .= ", " ;
+#    end foreach ;
+#    warning here : "Old style declaration: now write '... {" . s . "} ..." ;
+  end select ;
   $}$ ;
   ${$ ;
   @enumMessageList mEnumMessageList [emptyList] ;
