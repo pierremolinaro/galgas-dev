@@ -406,6 +406,7 @@ once readerMapFor_uint -> @readerMap  outMap :
   enterBaseReaderWithoutArgument !?outMap !"significantBitCount" ![@uintGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"hexString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"xString" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"isUnicodeValueAssigned" ![@boolGalgasType new] !false ;
 end once ;
 
@@ -443,6 +444,7 @@ once readerMapFor_uint64 ->@readerMap outMap :
   enterBaseReaderWith2UintArguments !?outMap !"uintSlice" ![@uintGalgasType new] !true ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"hexString" ![@stringGalgasType new] !false ;
+  enterBaseReaderWithoutArgument !?outMap !"xString" ![@stringGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
