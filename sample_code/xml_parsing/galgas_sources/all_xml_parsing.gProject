@@ -1,11 +1,11 @@
 project all_xml_parsing :
-  semantics "xml_types.ggs" : makefile, xcode_tool ;
+  semantics "xml_types.gSemantics" : makefile, xcode_tool ;
   lexique "xml_parsing_lexique.gLexique" : makefile, xcode_tool, xcode_app ;
-  syntax "xml_parsing_syntax.ggs" : makefile, xcode_tool ;
+  syntax "xml_parsing_syntax.gSyntax" : makefile, xcode_tool ;
   grammar "xml_parsing_grammar.gGrammar" : makefile, xcode_tool ;
 
-  semantics "xml_parsing_semantics.ggs" : makefile, xcode_tool ;
+  semantics "xml_parsing_semantics.gSemantics" : makefile, xcode_tool ;
   option "xml_parsing_options.gOption" : makefile, xcode_tool, xcode_app ;
   gui "xml_parsing_cocoa.gGui" : xcode_tool, xcode_app ;
-  program "xml_parsing_program.ggs" : makefile, xcode_tool ;
+  program "xml_parsing_program.gProgram" : makefile, xcode_tool ;
 end project ;

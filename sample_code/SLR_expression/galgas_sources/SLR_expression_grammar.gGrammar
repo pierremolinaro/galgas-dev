@@ -1,8 +1,8 @@
 grammar SLR_expression_grammar "":
-with "SLR_expression_syntax.ggs" ;
+with "SLR_expression_syntax.gSyntax" ;
 import lexique SLR_expression_lexique in "SLR_expression_lexique.gLexique" ;
 import option SLR_expression_options in "SLR_expression_options.gOption" ;
-import syntax SLR_expression_syntax in "SLR_expression_syntax.ggs" ;
+import syntax SLR_expression_syntax in "SLR_expression_syntax.gSyntax" ;
 
 root <StartSymbol> ;
 

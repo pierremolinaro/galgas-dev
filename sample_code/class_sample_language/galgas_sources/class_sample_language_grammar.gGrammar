@@ -1,8 +1,8 @@
 grammar class_sample_language_grammar "LL1":
-with "class_sample_language_syntax.ggs" ;
+with "class_sample_language_syntax.gSyntax" ;
 import lexique class_sample_language_lexique in "class_sample_language_lexique.gLexique" ;
 import option class_sample_language_options in "class_sample_language_options.gOption" ;
-import syntax class_sample_language_syntax in "class_sample_language_syntax.ggs" ;
+import syntax class_sample_language_syntax in "class_sample_language_syntax.gSyntax" ;
 
 root <start_symbol> ;
 

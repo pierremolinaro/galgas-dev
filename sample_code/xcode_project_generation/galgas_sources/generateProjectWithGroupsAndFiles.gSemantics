@@ -2,11 +2,11 @@
 
 semantics generateProjectWithGroupsAndFiles :
 
-import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.ggs" ;
+import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-routine generateProjectWithGroupsAndFiles :
+routine generateProjectWithGroupsAndFiles ??@string inGenerationDirectory:
 #-------------------------------------------------- Create XCode project descriptor object
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -22,7 +22,7 @@ routine generateProjectWithGroupsAndFiles :
   enter_file_in_group !?XcodeProjectDescription !"azerty/toto.cpp" !?groupContents ;
   @XcodeObjectReferenceList subGroupContents [emptyList] ;
   enter_file_in_group !?XcodeProjectDescription !"qwerty/foo.cpp" !?subGroupContents ;
-  enter_nib_in_group !?XcodeProjectDescription !"English.lproj" !"MainMenu.nib" !?groupContents ;
+  enter_xib_in_group !?XcodeProjectDescription !"English.lproj" !"MainMenu.xib" !?groupContents ;
   enter_subgroup
     !?XcodeProjectDescription
     !"A Sub Group" # The sub-group name, as it appears in Project Window
@@ -47,9 +47,10 @@ routine generateProjectWithGroupsAndFiles :
   ;
 #-------------------------------------------------- Build Project file
   generateXCodeFile
-    !XcodeProjectDescription
+    !?XcodeProjectDescription
     !"./projectWithGroupsAndFiles.xcodeproj"
     !projectDefaultSettings
+    !inGenerationDirectory
   ;
 end routine ;
 

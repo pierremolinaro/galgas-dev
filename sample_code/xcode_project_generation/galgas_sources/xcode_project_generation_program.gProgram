@@ -1,0 +1,33 @@
+program xcode_project_generation_program "version 1.0.0":
+
+#--- Import clauses
+import semantics generateEmptyProject in "generateEmptyProject.gSemantics" ;
+import semantics generateProjectWithGroupsAndFiles in "generateProjectWithGroupsAndFiles.gSemantics" ;
+import semantics generateCommandLineToolTarget in "generateCommandLineToolTarget.gSemantics" ;
+import semantics xcode_project_generation_semantics in "xcode_project_generation_semantics.gSemantics" ;
+import grammar xcode_project_generation_grammar in "xcode_project_generation_grammar.gGrammar" ;
+
+
+#--- Prologue routine
+before {
+#--- Generate Projects
+  const @string generationDirectory := [@string stringWithCurrentDirectory] ;
+  generateEmptyXcodeProject !generationDirectory ;
+  generateProjectWithGroupsAndFiles !generationDirectory ;
+  generateProjectWithCommandLineTarget !generationDirectory ;
+}
+
+#--- 'when' clauses
+when . "xcode_project_generation"
+message "a source text file with the .xcode_project_generation extension"
+??@lstring inSourceFile {
+  grammar xcode_project_generation_grammar in inSourceFile ;
+}
+
+#--- Epilogue routine
+after {
+}
+
+#---
+
+end program ;

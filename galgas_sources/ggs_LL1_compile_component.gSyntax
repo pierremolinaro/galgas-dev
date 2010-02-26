@@ -142,10 +142,15 @@ rule <galgas_component>
 :
   $project$ ;
   $identifier$ ? @lstring sourceFileName ;
-  @string s := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
-  if s != [sourceFileName string] then
-    error sourceFileName : "the project name ('" . sourceFileName . "') should be the file base name '" . s . "'" ;
+  if [[@string stringWithSourceFilePath] pathExtension] != "gProject" then
+    warning sourceFileName: "In GALGAS 1.9.11 and later, use '.gProject' for extension of a project file name" ;
   end if ;
+  const @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+  if [sourceFileName string] != basename then
+    error sourceFileName: "the component name ('" . [sourceFileName string]
+    . "') should the same as the source file base name ('" . basename . "')"
+    ;
+  end if ; 
   $:$ ;
   @EXsourceFileMap sourceFileMap [emptyMap] ;
   @EXtargetFileListMap targetFileListMap [emptyMap] ;

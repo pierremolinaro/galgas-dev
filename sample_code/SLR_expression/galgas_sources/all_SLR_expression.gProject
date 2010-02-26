@@ -1,11 +1,11 @@
 project all_SLR_expression:
   lexique "SLR_expression_lexique.gLexique" : makefile, xcode_tool, xcode_app ;
   option "SLR_expression_options.gOption" : makefile, xcode_tool, xcode_app ;
-  semantics "SLR_expression_semantics.ggs" : makefile, xcode_tool ;
-  syntax "SLR_expression_syntax.ggs" : makefile, xcode_tool ;
+  semantics "SLR_expression_semantics.gSemantics" : makefile, xcode_tool ;
+  syntax "SLR_expression_syntax.gSyntax" : makefile, xcode_tool ;
   grammar "SLR_expression_grammar.gGrammar" : makefile, xcode_tool ;
   gui "SLR_expression_cocoa.gGui" : xcode_tool, xcode_app ;
-  program "SLR_expression_program.ggs" : makefile, xcode_tool ;
+  program "SLR_expression_program.gProgram" : makefile, xcode_tool ;
 end project ;
 
 

@@ -568,13 +568,15 @@ rule <galgas_component>
   @lstring componentName ;
   $identifier$ ? componentName ;
   $:$ ;
-  @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+  if [[@string stringWithSourceFilePath] pathExtension] != "gSemantics" then
+    warning componentName: "In GALGAS 1.9.11 and later, use '.gSemantics' for extension of a semantics file name" ;
+  end if ;
+  const @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
   if [componentName string] != basename then
-    warning componentName: "GALGAS 1.7.5 and later checks "
-      "the component name ('" . [componentName string]
-    . "') against the source file base name ('" . basename . "'): they should be identical"
+    error componentName: "the component name ('" . [componentName string]
+    . "') should be the same as the source file base name ('" . basename . "')"
     ;
-  end if ;  
+  end if ; 
 #--- No lexique
   @string defLexique := "" ;
 #--- Import semantics

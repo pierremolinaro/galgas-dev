@@ -2,7 +2,7 @@ syntax SLR_expression_syntax :
 with "SLR_expression_lexique.gLexique" ;
 import lexique SLR_expression_lexique in "SLR_expression_lexique.gLexique" ;
 import option SLR_expression_options in "SLR_expression_options.gOption" ;
-import semantics SLR_expression_semantics in "SLR_expression_semantics.ggs" ;
+import semantics SLR_expression_semantics in "SLR_expression_semantics.gSemantics" ;
 
 nonterminal <StartSymbol> ;
 

@@ -1,0 +1,16 @@
+project all_xcode_project_generation:
+#--- XCode Project Generation
+  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile, xcode_tool ;
+  semantics "generateEmptyProject.gSemantics" : makefile, xcode_tool ;
+  semantics "generateProjectWithGroupsAndFiles.gSemantics" : makefile, xcode_tool ;
+  semantics "generateCommandLineToolTarget.gSemantics" : makefile, xcode_tool ;
+#---
+  lexique   "xcode_project_generation_lexique.gLexique" : makefile, xcode_tool, xcode_app ;
+  option    "xcode_project_generation_options.gOption" : makefile, xcode_tool, xcode_app ;
+  semantics "xcode_project_generation_semantics.gSemantics" : makefile, xcode_tool ;
+  syntax    "xcode_project_generation_syntax.gSyntax" : makefile, xcode_tool ;
+  grammar   "xcode_project_generation_grammar.gGrammar" : makefile, xcode_tool ;
+  gui       "xcode_project_generation_cocoa.gGui" : xcode_tool, xcode_app ;
+  program   "xcode_project_generation_program.gProgram" : makefile, xcode_tool ;
+  extern    "xcode_project_generation_computations.cpp" : makefile, xcode_tool ;
+end project ;

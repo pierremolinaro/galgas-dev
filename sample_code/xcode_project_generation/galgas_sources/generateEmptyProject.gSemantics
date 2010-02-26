@@ -2,11 +2,11 @@
 
 semantics generateEmptyProject :
 
-import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.ggs" ;
+import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-routine generateEmptyXcodeProject :
+routine generateEmptyXcodeProject ??@string inGenerationDirectory :
 #-------------------------------------------------- Create XCode project descriptor object
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -21,9 +21,10 @@ routine generateEmptyXcodeProject :
   ;
 #-------------------------------------------------- Build Project file
   generateXCodeFile
-    !XcodeProjectDescription
+    !?XcodeProjectDescription
     !"./emptyProject.xcodeproj"
     !projectDefaultSettings
+    !inGenerationDirectory
   ;
 end routine ;
 
