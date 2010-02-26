@@ -3,7 +3,7 @@ semantics xml_types :
 #------------------------------------------------------------*
 
 enum @xmlNodeType {
-  constructor element, text, comment ;
+  element, text, comment
 }{
 }
 

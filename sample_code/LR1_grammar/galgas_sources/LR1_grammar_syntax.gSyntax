@@ -2,7 +2,7 @@ syntax LR1_grammar_syntax :
 with "LR1_grammar_lexique.gLexique" ;
 import lexique LR1_grammar_lexique in "LR1_grammar_lexique.gLexique" ;
 import option LR1_grammar_options in "LR1_grammar_options.gOption" ;
-import semantics LR1_grammar_semantics in "LR1_grammar_semantics.ggs" ;
+import semantics LR1_grammar_semantics in "LR1_grammar_semantics.gSemantics" ;
 
 nonterminal <S> ;
 nonterminal <C> ;

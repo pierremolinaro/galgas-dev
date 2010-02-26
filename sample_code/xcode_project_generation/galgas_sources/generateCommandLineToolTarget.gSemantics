@@ -2,11 +2,11 @@
 
 semantics generateCommandLineToolTarget :
 
-import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.ggs" ;
+import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-routine generateProjectWithCommandLineTarget :
+routine generateProjectWithCommandLineTarget ??@string inGenerationDirectory :
 #-------------------------------------------------- Create XCode project descriptor object
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -35,6 +35,7 @@ routine generateProjectWithCommandLineTarget :
     !toolTargetSettings
     !"prefix.pch" # (Absolute or relative) path to precompiled prefix, or empty string if none
     !buildPhaseList
+    ![@Xcode_PBXBuildFile_list emptyList] # No framework
     ![@stringlist emptyList] # No Dependency
     ?toolTargetKey # Unused here
   ;
@@ -47,9 +48,10 @@ routine generateProjectWithCommandLineTarget :
   ;
 #-------------------------------------------------- Build Project file
   generateXCodeFile
-    !XcodeProjectDescription
+    !?XcodeProjectDescription
     !"./projectWithCommandLineTarget.xcodeproj"
     !projectDefaultSettings
+    !inGenerationDirectory
   ;
 end routine ;
 

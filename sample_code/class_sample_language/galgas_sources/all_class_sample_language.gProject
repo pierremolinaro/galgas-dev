@@ -1,10 +1,10 @@
 project all_class_sample_language:
   lexique "class_sample_language_lexique.gLexique" : makefile, xcode_tool, xcode_app ;
   option "class_sample_language_options.gOption" : makefile, xcode_tool, xcode_app ;
-  semantics "class_sample_language_semantics.ggs" : makefile, xcode_tool ;
-  syntax "class_sample_language_syntax.ggs" : makefile, xcode_tool ;
+  semantics "class_sample_language_semantics.gSemantics" : makefile, xcode_tool ;
+  syntax "class_sample_language_syntax.gSyntax" : makefile, xcode_tool ;
   grammar "class_sample_language_grammar.gGrammar" : makefile, xcode_tool ;
   gui "class_sample_language_cocoa.gGui" : xcode_tool, xcode_app ;
-  program "class_sample_language_program.ggs" : makefile, xcode_tool ;
+  program "class_sample_language_program.gProgram" : makefile, xcode_tool ;
 end project ;
 
