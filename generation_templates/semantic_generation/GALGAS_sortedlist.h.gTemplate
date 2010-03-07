@@ -1,0 +1,140 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["'" . TYPE_NAME . "' class" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_NAME% : public AC_GALGAS_SortedList {
+//--- Constructor
+  protected : GALGAS_%!TYPE_NAME% (const GALGAS_%!TYPE_NAME% * inSource
+                             COMMA_LOCATION_ARGS) ;
+
+//--- No copy
+  private : GALGAS_%!TYPE_NAME% (const GALGAS_%!TYPE_NAME% &) ;
+  private : GALGAS_%!TYPE_NAME% & operator = (const GALGAS_%!TYPE_NAME% &) ;
+
+//--- GALGAS constructors
+  public : static GALGAS_%!TYPE_NAME% * constructor_emptySortedList (LOCATION_ARGS) ;
+
+  public : static GALGAS_%!TYPE_NAME% * constructor_sortedListWithValue (%?COL0
+  foreach ATTRIBUTE_LIST
+  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  between %,\n%!COL0
+  end foreach
+  %\n%!COL0%COMMA_LOCATION_ARGS) ;
+
+//--- Modifier handling
+  private : static void insulate (GALGAS_%!TYPE_NAME% * & ioOperand
+                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- . (concat) operator
+  public : static GALGAS_%!TYPE_NAME% * operator_concat (const GALGAS_%!TYPE_NAME% * inOperand1,
+               const GALGAS_%!TYPE_NAME% * inOperand2
+               COMMA_LOCATION_ARGS) ;
+
+//--- Introspection
+  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+
+//--- Method for comparing two list elements
+  protected : virtual PMSInt32 compareSortedListElements (const AC_GALGAS__root * inLeftAttributeList [],
+                                                          const AC_GALGAS__root * inRightAttributeList []) ;
+
+
+//--- Friends
+  friend void dotAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult,
+                                   const GALGAS_%!TYPE_NAME% * inOperand
+                                   COMMA_LOCATION_ARGS) ;
+
+
+  friend void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                                   const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+%) ;
+  
+  friend void modifier_popSmallest (GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                                    GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]
+  end foreach%,
+                                    C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+  friend void modifier_popGreatest (GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                                    GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]
+  end foreach%,
+                                    C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+  friend void method_smallest (const GALGAS_%!TYPE_NAME% * inList%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                               GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]
+  end foreach%,
+                               C_Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  friend void method_greatest (const GALGAS_%!TYPE_NAME% * inList%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                               GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]
+  end foreach%,
+                               C_Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+
+//--- Enumerator class
+  public : class cEnumerator : public AC_GALGAS_Enumerator {
+    public : cEnumerator (const GALGAS_%!TYPE_NAME% * inEnumeratedObject,
+                          const bool inAscending) ;
+  
+  //--- Attribute access
+%foreach ATTRIBUTE_LIST do
+%    public : const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * attribute_%![mAttributeName string]% (void) const ;\n%
+end foreach
+%  } ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+void dotAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult,
+                          const GALGAS_%!TYPE_NAME% * inOperand
+                          COMMA_LOCATION_ARGS) ;
+
+void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                          const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+%) ;
+  
+void modifier_popSmallest (GALGAS_%!TYPE_NAME% * & ioResult,
+%foreach ATTRIBUTE_LIST
+  do index IDX 
+%                           GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
+end foreach
+%                           C_Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+void modifier_popGreatest (GALGAS_%!TYPE_NAME% * & ioResult,
+%foreach ATTRIBUTE_LIST
+  do index IDX 
+%                          GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
+end foreach
+%                          C_Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) ;
+
+
+void method_smallest (const GALGAS_%!TYPE_NAME% * inList,
+%foreach ATTRIBUTE_LIST
+  do index IDX 
+%                      GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
+end foreach
+%                      C_Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) ;
+
+void method_greatest (const GALGAS_%!TYPE_NAME% * inList,
+%foreach ATTRIBUTE_LIST
+  do index IDX 
+%                      GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
+end foreach
+%                      C_Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) ;
+
