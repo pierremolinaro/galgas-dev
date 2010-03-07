@@ -17,15 +17,15 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax guiModelBuilder :
+syntax guiSyntax :
 with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
+import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <gui_component_start_symbol> !@guiComponentRoot outGuiComponentRoot ;
+nonterminal <gui_component_start_symbol> !@guiComponentAST outGuiComponentRoot ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -34,15 +34,15 @@ nonterminal <gui_component_start_symbol> !@guiComponentRoot outGuiComponentRoot 
 #---------------------------------------------------------------------------*
 
 rule <gui_component_start_symbol>
-  !@guiComponentRoot outGuiComponentRoot
+  !@guiComponentAST outGuiComponentRoot
 :
   $gui$ ;
   $identifier$ ?@lstring mGUIName ;
   $literal_string$ ?@lstring mGUIClass ;
   $:$ ;
   @lstringlist importedOptionList [emptyList] ;
-  @guiSimpleAttributeList simpleGlobalAttributes [emptyList] ;
-  @withLexiqueList withLexiqueList [emptyList] ;
+  @guiSimpleAttributeListAST simpleGlobalAttributes [emptyList] ;
+  @withLexiqueListAST withLexiqueList [emptyList] ;
   repeat
   while
     $identifier$ ?@lstring mKey ;
@@ -65,9 +65,9 @@ rule <gui_component_start_symbol>
     or
       $lexique$ ;
       $literal_string$ ?@lstring lexiqueReference ;
-      @guiLabelList labels [emptyList] ;
-      @guiSimpleAttributeList simpleAttributes [emptyList] ;
-      @guiCompoundAttributeList compoundAttributes [emptyList] ;
+      @guiLabelListAST labels [emptyList] ;
+      @guiSimpleAttributeListAST simpleAttributes [emptyList] ;
+      @guiCompoundAttributeListAST compoundAttributes [emptyList] ;
       ${$ ;
       repeat
       while
@@ -113,7 +113,7 @@ rule <gui_component_start_symbol>
   $end$ ;
   $gui$ ;
   $;$ ;
-  outGuiComponentRoot := [@guiComponentRoot new
+  outGuiComponentRoot := [@guiComponentAST new
     !mGUIName
     !mGUIClass
     !importedOptionList

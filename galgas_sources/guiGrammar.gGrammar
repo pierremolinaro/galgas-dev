@@ -18,13 +18,13 @@
 #---------------------------------------------------------------------------*
 
 grammar guiGrammar "SLR" :
-  with "guiModelBuilder.gSyntax" ;
+  with "guiSyntax.gSyntax" ;
 
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax guiModelBuilder in "guiModelBuilder.gSyntax" ;
+  import syntax guiSyntax in "guiSyntax.gSyntax" ;
 
   root <gui_component_start_symbol>
-    !@guiComponentRoot outGuiComponentRoot
+    !@guiComponentAST outGuiComponentRoot
   ; # LL1
 end grammar ;
 

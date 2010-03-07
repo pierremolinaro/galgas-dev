@@ -120,12 +120,8 @@
 		CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
 		CF0CB79B0BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
 		CF0CB79D0BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
-		CF0CB7AF0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
-		CF0CB7B10BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
 		CF0CB7D90BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
 		CF0CB7DB0BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
-		CF0CB8000BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
-		CF0CB8020BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
 		CF0CB8160BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
 		CF0CB8180BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
 		CF0CB82A0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
@@ -362,12 +358,8 @@
 		CF51543D110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF515439110F176B00E33D13 /* GALGAS_lchar.cpp */; };
 		CF51543E110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF515439110F176B00E33D13 /* GALGAS_lchar.cpp */; };
 		CF51543F110F176B00E33D13 /* GALGAS_lchar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF515439110F176B00E33D13 /* GALGAS_lchar.cpp */; };
-		CF51CA580FEABCFE0031BFFE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
-		CF51CA590FEABCFF0031BFFE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
 		CF51CA5A0FEABD000031BFFE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
 		CF51CA5B0FEABD010031BFFE /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
-		CF51CA5C0FEABD050031BFFE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
-		CF51CA5D0FEABD060031BFFE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
 		CF51CA5E0FEABD070031BFFE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
 		CF51CA5F0FEABD080031BFFE /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
 		CF546CE90A3476300076D39C /* GGS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546CE70A3476300076D39C /* GGS_uint64.cpp */; };
@@ -969,14 +961,10 @@
 		CFDACD0A1003D0B60096A8E5 /* F_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_main.cpp */; };
 		CFDACD0B1003D0B60096A8E5 /* F_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_main.cpp */; };
 		CFDACD311003DF0B0096A8E5 /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
-		CFDACD321003DF0C0096A8E5 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
-		CFDACD331003DF0F0096A8E5 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
 		CFDACD421003E0120096A8E5 /* instructionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5470BC3D8F6005A1AEC /* instructionMetamodel.cpp */; };
 		CFDACD4D1003E0EE0096A8E5 /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CFDACD511003E1330096A8E5 /* instructionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5470BC3D8F6005A1AEC /* instructionMetamodel.cpp */; };
 		CFDACD531003E15B0096A8E5 /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
-		CFDACD551003E16C0096A8E5 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
-		CFDACD561003E16E0096A8E5 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
 		CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
 		CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
 		CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
@@ -1036,10 +1024,6 @@
 		CFE167830E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE167840E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE167850E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
-		CFE26CA90C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
-		CFE26CAB0C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
-		CFE26CAF0C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
-		CFE26CB10C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
 		CFE26D010C12FD100066ACB3 /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
 		CFE26D030C12FD100066ACB3 /* programModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD90C12FD100066ACB3 /* programModelBuilder.cpp */; };
 		CFE26D070C12FD100066ACB3 /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
@@ -1160,9 +1144,7 @@
 		CFEDF32D0C2D161F0038713A /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CFEDF32F0C2D161F0038713A /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
 		CFEDF3310C2D161F0038713A /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
-		CFEDF3320C2D161F0038713A /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
 		CFEDF3340C2D161F0038713A /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
-		CFEDF3360C2D161F0038713A /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
 		CFEDF3370C2D161F0038713A /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
 		CFEDF3380C2D161F0038713A /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
 		CFEDF33A0C2D161F0038713A /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
@@ -1180,8 +1162,6 @@
 		CFEDF3470C2D161F0038713A /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
 		CFEDF3490C2D161F0038713A /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFEDF34A0C2D161F0038713A /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
-		CFEDF34C0C2D161F0038713A /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
-		CFEDF34D0C2D161F0038713A /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
 		CFEDF34E0C2D161F0038713A /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
 		CFEDF34F0C2D161F0038713A /* programModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD90C12FD100066ACB3 /* programModelBuilder.cpp */; };
 		CFEDF3500C2D161F0038713A /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
@@ -1281,9 +1261,7 @@
 		CFEDF48D0C2D16610038713A /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CFEDF48F0C2D16610038713A /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
 		CFEDF4910C2D16610038713A /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
-		CFEDF4920C2D16610038713A /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
 		CFEDF4940C2D16610038713A /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
-		CFEDF4960C2D16610038713A /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
 		CFEDF4970C2D16610038713A /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
 		CFEDF4980C2D16610038713A /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
 		CFEDF49A0C2D16610038713A /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
@@ -1301,8 +1279,6 @@
 		CFEDF4A70C2D16610038713A /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
 		CFEDF4A90C2D16610038713A /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFEDF4AA0C2D16610038713A /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
-		CFEDF4AC0C2D16610038713A /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
-		CFEDF4AD0C2D16610038713A /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
 		CFEDF4AE0C2D16610038713A /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
 		CFEDF4AF0C2D16610038713A /* programModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD90C12FD100066ACB3 /* programModelBuilder.cpp */; };
 		CFEDF4B00C2D16610038713A /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
@@ -1445,6 +1421,30 @@
 		CFFB8946110CBFF1006248FD /* predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFB8941110CBFF1006248FD /* predefined-types.cpp */; };
 		CFFB8947110CBFF1006248FD /* predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFB8941110CBFF1006248FD /* predefined-types.cpp */; };
 		CFFB8948110CBFF1006248FD /* predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFB8941110CBFF1006248FD /* predefined-types.cpp */; };
+		CFFE063211442CC200BE7C52 /* guiTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */; };
+		CFFE063311442CC200BE7C52 /* guiTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */; };
+		CFFE063411442CC200BE7C52 /* guiTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */; };
+		CFFE063511442CC200BE7C52 /* guiTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */; };
+		CFFE063611442CC200BE7C52 /* guiTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */; };
+		CFFE063711442CC200BE7C52 /* guiTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */; };
+		CFFE064011442ECD00BE7C52 /* guiSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */; };
+		CFFE064111442ECD00BE7C52 /* guiSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */; };
+		CFFE064211442ECD00BE7C52 /* guiSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */; };
+		CFFE064311442ECD00BE7C52 /* guiSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */; };
+		CFFE064411442ECD00BE7C52 /* guiSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */; };
+		CFFE064511442ECD00BE7C52 /* guiSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */; };
+		CFFE064E11443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */; };
+		CFFE064F11443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */; };
+		CFFE065011443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */; };
+		CFFE065111443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */; };
+		CFFE065211443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */; };
+		CFFE065311443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */; };
+		CFFE065411443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */; };
+		CFFE065511443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */; };
+		CFFE065611443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */; };
+		CFFE065711443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */; };
+		CFFE065811443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */; };
+		CFFE065911443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */; };
 		CFFE920E0B7CC06E009BCBF5 /* domain_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE920C0B7CC06E009BCBF5 /* domain_parser.cpp */; };
 		CFFE92140B7CC06E009BCBF5 /* domain_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE920C0B7CC06E009BCBF5 /* domain_parser.cpp */; };
 		CFFE92160B7CC06E009BCBF5 /* domain_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE920C0B7CC06E009BCBF5 /* domain_parser.cpp */; };
@@ -1555,12 +1555,8 @@
 		CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_class.h; sourceTree = "<group>"; };
 		CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionSemantics.cpp; sourceTree = "<group>"; };
 		CF0CB78E0BC0130500E6FABE /* optionSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionSemantics.h; sourceTree = "<group>"; };
-		CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueMetamodel.cpp; sourceTree = "<group>"; };
-		CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueMetamodel.h; sourceTree = "<group>"; };
 		CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionMetamodel.cpp; sourceTree = "<group>"; };
 		CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionMetamodel.h; sourceTree = "<group>"; };
-		CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueModelBuilder.cpp; sourceTree = "<group>"; };
-		CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueModelBuilder.h; sourceTree = "<group>"; };
 		CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionModelBuilder.cpp; sourceTree = "<group>"; };
 		CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionModelBuilder.h; sourceTree = "<group>"; };
 		CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueLL1grammar.cpp; sourceTree = "<group>"; };
@@ -2161,10 +2157,6 @@
 		CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentMetamodel.cpp; sourceTree = "<group>"; };
 		CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentMetamodel.h; sourceTree = "<group>"; };
 		CFE167820E8E7A2B00AFDAFC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = guiMetamodel.cpp; sourceTree = "<group>"; };
-		CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = guiMetamodel.h; sourceTree = "<group>"; };
-		CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = guiModelBuilder.cpp; sourceTree = "<group>"; };
-		CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = guiModelBuilder.h; sourceTree = "<group>"; };
 		CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programMetamodel.cpp; sourceTree = "<group>"; };
 		CFE26CD80C12FD100066ACB3 /* programMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programMetamodel.h; sourceTree = "<group>"; };
 		CFE26CD90C12FD100066ACB3 /* programModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programModelBuilder.cpp; sourceTree = "<group>"; };
@@ -2302,6 +2294,14 @@
 		CFFB8941110CBFF1006248FD /* predefined-types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "predefined-types.cpp"; sourceTree = "<group>"; };
 		CFFB8942110CBFF1006248FD /* predefined-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "predefined-types.h"; sourceTree = "<group>"; };
 		CFFC8DBF0B8A253200920BB1 /* include_typeCurrentObjectName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCurrentObjectName.h; sourceTree = "<group>"; };
+		CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiTypesForAST.cpp; sourceTree = "<group>"; };
+		CFFE063111442CC200BE7C52 /* guiTypesForAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiTypesForAST.h; sourceTree = "<group>"; };
+		CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiSyntax.cpp; sourceTree = "<group>"; };
+		CFFE063F11442ECD00BE7C52 /* guiSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiSyntax.h; sourceTree = "<group>"; };
+		CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueSyntax.cpp; sourceTree = "<group>"; };
+		CFFE064B11443BA800BE7C52 /* lexiqueSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueSyntax.h; sourceTree = "<group>"; };
+		CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueTypesForAST.cpp; sourceTree = "<group>"; };
+		CFFE064D11443BA800BE7C52 /* lexiqueTypesForAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueTypesForAST.h; sourceTree = "<group>"; };
 		CFFE920C0B7CC06E009BCBF5 /* domain_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = domain_parser.cpp; sourceTree = "<group>"; };
 		CFFE920D0B7CC06E009BCBF5 /* domain_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = domain_parser.h; sourceTree = "<group>"; };
 		CFFE92260B7CCA1B009BCBF5 /* include_C_domainToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_domainToImplement.h; sourceTree = "<group>"; };
@@ -3004,13 +3004,13 @@
 		CFEEBE6505C0569F009FE498 /* GUI Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */,
+				CFFE063F11442ECD00BE7C52 /* guiSyntax.h */,
+				CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */,
+				CFFE063111442CC200BE7C52 /* guiTypesForAST.h */,
 				CFDACCB71003CC160096A8E5 /* cocoaGalgas.m */,
 				CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */,
 				CFC153020FF6A76700A61DE8 /* guiGrammar.h */,
-				CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */,
-				CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */,
-				CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */,
-				CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */,
 				CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */,
 				CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */,
 				CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */,
@@ -3115,12 +3115,12 @@
 		CFF5376A057A504000854C83 /* Lexique Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */,
+				CFFE064B11443BA800BE7C52 /* lexiqueSyntax.h */,
+				CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */,
+				CFFE064D11443BA800BE7C52 /* lexiqueTypesForAST.h */,
 				CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */,
 				CFD2EA820FD45D080085EC05 /* predefinedLexicalActions.h */,
-				CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */,
-				CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */,
-				CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */,
-				CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */,
 				CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */,
 				CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */,
 				CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */,
@@ -3994,8 +3994,6 @@
 				CF03A56F0FD9980E00D079B7 /* optionModelBuilder.cpp in Sources */,
 				CF03A5700FD9980F00D079B7 /* optionLL1grammar.cpp in Sources */,
 				CF580BDA0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
-				CF51CA580FEABCFE0031BFFE /* lexiqueModelBuilder.cpp in Sources */,
-				CF51CA590FEABCFF0031BFFE /* lexiqueMetamodel.cpp in Sources */,
 				CF51CA5A0FEABD000031BFFE /* lexiqueLL1grammar.cpp in Sources */,
 				CF51CA5B0FEABD010031BFFE /* lexiqueCompilation.cpp in Sources */,
 				CF0AF9110FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
@@ -4007,8 +4005,6 @@
 				CF074CA01000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
 				CFDACD061003D0B60096A8E5 /* F_main.cpp in Sources */,
 				CFDACD311003DF0B0096A8E5 /* guiCompilation.cpp in Sources */,
-				CFDACD321003DF0C0096A8E5 /* guiModelBuilder.cpp in Sources */,
-				CFDACD331003DF0F0096A8E5 /* guiMetamodel.cpp in Sources */,
 				CFDACD421003E0120096A8E5 /* instructionMetamodel.cpp in Sources */,
 				CFCF13151020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF06F7EF10498E5B005F03FA /* semanticsMetamodel.cpp in Sources */,
@@ -4079,6 +4075,10 @@
 				CFE37329111ECB7100DB9B52 /* generatePredefinedTypes.cpp in Sources */,
 				CFE3733D111EDD0800DB9B52 /* semanticsGeneration.cpp in Sources */,
 				CF319028114401E100AC01EA /* AC_GALGAS_SortedList.cpp in Sources */,
+				CFFE063211442CC200BE7C52 /* guiTypesForAST.cpp in Sources */,
+				CFFE064011442ECD00BE7C52 /* guiSyntax.cpp in Sources */,
+				CFFE064E11443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */,
+				CFFE064F11443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4180,9 +4180,7 @@
 				CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB5E60BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 				CF0CB79B0BC0130500E6FABE /* optionSemantics.cpp in Sources */,
-				CF0CB7AF0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
 				CF0CB7D90BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
-				CF0CB8000BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
 				CF0CB8160BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
 				CF0CB82A0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
 				CF0CB84E0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
@@ -4200,8 +4198,6 @@
 				CFE1544F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 				CFDD30A70C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30A90C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
-				CFE26CA90C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */,
-				CFE26CAB0C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */,
 				CFE26D010C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26D030C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D260C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
@@ -4307,6 +4303,10 @@
 				CF288E65111DEB74004E4E82 /* galgas_routines.cpp in Sources */,
 				CFE3733F111EDD0800DB9B52 /* semanticsGeneration.cpp in Sources */,
 				CF31902A114401E100AC01EA /* AC_GALGAS_SortedList.cpp in Sources */,
+				CFFE063411442CC200BE7C52 /* guiTypesForAST.cpp in Sources */,
+				CFFE064211442ECD00BE7C52 /* guiSyntax.cpp in Sources */,
+				CFFE065211443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */,
+				CFFE065311443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4407,9 +4407,7 @@
 				CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 				CF0CB79D0BC0130500E6FABE /* optionSemantics.cpp in Sources */,
-				CF0CB7B10BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
 				CF0CB7DB0BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
-				CF0CB8020BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
 				CF0CB8180BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
 				CF0CB82C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
 				CF0CB8500BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
@@ -4427,8 +4425,6 @@
 				CFE154530C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 				CFDD30AF0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30B10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
-				CFE26CAF0C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */,
-				CFE26CB10C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */,
 				CFE26D070C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26D090C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D280C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
@@ -4535,6 +4531,10 @@
 				CFE3732C111ECB7100DB9B52 /* generatePredefinedTypes.cpp in Sources */,
 				CFE37340111EDD0800DB9B52 /* semanticsGeneration.cpp in Sources */,
 				CF31902B114401E100AC01EA /* AC_GALGAS_SortedList.cpp in Sources */,
+				CFFE063511442CC200BE7C52 /* guiTypesForAST.cpp in Sources */,
+				CFFE064311442ECD00BE7C52 /* guiSyntax.cpp in Sources */,
+				CFFE065411443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */,
+				CFFE065511443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4705,8 +4705,6 @@
 				CF03A5750FD9982100D079B7 /* optionLL1grammar.cpp in Sources */,
 				CF03A5760FD9982200D079B7 /* optionCompilation.cpp in Sources */,
 				CF580BDB0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
-				CF51CA5C0FEABD050031BFFE /* lexiqueModelBuilder.cpp in Sources */,
-				CF51CA5D0FEABD060031BFFE /* lexiqueMetamodel.cpp in Sources */,
 				CF51CA5E0FEABD070031BFFE /* lexiqueLL1grammar.cpp in Sources */,
 				CF51CA5F0FEABD080031BFFE /* lexiqueCompilation.cpp in Sources */,
 				CF0AF9120FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
@@ -4720,8 +4718,6 @@
 				CFDACD4D1003E0EE0096A8E5 /* semanticsMetamodel.cpp in Sources */,
 				CFDACD511003E1330096A8E5 /* instructionMetamodel.cpp in Sources */,
 				CFDACD531003E15B0096A8E5 /* guiCompilation.cpp in Sources */,
-				CFDACD551003E16C0096A8E5 /* guiMetamodel.cpp in Sources */,
-				CFDACD561003E16E0096A8E5 /* guiModelBuilder.cpp in Sources */,
 				CFCF13161020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FB1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32710654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
@@ -4790,6 +4786,10 @@
 				CFE3732A111ECB7100DB9B52 /* generatePredefinedTypes.cpp in Sources */,
 				CFE3733E111EDD0800DB9B52 /* semanticsGeneration.cpp in Sources */,
 				CF319029114401E100AC01EA /* AC_GALGAS_SortedList.cpp in Sources */,
+				CFFE063311442CC200BE7C52 /* guiTypesForAST.cpp in Sources */,
+				CFFE064111442ECD00BE7C52 /* guiSyntax.cpp in Sources */,
+				CFFE065011443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */,
+				CFFE065111443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4890,9 +4890,7 @@
 				CFEDF32D0C2D161F0038713A /* lexiqueSemantics.cpp in Sources */,
 				CFEDF32F0C2D161F0038713A /* AC_galgas_class.cpp in Sources */,
 				CFEDF3310C2D161F0038713A /* optionSemantics.cpp in Sources */,
-				CFEDF3320C2D161F0038713A /* lexiqueMetamodel.cpp in Sources */,
 				CFEDF3340C2D161F0038713A /* optionMetamodel.cpp in Sources */,
-				CFEDF3360C2D161F0038713A /* lexiqueModelBuilder.cpp in Sources */,
 				CFEDF3370C2D161F0038713A /* optionModelBuilder.cpp in Sources */,
 				CFEDF3380C2D161F0038713A /* lexiqueLL1grammar.cpp in Sources */,
 				CFEDF33A0C2D161F0038713A /* optionLL1grammar.cpp in Sources */,
@@ -4910,8 +4908,6 @@
 				CFEDF3470C2D161F0038713A /* parameterArgumentMetamodel.cpp in Sources */,
 				CFEDF3490C2D161F0038713A /* grammarMetamodel.cpp in Sources */,
 				CFEDF34A0C2D161F0038713A /* grammarModelBuilder.cpp in Sources */,
-				CFEDF34C0C2D161F0038713A /* guiMetamodel.cpp in Sources */,
-				CFEDF34D0C2D161F0038713A /* guiModelBuilder.cpp in Sources */,
 				CFEDF34E0C2D161F0038713A /* programMetamodel.cpp in Sources */,
 				CFEDF34F0C2D161F0038713A /* programModelBuilder.cpp in Sources */,
 				CFEDF3500C2D161F0038713A /* programSLRgrammar.cpp in Sources */,
@@ -5006,6 +5002,10 @@
 				CFE3732D111ECB7100DB9B52 /* generatePredefinedTypes.cpp in Sources */,
 				CFE37341111EDD0800DB9B52 /* semanticsGeneration.cpp in Sources */,
 				CF31902C114401E100AC01EA /* AC_GALGAS_SortedList.cpp in Sources */,
+				CFFE063611442CC200BE7C52 /* guiTypesForAST.cpp in Sources */,
+				CFFE064411442ECD00BE7C52 /* guiSyntax.cpp in Sources */,
+				CFFE065611443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */,
+				CFFE065711443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5106,9 +5106,7 @@
 				CFEDF48D0C2D16610038713A /* lexiqueSemantics.cpp in Sources */,
 				CFEDF48F0C2D16610038713A /* AC_galgas_class.cpp in Sources */,
 				CFEDF4910C2D16610038713A /* optionSemantics.cpp in Sources */,
-				CFEDF4920C2D16610038713A /* lexiqueMetamodel.cpp in Sources */,
 				CFEDF4940C2D16610038713A /* optionMetamodel.cpp in Sources */,
-				CFEDF4960C2D16610038713A /* lexiqueModelBuilder.cpp in Sources */,
 				CFEDF4970C2D16610038713A /* optionModelBuilder.cpp in Sources */,
 				CFEDF4980C2D16610038713A /* lexiqueLL1grammar.cpp in Sources */,
 				CFEDF49A0C2D16610038713A /* optionLL1grammar.cpp in Sources */,
@@ -5126,8 +5124,6 @@
 				CFEDF4A70C2D16610038713A /* parameterArgumentMetamodel.cpp in Sources */,
 				CFEDF4A90C2D16610038713A /* grammarMetamodel.cpp in Sources */,
 				CFEDF4AA0C2D16610038713A /* grammarModelBuilder.cpp in Sources */,
-				CFEDF4AC0C2D16610038713A /* guiMetamodel.cpp in Sources */,
-				CFEDF4AD0C2D16610038713A /* guiModelBuilder.cpp in Sources */,
 				CFEDF4AE0C2D16610038713A /* programMetamodel.cpp in Sources */,
 				CFEDF4AF0C2D16610038713A /* programModelBuilder.cpp in Sources */,
 				CFEDF4B00C2D16610038713A /* programSLRgrammar.cpp in Sources */,
@@ -5222,6 +5218,10 @@
 				CFE3732E111ECB7100DB9B52 /* generatePredefinedTypes.cpp in Sources */,
 				CFE37342111EDD0800DB9B52 /* semanticsGeneration.cpp in Sources */,
 				CF31902D114401E100AC01EA /* AC_GALGAS_SortedList.cpp in Sources */,
+				CFFE063711442CC200BE7C52 /* guiTypesForAST.cpp in Sources */,
+				CFFE064511442ECD00BE7C52 /* guiSyntax.cpp in Sources */,
+				CFFE065811443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */,
+				CFFE065911443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

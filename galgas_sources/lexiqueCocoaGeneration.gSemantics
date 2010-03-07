@@ -20,7 +20,7 @@
 semantics lexiqueCocoaGeneration :
 import "predefinedLexicalActions.gSemantics" ;
 
-import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
+import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
 import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
@@ -29,14 +29,14 @@ import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 #   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalExpression generateCocoaConditionCode
+abstract reader @lexicalExpressionAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalOrExpression generateCocoaConditionCode
+override reader @lexicalOrExpressionAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -47,7 +47,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterIntervalMatch generateCocoaConditionCode
+override reader @lexicalCharacterIntervalMatchAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -61,7 +61,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalStringMatch generateCocoaConditionCode
+override reader @lexicalStringMatchAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -71,7 +71,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalStringNotMatch generateCocoaConditionCode
+override reader @lexicalStringNotMatchAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -82,7 +82,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterMatch generateCocoaConditionCode
+override reader @lexicalCharacterMatchAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -93,7 +93,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterSetMatch generateCocoaConditionCode
+override reader @lexicalCharacterSetMatchAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -106,13 +106,13 @@ end reader ;
 #     R O U T I N E    O R    F U N C T I O N    A R G U M E N T            *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalRoutineOrFunctionFormalInputArgument generateCocoaRoutineOrFunctionArgument
+abstract reader @lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalAttributeInputArgument generateCocoaRoutineOrFunctionArgument
+override reader @lexicalAttributeInputArgumentAST generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := "mLexicalAttribute_" . mAttributeName ;
@@ -120,7 +120,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterInputArgument generateCocoaRoutineOrFunctionArgument
+override reader @lexicalCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := [[[mCharacter char] uint] string] ;
@@ -128,7 +128,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalUnsignedInputArgument generateCocoaRoutineOrFunctionArgument
+override reader @lexicalUnsignedInputArgumentAST generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := [[mUnsigned uint] string] ;
@@ -136,7 +136,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCurrentCharacterInputArgument generateCocoaRoutineOrFunctionArgument
+override reader @lexicalCurrentCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := "mPreviousChar" ;
@@ -144,7 +144,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalFunctionInputArgument generateCocoaRoutineOrFunctionArgument
+override reader @lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := "scanner_cocoa_function_" . mFunctionName . " (" ;
@@ -159,14 +159,14 @@ end reader ;
 #                   R O U T I N E    A R G U M E N T                        *
 #---------------------------------------------------------------------------*
 
-abstract reader @abstractLexicalRoutineActualArgument generateCocoaRoutineArgument
+abstract reader @abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalAttributeInputOutputArgument generateCocoaRoutineArgument
+override reader @lexicalAttributeInputOutputArgumentAST generateCocoaRoutineArgument
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -181,7 +181,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalFormalInputArgument generateCocoaRoutineArgument
+override reader @lexicalFormalInputArgumentAST generateCocoaRoutineArgument
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -192,14 +192,14 @@ end reader ;
 #  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T         *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalSendDefaultAction generateCocoaDefaultSendCode
+abstract reader @lexicalSendDefaultActionAST generateCocoaDefaultSendCode
   ?@string inScannerClassName
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalSendTerminalByDefault generateCocoaDefaultSendCode
+override reader @lexicalSendTerminalByDefaultAST generateCocoaDefaultSendCode
   ?@string inScannerClassName
   -> @string outGeneratedCode
 :
@@ -208,7 +208,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalErrorByDefault generateCocoaDefaultSendCode
+override reader @lexicalErrorByDefaultAST generateCocoaDefaultSendCode
   ?@string unused inScannerClassName
   -> @string outGeneratedCode
 :
@@ -219,7 +219,7 @@ end reader ;
 #  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalInstruction generateCocoaInstructionCode
+abstract reader @lexicalInstructionAST generateCocoaInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -227,7 +227,7 @@ abstract reader @lexicalInstruction generateCocoaInstructionCode
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalStructuredSendInstruction generateCocoaInstructionCode
+override reader @lexicalStructuredSendInstructionAST generateCocoaInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -245,7 +245,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalSimpleSendInstruction generateCocoaInstructionCode
+override reader @lexicalSimpleSendInstructionAST generateCocoaInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -255,7 +255,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalRepeatInstruction generateCocoaInstructionCode
+override reader @lexicalRepeatInstructionAST generateCocoaInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -290,7 +290,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalSelectInstruction generateCocoaInstructionCode
+override reader @lexicalSelectInstructionAST generateCocoaInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -324,7 +324,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalRoutineInstruction generateCocoaInstructionCode
+override reader @lexicalRoutineInstructionAST generateCocoaInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -338,7 +338,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalDropInstruction generateCocoaInstructionCode
+override reader @lexicalDropInstructionAST generateCocoaInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -348,7 +348,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalErrorInstruction generateCocoaInstructionCode
+override reader @lexicalErrorInstructionAST generateCocoaInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -358,7 +358,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalWarningInstruction generateCocoaInstructionCode
+override reader @lexicalWarningInstructionAST generateCocoaInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -368,7 +368,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalTagInstruction generateCocoaInstructionCode
+override reader @lexicalTagInstructionAST generateCocoaInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -379,7 +379,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalRewindInstruction generateCocoaInstructionCode
+override reader @lexicalRewindInstructionAST generateCocoaInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -390,7 +390,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalLogInstruction generateCocoaInstructionCode
+override reader @lexicalLogInstructionAST generateCocoaInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -402,7 +402,7 @@ end reader ;
 #        L E X I C A L    R U L E    C O D E    G E N E R A T I O N         *
 #---------------------------------------------------------------------------*
 
-abstract reader @abstractLexicalRule generateCocoaCode
+abstract reader @abstractLexicalRuleAST generateCocoaCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -410,7 +410,7 @@ abstract reader @abstractLexicalRule generateCocoaCode
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalImplicitRule generateCocoaCode
+override reader @lexicalImplicitRuleAST generateCocoaCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -429,7 +429,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalExplicitRule generateCocoaCode
+override reader @lexicalExplicitRuleAST generateCocoaCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode

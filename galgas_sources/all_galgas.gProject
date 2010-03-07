@@ -37,8 +37,8 @@ project all_galgas:
   grammar   "galgasTemplateGrammar.gGrammar" : makefile ;
  
 #--- Lexique Component
-  semantics "lexiqueMetamodel.gSemantics" : makefile ;
-  syntax    "lexiqueModelBuilder.gSyntax" : makefile ;
+  semantics "lexiqueTypesForAST.gSemantics" : makefile ;
+  syntax    "lexiqueSyntax.gSyntax" : makefile ;
   grammar   "lexiqueLL1grammar.gGrammar" : makefile ;
   semantics "lexiqueSemantics.gSemantics" : makefile ;
   semantics "predefinedLexicalActions.gSemantics" : makefile ;
@@ -54,8 +54,8 @@ project all_galgas:
   semantics "optionCompilation.gSemantics" : makefile ;
 
 #--- GUI component
-  semantics "guiMetamodel.gSemantics" : makefile ;
-  syntax    "guiModelBuilder.gSyntax" : makefile ;
+  semantics "guiTypesForAST.gSemantics" : makefile ;
+  syntax    "guiSyntax.gSyntax" : makefile ;
   grammar   "guiGrammar.gGrammar" : makefile ;
   semantics "guiCompilation.gSemantics" : makefile ;
 

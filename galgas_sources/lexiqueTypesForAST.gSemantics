@@ -17,27 +17,27 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics lexiqueMetamodel :
+semantics lexiqueTypesForAST :
 
 #---------------------------------------------------------------------------*
 
-abstract class @lexicalExpression {
+abstract class @lexicalExpressionAST {
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @lexicalInstruction {
+abstract class @lexicalInstructionAST {
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalInstructionList {
-  @lexicalInstruction mInstruction ;
+list @lexicalInstructionListAST {
+  @lexicalInstructionAST mInstruction ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @metamodelTemplateDelimitorList {
+list @metamodelTemplateDelimitorListAST {
   @lstring mStartString ;
   @lstringlist mOptionList ;
   @lstring mEndString ;
@@ -45,7 +45,7 @@ list @metamodelTemplateDelimitorList {
 
 #---------------------------------------------------------------------------*
 
-list @templateReplacementList {
+list @templateReplacementListAST {
   @lstring mMatchString ;
   @lstring mReplacementString ;
   @lstring mReplacementFunction ;
@@ -53,52 +53,52 @@ list @templateReplacementList {
 
 #---------------------------------------------------------------------------*
 
-abstract class @abstractLexicalRule {
+abstract class @abstractLexicalRuleAST {
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalRuleList {
-  @abstractLexicalRule mLexicalRule ;
+list @lexicalRuleListAST {
+  @abstractLexicalRuleAST mLexicalRule ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalImplicitRule extends @abstractLexicalRule {
+class @lexicalImplicitRuleAST extends @abstractLexicalRuleAST {
   @lstring mListName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalExplicitRule extends @abstractLexicalRule {
-  @lexicalExpression mLexicalRuleExpression ;
-  @lexicalInstructionList mInstructionList ;
+class @lexicalExplicitRuleAST extends @abstractLexicalRuleAST {
+  @lexicalExpressionAST mLexicalRuleExpression ;
+  @lexicalInstructionListAST mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalMessageDeclarationList {
+list @lexicalMessageDeclarationListAST {
   @lstring mMessageName ;
   @lstring mMessageValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalAttributeList {
+list @lexicalAttributeListAST {
   @lstring mTypeName ;
   @lstring mName ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalStyleList {
+list @lexicalStyleListAST {
   @lstring mName ;
   @lstring mComment ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @terminalDeclarationList {
+list @terminalDeclarationListAST {
   @lstring mName ;
   @lstringlist mSentAttributeList ;
   @lstring mSyntaxErrorMessage ;
@@ -108,7 +108,7 @@ list @terminalDeclarationList {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalListEntryList {
+list @lexicalListEntryListAST {
   @lstring mEntrySpelling ;
   @lstring mTerminalSpelling ;
   @lstringlist mFeatureList ;
@@ -116,231 +116,231 @@ list @lexicalListEntryList {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalListDeclarationList {
+list @lexicalListDeclarationListAST {
   @lstring mName ;
   @lstring mStyle ; # Empty string if no style
   @lstring mSyntaxErrorMessage ;
   @lstringlist mSentAttributeList ;
-  @lexicalListEntryList mEntryList ;  
+  @lexicalListEntryListAST mEntryList ;  
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalOrExpression extends @lexicalExpression {
-  @lexicalExpression mLeftOperand ;
-  @lexicalExpression mRightOperand ;
+class @lexicalOrExpressionAST extends @lexicalExpressionAST {
+  @lexicalExpressionAST mLeftOperand ;
+  @lexicalExpressionAST mRightOperand ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalCharacterSetMatch extends @lexicalExpression {
+class @lexicalCharacterSetMatchAST extends @lexicalExpressionAST {
   @lstring mCharacterSetName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalCharacterMatch extends @lexicalExpression {
+class @lexicalCharacterMatchAST extends @lexicalExpressionAST {
   @lchar mCharacter ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalCharacterIntervalMatch extends @lexicalExpression {
+class @lexicalCharacterIntervalMatchAST extends @lexicalExpressionAST {
   @lchar mLowerBound ;
   @lchar mUpperBound ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalStringMatch extends @lexicalExpression {
+class @lexicalStringMatchAST extends @lexicalExpressionAST {
   @lstring mString ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalStringNotMatch extends @lexicalExpression {
+class @lexicalStringNotMatchAST extends @lexicalExpressionAST {
   @lstring mString ;
   @lstring mErrorMessage ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalSendSearchList {
+list @lexicalSendSearchListAST {
   @lstring mAttributeName ;
   @lstring mSearchListName ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @lexicalSendDefaultAction {
+abstract class @lexicalSendDefaultActionAST {
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalStructuredSendInstruction extends @lexicalInstruction {
-  @lexicalSendSearchList mLexicalSendSearchList ;
-  @lexicalSendDefaultAction mLexicalSendDefaultAction ;
+class @lexicalStructuredSendInstructionAST extends @lexicalInstructionAST {
+  @lexicalSendSearchListAST mLexicalSendSearchList ;
+  @lexicalSendDefaultActionAST mLexicalSendDefaultAction ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalSimpleSendInstruction extends @lexicalInstruction {
+class @lexicalSimpleSendInstructionAST extends @lexicalInstructionAST {
   @lstring mSentTerminal ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalSendTerminalByDefault extends @lexicalSendDefaultAction {
+class @lexicalSendTerminalByDefaultAST extends @lexicalSendDefaultActionAST {
   @lstring mDefaultSentTerminal ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalErrorByDefault extends @lexicalSendDefaultAction {
+class @lexicalErrorByDefaultAST extends @lexicalSendDefaultActionAST {
   @lstring mDefaultErrorMessageName ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalWhileBranchList {
-  @lexicalExpression mWhileExpression ;
-  @lexicalInstructionList mWhileInstructionList ;
+list @lexicalWhileBranchListAST {
+  @lexicalExpressionAST mWhileExpression ;
+  @lexicalInstructionListAST mWhileInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalRepeatInstruction extends @lexicalInstruction {
-  @lexicalInstructionList mRepeatedInstructionList ;
-  @lexicalWhileBranchList mLexicalWhileBranchList ;
+class @lexicalRepeatInstructionAST extends @lexicalInstructionAST {
+  @lexicalInstructionListAST mRepeatedInstructionList ;
+  @lexicalWhileBranchListAST mLexicalWhileBranchList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalSelectBranchList {
-  @lexicalExpression mSelectExpression ;
-  @lexicalInstructionList mSelectInstructionList ;
+list @lexicalSelectBranchListAST {
+  @lexicalExpressionAST mSelectExpression ;
+  @lexicalInstructionListAST mSelectInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalSelectInstruction extends @lexicalInstruction {
-  @lexicalSelectBranchList mLexicalSelectBranchList ;
-  @lexicalInstructionList mDefaultInstructionList ;
+class @lexicalSelectInstructionAST extends @lexicalInstructionAST {
+  @lexicalSelectBranchListAST mLexicalSelectBranchList ;
+  @lexicalInstructionListAST mDefaultInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @abstractLexicalRoutineActualArgument {
+abstract class @abstractLexicalRoutineActualArgumentAST {
   @location mActualPassingModeLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalRoutineCallActualArgumentList {
-  @abstractLexicalRoutineActualArgument mLexicalRoutineActualArgument ;
+list @lexicalRoutineCallActualArgumentListAST {
+  @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalRoutineInstruction extends @lexicalInstruction {
+class @lexicalRoutineInstructionAST extends @lexicalInstructionAST {
   @lstring mRoutineName ;
-  @lexicalRoutineCallActualArgumentList mActualArgumentList ;
+  @lexicalRoutineCallActualArgumentListAST mActualArgumentList ;
   @lstringlist mErrorMessageList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalAttributeInputOutputArgument extends @abstractLexicalRoutineActualArgument {
+class @lexicalAttributeInputOutputArgumentAST extends @abstractLexicalRoutineActualArgumentAST {
   @lstring mAttributeName ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @lexicalRoutineOrFunctionFormalInputArgument {
+abstract class @lexicalRoutineOrFunctionFormalInputArgumentAST {
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalFormalInputArgument extends @abstractLexicalRoutineActualArgument {
-  @lexicalRoutineOrFunctionFormalInputArgument mRoutineOrFunctionFormalInputArgument ;
+class @lexicalFormalInputArgumentAST extends @abstractLexicalRoutineActualArgumentAST {
+  @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalFunctionCallActualArgumentList {
-  @lexicalRoutineOrFunctionFormalInputArgument mLexicalActualInputArgument ;
+list @lexicalFunctionCallActualArgumentListAST {
+  @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalAttributeInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
+class @lexicalAttributeInputArgumentAST extends @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lstring mAttributeName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalCharacterInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
+class @lexicalCharacterInputArgumentAST extends @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lchar mCharacter ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalUnsignedInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
+class @lexicalUnsignedInputArgumentAST extends @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @luint mUnsigned ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalCurrentCharacterInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
+class @lexicalCurrentCharacterInputArgumentAST extends @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalFunctionInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
+class @lexicalFunctionInputArgumentAST extends @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lstring mFunctionName ;
-  @lexicalFunctionCallActualArgumentList mFunctionActualArgumentList ;
+  @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalDropInstruction extends @lexicalInstruction {
+class @lexicalDropInstructionAST extends @lexicalInstructionAST {
   @lstring mTerminalName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalErrorInstruction extends @lexicalInstruction {
+class @lexicalErrorInstructionAST extends @lexicalInstructionAST {
   @lstring mErrorMessageName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalWarningInstruction extends @lexicalInstruction {
+class @lexicalWarningInstructionAST extends @lexicalInstructionAST {
   @lstring mWarningMessageName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalTagInstruction extends @lexicalInstruction {
+class @lexicalTagInstructionAST extends @lexicalInstructionAST {
   @lstring mLexicalTagName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalRewindInstruction extends @lexicalInstruction {
+class @lexicalRewindInstructionAST extends @lexicalInstructionAST {
   @lstring mLexicalTagName ;
   @lstring mTerminalName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalLogInstruction extends @lexicalInstruction {
+class @lexicalLogInstructionAST extends @lexicalInstructionAST {
 }
 
 #---------------------------------------------------------------------------*
 
-enum @lexicalArgumentMode {
+enum @lexicalArgumentModeAST {
   lexicalInputMode, lexicalInputOutputMode
 }{
   reader lexicalFormalModeName :
@@ -366,50 +366,50 @@ enum @lexicalArgumentMode {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalExternRoutineFormalArgumentList {
-  @lexicalArgumentMode mPassingMode ;
+list @lexicalExternRoutineFormalArgumentListAST {
+  @lexicalArgumentModeAST mPassingMode ;
   @lstring mLexicalTypeName ;
   @lstring mFormalArgumentName ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @externRoutineList {
+list @externRoutineListAST {
   @lstring mRoutineName ;
-  @lexicalExternRoutineFormalArgumentList mLexicalRoutineFormalArgumentList ;
+  @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList ;
   @stringlist mErrorMessageList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lexicalExternFunctionFormalArgumentList {
+list @lexicalExternFunctionFormalArgumentListAST {
   @lstring mLexicalTypeName ;
   @lstring mFormalArgumentName ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @externFunctionList {
+list @externFunctionListAST {
   @lstring mFunctionName ;
-  @lexicalExternFunctionFormalArgumentList mLexicalFunctionFormalArgumentList ;
+  @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList ;
   @lstring mReturnedTypeName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexiqueComponentRoot {
+class @lexiqueComponentAST {
   @lstring mLexiqueComponentName  ;
   @bool mIsTemplate feature nogetter ;
-  @metamodelTemplateDelimitorList mTemplateDelimitorList ;
-  @templateReplacementList mTemplateReplacementList ;
-  @lexicalAttributeList mLexicalAttributeList  ;
-  @lexicalStyleList mLexicalStyleList ;
-  @terminalDeclarationList mTerminalDeclarationList  ;
-  @lexicalMessageDeclarationList mLexicalMessageDeclarationList ;
-  @lexicalListDeclarationList mLexicalListDeclarationList  ;
-  @lexicalRuleList mLexicalRuleList ;
-  @externRoutineList mExternRoutineList ;
-  @externFunctionList mExternFunctionList  ;
+  @metamodelTemplateDelimitorListAST mTemplateDelimitorList ;
+  @templateReplacementListAST mTemplateReplacementList ;
+  @lexicalAttributeListAST mLexicalAttributeList  ;
+  @lexicalStyleListAST mLexicalStyleList ;
+  @terminalDeclarationListAST mTerminalDeclarationList  ;
+  @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList ;
+  @lexicalListDeclarationListAST mLexicalListDeclarationList  ;
+  @lexicalRuleListAST mLexicalRuleList ;
+  @externRoutineListAST mExternRoutineList ;
+  @externFunctionListAST mExternFunctionList  ;
 }
 
 #---------------------------------------------------------------------------*

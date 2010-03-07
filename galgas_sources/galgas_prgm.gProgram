@@ -28,7 +28,7 @@ program galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
   import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
   import semantics optionCompilation in "optionCompilation.gSemantics" ;
-  import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
+  import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
   import semantics guiCompilation in "guiCompilation.gSemantics" ;
   import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
