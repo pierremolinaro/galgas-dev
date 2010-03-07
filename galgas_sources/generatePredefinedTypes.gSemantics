@@ -379,6 +379,18 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @sortedlistGalgasType appendGeneratedHeader ?!@string ioHeader :
+  @ACGalgasType t := self ; # Bug in GALGAS 1
+  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
+  ioHeader .= [filewrapper typeGenerationTemplate.sortedlistTypeHeader
+    ![t typeIdentifierRepresentation]
+    ![tt mAttributeList]
+#    ![tt mSortDescriptorList]
+ ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @listGalgasType appendGeneratedHeader ?!@string ioHeader :
   @ACGalgasType t := self ; # Bug in GALGAS 1
   @listGalgasType tt := self ; # Bug in GALGAS 1
@@ -405,6 +417,18 @@ override method @listGalgasType appendGeneratedImplementation ?!@string ioImplem
   ioImplementation .= [filewrapper typeGenerationTemplate.listTypeImplementation
     ![t typeIdentifierRepresentation]
     ![tt mAttributeList]
+ ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedlistGalgasType appendGeneratedImplementation ?!@string ioImplementation :
+  @ACGalgasType t := self ; # Bug in GALGAS 1
+  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
+  ioImplementation .= [filewrapper typeGenerationTemplate.sortedlistTypeImplementation
+    ![t typeIdentifierRepresentation]
+    ![tt mAttributeList]
+    ![tt mSortDescriptorList]
  ] ;
 end method ;
 

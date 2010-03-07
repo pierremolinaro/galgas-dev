@@ -35198,7 +35198,7 @@ isEqualToObject (const cSortedListElement * inOperand) const {
 PMSInt32 elementOf_GGS_wrapperFileSortedList::
 compareForSorting (const cSortedListElement * inOperand) const {
   const elementOf_GGS_wrapperFileSortedList * operand = (const elementOf_GGS_wrapperFileSortedList *) inOperand ;
-  PMSInt32 result = mRegularFileName.compareForSortedList (operand->mRegularFileName) ;
+  PMSInt32 result = mRegularFileName.genericObjectCompare (operand->mRegularFileName) ;
   return result ;
 }
 
@@ -35593,7 +35593,7 @@ isEqualToObject (const cSortedListElement * inOperand) const {
 PMSInt32 elementOf_GGS_wrapperDirectorySortedList::
 compareForSorting (const cSortedListElement * inOperand) const {
   const elementOf_GGS_wrapperDirectorySortedList * operand = (const elementOf_GGS_wrapperDirectorySortedList *) inOperand ;
-  PMSInt32 result = mDirectoryName.compareForSortedList (operand->mDirectoryName) ;
+  PMSInt32 result = mDirectoryName.genericObjectCompare (operand->mDirectoryName) ;
   return result ;
 }
 

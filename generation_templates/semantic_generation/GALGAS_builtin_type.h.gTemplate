@@ -259,7 +259,7 @@ if [TYPE accept_tilde_operator] then
 end if
 %//--------------------------------- Comparison
 
-  public : virtual PMSInt32 compareForSortedList (const AC_GALGAS__root * inOperand
+  public : virtual PMSInt32 genericObjectCompare (const AC_GALGAS__root * inOperand
                                                    COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Introspection
