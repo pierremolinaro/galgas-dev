@@ -429,7 +429,8 @@ foreach [TYPE readerMap] do
 end foreach
 if [[TYPE enumerable] length] > 0 then
 %//--------------------------------- Enumeration handling
-  protected : virtual const AC_GALGAS__root * * enumerationArray (const bool inAscending) const ;
+  protected : virtual void populateEnumerationArray (const AC_GALGAS__root * ioEnumerationArray [],
+                                                     const bool inAscending) const ;
   protected : virtual PMUInt32 count (void) const ;
 
 //--------------------------------- Enumerator declaration
