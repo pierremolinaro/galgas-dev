@@ -1,0 +1,242 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["'" . TYPE_NAME . "' class" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ("%!TYPE_NAME%", NULL) ;
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_NAME%::GALGAS_%!TYPE_NAME% (const GALGAS_%!TYPE_NAME% * inSource
+                              COMMA_LOCATION_ARGS) :
+AC_GALGAS_SortedList (%![[ATTRIBUTE_LIST length] string]%, inSource COMMA_THERE) {
+}
+
+//---------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_%!TYPE_NAME%::typeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
+}
+
+//---------------------------------------------------------------------------*
+
+PMSInt32 GALGAS_%!TYPE_NAME%::compareSortedListElements (const AC_GALGAS__root * inLeftAttributeList [],
+                                                         const AC_GALGAS__root * inRightAttributeList []) {
+  PMSInt32 result = 0 ;
+% foreach SORT_ATTRIBUTE_LIST do
+    %  if (result == 0) {\n%
+    %    result = % if mAscendingOrder then else %- % end if%inLeftAttributeList [%![mAttributeIndex string]%]->genericObjectCompare (inRightAttributeList [%![mAttributeIndex string]%] COMMA_HERE) ;\n%
+    %  }\n%
+  end foreach
+%  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_NAME%::insulate (GALGAS_%!TYPE_NAME% * & ioOperand
+                              COMMA_LOCATION_ARGS) {
+  if (ioOperand->retainCount () > 1) {
+    GALGAS_%!TYPE_NAME% * p = NULL ;
+    macroMyNew (p, GALGAS_%!TYPE_NAME% (ioOperand COMMA_THERE)) ;
+    macroReleaseObject (ioOperand) ;
+    macroRetainObject (p) ;
+    ioOperand = p ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_emptySortedList (LOCATION_ARGS) {
+  GALGAS_%!TYPE_NAME% * result = NULL ;
+  macroMyNew (result, GALGAS_%!TYPE_NAME% (NULL COMMA_THERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_sortedListWithValue (%?COL0
+  foreach ATTRIBUTE_LIST
+  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  between %,\n%!COL0
+  end foreach
+  %\n%!COL0%COMMA_LOCATION_ARGS) {
+  GALGAS_%!TYPE_NAME% * result = GALGAS_%!TYPE_NAME%::constructor_emptySortedList (THERE) ;
+  const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+  foreach ATTRIBUTE_LIST
+  do index IDX %inOperand%![IDX string]
+  between %, %
+  end foreach
+%} ;
+  result->addObject (attributeArray) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n                          const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+%) {
+  if (ioResult != NULL) {
+    GALGAS_%!TYPE_NAME%::insulate (ioResult COMMA_HERE) ;
+    const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    foreach ATTRIBUTE_LIST
+    do index IDX %inOperand%![IDX string]
+    between %, %
+    end foreach
+    %} ;
+    ioResult->addObject (attributeArray) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void modifier_popSmallest (GALGAS_%!TYPE_NAME% * & ioResult,\n%
+  foreach ATTRIBUTE_LIST
+  do index IDX %                           GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string] %,\n%
+  end foreach
+%                           C_Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) {
+%
+  foreach ATTRIBUTE_LIST
+  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  end foreach
+%  if (ioResult != NULL) {
+    GALGAS_%!TYPE_NAME%::insulate (ioResult COMMA_HERE) ;
+    const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    foreach ATTRIBUTE_LIST
+      do %NULL%
+      between %, %
+    end foreach %} ;
+    ioResult->removeSmallestObject (attributeArray, inCompiler COMMA_THERE) ;\n%
+  foreach ATTRIBUTE_LIST do index IDX
+%    outOperand%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributeArray [%![IDX string]%] ;\n%
+%    macroValidObjectThere (outOperand%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
+  end foreach
+%  }
+}
+
+//---------------------------------------------------------------------------*
+
+void modifier_popGreatest (GALGAS_%!TYPE_NAME% * & ioResult,\n%
+  foreach ATTRIBUTE_LIST
+  do index IDX %                        GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string] %,\n%
+  end foreach
+%                        C_Compiler * inCompiler
+                        COMMA_LOCATION_ARGS) {
+%
+  foreach ATTRIBUTE_LIST
+  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  end foreach
+%  if (ioResult != NULL) {
+    GALGAS_%!TYPE_NAME%::insulate (ioResult COMMA_HERE) ;
+    const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    foreach ATTRIBUTE_LIST
+      do %NULL%
+      between %, %
+    end foreach %} ;
+    ioResult->removeGreatestObject (attributeArray, inCompiler COMMA_THERE) ;\n%
+  foreach ATTRIBUTE_LIST do index IDX
+%    outOperand%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributeArray [%![IDX string]%] ;\n%
+%    macroValidObjectThere (outOperand%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
+  end foreach
+%  }
+}
+
+//---------------------------------------------------------------------------*
+
+void dotAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult,
+                          const GALGAS_%!TYPE_NAME% * inOperand
+                          COMMA_LOCATION_ARGS) {
+  if (ioResult != NULL) {
+    GALGAS_%!TYPE_NAME%::insulate (ioResult COMMA_THERE) ;
+    ioResult->appendSortedList (inOperand) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::operator_concat (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                                            const GALGAS_%!TYPE_NAME% * inOperand2
+                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_%!TYPE_NAME% * result = NULL ;
+  if ((inOperand1 != NULL) && (inOperand2 != NULL)) {
+    result = GALGAS_%!TYPE_NAME%::constructor_emptySortedList (THERE) ;
+    result->appendSortedList (inOperand1) ;
+    result->appendSortedList (inOperand2) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+void method_smallest (const GALGAS_%!TYPE_NAME% * inList,\n%
+  foreach ATTRIBUTE_LIST
+  do index IDX %                      GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string] %,\n%
+  end foreach
+%                      C_Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
+%
+  foreach ATTRIBUTE_LIST
+  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  end foreach
+%  if (inList != NULL) {
+    const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    foreach ATTRIBUTE_LIST
+      do %NULL%
+      between %, %
+    end foreach %} ;
+    inList->smallestObjectAttributeList (attributeArray, inCompiler COMMA_THERE) ;
+%  foreach ATTRIBUTE_LIST do index IDX
+%    outOperand%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributeArray [%![IDX string]%] ;\n%
+%    macroValidObjectThere (outOperand%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
+  end foreach
+%  }
+}
+
+//---------------------------------------------------------------------------*
+
+void method_greatest (const GALGAS_%!TYPE_NAME% * inList,\n%
+  foreach ATTRIBUTE_LIST
+  do index IDX %                      GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string] %,\n%
+  end foreach
+%                      C_Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
+%
+  foreach ATTRIBUTE_LIST
+  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  end foreach
+%  if (inList != NULL) {
+    const AC_GALGAS__root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    foreach ATTRIBUTE_LIST
+      do %NULL%
+      between %, %
+    end foreach %} ;
+    inList->greatestObjectAttributeList (attributeArray, inCompiler COMMA_THERE) ;
+%  foreach ATTRIBUTE_LIST do index IDX
+%    outOperand%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributeArray [%![IDX string]%] ;\n%
+%    macroValidObjectThere (outOperand%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
+  end foreach
+%  }
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_NAME%::cEnumerator::cEnumerator (const GALGAS_%!TYPE_NAME% * inEnumeratedObject,
+           const bool inAscending) :
+AC_GALGAS_Enumerator (inEnumeratedObject, inAscending) {
+}
+
+%foreach ATTRIBUTE_LIST do index IDX
+%//---------------------------------------------------------------------------*
+
+const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_NAME%::cEnumerator::attribute_%![mAttributeName string]% (void) const {
+  const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * result = (const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) directAccess (%![IDX string]% COMMA_HERE) ;
+  macroValidObject (result, const GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;
+  return result ;
+}
+%end foreach
+%
+
