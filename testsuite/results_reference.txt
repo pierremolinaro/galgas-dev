@@ -1,3 +1,7 @@
+*************************************** GALGAS 2 Tests
+*** Test on list
+LOGGING 'n':<@uint:2>
+*** GALGAS 2 Test Done
 *************************************** begin of foreach instruction test 1
   before
   do 'a'

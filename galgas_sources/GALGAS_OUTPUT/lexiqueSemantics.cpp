@@ -3554,9 +3554,9 @@ isEqualToObject (const cSortedListElement * inOperand) const {
 PMSInt32 elementOf_GGS_tokenSortedlist::
 compareForSorting (const cSortedListElement * inOperand) const {
   const elementOf_GGS_tokenSortedlist * operand = (const elementOf_GGS_tokenSortedlist *) inOperand ;
-  PMSInt32 result = mLength.compareForSortedList (operand->mLength) ;
+  PMSInt32 result = mLength.genericObjectCompare (operand->mLength) ;
   if (result == 0) {
-    result = mName.compareForSortedList (operand->mName) ;
+    result = mName.genericObjectCompare (operand->mName) ;
   }
   return result ;
 }

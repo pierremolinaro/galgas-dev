@@ -72,6 +72,8 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"AC_GALGAS_Enumerable.h" ;
   out_fileList += !"AC_GALGAS_Array.cpp" ;
   out_fileList += !"AC_GALGAS_Array.h" ;
+  out_fileList += !"AC_GALGAS_SortedList.cpp" ;
+  out_fileList += !"AC_GALGAS_SortedList.h" ;
   out_fileList += !"AC_GALGAS__root.cpp" ;
   out_fileList += !"AC_GALGAS__root.h" ;
   out_fileList += !"GALGAS_binaryset.cpp" ;

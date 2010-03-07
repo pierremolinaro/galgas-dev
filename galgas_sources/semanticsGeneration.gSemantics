@@ -153,6 +153,17 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@string TYPE_NAME
     ?@attributeList ATTRIBUTE_LIST
   ;
+#--- Sorted List
+  template sortedlistTypeHeader "GALGAS_sortedlist.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@attributeList ATTRIBUTE_LIST
+  ;
+  template sortedlistTypeImplementation "GALGAS_sortedlist.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@attributeList ATTRIBUTE_LIST
+    ?@sortDescriptorList SORT_ATTRIBUTE_LIST
+  ;
+
 #--- enum
   template enumTypeHeader "GALGAS_enum.h.gTemplate"
     ?@string TYPE_NAME
@@ -230,11 +241,37 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclaration generateCode
-  ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
+  ?!@semanticContext ioSemanticContext
+  ?!@string ioHeaderString
+  ?!@string ioImplementationString
 :
-  message "@sortedListDeclaration generateCode\n" ;
+  @attributeList attributeList [emptyList] ;
+  @indexAttributeMap indexAttributeMap [emptyMap] ;
+  foreach mAttributeList do
+    @typeMapIndex attributeTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    attributeList +=
+      !attributeTypeIndex
+      !mAttributeName
+    ;
+    [!?indexAttributeMap insertKey !mAttributeName ![indexAttributeMap count]] ;
+  end foreach ;
+  @sortDescriptorList sortAttributeList [emptyList] ;
+  foreach mSortDescriptorList do
+    @uint attributeIndex ;
+    [indexAttributeMap searchKey !mSortedAttributeName ?attributeIndex] ;
+    sortAttributeList += !attributeIndex !mAscending ;
+  end foreach ;
+  @sortedListDeclaration tt := self ; # Bug in GALGAS 1
+  ioHeaderString .= [filewrapper typeGenerationTemplate.sortedlistTypeHeader
+    ![[tt mSortedListTypeName] identifierRepresentation]
+    !attributeList
+ ] ;
+  ioImplementationString .= [filewrapper typeGenerationTemplate.sortedlistTypeImplementation
+    ![[tt mSortedListTypeName] identifierRepresentation]
+    !attributeList
+    !sortAttributeList
+ ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -432,15 +432,24 @@ class @structGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @sortDescriptorList {
-  @lstring mAttributeName ;
-  @bool mAscending ;
+map @indexAttributeMap {
+  @uint mAttributeIndex ;
+  insert insertKey error message "the '%K' attribute has been already declared in %L" ;
+  search searchKey error message "the '%K' attribute is not declared" ;
 }
+
+#---------------------------------------------------------------------------*
+
+list @sortDescriptorList {
+  @uint mAttributeIndex ;
+  @bool mAscendingOrder ;
+}
+
 #---------------------------------------------------------------------------*
 
 class @sortedlistGalgasType extends @ACGalgasType {
-  @lstring mListTypeName feature nogetter ;
-  @attributeList mAttributeList feature nogetter ;
+  @lstring mListTypeName ;
+  @attributeList mAttributeList ;
   @sortDescriptorList mSortDescriptorList ;
 }
 
@@ -593,8 +602,11 @@ once constructBuiltinTypeMap ->@typeMap outTypeMap :
 #  lstringAttribute += !lstringIndex ![@lstring new !"mString" !here] ;
 #  [@typeMapIndex makeRegularIndex ![@lstring new !"bool" !here] !?outTypeMap ?lstringIndex] ;
 #  lstringAttribute += !lstringIndex ![@lstring new !"mBool" !here] ;
-#  @lstring lstringlist [new !"string_bool_list" !here] ;
-#  [!?outTypeMap insertKey !lstringlist ![@listGalgasType new !lstringlist !lstringAttribute]] ;
+#  @lstring lstringlist [new !"string_bool_sortedlist" !here] ;
+#  @sortDescriptorList sortList [emptyList] ;
+#  sortList += !1 !true ;
+#  sortList += !0 !false ;
+#  [!?outTypeMap insertKey !lstringlist ![@sortedlistGalgasType new !lstringlist !lstringAttribute !sortList]] ;
 end once ;
 
 #---------------------------------------------------------------------------*

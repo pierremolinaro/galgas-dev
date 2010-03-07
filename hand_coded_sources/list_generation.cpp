@@ -1438,14 +1438,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  PMSInt32 result = "
               << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
               << sortAttribute._mSortAttribute (HERE)
-              << ".compareForSortedList (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n" ;
+              << ".genericObjectCompare (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n" ;
     sortAttribute.next () ;
     while (sortAttribute.hasCurrentObject ()) {
       inCppFile << "  if (result == 0) {\n"
                    "    result = "
                 << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
                 << sortAttribute._mSortAttribute (HERE)
-                << ".compareForSortedList (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n"
+                << ".genericObjectCompare (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n"
                 << "  }\n" ;
       sortAttribute.next() ;
     }

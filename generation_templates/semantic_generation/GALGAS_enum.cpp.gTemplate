@@ -67,7 +67,7 @@ end foreach
 
 //---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_NAME%::compareForSortedList (%?COL_C%const AC_GALGAS__root * inOperand
+PMSInt32 GALGAS_%!TYPE_NAME%::genericObjectCompare (%?COL_C%const AC_GALGAS__root * inOperand
 %                                                   !COL_C%COMMA_LOCATION_ARGS) const {
   const GALGAS_%!TYPE_NAME% * operand = (const GALGAS_%!TYPE_NAME% *) inOperand ;
   macroValidObjectThere (operand, const GALGAS_%!TYPE_NAME%) ;

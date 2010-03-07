@@ -41,10 +41,12 @@ routine_test_dictionary (void) {
 
 static void
 routine_test_galgas2 (C_Compiler & /*inLexique */) {
+  printf ("*************************************** GALGAS 2 Tests\n") ;
+  printf ("*** Test on list\n") ;
   GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
   C_Object::retain (n COMMA_HERE) ;
-  //AC_GALGAS__root::log (n, "n") ;
-  const PMUInt32 TEST_SIZE = 5000 ;
+  AC_GALGAS__root::log (n, "n") ;
+  const PMUInt32 TEST_SIZE = 500 ;
 
   GALGAS_uintlist * aList = GALGAS_uintlist::constructor_emptyList (HERE) ;
   C_Object::retain (aList COMMA_HERE) ;
@@ -54,11 +56,55 @@ routine_test_galgas2 (C_Compiler & /*inLexique */) {
 
   macroReleaseObject (n) ;
   macroReleaseObject (aList) ;
+  /* printf ("*** Test on sorted list\n") ;
+  GALGAS_myList * r = GALGAS_myList::constructor_emptySortedList (HERE) ;
+  C_Object::retain (r COMMA_HERE) ;
+
+  GALGAS_string * s = GALGAS_string::constructor_new ("azerty" COMMA_HERE) ;
+  GALGAS_uint * u = GALGAS_uint::constructor_new (23 COMMA_HERE) ;
+  addAssign_operation (r, u, s) ;
+
+  s = GALGAS_string::constructor_new ("meuh" COMMA_HERE) ;
+  u = GALGAS_uint::constructor_new (45 COMMA_HERE) ;
+  addAssign_operation (r, u, s) ;
+
+  s = GALGAS_string::constructor_new ("oiiuyt" COMMA_HERE) ;
+  u = GALGAS_uint::constructor_new (89 COMMA_HERE) ;
+  addAssign_operation (r, u, s) ;
+
+  s = GALGAS_string::constructor_new ("zeze" COMMA_HERE) ;
+  u = GALGAS_uint::constructor_new (45 COMMA_HERE) ;
+  addAssign_operation (r, u, s) ;
+
+  s = GALGAS_string::constructor_new ("zaez" COMMA_HERE) ;
+  u = GALGAS_uint::constructor_new (89 COMMA_HERE) ;
+  addAssign_operation (r, u, s) ;
+
+  s = GALGAS_string::constructor_new ("nbnb" COMMA_HERE) ;
+  u = GALGAS_uint::constructor_new (23 COMMA_HERE) ;
+  addAssign_operation (r, u, s) ;
+
+  s = GALGAS_string::constructor_new ("prems" COMMA_HERE) ;
+  u = GALGAS_uint::constructor_new (18 COMMA_HERE) ;
+  addAssign_operation (r, u, s) ;
+
+  printf ("*** Enumeration\n") ;
+  GALGAS_myList::cEnumerator e (r, false) ;
+  while (e.hasCurrentObject ()) {
+    C_String s ;
+    e.attribute_mField1 ()->description (s, 0) ;
+    e.attribute_mField2 ()->description (s, 0) ;
+    printf ("%s\n", s.cString (HERE)) ;
+    e.next () ;
+  }
+  C_Object::release (r COMMA_HERE) ; */
+
+//--- End of tests
+  printf ("*** GALGAS 2 Test Done\n") ;
   C_Object::garbage () ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     C_Object::checkAllObjectsHaveBeenReleased () ;
   #endif
- // printf ("GALGAS 2 Test Done\n") ;
 }
 
 //---------------------------------------------------------------------------*

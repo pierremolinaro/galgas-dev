@@ -56,7 +56,7 @@ end foreach%} enum_%!TYPE_NAME% ;
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Compare (for sorted list)
-  public : virtual PMSInt32 compareForSortedList (const AC_GALGAS__root * inOperand
+  public : virtual PMSInt32 genericObjectCompare (const AC_GALGAS__root * inOperand
                                                    COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Introspection
