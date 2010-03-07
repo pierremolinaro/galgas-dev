@@ -17,18 +17,18 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics guiMetamodel :
+semantics guiTypesForAST :
 
 #---------------------------------------------------------------------------*
 
-list @guiSimpleAttributeList {
+list @guiSimpleAttributeListAST {
   @lstring mKey ;
   @lstring mValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @guiCompoundAttributeList {
+list @guiCompoundAttributeListAST {
   @lstring mKey ;
   @lstring mAttributeName ;
   @lstring mValue ;
@@ -36,28 +36,28 @@ list @guiCompoundAttributeList {
 
 #---------------------------------------------------------------------------*
 
-list @guiLabelList {
+list @guiLabelListAST {
   @lstringlist mTerminalList ;
   @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @withLexiqueList {
+list @withLexiqueListAST {
   @lstring mLexiqueFileName ;
-  @guiLabelList mLabels ;
-  @guiSimpleAttributeList mSimpleAttributes ;
-  @guiCompoundAttributeList mCompoundAttributes ;
+  @guiLabelListAST mLabels ;
+  @guiSimpleAttributeListAST mSimpleAttributes ;
+  @guiCompoundAttributeListAST mCompoundAttributes ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @guiComponentRoot {
+struct @guiComponentAST {
   @lstring mGUIName  ;
   @lstring mGUIClass ;
   @lstringlist mImportedOptionList ;
-  @guiSimpleAttributeList mGlobalSimpleAttributeList ;
-  @withLexiqueList mWithLexiqueList ;
+  @guiSimpleAttributeListAST mGlobalSimpleAttributeList ;
+  @withLexiqueListAST mWithLexiqueList ;
 }
 
 #---------------------------------------------------------------------------*

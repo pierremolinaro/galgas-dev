@@ -21,9 +21,9 @@ semantics semanticsMetamodel :
 import "instructionMetamodel.gSemantics" ;
 import "lexiqueMetamodel.gSemantics" ;
 import "optionMetamodel.gSemantics" ;
-import "syntaxMetamodel.gSemantics" ;
+import "lexiqueTypesForAST.gSemantics" ;
 
-import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
+import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
@@ -248,7 +248,7 @@ class @semanticsComponentRoot {
 #---------------------------------------------------------------------------*
 
 map @parsedLexiqueComponentMap {
-  @lexiqueComponentRoot mRoot ;
+  @lexiqueComponentAST mRoot ;
   insert insertKey error message "the '%K' lexique component has already been parsed" ;
   search searchKey error message "the '%K' lexique component symbol is not parsed" ;
 }

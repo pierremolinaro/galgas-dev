@@ -1,6 +1,6 @@
 semantics lexiqueSemantics :
-import "lexiqueMetamodel.gSemantics" ;
-import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
+import "lexiqueTypesForAST.gSemantics" ;
+import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -188,7 +188,7 @@ map @lexicalMessageMap {
 #---------------------------------------------------------------------------*
 
 list @lexicalRoutineFormalArgumentList {
-  @lexicalArgumentMode mLexicalFormalArgumentMode ;
+  @lexicalArgumentModeAST mLexicalFormalArgumentMode ;
   @lexicalTypeEnum mLexicalFormalArgumentType ;
   @string mArgumentNameForComment ;
  }

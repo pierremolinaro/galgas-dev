@@ -24,7 +24,7 @@ import "semanticsMetamodel.gSemantics" ;
 
 import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
-import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
+import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 import semantics lexiqueGeneration in "lexiqueGeneration.gSemantics" ;
 import semantics lexiqueCocoaGeneration in "lexiqueCocoaGeneration.gSemantics" ;
@@ -34,13 +34,13 @@ import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 #                     checkLexicalDefaultAction                             *
 #---------------------------------------------------------------------------*
 
-abstract method @lexicalSendDefaultAction checkLexicalDefaultAction
+abstract method @lexicalSendDefaultActionAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalSendTerminalByDefault checkLexicalDefaultAction
+override method @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mDefaultSentTerminal ?*] ;
@@ -48,7 +48,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalErrorByDefault checkLexicalDefaultAction
+override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   with xyz_ : !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mDefaultErrorMessageName do
@@ -60,13 +60,13 @@ end method ;
 #                       checkLexicalExpression                              *
 #---------------------------------------------------------------------------*
 
-abstract method @lexicalExpression checkLexicalExpression
+abstract method @lexicalExpressionAST checkLexicalExpression
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalOrExpression checkLexicalExpression
+override method @lexicalOrExpressionAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   [mLeftOperand checkLexicalExpression !? ioLexiqueAnalysisContext] ;
@@ -75,28 +75,28 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCharacterMatch checkLexicalExpression
+override method @lexicalCharacterMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCharacterSetMatch checkLexicalExpression
+override method @lexicalCharacterSetMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCharacterIntervalMatch checkLexicalExpression
+override method @lexicalCharacterIntervalMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalStringMatch checkLexicalExpression
+override method @lexicalStringMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string] ;
@@ -104,7 +104,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalStringNotMatch checkLexicalExpression
+override method @lexicalStringNotMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string] ;
@@ -117,14 +117,14 @@ end method ;
 #                       checkLexicalFunctionCallArgument                    *
 #---------------------------------------------------------------------------*
 
-abstract method @lexicalRoutineOrFunctionFormalInputArgument checkLexicalFunctionCallArgument
+abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalAttributeInputArgument checkLexicalFunctionCallArgument
+override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -146,7 +146,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCharacterInputArgument checkLexicalFunctionCallArgument
+override method @lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -161,7 +161,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalUnsignedInputArgument checkLexicalFunctionCallArgument
+override method @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -176,7 +176,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCurrentCharacterInputArgument checkLexicalFunctionCallArgument
+override method @lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -191,7 +191,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalFunctionInputArgument checkLexicalFunctionCallArgument
+override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -238,14 +238,14 @@ end method ;
 #                       checkLexicalRoutineCallArgument                     *
 #---------------------------------------------------------------------------*
 
-abstract method @lexicalRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
+abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalAttributeInputArgument checkLexicalRoutineCallArgument
+override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -267,7 +267,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCharacterInputArgument checkLexicalRoutineCallArgument
+override method @lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -282,7 +282,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalUnsignedInputArgument checkLexicalRoutineCallArgument
+override method @lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -297,7 +297,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCurrentCharacterInputArgument checkLexicalRoutineCallArgument
+override method @lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -312,7 +312,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalFunctionInputArgument checkLexicalRoutineCallArgument
+override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -359,17 +359,17 @@ end method ;
 #                       checkLexicalRoutineCallArgument                     *
 #---------------------------------------------------------------------------*
 
-abstract method @abstractLexicalRoutineActualArgument checkLexicalRoutineCallArgument
+abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
-  ?@lexicalArgumentMode unused inLexicalRoutineFormalArgumentMode
+  ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalAttributeInputOutputArgument checkLexicalRoutineCallArgument
+override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?@lexicalArgumentMode inLexicalRoutineFormalArgumentMode
+  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
 #--- Check attribute definition
@@ -387,16 +387,16 @@ override method @lexicalAttributeInputOutputArgument checkLexicalRoutineCallArgu
     . " type" ;
   end if ;
 #--- Passing mode check
-  if inLexicalRoutineFormalArgumentMode != [@lexicalArgumentMode lexicalInputOutputMode] then
+  if inLexicalRoutineFormalArgumentMode != [@lexicalArgumentModeAST lexicalInputOutputMode] then
     error mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode" ;
   end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalFormalInputArgument checkLexicalRoutineCallArgument
+override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?@lexicalArgumentMode inLexicalRoutineFormalArgumentMode
+  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
 #--- Check attribute definition
@@ -406,7 +406,7 @@ override method @lexicalFormalInputArgument checkLexicalRoutineCallArgument
     !inLexicalRoutineFormalArgumentType
   ] ;
 #--- Passing mode check
-  if inLexicalRoutineFormalArgumentMode != [@lexicalArgumentMode lexicalInputMode] then
+  if inLexicalRoutineFormalArgumentMode != [@lexicalArgumentModeAST lexicalInputMode] then
     error mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode" ;
   end if ;
 end method ;
@@ -415,14 +415,14 @@ end method ;
 #                       checkLexicalInstruction                             *
 #---------------------------------------------------------------------------*
 
-abstract method @lexicalInstruction checkLexicalInstruction
+abstract method @lexicalInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalStructuredSendInstruction checkLexicalInstruction
+override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
@@ -437,7 +437,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalSimpleSendInstruction checkLexicalInstruction
+override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
@@ -446,7 +446,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalRepeatInstruction checkLexicalInstruction
+override method @lexicalRepeatInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap
 :
@@ -465,7 +465,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalSelectInstruction checkLexicalInstruction
+override method @lexicalSelectInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap  ioTagMap
 :
@@ -484,7 +484,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalRoutineInstruction checkLexicalInstruction
+override method @lexicalRoutineInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
@@ -534,7 +534,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalLogInstruction checkLexicalInstruction
+override method @lexicalLogInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
@@ -542,7 +542,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalRewindInstruction checkLexicalInstruction
+override method @lexicalRewindInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap
 :
@@ -552,7 +552,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalDropInstruction checkLexicalInstruction
+override method @lexicalDropInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
@@ -561,7 +561,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalTagInstruction checkLexicalInstruction
+override method @lexicalTagInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap
 :
@@ -570,7 +570,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalErrorInstruction checkLexicalInstruction
+override method @lexicalErrorInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
@@ -581,7 +581,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalWarningInstruction checkLexicalInstruction
+override method @lexicalWarningInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
@@ -594,13 +594,13 @@ end method ;
 #                         compileLexiqueComponent                           *
 #---------------------------------------------------------------------------*
 
-abstract method @abstractLexicalRule checkLexicalRule
+abstract method @abstractLexicalRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalImplicitRule checkLexicalRule
+override method @lexicalImplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?* ?*] ;
@@ -608,7 +608,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalExplicitRule checkLexicalRule
+override method @lexicalExplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   [mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext] ;
@@ -627,11 +627,11 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
   template headerZone2 "lexique_header_template_zone_2.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
+    ?@lexiqueComponentAST LEXIQUE_COMPONENT_ROOT
   ;
   template headerZone3 "lexique_header_template_zone_3.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
-    ?@lexicalListDeclarationList DELIMITOR_LIST_LIST
+    ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
   ;
   template implementationZone2 "lexique_implementation.cpp.gTemplate"
@@ -641,9 +641,9 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@terminalList TERMINAL_LIST
     ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
     ?@stringset STRINGS_IN_EXPLICIT_RULES
-    ?@lexicalRuleList LEXICAL_RULE_LIST
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
+    ?@lexiqueComponentAST LEXIQUE_COMPONENT_ROOT
   ;
   template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.gTemplate"
     ?@string LEXIQUE_CLASS_NAME
@@ -659,9 +659,9 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@lexicalMessageMap unused LEXICAL_MESSAGE_MAP
     ?@terminalList unused TERMINAL_LIST
     ?@stringset unused STRINGS_IN_EXPLICIT_RULES
-    ?@lexicalRuleList LEXICAL_RULE_LIST
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
+    ?@lexiqueComponentAST LEXIQUE_COMPONENT_ROOT
   ;
 }
 
@@ -672,7 +672,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
 routine parseLexiqueComponent
   ??@lstring inSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct
-  !@lexiqueComponentRoot outLexiqueComponentRoot
+  !@lexiqueComponentAST outLexiqueComponentRoot
 :
   @lstring key [new ![[inSourceFile lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
   if [[ioParsedComponentStruct mParsedLexiqueComponentMap] hasKey ! [key string]] then
@@ -692,7 +692,7 @@ routine compileLexiqueComponent
   ??@string inOutputDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  @lexiqueComponentRoot lexiqueComponentRoot ;
+  @lexiqueComponentAST lexiqueComponentRoot ;
   parseLexiqueComponent
     !inSourceFile
     !?ioParsedComponentStruct

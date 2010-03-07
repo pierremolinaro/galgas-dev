@@ -20,11 +20,11 @@
 semantics guiCompilation :
 import "semanticsMetamodel.gSemantics" ;
 import "semanticsSemantics.gSemantics" ;
-import "guiMetamodel.gSemantics" ;
+import "guiTypesForAST.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
 import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
-import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
+import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics optionCompilation in "optionCompilation.gSemantics" ;
 import grammar guiGrammar in "guiGrammar.gGrammar" ;
@@ -67,7 +67,7 @@ list @importedLexiqueList {
   @string mBlockComment ;
   @string mTitle ;
   @textMacroList mTextMacroList ;
-  @guiLabelList mLabels ;
+  @guiLabelListAST mLabels ;
 }
 
 #---------------------------------------------------------------------------*
@@ -102,7 +102,7 @@ routine compileGuiComponent
   ??@string inOutputDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  @guiComponentRoot guiComponentRoot ;
+  @guiComponentAST guiComponentRoot ;
   grammar guiGrammar in inSourceFile ?guiComponentRoot ;
 #--- Check component name
   @lstring componentName := [guiComponentRoot mGUIName] ;
@@ -159,7 +159,7 @@ routine compileGuiComponent
 #--- 'with lexique' construct analysis
   foreach [guiComponentRoot mWithLexiqueList] do
   #--- Check lexique
-    @lexiqueComponentRoot lexiqueComponentRoot ;
+    @lexiqueComponentAST lexiqueComponentRoot ;
     if [mLexiqueFileName pathExtension] != "gLexique" then
       error mLexiqueFileName:"the file extension for a lexique component should be 'gLexique'" -> lexiqueComponentRoot ;
     else

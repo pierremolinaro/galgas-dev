@@ -20,7 +20,7 @@
 semantics lexiqueGeneration :
 import "predefinedLexicalActions.gSemantics" ;
 
-import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
+import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
 import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
@@ -29,14 +29,14 @@ import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 #   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalExpression generateConditionCode
+abstract reader @lexicalExpressionAST generateConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalOrExpression generateConditionCode
+override reader @lexicalOrExpressionAST generateConditionCode
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -47,7 +47,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterIntervalMatch generateConditionCode
+override reader @lexicalCharacterIntervalMatchAST generateConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -61,7 +61,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalStringMatch generateConditionCode
+override reader @lexicalStringMatchAST generateConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -73,7 +73,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalStringNotMatch generateConditionCode
+override reader @lexicalStringNotMatchAST generateConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -88,7 +88,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterMatch generateConditionCode
+override reader @lexicalCharacterMatchAST generateConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -99,7 +99,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterSetMatch generateConditionCode
+override reader @lexicalCharacterSetMatchAST generateConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -112,13 +112,13 @@ end reader ;
 #     R O U T I N E    O R    F U N C T I O N    A R G U M E N T            *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument
+abstract reader @lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalAttributeInputArgument generateRoutineOrFunctionArgument
+override reader @lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := "token.mLexicalAttribute_" . [mAttributeName identifierRepresentation] ;
@@ -126,7 +126,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterInputArgument generateRoutineOrFunctionArgument
+override reader @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := [[mCharacter char] utf32CharConstantRepresentation] ;
@@ -134,7 +134,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalUnsignedInputArgument generateRoutineOrFunctionArgument
+override reader @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := [[mUnsigned uint] string] ;
@@ -142,7 +142,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCurrentCharacterInputArgument generateRoutineOrFunctionArgument
+override reader @lexicalCurrentCharacterInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := "previousChar ()" ;
@@ -150,7 +150,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalFunctionInputArgument generateRoutineOrFunctionArgument
+override reader @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := "::scanner_function_" . mFunctionName . " (*this" ;
@@ -164,13 +164,13 @@ end reader ;
 #                   R O U T I N E    A R G U M E N T                        *
 #---------------------------------------------------------------------------*
 
-abstract reader @abstractLexicalRoutineActualArgument generateRoutineArgument
+abstract reader @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalAttributeInputOutputArgument generateRoutineArgument
+override reader @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := "token.mLexicalAttribute_" . [mAttributeName identifierRepresentation] ;
@@ -178,7 +178,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalFormalInputArgument generateRoutineArgument
+override reader @lexicalFormalInputArgumentAST generateRoutineArgument
   -> @string outGeneratedCode
 :
   outGeneratedCode := [mRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument] ;
@@ -188,14 +188,14 @@ end reader ;
 #  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T         *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalSendDefaultAction generateDefaultSendCode
+abstract reader @lexicalSendDefaultActionAST generateDefaultSendCode
   ?@string inScannerClassName
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalSendTerminalByDefault generateDefaultSendCode
+override reader @lexicalSendTerminalByDefaultAST generateDefaultSendCode
   ?@string unused inScannerClassName
   -> @string outGeneratedCode
 :
@@ -204,7 +204,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalErrorByDefault generateDefaultSendCode
+override reader @lexicalErrorByDefaultAST generateDefaultSendCode
   ?@string unused inScannerClassName
   -> @string outGeneratedCode
 :
@@ -215,7 +215,7 @@ end reader ;
 #  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalInstruction generateInstructionCode
+abstract reader @lexicalInstructionAST generateInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -223,7 +223,7 @@ abstract reader @lexicalInstruction generateInstructionCode
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalStructuredSendInstruction generateInstructionCode
+override reader @lexicalStructuredSendInstructionAST generateInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -242,7 +242,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalSimpleSendInstruction generateInstructionCode
+override reader @lexicalSimpleSendInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -253,7 +253,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalRepeatInstruction generateInstructionCode
+override reader @lexicalRepeatInstructionAST generateInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -288,7 +288,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalSelectInstruction generateInstructionCode
+override reader @lexicalSelectInstructionAST generateInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -322,7 +322,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalRoutineInstruction generateInstructionCode
+override reader @lexicalRoutineInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -339,7 +339,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalDropInstruction generateInstructionCode
+override reader @lexicalDropInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -349,7 +349,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalErrorInstruction generateInstructionCode
+override reader @lexicalErrorInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -359,7 +359,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalWarningInstruction generateInstructionCode
+override reader @lexicalWarningInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -369,7 +369,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalTagInstruction generateInstructionCode
+override reader @lexicalTagInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -379,7 +379,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalRewindInstruction generateInstructionCode
+override reader @lexicalRewindInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -391,7 +391,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalLogInstruction generateInstructionCode
+override reader @lexicalLogInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -403,7 +403,7 @@ end reader ;
 #        L E X I C A L    R U L E    C O D E    G E N E R A T I O N         *
 #---------------------------------------------------------------------------*
 
-abstract reader @abstractLexicalRule generateCode
+abstract reader @abstractLexicalRuleAST generateCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -411,7 +411,7 @@ abstract reader @abstractLexicalRule generateCode
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalImplicitRule generateCode
+override reader @lexicalImplicitRuleAST generateCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
@@ -433,7 +433,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalExplicitRule generateCode
+override reader @lexicalExplicitRuleAST generateCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
