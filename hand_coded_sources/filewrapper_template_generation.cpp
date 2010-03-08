@@ -116,6 +116,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   ioCppFile << ") {\n"
                "  C_String result ;\n" ;
+  if (mUsesColumnMarker.boolValue ()) {
+    ioCppFile <<  "  PMUInt32 columnMarker = 0 ;\n" ;
+  }
   current.rewind () ;
   if (current.hasCurrentObject ()) {
     ioCppFile << "  const bool isBuilt = " ;
@@ -275,7 +278,7 @@ isUsingLexiqueArgument (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cPtr_templateInstructionConstant
+  #pragma mark cPtr_templateInstructionColumnString
 #endif
 
 //---------------------------------------------------------------------------*
@@ -297,6 +300,60 @@ isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
 //---------------------------------------------------------------------------*
 
 bool cPtr_templateInstructionColumnString::
+isUsingLexiqueArgument (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_templateInstructionGetColumnLocation
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_templateInstructionGetColumnLocation::
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "columnMarker = result.currentColumn () ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionGetColumnLocation::
+isConstantUsed (const GGS_typeCplusPlusName & /* inCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionGetColumnLocation::
+isUsingLexiqueArgument (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_templateInstructionGotoColumnLocation
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_templateInstructionGotoColumnLocation::
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "result.appendSpacesUntilColumn (columnMarker) ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionGotoColumnLocation::
+isConstantUsed (const GGS_typeCplusPlusName & /* inCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionGotoColumnLocation::
 isUsingLexiqueArgument (void) const {
   return false ;
 }

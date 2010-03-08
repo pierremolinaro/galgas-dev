@@ -5514,6 +5514,16 @@ class @templateInstructionColumnString extends @templateInstruction {
 
 #---------------------------------------------------------------------------*
 
+class @templateInstructionGetColumnLocation extends @templateInstruction {
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionGotoColumnLocation extends @templateInstruction {
+}
+
+#---------------------------------------------------------------------------*
+
 class @templateInstructionForeach extends @templateInstruction {
   @bool mIsAscending feature nogetter ;
   @string mCppExpressionTypeName feature nogetter ;
