@@ -36,7 +36,7 @@ nonterminal <grammar_start_symbol_label>
 
 nonterminal <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 ;
 
 #---------------------------------------------------------------------------*
@@ -138,7 +138,7 @@ rule <grammar_start_symbol_label>
   ?!@nonTerminalLabelList ioLabelList
 :
   @stringset argumentNameSet [emptySet] ;
-  @formalParameterList mFormalParameterList [emptyList] ;
+  @formalParameterListAST mFormalParameterList [emptyList] ;
   repeat
   while
     @lstring argumentName ;
@@ -155,7 +155,7 @@ end rule ;
 
 rule <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
   $?$ ;
   $type_name$ ?@lstring mTypeName ;
@@ -165,7 +165,7 @@ rule <label_formal_parameter>
   end select ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=
-    ![@formalArgumentPassingMode argumentIn]
+    ![@formalArgumentPassingModeAST argumentIn]
     !mTypeName
     !outArgumentName
     !false
@@ -176,7 +176,7 @@ end rule ;
 
 rule <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
   $??$ ;
   $type_name$ ?@lstring mTypeName ;
@@ -186,7 +186,7 @@ rule <label_formal_parameter>
   end select ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=
-    ![@formalArgumentPassingMode argumentConstantIn]
+    ![@formalArgumentPassingModeAST argumentConstantIn]
     !mTypeName
     !outArgumentName
     !false
@@ -197,7 +197,7 @@ end rule ;
 
 rule <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
   $?!$ ;
   $type_name$ ?@lstring mTypeName ;
@@ -207,7 +207,7 @@ rule <label_formal_parameter>
   end select ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=
-    ![@formalArgumentPassingMode argumentInOut]
+    ![@formalArgumentPassingModeAST argumentInOut]
     !mTypeName
     !outArgumentName
     !false
@@ -218,13 +218,13 @@ end rule ;
 
 rule <label_formal_parameter>
   !@lstring outArgumentName
-  ?!@formalParameterList ioStartSymbolLabelFormalParameterList
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
   $!$ ;
   $type_name$ ?@lstring mTypeName ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=
-    ![@formalArgumentPassingMode argumentOut]
+    ![@formalArgumentPassingModeAST argumentOut]
     !mTypeName
     !outArgumentName
     !false

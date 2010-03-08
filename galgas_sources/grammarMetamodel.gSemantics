@@ -18,13 +18,13 @@
 #---------------------------------------------------------------------------*
 
 semantics grammarMetamodel :
-import "semanticsMetamodel.gSemantics" ;
-import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+import "syntaxMetamodel.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
 list @startSymbolLabelFormalParameterList {
-  @formalArgumentPassingMode mFormalAgumentPassingMode ;
+  @formalArgumentPassingModeAST mFormalAgumentPassingMode ;
   @lstring mTypeName ;
   @lstring mArgumentName ;
 }

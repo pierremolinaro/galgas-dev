@@ -17,14 +17,11 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax semanticsModelBuilder :
+syntax semanticsComponent :
 with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
-import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
-import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -33,11 +30,11 @@ import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 #------------------------------------------------------------------------------*
 
 nonterminal <semantics_component_start_symbol>
-  !@semanticsComponentRoot outSemanticsComponentRoot
+  !@semanticsComponentAST outSemanticsComponentRoot
 ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 ;
 
 nonterminal <obsolete_declaration> ;
@@ -45,7 +42,7 @@ nonterminal <obsolete_declaration> ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_component_start_symbol>
-  !@semanticsComponentRoot outSemanticsComponentRoot
+  !@semanticsComponentAST outSemanticsComponentRoot
 :
   $semantics$ ;
 #--- Semantics Component Name
@@ -53,14 +50,14 @@ rule <semantics_component_start_symbol>
   $:$ ;
 #--- Loop on import and semantics declarations
   @lstringlist mImportedComponentFileNameList [emptyList] ;
-  @semanticDeclarationStruct mSemanticDeclarations [new
-    ![@semanticDeclarationList emptyList]
-    ![@abstractCategoryMethodListMap emptyMap]
-    ![@categoryMethodListMap emptyMap]
-    ![@overridingCategoryMethodListMap emptyMap]
-    ![@abstractCategoryReaderListMap emptyMap]
-    ![@categoryReaderListMap emptyMap]
-    ![@overridingCategoryReaderListMap emptyMap]
+  @semanticDeclarationStructAST mSemanticDeclarations [new
+    ![@semanticDeclarationListAST emptyList]
+    ![@abstractMultiMethodListMapAST emptyMap]
+    ![@multiMethodListMapAST emptyMap]
+    ![@overridingMultiMethodListMapAST emptyMap]
+    ![@abstractMultiReaderListMapAST emptyMap]
+    ![@multiReaderListMapAST emptyMap]
+    ![@overridingMultiReaderListMapAST emptyMap]
   ] ;
   repeat
   while
@@ -95,7 +92,7 @@ rule <semantics_component_start_symbol>
   @location endOfSourceFile := here ;
   $semantics$ ;
   $;$ ;
-  outSemanticsComponentRoot := [@semanticsComponentRoot new
+  outSemanticsComponentRoot := [@semanticsComponentAST new
     !mSemanticsComponentName
     !mImportedComponentFileNameList
     !mSemanticDeclarations

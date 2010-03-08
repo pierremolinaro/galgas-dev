@@ -25,9 +25,8 @@ semantics galgas_routines :
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
   import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
-  import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
-  import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
-  import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+  import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
+  import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
   import semantics programMetamodel in "programMetamodel.gSemantics" ;
   import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
@@ -62,7 +61,7 @@ routine checkCategoryMethodDefinitionForClass
   ??@string inClassName
   ??@lstring inAbstractCategoryMethodName
   ??@descendantClassListMap inDescendantClassListMap
-  ??@overridingCategoryMethodListMap inOverridingCategoryMethodListMap
+  ??@overridingMultiMethodListMapAST inOverridingCategoryMethodListMap
 :
   @classIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
@@ -74,7 +73,7 @@ routine checkCategoryMethodDefinitionForClass
     else
       error descendantClassName: "the '@" . descendantClassName . "' type should be a class" -> isAbstract ;
     end cast ;
-    @overridingCategoryMethodList overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
+    @overridingMultiMethodListAST overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
     @bool found := false ;
     foreach overridingMethods while not found do
       found := [inAbstractCategoryMethodName string] == [mOverridingCategoryMethodName string] ;
@@ -104,7 +103,7 @@ routine checkCategoryReaderDefinitionForClass
   ??@string inClassName
   ??@lstring inAbstractCategoryReaderName
   ??@descendantClassListMap inDescendantClassListMap
-  ??@overridingCategoryReaderListMap inOverridingCategoryReaderListMap
+  ??@overridingMultiReaderListMapAST inOverridingCategoryReaderListMap
 :
   @classIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
@@ -116,7 +115,7 @@ routine checkCategoryReaderDefinitionForClass
     else
       error descendantClassName: "the '@" . descendantClassName . "' type should be a class" -> isAbstract ;
     end cast ;
-    @overridingCategoryReaderList overridingReaders := [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]] ;
+    @overridingMultiReaderListAST overridingReaders := [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]] ;
     @bool found := false ;
     foreach overridingReaders while not found do
       found := [inAbstractCategoryReaderName string] == [mOverridingCategoryReaderName string] ;
@@ -146,7 +145,7 @@ routine performProjectGlobalCheckings
   ??@location inEndOfSourceFile
 :
 #--- Build all declaration list
-  @semanticDeclarationList semanticDeclarationList [emptyList] ;
+  @semanticDeclarationListAST semanticDeclarationList [emptyList] ;
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
     semanticDeclarationList .= [[mRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   end foreach ;
@@ -156,9 +155,9 @@ routine performProjectGlobalCheckings
 #--- Check that for every abstract category method, an overridden category method
 #    defined in an concrete subclass
   if [@uint errorCount] == 0 then
-    @abstractCategoryMethodListMap abstractCategoryMethodListMap [emptyMap] ;
-    @categoryMethodListMap categoryMethodListMap [emptyMap] ;
-    @overridingCategoryMethodListMap overridingCategoryMethodListMap [emptyMap];
+    @abstractMultiMethodListMapAST abstractCategoryMethodListMap [emptyMap] ;
+    @multiMethodListMapAST categoryMethodListMap [emptyMap] ;
+    @overridingMultiMethodListMapAST overridingCategoryMethodListMap [emptyMap];
     foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
       abstractCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryMethodListMap] ;
       overridingCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryMethodListMap] ;
@@ -179,9 +178,9 @@ routine performProjectGlobalCheckings
 #--- Check that for every abstract category reader, an overridden category reader
 #    defined in an concrete subclass
   if [@uint errorCount] == 0 then
-    @abstractCategoryReaderListMap abstractCategoryReaderListMap [emptyMap] ;
-    @categoryReaderListMap categoryReaderListMap [emptyMap] ;
-    @overridingCategoryReaderListMap overridingCategoryReaderListMap [emptyMap];
+    @abstractMultiReaderListMapAST abstractCategoryReaderListMap [emptyMap] ;
+    @multiReaderListMapAST categoryReaderListMap [emptyMap] ;
+    @overridingMultiReaderListMapAST overridingCategoryReaderListMap [emptyMap];
     foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
       abstractCategoryReaderListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryReaderListMap] ;
       overridingCategoryReaderListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryReaderListMap] ;

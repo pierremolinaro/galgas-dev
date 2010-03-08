@@ -24,7 +24,7 @@ class cPtr_formalParameter : public cPtr__AC_galgas_class {
 //--- END OF USER ZONE 2
 
 //--- Constructor
-  public : cPtr_formalParameter (const GGS_formalArgumentPassingMode& ,
+  public : cPtr_formalParameter (const GGS_formalArgumentPassingModeAST& ,
                                 const GGS_lstring & ,
                                 const GGS_lstring & ,
                                 const GGS_bool& 

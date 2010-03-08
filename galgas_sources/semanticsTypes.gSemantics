@@ -18,8 +18,8 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsTypes :
-import "parameterArgumentMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import "semanticsTypesForAST.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -88,7 +88,7 @@ list @typeList {
 list @signature {
   @typeMapIndex mAttributeTypeIndex ;
   @lstring mFormalArgumentName ;
-  @formalArgumentPassingMode mFormalArgumentPassingMode ;
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
 }
 
 #---------------------------------------------------------------------------*

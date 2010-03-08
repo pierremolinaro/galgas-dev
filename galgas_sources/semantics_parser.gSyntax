@@ -1269,7 +1269,7 @@ rule <semantics_declaration>
   @L_EXsignature returnedTypes [emptyList] ;
   $->$ ;
 #--- Parse result
-  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -1364,7 +1364,7 @@ label importSemantics
 #---- Function return value -----------------------------------------
   @L_EXsignature returnedTypes [emptyList] ;
   $->$ ;
-  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -1441,7 +1441,7 @@ rule <semantics_declaration>
   @L_EXsignature returnedTypes [emptyList] ;
   $->$ ;
 #--- Parse result
-  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -1526,7 +1526,7 @@ label importSemantics
 #---- Function return value -----------------------------------------
   @L_EXsignature returnedTypes [emptyList] ;
   $->$ ;
-  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -2630,7 +2630,7 @@ rule <formal_arguments_list>
   repeat
   while
     $??$ ; # '??'  : constant input formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2657,7 +2657,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $?$ ; # '?'  : input formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2684,7 +2684,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $?!$ ; # '?!' : input/output formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentInOut] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2710,7 +2710,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $!$ ; # '!' : output formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentOut] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2735,7 +2735,7 @@ label importGrammarForSemantics
   repeat
   while
     $??$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2747,7 +2747,7 @@ label importGrammarForSemantics
     end select ;
   while
     $?$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2759,7 +2759,7 @@ label importGrammarForSemantics
     end select ;
   while
     $?!$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentInOut] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2771,7 +2771,7 @@ label importGrammarForSemantics
     end select ;
   while
     $!$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentOut] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2797,7 +2797,7 @@ rule <formal_input_arguments_list>
   repeat
   while
     $??$ ; # '??'  : constant input formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2824,7 +2824,7 @@ rule <formal_input_arguments_list>
     end select ;
   while
     $?$ ; # '?'  : input formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2857,7 +2857,7 @@ label importGrammarForSemantics
   repeat
   while
     $??$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2869,7 +2869,7 @@ label importGrammarForSemantics
     end select ;
   while
     $?$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
+    @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -5983,8 +5983,8 @@ rule <semantics_declaration>
     ;
   #--- Build insert and search method map
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @formalArgumentPassingMode inPassingMode [argumentIn] ;
-    @formalArgumentPassingMode outPassingMode [argumentOut] ;
+    @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
+    @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodList do
@@ -6075,8 +6075,8 @@ rule <semantics_declaration>
     @insertOrSearchMethodList removeMethodList [emptyList] ;
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
-    @formalArgumentPassingMode inPassingMode [argumentIn] ;
-    @formalArgumentPassingMode outPassingMode [argumentOut] ;
+    @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
+    @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
@@ -6302,8 +6302,8 @@ label importSemantics
     ;
   #--- Build insert and search method map
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @formalArgumentPassingMode inPassingMode [argumentIn] ;
-    @formalArgumentPassingMode outPassingMode [argumentOut] ;
+    @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
+    @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodList do
@@ -6381,8 +6381,8 @@ label importSemantics
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
-    @formalArgumentPassingMode inPassingMode [argumentIn] ;
-    @formalArgumentPassingMode outPassingMode [argumentOut] ;
+    @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
+    @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
@@ -7402,8 +7402,8 @@ rule <semantics_declaration>
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques do
-      extractSignature += !mAttributType ![@formalArgumentPassingMode argumentOut] ;
-      inputSignature += !mAttributType ![@formalArgumentPassingMode argumentIn] ;
+      extractSignature += !mAttributType ![@formalArgumentPassingModeAST argumentOut] ;
+      inputSignature += !mAttributType ![@formalArgumentPassingModeAST argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7457,8 +7457,8 @@ label importSemantics
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques do
-      extractSignature += !mAttributType ![@formalArgumentPassingMode argumentOut] ;
-      inputSignature += !mAttributType ![@formalArgumentPassingMode argumentIn] ;
+      extractSignature += !mAttributType ![@formalArgumentPassingModeAST argumentOut] ;
+      inputSignature += !mAttributType ![@formalArgumentPassingModeAST argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7516,7 +7516,7 @@ rule <semantics_declaration>
     ;
     @L_EXsignature extractSignature [emptyList] ;
     foreach listeTousAttributsSemantiques do
-      extractSignature += !mAttributType ![@formalArgumentPassingMode argumentOut] ;
+      extractSignature += !mAttributType ![@formalArgumentPassingModeAST argumentOut] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -7597,7 +7597,7 @@ label importSemantics
     ;
     @L_EXsignature extractSignature [emptyList] ;
     foreach listeTousAttributsSemantiques do
-      extractSignature += !mAttributType ![@formalArgumentPassingMode argumentOut] ;
+      extractSignature += !mAttributType ![@formalArgumentPassingModeAST argumentOut] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -8015,7 +8015,7 @@ rule <semantics_declaration>
       @lstring parameterName ;
       $identifier$ ? parameterName ;
       @typeCplusPlusName cppName := [@typeAutomaticName new ![parameterName location] ![parameterName string]] ;
-      templateArgumentTypesList += !type_semantique ![@formalArgumentPassingMode argumentConstantIn] !cppName !true !parameterName ;
+      templateArgumentTypesList += !type_semantique ![@formalArgumentPassingModeAST argumentConstantIn] !cppName !true !parameterName ;
       if parameterIsUsed then
         [!?templateVariableMap insertKey !parameterName !type_semantique !cppName] ;
       else
@@ -8652,14 +8652,14 @@ rule <semantics_declaration_begining_by_extern>
   $->$ ;
 #--- Check all arguments are input or const input
   foreach listeTypeEtNomsArguments do
-    if mFormalArgumentPassingMode == [@formalArgumentPassingMode argumentOut] then
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
     end if ;
   end foreach ;
 #--- Parse result
-  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>
@@ -8706,14 +8706,14 @@ label importSemantics
   $->$ ;
 #--- Check all arguments are input or const input
   foreach listeTypeEtNomsArguments do
-    if mFormalArgumentPassingMode == [@formalArgumentPassingMode argumentOut] then
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
     end if ;
   end foreach ;
 #--- Parse result
-  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+  @formalArgumentPassingModeAST passingMode := [@formalArgumentPassingModeAST argumentOut] ;
   @AC_galgasType returnedType ;
   @lstring galgasTypeName ;
   <formal_argument_type>

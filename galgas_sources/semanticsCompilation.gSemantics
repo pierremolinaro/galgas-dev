@@ -21,8 +21,8 @@ semantics semanticsCompilation :
   import semantics semanticsGeneration in "semanticsGeneration.gSemantics" ;
   import "semanticsSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
-  import "semanticsMetamodel.gSemantics" ;
-  import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+  import "allASTTypes.gSemantics" ;
+  import semantics allASTTypes in "allASTTypes.gSemantics" ;
 
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
 
@@ -32,14 +32,14 @@ semantics semanticsCompilation :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclaration enterType
+abstract method @semanticDeclarationAST enterType
   ?!@semanticContext unused ioSemanticContext
 ;
 
 #---------------------------------------------------------------------------*
 
 override
-method @mapDeclaration enterType
+method @mapDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -90,7 +90,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapindexDeclaration enterType
+override method @mapindexDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle map type name
@@ -107,7 +107,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @enumDeclaration enterType
+override method @enumDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -152,7 +152,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @filewrapperDeclaration enterType
+override method @filewrapperDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
   @filewrapperTemplateMap filewrapperTemplateMap [emptyMap] ;
@@ -164,7 +164,7 @@ override method @filewrapperDeclaration enterType
       templateSignature +=
         !parameterTypeIndex
         !mFormalParameterName
-        ![@formalArgumentPassingMode argumentIn]
+        ![@formalArgumentPassingModeAST argumentIn]
       ;
     end foreach ;
     [!?filewrapperTemplateMap insertKey
@@ -183,7 +183,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclaration enterType
+override method @sortedListDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -203,7 +203,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @structDeclaration enterType
+override method @structDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -223,7 +223,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listDeclaration enterType
+override method @listDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -243,7 +243,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @classDeclaration enterType
+override method @classDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle super class
@@ -279,7 +279,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externRoutineDeclaration enterType # Handles also routine declaration
+override method @externRoutineDeclarationAST enterType # Handles also routine declaration
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
@@ -295,7 +295,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externFunctionDeclaration enterType # Handles also function declaration
+override method @externFunctionDeclarationAST enterType # Handles also function declaration
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
@@ -314,7 +314,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @onceFunctionDeclaration enterType
+override method @lazyFunctionDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Result type
@@ -326,7 +326,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listmapDeclaration enterType
+override method @listmapDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
   @typeMapIndex associatedListTypeIndex ;
@@ -342,7 +342,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 routine buildSemanticContext
-  ??@semanticDeclarationList inSemanticDeclarationList
+  ??@semanticDeclarationListAST inSemanticDeclarationList
   ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
@@ -394,73 +394,73 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract method @semanticInstruction instructionSemanticAnalysis
+abstract method @semanticInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @localVariableDeclaration instructionSemanticAnalysis
+override method @localVariableDeclarationAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@localVariableDeclaration instructionSemanticAnalysis\n" ;
+  message "@localVariableDeclarationAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @localVariableDeclarationWithInitialization instructionSemanticAnalysis
+override method @localVariableDeclarationWithInitializationAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@localVariableDeclarationWithInitialization instructionSemanticAnalysis\n" ;
+  message "@localVariableDeclarationWithInitializationAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @localVariableDeclarationWithAssignment instructionSemanticAnalysis
+override method @localVariableDeclarationWithAssignmentAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@localVariableDeclarationWithAssignment instructionSemanticAnalysis\n" ;
+  message "@localVariableDeclarationWithAssignmentAST instructionSemanticAnalysis\n" ;
 end method ;
 
 
 #---------------------------------------------------------------------------*
 
-override method @localConstantDeclarationWithSourceExpression instructionSemanticAnalysis
+override method @localConstantDeclarationWithSourceExpressionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@localConstantDeclarationWithSourceExpression instructionSemanticAnalysis\n" ;
+  message "@localConstantDeclarationWithSourceExpressionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @localConstantDeclarationWithConstructorCall instructionSemanticAnalysis
+override method @localConstantDeclarationWithConstructorCallAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@localConstantDeclarationWithConstructorCall instructionSemanticAnalysis\n" ;
+  message "@localConstantDeclarationWithConstructorCallAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @assignmentInstruction instructionSemanticAnalysis
+override method @assignmentInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@assignmentInstruction instructionSemanticAnalysis\n" ;
+  message "@assignmentInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @appendInstruction instructionSemanticAnalysis
+override method @appendInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@appendInstruction instructionSemanticAnalysis\n" ;
+  message "@appendInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sendInstruction instructionSemanticAnalysis
+override method @sendInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@sendInstruction instructionSemanticAnalysis\n" ;
+  message "@sendInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -521,106 +521,106 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @matchInstruction instructionSemanticAnalysis
+override method @matchInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@matchInstruction instructionSemanticAnalysis\n" ;
+  message "@matchInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @castInstruction instructionSemanticAnalysis
+override method @castInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@castInstruction instructionSemanticAnalysis\n" ;
+  message "@castInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @addInstruction instructionSemanticAnalysis
+override method @addInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@addInstruction instructionSemanticAnalysis\n" ;
+  message "@addInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @removeInstruction instructionSemanticAnalysis
+override method @removeInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@removeInstruction instructionSemanticAnalysis\n" ;
+  message "@removeInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @incrementInstruction instructionSemanticAnalysis
+override method @incrementInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@incrementInstruction instructionSemanticAnalysis\n" ;
+  message "@incrementInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @decrementInstruction instructionSemanticAnalysis
+override method @decrementInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@decrementInstruction instructionSemanticAnalysis\n" ;
+  message "@decrementInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @loopInstruction instructionSemanticAnalysis
+override method @loopInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@loopInstruction instructionSemanticAnalysis\n" ;
+  message "@loopInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @messageInstruction instructionSemanticAnalysis
+override method @messageInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@messageInstruction instructionSemanticAnalysis\n" ;
+  message "@messageInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @logInstruction instructionSemanticAnalysis
+override method @logInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@logInstruction instructionSemanticAnalysis\n" ;
+  message "@logInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @grammarInstruction instructionSemanticAnalysis
+override method @grammarInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@grammarInstruction instructionSemanticAnalysis\n" ;
+  message "@grammarInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @withInstruction instructionSemanticAnalysis
+override method @withInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@withInstruction instructionSemanticAnalysis\n" ;
+  message "@withInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @switchInstruction instructionSemanticAnalysis
+override method @switchInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@switchInstruction instructionSemanticAnalysis\n" ;
+  message "@switchInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @typeMethodInstruction instructionSemanticAnalysis
+override method @typeMethodInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@typeMethodInstruction instructionSemanticAnalysis\n" ;
+  message "@typeMethodInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -629,29 +629,29 @@ end method ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclaration semanticAnalysis
+abstract method @semanticDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapDeclaration semanticAnalysis
+override method @mapDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@mapDeclaration semanticAnalysis\n" ;
+  message "@mapDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapindexDeclaration semanticAnalysis
+override method @mapindexDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@mapindexDeclaration semanticAnalysis\n" ;
+  message "@mapindexDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @enumDeclaration semanticAnalysis
+override method @enumDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
 #--- Nothing to do
@@ -659,58 +659,58 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @filewrapperDeclaration semanticAnalysis
+override method @filewrapperDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@filewrapperDeclaration.semanticAnalysis\n" ;
+  message "@filewrapperDeclarationAST.semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclaration semanticAnalysis
+override method @sortedListDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@sortedListDeclaration semanticAnalysis\n" ;
+  message "@sortedListDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @structDeclaration semanticAnalysis
+override method @structDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@structDeclaration semanticAnalysis\n" ;
+  message "@structDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listDeclaration semanticAnalysis
+override method @listDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@listDeclaration semanticAnalysis\n" ;
+  message "@listDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @classDeclaration semanticAnalysis
+override method @classDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@classDeclaration semanticAnalysis\n" ;
+  message "@classDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externRoutineDeclaration semanticAnalysis
+override method @externRoutineDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@externRoutineDeclaration semanticAnalysis\n" ;
+  message "@externRoutineDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @routineDeclaration semanticAnalysis
+override method @routineDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@routineDeclaration semanticAnalysis\n" ;
+  message "@routineDeclarationAST semanticAnalysis\n" ;
 #  foreach mRoutineInstructionList do
 #    [mInstruction instructionSemanticAnalysis !inSemanticContext] ;
 #  end foreach ;
@@ -718,18 +718,18 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externFunctionDeclaration semanticAnalysis
+override method @externFunctionDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@externFunctionDeclaration semanticAnalysis\n" ;
+  message "@externFunctionDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @functionDeclaration semanticAnalysis
+override method @functionDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@functionDeclaration semanticAnalysis\n" ;
+  message "@functionDeclarationAST semanticAnalysis\n" ;
 #  foreach mFunctionInstructionList do
 #    [mInstruction instructionSemanticAnalysis !inSemanticContext] ;
 #  end foreach ;
@@ -737,18 +737,18 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @onceFunctionDeclaration semanticAnalysis
+override method @lazyFunctionDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@onceFunctionDeclaration semanticAnalysis\n" ;
+  message "@lazyFunctionDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listmapDeclaration semanticAnalysis
+override method @listmapDeclarationAST semanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@listmapDeclaration semanticAnalysis\n" ;
+  message "@listmapDeclarationAST semanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -760,7 +760,7 @@ end method ;
 routine parseSemanticComponent
   ??@lstring inSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct
-  !@semanticsComponentRoot outSemanticsComponentRoot
+  !@semanticsComponentAST outSemanticsComponentRoot
 :
   @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   @lstring basenameKey [new !basename !here] ;
@@ -776,7 +776,7 @@ end routine ;
 
 routine recursivelyImportSemanticComponent
   ?!@parsedComponentStruct ioParsedComponentStruct
-  ?!@semanticDeclarationList ioSemanticDeclarationList
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList
   ?!@stringset ioParsedFileSet
   ??@lstringlist inListOfFilesToParse
   ??@string inDirectory
@@ -790,7 +790,7 @@ routine recursivelyImportSemanticComponent
           ![mValue absolutePathFromPath !inDirectory]
           ![mValue location]
         ] ;
-        @semanticsComponentRoot semanticsComponentRoot ;
+        @semanticsComponentAST semanticsComponentRoot ;
         parseSemanticComponent
           !filePath
           !?ioParsedComponentStruct
@@ -817,7 +817,7 @@ routine compileSemanticsComponent
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
 #--- Parse source file
-  @semanticsComponentRoot semanticsComponentRoot ;
+  @semanticsComponentAST semanticsComponentRoot ;
   parseSemanticComponent
     !inSourceFile
     !?ioParsedComponentStruct
@@ -833,7 +833,7 @@ routine compileSemanticsComponent
     ;
   end if ; 
 #--- Recursively parse all imported files
-  @semanticDeclarationList semanticDeclarationList := [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+  @semanticDeclarationListAST semanticDeclarationList := [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   recursivelyImportSemanticComponent
     !?ioParsedComponentStruct

@@ -1,0 +1,1336 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  metamodel that defines expression                                        *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticsTypesForAST :
+
+import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticExpressionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticExpressionListAST {
+  @semanticExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @outSemanticExpressionListAST {
+  @semanticExpressionListAST mExpression ;
+  @location mEndOfExpressionLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
+#class @variableExpressionAST extends @semanticExpressionAST {
+#  @lstring mVariableName ;
+#}
+
+#---------------------------------------------------------------------------*
+
+class @selfInExpressionAST extends @semanticExpressionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @hereExpressionAST extends @semanticExpressionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @trueExpressionAST extends @semanticExpressionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @falseExpressionAST extends @semanticExpressionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalCharExpressionAST extends @semanticExpressionAST {
+  @lchar mCharacter ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalStringExpressionAST extends @semanticExpressionAST {
+  @stringlist mStringSequence ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalDoubleExpressionAST extends @semanticExpressionAST {
+  @ldouble mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalUIntExpressionAST extends @semanticExpressionAST {
+  @luint mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalUInt64ExpressionAST extends @semanticExpressionAST {
+  @luint64 mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalSIntExpressionAST extends @semanticExpressionAST {
+  @lsint mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalSInt64ExpressionAST extends @semanticExpressionAST {
+  @lsint64 mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @constructorExpressionAST extends @semanticExpressionAST {
+  @lstring mTypeName ;
+  @lstring mConstructorName ;
+  @outSemanticExpressionListAST mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @readerCallExpressionAST extends @semanticExpressionAST {
+  @semanticExpressionAST mReceiver ;
+  @lstring mReaderName ;
+  @outSemanticExpressionListAST mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionExpressionAST extends @semanticExpressionAST {
+  @lstring mOptionComponentName ;
+  @lstring mOptionEntryName ;
+  @lstring mOptionReaderName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @concatExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @orExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @xorExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @andExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @equalExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @notEqualExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lowerOrEqualExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @greaterOrEqualExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @strictGreaterExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @strictLowerExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @rightShiftExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @leftShiftExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @addExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @subExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @multiplicationExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @divisionExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @moduloExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mLeftExpression ;
+  @semanticExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @unaryMinusExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @notExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @negateExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @ifExpressionAST extends @semanticExpressionAST {
+  @semanticExpressionAST mIfExpression ;
+  @semanticExpressionAST mThenExpression ;
+  @semanticExpressionAST mElseExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @functionCallExpressionAST extends @semanticExpressionAST {
+  @lstring mFunctionName ;
+  @outSemanticExpressionListAST mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @varInExpressionAST extends @semanticExpressionAST {
+  @lstring mVarName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalTypeInExpressionAST extends @semanticExpressionAST {
+  @lstring mVarName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @castInExpressionAST extends @semanticExpressionAST {
+  @semanticExpressionAST mReceiverExpression ;
+  @bool mUseKindOfClass ;
+  @lstring mTypeName ;
+  @semanticExpressionAST mErrorLocationExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperObjectInstanciationInExpressionAST extends @semanticExpressionAST {
+  @lstring mFilewrapperName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperInExpressionAST extends @semanticExpressionAST {
+  @lstring mFilewrapperName ;
+  @lstring mFilewrapperPath ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperTemplateInExpressionAST extends @semanticExpressionAST {
+  @lstring mFilewrapperName ;
+  @lstring mFilewrapperTemplateName ;
+  @outSemanticExpressionListAST mActualOutputParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @formalArgumentPassingModeAST {
+  argumentIn, argumentOut, argumentInOut, argumentConstantIn
+}{
+  reader formalArgumentMessage :
+    argumentConstantIn -> "a constant input (??) formal argument" ;
+    argumentIn -> "an input (?) formal argument" ;
+    argumentOut -> "an output (!) formal argument" ;
+    argumentInOut -> "an input/output (?!) argument" ;
+  end reader ;
+
+  reader formalArgumentString :
+    argumentConstantIn -> "'??'" ;
+    argumentIn -> "'?'" ;
+    argumentOut -> "'!'" ;
+    argumentInOut -> "'?!'" ;
+  end reader ;
+
+  reader string :
+    argumentConstantIn -> "??" ;
+    argumentIn -> "?" ;
+    argumentOut -> "!" ;
+    argumentInOut -> "?!" ;
+  end reader ;
+
+  reader generation1ForFormalParameter :
+    argumentConstantIn -> "const " ;
+    argumentIn -> "" ;
+    argumentOut -> "" ;
+    argumentInOut -> "" ;
+  end reader ;
+
+  reader generation2ForFormalParameter :
+    argumentConstantIn -> "" ;
+    argumentIn -> "" ;
+    argumentOut -> " &" ;
+    argumentInOut -> " &" ;
+  end reader ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    P A R A M E T E R    L I S T                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalParameterListAST {
+  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
+  @lstring mFormalParameterTypeName ;
+  @lstring mFormalParameterName ;
+  @bool mIsUnused ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalInputParameterListAST {
+  @lstring mFormalParameterTypeName ;
+  @lstring mFormalParameterName ;
+  @bool mIsUnused ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    P A R A M E T E R                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @actualParameterAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputActualParameterAST extends @actualParameterAST {
+  @semanticExpressionAST mOutputActualParameterExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputInputActualParameterAST extends @actualParameterAST {
+  @lstring mOutputInputActualParameterName ;
+  @lstringlist mStructAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputActualParameterAST extends @actualParameterAST {
+  @lstring mDeclarationTypeName ;
+  @lstring mInputActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputJokerActualParameterAST extends @actualParameterAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @actualParameterListAST {
+  @actualParameterAST mActualParameter ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @actualInputParameterListAST {
+  @lstring mActualParameterTypeName ; # Empty if no type
+  @lstring mActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @syntaxInstructionAST {
+  @location mStartLocation feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticInstructionAST extends @syntaxInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticInstructionListAST {
+  @semanticInstructionAST mInstruction ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticDeclarationAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticDeclarationListAST {
+  @semanticDeclarationAST mSemanticDeclaration ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    R O U T I N E    D E C L A R A T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externRoutineDeclarationAST extends @semanticDeclarationAST {
+  @lstring mRoutineName ;
+  @formalParameterListAST mFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    P R O T O T Y P E    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routinePrototypeDeclarationAST extends @externRoutineDeclarationAST {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routineDeclarationAST extends @routinePrototypeDeclarationAST {
+  @semanticInstructionListAST mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externFunctionDeclarationAST extends @semanticDeclarationAST {
+  @lstring mFunctionName ;
+  @formalParameterListAST mFormalParameterList ;
+  @lstring mResultTypeName ;
+  @lstring mResultVariableName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F U N C T I O N    D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @functionDeclarationAST extends @externFunctionDeclarationAST {
+  @semanticInstructionListAST mFunctionInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    O N C E    F U N C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @lazyFunctionDeclarationAST extends @semanticDeclarationAST {
+  @lstring mFunctionName ;
+  @lstring mResultTypeName ;
+  @lstring mResultVariableName ;
+  @semanticInstructionListAST mFunctionInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @localVariableDeclarationAST extends @semanticInstructionAST {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableDeclarationWithInitializationAST extends @semanticInstructionAST {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+  @lstring mConstructorName ;
+  @outSemanticExpressionListAST mConstructorArguments ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableDeclarationWithAssignmentAST extends @semanticInstructionAST {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+  @semanticExpressionAST mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @localConstantDeclarationWithSourceExpressionAST extends @semanticInstructionAST {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+  @semanticExpressionAST mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @localConstantDeclarationWithConstructorCallAST extends @semanticInstructionAST {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+  @lstring mConstructorName ;
+  @outSemanticExpressionListAST mConstructorArguments ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A S S I G N M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @assignmentInstructionAST extends @semanticInstructionAST {
+  @lstring mTargetVariableName ;
+  @lstringlist mStructAttributeList ;
+  @semanticExpressionAST mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  D O T    A S S I G N M E N T    I N S T R U C T I O N                    *
+#                                                                           *
+#  VARIABLE .= EXPRESSION ;                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @appendInstructionAST extends @semanticInstructionAST {
+  @lstring mTargetVariableName ;
+  @lstringlist mStructAttributeList ;
+  @semanticExpressionAST mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S E N D    I N S T R U C T I O N                                         *
+#                                                                           *
+#  send EXPRESSION ;                                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @sendInstructionAST extends @semanticInstructionAST {
+  @semanticExpressionAST mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R E A C H    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @foreachInstructionEnumeratedObjectElementAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @foreachInstructionJokerAST extends @foreachInstructionEnumeratedObjectElementAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @foreachInstructionEnumeratedConstantAST extends @foreachInstructionEnumeratedObjectElementAST {
+  @lstring mTypeName ;
+  @lstring mConstantName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @foreachInstructionEnumeratedObjectElementListAST {
+  @foreachInstructionEnumeratedObjectElementAST mElement ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @foreachInstructionEnumeratedObjectList {
+  @bool mIsAscending ;
+  @semanticExpressionAST mEnumeratedExpression ;
+  @foreachInstructionEnumeratedObjectElementListAST mElementList ;
+  @bool mEndsWithEllipsis ;
+  @lstring mPrefix ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @foreachInstruction extends @semanticInstructionAST {
+  @foreachInstructionEnumeratedObjectList mEnumeratedObjectList ;
+  @lstring mIndexVariableName ;
+  @semanticExpressionAST mWhileExpression ;
+  @semanticInstructionListAST mBeforeInstructionList ;
+  @semanticInstructionListAST mBetweenInstructionList ;
+  @semanticInstructionListAST mDoInstructionList ;
+  @semanticInstructionListAST mAfterInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  I F    I N S T R U C T I O N                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @ifBranchList {
+  @semanticExpressionAST mIFexpression ;
+  @semanticInstructionListAST mIFinstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @ifInstruction extends @semanticInstructionAST {
+  @ifBranchList mBranchList ; # [1, *]
+  @semanticInstructionListAST mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E T H O D    C A L L    I N S T R U C T I O N                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @methodCallInstruction extends @semanticInstructionAST {
+  @semanticExpressionAST mReceiverExpression ;
+  @lstring mMethodName ;
+  @actualParameterListAST mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D I F I E R    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @modifierCallInstruction extends @semanticInstructionAST {
+  @lstring mReceiverName ;
+  @lstringlist mReceiverStructAttributes ;
+  @lstring mModifierName ;
+  @actualParameterListAST mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E R R O R    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @errorInstruction extends @semanticInstructionAST {
+  @semanticExpressionAST mReceiverExpression ;
+  @semanticExpressionAST mErrorExpression ;
+  @lstringlist mBuiltVariableList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    W A R N I N G    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @warningInstruction extends @semanticInstructionAST {
+  @semanticExpressionAST mReceiverExpression ;
+  @semanticExpressionAST mWarningExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routineCallInstruction extends @semanticInstructionAST {
+  @lstring mRoutineName ;
+  @actualParameterListAST mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @matchEntry {
+}
+
+#---------------------------------------------------------------------------*
+
+list @matchEntryList {
+  @matchEntry mEntry ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @constantMatchEntry extends @matchEntry {
+  @lstring mConstantName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @classMatchEntry extends @matchEntry {
+  @lstring mClassName ;
+  @foreachInstructionEnumeratedObjectElementListAST mElements ;
+  @bool mEndsWithEllipsis ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @matchInstructionBranchListAST {
+  @matchEntryList mMatchEntryList ;
+  @semanticInstructionListAST mMatchBranchInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @matchInstructionAST extends @semanticInstructionAST {
+  @lstringlist mMatchedVariableNameList ;
+  @matchInstructionBranchListAST mMatchInstructionBranchList ;
+  @semanticInstructionListAST mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A S T    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @castInstructionBranchListAST {
+  @bool mUseKindOfClass ;
+  @lstring mTypeName ;
+  @lstring mConstantVarName ; # Empty string if no constant var
+  @bool mConstantVarNameIsUnused ; # true if no constant var
+  @semanticInstructionListAST mCastBranchInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @elseOrDefaultForCastInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @elseForCastInstructionAST extends @elseOrDefaultForCastInstructionAST {
+  @semanticInstructionListAST mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @defaultForCastInstructionAST extends @elseOrDefaultForCastInstructionAST {
+  @semanticExpressionAST mErrorLocationExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @castInstructionAST extends @semanticInstructionAST {
+  @semanticExpressionAST mExpression ;
+  @castInstructionBranchListAST mCastInstructionBranchList ;
+  @elseOrDefaultForCastInstructionAST mElseOrDefault ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A D D    I N S T R U C T I O N      + =                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @addInstructionAST extends @semanticInstructionAST {
+  @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
+  @outSemanticExpressionListAST mExpressionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R E M O V E    I N S T R U C T I O N      - =                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @removeInstructionAST extends @semanticInstructionAST {
+  @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
+  @semanticExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @incrementInstructionAST extends @semanticInstructionAST {
+  @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @decrementInstructionAST extends @semanticInstructionAST {
+  @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L O O P    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @loopInstructionAST extends @semanticInstructionAST {
+  @semanticExpressionAST mVariantExpression ;
+  @semanticInstructionListAST mFirstInstructions ;
+  @semanticExpressionAST mLoopExpression ;
+  @semanticInstructionListAST mSecondInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E S S A G E    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @messageInstructionAST extends @semanticInstructionAST {
+  @semanticExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O G    I N S T R U C T I O N                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @logListAST {
+  @lstring mLogMessage ;
+  @semanticExpressionAST mLogExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @logInstructionAST extends @semanticInstructionAST {
+  @logListAST mLogList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G R A M M A R    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionAST extends @semanticInstructionAST {
+  @lstring mGrammarComponentName ;
+  @lstring mLabelName ;
+  @semanticExpressionAST mSourceExpression ;
+  @bool mSourceExpressionIsFile ; # If false, mSourceExpression should be the source string
+  @actualParameterListAST mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  W I T H    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @withInstructionAST extends @semanticInstructionAST {
+  @lstring mPrefix ;
+  @lstring mTargetObjectName ;
+  @lstringlist mStructAttributeList ;
+  @lstring mSearchMethodName ;
+  @semanticExpressionAST mKeyExpression ;
+  @semanticInstructionListAST mDoBranchInstructions ;
+  @semanticInstructionListAST mElseBranchInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S W I T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @switchBranchesAST {
+  @lstringlist mSwitchConstantList ;
+  @semanticInstructionListAST mInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @switchInstructionAST extends @semanticInstructionAST {
+  @semanticExpressionAST mSwitchExpression ;
+  @switchBranchesAST mBranches ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeMethodInstructionAST extends @semanticInstructionAST {
+  @lstring mTypeName ;
+  @lstring mMethodName ;
+  @actualParameterListAST mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @abstracMultiMethodListAST {
+  @lstring mAbstractCategoryMethodName ;
+  @formalParameterListAST mAbstractCategoryFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @abstractMultiMethodListMapAST (@abstracMultiMethodListAST) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        C A T E G O R Y    M E T H O D    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @multiMethodListAST {
+  @lstring mCategoryMethodName ;
+  @formalParameterListAST mCategoryFormalParameterList ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @multiMethodListMapAST (@multiMethodListAST) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @overridingMultiMethodListAST {
+  @lstring mOverridingCategoryMethodName ;
+  @formalParameterListAST mOverridingCategoryFormalParameterList ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @overridingMultiMethodListMapAST (@overridingMultiMethodListAST) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @abstractMultiReaderListAST {
+  @lstring mAbstractCategoryReaderName ;
+  @formalInputParameterListAST mAbstractCategoryFormalInputParameterList ;
+  @lstring mReturnedTypeName ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @abstractMultiReaderListMapAST (@abstractMultiReaderListAST) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        C A T E G O R Y    R E A D E R    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @multiReaderListAST {
+  @lstring mCategoryReaderName ;
+  @formalInputParameterListAST mReaderCategoryFormalInputParameterList ;
+  @lstring mReturnedTypeName ;
+  @lstring mReturnedVariableName ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @multiReaderListMapAST (@multiReaderListAST) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @overridingMultiReaderListAST {
+  @lstring mOverridingCategoryReaderName ;
+  @formalInputParameterListAST mOverridingReaderFormalInputParameterList ;
+  @lstring mReturnedTypeName ;
+  @lstring mReturnedVariableName ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @overridingMultiReaderListMapAST (@overridingMultiReaderListAST) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           S E M A N T I C   D E C L A R A T I O N S                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+struct @semanticDeclarationStructAST {
+  @semanticDeclarationListAST mSemanticDeclarationList ;
+#--- Multi Methods
+  @abstractMultiMethodListMapAST mAbstractCategoryMethodListMap ;
+  @multiMethodListMapAST mCategoryMethodListMap ;
+  @overridingMultiMethodListMapAST mOverridingCategoryMethodListMap ;
+#--- Multi readers
+  @abstractMultiReaderListMapAST mAbstractCategoryReaderListMap ;
+  @multiReaderListMapAST mCategoryReaderListMap ;
+  @overridingMultiReaderListMapAST mOverridingCategoryReaderListMap ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    Common Rules                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @attributeInCollectionListAST {
+  @lstring mAttributeTypeName ;
+  @lstring mAttributeName ;
+  @lstringlist mFeatureList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T M A P    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listmapDeclarationAST extends @semanticDeclarationAST {
+  @lstring mListmapTypeName ;
+  @lstring mAssociatedListTypeName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    D E C L A R A T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @mapMethodListAST {
+  @lstring mMethodName ;
+  @lstring mAlternateMethodName ; # §
+  @lstring mErrorMessage ;
+  @lstring mShadowErrorMessage ; # §
+}
+
+#---------------------------------------------------------------------------*
+
+class @mapDeclarationAST extends @semanticDeclarationAST {
+  @lstring mMapTypeName ;
+  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
+  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
+  @attributeInCollectionListAST mAttributeList ;
+  @mapMethodListAST mInsertMethodList ;
+  @mapMethodListAST mSearchMethodList ;
+  @mapMethodListAST mRemoveMethodList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    I N D E X    D E C L A R A T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @mapindexDeclarationAST extends @semanticDeclarationAST {
+  @lstring mMapIndexTypeName ;
+  @lstring mMapTypeName ;
+  @lstring mSearchMethodName ;
+  @lstring mSearchMethodErrorMessage ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C L A S S    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @abstractMethodDefinitionListAST {
+  @lstring mMethodName ;
+  @formalParameterListAST mSignature ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @overridenMethodDefinitionListAST {
+  @lstring mMethodName ;
+  @formalParameterListAST mSignature ;
+  @semanticInstructionListAST mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @methodDefinitionListAST {
+  @lstring mMethodName ;
+  @formalParameterListAST mSignature ;
+  @semanticInstructionListAST mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @classMessageDefinitionListAST {
+  @lstring mMessageName ;
+  @lstring mMessageValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @lazyAttributeListAST {
+  @location mLocationMagicNumber ;
+  @attributeInCollectionListAST mAttributeList ;
+  @semanticInstructionListAST mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @classDeclarationAST extends @semanticDeclarationAST {
+  @bool mIsAbstract ;
+  @lstring mClassTypeName ;
+  @lstring mSuperClassName ; # Empty if no super class
+  @lstringlist mClassFeatureList ;
+  @attributeInCollectionListAST mAttributeList ;
+  @abstractMethodDefinitionListAST mAbstractMethodList ;
+  @overridenMethodDefinitionListAST mOverridenMethodList ;
+  @methodDefinitionListAST mMethodList ;
+  @classMessageDefinitionListAST mMessageList ;
+  @lazyAttributeListAST mLazyAttributeList ;
+  @string mClassMessage ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listDeclarationAST extends @semanticDeclarationAST {
+  @lstring mListTypeName ;
+  @attributeInCollectionListAST mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S T R U C T    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @structDeclarationAST extends @semanticDeclarationAST {
+  @lstring mStructTypeName ;
+  @attributeInCollectionListAST mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S O R T E D    L I S T    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @sortedListSortDescriptorListAST {
+  @lstring mSortedAttributeName ;
+  @bool mAscending ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @sortedListDeclarationAST extends @semanticDeclarationAST {
+  @lstring mSortedListTypeName ;
+  @attributeInCollectionListAST mAttributeList ;
+  @sortedListSortDescriptorListAST mSortDescriptorList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @enumMessageAssociationListAST {
+  @lstring mConstantName ;
+  @lstring mMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @enumMessageListAST {
+  @lstring mEnumMessageName ;
+  @enumMessageAssociationListAST mMessageAssociationList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumDeclarationAST extends @semanticDeclarationAST {
+  @lstring mEnumTypeName ;
+  @lstringlist mConstantList ;
+  @enumMessageListAST mEnumMessageList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F I L E W R A P P E R    D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @filewrapperTemplateListAST {
+  @lstring mFilewrapperTemplateName ;
+  @lstring mFilewrapperTemplatePath ;
+  @formalInputParameterListAST mFilewrapperTemplateFormalInputParameters ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperDeclarationAST extends @semanticDeclarationAST {
+  @lstring mFilewrapperName ;
+  @lstring mFilewrapperPath ;
+  @lstringlist mFilewrapperExtensionList ;
+  @filewrapperTemplateListAST mFilewrapperTemplateList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @semanticsComponentAST {
+  @lstring mSemanticsComponentName  ;
+  @lstringlist mImportedComponentFileNameList  ;
+  @semanticDeclarationStructAST mSemanticDeclarations  ;
+  @location mEndOfSourceFile  ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

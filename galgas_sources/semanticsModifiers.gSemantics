@@ -25,7 +25,7 @@ import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 list @formalParameterSignature {
   @ACGalgasType mParameterType ;
-  @formalArgumentPassingMode mFormalParameterPassingMode ;
+  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
 }
 
 #---------------------------------------------------------------------------*
@@ -45,7 +45,7 @@ routine enterModifierWithStringInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -75,7 +75,7 @@ routine enterModifierWithLocationInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@locationGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@locationGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -91,7 +91,7 @@ routine enterModifierWithCharInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@charGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@charGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -107,7 +107,7 @@ routine enterModifierWithBoolInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@boolGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@boolGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -123,7 +123,7 @@ routine enterModifierWithDataInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@dataGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@dataGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -139,7 +139,7 @@ routine enterModifierWithUintInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@uintGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@uintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -155,7 +155,7 @@ routine enterModifierWithUint64InputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@uint64GalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@uint64GalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -171,7 +171,7 @@ routine enterModifierWithSintInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@sintGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@sintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -187,7 +187,7 @@ routine enterModifierWithSint64InputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@sint64GalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@sint64GalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -203,7 +203,7 @@ routine enterModifierWithDoubleInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@doubleGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@doubleGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -219,8 +219,8 @@ routine enterModifierWithCharUintInputArgument
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@charGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += ![@uintGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@charGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@uintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertKey
     ![@lstring new !inName !here]
     !argList
@@ -550,8 +550,8 @@ override reader @classGalgasType modifierMap ->@modifierMap outModifierMap :
     [mAttributeTypeIndex searchKey ?* ?t] ;
   #--- set...Attribute... method
     @formalParameterSignature accessorSignature [emptyList] ;
-    accessorSignature += ![@lstringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-    accessorSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+    accessorSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
     [!?outModifierMap insertKey
       ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] ![mAttributeName location]]
       !accessorSignature
@@ -569,8 +569,8 @@ override reader @listGalgasType modifierMap ->@modifierMap outModifierMap :
   foreach mAttributeList do
     @ACGalgasType t ;
     [mAttributeTypeIndex searchKey ?* ?t] ;
-    extractSignature += !t ![@formalArgumentPassingMode argumentOut] ;
-    inputSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+    extractSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
+    inputSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
   end foreach ;
   [!?outModifierMap insertKey
     ![@lstring new !"popFirst" !here]
@@ -591,8 +591,8 @@ override reader @listGalgasType modifierMap ->@modifierMap outModifierMap :
     @ACGalgasType t ;
     [mAttributeTypeIndex searchKey ?* ?t] ;
     @formalParameterSignature signature [emptyList] ;
-    signature += ![@uintGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-    signature += !t ![@formalArgumentPassingMode argumentOut] ;
+    signature += ![@uintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    signature += !t ![@formalArgumentPassingModeAST argumentOut] ;
     [!?outModifierMap insertKey
       ![@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
       !signature
@@ -627,7 +627,7 @@ override reader @sortedlistGalgasType modifierMap ->@modifierMap outModifierMap 
   foreach mAttributeList do
     @ACGalgasType t ;
     [mAttributeTypeIndex searchKey ?* ?t] ;
-    extractSignature += !t ![@formalArgumentPassingMode argumentOut] ;
+    extractSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
   end foreach ;
   [!?outModifierMap insertKey
     ![@lstring new !"popSmallest" !here]
@@ -647,17 +647,17 @@ override reader @mapType modifierMap ->@modifierMap outModifierMap :
   outModifierMap := [@modifierMap emptyMap] ;
   @formalParameterSignature insertSignature [emptyList] ;
   @formalParameterSignature removeSignature [emptyList] ;
-  insertSignature += ![@lstringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  removeSignature += ![@lstringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  insertSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  removeSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   foreach mAttributeList do
     @ACGalgasType t ;
     [mAttributeTypeIndex searchKey ?* ?t] ;
-    insertSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-    removeSignature += !t ![@formalArgumentPassingMode argumentOut] ;
+    insertSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    removeSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
   #--- set...Attribute...forKey methods
     @formalParameterSignature accessorSignature [emptyList] ;
-    accessorSignature += ![@lstringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-    accessorSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+    accessorSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
     [!?outModifierMap insertKey
       ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]]
       !accessorSignature

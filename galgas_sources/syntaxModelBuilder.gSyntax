@@ -21,9 +21,7 @@ syntax syntaxModelBuilder :
 with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
-import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #------------------------------------------------------------------------------*
@@ -32,7 +30,7 @@ import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-nonterminal <expression> !@semanticExpression outExpression ;
+nonterminal <expression> !@semanticExpressionAST outExpression ;
 
 nonterminal <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoot ;
 
@@ -42,20 +40,20 @@ nonterminal <syntax_rule_declaration> ?!@syntaxRuleList ioRuleList ;
 
 nonterminal <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList ;
 
-nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
+nonterminal <semantic_instruction> !@semanticInstructionAST outInstruction ;
 
-nonterminal <syntax_instruction> !@syntaxInstruction outInstruction ;
+nonterminal <syntax_instruction> !@syntaxInstructionAST outInstruction ;
 
-nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList ;
+nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
 
-nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
+nonterminal <actual_parameter_list> !@actualParameterListAST outActualParameterList ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 ;
 
 nonterminal <actual_input_parameter_list>
-  !@actualInputParameterList outActualInputParameterList
+  !@actualInputParameterListAST outActualInputParameterList
 ;
 
 nonterminal <obsolete_declaration> ;
@@ -96,14 +94,14 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
 #--- Loop on declarations
   @nonterminalDeclarationList mNonterminalDeclarationList [emptyList] ;
   @syntaxRuleList mRuleList [emptyList] ;
-  @semanticDeclarationStruct mSemanticDeclarations [new
-    ![@semanticDeclarationList emptyList]
-    ![@abstractCategoryMethodListMap emptyMap]
-    ![@categoryMethodListMap emptyMap]
-    ![@overridingCategoryMethodListMap emptyMap]
-    ![@abstractCategoryReaderListMap emptyMap]
-    ![@categoryReaderListMap emptyMap]
-    ![@overridingCategoryReaderListMap emptyMap]
+  @semanticDeclarationStructAST mSemanticDeclarations [new
+    ![@semanticDeclarationListAST emptyList]
+    ![@abstractMultiMethodListMapAST emptyMap]
+    ![@multiMethodListMapAST emptyMap]
+    ![@overridingMultiMethodListMapAST emptyMap]
+    ![@abstractMultiReaderListMapAST emptyMap]
+    ![@multiReaderListMapAST emptyMap]
+    ![@overridingMultiReaderListMapAST emptyMap]
   ] ;
   repeat
   while
@@ -139,7 +137,7 @@ nonterminal <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTermina
 #---------------------------------------------------------------------------*
 
 rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelList ioNonTerminalLabelList :
-  @formalParameterList mFormalParameters ;
+  @formalParameterListAST mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
   ioNonTerminalLabelList +=
     !inLabelName
@@ -195,7 +193,7 @@ rule <syntax_rule_label>
   ??@lstring inLabelName
   ?!@syntaxRuleLabelList ioLabelList
 :
-  @formalParameterList mFormalParameters ;
+  @formalParameterListAST mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
   $:$ ;
   @syntaxInstructionList mSyntaxInstructionList ;
@@ -239,11 +237,11 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
   outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
   repeat
   while
-    @semanticInstruction instruction ;
+    @semanticInstructionAST instruction ;
     <semantic_instruction> ? instruction ;
     outSyntaxInstructionList += !instruction ;
   while
-    @syntaxInstruction instruction ;
+    @syntaxInstructionAST instruction ;
     <syntax_instruction> ? instruction ;
     outSyntaxInstructionList += !instruction ;
   end repeat ;
@@ -255,7 +253,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstruction outInstruction :
+rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $non_terminal_symbol$ ? @lstring mNonterminalName ;
   @lstring mLabelName ; # No label : empty string
   select
@@ -266,7 +264,7 @@ rule <syntax_instruction> !@syntaxInstruction outInstruction :
   or
     $identifier$ ? mLabelName ;
   end select ;
-  @actualParameterList mActualParameterList ;
+  @actualParameterListAST mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
   $;$ ;
   outInstruction := [@nonterminalCallInstruction new
@@ -283,9 +281,9 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstruction outInstruction :
+rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $terminal$ ? @lstring mTerminalName ;
-  @actualInputParameterList mActualInputParameterList ;
+  @actualInputParameterListAST mActualInputParameterList ;
   <actual_input_parameter_list> ? mActualInputParameterList ;
   $;$ ;
   outInstruction := [@terminalCheckInstruction new
@@ -301,7 +299,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstruction outInstruction :
+rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $repeat$ ;
   @location mRepeatInstructionLocation := here ;
   @syntaxInstructionList mRepeatedInstructionList ;
@@ -330,7 +328,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstruction outInstruction :
+rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $select$ ;
   @location mSelectInstructionLocation := here ;
   @listOfSyntaxInstructionList mSelectBranchList [emptyList] ;
@@ -358,7 +356,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstruction outInstruction :
+rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $parse$ ;
   const @location instructionLocation := here ;
   $do$ ;
@@ -387,13 +385,13 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstruction outInstruction :
+rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $parse$ ;
   const @location instructionLocation := here ;
   @whenBranchList whenBranchList [emptyList] ;
   repeat
     $when$ ;
-    @semanticExpression whenExpression ;
+    @semanticExpressionAST whenExpression ;
     <expression> ? whenExpression ;
     $:$ ;
     @syntaxInstructionList instructionList ;
@@ -420,14 +418,14 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstruction outInstruction :
+rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $parse$ ;
   const @location instructionLocation := here ;
   $loop$ ;
-  @semanticExpression variantExpression ;
+  @semanticExpressionAST variantExpression ;
   <expression> ? variantExpression ;
   $while$ ;
-  @semanticExpression whileExpression ;
+  @semanticExpressionAST whileExpression ;
   <expression> ? whileExpression ;
   $do$ ;
   @syntaxInstructionList instructionList ;
@@ -449,14 +447,14 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstruction outInstruction :
+rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $block$ ;
   const @location instructionLocation := here ;
   $identifier$ ? @lstring mReceiverVariable ;
   $.$ ;
   $identifier$ ? @lstring mBlockMethodName ;
   $($ ;
-  @actualParameterList mPrologActualParameterList ;
+  @actualParameterListAST mPrologActualParameterList ;
   <actual_parameter_list> ? mPrologActualParameterList ;
   $)$ ;
   $:$ ;
@@ -465,7 +463,7 @@ rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $end$ ;
   $block$ ;
   $($ ;
-  @actualParameterList mEpilogActualParameterList ;
+  @actualParameterListAST mEpilogActualParameterList ;
   <actual_parameter_list> ? mEpilogActualParameterList ;
   $)$ ;
   $;$ ;

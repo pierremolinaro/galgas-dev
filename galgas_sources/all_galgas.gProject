@@ -47,8 +47,8 @@ project all_galgas:
   semantics "lexiqueCompilation.gSemantics" : makefile ;
 
 #--- Option Component
-  semantics "optionMetamodel.gSemantics" : makefile ;
-  syntax    "optionModelBuilder.gSyntax" : makefile ;
+  semantics "optionTypesForAST.gSemantics" : makefile ;
+  syntax    "optionSyntax.gSyntax" : makefile ;
   grammar   "optionLL1grammar.gGrammar" : makefile ;
   semantics "optionSemantics.gSemantics" : makefile ;
   semantics "optionCompilation.gSemantics" : makefile ;
@@ -59,22 +59,16 @@ project all_galgas:
   grammar   "guiGrammar.gGrammar" : makefile ;
   semantics "guiCompilation.gSemantics" : makefile ;
 
-#--- Expression
-  semantics "expressionMetamodel.gSemantics" : makefile ;
-  syntax    "expressionModelBuilder.gSyntax" : makefile ;
-
-#--- Parameters and arguments
-  semantics "parameterArgumentMetamodel.gSemantics" : makefile ;
-  syntax    "parameterArgumentBuilder.gSyntax" : makefile ;
-
-#--- Instructions
-  semantics "instructionMetamodel.gSemantics" : makefile ;
-  syntax    "semanticInstructionListModelBuilder.gSyntax" : makefile ;
+#--- All AST types
+  semantics "allASTTypes.gSemantics" ;
 
 #--- Semantics Component
-  semantics "semanticsMetamodel.gSemantics" : makefile ;
-  syntax    "semanticDeclarationModelBuilder.gSyntax" : makefile ;
-  syntax    "semanticsModelBuilder.gSyntax" : makefile ;
+  semantics "semanticsTypesForAST.gSemantics" : makefile ;
+  syntax    "expressionSyntax.gSyntax" : makefile ;
+  syntax    "parameterArgumentSyntax.gSyntax" : makefile ;
+  syntax    "semanticInstructionsSyntax.gSyntax" : makefile ;
+  syntax    "semanticDeclarationsSyntax.gSyntax" : makefile ;
+  syntax    "semanticsComponent.gSyntax" : makefile ;
   grammar   "semanticsSLRgrammar.gGrammar" : makefile ;
   semantics "semanticsTypes.gSemantics" : makefile ;
   semantics "semanticsTypeFeatures.gSemantics" : makefile ;

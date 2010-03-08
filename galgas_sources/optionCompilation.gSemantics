@@ -17,12 +17,11 @@
 #---------------------------------------------------------------------------*
 
 semantics optionCompilation :
-import "optionMetamodel.gSemantics" ;
+import "allASTTypes.gSemantics" ;
 import "optionSemantics.gSemantics" ;
 import "semanticsMetamodel.gSemantics" ;
 
-import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
-import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
+import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import semantics optionSemantics in "optionSemantics.gSemantics" ;
 import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
 
@@ -68,7 +67,7 @@ filewrapper optionGenerationTemplates in "../generation_templates/option_generat
 routine parseOptionComponent
   ??@lstring inSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct
-  !@optionComponentRoot outOptionComponentRoot
+  !@optionComponentAST outOptionComponentRoot
 :
   @lstring key [new ![[inSourceFile lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
   if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [key string]] then
@@ -87,7 +86,7 @@ routine compileOptionComponent
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
 #--- Parse option component
-  @optionComponentRoot optionComponentRoot ;
+  @optionComponentAST optionComponentRoot ;
   parseOptionComponent
     !inSourceFile
     !?ioParsedComponentStruct
@@ -126,7 +125,7 @@ routine compileOptionComponent
         !mOptionComment
         !"false"
       ] ;
-      if mOptionDefaultValueKind != [@optionDefaultValueEnum noDefaultValue] then
+      if mOptionDefaultValueKind != [@optionDefaultValueEnumAST noDefaultValue] then
         error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)" ;      
       end if ;
     elsif [mOptionTypeName string] == "uint" then
@@ -137,7 +136,7 @@ routine compileOptionComponent
         !mOptionComment
         !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
       ] ;
-      if mOptionDefaultValueKind == [@optionDefaultValueEnum stringDefaultValue] then
+      if mOptionDefaultValueKind == [@optionDefaultValueEnumAST stringDefaultValue] then
         error mOptionDefaultValue:"an @uint option default value cannot be an @string value" ;      
       end if ;
     elsif [mOptionTypeName string] == "string" then
@@ -148,7 +147,7 @@ routine compileOptionComponent
         !mOptionComment
         ![mOptionDefaultValue string]
       ] ;
-      if mOptionDefaultValueKind == [@optionDefaultValueEnum unsignedDefaultValue] then
+      if mOptionDefaultValueKind == [@optionDefaultValueEnumAST unsignedDefaultValue] then
         error mOptionDefaultValue:"an @string option default value cannot be an @uint value" ;      
       end if ;
     else

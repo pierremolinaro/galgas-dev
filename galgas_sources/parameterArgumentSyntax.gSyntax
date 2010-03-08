@@ -17,12 +17,11 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax parameterArgumentBuilder :
+syntax parameterArgumentSyntax :
 with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -30,15 +29,15 @@ import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSema
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-nonterminal <expression> !@semanticExpression outExpression ;
+nonterminal <expression> !@semanticExpressionAST outExpression ;
 
-nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList ;
+nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
 
-nonterminal <formal_input_parameter_list> !@formalInputParameterList outFormalInputParameterList ;
+nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
 
-nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
+nonterminal <actual_parameter_list> !@actualParameterListAST outActualParameterList ;
 
-nonterminal <actual_input_parameter_list> !@actualInputParameterList outActualInputParameterList ;
+nonterminal <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -46,23 +45,23 @@ nonterminal <actual_input_parameter_list> !@actualInputParameterList outActualIn
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <formal_parameter_list> !@formalParameterList outFormalParameterList :
-  outFormalParameterList := [@formalParameterList emptyList] ;
+rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList :
+  outFormalParameterList := [@formalParameterListAST emptyList] ;
   repeat
   while
-    @formalArgumentPassingMode mFormalParameterPassingMode ;
+    @formalArgumentPassingModeAST mFormalParameterPassingMode ;
     select
       $?$ ;
-      mFormalParameterPassingMode := [@formalArgumentPassingMode argumentIn] ;
+      mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentIn] ;
     or
       $??$ ;
-      mFormalParameterPassingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+      mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     or
       $?!$ ;
-      mFormalParameterPassingMode := [@formalArgumentPassingMode argumentInOut] ;
+      mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentInOut] ;
     or
       $!$ ;
-      mFormalParameterPassingMode := [@formalArgumentPassingMode argumentOut] ;
+      mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentOut] ;
     end select ;
     $type_name$ ?@lstring mFormalParameterTypeName ;
     @bool mIsUnused ;
@@ -88,14 +87,14 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <actual_parameter_list> !@actualParameterList outActualParameterList :
-  outActualParameterList := [@actualParameterList emptyList] ;
+rule <actual_parameter_list> !@actualParameterListAST outActualParameterList :
+  outActualParameterList := [@actualParameterListAST emptyList] ;
   repeat
   while
     $?$ ;
     select
       $*$ ;
-      outActualParameterList += ![@inputJokerActualParameter new] ;
+      outActualParameterList += ![@inputJokerActualParameterAST new] ;
     or
       @luint count ;
       $unsigned_literal_integer$ ? count ;
@@ -106,16 +105,16 @@ rule <actual_parameter_list> !@actualParameterList outActualParameterList :
       else
         loop n :
         while n > 0 do
-          outActualParameterList += ![@inputJokerActualParameter new] ;
+          outActualParameterList += ![@inputJokerActualParameterAST new] ;
           n -- ;
         end loop ;
       end if ;
     end select ;
   while
     $!$ ;
-    @semanticExpression e ;
+    @semanticExpressionAST e ;
     <expression> ? e ;
-    outActualParameterList += ![@outputActualParameter new !e] ;
+    outActualParameterList += ![@outputActualParameterAST new !e] ;
   while
     $!?$ ;
     @lstring outputInputActualParameterName ;
@@ -127,7 +126,7 @@ rule <actual_parameter_list> !@actualParameterList outActualParameterList :
       $identifier$ ? @lstring structAttributeName ;
       structAttributeList += !structAttributeName ;
     end repeat ;
-    outActualParameterList += ![@outputInputActualParameter new !outputInputActualParameterName !structAttributeList] ;
+    outActualParameterList += ![@outputInputActualParameterAST new !outputInputActualParameterName !structAttributeList] ;
   while
     $?$ ;
     @lstring declarationTypeName ;
@@ -138,7 +137,7 @@ rule <actual_parameter_list> !@actualParameterList outActualParameterList :
     end select ;
     @lstring inputActualParameterName ;
     $identifier$ ?inputActualParameterName ;
-    outActualParameterList += ![@inputActualParameter new !declarationTypeName !inputActualParameterName] ;
+    outActualParameterList += ![@inputActualParameterAST new !declarationTypeName !inputActualParameterName] ;
   end repeat ;
 end rule ;
 
@@ -148,8 +147,8 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <formal_input_parameter_list> !@formalInputParameterList outFormalInputParameterList :
-  outFormalInputParameterList := [@formalInputParameterList emptyList] ;
+rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList :
+  outFormalInputParameterList := [@formalInputParameterListAST emptyList] ;
   repeat
   while
     $?$ ;
@@ -177,9 +176,9 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <actual_input_parameter_list>
-  !@actualInputParameterList outActualInputParameterList
+  !@actualInputParameterListAST outActualInputParameterList
 :
-  outActualInputParameterList := [@actualInputParameterList emptyList] ;
+  outActualInputParameterList := [@actualInputParameterListAST emptyList] ;
   repeat
   while
     $?$ ;

@@ -49,8 +49,8 @@ once instanceMethodMapFor_string ->@modifierMap outModifierMap :
   enterModifierWithStringInputArgument !?outModifierMap !"makeDirectoryAndWriteToFile" !true ;
   enterModifierWithoutArgument !?outModifierMap !"makeDirectory" !true ;
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += ![@boolGalgasType new] ![@formalArgumentPassingMode argumentOut] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@boolGalgasType new] ![@formalArgumentPassingModeAST argumentOut] ;
   [!?outModifierMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     !argList

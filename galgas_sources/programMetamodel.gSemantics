@@ -19,9 +19,7 @@
 
 semantics programMetamodel :
 import "semanticsMetamodel.gSemantics" ;
-import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
-import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -29,7 +27,7 @@ list @programRuleList {
   @lstring mSourceFileExtension ;
   @lstring mSourceFileHelp ;
   @lstring mSourceFileVariableName ;
-  @semanticInstructionList mInstructionList ;
+  @semanticInstructionListAST mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -37,10 +35,10 @@ list @programRuleList {
 class @programComponentRoot {
   @lstring mProgramName ;
   @lstring mVersionString ;
-  @semanticInstructionList mPrologueInstructionList ;
-  @semanticInstructionList mEpilogueInstructionList ;
+  @semanticInstructionListAST mPrologueInstructionList ;
+  @semanticInstructionListAST mEpilogueInstructionList ;
   @programRuleList mProgramRules ;
-  @semanticDeclarationStruct mSemanticDeclarations ;
+  @semanticDeclarationStructAST mSemanticDeclarations ;
 }
 
 #---------------------------------------------------------------------------*
