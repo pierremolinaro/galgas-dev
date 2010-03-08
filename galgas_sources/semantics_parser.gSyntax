@@ -7145,6 +7145,7 @@ rule <semantics_declaration_beginning_by_abstract>
     !listeTypeEtNomsArguments
     ![@templateInstructionList emptyList]
     ![templateName location] # Magic Number
+    !false
   ] ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
@@ -7289,12 +7290,14 @@ rule <semantics_declaration>
   while
   end repeat ;
   @templateInstructionList templateInstructionList ;
+  @bool usesColumnMarker ;
   grammar galgasTemplateGrammar on templateString
     !categoryTemplateVariableMap
     !ioSemanticContext
     !ioComponentSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
     ?templateInstructionList
+    ?usesColumnMarker
   ;
   $end$ ;
   $template$ ;
@@ -7307,6 +7310,7 @@ rule <semantics_declaration>
     !listeTypeEtNomsArguments
     !templateInstructionList
     ![templateName location] # Magic Number
+    !usesColumnMarker
   ] ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
@@ -8020,18 +8024,21 @@ rule <semantics_declaration>
     end repeat ;
     [!?templateMap insertKey !templateName !formalAttributeList] ;
     @templateInstructionList templateInstructionList ;
+    @bool usesColumnMarker ;
     grammar galgasTemplateGrammar in templateAbsolutePath
       !templateVariableMap
       !ioSemanticContext
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
       ?templateInstructionList
+      ?usesColumnMarker
     ;
     listeEntitesAengendrer += ![@C_filewrapperTemplateToImplement new
       !wrapperName
       !templateName
       !templateArgumentTypesList
       !templateInstructionList
+      !usesColumnMarker
     ] ;
     $;$ ;
   end repeat ;

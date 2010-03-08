@@ -29,6 +29,7 @@ nonterminal <lexique_component_start_symbol>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   !@templateInstructionList outResultingInstructionList
+  !@bool outUsesColumnMarker
 ;
 
 nonterminal <template_instruction>
@@ -37,6 +38,7 @@ nonterminal <template_instruction>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool ioUsesColumnMarker
 ;
 
 nonterminal <expression>
@@ -68,6 +70,7 @@ rule <template_instruction>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool unused ioUsesColumnMarker
 :
   $!$ ;
   @typeExpression expression ;
@@ -92,6 +95,7 @@ rule <template_instruction>
   ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool unused ioUsesColumnMarker
 :
   $?$ ;
   @lstring columnConstantName ;
@@ -108,11 +112,42 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <template_instruction>
+  ?!@templateVariableMap unused ioTemplateVariableMap
+  ??@EXsemanticContext unused inSemanticContext
+  ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool ioUsesColumnMarker
+:
+  $?^$ ;
+  ioResultingInstructionList += ![@templateInstructionGetColumnLocation new] ;
+  ioUsesColumnMarker := true ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateVariableMap unused ioTemplateVariableMap
+  ??@EXsemanticContext unused inSemanticContext
+  ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool ioUsesColumnMarker
+:
+  $!^$ ;
+  ioResultingInstructionList += ![@templateInstructionGotoColumnLocation new] ;
+  ioUsesColumnMarker := true ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
   ?!@templateVariableMap ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool ioUsesColumnMarker
 :
   $block$ ;
   @typeExpression expression ;
@@ -139,6 +174,7 @@ rule <template_instruction>
       !inComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
       !?blockInstructionList
+      !?ioUsesColumnMarker
     ;
     enterTemplateString !?blockInstructionList ;
   end repeat ;
@@ -160,6 +196,7 @@ rule <template_instruction>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool ioUsesColumnMarker
 :
   $foreach$ ;
   @bool ascending ;
@@ -220,6 +257,7 @@ rule <template_instruction>
         !inComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?beforeInstructionList
+        !?ioUsesColumnMarker
       ;
       enterTemplateString !? beforeInstructionList ;
     end repeat ;
@@ -260,6 +298,7 @@ rule <template_instruction>
       !inComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
       !?doInstructionList
+      !?ioUsesColumnMarker
     ;
     enterTemplateString !?doInstructionList ;
   end repeat ;
@@ -278,6 +317,7 @@ rule <template_instruction>
         !inComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?betweenInstructionList
+        !?ioUsesColumnMarker
       ;
       enterTemplateString !?betweenInstructionList ;
     end repeat ;
@@ -297,6 +337,7 @@ rule <template_instruction>
         !inComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?beforeInstructionList
+        !?ioUsesColumnMarker
       ;
       enterTemplateString !?afterInstructionList ;
     end repeat ;
@@ -326,6 +367,7 @@ rule <template_instruction>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool ioUsesColumnMarker
 :
   $if$ ;
   @templateInstructionIfBranchList templateInstructionIfBranchList [emptyList] ;
@@ -353,6 +395,7 @@ rule <template_instruction>
         !inComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?instructionList
+        !?ioUsesColumnMarker
       ;
       enterTemplateString !? instructionList ;
     end repeat ;
@@ -375,6 +418,7 @@ rule <template_instruction>
         !inComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?elseInstructionList
+        !?ioUsesColumnMarker
       ;
       enterTemplateString !?elseInstructionList ;
     end repeat ;
@@ -396,10 +440,12 @@ rule <lexique_component_start_symbol>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   !@templateInstructionList outResultingInstructionList
+  !@bool outUsesColumnMarker
 :
   outResultingInstructionList := [@templateInstructionList emptyList] ;
   @templateVariableMap templateVariableMap := inTemplateVariableMap ;
   enterTemplateString !?outResultingInstructionList ;
+  outUsesColumnMarker := false ;
   repeat
   while
     <template_instruction>
@@ -408,6 +454,7 @@ rule <lexique_component_start_symbol>
       !inComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
       !?outResultingInstructionList
+      !?outUsesColumnMarker
     ;
     enterTemplateString !?outResultingInstructionList ;
   end repeat ;

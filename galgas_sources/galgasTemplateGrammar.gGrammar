@@ -31,6 +31,7 @@ grammar galgasTemplateGrammar "SLR" :
     ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
     ??@M_optionComponents inOptionsComponentsMapForUse
     !@templateInstructionList outResultingInstructionList
+    !@bool outUsesColumnMarker
   ;
 end grammar ;
 

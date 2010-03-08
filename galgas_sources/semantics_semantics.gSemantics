@@ -1319,6 +1319,7 @@ class @categoryTemplateToImplement extends @typeEntityToGenerate {
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments feature nogetter ;
   @templateInstructionList mInstructionList feature nogetter ;
   @location mMagicNumber feature nogetter ;
+  @bool mUsesColumnMarker feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1601,6 +1602,7 @@ class @C_filewrapperTemplateToImplement extends @typeEntityToGenerate {
   @lstring mTemplateName feature nogetter ;
   @typeListeTypesEtNomsArgMethode mTemplateArgumentList feature nogetter ;
   @templateInstructionList mTemplateInstructionList feature nogetter ;
+  @bool mUsesColumnMarker feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

@@ -1611,6 +1611,8 @@
 		CF2F1D1810A7122D0035C560 /* include_selectInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_selectInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
 		CF2F1D1F10A713D90035C560 /* include_terminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_terminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
 		CF2F1D2610A715A90035C560 /* include_abstractSyntaxInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_abstractSyntaxInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF308BB911455874000098F3 /* include_templateInstructionGetColumnLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionGetColumnLocation.h; sourceTree = "<group>"; };
+		CF308BBA11455874000098F3 /* include_templateInstructionGotoColumnLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionGotoColumnLocation.h; sourceTree = "<group>"; };
 		CF319026114401E100AC01EA /* AC_GALGAS_SortedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_SortedList.cpp; sourceTree = "<group>"; };
 		CF319027114401E100AC01EA /* AC_GALGAS_SortedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_SortedList.h; sourceTree = "<group>"; };
 		CF3190F31144203D00AC01EA /* GALGAS_builtin_type.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_builtin_type.cpp.gTemplate; sourceTree = "<group>"; };
@@ -2664,6 +2666,8 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF308BB911455874000098F3 /* include_templateInstructionGetColumnLocation.h */,
+				CF308BBA11455874000098F3 /* include_templateInstructionGotoColumnLocation.h */,
 				CF82F0FF10BED70D00F40B32 /* include_typeOptionAccess.h */,
 				CF82F0FC10BED6AE00F40B32 /* include_typeDescriptionInExpression.h */,
 				CFD24CF010B54750007DE7CA /* include_typeOnceFunctionToGenerate.h */,

@@ -73,19 +73,19 @@ end foreach
                                    COMMA_LOCATION_ARGS) ;
 %foreach ATTRIBUTE_LIST do
 %
-  friend void modifier_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%AtIndex (GALGAS_%!TYPE_NAME% * & ioList,
-                                         const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttributeValue,
-                                         const GALGAS_uint * inIndex,
-                                         C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+  friend void modifier_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%AtIndex (%?^%GALGAS_%!TYPE_NAME% * & ioList,
+                                         %!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttributeValue,
+                                         %!^%const GALGAS_uint * inIndex,
+                                         %!^%C_Compiler * inCompiler
+                                         %!^%COMMA_LOCATION_ARGS) ;
 %
 end foreach
 foreach ATTRIBUTE_LIST do
 %
-  friend GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * readerCall_%![mAttributeName string]%AtIndex (const GALGAS_%!TYPE_NAME% * inList,
-                                               const GALGAS_uint * inIndex,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+  friend GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * readerCall_%![mAttributeName string]%AtIndex (%?^%const GALGAS_%!TYPE_NAME% * inList,
+                                               %!^%const GALGAS_uint * inIndex,
+                                               %!^%C_Compiler * inCompiler
+                                               %!^%COMMA_LOCATION_ARGS) ;
 %
 end foreach
 %
@@ -104,16 +104,16 @@ end foreach
 %                           C_Compiler * inCompiler
                            COMMA_LOCATION_ARGS) ;
 
-  friend GALGAS_%!TYPE_NAME% * readerCall_subListWithRange (const GALGAS_%!TYPE_NAME% * inList,
-                                                      const GALGAS_uint * inIndex,
-                                                      const GALGAS_uint * inLength,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
+  friend GALGAS_%!TYPE_NAME% * readerCall_subListWithRange (%?^%const GALGAS_%!TYPE_NAME% * inList,
+                                          %!^%const GALGAS_uint * inIndex,
+                                          %!^%const GALGAS_uint * inLength,
+                                          %!^%C_Compiler * inCompiler
+                                          %!^%COMMA_LOCATION_ARGS) ;
 
-  friend GALGAS_%!TYPE_NAME% * readerCall_subListFromIndex (const GALGAS_%!TYPE_NAME% * inList,
-                                                      const GALGAS_uint * inIndex,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
+  friend GALGAS_%!TYPE_NAME% * readerCall_subListFromIndex (%?^%const GALGAS_%!TYPE_NAME% * inList,
+                                           %!^%const GALGAS_uint * inIndex,
+                                           %!^%C_Compiler * inCompiler
+                                           %!^%COMMA_LOCATION_ARGS) ;
 
 //--- Enumerator class
   public : class cEnumerator : public AC_GALGAS_Enumerator {

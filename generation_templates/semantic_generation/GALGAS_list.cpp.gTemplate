@@ -4,9 +4,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ("%!TYPE_NAME%",
-                                                                    NULL,
-                                                                    (genericObjectCompareFunctionType) AC_GALGAS_Array::objectCompare) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% (%?^%"%!TYPE_NAME%",
+                                                      %!^%NULL,
+                                                      %!^%(genericObjectCompareFunctionType) AC_GALGAS_Array::objectCompare) ;
 
 //---------------------------------------------------------------------------*
 
@@ -24,12 +24,12 @@ GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_emptyList (LOCATION_ARGS)
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_listWithValue (%?COL0
+GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_listWithValue (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
-  between %,\n%!COL0
+  between %,\n%!^
   end foreach
-  %\n%!COL0%COMMA_LOCATION_ARGS) {
+  %\n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_NAME% * result = GALGAS_%!TYPE_NAME%::constructor_emptyList (THERE) ;
   const AC_GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
   foreach ATTRIBUTE_LIST
@@ -61,9 +61,9 @@ void GALGAS_%!TYPE_NAME%::insulate (GALGAS_%!TYPE_NAME% * & ioObject) {
 
 //---------------------------------------------------------------------------*
 
-void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
+void addAssign_operation (%?^%GALGAS_%!TYPE_NAME% * & ioResult%
   foreach ATTRIBUTE_LIST
-  do index IDX %,\n                          const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   end foreach
 %) {
   if (ioResult != NULL) {
@@ -80,9 +80,9 @@ void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
 
 //---------------------------------------------------------------------------*
 
-void modifier_prependValue (GALGAS_%!TYPE_NAME% * & ioResult%
+void modifier_prependValue (%?^%GALGAS_%!TYPE_NAME% * & ioResult%
   foreach ATTRIBUTE_LIST
-  do index IDX %,\n                            const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   end foreach
 %
                             COMMA_UNUSED_LOCATION_ARGS) {
