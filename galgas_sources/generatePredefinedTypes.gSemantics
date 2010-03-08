@@ -118,7 +118,7 @@ end reader ;
 
 override reader @objectGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
   outList := [@builtinTypeAttributeList emptyList] ;
-  outList += !"AC_GALGAS__root" !true !"mEmbeddedObject" !false !"embeddedObject" ;
+  outList += !"AC_GALGAS_root" !true !"mEmbeddedObject" !false !"embeddedObject" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

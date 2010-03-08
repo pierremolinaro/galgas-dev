@@ -10,7 +10,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
 
 class GALGAS_%!TYPE_NAME% : public %
 if [[TYPE enumerable] length] == 0 then
-  %AC_GALGAS__root%
+  %AC_GALGAS_root%
 else
   %AC_GALGAS_Enumerable%
 end if
@@ -258,9 +258,8 @@ if [TYPE accept_tilde_operator] then
         !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 %//--------------------------------- Comparison
-
-  public : virtual PMSInt32 genericObjectCompare (const AC_GALGAS__root * inOperand
-                                                   COMMA_LOCATION_ARGS) const ;
+  public : static PMSInt32 objectCompare (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                          const GALGAS_%!TYPE_NAME% * inOperand2) ;
 
 //--------------------------------- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
@@ -429,7 +428,7 @@ foreach [TYPE readerMap] do
 end foreach
 if [[TYPE enumerable] length] > 0 then
 %//--------------------------------- Enumeration handling
-  protected : virtual void populateEnumerationArray (const AC_GALGAS__root * ioEnumerationArray [],
+  protected : virtual void populateEnumerationArray (const AC_GALGAS_root * ioEnumerationArray [],
                                                      const bool inAscending) const ;
   protected : virtual PMUInt32 count (void) const ;
 
