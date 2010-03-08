@@ -515,7 +515,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
       GGS_L_EXsignature::cEnumerator typeArgumentCourant (mFormalParameterList, true) ;
       while (typeArgumentCourant.hasCurrentObject ()) {
-        if (typeArgumentCourant._mFormalArgumentPassingMode (HERE).enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
+        if (typeArgumentCourant._mFormalArgumentPassingMode (HERE).enumValue () != GGS_formalArgumentPassingModeAST::enum_argumentOut) {
           if (nombreArgumentsTestes == 0) {
             ioCppFile << "if (" ;
           }else{

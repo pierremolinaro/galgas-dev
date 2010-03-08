@@ -31,7 +31,7 @@ class GGS_typeInstructionList ;
 class AC_OutputStream ;
 class C_String ;
 class GGS_typeCplusPlusName ;
-class GGS_formalArgumentPassingMode ;
+class GGS_formalArgumentPassingModeAST ;
 class cPtr_AC_galgasType ;
 
 //---------------------------------------------------------------------------*
@@ -66,12 +66,12 @@ formalCurrentObjectArgumentIsUsedForList (const GGS_typeInstructionList & inList
 
 void
 generateFormalArgumentFromTypeName (const C_String & inTypeName,
-                                    const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
+                                    const GGS_formalArgumentPassingModeAST & inFormalArgumentPassingMode,
                                     AC_OutputStream & inFile) ;
 
 void
 generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
-                                const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
+                                const GGS_formalArgumentPassingModeAST & inFormalArgumentPassingMode,
                                 AC_OutputStream & inFile) ;
 
 //---------------------------------------------------------------------------*

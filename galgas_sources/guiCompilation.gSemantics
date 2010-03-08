@@ -22,7 +22,6 @@ import "semanticsMetamodel.gSemantics" ;
 import "semanticsSemantics.gSemantics" ;
 import "guiTypesForAST.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
-import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;

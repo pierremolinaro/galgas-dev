@@ -19,7 +19,7 @@
 
 semantics grammarSemantics :
 
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -28,7 +28,7 @@ import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSema
 #---------------------------------------------------------------------------*
 
 list @signatureForGrammarAnalysis {
-  @formalArgumentPassingMode mFormalArgumentPassingModeForGrammarAnalysis ;
+  @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis ;
   @lstring mGalgasTypeNameForGrammarAnalysis ;
 }
 

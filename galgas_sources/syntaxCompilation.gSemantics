@@ -17,10 +17,8 @@
 #---------------------------------------------------------------------------*
 
 semantics syntaxCompilation :
-import "syntaxMetamodel.gSemantics" ;
-import "semanticsMetamodel.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
-import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+import "allASTTypes.gSemantics" ;
+import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*

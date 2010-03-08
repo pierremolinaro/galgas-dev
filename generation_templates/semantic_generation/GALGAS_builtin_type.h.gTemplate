@@ -98,11 +98,11 @@ end if
 foreach [TYPE modifierMap] do
   %  protected : void modifier_%![key identifierRepresentation]% (%?COL
   foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
@@ -132,11 +132,11 @@ end foreach
 foreach [TYPE instanceMethodMap] do
   %  protected : void method_%![key identifierRepresentation]% (%?COL
   foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
@@ -166,11 +166,11 @@ end foreach
 foreach [TYPE classMethodMap] do
   %  public : static void class_method_%![key identifierRepresentation]% (%?COL
   foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
@@ -369,11 +369,11 @@ foreach [TYPE instanceMethodMap] do
   %  friend inline void method_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * inObject%
   foreach mParameterList do index IDX
     %,\n%!COL
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
@@ -392,11 +392,11 @@ foreach [TYPE modifierMap] do
   %  friend inline void modifier_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
   foreach mParameterList do index IDX
     %,\n%!COL
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
@@ -452,11 +452,11 @@ end if
   %inline void modifier_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
   foreach mParameterList do index IDX
     %,\n%!COL
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
@@ -473,11 +473,11 @@ end if
     GALGAS_%!TYPE_NAME%::insulate (ioResult COMMA_THERE) ;
     ioResult->modifier_%![key identifierRepresentation]% (%
   foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %outArgument% ![IDX string]
     else # argumentIn
       %inArgument% ![IDX string]
@@ -507,11 +507,11 @@ foreach [TYPE instanceMethodMap] do
   %inline void method_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * inObject%
   foreach mParameterList do index IDX
     %,\n%!COL
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mParameterType typeIdentifierRepresentation] % * inArgument% ![IDX string]
@@ -528,11 +528,11 @@ foreach [TYPE instanceMethodMap] do
     macroRetainObjectThere (inObject) ;
     inObject->method_%![key identifierRepresentation]% (%
   foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingMode argumentConstantIn] then
+    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentInOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingMode argumentOut] then
+    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %outArgument% ![IDX string]
     else # argumentIn
       %inArgument% ![IDX string]

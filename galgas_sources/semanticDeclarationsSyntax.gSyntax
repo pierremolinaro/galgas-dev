@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantic declaracration model builder                                    *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,14 +17,11 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax semanticDeclarationModelBuilder :
+syntax semanticDeclarationsSyntax :
 with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
-import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
-import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -32,19 +29,17 @@ import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList ;
+nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
 
-nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
+nonterminal <actual_parameter_list> !@actualParameterListAST outActualParameterList ;
 
-nonterminal <semantic_instruction_list> !@semanticInstructionList outInstructionsList ;
-
-nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
+nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 ;
 
-nonterminal <formal_input_parameter_list> !@formalInputParameterList outFormalInputParameterList ;
+nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
 
 nonterminal <obsolete_declaration> ;
 
@@ -54,11 +49,11 @@ nonterminal <obsolete_declaration> ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal <attribute_declaration> ?!@attributeInCollectionList ioAttributeInCollectionList ;
+nonterminal <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList ;
 
 #---------------------------------------------------------------------------*
 
-rule <attribute_declaration> ?!@attributeInCollectionList ioAttributeInCollectionList :
+rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList :
   $type_name$ ? @lstring mAttributeTypeName ;
   $identifier$ ? @lstring mAttributeName ;
   @lstringlist featureList [emptyList] ;
@@ -83,7 +78,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $listmap$ ;
 #--- Map type name
@@ -92,7 +87,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring mAssociatedListTypeName ;
   $)$ ;
   $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@listmapDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@listmapDeclarationAST new
     !mListmapTypeName
     !mAssociatedListTypeName
   ] ;
@@ -112,11 +107,11 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <map_method_declaration> ?!@mapMethodList ioMapMethodList ;
+nonterminal <map_method_declaration> ?!@mapMethodListAST ioMapMethodList ;
 
 #---------------------------------------------------------------------------*
 
-rule <map_method_declaration> ?!@mapMethodList ioMapMethodList :
+rule <map_method_declaration> ?!@mapMethodListAST ioMapMethodList :
   $identifier$ ? @lstring mMethodName ;
   @lstring mAlternateMethodName ;
   select
@@ -147,7 +142,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $map$ ;
 #--- Map type name
@@ -167,10 +162,10 @@ rule <semantic_declaration>
   end select ;
 #--- Map properties
   ${$ ;
-  @attributeInCollectionList mAttributeList [emptyList] ;
-  @mapMethodList mInsertMethodList [emptyList] ;
-  @mapMethodList mSearchMethodList [emptyList] ;
-  @mapMethodList mRemoveMethodList [emptyList] ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  @mapMethodListAST mInsertMethodList [emptyList] ;
+  @mapMethodListAST mSearchMethodList [emptyList] ;
+  @mapMethodListAST mRemoveMethodList [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
@@ -185,7 +180,7 @@ rule <semantic_declaration>
     <map_method_declaration> !? mRemoveMethodList ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@mapDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@mapDeclarationAST new
     !mMapTypeName
     !mAssociatedEnumTypeName
     !mAssociatedTerminaisonMethodName
@@ -211,7 +206,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $mapindex$ ;
   $type_name$ ?@lstring mMapIndexName ;
@@ -226,7 +221,7 @@ rule <semantic_declaration>
   $literal_string$ ? @lstring mSearchMethodErrorMessage ;
   $;$ ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@mapindexDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@mapindexDeclarationAST new
     !mMapIndexName
     !mMapTypeName
     !mSearchMethodName
@@ -293,11 +288,11 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <class_message_declaration> ?!@classMessageDefinitionList ioClassMessageDefinitionList ;
+nonterminal <class_message_declaration> ?!@classMessageDefinitionListAST ioClassMessageDefinitionList ;
 
 #---------------------------------------------------------------------------*
 
-rule <class_message_declaration> ?!@classMessageDefinitionList ioClassMessageDefinitionList :
+rule <class_message_declaration> ?!@classMessageDefinitionListAST ioClassMessageDefinitionList :
   $message$ ;
   $identifier$ ? @lstring mMessageName ;
   $literal_string$ ? @lstring mMessageValue ;
@@ -308,18 +303,18 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 nonterminal <class_abstract_method_declaration>
-  ?!@abstractMethodDefinitionList ioAbstractMethodDefinitionList
+  ?!@abstractMethodDefinitionListAST ioAbstractMethodDefinitionList
 ;
 
 #---------------------------------------------------------------------------*
 
 rule <class_abstract_method_declaration>
-  ?!@abstractMethodDefinitionList ioAbstractMethodDefinitionList
+  ?!@abstractMethodDefinitionListAST ioAbstractMethodDefinitionList
 :
   $abstract$ ;
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
-  @formalParameterList mSignature ;
+  @formalParameterListAST mSignature ;
   <formal_parameter_list> ? mSignature ;
   $;$ ;
   ioAbstractMethodDefinitionList += !mMethodName !mSignature ;
@@ -328,21 +323,21 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 nonterminal <class_overriden_method_declaration>
-  ?!@overridenMethodDefinitionList ioOverridenMethodDefinitionList
+  ?!@overridenMethodDefinitionListAST ioOverridenMethodDefinitionList
 ;
 
 #---------------------------------------------------------------------------*
 
 rule <class_overriden_method_declaration>
-  ?!@overridenMethodDefinitionList ioOverridenMethodDefinitionList
+  ?!@overridenMethodDefinitionListAST ioOverridenMethodDefinitionList
 :
   $override$ ;
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
-  @formalParameterList mSignature ;
+  @formalParameterListAST mSignature ;
   <formal_parameter_list> ? mSignature ;
   $:$ ;
-  @semanticInstructionList mInstructionList ;
+  @semanticInstructionListAST mInstructionList ;
   <semantic_instruction_list> ? mInstructionList ;
   $end$ ;
   $method$ ;
@@ -356,17 +351,17 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <class_method_declaration> ?!@methodDefinitionList ioMethodDefinitionList ;
+nonterminal <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefinitionList ;
 
 #---------------------------------------------------------------------------*
 
-rule <class_method_declaration> ?!@methodDefinitionList ioMethodDefinitionList :
+rule <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefinitionList :
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
-  @formalParameterList mSignature ;
+  @formalParameterListAST mSignature ;
   <formal_parameter_list> ? mSignature ;
   $:$ ;
-  @semanticInstructionList mInstructionList ;
+  @semanticInstructionListAST mInstructionList ;
   <semantic_instruction_list> ? mInstructionList ;
   $end$ ;
   $method$ ;
@@ -380,13 +375,13 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <lazy_attribute_declaration> ?!@lazyAttributeList ioLazyAttributeList ;
+nonterminal <lazy_attribute_declaration> ?!@lazyAttributeListAST ioLazyAttributeList ;
 
 #---------------------------------------------------------------------------*
 
-rule <lazy_attribute_declaration> ?!@lazyAttributeList ioLazyAttributeList :
+rule <lazy_attribute_declaration> ?!@lazyAttributeListAST ioLazyAttributeList :
   $once$ ;
-  @attributeInCollectionList attributeTypeAndNameList [emptyList] ;
+  @attributeInCollectionListAST attributeTypeAndNameList [emptyList] ;
   repeat
     $type_name$ ?@lstring  attributeTypeName ;
     $identifier$ ? @lstring attributeName ;
@@ -394,7 +389,7 @@ rule <lazy_attribute_declaration> ?!@lazyAttributeList ioLazyAttributeList :
   while
   end repeat ;
   $:$ ;
-  @semanticInstructionList mInstructionList ;
+  @semanticInstructionListAST mInstructionList ;
   <semantic_instruction_list> ? mInstructionList ;
   $end$ ;
   $once$ ;
@@ -409,7 +404,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   @bool mIsAbstract ;
   select
@@ -441,12 +436,12 @@ rule <semantic_declaration>
   ${$ ;
   @string mClassMessage := "" ;
 #--- Class properties
-  @attributeInCollectionList mAttributeList [emptyList] ;
-  @abstractMethodDefinitionList mAbstractMethodList [emptyList] ;
-  @overridenMethodDefinitionList mOverridenMethodList [emptyList] ;
-  @methodDefinitionList mMethodList [emptyList] ;
-  @classMessageDefinitionList mMessageList [emptyList] ;
-  @lazyAttributeList mLazyAttributeList [emptyList] ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  @abstractMethodDefinitionListAST mAbstractMethodList [emptyList] ;
+  @overridenMethodDefinitionListAST mOverridenMethodList [emptyList] ;
+  @methodDefinitionListAST mMethodList [emptyList] ;
+  @classMessageDefinitionListAST mMessageList [emptyList] ;
+  @lazyAttributeListAST mLazyAttributeList [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
@@ -474,7 +469,7 @@ rule <semantic_declaration>
     $;$ ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@classDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@classDeclarationAST new
     !mIsAbstract
     !mClassTypeName
     !mSuperClassName # Empty if no super class
@@ -497,18 +492,18 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $struct$ ;
   $type_name$ ?@lstring mListTypeName ;
   ${$ ;
-  @attributeInCollectionList mAttributeList [emptyList] ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@structDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@structDeclarationAST new
     !mListTypeName
     !mAttributeList
   ] ;
@@ -521,18 +516,18 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $list$ ;
   $type_name$ ?@lstring mListTypeName ;
   ${$ ;
-  @attributeInCollectionList mAttributeList [emptyList] ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@listDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@listDeclarationAST new
     !mListTypeName
     !mAttributeList
   ] ;
@@ -560,11 +555,11 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorList ioSortedListSortDescriptorList ;
+nonterminal <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList ;
 
 #---------------------------------------------------------------------------*
 
-rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorList ioSortedListSortDescriptorList :
+rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList :
   $identifier$ ? @lstring mSortedAttributeName ;
   @bool mAscending ;
   select
@@ -580,26 +575,26 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $sortedlist$ ;
   $type_name$ ?@lstring mSortedListTypeName ;
   ${$ ;
-  @attributeInCollectionList mAttributeList [emptyList] ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
   ${$ ;
-  @sortedListSortDescriptorList mSortDescriptorList[emptyList] ;
+  @sortedListSortDescriptorListAST mSortDescriptorList[emptyList] ;
   repeat
     <sortedlist_sort_descriptor> !? mSortDescriptorList ;
   while
     $,$ ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@sortedListDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@sortedListDeclarationAST new
     !mSortedListTypeName
     !mAttributeList
     !mSortDescriptorList
@@ -612,15 +607,15 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal <enum_message_declaration> ?!@enumMessageList ioEnumMessageList ;
+nonterminal <enum_message_declaration> ?!@enumMessageListAST ioEnumMessageList ;
 
 #---------------------------------------------------------------------------*
 
-rule <enum_message_declaration> ?!@enumMessageList ioEnumMessageList :
+rule <enum_message_declaration> ?!@enumMessageListAST ioEnumMessageList :
   $reader$ ;
   $identifier$ ?@lstring mEnumMessageName ;
   $:$ ;
-  @enumMessageAssociationList mMessageAssociationList [emptyList] ;
+  @enumMessageAssociationListAST mMessageAssociationList [emptyList] ;
   repeat
     $identifier$ ? @lstring mConstantName ;
     $->$ ;
@@ -641,7 +636,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $enum$ ;
   $type_name$ ? @lstring mEnumTypeName ;
@@ -675,13 +670,13 @@ rule <semantic_declaration>
   end select ;
   $}$ ;
   ${$ ;
-  @enumMessageList mEnumMessageList [emptyList] ;
+  @enumMessageListAST mEnumMessageList [emptyList] ;
   repeat
   while
     <enum_message_declaration> !? mEnumMessageList ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@enumDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@enumDeclarationAST new
     !mEnumTypeName
     !mConstantList
     !mEnumMessageList
@@ -695,7 +690,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $filewrapper$ ;
   $identifier$ ? @lstring mFilewrapperName ;
@@ -715,13 +710,13 @@ rule <semantic_declaration>
   end select ;
   $}$ ;
   ${$ ;
-  @filewrapperTemplateList mFilewrapperTemplateList [emptyList] ;
+  @filewrapperTemplateListAST mFilewrapperTemplateList [emptyList] ;
   repeat
   while
     $template$ ;
     $identifier$ ? @lstring mFilewrapperTemplateName ;
     $literal_string$ ? @lstring mFilewrapperTemplatePath ;
-    @formalInputParameterList mFilewrapperTemplateFormalInputParameters ;
+    @formalInputParameterListAST mFilewrapperTemplateFormalInputParameters ;
     <formal_input_parameter_list> ? mFilewrapperTemplateFormalInputParameters ;
     $;$ ;
     mFilewrapperTemplateList +=
@@ -731,7 +726,7 @@ rule <semantic_declaration>
     ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@filewrapperDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@filewrapperDeclarationAST new
     !mFilewrapperName
     !mFilewrapperPath
     !mFilewrapperExtensionList
@@ -746,13 +741,13 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $abstract$ ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
   $identifier$ ? @lstring mMethodName ;
-  @formalParameterList mFormalParameterList ;
+  @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
   ioSemanticDeclarations.mAbstractCategoryMethodListMap += ![mClassName string] !mMethodName !mFormalParameterList ;
@@ -765,15 +760,15 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $method$ ;
   $type_name$ ? @lstring mClassName ;
   $identifier$ ? @lstring mMethodName ;
-  @formalParameterList mFormalParameterList ;
+  @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $:$ ;
-  @semanticInstructionList mRoutineInstructionList ;
+  @semanticInstructionListAST mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $end$ ;
   $method$ ;
@@ -793,16 +788,16 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $override$ ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
   $identifier$ ? @lstring mMethodName ;
-  @formalParameterList mFormalParameterList ;
+  @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $:$ ;
-  @semanticInstructionList mRoutineInstructionList ;
+  @semanticInstructionListAST mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $end$ ;
   $method$ ;
@@ -822,13 +817,13 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $abstract$ ;
   $reader$ ;
   $type_name$ ? @lstring mClassName ;
   $identifier$ ? @lstring mReaderName ;
-  @formalInputParameterList mFormalInputParameterList ;
+  @formalInputParameterListAST mFormalInputParameterList ;
   <formal_input_parameter_list> ? mFormalInputParameterList ;
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
@@ -849,18 +844,18 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $reader$ ;
   $type_name$ ? @lstring mClassName ;
   $identifier$ ? @lstring mMethodName ;
-  @formalInputParameterList mFormalInputParameterList ;
+  @formalInputParameterListAST mFormalInputParameterList ;
   <formal_input_parameter_list> ? mFormalInputParameterList ;
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? @lstring mReturnedVariableName ;
   $:$ ;
-  @semanticInstructionList mRoutineInstructionList ;
+  @semanticInstructionListAST mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $end$ ;
   $reader$ ;
@@ -882,19 +877,19 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
   $override$ ;
   $reader$ ;
   $type_name$ ? @lstring mClassName ;
   $identifier$ ? @lstring mMethodName ;
-  @formalInputParameterList mFormalInputParameterList ;
+  @formalInputParameterListAST mFormalInputParameterList ;
   <formal_input_parameter_list> ? mFormalInputParameterList ;
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? @lstring mReturnedVariableName ;
   $:$ ;
-  @semanticInstructionList mRoutineInstructionList ;
+  @semanticInstructionListAST mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $end$ ;
   $reader$ ;

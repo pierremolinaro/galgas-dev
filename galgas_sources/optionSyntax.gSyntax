@@ -2,7 +2,7 @@
 #                                                                           *
 #  'option' component parser, as model builder                              *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,27 +17,27 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax optionModelBuilder :
+syntax optionSyntax :
 with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
+import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
 
-nonterminal <option_component_start_symbol> !@optionComponentRoot outOptionComponentRoot;
+nonterminal <option_component_start_symbol> !@optionComponentAST outOptionComponentRoot;
 
-nonterminal <option> ?!@commandLineOptionList ioCommandLineOptionList ;
+nonterminal <option> ?!@commandLineOptionListAST ioCommandLineOptionList ;
 
 #---------------------------------------------------------------------------*
 
 rule <option_component_start_symbol>
- !@optionComponentRoot outOptionComponentRoot
+ !@optionComponentAST outOptionComponentRoot
 :
   $option$ ;
 #--- Option Component Name
   $identifier$ ?@lstring mOptionComponentName ;
   $:$ ;
 #--- Parse the option list
-  @commandLineOptionList mOptions [emptyList] ;
+  @commandLineOptionListAST mOptions [emptyList] ;
   repeat
   while 
     <option> !?mOptions ;
@@ -45,7 +45,7 @@ rule <option_component_start_symbol>
   $end$ ;
   $option$ ;
   $;$ ;
-  outOptionComponentRoot := [@optionComponentRoot new
+  outOptionComponentRoot := [@optionComponentAST new
     !mOptionComponentName
     !mOptions
   ] ;
@@ -53,7 +53,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <option> ?!@commandLineOptionList ioCommandLineOptionList :
+rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList :
   $type_name$ ?@lstring mOptionTypeName  ;
   $identifier$ ?@lstring mOptionInternalName ;
   $:$ ;
@@ -63,18 +63,18 @@ rule <option> ?!@commandLineOptionList ioCommandLineOptionList :
   $->$ ;
   $literal_string$ ?@lstring mOptionComment ;
   @lstring defaultValue [new !"" !here] ;
-  @optionDefaultValueEnum optionDefaultValueKind ;
+  @optionDefaultValueEnumAST optionDefaultValueKind ;
   select
-    optionDefaultValueKind := [@optionDefaultValueEnum noDefaultValue] ;
+    optionDefaultValueKind := [@optionDefaultValueEnumAST noDefaultValue] ;
   or
     $default$ ;
     select
       $literal_string$ ? defaultValue ;
-      optionDefaultValueKind := [@optionDefaultValueEnum stringDefaultValue] ;
+      optionDefaultValueKind := [@optionDefaultValueEnumAST stringDefaultValue] ;
     or
       $unsigned_literal_integer$ ? @luint v ;
       [!?defaultValue setString ![[v uint] string]] ;
-      optionDefaultValueKind := [@optionDefaultValueEnum unsignedDefaultValue] ;
+      optionDefaultValueKind := [@optionDefaultValueEnumAST unsignedDefaultValue] ;
     end select ;
   end select ;
   $;$ ;

@@ -21,19 +21,17 @@ syntax programModelBuilder :
 with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
-import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 import semantics programMetamodel in "programMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
 nonterminal <program_component_start_symbol> !@programComponentRoot outProgramComponentRoot ;
 
-nonterminal <semantic_instruction_list> !@semanticInstructionList outInstructionsList ;
+nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationStruct ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST ioSemanticDeclarations
 ;
 
 #---------------------------------------------------------------------------*
@@ -74,18 +72,18 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
 #--- Prologue
   $before$ ;
   ${$ ;
-  @semanticInstructionList mPrologueInstructionList [emptyList] ;
+  @semanticInstructionListAST mPrologueInstructionList [emptyList] ;
   <semantic_instruction_list> ? mPrologueInstructionList ;
   $}$ ;
 #--- Program rules
-  @semanticDeclarationStruct mSemanticDeclarations [new
-    ![@semanticDeclarationList emptyList]
-    ![@abstractCategoryMethodListMap emptyMap]
-    ![@categoryMethodListMap emptyMap]
-    ![@overridingCategoryMethodListMap emptyMap]
-    ![@abstractCategoryReaderListMap emptyMap]
-    ![@categoryReaderListMap emptyMap]
-    ![@overridingCategoryReaderListMap emptyMap]
+  @semanticDeclarationStructAST mSemanticDeclarations [new
+    ![@semanticDeclarationListAST emptyList]
+    ![@abstractMultiMethodListMapAST emptyMap]
+    ![@multiMethodListMapAST emptyMap]
+    ![@overridingMultiMethodListMapAST emptyMap]
+    ![@abstractMultiReaderListMapAST emptyMap]
+    ![@multiReaderListMapAST emptyMap]
+    ![@overridingMultiReaderListMapAST emptyMap]
   ] ;
   @programRuleList mProgramRules [emptyList] ;
   repeat
@@ -102,7 +100,7 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
     end if ;
     $identifier$ ? @lstring mSourceFileVariableName ;
     ${$ ;
-    @semanticInstructionList mInstructionList ;
+    @semanticInstructionListAST mInstructionList ;
     <semantic_instruction_list> ? mInstructionList ;
     $}$ ;
     mProgramRules +=
@@ -117,7 +115,7 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
 #--- Epilogue
   $after$ ;
   ${$ ;
-  @semanticInstructionList mEpilogueInstructionList ;
+  @semanticInstructionListAST mEpilogueInstructionList ;
   <semantic_instruction_list> ? mEpilogueInstructionList ;
   $}$ ;
 #---

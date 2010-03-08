@@ -695,7 +695,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          if (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+          if (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::enum_argumentOut) {
             generatedZone3 << "        parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.next () ;
@@ -711,7 +711,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          if (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+          if (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::enum_argumentOut) {
             generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.next () ;

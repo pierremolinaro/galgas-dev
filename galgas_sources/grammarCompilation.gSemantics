@@ -17,11 +17,11 @@
 #---------------------------------------------------------------------------*
 
 semantics grammarCompilation :
-import "grammarMetamodel.gSemantics" ;
+import "allASTTypes.gSemantics" ;
 import "grammarSemantics.gSemantics" ;
 import "galgas_cli_options.gOption" ;
 
-import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
+import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import semantics grammarSemantics in "grammarSemantics.gSemantics" ;
 import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
@@ -146,7 +146,7 @@ end routine ;
 #                     transformInstructionList                              *
 #---------------------------------------------------------------------------*
 
-abstract method @syntaxInstruction transformInstruction
+abstract method @syntaxInstructionAST transformInstruction
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!@uint ioAddedNonTerminalIndex
@@ -155,7 +155,7 @@ abstract method @syntaxInstruction transformInstruction
 
 #---------------------------------------------------------------------------*
 
-override method @semanticInstruction transformInstruction
+override method @semanticInstructionAST transformInstruction
   ?!@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
   ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
   ?!@uint unused ioAddedNonTerminalIndex

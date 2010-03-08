@@ -32,8 +32,6 @@ semantics semanticsGeneration :
   import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
   import "semanticsSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
-  import "semanticsMetamodel.gSemantics" ;
-  import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -41,91 +39,91 @@ semantics semanticsGeneration :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticDeclaration generatePredeclaration -> @string outPredeclaration :
+reader @semanticDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @mapDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "class GALGAS_" . [mMapTypeName identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapindexDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @mapindexDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "class GALGAS_" . [mMapIndexTypeName identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @enumDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @enumDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "class GALGAS_" . [mEnumTypeName identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @filewrapperDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @filewrapperDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedListDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @sortedListDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "class GALGAS_" . [mSortedListTypeName identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @structDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @structDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "class GALGAS_" . [mStructTypeName identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @listDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "class GALGAS_" . [mListTypeName identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @classDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @classDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "class GALGAS_" . [mClassTypeName identifierRepresentation] . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @externRoutineDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @externRoutineDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @routineDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @routineDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @externFunctionDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @externFunctionDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @functionDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @onceFunctionDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @lazyFunctionDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listmapDeclaration generatePredeclaration -> @string outPredeclaration :
+override reader @listmapDeclarationAST generatePredeclaration -> @string outPredeclaration :
   outPredeclaration := "class GALGAS_" . [mListmapTypeName identifierRepresentation] . " ;\n" ;
 end reader ;
 
@@ -139,7 +137,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
 } {
   template semanticFileHeader "semantic-file.h.gTemplate"
     ?@string COMPONENT_NAME
-    ?@semanticDeclarationList SEMANTIC_DECLARATION_LIST # For generating class predeclarations
+    ?@semanticDeclarationListAST SEMANTIC_DECLARATION_LIST # For generating class predeclarations
   ;
   template semanticFileImplementation "semantic-file.cpp.gTemplate"
     ?@string COMPONENT_NAME
@@ -168,12 +166,12 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
   template enumTypeHeader "GALGAS_enum.h.gTemplate"
     ?@string TYPE_NAME
     ?@lstringlist CONSTANT_LIST
-    ?@enumMessageList ENUM_MESSAGE_LIST
+    ?@enumMessageListAST ENUM_MESSAGE_LIST
   ;
   template enumTypeImplementation "GALGAS_enum.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@lstringlist CONSTANT_LIST
-    ?@enumMessageList ENUM_MESSAGE_LIST
+    ?@enumMessageListAST ENUM_MESSAGE_LIST
   ;
 }
 
@@ -183,7 +181,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclaration generateCode
+abstract method @semanticDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
@@ -191,27 +189,27 @@ abstract method @semanticDeclaration generateCode
 
 #---------------------------------------------------------------------------*
 
-override method @mapDeclaration generateCode
+override method @mapDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@mapDeclaration generateCode\n" ;
+  message "@mapDeclarationAST generateCode\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapindexDeclaration generateCode
+override method @mapindexDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@mapindexDeclaration generateCode\n" ;
+  message "@mapindexDeclarationAST generateCode\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @enumDeclaration generateCode
+override method @enumDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string ioHeaderString
   ?!@string ioImplementationString
@@ -230,17 +228,17 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @filewrapperDeclaration generateCode
+override method @filewrapperDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@filewrapperDeclaration.semanticAnalysis [in semanticCompilation.gSemantics]\n" ;
+  message "@filewrapperDeclarationAST.semanticAnalysis [in semanticCompilation.gSemantics]\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclaration generateCode
+override method @sortedListDeclarationAST generateCode
   ?!@semanticContext ioSemanticContext
   ?!@string ioHeaderString
   ?!@string ioImplementationString
@@ -262,7 +260,7 @@ override method @sortedListDeclaration generateCode
     [indexAttributeMap searchKey !mSortedAttributeName ?attributeIndex] ;
     sortAttributeList += !attributeIndex !mAscending ;
   end foreach ;
-  @sortedListDeclaration tt := self ; # Bug in GALGAS 1
+  @sortedListDeclarationAST tt := self ; # Bug in GALGAS 1
   ioHeaderString .= [filewrapper typeGenerationTemplate.sortedlistTypeHeader
     ![[tt mSortedListTypeName] identifierRepresentation]
     !attributeList
@@ -276,17 +274,17 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @structDeclaration generateCode
+override method @structDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@structDeclaration generateCode\n" ;
+  message "@structDeclarationAST generateCode\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listDeclaration generateCode
+override method @listDeclarationAST generateCode
   ?!@semanticContext ioSemanticContext
   ?!@string ioHeaderString
   ?!@string ioImplementationString
@@ -300,7 +298,7 @@ override method @listDeclaration generateCode
       !mAttributeName
     ;
   end foreach ;
-  @listDeclaration tt := self ; # Bug in GALGAS 1
+  @listDeclarationAST tt := self ; # Bug in GALGAS 1
   ioHeaderString .= [filewrapper typeGenerationTemplate.listTypeHeader
     ![[tt mListTypeName] identifierRepresentation]
     !attributeList
@@ -313,32 +311,32 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @classDeclaration generateCode
+override method @classDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@classDeclaration generateCode\n" ;
+  message "@classDeclarationAST generateCode\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externRoutineDeclaration generateCode
+override method @externRoutineDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@externRoutineDeclaration generateCode\n" ;
+  message "@externRoutineDeclarationAST generateCode\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @routineDeclaration generateCode
+override method @routineDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@routineDeclaration generateCode\n" ;
+  message "@routineDeclarationAST generateCode\n" ;
 #  foreach mRoutineInstructionList do
 #    [mInstruction instructionSemanticAnalysis !inSemanticContext] ;
 #  end foreach ;
@@ -346,22 +344,22 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externFunctionDeclaration generateCode
+override method @externFunctionDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@externFunctionDeclaration generateCode\n" ;
+  message "@externFunctionDeclarationAST generateCode\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @functionDeclaration generateCode
+override method @functionDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@functionDeclaration generateCode\n" ;
+  message "@functionDeclarationAST generateCode\n" ;
 #  foreach mFunctionInstructionList do
 #    [mInstruction instructionSemanticAnalysis !inSemanticContext] ;
 #  end foreach ;
@@ -369,22 +367,22 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @onceFunctionDeclaration generateCode
+override method @lazyFunctionDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@onceFunctionDeclaration generateCode\n" ;
+  message "@lazyFunctionDeclarationAST generateCode\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listmapDeclaration generateCode
+override method @listmapDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
-  message "@listmapDeclaration generateCode\n" ;
+  message "@listmapDeclarationAST generateCode\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -26,11 +26,10 @@ program galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics projectCreation in "projectCreation.gSemantics" ;
   import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
   import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
-  import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
+  import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
   import semantics optionCompilation in "optionCompilation.gSemantics" ;
   import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
   import semantics guiCompilation in "guiCompilation.gSemantics" ;
-  import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
   import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
   import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;

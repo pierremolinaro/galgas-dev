@@ -48,13 +48,13 @@ once classMethodMapFor_string ->@modifierMap outModifierMap :
   enterModifierWithStringInputArgument !?outModifierMap !"removeEmptyDirectory" !true ;
   enterModifierWithStringInputArgument !?outModifierMap !"removeDirectoryRecursively" !true ;
   @formalParameterSignature argList [emptyList] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?outModifierMap insertKey
     ![@lstring new !"generateFile" !here]
     !argList
@@ -75,9 +75,9 @@ override reader @mapindexType classMethodMap ->@modifierMap outModifierMap :
   @formalParameterSignature argList [emptyList] ;
   @ACGalgasType tSelf := self ;
   @ACGalgasType t ; [mIndexOfMapType searchKey ?* ?t] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingMode argumentConstantIn] ;
-  argList += !t ![@formalArgumentPassingMode argumentInOut] ;
-  argList += !tSelf ![@formalArgumentPassingMode argumentOut] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !t ![@formalArgumentPassingModeAST argumentInOut] ;
+  argList += !tSelf ![@formalArgumentPassingModeAST argumentOut] ;
   [!?outModifierMap insertKey
     ![@lstring new !"makeRegularIndex" !here]
     !argList

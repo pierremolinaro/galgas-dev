@@ -2,7 +2,7 @@
 #                                                                           *
 #  'expression' component parser, as model builder                          *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,12 +17,11 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax expressionModelBuilder :
+syntax expressionSyntax :
 with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -30,21 +29,21 @@ import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSema
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-nonterminal <expression> !@semanticExpression outExpression ;
+nonterminal <expression> !@semanticExpressionAST outExpression ;
 
-nonterminal <concatenation_term> !@semanticExpression outExpression ;
+nonterminal <concatenation_term> !@semanticExpressionAST outExpression ;
 
-nonterminal <relation_term> !@semanticExpression outExpression ;
+nonterminal <relation_term> !@semanticExpressionAST outExpression ;
 
-nonterminal <relation_factor> !@semanticExpression outExpression ;
+nonterminal <relation_factor> !@semanticExpressionAST outExpression ;
 
-nonterminal <simple_expression> !@semanticExpression outExpression ;
+nonterminal <simple_expression> !@semanticExpressionAST outExpression ;
 
-nonterminal <term> !@semanticExpression outExpression ;
+nonterminal <term> !@semanticExpressionAST outExpression ;
 
-nonterminal <factor> !@semanticExpression outExpression ;
+nonterminal <factor> !@semanticExpressionAST outExpression ;
 
-nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
+nonterminal <output_expression_list> !@outSemanticExpressionListAST outExpressionList ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -52,16 +51,16 @@ nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <expression> !@semanticExpression outExpression :
+rule <expression> !@semanticExpressionAST outExpression :
   <concatenation_term> ? outExpression ;
   repeat
   while
     @location operatorLocation := here ;
     $.$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <concatenation_term> ? rightOperand ;
-    outExpression := [@concatExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@concatExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   end repeat ;
 end rule ;
 
@@ -71,23 +70,23 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <concatenation_term> !@semanticExpression outExpression :
+rule <concatenation_term> !@semanticExpressionAST outExpression :
   <relation_term> ? outExpression ;
   repeat
   while
     @location operatorLocation := here ;
     $|$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <relation_term> ? rightOperand ;
-    outExpression := [@orExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@orExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $^$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <relation_term> ? rightOperand ;
-    outExpression := [@xorExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@xorExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   end repeat ;
 end rule ;
 
@@ -97,16 +96,16 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <relation_term> !@semanticExpression outExpression :
+rule <relation_term> !@semanticExpressionAST outExpression :
   <relation_factor> ? outExpression ;
   repeat
   while
     @location operatorLocation := here ;
     $&$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <relation_factor> ? rightOperand ;
-    outExpression := [@andExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@andExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   end repeat ;
 end rule ;
 
@@ -116,51 +115,51 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <relation_factor> !@semanticExpression outExpression :
+rule <relation_factor> !@semanticExpressionAST outExpression :
   <simple_expression> ? outExpression ;
   repeat
   while
     @location operatorLocation := here ;
     $==$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <simple_expression> ? rightOperand ;
-    outExpression := [@equalExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@equalExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $!=$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <simple_expression> ? rightOperand ;
-    outExpression := [@notEqualExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@notEqualExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $<=$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <simple_expression> ? rightOperand ;
-    outExpression := [@lowerOrEqualExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@lowerOrEqualExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $>=$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <simple_expression> ? rightOperand ;
-    outExpression := [@greaterOrEqualExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@greaterOrEqualExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $>$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <simple_expression> ? rightOperand ;
-    outExpression := [@strictGreaterExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@strictGreaterExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $<$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <simple_expression> ? rightOperand ;
-    outExpression := [@strictLowerExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@strictLowerExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   end repeat ;
 end rule ;
 
@@ -170,37 +169,37 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <simple_expression> !@semanticExpression outExpression :
+rule <simple_expression> !@semanticExpressionAST outExpression :
   <term> ? outExpression ;
   repeat
   while
     @location operatorLocation := here ;
     $<<$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <term> ? rightOperand ;
-    outExpression := [@leftShiftExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@leftShiftExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $>>$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <term> ? rightOperand ;
-    outExpression := [@rightShiftExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@rightShiftExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $+$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <term> ? rightOperand ;
-    outExpression := [@addExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@addExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $-$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <term> ? rightOperand ;
-    outExpression := [@subExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@subExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   end repeat ;
 end rule ;
 
@@ -210,30 +209,30 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <term> !@semanticExpression outExpression :
+rule <term> !@semanticExpressionAST outExpression :
   <factor> ? outExpression ;
   repeat
   while
     @location operatorLocation := here ;
     $*$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <factor> ? rightOperand ;
-    outExpression := [@multiplicationExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@multiplicationExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $/$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <factor> ? rightOperand ;
-    outExpression := [@divisionExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@divisionExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
     $mod$ ;
-    @semanticExpression leftOperand := outExpression ;
-    @semanticExpression rightOperand ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
     <factor> ? rightOperand ;
-    outExpression := [@moduloExpression new !operatorLocation !leftOperand !rightOperand] ;
+    outExpression := [@moduloExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   end repeat ;
 end rule ;
 
@@ -243,11 +242,11 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @location operatorLocation := here ;
   $-$ ;
   <factor> ? outExpression ;
-  outExpression := [@unaryMinusExpression new !operatorLocation !outExpression] ;
+  outExpression := [@unaryMinusExpressionAST new !operatorLocation !outExpression] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -256,10 +255,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @lstring identifier ;
   $identifier$ ? identifier ;
-  outExpression := [@varInExpression new !identifier] ;
+  outExpression := [@varInExpressionAST new !identifier] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -268,9 +267,9 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $self$ ;
-  outExpression := [@selfInExpression new] ;
+  outExpression := [@selfInExpressionAST new] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -281,13 +280,13 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $($ ;
   select
     <expression> ? outExpression ;
   or
     $cast$ ;
-    @semanticExpression receiverExpression ;
+    @semanticExpressionAST receiverExpression ;
     <expression> ? receiverExpression ;
     $if$ ;
     @bool useKindOfClass ;
@@ -302,9 +301,9 @@ rule <factor> !@semanticExpression outExpression :
     $type_name$ ? typeName ;
     $else$ ;
     $error$ ;
-    @semanticExpression errorLocationExpression ;
+    @semanticExpressionAST errorLocationExpression ;
     <expression> ? errorLocationExpression ;
-    outExpression := [@castInExpression new
+    outExpression := [@castInExpressionAST new
       !receiverExpression
       !useKindOfClass
       !typeName
@@ -320,11 +319,11 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @location operatorLocation := here ;
   $not$ ;
   <factor> ? outExpression ;
-  outExpression := [@notExpression new !operatorLocation !outExpression] ;
+  outExpression := [@notExpressionAST new !operatorLocation !outExpression] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -333,11 +332,11 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @location operatorLocation := here ;
   $~$ ;
   <factor> ? outExpression ;
-  outExpression := [@negateExpression new !operatorLocation !outExpression] ;
+  outExpression := [@negateExpressionAST new !operatorLocation !outExpression] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -346,9 +345,9 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $true$ ;
-  outExpression := [@trueExpression new] ;
+  outExpression := [@trueExpressionAST new] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -357,9 +356,9 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $false$ ;
-  outExpression := [@falseExpression new] ;
+  outExpression := [@falseExpressionAST new] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -368,7 +367,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @stringlist literalStringList [emptyList] ;
   repeat
     @lstring literalString ;
@@ -376,7 +375,7 @@ rule <factor> !@semanticExpression outExpression :
     literalStringList += ![literalString string] ;
   while
   end repeat ;
-  outExpression := [@literalStringExpression new !literalStringList] ;
+  outExpression := [@literalStringExpressionAST new !literalStringList] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -385,10 +384,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @luint literalInt ;
   $unsigned_literal_integer$ ?literalInt ;
-  outExpression := [@literalUIntExpression new !literalInt] ;
+  outExpression := [@literalUIntExpressionAST new !literalInt] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -397,10 +396,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @lsint literalInt ;
   $signed_literal_integer$ ?literalInt ;
-  outExpression := [@literalSIntExpression new !literalInt] ;
+  outExpression := [@literalSIntExpressionAST new !literalInt] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -409,10 +408,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @luint64 literalInt ;
   $unsigned_literal_integer64$ ?literalInt ;
-  outExpression := [@literalUInt64Expression new !literalInt] ;
+  outExpression := [@literalUInt64ExpressionAST new !literalInt] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -421,10 +420,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @lsint64 literalInt ;
   $signed_literal_integer64$ ?literalInt ;
-  outExpression := [@literalSInt64Expression new !literalInt] ;
+  outExpression := [@literalSInt64ExpressionAST new !literalInt] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -433,10 +432,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @lchar literalChar ;
   $literal_char$ ?literalChar ;
-  outExpression := [@literalCharExpression new !literalChar] ;
+  outExpression := [@literalCharExpressionAST new !literalChar] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -445,10 +444,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   @ldouble literalDouble ;
   $literal_double$ ? literalDouble ?* ;
-  outExpression := [@literalDoubleExpression new !literalDouble] ;
+  outExpression := [@literalDoubleExpressionAST new !literalDouble] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -457,9 +456,9 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $here$ ;
-  outExpression := [@hereExpression new] ;
+  outExpression := [@hereExpressionAST new] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -468,18 +467,18 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $if$ ;
-  @semanticExpression ifExpression ;
+  @semanticExpressionAST ifExpression ;
   <expression> ? ifExpression ;
   $then$ ;
-  @semanticExpression thenExpression ;
+  @semanticExpressionAST thenExpression ;
   <expression> ? thenExpression ;
   $else$ ;
-  @semanticExpression elseExpression ;
+  @semanticExpressionAST elseExpression ;
   <expression> ? elseExpression ;
   $end$ ;
-  outExpression := [@ifExpression new
+  outExpression := [@ifExpressionAST new
     !ifExpression
     !thenExpression
     !elseExpression
@@ -496,19 +495,19 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $[$ ;
   select
   #--- Get source identity characteristics
-    @semanticExpression receiverExpression ;
+    @semanticExpressionAST receiverExpression ;
     <expression> ? receiverExpression ;
   #--- Get reader name
     @lstring readerName ;
     $identifier$ ? readerName ;
   #--- Actual parameters
-    @outExpressionList expressionList ;
+    @outSemanticExpressionListAST expressionList ;
     <output_expression_list> ? expressionList ;
-    outExpression := [@readerCallExpression new !receiverExpression !readerName !expressionList] ;
+    outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
   or
   #--- Class name
     @lstring className ;
@@ -517,9 +516,9 @@ rule <factor> !@semanticExpression outExpression :
     @lstring constructorName ;
     $identifier$ ? constructorName ;
   #--- Actual arguments
-    @outExpressionList expressionList ;
+    @outSemanticExpressionListAST expressionList ;
     <output_expression_list> ? expressionList ;
-    outExpression := [@constructorExpression new
+    outExpression := [@constructorExpressionAST new
       !className
       !constructorName
       !expressionList
@@ -531,20 +530,20 @@ rule <factor> !@semanticExpression outExpression :
       @lstring optionName ;
       $identifier$ ?optionName ;
       $identifier$ ?@lstring readerName ;
-      outExpression := [@optionExpression new ![@lstring new !"generic_galgas_cli_options" !here] !optionName !readerName] ;
+      outExpression := [@optionExpressionAST new ![@lstring new !"generic_galgas_cli_options" !here] !optionName !readerName] ;
     or
       $identifier$ ?@lstring optionComponentName ;
       $.$ ;
       $identifier$ ?@lstring optionName ;
       $identifier$ ?@lstring readerName ;
-      outExpression := [@optionExpression new !optionComponentName !optionName !readerName] ;
+      outExpression := [@optionExpressionAST new !optionComponentName !optionName !readerName] ;
     end select ;
   or
     $filewrapper$ ;
     @lstring filewrapperName ;
     $identifier$ ? filewrapperName ;
     select
-      outExpression := [@filewrapperObjectInstanciationInExpression new
+      outExpression := [@filewrapperObjectInstanciationInExpressionAST new
         !filewrapperName
       ] ;
     or
@@ -552,16 +551,16 @@ rule <factor> !@semanticExpression outExpression :
       select
         @lstring filePath ;
         $literal_string$ ? filePath ;
-        outExpression := [@filewrapperInExpression new
+        outExpression := [@filewrapperInExpressionAST new
           !filewrapperName
           !filePath
         ] ;
       or
         @lstring filewrapperTemplateName ;
         $identifier$ ? filewrapperTemplateName ;
-        @outExpressionList expressionList ;
+        @outSemanticExpressionListAST expressionList ;
         <output_expression_list> ? expressionList ;
-        outExpression := [@filewrapperTemplateInExpression new
+        outExpression := [@filewrapperTemplateInExpressionAST new
           !filewrapperName
           !filewrapperTemplateName
           !expressionList
@@ -580,12 +579,12 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $identifier$ ? @lstring functionName ;
   $[$ ;
-  @outExpressionList expressionList ;
+  @outSemanticExpressionListAST expressionList ;
   <output_expression_list> ? expressionList ;
-  outExpression := [@functionCallExpression new
+  outExpression := [@functionCallExpressionAST new
     !functionName
     !expressionList
   ] ;
@@ -600,10 +599,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpression outExpression :
+rule <factor> !@semanticExpressionAST outExpression :
   $`$ ;
   $type_name$ ? @lstring typeName ;
-  outExpression := [@literalTypeInExpression new
+  outExpression := [@literalTypeInExpressionAST new
     !typeName
   ] ;
 end rule ;
@@ -614,16 +613,16 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <output_expression_list>  !@outExpressionList outExpressionList:
-  @semanticExpressionList expressionList [emptyList] ;
+rule <output_expression_list>  !@outSemanticExpressionListAST outExpressionList:
+  @semanticExpressionListAST expressionList [emptyList] ;
   repeat
   while
     $!$ ;
-    @semanticExpression expression ;
+    @semanticExpressionAST expression ;
     <expression> ? expression ;
     expressionList += !expression ;
   end repeat ;
-  outExpressionList := [@outExpressionList new
+  outExpressionList := [@outSemanticExpressionListAST new
     !expressionList
     !here
   ] ;

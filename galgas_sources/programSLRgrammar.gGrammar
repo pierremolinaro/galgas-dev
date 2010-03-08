@@ -18,15 +18,15 @@
 #---------------------------------------------------------------------------*
 
 grammar programSLRgrammar "SLR" :
-  with "expressionModelBuilder.gSyntax" ;
-  with "parameterArgumentBuilder.gSyntax" ;
-  with "semanticInstructionListModelBuilder.gSyntax" ;
+  with "expressionSyntax.gSyntax" ;
+  with "parameterArgumentSyntax.gSyntax" ;
+  with "semanticInstructionsSyntax.gSyntax" ;
   with "programModelBuilder.gSyntax" ;
 
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax expressionModelBuilder in "expressionModelBuilder.gSyntax" ;
-  import syntax parameterArgumentBuilder in "parameterArgumentBuilder.gSyntax" ;
-  import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.gSyntax" ;
+  import syntax expressionSyntax in "expressionSyntax.gSyntax" ;
+  import syntax parameterArgumentSyntax in "parameterArgumentSyntax.gSyntax" ;
+  import syntax semanticInstructionsSyntax in "semanticInstructionsSyntax.gSyntax" ;
   import syntax programModelBuilder in "programModelBuilder.gSyntax" ;
 
   root <program_component_start_symbol>

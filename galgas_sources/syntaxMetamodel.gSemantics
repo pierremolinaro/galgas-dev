@@ -19,25 +19,23 @@
 
 semantics syntaxMetamodel :
 
-import "expressionMetamodel.gSemantics" ;
+import "semanticsTypesForAST.gSemantics" ;
 import "parameterArgumentMetamodel.gSemantics" ;
 import "instructionMetamodel.gSemantics" ;
 
-import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
-import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
-import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
 list @syntaxInstructionList {
-  @syntaxInstruction mInstruction ;
+  @syntaxInstructionAST mInstruction ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @nonTerminalLabelList {
   @lstring mLabelName ;
-  @formalParameterList mFormalParameters ;
+  @formalParameterListAST mFormalParameters ;
 }
 
 #---------------------------------------------------------------------------*
@@ -52,7 +50,7 @@ list @nonterminalDeclarationList {
 
 list @syntaxRuleLabelList {
   @lstring mLabelName ;
-  @formalParameterList mFormalParameters ;
+  @formalParameterListAST mFormalParameters ;
   @syntaxInstructionList mSyntaxInstructionList ;
 }
 
@@ -69,10 +67,10 @@ list @syntaxRuleList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @nonterminalCallInstruction extends @syntaxInstruction {
+class @nonterminalCallInstruction extends @syntaxInstructionAST {
   @lstring mNonterminalName ;
   @lstring mLabelName ; # No label : empty string
-  @actualParameterList mActualParameterList ;
+  @actualParameterListAST mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -81,9 +79,9 @@ class @nonterminalCallInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @terminalCheckInstruction extends @syntaxInstruction {
+class @terminalCheckInstruction extends @syntaxInstructionAST {
   @lstring mTerminalName ;
-  @actualInputParameterList mActualInputParameterList ;
+  @actualInputParameterListAST mActualInputParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -98,7 +96,7 @@ list @listOfSyntaxInstructionList {
 
 #---------------------------------------------------------------------------*
 
-class @repeatInstruction extends @syntaxInstruction {
+class @repeatInstruction extends @syntaxInstructionAST {
   @syntaxInstructionList mRepeatedInstructionList ;
   @listOfSyntaxInstructionList mRepeatBranchList ;
 }
@@ -109,7 +107,7 @@ class @repeatInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @selectInstruction extends @syntaxInstruction {
+class @selectInstruction extends @syntaxInstructionAST {
   @listOfSyntaxInstructionList mSelectBranchList ;
 }
 
@@ -119,7 +117,7 @@ class @selectInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @parseDoInstruction extends @syntaxInstruction {
+class @parseDoInstruction extends @syntaxInstructionAST {
   @listOfSyntaxInstructionList mParseDoBranchList ;
 }
 
@@ -129,9 +127,9 @@ class @parseDoInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @parseLoopInstruction extends @syntaxInstruction {
-  @semanticExpression mVariantExpression ;
-  @semanticExpression mWhileExpression ;
+class @parseLoopInstruction extends @syntaxInstructionAST {
+  @semanticExpressionAST mVariantExpression ;
+  @semanticExpressionAST mWhileExpression ;
   @syntaxInstructionList mDoInstructionList ;
 }
 
@@ -142,13 +140,13 @@ class @parseLoopInstruction extends @syntaxInstruction {
 #---------------------------------------------------------------------------*
 
 list @whenBranchList {
-  @semanticExpression mWhenExpression ;
+  @semanticExpressionAST mWhenExpression ;
   @syntaxInstructionList mParseDoBranchList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @parseWhenInstruction extends @syntaxInstruction {
+class @parseWhenInstruction extends @syntaxInstructionAST {
   @whenBranchList mWhenBranchList ;
   @syntaxInstructionList mElseInstructionList ;
 }
@@ -159,12 +157,12 @@ class @parseWhenInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @blockInstruction extends @syntaxInstruction {
+class @blockInstruction extends @syntaxInstructionAST {
   @lstring mReceiverVariable ;
   @lstring mBlockMethodName ;
-  @actualParameterList mPrologActualParameterList ;
+  @actualParameterListAST mPrologActualParameterList ;
   @syntaxInstructionList mInstructionList ;
-  @actualParameterList mEpilogActualParameterList ;
+  @actualParameterListAST mEpilogActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -174,7 +172,7 @@ class @syntaxComponentRoot {
   @lstring mImportedLexiqueReference ;
   @nonterminalDeclarationList mNonterminalDeclarationList ;
   @syntaxRuleList mRuleList ;
-  @semanticDeclarationStruct mSemanticDeclarations ;
+  @semanticDeclarationStructAST mSemanticDeclarations ;
 }
 
 #---------------------------------------------------------------------------*
