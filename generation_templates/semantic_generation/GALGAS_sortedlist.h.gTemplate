@@ -36,8 +36,8 @@ class GALGAS_%!TYPE_NAME% : public AC_GALGAS_SortedList {
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
 
 //--- Method for comparing two list elements
-  protected : virtual PMSInt32 compareSortedListElements (const AC_GALGAS__root * inLeftAttributeList [],
-                                                          const AC_GALGAS__root * inRightAttributeList []) ;
+  protected : virtual PMSInt32 compareSortedListElements (const AC_GALGAS_root * inLeftAttributeList [],
+                                                          const AC_GALGAS_root * inRightAttributeList []) ;
 
 
 //--- Friends

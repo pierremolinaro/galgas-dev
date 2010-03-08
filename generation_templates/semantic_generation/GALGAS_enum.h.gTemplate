@@ -8,7 +8,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_NAME% : public AC_GALGAS__root {
+class GALGAS_%!TYPE_NAME% : public AC_GALGAS_root {
 //--------------------------------- Enumeration
   protected : typedef enum {%?COL0
 foreach CONSTANT_LIST
@@ -56,7 +56,7 @@ end foreach%} enum_%!TYPE_NAME% ;
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Compare (for sorted list)
-  public : virtual PMSInt32 genericObjectCompare (const AC_GALGAS__root * inOperand
+  public : virtual PMSInt32 genericObjectCompare (const AC_GALGAS_root * inOperand
                                                    COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Introspection
