@@ -230,10 +230,6 @@ rule <semantic_declaration>
 end rule ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#    C L A S S    D E C L A R A T I O N                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
 
 rule <obsolete_declaration> :
   $map$ ;
@@ -286,6 +282,10 @@ rule <obsolete_declaration> :
   $}$ ;
 end rule ;
 
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C L A S S    D E C L A R A T I O N                                     *
+#                                                                           *
 #---------------------------------------------------------------------------*
 
 nonterminal <class_message_declaration> ?!@classMessageDefinitionListAST ioClassMessageDefinitionList ;
@@ -415,73 +415,77 @@ rule <semantic_declaration>
   end select ;
   $class$ ;
   $type_name$ ?@lstring mClassTypeName ;
-  @lstring mSuperClassName ; # Empty if no super class
   select
-    mSuperClassName := [@lstring new !"" !here] ;
-  or
-    $extends$ ;
-    $type_name$ ? mSuperClassName ;
-  end select ;
-  @lstringlist classFeatureList [emptyList] ;
-  select
-  or
-    $feature$ ;
-    repeat
-      $identifier$ ? @lstring classFeatureName ;
-      classFeatureList += !classFeatureName ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
-  ${$ ;
-  @string mClassMessage := "" ;
-#--- Class properties
-  @attributeInCollectionListAST mAttributeList [emptyList] ;
-  @abstractMethodDefinitionListAST mAbstractMethodList [emptyList] ;
-  @overridenMethodDefinitionListAST mOverridenMethodList [emptyList] ;
-  @methodDefinitionListAST mMethodList [emptyList] ;
-  @classMessageDefinitionListAST mMessageList [emptyList] ;
-  @lazyAttributeListAST mLazyAttributeList [emptyList] ;
-  repeat
-  while
-    <attribute_declaration> !? mAttributeList ;
-  while
-    <class_abstract_method_declaration> !? mAbstractMethodList ;
-  while
-    <class_overriden_method_declaration> !? mOverridenMethodList ;
-  while
-    <class_method_declaration> !? mMethodList ;
-  while
-    <class_message_declaration> !? mMessageList ;
-  while
-    <lazy_attribute_declaration> !? mLazyAttributeList ;
-  while
-    $message$ ;
-    if [mClassMessage length] > 0 then
-      error here: "the class message is already defined" ;
-    end if ;
-    @lstring classMessage ;
-    $literal_string$ ? classMessage ;
-    if [classMessage length] == 0 then
-      error classMessage: "the class message string should be not empty" ;
-    end if ;
-    mClassMessage := [classMessage string] ;
     $;$ ;
-  end repeat ;
-  $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@classDeclarationAST new
-    !mIsAbstract
-    !mClassTypeName
-    !mSuperClassName # Empty if no super class
-    !classFeatureList
-    !mAttributeList
-    !mAbstractMethodList
-    !mOverridenMethodList
-    !mMethodList
-    !mMessageList
-    !mLazyAttributeList
-    !mClassMessage
-  ] ;
+  or
+    @lstring mSuperClassName ; # Empty if no super class
+    select
+      mSuperClassName := [@lstring new !"" !here] ;
+    or
+      $extends$ ;
+      $type_name$ ? mSuperClassName ;
+    end select ;
+    @lstringlist classFeatureList [emptyList] ;
+    select
+    or
+      $feature$ ;
+      repeat
+        $identifier$ ? @lstring classFeatureName ;
+        classFeatureList += !classFeatureName ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+    ${$ ;
+    @string mClassMessage := "" ;
+  #--- Class properties
+    @attributeInCollectionListAST mAttributeList [emptyList] ;
+    @abstractMethodDefinitionListAST mAbstractMethodList [emptyList] ;
+    @overridenMethodDefinitionListAST mOverridenMethodList [emptyList] ;
+    @methodDefinitionListAST mMethodList [emptyList] ;
+    @classMessageDefinitionListAST mMessageList [emptyList] ;
+    @lazyAttributeListAST mLazyAttributeList [emptyList] ;
+    repeat
+    while
+      <attribute_declaration> !? mAttributeList ;
+    while
+      <class_abstract_method_declaration> !? mAbstractMethodList ;
+    while
+      <class_overriden_method_declaration> !? mOverridenMethodList ;
+    while
+      <class_method_declaration> !? mMethodList ;
+    while
+      <class_message_declaration> !? mMessageList ;
+    while
+      <lazy_attribute_declaration> !? mLazyAttributeList ;
+    while
+      $message$ ;
+      if [mClassMessage length] > 0 then
+        error here: "the class message is already defined" ;
+      end if ;
+      @lstring classMessage ;
+      $literal_string$ ? classMessage ;
+      if [classMessage length] == 0 then
+        error classMessage: "the class message string should be not empty" ;
+      end if ;
+      mClassMessage := [classMessage string] ;
+      $;$ ;
+    end repeat ;
+    $}$ ;
+    ioSemanticDeclarations.mSemanticDeclarationList += ![@classDeclarationAST new
+      !mIsAbstract
+      !mClassTypeName
+      !mSuperClassName # Empty if no super class
+      !classFeatureList
+      !mAttributeList
+      !mAbstractMethodList
+      !mOverridenMethodList
+      !mMethodList
+      !mMessageList
+      !mLazyAttributeList
+      !mClassMessage
+    ] ;
+  end select ;
 end rule ;
 
 

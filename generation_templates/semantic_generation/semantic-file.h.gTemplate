@@ -6,6 +6,6 @@
 #include "galgas2/predefined-types.h"
 %
 foreach SEMANTIC_DECLARATION_LIST do
-  ![mSemanticDeclaration generatePredeclaration]
+  %class GALGAS_%!mValue% ;\n%
 end foreach
 %

@@ -467,58 +467,58 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @foreachInstruction instructionSemanticAnalysis
+override method @foreachInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@foreachInstruction instructionSemanticAnalysis\n" ;
+  message "@foreachInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @ifInstruction instructionSemanticAnalysis
+override method @ifInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@ifInstruction instructionSemanticAnalysis\n" ;
+  message "@ifInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @methodCallInstruction instructionSemanticAnalysis
+override method @methodCallInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@methodCallInstruction instructionSemanticAnalysis\n" ;
+  message "@methodCallInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @modifierCallInstruction instructionSemanticAnalysis
+override method @modifierCallInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@modifierCallInstruction instructionSemanticAnalysis\n" ;
+  message "@modifierCallInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @errorInstruction instructionSemanticAnalysis
+override method @errorInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@errorInstruction instructionSemanticAnalysis\n" ;
+  message "@errorInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @warningInstruction instructionSemanticAnalysis
+override method @warningInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@warningInstruction instructionSemanticAnalysis\n" ;
+  message "@warningInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @routineCallInstruction instructionSemanticAnalysis
+override method @routineCallInstructionAST instructionSemanticAnalysis
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@routineCallInstruction instructionSemanticAnalysis\n" ;
+  message "@routineCallInstructionAST instructionSemanticAnalysis\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -871,9 +871,13 @@ routine compileSemanticsComponent
   end foreach ;
 #--- Perform Code Generation
   if [@uint errorCount] == 0 then
+    @stringlist predeclarationList [emptyList] ;
+    foreach declarationSortedListForGeneration do
+    
+    end foreach ;
     @string headerString := [filewrapper typeGenerationTemplate.semanticFileHeader
       ![componentName string]
-      !semanticDeclarationList
+      !predeclarationList
     ] ;
     @string implementationString := [filewrapper typeGenerationTemplate.semanticFileImplementation
       ![componentName string]

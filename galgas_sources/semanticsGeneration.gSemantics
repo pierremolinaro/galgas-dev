@@ -19,19 +19,22 @@
 
 semantics semanticsGeneration :
   import "semanticsTypes.gSemantics" ;
-  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
   import "semanticsReaders.gSemantics" ;
-  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
   import "semanticsConstructors.gSemantics" ;
-  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
   import "semanticsTypeFeatures.gSemantics" ;
-  import semantics semanticsTypeFeatures in "semanticsTypeFeatures.gSemantics" ;
   import "semanticsClassMethods.gSemantics" ;
-  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
   import "semanticsInstanceMethods.gSemantics" ;
-  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
   import "semanticsSemantics.gSemantics" ;
+  import "semanticsDecoration.gSemantics" ;
+
+  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
+  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
+  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
+  import semantics semanticsTypeFeatures in "semanticsTypeFeatures.gSemantics" ;
+  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
+  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+  import semantics semanticsDecoration in "semanticsDecoration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -39,93 +42,61 @@ semantics semanticsGeneration :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "" ;
-end reader ;
+method @semanticDeclarationForGeneration generatePredeclaration ?!@stringlist unused ioPredeclarationList :
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "class GALGAS_" . [mMapTypeName identifierRepresentation] . " ;\n" ;
-end reader ;
+override method @mapDeclarationForGeneration generatePredeclaration ?!@stringlist ioPredeclarationList :
+  ioPredeclarationList += ![mMapTypeName identifierRepresentation] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapindexDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "class GALGAS_" . [mMapIndexTypeName identifierRepresentation] . " ;\n" ;
-end reader ;
+override method @mapindexDeclarationForGeneration generatePredeclaration ?!@stringlist ioPredeclarationList :
+  ioPredeclarationList += ![mMapIndexTypeName identifierRepresentation] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @enumDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "class GALGAS_" . [mEnumTypeName identifierRepresentation] . " ;\n" ;
-end reader ;
+override method @enumDeclarationForGeneration generatePredeclaration ?!@stringlist ioPredeclarationList :
+  ioPredeclarationList += ![mEnumTypeName identifierRepresentation] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @filewrapperDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "" ;
-end reader ;
+override method @filewrapperDeclarationForGeneration generatePredeclaration ?!@stringlist unused  ioPredeclarationList :
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedListDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "class GALGAS_" . [mSortedListTypeName identifierRepresentation] . " ;\n" ;
-end reader ;
+override method @sortedListDeclarationForGeneration generatePredeclaration ?!@stringlist ioPredeclarationList :
+  ioPredeclarationList += ![mSortedListTypeName identifierRepresentation] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @structDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "class GALGAS_" . [mStructTypeName identifierRepresentation] . " ;\n" ;
-end reader ;
+override method @structDeclarationForGeneration generatePredeclaration ?!@stringlist ioPredeclarationList :
+  ioPredeclarationList += ![mStructTypeName identifierRepresentation] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "class GALGAS_" . [mListTypeName identifierRepresentation] . " ;\n" ;
-end reader ;
+override method @listDeclarationForGeneration generatePredeclaration ?!@stringlist ioPredeclarationList :
+  ioPredeclarationList += ![mListTypeName identifierRepresentation] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @classDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "class GALGAS_" . [mClassTypeName identifierRepresentation] . " ;\n" ;
-end reader ;
+override method @classDeclarationForGeneration generatePredeclaration ?!@stringlist ioPredeclarationList :
+  ioPredeclarationList += ![mClassTypeName identifierRepresentation] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @externRoutineDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @routineDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @externFunctionDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @functionDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lazyFunctionDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @listmapDeclarationAST generatePredeclaration -> @string outPredeclaration :
-  outPredeclaration := "class GALGAS_" . [mListmapTypeName identifierRepresentation] . " ;\n" ;
-end reader ;
+override method @listmapDeclarationForGeneration generatePredeclaration ?!@stringlist ioPredeclarationList :
+  ioPredeclarationList += ![mListmapTypeName identifierRepresentation] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -137,7 +108,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
 } {
   template semanticFileHeader "semantic-file.h.gTemplate"
     ?@string COMPONENT_NAME
-    ?@semanticDeclarationListAST SEMANTIC_DECLARATION_LIST # For generating class predeclarations
+    ?@stringlist SEMANTIC_DECLARATION_LIST # For generating class predeclarations
   ;
   template semanticFileImplementation "semantic-file.cpp.gTemplate"
     ?@string COMPONENT_NAME

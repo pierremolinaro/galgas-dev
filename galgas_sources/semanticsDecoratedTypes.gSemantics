@@ -683,7 +683,7 @@ list @foreachInstructionEnumeratedObjectListForGeneration {
 
 #---------------------------------------------------------------------------*
 
-class @foreachInstruction extends @semanticInstructionForGeneration {
+class @foreachInstructionForGeneration extends @semanticInstructionForGeneration {
   @foreachInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList ;
   @lstring mIndexVariableName ;
   @semanticExpressionForGeneration mWhileExpression ;
@@ -699,15 +699,15 @@ class @foreachInstruction extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @ifBranchList {
+list @ifBranchListForGeneration {
   @semanticExpressionForGeneration mIFexpression ;
   @semanticInstructionListForGeneration mIFinstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @ifInstruction extends @semanticInstructionForGeneration {
-  @ifBranchList mBranchList ; # [1, *]
+class @ifInstructionForGeneration extends @semanticInstructionForGeneration {
+  @ifBranchListForGeneration mBranchList ; # [1, *]
   @semanticInstructionListForGeneration mElseInstructionList ;
 }
 
@@ -717,7 +717,7 @@ class @ifInstruction extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @methodCallInstruction extends @semanticInstructionForGeneration {
+class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
   @lstring mMethodName ;
   @actualParameterListForGeneration mActualParameterList ;
@@ -729,7 +729,7 @@ class @methodCallInstruction extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @modifierCallInstruction extends @semanticInstructionForGeneration {
+class @modifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mReceiverName ;
   @lstringlist mReceiverStructAttributes ;
   @lstring mModifierName ;
@@ -742,7 +742,7 @@ class @modifierCallInstruction extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @errorInstruction extends @semanticInstructionForGeneration {
+class @errorInstructionForGeneration extends @semanticInstructionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
   @semanticExpressionForGeneration mErrorExpression ;
   @lstringlist mBuiltVariableList ;
@@ -754,7 +754,7 @@ class @errorInstruction extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @warningInstruction extends @semanticInstructionForGeneration {
+class @warningInstructionForGeneration extends @semanticInstructionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
   @semanticExpressionForGeneration mWarningExpression ;
 }
@@ -765,7 +765,7 @@ class @warningInstruction extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @routineCallInstruction extends @semanticInstructionForGeneration {
+class @routineCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mRoutineName ;
   @actualParameterListForGeneration mActualParameterList ;
 }
@@ -776,24 +776,24 @@ class @routineCallInstruction extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @matchEntry {
+abstract class @matchEntryForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-list @matchEntryList {
-  @matchEntry mEntry ;
+list @matchEntryListForGeneration {
+  @matchEntryForGeneration mEntry ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @constantMatchEntry extends @matchEntry {
+class @constantMatchEntryForGeneration extends @matchEntryForGeneration {
   @lstring mConstantName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @classMatchEntry extends @matchEntry {
+class @classMatchEntryForGeneration extends @matchEntryForGeneration {
   @lstring mClassName ;
   @foreachInstructionEnumeratedObjectElementListForGeneration mElements ;
   @bool mEndsWithEllipsis ;
@@ -802,7 +802,7 @@ class @classMatchEntry extends @matchEntry {
 #---------------------------------------------------------------------------*
 
 list @matchInstructionBranchListForGeneration {
-  @matchEntryList mMatchEntryList ;
+  @matchEntryListForGeneration mMatchEntryList ;
   @semanticInstructionListForGeneration mMatchBranchInstructionList ;
 }
 
