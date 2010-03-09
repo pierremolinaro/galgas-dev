@@ -17,9 +17,9 @@
 #---------------------------------------------------------------------------*
 
 semantics semantics_semantics :
-import "common_semantics.gSemantics" ;
+  import "common_semantics.gSemantics" ;
 
-import semantics common_semantics in "common_semantics.gSemantics" ;
+  import semantics common_semantics in "common_semantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1420,8 +1420,6 @@ class @C_mapindexToImplement extends @typeEntityToGenerate {
   @lstring mMapTypeName feature nogetter ;
 #--- Map attributes
   @typeListeAttributsSemantiques mMapAttributesList feature nogetter ;
-#--- Readers
-  @mapIndexSearchReaderMap mMapIndexSearchReaderMap feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

@@ -173,18 +173,22 @@ rule <semantic_declaration>
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
-  $:$ ;
-  @semanticInstructionListAST mRoutineInstructionList ;
-  <semantic_instruction_list> ? mRoutineInstructionList ;
-  $end$ ;
-  $once$ ;
-  $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@lazyFunctionDeclarationAST new
-    !mRoutineName
-    !resultTypeName
-    !resultVariableName
-    !mRoutineInstructionList
-  ] ;
+  select
+    $;$ ;
+  or
+    $:$ ;
+    @semanticInstructionListAST mRoutineInstructionList ;
+    <semantic_instruction_list> ? mRoutineInstructionList ;
+    $end$ ;
+    $once$ ;
+    $;$ ;
+    ioSemanticDeclarations.mSemanticDeclarationList += ![@lazyFunctionDeclarationAST new
+      !mRoutineName
+      !resultTypeName
+      !resultVariableName
+      !mRoutineInstructionList
+    ] ;
+  end select ;
 end rule ;
 
 #---------------------------------------------------------------------------*

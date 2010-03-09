@@ -23,7 +23,139 @@ import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  G A L G A S    A B S T R A C T  T Y P E                                  *
+#  U N I F I E D    T Y P E    M A P                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+mapindex @unifiedTypeMapIndex ;
+
+#---------------------------------------------------------------------------*
+
+list @unifiedTypeMapIndexList {
+  @unifiedTypeMapIndex mType ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C O N S T R U C T O R    M A P                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @constructorMap {
+  @unifiedTypeMapIndexList mArgumentTypeList ;
+  @bool mHasLexique ;
+  @unifiedTypeMapIndex mReturnedType ;
+  insert insertKey error message "the '%K' constructor has been already defined" ;
+  search searchKey error message "the '%K' constuctor is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+enum @readerQualifier {
+  isAbstract, isBasic, isInherited, isOverriding
+}{
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R E A D E R    M A P                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @readerMap {
+  @unifiedTypeMapIndexList mArgumentTypeList ;
+  @bool mHasLexiqueArgument ;
+  @unifiedTypeMapIndex mReturnedType ;
+  @readerQualifier mQualifier ;
+  @string mImplicitConversionReader ;
+  insert insertKey error message "the '%K' reader has been already defined" ;
+  search searchKey error message "the '%K' reader is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D I F I E R    M A P                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalParameterSignature {
+  @unifiedTypeMapIndex mParameterType ;
+  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @modifierMap {
+  @formalParameterSignature mParameterList ;
+  @bool mHasCompilerArgument ;
+  insert insertKey error message "the '%K' modifier has been already defined" ;
+  search searchKey error message "the '%K' modifier is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E T H O D    M A P                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @methodMap {
+  @formalParameterSignature mParameterList ;
+  @bool mHasCompilerArgument ;
+  insert insertKey error message "the '%K' method has been already defined" ;
+  search searchKey error message "the '%K' method is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C L A S S    M E T H O D    M A P                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @classMethodMap {
+  @formalParameterSignature mParameterList ;
+  @bool mHasCompilerArgument ;
+  insert insertKey error message "the '%K' class method has been already defined" ;
+  search searchKey error message "the '%K' class method is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  E N U M E R A T I O N    L I S T                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @enumeratedItemsWithForeachInstruction {
+  @unifiedTypeMapIndex mEnumeratedType ;
+  @string mEnumerationName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  U N I F I E D    T Y P E    M A P                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @unifiedTypeMap {
+  @bool mIsAbstract ;
+  @unifiedTypeMapIndex mSuperType ;
+  @constructorMap mConstructorMap ;
+  @readerMap mReaderMap ;
+  @modifierMap mModifierMap ;
+  @methodMap mMethodMap ;
+  @classMethodMap mClassMethodMap ;
+  @enumeratedItemsWithForeachInstruction mEnumeratedItemsWithForeachInstruction ; # Empty List if cannot be enumerated
+
+  insert insertKey error message "the '@%K' type has been already declared in %L" ;
+  search searchKey error message "the '@%K' type is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+mapindex @unifiedTypeMapIndex (@unifiedTypeMap) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G A L G A S    A B S T R A C T         T Y P E                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -52,9 +184,7 @@ map @typeMap {
 
 #---------------------------------------------------------------------------*
 
-mapindex @typeMapIndex (@typeMap) {
-  search searchKey error message "the '@%K' type is not declared" ;
-}
+mapindex @typeMapIndex (@typeMap) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -348,9 +478,8 @@ class @classGalgasType extends @ACGalgasType {
     loop inTypeCount :
     while [superClassIndex isRegular] & ok & not circularityError do
     #--- Retrieve super class features
-      @lstring superClassName ;
-      @ACGalgasType t ;
-      [superClassIndex searchKey ?superClassName ?t] ;
+      @lstring superClassName := [superClassIndex key] ;
+      @ACGalgasType t := [superClassIndex mType] ;
     #--- Check there is no circularity
       circularityError := [superClassSet hasKey ![superClassName string]] ;
       superClassSet += ![superClassName string] ;
@@ -401,9 +530,8 @@ class @listmapGalgasType extends @ACGalgasType {
 
   override
   method checkTypeCrossReferences ??@uint unused inTypeCount :
-    @lstring listTypeName ;
-    @ACGalgasType t ;
-    [mAssociatedListTypeIndex searchKey ?listTypeName ?t] ;
+    @lstring listTypeName := [mAssociatedListTypeIndex key] ;
+    @ACGalgasType t := [mAssociatedListTypeIndex mType] ;
   #--- Check list type is actually a list
     cast t :
     when >= @listGalgasType do
@@ -482,13 +610,11 @@ class @mapType extends @ACGalgasType {
 class @mapindexType extends @ACGalgasType {
   @lstring mMapIndexTypeName feature nogetter ;
   @typeMapIndex mIndexOfMapType feature nogetter ;
-  @lstring mSearchMethodName feature nogetter ;
 
   override
   method checkTypeCrossReferences ??@uint unused inTypeCount :
-    @lstring mapTypeName ;
-    @ACGalgasType t ;
-    [mIndexOfMapType searchKey ?mapTypeName ?t] ;
+    @lstring mapTypeName := [mIndexOfMapType key] ;
+    @ACGalgasType t := [mIndexOfMapType mType] ;
   #--- Check map type is actually a map
     cast t :
     when >= @mapType do

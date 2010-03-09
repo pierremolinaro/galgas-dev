@@ -23,31 +23,31 @@ import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType classMethodMap ->@modifierMap outModifierMap :
-  outModifierMap := [@modifierMap emptyMap] ;
+reader @ACGalgasType classMethodMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once classMethodMapFor_location ->@modifierMap outModifierMap :
-  outModifierMap := [@modifierMap emptyMap] ;
+once classMethodMapFor_location ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @locationGalgasType classMethodMap ->@modifierMap outModifierMap :
+override reader @locationGalgasType classMethodMap ->@modifierMapEXX outModifierMap :
   outModifierMap := classMethodMapFor_location [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once classMethodMapFor_string ->@modifierMap outModifierMap :
-  outModifierMap := [@modifierMap emptyMap] ;
+once classMethodMapFor_string ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
   enterModifierWithStringInputArgument !?outModifierMap !"deleteFile" !true ;
   enterModifierWithStringInputArgument !?outModifierMap !"deleteFileIfExists" !true ;
   enterModifierWithStringInputArgument !?outModifierMap !"removeEmptyDirectory" !true ;
   enterModifierWithStringInputArgument !?outModifierMap !"removeDirectoryRecursively" !true ;
-  @formalParameterSignature argList [emptyList] ;
+  @formalParameterSignatureEXX argList [emptyList] ;
   argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
@@ -64,17 +64,17 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType classMethodMap ->@modifierMap outModifierMap :
+override reader @stringGalgasType classMethodMap ->@modifierMapEXX outModifierMap :
   outModifierMap := classMethodMapFor_string [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapindexType classMethodMap ->@modifierMap outModifierMap :
-  outModifierMap := [@modifierMap emptyMap] ;
-  @formalParameterSignature argList [emptyList] ;
+override reader @mapindexType classMethodMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  @formalParameterSignatureEXX argList [emptyList] ;
   @ACGalgasType tSelf := self ;
-  @ACGalgasType t ; [mIndexOfMapType searchKey ?* ?t] ;
+  @ACGalgasType t := [mIndexOfMapType mType] ;
   argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !t ![@formalArgumentPassingModeAST argumentInOut] ;
   argList += !tSelf ![@formalArgumentPassingModeAST argumentOut] ;

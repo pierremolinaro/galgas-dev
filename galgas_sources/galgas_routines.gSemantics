@@ -65,7 +65,8 @@ routine checkCategoryMethodDefinitionForClass
 :
   @classIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
-    @lstring descendantClassName ; @ACGalgasType t ; [mClassMapindex searchKey ?descendantClassName ?t] ;
+    @lstring descendantClassName := [mClassMapindex key] ;
+    @ACGalgasType t := [mClassMapindex mType] ;
     @bool isAbstract ;
     cast t :
     when >= @classGalgasType classType do
@@ -107,7 +108,8 @@ routine checkCategoryReaderDefinitionForClass
 :
   @classIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
-    @lstring descendantClassName ; @ACGalgasType t ; [mClassMapindex searchKey ?descendantClassName ?t] ;
+    @lstring descendantClassName := [mClassMapindex key] ;
+    @ACGalgasType t := [mClassMapindex mType] ;
     @bool isAbstract ;
     cast t :
     when >= @classGalgasType classType do

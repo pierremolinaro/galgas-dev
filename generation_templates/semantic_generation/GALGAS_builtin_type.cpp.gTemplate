@@ -62,7 +62,7 @@ void GALGAS_%!TYPE_NAME%::insulate (%?COL_0%GALGAS_%!TYPE_NAME% * & ioOperand
 }
 %end if
 foreach [TYPE readerMap] do
-  if mQualifier == [@readerQualifier isBasic] then
+  if mQualifier == [@readerQualifierEXX isBasic] then
     %//---------------------------------------------------------------------------*\n\n%
     %GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * readerCall_% ![key identifierRepresentation] % (%?COL
     %const GALGAS_%!TYPE_NAME% * inObject%

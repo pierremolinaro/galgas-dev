@@ -102,7 +102,6 @@ override method @mapindexDeclarationAST enterType
   @ACGalgasType t := [@mapindexType new
     !mMapIndexTypeName
     !mapTypeIndex
-    !mSearchMethodName
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mMapIndexTypeName !t] ;
 end method ;
@@ -850,9 +849,9 @@ routine compileSemanticsComponent
 #--- Check type declarations
   if [@uint errorCount] == 0 then
     foreach [semanticContext mTypeMap] do
-      @constructorMap constructorMap := [mType constructorMap] ;
-      @readerMap readerMap := [mType readerMap] ;
-      @modifierMap modifierMap := [mType modifierMap] ;
+      @constructorMapEXX constructorMap := [mType constructorMap] ;
+      @readerMapEXX readerMap := [mType readerMap] ;
+      @modifierMapEXX modifierMap := [mType modifierMap] ;
     end foreach ;
   end if ;
 #--- Perform semantic analysis of all declarations

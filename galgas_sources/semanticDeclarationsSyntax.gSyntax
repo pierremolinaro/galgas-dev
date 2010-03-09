@@ -213,19 +213,10 @@ rule <semantic_declaration>
   $($ ;
   $type_name$ ? @lstring mMapTypeName ;
   $)$ ;
-  ${$ ;
-  $search$ ;
-  $identifier$ ? @lstring mSearchMethodName ;
-  $error$ ;
-  $message$ ;
-  $literal_string$ ? @lstring mSearchMethodErrorMessage ;
   $;$ ;
-  $}$ ;
   ioSemanticDeclarations.mSemanticDeclarationList += ![@mapindexDeclarationAST new
     !mMapIndexName
     !mMapTypeName
-    !mSearchMethodName
-    !mSearchMethodErrorMessage
   ] ;
 end rule ;
 

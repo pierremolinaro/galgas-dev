@@ -5786,27 +5786,11 @@ rule <semantics_declaration>
     @mapModifierMap modifierMethodMap := [mapType mModifierMethodMap] ;
     @EXmapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
     $)$ ;
-    ${$ ;
-    @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
-    repeat
-    while
-      $search$ ;
-      @lstring searchReaderName ;
-      $identifier$ ? searchReaderName ;
-      $error$ ;
-      $message$ ;
-      @lstring mapindexErrorMessage ;
-      $literal_string$ ? mapindexErrorMessage ;
-      check_KL_escapeCharacters !mapindexErrorMessage ;
-      [!?mapIndexSearchReaderMap insertKey !searchReaderName !mapindexErrorMessage] ;
-      $;$ ;
-    end repeat ;
-    $}$ ;
+    $;$ ;
     @AC_galgasType t := [@typeGalgasMapindexType new 
       !mapindexTypeName
       !mapTypeName
       !mapAttributesList
-      !mapIndexSearchReaderMap
       !tableMethodesSurcharger
       !modifierMethodMap
       !readerMethodMap
@@ -5816,7 +5800,6 @@ rule <semantics_declaration>
       !mapindexTypeName
       !mapTypeName
       !mapAttributesList
-      !mapIndexSearchReaderMap
     ] ;
     listeEntitesAengendrer += !e ;
   end select ;
@@ -5852,27 +5835,11 @@ label importSemantics
     @mapModifierMap modifierMethodMap := [mapType mModifierMethodMap] ;
     @EXmapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
     $)$ ;
-    ${$ ;
-    @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
-    repeat
-    while
-      $search$ ;
-      @lstring searchReaderName ;
-      $identifier$ ? searchReaderName ;
-      $error$ ;
-      $message$ ;
-      @lstring mapindexErrorMessage ;
-      $literal_string$ ? mapindexErrorMessage ;
-      check_KL_escapeCharacters !mapindexErrorMessage ;
-      [!?mapIndexSearchReaderMap insertKey !searchReaderName !mapindexErrorMessage] ;
-      $;$ ;
-    end repeat ;
-    $}$ ;
+    $;$ ;
     @AC_galgasType t := [@typeGalgasMapindexType new 
       !mapindexTypeName
       !mapTypeName
       !mapAttributesList
-      !mapIndexSearchReaderMap
       !tableMethodesSurcharger
       !modifierMethodMap
       !readerMethodMap

@@ -440,32 +440,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  operator () (UNUSED_LOCATION_ARGS) const {\n"
              "    return this ;\n"
              "  }\n\n"
-             "//--- Search method(s)\n" ;
-//--- Declare mapindex search error messages
-  GGS_mapIndexSearchReaderMap::cEnumerator currentMethod (mMapIndexSearchReaderMap) ;
-  while (currentMethod.hasCurrentObject ()) {
-    inHfile << "  public : static const utf32 kMapIndexSearchMessage_" << currentMethod._key (HERE) << " [] ;\n\n" ;
-    currentMethod.next () ;
-  }
-
-  currentMethod.rewind () ;
-  while (currentMethod.hasCurrentObject ()) {
-    inHfile << "  public : void\n"
-               "  method_" << currentMethod._key (HERE) << " (C_Compiler & inLexique,\n"
-               "                     GGS_lstring & outKey" ;
-    GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mMapAttributesList, true) ;
-    PMSInt32 attributeIndex = 1 ;
-    while (currentAttribute.hasCurrentObject ()) {
-      inHfile << ",\n"
-                 "                     " ;
-      currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << "outAttribute" << cStringWithSigned (attributeIndex) ;
-      attributeIndex ++ ;
-      currentAttribute.next () ;
-    }
-    inHfile << "\n"
-               "                     COMMA_LOCATION_ARGS) const ;\n" ;
-    currentMethod.next () ;
+             "//--- Attribute access\n" ;
+  GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mMapAttributesList, true) ;
+  while (currentAttribute.hasCurrentObject ()) {
+    inHfile << "  public : " ;
+    currentAttribute._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
+    inHfile << " reader_" << currentAttribute._mAttributeName (HERE) << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    currentAttribute.next () ;
   }
   inHfile <<  "} ;\n\n" ;
  }
@@ -560,74 +541,39 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "}\n\n" ;
 
-//--- Declare mapindex search error messages
-  GGS_mapIndexSearchReaderMap::cEnumerator currentMethod (mMapIndexSearchReaderMap) ;
-  while (currentMethod.hasCurrentObject ()) {
-    inCppFile << "const utf32 GGS_" << mMapindexTypeName << "::kMapIndexSearchMessage_" << currentMethod._key (HERE) << " [] = " ;
-    inCppFile.appendUTF32LiteralStringConstant (currentMethod._mRetrieveErrorMessage (HERE).string ()) ;
-    inCppFile << " ;\n\n" ;
-    currentMethod.next () ;
-  }
+//--- Attribute access (readers)
 
-//--- Search methods
-  currentMethod.rewind () ;
-  while (currentMethod.hasCurrentObject ()) {
+  GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mMapAttributesList, true) ;
+  while (currentAttribute.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
-    inCppFile << "void GGS_" << mMapindexTypeName << "::\n"
-                 "method_" << currentMethod._key (HERE) << " (C_Compiler & inLexique,\n"
-                 "                   GGS_lstring & outKey" ;
-    GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mMapAttributesList, true) ;
-    PMSInt32 attributeIndex = 1 ;
-    while (currentAttribute.hasCurrentObject ()) {
-      inCppFile << ",\n"
-                   "                   " ;
-      currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "outAttribute" << cStringWithSigned (attributeIndex) ;
-      attributeIndex ++ ;
-      currentAttribute.next () ;
-    }
-    inCppFile << "\n"
-                 "                   COMMA_LOCATION_ARGS) const {\n"
-                 "  bool shouldDropArguments = true ;\n"
+    currentAttribute._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " GGS_" << mMapindexTypeName << "::reader_" << currentAttribute._mAttributeName (HERE) << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const {\n"
+                 "  " ;
+    currentAttribute._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " result ;\n"
                  "  switch (mState) {\n"
                  "  case kNotBuilt :\n"
+                 "    break ;\n"
+                 "  case kNull :\n"
+                 "    inLexique.onTheFlyRunTimeError (\"this map index is a null index\" COMMA_THERE) ;\n"
                  "    break ;\n"
                  "  case kRegular :\n"
                  "    if (mIndex.retrieve () == NULL) {\n"
                  "      inLexique.onTheFlyRunTimeError (\"bound entry has been deleted\" COMMA_THERE) ;\n"
                  "    }else if (! mIndex.retrieve ()->mIsDefined) {\n"
-                 "      AC_galgas_map::emitMapSemanticErrorMessage (inLexique, mKey,\n"
-                 "                                                  kMapIndexSearchMessage_" << currentMethod._key (HERE) << "\n"
-                 "                                                  COMMA_THERE) ;\n"
+                 "      inLexique.onTheFlyRunTimeError (\"entry is not solved\" COMMA_THERE) ;\n"
                  "    }else{\n"
                  "      MF_Assert (reinterpret_cast <const elementOf_GGS_" << mMapTypeName << " *> (mIndex.retrieve ()) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                  "      const elementOf_GGS_" << mMapTypeName << " * p = (const elementOf_GGS_" << mMapTypeName << " *) mIndex.retrieve () ;\n"
-                 "      outKey = mKey ;\n" ;
-    currentAttribute.rewind () ;
-    attributeIndex = 1 ;
-    while (currentAttribute.hasCurrentObject ()) {
-      inCppFile << "      outAttribute" << cStringWithSigned (attributeIndex)
-                << " = p->mInfo." << currentAttribute._mAttributeName (HERE)
-                << " ;\n" ;
-      attributeIndex ++ ;
-      currentAttribute.next () ;
-    }
-    inCppFile << "      shouldDropArguments = false ;\n"
+                 "      result = p->mInfo." << currentAttribute._mAttributeName (HERE) << " ;\n"
                  "    }\n"
                  "    break ;\n"
-                 "  case kNull:\n"
-                 "    inLexique.onTheFlyRunTimeError (\"key access on a null index\" COMMA_THERE) ;\n"
-                 "    break ;\n"
                  "  }\n"
-                 "  if (shouldDropArguments) {\n"
-                 "    outKey.drop () ;\n" ;
-    for (PMSInt32 i=1 ; i<=mMapAttributesList.count () ; i++) {
-      inCppFile << "    outAttribute" << cStringWithSigned (i) << ".drop () ;\n" ;
-    }
-    inCppFile << "  }\n"
+                 "  return result ;\n"
                  "}\n\n" ;
-    currentMethod.next () ;
+    currentAttribute.next () ;
   }
+
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_object GGS_" << mMapindexTypeName << "::reader_object (void) const {\n"
                "  GGS_object result ;\n"

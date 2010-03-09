@@ -23,32 +23,32 @@ import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType instanceMethodMap ->@modifierMap outModifierMap :
-  outModifierMap := [@modifierMap emptyMap] ;
+reader @ACGalgasType instanceMethodMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once instanceMethodMapFor_data ->@modifierMap outModifierMap :
-  outModifierMap := [@modifierMap emptyMap] ;
+once instanceMethodMapFor_data ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
   enterModifierWithStringInputArgument !?outModifierMap !"writeToFile" !true ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @dataGalgasType instanceMethodMap ->@modifierMap outModifierMap :
+override reader @dataGalgasType instanceMethodMap ->@modifierMapEXX outModifierMap :
   outModifierMap := instanceMethodMapFor_data [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once instanceMethodMapFor_string ->@modifierMap outModifierMap :
-  outModifierMap := [@modifierMap emptyMap] ;
+once instanceMethodMapFor_string ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
   enterModifierWithStringInputArgument !?outModifierMap !"writeToFile" !true ;
   enterModifierWithStringInputArgument !?outModifierMap !"writeToExecutableFile" !true ;
   enterModifierWithStringInputArgument !?outModifierMap !"makeDirectoryAndWriteToFile" !true ;
   enterModifierWithoutArgument !?outModifierMap !"makeDirectory" !true ;
-  @formalParameterSignature argList [emptyList] ;
+  @formalParameterSignatureEXX argList [emptyList] ;
   argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += ![@boolGalgasType new] ![@formalArgumentPassingModeAST argumentOut] ;
   [!?outModifierMap insertKey
@@ -60,7 +60,7 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType instanceMethodMap ->@modifierMap outModifierMap :
+override reader @stringGalgasType instanceMethodMap ->@modifierMapEXX outModifierMap :
   outModifierMap := instanceMethodMapFor_string [] ;
 end reader ;
 
