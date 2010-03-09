@@ -17,6 +17,7 @@
 #---------------------------------------------------------------------------*
 
 semantics common_semantics :
+import "grammarSemantics.gSemantics" ;
 import semantics grammarSemantics in "grammarSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
@@ -3251,32 +3252,12 @@ map @mapIndexSearchReaderMap {
 
 class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
   @lstring mMapTypeName feature nogetter ;
-  @typeListeAttributsSemantiques mMapAttributesList feature nogetter ;
-  @mapIndexSearchReaderMap mMapIndexSearchReaderMap feature nogetter ;
+  @typeListeAttributsSemantiques mMapAttributesList ;
 
 #--- Associated map features
   @typeTableBlocsDeTable aTableMethodesSurcharger feature nogetter ;
   @mapModifierMap mModifierMethodMap feature nogetter ;
   @EXmapMethodMap mReaderMethodMap feature nogetter ;
-
-#--- mapindex accept method calls corresponding to search declarations
-  override
-  method handleMethodInstructionCall
-    ??@lstring inMethodName
-    ??@EXcategoryMethodMap unused inCategoryMethodMap
-    !@L_EXsignature outReaderSignature
-    !@string outCategoryMethodClassBaseName
-  :
-    outCategoryMethodClassBaseName := "" ;
-    [mMapIndexSearchReaderMap searchKey !inMethodName ?*] ;
-    outReaderSignature := [@L_EXsignature listWithValue
-      ![@typeGalgas_lstring new]
-      ![@formalArgumentPassingModeAST argumentOut]
-    ] ;
-    foreach mMapAttributesList do
-      outReaderSignature += !mAttributType ![@formalArgumentPassingModeAST argumentOut] ;
-    end foreach ;
-  end method ;
 
 #--- A mapindex only accept 'makeRegularIndex' type method call
   override
@@ -3305,7 +3286,6 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
            !mMapindexTypeName
            !mMapTypeName
            !mMapAttributesList
-           !mMapIndexSearchReaderMap
            !aTableMethodesSurcharger
            !mModifierMethodMap
            !mReaderMethodMap
@@ -4120,7 +4100,7 @@ routine handleReaderCall
       error inReaderName : "this reader is not defined"
        -> outAccessorTypesList, outReturnedType ;
     end if ;
-  when >= @typeGalgasUndefinedMapindexType do
+  when >= @typeGalgasMapindexType t do
     if [inReaderName string] == "description" then
       outReturnedType := [@typeGalgas_string new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -4149,8 +4129,16 @@ routine handleReaderCall
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_bool new] ;
     else
-      error inReaderName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_bool new] ; # Any value
+      @bool found := false ;
+      foreach [t mMapAttributesList] while not found do
+        found := [inReaderName string] == [mAttributeName string] ;
+        outReturnedType := mAttributType ;
+      end foreach ;
+      if not found then
+        error inReaderName : "this reader is not defined" ;
+      end if ;
     end if ;
   when >= @typeGalgas_string do
     handleStringReaderCall !inReaderName ?outAccessorTypesList ?outReturnedType ?outHasLexiqueAndLocationArguments ;

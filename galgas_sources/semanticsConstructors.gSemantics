@@ -22,7 +22,7 @@ import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-map @constructorMap {
+map @constructorMapEXX {
   @typeList mArgumentTypeList ;
   @bool mHasLexique ;
   @ACGalgasType mReturnedType ;
@@ -33,7 +33,7 @@ map @constructorMap {
 #---------------------------------------------------------------------------*
 
 routine enterConstructorWithoutArgument
-  ?!@constructorMap ioConstructorMap
+  ?!@constructorMapEXX ioConstructorMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -49,7 +49,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterConstructorWithStringArgument
-  ?!@constructorMap ioConstructorMap
+  ?!@constructorMapEXX ioConstructorMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -65,7 +65,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterConstructorWithCharArgument
-  ?!@constructorMap ioConstructorMap
+  ?!@constructorMapEXX ioConstructorMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -81,7 +81,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterConstructorWithUintArgument
-  ?!@constructorMap ioConstructorMap
+  ?!@constructorMapEXX ioConstructorMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -97,7 +97,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterConstructorWith2UintArguments
-  ?!@constructorMap ioConstructorMap
+  ?!@constructorMapEXX ioConstructorMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -116,7 +116,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterConstructorWith3UintArguments
-  ?!@constructorMap ioConstructorMap
+  ?!@constructorMapEXX ioConstructorMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -136,7 +136,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterConstructorWith2UintUint64Arguments
-  ?!@constructorMap ioConstructorMap
+  ?!@constructorMapEXX ioConstructorMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -155,18 +155,18 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-abstract reader @ACGalgasType constructorMap ->@constructorMap outMap ;
+abstract reader @ACGalgasType constructorMap ->@constructorMapEXX outMap ;
 
 #---------------------------------------------------------------------------*
 
-override reader @locationGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @locationGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_string ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_string ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"stringWithVersionString" ![@stringGalgasType new] !false ;
   enterConstructorWithoutArgument !?outMap !"stringWithSourceFilePath" ![@stringGalgasType new] !true ;
   enterConstructorWithoutArgument !?outMap !"stringWithCurrentDirectory" ![@stringGalgasType new] !false ;
@@ -191,34 +191,34 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType constructorMap ->@constructorMap outMap :
+override reader @stringGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_string [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_char ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_char ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"replacementCharacter" ![@charGalgasType new] !false ;
   enterConstructorWithUintArgument !?outMap !"unicodeCharacterWithUnsigned" ![@charGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @charGalgasType constructorMap ->@constructorMap outMap :
+override reader @charGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_char [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @boolGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @boolGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_uint -> @constructorMap  outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_uint -> @constructorMapEXX  outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"max" ![@uintGalgasType new] !false ;
   enterConstructorWithoutArgument !?outMap !"errorCount" ![@uintGalgasType new] !true ;
   enterConstructorWithoutArgument !?outMap !"warningCount" ![@uintGalgasType new] !true ;
@@ -227,28 +227,28 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType constructorMap ->@constructorMap outMap :
+override reader @uintGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_uint [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_sint ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_sint ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"max" ![@sintGalgasType new] !false ;
   enterConstructorWithoutArgument !?outMap !"min" ![@sintGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType constructorMap ->@constructorMap outMap :
+override reader @sintGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_sint [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_uint64 ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_uint64 ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"max" ![@uint64GalgasType new] !false ;
   enterConstructorWithStringArgument !?outMap !"uint64MaskWithCompressedBitString" ![@uint64GalgasType new] !true ;
   enterConstructorWithStringArgument !?outMap !"uint64BaseValueWithCompressedBitString" ![@uint64GalgasType new] !true ;
@@ -257,34 +257,34 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType constructorMap ->@constructorMap outMap :
+override reader @uint64GalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_uint64 [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_sint64 ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_sint64 ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"max" ![@sint64GalgasType new] !false ;
   enterConstructorWithoutArgument !?outMap !"min" ![@sint64GalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType constructorMap ->@constructorMap outMap :
+override reader @sint64GalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_sint64 [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @doubleGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @doubleGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_lstring ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_lstring ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList t [emptyList] ;
   t += ![@stringGalgasType new] ;
   t += ![@locationGalgasType new] ;
@@ -294,14 +294,14 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lstringGalgasType constructorMap ->@constructorMap outMap :
+override reader @lstringGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_lstring [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_lchar ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_lchar ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList t [emptyList] ;
   t += ![@charGalgasType new] ;
   t += ![@locationGalgasType new] ;
@@ -310,14 +310,14 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lcharGalgasType constructorMap ->@constructorMap outMap :
+override reader @lcharGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_lchar [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_lbool ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_lbool ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList t [emptyList] ;
   t += ![@boolGalgasType new] ;
   t += ![@locationGalgasType new] ;
@@ -326,14 +326,14 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lboolGalgasType constructorMap ->@constructorMap outMap :
+override reader @lboolGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_lbool [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_luint ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_luint ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList t [emptyList] ;
   t += ![@uintGalgasType new] ;
   t += ![@locationGalgasType new] ;
@@ -342,14 +342,14 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @luintGalgasType constructorMap ->@constructorMap outMap :
+override reader @luintGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_luint [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_lsint ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_lsint ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList t [emptyList] ;
   t += ![@sintGalgasType new] ;
   t += ![@locationGalgasType new] ;
@@ -358,14 +358,14 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lsintGalgasType constructorMap ->@constructorMap outMap :
+override reader @lsintGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_lsint [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_luint64 ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_luint64 ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList t [emptyList] ;
   t += ![@uint64GalgasType new] ;
   t += ![@locationGalgasType new] ;
@@ -374,14 +374,14 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @luint64GalgasType constructorMap ->@constructorMap outMap :
+override reader @luint64GalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_luint64 [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_lsint64 ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_lsint64 ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList t [emptyList] ;
   t += ![@sint64GalgasType new] ;
   t += ![@locationGalgasType new] ;
@@ -390,14 +390,14 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lsint64GalgasType constructorMap ->@constructorMap outMap :
+override reader @lsint64GalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_lsint64 [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_ldouble ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_ldouble ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList t [emptyList] ;
   t += ![@doubleGalgasType new] ;
   t += ![@locationGalgasType new] ;
@@ -406,28 +406,28 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @ldoubleGalgasType constructorMap ->@constructorMap outMap :
+override reader @ldoubleGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_ldouble [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_stringset ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_stringset ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"emptySet" ![@stringsetGalgasType new] !false ;
   enterConstructorWithStringArgument !?outMap !"setWithString" ![@stringsetGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringsetGalgasType constructorMap ->@constructorMap outMap :
+override reader @stringsetGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_stringset [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_binaryset ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_binaryset ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithUintArgument !?outMap !"binarySetWithBit" ![@binarysetGalgasType new] !true ;
   enterConstructorWithoutArgument !?outMap !"emptyBinarySet" ![@binarysetGalgasType new] !false ;
   enterConstructorWithoutArgument !?outMap !"fullBinarySet" ![@binarysetGalgasType new] !false ;
@@ -453,46 +453,46 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @binarysetGalgasType constructorMap ->@constructorMap outMap :
+override reader @binarysetGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_binaryset [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_type ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_type ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"typeList" !build_typelist_type [] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @typeGalgasType constructorMap ->@constructorMap outMap :
+override reader @typeGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_type [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @objectGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @objectGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_data ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_data ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"emptyData" ![@dataGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @dataGalgasType constructorMap ->@constructorMap outMap :
+override reader @dataGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_data [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once constructorMapFor_function ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+once constructorMapFor_function ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"functionList" !build_functionlist_type [] !false ;
   enterConstructorWithStringArgument !?outMap !"functionWithName" ![@functionGalgasType new] !false ;
   enterConstructorWithStringArgument !?outMap !"isFunctionDefined" ![@boolGalgasType new] !false ;
@@ -500,21 +500,19 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionGalgasType constructorMap ->@constructorMap outMap :
+override reader @functionGalgasType constructorMap ->@constructorMapEXX outMap :
   outMap := constructorMapFor_function [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @classGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @classGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @ACGalgasType selfType := self ; # Astuce car self n'est pas défini dans un contexte emboîté (BUG)
   if not mIsAbstract then
     @typeList typeList [emptyList] ;
     foreach mAttributeList do
-      @ACGalgasType t ;
-      [mAttributeTypeIndex searchKey ?* ?t] ;
-      typeList += !t ;
+      typeList += ![mAttributeTypeIndex mType] ;
     end foreach ;
     [!?outMap insertKey ![@lstring new !"new" !here] !typeList !false !selfType] ;
   end if ;
@@ -522,71 +520,65 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @listGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"emptyList" !self !false ;
   @typeList typeList [emptyList] ;
   foreach mAttributeList do
-    @ACGalgasType t ;
-    [mAttributeTypeIndex searchKey ?* ?t] ;
-    typeList += !t ;
+    typeList += ![mAttributeTypeIndex mType] ;
   end foreach ;
   [!?outMap insertKey ![@lstring new !"listWithValue" !here] !typeList !false !self] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listmapGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @listmapGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"emptyMap" !self !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @structGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @structGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @typeList typeList [emptyList] ;
   foreach mAttributeList do
-    @ACGalgasType t ;
-    [mAttributeTypeIndex searchKey ?* ?t] ;
-    typeList += !t ;
+    typeList += ![mAttributeTypeIndex mType] ;
   end foreach ;
   [!?outMap insertKey ![@lstring new !"new" !here] !typeList !false !self] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedlistGalgasType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @sortedlistGalgasType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"emptySortedList" !self !false ;
   @typeList typeList [emptyList] ;
   foreach mAttributeList do
-    @ACGalgasType t ;
-    [mAttributeTypeIndex searchKey ?* ?t] ;
-    typeList += !t ;
+    typeList += ![mAttributeTypeIndex mType] ;
   end foreach ;
   [!?outMap insertKey ![@lstring new !"sortedListWithValue" !here] !typeList !false !self] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @mapType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"emptyMap" !self !false ;
   [!?outMap insertKey ![@lstring new !"mapWithMapToOverride" !here] ![@typeList listWithValue !self] !false !self] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapindexType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @mapindexType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   enterConstructorWithoutArgument !?outMap !"null" !self !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @enumType constructorMap ->@constructorMap outMap :
-  outMap := [@constructorMap emptyMap] ;
+override reader @enumType constructorMap ->@constructorMapEXX outMap :
+  outMap := [@constructorMapEXX emptyMap] ;
   @ACGalgasType selfType := self ; # Astuce car self n'est pas défini dans un contexte emboîté (BUG)
   foreach mEnumConstructorMap do
     enterConstructorWithoutArgument !?outMap ![key string] !selfType !false ;

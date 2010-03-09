@@ -23,18 +23,18 @@ import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-enum @readerQualifier {
+enum @readerQualifierEXX {
   isAbstract, isBasic, isInherited, isOverriding
 }{
 }
 
 #---------------------------------------------------------------------------*
 
-map @readerMap {
+map @readerMapEXX {
   @typeList mArgumentTypeList ;
   @bool mHasLexiqueArgument ;
   @ACGalgasType mReturnedType ;
-  @readerQualifier mQualifier ;
+  @readerQualifierEXX mQualifier ;
   @string mImplicitConversionReader ;
   insert insertKey error message "the '%K' reader has been already defined" ;
   search searchKey error message "the '%K' reader is not declared" ;
@@ -43,7 +43,7 @@ map @readerMap {
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWithoutArgumentWithConversion
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -54,7 +54,7 @@ routine enterBaseReaderWithoutArgumentWithConversion
     ![@typeList emptyList]
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
     !inConversionString
   ] ;
 end routine ;
@@ -62,7 +62,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWithoutArgument
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -79,7 +79,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterInheritedReaderWithoutArgument
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -89,7 +89,7 @@ routine enterInheritedReaderWithoutArgument
     ![@typeList emptyList]
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isInherited]
+    ![@readerQualifierEXX isInherited]
     !""
   ] ;
 end routine ;
@@ -97,7 +97,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWithStringArgument
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -109,7 +109,7 @@ routine enterBaseReaderWithStringArgument
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
     !""
   ] ;
 end routine ;
@@ -117,7 +117,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWith2StringArguments
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -130,7 +130,7 @@ routine enterBaseReaderWith2StringArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
     !""
   ] ;
 end routine ;
@@ -138,7 +138,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWithBoolArgument
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -150,7 +150,7 @@ routine enterBaseReaderWithBoolArgument
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
     !""
   ] ;
 end routine ;
@@ -158,7 +158,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWithBoolStringlistArguments
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -171,7 +171,7 @@ routine enterBaseReaderWithBoolStringlistArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
     !""
   ] ;
 end routine ;
@@ -179,7 +179,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWithUintArgument
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -191,7 +191,7 @@ routine enterBaseReaderWithUintArgument
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
      !""
   ] ;
 end routine ;
@@ -199,7 +199,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWith2UintArguments
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -212,7 +212,7 @@ routine enterBaseReaderWith2UintArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
      !""
   ] ;
 end routine ;
@@ -220,7 +220,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWith3UintArguments
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -234,7 +234,7 @@ routine enterBaseReaderWith3UintArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
      !""
   ] ;
 end routine ;
@@ -242,7 +242,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine enterBaseReaderWithUintCharArguments
-  ?!@readerMap ioReaderMap
+  ?!@readerMapEXX ioReaderMap
   ??@string inName
   ??@ACGalgasType inReturnedType
   ??@bool inHasLexiqueAndLocationArguments
@@ -255,15 +255,15 @@ routine enterBaseReaderWithUintCharArguments
     !argList
     !inHasLexiqueAndLocationArguments
     !inReturnedType
-    ![@readerQualifier isBasic]
+    ![@readerQualifierEXX isBasic]
      !""
   ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-once commonReaderMapForAllTypes ->@readerMap outMap :
-  outMap := [@readerMap emptyMap] ;
+once commonReaderMapForAllTypes ->@readerMapEXX outMap :
+  outMap := [@readerMapEXX emptyMap] ;
   enterInheritedReaderWithoutArgument !?outMap !"description" ![@stringGalgasType new] !false ;
   enterInheritedReaderWithoutArgument !?outMap !"object" ![@objectGalgasType new] !false ;
   enterInheritedReaderWithoutArgument !?outMap !"dynamicType" ![@typeGalgasType new] !false ;
@@ -271,11 +271,11 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-abstract reader @ACGalgasType readerMap ->@readerMap outMap ;
+abstract reader @ACGalgasType readerMap ->@readerMapEXX outMap ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_location ->@readerMap outMap :
+once readerMapFor_location ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"locationString" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"locationIndex" ![@uintGalgasType new] !false ;
@@ -285,13 +285,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @locationGalgasType readerMap ->@readerMap outMap :
+override reader @locationGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_location [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_string ->@readerMap outMap :
+once readerMapFor_string ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"doesEnvironmentVariableExist" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
@@ -340,13 +340,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType readerMap ->@readerMap outMap :
+override reader @stringGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_string [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_char ->@readerMap outMap :
+once readerMapFor_char ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"utf32CharConstantRepresentation" ![@stringGalgasType new] !false ;
@@ -372,13 +372,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @charGalgasType readerMap ->@readerMap outMap :
+override reader @charGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_char [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_bool ->@readerMap outMap :
+once readerMapFor_bool ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"cString" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"ocString" ![@stringGalgasType new] !false ;
@@ -390,13 +390,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @boolGalgasType readerMap ->@readerMap outMap :
+override reader @boolGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_bool [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_uint -> @readerMap  outMap :
+once readerMapFor_uint -> @readerMapEXX  outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !true ;
@@ -412,13 +412,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType readerMap ->@readerMap outMap :
+override reader @uintGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_uint [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_sint ->@readerMap outMap :
+once readerMapFor_sint ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !true ;
@@ -429,13 +429,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType readerMap ->@readerMap outMap :
+override reader @sintGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_sint [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_uint64 ->@readerMap outMap :
+once readerMapFor_uint64 ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !true ;
@@ -449,13 +449,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType readerMap ->@readerMap outMap :
+override reader @uint64GalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_uint64 [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_sint64 ->@readerMap outMap :
+once readerMapFor_sint64 ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !true ;
@@ -466,13 +466,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType readerMap ->@readerMap outMap :
+override reader @sint64GalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_sint64 [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_double ->@readerMap outMap :
+once readerMapFor_double ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"string" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !true ;
@@ -483,13 +483,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @doubleGalgasType readerMap ->@readerMap outMap :
+override reader @doubleGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_double [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_lstring ->@readerMap outMap :
+once readerMapFor_lstring ->@readerMapEXX outMap :
   outMap := readerMapFor_string [] ;
   foreach [outMap keyList] do
     with !?outMap searchKey !mValue do
@@ -503,13 +503,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lstringGalgasType readerMap ->@readerMap outMap :
+override reader @lstringGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_lstring [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_lchar ->@readerMap outMap :
+once readerMapFor_lchar ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"char" ![@charGalgasType new] !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !"locationString" ![@stringGalgasType new] !false !"location" ;
@@ -518,13 +518,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lcharGalgasType readerMap ->@readerMap outMap :
+override reader @lcharGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_lchar [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_lbool ->@readerMap outMap :
+once readerMapFor_lbool ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"bool" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
@@ -532,13 +532,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lboolGalgasType readerMap ->@readerMap outMap :
+override reader @lboolGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_lbool [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_luint ->@readerMap outMap :
+once readerMapFor_luint ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"uint" ![@uintGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"location" ![@locationGalgasType new] !false ;
@@ -548,13 +548,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @luintGalgasType readerMap ->@readerMap outMap :
+override reader @luintGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_luint [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_lsint ->@readerMap outMap :
+once readerMapFor_lsint ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"sint" ![@sintGalgasType new] !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !"string" ![@stringGalgasType new] !false  !"sint";
@@ -564,13 +564,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lsintGalgasType readerMap ->@readerMap outMap :
+override reader @lsintGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_lsint [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_luint64 ->@readerMap outMap :
+once readerMapFor_luint64 ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   @typeList t [emptyList] ;
   enterBaseReaderWithoutArgument !?outMap !"uint64" ![@uint64GalgasType new] !false ;
@@ -581,13 +581,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @luint64GalgasType readerMap ->@readerMap outMap :
+override reader @luint64GalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_luint64 [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_lsint64 ->@readerMap outMap :
+once readerMapFor_lsint64 ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"sint64" ![@sint64GalgasType new] !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !"string" ![@stringGalgasType new] !false !"sint64" ;
@@ -597,13 +597,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lsint64GalgasType readerMap ->@readerMap outMap :
+override reader @lsint64GalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_lsint64 [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_ldouble ->@readerMap outMap :
+once readerMapFor_ldouble ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"double" ![@doubleGalgasType new] !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !"string" ![@stringGalgasType new] !false !"double" ;
@@ -613,13 +613,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @ldoubleGalgasType readerMap ->@readerMap outMap :
+override reader @ldoubleGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_ldouble [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_stringset ->@readerMap outMap :
+once readerMapFor_stringset ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"count" ![@uintGalgasType new] !false ;
@@ -628,13 +628,13 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringsetGalgasType readerMap ->@readerMap outMap :
+override reader @stringsetGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_stringset [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_binaryset ->@readerMap outMap :
+once readerMapFor_binaryset ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"isFull" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"isEmpty" ![@boolGalgasType new] !false ;
@@ -642,7 +642,7 @@ once readerMapFor_binaryset ->@readerMap outMap :
   @typeList t [emptyList] ;
   t += ![@binarysetGalgasType new] ;
   t += ![@binarysetGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"ITE" !here] !t !false ![@binarysetGalgasType new]![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"ITE" !here] !t !false ![@binarysetGalgasType new]![@readerQualifierEXX isBasic] !""] ;
   enterBaseReaderWithUintArgument !?outMap !"forAllOnBitIndex" ![@binarysetGalgasType new] !true ;
   enterBaseReaderWithUintArgument !?outMap !"forAllOnBitIndexAndBeyond" ![@binarysetGalgasType new] !true ;
   enterBaseReaderWithUintArgument !?outMap !"existOnBitIndex" ![@binarysetGalgasType new] !true ;
@@ -654,7 +654,7 @@ once readerMapFor_binaryset ->@readerMap outMap :
   t := [@typeList emptyList] ;
   t += ![@uintGalgasType new] ;
   t += !build_stringlist_type [] ;
-  [!?outMap insertKey ![@lstring new !"stringValueListWithNameList" !here] !t !true !build_stringlist_type []![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"stringValueListWithNameList" !here] !t !true !build_stringlist_type []![@readerQualifierEXX isBasic] !""] ;
   enterBaseReaderWithoutArgument !?outMap !"predicateStringValue" ![@stringGalgasType new] !false ;
   enterBaseReaderWithUintArgument !?outMap !"compressedStringValueList" !build_stringlist_type [] !true ;
   enterBaseReaderWith2UintArguments !?outMap !"swap21" ![@binarysetGalgasType new] !false ;
@@ -667,33 +667,33 @@ once readerMapFor_binaryset ->@readerMap outMap :
   t := [@typeList emptyList] ;
   t += ![@binarysetGalgasType new] ;
   t += ![@uintGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"accessibleStates" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"accessibleStates" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
   t := [@typeList emptyList] ;
   t += ![@binarysetGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"equalTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
-  [!?outMap insertKey ![@lstring new !"notEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
-  [!?outMap insertKey ![@lstring new !"lowerOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
-  [!?outMap insertKey ![@lstring new !"greaterOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
-  [!?outMap insertKey ![@lstring new !"strictGreaterThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
-  [!?outMap insertKey ![@lstring new !"strictLowerThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"equalTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"notEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"lowerOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"greaterOrEqualTo" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"strictGreaterThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"strictLowerThan" !here] !t !false ![@binarysetGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
   enterBaseReaderWith2UintArguments !?outMap !"binarySetByTranslatingFromIndex" ![@binarysetGalgasType new] !false ;
   t := [@typeList emptyList] ;
   t += ![@uint64GalgasType new] ;
   t += ![@uintGalgasType new] ;
   t += ![@uintGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"containsValue" !here] !t !false ![@boolGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"containsValue" !here] !t !false ![@boolGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
   enterBaseReaderWith2UintArguments !?outMap !"existsOnBitRange" ![@binarysetGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @binarysetGalgasType readerMap ->@readerMap outMap :
+override reader @binarysetGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_binaryset [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_type ->@readerMap outMap :
+once readerMapFor_type ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"hasSuperclass" ![@boolGalgasType new] !false ;
@@ -702,39 +702,39 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @typeGalgasType readerMap ->@readerMap outMap :
+override reader @typeGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_type [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_object ->@readerMap outMap :
+once readerMapFor_object ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"objectType" ![@typeGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @objectGalgasType readerMap ->@readerMap outMap :
+override reader @objectGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_object [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_data ->@readerMap outMap :
+once readerMapFor_data ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @dataGalgasType readerMap ->@readerMap outMap :
+override reader @dataGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_data [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_function ->@readerMap outMap :
+once readerMapFor_function ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"name" ![@stringGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"resultType" ![@typeGalgasType new] !false ;
@@ -742,34 +742,32 @@ once readerMapFor_function ->@readerMap outMap :
   @typeList objectList [emptyList] ;
   objectList += !build_objectlist_type [] ;
   objectList += ![@locationGalgasType new] ;
-  [!?outMap insertKey ![@lstring new !"invoke" !here] !objectList !true ![@objectGalgasType new] ![@readerQualifier isBasic] !""] ;
+  [!?outMap insertKey ![@lstring new !"invoke" !here] !objectList !true ![@objectGalgasType new] ![@readerQualifierEXX isBasic] !""] ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionGalgasType readerMap ->@readerMap outMap :
+override reader @functionGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_function [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @classGalgasType readerMap ->@readerMap outMap :
+override reader @classGalgasType readerMap ->@readerMapEXX outMap :
   if [mSuperClassIndex isNull] then
     outMap := commonReaderMapForAllTypes [] ;
   else
-    @ACGalgasType superClassType ;
-    [mSuperClassIndex searchKey ?* ?superClassType] ;
+    @ACGalgasType superClassType := [mSuperClassIndex mType] ;
     outMap := [superClassType readerMap] ;
   end if ;
   foreach mAttributeList do
-    @ACGalgasType t ;
-    [mAttributeTypeIndex searchKey ?* ?t] ;
+    @ACGalgasType t := [mAttributeTypeIndex mType] ;
     [!?outMap insertKey
       !mAttributeName
       ![@typeList emptyList]
       !false
       !t
-      ![@readerQualifier isBasic]
+      ![@readerQualifierEXX isBasic]
       !""
     ] ;
   end foreach ;
@@ -777,26 +775,25 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_list ->@readerMap outMap :
+once readerMapFor_list ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"length" ![@uintGalgasType new] !false ;
 end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listGalgasType readerMap ->@readerMap outMap :
+override reader @listGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_list [] ;
   enterBaseReaderWithUintArgument !?outMap !"subListFromIndex" !self !false ;
   enterBaseReaderWith2UintArguments !?outMap !"subListWithRange" !self !false ;
   foreach mAttributeList do
-    @ACGalgasType t ;
-    [mAttributeTypeIndex searchKey ?* ?t] ;
+    @ACGalgasType t := [mAttributeTypeIndex mType] ;
     [!?outMap insertKey
       ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
       ![@typeList listWithValue ![@uintGalgasType new]]
       !false
       !t
-      ![@readerQualifier isBasic]
+      ![@readerQualifierEXX isBasic]
       !""
     ] ;
   end foreach ;
@@ -804,7 +801,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_listmap ->@readerMap outMap :
+once readerMapFor_listmap ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"allKeys" ![@stringsetGalgasType new] !false ;
@@ -814,26 +811,24 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listmapGalgasType readerMap ->@readerMap outMap :
+override reader @listmapGalgasType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_listmap [] ;
-  @ACGalgasType t ;
-  [mAssociatedListTypeIndex searchKey ?* ?t] ;
+  @ACGalgasType t := [mAssociatedListTypeIndex mType] ;
   enterBaseReaderWithStringArgument !?outMap !"listForKey" !t !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @structGalgasType readerMap ->@readerMap outMap :
+override reader @structGalgasType readerMap ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   foreach mAttributeList do
-    @ACGalgasType t ;
-    [mAttributeTypeIndex searchKey ?* ?t] ;
+    @ACGalgasType t := [mAttributeTypeIndex mType] ;
     [!?outMap insertKey
       !mAttributeName
       ![@typeList emptyList]
       !false
       !t
-      ![@readerQualifier isBasic]
+      ![@readerQualifierEXX isBasic]
       !""
     ] ;
   end foreach ;
@@ -841,14 +836,14 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedlistGalgasType readerMap ->@readerMap outMap :
+override reader @sortedlistGalgasType readerMap ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"length" !self !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-once readerMapFor_map ->@readerMap outMap :
+once readerMapFor_map ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithStringArgument !?outMap !"hasKey" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"locationForKey" ![@locationGalgasType new] !false ;
@@ -861,14 +856,14 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapType readerMap ->@readerMap outMap :
+override reader @mapType readerMap ->@readerMapEXX outMap :
   outMap := readerMapFor_map [] ;
   enterBaseReaderWithoutArgument !?outMap !"overriddenMap" !self !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapindexType readerMap ->@readerMap outMap :
+override reader @mapindexType readerMap ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   enterBaseReaderWithoutArgument !?outMap !"isRegular" ![@boolGalgasType new] !false ;
   enterBaseReaderWithoutArgument !?outMap !"isNull" ![@boolGalgasType new] !false ;
@@ -878,7 +873,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @enumType readerMap ->@readerMap outMap :
+override reader @enumType readerMap ->@readerMapEXX outMap :
   outMap := commonReaderMapForAllTypes [] ;
   foreach mEnumMessageMap do
     enterBaseReaderWithoutArgument !?outMap ![key string] ![@lstringGalgasType new] !false ;

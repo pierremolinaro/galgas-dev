@@ -1164,8 +1164,6 @@ class @mapDeclarationAST extends @semanticDeclarationAST {
 class @mapindexDeclarationAST extends @semanticDeclarationAST {
   @lstring mMapIndexTypeName ;
   @lstring mMapTypeName ;
-  @lstring mSearchMethodName ;
-  @lstring mSearchMethodErrorMessage ;
 }
 
 #---------------------------------------------------------------------------*

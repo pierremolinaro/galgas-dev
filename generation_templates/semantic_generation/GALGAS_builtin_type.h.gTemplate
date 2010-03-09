@@ -198,7 +198,7 @@ end foreach
 //--------------------------------- Readers
 %
 foreach [TYPE readerMap] do
-  if (mQualifier != [@readerQualifier isInherited]) & (mImplicitConversionReader == "") then
+  if (mQualifier != [@readerQualifierEXX isInherited]) & (mImplicitConversionReader == "") then
     %  protected : virtual GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * reader_% ![key identifierRepresentation] % (%?COL
     foreach mArgumentTypeList
       do index IDX %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand% ![IDX string]
@@ -218,7 +218,7 @@ foreach [TYPE readerMap] do
       end if
     end if
     %) const%
-    if mQualifier == [@readerQualifier isAbstract] then
+    if mQualifier == [@readerQualifierEXX isAbstract] then
       % = 0%
     end if
     % ;\n\n%
@@ -412,7 +412,7 @@ foreach [TYPE modifierMap] do
 end foreach
 %//--------------------------------- Reader invocation declaration\n%
 foreach [TYPE readerMap] do
-  if mQualifier == [@readerQualifier isBasic] then
+  if mQualifier == [@readerQualifierEXX isBasic] then
     %  friend GALGAS_% ![mReturnedType typeIdentifierRepresentation] % * readerCall_% ![key identifierRepresentation] % (%?COL
     %const GALGAS_%!TYPE_NAME% * inObject%
     foreach mArgumentTypeList
