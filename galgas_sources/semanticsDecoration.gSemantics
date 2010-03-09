@@ -1,0 +1,399 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Component for compiling a semantics component                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticsDecoration :
+  import "semanticsDecoratedTypes.gSemantics" ;
+  import "semanticsSemantics.gSemantics" ;
+
+  import semantics semanticsDecoratedTypes in "semanticsDecoratedTypes.gSemantics" ;
+  import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+abstract method @semanticInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@localVariableDeclarationForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationWithInitializationForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@localVariableDeclarationWithInitializationForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationWithAssignmentForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@localVariableDeclarationWithAssignmentForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+
+#---------------------------------------------------------------------------*
+
+override method @localConstantDeclarationWithSourceExpressionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@localConstantDeclarationWithSourceExpressionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localConstantDeclarationWithConstructorCallForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@localConstantDeclarationWithConstructorCallForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @assignmentInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@assignmentInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @appendInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@appendInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sendInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@sendInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @foreachInstruction decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@foreachInstruction decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @ifInstruction decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@ifInstruction decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @methodCallInstruction decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@methodCallInstruction decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @modifierCallInstruction decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@modifierCallInstruction decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @errorInstruction decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@errorInstruction decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @warningInstruction decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@warningInstruction decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @routineCallInstruction decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@routineCallInstruction decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @matchInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@matchInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @castInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@castInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @addInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@addInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @removeInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@removeInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @incrementInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@incrementInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @decrementInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@decrementInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @loopInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@loopInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @messageInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@messageInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @logInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@logInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@grammarInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @withInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@withInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @switchInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@switchInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @typeMethodInstructionForGeneration decorateAbstractSyntaxTree
+  ?!@semanticContext unused ioSemanticContext
+:
+  message "@typeMethodInstructionForGeneration decorateAbstractSyntaxTree\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E M A N T I C S    A N A L Y S I S                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @semanticDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+;
+
+#---------------------------------------------------------------------------*
+
+override method @mapDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@mapDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapindexDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@mapindexDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+#--- Nothing to do
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@filewrapperDeclarationAST.semanticAnalysis\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@sortedListDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @structDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@structDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@listDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @classDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@classDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externRoutineDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@externRoutineDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @routineDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@routineDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+#  foreach mRoutineInstructionList do
+#    [mInstruction decorateAbstractSyntaxTree !inSemanticContext] ;
+#  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externFunctionDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@externFunctionDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @functionDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@functionDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lazyFunctionDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@lazyFunctionDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listmapDeclarationForGeneration decorateAbstractSyntaxTree 
+  ?@semanticContext unused ioSemanticContext
+  ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
+:
+  message "@listmapDeclarationForGeneration decorateAbstractSyntaxTree \n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

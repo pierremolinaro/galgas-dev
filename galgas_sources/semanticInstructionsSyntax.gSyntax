@@ -342,13 +342,13 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 nonterminal <foreach_enumerated_object>
-  ?!@foreachInstructionEnumeratedObjectList ioForeachInstructionEnumeratedObjectList
+  ?!@foreachInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
 ;
 
 #---------------------------------------------------------------------------*
 
 rule <foreach_enumerated_object>
-  ?!@foreachInstructionEnumeratedObjectList ioForeachInstructionEnumeratedObjectList
+  ?!@foreachInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
 :
   @bool ascending ;
   select
@@ -422,7 +422,7 @@ end rule ;
 rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $foreach$ ;
   const @location instructionLocation := here ;
-  @foreachInstructionEnumeratedObjectList mEnumeratedObjectList [emptyList] ;
+  @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
   repeat
     <foreach_enumerated_object> !?mEnumeratedObjectList ;
   while

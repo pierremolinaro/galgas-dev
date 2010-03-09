@@ -18,12 +18,14 @@
 
 semantics semanticsCompilation :
   import "semanticsGeneration.gSemantics" ;
-  import semantics semanticsGeneration in "semanticsGeneration.gSemantics" ;
+  import "semanticsDecoration.gSemantics" ;
   import "semanticsSemantics.gSemantics" ;
-  import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import "allASTTypes.gSemantics" ;
-  import semantics allASTTypes in "allASTTypes.gSemantics" ;
 
+  import semantics allASTTypes in "allASTTypes.gSemantics" ;
+  import semantics semanticsGeneration in "semanticsGeneration.gSemantics" ;
+  import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+  import semantics semanticsDecoration in "semanticsDecoration.gSemantics" ;
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -853,10 +855,18 @@ routine compileSemanticsComponent
       @modifierMap modifierMap := [mType modifierMap] ;
     end foreach ;
   end if ;
-#--- Perform semantic analysis
+#--- Perform semantic analysis of all declarations
   foreach semanticDeclarationList do
     [mSemanticDeclaration semanticAnalysis
       !?semanticContext
+    ] ;
+  end foreach ;
+#--- Perform semantic analysis of declarations of this component
+  @semanticDeclarationSortedListForGeneration declarationSortedListForGeneration [emptySortedList] ;
+  foreach semanticDeclarationList do
+    [mSemanticDeclaration decorateAbstractSyntaxTree
+      !semanticContext
+      !?declarationSortedListForGeneration
     ] ;
   end foreach ;
 #--- Perform Code Generation
