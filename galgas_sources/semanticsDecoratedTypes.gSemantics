@@ -17,107 +17,107 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics semanticsTypesForAST :
+semantics semanticsDecoratedTypes :
 
 #---------------------------------------------------------------------------*
 
-abstract class @semanticExpressionAST {
+abstract class @semanticExpressionForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-list @semanticExpressionListAST {
-  @semanticExpressionAST mExpression ;
+list @semanticExpressionListForGeneration {
+  @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @outSemanticExpressionListAST {
-  @semanticExpressionListAST mExpression ;
+class @outSemanticExpressionListForGeneration {
+  @semanticExpressionListForGeneration mExpression ;
   @location mEndOfExpressionLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @selfInExpressionAST extends @semanticExpressionAST {
+class @selfInExpressionForGeneration extends @semanticExpressionForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-class @hereExpressionAST extends @semanticExpressionAST {
+class @hereExpressionForGeneration extends @semanticExpressionForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-class @trueExpressionAST extends @semanticExpressionAST {
+class @trueExpressionForGeneration extends @semanticExpressionForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-class @falseExpressionAST extends @semanticExpressionAST {
+class @falseExpressionForGeneration extends @semanticExpressionForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-class @literalCharExpressionAST extends @semanticExpressionAST {
+class @literalCharExpressionForGeneration extends @semanticExpressionForGeneration {
   @lchar mCharacter ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @literalStringExpressionAST extends @semanticExpressionAST {
+class @literalStringExpressionForGeneration extends @semanticExpressionForGeneration {
   @stringlist mStringSequence ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @literalDoubleExpressionAST extends @semanticExpressionAST {
+class @literalDoubleExpressionForGeneration extends @semanticExpressionForGeneration {
   @ldouble mValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @literalUIntExpressionAST extends @semanticExpressionAST {
+class @literalUIntExpressionForGeneration extends @semanticExpressionForGeneration {
   @luint mValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @literalUInt64ExpressionAST extends @semanticExpressionAST {
+class @literalUInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
   @luint64 mValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @literalSIntExpressionAST extends @semanticExpressionAST {
+class @literalSIntExpressionForGeneration extends @semanticExpressionForGeneration {
   @lsint mValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @literalSInt64ExpressionAST extends @semanticExpressionAST {
+class @literalSInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
   @lsint64 mValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @constructorExpressionAST extends @semanticExpressionAST {
+class @constructorExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstring mTypeName ;
   @lstring mConstructorName ;
-  @outSemanticExpressionListAST mExpressions ;
+  @outSemanticExpressionListForGeneration mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @readerCallExpressionAST extends @semanticExpressionAST {
-  @semanticExpressionAST mReceiver ;
+class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiver ;
   @lstring mReaderName ;
-  @outSemanticExpressionListAST mExpressions ;
+  @outSemanticExpressionListForGeneration mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @optionExpressionAST extends @semanticExpressionAST {
+class @optionExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstring mOptionComponentName ;
   @lstring mOptionEntryName ;
   @lstring mOptionReaderName ;
@@ -125,216 +125,216 @@ class @optionExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
-class @concatExpressionAST extends @semanticExpressionAST {
+class @concatExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @orExpressionAST extends @semanticExpressionAST {
+class @orExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @xorExpressionAST extends @semanticExpressionAST {
+class @xorExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @andExpressionAST extends @semanticExpressionAST {
+class @andExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @equalExpressionAST extends @semanticExpressionAST {
+class @equalExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @notEqualExpressionAST extends @semanticExpressionAST {
+class @notEqualExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lowerOrEqualExpressionAST extends @semanticExpressionAST {
+class @lowerOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @greaterOrEqualExpressionAST extends @semanticExpressionAST {
+class @greaterOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @strictGreaterExpressionAST extends @semanticExpressionAST {
+class @strictGreaterExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @strictLowerExpressionAST extends @semanticExpressionAST {
+class @strictLowerExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @rightShiftExpressionAST extends @semanticExpressionAST {
+class @rightShiftExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @leftShiftExpressionAST extends @semanticExpressionAST {
+class @leftShiftExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @addExpressionAST extends @semanticExpressionAST {
+class @addExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @subExpressionAST extends @semanticExpressionAST {
+class @subExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @multiplicationExpressionAST extends @semanticExpressionAST {
+class @multiplicationExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @divisionExpressionAST extends @semanticExpressionAST {
+class @divisionExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @moduloExpressionAST extends @semanticExpressionAST {
+class @moduloExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @unaryMinusExpressionAST extends @semanticExpressionAST {
+class @unaryMinusExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mExpression ;
+  @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @notExpressionAST extends @semanticExpressionAST {
+class @notExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mExpression ;
+  @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @negateExpressionAST extends @semanticExpressionAST {
+class @negateExpressionForGeneration extends @semanticExpressionForGeneration {
   @location mOperatorLocation ;
-  @semanticExpressionAST mExpression ;
+  @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @ifExpressionAST extends @semanticExpressionAST {
-  @semanticExpressionAST mIfExpression ;
-  @semanticExpressionAST mThenExpression ;
-  @semanticExpressionAST mElseExpression ;
+class @ifExpressionForGeneration extends @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mIfExpression ;
+  @semanticExpressionForGeneration mThenExpression ;
+  @semanticExpressionForGeneration mElseExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @functionCallExpressionAST extends @semanticExpressionAST {
+class @functionCallExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstring mFunctionName ;
-  @outSemanticExpressionListAST mExpressions ;
+  @outSemanticExpressionListForGeneration mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @varInExpressionAST extends @semanticExpressionAST {
+class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstring mVarName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @literalTypeInExpressionAST extends @semanticExpressionAST {
+class @literalTypeInExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstring mVarName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @castInExpressionAST extends @semanticExpressionAST {
-  @semanticExpressionAST mReceiverExpression ;
+class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
   @bool mUseKindOfClass ;
   @lstring mTypeName ;
-  @semanticExpressionAST mErrorLocationExpression ;
+  @semanticExpressionForGeneration mErrorLocationExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @filewrapperObjectInstanciationInExpressionAST extends @semanticExpressionAST {
+class @filewrapperObjectInstanciationInExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstring mFilewrapperName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @filewrapperInExpressionAST extends @semanticExpressionAST {
+class @filewrapperInExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstring mFilewrapperName ;
   @lstring mFilewrapperPath ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @filewrapperTemplateInExpressionAST extends @semanticExpressionAST {
+class @filewrapperTemplateInExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstring mFilewrapperName ;
   @lstring mFilewrapperTemplateName ;
-  @outSemanticExpressionListAST mActualOutputParameterList ;
+  @outSemanticExpressionListForGeneration mActualOutputParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -343,7 +343,7 @@ class @filewrapperTemplateInExpressionAST extends @semanticExpressionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-enum @formalArgumentPassingModeAST {
+enum @formalArgumentPassingModeForGeneration {
   argumentIn, argumentOut, argumentInOut, argumentConstantIn
 }{
   reader formalArgumentMessage :
@@ -388,8 +388,8 @@ enum @formalArgumentPassingModeAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @formalParameterListAST {
-  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
+list @formalParameterListForGeneration {
+  @formalArgumentPassingModeForGeneration mFormalParameterPassingMode ;
   @lstring mFormalParameterTypeName ;
   @lstring mFormalParameterName ;
   @bool mIsUnused ;
@@ -401,7 +401,7 @@ list @formalParameterListAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @formalInputParameterListAST {
+list @formalInputParameterListForGeneration {
   @lstring mFormalParameterTypeName ;
   @lstring mFormalParameterName ;
   @bool mIsUnused ;
@@ -413,38 +413,38 @@ list @formalInputParameterListAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @actualParameterAST {
+abstract class @actualParameterForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-class @outputActualParameterAST extends @actualParameterAST {
-  @semanticExpressionAST mOutputActualParameterExpression ;
+class @outputActualParameterForGeneration extends @actualParameterForGeneration {
+  @semanticExpressionForGeneration mOutputActualParameterExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @outputInputActualParameterAST extends @actualParameterAST {
+class @outputInputActualParameterForGeneration extends @actualParameterForGeneration {
   @lstring mOutputInputActualParameterName ;
   @lstringlist mStructAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @inputActualParameterAST extends @actualParameterAST {
+class @inputActualParameterForGeneration extends @actualParameterForGeneration {
   @lstring mDeclarationTypeName ;
   @lstring mInputActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @inputJokerActualParameterAST extends @actualParameterAST {
+class @inputJokerActualParameterForGeneration extends @actualParameterForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-list @actualParameterListAST {
-  @actualParameterAST mActualParameter ;
+list @actualParameterListForGeneration {
+  @actualParameterForGeneration mActualParameter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -453,37 +453,46 @@ list @actualParameterListAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @actualInputParameterListAST {
+list @actualInputParameterListForGeneration {
   @lstring mActualParameterTypeName ; # Empty if no type
   @lstring mActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @syntaxInstructionAST {
+abstract class @syntaxInstructionForGeneration {
   @location mStartLocation feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @semanticInstructionAST extends @syntaxInstructionAST {
+abstract class @semanticInstructionForGeneration extends @syntaxInstructionForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-list @semanticInstructionListAST {
-  @semanticInstructionAST mInstruction ;
+list @semanticInstructionListForGeneration {
+  @semanticInstructionForGeneration mInstruction ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @semanticDeclarationAST {
+abstract class @semanticDeclarationForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-list @semanticDeclarationListAST {
-  @semanticDeclarationAST mSemanticDeclaration ;
+sortedlist @semanticDeclarationSortedListForGeneration {
+  @string mOrderString ;
+  @semanticDeclarationForGeneration mSemanticDeclaration ;
+}{
+  mOrderString <
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticDeclarationListForGeneration {
+  @semanticDeclarationForGeneration mSemanticDeclaration ;
 }
 
 #---------------------------------------------------------------------------*
@@ -492,9 +501,9 @@ list @semanticDeclarationListAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @externRoutineDeclarationAST extends @semanticDeclarationAST {
+class @externRoutineDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mRoutineName ;
-  @formalParameterListAST mFormalParameterList ;
+  @formalParameterListForGeneration mFormalParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -503,7 +512,7 @@ class @externRoutineDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @routinePrototypeDeclarationAST extends @externRoutineDeclarationAST {
+class @routinePrototypeDeclarationForGeneration extends @externRoutineDeclarationForGeneration {
 }
 
 #---------------------------------------------------------------------------*
@@ -512,8 +521,8 @@ class @routinePrototypeDeclarationAST extends @externRoutineDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @routineDeclarationAST extends @routinePrototypeDeclarationAST {
-  @semanticInstructionListAST mRoutineInstructionList ;
+class @routineDeclarationForGeneration extends @routinePrototypeDeclarationForGeneration {
+  @semanticInstructionListForGeneration mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -522,9 +531,9 @@ class @routineDeclarationAST extends @routinePrototypeDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @externFunctionDeclarationAST extends @semanticDeclarationAST {
+class @externFunctionDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mFunctionName ;
-  @formalParameterListAST mFormalParameterList ;
+  @formalParameterListForGeneration mFormalParameterList ;
   @lstring mResultTypeName ;
   @lstring mResultVariableName ;
 }
@@ -535,8 +544,8 @@ class @externFunctionDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @functionDeclarationAST extends @externFunctionDeclarationAST {
-  @semanticInstructionListAST mFunctionInstructionList ;
+class @functionDeclarationForGeneration extends @externFunctionDeclarationForGeneration {
+  @semanticInstructionListForGeneration mFunctionInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -545,11 +554,11 @@ class @functionDeclarationAST extends @externFunctionDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @lazyFunctionDeclarationAST extends @semanticDeclarationAST {
+class @lazyFunctionDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mFunctionName ;
   @lstring mResultTypeName ;
   @lstring mResultVariableName ;
-  @semanticInstructionListAST mFunctionInstructionList ;
+  @semanticInstructionListForGeneration mFunctionInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -558,43 +567,43 @@ class @lazyFunctionDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @localVariableDeclarationAST extends @semanticInstructionAST {
+class @localVariableDeclarationForGeneration extends @semanticInstructionForGeneration {
   @lstring mTypeName ;
   @lstring mVariableName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @localVariableDeclarationWithInitializationAST extends @semanticInstructionAST {
+class @localVariableDeclarationWithInitializationForGeneration extends @semanticInstructionForGeneration {
   @lstring mTypeName ;
   @lstring mVariableName ;
   @lstring mConstructorName ;
-  @outSemanticExpressionListAST mConstructorArguments ;
+  @outSemanticExpressionListForGeneration mConstructorArguments ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @localVariableDeclarationWithAssignmentAST extends @semanticInstructionAST {
+class @localVariableDeclarationWithAssignmentForGeneration extends @semanticInstructionForGeneration {
   @lstring mTypeName ;
   @lstring mVariableName ;
-  @semanticExpressionAST mSourceExpression ;
+  @semanticExpressionForGeneration mSourceExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @localConstantDeclarationWithSourceExpressionAST extends @semanticInstructionAST {
+class @localConstantDeclarationWithSourceExpressionForGeneration extends @semanticInstructionForGeneration {
   @lstring mTypeName ;
   @lstring mVariableName ;
-  @semanticExpressionAST mSourceExpression ;
+  @semanticExpressionForGeneration mSourceExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @localConstantDeclarationWithConstructorCallAST extends @semanticInstructionAST {
+class @localConstantDeclarationWithConstructorCallForGeneration extends @semanticInstructionForGeneration {
   @lstring mTypeName ;
   @lstring mVariableName ;
   @lstring mConstructorName ;
-  @outSemanticExpressionListAST mConstructorArguments ;
+  @outSemanticExpressionListForGeneration mConstructorArguments ;
 }
 
 #---------------------------------------------------------------------------*
@@ -603,10 +612,10 @@ class @localConstantDeclarationWithConstructorCallAST extends @semanticInstructi
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @assignmentInstructionAST extends @semanticInstructionAST {
+class @assignmentInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mTargetVariableName ;
   @lstringlist mStructAttributeList ;
-  @semanticExpressionAST mSourceExpression ;
+  @semanticExpressionForGeneration mSourceExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -617,10 +626,10 @@ class @assignmentInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @appendInstructionAST extends @semanticInstructionAST {
+class @appendInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mTargetVariableName ;
   @lstringlist mStructAttributeList ;
-  @semanticExpressionAST mSourceExpression ;
+  @semanticExpressionForGeneration mSourceExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -631,8 +640,8 @@ class @appendInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @sendInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mSourceExpression ;
+class @sendInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mSourceExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -641,47 +650,47 @@ class @sendInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @foreachInstructionEnumeratedObjectElementAST {
+abstract class @foreachInstructionEnumeratedObjectElementForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-class @foreachInstructionJokerAST extends @foreachInstructionEnumeratedObjectElementAST {
+class @foreachInstructionJokerForGeneration extends @foreachInstructionEnumeratedObjectElementForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-class @foreachInstructionEnumeratedConstantAST extends @foreachInstructionEnumeratedObjectElementAST {
+class @foreachInstructionEnumeratedConstantForGeneration extends @foreachInstructionEnumeratedObjectElementForGeneration {
   @lstring mTypeName ;
   @lstring mConstantName ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @foreachInstructionEnumeratedObjectElementListAST {
-  @foreachInstructionEnumeratedObjectElementAST mElement ;
+list @foreachInstructionEnumeratedObjectElementListForGeneration {
+  @foreachInstructionEnumeratedObjectElementForGeneration mElement ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @foreachInstructionEnumeratedObjectListAST {
+list @foreachInstructionEnumeratedObjectListForGeneration {
   @bool mIsAscending ;
-  @semanticExpressionAST mEnumeratedExpression ;
-  @foreachInstructionEnumeratedObjectElementListAST mElementList ;
+  @semanticExpressionForGeneration mEnumeratedExpression ;
+  @foreachInstructionEnumeratedObjectElementListForGeneration mElementList ;
   @bool mEndsWithEllipsis ;
   @lstring mPrefix ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @foreachInstruction extends @semanticInstructionAST {
-  @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList ;
+class @foreachInstruction extends @semanticInstructionForGeneration {
+  @foreachInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList ;
   @lstring mIndexVariableName ;
-  @semanticExpressionAST mWhileExpression ;
-  @semanticInstructionListAST mBeforeInstructionList ;
-  @semanticInstructionListAST mBetweenInstructionList ;
-  @semanticInstructionListAST mDoInstructionList ;
-  @semanticInstructionListAST mAfterInstructionList ;
+  @semanticExpressionForGeneration mWhileExpression ;
+  @semanticInstructionListForGeneration mBeforeInstructionList ;
+  @semanticInstructionListForGeneration mBetweenInstructionList ;
+  @semanticInstructionListForGeneration mDoInstructionList ;
+  @semanticInstructionListForGeneration mAfterInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -691,15 +700,15 @@ class @foreachInstruction extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @ifBranchList {
-  @semanticExpressionAST mIFexpression ;
-  @semanticInstructionListAST mIFinstructionList ;
+  @semanticExpressionForGeneration mIFexpression ;
+  @semanticInstructionListForGeneration mIFinstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @ifInstruction extends @semanticInstructionAST {
+class @ifInstruction extends @semanticInstructionForGeneration {
   @ifBranchList mBranchList ; # [1, *]
-  @semanticInstructionListAST mElseInstructionList ;
+  @semanticInstructionListForGeneration mElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -708,10 +717,10 @@ class @ifInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @methodCallInstruction extends @semanticInstructionAST {
-  @semanticExpressionAST mReceiverExpression ;
+class @methodCallInstruction extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
   @lstring mMethodName ;
-  @actualParameterListAST mActualParameterList ;
+  @actualParameterListForGeneration mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -720,11 +729,11 @@ class @methodCallInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @modifierCallInstruction extends @semanticInstructionAST {
+class @modifierCallInstruction extends @semanticInstructionForGeneration {
   @lstring mReceiverName ;
   @lstringlist mReceiverStructAttributes ;
   @lstring mModifierName ;
-  @actualParameterListAST mActualParameterList ;
+  @actualParameterListForGeneration mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -733,9 +742,9 @@ class @modifierCallInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @errorInstruction extends @semanticInstructionAST {
-  @semanticExpressionAST mReceiverExpression ;
-  @semanticExpressionAST mErrorExpression ;
+class @errorInstruction extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
+  @semanticExpressionForGeneration mErrorExpression ;
   @lstringlist mBuiltVariableList ;
 }
 
@@ -745,9 +754,9 @@ class @errorInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @warningInstruction extends @semanticInstructionAST {
-  @semanticExpressionAST mReceiverExpression ;
-  @semanticExpressionAST mWarningExpression ;
+class @warningInstruction extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
+  @semanticExpressionForGeneration mWarningExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -756,9 +765,9 @@ class @warningInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @routineCallInstruction extends @semanticInstructionAST {
+class @routineCallInstruction extends @semanticInstructionForGeneration {
   @lstring mRoutineName ;
-  @actualParameterListAST mActualParameterList ;
+  @actualParameterListForGeneration mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -786,23 +795,23 @@ class @constantMatchEntry extends @matchEntry {
 
 class @classMatchEntry extends @matchEntry {
   @lstring mClassName ;
-  @foreachInstructionEnumeratedObjectElementListAST mElements ;
+  @foreachInstructionEnumeratedObjectElementListForGeneration mElements ;
   @bool mEndsWithEllipsis ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @matchInstructionBranchListAST {
+list @matchInstructionBranchListForGeneration {
   @matchEntryList mMatchEntryList ;
-  @semanticInstructionListAST mMatchBranchInstructionList ;
+  @semanticInstructionListForGeneration mMatchBranchInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @matchInstructionAST extends @semanticInstructionAST {
+class @matchInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstringlist mMatchedVariableNameList ;
-  @matchInstructionBranchListAST mMatchInstructionBranchList ;
-  @semanticInstructionListAST mElseInstructionList ;
+  @matchInstructionBranchListForGeneration mMatchInstructionBranchList ;
+  @semanticInstructionListForGeneration mElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -811,37 +820,37 @@ class @matchInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @castInstructionBranchListAST {
+list @castInstructionBranchListForGeneration {
   @bool mUseKindOfClass ;
   @lstring mTypeName ;
   @lstring mConstantVarName ; # Empty string if no constant var
   @bool mConstantVarNameIsUnused ; # true if no constant var
-  @semanticInstructionListAST mCastBranchInstructionList ;
+  @semanticInstructionListForGeneration mCastBranchInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @elseOrDefaultForCastInstructionAST {
+abstract class @elseOrDefaultForCastInstructionForGeneration {
 }
 
 #---------------------------------------------------------------------------*
 
-class @elseForCastInstructionAST extends @elseOrDefaultForCastInstructionAST {
-  @semanticInstructionListAST mElseInstructionList ;
+class @elseForCastInstructionForGeneration extends @elseOrDefaultForCastInstructionForGeneration {
+  @semanticInstructionListForGeneration mElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @defaultForCastInstructionAST extends @elseOrDefaultForCastInstructionAST {
-  @semanticExpressionAST mErrorLocationExpression ;
+class @defaultForCastInstructionForGeneration extends @elseOrDefaultForCastInstructionForGeneration {
+  @semanticExpressionForGeneration mErrorLocationExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @castInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mExpression ;
-  @castInstructionBranchListAST mCastInstructionBranchList ;
-  @elseOrDefaultForCastInstructionAST mElseOrDefault ;
+class @castInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+  @castInstructionBranchListForGeneration mCastInstructionBranchList ;
+  @elseOrDefaultForCastInstructionForGeneration mElseOrDefault ;
 }
 
 #---------------------------------------------------------------------------*
@@ -850,10 +859,10 @@ class @castInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @addInstructionAST extends @semanticInstructionAST {
+class @addInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
-  @outSemanticExpressionListAST mExpressionList ;
+  @outSemanticExpressionListForGeneration mExpressionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -862,10 +871,10 @@ class @addInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @removeInstructionAST extends @semanticInstructionAST {
+class @removeInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
-  @semanticExpressionAST mExpression ;
+  @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -874,7 +883,7 @@ class @removeInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @incrementInstructionAST extends @semanticInstructionAST {
+class @incrementInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
 }
@@ -885,7 +894,7 @@ class @incrementInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @decrementInstructionAST extends @semanticInstructionAST {
+class @decrementInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
 }
@@ -896,11 +905,11 @@ class @decrementInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @loopInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mVariantExpression ;
-  @semanticInstructionListAST mFirstInstructions ;
-  @semanticExpressionAST mLoopExpression ;
-  @semanticInstructionListAST mSecondInstructions ;
+class @loopInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mVariantExpression ;
+  @semanticInstructionListForGeneration mFirstInstructions ;
+  @semanticExpressionForGeneration mLoopExpression ;
+  @semanticInstructionListForGeneration mSecondInstructions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -909,8 +918,8 @@ class @loopInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @messageInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mExpression ;
+class @messageInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -919,15 +928,15 @@ class @messageInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @logListAST {
+list @logListForGeneration {
   @lstring mLogMessage ;
-  @semanticExpressionAST mLogExpression ;
+  @semanticExpressionForGeneration mLogExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @logInstructionAST extends @semanticInstructionAST {
-  @logListAST mLogList ;
+class @logInstructionForGeneration extends @semanticInstructionForGeneration {
+  @logListForGeneration mLogList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -936,12 +945,12 @@ class @logInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @grammarInstructionAST extends @semanticInstructionAST {
+class @grammarInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mGrammarComponentName ;
   @lstring mLabelName ;
-  @semanticExpressionAST mSourceExpression ;
+  @semanticExpressionForGeneration mSourceExpression ;
   @bool mSourceExpressionIsFile ; # If false, mSourceExpression should be the source string
-  @actualParameterListAST mActualParameterList ;
+  @actualParameterListForGeneration mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -950,14 +959,14 @@ class @grammarInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @withInstructionAST extends @semanticInstructionAST {
+class @withInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mPrefix ;
   @lstring mTargetObjectName ;
   @lstringlist mStructAttributeList ;
   @lstring mSearchMethodName ;
-  @semanticExpressionAST mKeyExpression ;
-  @semanticInstructionListAST mDoBranchInstructions ;
-  @semanticInstructionListAST mElseBranchInstructions ;
+  @semanticExpressionForGeneration mKeyExpression ;
+  @semanticInstructionListForGeneration mDoBranchInstructions ;
+  @semanticInstructionListForGeneration mElseBranchInstructions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -966,16 +975,16 @@ class @withInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @switchBranchesAST {
+list @switchBranchesForGeneration {
   @lstringlist mSwitchConstantList ;
-  @semanticInstructionListAST mInstructions ;
+  @semanticInstructionListForGeneration mInstructions ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @switchInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mSwitchExpression ;
-  @switchBranchesAST mBranches ;
+class @switchInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mSwitchExpression ;
+  @switchBranchesForGeneration mBranches ;
 }
 
 #---------------------------------------------------------------------------*
@@ -984,10 +993,10 @@ class @switchInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeMethodInstructionAST extends @semanticInstructionAST {
+class @typeMethodInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mTypeName ;
   @lstring mMethodName ;
-  @actualParameterListAST mActualParameterList ;
+  @actualParameterListForGeneration mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -996,14 +1005,14 @@ class @typeMethodInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @abstracMultiMethodListAST {
+list @abstracMultiMethodListForGeneration {
   @lstring mAbstractCategoryMethodName ;
-  @formalParameterListAST mAbstractCategoryFormalParameterList ;
+  @formalParameterListForGeneration mAbstractCategoryFormalParameterList ;
 }
 
 #---------------------------------------------------------------------------*
 
-listmap @abstractMultiMethodListMapAST (@abstracMultiMethodListAST) ;
+listmap @abstractMultiMethodListMapForGeneration (@abstracMultiMethodListForGeneration) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1011,15 +1020,15 @@ listmap @abstractMultiMethodListMapAST (@abstracMultiMethodListAST) ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @multiMethodListAST {
+list @multiMethodListForGeneration {
   @lstring mCategoryMethodName ;
-  @formalParameterListAST mCategoryFormalParameterList ;
-  @semanticInstructionListAST mRoutineInstructionList ;
+  @formalParameterListForGeneration mCategoryFormalParameterList ;
+  @semanticInstructionListForGeneration mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-listmap @multiMethodListMapAST (@multiMethodListAST) ;
+listmap @multiMethodListMapForGeneration (@multiMethodListForGeneration) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1027,15 +1036,15 @@ listmap @multiMethodListMapAST (@multiMethodListAST) ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @overridingMultiMethodListAST {
+list @overridingMultiMethodListForGeneration {
   @lstring mOverridingCategoryMethodName ;
-  @formalParameterListAST mOverridingCategoryFormalParameterList ;
-  @semanticInstructionListAST mRoutineInstructionList ;
+  @formalParameterListForGeneration mOverridingCategoryFormalParameterList ;
+  @semanticInstructionListForGeneration mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-listmap @overridingMultiMethodListMapAST (@overridingMultiMethodListAST) ;
+listmap @overridingMultiMethodListMapForGeneration (@overridingMultiMethodListForGeneration) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1043,15 +1052,15 @@ listmap @overridingMultiMethodListMapAST (@overridingMultiMethodListAST) ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @abstractMultiReaderListAST {
+list @abstractMultiReaderListForGeneration {
   @lstring mAbstractCategoryReaderName ;
-  @formalInputParameterListAST mAbstractCategoryFormalInputParameterList ;
+  @formalInputParameterListForGeneration mAbstractCategoryFormalInputParameterList ;
   @lstring mReturnedTypeName ;
 }
 
 #---------------------------------------------------------------------------*
 
-listmap @abstractMultiReaderListMapAST (@abstractMultiReaderListAST) ;
+listmap @abstractMultiReaderListMapForGeneration (@abstractMultiReaderListForGeneration) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1059,17 +1068,17 @@ listmap @abstractMultiReaderListMapAST (@abstractMultiReaderListAST) ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @multiReaderListAST {
+list @multiReaderListForGeneration {
   @lstring mCategoryReaderName ;
-  @formalInputParameterListAST mReaderCategoryFormalInputParameterList ;
+  @formalInputParameterListForGeneration mReaderCategoryFormalInputParameterList ;
   @lstring mReturnedTypeName ;
   @lstring mReturnedVariableName ;
-  @semanticInstructionListAST mRoutineInstructionList ;
+  @semanticInstructionListForGeneration mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-listmap @multiReaderListMapAST (@multiReaderListAST) ;
+listmap @multiReaderListMapForGeneration (@multiReaderListForGeneration) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1077,17 +1086,17 @@ listmap @multiReaderListMapAST (@multiReaderListAST) ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @overridingMultiReaderListAST {
+list @overridingMultiReaderListForGeneration {
   @lstring mOverridingCategoryReaderName ;
-  @formalInputParameterListAST mOverridingReaderFormalInputParameterList ;
+  @formalInputParameterListForGeneration mOverridingReaderFormalInputParameterList ;
   @lstring mReturnedTypeName ;
   @lstring mReturnedVariableName ;
-  @semanticInstructionListAST mRoutineInstructionList ;
+  @semanticInstructionListForGeneration mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-listmap @overridingMultiReaderListMapAST (@overridingMultiReaderListAST) ;
+listmap @overridingMultiReaderListMapForGeneration (@overridingMultiReaderListForGeneration) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1095,16 +1104,16 @@ listmap @overridingMultiReaderListMapAST (@overridingMultiReaderListAST) ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-struct @semanticDeclarationStructAST {
-  @semanticDeclarationListAST mSemanticDeclarationList ;
+struct @semanticDeclarationStructForGeneration {
+  @semanticDeclarationListForGeneration mSemanticDeclarationList ;
 #--- Multi Methods
-  @abstractMultiMethodListMapAST mAbstractCategoryMethodListMap ;
-  @multiMethodListMapAST mCategoryMethodListMap ;
-  @overridingMultiMethodListMapAST mOverridingCategoryMethodListMap ;
+  @abstractMultiMethodListMapForGeneration mAbstractCategoryMethodListMap ;
+  @multiMethodListMapForGeneration mCategoryMethodListMap ;
+  @overridingMultiMethodListMapForGeneration mOverridingCategoryMethodListMap ;
 #--- Multi readers
-  @abstractMultiReaderListMapAST mAbstractCategoryReaderListMap ;
-  @multiReaderListMapAST mCategoryReaderListMap ;
-  @overridingMultiReaderListMapAST mOverridingCategoryReaderListMap ;
+  @abstractMultiReaderListMapForGeneration mAbstractCategoryReaderListMap ;
+  @multiReaderListMapForGeneration mCategoryReaderListMap ;
+  @overridingMultiReaderListMapForGeneration mOverridingCategoryReaderListMap ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1113,7 +1122,7 @@ struct @semanticDeclarationStructAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @attributeInCollectionListAST {
+list @attributeInCollectionListForGeneration {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
   @lstringlist mFeatureList ;
@@ -1125,7 +1134,7 @@ list @attributeInCollectionListAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @listmapDeclarationAST extends @semanticDeclarationAST {
+class @listmapDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mListmapTypeName ;
   @lstring mAssociatedListTypeName ;
 }
@@ -1136,7 +1145,7 @@ class @listmapDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @mapMethodListAST {
+list @mapMethodListForGeneration {
   @lstring mMethodName ;
   @lstring mAlternateMethodName ; # §
   @lstring mErrorMessage ;
@@ -1145,14 +1154,14 @@ list @mapMethodListAST {
 
 #---------------------------------------------------------------------------*
 
-class @mapDeclarationAST extends @semanticDeclarationAST {
+class @mapDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mMapTypeName ;
   @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
   @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
-  @attributeInCollectionListAST mAttributeList ;
-  @mapMethodListAST mInsertMethodList ;
-  @mapMethodListAST mSearchMethodList ;
-  @mapMethodListAST mRemoveMethodList ;
+  @attributeInCollectionListForGeneration mAttributeList ;
+  @mapMethodListForGeneration mInsertMethodList ;
+  @mapMethodListForGeneration mSearchMethodList ;
+  @mapMethodListForGeneration mRemoveMethodList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1161,7 +1170,7 @@ class @mapDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @mapindexDeclarationAST extends @semanticDeclarationAST {
+class @mapindexDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mMapIndexTypeName ;
   @lstring mMapTypeName ;
   @lstring mSearchMethodName ;
@@ -1174,55 +1183,55 @@ class @mapindexDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @abstractMethodDefinitionListAST {
+list @abstractMethodDefinitionListForGeneration {
   @lstring mMethodName ;
-  @formalParameterListAST mSignature ;
+  @formalParameterListForGeneration mSignature ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @overridenMethodDefinitionListAST {
+list @overridenMethodDefinitionListForGeneration {
   @lstring mMethodName ;
-  @formalParameterListAST mSignature ;
-  @semanticInstructionListAST mInstructionList ;
+  @formalParameterListForGeneration mSignature ;
+  @semanticInstructionListForGeneration mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @methodDefinitionListAST {
+list @methodDefinitionListForGeneration {
   @lstring mMethodName ;
-  @formalParameterListAST mSignature ;
-  @semanticInstructionListAST mInstructionList ;
+  @formalParameterListForGeneration mSignature ;
+  @semanticInstructionListForGeneration mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @classMessageDefinitionListAST {
+list @classMessageDefinitionListForGeneration {
   @lstring mMessageName ;
   @lstring mMessageValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @lazyAttributeListAST {
+list @lazyAttributeListForGeneration {
   @location mLocationMagicNumber ;
-  @attributeInCollectionListAST mAttributeList ;
-  @semanticInstructionListAST mInstructionList ;
+  @attributeInCollectionListForGeneration mAttributeList ;
+  @semanticInstructionListForGeneration mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @classDeclarationAST extends @semanticDeclarationAST {
+class @classDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
   @lstring mSuperClassName ; # Empty if no super class
   @lstringlist mClassFeatureList ;
-  @attributeInCollectionListAST mAttributeList ;
-  @abstractMethodDefinitionListAST mAbstractMethodList ;
-  @overridenMethodDefinitionListAST mOverridenMethodList ;
-  @methodDefinitionListAST mMethodList ;
-  @classMessageDefinitionListAST mMessageList ;
-  @lazyAttributeListAST mLazyAttributeList ;
+  @attributeInCollectionListForGeneration mAttributeList ;
+  @abstractMethodDefinitionListForGeneration mAbstractMethodList ;
+  @overridenMethodDefinitionListForGeneration mOverridenMethodList ;
+  @methodDefinitionListForGeneration mMethodList ;
+  @classMessageDefinitionListForGeneration mMessageList ;
+  @lazyAttributeListForGeneration mLazyAttributeList ;
   @string mClassMessage ;
 }
 
@@ -1232,9 +1241,9 @@ class @classDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @listDeclarationAST extends @semanticDeclarationAST {
+class @listDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mListTypeName ;
-  @attributeInCollectionListAST mAttributeList ;
+  @attributeInCollectionListForGeneration mAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1243,9 +1252,9 @@ class @listDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @structDeclarationAST extends @semanticDeclarationAST {
+class @structDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mStructTypeName ;
-  @attributeInCollectionListAST mAttributeList ;
+  @attributeInCollectionListForGeneration mAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1254,17 +1263,17 @@ class @structDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @sortedListSortDescriptorListAST {
+list @sortedListSortDescriptorListForGeneration {
   @lstring mSortedAttributeName ;
   @bool mAscending ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @sortedListDeclarationAST extends @semanticDeclarationAST {
+class @sortedListDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mSortedListTypeName ;
-  @attributeInCollectionListAST mAttributeList ;
-  @sortedListSortDescriptorListAST mSortDescriptorList ;
+  @attributeInCollectionListForGeneration mAttributeList ;
+  @sortedListSortDescriptorListForGeneration mSortDescriptorList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1273,24 +1282,24 @@ class @sortedListDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @enumMessageAssociationListAST {
+list @enumMessageAssociationListForGeneration {
   @lstring mConstantName ;
   @lstring mMessage ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @enumMessageListAST {
+list @enumMessageListForGeneration {
   @lstring mEnumMessageName ;
-  @enumMessageAssociationListAST mMessageAssociationList ;
+  @enumMessageAssociationListForGeneration mMessageAssociationList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @enumDeclarationAST extends @semanticDeclarationAST {
+class @enumDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mEnumTypeName ;
   @lstringlist mConstantList ;
-  @enumMessageListAST mEnumMessageList ;
+  @enumMessageListForGeneration mEnumMessageList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1299,27 +1308,27 @@ class @enumDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @filewrapperTemplateListAST {
+list @filewrapperTemplateListForGeneration {
   @lstring mFilewrapperTemplateName ;
   @lstring mFilewrapperTemplatePath ;
-  @formalInputParameterListAST mFilewrapperTemplateFormalInputParameters ;
+  @formalInputParameterListForGeneration mFilewrapperTemplateFormalInputParameters ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @filewrapperDeclarationAST extends @semanticDeclarationAST {
+class @filewrapperDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @lstring mFilewrapperName ;
   @lstring mFilewrapperPath ;
   @lstringlist mFilewrapperExtensionList ;
-  @filewrapperTemplateListAST mFilewrapperTemplateList ;
+  @filewrapperTemplateListForGeneration mFilewrapperTemplateList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @semanticsComponentAST {
+class @semanticsComponentForGeneration {
   @lstring mSemanticsComponentName  ;
   @lstringlist mImportedComponentFileNameList  ;
-  @semanticDeclarationStructAST mSemanticDeclarations  ;
+  @semanticDeclarationStructForGeneration mSemanticDeclarations  ;
   @location mEndOfSourceFile  ;
 }
 

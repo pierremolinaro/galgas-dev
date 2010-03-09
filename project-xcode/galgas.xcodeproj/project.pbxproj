@@ -680,6 +680,18 @@
 		CF7B06290AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
 		CF7B06330AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
 		CF7B06350AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
+		CF7B55751146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */; };
+		CF7B55761146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */; };
+		CF7B55771146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */; };
+		CF7B55781146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */; };
+		CF7B55791146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */; };
+		CF7B557A1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */; };
+		CF7B557B1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */; };
+		CF7B557C1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */; };
+		CF7B557D1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */; };
+		CF7B557E1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */; };
+		CF7B557F1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */; };
+		CF7B55801146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */; };
 		CF7D283A0D830C8E00F40DB6 /* struct_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7D28390D830C8E00F40DB6 /* struct_generation.cpp */; };
 		CF7D283B0D830C8E00F40DB6 /* struct_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7D28390D830C8E00F40DB6 /* struct_generation.cpp */; };
 		CF7D283D0D830C8E00F40DB6 /* struct_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7D28390D830C8E00F40DB6 /* struct_generation.cpp */; };
@@ -1756,6 +1768,10 @@
 		CF7A1403058CEFE2007126C1 /* galgasDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7B06240AEE387C00E94B20 /* AC_galgas_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_list.h; sourceTree = "<group>"; };
 		CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_list.cpp; sourceTree = "<group>"; };
+		CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsDecoratedTypes.cpp; sourceTree = "<group>"; };
+		CF7B55721146AEE90068C5E6 /* semanticsDecoratedTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsDecoratedTypes.h; sourceTree = "<group>"; };
+		CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsDecoration.cpp; sourceTree = "<group>"; };
+		CF7B55741146AEE90068C5E6 /* semanticsDecoration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsDecoration.h; sourceTree = "<group>"; };
 		CF7D281E0D830B4300F40DB6 /* include_C_structToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_structToImplement.h; sourceTree = "<group>"; };
 		CF7D281F0D830B4300F40DB6 /* include_typeGalgasStructType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasStructType.h; sourceTree = "<group>"; };
 		CF7D28390D830C8E00F40DB6 /* struct_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = struct_generation.cpp; sourceTree = "<group>"; };
@@ -3111,6 +3127,10 @@
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */,
+				CF7B55721146AEE90068C5E6 /* semanticsDecoratedTypes.h */,
+				CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */,
+				CF7B55741146AEE90068C5E6 /* semanticsDecoration.h */,
 				CF497DC11145A1ED00263347 /* allASTTypes.cpp */,
 				CF497DC21145A1ED00263347 /* allASTTypes.h */,
 				CF497E051145A1EE00263347 /* expressionSyntax.cpp */,
@@ -4046,6 +4066,8 @@
 				CF497E191145A1EE00263347 /* semanticInstructionsSyntax.cpp in Sources */,
 				CF497E1A1145A1EE00263347 /* semanticsComponent.cpp in Sources */,
 				CF497E1B1145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
+				CF7B55751146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
+				CF7B55761146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4272,6 +4294,8 @@
 				CF497E291145A1EE00263347 /* semanticInstructionsSyntax.cpp in Sources */,
 				CF497E2A1145A1EE00263347 /* semanticsComponent.cpp in Sources */,
 				CF497E2B1145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
+				CF7B55791146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
+				CF7B557A1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4498,6 +4522,8 @@
 				CF497E311145A1EE00263347 /* semanticInstructionsSyntax.cpp in Sources */,
 				CF497E321145A1EE00263347 /* semanticsComponent.cpp in Sources */,
 				CF497E331145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
+				CF7B557B1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
+				CF7B557C1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4752,6 +4778,8 @@
 				CF497E211145A1EE00263347 /* semanticInstructionsSyntax.cpp in Sources */,
 				CF497E221145A1EE00263347 /* semanticsComponent.cpp in Sources */,
 				CF497E231145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
+				CF7B55771146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
+				CF7B55781146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4967,6 +4995,8 @@
 				CF497E391145A1EE00263347 /* semanticInstructionsSyntax.cpp in Sources */,
 				CF497E3A1145A1EE00263347 /* semanticsComponent.cpp in Sources */,
 				CF497E3B1145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
+				CF7B557D1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
+				CF7B557E1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5182,6 +5212,8 @@
 				CF497E411145A1EE00263347 /* semanticInstructionsSyntax.cpp in Sources */,
 				CF497E421145A1EE00263347 /* semanticsComponent.cpp in Sources */,
 				CF497E431145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
+				CF7B557F1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
+				CF7B55801146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
