@@ -469,7 +469,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $end$ ;
   $foreach$ ;
   $;$ ;
-  outInstruction := [@foreachInstruction new
+  outInstruction := [@foreachInstructionAST new
     !instructionLocation
     !mEnumeratedObjectList
     !mIndexVariableName
@@ -508,7 +508,7 @@ end rule ;
 rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $if$ ;
   const @location instructionLocation := here ;
-  @ifBranchList mBranchList [emptyList] ;
+  @ifBranchListAST mBranchList [emptyList] ;
   repeat
     @semanticExpressionAST mIFexpressionList ;
     <expression> ?mIFexpressionList ;
@@ -529,7 +529,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $end$ ;
   $if$ ;
   $;$ ;
-  outInstruction := [@ifInstruction new
+  outInstruction := [@ifInstructionAST new
     !instructionLocation
     !mBranchList
     !mElseInstructionList
@@ -552,7 +552,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   <actual_parameter_list> ? mActualParameterList ;
   $]$ ;
   $;$ ;
-  outInstruction := [@methodCallInstruction new
+  outInstruction := [@methodCallInstructionAST new
     !instructionLocation
     !mReceiverExpression
     !mMethodName
@@ -583,7 +583,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   <actual_parameter_list> ? mActualParameterList ;
   $]$ ;
   $;$ ;
-  outInstruction := [@modifierCallInstruction new
+  outInstruction := [@modifierCallInstructionAST new
     !instructionLocation
     !mReceiverName
     !mReceiverStructAttributes
@@ -619,7 +619,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     end repeat ;
   end select ;
   $;$ ;
-  outInstruction := [@errorInstruction new
+  outInstruction := [@errorInstructionAST new
     !instructionLocation
     !mReceiverExpression
     !mErrorExpression
@@ -642,7 +642,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @semanticExpressionAST mWarningExpression ;
   <expression> ? mWarningExpression ;
   $;$ ;
-  outInstruction := [@warningInstruction new
+  outInstruction := [@warningInstructionAST new
     !instructionLocation
     !mReceiverExpression
     !mWarningExpression
@@ -660,7 +660,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @actualParameterListAST mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
   $;$ ;
-  outInstruction := [@routineCallInstruction new
+  outInstruction := [@routineCallInstructionAST new
     ![mRoutineName location]
     !mRoutineName
     !mActualParameterList
@@ -727,18 +727,18 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal <match_entry> ?!@matchEntryList ioMatchEntryList ;
+nonterminal <match_entry> ?!@matchEntryListAST ioMatchEntryList ;
 
 #---------------------------------------------------------------------------*
 
-rule <match_entry> ?!@matchEntryList ioMatchEntryList :
+rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
   $identifier$ ? @lstring mConstantName ;
-  ioMatchEntryList += ![@constantMatchEntry new !mConstantName] ;
+  ioMatchEntryList += ![@constantMatchEntryAST new !mConstantName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <match_entry> ?!@matchEntryList ioMatchEntryList :
+rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
   $type_name$ ?@lstring mClassName ;
   $($ ;
   @foreachInstructionEnumeratedObjectElementListAST mElements [emptyList] ;
@@ -775,7 +775,7 @@ rule <match_entry> ?!@matchEntryList ioMatchEntryList :
     mEndsWithEllipsis := true ;
   end select ;
   $)$ ;
-  ioMatchEntryList += ![@classMatchEntry new
+  ioMatchEntryList += ![@classMatchEntryAST new
     !mClassName
     !mElements
     !mEndsWithEllipsis
@@ -790,7 +790,7 @@ nonterminal <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchI
 
 rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList :
   $when$ ;
-  @matchEntryList mMatchEntryList [emptyList] ;
+  @matchEntryListAST mMatchEntryList [emptyList] ;
   repeat
     <match_entry> !? mMatchEntryList ;
   while

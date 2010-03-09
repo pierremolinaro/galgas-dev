@@ -60,7 +60,7 @@ project all_galgas:
   semantics "guiCompilation.gSemantics" : makefile ;
 
 #--- All AST types
-#  semantics "allASTTypes.gSemantics" : makefile ;
+  semantics "allASTTypes.gSemantics" : makefile ;
 
 #--- Semantics Component
   semantics "semanticsTypesForAST.gSemantics" : makefile ;

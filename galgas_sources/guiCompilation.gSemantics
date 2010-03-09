@@ -18,14 +18,17 @@
 #---------------------------------------------------------------------------*
 
 semantics guiCompilation :
-import "semanticsMetamodel.gSemantics" ;
+
 import "semanticsSemantics.gSemantics" ;
-import "guiTypesForAST.gSemantics" ;
+import "allASTTypes.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
+import "optionCompilation.gSemantics" ;
+
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
-import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
+import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics optionCompilation in "optionCompilation.gSemantics" ;
+
 import grammar guiGrammar in "guiGrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*

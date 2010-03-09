@@ -674,7 +674,7 @@ list @foreachInstructionEnumeratedObjectListAST {
 
 #---------------------------------------------------------------------------*
 
-class @foreachInstruction extends @semanticInstructionAST {
+class @foreachInstructionAST extends @semanticInstructionAST {
   @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList ;
   @lstring mIndexVariableName ;
   @semanticExpressionAST mWhileExpression ;
@@ -690,15 +690,15 @@ class @foreachInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @ifBranchList {
+list @ifBranchListAST {
   @semanticExpressionAST mIFexpression ;
   @semanticInstructionListAST mIFinstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @ifInstruction extends @semanticInstructionAST {
-  @ifBranchList mBranchList ; # [1, *]
+class @ifInstructionAST extends @semanticInstructionAST {
+  @ifBranchListAST mBranchList ; # [1, *]
   @semanticInstructionListAST mElseInstructionList ;
 }
 
@@ -708,7 +708,7 @@ class @ifInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @methodCallInstruction extends @semanticInstructionAST {
+class @methodCallInstructionAST extends @semanticInstructionAST {
   @semanticExpressionAST mReceiverExpression ;
   @lstring mMethodName ;
   @actualParameterListAST mActualParameterList ;
@@ -720,7 +720,7 @@ class @methodCallInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @modifierCallInstruction extends @semanticInstructionAST {
+class @modifierCallInstructionAST extends @semanticInstructionAST {
   @lstring mReceiverName ;
   @lstringlist mReceiverStructAttributes ;
   @lstring mModifierName ;
@@ -733,7 +733,7 @@ class @modifierCallInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @errorInstruction extends @semanticInstructionAST {
+class @errorInstructionAST extends @semanticInstructionAST {
   @semanticExpressionAST mReceiverExpression ;
   @semanticExpressionAST mErrorExpression ;
   @lstringlist mBuiltVariableList ;
@@ -745,7 +745,7 @@ class @errorInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @warningInstruction extends @semanticInstructionAST {
+class @warningInstructionAST extends @semanticInstructionAST {
   @semanticExpressionAST mReceiverExpression ;
   @semanticExpressionAST mWarningExpression ;
 }
@@ -756,7 +756,7 @@ class @warningInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @routineCallInstruction extends @semanticInstructionAST {
+class @routineCallInstructionAST extends @semanticInstructionAST {
   @lstring mRoutineName ;
   @actualParameterListAST mActualParameterList ;
 }
@@ -767,24 +767,24 @@ class @routineCallInstruction extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @matchEntry {
+abstract class @matchEntryAST {
 }
 
 #---------------------------------------------------------------------------*
 
-list @matchEntryList {
-  @matchEntry mEntry ;
+list @matchEntryListAST {
+  @matchEntryAST mEntry ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @constantMatchEntry extends @matchEntry {
+class @constantMatchEntryAST extends @matchEntryAST {
   @lstring mConstantName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @classMatchEntry extends @matchEntry {
+class @classMatchEntryAST extends @matchEntryAST {
   @lstring mClassName ;
   @foreachInstructionEnumeratedObjectElementListAST mElements ;
   @bool mEndsWithEllipsis ;
@@ -793,7 +793,7 @@ class @classMatchEntry extends @matchEntry {
 #---------------------------------------------------------------------------*
 
 list @matchInstructionBranchListAST {
-  @matchEntryList mMatchEntryList ;
+  @matchEntryListAST mMatchEntryList ;
   @semanticInstructionListAST mMatchBranchInstructionList ;
 }
 

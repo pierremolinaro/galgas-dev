@@ -20,7 +20,7 @@
 semantics lexiqueCompilation :
 import "lexiqueGeneration.gSemantics" ;
 import "lexiqueCocoaGeneration.gSemantics" ;
-import "semanticsMetamodel.gSemantics" ;
+import "allASTTypes.gSemantics" ;
 
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics allASTTypes in "allASTTypes.gSemantics" ;

@@ -20,8 +20,6 @@
 semantics syntaxMetamodel :
 
 import "semanticsTypesForAST.gSemantics" ;
-import "parameterArgumentMetamodel.gSemantics" ;
-import "instructionMetamodel.gSemantics" ;
 
 import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 

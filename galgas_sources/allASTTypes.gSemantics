@@ -1,0 +1,82 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  All Abstract Syntax Tree Types                                           *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics allASTTypes :
+  import "lexiqueTypesForAST.gSemantics" ;
+  import "semanticsTypesForAST.gSemantics" ;
+  import "optionTypesForAST.gSemantics" ;
+  import "guiTypesForAST.gSemantics" ;
+  import "lexiqueTypesForAST.gSemantics" ;
+  import "syntaxMetamodel.gSemantics" ;
+  import "grammarMetamodel.gSemantics" ;
+
+import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
+import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
+import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
+import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
+import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
+import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
+
+
+#---------------------------------------------------------------------------*
+
+map @parsedLexiqueComponentMap {
+  @lexiqueComponentAST mRoot ;
+  insert insertKey error message "the '%K' lexique component has already been parsed" ;
+  search searchKey error message "the '%K' lexique component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @parsedOptionComponentMap {
+  @optionComponentAST mOptionComponentRoot ;
+  insert insertKey error message "the '%K' option component has already been parsed" ;
+  search searchKey error message "the '%K' option component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @parsedSemanticsComponentMap {
+  @semanticsComponentAST mRoot ;
+  insert insertKey error message "the '%K' semantics component has already been parsed" ;
+  search searchKey error message "the '%K' semantics component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @parsedSyntaxComponentMap {
+  @syntaxComponentRoot mSyntaxComponentRoot ;
+  insert insertKey error message "the '%K' syntax component has already been parsed" ;
+  search searchKey error message "the '%K' syntax component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
+struct @parsedComponentStruct {
+  @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
+  @parsedLexiqueComponentMap mParsedLexiqueComponentMap ;
+  @parsedSyntaxComponentMap mParsedSyntaxComponentMap ;
+  @parsedOptionComponentMap mParsedOptionComponentMap ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
+

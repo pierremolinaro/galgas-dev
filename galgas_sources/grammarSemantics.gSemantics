@@ -19,7 +19,9 @@
 
 semantics grammarSemantics :
 
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
+  import "semanticsTypesForAST.gSemantics" ;
+
+  import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
