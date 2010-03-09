@@ -173,6 +173,15 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@lstringlist CONSTANT_LIST
     ?@enumMessageListAST ENUM_MESSAGE_LIST
   ;
+#--- struct
+  template structTypeHeader "GALGAS_struct.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@attributeInCollectionListAST ATTRIBUTE_LIST
+  ;
+  template structTypeImplementation "GALGAS_struct.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@attributeInCollectionListAST ATTRIBUTE_LIST
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -276,10 +285,17 @@ end method ;
 
 override method @structDeclarationAST generateCode
   ?!@semanticContext unused ioSemanticContext
-  ?!@string unused ioHeaderString
-  ?!@string unused ioImplementationString
+  ?!@string ioHeaderString
+  ?!@string ioImplementationString
 :
-  message "@structDeclarationAST generateCode\n" ;
+  ioHeaderString .= [filewrapper typeGenerationTemplate.structTypeHeader
+    ![mStructTypeName identifierRepresentation]
+    !mAttributeList
+ ] ;
+  ioImplementationString .= [filewrapper typeGenerationTemplate.structTypeImplementation
+    ![mStructTypeName identifierRepresentation]
+    !mAttributeList
+] ;
 end method ;
 
 #---------------------------------------------------------------------------*
