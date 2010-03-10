@@ -129,7 +129,7 @@ routine constructorMapFor_string
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithSourceFilePath" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithCurrentDirectory" !"string" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithMainFirstArgument" !"string" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringWithContentsOfFile" !"char" !"uint" !"string" !true ;
+#  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringWithContentsOfFile" !"char" !"uint" !"string" !true ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithContentsOfFile" !"string" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithCurrentDateTime" !"string" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithEnvironmentVariable" !"string" !"string" !true ;

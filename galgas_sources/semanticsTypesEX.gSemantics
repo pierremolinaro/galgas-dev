@@ -527,7 +527,7 @@ class @enumType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine addTypeList
+routine addTypeListEX
   ??@string inElementTypeName
   ?!@typeMap ioTypeMap
 :
@@ -574,21 +574,21 @@ end once ;
 once constructBuiltinTypeMap ->@typeMap outTypeMap :
   outTypeMap := constructPrimitiveTypeMap [] ;
 #--- @lstringlist type
-  addTypeList !"lstring" !?outTypeMap ;
+  addTypeListEX !"lstring" !?outTypeMap ;
 #--- @stringlist type
-  addTypeList !"string" !?outTypeMap ;
+  addTypeListEX !"string" !?outTypeMap ;
 #--- @typelist type
-  addTypeList !"type" !?outTypeMap ;
+  addTypeListEX !"type" !?outTypeMap ;
 #--- @uint64list type
-  addTypeList !"uint64" !?outTypeMap ;
+  addTypeListEX !"uint64" !?outTypeMap ;
 #--- @luintlist type
-  addTypeList !"luint" !?outTypeMap ;
+  addTypeListEX !"luint" !?outTypeMap ;
 #--- @uintlist type
-  addTypeList !"uint" !?outTypeMap ;
+  addTypeListEX !"uint" !?outTypeMap ;
 #--- @functionlist type
-  addTypeList !"function" !?outTypeMap ;
+  addTypeListEX !"function" !?outTypeMap ;
 #--- @objectlist type
-  addTypeList !"object" !?outTypeMap ;
+  addTypeListEX !"object" !?outTypeMap ;
 #---
 #  @attributeList lstringAttribute [emptyList] ;
 #  @typeMapIndex lstringIndex ;

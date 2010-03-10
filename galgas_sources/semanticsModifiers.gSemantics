@@ -26,8 +26,8 @@ semantics semanticsModifiers :
 routine enterModifierWithInputArgument
   ?!@modifierMap ioModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ??@string inModifierName
   ??@string inInputArgumentTypeName
+  ??@string inModifierName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapIndex argumentTypeIndex ;
@@ -43,12 +43,32 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine enterModifierWithOutputArgument
+  ?!@modifierMap ioModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inInputArgumentTypeName
+  ??@string inModifierName
+  ??@bool inHasCompilerArgument
+:
+  @unifiedTypeMapIndex argumentTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgumentTypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
+  @formalParameterSignature argList [emptyList] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inModifierName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine enterModifierWith2InputArguments
   ?!@modifierMap ioModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ??@string inModifierName
   ??@string inInputArgument1TypeName
   ??@string inInputArgument2TypeName
+  ??@string inModifierName
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
