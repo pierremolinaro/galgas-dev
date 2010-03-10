@@ -26,13 +26,13 @@ semantics semanticsDecoration :
 #---------------------------------------------------------------------------*
 
 abstract method @semanticInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@localVariableDeclarationAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -40,7 +40,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationWithInitializationAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@localVariableDeclarationWithInitializationAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -48,7 +48,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationWithAssignmentAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@localVariableDeclarationWithAssignmentAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -57,7 +57,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localConstantDeclarationWithSourceExpressionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@localConstantDeclarationWithSourceExpressionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -65,7 +65,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localConstantDeclarationWithConstructorCallAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@localConstantDeclarationWithConstructorCallAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -73,7 +73,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @assignmentInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@assignmentInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -81,7 +81,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @appendInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@appendInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -89,7 +89,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sendInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@sendInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -97,7 +97,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @foreachInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@foreachInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -105,7 +105,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @ifInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@ifInstruction decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -113,7 +113,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @methodCallInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@methodCallInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -121,7 +121,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @modifierCallInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@modifierCallInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -129,7 +129,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @errorInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@errorInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -137,7 +137,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @warningInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@warningInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -145,7 +145,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @routineCallInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@routineCallInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -153,7 +153,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @matchInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@matchInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -161,7 +161,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @castInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@castInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -169,7 +169,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @addInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@addInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -177,7 +177,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @removeInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@removeInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -185,7 +185,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @incrementInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@incrementInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -193,7 +193,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @decrementInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@decrementInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -201,7 +201,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @loopInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@loopInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -209,7 +209,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @messageInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@messageInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -217,7 +217,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @logInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@logInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -225,7 +225,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @grammarInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@grammarInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -233,7 +233,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @withInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@withInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -241,7 +241,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @switchInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@switchInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -249,7 +249,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @typeMethodInstructionAST decorateAbstractSyntaxTree
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
 :
   message "@typeMethodInstructionAST decorateAbstractSyntaxTree\n" ;
 end method ;
@@ -261,14 +261,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 abstract method @semanticDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@mapDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -277,7 +277,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapindexDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@mapindexDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -286,7 +286,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @enumDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
 #--- Nothing to do
@@ -295,7 +295,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@filewrapperDeclarationAST.semanticAnalysis\n" ;
@@ -304,7 +304,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@sortedListDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -313,7 +313,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @structDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@structDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -322,7 +322,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@listDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -331,7 +331,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @classDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@classDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -340,7 +340,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externRoutineDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@externRoutineDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -349,7 +349,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @routineDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@routineDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -361,7 +361,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@externFunctionDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -370,7 +370,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @functionDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@functionDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -379,7 +379,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @lazyFunctionDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@lazyFunctionDeclarationAST decorateAbstractSyntaxTree \n" ;
@@ -388,7 +388,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST decorateAbstractSyntaxTree 
-  ?@semanticContext unused ioSemanticContext
+  ?@semanticContextEX unused ioSemanticContext
   ?!@semanticDeclarationSortedListForGeneration unused ioDeclarationSortedListForGeneration
 :
   message "@listmapDeclarationAST decorateAbstractSyntaxTree \n" ;

@@ -152,7 +152,7 @@ routine performProjectGlobalCheckings
     semanticDeclarationList .= [[mRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   end foreach ;
 #---- Build semantic context
-  @semanticContext semanticContext ;
+  @semanticContextEX semanticContext ;
   buildSemanticContext !semanticDeclarationList !inEndOfSourceFile ?semanticContext ;
 #--- Check that for every abstract category method, an overridden category method
 #    defined in an concrete subclass

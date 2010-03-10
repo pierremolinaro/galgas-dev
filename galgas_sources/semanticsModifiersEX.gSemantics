@@ -1,0 +1,693 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticsModifiersEX :
+import "semanticsTypesEX.gSemantics" ;
+import semantics semanticsTypesEX in "semanticsTypesEX.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+list @formalParameterSignatureEXX {
+  @ACGalgasType mParameterType ;
+  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @modifierMapEXX {
+  @formalParameterSignatureEXX mParameterList ;
+  @bool mHasCompilerArgument ;
+  insert insertKey error message "the '%K' modifier has been already defined" ;
+  search searchKey error message "the '%K' modifier is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithStringInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithoutArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    ![@formalParameterSignatureEXX emptyList]
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithLocationInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@locationGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithCharInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@charGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithBoolInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@boolGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithDataInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@dataGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithUintInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@uintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithUint64InputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@uint64GalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithSintInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@sintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithSint64InputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@sint64GalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithDoubleInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@doubleGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterModifierWithCharUintInputArgument
+  ?!@modifierMapEXX ioModifierMap
+  ??@string inName
+  ??@bool inHasCompilerArgument
+:
+  @formalParameterSignatureEXX argList [emptyList] ;
+  argList += ![@charGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += ![@uintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioModifierMap insertKey
+    ![@lstring new !inName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+abstract reader @ACGalgasType modifierMap ->@modifierMapEXX outModifierMap ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_location ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @locationGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_location [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_string ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithUintInputArgument !?outModifierMap !"setCapacity" !true ;
+  enterModifierWithUintInputArgument !?outModifierMap !"incIndentation" !true ;
+  enterModifierWithUintInputArgument !?outModifierMap !"decIndentation" !true ;
+  enterModifierWithCharUintInputArgument !?outModifierMap !"setCharacterAtIndex" !true ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_string [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_char ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @charGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_char [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_bool ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @boolGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_bool [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_uint -> @modifierMapEXX  outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @uintGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_uint [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_sint ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sintGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_sint [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_uint64 ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @uint64GalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_uint64 [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_sint64 ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sint64GalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_sint64 [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_double ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @doubleGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_double [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_lstring ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithStringInputArgument !?outModifierMap !"setString" !false ;
+  enterModifierWithLocationInputArgument !?outModifierMap !"setLocation" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lstringGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_lstring [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_lchar ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithCharInputArgument !?outModifierMap !"setChar" !false ;
+  enterModifierWithLocationInputArgument !?outModifierMap !"setLocation" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lcharGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_lchar [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_lbool ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithBoolInputArgument !?outModifierMap !"setBool" !false ;
+  enterModifierWithLocationInputArgument !?outModifierMap !"setLocation" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lboolGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_lbool [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_luint ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithUintInputArgument !?outModifierMap !"setUint" !false ;
+  enterModifierWithLocationInputArgument !?outModifierMap !"setLocation" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @luintGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_luint [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_lsint ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithSintInputArgument !?outModifierMap !"setSint" !false ;
+  enterModifierWithLocationInputArgument !?outModifierMap !"setLocation" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lsintGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_lsint [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_luint64 ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithUint64InputArgument !?outModifierMap !"setUint64" !false ;
+  enterModifierWithLocationInputArgument !?outModifierMap !"setLocation" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @luint64GalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_luint64 [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_lsint64 ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithSint64InputArgument !?outModifierMap !"setSint64" !false ;
+  enterModifierWithLocationInputArgument !?outModifierMap !"setLocation" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lsint64GalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_lsint64 [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_ldouble ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithDoubleInputArgument !?outModifierMap !"setDouble" !false ;
+  enterModifierWithLocationInputArgument !?outModifierMap !"setLocation" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @ldoubleGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_ldouble [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_stringset ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @stringsetGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_stringset [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_binaryset ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @binarysetGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_binaryset [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_type ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @typeGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_type [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_object ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @objectGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_object [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_data ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  enterModifierWithUintInputArgument !?outModifierMap !"appendByte" !true ;
+  enterModifierWithUintInputArgument !?outModifierMap !"appendShortBE" !true ;
+  enterModifierWithUintInputArgument !?outModifierMap !"appendShortLE" !true ;
+  enterModifierWithUintInputArgument !?outModifierMap !"appendUIntBE" !false ;
+  enterModifierWithUintInputArgument !?outModifierMap !"appendUIntLE" !false ;
+  enterModifierWithStringInputArgument !?outModifierMap !"appendUTF8String" !false ;
+  enterModifierWithDataInputArgument !?outModifierMap !"appendData" !false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @dataGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_data [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_function ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @functionGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_function [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @classGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  if [mSuperClassIndex isNull] then
+    outModifierMap := [@modifierMapEXX emptyMap] ;
+  else
+    @ACGalgasType superClassType := [mSuperClassIndex mType] ;
+    outModifierMap := [superClassType modifierMap] ;
+  end if ;
+  foreach mAttributeList do
+    @ACGalgasType t := [mAttributeTypeIndex mType] ;
+  #--- set...Attribute... method
+    @formalParameterSignatureEXX accessorSignature [emptyList] ;
+    accessorSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    [!?outModifierMap insertKey
+      ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] ![mAttributeName location]]
+      !accessorSignature
+      !true
+    ] ;
+  end foreach ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @listGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  @formalParameterSignatureEXX extractSignature [emptyList] ;
+  @formalParameterSignatureEXX inputSignature [emptyList] ;
+  foreach mAttributeList do
+    @ACGalgasType t  := [mAttributeTypeIndex mType] ;
+    extractSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
+    inputSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  end foreach ;
+  [!?outModifierMap insertKey
+    ![@lstring new !"popFirst" !here]
+    !extractSignature
+    !true
+  ] ;
+  [!?outModifierMap insertKey
+    ![@lstring new !"popLast" !here]
+    !extractSignature
+    !true
+  ] ;
+  [!?outModifierMap insertKey
+    ![@lstring new !"prependValue" !here]
+    !inputSignature
+    !true
+  ] ;
+  foreach mAttributeList do
+    @ACGalgasType t := [mAttributeTypeIndex mType] ;
+    @formalParameterSignatureEXX signature [emptyList] ;
+    signature += ![@uintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    signature += !t ![@formalArgumentPassingModeAST argumentOut] ;
+    [!?outModifierMap insertKey
+      ![@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
+      !signature
+      !true
+    ] ;
+  end foreach ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once modifierMapFor_listmap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+override reader @listmapGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := modifierMapFor_listmap [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @structGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sortedlistGalgasType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  @formalParameterSignatureEXX extractSignature [emptyList] ;
+  foreach mAttributeList do
+    @ACGalgasType t := [mAttributeTypeIndex mType] ;
+    extractSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
+  end foreach ;
+  [!?outModifierMap insertKey
+    ![@lstring new !"popSmallest" !here]
+    !extractSignature
+    !true
+  ] ;
+  [!?outModifierMap insertKey
+    ![@lstring new !"popGreatest" !here]
+    !extractSignature
+    !true
+  ] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+  @formalParameterSignatureEXX insertSignature [emptyList] ;
+  @formalParameterSignatureEXX removeSignature [emptyList] ;
+  insertSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  removeSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  foreach mAttributeList do
+    @ACGalgasType t := [mAttributeTypeIndex mType] ;
+    insertSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    removeSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
+  #--- set...Attribute...forKey methods
+    @formalParameterSignatureEXX accessorSignature [emptyList] ;
+    accessorSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    [!?outModifierMap insertKey
+      ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]]
+      !accessorSignature
+      !true
+    ] ;
+  end foreach ;
+#--- Insert Methods
+  foreach mInsertMethodMap do
+    [!?outModifierMap insertKey
+      !key
+      !insertSignature
+      !true
+    ] ;
+  end foreach ;
+#--- Remove methods
+  foreach mRemoveMethodMap do
+    [!?outModifierMap insertKey
+      !key
+      !removeSignature
+      !true
+    ] ;
+  end foreach ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapindexType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @enumType modifierMap ->@modifierMapEXX outModifierMap :
+  outModifierMap := [@modifierMapEXX emptyMap] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

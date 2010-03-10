@@ -866,6 +866,48 @@
 		CFB577010FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
 		CFB577020FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
 		CFB577030FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
+		CFB737861147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737801147DFC90080934F /* semanticsConstructorsEX.cpp */; };
+		CFB737871147DFC90080934F /* semanticsTypesEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737821147DFC90080934F /* semanticsTypesEX.cpp */; };
+		CFB737891147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737801147DFC90080934F /* semanticsConstructorsEX.cpp */; };
+		CFB7378A1147DFC90080934F /* semanticsTypesEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737821147DFC90080934F /* semanticsTypesEX.cpp */; };
+		CFB7378C1147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737801147DFC90080934F /* semanticsConstructorsEX.cpp */; };
+		CFB7378D1147DFC90080934F /* semanticsTypesEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737821147DFC90080934F /* semanticsTypesEX.cpp */; };
+		CFB7378F1147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737801147DFC90080934F /* semanticsConstructorsEX.cpp */; };
+		CFB737901147DFC90080934F /* semanticsTypesEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737821147DFC90080934F /* semanticsTypesEX.cpp */; };
+		CFB737921147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737801147DFC90080934F /* semanticsConstructorsEX.cpp */; };
+		CFB737931147DFC90080934F /* semanticsTypesEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737821147DFC90080934F /* semanticsTypesEX.cpp */; };
+		CFB737951147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737801147DFC90080934F /* semanticsConstructorsEX.cpp */; };
+		CFB737961147DFC90080934F /* semanticsTypesEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737821147DFC90080934F /* semanticsTypesEX.cpp */; };
+		CFB737A01147F5230080934F /* semanticsReadersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB7379E1147F5230080934F /* semanticsReadersEX.cpp */; };
+		CFB737A11147F5230080934F /* semanticsReadersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB7379E1147F5230080934F /* semanticsReadersEX.cpp */; };
+		CFB737A21147F5230080934F /* semanticsReadersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB7379E1147F5230080934F /* semanticsReadersEX.cpp */; };
+		CFB737A31147F5230080934F /* semanticsReadersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB7379E1147F5230080934F /* semanticsReadersEX.cpp */; };
+		CFB737A41147F5230080934F /* semanticsReadersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB7379E1147F5230080934F /* semanticsReadersEX.cpp */; };
+		CFB737A51147F5230080934F /* semanticsReadersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB7379E1147F5230080934F /* semanticsReadersEX.cpp */; };
+		CFB737AD1147FB550080934F /* semanticsModifiersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737AB1147FB550080934F /* semanticsModifiersEX.cpp */; };
+		CFB737AE1147FB550080934F /* semanticsModifiersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737AB1147FB550080934F /* semanticsModifiersEX.cpp */; };
+		CFB737AF1147FB550080934F /* semanticsModifiersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737AB1147FB550080934F /* semanticsModifiersEX.cpp */; };
+		CFB737B01147FB550080934F /* semanticsModifiersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737AB1147FB550080934F /* semanticsModifiersEX.cpp */; };
+		CFB737B11147FB550080934F /* semanticsModifiersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737AB1147FB550080934F /* semanticsModifiersEX.cpp */; };
+		CFB737B21147FB550080934F /* semanticsModifiersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737AB1147FB550080934F /* semanticsModifiersEX.cpp */; };
+		CFB737BB1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737B91147FE310080934F /* semanticsInstanceMethodsEX.cpp */; };
+		CFB737BC1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737B91147FE310080934F /* semanticsInstanceMethodsEX.cpp */; };
+		CFB737BD1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737B91147FE310080934F /* semanticsInstanceMethodsEX.cpp */; };
+		CFB737BE1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737B91147FE310080934F /* semanticsInstanceMethodsEX.cpp */; };
+		CFB737BF1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737B91147FE310080934F /* semanticsInstanceMethodsEX.cpp */; };
+		CFB737C01147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737B91147FE310080934F /* semanticsInstanceMethodsEX.cpp */; };
+		CFB737C7114800380080934F /* semanticsClassMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737C5114800380080934F /* semanticsClassMethodsEX.cpp */; };
+		CFB737C8114800380080934F /* semanticsClassMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737C5114800380080934F /* semanticsClassMethodsEX.cpp */; };
+		CFB737C9114800380080934F /* semanticsClassMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737C5114800380080934F /* semanticsClassMethodsEX.cpp */; };
+		CFB737CA114800380080934F /* semanticsClassMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737C5114800380080934F /* semanticsClassMethodsEX.cpp */; };
+		CFB737CB114800380080934F /* semanticsClassMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737C5114800380080934F /* semanticsClassMethodsEX.cpp */; };
+		CFB737CC114800380080934F /* semanticsClassMethodsEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737C5114800380080934F /* semanticsClassMethodsEX.cpp */; };
+		CFB737D7114803BC0080934F /* buildComponentTypeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737D5114803BC0080934F /* buildComponentTypeMap.cpp */; };
+		CFB737D8114803BC0080934F /* buildComponentTypeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737D5114803BC0080934F /* buildComponentTypeMap.cpp */; };
+		CFB737D9114803BC0080934F /* buildComponentTypeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737D5114803BC0080934F /* buildComponentTypeMap.cpp */; };
+		CFB737DA114803BC0080934F /* buildComponentTypeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737D5114803BC0080934F /* buildComponentTypeMap.cpp */; };
+		CFB737DB114803BC0080934F /* buildComponentTypeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737D5114803BC0080934F /* buildComponentTypeMap.cpp */; };
+		CFB737DC114803BC0080934F /* buildComponentTypeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB737D5114803BC0080934F /* buildComponentTypeMap.cpp */; };
 		CFB76EE70E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
 		CFB76EE90E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
 		CFB76EEB0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
@@ -1939,6 +1981,20 @@
 		CFB4C2CF10B02D3000F020E7 /* include_objectCastInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_objectCastInExpression.h; sourceTree = "<group>"; };
 		CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_actions.cpp; sourceTree = "<group>"; };
 		CFB576FD0FC340DE000B1844 /* scanner_actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner_actions.h; sourceTree = "<group>"; };
+		CFB737801147DFC90080934F /* semanticsConstructorsEX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsConstructorsEX.cpp; sourceTree = "<group>"; };
+		CFB737811147DFC90080934F /* semanticsConstructorsEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsConstructorsEX.h; sourceTree = "<group>"; };
+		CFB737821147DFC90080934F /* semanticsTypesEX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsTypesEX.cpp; sourceTree = "<group>"; };
+		CFB737831147DFC90080934F /* semanticsTypesEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsTypesEX.h; sourceTree = "<group>"; };
+		CFB7379E1147F5230080934F /* semanticsReadersEX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsReadersEX.cpp; sourceTree = "<group>"; };
+		CFB7379F1147F5230080934F /* semanticsReadersEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsReadersEX.h; sourceTree = "<group>"; };
+		CFB737AB1147FB550080934F /* semanticsModifiersEX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsModifiersEX.cpp; sourceTree = "<group>"; };
+		CFB737AC1147FB550080934F /* semanticsModifiersEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsModifiersEX.h; sourceTree = "<group>"; };
+		CFB737B91147FE310080934F /* semanticsInstanceMethodsEX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsInstanceMethodsEX.cpp; sourceTree = "<group>"; };
+		CFB737BA1147FE310080934F /* semanticsInstanceMethodsEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsInstanceMethodsEX.h; sourceTree = "<group>"; };
+		CFB737C5114800380080934F /* semanticsClassMethodsEX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsClassMethodsEX.cpp; sourceTree = "<group>"; };
+		CFB737C6114800380080934F /* semanticsClassMethodsEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsClassMethodsEX.h; sourceTree = "<group>"; };
+		CFB737D5114803BC0080934F /* buildComponentTypeMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildComponentTypeMap.cpp; sourceTree = "<group>"; };
+		CFB737D6114803BC0080934F /* buildComponentTypeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildComponentTypeMap.h; sourceTree = "<group>"; };
 		CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseForXcodeProjectGeneration.cpp; sourceTree = "<group>"; };
 		CFB76EE60E8D7DA300F826A9 /* baseForXcodeProjectGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseForXcodeProjectGeneration.h; sourceTree = "<group>"; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
@@ -3127,6 +3183,20 @@
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFB737D5114803BC0080934F /* buildComponentTypeMap.cpp */,
+				CFB737D6114803BC0080934F /* buildComponentTypeMap.h */,
+				CFB737C5114800380080934F /* semanticsClassMethodsEX.cpp */,
+				CFB737C6114800380080934F /* semanticsClassMethodsEX.h */,
+				CFB737B91147FE310080934F /* semanticsInstanceMethodsEX.cpp */,
+				CFB737BA1147FE310080934F /* semanticsInstanceMethodsEX.h */,
+				CFB737AB1147FB550080934F /* semanticsModifiersEX.cpp */,
+				CFB737AC1147FB550080934F /* semanticsModifiersEX.h */,
+				CFB7379E1147F5230080934F /* semanticsReadersEX.cpp */,
+				CFB7379F1147F5230080934F /* semanticsReadersEX.h */,
+				CFB737801147DFC90080934F /* semanticsConstructorsEX.cpp */,
+				CFB737811147DFC90080934F /* semanticsConstructorsEX.h */,
+				CFB737821147DFC90080934F /* semanticsTypesEX.cpp */,
+				CFB737831147DFC90080934F /* semanticsTypesEX.h */,
 				CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */,
 				CF7B55721146AEE90068C5E6 /* semanticsDecoratedTypes.h */,
 				CF7B55731146AEE90068C5E6 /* semanticsDecoration.cpp */,
@@ -4068,6 +4138,13 @@
 				CF497E1B1145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
 				CF7B55751146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
 				CF7B55761146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
+				CFB737861147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */,
+				CFB737871147DFC90080934F /* semanticsTypesEX.cpp in Sources */,
+				CFB737A01147F5230080934F /* semanticsReadersEX.cpp in Sources */,
+				CFB737AD1147FB550080934F /* semanticsModifiersEX.cpp in Sources */,
+				CFB737BB1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */,
+				CFB737C7114800380080934F /* semanticsClassMethodsEX.cpp in Sources */,
+				CFB737D7114803BC0080934F /* buildComponentTypeMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4296,6 +4373,13 @@
 				CF497E2B1145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
 				CF7B55791146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
 				CF7B557A1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
+				CFB7378C1147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */,
+				CFB7378D1147DFC90080934F /* semanticsTypesEX.cpp in Sources */,
+				CFB737A21147F5230080934F /* semanticsReadersEX.cpp in Sources */,
+				CFB737AF1147FB550080934F /* semanticsModifiersEX.cpp in Sources */,
+				CFB737BD1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */,
+				CFB737C9114800380080934F /* semanticsClassMethodsEX.cpp in Sources */,
+				CFB737D9114803BC0080934F /* buildComponentTypeMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4524,6 +4608,13 @@
 				CF497E331145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
 				CF7B557B1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
 				CF7B557C1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
+				CFB7378F1147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */,
+				CFB737901147DFC90080934F /* semanticsTypesEX.cpp in Sources */,
+				CFB737A31147F5230080934F /* semanticsReadersEX.cpp in Sources */,
+				CFB737B01147FB550080934F /* semanticsModifiersEX.cpp in Sources */,
+				CFB737BE1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */,
+				CFB737CA114800380080934F /* semanticsClassMethodsEX.cpp in Sources */,
+				CFB737DA114803BC0080934F /* buildComponentTypeMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4780,6 +4871,13 @@
 				CF497E231145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
 				CF7B55771146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
 				CF7B55781146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
+				CFB737891147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */,
+				CFB7378A1147DFC90080934F /* semanticsTypesEX.cpp in Sources */,
+				CFB737A11147F5230080934F /* semanticsReadersEX.cpp in Sources */,
+				CFB737AE1147FB550080934F /* semanticsModifiersEX.cpp in Sources */,
+				CFB737BC1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */,
+				CFB737C8114800380080934F /* semanticsClassMethodsEX.cpp in Sources */,
+				CFB737D8114803BC0080934F /* buildComponentTypeMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4997,6 +5095,13 @@
 				CF497E3B1145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
 				CF7B557D1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
 				CF7B557E1146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
+				CFB737921147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */,
+				CFB737931147DFC90080934F /* semanticsTypesEX.cpp in Sources */,
+				CFB737A41147F5230080934F /* semanticsReadersEX.cpp in Sources */,
+				CFB737B11147FB550080934F /* semanticsModifiersEX.cpp in Sources */,
+				CFB737BF1147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */,
+				CFB737CB114800380080934F /* semanticsClassMethodsEX.cpp in Sources */,
+				CFB737DB114803BC0080934F /* buildComponentTypeMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5214,6 +5319,13 @@
 				CF497E431145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */,
 				CF7B557F1146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */,
 				CF7B55801146AEE90068C5E6 /* semanticsDecoration.cpp in Sources */,
+				CFB737951147DFC90080934F /* semanticsConstructorsEX.cpp in Sources */,
+				CFB737961147DFC90080934F /* semanticsTypesEX.cpp in Sources */,
+				CFB737A51147F5230080934F /* semanticsReadersEX.cpp in Sources */,
+				CFB737B21147FB550080934F /* semanticsModifiersEX.cpp in Sources */,
+				CFB737C01147FE310080934F /* semanticsInstanceMethodsEX.cpp in Sources */,
+				CFB737CC114800380080934F /* semanticsClassMethodsEX.cpp in Sources */,
+				CFB737DC114803BC0080934F /* buildComponentTypeMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
