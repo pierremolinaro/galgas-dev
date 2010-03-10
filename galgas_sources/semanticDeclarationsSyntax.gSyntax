@@ -68,7 +68,7 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
     end repeat ;
   end select ;
   $;$ ;
-  ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName !featureList ;
+  ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName ; # !featureList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -376,7 +376,7 @@ rule <lazy_attribute_declaration> ?!@lazyAttributeListAST ioLazyAttributeList :
   repeat
     $type_name$ ?@lstring  attributeTypeName ;
     $identifier$ ? @lstring attributeName ;
-    attributeTypeAndNameList += !attributeTypeName !attributeName ![@lstringlist emptyList] ;
+    attributeTypeAndNameList += !attributeTypeName !attributeName ; # ![@lstringlist emptyList] ;
   while
   end repeat ;
   $:$ ;

@@ -1,0 +1,1201 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics buildSemanticContext :
+  import "semanticsClassMethods.gSemantics" ;
+  import "semanticsInstanceMethods.gSemantics" ;
+  import "semanticsModifiers.gSemantics" ;
+  import "semanticsReaders.gSemantics" ;
+  import "semanticsConstructors.gSemantics" ;
+
+  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
+  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
+  import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
+  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
+  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+routine addTypeList
+  ??@string inElementTypeName
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+:
+  const @string listTypeName := inElementTypeName . "list" ;
+#--- Element type index
+  @unifiedTypeMapIndex t ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inElementTypeName !here] !?ioUnifiedTypeMap ?t] ;
+#--- Enumeration description
+  @enumerationDescriptorList enumerationDescriptor [emptyList] ;
+  enumerationDescriptor += !t !"mValue" ;
+#--- Constructors
+  @constructorMap constructorMap [emptyMap] ;
+  enterConstructorWithoutArgument !?constructorMap !?ioUnifiedTypeMap !"new" !listTypeName !false ;
+  enterConstructorWithArgument !?constructorMap !?ioUnifiedTypeMap !"listWithValue" !inElementTypeName !listTypeName !true ;
+#--- Readers
+  @readerMap readerMap [emptyMap] ;
+  enterBaseReaderWithoutArgument !?readerMap !?ioUnifiedTypeMap !"length" !"uint" !false ;
+  enterBaseReaderWithArgument !?readerMap !?ioUnifiedTypeMap !"subListFromIndex" !"uint" !listTypeName !false ;
+  enterBaseReaderWith2Arguments !?readerMap !?ioUnifiedTypeMap !"subListWithRange" !"uint" !"uint" !listTypeName !false ;
+  enterBaseReaderWithArgument !?readerMap !?ioUnifiedTypeMap !"mValueAtIndex" !"uint" !inElementTypeName !false ;
+#--- Modifiers
+  @modifierMap modifierMap [emptyMap] ;
+  enterModifierWith2InputArguments !?modifierMap !?ioUnifiedTypeMap !inElementTypeName !"uint" !"setMValueAtIndex" !true ;
+  enterModifierWithOutputArgument !?modifierMap !?ioUnifiedTypeMap !inElementTypeName !"popFirst" !true ;
+  enterModifierWithOutputArgument !?modifierMap !?ioUnifiedTypeMap !inElementTypeName !"popLast" !true ;
+#--- Instance methods
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  enterInstanceMethodWithOutputArgument !?instanceMethodMap !?ioUnifiedTypeMap !inElementTypeName !"first" !true ;
+  enterInstanceMethodWithOutputArgument !?instanceMethodMap !?ioUnifiedTypeMap !inElementTypeName !"last" !true ;
+#--- Enter in type map
+  [!?ioUnifiedTypeMap insertKey
+    ![@lstring new !listTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum listType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    !enumerationDescriptor
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+function predefinedTypeMap
+  -> @unifiedTypeMap outUnifiedTypeMap
+:
+  outUnifiedTypeMap := [@unifiedTypeMap emptyMap] ;
+  @constructorMap constructorMap ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+#--- Enter "char" builtin type
+  constructorMapFor_char !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_char !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"char" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "bool" builtin type
+  readerMapFor_bool !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"bool" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@constructorMap emptyMap]
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop readerMap ;
+#--- Enter "uint" builtin type
+  constructorMapFor_uint !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_uint !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"uint" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "sint" builtin type
+  constructorMapFor_sint !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_sint !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"sint" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "sint64" builtin type
+  constructorMapFor_sint64 !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_sint64 !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"sint64" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "uint64" builtin type
+  constructorMapFor_uint64 !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_uint64 !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"uint64" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "double" builtin type
+  readerMapFor_double !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"double" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@constructorMap emptyMap]
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop readerMap ;
+#--- Enter "data" builtin type
+  constructorMapFor_data !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_data !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_data !?outUnifiedTypeMap ?modifierMap ;
+  instanceMethodMapFor_data !?outUnifiedTypeMap ?instanceMethodMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"data" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+  drop instanceMethodMap ;
+#--- Enter "type" builtin type
+  constructorMapFor_type !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_type !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"type" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "stringset" builtin type
+  constructorMapFor_stringset !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_stringset !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"stringset" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "binaryset" builtin type
+  constructorMapFor_binaryset !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_binaryset !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"binaryset" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "string" builtin type
+  constructorMapFor_string !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_string !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_string !?outUnifiedTypeMap ?modifierMap ;
+  instanceMethodMapFor_string !?outUnifiedTypeMap ?instanceMethodMap ;
+  classMethodMapFor_string !?outUnifiedTypeMap ?classMethodMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"string" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    !classMethodMap
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+  drop instanceMethodMap ;
+  drop classMethodMap ;
+#--- Enter "function" builtin type
+  constructorMapFor_function !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_function !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"function" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+#--- Enter "object" builtin type
+  readerMapFor_object !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"object" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@constructorMap emptyMap]
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop readerMap ;
+#--- Enter "location" builtin type
+  readerMapFor_location !?outUnifiedTypeMap ?readerMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"location" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@constructorMap emptyMap]
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop readerMap ;
+#--- Enter "lstring" builtin type
+  constructorMapFor_lstring !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_lstring !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_lstring !?outUnifiedTypeMap ?modifierMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"lstring" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+#--- Enter "lchar" builtin type
+  constructorMapFor_lchar !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_lchar !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_lchar !?outUnifiedTypeMap ?modifierMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"lchar" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+#--- Enter "lbool" builtin type
+  constructorMapFor_lbool !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_lbool !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_lbool !?outUnifiedTypeMap ?modifierMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"lbool" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+#--- Enter "ldouble" builtin type
+  constructorMapFor_ldouble !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_ldouble !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_ldouble !?outUnifiedTypeMap ?modifierMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"ldouble" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+#--- Enter "luint" builtin type
+  constructorMapFor_luint !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_luint !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_luint !?outUnifiedTypeMap ?modifierMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"luint" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+#--- Enter "luint64" builtin type
+  constructorMapFor_luint64 !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_luint64 !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_luint64 !?outUnifiedTypeMap ?modifierMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"luint64" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+#--- Enter "lsint" builtin type
+  constructorMapFor_lsint !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_lsint !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_lsint !?outUnifiedTypeMap ?modifierMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"lsint" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+#--- Enter "lsint64" builtin type
+  constructorMapFor_lsint64 !?outUnifiedTypeMap ?constructorMap ;
+  readerMapFor_lsint64 !?outUnifiedTypeMap ?readerMap ;
+  modifierMapFor_lsint64 !?outUnifiedTypeMap ?modifierMap ;
+  [!?outUnifiedTypeMap insertKey
+    ![@lstring new !"lsint64" !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+  drop constructorMap ;
+  drop readerMap ;
+  drop modifierMap ;
+#--- @lstringlist type
+  addTypeList !"lstring" !?outUnifiedTypeMap ;
+#--- @stringlist type
+  addTypeList !"string" !?outUnifiedTypeMap ;
+#--- @typelist type
+  addTypeList !"type" !?outUnifiedTypeMap ;
+#--- @uint64list type
+  addTypeList !"uint64" !?outUnifiedTypeMap ;
+#--- @luintlist type
+  addTypeList !"luint" !?outUnifiedTypeMap ;
+#--- @uintlist type
+  addTypeList !"uint" !?outUnifiedTypeMap ;
+#--- @functionlist type
+  addTypeList !"function" !?outUnifiedTypeMap ;
+#--- @objectlist type
+  addTypeList !"object" !?outUnifiedTypeMap ;
+end function ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R O U T I N E   M A P                                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @routineMap {
+  @formalParameterSignature mRoutineSignature ;
+  insert insertKey error message "the '%K' routine has been already declared in %L" ;
+  search searchKey error message "the '%K' routine is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F U N C T I O N   M A P                                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @functionMap {
+  @unifiedTypeMapIndexList mFunctionSignature ;
+  @unifiedTypeMapIndex mResultTypeIndex ;
+  insert insertKey error message "the '%K' function has been already declared in %L" ;
+  search searchKey error message "the '%K' function is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F I L E W R A P P E R   M A P                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @filewrapperTemplateMap {
+  @unifiedTypeMapIndexList mTemplateSignature ;
+  @lstring mFilewrapperTemplatePath ;
+  insert insertKey error message "the '%K' filewrapper template has been already declared in %L" ;
+  search searchKey error message "the '%K' filewrapper template is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @filewrapperMap {
+  @lstring mFilewrapperPath ;
+  @lstringlist mFilewrapperExtensionList ;
+  @filewrapperTemplateMap mFilewrapperTemplateMap ;
+  insert insertKey error message "the '%K' filewrapper has been already declared in %L" ;
+  search searchKey error message "the '%K' filewrapper is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E S C E N D A N T    C L A S S    L I S T M A P                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+listmap @descendantClassListMap (@unifiedTypeMapIndexList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E M A N T I C    C O N T E X T                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+struct @semanticContext {
+  @unifiedTypeMap mTypeMap ;
+  @routineMap mRoutineMap ;
+  @functionMap mFunctionMap ;
+  @descendantClassListMap mDescendantClassListMap ;
+  @filewrapperMap mFilewrapperMap ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O L L E C T    T Y P E S                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @collectedTypeMap {
+  @semanticDeclarationAST mDeclarationAbstractSyntaxTree ;
+  insert insertKey error message "the '%K' type has been already defined" ;
+  search searchKey error message "the '%K' type is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationAST collectType
+  ?!@collectedTypeMap unused ioCollectedTypeMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapDeclarationAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey
+    !mMapTypeName
+    !self
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapindexDeclarationAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey
+    !mMapIndexTypeName
+    !self
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumDeclarationAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey
+    !mEnumTypeName
+    !self
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey
+    !mSortedListTypeName
+    !self
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @structDeclarationAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey
+    !mStructTypeName
+    !self
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclarationAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey
+    !mListTypeName
+    !self
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @classDeclarationAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey
+    !mClassTypeName
+    !self
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listmapDeclarationAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey
+    !mListmapTypeName
+    !self
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N T E R    T Y P E S                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @semanticDeclarationAST enterType
+  ?!@semanticContext unused ioSemanticContext
+  ??@collectedTypeMap inCollectedTypeMap
+;
+
+#---------------------------------------------------------------------------*
+
+override method @mapDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+  @constructorMap constructorMap [emptyMap] ;
+  @readerMap readerMap [emptyMap] ;
+  @modifierMap modifierMap [emptyMap] ;
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  @enumerationDescriptorList enumerationDescriptor [emptyList] ;
+#--- string type index
+  @unifiedTypeMapIndex stringTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioSemanticContext.mTypeMap ?stringTypeIndex] ;
+#--- lstring type index
+  @unifiedTypeMapIndex lstringTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?ioSemanticContext.mTypeMap ?lstringTypeIndex] ;
+#--- current map type index
+  @unifiedTypeMapIndex currentMapTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex !mMapTypeName !?ioSemanticContext.mTypeMap ?currentMapTypeIndex] ;
+#--- Constructors
+  enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
+#--- Readers
+  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext.mTypeMap !"count" !"uint" !false ;
+#--- Handle attributes
+  @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
+  insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  @formalParameterSignature removeMethodFormalArgumentList [emptyList] ;
+  removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  foreach mAttributeList do
+    @unifiedTypeMapIndex attributeTypeIndex ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
+    insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    removeMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  end foreach ;
+#--- Handle insert modifiers
+  foreach mInsertMethodList do
+    if [modifierMap hasKey ![mMethodName string]] then
+      error mMethodName:"the '" . mMethodName . "' insert method is already declared" ;
+    else
+      [!?modifierMap insertKey
+        !mMethodName
+        !insertMethodFormalArgumentList
+        !true
+      ] ;
+    end if ;
+  end foreach ;
+#--- Handle remove modifiers
+  foreach mRemoveMethodList do
+    if [modifierMap hasKey ![mMethodName string]] then
+      error mMethodName:"the '" . mMethodName . "' method is already declared as an insert modifier or a remove modifier" ;
+    else
+      [!?modifierMap insertKey
+        !mMethodName
+        !removeMethodFormalArgumentList
+        !true
+      ] ;
+    end if ;
+  end foreach ;
+#--- Handle search methods
+  foreach mSearchMethodList do
+    [!?instanceMethodMap insertKey
+      !mMethodName
+      !removeMethodFormalArgumentList
+      !true
+    ] ;
+  end foreach ;
+#--- Enter "attributeForKey" readers
+  foreach mAttributeList do
+    const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
+    @unifiedTypeMapIndex attributeTypeIndex ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    [!?readerMap insertKey
+      !accessorName
+      ![@unifiedTypeMapIndexList listWithValue !stringTypeIndex]
+      !true
+      !attributeTypeIndex
+      ![@readerQualifier isBasic]
+      !""
+    ] ;
+  end foreach ;
+#--- Enter "set...Attribute...forKey" modifiers
+  foreach mAttributeList do
+    const @lstring accessorName [new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
+    @unifiedTypeMapIndex attributeTypeIndex ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    @formalParameterSignature accessorFormalArgumentList [emptyList] ;
+    accessorFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    [!?modifierMap insertKey
+      !accessorName
+      !accessorFormalArgumentList
+      !true
+    ] ;
+  end foreach ;
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mMapTypeName
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum mapType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    !enumerationDescriptor
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapindexDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap inCollectedTypeMap
+:
+#--- Check associated map is really a map
+  @semanticDeclarationAST ast ;
+  [inCollectedTypeMap searchKey !mAssociatedMapTypeName ?ast] ;
+  @attributeInCollectionListAST mapAttributeList ;
+  cast ast :
+  when == @mapDeclarationAST mapAST do
+    mapAttributeList := [mapAST mAttributeList] ;
+  else
+    error mAssociatedMapTypeName : "the '@" . mAssociatedMapTypeName . "' should be a map type" -> mapAttributeList ;
+  end cast ;
+#---
+  @constructorMap constructorMap [emptyMap] ;
+  @readerMap readerMap [emptyMap] ;
+  @modifierMap modifierMap [emptyMap] ;
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  @classMethodMap classMethodMap [emptyMap] ;
+#--- Associated map type index
+  @unifiedTypeMapIndex associatedMapTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex !mAssociatedMapTypeName !?ioSemanticContext.mTypeMap ?associatedMapTypeIndex] ;
+#--- lstring type index
+  @unifiedTypeMapIndex lstringTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?ioSemanticContext.mTypeMap ?lstringTypeIndex] ;
+#--- currentType type index
+  @unifiedTypeMapIndex currentTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?ioSemanticContext.mTypeMap ?currentTypeIndex] ;
+#--- Handle map type name
+  @unifiedTypeMapIndex mapTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex !mMapIndexTypeName !?ioSemanticContext.mTypeMap ?mapTypeIndex] ;
+#--- class method
+  @formalParameterSignature argList [emptyList] ;
+  argList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !associatedMapTypeIndex ![@formalArgumentPassingModeAST argumentInOut] ;
+  argList += !currentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  [!?classMethodMap insertKey
+    ![@lstring new !"makeRegularIndex" !here]
+    !argList
+    !false
+  ] ;
+#--- null constructor
+  enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext.mTypeMap !"null" ![mMapIndexTypeName string] !false ;
+#--- readers
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext.mTypeMap !"isSolved" !"bool" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext.mTypeMap !"isNull" !"bool" !false ;
+#--- Enter associated map attribute names as readers
+  foreach mapAttributeList do
+    const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
+    @unifiedTypeMapIndex attributeTypeIndex ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    [!?readerMap insertKey
+      !mAttributeName
+      ![@unifiedTypeMapIndexList emptyList]
+      !true
+      !attributeTypeIndex
+      ![@readerQualifier isBasic]
+      !""
+    ] ;
+  end foreach ;
+#--- Enter type in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mMapIndexTypeName
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum mapIndexType]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+##--- Handle attributes
+#  @enumConstructorMap enumConstructorMap [emptyMap] ;
+#  foreach mConstantList do
+#    [!?enumConstructorMap insertKey !mValue] ;
+#  end foreach ;
+##--- Build string set all constants
+#  @stringset allConstantSet [emptySet] ;
+#  foreach mConstantList do
+#    allConstantSet += ![mValue string] ;
+#  end foreach ;
+##--- Handle messages
+#  @enumMessageMap enumMessageMap [emptyMap] ;
+#  foreach mEnumMessageList do
+#    [!?enumMessageMap insertKey !mEnumMessageName] ;
+#   #--- Build set of constants named in this message definition
+#    @stringset messageConstantSet [emptySet] ;
+#    foreach mMessageAssociationList do
+#      if [messageConstantSet hasKey ![mConstantName string]] then
+#        error mConstantName: "the '" . mConstantName . "' is already named for this message definition" ;
+#      elsif not [allConstantSet hasKey ![mConstantName string]] then
+#        error mConstantName: "this constant is not declared"  ;
+#      end if ;
+#      messageConstantSet += ![mConstantName string] ;
+#    end foreach ;
+#  #--- Check all constants are named in message definition
+#    foreach messageConstantSet do
+#      if not [allConstantSet hasKey !key] then
+#        error mEnumMessageName: "this message definition does not name the '" . key . "' constant" ;
+#      end if ;
+#    end foreach ;
+#  end foreach ;
+##--- Enter type in type map
+#  @ACGalgasType t := [@enumType new
+#    !mEnumTypeName
+#    !enumConstructorMap
+#    !enumMessageMap
+#  ] ;
+#  [!?ioSemanticContext.mTypeMap insertKey !mEnumTypeName !t] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+#  @filewrapperTemplateMapEXX filewrapperTemplateMap [emptyMap] ;
+#  foreach mFilewrapperTemplateList do
+#    @signature templateSignature [emptyList] ;
+#    foreach mFilewrapperTemplateFormalInputParameters do
+#      @unifiedTypeMapIndex parameterTypeIndex ;
+#      [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext.mTypeMap ?parameterTypeIndex] ;
+#      templateSignature +=
+#        !parameterTypeIndex
+#        !mFormalParameterName
+#        ![@formalArgumentPassingModeAST argumentIn]
+#      ;
+#    end foreach ;
+#    [!?filewrapperTemplateMap insertKey
+#      !mFilewrapperTemplateName
+#      !templateSignature
+#      !mFilewrapperTemplatePath
+#    ] ;
+#  end foreach ;
+#  [!?ioSemanticContext.mFilewrapperMap insertKey
+#    !mFilewrapperName
+#    !mFilewrapperPath
+#    !mFilewrapperExtensionList
+#    !filewrapperTemplateMap
+#  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+##--- Handle attributes
+#  @attributeList attributeList [emptyList] ;
+#  foreach mAttributeList do
+#    @unifiedTypeMapIndex attributeTypeIndex ;
+#    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+#    attributeList += !attributeTypeIndex !mAttributeName ;
+#  end foreach ;
+##--- Enter type in type map
+#  @ACGalgasType t := [@listGalgasType new
+#    !mSortedListTypeName
+#    !attributeList
+#  ] ;
+#  [!?ioSemanticContext.mTypeMap insertKey !mSortedListTypeName !t] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @structDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+##--- Handle attributes
+#  @attributeList attributeList [emptyList] ;
+#  foreach mAttributeList do
+#    @unifiedTypeMapIndex attributeTypeIndex ;
+#    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+#    attributeList += !attributeTypeIndex !mAttributeName ;
+#  end foreach ;
+##--- Enter type in type map
+#  @ACGalgasType t := [@structGalgasType new
+#    !mStructTypeName
+#    !attributeList
+#  ] ;
+#  [!?ioSemanticContext.mTypeMap insertKey !mStructTypeName !t] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+##--- Handle attributes
+#  @attributeList attributeList [emptyList] ;
+#  foreach mAttributeList do
+#    @unifiedTypeMapIndex attributeTypeIndex ;
+#    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+#    attributeList += !attributeTypeIndex !mAttributeName ;
+#  end foreach ;
+##--- Enter type in type map
+#  @ACGalgasType t := [@listGalgasType new
+#    !mListTypeName
+#    !attributeList
+#  ] ;
+#  [!?ioSemanticContext.mTypeMap insertKey !mListTypeName !t] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @classDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+##--- Handle super class
+#  @unifiedTypeMapIndex superClassIndex ;
+#  if [mSuperClassName string] == "" then
+#    superClassIndex := [@unifiedTypeMapIndex null] ;
+#  else
+#    [@unifiedTypeMapIndex makeRegularIndex !mSuperClassName !?ioSemanticContext.mTypeMap ?superClassIndex] ;
+#  #--- Enter in descendant class listmap
+#    @unifiedTypeMapIndex classIndex ;
+#    [@unifiedTypeMapIndex makeRegularIndex !mClassTypeName !?ioSemanticContext.mTypeMap ?classIndex] ;
+#    ioSemanticContext.mDescendantClassListMap += ![mSuperClassName string] !classIndex ;
+#  end if ;
+##--- Handle attributes
+#  @attributeList attributeList [emptyList] ;
+#  foreach mAttributeList do
+#    @unifiedTypeMapIndex attributeTypeIndex ;
+#    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+#    attributeList += !attributeTypeIndex !mAttributeName ;
+#  end foreach ;
+##--- Handle methods
+#  @classMethodList methodList [emptyList] ;
+##--- Enter type in type map
+#  @classGalgasType t := [@classGalgasType new
+#    !mIsAbstract
+#    !mClassTypeName
+#    !superClassIndex
+#    !attributeList
+#    !methodList
+#  ] ;
+#  [!?ioSemanticContext.mTypeMap insertKey !mClassTypeName !t] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externRoutineDeclarationAST enterType # Handles also routine declaration
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+##--- Build signature
+#  @signature routineSignature [emptyList] ;
+#  foreach mFormalParameterList do
+#    @unifiedTypeMapIndex parameterTypeIndex ;
+#    [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext.mTypeMap ?parameterTypeIndex] ;
+#    routineSignature += !parameterTypeIndex !mFormalParameterName !mFormalParameterPassingMode ;
+#  end foreach ;
+##--- Enter routine in routine map
+#  [!?ioSemanticContext.mRoutineMap insertKey !mRoutineName !routineSignature] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externFunctionDeclarationAST enterType # Handles also function declaration
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+##--- Build signature
+#  @signature functionSignature [emptyList] ;
+#  foreach mFormalParameterList do
+#    @unifiedTypeMapIndex parameterTypeIndex ;
+#    [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext.mTypeMap ?parameterTypeIndex] ;
+#    functionSignature += !parameterTypeIndex !mFormalParameterName !mFormalParameterPassingMode ;
+#  end foreach ;
+##--- Result type
+#  @unifiedTypeMapIndex resultTypeIndex ;
+#  [@unifiedTypeMapIndex makeRegularIndex !mResultTypeName !?ioSemanticContext.mTypeMap ?resultTypeIndex] ;
+##--- Enter function in routine map
+#  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName !functionSignature !resultTypeIndex] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lazyFunctionDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+##--- Result type
+#  @unifiedTypeMapIndex resultTypeIndex ;
+#  [@unifiedTypeMapIndex makeRegularIndex !mResultTypeName !?ioSemanticContext.mTypeMap ?resultTypeIndex] ;
+##--- Enter function in routine map
+#  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName ![@signature emptyList] !resultTypeIndex] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listmapDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+  ??@collectedTypeMap unused inCollectedTypeMap
+:
+#  @unifiedTypeMapIndex associatedListTypeIndex ;
+#  [@unifiedTypeMapIndex makeRegularIndex !mAssociatedListTypeName !?ioSemanticContext.mTypeMap ?associatedListTypeIndex] ;
+##--- Enter type in type map
+#  @ACGalgasType t := [@listmapGalgasType new
+#    !mListmapTypeName
+#    !associatedListTypeIndex
+#  ] ;
+#  [!?ioSemanticContext.mTypeMap insertKey !mListmapTypeName !t] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    B U I L D    S E M A N T I C    C O N T E X T                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine buildSemanticContext
+  ??@semanticDeclarationListAST inSemanticDeclarationList
+  ??@location inEndOfSourceFile
+  !@semanticContext outSemanticContext
+:
+#--- Builtin types
+  @unifiedTypeMap typeMap := predefinedTypeMap [] ;
+#--- Build initial semantic context
+  outSemanticContext := [@semanticContext new
+    !typeMap
+    ![@routineMap emptyMap]
+    ![@functionMap emptyMap]
+    ![@descendantClassListMap emptyMap]
+    ![@filewrapperMap emptyMap]
+  ] ;
+#--- Collect all types
+  @collectedTypeMap collectedTypeMap [emptyMap] ;
+  foreach inSemanticDeclarationList do
+    [mSemanticDeclaration collectType !?collectedTypeMap] ;
+  end foreach ;
+#--- Loop throught all declarations
+  if [@uint errorCount] == 0 then
+    foreach inSemanticDeclarationList do
+      [mSemanticDeclaration enterType !?outSemanticContext !collectedTypeMap] ;
+    end foreach ;
+  end if ;
+#--- Check there is no undefined type
+  if [@uint errorCount] == 0 then
+    @stringlist undefinedClasses := [[outSemanticContext mTypeMap] unsolvedIndexKeyStringList] ;
+    if [undefinedClasses length] == 1 then
+      @string errorMessage := "there is 1 undefined type:" ;
+      foreach undefinedClasses do
+        errorMessage .= "\n-  @" . mValue ;
+      end foreach ;
+      error inEndOfSourceFile : errorMessage ;
+    elsif [undefinedClasses length] > 1 then
+      @string errorMessage := "there are " . [[undefinedClasses length] string] . " undefined types:" ;
+      foreach undefinedClasses do
+        errorMessage .= "\n-  @" . mValue ;
+      end foreach ;
+      error inEndOfSourceFile : errorMessage ;
+    end if ;
+  end if ;
+#--- Check type cross references are correct
+# * class inheritance graph has no circularity
+# * mapindex type refers to an actual map type
+# * listmap type refers to an actual list type
+  if [@uint errorCount] == 0 then
+    foreach [outSemanticContext mTypeMap] do
+#      [mType checkTypeCrossReferences ![[outSemanticContext mTypeMap] count]] ;
+    end foreach ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

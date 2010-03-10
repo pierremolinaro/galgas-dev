@@ -40,14 +40,34 @@ end routine ;
 routine enterInstanceMethodWithInputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ??@string inInstanceMethodName
   ??@string inInputArgumentTypeName
+  ??@string inInstanceMethodName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapIndex argumentTypeIndex ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgumentTypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioInstanceMethodMap insertKey
+    ![@lstring new !inInstanceMethodName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterInstanceMethodWithOutputArgument
+  ?!@instanceMethodMap ioInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inInputArgumentTypeName
+  ??@string inInstanceMethodName
+  ??@bool inHasCompilerArgument
+:
+  @unifiedTypeMapIndex argumentTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgumentTypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
+  @formalParameterSignature argList [emptyList] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
   [!?ioInstanceMethodMap insertKey
     ![@lstring new !inInstanceMethodName !here]
     !argList

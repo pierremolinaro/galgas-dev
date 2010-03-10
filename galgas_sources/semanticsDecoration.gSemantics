@@ -21,7 +21,7 @@ semantics semanticsDecoration :
   import "semanticsSemantics.gSemantics" ;
 
   import semantics semanticsDecoratedTypes in "semanticsDecoratedTypes.gSemantics" ;
-  import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+  import semantics semanticsSemanticsEX in "semanticsSemanticsEX.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

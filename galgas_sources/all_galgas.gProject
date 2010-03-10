@@ -76,7 +76,7 @@ project all_galgas:
   semantics "semanticsModifiers.gSemantics" : makefile ;
   semantics "semanticsInstanceMethods.gSemantics" : makefile ;
   semantics "semanticsClassMethods.gSemantics" : makefile ;
-  semantics "buildComponentTypeMap.gSemantics" : makefile ;
+  semantics "buildSemanticContext.gSemantics" : makefile ;
 
   semantics "semanticsTypesEX.gSemantics" : makefile ;
   semantics "semanticsTypeFeatures.gSemantics" : makefile ;
@@ -85,7 +85,7 @@ project all_galgas:
   semantics "semanticsModifiersEX.gSemantics" : makefile ;
   semantics "semanticsInstanceMethodsEX.gSemantics" : makefile ;
   semantics "semanticsClassMethodsEX.gSemantics" : makefile ;
-  semantics "semanticsSemantics.gSemantics" : makefile ;
+  semantics "semanticsSemanticsEX.gSemantics" : makefile ;
   semantics "semanticsDecoratedTypes.gSemantics" : makefile ;
   semantics "semanticsDecoration.gSemantics" : makefile ;
   semantics "semanticsGeneration.gSemantics" : makefile ;

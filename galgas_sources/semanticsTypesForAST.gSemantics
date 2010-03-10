@@ -1116,7 +1116,7 @@ struct @semanticDeclarationStructAST {
 list @attributeInCollectionListAST {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
-  @lstringlist mFeatureList ;
+#  @lstringlist mFeatureList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1163,7 +1163,7 @@ class @mapDeclarationAST extends @semanticDeclarationAST {
 
 class @mapindexDeclarationAST extends @semanticDeclarationAST {
   @lstring mMapIndexTypeName ;
-  @lstring mMapTypeName ;
+  @lstring mAssociatedMapTypeName ;
 }
 
 #---------------------------------------------------------------------------*

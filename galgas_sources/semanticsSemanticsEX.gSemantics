@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics semanticsSemantics :
+semantics semanticsSemanticsEX :
 import "semanticsTypesEX.gSemantics" ;
 import semantics semanticsTypesEX in "semanticsTypesEX.gSemantics" ;
 
@@ -211,7 +211,7 @@ import semantics semanticsTypesEX in "semanticsTypesEX.gSemantics" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @routineMap {
+map @routineMapEX {
   @signature mRoutineSignature ;
   insert insertKey error message "the '%K' routine has been already declared in %L" ;
   search searchKey error message "the '%K' routine is not declared" ;
@@ -223,7 +223,7 @@ map @routineMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @functionMap {
+map @functionMapEX {
   @signature mFunctionSignature ;
   @typeMapIndex mResultTypeIndex ;
   insert insertKey error message "the '%K' function has been already declared in %L" ;
@@ -236,7 +236,7 @@ map @functionMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @filewrapperTemplateMap {
+map @filewrapperTemplateMapEXX {
   @signature mTemplateSignature ;
   @lstring mFilewrapperTemplatePath ;
   insert insertKey error message "the '%K' filewrapper template has been already declared in %L" ;
@@ -245,10 +245,10 @@ map @filewrapperTemplateMap {
 
 #---------------------------------------------------------------------------*
 
-map @filewrapperMap {
+map @filewrapperMapEXX {
   @lstring mFilewrapperPath ;
   @lstringlist mFilewrapperExtensionList ;
-  @filewrapperTemplateMap mFilewrapperTemplateMap ;
+  @filewrapperTemplateMapEXX mFilewrapperTemplateMap ;
   insert insertKey error message "the '%K' filewrapper has been already declared in %L" ;
   search searchKey error message "the '%K' filewrapper is not declared" ;
 }
@@ -259,13 +259,13 @@ map @filewrapperMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @classIndexList {
+list @classIndexListEX {
   @typeMapIndex mClassMapindex ;
 }
 
 #---------------------------------------------------------------------------*
 
-listmap @descendantClassListMap (@classIndexList) ;
+listmap @descendantClassListMapEX (@classIndexListEX) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -275,10 +275,10 @@ listmap @descendantClassListMap (@classIndexList) ;
 
 struct @semanticContextEX {
   @typeMap mTypeMap ;
-  @routineMap mRoutineMap ;
-  @functionMap mFunctionMap ;
-  @descendantClassListMap mDescendantClassListMap ;
-  @filewrapperMap mFilewrapperMap ;
+  @routineMapEX mRoutineMap ;
+  @functionMapEX mFunctionMap ;
+  @descendantClassListMapEX mDescendantClassListMap ;
+  @filewrapperMapEXX mFilewrapperMap ;
 }
 
 #---------------------------------------------------------------------------*

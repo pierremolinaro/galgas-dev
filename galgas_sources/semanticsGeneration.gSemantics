@@ -33,7 +33,7 @@ semantics semanticsGeneration :
   import semantics semanticsTypeFeatures in "semanticsTypeFeatures.gSemantics" ;
   import semantics semanticsClassMethodsEX in "semanticsClassMethodsEX.gSemantics" ;
   import semantics semanticsInstanceMethodsEX in "semanticsInstanceMethodsEX.gSemantics" ;
-  import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+  import semantics semanticsSemanticsEX in "semanticsSemanticsEX.gSemantics" ;
   import semantics semanticsDecoration in "semanticsDecoration.gSemantics" ;
 
 #---------------------------------------------------------------------------*

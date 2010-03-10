@@ -124,7 +124,7 @@ map @classMethodMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @enumeratedItemsWithForeachInstruction {
+list @enumerationDescriptorList {
   @unifiedTypeMapIndex mEnumeratedType ;
   @string mEnumerationName ;
 }
@@ -155,7 +155,7 @@ enum @typeKindEnum {
 #---------------------------------------------------------------------------*
 
 map @unifiedTypeMap {
-  @bool mIsAbstract ;
+  @bool mIsConcrete ; # false if abstract class
   @unifiedTypeMapIndex mSuperType ;
   @typeKindEnum mTypeKindEnum ;
   @constructorMap mConstructorMap ;
@@ -163,7 +163,7 @@ map @unifiedTypeMap {
   @modifierMap mModifierMap ;
   @instanceMethodMap mInstanceMethodMap ;
   @classMethodMap mClassMethodMap ;
-  @enumeratedItemsWithForeachInstruction mEnumeratedItemsWithForeachInstruction ; # Empty List if cannot be enumerated
+  @enumerationDescriptorList mEnumerationDescriptor ; # Empty List if cannot be enumerated
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;

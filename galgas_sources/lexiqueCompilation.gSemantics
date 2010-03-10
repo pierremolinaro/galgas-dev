@@ -22,7 +22,7 @@ import "lexiqueGeneration.gSemantics" ;
 import "lexiqueCocoaGeneration.gSemantics" ;
 import "allASTTypes.gSemantics" ;
 
-import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+import semantics semanticsSemanticsEX in "semanticsSemanticsEX.gSemantics" ;
 import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 import semantics lexiqueGeneration in "lexiqueGeneration.gSemantics" ;
