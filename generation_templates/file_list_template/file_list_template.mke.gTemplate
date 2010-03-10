@@ -26,6 +26,7 @@ endif
 #---------------------------------------------------------------*
 
 SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT
+SOURCES_DIR += ../galgas_sources/GALGAS_OUTPUT/include-files
 %!HAND_CODED_SOURCES_SUB_DIRS%
 
 #---------------------------------------------------------------*
