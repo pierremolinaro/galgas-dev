@@ -1746,235 +1746,235 @@
 		CF6A7AE71148279D0034A94E /* semanticsSemanticsEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsSemanticsEX.h; sourceTree = "<group>"; };
 		CF6A7AFE114854B30034A94E /* buildSemanticContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildSemanticContext.cpp; sourceTree = "<group>"; };
 		CF6A7AFF114854B30034A94E /* buildSemanticContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildSemanticContext.h; sourceTree = "<group>"; };
-		CF6A7B0B114856140034A94E /* include_AC_elseOrDefaultForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_AC_elseOrDefaultForCastInstruction.h; sourceTree = "<group>"; };
-		CF6A7B0C114856140034A94E /* include_AC_galgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_AC_galgasType.h; sourceTree = "<group>"; };
-		CF6A7B0D114856140034A94E /* include_AC_semanticsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_AC_semanticsEntity.h; sourceTree = "<group>"; };
-		CF6A7B0E114856140034A94E /* include_AC_typeForGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_AC_typeForGrammarComponent.h; sourceTree = "<group>"; };
-		CF6A7B0F114856140034A94E /* include_C_assignmentInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_assignmentInstruction.h; sourceTree = "<group>"; };
-		CF6A7B10114856140034A94E /* include_C_classToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_classToImplement.h; sourceTree = "<group>"; };
-		CF6A7B11114856140034A94E /* include_C_constantDeclarationInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_constantDeclarationInstruction.h; sourceTree = "<group>"; };
-		CF6A7B12114856140034A94E /* include_C_declarationInstructionWithAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_declarationInstructionWithAssignment.h; sourceTree = "<group>"; };
-		CF6A7B13114856140034A94E /* include_C_defaultForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_defaultForCastInstruction.h; sourceTree = "<group>"; };
-		CF6A7B14114856140034A94E /* include_C_domainToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_domainToImplement.h; sourceTree = "<group>"; };
-		CF6A7B15114856140034A94E /* include_C_dotEqualInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_dotEqualInstruction.h; sourceTree = "<group>"; };
-		CF6A7B16114856140034A94E /* include_C_elseForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_elseForCastInstruction.h; sourceTree = "<group>"; };
-		CF6A7B17114856140034A94E /* include_C_filewrapperTemplateToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_filewrapperTemplateToImplement.h; sourceTree = "<group>"; };
-		CF6A7B18114856140034A94E /* include_C_galgasPrimitiveType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_galgasPrimitiveType.h; sourceTree = "<group>"; };
-		CF6A7B19114856140034A94E /* include_C_grammarForSemantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_grammarForSemantics.h; sourceTree = "<group>"; };
-		CF6A7B1A114856140034A94E /* include_C_grammarInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_grammarInstruction.h; sourceTree = "<group>"; };
-		CF6A7B1B114856140034A94E /* include_C_if_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_if_instruction.h; sourceTree = "<group>"; };
-		CF6A7B1C114856140034A94E /* include_C_listTypeToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_listTypeToImplement.h; sourceTree = "<group>"; };
-		CF6A7B1D114856140034A94E /* include_C_mapToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_mapToImplement.h; sourceTree = "<group>"; };
-		CF6A7B1E114856140034A94E /* include_C_mapindexToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_mapindexToImplement.h; sourceTree = "<group>"; };
-		CF6A7B1F114856140034A94E /* include_C_parse_loop_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_parse_loop_instruction.h; sourceTree = "<group>"; };
-		CF6A7B20114856140034A94E /* include_C_parse_rewind_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_parse_rewind_instruction.h; sourceTree = "<group>"; };
-		CF6A7B21114856140034A94E /* include_C_parse_when_else_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_parse_when_else_instruction.h; sourceTree = "<group>"; };
-		CF6A7B22114856140034A94E /* include_C_repeat_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_repeat_instruction.h; sourceTree = "<group>"; };
-		CF6A7B23114856140034A94E /* include_C_select_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_select_instruction.h; sourceTree = "<group>"; };
-		CF6A7B24114856140034A94E /* include_C_sortedListTypeToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_sortedListTypeToImplement.h; sourceTree = "<group>"; };
-		CF6A7B25114856140034A94E /* include_C_structToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_structToImplement.h; sourceTree = "<group>"; };
-		CF6A7B26114856140034A94E /* include_C_switch_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_switch_instruction.h; sourceTree = "<group>"; };
-		CF6A7B27114856140034A94E /* include_C_while_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_while_instruction.h; sourceTree = "<group>"; };
-		CF6A7B28114856140034A94E /* include_C_wrapperToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_wrapperToImplement.h; sourceTree = "<group>"; };
-		CF6A7B29114856140034A94E /* include_abstractSyntaxInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_abstractSyntaxInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
-		CF6A7B2A114856140034A94E /* include_binaryGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_binaryGalgasType.h; sourceTree = "<group>"; };
-		CF6A7B2B114856140034A94E /* include_callInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_callInstruction.h; sourceTree = "<group>"; };
-		CF6A7B2C114856140034A94E /* include_categoryMethodDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryMethodDeclaration.h; sourceTree = "<group>"; };
-		CF6A7B2D114856140034A94E /* include_categoryMethodToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryMethodToImplement.h; sourceTree = "<group>"; };
-		CF6A7B2E114856140034A94E /* include_categoryReaderToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryReaderToImplement.h; sourceTree = "<group>"; };
-		CF6A7B2F114856140034A94E /* include_categoryTemplateToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryTemplateToImplement.h; sourceTree = "<group>"; };
-		CF6A7B30114856140034A94E /* include_enumGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_enumGalgasType.h; sourceTree = "<group>"; };
-		CF6A7B31114856140034A94E /* include_formalInputParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_formalInputParameter.h; sourceTree = "<group>"; };
-		CF6A7B32114856140034A94E /* include_formalParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_formalParameter.h; sourceTree = "<group>"; };
-		CF6A7B33114856140034A94E /* include_nonTerminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_nonTerminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
-		CF6A7B34114856140034A94E /* include_objectCastInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_objectCastInExpression.h; sourceTree = "<group>"; };
-		CF6A7B35114856140034A94E /* include_repeatInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_repeatInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
-		CF6A7B36114856140034A94E /* include_selectInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_selectInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
-		CF6A7B37114856140034A94E /* include_templateBlockInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateBlockInstruction.h; sourceTree = "<group>"; };
-		CF6A7B38114856140034A94E /* include_templateDelimitorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateDelimitorList.h; sourceTree = "<group>"; };
-		CF6A7B39114856140034A94E /* include_templateInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstruction.h; sourceTree = "<group>"; };
-		CF6A7B3A114856140034A94E /* include_templateInstructionColumnString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionColumnString.h; sourceTree = "<group>"; };
-		CF6A7B3B114856140034A94E /* include_templateInstructionConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionConstant.h; sourceTree = "<group>"; };
-		CF6A7B3C114856140034A94E /* include_templateInstructionExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionExpression.h; sourceTree = "<group>"; };
-		CF6A7B3D114856140034A94E /* include_templateInstructionForeach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionForeach.h; sourceTree = "<group>"; };
-		CF6A7B3E114856140034A94E /* include_templateInstructionGetColumnLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionGetColumnLocation.h; sourceTree = "<group>"; };
-		CF6A7B3F114856140034A94E /* include_templateInstructionGotoColumnLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionGotoColumnLocation.h; sourceTree = "<group>"; };
-		CF6A7B40114856140034A94E /* include_templateInstructionIf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionIf.h; sourceTree = "<group>"; };
-		CF6A7B41114856140034A94E /* include_templateInstructionString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionString.h; sourceTree = "<group>"; };
-		CF6A7B42114856140034A94E /* include_templateReplacementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateReplacementList.h; sourceTree = "<group>"; };
-		CF6A7B43114856140034A94E /* include_terminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_terminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
-		CF6A7B44114856140034A94E /* include_typeAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeAddOperation.h; sourceTree = "<group>"; };
-		CF6A7B45114856140034A94E /* include_typeAndOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeAndOperation.h; sourceTree = "<group>"; };
-		CF6A7B46114856140034A94E /* include_typeAppendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeAppendInstruction.h; sourceTree = "<group>"; };
-		CF6A7B47114856140034A94E /* include_typeArgumentAttribut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentAttribut.h; sourceTree = "<group>"; };
-		CF6A7B48114856140034A94E /* include_typeArgumentCaractere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentCaractere.h; sourceTree = "<group>"; };
-		CF6A7B49114856140034A94E /* include_typeArgumentCaractereCourant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentCaractereCourant.h; sourceTree = "<group>"; };
-		CF6A7B4A114856140034A94E /* include_typeArgumentEntier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentEntier.h; sourceTree = "<group>"; };
-		CF6A7B4B114856140034A94E /* include_typeArgumentRoutine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentRoutine.h; sourceTree = "<group>"; };
-		CF6A7B4C114856140034A94E /* include_typeArgumentRoutineExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentRoutineExterne.h; sourceTree = "<group>"; };
-		CF6A7B4D114856140034A94E /* include_typeAutomaticName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeAutomaticName.h; sourceTree = "<group>"; };
-		CF6A7B4E114856140034A94E /* include_typeCallOfTypeMethodInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCallOfTypeMethodInstruction.h; sourceTree = "<group>"; };
-		CF6A7B4F114856140034A94E /* include_typeCastInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCastInExpression.h; sourceTree = "<group>"; };
-		CF6A7B50114856140034A94E /* include_typeCategoryTemplateCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCategoryTemplateCall.h; sourceTree = "<group>"; };
-		CF6A7B51114856140034A94E /* include_typeClassToTypeOperand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeClassToTypeOperand.h; sourceTree = "<group>"; };
-		CF6A7B52114856140034A94E /* include_typeConcatOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConcatOperation.h; sourceTree = "<group>"; };
-		CF6A7B53114856140034A94E /* include_typeConditionCaractere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionCaractere.h; sourceTree = "<group>"; };
-		CF6A7B54114856140034A94E /* include_typeConditionChaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionChaine.h; sourceTree = "<group>"; };
-		CF6A7B55114856140034A94E /* include_typeConditionIntervalle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionIntervalle.h; sourceTree = "<group>"; };
-		CF6A7B56114856140034A94E /* include_typeConditionLexicale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionLexicale.h; sourceTree = "<group>"; };
-		CF6A7B57114856140034A94E /* include_typeConditionNonChaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionNonChaine.h; sourceTree = "<group>"; };
-		CF6A7B58114856140034A94E /* include_typeConstructorExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConstructorExpression.h; sourceTree = "<group>"; };
-		CF6A7B59114856140034A94E /* include_typeCplusPlusName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCplusPlusName.h; sourceTree = "<group>"; };
-		CF6A7B5A114856140034A94E /* include_typeCppInheritedName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCppInheritedName.h; sourceTree = "<group>"; };
-		CF6A7B5B114856140034A94E /* include_typeCppStarThisName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCppStarThisName.h; sourceTree = "<group>"; };
-		CF6A7B5C114856140034A94E /* include_typeCppThisInCategoryName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCppThisInCategoryName.h; sourceTree = "<group>"; };
-		CF6A7B5D114856140034A94E /* include_typeCurrentObjectName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCurrentObjectName.h; sourceTree = "<group>"; };
-		CF6A7B5E114856140034A94E /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
-		CF6A7B5F114856140034A94E /* include_typeDefEntiteUtilisable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDefEntiteUtilisable.h; sourceTree = "<group>"; };
-		CF6A7B60114856140034A94E /* include_typeDefinitionTableAimplementer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDefinitionTableAimplementer.h; sourceTree = "<group>"; };
-		CF6A7B61114856140034A94E /* include_typeDescriptionInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDescriptionInExpression.h; sourceTree = "<group>"; };
-		CF6A7B62114856140034A94E /* include_typeDirectName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDirectName.h; sourceTree = "<group>"; };
-		CF6A7B63114856140034A94E /* include_typeDivideOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDivideOperation.h; sourceTree = "<group>"; };
-		CF6A7B64114856140034A94E /* include_typeDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDropInstruction.h; sourceTree = "<group>"; };
-		CF6A7B65114856140034A94E /* include_typeEmissionErreurParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionErreurParDefaut.h; sourceTree = "<group>"; };
-		CF6A7B66114856140034A94E /* include_typeEmissionParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionParDefaut.h; sourceTree = "<group>"; };
-		CF6A7B67114856140034A94E /* include_typeEmissionTerminalParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionTerminalParDefaut.h; sourceTree = "<group>"; };
-		CF6A7B68114856140034A94E /* include_typeEntiteFonction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonction.h; sourceTree = "<group>"; };
-		CF6A7B69114856140034A94E /* include_typeEntiteFonctionExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonctionExterne.h; sourceTree = "<group>"; };
-		CF6A7B6A114856140034A94E /* include_typeEntiteRoutine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteRoutine.h; sourceTree = "<group>"; };
-		CF6A7B6B114856140034A94E /* include_typeEntiteRoutineExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteRoutineExterne.h; sourceTree = "<group>"; };
-		CF6A7B6C114856140034A94E /* include_typeEntiteType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteType.h; sourceTree = "<group>"; };
-		CF6A7B6D114856140034A94E /* include_typeEntityToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntityToGenerate.h; sourceTree = "<group>"; };
-		CF6A7B6E114856140034A94E /* include_typeEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEqualTest.h; sourceTree = "<group>"; };
-		CF6A7B6F114856140034A94E /* include_typeErrorInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeErrorInstruction.h; sourceTree = "<group>"; };
-		CF6A7B70114856140034A94E /* include_typeExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeExpression.h; sourceTree = "<group>"; };
-		CF6A7B71114856140034A94E /* include_typeExternTypeToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeExternTypeToGenerate.h; sourceTree = "<group>"; };
-		CF6A7B72114856140034A94E /* include_typeFalseBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFalseBool.h; sourceTree = "<group>"; };
-		CF6A7B73114856140034A94E /* include_typeFileWrapperObjectInstanciation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperObjectInstanciation.h; sourceTree = "<group>"; };
-		CF6A7B74114856140034A94E /* include_typeFileWrapperTemplateCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperTemplateCall.h; sourceTree = "<group>"; };
-		CF6A7B75114856140034A94E /* include_typeFileWrapperWithStaticPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperWithStaticPath.h; sourceTree = "<group>"; };
-		CF6A7B76114856140034A94E /* include_typeFonctionAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFonctionAengendrer.h; sourceTree = "<group>"; };
-		CF6A7B77114856140034A94E /* include_typeFonctionExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFonctionExterneAengendrer.h; sourceTree = "<group>"; };
-		CF6A7B78114856140034A94E /* include_typeForeachInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeForeachInstruction.h; sourceTree = "<group>"; };
-		CF6A7B79114856140034A94E /* include_typeFunctionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFunctionCall.h; sourceTree = "<group>"; };
-		CF6A7B7A114856140034A94E /* include_typeGalgasClassType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasClassType.h; sourceTree = "<group>"; };
-		CF6A7B7B114856140034A94E /* include_typeGalgasDomainType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasDomainType.h; sourceTree = "<group>"; };
-		CF6A7B7C114856140034A94E /* include_typeGalgasExternType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasExternType.h; sourceTree = "<group>"; };
-		CF6A7B7D114856140034A94E /* include_typeGalgasListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListType.h; sourceTree = "<group>"; };
-		CF6A7B7E114856140034A94E /* include_typeGalgasListmapToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapToImplement.h; sourceTree = "<group>"; };
-		CF6A7B7F114856140034A94E /* include_typeGalgasListmapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapType.h; sourceTree = "<group>"; };
-		CF6A7B80114856140034A94E /* include_typeGalgasMapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasMapType.h; sourceTree = "<group>"; };
-		CF6A7B81114856140034A94E /* include_typeGalgasMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasMapindexType.h; sourceTree = "<group>"; };
-		CF6A7B82114856140034A94E /* include_typeGalgasNewClassType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasNewClassType.h; sourceTree = "<group>"; };
-		CF6A7B83114856140034A94E /* include_typeGalgasSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasSortedListType.h; sourceTree = "<group>"; };
-		CF6A7B84114856140034A94E /* include_typeGalgasStructType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasStructType.h; sourceTree = "<group>"; };
-		CF6A7B85114856140034A94E /* include_typeGalgasUndefinedClassType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedClassType.h; sourceTree = "<group>"; };
-		CF6A7B86114856140034A94E /* include_typeGalgasUndefinedExternType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedExternType.h; sourceTree = "<group>"; };
-		CF6A7B87114856140034A94E /* include_typeGalgasUndefinedListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedListType.h; sourceTree = "<group>"; };
-		CF6A7B88114856140034A94E /* include_typeGalgasUndefinedMapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedMapType.h; sourceTree = "<group>"; };
-		CF6A7B89114856140034A94E /* include_typeGalgasUndefinedMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedMapindexType.h; sourceTree = "<group>"; };
-		CF6A7B8A114856140034A94E /* include_typeGalgasUndefinedSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedSortedListType.h; sourceTree = "<group>"; };
-		CF6A7B8B114856140034A94E /* include_typeGalgas_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_binaryset.h; sourceTree = "<group>"; };
-		CF6A7B8C114856140034A94E /* include_typeGalgas_bool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_bool.h; sourceTree = "<group>"; };
-		CF6A7B8D114856140034A94E /* include_typeGalgas_char.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_char.h; sourceTree = "<group>"; };
-		CF6A7B8E114856140034A94E /* include_typeGalgas_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_data.h; sourceTree = "<group>"; };
-		CF6A7B8F114856140034A94E /* include_typeGalgas_double.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_double.h; sourceTree = "<group>"; };
-		CF6A7B90114856140034A94E /* include_typeGalgas_enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_enum.h; sourceTree = "<group>"; };
-		CF6A7B91114856140034A94E /* include_typeGalgas_filewrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_filewrapper.h; sourceTree = "<group>"; };
-		CF6A7B92114856140034A94E /* include_typeGalgas_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_function.h; sourceTree = "<group>"; };
-		CF6A7B93114856140034A94E /* include_typeGalgas_jokerInParameterList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_jokerInParameterList.h; sourceTree = "<group>"; };
-		CF6A7B94114856140034A94E /* include_typeGalgas_lbool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lbool.h; sourceTree = "<group>"; };
-		CF6A7B95114856140034A94E /* include_typeGalgas_lchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lchar.h; sourceTree = "<group>"; };
-		CF6A7B96114856140034A94E /* include_typeGalgas_ldouble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_ldouble.h; sourceTree = "<group>"; };
-		CF6A7B97114856140034A94E /* include_typeGalgas_location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_location.h; sourceTree = "<group>"; };
-		CF6A7B98114856140034A94E /* include_typeGalgas_lsint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lsint.h; sourceTree = "<group>"; };
-		CF6A7B99114856140034A94E /* include_typeGalgas_lsint64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lsint64.h; sourceTree = "<group>"; };
-		CF6A7B9A114856140034A94E /* include_typeGalgas_lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lstring.h; sourceTree = "<group>"; };
-		CF6A7B9B114856140034A94E /* include_typeGalgas_luint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_luint.h; sourceTree = "<group>"; };
-		CF6A7B9C114856140034A94E /* include_typeGalgas_luint64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_luint64.h; sourceTree = "<group>"; };
-		CF6A7B9D114856140034A94E /* include_typeGalgas_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_object.h; sourceTree = "<group>"; };
-		CF6A7B9E114856140034A94E /* include_typeGalgas_sint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_sint.h; sourceTree = "<group>"; };
-		CF6A7B9F114856140034A94E /* include_typeGalgas_sint64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_sint64.h; sourceTree = "<group>"; };
-		CF6A7BA0114856140034A94E /* include_typeGalgas_string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_string.h; sourceTree = "<group>"; };
-		CF6A7BA1114856140034A94E /* include_typeGalgas_stringset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_stringset.h; sourceTree = "<group>"; };
-		CF6A7BA2114856140034A94E /* include_typeGalgas_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_type.h; sourceTree = "<group>"; };
-		CF6A7BA3114856140034A94E /* include_typeGalgas_uint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint.h; sourceTree = "<group>"; };
-		CF6A7BA4114856140034A94E /* include_typeGalgas_uint64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint64.h; sourceTree = "<group>"; };
-		CF6A7BA5114856140034A94E /* include_typeHereExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeHereExpression.h; sourceTree = "<group>"; };
-		CF6A7BA6114856140034A94E /* include_typeIfThenElseExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeIfThenElseExpression.h; sourceTree = "<group>"; };
-		CF6A7BA7114856140034A94E /* include_typeIncrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeIncrementInstruction.h; sourceTree = "<group>"; };
-		CF6A7BA8114856140034A94E /* include_typeInfOrEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInfOrEqualTest.h; sourceTree = "<group>"; };
-		CF6A7BA9114856140034A94E /* include_typeInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstruction.h; sourceTree = "<group>"; };
-		CF6A7BAA114856140034A94E /* include_typeInstructionActionExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionActionExterne.h; sourceTree = "<group>"; };
-		CF6A7BAB114856140034A94E /* include_typeInstructionAppelMethodeListe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionAppelMethodeListe.h; sourceTree = "<group>"; };
-		CF6A7BAC114856140034A94E /* include_typeInstructionAppelNonTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionAppelNonTerminal.h; sourceTree = "<group>"; };
-		CF6A7BAD114856140034A94E /* include_typeInstructionDeclarationVarLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionDeclarationVarLocale.h; sourceTree = "<group>"; };
-		CF6A7BAE114856140034A94E /* include_typeInstructionEmettre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionEmettre.h; sourceTree = "<group>"; };
-		CF6A7BAF114856140034A94E /* include_typeInstructionEmettreSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionEmettreSimple.h; sourceTree = "<group>"; };
-		CF6A7BB0114856140034A94E /* include_typeInstructionErreurLexicale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionErreurLexicale.h; sourceTree = "<group>"; };
-		CF6A7BB1114856140034A94E /* include_typeInstructionLexicalWarning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionLexicalWarning.h; sourceTree = "<group>"; };
-		CF6A7BB2114856140034A94E /* include_typeInstructionLexicale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionLexicale.h; sourceTree = "<group>"; };
-		CF6A7BB3114856140034A94E /* include_typeInstructionRepetitionLexicale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionRepetitionLexicale.h; sourceTree = "<group>"; };
-		CF6A7BB4114856140034A94E /* include_typeInstructionSiLexical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionSiLexical.h; sourceTree = "<group>"; };
-		CF6A7BB5114856140034A94E /* include_typeInstructionVerifSyntaxique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionVerifSyntaxique.h; sourceTree = "<group>"; };
-		CF6A7BB6114856140034A94E /* include_typeJokerInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeJokerInExpression.h; sourceTree = "<group>"; };
-		CF6A7BB7114856140034A94E /* include_typeKeyName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeKeyName.h; sourceTree = "<group>"; };
-		CF6A7BB8114856140034A94E /* include_typeLeftShiftOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLeftShiftOperation.h; sourceTree = "<group>"; };
-		CF6A7BB9114856140034A94E /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
-		CF6A7BBA114856140034A94E /* include_typeLexicalLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalLogInstruction.h; sourceTree = "<group>"; };
-		CF6A7BBB114856140034A94E /* include_typeLexicalRewindAndSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalRewindAndSendInstruction.h; sourceTree = "<group>"; };
-		CF6A7BBC114856140034A94E /* include_typeLexicalTagInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalTagInstruction.h; sourceTree = "<group>"; };
-		CF6A7BBD114856140034A94E /* include_typeLiteralCharExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralCharExpression.h; sourceTree = "<group>"; };
-		CF6A7BBE114856140034A94E /* include_typeLiteralDoubleExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralDoubleExpression.h; sourceTree = "<group>"; };
-		CF6A7BBF114856140034A94E /* include_typeLiteralSInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralSInt64Expression.h; sourceTree = "<group>"; };
-		CF6A7BC0114856140034A94E /* include_typeLiteralSIntExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralSIntExpression.h; sourceTree = "<group>"; };
-		CF6A7BC1114856140034A94E /* include_typeLiteralStringExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralStringExpression.h; sourceTree = "<group>"; };
-		CF6A7BC2114856140034A94E /* include_typeLiteralUInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralUInt64Expression.h; sourceTree = "<group>"; };
-		CF6A7BC3114856140034A94E /* include_typeLiteralUIntExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralUIntExpression.h; sourceTree = "<group>"; };
-		CF6A7BC4114856140034A94E /* include_typeLocationAutomaticName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLocationAutomaticName.h; sourceTree = "<group>"; };
-		CF6A7BC5114856140034A94E /* include_typeLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLogInstruction.h; sourceTree = "<group>"; };
-		CF6A7BC6114856140034A94E /* include_typeLogicalNegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLogicalNegate.h; sourceTree = "<group>"; };
-		CF6A7BC7114856140034A94E /* include_typeMapBlockEpilogueInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMapBlockEpilogueInstruction.h; sourceTree = "<group>"; };
-		CF6A7BC8114856140034A94E /* include_typeMapBlockPrologueInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMapBlockPrologueInstruction.h; sourceTree = "<group>"; };
-		CF6A7BC9114856140034A94E /* include_typeMatchInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMatchInstruction.h; sourceTree = "<group>"; };
-		CF6A7BCA114856140034A94E /* include_typeMessageInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMessageInstruction.h; sourceTree = "<group>"; };
-		CF6A7BCB114856140034A94E /* include_typeMethodCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMethodCallInstruction.h; sourceTree = "<group>"; };
-		CF6A7BCC114856140034A94E /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
-		CF6A7BCD114856140034A94E /* include_typeModifierCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeModifierCallInstruction.h; sourceTree = "<group>"; };
-		CF6A7BCE114856140034A94E /* include_typeModuloOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeModuloOperation.h; sourceTree = "<group>"; };
-		CF6A7BCF114856140034A94E /* include_typeMultiplyOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMultiplyOperation.h; sourceTree = "<group>"; };
-		CF6A7BD0114856140034A94E /* include_typeNonEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeNonEqualTest.h; sourceTree = "<group>"; };
-		CF6A7BD1114856140034A94E /* include_typeNonterminalToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeNonterminalToGenerate.h; sourceTree = "<group>"; };
-		CF6A7BD2114856140034A94E /* include_typeNullName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeNullName.h; sourceTree = "<group>"; };
-		CF6A7BD3114856140034A94E /* include_typeOnceFunctionToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOnceFunctionToGenerate.h; sourceTree = "<group>"; };
-		CF6A7BD4114856140034A94E /* include_typeOperandName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOperandName.h; sourceTree = "<group>"; };
-		CF6A7BD5114856140034A94E /* include_typeOptionAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOptionAccess.h; sourceTree = "<group>"; };
-		CF6A7BD6114856140034A94E /* include_typeOrOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOrOperation.h; sourceTree = "<group>"; };
-		CF6A7BD7114856140034A94E /* include_typeParserInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeParserInstruction.h; sourceTree = "<group>"; };
-		CF6A7BD8114856140034A94E /* include_typeProductionAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeProductionAengendrer.h; sourceTree = "<group>"; };
-		CF6A7BD9114856140034A94E /* include_typeReaderCallInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeReaderCallInExpression.h; sourceTree = "<group>"; };
-		CF6A7BDA114856140034A94E /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
-		CF6A7BDB114856140034A94E /* include_typeRightShiftOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRightShiftOperation.h; sourceTree = "<group>"; };
-		CF6A7BDC114856140034A94E /* include_typeRoutineAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineAengendrer.h; sourceTree = "<group>"; };
-		CF6A7BDD114856140034A94E /* include_typeRoutineCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineCallInstruction.h; sourceTree = "<group>"; };
-		CF6A7BDE114856140034A94E /* include_typeRoutineExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineExterneAengendrer.h; sourceTree = "<group>"; };
-		CF6A7BDF114856140034A94E /* include_typeSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSendInstruction.h; sourceTree = "<group>"; };
-		CF6A7BE0114856140034A94E /* include_typeSimpleExtractInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSimpleExtractInstruction.h; sourceTree = "<group>"; };
-		CF6A7BE1114856140034A94E /* include_typeStrictInfTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeStrictInfTest.h; sourceTree = "<group>"; };
-		CF6A7BE2114856140034A94E /* include_typeStrictSupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeStrictSupTest.h; sourceTree = "<group>"; };
-		CF6A7BE3114856140034A94E /* include_typeStructuredCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeStructuredCastInstruction.h; sourceTree = "<group>"; };
-		CF6A7BE4114856140034A94E /* include_typeStructuredExtractInstructionWithElse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeStructuredExtractInstructionWithElse.h; sourceTree = "<group>"; };
-		CF6A7BE5114856140034A94E /* include_typeSubOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSubOperation.h; sourceTree = "<group>"; };
-		CF6A7BE6114856140034A94E /* include_typeSupOrEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSupOrEqualTest.h; sourceTree = "<group>"; };
-		CF6A7BE7114856140034A94E /* include_typeTestComplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeTestComplement.h; sourceTree = "<group>"; };
-		CF6A7BE8114856140034A94E /* include_typeTextTableCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeTextTableCall.h; sourceTree = "<group>"; };
-		CF6A7BE9114856140034A94E /* include_typeTrueBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeTrueBool.h; sourceTree = "<group>"; };
-		CF6A7BEA114856140034A94E /* include_typeUnaryMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeUnaryMinusOperation.h; sourceTree = "<group>"; };
-		CF6A7BEB114856140034A94E /* include_typeUnicodeCharSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeUnicodeCharSet.h; sourceTree = "<group>"; };
-		CF6A7BEC114856140034A94E /* include_typeVarInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeVarInExpression.h; sourceTree = "<group>"; };
-		CF6A7BED114856140034A94E /* include_typeWarningInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWarningInstruction.h; sourceTree = "<group>"; };
-		CF6A7BEE114856140034A94E /* include_typeWithInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWithInstruction.h; sourceTree = "<group>"; };
-		CF6A7BEF114856140034A94E /* include_typeXorOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeXorOperation.h; sourceTree = "<group>"; };
+		CF6A7BFA114858E30034A94E /* include_AC_elseOrDefaultForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_AC_elseOrDefaultForCastInstruction.h; sourceTree = "<group>"; };
+		CF6A7BFB114858E30034A94E /* include_AC_galgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_AC_galgasType.h; sourceTree = "<group>"; };
+		CF6A7BFC114858E30034A94E /* include_AC_semanticsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_AC_semanticsEntity.h; sourceTree = "<group>"; };
+		CF6A7BFD114858E30034A94E /* include_AC_typeForGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_AC_typeForGrammarComponent.h; sourceTree = "<group>"; };
+		CF6A7BFE114858E30034A94E /* include_C_assignmentInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_assignmentInstruction.h; sourceTree = "<group>"; };
+		CF6A7BFF114858E30034A94E /* include_C_classToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_classToImplement.h; sourceTree = "<group>"; };
+		CF6A7C00114858E30034A94E /* include_C_constantDeclarationInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_constantDeclarationInstruction.h; sourceTree = "<group>"; };
+		CF6A7C01114858E30034A94E /* include_C_declarationInstructionWithAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_declarationInstructionWithAssignment.h; sourceTree = "<group>"; };
+		CF6A7C02114858E30034A94E /* include_C_defaultForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_defaultForCastInstruction.h; sourceTree = "<group>"; };
+		CF6A7C03114858E30034A94E /* include_C_domainToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_domainToImplement.h; sourceTree = "<group>"; };
+		CF6A7C04114858E30034A94E /* include_C_dotEqualInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_dotEqualInstruction.h; sourceTree = "<group>"; };
+		CF6A7C05114858E30034A94E /* include_C_elseForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_elseForCastInstruction.h; sourceTree = "<group>"; };
+		CF6A7C06114858E30034A94E /* include_C_filewrapperTemplateToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_filewrapperTemplateToImplement.h; sourceTree = "<group>"; };
+		CF6A7C07114858E30034A94E /* include_C_galgasPrimitiveType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_galgasPrimitiveType.h; sourceTree = "<group>"; };
+		CF6A7C08114858E30034A94E /* include_C_grammarForSemantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_grammarForSemantics.h; sourceTree = "<group>"; };
+		CF6A7C09114858E30034A94E /* include_C_grammarInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_grammarInstruction.h; sourceTree = "<group>"; };
+		CF6A7C0A114858E30034A94E /* include_C_if_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_if_instruction.h; sourceTree = "<group>"; };
+		CF6A7C0B114858E30034A94E /* include_C_listTypeToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_listTypeToImplement.h; sourceTree = "<group>"; };
+		CF6A7C0C114858E30034A94E /* include_C_mapToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_mapToImplement.h; sourceTree = "<group>"; };
+		CF6A7C0D114858E30034A94E /* include_C_mapindexToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_mapindexToImplement.h; sourceTree = "<group>"; };
+		CF6A7C0E114858E30034A94E /* include_C_parse_loop_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_parse_loop_instruction.h; sourceTree = "<group>"; };
+		CF6A7C0F114858E30034A94E /* include_C_parse_rewind_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_parse_rewind_instruction.h; sourceTree = "<group>"; };
+		CF6A7C10114858E30034A94E /* include_C_parse_when_else_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_parse_when_else_instruction.h; sourceTree = "<group>"; };
+		CF6A7C11114858E30034A94E /* include_C_repeat_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_repeat_instruction.h; sourceTree = "<group>"; };
+		CF6A7C12114858E30034A94E /* include_C_select_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_select_instruction.h; sourceTree = "<group>"; };
+		CF6A7C13114858E30034A94E /* include_C_sortedListTypeToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_sortedListTypeToImplement.h; sourceTree = "<group>"; };
+		CF6A7C14114858E30034A94E /* include_C_structToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_structToImplement.h; sourceTree = "<group>"; };
+		CF6A7C15114858E30034A94E /* include_C_switch_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_switch_instruction.h; sourceTree = "<group>"; };
+		CF6A7C16114858E30034A94E /* include_C_while_instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_while_instruction.h; sourceTree = "<group>"; };
+		CF6A7C17114858E30034A94E /* include_C_wrapperToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_wrapperToImplement.h; sourceTree = "<group>"; };
+		CF6A7C18114858E30034A94E /* include_abstractSyntaxInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_abstractSyntaxInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF6A7C19114858E30034A94E /* include_binaryGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_binaryGalgasType.h; sourceTree = "<group>"; };
+		CF6A7C1A114858E30034A94E /* include_callInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_callInstruction.h; sourceTree = "<group>"; };
+		CF6A7C1B114858E30034A94E /* include_categoryMethodDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryMethodDeclaration.h; sourceTree = "<group>"; };
+		CF6A7C1C114858E30034A94E /* include_categoryMethodToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryMethodToImplement.h; sourceTree = "<group>"; };
+		CF6A7C1D114858E30034A94E /* include_categoryReaderToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryReaderToImplement.h; sourceTree = "<group>"; };
+		CF6A7C1E114858E30034A94E /* include_categoryTemplateToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryTemplateToImplement.h; sourceTree = "<group>"; };
+		CF6A7C1F114858E30034A94E /* include_enumGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_enumGalgasType.h; sourceTree = "<group>"; };
+		CF6A7C20114858E30034A94E /* include_formalInputParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_formalInputParameter.h; sourceTree = "<group>"; };
+		CF6A7C21114858E30034A94E /* include_formalParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_formalParameter.h; sourceTree = "<group>"; };
+		CF6A7C22114858E30034A94E /* include_nonTerminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_nonTerminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF6A7C23114858E30034A94E /* include_objectCastInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_objectCastInExpression.h; sourceTree = "<group>"; };
+		CF6A7C24114858E30034A94E /* include_repeatInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_repeatInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF6A7C25114858E30034A94E /* include_selectInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_selectInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF6A7C26114858E30034A94E /* include_templateBlockInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateBlockInstruction.h; sourceTree = "<group>"; };
+		CF6A7C27114858E30034A94E /* include_templateDelimitorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateDelimitorList.h; sourceTree = "<group>"; };
+		CF6A7C28114858E30034A94E /* include_templateInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstruction.h; sourceTree = "<group>"; };
+		CF6A7C29114858E30034A94E /* include_templateInstructionColumnString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionColumnString.h; sourceTree = "<group>"; };
+		CF6A7C2A114858E30034A94E /* include_templateInstructionConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionConstant.h; sourceTree = "<group>"; };
+		CF6A7C2B114858E30034A94E /* include_templateInstructionExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionExpression.h; sourceTree = "<group>"; };
+		CF6A7C2C114858E30034A94E /* include_templateInstructionForeach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionForeach.h; sourceTree = "<group>"; };
+		CF6A7C2D114858E30034A94E /* include_templateInstructionGetColumnLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionGetColumnLocation.h; sourceTree = "<group>"; };
+		CF6A7C2E114858E30034A94E /* include_templateInstructionGotoColumnLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionGotoColumnLocation.h; sourceTree = "<group>"; };
+		CF6A7C2F114858E30034A94E /* include_templateInstructionIf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionIf.h; sourceTree = "<group>"; };
+		CF6A7C30114858E30034A94E /* include_templateInstructionString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionString.h; sourceTree = "<group>"; };
+		CF6A7C31114858E30034A94E /* include_templateReplacementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateReplacementList.h; sourceTree = "<group>"; };
+		CF6A7C32114858E30034A94E /* include_terminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_terminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
+		CF6A7C33114858E30034A94E /* include_typeAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeAddOperation.h; sourceTree = "<group>"; };
+		CF6A7C34114858E30034A94E /* include_typeAndOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeAndOperation.h; sourceTree = "<group>"; };
+		CF6A7C35114858E30034A94E /* include_typeAppendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeAppendInstruction.h; sourceTree = "<group>"; };
+		CF6A7C36114858E30034A94E /* include_typeArgumentAttribut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentAttribut.h; sourceTree = "<group>"; };
+		CF6A7C37114858E30034A94E /* include_typeArgumentCaractere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentCaractere.h; sourceTree = "<group>"; };
+		CF6A7C38114858E30034A94E /* include_typeArgumentCaractereCourant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentCaractereCourant.h; sourceTree = "<group>"; };
+		CF6A7C39114858E30034A94E /* include_typeArgumentEntier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentEntier.h; sourceTree = "<group>"; };
+		CF6A7C3A114858E30034A94E /* include_typeArgumentRoutine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentRoutine.h; sourceTree = "<group>"; };
+		CF6A7C3B114858E30034A94E /* include_typeArgumentRoutineExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentRoutineExterne.h; sourceTree = "<group>"; };
+		CF6A7C3C114858E30034A94E /* include_typeAutomaticName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeAutomaticName.h; sourceTree = "<group>"; };
+		CF6A7C3D114858E30034A94E /* include_typeCallOfTypeMethodInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCallOfTypeMethodInstruction.h; sourceTree = "<group>"; };
+		CF6A7C3E114858E30034A94E /* include_typeCastInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCastInExpression.h; sourceTree = "<group>"; };
+		CF6A7C3F114858E30034A94E /* include_typeCategoryTemplateCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCategoryTemplateCall.h; sourceTree = "<group>"; };
+		CF6A7C40114858E30034A94E /* include_typeClassToTypeOperand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeClassToTypeOperand.h; sourceTree = "<group>"; };
+		CF6A7C41114858E30034A94E /* include_typeConcatOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConcatOperation.h; sourceTree = "<group>"; };
+		CF6A7C42114858E30034A94E /* include_typeConditionCaractere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionCaractere.h; sourceTree = "<group>"; };
+		CF6A7C43114858E30034A94E /* include_typeConditionChaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionChaine.h; sourceTree = "<group>"; };
+		CF6A7C44114858E30034A94E /* include_typeConditionIntervalle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionIntervalle.h; sourceTree = "<group>"; };
+		CF6A7C45114858E30034A94E /* include_typeConditionLexicale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionLexicale.h; sourceTree = "<group>"; };
+		CF6A7C46114858E30034A94E /* include_typeConditionNonChaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConditionNonChaine.h; sourceTree = "<group>"; };
+		CF6A7C47114858E30034A94E /* include_typeConstructorExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeConstructorExpression.h; sourceTree = "<group>"; };
+		CF6A7C48114858E30034A94E /* include_typeCplusPlusName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCplusPlusName.h; sourceTree = "<group>"; };
+		CF6A7C49114858E30034A94E /* include_typeCppInheritedName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCppInheritedName.h; sourceTree = "<group>"; };
+		CF6A7C4A114858E30034A94E /* include_typeCppStarThisName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCppStarThisName.h; sourceTree = "<group>"; };
+		CF6A7C4B114858E30034A94E /* include_typeCppThisInCategoryName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCppThisInCategoryName.h; sourceTree = "<group>"; };
+		CF6A7C4C114858E30034A94E /* include_typeCurrentObjectName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCurrentObjectName.h; sourceTree = "<group>"; };
+		CF6A7C4D114858E30034A94E /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
+		CF6A7C4E114858E30034A94E /* include_typeDefEntiteUtilisable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDefEntiteUtilisable.h; sourceTree = "<group>"; };
+		CF6A7C4F114858E30034A94E /* include_typeDefinitionTableAimplementer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDefinitionTableAimplementer.h; sourceTree = "<group>"; };
+		CF6A7C50114858E30034A94E /* include_typeDescriptionInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDescriptionInExpression.h; sourceTree = "<group>"; };
+		CF6A7C51114858E30034A94E /* include_typeDirectName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDirectName.h; sourceTree = "<group>"; };
+		CF6A7C52114858E30034A94E /* include_typeDivideOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDivideOperation.h; sourceTree = "<group>"; };
+		CF6A7C53114858E30034A94E /* include_typeDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeDropInstruction.h; sourceTree = "<group>"; };
+		CF6A7C54114858E30034A94E /* include_typeEmissionErreurParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionErreurParDefaut.h; sourceTree = "<group>"; };
+		CF6A7C55114858E30034A94E /* include_typeEmissionParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionParDefaut.h; sourceTree = "<group>"; };
+		CF6A7C56114858E30034A94E /* include_typeEmissionTerminalParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionTerminalParDefaut.h; sourceTree = "<group>"; };
+		CF6A7C57114858E30034A94E /* include_typeEntiteFonction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonction.h; sourceTree = "<group>"; };
+		CF6A7C58114858E30034A94E /* include_typeEntiteFonctionExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonctionExterne.h; sourceTree = "<group>"; };
+		CF6A7C59114858E30034A94E /* include_typeEntiteRoutine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteRoutine.h; sourceTree = "<group>"; };
+		CF6A7C5A114858E30034A94E /* include_typeEntiteRoutineExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteRoutineExterne.h; sourceTree = "<group>"; };
+		CF6A7C5B114858E30034A94E /* include_typeEntiteType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteType.h; sourceTree = "<group>"; };
+		CF6A7C5C114858E30034A94E /* include_typeEntityToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntityToGenerate.h; sourceTree = "<group>"; };
+		CF6A7C5D114858E30034A94E /* include_typeEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEqualTest.h; sourceTree = "<group>"; };
+		CF6A7C5E114858E30034A94E /* include_typeErrorInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeErrorInstruction.h; sourceTree = "<group>"; };
+		CF6A7C5F114858E30034A94E /* include_typeExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeExpression.h; sourceTree = "<group>"; };
+		CF6A7C60114858E30034A94E /* include_typeExternTypeToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeExternTypeToGenerate.h; sourceTree = "<group>"; };
+		CF6A7C61114858E30034A94E /* include_typeFalseBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFalseBool.h; sourceTree = "<group>"; };
+		CF6A7C62114858E30034A94E /* include_typeFileWrapperObjectInstanciation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperObjectInstanciation.h; sourceTree = "<group>"; };
+		CF6A7C63114858E30034A94E /* include_typeFileWrapperTemplateCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperTemplateCall.h; sourceTree = "<group>"; };
+		CF6A7C64114858E30034A94E /* include_typeFileWrapperWithStaticPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperWithStaticPath.h; sourceTree = "<group>"; };
+		CF6A7C65114858E30034A94E /* include_typeFonctionAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFonctionAengendrer.h; sourceTree = "<group>"; };
+		CF6A7C66114858E30034A94E /* include_typeFonctionExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFonctionExterneAengendrer.h; sourceTree = "<group>"; };
+		CF6A7C67114858E30034A94E /* include_typeForeachInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeForeachInstruction.h; sourceTree = "<group>"; };
+		CF6A7C68114858E30034A94E /* include_typeFunctionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFunctionCall.h; sourceTree = "<group>"; };
+		CF6A7C69114858E30034A94E /* include_typeGalgasClassType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasClassType.h; sourceTree = "<group>"; };
+		CF6A7C6A114858E30034A94E /* include_typeGalgasDomainType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasDomainType.h; sourceTree = "<group>"; };
+		CF6A7C6B114858E30034A94E /* include_typeGalgasExternType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasExternType.h; sourceTree = "<group>"; };
+		CF6A7C6C114858E30034A94E /* include_typeGalgasListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListType.h; sourceTree = "<group>"; };
+		CF6A7C6D114858E30034A94E /* include_typeGalgasListmapToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapToImplement.h; sourceTree = "<group>"; };
+		CF6A7C6E114858E30034A94E /* include_typeGalgasListmapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapType.h; sourceTree = "<group>"; };
+		CF6A7C6F114858E30034A94E /* include_typeGalgasMapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasMapType.h; sourceTree = "<group>"; };
+		CF6A7C70114858E30034A94E /* include_typeGalgasMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasMapindexType.h; sourceTree = "<group>"; };
+		CF6A7C71114858E30034A94E /* include_typeGalgasNewClassType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasNewClassType.h; sourceTree = "<group>"; };
+		CF6A7C72114858E30034A94E /* include_typeGalgasSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasSortedListType.h; sourceTree = "<group>"; };
+		CF6A7C73114858E30034A94E /* include_typeGalgasStructType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasStructType.h; sourceTree = "<group>"; };
+		CF6A7C74114858E30034A94E /* include_typeGalgasUndefinedClassType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedClassType.h; sourceTree = "<group>"; };
+		CF6A7C75114858E30034A94E /* include_typeGalgasUndefinedExternType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedExternType.h; sourceTree = "<group>"; };
+		CF6A7C76114858E30034A94E /* include_typeGalgasUndefinedListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedListType.h; sourceTree = "<group>"; };
+		CF6A7C77114858E30034A94E /* include_typeGalgasUndefinedMapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedMapType.h; sourceTree = "<group>"; };
+		CF6A7C78114858E30034A94E /* include_typeGalgasUndefinedMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedMapindexType.h; sourceTree = "<group>"; };
+		CF6A7C79114858E30034A94E /* include_typeGalgasUndefinedSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedSortedListType.h; sourceTree = "<group>"; };
+		CF6A7C7A114858E30034A94E /* include_typeGalgas_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_binaryset.h; sourceTree = "<group>"; };
+		CF6A7C7B114858E30034A94E /* include_typeGalgas_bool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_bool.h; sourceTree = "<group>"; };
+		CF6A7C7C114858E30034A94E /* include_typeGalgas_char.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_char.h; sourceTree = "<group>"; };
+		CF6A7C7D114858E30034A94E /* include_typeGalgas_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_data.h; sourceTree = "<group>"; };
+		CF6A7C7E114858E30034A94E /* include_typeGalgas_double.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_double.h; sourceTree = "<group>"; };
+		CF6A7C7F114858E30034A94E /* include_typeGalgas_enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_enum.h; sourceTree = "<group>"; };
+		CF6A7C80114858E30034A94E /* include_typeGalgas_filewrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_filewrapper.h; sourceTree = "<group>"; };
+		CF6A7C81114858E40034A94E /* include_typeGalgas_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_function.h; sourceTree = "<group>"; };
+		CF6A7C82114858E40034A94E /* include_typeGalgas_jokerInParameterList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_jokerInParameterList.h; sourceTree = "<group>"; };
+		CF6A7C83114858E40034A94E /* include_typeGalgas_lbool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lbool.h; sourceTree = "<group>"; };
+		CF6A7C84114858E40034A94E /* include_typeGalgas_lchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lchar.h; sourceTree = "<group>"; };
+		CF6A7C85114858E40034A94E /* include_typeGalgas_ldouble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_ldouble.h; sourceTree = "<group>"; };
+		CF6A7C86114858E40034A94E /* include_typeGalgas_location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_location.h; sourceTree = "<group>"; };
+		CF6A7C87114858E40034A94E /* include_typeGalgas_lsint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lsint.h; sourceTree = "<group>"; };
+		CF6A7C88114858E40034A94E /* include_typeGalgas_lsint64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lsint64.h; sourceTree = "<group>"; };
+		CF6A7C89114858E40034A94E /* include_typeGalgas_lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_lstring.h; sourceTree = "<group>"; };
+		CF6A7C8A114858E40034A94E /* include_typeGalgas_luint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_luint.h; sourceTree = "<group>"; };
+		CF6A7C8B114858E40034A94E /* include_typeGalgas_luint64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_luint64.h; sourceTree = "<group>"; };
+		CF6A7C8C114858E40034A94E /* include_typeGalgas_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_object.h; sourceTree = "<group>"; };
+		CF6A7C8D114858E40034A94E /* include_typeGalgas_sint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_sint.h; sourceTree = "<group>"; };
+		CF6A7C8E114858E40034A94E /* include_typeGalgas_sint64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_sint64.h; sourceTree = "<group>"; };
+		CF6A7C8F114858E40034A94E /* include_typeGalgas_string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_string.h; sourceTree = "<group>"; };
+		CF6A7C90114858E40034A94E /* include_typeGalgas_stringset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_stringset.h; sourceTree = "<group>"; };
+		CF6A7C91114858E40034A94E /* include_typeGalgas_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_type.h; sourceTree = "<group>"; };
+		CF6A7C92114858E40034A94E /* include_typeGalgas_uint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint.h; sourceTree = "<group>"; };
+		CF6A7C93114858E40034A94E /* include_typeGalgas_uint64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint64.h; sourceTree = "<group>"; };
+		CF6A7C94114858E40034A94E /* include_typeHereExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeHereExpression.h; sourceTree = "<group>"; };
+		CF6A7C95114858E40034A94E /* include_typeIfThenElseExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeIfThenElseExpression.h; sourceTree = "<group>"; };
+		CF6A7C96114858E40034A94E /* include_typeIncrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeIncrementInstruction.h; sourceTree = "<group>"; };
+		CF6A7C97114858E40034A94E /* include_typeInfOrEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInfOrEqualTest.h; sourceTree = "<group>"; };
+		CF6A7C98114858E40034A94E /* include_typeInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstruction.h; sourceTree = "<group>"; };
+		CF6A7C99114858E40034A94E /* include_typeInstructionActionExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionActionExterne.h; sourceTree = "<group>"; };
+		CF6A7C9A114858E40034A94E /* include_typeInstructionAppelMethodeListe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionAppelMethodeListe.h; sourceTree = "<group>"; };
+		CF6A7C9B114858E40034A94E /* include_typeInstructionAppelNonTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionAppelNonTerminal.h; sourceTree = "<group>"; };
+		CF6A7C9C114858E40034A94E /* include_typeInstructionDeclarationVarLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionDeclarationVarLocale.h; sourceTree = "<group>"; };
+		CF6A7C9D114858E40034A94E /* include_typeInstructionEmettre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionEmettre.h; sourceTree = "<group>"; };
+		CF6A7C9E114858E40034A94E /* include_typeInstructionEmettreSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionEmettreSimple.h; sourceTree = "<group>"; };
+		CF6A7C9F114858E40034A94E /* include_typeInstructionErreurLexicale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionErreurLexicale.h; sourceTree = "<group>"; };
+		CF6A7CA0114858E40034A94E /* include_typeInstructionLexicalWarning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionLexicalWarning.h; sourceTree = "<group>"; };
+		CF6A7CA1114858E40034A94E /* include_typeInstructionLexicale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionLexicale.h; sourceTree = "<group>"; };
+		CF6A7CA2114858E40034A94E /* include_typeInstructionRepetitionLexicale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionRepetitionLexicale.h; sourceTree = "<group>"; };
+		CF6A7CA3114858E40034A94E /* include_typeInstructionSiLexical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionSiLexical.h; sourceTree = "<group>"; };
+		CF6A7CA4114858E40034A94E /* include_typeInstructionVerifSyntaxique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionVerifSyntaxique.h; sourceTree = "<group>"; };
+		CF6A7CA5114858E40034A94E /* include_typeJokerInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeJokerInExpression.h; sourceTree = "<group>"; };
+		CF6A7CA6114858E40034A94E /* include_typeKeyName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeKeyName.h; sourceTree = "<group>"; };
+		CF6A7CA7114858E40034A94E /* include_typeLeftShiftOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLeftShiftOperation.h; sourceTree = "<group>"; };
+		CF6A7CA8114858E40034A94E /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
+		CF6A7CA9114858E40034A94E /* include_typeLexicalLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalLogInstruction.h; sourceTree = "<group>"; };
+		CF6A7CAA114858E40034A94E /* include_typeLexicalRewindAndSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalRewindAndSendInstruction.h; sourceTree = "<group>"; };
+		CF6A7CAB114858E40034A94E /* include_typeLexicalTagInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalTagInstruction.h; sourceTree = "<group>"; };
+		CF6A7CAC114858E40034A94E /* include_typeLiteralCharExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralCharExpression.h; sourceTree = "<group>"; };
+		CF6A7CAD114858E40034A94E /* include_typeLiteralDoubleExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralDoubleExpression.h; sourceTree = "<group>"; };
+		CF6A7CAE114858E40034A94E /* include_typeLiteralSInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralSInt64Expression.h; sourceTree = "<group>"; };
+		CF6A7CAF114858E40034A94E /* include_typeLiteralSIntExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralSIntExpression.h; sourceTree = "<group>"; };
+		CF6A7CB0114858E40034A94E /* include_typeLiteralStringExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralStringExpression.h; sourceTree = "<group>"; };
+		CF6A7CB1114858E40034A94E /* include_typeLiteralUInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralUInt64Expression.h; sourceTree = "<group>"; };
+		CF6A7CB2114858E40034A94E /* include_typeLiteralUIntExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralUIntExpression.h; sourceTree = "<group>"; };
+		CF6A7CB3114858E40034A94E /* include_typeLocationAutomaticName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLocationAutomaticName.h; sourceTree = "<group>"; };
+		CF6A7CB4114858E40034A94E /* include_typeLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLogInstruction.h; sourceTree = "<group>"; };
+		CF6A7CB5114858E40034A94E /* include_typeLogicalNegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeLogicalNegate.h; sourceTree = "<group>"; };
+		CF6A7CB6114858E40034A94E /* include_typeMapBlockEpilogueInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMapBlockEpilogueInstruction.h; sourceTree = "<group>"; };
+		CF6A7CB7114858E40034A94E /* include_typeMapBlockPrologueInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMapBlockPrologueInstruction.h; sourceTree = "<group>"; };
+		CF6A7CB8114858E40034A94E /* include_typeMatchInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMatchInstruction.h; sourceTree = "<group>"; };
+		CF6A7CB9114858E40034A94E /* include_typeMessageInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMessageInstruction.h; sourceTree = "<group>"; };
+		CF6A7CBA114858E40034A94E /* include_typeMethodCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMethodCallInstruction.h; sourceTree = "<group>"; };
+		CF6A7CBB114858E40034A94E /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
+		CF6A7CBC114858E40034A94E /* include_typeModifierCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeModifierCallInstruction.h; sourceTree = "<group>"; };
+		CF6A7CBD114858E40034A94E /* include_typeModuloOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeModuloOperation.h; sourceTree = "<group>"; };
+		CF6A7CBE114858E40034A94E /* include_typeMultiplyOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMultiplyOperation.h; sourceTree = "<group>"; };
+		CF6A7CBF114858E40034A94E /* include_typeNonEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeNonEqualTest.h; sourceTree = "<group>"; };
+		CF6A7CC0114858E40034A94E /* include_typeNonterminalToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeNonterminalToGenerate.h; sourceTree = "<group>"; };
+		CF6A7CC1114858E40034A94E /* include_typeNullName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeNullName.h; sourceTree = "<group>"; };
+		CF6A7CC2114858E40034A94E /* include_typeOnceFunctionToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOnceFunctionToGenerate.h; sourceTree = "<group>"; };
+		CF6A7CC3114858E40034A94E /* include_typeOperandName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOperandName.h; sourceTree = "<group>"; };
+		CF6A7CC4114858E40034A94E /* include_typeOptionAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOptionAccess.h; sourceTree = "<group>"; };
+		CF6A7CC5114858E40034A94E /* include_typeOrOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOrOperation.h; sourceTree = "<group>"; };
+		CF6A7CC6114858E40034A94E /* include_typeParserInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeParserInstruction.h; sourceTree = "<group>"; };
+		CF6A7CC7114858E40034A94E /* include_typeProductionAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeProductionAengendrer.h; sourceTree = "<group>"; };
+		CF6A7CC8114858E40034A94E /* include_typeReaderCallInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeReaderCallInExpression.h; sourceTree = "<group>"; };
+		CF6A7CC9114858E40034A94E /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
+		CF6A7CCA114858E40034A94E /* include_typeRightShiftOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRightShiftOperation.h; sourceTree = "<group>"; };
+		CF6A7CCB114858E40034A94E /* include_typeRoutineAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineAengendrer.h; sourceTree = "<group>"; };
+		CF6A7CCC114858E40034A94E /* include_typeRoutineCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineCallInstruction.h; sourceTree = "<group>"; };
+		CF6A7CCD114858E40034A94E /* include_typeRoutineExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineExterneAengendrer.h; sourceTree = "<group>"; };
+		CF6A7CCE114858E40034A94E /* include_typeSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSendInstruction.h; sourceTree = "<group>"; };
+		CF6A7CCF114858E40034A94E /* include_typeSimpleExtractInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSimpleExtractInstruction.h; sourceTree = "<group>"; };
+		CF6A7CD0114858E40034A94E /* include_typeStrictInfTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeStrictInfTest.h; sourceTree = "<group>"; };
+		CF6A7CD1114858E40034A94E /* include_typeStrictSupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeStrictSupTest.h; sourceTree = "<group>"; };
+		CF6A7CD2114858E40034A94E /* include_typeStructuredCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeStructuredCastInstruction.h; sourceTree = "<group>"; };
+		CF6A7CD3114858E40034A94E /* include_typeStructuredExtractInstructionWithElse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeStructuredExtractInstructionWithElse.h; sourceTree = "<group>"; };
+		CF6A7CD4114858E40034A94E /* include_typeSubOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSubOperation.h; sourceTree = "<group>"; };
+		CF6A7CD5114858E40034A94E /* include_typeSupOrEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSupOrEqualTest.h; sourceTree = "<group>"; };
+		CF6A7CD6114858E40034A94E /* include_typeTestComplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeTestComplement.h; sourceTree = "<group>"; };
+		CF6A7CD7114858E40034A94E /* include_typeTextTableCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeTextTableCall.h; sourceTree = "<group>"; };
+		CF6A7CD8114858E40034A94E /* include_typeTrueBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeTrueBool.h; sourceTree = "<group>"; };
+		CF6A7CD9114858E40034A94E /* include_typeUnaryMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeUnaryMinusOperation.h; sourceTree = "<group>"; };
+		CF6A7CDA114858E40034A94E /* include_typeUnicodeCharSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeUnicodeCharSet.h; sourceTree = "<group>"; };
+		CF6A7CDB114858E40034A94E /* include_typeVarInExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeVarInExpression.h; sourceTree = "<group>"; };
+		CF6A7CDC114858E40034A94E /* include_typeWarningInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWarningInstruction.h; sourceTree = "<group>"; };
+		CF6A7CDD114858E40034A94E /* include_typeWithInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWithInstruction.h; sourceTree = "<group>"; };
+		CF6A7CDE114858E40034A94E /* include_typeXorOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeXorOperation.h; sourceTree = "<group>"; };
 		CF6DF18F09E3F23700506859 /* galgasI386 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasI386; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6DF20509E3F30400506859 /* galgasDebugI386 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebugI386; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6DF25509E3F3A700506859 /* cocoaGalgasI386.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgasI386.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2540,240 +2540,240 @@
 			path = cocoa_debug;
 			sourceTree = "<group>";
 		};
-		CF6A7B0A114856140034A94E /* includes-files */ = {
+		CF6A7BF9114858E30034A94E /* include-files */ = {
 			isa = PBXGroup;
 			children = (
-				CF6A7B0B114856140034A94E /* include_AC_elseOrDefaultForCastInstruction.h */,
-				CF6A7B0C114856140034A94E /* include_AC_galgasType.h */,
-				CF6A7B0D114856140034A94E /* include_AC_semanticsEntity.h */,
-				CF6A7B0E114856140034A94E /* include_AC_typeForGrammarComponent.h */,
-				CF6A7B0F114856140034A94E /* include_C_assignmentInstruction.h */,
-				CF6A7B10114856140034A94E /* include_C_classToImplement.h */,
-				CF6A7B11114856140034A94E /* include_C_constantDeclarationInstruction.h */,
-				CF6A7B12114856140034A94E /* include_C_declarationInstructionWithAssignment.h */,
-				CF6A7B13114856140034A94E /* include_C_defaultForCastInstruction.h */,
-				CF6A7B14114856140034A94E /* include_C_domainToImplement.h */,
-				CF6A7B15114856140034A94E /* include_C_dotEqualInstruction.h */,
-				CF6A7B16114856140034A94E /* include_C_elseForCastInstruction.h */,
-				CF6A7B17114856140034A94E /* include_C_filewrapperTemplateToImplement.h */,
-				CF6A7B18114856140034A94E /* include_C_galgasPrimitiveType.h */,
-				CF6A7B19114856140034A94E /* include_C_grammarForSemantics.h */,
-				CF6A7B1A114856140034A94E /* include_C_grammarInstruction.h */,
-				CF6A7B1B114856140034A94E /* include_C_if_instruction.h */,
-				CF6A7B1C114856140034A94E /* include_C_listTypeToImplement.h */,
-				CF6A7B1D114856140034A94E /* include_C_mapToImplement.h */,
-				CF6A7B1E114856140034A94E /* include_C_mapindexToImplement.h */,
-				CF6A7B1F114856140034A94E /* include_C_parse_loop_instruction.h */,
-				CF6A7B20114856140034A94E /* include_C_parse_rewind_instruction.h */,
-				CF6A7B21114856140034A94E /* include_C_parse_when_else_instruction.h */,
-				CF6A7B22114856140034A94E /* include_C_repeat_instruction.h */,
-				CF6A7B23114856140034A94E /* include_C_select_instruction.h */,
-				CF6A7B24114856140034A94E /* include_C_sortedListTypeToImplement.h */,
-				CF6A7B25114856140034A94E /* include_C_structToImplement.h */,
-				CF6A7B26114856140034A94E /* include_C_switch_instruction.h */,
-				CF6A7B27114856140034A94E /* include_C_while_instruction.h */,
-				CF6A7B28114856140034A94E /* include_C_wrapperToImplement.h */,
-				CF6A7B29114856140034A94E /* include_abstractSyntaxInstructionForGrammarAnalysis.h */,
-				CF6A7B2A114856140034A94E /* include_binaryGalgasType.h */,
-				CF6A7B2B114856140034A94E /* include_callInstruction.h */,
-				CF6A7B2C114856140034A94E /* include_categoryMethodDeclaration.h */,
-				CF6A7B2D114856140034A94E /* include_categoryMethodToImplement.h */,
-				CF6A7B2E114856140034A94E /* include_categoryReaderToImplement.h */,
-				CF6A7B2F114856140034A94E /* include_categoryTemplateToImplement.h */,
-				CF6A7B30114856140034A94E /* include_enumGalgasType.h */,
-				CF6A7B31114856140034A94E /* include_formalInputParameter.h */,
-				CF6A7B32114856140034A94E /* include_formalParameter.h */,
-				CF6A7B33114856140034A94E /* include_nonTerminalInstructionForGrammarAnalysis.h */,
-				CF6A7B34114856140034A94E /* include_objectCastInExpression.h */,
-				CF6A7B35114856140034A94E /* include_repeatInstructionForGrammarAnalysis.h */,
-				CF6A7B36114856140034A94E /* include_selectInstructionForGrammarAnalysis.h */,
-				CF6A7B37114856140034A94E /* include_templateBlockInstruction.h */,
-				CF6A7B38114856140034A94E /* include_templateDelimitorList.h */,
-				CF6A7B39114856140034A94E /* include_templateInstruction.h */,
-				CF6A7B3A114856140034A94E /* include_templateInstructionColumnString.h */,
-				CF6A7B3B114856140034A94E /* include_templateInstructionConstant.h */,
-				CF6A7B3C114856140034A94E /* include_templateInstructionExpression.h */,
-				CF6A7B3D114856140034A94E /* include_templateInstructionForeach.h */,
-				CF6A7B3E114856140034A94E /* include_templateInstructionGetColumnLocation.h */,
-				CF6A7B3F114856140034A94E /* include_templateInstructionGotoColumnLocation.h */,
-				CF6A7B40114856140034A94E /* include_templateInstructionIf.h */,
-				CF6A7B41114856140034A94E /* include_templateInstructionString.h */,
-				CF6A7B42114856140034A94E /* include_templateReplacementList.h */,
-				CF6A7B43114856140034A94E /* include_terminalInstructionForGrammarAnalysis.h */,
-				CF6A7B44114856140034A94E /* include_typeAddOperation.h */,
-				CF6A7B45114856140034A94E /* include_typeAndOperation.h */,
-				CF6A7B46114856140034A94E /* include_typeAppendInstruction.h */,
-				CF6A7B47114856140034A94E /* include_typeArgumentAttribut.h */,
-				CF6A7B48114856140034A94E /* include_typeArgumentCaractere.h */,
-				CF6A7B49114856140034A94E /* include_typeArgumentCaractereCourant.h */,
-				CF6A7B4A114856140034A94E /* include_typeArgumentEntier.h */,
-				CF6A7B4B114856140034A94E /* include_typeArgumentRoutine.h */,
-				CF6A7B4C114856140034A94E /* include_typeArgumentRoutineExterne.h */,
-				CF6A7B4D114856140034A94E /* include_typeAutomaticName.h */,
-				CF6A7B4E114856140034A94E /* include_typeCallOfTypeMethodInstruction.h */,
-				CF6A7B4F114856140034A94E /* include_typeCastInExpression.h */,
-				CF6A7B50114856140034A94E /* include_typeCategoryTemplateCall.h */,
-				CF6A7B51114856140034A94E /* include_typeClassToTypeOperand.h */,
-				CF6A7B52114856140034A94E /* include_typeConcatOperation.h */,
-				CF6A7B53114856140034A94E /* include_typeConditionCaractere.h */,
-				CF6A7B54114856140034A94E /* include_typeConditionChaine.h */,
-				CF6A7B55114856140034A94E /* include_typeConditionIntervalle.h */,
-				CF6A7B56114856140034A94E /* include_typeConditionLexicale.h */,
-				CF6A7B57114856140034A94E /* include_typeConditionNonChaine.h */,
-				CF6A7B58114856140034A94E /* include_typeConstructorExpression.h */,
-				CF6A7B59114856140034A94E /* include_typeCplusPlusName.h */,
-				CF6A7B5A114856140034A94E /* include_typeCppInheritedName.h */,
-				CF6A7B5B114856140034A94E /* include_typeCppStarThisName.h */,
-				CF6A7B5C114856140034A94E /* include_typeCppThisInCategoryName.h */,
-				CF6A7B5D114856140034A94E /* include_typeCurrentObjectName.h */,
-				CF6A7B5E114856140034A94E /* include_typeDecrementInstruction.h */,
-				CF6A7B5F114856140034A94E /* include_typeDefEntiteUtilisable.h */,
-				CF6A7B60114856140034A94E /* include_typeDefinitionTableAimplementer.h */,
-				CF6A7B61114856140034A94E /* include_typeDescriptionInExpression.h */,
-				CF6A7B62114856140034A94E /* include_typeDirectName.h */,
-				CF6A7B63114856140034A94E /* include_typeDivideOperation.h */,
-				CF6A7B64114856140034A94E /* include_typeDropInstruction.h */,
-				CF6A7B65114856140034A94E /* include_typeEmissionErreurParDefaut.h */,
-				CF6A7B66114856140034A94E /* include_typeEmissionParDefaut.h */,
-				CF6A7B67114856140034A94E /* include_typeEmissionTerminalParDefaut.h */,
-				CF6A7B68114856140034A94E /* include_typeEntiteFonction.h */,
-				CF6A7B69114856140034A94E /* include_typeEntiteFonctionExterne.h */,
-				CF6A7B6A114856140034A94E /* include_typeEntiteRoutine.h */,
-				CF6A7B6B114856140034A94E /* include_typeEntiteRoutineExterne.h */,
-				CF6A7B6C114856140034A94E /* include_typeEntiteType.h */,
-				CF6A7B6D114856140034A94E /* include_typeEntityToGenerate.h */,
-				CF6A7B6E114856140034A94E /* include_typeEqualTest.h */,
-				CF6A7B6F114856140034A94E /* include_typeErrorInstruction.h */,
-				CF6A7B70114856140034A94E /* include_typeExpression.h */,
-				CF6A7B71114856140034A94E /* include_typeExternTypeToGenerate.h */,
-				CF6A7B72114856140034A94E /* include_typeFalseBool.h */,
-				CF6A7B73114856140034A94E /* include_typeFileWrapperObjectInstanciation.h */,
-				CF6A7B74114856140034A94E /* include_typeFileWrapperTemplateCall.h */,
-				CF6A7B75114856140034A94E /* include_typeFileWrapperWithStaticPath.h */,
-				CF6A7B76114856140034A94E /* include_typeFonctionAengendrer.h */,
-				CF6A7B77114856140034A94E /* include_typeFonctionExterneAengendrer.h */,
-				CF6A7B78114856140034A94E /* include_typeForeachInstruction.h */,
-				CF6A7B79114856140034A94E /* include_typeFunctionCall.h */,
-				CF6A7B7A114856140034A94E /* include_typeGalgasClassType.h */,
-				CF6A7B7B114856140034A94E /* include_typeGalgasDomainType.h */,
-				CF6A7B7C114856140034A94E /* include_typeGalgasExternType.h */,
-				CF6A7B7D114856140034A94E /* include_typeGalgasListType.h */,
-				CF6A7B7E114856140034A94E /* include_typeGalgasListmapToImplement.h */,
-				CF6A7B7F114856140034A94E /* include_typeGalgasListmapType.h */,
-				CF6A7B80114856140034A94E /* include_typeGalgasMapType.h */,
-				CF6A7B81114856140034A94E /* include_typeGalgasMapindexType.h */,
-				CF6A7B82114856140034A94E /* include_typeGalgasNewClassType.h */,
-				CF6A7B83114856140034A94E /* include_typeGalgasSortedListType.h */,
-				CF6A7B84114856140034A94E /* include_typeGalgasStructType.h */,
-				CF6A7B85114856140034A94E /* include_typeGalgasUndefinedClassType.h */,
-				CF6A7B86114856140034A94E /* include_typeGalgasUndefinedExternType.h */,
-				CF6A7B87114856140034A94E /* include_typeGalgasUndefinedListType.h */,
-				CF6A7B88114856140034A94E /* include_typeGalgasUndefinedMapType.h */,
-				CF6A7B89114856140034A94E /* include_typeGalgasUndefinedMapindexType.h */,
-				CF6A7B8A114856140034A94E /* include_typeGalgasUndefinedSortedListType.h */,
-				CF6A7B8B114856140034A94E /* include_typeGalgas_binaryset.h */,
-				CF6A7B8C114856140034A94E /* include_typeGalgas_bool.h */,
-				CF6A7B8D114856140034A94E /* include_typeGalgas_char.h */,
-				CF6A7B8E114856140034A94E /* include_typeGalgas_data.h */,
-				CF6A7B8F114856140034A94E /* include_typeGalgas_double.h */,
-				CF6A7B90114856140034A94E /* include_typeGalgas_enum.h */,
-				CF6A7B91114856140034A94E /* include_typeGalgas_filewrapper.h */,
-				CF6A7B92114856140034A94E /* include_typeGalgas_function.h */,
-				CF6A7B93114856140034A94E /* include_typeGalgas_jokerInParameterList.h */,
-				CF6A7B94114856140034A94E /* include_typeGalgas_lbool.h */,
-				CF6A7B95114856140034A94E /* include_typeGalgas_lchar.h */,
-				CF6A7B96114856140034A94E /* include_typeGalgas_ldouble.h */,
-				CF6A7B97114856140034A94E /* include_typeGalgas_location.h */,
-				CF6A7B98114856140034A94E /* include_typeGalgas_lsint.h */,
-				CF6A7B99114856140034A94E /* include_typeGalgas_lsint64.h */,
-				CF6A7B9A114856140034A94E /* include_typeGalgas_lstring.h */,
-				CF6A7B9B114856140034A94E /* include_typeGalgas_luint.h */,
-				CF6A7B9C114856140034A94E /* include_typeGalgas_luint64.h */,
-				CF6A7B9D114856140034A94E /* include_typeGalgas_object.h */,
-				CF6A7B9E114856140034A94E /* include_typeGalgas_sint.h */,
-				CF6A7B9F114856140034A94E /* include_typeGalgas_sint64.h */,
-				CF6A7BA0114856140034A94E /* include_typeGalgas_string.h */,
-				CF6A7BA1114856140034A94E /* include_typeGalgas_stringset.h */,
-				CF6A7BA2114856140034A94E /* include_typeGalgas_type.h */,
-				CF6A7BA3114856140034A94E /* include_typeGalgas_uint.h */,
-				CF6A7BA4114856140034A94E /* include_typeGalgas_uint64.h */,
-				CF6A7BA5114856140034A94E /* include_typeHereExpression.h */,
-				CF6A7BA6114856140034A94E /* include_typeIfThenElseExpression.h */,
-				CF6A7BA7114856140034A94E /* include_typeIncrementInstruction.h */,
-				CF6A7BA8114856140034A94E /* include_typeInfOrEqualTest.h */,
-				CF6A7BA9114856140034A94E /* include_typeInstruction.h */,
-				CF6A7BAA114856140034A94E /* include_typeInstructionActionExterne.h */,
-				CF6A7BAB114856140034A94E /* include_typeInstructionAppelMethodeListe.h */,
-				CF6A7BAC114856140034A94E /* include_typeInstructionAppelNonTerminal.h */,
-				CF6A7BAD114856140034A94E /* include_typeInstructionDeclarationVarLocale.h */,
-				CF6A7BAE114856140034A94E /* include_typeInstructionEmettre.h */,
-				CF6A7BAF114856140034A94E /* include_typeInstructionEmettreSimple.h */,
-				CF6A7BB0114856140034A94E /* include_typeInstructionErreurLexicale.h */,
-				CF6A7BB1114856140034A94E /* include_typeInstructionLexicalWarning.h */,
-				CF6A7BB2114856140034A94E /* include_typeInstructionLexicale.h */,
-				CF6A7BB3114856140034A94E /* include_typeInstructionRepetitionLexicale.h */,
-				CF6A7BB4114856140034A94E /* include_typeInstructionSiLexical.h */,
-				CF6A7BB5114856140034A94E /* include_typeInstructionVerifSyntaxique.h */,
-				CF6A7BB6114856140034A94E /* include_typeJokerInExpression.h */,
-				CF6A7BB7114856140034A94E /* include_typeKeyName.h */,
-				CF6A7BB8114856140034A94E /* include_typeLeftShiftOperation.h */,
-				CF6A7BB9114856140034A94E /* include_typeLexicalDropInstruction.h */,
-				CF6A7BBA114856140034A94E /* include_typeLexicalLogInstruction.h */,
-				CF6A7BBB114856140034A94E /* include_typeLexicalRewindAndSendInstruction.h */,
-				CF6A7BBC114856140034A94E /* include_typeLexicalTagInstruction.h */,
-				CF6A7BBD114856140034A94E /* include_typeLiteralCharExpression.h */,
-				CF6A7BBE114856140034A94E /* include_typeLiteralDoubleExpression.h */,
-				CF6A7BBF114856140034A94E /* include_typeLiteralSInt64Expression.h */,
-				CF6A7BC0114856140034A94E /* include_typeLiteralSIntExpression.h */,
-				CF6A7BC1114856140034A94E /* include_typeLiteralStringExpression.h */,
-				CF6A7BC2114856140034A94E /* include_typeLiteralUInt64Expression.h */,
-				CF6A7BC3114856140034A94E /* include_typeLiteralUIntExpression.h */,
-				CF6A7BC4114856140034A94E /* include_typeLocationAutomaticName.h */,
-				CF6A7BC5114856140034A94E /* include_typeLogInstruction.h */,
-				CF6A7BC6114856140034A94E /* include_typeLogicalNegate.h */,
-				CF6A7BC7114856140034A94E /* include_typeMapBlockEpilogueInstruction.h */,
-				CF6A7BC8114856140034A94E /* include_typeMapBlockPrologueInstruction.h */,
-				CF6A7BC9114856140034A94E /* include_typeMatchInstruction.h */,
-				CF6A7BCA114856140034A94E /* include_typeMessageInstruction.h */,
-				CF6A7BCB114856140034A94E /* include_typeMethodCallInstruction.h */,
-				CF6A7BCC114856140034A94E /* include_typeMinusOperation.h */,
-				CF6A7BCD114856140034A94E /* include_typeModifierCallInstruction.h */,
-				CF6A7BCE114856140034A94E /* include_typeModuloOperation.h */,
-				CF6A7BCF114856140034A94E /* include_typeMultiplyOperation.h */,
-				CF6A7BD0114856140034A94E /* include_typeNonEqualTest.h */,
-				CF6A7BD1114856140034A94E /* include_typeNonterminalToGenerate.h */,
-				CF6A7BD2114856140034A94E /* include_typeNullName.h */,
-				CF6A7BD3114856140034A94E /* include_typeOnceFunctionToGenerate.h */,
-				CF6A7BD4114856140034A94E /* include_typeOperandName.h */,
-				CF6A7BD5114856140034A94E /* include_typeOptionAccess.h */,
-				CF6A7BD6114856140034A94E /* include_typeOrOperation.h */,
-				CF6A7BD7114856140034A94E /* include_typeParserInstruction.h */,
-				CF6A7BD8114856140034A94E /* include_typeProductionAengendrer.h */,
-				CF6A7BD9114856140034A94E /* include_typeReaderCallInExpression.h */,
-				CF6A7BDA114856140034A94E /* include_typeRemoveInstruction.h */,
-				CF6A7BDB114856140034A94E /* include_typeRightShiftOperation.h */,
-				CF6A7BDC114856140034A94E /* include_typeRoutineAengendrer.h */,
-				CF6A7BDD114856140034A94E /* include_typeRoutineCallInstruction.h */,
-				CF6A7BDE114856140034A94E /* include_typeRoutineExterneAengendrer.h */,
-				CF6A7BDF114856140034A94E /* include_typeSendInstruction.h */,
-				CF6A7BE0114856140034A94E /* include_typeSimpleExtractInstruction.h */,
-				CF6A7BE1114856140034A94E /* include_typeStrictInfTest.h */,
-				CF6A7BE2114856140034A94E /* include_typeStrictSupTest.h */,
-				CF6A7BE3114856140034A94E /* include_typeStructuredCastInstruction.h */,
-				CF6A7BE4114856140034A94E /* include_typeStructuredExtractInstructionWithElse.h */,
-				CF6A7BE5114856140034A94E /* include_typeSubOperation.h */,
-				CF6A7BE6114856140034A94E /* include_typeSupOrEqualTest.h */,
-				CF6A7BE7114856140034A94E /* include_typeTestComplement.h */,
-				CF6A7BE8114856140034A94E /* include_typeTextTableCall.h */,
-				CF6A7BE9114856140034A94E /* include_typeTrueBool.h */,
-				CF6A7BEA114856140034A94E /* include_typeUnaryMinusOperation.h */,
-				CF6A7BEB114856140034A94E /* include_typeUnicodeCharSet.h */,
-				CF6A7BEC114856140034A94E /* include_typeVarInExpression.h */,
-				CF6A7BED114856140034A94E /* include_typeWarningInstruction.h */,
-				CF6A7BEE114856140034A94E /* include_typeWithInstruction.h */,
-				CF6A7BEF114856140034A94E /* include_typeXorOperation.h */,
+				CF6A7BFA114858E30034A94E /* include_AC_elseOrDefaultForCastInstruction.h */,
+				CF6A7BFB114858E30034A94E /* include_AC_galgasType.h */,
+				CF6A7BFC114858E30034A94E /* include_AC_semanticsEntity.h */,
+				CF6A7BFD114858E30034A94E /* include_AC_typeForGrammarComponent.h */,
+				CF6A7BFE114858E30034A94E /* include_C_assignmentInstruction.h */,
+				CF6A7BFF114858E30034A94E /* include_C_classToImplement.h */,
+				CF6A7C00114858E30034A94E /* include_C_constantDeclarationInstruction.h */,
+				CF6A7C01114858E30034A94E /* include_C_declarationInstructionWithAssignment.h */,
+				CF6A7C02114858E30034A94E /* include_C_defaultForCastInstruction.h */,
+				CF6A7C03114858E30034A94E /* include_C_domainToImplement.h */,
+				CF6A7C04114858E30034A94E /* include_C_dotEqualInstruction.h */,
+				CF6A7C05114858E30034A94E /* include_C_elseForCastInstruction.h */,
+				CF6A7C06114858E30034A94E /* include_C_filewrapperTemplateToImplement.h */,
+				CF6A7C07114858E30034A94E /* include_C_galgasPrimitiveType.h */,
+				CF6A7C08114858E30034A94E /* include_C_grammarForSemantics.h */,
+				CF6A7C09114858E30034A94E /* include_C_grammarInstruction.h */,
+				CF6A7C0A114858E30034A94E /* include_C_if_instruction.h */,
+				CF6A7C0B114858E30034A94E /* include_C_listTypeToImplement.h */,
+				CF6A7C0C114858E30034A94E /* include_C_mapToImplement.h */,
+				CF6A7C0D114858E30034A94E /* include_C_mapindexToImplement.h */,
+				CF6A7C0E114858E30034A94E /* include_C_parse_loop_instruction.h */,
+				CF6A7C0F114858E30034A94E /* include_C_parse_rewind_instruction.h */,
+				CF6A7C10114858E30034A94E /* include_C_parse_when_else_instruction.h */,
+				CF6A7C11114858E30034A94E /* include_C_repeat_instruction.h */,
+				CF6A7C12114858E30034A94E /* include_C_select_instruction.h */,
+				CF6A7C13114858E30034A94E /* include_C_sortedListTypeToImplement.h */,
+				CF6A7C14114858E30034A94E /* include_C_structToImplement.h */,
+				CF6A7C15114858E30034A94E /* include_C_switch_instruction.h */,
+				CF6A7C16114858E30034A94E /* include_C_while_instruction.h */,
+				CF6A7C17114858E30034A94E /* include_C_wrapperToImplement.h */,
+				CF6A7C18114858E30034A94E /* include_abstractSyntaxInstructionForGrammarAnalysis.h */,
+				CF6A7C19114858E30034A94E /* include_binaryGalgasType.h */,
+				CF6A7C1A114858E30034A94E /* include_callInstruction.h */,
+				CF6A7C1B114858E30034A94E /* include_categoryMethodDeclaration.h */,
+				CF6A7C1C114858E30034A94E /* include_categoryMethodToImplement.h */,
+				CF6A7C1D114858E30034A94E /* include_categoryReaderToImplement.h */,
+				CF6A7C1E114858E30034A94E /* include_categoryTemplateToImplement.h */,
+				CF6A7C1F114858E30034A94E /* include_enumGalgasType.h */,
+				CF6A7C20114858E30034A94E /* include_formalInputParameter.h */,
+				CF6A7C21114858E30034A94E /* include_formalParameter.h */,
+				CF6A7C22114858E30034A94E /* include_nonTerminalInstructionForGrammarAnalysis.h */,
+				CF6A7C23114858E30034A94E /* include_objectCastInExpression.h */,
+				CF6A7C24114858E30034A94E /* include_repeatInstructionForGrammarAnalysis.h */,
+				CF6A7C25114858E30034A94E /* include_selectInstructionForGrammarAnalysis.h */,
+				CF6A7C26114858E30034A94E /* include_templateBlockInstruction.h */,
+				CF6A7C27114858E30034A94E /* include_templateDelimitorList.h */,
+				CF6A7C28114858E30034A94E /* include_templateInstruction.h */,
+				CF6A7C29114858E30034A94E /* include_templateInstructionColumnString.h */,
+				CF6A7C2A114858E30034A94E /* include_templateInstructionConstant.h */,
+				CF6A7C2B114858E30034A94E /* include_templateInstructionExpression.h */,
+				CF6A7C2C114858E30034A94E /* include_templateInstructionForeach.h */,
+				CF6A7C2D114858E30034A94E /* include_templateInstructionGetColumnLocation.h */,
+				CF6A7C2E114858E30034A94E /* include_templateInstructionGotoColumnLocation.h */,
+				CF6A7C2F114858E30034A94E /* include_templateInstructionIf.h */,
+				CF6A7C30114858E30034A94E /* include_templateInstructionString.h */,
+				CF6A7C31114858E30034A94E /* include_templateReplacementList.h */,
+				CF6A7C32114858E30034A94E /* include_terminalInstructionForGrammarAnalysis.h */,
+				CF6A7C33114858E30034A94E /* include_typeAddOperation.h */,
+				CF6A7C34114858E30034A94E /* include_typeAndOperation.h */,
+				CF6A7C35114858E30034A94E /* include_typeAppendInstruction.h */,
+				CF6A7C36114858E30034A94E /* include_typeArgumentAttribut.h */,
+				CF6A7C37114858E30034A94E /* include_typeArgumentCaractere.h */,
+				CF6A7C38114858E30034A94E /* include_typeArgumentCaractereCourant.h */,
+				CF6A7C39114858E30034A94E /* include_typeArgumentEntier.h */,
+				CF6A7C3A114858E30034A94E /* include_typeArgumentRoutine.h */,
+				CF6A7C3B114858E30034A94E /* include_typeArgumentRoutineExterne.h */,
+				CF6A7C3C114858E30034A94E /* include_typeAutomaticName.h */,
+				CF6A7C3D114858E30034A94E /* include_typeCallOfTypeMethodInstruction.h */,
+				CF6A7C3E114858E30034A94E /* include_typeCastInExpression.h */,
+				CF6A7C3F114858E30034A94E /* include_typeCategoryTemplateCall.h */,
+				CF6A7C40114858E30034A94E /* include_typeClassToTypeOperand.h */,
+				CF6A7C41114858E30034A94E /* include_typeConcatOperation.h */,
+				CF6A7C42114858E30034A94E /* include_typeConditionCaractere.h */,
+				CF6A7C43114858E30034A94E /* include_typeConditionChaine.h */,
+				CF6A7C44114858E30034A94E /* include_typeConditionIntervalle.h */,
+				CF6A7C45114858E30034A94E /* include_typeConditionLexicale.h */,
+				CF6A7C46114858E30034A94E /* include_typeConditionNonChaine.h */,
+				CF6A7C47114858E30034A94E /* include_typeConstructorExpression.h */,
+				CF6A7C48114858E30034A94E /* include_typeCplusPlusName.h */,
+				CF6A7C49114858E30034A94E /* include_typeCppInheritedName.h */,
+				CF6A7C4A114858E30034A94E /* include_typeCppStarThisName.h */,
+				CF6A7C4B114858E30034A94E /* include_typeCppThisInCategoryName.h */,
+				CF6A7C4C114858E30034A94E /* include_typeCurrentObjectName.h */,
+				CF6A7C4D114858E30034A94E /* include_typeDecrementInstruction.h */,
+				CF6A7C4E114858E30034A94E /* include_typeDefEntiteUtilisable.h */,
+				CF6A7C4F114858E30034A94E /* include_typeDefinitionTableAimplementer.h */,
+				CF6A7C50114858E30034A94E /* include_typeDescriptionInExpression.h */,
+				CF6A7C51114858E30034A94E /* include_typeDirectName.h */,
+				CF6A7C52114858E30034A94E /* include_typeDivideOperation.h */,
+				CF6A7C53114858E30034A94E /* include_typeDropInstruction.h */,
+				CF6A7C54114858E30034A94E /* include_typeEmissionErreurParDefaut.h */,
+				CF6A7C55114858E30034A94E /* include_typeEmissionParDefaut.h */,
+				CF6A7C56114858E30034A94E /* include_typeEmissionTerminalParDefaut.h */,
+				CF6A7C57114858E30034A94E /* include_typeEntiteFonction.h */,
+				CF6A7C58114858E30034A94E /* include_typeEntiteFonctionExterne.h */,
+				CF6A7C59114858E30034A94E /* include_typeEntiteRoutine.h */,
+				CF6A7C5A114858E30034A94E /* include_typeEntiteRoutineExterne.h */,
+				CF6A7C5B114858E30034A94E /* include_typeEntiteType.h */,
+				CF6A7C5C114858E30034A94E /* include_typeEntityToGenerate.h */,
+				CF6A7C5D114858E30034A94E /* include_typeEqualTest.h */,
+				CF6A7C5E114858E30034A94E /* include_typeErrorInstruction.h */,
+				CF6A7C5F114858E30034A94E /* include_typeExpression.h */,
+				CF6A7C60114858E30034A94E /* include_typeExternTypeToGenerate.h */,
+				CF6A7C61114858E30034A94E /* include_typeFalseBool.h */,
+				CF6A7C62114858E30034A94E /* include_typeFileWrapperObjectInstanciation.h */,
+				CF6A7C63114858E30034A94E /* include_typeFileWrapperTemplateCall.h */,
+				CF6A7C64114858E30034A94E /* include_typeFileWrapperWithStaticPath.h */,
+				CF6A7C65114858E30034A94E /* include_typeFonctionAengendrer.h */,
+				CF6A7C66114858E30034A94E /* include_typeFonctionExterneAengendrer.h */,
+				CF6A7C67114858E30034A94E /* include_typeForeachInstruction.h */,
+				CF6A7C68114858E30034A94E /* include_typeFunctionCall.h */,
+				CF6A7C69114858E30034A94E /* include_typeGalgasClassType.h */,
+				CF6A7C6A114858E30034A94E /* include_typeGalgasDomainType.h */,
+				CF6A7C6B114858E30034A94E /* include_typeGalgasExternType.h */,
+				CF6A7C6C114858E30034A94E /* include_typeGalgasListType.h */,
+				CF6A7C6D114858E30034A94E /* include_typeGalgasListmapToImplement.h */,
+				CF6A7C6E114858E30034A94E /* include_typeGalgasListmapType.h */,
+				CF6A7C6F114858E30034A94E /* include_typeGalgasMapType.h */,
+				CF6A7C70114858E30034A94E /* include_typeGalgasMapindexType.h */,
+				CF6A7C71114858E30034A94E /* include_typeGalgasNewClassType.h */,
+				CF6A7C72114858E30034A94E /* include_typeGalgasSortedListType.h */,
+				CF6A7C73114858E30034A94E /* include_typeGalgasStructType.h */,
+				CF6A7C74114858E30034A94E /* include_typeGalgasUndefinedClassType.h */,
+				CF6A7C75114858E30034A94E /* include_typeGalgasUndefinedExternType.h */,
+				CF6A7C76114858E30034A94E /* include_typeGalgasUndefinedListType.h */,
+				CF6A7C77114858E30034A94E /* include_typeGalgasUndefinedMapType.h */,
+				CF6A7C78114858E30034A94E /* include_typeGalgasUndefinedMapindexType.h */,
+				CF6A7C79114858E30034A94E /* include_typeGalgasUndefinedSortedListType.h */,
+				CF6A7C7A114858E30034A94E /* include_typeGalgas_binaryset.h */,
+				CF6A7C7B114858E30034A94E /* include_typeGalgas_bool.h */,
+				CF6A7C7C114858E30034A94E /* include_typeGalgas_char.h */,
+				CF6A7C7D114858E30034A94E /* include_typeGalgas_data.h */,
+				CF6A7C7E114858E30034A94E /* include_typeGalgas_double.h */,
+				CF6A7C7F114858E30034A94E /* include_typeGalgas_enum.h */,
+				CF6A7C80114858E30034A94E /* include_typeGalgas_filewrapper.h */,
+				CF6A7C81114858E40034A94E /* include_typeGalgas_function.h */,
+				CF6A7C82114858E40034A94E /* include_typeGalgas_jokerInParameterList.h */,
+				CF6A7C83114858E40034A94E /* include_typeGalgas_lbool.h */,
+				CF6A7C84114858E40034A94E /* include_typeGalgas_lchar.h */,
+				CF6A7C85114858E40034A94E /* include_typeGalgas_ldouble.h */,
+				CF6A7C86114858E40034A94E /* include_typeGalgas_location.h */,
+				CF6A7C87114858E40034A94E /* include_typeGalgas_lsint.h */,
+				CF6A7C88114858E40034A94E /* include_typeGalgas_lsint64.h */,
+				CF6A7C89114858E40034A94E /* include_typeGalgas_lstring.h */,
+				CF6A7C8A114858E40034A94E /* include_typeGalgas_luint.h */,
+				CF6A7C8B114858E40034A94E /* include_typeGalgas_luint64.h */,
+				CF6A7C8C114858E40034A94E /* include_typeGalgas_object.h */,
+				CF6A7C8D114858E40034A94E /* include_typeGalgas_sint.h */,
+				CF6A7C8E114858E40034A94E /* include_typeGalgas_sint64.h */,
+				CF6A7C8F114858E40034A94E /* include_typeGalgas_string.h */,
+				CF6A7C90114858E40034A94E /* include_typeGalgas_stringset.h */,
+				CF6A7C91114858E40034A94E /* include_typeGalgas_type.h */,
+				CF6A7C92114858E40034A94E /* include_typeGalgas_uint.h */,
+				CF6A7C93114858E40034A94E /* include_typeGalgas_uint64.h */,
+				CF6A7C94114858E40034A94E /* include_typeHereExpression.h */,
+				CF6A7C95114858E40034A94E /* include_typeIfThenElseExpression.h */,
+				CF6A7C96114858E40034A94E /* include_typeIncrementInstruction.h */,
+				CF6A7C97114858E40034A94E /* include_typeInfOrEqualTest.h */,
+				CF6A7C98114858E40034A94E /* include_typeInstruction.h */,
+				CF6A7C99114858E40034A94E /* include_typeInstructionActionExterne.h */,
+				CF6A7C9A114858E40034A94E /* include_typeInstructionAppelMethodeListe.h */,
+				CF6A7C9B114858E40034A94E /* include_typeInstructionAppelNonTerminal.h */,
+				CF6A7C9C114858E40034A94E /* include_typeInstructionDeclarationVarLocale.h */,
+				CF6A7C9D114858E40034A94E /* include_typeInstructionEmettre.h */,
+				CF6A7C9E114858E40034A94E /* include_typeInstructionEmettreSimple.h */,
+				CF6A7C9F114858E40034A94E /* include_typeInstructionErreurLexicale.h */,
+				CF6A7CA0114858E40034A94E /* include_typeInstructionLexicalWarning.h */,
+				CF6A7CA1114858E40034A94E /* include_typeInstructionLexicale.h */,
+				CF6A7CA2114858E40034A94E /* include_typeInstructionRepetitionLexicale.h */,
+				CF6A7CA3114858E40034A94E /* include_typeInstructionSiLexical.h */,
+				CF6A7CA4114858E40034A94E /* include_typeInstructionVerifSyntaxique.h */,
+				CF6A7CA5114858E40034A94E /* include_typeJokerInExpression.h */,
+				CF6A7CA6114858E40034A94E /* include_typeKeyName.h */,
+				CF6A7CA7114858E40034A94E /* include_typeLeftShiftOperation.h */,
+				CF6A7CA8114858E40034A94E /* include_typeLexicalDropInstruction.h */,
+				CF6A7CA9114858E40034A94E /* include_typeLexicalLogInstruction.h */,
+				CF6A7CAA114858E40034A94E /* include_typeLexicalRewindAndSendInstruction.h */,
+				CF6A7CAB114858E40034A94E /* include_typeLexicalTagInstruction.h */,
+				CF6A7CAC114858E40034A94E /* include_typeLiteralCharExpression.h */,
+				CF6A7CAD114858E40034A94E /* include_typeLiteralDoubleExpression.h */,
+				CF6A7CAE114858E40034A94E /* include_typeLiteralSInt64Expression.h */,
+				CF6A7CAF114858E40034A94E /* include_typeLiteralSIntExpression.h */,
+				CF6A7CB0114858E40034A94E /* include_typeLiteralStringExpression.h */,
+				CF6A7CB1114858E40034A94E /* include_typeLiteralUInt64Expression.h */,
+				CF6A7CB2114858E40034A94E /* include_typeLiteralUIntExpression.h */,
+				CF6A7CB3114858E40034A94E /* include_typeLocationAutomaticName.h */,
+				CF6A7CB4114858E40034A94E /* include_typeLogInstruction.h */,
+				CF6A7CB5114858E40034A94E /* include_typeLogicalNegate.h */,
+				CF6A7CB6114858E40034A94E /* include_typeMapBlockEpilogueInstruction.h */,
+				CF6A7CB7114858E40034A94E /* include_typeMapBlockPrologueInstruction.h */,
+				CF6A7CB8114858E40034A94E /* include_typeMatchInstruction.h */,
+				CF6A7CB9114858E40034A94E /* include_typeMessageInstruction.h */,
+				CF6A7CBA114858E40034A94E /* include_typeMethodCallInstruction.h */,
+				CF6A7CBB114858E40034A94E /* include_typeMinusOperation.h */,
+				CF6A7CBC114858E40034A94E /* include_typeModifierCallInstruction.h */,
+				CF6A7CBD114858E40034A94E /* include_typeModuloOperation.h */,
+				CF6A7CBE114858E40034A94E /* include_typeMultiplyOperation.h */,
+				CF6A7CBF114858E40034A94E /* include_typeNonEqualTest.h */,
+				CF6A7CC0114858E40034A94E /* include_typeNonterminalToGenerate.h */,
+				CF6A7CC1114858E40034A94E /* include_typeNullName.h */,
+				CF6A7CC2114858E40034A94E /* include_typeOnceFunctionToGenerate.h */,
+				CF6A7CC3114858E40034A94E /* include_typeOperandName.h */,
+				CF6A7CC4114858E40034A94E /* include_typeOptionAccess.h */,
+				CF6A7CC5114858E40034A94E /* include_typeOrOperation.h */,
+				CF6A7CC6114858E40034A94E /* include_typeParserInstruction.h */,
+				CF6A7CC7114858E40034A94E /* include_typeProductionAengendrer.h */,
+				CF6A7CC8114858E40034A94E /* include_typeReaderCallInExpression.h */,
+				CF6A7CC9114858E40034A94E /* include_typeRemoveInstruction.h */,
+				CF6A7CCA114858E40034A94E /* include_typeRightShiftOperation.h */,
+				CF6A7CCB114858E40034A94E /* include_typeRoutineAengendrer.h */,
+				CF6A7CCC114858E40034A94E /* include_typeRoutineCallInstruction.h */,
+				CF6A7CCD114858E40034A94E /* include_typeRoutineExterneAengendrer.h */,
+				CF6A7CCE114858E40034A94E /* include_typeSendInstruction.h */,
+				CF6A7CCF114858E40034A94E /* include_typeSimpleExtractInstruction.h */,
+				CF6A7CD0114858E40034A94E /* include_typeStrictInfTest.h */,
+				CF6A7CD1114858E40034A94E /* include_typeStrictSupTest.h */,
+				CF6A7CD2114858E40034A94E /* include_typeStructuredCastInstruction.h */,
+				CF6A7CD3114858E40034A94E /* include_typeStructuredExtractInstructionWithElse.h */,
+				CF6A7CD4114858E40034A94E /* include_typeSubOperation.h */,
+				CF6A7CD5114858E40034A94E /* include_typeSupOrEqualTest.h */,
+				CF6A7CD6114858E40034A94E /* include_typeTestComplement.h */,
+				CF6A7CD7114858E40034A94E /* include_typeTextTableCall.h */,
+				CF6A7CD8114858E40034A94E /* include_typeTrueBool.h */,
+				CF6A7CD9114858E40034A94E /* include_typeUnaryMinusOperation.h */,
+				CF6A7CDA114858E40034A94E /* include_typeUnicodeCharSet.h */,
+				CF6A7CDB114858E40034A94E /* include_typeVarInExpression.h */,
+				CF6A7CDC114858E40034A94E /* include_typeWarningInstruction.h */,
+				CF6A7CDD114858E40034A94E /* include_typeWithInstruction.h */,
+				CF6A7CDE114858E40034A94E /* include_typeXorOperation.h */,
 			);
-			path = "includes-files";
+			path = "include-files";
 			sourceTree = "<group>";
 		};
 		CF8E30210D9EE01900EF3764 /* Project Creation */ = {
@@ -3103,7 +3103,7 @@
 		CFF53732057A4E5000854C83 /* GALGAS_OUTPUT */ = {
 			isa = PBXGroup;
 			children = (
-				CF6A7B0A114856140034A94E /* includes-files */,
+				CF6A7BF9114858E30034A94E /* include-files */,
 				CF8E30210D9EE01900EF3764 /* Project Creation */,
 				CFDE72200D85C5DE00596413 /* Template Scanner */,
 				CFF53740057A4EFE00854C83 /* Galgas Scanner */,
