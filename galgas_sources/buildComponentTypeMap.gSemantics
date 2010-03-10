@@ -1,0 +1,43 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics buildComponentTypeMap :
+  import "semanticsClassMethods.gSemantics" ;
+  import "semanticsInstanceMethods.gSemantics" ;
+  import "semanticsModifiers.gSemantics" ;
+  import "semanticsReaders.gSemantics" ;
+  import "semanticsConstructors.gSemantics" ;
+
+  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
+  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
+  import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
+  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
+  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+function predefinedTypeMap
+  -> @unifiedTypeMap outUnifiedTypeMap
+:
+  outUnifiedTypeMap := [@unifiedTypeMap emptyMap] ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

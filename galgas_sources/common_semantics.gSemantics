@@ -3242,14 +3242,6 @@ class @typeGalgasUndefinedMapindexType extends @AC_galgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @mapIndexSearchReaderMap {
-  @lstring mRetrieveErrorMessage ;
-  insert insertKey error message "a search reader named '%K' is already declared in %L" ;
-  search searchKey error message "there is search reader named '%K'" ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
   @lstring mMapTypeName feature nogetter ;
   @typeListeAttributsSemantiques mMapAttributesList ;

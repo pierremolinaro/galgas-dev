@@ -18,72 +18,72 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsClassMethods :
-import "semanticsModifiers.gSemantics" ;
-import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
+  import "semanticsTypes.gSemantics" ;
+  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType classMethodMap ->@modifierMapEXX outModifierMap :
-  outModifierMap := [@modifierMapEXX emptyMap] ;
-end reader ;
+routine enterClassMethodWithStringInputArgument
+  ?!@classMethodMap ioClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inClassMethodName
+  ??@bool inHasCompilerArgument
+:
+  @unifiedTypeMapIndex argumentTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
+  @formalParameterSignature argList [emptyList] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioClassMethodMap insertKey
+    ![@lstring new !inClassMethodName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
-once classMethodMapFor_location ->@modifierMapEXX outModifierMap :
-  outModifierMap := [@modifierMapEXX emptyMap] ;
-end once ;
-
-#---------------------------------------------------------------------------*
-
-override reader @locationGalgasType classMethodMap ->@modifierMapEXX outModifierMap :
-  outModifierMap := classMethodMapFor_location [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-once classMethodMapFor_string ->@modifierMapEXX outModifierMap :
-  outModifierMap := [@modifierMapEXX emptyMap] ;
-  enterModifierWithStringInputArgument !?outModifierMap !"deleteFile" !true ;
-  enterModifierWithStringInputArgument !?outModifierMap !"deleteFileIfExists" !true ;
-  enterModifierWithStringInputArgument !?outModifierMap !"removeEmptyDirectory" !true ;
-  enterModifierWithStringInputArgument !?outModifierMap !"removeDirectoryRecursively" !true ;
-  @formalParameterSignatureEXX argList [emptyList] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [!?outModifierMap insertKey
+routine classMethodMapFor_string
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap
+:
+  outClassMethodMap := [@classMethodMap emptyMap] ;
+  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !true ;
+  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !true ;
+  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !true ;
+  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !true ;
+  @unifiedTypeMapIndex stringType ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringType] ;
+  @formalParameterSignature argList [emptyList] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?outClassMethodMap insertKey
     ![@lstring new !"generateFile" !here]
     !argList
     !true
   ] ;
-end once ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType classMethodMap ->@modifierMapEXX outModifierMap :
-  outModifierMap := classMethodMapFor_string [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @mapindexType classMethodMap ->@modifierMapEXX outModifierMap :
-  outModifierMap := [@modifierMapEXX emptyMap] ;
-  @formalParameterSignatureEXX argList [emptyList] ;
-  @ACGalgasType tSelf := self ;
-  @ACGalgasType t := [mIndexOfMapType mType] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentInOut] ;
-  argList += !tSelf ![@formalArgumentPassingModeAST argumentOut] ;
-  [!?outModifierMap insertKey
-    ![@lstring new !"makeRegularIndex" !here]
-    !argList
-    !true
-  ] ;
-end reader ;
+#override reader @mapindexType classMethodMap ->@classMethodMap outClassMethodMap :
+#  outClassMethodMap := [@classMethodMap emptyMap] ;
+#  @formalParameterSignatureEXX argList [emptyList] ;
+#  @ACGalgasType tSelf := self ;
+#  @ACGalgasType t := [mIndexOfMapType mType] ;
+#  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+#  argList += !t ![@formalArgumentPassingModeAST argumentInOut] ;
+#  argList += !tSelf ![@formalArgumentPassingModeAST argumentOut] ;
+#  [!?outClassMethodMap insertKey
+#    ![@lstring new !"makeRegularIndex" !here]
+#    !argList
+#    !true
+#  ] ;
+#end reader ;
 
 #---------------------------------------------------------------------------*
 

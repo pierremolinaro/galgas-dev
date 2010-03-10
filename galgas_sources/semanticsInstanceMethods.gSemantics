@@ -18,51 +18,76 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsInstanceMethods :
-import "semanticsModifiers.gSemantics" ;
-import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
+  import "semanticsTypes.gSemantics" ;
+  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType instanceMethodMap ->@modifierMapEXX outModifierMap :
-  outModifierMap := [@modifierMapEXX emptyMap] ;
-end reader ;
+routine enterInstanceMethodWithoutArgument
+  ?!@instanceMethodMap ioInstanceMethodMap
+  ??@string inInstanceMethodName
+  ??@bool inHasCompilerArgument
+:
+  [!?ioInstanceMethodMap insertKey
+    ![@lstring new !inInstanceMethodName !here]
+    ![@formalParameterSignature emptyList]
+    !inHasCompilerArgument
+  ] ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
-once instanceMethodMapFor_data ->@modifierMapEXX outModifierMap :
-  outModifierMap := [@modifierMapEXX emptyMap] ;
-  enterModifierWithStringInputArgument !?outModifierMap !"writeToFile" !true ;
-end once ;
+routine enterInstanceMethodWithInputArgument
+  ?!@instanceMethodMap ioInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inInstanceMethodName
+  ??@string inInputArgumentTypeName
+  ??@bool inHasCompilerArgument
+:
+  @unifiedTypeMapIndex argumentTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgumentTypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
+  @formalParameterSignature argList [emptyList] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?ioInstanceMethodMap insertKey
+    ![@lstring new !inInstanceMethodName !here]
+    !argList
+    !inHasCompilerArgument
+  ] ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
-override reader @dataGalgasType instanceMethodMap ->@modifierMapEXX outModifierMap :
-  outModifierMap := instanceMethodMapFor_data [] ;
-end reader ;
+routine instanceMethodMapFor_data
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap
+:
+  outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"writeToFile" !true ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
-once instanceMethodMapFor_string ->@modifierMapEXX outModifierMap :
-  outModifierMap := [@modifierMapEXX emptyMap] ;
-  enterModifierWithStringInputArgument !?outModifierMap !"writeToFile" !true ;
-  enterModifierWithStringInputArgument !?outModifierMap !"writeToExecutableFile" !true ;
-  enterModifierWithStringInputArgument !?outModifierMap !"makeDirectoryAndWriteToFile" !true ;
-  enterModifierWithoutArgument !?outModifierMap !"makeDirectory" !true ;
-  @formalParameterSignatureEXX argList [emptyList] ;
-  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += ![@boolGalgasType new] ![@formalArgumentPassingModeAST argumentOut] ;
-  [!?outModifierMap insertKey
+routine instanceMethodMapFor_string
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap
+:
+  outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"writeToFile" !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"writeToExecutableFile" !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"makeDirectoryAndWriteToFile" !true ;
+  enterInstanceMethodWithoutArgument !?outInstanceMethodMap !"makeDirectory" !true ;
+  @formalParameterSignature argList [emptyList] ;
+  @unifiedTypeMapIndex t ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?t] ;
+  argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"bool" !here] !?ioUnifiedTypeMap ?t] ;
+  argList += !t ![@formalArgumentPassingModeAST argumentOut] ;
+  [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     !argList
     !true
   ] ;
-end once ;
-
-#---------------------------------------------------------------------------*
-
-override reader @stringGalgasType instanceMethodMap ->@modifierMapEXX outModifierMap :
-  outModifierMap := instanceMethodMapFor_string [] ;
-end reader ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 

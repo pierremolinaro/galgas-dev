@@ -17,8 +17,8 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsSemantics :
-import "semanticsTypes.gSemantics" ;
-import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
+import "semanticsTypesEX.gSemantics" ;
+import semantics semanticsTypesEX in "semanticsTypesEX.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -273,7 +273,7 @@ listmap @descendantClassListMap (@classIndexList) ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-struct @semanticContext {
+struct @semanticContextEX {
   @typeMap mTypeMap ;
   @routineMap mRoutineMap ;
   @functionMap mFunctionMap ;

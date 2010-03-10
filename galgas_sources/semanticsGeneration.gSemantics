@@ -19,20 +19,20 @@
 
 semantics semanticsGeneration :
   import "semanticsTypes.gSemantics" ;
-  import "semanticsReaders.gSemantics" ;
-  import "semanticsConstructors.gSemantics" ;
+  import "semanticsReadersEX.gSemantics" ;
+  import "semanticsConstructorsEX.gSemantics" ;
   import "semanticsTypeFeatures.gSemantics" ;
-  import "semanticsClassMethods.gSemantics" ;
-  import "semanticsInstanceMethods.gSemantics" ;
+  import "semanticsClassMethodsEX.gSemantics" ;
+  import "semanticsInstanceMethodsEX.gSemantics" ;
   import "semanticsSemantics.gSemantics" ;
   import "semanticsDecoration.gSemantics" ;
 
-  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
-  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
-  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
+  import semantics semanticsTypesEX in "semanticsTypesEX.gSemantics" ;
+  import semantics semanticsReadersEX in "semanticsReadersEX.gSemantics" ;
+  import semantics semanticsConstructorsEX in "semanticsConstructorsEX.gSemantics" ;
   import semantics semanticsTypeFeatures in "semanticsTypeFeatures.gSemantics" ;
-  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
-  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
+  import semantics semanticsClassMethodsEX in "semanticsClassMethodsEX.gSemantics" ;
+  import semantics semanticsInstanceMethodsEX in "semanticsInstanceMethodsEX.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import semantics semanticsDecoration in "semanticsDecoration.gSemantics" ;
 
@@ -162,7 +162,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
 #---------------------------------------------------------------------------*
 
 abstract method @semanticDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 ;
@@ -170,7 +170,7 @@ abstract method @semanticDeclarationAST generateCode
 #---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -180,7 +180,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapindexDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -190,7 +190,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @enumDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string ioHeaderString
   ?!@string ioImplementationString
 :
@@ -209,7 +209,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -219,7 +219,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclarationAST generateCode
-  ?!@semanticContext ioSemanticContext
+  ?!@semanticContextEX ioSemanticContext
   ?!@string ioHeaderString
   ?!@string ioImplementationString
 :
@@ -255,7 +255,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @structDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string ioHeaderString
   ?!@string ioImplementationString
 :
@@ -272,7 +272,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listDeclarationAST generateCode
-  ?!@semanticContext ioSemanticContext
+  ?!@semanticContextEX ioSemanticContext
   ?!@string ioHeaderString
   ?!@string ioImplementationString
 :
@@ -299,7 +299,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @classDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -309,7 +309,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externRoutineDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -319,7 +319,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @routineDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -332,7 +332,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -342,7 +342,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @functionDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -355,7 +355,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @lazyFunctionDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
@@ -365,7 +365,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST generateCode
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContextEX unused ioSemanticContext
   ?!@string unused ioHeaderString
   ?!@string unused ioImplementationString
 :
