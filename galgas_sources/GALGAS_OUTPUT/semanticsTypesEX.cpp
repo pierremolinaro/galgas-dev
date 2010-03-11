@@ -820,13 +820,13 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sortedTypeList ("sortedType
 
 //---------------------------------------------------------------------------*
 
-GGS_sortedTypeList::GGS_sortedTypeList (void): AC_galgas_sortedlist () { // Default Constructor
+GGS_sortedTypeList::GGS_sortedTypeList (void): AC_GGS_sortedlist () { // Default Constructor
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_sortedTypeList::
-GGS_sortedTypeList (const GGS_sortedTypeList & inSource): AC_galgas_sortedlist (inSource) {
+GGS_sortedTypeList (const GGS_sortedTypeList & inSource): AC_GGS_sortedlist (inSource) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1097,7 +1097,7 @@ const C_galgas_type_descriptorEX * GGS_sortedTypeList::typeDescriptor (void) con
 elementOf_GGS_typeList::
 elementOf_GGS_typeList (const GGS_ACGalgasType & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mType (argument_0) {
 }
 
@@ -1479,7 +1479,7 @@ elementOf_GGS_signature (const GGS_typeMapIndex & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_formalArgumentPassingModeAST& argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAttributeTypeIndex (argument_0),
 mFormalArgumentName (argument_1),
 mFormalArgumentPassingMode (argument_2) {
@@ -1990,7 +1990,7 @@ elementOf_GGS_attributeList::
 elementOf_GGS_attributeList (const GGS_typeMapIndex & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAttributeTypeIndex (argument_0),
 mAttributeName (argument_1) {
 }
@@ -6707,7 +6707,7 @@ elementOf_GGS_classMethodList::
 elementOf_GGS_classMethodList (const GGS_lstring & argument_0,
                                 const GGS_signature & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMethodName (argument_0),
 mMethodSignature (argument_1) {
 }
@@ -8499,7 +8499,7 @@ elementOf_GGS_sortDescriptorList::
 elementOf_GGS_sortDescriptorList (const GGS_uint & argument_0,
                                 const GGS_bool& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAttributeIndex (argument_0),
 mAscendingOrder (argument_1) {
 }

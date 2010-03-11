@@ -339,7 +339,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalTypeEnum::typeDescriptor (void) co
 elementOf_GGS_lexicalTypeList::
 elementOf_GGS_lexicalTypeList (const GGS_lexicalTypeEnum& argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexicalType (argument_0) {
 }
 
@@ -1572,7 +1572,7 @@ elementOf_GGS_lexicalSentValueList::
 elementOf_GGS_lexicalSentValueList (const GGS_string& argument_0,
                                 const GGS_lexicalTypeEnum& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAttributeName (argument_0),
 mLexicalType (argument_1) {
 }
@@ -2440,7 +2440,7 @@ elementOf_GGS_terminalList (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_3,
                                 const GGS_uint & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mTerminalName (argument_0),
 mSentAttributeList (argument_1),
 mSyntaxErrorMessage (argument_2),
@@ -3590,13 +3590,13 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_tokenSortedlist ("tokenSort
 
 //---------------------------------------------------------------------------*
 
-GGS_tokenSortedlist::GGS_tokenSortedlist (void): AC_galgas_sortedlist () { // Default Constructor
+GGS_tokenSortedlist::GGS_tokenSortedlist (void): AC_GGS_sortedlist () { // Default Constructor
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_tokenSortedlist::
-GGS_tokenSortedlist (const GGS_tokenSortedlist & inSource): AC_galgas_sortedlist (inSource) {
+GGS_tokenSortedlist (const GGS_tokenSortedlist & inSource): AC_GGS_sortedlist (inSource) {
 }
 
 //---------------------------------------------------------------------------*
@@ -4826,7 +4826,7 @@ elementOf_GGS_lexicalRoutineFormalArgumentList (const GGS_lexicalArgumentModeAST
                                 const GGS_lexicalTypeEnum& argument_1,
                                 const GGS_string& argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexicalFormalArgumentMode (argument_0),
 mLexicalFormalArgumentType (argument_1),
 mArgumentNameForComment (argument_2) {
@@ -5833,7 +5833,7 @@ elementOf_GGS_lexicalFunctionFormalArgumentList::
 elementOf_GGS_lexicalFunctionFormalArgumentList (const GGS_lexicalTypeEnum& argument_0,
                                 const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexicalType (argument_0),
 mArgumentNameForComment (argument_1) {
 }
@@ -6778,7 +6778,7 @@ elementOf_GGS_templateDelimitorList (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_bool& argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mStartString (argument_0),
 mEndString (argument_1),
 mPreservesStartDelimiter (argument_2) {

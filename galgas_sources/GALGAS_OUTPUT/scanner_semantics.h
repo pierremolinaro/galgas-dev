@@ -121,7 +121,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_templateDelimiterMap
 
 //---------------------------------------------------------------------------*
 
-class GGS_templateDelimiterMap : public AC_galgas_map {
+class GGS_templateDelimiterMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_templateDelimiterMap cElement ;
 
@@ -235,7 +235,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_templateReplacementM
 
 //---------------------------------------------------------------------------*
 
-class GGS_templateReplacementMap : public AC_galgas_map {
+class GGS_templateReplacementMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_templateReplacementMap cElement ;
 
@@ -349,7 +349,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeLexicalAttribute
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeLexicalAttributesMap : public AC_galgas_map {
+class GGS_typeLexicalAttributesMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeLexicalAttributesMap cElement ;
 
@@ -458,7 +458,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_tagMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_tagMap : public AC_galgas_map {
+class GGS_tagMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_tagMap cElement ;
 
@@ -564,7 +564,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_EXLexicalTypeMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_EXLexicalTypeMap : public AC_galgas_map {
+class GGS_EXLexicalTypeMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_EXLexicalTypeMap cElement ;
 
@@ -673,7 +673,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeTableMessagesErr
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeTableMessagesErreurs : public AC_galgas_map {
+class GGS_typeTableMessagesErreurs : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeTableMessagesErreurs cElement ;
 
@@ -787,7 +787,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_M_styles ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_M_styles : public AC_galgas_map {
+class GGS_M_styles : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_M_styles cElement ;
 
@@ -898,7 +898,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_styleList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_styleList : public AC_galgas_list {
+class GGS_styleList : public AC_GGS_list {
   public : typedef elementOf_GGS_styleList cElement ;
 
 //--- Constructor 'emptyList'
@@ -1036,7 +1036,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeTableDefinitionT
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeTableDefinitionTerminaux : public AC_galgas_map {
+class GGS_typeTableDefinitionTerminaux : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeTableDefinitionTerminaux cElement ;
 
@@ -1160,7 +1160,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeTableMotsReserve
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeTableMotsReserves : public AC_galgas_map {
+class GGS_typeTableMotsReserves : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeTableMotsReserves cElement ;
 
@@ -1269,7 +1269,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeTableTablesDeMot
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeTableTablesDeMotsReserves : public AC_galgas_map {
+class GGS_typeTableTablesDeMotsReserves : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeTableTablesDeMotsReserves cElement ;
 
@@ -1376,10 +1376,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeConditionLexical
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeConditionLexicale : public AC_galgas_class {
+class GGS_typeConditionLexicale : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_typeConditionLexicale (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_typeConditionLexicale (const cPtr__AC_galgas_class * inPointer) ;
@@ -1813,7 +1813,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeListeConditionsL
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeListeConditionsLexicales : public AC_galgas_list {
+class GGS_typeListeConditionsLexicales : public AC_GGS_list {
   public : typedef elementOf_GGS_typeListeConditionsLexicales cElement ;
 
 //--- Constructor 'emptyList'
@@ -1932,10 +1932,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeInstructionLexic
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeInstructionLexicale : public AC_galgas_class {
+class GGS_typeInstructionLexicale : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_typeInstructionLexicale (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_typeInstructionLexicale (const cPtr__AC_galgas_class * inPointer) ;
@@ -2005,7 +2005,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_tListeInstructionsLe
 
 //---------------------------------------------------------------------------*
 
-class GGS_tListeInstructionsLexicales : public AC_galgas_list {
+class GGS_tListeInstructionsLexicales : public AC_GGS_list {
   public : typedef elementOf_GGS_tListeInstructionsLexicales cElement ;
 
 //--- Constructor 'emptyList'
@@ -2128,7 +2128,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeListeTestsEtInst
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeListeTestsEtInstructions : public AC_galgas_list {
+class GGS_typeListeTestsEtInstructions : public AC_GGS_list {
   public : typedef elementOf_GGS_typeListeTestsEtInstructions cElement ;
 
 //--- Constructor 'emptyList'
@@ -2264,10 +2264,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeArgumentRoutineE
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeArgumentRoutineExterne : public AC_galgas_class {
+class GGS_typeArgumentRoutineExterne : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_typeArgumentRoutineExterne (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_typeArgumentRoutineExterne (const cPtr__AC_galgas_class * inPointer) ;
@@ -2337,7 +2337,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeListeArgumentsRo
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeListeArgumentsRoutExterne : public AC_galgas_list {
+class GGS_typeListeArgumentsRoutExterne : public AC_GGS_list {
   public : typedef elementOf_GGS_typeListeArgumentsRoutExterne cElement ;
 
 //--- Constructor 'emptyList'
@@ -2822,7 +2822,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeListeMessagesErr
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeListeMessagesErreur : public AC_galgas_list {
+class GGS_typeListeMessagesErreur : public AC_GGS_list {
   public : typedef elementOf_GGS_typeListeMessagesErreur cElement ;
 
 //--- Constructor 'emptyList'
@@ -2941,10 +2941,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeEmissionParDefau
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeEmissionParDefaut : public AC_galgas_class {
+class GGS_typeEmissionParDefaut : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_typeEmissionParDefaut (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_typeEmissionParDefaut (const cPtr__AC_galgas_class * inPointer) ;
@@ -3158,7 +3158,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeListeRecherche ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeListeRecherche : public AC_galgas_list {
+class GGS_typeListeRecherche : public AC_GGS_list {
   public : typedef elementOf_GGS_typeListeRecherche cElement ;
 
 //--- Constructor 'emptyList'
@@ -4109,7 +4109,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_tokensInListMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_tokensInListMap : public AC_galgas_map {
+class GGS_tokensInListMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_tokensInListMap cElement ;
 
@@ -4444,7 +4444,7 @@ class elementOf_GGS_M_styles : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_styleList : public AC_galgas_list::cListElement {
+class elementOf_GGS_styleList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mStyleName ;
   public : GGS_string mTitle ;
@@ -4604,7 +4604,7 @@ class elementOf_GGS_typeTableTablesDeMotsReserves : public AC_galgas_map_element
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_typeListeConditionsLexicales : public AC_galgas_list::cListElement {
+class elementOf_GGS_typeListeConditionsLexicales : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_typeConditionLexicale  attributCondition ;
 //--- Constructor
@@ -4640,7 +4640,7 @@ class elementOf_GGS_typeListeConditionsLexicales : public AC_galgas_list::cListE
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_tListeInstructionsLexicales : public AC_galgas_list::cListElement {
+class elementOf_GGS_tListeInstructionsLexicales : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_typeInstructionLexicale  attributInstruction ;
 //--- Constructor
@@ -4672,7 +4672,7 @@ class elementOf_GGS_tListeInstructionsLexicales : public AC_galgas_list::cListEl
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_typeListeTestsEtInstructions : public AC_galgas_list::cListElement {
+class elementOf_GGS_typeListeTestsEtInstructions : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_typeListeConditionsLexicales  attributListeConditions ;
   public : GGS_tListeInstructionsLexicales  attributListeInstructions ;
@@ -4710,7 +4710,7 @@ class elementOf_GGS_typeListeTestsEtInstructions : public AC_galgas_list::cListE
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_typeListeArgumentsRoutExterne : public AC_galgas_list::cListElement {
+class elementOf_GGS_typeListeArgumentsRoutExterne : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_typeArgumentRoutineExterne  attributArgument ;
 //--- Constructor
@@ -4762,7 +4762,7 @@ class elementOf_GGS_typeListeArgumentsRoutExterne : public AC_galgas_list::cList
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_typeListeMessagesErreur : public AC_galgas_list::cListElement {
+class elementOf_GGS_typeListeMessagesErreur : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_uint  mErrorMessageIndex ;
 //--- Constructor
@@ -4806,7 +4806,7 @@ class elementOf_GGS_typeListeMessagesErreur : public AC_galgas_list::cListElemen
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_typeListeRecherche : public AC_galgas_list::cListElement {
+class elementOf_GGS_typeListeRecherche : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  attributNomAttribut ;
   public : GGS_lstring  attributNomTable ;

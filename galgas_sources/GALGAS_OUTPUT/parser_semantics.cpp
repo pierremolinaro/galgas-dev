@@ -693,7 +693,7 @@ const C_galgas_type_descriptorEX * GGS_typeInstructionVerifSyntaxique::typeDescr
 elementOf_GGS_typeListeBranchesInstructions::
 elementOf_GGS_typeListeBranchesInstructions (const GGS_typeInstructionList & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mInstructionList (argument_0) {
 }
 
@@ -1522,7 +1522,7 @@ elementOf_GGS_L_parse_rewind_signature_list::
 elementOf_GGS_L_parse_rewind_signature_list (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSignature (argument_0),
 mErrorLocation (argument_1) {
 }

@@ -51,7 +51,7 @@
 elementOf_GGS_syntaxInstructionList::
 elementOf_GGS_syntaxInstructionList (const GGS_syntaxInstructionAST & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mInstruction (argument_0) {
 }
 
@@ -432,7 +432,7 @@ elementOf_GGS_nonTerminalLabelList::
 elementOf_GGS_nonTerminalLabelList (const GGS_lstring & argument_0,
                                 const GGS_formalParameterListAST & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLabelName (argument_0),
 mFormalParameters (argument_1) {
 }
@@ -879,7 +879,7 @@ elementOf_GGS_nonterminalDeclarationList (const GGS_lstring & argument_0,
                                 const GGS_nonTerminalLabelList & argument_1,
                                 const GGS_bool& argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mNonterminalName (argument_0),
 mLabels (argument_1),
 mHasParseLabel (argument_2) {
@@ -1391,7 +1391,7 @@ elementOf_GGS_syntaxRuleLabelList (const GGS_lstring & argument_0,
                                 const GGS_formalParameterListAST & argument_1,
                                 const GGS_syntaxInstructionList & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLabelName (argument_0),
 mFormalParameters (argument_1),
 mSyntaxInstructionList (argument_2) {
@@ -1902,7 +1902,7 @@ elementOf_GGS_syntaxRuleList::
 elementOf_GGS_syntaxRuleList (const GGS_lstring & argument_0,
                                 const GGS_syntaxRuleLabelList & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mNonterminalName (argument_0),
 mLabelList (argument_1) {
 }
@@ -2825,7 +2825,7 @@ const C_galgas_type_descriptorEX * GGS_terminalCheckInstruction::typeDescriptor 
 elementOf_GGS_listOfSyntaxInstructionList::
 elementOf_GGS_listOfSyntaxInstructionList (const GGS_syntaxInstructionList & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSyntaxInstructionList (argument_0) {
 }
 
@@ -4102,7 +4102,7 @@ elementOf_GGS_whenBranchList::
 elementOf_GGS_whenBranchList (const GGS_semanticExpressionAST & argument_0,
                                 const GGS_syntaxInstructionList & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mWhenExpression (argument_0),
 mParseDoBranchList (argument_1) {
 }

@@ -161,7 +161,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTypeList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalTypeList : public AC_galgas_list {
+class GGS_lexicalTypeList : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalTypeList cElement ;
 
 //--- Constructor 'emptyList'
@@ -282,7 +282,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTypeMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalTypeMap : public AC_galgas_map {
+class GGS_lexicalTypeMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalTypeMap cElement ;
 
@@ -391,7 +391,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeMap 
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalAttributeMap : public AC_galgas_map {
+class GGS_lexicalAttributeMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalAttributeMap cElement ;
 
@@ -502,7 +502,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSentValueList
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalSentValueList : public AC_galgas_list {
+class GGS_lexicalSentValueList : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalSentValueList cElement ;
 
 //--- Constructor 'emptyList'
@@ -640,7 +640,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_terminalMap : public AC_galgas_map {
+class GGS_terminalMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_terminalMap cElement ;
 
@@ -751,7 +751,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_terminalList : public AC_galgas_list {
+class GGS_terminalList : public AC_GGS_list {
   public : typedef elementOf_GGS_terminalList cElement ;
 
 //--- Constructor 'emptyList'
@@ -940,7 +940,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExplicitToken
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalExplicitTokenListMap : public AC_galgas_map {
+class GGS_lexicalExplicitTokenListMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalExplicitTokenListMap cElement ;
 
@@ -1056,7 +1056,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_tokenSortedlist ;
 //---------------------------------------------------------------------------*
 
 
-class GGS_tokenSortedlist : public AC_galgas_sortedlist {
+class GGS_tokenSortedlist : public AC_GGS_sortedlist {
   public : typedef elementOf_GGS_tokenSortedlist cElement ;
 //--- Default Constructor
   public : GGS_tokenSortedlist (void) ;
@@ -1161,7 +1161,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExplicitToken
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalExplicitTokenListMapMap : public AC_galgas_map {
+class GGS_lexicalExplicitTokenListMapMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalExplicitTokenListMapMap cElement ;
 
@@ -1284,7 +1284,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalMessageMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalMessageMap : public AC_galgas_map {
+class GGS_lexicalMessageMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalMessageMap cElement ;
 
@@ -1400,7 +1400,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineFormal
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalRoutineFormalArgumentList : public AC_galgas_list {
+class GGS_lexicalRoutineFormalArgumentList : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalRoutineFormalArgumentList cElement ;
 
 //--- Constructor 'emptyList'
@@ -1555,7 +1555,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalRoutineMap : public AC_galgas_map {
+class GGS_lexicalRoutineMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalRoutineMap cElement ;
 
@@ -1681,7 +1681,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionForma
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalFunctionFormalArgumentList : public AC_galgas_list {
+class GGS_lexicalFunctionFormalArgumentList : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalFunctionFormalArgumentList cElement ;
 
 //--- Constructor 'emptyList'
@@ -1819,7 +1819,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalFunctionMap : public AC_galgas_map {
+class GGS_lexicalFunctionMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalFunctionMap cElement ;
 
@@ -1945,7 +1945,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_templateDelimitorLis
 
 //---------------------------------------------------------------------------*
 
-class GGS_templateDelimitorList : public AC_galgas_list {
+class GGS_templateDelimitorList : public AC_GGS_list {
   public : typedef elementOf_GGS_templateDelimitorList cElement ;
 
 //--- Constructor 'emptyList'
@@ -2100,7 +2100,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_styleMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_styleMap : public AC_galgas_map {
+class GGS_styleMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_styleMap cElement ;
 
@@ -2214,7 +2214,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalTagMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalTagMap : public AC_galgas_map {
+class GGS_lexicalTagMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalTagMap cElement ;
 
@@ -2314,7 +2314,7 @@ class GGS_lexicalTagMap : public AC_galgas_map {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalTypeList : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalTypeList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lexicalTypeEnum mLexicalType ;
 //--- Constructor
@@ -2412,7 +2412,7 @@ class elementOf_GGS_lexicalAttributeMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalSentValueList : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalSentValueList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mAttributeName ;
   public : GGS_lexicalTypeEnum mLexicalType ;
@@ -2479,7 +2479,7 @@ class elementOf_GGS_terminalMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_terminalList : public AC_galgas_list::cListElement {
+class elementOf_GGS_terminalList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mTerminalName ;
   public : GGS_lexicalSentValueList  mSentAttributeList ;
@@ -2553,7 +2553,7 @@ class elementOf_GGS_lexicalExplicitTokenListMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_tokenSortedlist : public AC_galgas_sortedlist::cSortedListElement {
+class elementOf_GGS_tokenSortedlist : public AC_GGS_sortedlist::cSortedListElement {
 //--- Attributes
   public : GGS_uint  mLength ;
   public : GGS_string mName ;
@@ -2654,7 +2654,7 @@ class elementOf_GGS_lexicalMessageMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalRoutineFormalArgumentList : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalRoutineFormalArgumentList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lexicalArgumentModeAST mLexicalFormalArgumentMode ;
   public : GGS_lexicalTypeEnum mLexicalFormalArgumentType ;
@@ -2726,7 +2726,7 @@ class elementOf_GGS_lexicalRoutineMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalFunctionFormalArgumentList : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalFunctionFormalArgumentList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lexicalTypeEnum mLexicalType ;
   public : GGS_string mArgumentNameForComment ;
@@ -2796,7 +2796,7 @@ class elementOf_GGS_lexicalFunctionMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_templateDelimitorList : public AC_galgas_list::cListElement {
+class elementOf_GGS_templateDelimitorList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mStartString ;
   public : GGS_lstring  mEndString ;

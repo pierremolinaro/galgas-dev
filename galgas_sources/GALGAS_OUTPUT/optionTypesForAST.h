@@ -122,7 +122,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_commandLineOptionLis
 
 //---------------------------------------------------------------------------*
 
-class GGS_commandLineOptionListAST : public AC_galgas_list {
+class GGS_commandLineOptionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_commandLineOptionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -343,10 +343,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_optionComponentAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_optionComponentAST : public AC_galgas_class {
+class GGS_optionComponentAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_optionComponentAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_optionComponentAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -416,7 +416,7 @@ extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__optionComponentAST ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_commandLineOptionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_commandLineOptionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mOptionTypeName ;
   public : GGS_lstring  mOptionInternalName ;

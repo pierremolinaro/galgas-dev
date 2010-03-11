@@ -134,10 +134,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExpressionAST
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalExpressionAST : public AC_galgas_class {
+class GGS_lexicalExpressionAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_lexicalExpressionAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_lexicalExpressionAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -203,10 +203,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalInstructionAS
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalInstructionAST : public AC_galgas_class {
+class GGS_lexicalInstructionAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_lexicalInstructionAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_lexicalInstructionAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -276,7 +276,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalInstructionLi
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalInstructionListAST : public AC_galgas_list {
+class GGS_lexicalInstructionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalInstructionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -399,7 +399,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_metamodelTemplateDel
 
 //---------------------------------------------------------------------------*
 
-class GGS_metamodelTemplateDelimitorListAST : public AC_galgas_list {
+class GGS_metamodelTemplateDelimitorListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_metamodelTemplateDelimitorListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -556,7 +556,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_templateReplacementL
 
 //---------------------------------------------------------------------------*
 
-class GGS_templateReplacementListAST : public AC_galgas_list {
+class GGS_templateReplacementListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_templateReplacementListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -709,10 +709,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractLexicalRuleA
 
 //---------------------------------------------------------------------------*
 
-class GGS_abstractLexicalRuleAST : public AC_galgas_class {
+class GGS_abstractLexicalRuleAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_abstractLexicalRuleAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_abstractLexicalRuleAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -782,7 +782,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRuleListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalRuleListAST : public AC_galgas_list {
+class GGS_lexicalRuleListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalRuleListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -1051,7 +1051,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalMessageDeclar
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalMessageDeclarationListAST : public AC_galgas_list {
+class GGS_lexicalMessageDeclarationListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalMessageDeclarationListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -1191,7 +1191,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalAttributeList
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalAttributeListAST : public AC_galgas_list {
+class GGS_lexicalAttributeListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalAttributeListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -1331,7 +1331,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalStyleListAST 
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalStyleListAST : public AC_galgas_list {
+class GGS_lexicalStyleListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalStyleListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -1471,7 +1471,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalDeclarationL
 
 //---------------------------------------------------------------------------*
 
-class GGS_terminalDeclarationListAST : public AC_galgas_list {
+class GGS_terminalDeclarationListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_terminalDeclarationListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -1662,7 +1662,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalListEntryList
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalListEntryListAST : public AC_galgas_list {
+class GGS_lexicalListEntryListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalListEntryListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -1819,7 +1819,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalListDeclarati
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalListDeclarationListAST : public AC_galgas_list {
+class GGS_lexicalListDeclarationListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalListDeclarationListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -2448,7 +2448,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSendSearchLis
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalSendSearchListAST : public AC_galgas_list {
+class GGS_lexicalSendSearchListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalSendSearchListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -2584,10 +2584,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSendDefaultAc
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalSendDefaultActionAST : public AC_galgas_class {
+class GGS_lexicalSendDefaultActionAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_lexicalSendDefaultActionAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_lexicalSendDefaultActionAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -2947,7 +2947,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalWhileBranchLi
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalWhileBranchListAST : public AC_galgas_list {
+class GGS_lexicalWhileBranchListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalWhileBranchListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -3161,7 +3161,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalSelectBranchL
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalSelectBranchListAST : public AC_galgas_list {
+class GGS_lexicalSelectBranchListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalSelectBranchListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -3371,10 +3371,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractLexicalRouti
 
 //---------------------------------------------------------------------------*
 
-class GGS_abstractLexicalRoutineActualArgumentAST : public AC_galgas_class {
+class GGS_abstractLexicalRoutineActualArgumentAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_abstractLexicalRoutineActualArgumentAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_abstractLexicalRoutineActualArgumentAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -3445,7 +3445,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineCallAc
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalRoutineCallActualArgumentListAST : public AC_galgas_list {
+class GGS_lexicalRoutineCallActualArgumentListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalRoutineCallActualArgumentListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -3713,10 +3713,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalRoutineOrFunc
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_galgas_class {
+class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -3859,7 +3859,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalFunctionCallA
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalFunctionCallActualArgumentListAST : public AC_galgas_list {
+class GGS_lexicalFunctionCallActualArgumentListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalFunctionCallActualArgumentListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -4847,7 +4847,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExternRoutine
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalExternRoutineFormalArgumentListAST : public AC_galgas_list {
+class GGS_lexicalExternRoutineFormalArgumentListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalExternRoutineFormalArgumentListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -5004,7 +5004,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_externRoutineListAST
 
 //---------------------------------------------------------------------------*
 
-class GGS_externRoutineListAST : public AC_galgas_list {
+class GGS_externRoutineListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_externRoutineListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -5161,7 +5161,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexicalExternFunctio
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalExternFunctionFormalArgumentListAST : public AC_galgas_list {
+class GGS_lexicalExternFunctionFormalArgumentListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lexicalExternFunctionFormalArgumentListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -5301,7 +5301,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_externFunctionListAS
 
 //---------------------------------------------------------------------------*
 
-class GGS_externFunctionListAST : public AC_galgas_list {
+class GGS_externFunctionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_externFunctionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -5454,10 +5454,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lexiqueComponentAST 
 
 //---------------------------------------------------------------------------*
 
-class GGS_lexiqueComponentAST : public AC_galgas_class {
+class GGS_lexiqueComponentAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_lexiqueComponentAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_lexiqueComponentAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -5594,7 +5594,7 @@ class cPtr_lexicalInstructionAST : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalInstructionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalInstructionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lexicalInstructionAST  mInstruction ;
 //--- Constructor
@@ -5626,7 +5626,7 @@ class elementOf_GGS_lexicalInstructionListAST : public AC_galgas_list::cListElem
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_metamodelTemplateDelimitorListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_metamodelTemplateDelimitorListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mStartString ;
   public : GGS_lstringlist  mOptionList ;
@@ -5662,7 +5662,7 @@ class elementOf_GGS_metamodelTemplateDelimitorListAST : public AC_galgas_list::c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_templateReplacementListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_templateReplacementListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mMatchString ;
   public : GGS_lstring  mReplacementString ;
@@ -5722,7 +5722,7 @@ class cPtr_abstractLexicalRuleAST : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalRuleListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalRuleListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_abstractLexicalRuleAST  mLexicalRule ;
 //--- Constructor
@@ -5824,7 +5824,7 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalMessageDeclarationListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalMessageDeclarationListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mMessageName ;
   public : GGS_lstring  mMessageValue ;
@@ -5858,7 +5858,7 @@ class elementOf_GGS_lexicalMessageDeclarationListAST : public AC_galgas_list::cL
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalAttributeListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalAttributeListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mTypeName ;
   public : GGS_lstring  mName ;
@@ -5892,7 +5892,7 @@ class elementOf_GGS_lexicalAttributeListAST : public AC_galgas_list::cListElemen
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalStyleListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalStyleListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mName ;
   public : GGS_lstring  mComment ;
@@ -5926,7 +5926,7 @@ class elementOf_GGS_lexicalStyleListAST : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_terminalDeclarationListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_terminalDeclarationListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mName ;
   public : GGS_lstringlist  mSentAttributeList ;
@@ -5966,7 +5966,7 @@ class elementOf_GGS_terminalDeclarationListAST : public AC_galgas_list::cListEle
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalListEntryListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalListEntryListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mEntrySpelling ;
   public : GGS_lstring  mTerminalSpelling ;
@@ -6002,7 +6002,7 @@ class elementOf_GGS_lexicalListEntryListAST : public AC_galgas_list::cListElemen
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalListDeclarationListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalListDeclarationListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mName ;
   public : GGS_lstring  mStyle ;
@@ -6252,7 +6252,7 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalSendSearchListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalSendSearchListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mAttributeName ;
   public : GGS_lstring  mSearchListName ;
@@ -6448,7 +6448,7 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalWhileBranchListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalWhileBranchListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lexicalExpressionAST  mWhileExpression ;
   public : GGS_lexicalInstructionListAST  mWhileInstructionList ;
@@ -6518,7 +6518,7 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalSelectBranchListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalSelectBranchListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lexicalExpressionAST  mSelectExpression ;
   public : GGS_lexicalInstructionListAST  mSelectInstructionList ;
@@ -6614,7 +6614,7 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public cPtr__AC_galgas_clas
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalRoutineCallActualArgumentListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalRoutineCallActualArgumentListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_abstractLexicalRoutineActualArgumentAST  mLexicalRoutineActualArgument ;
 //--- Constructor
@@ -6778,7 +6778,7 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalFunctionCallActualArgumentListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalFunctionCallActualArgumentListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lexicalRoutineOrFunctionFormalInputArgumentAST  mLexicalActualInputArgument ;
 //--- Constructor
@@ -7183,7 +7183,7 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalExternRoutineFormalArgumentListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalExternRoutineFormalArgumentListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lexicalArgumentModeAST mPassingMode ;
   public : GGS_lstring  mLexicalTypeName ;
@@ -7219,7 +7219,7 @@ class elementOf_GGS_lexicalExternRoutineFormalArgumentListAST : public AC_galgas
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_externRoutineListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_externRoutineListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mRoutineName ;
   public : GGS_lexicalExternRoutineFormalArgumentListAST  mLexicalRoutineFormalArgumentList ;
@@ -7255,7 +7255,7 @@ class elementOf_GGS_externRoutineListAST : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lexicalExternFunctionFormalArgumentListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lexicalExternFunctionFormalArgumentListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mLexicalTypeName ;
   public : GGS_lstring  mFormalArgumentName ;
@@ -7289,7 +7289,7 @@ class elementOf_GGS_lexicalExternFunctionFormalArgumentListAST : public AC_galga
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_externFunctionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_externFunctionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mFunctionName ;
   public : GGS_lexicalExternFunctionFormalArgumentListAST  mLexicalFunctionFormalArgumentList ;

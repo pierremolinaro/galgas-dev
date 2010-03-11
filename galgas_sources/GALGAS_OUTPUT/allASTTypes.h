@@ -59,7 +59,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedLexiqueCompone
 
 //---------------------------------------------------------------------------*
 
-class GGS_parsedLexiqueComponentMap : public AC_galgas_map {
+class GGS_parsedLexiqueComponentMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_parsedLexiqueComponentMap cElement ;
 
@@ -168,7 +168,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedOptionComponen
 
 //---------------------------------------------------------------------------*
 
-class GGS_parsedOptionComponentMap : public AC_galgas_map {
+class GGS_parsedOptionComponentMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_parsedOptionComponentMap cElement ;
 
@@ -277,7 +277,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedSemanticsCompo
 
 //---------------------------------------------------------------------------*
 
-class GGS_parsedSemanticsComponentMap : public AC_galgas_map {
+class GGS_parsedSemanticsComponentMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_parsedSemanticsComponentMap cElement ;
 
@@ -386,7 +386,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parsedSyntaxComponen
 
 //---------------------------------------------------------------------------*
 
-class GGS_parsedSyntaxComponentMap : public AC_galgas_map {
+class GGS_parsedSyntaxComponentMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_parsedSyntaxComponentMap cElement ;
 

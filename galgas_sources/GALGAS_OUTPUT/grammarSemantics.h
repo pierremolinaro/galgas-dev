@@ -70,7 +70,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_signatureForGrammarA
 
 //---------------------------------------------------------------------------*
 
-class GGS_signatureForGrammarAnalysis : public AC_galgas_list {
+class GGS_signatureForGrammarAnalysis : public AC_GGS_list {
   public : typedef elementOf_GGS_signatureForGrammarAnalysis cElement ;
 
 //--- Constructor 'emptyList'
@@ -208,7 +208,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonterminalSymbolLab
 
 //---------------------------------------------------------------------------*
 
-class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_galgas_map {
+class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_nonterminalSymbolLabelMapForGrammarAnalysis cElement ;
 
@@ -315,10 +315,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractSyntaxInstru
 
 //---------------------------------------------------------------------------*
 
-class GGS_abstractSyntaxInstructionForGrammarAnalysis : public AC_galgas_class {
+class GGS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_abstractSyntaxInstructionForGrammarAnalysis (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_abstractSyntaxInstructionForGrammarAnalysis (const cPtr__AC_galgas_class * inPointer) ;
@@ -388,7 +388,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxInstructionLis
 
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxInstructionListForGrammarAnalysis : public AC_galgas_list {
+class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GGS_list {
   public : typedef elementOf_GGS_syntaxInstructionListForGrammarAnalysis cElement ;
 
 //--- Constructor 'emptyList'
@@ -511,7 +511,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_productionRuleListFo
 
 //---------------------------------------------------------------------------*
 
-class GGS_productionRuleListForGrammarAnalysis : public AC_galgas_list {
+class GGS_productionRuleListForGrammarAnalysis : public AC_GGS_list {
   public : typedef elementOf_GGS_productionRuleListForGrammarAnalysis cElement ;
 
 //--- Constructor 'emptyList'
@@ -683,7 +683,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_unusedNonTerminalSym
 
 //---------------------------------------------------------------------------*
 
-class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_map {
+class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_unusedNonTerminalSymbolMapForGrammarAnalysis cElement ;
 
@@ -786,7 +786,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonTerminalSymbolMap
 
 //---------------------------------------------------------------------------*
 
-class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_map {
+class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_nonTerminalSymbolMapForGrammarAnalysis cElement ;
 
@@ -1048,7 +1048,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_branchListForGrammar
 
 //---------------------------------------------------------------------------*
 
-class GGS_branchListForGrammarAnalysis : public AC_galgas_list {
+class GGS_branchListForGrammarAnalysis : public AC_GGS_list {
   public : typedef elementOf_GGS_branchListForGrammarAnalysis cElement ;
 
 //--- Constructor 'emptyList'
@@ -1317,7 +1317,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxComponentListF
 
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxComponentListForGrammarAnalysis : public AC_galgas_list {
+class GGS_syntaxComponentListForGrammarAnalysis : public AC_GGS_list {
   public : typedef elementOf_GGS_syntaxComponentListForGrammarAnalysis cElement ;
 
 //--- Constructor 'emptyList'
@@ -1455,7 +1455,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalSymbolsMapFo
 
 //---------------------------------------------------------------------------*
 
-class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_galgas_map {
+class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_terminalSymbolsMapForGrammarAnalysis cElement ;
 
@@ -1571,7 +1571,7 @@ void routine_analyzeGrammar (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_signatureForGrammarAnalysis : public AC_galgas_list::cListElement {
+class elementOf_GGS_signatureForGrammarAnalysis : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis ;
   public : GGS_lstring  mGalgasTypeNameForGrammarAnalysis ;
@@ -1642,7 +1642,7 @@ class elementOf_GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_galg
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_syntaxInstructionListForGrammarAnalysis : public AC_galgas_list::cListElement {
+class elementOf_GGS_syntaxInstructionListForGrammarAnalysis : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_abstractSyntaxInstructionForGrammarAnalysis  mInstruction ;
 //--- Constructor
@@ -1674,7 +1674,7 @@ class elementOf_GGS_syntaxInstructionListForGrammarAnalysis : public AC_galgas_l
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_productionRuleListForGrammarAnalysis : public AC_galgas_list::cListElement {
+class elementOf_GGS_productionRuleListForGrammarAnalysis : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mLeftNonterminalSymbol ;
   public : GGS_uint  mLeftNonterminalSymbolIndex ;
@@ -1787,7 +1787,7 @@ class elementOf_GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_galgas_ma
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_branchListForGrammarAnalysis : public AC_galgas_list::cListElement {
+class elementOf_GGS_branchListForGrammarAnalysis : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_syntaxInstructionListForGrammarAnalysis  mSyntaxInstructionList ;
 //--- Constructor
@@ -1827,7 +1827,7 @@ class elementOf_GGS_branchListForGrammarAnalysis : public AC_galgas_list::cListE
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_syntaxComponentListForGrammarAnalysis : public AC_galgas_list::cListElement {
+class elementOf_GGS_syntaxComponentListForGrammarAnalysis : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_productionRuleListForGrammarAnalysis  mProductionRulesList ;
   public : GGS_lstring  mSyntaxComponentName ;

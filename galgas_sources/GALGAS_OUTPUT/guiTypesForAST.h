@@ -53,7 +53,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiSimpleAttributeLi
 
 //---------------------------------------------------------------------------*
 
-class GGS_guiSimpleAttributeListAST : public AC_galgas_list {
+class GGS_guiSimpleAttributeListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_guiSimpleAttributeListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -193,7 +193,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiCompoundAttribute
 
 //---------------------------------------------------------------------------*
 
-class GGS_guiCompoundAttributeListAST : public AC_galgas_list {
+class GGS_guiCompoundAttributeListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_guiCompoundAttributeListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -350,7 +350,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiLabelListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_guiLabelListAST : public AC_galgas_list {
+class GGS_guiLabelListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_guiLabelListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -490,7 +490,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_withLexiqueListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_withLexiqueListAST : public AC_galgas_list {
+class GGS_withLexiqueListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_withLexiqueListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -656,7 +656,7 @@ class GGS_withLexiqueListAST : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_guiSimpleAttributeListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_guiSimpleAttributeListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mKey ;
   public : GGS_lstring  mValue ;
@@ -690,7 +690,7 @@ class elementOf_GGS_guiSimpleAttributeListAST : public AC_galgas_list::cListElem
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_guiCompoundAttributeListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_guiCompoundAttributeListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mKey ;
   public : GGS_lstring  mAttributeName ;
@@ -726,7 +726,7 @@ class elementOf_GGS_guiCompoundAttributeListAST : public AC_galgas_list::cListEl
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_guiLabelListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_guiLabelListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstringlist  mTerminalList ;
   public : GGS_location  mLocation ;
@@ -760,7 +760,7 @@ class elementOf_GGS_guiLabelListAST : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_withLexiqueListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_withLexiqueListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mLexiqueFileName ;
   public : GGS_guiLabelListAST  mLabels ;

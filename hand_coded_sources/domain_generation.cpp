@@ -46,7 +46,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mDomainName << " ;\n\n" ;
   
-  inHfile << "class GGS_" << mDomainName << " : public AC_galgas_domain {\n" ;
+  inHfile << "class GGS_" << mDomainName << " : public AC_GGS_domain {\n" ;
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
   while (currentAttribute.hasCurrentObject ()) {
     inHfile << "//--- '" << currentAttribute._key (HERE) << "' domain\n"
@@ -155,7 +155,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Constructor
   inCppFile << "GGS_" << mDomainName << "::GGS_" << mDomainName << " (void) :\n"
-               "AC_galgas_domain ()" ;
+               "AC_GGS_domain ()" ;
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
   while (currentAttribute.hasCurrentObject ()) {
     inCppFile << ",\n"
@@ -198,7 +198,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << currentAttribute._key (HERE)
               << " ;\n"
                "  result.mBDDVariableCountForDomain_" << currentAttribute._key (HERE)
-            << " = AC_galgas_domain::bitCountForDomainSize (inDomain_" << currentAttribute._key (HERE) << ".count ()) ;\n" ;
+            << " = AC_GGS_domain::bitCountForDomainSize (inDomain_" << currentAttribute._key (HERE) << ".count ()) ;\n" ;
     currentAttribute.next () ;
   }
   inCppFile << "  return result ;\n"

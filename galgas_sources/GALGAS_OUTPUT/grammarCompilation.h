@@ -143,7 +143,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonTerminalToAddList
 
 //---------------------------------------------------------------------------*
 
-class GGS_nonTerminalToAddList : public AC_galgas_list {
+class GGS_nonTerminalToAddList : public AC_GGS_list {
   public : typedef elementOf_GGS_nonTerminalToAddList cElement ;
 
 //--- Constructor 'emptyList'
@@ -287,7 +287,7 @@ void routine_compileGrammarComponent (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_nonTerminalToAddList : public AC_galgas_list::cListElement {
+class elementOf_GGS_nonTerminalToAddList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mSyntaxComponentName ;
   public : GGS_uint  mNonTerminalToAddCount ;

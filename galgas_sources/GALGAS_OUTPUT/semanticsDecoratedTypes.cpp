@@ -215,7 +215,7 @@ const C_galgas_type_descriptorEX * GGS_semanticExpressionForGeneration::typeDesc
 elementOf_GGS_semanticExpressionListForGeneration::
 elementOf_GGS_semanticExpressionListForGeneration (const GGS_semanticExpressionForGeneration & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mExpression (argument_0) {
 }
 
@@ -10536,7 +10536,7 @@ elementOf_GGS_formalParameterListForGeneration (const GGS_formalArgumentPassingM
                                 const GGS_lstring & argument_2,
                                 const GGS_bool& argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mFormalParameterPassingMode (argument_0),
 mFormalParameterTypeName (argument_1),
 mFormalParameterName (argument_2),
@@ -11113,7 +11113,7 @@ elementOf_GGS_formalInputParameterListForGeneration (const GGS_lstring & argumen
                                 const GGS_lstring & argument_1,
                                 const GGS_bool& argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mFormalParameterTypeName (argument_0),
 mFormalParameterName (argument_1),
 mIsUnused (argument_2) {
@@ -12618,7 +12618,7 @@ const C_galgas_type_descriptorEX * GGS_inputJokerActualParameterForGeneration::t
 elementOf_GGS_actualParameterListForGeneration::
 elementOf_GGS_actualParameterListForGeneration (const GGS_actualParameterForGeneration & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mActualParameter (argument_0) {
 }
 
@@ -12999,7 +12999,7 @@ elementOf_GGS_actualInputParameterListForGeneration::
 elementOf_GGS_actualInputParameterListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mActualParameterTypeName (argument_0),
 mActualParameterName (argument_1) {
 }
@@ -13767,7 +13767,7 @@ const C_galgas_type_descriptorEX * GGS_semanticInstructionForGeneration::typeDes
 elementOf_GGS_semanticInstructionListForGeneration::
 elementOf_GGS_semanticInstructionListForGeneration (const GGS_semanticInstructionForGeneration & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mInstruction (argument_0) {
 }
 
@@ -14363,13 +14363,13 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticDeclarationSortedLi
 
 //---------------------------------------------------------------------------*
 
-GGS_semanticDeclarationSortedListForGeneration::GGS_semanticDeclarationSortedListForGeneration (void): AC_galgas_sortedlist () { // Default Constructor
+GGS_semanticDeclarationSortedListForGeneration::GGS_semanticDeclarationSortedListForGeneration (void): AC_GGS_sortedlist () { // Default Constructor
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_semanticDeclarationSortedListForGeneration::
-GGS_semanticDeclarationSortedListForGeneration (const GGS_semanticDeclarationSortedListForGeneration & inSource): AC_galgas_sortedlist (inSource) {
+GGS_semanticDeclarationSortedListForGeneration (const GGS_semanticDeclarationSortedListForGeneration & inSource): AC_GGS_sortedlist (inSource) {
 }
 
 //---------------------------------------------------------------------------*
@@ -14640,7 +14640,7 @@ const C_galgas_type_descriptorEX * GGS_semanticDeclarationSortedListForGeneratio
 elementOf_GGS_semanticDeclarationListForGeneration::
 elementOf_GGS_semanticDeclarationListForGeneration (const GGS_semanticDeclarationForGeneration & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSemanticDeclaration (argument_0) {
 }
 
@@ -18943,7 +18943,7 @@ const C_galgas_type_descriptorEX * GGS_foreachInstructionEnumeratedConstantForGe
 elementOf_GGS_foreachInstructionEnumeratedObjectElementListForGeneration::
 elementOf_GGS_foreachInstructionEnumeratedObjectElementListForGeneration (const GGS_foreachInstructionEnumeratedObjectElementForGeneration & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mElement (argument_0) {
 }
 
@@ -19327,7 +19327,7 @@ elementOf_GGS_foreachInstructionEnumeratedObjectListForGeneration (const GGS_boo
                                 const GGS_bool& argument_3,
                                 const GGS_lstring & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mIsAscending (argument_0),
 mEnumeratedExpression (argument_1),
 mElementList (argument_2),
@@ -20297,7 +20297,7 @@ elementOf_GGS_ifBranchListForGeneration::
 elementOf_GGS_ifBranchListForGeneration (const GGS_semanticExpressionForGeneration & argument_0,
                                 const GGS_semanticInstructionListForGeneration & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mIFexpression (argument_0),
 mIFinstructionList (argument_1) {
 }
@@ -22360,7 +22360,7 @@ const C_galgas_type_descriptorEX * GGS_matchEntryForGeneration::typeDescriptor (
 elementOf_GGS_matchEntryListForGeneration::
 elementOf_GGS_matchEntryListForGeneration (const GGS_matchEntryForGeneration & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mEntry (argument_0) {
 }
 
@@ -23189,7 +23189,7 @@ elementOf_GGS_matchInstructionBranchListForGeneration::
 elementOf_GGS_matchInstructionBranchListForGeneration (const GGS_matchEntryListForGeneration & argument_0,
                                 const GGS_semanticInstructionListForGeneration & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMatchEntryList (argument_0),
 mMatchBranchInstructionList (argument_1) {
 }
@@ -23887,7 +23887,7 @@ elementOf_GGS_castInstructionBranchListForGeneration (const GGS_bool& argument_0
                                 const GGS_bool& argument_3,
                                 const GGS_semanticInstructionListForGeneration & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mUseKindOfClass (argument_0),
 mTypeName (argument_1),
 mConstantVarName (argument_2),
@@ -26783,7 +26783,7 @@ elementOf_GGS_logListForGeneration::
 elementOf_GGS_logListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_semanticExpressionForGeneration & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLogMessage (argument_0),
 mLogExpression (argument_1) {
 }
@@ -28056,7 +28056,7 @@ elementOf_GGS_switchBranchesForGeneration::
 elementOf_GGS_switchBranchesForGeneration (const GGS_lstringlist & argument_0,
                                 const GGS_semanticInstructionListForGeneration & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSwitchConstantList (argument_0),
 mInstructions (argument_1) {
 }
@@ -28980,7 +28980,7 @@ elementOf_GGS_abstracMultiMethodListForGeneration::
 elementOf_GGS_abstracMultiMethodListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_formalParameterListForGeneration & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAbstractCategoryMethodName (argument_0),
 mAbstractCategoryFormalParameterList (argument_1) {
 }
@@ -29643,7 +29643,7 @@ elementOf_GGS_multiMethodListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_formalParameterListForGeneration & argument_1,
                                 const GGS_semanticInstructionListForGeneration & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mCategoryMethodName (argument_0),
 mCategoryFormalParameterList (argument_1),
 mRoutineInstructionList (argument_2) {
@@ -30372,7 +30372,7 @@ elementOf_GGS_overridingMultiMethodListForGeneration (const GGS_lstring & argume
                                 const GGS_formalParameterListForGeneration & argument_1,
                                 const GGS_semanticInstructionListForGeneration & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mOverridingCategoryMethodName (argument_0),
 mOverridingCategoryFormalParameterList (argument_1),
 mRoutineInstructionList (argument_2) {
@@ -31101,7 +31101,7 @@ elementOf_GGS_abstractMultiReaderListForGeneration (const GGS_lstring & argument
                                 const GGS_formalInputParameterListForGeneration & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAbstractCategoryReaderName (argument_0),
 mAbstractCategoryFormalInputParameterList (argument_1),
 mReturnedTypeName (argument_2) {
@@ -31832,7 +31832,7 @@ elementOf_GGS_multiReaderListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_3,
                                 const GGS_semanticInstructionListForGeneration & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mCategoryReaderName (argument_0),
 mReaderCategoryFormalInputParameterList (argument_1),
 mReturnedTypeName (argument_2),
@@ -32695,7 +32695,7 @@ elementOf_GGS_overridingMultiReaderListForGeneration (const GGS_lstring & argume
                                 const GGS_lstring & argument_3,
                                 const GGS_semanticInstructionListForGeneration & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mOverridingCategoryReaderName (argument_0),
 mOverridingReaderFormalInputParameterList (argument_1),
 mReturnedTypeName (argument_2),
@@ -33733,7 +33733,7 @@ elementOf_GGS_attributeInCollectionListForGeneration (const GGS_lstring & argume
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAttributeTypeName (argument_0),
 mAttributeName (argument_1),
 mFeatureList (argument_2) {
@@ -34470,7 +34470,7 @@ elementOf_GGS_mapMethodListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstring & argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMethodName (argument_0),
 mAlternateMethodName (argument_1),
 mErrorMessage (argument_2),
@@ -35634,7 +35634,7 @@ elementOf_GGS_abstractMethodDefinitionListForGeneration::
 elementOf_GGS_abstractMethodDefinitionListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_formalParameterListForGeneration & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMethodName (argument_0),
 mSignature (argument_1) {
 }
@@ -36081,7 +36081,7 @@ elementOf_GGS_overridenMethodDefinitionListForGeneration (const GGS_lstring & ar
                                 const GGS_formalParameterListForGeneration & argument_1,
                                 const GGS_semanticInstructionListForGeneration & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMethodName (argument_0),
 mSignature (argument_1),
 mInstructionList (argument_2) {
@@ -36593,7 +36593,7 @@ elementOf_GGS_methodDefinitionListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_formalParameterListForGeneration & argument_1,
                                 const GGS_semanticInstructionListForGeneration & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMethodName (argument_0),
 mSignature (argument_1),
 mInstructionList (argument_2) {
@@ -37104,7 +37104,7 @@ elementOf_GGS_classMessageDefinitionListForGeneration::
 elementOf_GGS_classMessageDefinitionListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMessageName (argument_0),
 mMessageValue (argument_1) {
 }
@@ -37551,7 +37551,7 @@ elementOf_GGS_lazyAttributeListForGeneration (const GGS_location & argument_0,
                                 const GGS_attributeInCollectionListForGeneration & argument_1,
                                 const GGS_semanticInstructionListForGeneration & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLocationMagicNumber (argument_0),
 mAttributeList (argument_1),
 mInstructionList (argument_2) {
@@ -38914,7 +38914,7 @@ elementOf_GGS_sortedListSortDescriptorListForGeneration::
 elementOf_GGS_sortedListSortDescriptorListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSortedAttributeName (argument_0),
 mAscending (argument_1) {
 }
@@ -39604,7 +39604,7 @@ elementOf_GGS_enumMessageAssociationListForGeneration::
 elementOf_GGS_enumMessageAssociationListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mConstantName (argument_0),
 mMessage (argument_1) {
 }
@@ -40050,7 +40050,7 @@ elementOf_GGS_enumMessageListForGeneration::
 elementOf_GGS_enumMessageListForGeneration (const GGS_lstring & argument_0,
                                 const GGS_enumMessageAssociationListForGeneration & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mEnumMessageName (argument_0),
 mMessageAssociationList (argument_1) {
 }
@@ -40741,7 +40741,7 @@ elementOf_GGS_filewrapperTemplateListForGeneration (const GGS_lstring & argument
                                 const GGS_lstring & argument_1,
                                 const GGS_formalInputParameterListForGeneration & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mFilewrapperTemplateName (argument_0),
 mFilewrapperTemplatePath (argument_1),
 mFilewrapperTemplateFormalInputParameters (argument_2) {

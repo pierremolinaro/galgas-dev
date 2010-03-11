@@ -54,7 +54,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_programRuleList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_programRuleList : public AC_galgas_list {
+class GGS_programRuleList : public AC_GGS_list {
   public : typedef elementOf_GGS_programRuleList cElement ;
 
 //--- Constructor 'emptyList'
@@ -224,10 +224,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_programComponentRoot
 
 //---------------------------------------------------------------------------*
 
-class GGS_programComponentRoot : public AC_galgas_class {
+class GGS_programComponentRoot : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_programComponentRoot (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_programComponentRoot (const cPtr__AC_galgas_class * inPointer) ;
@@ -305,7 +305,7 @@ extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__programComponentRoot
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_programRuleList : public AC_galgas_list::cListElement {
+class elementOf_GGS_programRuleList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mSourceFileExtension ;
   public : GGS_lstring  mSourceFileHelp ;

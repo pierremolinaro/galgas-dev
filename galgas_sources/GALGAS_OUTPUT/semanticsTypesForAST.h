@@ -294,10 +294,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticExpressionAS
 
 //---------------------------------------------------------------------------*
 
-class GGS_semanticExpressionAST : public AC_galgas_class {
+class GGS_semanticExpressionAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_semanticExpressionAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_semanticExpressionAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -367,7 +367,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticExpressionLi
 
 //---------------------------------------------------------------------------*
 
-class GGS_semanticExpressionListAST : public AC_galgas_list {
+class GGS_semanticExpressionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_semanticExpressionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -486,10 +486,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_outSemanticExpressio
 
 //---------------------------------------------------------------------------*
 
-class GGS_outSemanticExpressionListAST : public AC_galgas_class {
+class GGS_outSemanticExpressionListAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_outSemanticExpressionListAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_outSemanticExpressionListAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -3765,7 +3765,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalParameterListA
 
 //---------------------------------------------------------------------------*
 
-class GGS_formalParameterListAST : public AC_galgas_list {
+class GGS_formalParameterListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_formalParameterListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -3939,7 +3939,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalInputParameter
 
 //---------------------------------------------------------------------------*
 
-class GGS_formalInputParameterListAST : public AC_galgas_list {
+class GGS_formalInputParameterListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_formalInputParameterListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -4092,10 +4092,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualParameterAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_actualParameterAST : public AC_galgas_class {
+class GGS_actualParameterAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_actualParameterAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_actualParameterAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -4455,7 +4455,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualParameterListA
 
 //---------------------------------------------------------------------------*
 
-class GGS_actualParameterListAST : public AC_galgas_list {
+class GGS_actualParameterListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_actualParameterListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -4578,7 +4578,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_actualInputParameter
 
 //---------------------------------------------------------------------------*
 
-class GGS_actualInputParameterListAST : public AC_galgas_list {
+class GGS_actualInputParameterListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_actualInputParameterListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -4714,10 +4714,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxInstructionAST
 
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxInstructionAST : public AC_galgas_class {
+class GGS_syntaxInstructionAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_syntaxInstructionAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_syntaxInstructionAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -4853,7 +4853,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticInstructionL
 
 //---------------------------------------------------------------------------*
 
-class GGS_semanticInstructionListAST : public AC_galgas_list {
+class GGS_semanticInstructionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_semanticInstructionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -4972,10 +4972,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticDeclarationA
 
 //---------------------------------------------------------------------------*
 
-class GGS_semanticDeclarationAST : public AC_galgas_class {
+class GGS_semanticDeclarationAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_semanticDeclarationAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_semanticDeclarationAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -5045,7 +5045,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticDeclarationL
 
 //---------------------------------------------------------------------------*
 
-class GGS_semanticDeclarationListAST : public AC_galgas_list {
+class GGS_semanticDeclarationListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_semanticDeclarationListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -6230,10 +6230,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstructionEn
 
 //---------------------------------------------------------------------------*
 
-class GGS_foreachInstructionEnumeratedObjectElementAST : public AC_galgas_class {
+class GGS_foreachInstructionEnumeratedObjectElementAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_foreachInstructionEnumeratedObjectElementAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_foreachInstructionEnumeratedObjectElementAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -6447,7 +6447,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstructionEn
 
 //---------------------------------------------------------------------------*
 
-class GGS_foreachInstructionEnumeratedObjectElementListAST : public AC_galgas_list {
+class GGS_foreachInstructionEnumeratedObjectElementListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_foreachInstructionEnumeratedObjectElementListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -6570,7 +6570,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_foreachInstructionEn
 
 //---------------------------------------------------------------------------*
 
-class GGS_foreachInstructionEnumeratedObjectListAST : public AC_galgas_list {
+class GGS_foreachInstructionEnumeratedObjectListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_foreachInstructionEnumeratedObjectListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -6846,7 +6846,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_ifBranchListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_ifBranchListAST : public AC_galgas_list {
+class GGS_ifBranchListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_ifBranchListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -7440,10 +7440,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_matchEntryAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_matchEntryAST : public AC_galgas_class {
+class GGS_matchEntryAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_matchEntryAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_matchEntryAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -7513,7 +7513,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_matchEntryListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_matchEntryListAST : public AC_galgas_list {
+class GGS_matchEntryListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_matchEntryListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -7784,7 +7784,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_matchInstructionBran
 
 //---------------------------------------------------------------------------*
 
-class GGS_matchInstructionBranchListAST : public AC_galgas_list {
+class GGS_matchInstructionBranchListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_matchInstructionBranchListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -8001,7 +8001,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_castInstructionBranc
 
 //---------------------------------------------------------------------------*
 
-class GGS_castInstructionBranchListAST : public AC_galgas_list {
+class GGS_castInstructionBranchListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_castInstructionBranchListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -8188,10 +8188,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_elseOrDefaultForCast
 
 //---------------------------------------------------------------------------*
 
-class GGS_elseOrDefaultForCastInstructionAST : public AC_galgas_class {
+class GGS_elseOrDefaultForCastInstructionAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_elseOrDefaultForCastInstructionAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_elseOrDefaultForCastInstructionAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -8938,7 +8938,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_logListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_logListAST : public AC_galgas_list {
+class GGS_logListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_logListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -9317,7 +9317,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_switchBranchesAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_switchBranchesAST : public AC_galgas_list {
+class GGS_switchBranchesAST : public AC_GGS_list {
   public : typedef elementOf_GGS_switchBranchesAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -9609,7 +9609,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstracMultiMethodLi
 
 //---------------------------------------------------------------------------*
 
-class GGS_abstracMultiMethodListAST : public AC_galgas_list {
+class GGS_abstracMultiMethodListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_abstracMultiMethodListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -9745,7 +9745,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractMultiMethodL
 
 //---------------------------------------------------------------------------*
 
-class GGS_abstractMultiMethodListMapAST : public AC_galgas_listmap {
+class GGS_abstractMultiMethodListMapAST : public AC_GGS_listmap {
 //--- Node class
   public : class cElement : public cPtrListMapObject {
  //--- List attribute
@@ -9827,7 +9827,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_multiMethodListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_multiMethodListAST : public AC_galgas_list {
+class GGS_multiMethodListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_multiMethodListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -9980,7 +9980,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_multiMethodListMapAS
 
 //---------------------------------------------------------------------------*
 
-class GGS_multiMethodListMapAST : public AC_galgas_listmap {
+class GGS_multiMethodListMapAST : public AC_GGS_listmap {
 //--- Node class
   public : class cElement : public cPtrListMapObject {
  //--- List attribute
@@ -10063,7 +10063,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridingMultiMetho
 
 //---------------------------------------------------------------------------*
 
-class GGS_overridingMultiMethodListAST : public AC_galgas_list {
+class GGS_overridingMultiMethodListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_overridingMultiMethodListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -10216,7 +10216,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridingMultiMetho
 
 //---------------------------------------------------------------------------*
 
-class GGS_overridingMultiMethodListMapAST : public AC_galgas_listmap {
+class GGS_overridingMultiMethodListMapAST : public AC_GGS_listmap {
 //--- Node class
   public : class cElement : public cPtrListMapObject {
  //--- List attribute
@@ -10299,7 +10299,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractMultiReaderL
 
 //---------------------------------------------------------------------------*
 
-class GGS_abstractMultiReaderListAST : public AC_galgas_list {
+class GGS_abstractMultiReaderListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_abstractMultiReaderListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -10452,7 +10452,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractMultiReaderL
 
 //---------------------------------------------------------------------------*
 
-class GGS_abstractMultiReaderListMapAST : public AC_galgas_listmap {
+class GGS_abstractMultiReaderListMapAST : public AC_GGS_listmap {
 //--- Node class
   public : class cElement : public cPtrListMapObject {
  //--- List attribute
@@ -10535,7 +10535,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_multiReaderListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_multiReaderListAST : public AC_galgas_list {
+class GGS_multiReaderListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_multiReaderListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -10722,7 +10722,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_multiReaderListMapAS
 
 //---------------------------------------------------------------------------*
 
-class GGS_multiReaderListMapAST : public AC_galgas_listmap {
+class GGS_multiReaderListMapAST : public AC_GGS_listmap {
 //--- Node class
   public : class cElement : public cPtrListMapObject {
  //--- List attribute
@@ -10807,7 +10807,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridingMultiReade
 
 //---------------------------------------------------------------------------*
 
-class GGS_overridingMultiReaderListAST : public AC_galgas_list {
+class GGS_overridingMultiReaderListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_overridingMultiReaderListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -10994,7 +10994,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridingMultiReade
 
 //---------------------------------------------------------------------------*
 
-class GGS_overridingMultiReaderListMapAST : public AC_galgas_listmap {
+class GGS_overridingMultiReaderListMapAST : public AC_GGS_listmap {
 //--- Node class
   public : class cElement : public cPtrListMapObject {
  //--- List attribute
@@ -11079,7 +11079,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_attributeInCollectio
 
 //---------------------------------------------------------------------------*
 
-class GGS_attributeInCollectionListAST : public AC_galgas_list {
+class GGS_attributeInCollectionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_attributeInCollectionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -11293,7 +11293,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_mapMethodListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_mapMethodListAST : public AC_galgas_list {
+class GGS_mapMethodListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_mapMethodListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -11625,7 +11625,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractMethodDefini
 
 //---------------------------------------------------------------------------*
 
-class GGS_abstractMethodDefinitionListAST : public AC_galgas_list {
+class GGS_abstractMethodDefinitionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_abstractMethodDefinitionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -11765,7 +11765,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_overridenMethodDefin
 
 //---------------------------------------------------------------------------*
 
-class GGS_overridenMethodDefinitionListAST : public AC_galgas_list {
+class GGS_overridenMethodDefinitionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_overridenMethodDefinitionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -11922,7 +11922,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_methodDefinitionList
 
 //---------------------------------------------------------------------------*
 
-class GGS_methodDefinitionListAST : public AC_galgas_list {
+class GGS_methodDefinitionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_methodDefinitionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -12079,7 +12079,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classMessageDefiniti
 
 //---------------------------------------------------------------------------*
 
-class GGS_classMessageDefinitionListAST : public AC_galgas_list {
+class GGS_classMessageDefinitionListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_classMessageDefinitionListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -12219,7 +12219,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_lazyAttributeListAST
 
 //---------------------------------------------------------------------------*
 
-class GGS_lazyAttributeListAST : public AC_galgas_list {
+class GGS_lazyAttributeListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_lazyAttributeListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -12616,7 +12616,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sortedListSortDescri
 
 //---------------------------------------------------------------------------*
 
-class GGS_sortedListSortDescriptorListAST : public AC_galgas_list {
+class GGS_sortedListSortDescriptorListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_sortedListSortDescriptorListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -12832,7 +12832,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumMessageAssociati
 
 //---------------------------------------------------------------------------*
 
-class GGS_enumMessageAssociationListAST : public AC_galgas_list {
+class GGS_enumMessageAssociationListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_enumMessageAssociationListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -12972,7 +12972,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumMessageListAST ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_enumMessageListAST : public AC_galgas_list {
+class GGS_enumMessageListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_enumMessageListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -13188,7 +13188,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperTemplateL
 
 //---------------------------------------------------------------------------*
 
-class GGS_filewrapperTemplateListAST : public AC_galgas_list {
+class GGS_filewrapperTemplateListAST : public AC_GGS_list {
   public : typedef elementOf_GGS_filewrapperTemplateListAST cElement ;
 
 //--- Constructor 'emptyList'
@@ -13419,10 +13419,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_semanticsComponentAS
 
 //---------------------------------------------------------------------------*
 
-class GGS_semanticsComponentAST : public AC_galgas_class {
+class GGS_semanticsComponentAST : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_semanticsComponentAST (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_semanticsComponentAST (const cPtr__AC_galgas_class * inPointer) ;
@@ -13520,7 +13520,7 @@ class cPtr_semanticExpressionAST : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_semanticExpressionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_semanticExpressionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_semanticExpressionAST  mExpression ;
 //--- Constructor
@@ -15099,7 +15099,7 @@ class cPtr_filewrapperTemplateInExpressionAST : public cPtr_semanticExpressionAS
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_formalParameterListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_formalParameterListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_formalArgumentPassingModeAST mFormalParameterPassingMode ;
   public : GGS_lstring  mFormalParameterTypeName ;
@@ -15137,7 +15137,7 @@ class elementOf_GGS_formalParameterListAST : public AC_galgas_list::cListElement
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_formalInputParameterListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_formalInputParameterListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mFormalParameterTypeName ;
   public : GGS_lstring  mFormalParameterName ;
@@ -15332,7 +15332,7 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_actualParameterListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_actualParameterListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_actualParameterAST  mActualParameter ;
 //--- Constructor
@@ -15364,7 +15364,7 @@ class elementOf_GGS_actualParameterListAST : public AC_galgas_list::cListElement
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_actualInputParameterListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_actualInputParameterListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mActualParameterTypeName ;
   public : GGS_lstring  mActualParameterName ;
@@ -15450,7 +15450,7 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_semanticInstructionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_semanticInstructionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_semanticInstructionAST  mInstruction ;
 //--- Constructor
@@ -15506,7 +15506,7 @@ class cPtr_semanticDeclarationAST : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_semanticDeclarationListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_semanticDeclarationListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_semanticDeclarationAST  mSemanticDeclaration ;
 //--- Constructor
@@ -16161,7 +16161,7 @@ class cPtr_foreachInstructionEnumeratedConstantAST : public cPtr_foreachInstruct
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_foreachInstructionEnumeratedObjectElementListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_foreachInstructionEnumeratedObjectElementListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_foreachInstructionEnumeratedObjectElementAST  mElement ;
 //--- Constructor
@@ -16193,7 +16193,7 @@ class elementOf_GGS_foreachInstructionEnumeratedObjectElementListAST : public AC
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_foreachInstructionEnumeratedObjectListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_foreachInstructionEnumeratedObjectListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_bool mIsAscending ;
   public : GGS_semanticExpressionAST  mEnumeratedExpression ;
@@ -16280,7 +16280,7 @@ class cPtr_foreachInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_ifBranchListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_ifBranchListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_semanticExpressionAST  mIFexpression ;
   public : GGS_semanticInstructionListAST  mIFinstructionList ;
@@ -16568,7 +16568,7 @@ class cPtr_matchEntryAST : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_matchEntryListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_matchEntryListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_matchEntryAST  mEntry ;
 //--- Constructor
@@ -16672,7 +16672,7 @@ class cPtr_classMatchEntryAST : public cPtr_matchEntryAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_matchInstructionBranchListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_matchInstructionBranchListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_matchEntryListAST  mMatchEntryList ;
   public : GGS_semanticInstructionListAST  mMatchBranchInstructionList ;
@@ -16745,7 +16745,7 @@ class cPtr_matchInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_castInstructionBranchListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_castInstructionBranchListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_bool mUseKindOfClass ;
   public : GGS_lstring  mTypeName ;
@@ -17144,7 +17144,7 @@ class cPtr_messageInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_logListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_logListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mLogMessage ;
   public : GGS_semanticExpressionAST  mLogExpression ;
@@ -17303,7 +17303,7 @@ class cPtr_withInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_switchBranchesAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_switchBranchesAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstringlist  mSwitchConstantList ;
   public : GGS_semanticInstructionListAST  mInstructions ;
@@ -17413,7 +17413,7 @@ class cPtr_typeMethodInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_abstracMultiMethodListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_abstracMultiMethodListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mAbstractCategoryMethodName ;
   public : GGS_formalParameterListAST  mAbstractCategoryFormalParameterList ;
@@ -17447,7 +17447,7 @@ class elementOf_GGS_abstracMultiMethodListAST : public AC_galgas_list::cListElem
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_multiMethodListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_multiMethodListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mCategoryMethodName ;
   public : GGS_formalParameterListAST  mCategoryFormalParameterList ;
@@ -17483,7 +17483,7 @@ class elementOf_GGS_multiMethodListAST : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_overridingMultiMethodListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_overridingMultiMethodListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mOverridingCategoryMethodName ;
   public : GGS_formalParameterListAST  mOverridingCategoryFormalParameterList ;
@@ -17519,7 +17519,7 @@ class elementOf_GGS_overridingMultiMethodListAST : public AC_galgas_list::cListE
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_abstractMultiReaderListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_abstractMultiReaderListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mAbstractCategoryReaderName ;
   public : GGS_formalInputParameterListAST  mAbstractCategoryFormalInputParameterList ;
@@ -17555,7 +17555,7 @@ class elementOf_GGS_abstractMultiReaderListAST : public AC_galgas_list::cListEle
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_multiReaderListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_multiReaderListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mCategoryReaderName ;
   public : GGS_formalInputParameterListAST  mReaderCategoryFormalInputParameterList ;
@@ -17595,7 +17595,7 @@ class elementOf_GGS_multiReaderListAST : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_overridingMultiReaderListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_overridingMultiReaderListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mOverridingCategoryReaderName ;
   public : GGS_formalInputParameterListAST  mOverridingReaderFormalInputParameterList ;
@@ -17733,7 +17733,7 @@ class GGS_semanticDeclarationStructAST : public GGS__root {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_attributeInCollectionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_attributeInCollectionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mAttributeTypeName ;
   public : GGS_lstring  mAttributeName ;
@@ -17803,7 +17803,7 @@ class cPtr_listmapDeclarationAST : public cPtr_semanticDeclarationAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_mapMethodListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_mapMethodListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_lstring  mAlternateMethodName ;
@@ -17923,7 +17923,7 @@ class cPtr_mapindexDeclarationAST : public cPtr_semanticDeclarationAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_abstractMethodDefinitionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_abstractMethodDefinitionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_formalParameterListAST  mSignature ;
@@ -17957,7 +17957,7 @@ class elementOf_GGS_abstractMethodDefinitionListAST : public AC_galgas_list::cLi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_overridenMethodDefinitionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_overridenMethodDefinitionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_formalParameterListAST  mSignature ;
@@ -17993,7 +17993,7 @@ class elementOf_GGS_overridenMethodDefinitionListAST : public AC_galgas_list::cL
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_methodDefinitionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_methodDefinitionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_formalParameterListAST  mSignature ;
@@ -18029,7 +18029,7 @@ class elementOf_GGS_methodDefinitionListAST : public AC_galgas_list::cListElemen
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_classMessageDefinitionListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_classMessageDefinitionListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mMessageName ;
   public : GGS_lstring  mMessageValue ;
@@ -18063,7 +18063,7 @@ class elementOf_GGS_classMessageDefinitionListAST : public AC_galgas_list::cList
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_lazyAttributeListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lazyAttributeListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_location  mLocationMagicNumber ;
   public : GGS_attributeInCollectionListAST  mAttributeList ;
@@ -18225,7 +18225,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_sortedListSortDescriptorListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_sortedListSortDescriptorListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mSortedAttributeName ;
   public : GGS_bool mAscending ;
@@ -18297,7 +18297,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_enumMessageAssociationListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_enumMessageAssociationListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mConstantName ;
   public : GGS_lstring  mMessage ;
@@ -18331,7 +18331,7 @@ class elementOf_GGS_enumMessageAssociationListAST : public AC_galgas_list::cList
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_enumMessageListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_enumMessageListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mEnumMessageName ;
   public : GGS_enumMessageAssociationListAST  mMessageAssociationList ;
@@ -18403,7 +18403,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_filewrapperTemplateListAST : public AC_galgas_list::cListElement {
+class elementOf_GGS_filewrapperTemplateListAST : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mFilewrapperTemplateName ;
   public : GGS_lstring  mFilewrapperTemplatePath ;

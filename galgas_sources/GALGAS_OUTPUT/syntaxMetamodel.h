@@ -76,7 +76,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxInstructionLis
 
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxInstructionList : public AC_galgas_list {
+class GGS_syntaxInstructionList : public AC_GGS_list {
   public : typedef elementOf_GGS_syntaxInstructionList cElement ;
 
 //--- Constructor 'emptyList'
@@ -199,7 +199,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonTerminalLabelList
 
 //---------------------------------------------------------------------------*
 
-class GGS_nonTerminalLabelList : public AC_galgas_list {
+class GGS_nonTerminalLabelList : public AC_GGS_list {
   public : typedef elementOf_GGS_nonTerminalLabelList cElement ;
 
 //--- Constructor 'emptyList'
@@ -339,7 +339,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonterminalDeclarati
 
 //---------------------------------------------------------------------------*
 
-class GGS_nonterminalDeclarationList : public AC_galgas_list {
+class GGS_nonterminalDeclarationList : public AC_GGS_list {
   public : typedef elementOf_GGS_nonterminalDeclarationList cElement ;
 
 //--- Constructor 'emptyList'
@@ -496,7 +496,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxRuleLabelList 
 
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxRuleLabelList : public AC_galgas_list {
+class GGS_syntaxRuleLabelList : public AC_GGS_list {
   public : typedef elementOf_GGS_syntaxRuleLabelList cElement ;
 
 //--- Constructor 'emptyList'
@@ -653,7 +653,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxRuleList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxRuleList : public AC_galgas_list {
+class GGS_syntaxRuleList : public AC_GGS_list {
   public : typedef elementOf_GGS_syntaxRuleList cElement ;
 
 //--- Constructor 'emptyList'
@@ -945,7 +945,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_listOfSyntaxInstruct
 
 //---------------------------------------------------------------------------*
 
-class GGS_listOfSyntaxInstructionList : public AC_galgas_list {
+class GGS_listOfSyntaxInstructionList : public AC_GGS_list {
   public : typedef elementOf_GGS_listOfSyntaxInstructionList cElement ;
 
 //--- Constructor 'emptyList'
@@ -1366,7 +1366,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_whenBranchList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_whenBranchList : public AC_galgas_list {
+class GGS_whenBranchList : public AC_GGS_list {
   public : typedef elementOf_GGS_whenBranchList cElement ;
 
 //--- Constructor 'emptyList'
@@ -1658,10 +1658,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxComponentRoot 
 
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxComponentRoot : public AC_galgas_class {
+class GGS_syntaxComponentRoot : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_syntaxComponentRoot (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_syntaxComponentRoot (const cPtr__AC_galgas_class * inPointer) ;
@@ -1737,7 +1737,7 @@ extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__syntaxComponentRoot 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_syntaxInstructionList : public AC_galgas_list::cListElement {
+class elementOf_GGS_syntaxInstructionList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_syntaxInstructionAST  mInstruction ;
 //--- Constructor
@@ -1769,7 +1769,7 @@ class elementOf_GGS_syntaxInstructionList : public AC_galgas_list::cListElement 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_nonTerminalLabelList : public AC_galgas_list::cListElement {
+class elementOf_GGS_nonTerminalLabelList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mLabelName ;
   public : GGS_formalParameterListAST  mFormalParameters ;
@@ -1803,7 +1803,7 @@ class elementOf_GGS_nonTerminalLabelList : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_nonterminalDeclarationList : public AC_galgas_list::cListElement {
+class elementOf_GGS_nonterminalDeclarationList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mNonterminalName ;
   public : GGS_nonTerminalLabelList  mLabels ;
@@ -1839,7 +1839,7 @@ class elementOf_GGS_nonterminalDeclarationList : public AC_galgas_list::cListEle
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_syntaxRuleLabelList : public AC_galgas_list::cListElement {
+class elementOf_GGS_syntaxRuleLabelList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mLabelName ;
   public : GGS_formalParameterListAST  mFormalParameters ;
@@ -1875,7 +1875,7 @@ class elementOf_GGS_syntaxRuleLabelList : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_syntaxRuleList : public AC_galgas_list::cListElement {
+class elementOf_GGS_syntaxRuleList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mNonterminalName ;
   public : GGS_syntaxRuleLabelList  mLabelList ;
@@ -1985,7 +1985,7 @@ class cPtr_terminalCheckInstruction : public cPtr_syntaxInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_listOfSyntaxInstructionList : public AC_galgas_list::cListElement {
+class elementOf_GGS_listOfSyntaxInstructionList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_syntaxInstructionList  mSyntaxInstructionList ;
 //--- Constructor
@@ -2163,7 +2163,7 @@ class cPtr_parseLoopInstruction : public cPtr_syntaxInstructionAST {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_whenBranchList : public AC_galgas_list::cListElement {
+class elementOf_GGS_whenBranchList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_semanticExpressionAST  mWhenExpression ;
   public : GGS_syntaxInstructionList  mParseDoBranchList ;

@@ -52,7 +52,7 @@ elementOf_GGS_guiSimpleAttributeListAST::
 elementOf_GGS_guiSimpleAttributeListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mKey (argument_0),
 mValue (argument_1) {
 }
@@ -499,7 +499,7 @@ elementOf_GGS_guiCompoundAttributeListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mKey (argument_0),
 mAttributeName (argument_1),
 mValue (argument_2) {
@@ -1010,7 +1010,7 @@ elementOf_GGS_guiLabelListAST::
 elementOf_GGS_guiLabelListAST (const GGS_lstringlist & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mTerminalList (argument_0),
 mLocation (argument_1) {
 }
@@ -1458,7 +1458,7 @@ elementOf_GGS_withLexiqueListAST (const GGS_lstring & argument_0,
                                 const GGS_guiSimpleAttributeListAST & argument_2,
                                 const GGS_guiCompoundAttributeListAST & argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexiqueFileName (argument_0),
 mLabels (argument_1),
 mSimpleAttributes (argument_2),

@@ -52,7 +52,7 @@ elementOf_GGS_XcodeObjectReferenceList::
 elementOf_GGS_XcodeObjectReferenceList (const GGS_string& argument_0,
                                 const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mRefString (argument_0),
 mComment (argument_1) {
 }
@@ -4787,7 +4787,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_PBXBuildFile::typeDescriptor (void)
 elementOf_GGS_Xcode_PBXBuildFile_list::
 elementOf_GGS_Xcode_PBXBuildFile_list (const GGS_Xcode_PBXBuildFile & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mFile (argument_0) {
 }
 
@@ -5454,7 +5454,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_PBXSourcesBuildPhase::typeDescripto
 elementOf_GGS_Xcode_PBXSourcesBuildPhase_list::
 elementOf_GGS_Xcode_PBXSourcesBuildPhase_list (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mBuildPhase (argument_0) {
 }
 
@@ -6121,7 +6121,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_PBXResourcesBuildPhase::typeDescrip
 elementOf_GGS_Xcode_PBXResourcesBuildPhase_list::
 elementOf_GGS_Xcode_PBXResourcesBuildPhase_list (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mBuildPhase (argument_0) {
 }
 
@@ -6816,7 +6816,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_PBXFrameworksBuildPhase::typeDescri
 elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list::
 elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mBuildPhase (argument_0) {
 }
 
@@ -7503,7 +7503,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_PBXGroup::typeDescriptor (void) con
 elementOf_GGS_Xcode_PBXGroup_list::
 elementOf_GGS_Xcode_PBXGroup_list (const GGS_Xcode_PBXGroup & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mGroup (argument_0) {
 }
 
@@ -8203,7 +8203,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_XCBuildConfiguration::typeDescripto
 elementOf_GGS_Xcode_XCBuildConfiguration_list::
 elementOf_GGS_Xcode_XCBuildConfiguration_list (const GGS_Xcode_XCBuildConfiguration & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mBuildConfig (argument_0) {
 }
 
@@ -8590,7 +8590,7 @@ elementOf_GGS_Xcode_PBXNativeTarget_list (const GGS_string& argument_0,
                                 const GGS_stringlist & argument_6,
                                 const GGS_stringlist & argument_7
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mTargetKey (argument_0),
 mTargetName (argument_1),
 mTargetConfiguration (argument_2),
@@ -9692,7 +9692,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_targetDependencyDescription::typeDe
 elementOf_GGS_Xcode_targetDependencyDescription_list::
 elementOf_GGS_Xcode_targetDependencyDescription_list (const GGS_Xcode_targetDependencyDescription & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mDependency (argument_0) {
 }
 
@@ -10074,7 +10074,7 @@ elementOf_GGS_Xcode_PBXVariantGroup_list (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_string& argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mPBXVariantKey (argument_0),
 mPBXFileReferenceKey (argument_1),
 mName (argument_2) {

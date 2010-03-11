@@ -56,7 +56,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_routineMapEX ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_routineMapEX : public AC_galgas_map {
+class GGS_routineMapEX : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_routineMapEX cElement ;
 
@@ -165,7 +165,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_functionMapEX ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_functionMapEX : public AC_galgas_map {
+class GGS_functionMapEX : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_functionMapEX cElement ;
 
@@ -279,7 +279,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperTemplateM
 
 //---------------------------------------------------------------------------*
 
-class GGS_filewrapperTemplateMapEXX : public AC_galgas_map {
+class GGS_filewrapperTemplateMapEXX : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_filewrapperTemplateMapEXX cElement ;
 
@@ -393,7 +393,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperMapEXX ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_filewrapperMapEXX : public AC_galgas_map {
+class GGS_filewrapperMapEXX : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_filewrapperMapEXX cElement ;
 
@@ -514,7 +514,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classIndexListEX ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_classIndexListEX : public AC_galgas_list {
+class GGS_classIndexListEX : public AC_GGS_list {
   public : typedef elementOf_GGS_classIndexListEX cElement ;
 
 //--- Constructor 'emptyList'
@@ -633,7 +633,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_descendantClassListM
 
 //---------------------------------------------------------------------------*
 
-class GGS_descendantClassListMapEX : public AC_galgas_listmap {
+class GGS_descendantClassListMapEX : public AC_GGS_listmap {
 //--- Node class
   public : class cElement : public cPtrListMapObject {
  //--- List attribute
@@ -842,7 +842,7 @@ class elementOf_GGS_filewrapperMapEXX : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_classIndexListEX : public AC_galgas_list::cListElement {
+class elementOf_GGS_classIndexListEX : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_typeMapIndex  mClassMapindex ;
 //--- Constructor

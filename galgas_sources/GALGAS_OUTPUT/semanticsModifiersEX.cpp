@@ -52,7 +52,7 @@ elementOf_GGS_formalParameterSignatureEXX::
 elementOf_GGS_formalParameterSignatureEXX (const GGS_ACGalgasType & argument_0,
                                 const GGS_formalArgumentPassingModeAST& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mParameterType (argument_0),
 mFormalParameterPassingMode (argument_1) {
 }

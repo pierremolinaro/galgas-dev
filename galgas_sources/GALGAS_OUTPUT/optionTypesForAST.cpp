@@ -180,7 +180,7 @@ elementOf_GGS_commandLineOptionListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_5,
                                 const GGS_optionDefaultValueEnumAST& argument_6
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mOptionTypeName (argument_0),
 mOptionInternalName (argument_1),
 mOptionInvocationLetter (argument_2),

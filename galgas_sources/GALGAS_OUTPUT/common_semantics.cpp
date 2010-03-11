@@ -974,7 +974,7 @@ const C_galgas_type_descriptorEX * GGS_typeInstruction::typeDescriptor (void) co
 elementOf_GGS_typeInstructionList::
 elementOf_GGS_typeInstructionList (const GGS_typeInstruction & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mInstruction (argument_0) {
 }
 
@@ -1354,7 +1354,7 @@ const C_galgas_type_descriptorEX * GGS_typeInstructionList::typeDescriptor (void
 elementOf_GGS_typeListModel::
 elementOf_GGS_typeListModel (const GGS_lstring & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mTypeName (argument_0) {
 }
 
@@ -12616,7 +12616,7 @@ elementOf_GGS_typeListeTypesEtNomsArgMethode (const GGS_AC_galgasType & argument
                                 const GGS_bool& argument_3,
                                 const GGS_lstring & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mType (argument_0),
 mFormalArgumentPassingMode (argument_1),
 mCppName (argument_2),
@@ -13603,7 +13603,7 @@ elementOf_GGS_typeListeAttributsSemantiques::
 elementOf_GGS_typeListeAttributsSemantiques (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAttributType (argument_0),
 mAttributeName (argument_1) {
 }
@@ -14049,7 +14049,7 @@ elementOf_GGS_typeTypesList::
 elementOf_GGS_typeTypesList (const GGS_AC_galgasType & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mType (argument_0),
 mEndOfExpressionLocation (argument_1) {
 }
@@ -14495,7 +14495,7 @@ elementOf_GGS_L_EXsignature::
 elementOf_GGS_L_EXsignature (const GGS_AC_galgasType & argument_0,
                                 const GGS_formalArgumentPassingModeAST& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mType (argument_0),
 mFormalArgumentPassingMode (argument_1) {
 }
@@ -16441,7 +16441,7 @@ elementOf_GGS_L_actualParametersSignature::
 elementOf_GGS_L_actualParametersSignature (const GGS_AC_galgasType & argument_0,
                                 const GGS_EXactualParametersPassingMode& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mType (argument_0),
 mFormalArgumentPassingMode (argument_1) {
 }
@@ -29303,7 +29303,7 @@ elementOf_GGS_insertOrSearchMethodList (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_2,
                                 const GGS_string& argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMethodName (argument_0),
 mErrorMessage (argument_1),
 mIsGetIndexMethod (argument_2),
@@ -36684,7 +36684,7 @@ elementOf_GGS_L_lazyAttributeList (const GGS_location & argument_0,
                                 const GGS_typeListeAttributsSemantiques & argument_1,
                                 const GGS_typeInstructionList & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLocationMagicNumber (argument_0),
 mComputedAttributeTypeAndNameList (argument_1),
 mInstructionList (argument_2) {
@@ -42522,7 +42522,7 @@ elementOf_GGS_labelForPopUpList (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_uint & argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mTerminal1 (argument_0),
 mTerminal1ID (argument_1),
 mTerminal2 (argument_2),
@@ -43098,7 +43098,7 @@ elementOf_GGS_EXtextMacroList::
 elementOf_GGS_EXtextMacroList (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mKey (argument_0),
 mContents (argument_1) {
 }
@@ -46733,7 +46733,7 @@ const C_galgas_type_descriptorEX * GGS_templateInstruction::typeDescriptor (void
 elementOf_GGS_templateInstructionList::
 elementOf_GGS_templateInstructionList (const GGS_templateInstruction & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mInstruction (argument_0) {
 }
 
@@ -48842,7 +48842,7 @@ elementOf_GGS_templateInstructionIfBranchList::
 elementOf_GGS_templateInstructionIfBranchList (const GGS_typeExpression & argument_0,
                                 const GGS_templateInstructionList & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mExpression (argument_0),
 mInstructionList (argument_1) {
 }

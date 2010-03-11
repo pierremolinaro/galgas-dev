@@ -62,7 +62,7 @@ elementOf_GGS_guiCommandLineOptionList (const GGS_string& argument_0,
                                 const GGS_string& argument_3,
                                 const GGS_string& argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mOptionComponent (argument_0),
 mOptionIdentifier (argument_1),
 mOptionChar (argument_2),
@@ -1064,7 +1064,7 @@ elementOf_GGS_nibAndClassList::
 elementOf_GGS_nibAndClassList (const GGS_string& argument_0,
                                 const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mNibName (argument_0),
 mClassName (argument_1) {
 }
@@ -1510,7 +1510,7 @@ elementOf_GGS_textMacroList::
 elementOf_GGS_textMacroList (const GGS_string& argument_0,
                                 const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mKey (argument_0),
 mContents (argument_1) {
 }
@@ -1959,7 +1959,7 @@ elementOf_GGS_importedLexiqueList (const GGS_string& argument_0,
                                 const GGS_textMacroList & argument_3,
                                 const GGS_guiLabelListAST & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexiqueClassName (argument_0),
 mBlockComment (argument_1),
 mTitle (argument_2),

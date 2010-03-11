@@ -124,7 +124,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_readerMapEXX ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_readerMapEXX : public AC_galgas_map {
+class GGS_readerMapEXX : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_readerMapEXX cElement ;
 

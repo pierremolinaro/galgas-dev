@@ -120,13 +120,24 @@ map @classMethodMap {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  E N U M E R A T I O N    L I S T                                         *
+#  E N U M E R A T I O N    D E S C R I P T O R    L I S T                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 list @enumerationDescriptorList {
   @unifiedTypeMapIndex mEnumeratedType ;
   @string mEnumerationName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E D    A T T R I B U T E    L I S T                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @typedAttributeList {
+  @unifiedTypeMapIndex mEnumeratedType ;
+  @lstring mAttributeName ;
 }
 
 #---------------------------------------------------------------------------*
