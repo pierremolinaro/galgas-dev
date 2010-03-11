@@ -1122,7 +1122,7 @@ override method @structDeclarationAST enterType
   foreach mAttributeList do
     @unifiedTypeMapIndex attributeTypeIndex ;
     [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
-    [!?readerMap insertKey
+    [!?readerMap insertOrReplace
       !mAttributeName
       ![@unifiedTypeMapIndexList emptyList]
       !false

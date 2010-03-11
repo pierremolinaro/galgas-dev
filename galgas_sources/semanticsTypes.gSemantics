@@ -70,6 +70,7 @@ map @readerMap {
   @string mImplicitConversionReader ;
   insert insertKey error message "the '%K' reader has been already defined" ;
   search searchKey error message "the '%K' reader is not declared" ;
+  insert or replace ;
 }
 
 #---------------------------------------------------------------------------*
