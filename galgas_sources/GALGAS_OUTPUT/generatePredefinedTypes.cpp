@@ -55,7 +55,7 @@ elementOf_GGS_builtinTypeAttributeList (const GGS_string& argument_0,
                                 const GGS_bool& argument_3,
                                 const GGS_string& argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mCppClassName (argument_0),
 mIsPointer (argument_1),
 mAttributeName (argument_2),

@@ -1847,7 +1847,7 @@ const C_galgas_type_descriptorEX * GGS_filewrapperMapEXX::typeDescriptor (void) 
 elementOf_GGS_classIndexListEX::
 elementOf_GGS_classIndexListEX (const GGS_typeMapIndex & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mClassMapindex (argument_0) {
 }
 

@@ -54,7 +54,7 @@ elementOf_GGS_programRuleList (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_semanticInstructionListAST & argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSourceFileExtension (argument_0),
 mSourceFileHelp (argument_1),
 mSourceFileVariableName (argument_2),

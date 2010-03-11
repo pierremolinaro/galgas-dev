@@ -147,7 +147,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (superClassName.length () > 0) {
     inHfile << " : public GGS_" << superClassName ;
   }else{
-    inHfile << " : public AC_galgas_class" ;
+    inHfile << " : public AC_GGS_class" ;
   }
   inHfile << " {\n" ;
 
@@ -157,7 +157,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (superClassName.length () > 0) {
     inHfile << "GGS_" << superClassName ;
   }else{
-    inHfile << "AC_galgas_class" ;
+    inHfile << "AC_GGS_class" ;
   }
   inHfile << " () {}\n\n" ;
 //--- Pointer assignment constructor

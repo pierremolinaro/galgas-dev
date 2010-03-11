@@ -567,7 +567,7 @@ elementOf_GGS_nonTerminalToAddList::
 elementOf_GGS_nonTerminalToAddList (const GGS_string& argument_0,
                                 const GGS_uint & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSyntaxComponentName (argument_0),
 mNonTerminalToAddCount (argument_1) {
 }

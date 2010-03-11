@@ -689,7 +689,7 @@ elementOf_GGS_enumerableTypeDescriptionList::
 elementOf_GGS_enumerableTypeDescriptionList (const GGS_ACGalgasType & argument_0,
                                 const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mType (argument_0),
 mEnumerationName (argument_1) {
 }

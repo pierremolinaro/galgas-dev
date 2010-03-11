@@ -53,7 +53,7 @@ elementOf_GGS_startSymbolLabelFormalParameterList (const GGS_formalArgumentPassi
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mFormalAgumentPassingMode (argument_0),
 mTypeName (argument_1),
 mArgumentName (argument_2) {

@@ -94,7 +94,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumerableTypeDescri
 
 //---------------------------------------------------------------------------*
 
-class GGS_enumerableTypeDescriptionList : public AC_galgas_list {
+class GGS_enumerableTypeDescriptionList : public AC_GGS_list {
   public : typedef elementOf_GGS_enumerableTypeDescriptionList cElement ;
 
 //--- Constructor 'emptyList'
@@ -604,7 +604,7 @@ findCategoryReader__ACGalgasType__add_assign_operator (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_enumerableTypeDescriptionList : public AC_galgas_list::cListElement {
+class elementOf_GGS_enumerableTypeDescriptionList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_ACGalgasType  mType ;
   public : GGS_string mEnumerationName ;

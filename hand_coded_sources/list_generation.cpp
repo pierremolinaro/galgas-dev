@@ -36,7 +36,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //----------------------- Element of list class declaration ----------------  
   inHfile.appendCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
-  inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_list::cListElement {\n"
+  inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_GGS_list::cListElement {\n"
 //--- Attributes
              "//--- Attributes\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator attributCourant (mNonExternAttributesList, true) ;
@@ -103,7 +103,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << aNomListe << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
+  inHfile << "class GGS_" << aNomListe << " : public AC_GGS_list {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n\n"
 
 //--- Constructor 'emptyList'
@@ -403,7 +403,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                                "
                "COMMA_LOCATION_ARGS) :\n"
-               "AC_galgas_list::cListElement (THERE)" ;
+               "AC_GGS_list::cListElement (THERE)" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1092,7 +1092,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //----------------------- Element of list class declaration ----------------  
   inHfile.appendCppTitleComment (C_String ("Element of sorted list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
-  inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_sortedlist::cSortedListElement {\n"
+  inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_GGS_sortedlist::cSortedListElement {\n"
 //--- Attributes
              "//--- Attributes\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator attributCourant (mNonExternAttributesList, true) ;
@@ -1161,7 +1161,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << aNomListe << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
   inHfile << "\n"
-             "class GGS_" << aNomListe << " : public AC_galgas_sortedlist {\n"
+             "class GGS_" << aNomListe << " : public AC_GGS_sortedlist {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n"
 //--- Constructors and assignment operator declaration
              "//--- Default Constructor\n"
@@ -1477,14 +1477,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Generate default constructor
   inCppFile << "GGS_" << aNomListe
             << "::GGS_" << aNomListe
-            << " (void): AC_galgas_sortedlist () { // Default Constructor\n"
+            << " (void): AC_GGS_sortedlist () { // Default Constructor\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Engendrer le constructeur de recopie
   inCppFile << "GGS_" << aNomListe << "::\n"
                "GGS_" << aNomListe
-            << " (const GGS_" << aNomListe << " & inSource): AC_galgas_sortedlist (inSource) {\n"
+            << " (const GGS_" << aNomListe << " & inSource): AC_GGS_sortedlist (inSource) {\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 

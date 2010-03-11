@@ -51,7 +51,7 @@
 elementOf_GGS_typeCplusPlusNameList::
 elementOf_GGS_typeCplusPlusNameList (const GGS_typeCplusPlusName & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mCppName (argument_0) {
 }
 
@@ -843,7 +843,7 @@ elementOf_GGS_typeSemanticsTypesList::
 elementOf_GGS_typeSemanticsTypesList (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mType (argument_0),
 mGalgasVariableName (argument_1) {
 }
@@ -1789,7 +1789,7 @@ elementOf_GGS_L_assignedVariables::
 elementOf_GGS_L_assignedVariables (const GGS_typeCplusPlusName & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 aNomVariableCible (argument_0),
 aNomAttributSource (argument_1) {
 }
@@ -2398,7 +2398,7 @@ const C_galgas_type_descriptorEX * GGS_typeCible::typeDescriptor (void) const {
 elementOf_GGS_typeListeCibles::
 elementOf_GGS_typeListeCibles (const GGS_typeCible & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 aCible (argument_0) {
 }
 
@@ -2779,7 +2779,7 @@ elementOf_GGS_L_nameWithType::
 elementOf_GGS_L_nameWithType (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mType (argument_0),
 mName (argument_1) {
 }
@@ -3333,7 +3333,7 @@ reader_description (const PMSInt32 /* inIndentation */) const {
 elementOf_GGS_typeExpressionList::
 elementOf_GGS_typeExpressionList (const GGS_typeExpression & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mExpression (argument_0) {
 }
 
@@ -3713,7 +3713,7 @@ const C_galgas_type_descriptorEX * GGS_typeExpressionList::typeDescriptor (void)
 elementOf_GGS_varToDropList::
 elementOf_GGS_varToDropList (const GGS_typeCplusPlusName & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mVarToDrop (argument_0) {
 }
 
@@ -18763,7 +18763,7 @@ elementOf_GGS_L_expression_instructionsList_list (const GGS_typeExpression & arg
                                 const GGS_typeInstructionList & argument_1,
                                 const GGS_location & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mIFexpression (argument_0),
 mInstructionList (argument_1),
 mLocation (argument_2) {
@@ -19498,7 +19498,7 @@ elementOf_GGS_L_switchBranchlist::
 elementOf_GGS_L_switchBranchlist (const GGS_stringset & argument_0,
                                 const GGS_typeInstructionList & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mConstantSet (argument_0),
 mInstructionList (argument_1) {
 }
@@ -23380,7 +23380,7 @@ elementOf_GGS_L_matchInstructionCasesList (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_typeInstructionList & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mCase1_name (argument_0),
 mCase2_name (argument_1),
 mInstructionList (argument_2) {
@@ -24278,7 +24278,7 @@ elementOf_GGS_foreachEnumerationList (const GGS_bool& argument_0,
                                 const GGS_string& argument_3,
                                 const GGS_bool& argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mNewStyle (argument_0),
 mSourceExpression (argument_1),
 mLocationOffset (argument_2),
@@ -25529,7 +25529,7 @@ elementOf_GGS_typeStructuredExtractCasesList (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_2,
                                 const GGS_bool& argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mClassName (argument_0),
 mResultVarID (argument_1),
 mInstructionList (argument_2),
@@ -26943,7 +26943,7 @@ elementOf_GGS_typeStructuredCastBranchList (const GGS_lstring & argument_0,
                                 const GGS_typeCplusPlusNameList & argument_2,
                                 const GGS_typeInstructionList & argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mCastClassName (argument_0),
 mCheckForKindOfClass (argument_1),
 mLocalConstantName (argument_2),
@@ -30723,7 +30723,7 @@ elementOf_GGS_EXsortDescriptorList::
 elementOf_GGS_EXsortDescriptorList (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSortAttribute (argument_0),
 mAscendingOrder (argument_1) {
 }
@@ -33370,7 +33370,7 @@ const C_galgas_type_descriptorEX * GGS_typeFonctionExterneAengendrer::typeDescri
 elementOf_GGS_typeEntitiesToGenerateList::
 elementOf_GGS_typeEntitiesToGenerateList (const GGS_typeEntityToGenerate & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mEntityToGenerate (argument_0) {
 }
 
@@ -34594,7 +34594,7 @@ elementOf_GGS_ruleDescriptorForProgramList (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_typeInstructionList & argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSourceExtension (argument_0),
 mHelpMessage (argument_1),
 mSourceFileName (argument_2),
@@ -35235,13 +35235,13 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_wrapperFileSortedList ("wra
 
 //---------------------------------------------------------------------------*
 
-GGS_wrapperFileSortedList::GGS_wrapperFileSortedList (void): AC_galgas_sortedlist () { // Default Constructor
+GGS_wrapperFileSortedList::GGS_wrapperFileSortedList (void): AC_GGS_sortedlist () { // Default Constructor
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_wrapperFileSortedList::
-GGS_wrapperFileSortedList (const GGS_wrapperFileSortedList & inSource): AC_galgas_sortedlist (inSource) {
+GGS_wrapperFileSortedList (const GGS_wrapperFileSortedList & inSource): AC_GGS_sortedlist (inSource) {
 }
 
 //---------------------------------------------------------------------------*
@@ -35630,13 +35630,13 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_wrapperDirectorySortedList 
 
 //---------------------------------------------------------------------------*
 
-GGS_wrapperDirectorySortedList::GGS_wrapperDirectorySortedList (void): AC_galgas_sortedlist () { // Default Constructor
+GGS_wrapperDirectorySortedList::GGS_wrapperDirectorySortedList (void): AC_GGS_sortedlist () { // Default Constructor
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_wrapperDirectorySortedList::
-GGS_wrapperDirectorySortedList (const GGS_wrapperDirectorySortedList & inSource): AC_galgas_sortedlist (inSource) {
+GGS_wrapperDirectorySortedList (const GGS_wrapperDirectorySortedList & inSource): AC_GGS_sortedlist (inSource) {
 }
 
 //---------------------------------------------------------------------------*

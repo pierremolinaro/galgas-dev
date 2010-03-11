@@ -52,7 +52,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_builtinTypeAttribute
 
 //---------------------------------------------------------------------------*
 
-class GGS_builtinTypeAttributeList : public AC_galgas_list {
+class GGS_builtinTypeAttributeList : public AC_GGS_list {
   public : typedef elementOf_GGS_builtinTypeAttributeList cElement ;
 
 //--- Constructor 'emptyList'
@@ -351,7 +351,7 @@ void routine_generateHeadersOfBuiltinTypes (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_builtinTypeAttributeList : public AC_galgas_list::cListElement {
+class elementOf_GGS_builtinTypeAttributeList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mCppClassName ;
   public : GGS_bool mIsPointer ;

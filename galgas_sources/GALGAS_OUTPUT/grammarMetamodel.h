@@ -54,7 +54,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_startSymbolLabelForm
 
 //---------------------------------------------------------------------------*
 
-class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
+class GGS_startSymbolLabelFormalParameterList : public AC_GGS_list {
   public : typedef elementOf_GGS_startSymbolLabelFormalParameterList cElement ;
 
 //--- Constructor 'emptyList'
@@ -207,10 +207,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_grammarComponentRoot
 
 //---------------------------------------------------------------------------*
 
-class GGS_grammarComponentRoot : public AC_galgas_class {
+class GGS_grammarComponentRoot : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_grammarComponentRoot (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_grammarComponentRoot (const cPtr__AC_galgas_class * inPointer) ;
@@ -292,7 +292,7 @@ extern C_galgasRootClassRunTimeInformationEX gClassInfoFor__grammarComponentRoot
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_startSymbolLabelFormalParameterList : public AC_galgas_list::cListElement {
+class elementOf_GGS_startSymbolLabelFormalParameterList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_formalArgumentPassingModeAST mFormalAgumentPassingMode ;
   public : GGS_lstring  mTypeName ;

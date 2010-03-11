@@ -3077,7 +3077,7 @@ elementOf_GGS_styleList::
 elementOf_GGS_styleList (const GGS_string& argument_0,
                                 const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mStyleName (argument_0),
 mTitle (argument_1) {
 }
@@ -6064,7 +6064,7 @@ const C_galgas_type_descriptorEX * GGS_typeConditionIntervalle::typeDescriptor (
 elementOf_GGS_typeListeConditionsLexicales::
 elementOf_GGS_typeListeConditionsLexicales (const GGS_typeConditionLexicale & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 attributCondition (argument_0) {
 }
 
@@ -6608,7 +6608,7 @@ const C_galgas_type_descriptorEX * GGS_typeInstructionLexicale::typeDescriptor (
 elementOf_GGS_tListeInstructionsLexicales::
 elementOf_GGS_tListeInstructionsLexicales (const GGS_typeInstructionLexicale & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 attributInstruction (argument_0) {
 }
 
@@ -6989,7 +6989,7 @@ elementOf_GGS_typeListeTestsEtInstructions::
 elementOf_GGS_typeListeTestsEtInstructions (const GGS_typeListeConditionsLexicales & argument_0,
                                 const GGS_tListeInstructionsLexicales & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 attributListeConditions (argument_0),
 attributListeInstructions (argument_1) {
 }
@@ -7598,7 +7598,7 @@ const C_galgas_type_descriptorEX * GGS_typeArgumentRoutineExterne::typeDescripto
 elementOf_GGS_typeListeArgumentsRoutExterne::
 elementOf_GGS_typeListeArgumentsRoutExterne (const GGS_typeArgumentRoutineExterne & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 attributArgument (argument_0) {
 }
 
@@ -9013,7 +9013,7 @@ const C_galgas_type_descriptorEX * GGS_typeArgumentRoutine::typeDescriptor (void
 elementOf_GGS_typeListeMessagesErreur::
 elementOf_GGS_typeListeMessagesErreur (const GGS_uint & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mErrorMessageIndex (argument_0) {
 }
 
@@ -9966,7 +9966,7 @@ elementOf_GGS_typeListeRecherche::
 elementOf_GGS_typeListeRecherche (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 attributNomAttribut (argument_0),
 attributNomTable (argument_1) {
 }

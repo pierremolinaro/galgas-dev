@@ -52,7 +52,7 @@ elementOf_GGS_signatureForGrammarAnalysis::
 elementOf_GGS_signatureForGrammarAnalysis (const GGS_formalArgumentPassingModeAST& argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mFormalArgumentPassingModeForGrammarAnalysis (argument_0),
 mGalgasTypeNameForGrammarAnalysis (argument_1) {
 }
@@ -1087,7 +1087,7 @@ const C_galgas_type_descriptorEX * GGS_abstractSyntaxInstructionForGrammarAnalys
 elementOf_GGS_syntaxInstructionListForGrammarAnalysis::
 elementOf_GGS_syntaxInstructionListForGrammarAnalysis (const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mInstruction (argument_0) {
 }
 
@@ -1470,7 +1470,7 @@ elementOf_GGS_productionRuleListForGrammarAnalysis (const GGS_lstring & argument
                                 const GGS_syntaxInstructionListForGrammarAnalysis & argument_2,
                                 const GGS_uint & argument_3
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLeftNonterminalSymbol (argument_0),
 mLeftNonterminalSymbolIndex (argument_1),
 mInstructionList (argument_2),
@@ -3304,7 +3304,7 @@ const C_galgas_type_descriptorEX * GGS_nonTerminalInstructionForGrammarAnalysis:
 elementOf_GGS_branchListForGrammarAnalysis::
 elementOf_GGS_branchListForGrammarAnalysis (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSyntaxInstructionList (argument_0) {
 }
 
@@ -4087,7 +4087,7 @@ elementOf_GGS_syntaxComponentListForGrammarAnalysis::
 elementOf_GGS_syntaxComponentListForGrammarAnalysis (const GGS_productionRuleListForGrammarAnalysis & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mProductionRulesList (argument_0),
 mSyntaxComponentName (argument_1) {
 }

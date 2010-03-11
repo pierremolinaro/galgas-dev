@@ -60,7 +60,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_guiCommandLineOption
 
 //---------------------------------------------------------------------------*
 
-class GGS_guiCommandLineOptionList : public AC_galgas_list {
+class GGS_guiCommandLineOptionList : public AC_GGS_list {
   public : typedef elementOf_GGS_guiCommandLineOptionList cElement ;
 
 //--- Constructor 'emptyList'
@@ -249,7 +249,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_extensionMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_extensionMap : public AC_galgas_map {
+class GGS_extensionMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_extensionMap cElement ;
 
@@ -354,7 +354,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nibAndClassList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_nibAndClassList : public AC_galgas_list {
+class GGS_nibAndClassList : public AC_GGS_list {
   public : typedef elementOf_GGS_nibAndClassList cElement ;
 
 //--- Constructor 'emptyList'
@@ -494,7 +494,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_textMacroList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_textMacroList : public AC_galgas_list {
+class GGS_textMacroList : public AC_GGS_list {
   public : typedef elementOf_GGS_textMacroList cElement ;
 
 //--- Constructor 'emptyList'
@@ -634,7 +634,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_importedLexiqueList 
 
 //---------------------------------------------------------------------------*
 
-class GGS_importedLexiqueList : public AC_galgas_list {
+class GGS_importedLexiqueList : public AC_GGS_list {
   public : typedef elementOf_GGS_importedLexiqueList cElement ;
 
 //--- Constructor 'emptyList'
@@ -828,7 +828,7 @@ void routine_compileGuiComponent (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_guiCommandLineOptionList : public AC_galgas_list::cListElement {
+class elementOf_GGS_guiCommandLineOptionList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mOptionComponent ;
   public : GGS_string mOptionIdentifier ;
@@ -901,7 +901,7 @@ class elementOf_GGS_extensionMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_nibAndClassList : public AC_galgas_list::cListElement {
+class elementOf_GGS_nibAndClassList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mNibName ;
   public : GGS_string mClassName ;
@@ -935,7 +935,7 @@ class elementOf_GGS_nibAndClassList : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_textMacroList : public AC_galgas_list::cListElement {
+class elementOf_GGS_textMacroList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mKey ;
   public : GGS_string mContents ;
@@ -969,7 +969,7 @@ class elementOf_GGS_textMacroList : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_importedLexiqueList : public AC_galgas_list::cListElement {
+class elementOf_GGS_importedLexiqueList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mLexiqueClassName ;
   public : GGS_string mBlockComment ;

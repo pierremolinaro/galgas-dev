@@ -47,7 +47,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_commandLineOptionMap
 
 //---------------------------------------------------------------------------*
 
-class GGS_commandLineOptionMap : public AC_galgas_map {
+class GGS_commandLineOptionMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_commandLineOptionMap cElement ;
 

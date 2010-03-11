@@ -191,7 +191,7 @@ elementOf_GGS_projectSourceList (const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSourceKind (argument_0),
 mFilePath (argument_1),
 mTargetList (argument_2) {

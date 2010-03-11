@@ -292,7 +292,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeListeBranchesIns
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeListeBranchesInstructions : public AC_galgas_list {
+class GGS_typeListeBranchesInstructions : public AC_GGS_list {
   public : typedef elementOf_GGS_typeListeBranchesInstructions cElement ;
 
 //--- Constructor 'emptyList'
@@ -563,7 +563,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_L_parse_rewind_signa
 
 //---------------------------------------------------------------------------*
 
-class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
+class GGS_L_parse_rewind_signature_list : public AC_GGS_list {
   public : typedef elementOf_GGS_L_parse_rewind_signature_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -1003,7 +1003,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeAltProductionsMa
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeAltProductionsMap : public AC_galgas_map {
+class GGS_typeAltProductionsMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeAltProductionsMap cElement ;
 
@@ -1215,7 +1215,7 @@ extern C_galgasClassRunTimeInformationEX gClassInfoFor__typeProductionAengendrer
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_typeListeBranchesInstructions : public AC_galgas_list::cListElement {
+class elementOf_GGS_typeListeBranchesInstructions : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_typeInstructionList  mInstructionList ;
 //--- Constructor
@@ -1255,7 +1255,7 @@ class elementOf_GGS_typeListeBranchesInstructions : public AC_galgas_list::cList
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_L_parse_rewind_signature_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_L_parse_rewind_signature_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_syntaxInstructionListForGrammarAnalysis  mSignature ;
   public : GGS_location  mErrorLocation ;

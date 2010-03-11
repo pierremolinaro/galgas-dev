@@ -108,7 +108,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_targetFileListMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_targetFileListMap : public AC_galgas_listmap {
+class GGS_targetFileListMap : public AC_GGS_listmap {
 //--- Node class
   public : class cElement : public cPtrListMapObject {
  //--- List attribute
@@ -187,7 +187,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sourceFileMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_sourceFileMap : public AC_galgas_map {
+class GGS_sourceFileMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_sourceFileMap cElement ;
 

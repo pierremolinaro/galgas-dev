@@ -379,7 +379,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalInstructionAST::typeDescriptor (vo
 elementOf_GGS_lexicalInstructionListAST::
 elementOf_GGS_lexicalInstructionListAST (const GGS_lexicalInstructionAST & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mInstruction (argument_0) {
 }
 
@@ -761,7 +761,7 @@ elementOf_GGS_metamodelTemplateDelimitorListAST (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mStartString (argument_0),
 mOptionList (argument_1),
 mEndString (argument_2) {
@@ -1273,7 +1273,7 @@ elementOf_GGS_templateReplacementListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMatchString (argument_0),
 mReplacementString (argument_1),
 mReplacementFunction (argument_2) {
@@ -1947,7 +1947,7 @@ const C_galgas_type_descriptorEX * GGS_abstractLexicalRuleAST::typeDescriptor (v
 elementOf_GGS_lexicalRuleListAST::
 elementOf_GGS_lexicalRuleListAST (const GGS_abstractLexicalRuleAST & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexicalRule (argument_0) {
 }
 
@@ -2756,7 +2756,7 @@ elementOf_GGS_lexicalMessageDeclarationListAST::
 elementOf_GGS_lexicalMessageDeclarationListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mMessageName (argument_0),
 mMessageValue (argument_1) {
 }
@@ -3202,7 +3202,7 @@ elementOf_GGS_lexicalAttributeListAST::
 elementOf_GGS_lexicalAttributeListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mTypeName (argument_0),
 mName (argument_1) {
 }
@@ -3648,7 +3648,7 @@ elementOf_GGS_lexicalStyleListAST::
 elementOf_GGS_lexicalStyleListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mName (argument_0),
 mComment (argument_1) {
 }
@@ -4097,7 +4097,7 @@ elementOf_GGS_terminalDeclarationListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_3,
                                 const GGS_lstringlist & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mName (argument_0),
 mSentAttributeList (argument_1),
 mSyntaxErrorMessage (argument_2),
@@ -4739,7 +4739,7 @@ elementOf_GGS_lexicalListEntryListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mEntrySpelling (argument_0),
 mTerminalSpelling (argument_1),
 mFeatureList (argument_2) {
@@ -5253,7 +5253,7 @@ elementOf_GGS_lexicalListDeclarationListAST (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_3,
                                 const GGS_lexicalListEntryListAST & argument_4
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mName (argument_0),
 mStyle (argument_1),
 mSyntaxErrorMessage (argument_2),
@@ -7178,7 +7178,7 @@ elementOf_GGS_lexicalSendSearchListAST::
 elementOf_GGS_lexicalSendSearchListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mAttributeName (argument_0),
 mSearchListName (argument_1) {
 }
@@ -8624,7 +8624,7 @@ elementOf_GGS_lexicalWhileBranchListAST::
 elementOf_GGS_lexicalWhileBranchListAST (const GGS_lexicalExpressionAST & argument_0,
                                 const GGS_lexicalInstructionListAST & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mWhileExpression (argument_0),
 mWhileInstructionList (argument_1) {
 }
@@ -9294,7 +9294,7 @@ elementOf_GGS_lexicalSelectBranchListAST::
 elementOf_GGS_lexicalSelectBranchListAST (const GGS_lexicalExpressionAST & argument_0,
                                 const GGS_lexicalInstructionListAST & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mSelectExpression (argument_0),
 mSelectInstructionList (argument_1) {
 }
@@ -10144,7 +10144,7 @@ const C_galgas_type_descriptorEX * GGS_abstractLexicalRoutineActualArgumentAST::
 elementOf_GGS_lexicalRoutineCallActualArgumentListAST::
 elementOf_GGS_lexicalRoutineCallActualArgumentListAST (const GGS_abstractLexicalRoutineActualArgumentAST & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexicalRoutineActualArgument (argument_0) {
 }
 
@@ -11350,7 +11350,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalFormalInputArgumentAST::typeDescri
 elementOf_GGS_lexicalFunctionCallActualArgumentListAST::
 elementOf_GGS_lexicalFunctionCallActualArgumentListAST (const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & argument_0
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexicalActualInputArgument (argument_0) {
 }
 
@@ -14159,7 +14159,7 @@ elementOf_GGS_lexicalExternRoutineFormalArgumentListAST (const GGS_lexicalArgume
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mPassingMode (argument_0),
 mLexicalTypeName (argument_1),
 mFormalArgumentName (argument_2) {
@@ -14671,7 +14671,7 @@ elementOf_GGS_externRoutineListAST (const GGS_lstring & argument_0,
                                 const GGS_lexicalExternRoutineFormalArgumentListAST & argument_1,
                                 const GGS_stringlist & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mRoutineName (argument_0),
 mLexicalRoutineFormalArgumentList (argument_1),
 mErrorMessageList (argument_2) {
@@ -15182,7 +15182,7 @@ elementOf_GGS_lexicalExternFunctionFormalArgumentListAST::
 elementOf_GGS_lexicalExternFunctionFormalArgumentListAST (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mLexicalTypeName (argument_0),
 mFormalArgumentName (argument_1) {
 }
@@ -15629,7 +15629,7 @@ elementOf_GGS_externFunctionListAST (const GGS_lstring & argument_0,
                                 const GGS_lexicalExternFunctionFormalArgumentListAST & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-AC_galgas_list::cListElement (THERE),
+AC_GGS_list::cListElement (THERE),
 mFunctionName (argument_0),
 mLexicalFunctionFormalArgumentList (argument_1),
 mReturnedTypeName (argument_2) {

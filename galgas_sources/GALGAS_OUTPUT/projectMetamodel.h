@@ -135,7 +135,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_projectSourceList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_projectSourceList : public AC_galgas_list {
+class GGS_projectSourceList : public AC_GGS_list {
   public : typedef elementOf_GGS_projectSourceList cElement ;
 
 //--- Constructor 'emptyList'
@@ -284,7 +284,7 @@ class GGS_projectSourceList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_projectSourceList : public AC_galgas_list::cListElement {
+class elementOf_GGS_projectSourceList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_sourceFileKind mSourceKind ;
   public : GGS_lstring  mFilePath ;

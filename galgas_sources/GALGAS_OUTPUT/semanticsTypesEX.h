@@ -125,10 +125,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_ACGalgasType ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_ACGalgasType : public AC_galgas_class {
+class GGS_ACGalgasType : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_ACGalgasType (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_ACGalgasType (const cPtr__AC_galgas_class * inPointer) ;
@@ -196,7 +196,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeMap : public AC_galgas_map {
+class GGS_typeMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeMap cElement ;
 
@@ -303,7 +303,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeMapIndex ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeMapIndex : public AC_galgas_mapindex {
+class GGS_typeMapIndex : public AC_GGS_mapindex {
 //--- 'null' constructor
   public : static GGS_typeMapIndex
   constructor_null (C_Compiler & inLexique
@@ -358,7 +358,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sortedTypeList ;
 //---------------------------------------------------------------------------*
 
 
-class GGS_sortedTypeList : public AC_galgas_sortedlist {
+class GGS_sortedTypeList : public AC_GGS_sortedlist {
   public : typedef elementOf_GGS_sortedTypeList cElement ;
 //--- Default Constructor
   public : GGS_sortedTypeList (void) ;
@@ -457,7 +457,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typeList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeList : public AC_galgas_list {
+class GGS_typeList : public AC_GGS_list {
   public : typedef elementOf_GGS_typeList cElement ;
 
 //--- Constructor 'emptyList'
@@ -580,7 +580,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_signature ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_signature : public AC_galgas_list {
+class GGS_signature : public AC_GGS_list {
   public : typedef elementOf_GGS_signature cElement ;
 
 //--- Constructor 'emptyList'
@@ -737,7 +737,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_attributeList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_attributeList : public AC_galgas_list {
+class GGS_attributeList : public AC_GGS_list {
   public : typedef elementOf_GGS_attributeList cElement ;
 
 //--- Constructor 'emptyList'
@@ -2553,7 +2553,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_classMethodList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_classMethodList : public AC_galgas_list {
+class GGS_classMethodList : public AC_GGS_list {
   public : typedef elementOf_GGS_classMethodList cElement ;
 
 //--- Constructor 'emptyList'
@@ -2986,7 +2986,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_indexAttributeMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_indexAttributeMap : public AC_galgas_map {
+class GGS_indexAttributeMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_indexAttributeMap cElement ;
 
@@ -3097,7 +3097,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sortDescriptorList ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_sortDescriptorList : public AC_galgas_list {
+class GGS_sortDescriptorList : public AC_GGS_list {
   public : typedef elementOf_GGS_sortDescriptorList cElement ;
 
 //--- Constructor 'emptyList'
@@ -3311,7 +3311,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_mapMethodMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_mapMethodMap : public AC_galgas_map {
+class GGS_mapMethodMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_mapMethodMap cElement ;
 
@@ -3560,7 +3560,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumConstructorMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_enumConstructorMap : public AC_galgas_map {
+class GGS_enumConstructorMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_enumConstructorMap cElement ;
 
@@ -3664,7 +3664,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_enumMessageMap ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_enumMessageMap : public AC_galgas_map {
+class GGS_enumMessageMap : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_enumMessageMap cElement ;
 
@@ -4003,7 +4003,7 @@ class elementOf_GGS_typeMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_sortedTypeList : public AC_galgas_sortedlist::cSortedListElement {
+class elementOf_GGS_sortedTypeList : public AC_GGS_sortedlist::cSortedListElement {
 //--- Attributes
   public : GGS_ACGalgasType  mType ;
   public : GGS_string mSortString ;
@@ -4033,7 +4033,7 @@ class elementOf_GGS_sortedTypeList : public AC_galgas_sortedlist::cSortedListEle
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_typeList : public AC_galgas_list::cListElement {
+class elementOf_GGS_typeList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_ACGalgasType  mType ;
 //--- Constructor
@@ -4065,7 +4065,7 @@ class elementOf_GGS_typeList : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_signature : public AC_galgas_list::cListElement {
+class elementOf_GGS_signature : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_typeMapIndex  mAttributeTypeIndex ;
   public : GGS_lstring  mFormalArgumentName ;
@@ -4101,7 +4101,7 @@ class elementOf_GGS_signature : public AC_galgas_list::cListElement {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_attributeList : public AC_galgas_list::cListElement {
+class elementOf_GGS_attributeList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_typeMapIndex  mAttributeTypeIndex ;
   public : GGS_lstring  mAttributeName ;
@@ -4827,7 +4827,7 @@ class cPtr_binarysetGalgasType : public cPtr_primitiveGalgasType {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_classMethodList : public AC_galgas_list::cListElement {
+class elementOf_GGS_classMethodList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_signature  mMethodSignature ;
@@ -5054,7 +5054,7 @@ class elementOf_GGS_indexAttributeMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_sortDescriptorList : public AC_galgas_list::cListElement {
+class elementOf_GGS_sortDescriptorList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_uint  mAttributeIndex ;
   public : GGS_bool mAscendingOrder ;

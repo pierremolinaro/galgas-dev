@@ -53,7 +53,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_formalParameterSigna
 
 //---------------------------------------------------------------------------*
 
-class GGS_formalParameterSignatureEXX : public AC_galgas_list {
+class GGS_formalParameterSignatureEXX : public AC_GGS_list {
   public : typedef elementOf_GGS_formalParameterSignatureEXX cElement ;
 
 //--- Constructor 'emptyList'
@@ -191,7 +191,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_modifierMapEXX ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_modifierMapEXX : public AC_galgas_map {
+class GGS_modifierMapEXX : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_modifierMapEXX cElement ;
 
@@ -740,7 +740,7 @@ GGS_modifierMapEXX  function_modifierMapFor_listmap (C_Compiler & COMMA_LOCATION
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_formalParameterSignatureEXX : public AC_galgas_list::cListElement {
+class elementOf_GGS_formalParameterSignatureEXX : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_ACGalgasType  mParameterType ;
   public : GGS_formalArgumentPassingModeAST mFormalParameterPassingMode ;

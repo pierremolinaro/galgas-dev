@@ -108,7 +108,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_XcodeObjectReference
 
 //---------------------------------------------------------------------------*
 
-class GGS_XcodeObjectReferenceList : public AC_galgas_list {
+class GGS_XcodeObjectReferenceList : public AC_GGS_list {
   public : typedef elementOf_GGS_XcodeObjectReferenceList cElement ;
 
 //--- Constructor 'emptyList'
@@ -244,10 +244,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReferen
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXFileReference_abstract : public AC_galgas_class {
+class GGS_Xcode_PBXFileReference_abstract : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_Xcode_PBXFileReference_abstract (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_Xcode_PBXFileReference_abstract (const cPtr__AC_galgas_class * inPointer) ;
@@ -1469,7 +1469,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReferen
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXFileReference_map : public AC_galgas_map {
+class GGS_Xcode_PBXFileReference_map : public AC_GGS_map {
 //--- Element Class
   public : typedef elementOf_GGS_Xcode_PBXFileReference_map cElement ;
 
@@ -1576,10 +1576,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXBuildFile ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXBuildFile : public AC_galgas_class {
+class GGS_Xcode_PBXBuildFile : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_Xcode_PBXBuildFile (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_Xcode_PBXBuildFile (const cPtr__AC_galgas_class * inPointer) ;
@@ -1659,7 +1659,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXBuildFile_l
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXBuildFile_list : public AC_galgas_list {
+class GGS_Xcode_PBXBuildFile_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_PBXBuildFile_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -1778,10 +1778,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXSourcesBuil
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXSourcesBuildPhase : public AC_galgas_class {
+class GGS_Xcode_PBXSourcesBuildPhase : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_Xcode_PBXSourcesBuildPhase (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_Xcode_PBXSourcesBuildPhase (const cPtr__AC_galgas_class * inPointer) ;
@@ -1863,7 +1863,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXSourcesBuil
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXSourcesBuildPhase_list : public AC_galgas_list {
+class GGS_Xcode_PBXSourcesBuildPhase_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_PBXSourcesBuildPhase_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -1982,10 +1982,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXResourcesBu
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXResourcesBuildPhase : public AC_galgas_class {
+class GGS_Xcode_PBXResourcesBuildPhase : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_Xcode_PBXResourcesBuildPhase (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_Xcode_PBXResourcesBuildPhase (const cPtr__AC_galgas_class * inPointer) ;
@@ -2067,7 +2067,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXResourcesBu
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXResourcesBuildPhase_list : public AC_galgas_list {
+class GGS_Xcode_PBXResourcesBuildPhase_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_PBXResourcesBuildPhase_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -2186,10 +2186,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFrameworksB
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXFrameworksBuildPhase : public AC_galgas_class {
+class GGS_Xcode_PBXFrameworksBuildPhase : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_Xcode_PBXFrameworksBuildPhase (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_Xcode_PBXFrameworksBuildPhase (const cPtr__AC_galgas_class * inPointer) ;
@@ -2271,7 +2271,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFrameworksB
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_galgas_list {
+class GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -2390,10 +2390,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXGroup ;
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXGroup : public AC_galgas_class {
+class GGS_Xcode_PBXGroup : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_Xcode_PBXGroup (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_Xcode_PBXGroup (const cPtr__AC_galgas_class * inPointer) ;
@@ -2477,7 +2477,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXGroup_list 
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXGroup_list : public AC_galgas_list {
+class GGS_Xcode_PBXGroup_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_PBXGroup_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -2596,10 +2596,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_XCBuildConfigu
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_XCBuildConfiguration : public AC_galgas_class {
+class GGS_Xcode_XCBuildConfiguration : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_Xcode_XCBuildConfiguration (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_Xcode_XCBuildConfiguration (const cPtr__AC_galgas_class * inPointer) ;
@@ -2683,7 +2683,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_XCBuildConfigu
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_XCBuildConfiguration_list : public AC_galgas_list {
+class GGS_Xcode_XCBuildConfiguration_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_XCBuildConfiguration_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -2806,7 +2806,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXNativeTarge
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list {
+class GGS_Xcode_PBXNativeTarget_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_PBXNativeTarget_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -3044,10 +3044,10 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_targetDependen
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_targetDependencyDescription : public AC_galgas_class {
+class GGS_Xcode_targetDependencyDescription : public AC_GGS_class {
 //--- Default constructor
   public : inline GGS_Xcode_targetDependencyDescription (void) :
-  AC_galgas_class () {}
+  AC_GGS_class () {}
 
 //--- Pointer assignment constructor
   public : GGS_Xcode_targetDependencyDescription (const cPtr__AC_galgas_class * inPointer) ;
@@ -3127,7 +3127,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_targetDependen
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_targetDependencyDescription_list : public AC_galgas_list {
+class GGS_Xcode_targetDependencyDescription_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_targetDependencyDescription_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -3250,7 +3250,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXVariantGrou
 
 //---------------------------------------------------------------------------*
 
-class GGS_Xcode_PBXVariantGroup_list : public AC_galgas_list {
+class GGS_Xcode_PBXVariantGroup_list : public AC_GGS_list {
   public : typedef elementOf_GGS_Xcode_PBXVariantGroup_list cElement ;
 
 //--- Constructor 'emptyList'
@@ -3745,7 +3745,7 @@ void routine_generateXCodeFile (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_XcodeObjectReferenceList : public AC_galgas_list::cListElement {
+class elementOf_GGS_XcodeObjectReferenceList : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mRefString ;
   public : GGS_string mComment ;
@@ -4528,7 +4528,7 @@ class cPtr_Xcode_PBXBuildFile : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_PBXBuildFile_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_PBXBuildFile_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_Xcode_PBXBuildFile  mFile ;
 //--- Constructor
@@ -4603,7 +4603,7 @@ class cPtr_Xcode_PBXSourcesBuildPhase : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_PBXSourcesBuildPhase_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_PBXSourcesBuildPhase_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_Xcode_PBXSourcesBuildPhase  mBuildPhase ;
 //--- Constructor
@@ -4678,7 +4678,7 @@ class cPtr_Xcode_PBXResourcesBuildPhase : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_PBXResourcesBuildPhase_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_PBXResourcesBuildPhase_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_Xcode_PBXResourcesBuildPhase  mBuildPhase ;
 //--- Constructor
@@ -4758,7 +4758,7 @@ class cPtr_Xcode_PBXFrameworksBuildPhase : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_Xcode_PBXFrameworksBuildPhase  mBuildPhase ;
 //--- Constructor
@@ -4835,7 +4835,7 @@ class cPtr_Xcode_PBXGroup : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_PBXGroup_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_PBXGroup_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_Xcode_PBXGroup  mGroup ;
 //--- Constructor
@@ -4916,7 +4916,7 @@ class cPtr_Xcode_XCBuildConfiguration : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_XCBuildConfiguration_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_XCBuildConfiguration_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_Xcode_XCBuildConfiguration  mBuildConfig ;
 //--- Constructor
@@ -4948,7 +4948,7 @@ class elementOf_GGS_Xcode_XCBuildConfiguration_list : public AC_galgas_list::cLi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_PBXNativeTarget_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mTargetKey ;
   public : GGS_string mTargetName ;
@@ -5035,7 +5035,7 @@ class cPtr_Xcode_targetDependencyDescription : public cPtr__AC_galgas_class {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_targetDependencyDescription_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_targetDependencyDescription_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_Xcode_targetDependencyDescription  mDependency ;
 //--- Constructor
@@ -5067,7 +5067,7 @@ class elementOf_GGS_Xcode_targetDependencyDescription_list : public AC_galgas_li
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_Xcode_PBXVariantGroup_list : public AC_galgas_list::cListElement {
+class elementOf_GGS_Xcode_PBXVariantGroup_list : public AC_GGS_list::cListElement {
 //--- Attributes
   public : GGS_string mPBXVariantKey ;
   public : GGS_string mPBXFileReferenceKey ;

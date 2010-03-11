@@ -49,7 +49,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Map list '@") + mListmapTypeName + "'") ;
   inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mListmapTypeName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "class GGS_" << mListmapTypeName << " : public AC_galgas_listmap {\n"
+  inHfile << "class GGS_" << mListmapTypeName << " : public AC_GGS_listmap {\n"
              "//--- Node class\n"
              "  public : class cElement : public cPtrListMapObject {\n"
              " //--- List attribute\n"
@@ -411,7 +411,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Map index '@") + mMapindexTypeName + "'") ;
   inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mMapindexTypeName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "class GGS_" << mMapindexTypeName << " : public AC_galgas_mapindex {\n"
+  inHfile << "class GGS_" << mMapindexTypeName << " : public AC_GGS_mapindex {\n"
              "//--- 'null' constructor\n"
              "  public : static GGS_" << mMapindexTypeName << "\n"
              "  constructor_null (C_Compiler & inLexique\n"
@@ -670,7 +670,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class elementOf_GGS_" << mMapTypeName << " ;\n\n" ;
   inHfile << "extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_" << mMapTypeName << " ;\n\n" ;
   inHfile.appendCppHyphenLineComment () ;
-  inHfile << "class GGS_" << mMapTypeName << " : public AC_galgas_map {\n" ;
+  inHfile << "class GGS_" << mMapTypeName << " : public AC_GGS_map {\n" ;
   inHfile << "//--- Element Class\n"
              "  public : typedef elementOf_GGS_" << mMapTypeName << " cElement ;\n\n"
              "//--- Get pointers\n"
