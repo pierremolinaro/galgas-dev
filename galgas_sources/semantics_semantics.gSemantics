@@ -1366,6 +1366,7 @@ class @C_mapToImplement extends @typeEntityToGenerate {
   @insertOrSearchMethodList mInsertMethodList feature nogetter ;
   @insertOrSearchMethodList mSearchMethodList feature nogetter ;
   @insertOrSearchMethodList mRemoveMethodList feature nogetter ;
+  @bool mHasInsertOrReplaceModifier ;
 }
 
 #---------------------------------------------------------------------------*

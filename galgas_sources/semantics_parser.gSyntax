@@ -6048,7 +6048,21 @@ rule <semantics_declaration>
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @EXmapMethodMap mapReaderMethodMap [emptyMap] ;
+    @bool hasInsertOrReplaceMethod := false ;
     repeat
+    while
+      $insert$ ;
+      $or$ ;
+      $replace$ ;
+      $;$ ;
+      hasInsertOrReplaceMethod := true ;
+      #--- Enter insert method in modifier map
+      @L_EXsignature methodSignature [emptyList] ;
+      methodSignature += !lstringType !inPassingMode ;
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !inPassingMode ;      
+      end foreach ;
+      [!?mapModifierMethodMap insertKey ![@lstring new !"insertOrReplace" !here] !methodSignature] ;
     while
       $remove$ ;
       @lstring methodName ;
@@ -6171,6 +6185,7 @@ rule <semantics_declaration>
       !insertMethodList
       !searchMethodList
       !removeMethodList
+      !hasInsertOrReplaceMethod
     ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
@@ -6348,13 +6363,27 @@ label importSemantics
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
-    @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
-    @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
-    @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
-    @AC_galgasType luintType := [@typeGalgas_luint new] ;
+    const @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
+    const @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
+    const @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
+    const @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @EXmapMethodMap mapReaderMethodMap [emptyMap] ;
+    @bool hasInsertOrReplaceMethod := false ;
     repeat
+    while
+      $insert$ ;
+      $or$ ;
+      $replace$ ;
+      $;$ ;
+      hasInsertOrReplaceMethod := true ;
+      #--- Enter insert method in modifier map
+      @L_EXsignature methodSignature [emptyList] ;
+      methodSignature += !lstringType !inPassingMode ;
+      foreach listeTousAttributsSemantiques do
+        methodSignature += !mAttributType !inPassingMode ;      
+      end foreach ;
+      [!?mapModifierMethodMap insertKey ![@lstring new !"insertOrReplace" !here] !methodSignature] ;
     while
       $remove$ ;
       @lstring methodName ;

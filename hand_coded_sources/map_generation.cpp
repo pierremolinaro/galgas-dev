@@ -865,9 +865,27 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     current.next () ;
   }
   inHfile << "                                   GGS_luint * outIndex\n"
-             "                                   COMMA_LOCATION_ARGS) const ;\n"
+             "                                   COMMA_LOCATION_ARGS) const ;\n" ;
+//--- Declaring insert or replace modifier
+  if (mHasInsertOrReplaceModifier.boolValue ()) {
+    inHfile << "//--- 'insertOrReplace' Modifier\n" ;
+    inHfile <<    "  public : void modifier_insertOrReplace (C_Compiler & inLexique" 
+               ",\n                                const GGS_lstring & inKey" ;
+    GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
+    PMSInt32 attributeIndex = 0 ;
+    while (currentAttribute.hasCurrentObject ()) {
+      inHfile << ",\n                                const " ;
+      currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
+      inHfile << " inParameter" << cStringWithSigned (attributeIndex) ;
+      attributeIndex ++ ;
+      currentAttribute.next () ;
+    }
+    inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
+    currentInsertMethod.next () ;
+  }
+
 //--- Generate 'description' reader declaration
-             "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
+  inHfile << "  public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;\n"
 //--- Generate 'mapWithMapToOverride' constructor declaration
               "  public : static GGS_" << mMapTypeName << " constructor_mapWithMapToOverride (C_Compiler & inLexique,\n"
               "                                            const GGS_" << mMapTypeName << " & inMapToOverride\n"
@@ -1532,6 +1550,41 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "const C_galgas_type_descriptorEX * GGS_" << mMapTypeName << "::typeDescriptor (void) const {\n"
                "  return & kTypeDescriptor_GGS_" << mMapTypeName << " ;\n"
                "}\n\n" ;
+
+
+//--- Declaring insert or replace modifier
+  if (mHasInsertOrReplaceModifier.boolValue ()) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << mMapTypeName << "::modifier_insertOrReplace (C_Compiler & /* inLexique */" 
+                 ",\n                                const GGS_lstring & inKey" ;
+    GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
+    PMSInt32 attributeIndex = 0 ;
+    while (currentAttribute.hasCurrentObject ()) {
+      inCppFile << ",\n                                const " ;
+      currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
+      inCppFile << " inParameter" << cStringWithSigned (attributeIndex) ;
+      attributeIndex ++ ;
+      currentAttribute.next () ;
+    }
+    inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "  if (isBuilt () && inKey.isBuilt ()" ;
+    for (PMSInt32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
+      inCppFile << "\n  && inParameter" << cStringWithSigned (i) << ".isBuilt ()" ;
+    }
+    inCppFile << ") {\n"
+                 "    insulateMap () ;\n"
+                 "    e_" << mMapTypeName << " info ;\n" ;
+    currentAttribute.rewind () ;
+    attributeIndex = 0 ;
+    while (currentAttribute.hasCurrentObject ()) {
+      inCppFile << "    info." << currentAttribute._mAttributeName (HERE)  << " =  inParameter" << cStringWithSigned (attributeIndex) << " ;\n" ;
+      attributeIndex ++ ;
+      currentAttribute.next () ;
+    }
+    inCppFile << "    insertOrReplaceElement (inKey, (void *) & info) ;\n"
+                 "  }\n"
+                 "}\n\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
