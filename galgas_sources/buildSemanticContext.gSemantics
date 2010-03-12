@@ -129,7 +129,7 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type"] ;
   ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset"] ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"uin64" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint64" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint64" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"object" ;
@@ -221,6 +221,22 @@ map @collectedTypeMap {
 
 #---------------------------------------------------------------------------*
 
+mapindex @collectedTypeMapIndex (@collectedTypeMap) ;
+
+#---------------------------------------------------------------------------*
+
+routine collectAttributeTypes
+  ??@attributeInCollectionListAST inAttributeList
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  foreach inAttributeList do
+    @collectedTypeMapIndex attributeTypeIndex ;
+    [@collectedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioCollectedTypeMap ?attributeTypeIndex] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 method @semanticDeclarationAST collectType
   ?!@collectedTypeMap unused ioCollectedTypeMap
 :
@@ -231,9 +247,7 @@ end method ;
 override method @predefinedTypeAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-  ] ;
+  [!?ioCollectedTypeMap insertKey ![@lstring new !mPredefinedTypeName !here]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -241,9 +255,8 @@ end method ;
 override method @mapDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    !mMapTypeName
-  ] ;
+  [!?ioCollectedTypeMap insertKey !mMapTypeName] ;
+  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -251,9 +264,7 @@ end method ;
 override method @mapindexDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    !mMapIndexTypeName
-  ] ;
+  [!?ioCollectedTypeMap insertKey !mMapIndexTypeName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -261,9 +272,7 @@ end method ;
 override method @enumDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    !mEnumTypeName
-  ] ;
+  [!?ioCollectedTypeMap insertKey !mEnumTypeName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -271,9 +280,8 @@ end method ;
 override method @sortedListDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    !mSortedListTypeName
-  ] ;
+  [!?ioCollectedTypeMap insertKey !mSortedListTypeName] ;
+  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -281,9 +289,8 @@ end method ;
 override method @structDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    !mStructTypeName
-  ] ;
+  [!?ioCollectedTypeMap insertKey !mStructTypeName] ;
+  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -291,9 +298,8 @@ end method ;
 override method @listDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    !mListTypeName
-  ] ;
+  [!?ioCollectedTypeMap insertKey !mListTypeName] ;
+  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -301,9 +307,8 @@ end method ;
 override method @classDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    !mClassTypeName
-  ] ;
+  [!?ioCollectedTypeMap insertKey !mClassTypeName] ;
+  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -311,9 +316,7 @@ end method ;
 override method @listmapDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey
-    !mListmapTypeName
-  ] ;
+  [!?ioCollectedTypeMap insertKey !mListmapTypeName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -336,7 +339,7 @@ override method @uintPredefinedTypeAST enterType
   constructorMapFor_uint !?ioSemanticContext.mTypeMap ?constructorMap ;
   readerMapFor_uint !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"uint" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -360,7 +363,7 @@ override method @uint64PredefinedTypeAST enterType
   constructorMapFor_uint64 !?ioSemanticContext.mTypeMap ?constructorMap ;
   readerMapFor_uint64 !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"uint64" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -384,7 +387,7 @@ override method @sintPredefinedTypeAST enterType
   constructorMapFor_sint !?ioSemanticContext.mTypeMap ?constructorMap ;
   readerMapFor_sint !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"sint" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -408,7 +411,7 @@ override method @sint64PredefinedTypeAST enterType
   constructorMapFor_sint64 !?ioSemanticContext.mTypeMap ?constructorMap ;
   readerMapFor_sint64 !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"sint64" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -432,7 +435,7 @@ override method @charPredefinedTypeAST enterType
   constructorMapFor_char !?ioSemanticContext.mTypeMap ?constructorMap ;
   readerMapFor_char !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"char" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -454,7 +457,7 @@ override method @doublePredefinedTypeAST enterType
   @readerMap readerMap ;
   readerMapFor_double !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"double" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -484,7 +487,7 @@ override method @stringPredefinedTypeAST enterType
   instanceMethodMapFor_string !?ioSemanticContext.mTypeMap ?instanceMethodMap ;
   classMethodMapFor_string !?ioSemanticContext.mTypeMap ?classMethodMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"string" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -508,6 +511,22 @@ override method @lboolPredefinedTypeAST enterType
   @modifierMap modifierMap ;
   @instanceMethodMap instanceMethodMap ;
   @classMethodMap classMethodMap ;
+  constructorMapFor_lbool !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_lbool !?ioSemanticContext.mTypeMap ?readerMap ;
+  modifierMapFor_lbool !?ioSemanticContext.mTypeMap ?modifierMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -515,6 +534,27 @@ end method ;
 override method @luintPredefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
+  @constructorMap constructorMap ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+  constructorMapFor_luint !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_luint !?ioSemanticContext.mTypeMap ?readerMap ;
+  modifierMapFor_luint !?ioSemanticContext.mTypeMap ?modifierMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -522,6 +562,27 @@ end method ;
 override method @luint64PredefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
+  @constructorMap constructorMap ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+  constructorMapFor_luint64 !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_luint64 !?ioSemanticContext.mTypeMap ?readerMap ;
+  modifierMapFor_luint64 !?ioSemanticContext.mTypeMap ?modifierMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -529,6 +590,27 @@ end method ;
 override method @lsintPredefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
+  @constructorMap constructorMap ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+  constructorMapFor_lsint !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_lsint !?ioSemanticContext.mTypeMap ?readerMap ;
+  modifierMapFor_lsint !?ioSemanticContext.mTypeMap ?modifierMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -536,6 +618,27 @@ end method ;
 override method @lsint64PredefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
+  @constructorMap constructorMap ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+  constructorMapFor_lsint64 !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_lsint64 !?ioSemanticContext.mTypeMap ?readerMap ;
+  modifierMapFor_lsint64 !?ioSemanticContext.mTypeMap ?modifierMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -543,6 +646,27 @@ end method ;
 override method @lcharPredefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
+  @constructorMap constructorMap ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+  constructorMapFor_lchar !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_lchar !?ioSemanticContext.mTypeMap ?readerMap ;
+  modifierMapFor_lchar !?ioSemanticContext.mTypeMap ?modifierMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -550,6 +674,27 @@ end method ;
 override method @ldoublePredefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
+  @constructorMap constructorMap ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+  constructorMapFor_ldouble !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_ldouble !?ioSemanticContext.mTypeMap ?readerMap ;
+  modifierMapFor_ldouble !?ioSemanticContext.mTypeMap ?modifierMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -557,6 +702,27 @@ end method ;
 override method @lstringPredefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
+  @constructorMap constructorMap ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+  constructorMapFor_lstring !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_lstring !?ioSemanticContext.mTypeMap ?readerMap ;
+  modifierMapFor_lstring !?ioSemanticContext.mTypeMap ?modifierMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -564,6 +730,21 @@ end method ;
 override method @locationPredefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
+  @readerMap readerMap ;
+  readerMapFor_location !?ioSemanticContext.mTypeMap ?readerMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    ![@constructorMap emptyMap]
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -581,7 +762,7 @@ override method @stringsetPredefinedTypeAST enterType
   modifierMapFor_data !?ioSemanticContext.mTypeMap ?modifierMap ;
   instanceMethodMapFor_data !?ioSemanticContext.mTypeMap ?instanceMethodMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"data" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -603,7 +784,7 @@ override method @objectPredefinedTypeAST enterType
   @readerMap readerMap ;
   readerMapFor_object !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"object" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -627,6 +808,21 @@ override method @functionPredefinedTypeAST enterType
   @modifierMap modifierMap ;
   @instanceMethodMap instanceMethodMap ;
   @classMethodMap classMethodMap ;
+  constructorMapFor_function !?ioSemanticContext.mTypeMap ?constructorMap ;
+  readerMapFor_function !?ioSemanticContext.mTypeMap ?readerMap ;
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mPredefinedTypeName !here]
+    !true # Concrete Type
+    ![@unifiedTypeMapIndex null] # No super type
+    ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    ![@modifierMap emptyMap]
+    ![@instanceMethodMap emptyMap]
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -640,7 +836,7 @@ override method @typePredefinedTypeAST enterType
   constructorMapFor_type !?ioSemanticContext.mTypeMap ?constructorMap ;
   readerMapFor_type !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"type" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -665,7 +861,7 @@ override method @binarysetPredefinedTypeAST enterType
   constructorMapFor_binaryset !?ioSemanticContext.mTypeMap ?constructorMap ;
   readerMapFor_binaryset !?ioSemanticContext.mTypeMap ?readerMap ;
   [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !"binaryset" !here]
+    ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
@@ -1349,7 +1545,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST enterOrderedDeclaration
-  ?!@partiallyOrderedSemanticDeclarationListAST unused ioPartiallyOrderedDeclarationList
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
   ioPartiallyOrderedDeclarationList += !"" !mPredefinedTypeName !self ;
 end method ;
