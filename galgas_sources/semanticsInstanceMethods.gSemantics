@@ -28,7 +28,7 @@ routine enterInstanceMethodWithoutArgument
   ??@string inInstanceMethodName
   ??@bool inHasCompilerArgument
 :
-  [!?ioInstanceMethodMap insertKey
+  [!?ioInstanceMethodMap insertOrReplace
     ![@lstring new !inInstanceMethodName !here]
     ![@formalParameterSignature emptyList]
     !inHasCompilerArgument
@@ -48,7 +48,7 @@ routine enterInstanceMethodWithInputArgument
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgumentTypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [!?ioInstanceMethodMap insertKey
+  [!?ioInstanceMethodMap insertOrReplace
     ![@lstring new !inInstanceMethodName !here]
     !argList
     !inHasCompilerArgument
@@ -68,7 +68,7 @@ routine enterInstanceMethodWithOutputArgument
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgumentTypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
-  [!?ioInstanceMethodMap insertKey
+  [!?ioInstanceMethodMap insertOrReplace
     ![@lstring new !inInstanceMethodName !here]
     !argList
     !inHasCompilerArgument
@@ -102,7 +102,7 @@ routine instanceMethodMapFor_string
   argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"bool" !here] !?ioUnifiedTypeMap ?t] ;
   argList += !t ![@formalArgumentPassingModeAST argumentOut] ;
-  [!?outInstanceMethodMap insertKey
+  [!?outInstanceMethodMap insertOrReplace
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     !argList
     !true

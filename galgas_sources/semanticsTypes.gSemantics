@@ -68,7 +68,7 @@ map @readerMap {
   @unifiedTypeMapIndex mReturnedType ;
   @readerQualifier mQualifier ;
   @string mImplicitConversionReader ;
-  insert insertKey error message "the '%K' reader has been already defined" ;
+  insert insertKey error message "the '%K' reader is already declared" ;
   search searchKey error message "the '%K' reader is not declared" ;
   insert or replace ;
 }
@@ -89,7 +89,8 @@ list @formalParameterSignature {
 map @modifierMap {
   @formalParameterSignature mParameterList ;
   @bool mHasCompilerArgument ;
-  insert insertKey error message "the '%K' modifier has been already defined" ;
+  insert or replace ;
+  insert insertKey error message "the '%K' modifier is already declared" ;
   search searchKey error message "the '%K' modifier is not declared" ;
 }
 
@@ -102,8 +103,9 @@ map @modifierMap {
 map @instanceMethodMap {
   @formalParameterSignature mParameterList ;
   @bool mHasCompilerArgument ;
-  insert insertKey error message "the '%K' method has been already defined" ;
-  search searchKey error message "the '%K' method is not declared" ;
+  insert or replace ;
+  insert insertKey error message "the '%K' instance method is already declared" ;
+  search searchKey error message "the '%K' instance method is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -115,7 +117,8 @@ map @instanceMethodMap {
 map @classMethodMap {
   @formalParameterSignature mParameterList ;
   @bool mHasCompilerArgument ;
-  insert insertKey error message "the '%K' class method has been already defined" ;
+  insert or replace ;
+  insert insertKey error message "the '%K' class method is already declared" ;
   search searchKey error message "the '%K' class method is not declared" ;
 }
 
@@ -137,7 +140,7 @@ list @enumerationDescriptorList {
 #---------------------------------------------------------------------------*
 
 list @typedAttributeList {
-  @unifiedTypeMapIndex mEnumeratedType ;
+  @unifiedTypeMapIndex mAttributeTypeIndex ;
   @lstring mAttributeName ;
 }
 
@@ -170,6 +173,7 @@ map @unifiedTypeMap {
   @bool mIsConcrete ; # false if abstract class
   @unifiedTypeMapIndex mSuperType ;
   @typeKindEnum mTypeKindEnum ;
+  @typedAttributeList mTypedAttributeList ;
   @constructorMap mConstructorMap ;
   @readerMap mReaderMap ;
   @modifierMap mModifierMap ;

@@ -34,7 +34,7 @@ routine enterModifierWithInputArgument
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgumentTypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [!?ioModifierMap insertKey
+  [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     !argList
     !inHasCompilerArgument
@@ -54,7 +54,7 @@ routine enterModifierWithOutputArgument
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgumentTypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
-  [!?ioModifierMap insertKey
+  [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     !argList
     !inHasCompilerArgument
@@ -77,7 +77,7 @@ routine enterModifierWith2InputArguments
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inInputArgument2TypeName !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [!?ioModifierMap insertKey
+  [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     !argList
     !inHasCompilerArgument
@@ -91,7 +91,7 @@ routine enterModifierWithoutArgument
   ??@string inModifierName
   ??@bool inHasCompilerArgument
 :
-  [!?ioModifierMap insertKey
+  [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     ![@formalParameterSignature emptyList]
     !inHasCompilerArgument
