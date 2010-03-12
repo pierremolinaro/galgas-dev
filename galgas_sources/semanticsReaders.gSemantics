@@ -33,7 +33,7 @@ routine enterBaseReaderWithoutArgumentWithConversion
 :
   @unifiedTypeMapIndex returnedTypeIndex ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inReturnedTypeName !here] !?ioUnifiedTypeMap ?returnedTypeIndex] ;
-  [!?ioReaderMap insertKey
+  [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@unifiedTypeMapIndexList emptyList]
     !inHasLexiqueAndLocationArguments
@@ -73,7 +73,7 @@ routine enterInheritedReaderWithoutArgument
 :
   @unifiedTypeMapIndex returnedTypeIndex ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inReturnedTypeName !here] !?ioUnifiedTypeMap ?returnedTypeIndex] ;
-  [!?ioReaderMap insertKey
+  [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@unifiedTypeMapIndexList emptyList]
     !inHasLexiqueAndLocationArguments
@@ -99,7 +99,7 @@ routine enterBaseReaderWithArgument
   @unifiedTypeMapIndex t ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inArgument1TypeName !here] !?ioUnifiedTypeMap ?t] ;
   argList += !t ;
-  [!?ioReaderMap insertKey
+  [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     !argList
     !inHasLexiqueAndLocationArguments
@@ -128,7 +128,7 @@ routine enterBaseReaderWith2Arguments
   argList += !t ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inArgument2TypeName !here] !?ioUnifiedTypeMap ?t] ;
   argList += !t ;
-  [!?ioReaderMap insertKey
+  [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     !argList
     !inHasLexiqueAndLocationArguments
@@ -160,7 +160,7 @@ routine enterBaseReaderWith3Arguments
   argList += !t ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !inArgument3TypeName !here] !?ioUnifiedTypeMap ?t] ;
   argList += !t ;
-  [!?ioReaderMap insertKey
+  [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     !argList
     !inHasLexiqueAndLocationArguments
@@ -388,7 +388,7 @@ routine readerMapFor_lstring
   @readerMap commonReaders [emptyMap] ;
   enterReaderFor_string_lstring_types !?ioUnifiedTypeMap !?commonReaders ;
   foreach commonReaders do
-    [!?outMap insertKey
+    [!?outMap insertOrReplace
       !key
       !mArgumentTypeList
       !mHasLexiqueArgument

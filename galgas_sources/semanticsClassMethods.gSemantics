@@ -33,7 +33,7 @@ routine enterClassMethodWithStringInputArgument
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [!?ioClassMethodMap insertKey
+  [!?ioClassMethodMap insertOrReplace
     ![@lstring new !inClassMethodName !here]
     !argList
     !inHasCompilerArgument
@@ -61,7 +61,7 @@ routine classMethodMapFor_string
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [!?outClassMethodMap insertKey
+  [!?outClassMethodMap insertOrReplace
     ![@lstring new !"generateFile" !here]
     !argList
     !true
