@@ -120,7 +120,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_string
+override method @stringPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
@@ -129,7 +129,6 @@ routine constructorMapFor_string
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithSourceFilePath" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithCurrentDirectory" !"string" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithMainFirstArgument" !"string" !false ;
-#  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringWithContentsOfFile" !"char" !"uint" !"string" !true ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithContentsOfFile" !"string" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithCurrentDateTime" !"string" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithEnvironmentVariable" !"string" !"string" !true ;
@@ -139,22 +138,23 @@ routine constructorMapFor_string
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"CppString" !"string" !"string" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"CppChar" !"char" !"string" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"componentsJoinedByString" !"stringlist" !"string" !"string" !false ;
-end routine ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringWithSequenceOfCharacters" !"char" !"uint" !"string" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_char
+override method @charPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"replacementCharacter" !"char" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"unicodeCharacterWithUnsigned" !"uint" !"char" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_uint
+override method @uintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
@@ -163,22 +163,22 @@ routine constructorMapFor_uint
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"errorCount" !"uint" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"warningCount" !"uint" !true ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"valueWithMask" !"uint" !"uint" !"uint" !true ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_sint
+override method @sintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"sint" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"min" !"sint" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_uint64
+override method @uint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
@@ -187,114 +187,114 @@ routine constructorMapFor_uint64
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64MaskWithCompressedBitString" !"string" !"uint64" !true ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64BaseValueWithCompressedBitString" !"string"  !"uint64" !true ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64WithBitString" !"string"  !"uint64" !true ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_sint64
+override method @sint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"sint64" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"min" !"sint64" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_lstring
+override method @lstringPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"string" !"location" !"lstring" !true ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"string" !"location" !"lstring" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"retrieveAndResetTemplateString" !"lstring" !true ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_lchar
+override method @lcharPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"char" !"location" !"lchar" !true ;
-end routine ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"char" !"location" !"lchar" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_lbool
+override method @lboolPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"bool" !"location" !"lbool" !true ;
-end routine ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"bool" !"location" !"lbool" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_luint
+override method @luintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"uint" !"location" !"luint" !true ;
-end routine ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"uint" !"location" !"luint" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_lsint
+override method @lsintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"sint" !"location" !"lsint" !true ;
-end routine ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"sint" !"location" !"lsint" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_luint64
+override method @luint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"uint64" !"location" !"luint64" !true ;
-end routine ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"uint64" !"location" !"luint64" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_lsint64
+override method @lsint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"sint64" !"location" !"lsint64" !true ;
-end routine ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"sint64" !"location" !"lsint64" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_ldouble
+override method @ldoublePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"double" !"location" !"ldouble" !true ;
-end routine ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"new" !"double" !"location" !"ldouble" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_stringset
+override method @stringsetPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptySet" !"stringset" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithString" !"string" !"stringset" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_binaryset
+override method @binarysetPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
@@ -315,32 +315,32 @@ routine constructorMapFor_binaryset
   enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictGreaterThanConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
   enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithLowerOrEqualToConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
   enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithGreaterOrEqualToConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithITE" !"binaryset" !"binaryset" !"binaryset" !"binaryset" !true ;
-end routine ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithITE" !"binaryset" !"binaryset" !"binaryset" !"binaryset" !false ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_type
+override method @typePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"typeList" !"typelist" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_data
+override method @dataPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptyData" !"data" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine constructorMapFor_function
+override method @functionPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
@@ -348,102 +348,7 @@ routine constructorMapFor_function
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"functionList" !"functionlist" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"functionWithName" !"string" !"function" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"isFunctionDefined" !"string" !"bool" !false ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine constructorMapFor_class
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@constructorMap outMap
-:
-  outMap := [@constructorMap emptyMap] ;
-#  @ACGalgasType selfType := self ; # Astuce car self n'est pas défini dans un contexte emboîté (BUG)
-#  if not mIsAbstract then
-#    @typeList typeList [emptyList] ;
-#    foreach mAttributeList do
-#      typeList += ![mAttributeTypeIndex mType] ;
-#    end foreach ;
-#    [!?outMap insertKey ![@lstring new !"new" !here] !typeList !false !selfType] ;
-#  end if ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine constructorMapFor_listmap
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@constructorMap outMap
-:
-  outMap := [@constructorMap emptyMap] ;
-#  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptyList" !self !false ;
-#  @typeList typeList [emptyList] ;
-#  foreach mAttributeList do
-#    typeList += ![mAttributeTypeIndex mType] ;
-#  end foreach ;
-#  [!?outMap insertKey ![@lstring new !"listWithValue" !here] !typeList !false !self] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine constructorMapFor_struct
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@constructorMap outMap
-:
-  outMap := [@constructorMap emptyMap] ;
-#  @typeList typeList [emptyList] ;
-#  foreach mAttributeList do
-#    typeList += ![mAttributeTypeIndex mType] ;
-#  end foreach ;
-#  [!?outMap insertKey ![@lstring new !"new" !here] !typeList !false !self] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine constructorMapFor_sortedlist
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@constructorMap outMap
-:
-  outMap := [@constructorMap emptyMap] ;
-#  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptySortedList" !self !false ;
-#  @typeList typeList [emptyList] ;
-#  foreach mAttributeList do
-#    typeList += ![mAttributeTypeIndex mType] ;
-#  end foreach ;
-#  [!?outMap insertKey ![@lstring new !"sortedListWithValue" !here] !typeList !false !self] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine constructorMapFor_map
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@constructorMap outMap
-:
-  outMap := [@constructorMap emptyMap] ;
-#  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptyMap" !self !false ;
-#  [!?outMap insertKey ![@lstring new !"mapWithMapToOverride" !here] ![@typeList listWithValue !self] !false !self] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine constructorMapFor_mapindex
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@constructorMap outMap
-:
-  outMap := [@constructorMap emptyMap] ;
-#  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"null" !self !false ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine constructorMapFor_enum
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@constructorMap outMap
-:
-  outMap := [@constructorMap emptyMap] ;
-#  @ACGalgasType selfType := self ; # Astuce car self n'est pas défini dans un contexte emboîté (BUG)
-#  foreach mEnumConstructorMap do
-#    enterConstructorWithoutArgument !?outMap ![key string] !selfType !false ;
-#  end foreach ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

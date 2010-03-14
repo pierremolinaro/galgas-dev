@@ -10,25 +10,26 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
 
 class GALGAS_%!TYPE_NAME% : public %
 if [[TYPE enumerable] length] == 0 then
-  %AC_GALGAS_root%
+  %GALGAS_root%
 else
-  %AC_GALGAS_Enumerable%
+  %GALGAS_enumerable%
 end if
 % {
-//--------------------------------- Native constructor
+//--------------------------------- C++ constructor
 %
-%  protected : GALGAS_%!TYPE_NAME% (%?COL_00
+%  protected : GALGAS_%!TYPE_NAME% (%?^
 foreach [TYPE attributeDescriptionList]
   do %const % !mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
-  between %,\n%!COL_00
+  between %,\n%!^
 end foreach
 if [[TYPE attributeDescriptionList] length] == 0 then
   %LOCATION_ARGS) ;\n\n%
 else
-  %\n%!COL_00 %COMMA_LOCATION_ARGS) ;\n\n%
+  %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if [TYPE generate_new_constructor] then
+  %//--------------------------------- Native constructor\n%
   %  public : static GALGAS_%!TYPE_NAME% * constructor_new (%?COL_01
   foreach [TYPE attributeDescriptionList]
     do %const % !mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
@@ -45,7 +46,7 @@ end if
 foreach [TYPE constructorMap]
 before %//--------------------------------- GALGAS constructors\n%
 do
-  %  public : static GALGAS_%![mReturnedType typeIdentifierRepresentation]% * constructor_%![key string]% (%?COL
+  %  public : static GALGAS_%![mReturnedType typeIdentifierRepresentation]% * constructor_%![key identifierRepresentation]% (%?COL
   foreach mArgumentTypeList
     do index IDX %const GALGAS_%![mType typeIdentifierRepresentation]% * inOperand% ![IDX string]
     between %,\n% !COL
@@ -66,8 +67,7 @@ do
   %) ;\n\n%
 end foreach
 
-%
-//--------------------------------- No copy
+%//--------------------------------- No copy
   private : GALGAS_%!TYPE_NAME% (const GALGAS_%!TYPE_NAME% &) ;
   private : GALGAS_%!TYPE_NAME% & operator = (const GALGAS_%!TYPE_NAME% &) ;
 
@@ -257,14 +257,6 @@ if [TYPE accept_tilde_operator] then
   %  public : static GALGAS_%!TYPE_NAME% * operator_tilde (%?COL%const GALGAS_%!TYPE_NAME% * inOperand\n%
         !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
-%//--------------------------------- Comparison
-  public : static PMSInt32 objectCompare (const GALGAS_%!TYPE_NAME% * inOperand1,
-                                          const GALGAS_%!TYPE_NAME% * inOperand2) ;
-
-//--------------------------------- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
-
-%
 
 if [TYPE accept_concat_operator] then
   %//--------------------------------- . (concat) operator\n%
@@ -356,7 +348,14 @@ if [TYPE accept_inc_dec_operator] | [TYPE accept_append_operator] | ([[TYPE modi
         !COL%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
-%//--------------------------------- Private data member\n%
+%//--------------------------------- Comparison
+  public : static PMSInt32 objectCompare (const GALGAS_%!TYPE_NAME% * inOperand1,
+                                          const GALGAS_%!TYPE_NAME% * inOperand2) ;
+
+//--------------------------------- Introspection
+  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+
+//--------------------------------- Private data member\n%
 foreach [TYPE attributeDescriptionList] do
   %  private : %if mIsPointer then %const % end if !mCppClassName % % if mIsPointer then %* % end if !mAttributeName% ;\n%
   if [mGetterName length] > 0 then
@@ -366,7 +365,7 @@ end foreach
 %
 //--------------------------------- Instance Method Invocation\n\n%
 foreach [TYPE instanceMethodMap] do
-  %  friend inline void method_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * inObject%
+  %  friend inline void instanceMethodCall_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * inObject%
   foreach mParameterList do index IDX
     %,\n%!COL
     if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -389,7 +388,7 @@ foreach [TYPE instanceMethodMap] do
 end foreach
 %//--------------------------------- Modifier invocation\n%
 foreach [TYPE modifierMap] do
-  %  friend inline void modifier_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
+  %  friend inline void modifierCall_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
   foreach mParameterList do index IDX
     %,\n%!COL
     if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -428,7 +427,7 @@ foreach [TYPE readerMap] do
 end foreach
 if [[TYPE enumerable] length] > 0 then
 %//--------------------------------- Enumeration handling
-  protected : virtual void populateEnumerationArray (const AC_GALGAS_root * ioEnumerationArray [],
+  protected : virtual void populateEnumerationArray (const GALGAS_root * ioEnumerationArray [],
                                                      const bool inAscending) const ;
   protected : virtual PMUInt32 count (void) const ;
 
@@ -449,7 +448,7 @@ end if
 
 %foreach [TYPE modifierMap] do
   %//---------------------------------------------------------------------------*\n\n%
-  %inline void modifier_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
+  %inline void modifierCall_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * & ioResult%
   foreach mParameterList do index IDX
     %,\n%!COL
     if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -504,7 +503,7 @@ end foreach
 
 foreach [TYPE instanceMethodMap] do
   %//---------------------------------------------------------------------------*\n\n%
-  %inline void method_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * inObject%
+  %inline void instanceMethodCall_%![key identifierRepresentation]% (%?COL%GALGAS_%!TYPE_NAME% * inObject%
   foreach mParameterList do index IDX
     %,\n%!COL
     if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then

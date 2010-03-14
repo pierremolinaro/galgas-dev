@@ -18,18 +18,13 @@
 #---------------------------------------------------------------------------*
 
 semantics generatePredefinedTypes :
-  import "semanticsGeneration.gSemantics" ;
-  import semantics semanticsGeneration in "semanticsGeneration.gSemantics" ;
+#  import "semanticsGeneration.gSemantics" ;
+  import "semanticsTypesEX.gSemantics" ;
+  import "semanticAnalysis.gSemantics" ;
 
-#---------------------------------------------------------------------------*
-
-list @builtinTypeAttributeList {
-  @string mCppClassName ;
-  @bool mIsPointer ;
-  @string mAttributeName ;
-  @bool mUseReferenceForConstructor ;
-  @string mGetterName ;
-}
+#  import semantics semanticsGeneration in "semanticsGeneration.gSemantics" ;
+  import semantics semanticsTypesEX in "semanticsTypesEX.gSemantics" ;
+  import semantics semanticAnalysis in "semanticAnalysis.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -37,78 +32,78 @@ list @builtinTypeAttributeList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+reader @ACGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @boolGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @boolGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"bool" !false !"mBoolValue" !false !"boolValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringsetGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @stringsetGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"cStringsetNode" !true !"mRoot" !false !"" ;
   outList += !"PMUInt32" !false !"mCount" !false !"" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @charGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @charGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"utf32" !false !"mCharValue" !false !"charValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @stringGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"C_String" !false !"mString" !true !"stringValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @uintGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"PMUInt32" !false !"mUIntValue" !false !"uintValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @sintGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"PMSInt32" !false !"mSIntValue" !false !"sintValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @uint64GalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"PMUInt64" !false !"mUInt64Value" !false !"uint64Value" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @sint64GalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"PMSInt64" !false !"mSInt64Value" !false !"sint64Value" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @doubleGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @doubleGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"double" !false !"mDoubleValue" !false !"doubleValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @locationGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @locationGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"C_LocationInSource" !false !"mStartLocationInSource" !true !"startLocation" ;
   outList += !"C_LocationInSource" !false !"mEndLocationInSource" !true !"endLocation" ;
   outList += !"C_SourceTextInString" !true !"mSourceText" !false !"sourceText" ;
@@ -116,100 +111,100 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @objectGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
-  outList += !"AC_GALGAS_root" !true !"mEmbeddedObject" !false !"embeddedObject" ;
+override reader @objectGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_root" !true !"mEmbeddedObject" !false !"embeddedObject" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @typeGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @typeGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"C_galgas_type_descriptor" !true !"mTypeDescriptor" !false !"embeddedTypeDescriptor" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @functionGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"C_galgas_function_descriptor" !true !"mFunctionDescriptor" !false !"functionDescriptor" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lstringGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @lstringGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"GALGAS_string" !true !"mString" !false !"stringValue" ;
   outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lcharGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @lcharGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"GALGAS_char" !true !"mChar" !false !"charValue" ;
   outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @luintGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @luintGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"GALGAS_uint" !true !"mUInt" !false !"uintValue" ;
   outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lsintGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @lsintGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"GALGAS_sint" !true !"mSInt" !false !"sintValue" ;
   outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @luint64GalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @luint64GalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"GALGAS_uint_36__34_" !true !"mUInt64" !false !"uint64Value" ;
   outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lsint64GalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @lsint64GalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"GALGAS_sint_36__34_" !true !"mSInt64" !false !"sint64Value" ;
   outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lboolGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @lboolGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"GALGAS_bool" !true !"mBool" !false !"boolValue" ;
   outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @ldoubleGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @ldoubleGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"GALGAS_double" !true !"mDouble" !false !"doubleValue" ;
   outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @binarysetGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @binarysetGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"C_BDD" !false !"mBDD" !true !"bdd" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @dataGalgasType attributeDescriptionList -> @builtinTypeAttributeList outList :
-  outList := [@builtinTypeAttributeList emptyList] ;
+override reader @dataGalgasType attributeDescriptionList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
   outList += !"uint8Array" !false !"mData" !true !"" ;
 end reader ;
 
@@ -343,19 +338,64 @@ end reader ;
 
 filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
-  template primitiveTypeHeader "GALGAS_builtin_type.h.gTemplate"
+  template unifiedTypeHeader "unified-type.h.gTemplate"
     ?@string TYPE_NAME
-    ?@ACGalgasType TYPE
+    ?@string TYPE_IDENTIFIER
+    ?@bool IS_CONCRETE # false if abstract class
+    ?@unifiedTypeMapIndex SUPER_TYPE_INDEX
+    ?@typeKindEnum TYPE_KIND
+    ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
+    ?@constructorMap CONSTRUCTOR_MAP
+    ?@readerMap READER_MAP
+    ?@modifierMap MODIFIER_MAP
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
+    ?@classMethodMap CLASS_METHOD_MAP
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
+    ?@uint SUPPORTED_OPERATORS
+    ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
+    ?@string SUPER_CLASS_FOR_GENERATION
   ;
-  template primitiveTypeImplementation "GALGAS_builtin_type.cpp.gTemplate"
+
+  template unifiedTypeImplementation "unified-type.cpp.gTemplate"
     ?@string TYPE_NAME
-    ?@ACGalgasType TYPE
+    ?@string TYPE_IDENTIFIER
+    ?@bool IS_CONCRETE # false if abstract class
+    ?@unifiedTypeMapIndex SUPER_TYPE_INDEX
+    ?@typeKindEnum TYPE_KIND
+    ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
+    ?@constructorMap CONSTRUCTOR_MAP
+    ?@readerMap READER_MAP
+    ?@modifierMap MODIFIER_MAP
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
+    ?@classMethodMap CLASS_METHOD_MAP
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
+    ?@uint SUPPORTED_OPERATORS
+    ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
+    ?@string SUPER_CLASS_FOR_GENERATION
   ;
-  template predefinedTypesHeader "predefined_types.h.gTemplate"
-    ?@typeMap TYPE_MAP
+
+  template predefinedTypesHeader "types-predeclaration.h.gTemplate"
+    ?@stringset TYPE_LIST
   ;
   template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
   ;
+
+
+#  template primitiveTypeImplementation "GALGAS_builtin_type.cpp.gTemplate"
+#    ?@string TYPE_NAME
+#    ?@ACGalgasType TYPE
+#  ;
+#  template primitiveTypeHeader "GALGAS_builtin_type.h.gTemplate"
+#    ?@string TYPE_NAME
+#    ?@ACGalgasType TYPE
+#  ;
+#  template predefinedTypesHeaderEX "predefined_types.h.gTemplate"
+#    ?@typeMap TYPE_MAP
+#  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -370,34 +410,34 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @primitiveGalgasType appendGeneratedHeader ?!@string ioHeader :
-  @ACGalgasType t := self ; # Bug in GALGAS 1
-  ioHeader .= [filewrapper builtinTypeGenerationTemplate.primitiveTypeHeader
-    ![t typeIdentifierRepresentation]
-    !t
- ] ;
+#  @ACGalgasType t := self ; # Bug in GALGAS 1
+#  ioHeader .= [filewrapper builtinTypeGenerationTemplate.primitiveTypeHeader
+#    ![t typeIdentifierRepresentation]
+#    !t
+# ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @sortedlistGalgasType appendGeneratedHeader ?!@string ioHeader :
-  @ACGalgasType t := self ; # Bug in GALGAS 1
-  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
-  ioHeader .= [filewrapper typeGenerationTemplate.sortedlistTypeHeader
-    ![t typeIdentifierRepresentation]
-    ![tt mAttributeList]
-#    ![tt mSortDescriptorList]
- ] ;
+#  @ACGalgasType t := self ; # Bug in GALGAS 1
+#  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
+#  ioHeader .= [filewrapper typeGenerationTemplate.sortedlistTypeHeader
+#    ![t typeIdentifierRepresentation]
+#    ![tt mAttributeList]
+##    ![tt mSortDescriptorList]
+# ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @listGalgasType appendGeneratedHeader ?!@string ioHeader :
-  @ACGalgasType t := self ; # Bug in GALGAS 1
-  @listGalgasType tt := self ; # Bug in GALGAS 1
-  ioHeader .= [filewrapper typeGenerationTemplate.listTypeHeader
-    ![t typeIdentifierRepresentation]
-    ![tt mAttributeList]
- ] ;
+#  @ACGalgasType t := self ; # Bug in GALGAS 1
+#  @listGalgasType tt := self ; # Bug in GALGAS 1
+#  ioHeader .= [filewrapper typeGenerationTemplate.listTypeHeader
+#    ![t typeIdentifierRepresentation]
+#    ![tt mAttributeList]
+# ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -412,35 +452,70 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listGalgasType appendGeneratedImplementation ?!@string ioImplementation :
-  @ACGalgasType t := self ; # Bug in GALGAS 1
-  @listGalgasType tt := self ; # Bug in GALGAS 1
-  ioImplementation .= [filewrapper typeGenerationTemplate.listTypeImplementation
-    ![t typeIdentifierRepresentation]
-    ![tt mAttributeList]
- ] ;
+#  @ACGalgasType t := self ; # Bug in GALGAS 1
+#  @listGalgasType tt := self ; # Bug in GALGAS 1
+#  ioImplementation .= [filewrapper typeGenerationTemplate.listTypeImplementation
+#    ![t typeIdentifierRepresentation]
+#    ![tt mAttributeList]
+# ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @sortedlistGalgasType appendGeneratedImplementation ?!@string ioImplementation :
-  @ACGalgasType t := self ; # Bug in GALGAS 1
-  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
-  ioImplementation .= [filewrapper typeGenerationTemplate.sortedlistTypeImplementation
-    ![t typeIdentifierRepresentation]
-    ![tt mAttributeList]
-    ![tt mSortDescriptorList]
- ] ;
+#  @ACGalgasType t := self ; # Bug in GALGAS 1
+#  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
+#  ioImplementation .= [filewrapper typeGenerationTemplate.sortedlistTypeImplementation
+#    ![t typeIdentifierRepresentation]
+#    ![tt mAttributeList]
+#    ![tt mSortDescriptorList]
+# ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @primitiveGalgasType appendGeneratedImplementation ?!@string ioImplementation :
-  @ACGalgasType t := self ; # Bug in GALGAS 1
-  ioImplementation .= [filewrapper builtinTypeGenerationTemplate.primitiveTypeImplementation
-    ![t typeIdentifierRepresentation]
-    !t
- ] ;
+#  @ACGalgasType t := self ; # Bug in GALGAS 1
+#  ioImplementation .= [filewrapper builtinTypeGenerationTemplate.primitiveTypeImplementation
+#    ![t typeIdentifierRepresentation]
+#    !t
+# ] ;
 end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    G E N E R A T E D    I M P L E M E N T A T I O N           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationAST appendSpecificImplementation ->@string outImplementation :
+  outImplementation := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @listDeclarationAST appendSpecificImplementation ->@string outImplementation :
+  outImplementation := "" ;
+#  @ACGalgasType t := self ; # Bug in GALGAS 1
+#  @listGalgasType tt := self ; # Bug in GALGAS 1
+#  ioImplementation .= [filewrapper typeGenerationTemplate.listTypeImplementation
+#    ![t typeIdentifierRepresentation]
+#    ![tt mAttributeList]
+# ] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sortedListDeclarationAST appendSpecificImplementation ->@string outImplementation :
+  outImplementation := "" ;
+#  @ACGalgasType t := self ; # Bug in GALGAS 1
+#  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
+#  ioImplementation .= [filewrapper typeGenerationTemplate.sortedlistTypeImplementation
+#    ![t typeIdentifierRepresentation]
+#    ![tt mAttributeList]
+#    ![tt mSortDescriptorList]
+# ] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -453,16 +528,90 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
     if not [inDirectory directoryExists] then
       error here : "the '" . inDirectory . "' directory does not exist" ;
     else
+
+
+
+
+
+
+#    #--- Predefined types headers
+#      @string generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesHeaderEX
+#        !constructBuiltinTypeMap []
+#      ] ;
+#      foreach constructBuiltinTypeMap [] do
+#        [mType appendGeneratedHeader !?generatedCode] ;
+#      end foreach ;
+#      [@string generateFile
+#        !inDirectory
+#        !"predefined-types.h"
+#        !"//"
+#        !"\n\n" # Defaut user zone1
+#        !generatedCode
+#        !"\n\n" # Defaut user zone2
+#        !"#endif\n"
+#      ] ;
+#    #--- Predefined types implementation
+#      generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation] ;
+#      foreach constructBuiltinTypeMap [] do
+#        [mType appendGeneratedImplementation !?generatedCode] ;
+#      end foreach ;
+#      [@string generateFile
+#        !inDirectory
+#        !"predefined-types.cpp"
+#        !"//"
+#        !"\n\n" # Defaut user zone1
+#        !generatedCode
+#        !"\n\n" # Defaut user zone2
+#        !""
+#      ] ;
+
+
+
+
+
+
+    #------ Add predefined types to semantics declarations
+      @semanticDeclarationListAST predefinedTypeASTlist [emptyList] ;
+      appendPredefinedTypesASTs !?predefinedTypeASTlist ;
     #--- Predefined types headers
+      @semanticContext semanticContext ;
+      buildSemanticContext
+        !predefinedTypeASTlist
+        !here
+        ?semanticContext
+      ;
+      @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+      performSemanticAnalysis
+        !semanticContext
+        ?decoratedDeclarationListForGeneration
+      ;
       @string generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesHeader
-        !constructBuiltinTypeMap []
+        ![[semanticContext mTypeMap] allKeys]
       ] ;
-      foreach constructBuiltinTypeMap [] do
-        [mType appendGeneratedHeader !?generatedCode] ;
+      foreach [semanticContext mTypeMap] do
+        generatedCode .= [filewrapper builtinTypeGenerationTemplate.unifiedTypeHeader
+          ![key string]
+          ![key identifierRepresentation]
+          !mIsConcrete
+          !mSuperType
+          !mTypeKindEnum
+          !mCurrentTypedAttributeList
+          !mConstructorMap
+          !mReaderMap
+          !mModifierMap
+          !mInstanceMethodMap
+          !mClassMethodMap
+          !mEnumerationDescriptor
+          !mHandledOperatorFlags
+          !mAddAssignOperatorArguments
+          !mMinusAssignOperatorArguments
+          !mNativeAttributeList
+          !mSuperClassForCodeGeneration
+        ] ;
       end foreach ;
       [@string generateFile
         !inDirectory
-        !"predefined-types.h"
+        !"predefined-types-2.h"
         !"//"
         !"\n\n" # Defaut user zone1
         !generatedCode
@@ -471,12 +620,31 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
       ] ;
     #--- Predefined types implementation
       generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation] ;
-      foreach constructBuiltinTypeMap [] do
-        [mType appendGeneratedImplementation !?generatedCode] ;
+      foreach [semanticContext mTypeMap] do
+        generatedCode .= [filewrapper builtinTypeGenerationTemplate.unifiedTypeImplementation
+          ![key string]
+          ![key identifierRepresentation]
+          !mIsConcrete
+          !mSuperType
+          !mTypeKindEnum
+          !mCurrentTypedAttributeList
+          !mConstructorMap
+          !mReaderMap
+          !mModifierMap
+          !mInstanceMethodMap
+          !mClassMethodMap
+          !mEnumerationDescriptor
+          !mHandledOperatorFlags
+          !mAddAssignOperatorArguments
+          !mMinusAssignOperatorArguments
+          !mNativeAttributeList
+          !mSuperClassForCodeGeneration
+        ] ;
+        generatedCode .= [mDeclarationAST appendSpecificImplementation] ;
       end foreach ;
       [@string generateFile
         !inDirectory
-        !"predefined-types.cpp"
+        !"predefined-types-2.cpp"
         !"//"
         !"\n\n" # Defaut user zone1
         !generatedCode

@@ -77,17 +77,17 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine instanceMethodMapFor_data
+override method @dataPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@instanceMethodMap outInstanceMethodMap
 :
   outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"writeToFile" !true ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine instanceMethodMapFor_string
+override method @stringPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@instanceMethodMap outInstanceMethodMap
 :
@@ -107,7 +107,7 @@ routine instanceMethodMapFor_string
     !argList
     !true
   ] ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
