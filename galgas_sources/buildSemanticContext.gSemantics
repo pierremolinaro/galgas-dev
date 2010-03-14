@@ -334,7 +334,6 @@ override method @predefinedTypeAST enterType
     !minusAssignArgumentList
     ![t getNativeAttributeList]
     !if mPredefinedTypeName == "stringset" then "enumerable" else "root" end
-    !self
   ] ;
 end method ;
 
@@ -454,7 +453,6 @@ override method @mapDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
     !"map"
-    !self
   ] ;
 end method ;
 
@@ -472,7 +470,7 @@ override method @mapindexDeclarationAST enterType
     ?typeKindEnum
     ?*
     ?mapTypedAttributeList
-    ?12*
+    ?11*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be a map type" ;
@@ -542,7 +540,6 @@ override method @mapindexDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
     !"mapindex"
-    !self
   ] ;
 end method ;
 
@@ -587,7 +584,6 @@ override method @enumDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
     !"root"
-    !self
   ] ;
 end method ;
 
@@ -690,7 +686,6 @@ override method @sortedListDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
     !"sortedlist"
-    !self
   ] ;
 end method ;
 
@@ -755,7 +750,6 @@ override method @structDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
     !"struct"
-    !self
   ] ;
 end method ;
 
@@ -780,11 +774,13 @@ override method @listDeclarationAST enterType
 #--- Attribute description
   @enumerationDescriptorList enumerationDescriptor [emptyList] ;
   @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
-  @formalParameterSignature modifierFormalArgumentList [emptyList] ;
+  @formalParameterSignature modifierOutputFormalArgumentList [emptyList] ;
+  @formalParameterSignature modifierInputFormalArgumentList [emptyList] ;
   foreach typedAttributeList do
     enumerationDescriptor += !mAttributeTypeIndex ![mAttributeName string] ;
     constructorAttributeTypeList += !mAttributeTypeIndex ;
-    modifierFormalArgumentList += !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+    modifierOutputFormalArgumentList += !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+    modifierInputFormalArgumentList += !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   end foreach ;
 #--- Constructors
   @constructorMap constructorMap [emptyMap] ;
@@ -798,8 +794,8 @@ override method @listDeclarationAST enterType
 #--- Readers
   @readerMap readerMap [emptyMap] ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext.mTypeMap !"length" !"uint" !false ;
-#  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" ![mListTypeName string] !false ;
-#  enterBaseReaderWith2Arguments !?readerMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"uint" !"uint" ![mListTypeName string] !false ;
+  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" ![mListTypeName string] !true ;
+  enterBaseReaderWith2Arguments !?readerMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"uint" !"uint" ![mListTypeName string] !true ;
   foreach typedAttributeList do
     [!?readerMap insertOrReplace
       ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
@@ -814,13 +810,18 @@ override method @listDeclarationAST enterType
   @modifierMap modifierMap [emptyMap] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popFirst" !here]
-    !modifierFormalArgumentList
+    !modifierOutputFormalArgumentList
     !true
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popLast" !here]
-    !modifierFormalArgumentList
+    !modifierOutputFormalArgumentList
     !true
+  ] ;
+  [!?modifierMap insertOrReplace
+    ![@lstring new !"prependValue" !here]
+    !modifierInputFormalArgumentList
+    !false
   ] ;
   foreach typedAttributeList do
     @formalParameterSignature setterFormalArgumentList [emptyList] ;
@@ -836,12 +837,12 @@ override method @listDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   [!?instanceMethodMap insertOrReplace
     ![@lstring new !"first" !here]
-    !modifierFormalArgumentList
+    !modifierOutputFormalArgumentList
     !true
   ] ;
   [!?instanceMethodMap insertOrReplace
     ![@lstring new !"last" !here]
-    !modifierFormalArgumentList
+    !modifierOutputFormalArgumentList
     !true
   ] ;
 #--- Enter in type map
@@ -858,12 +859,11 @@ override method @listDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
-    !binaryConcatOperator [] | doNotGenererateObjectCompare []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
     !constructorAttributeTypeList
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
     !"list"
-    !self
   ] ;
 end method ;
 
@@ -903,7 +903,7 @@ override method @classDeclarationAST enterType
       ?modifierMap
       ?instanceMethodMap
       ?classMethodMap
-      ?7*
+      ?6*
     ] ;
     if typeKindEnum != [@typeKindEnum classType] then
       error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
@@ -999,7 +999,6 @@ override method @classDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
     !if [superClassIndex isNull] then "root" else [[superClassIndex key] string] end
-    !self
   ] ;
 end method ;
 
@@ -1064,7 +1063,7 @@ override method @listmapDeclarationAST enterType
     ?typeKindEnum
     ?*
     ?listTypedAttributeList
-    ?12*
+    ?11*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1116,7 +1115,6 @@ override method @listmapDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
     !"listmap"
-    !self
   ] ;
 end method ;
 

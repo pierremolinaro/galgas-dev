@@ -42,6 +42,27 @@ override method @predefinedTypeAST performSemanticAnalysis
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
     ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] ![@lstring new !mPredefinedTypeName !here]]
   ] ;
+
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  @typedAttributeList typedAttributeList [emptyList] ;
+  foreach mAttributeList do
+    typedAttributeList +=
+      ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mAttributeTypeName]
+      !mAttributeName
+    ;
+  end foreach ;
+  ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
+    ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mListTypeName]
+    !typedAttributeList
+  ] ;
+
 end method ;
 
 #---------------------------------------------------------------------------*

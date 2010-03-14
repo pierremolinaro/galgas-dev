@@ -1249,7 +1249,7 @@ list @semanticDeclarationListForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @semanticTypeDeclarationForGeneration extends @semanticDeclarationForGeneration {
+abstract class @semanticTypeForGeneration extends @semanticDeclarationForGeneration {
   @unifiedTypeMapIndex mTypeIndex ;
 }
 
@@ -1259,7 +1259,7 @@ abstract class @semanticTypeDeclarationForGeneration extends @semanticDeclaratio
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @primitiveTypeForGeneration extends @semanticTypeDeclarationForGeneration {
+class @primitiveTypeForGeneration extends @semanticTypeForGeneration {
 }
 
 #---------------------------------------------------------------------------*
@@ -1268,8 +1268,8 @@ class @primitiveTypeForGeneration extends @semanticTypeDeclarationForGeneration 
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @listDeclarationForGeneration extends @semanticTypeDeclarationForGeneration {
-  @typedAttributeList mCurrentTypedAttributeList ;
+class @listTypeForGeneration extends @semanticTypeForGeneration {
+  @typedAttributeList mTypedAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1278,7 +1278,7 @@ class @listDeclarationForGeneration extends @semanticTypeDeclarationForGeneratio
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @structDeclarationForGeneration extends @semanticTypeDeclarationForGeneration {
+class @structDeclarationForGeneration extends @semanticTypeForGeneration {
   @typedAttributeList mCurrentTypedAttributeList ;
 }
 

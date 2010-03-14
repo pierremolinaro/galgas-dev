@@ -385,6 +385,12 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
   ;
 
 
+  template listTypeSpecificImplementation "GALGAS_list.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+
 #  template primitiveTypeImplementation "GALGAS_builtin_type.cpp.gTemplate"
 #    ?@string TYPE_NAME
 #    ?@ACGalgasType TYPE
@@ -404,110 +410,92 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-method @ACGalgasType appendGeneratedHeader ?!@string unused ioHeader :
-end method ;
+reader @semanticDeclarationForGeneration appendDeclaration -> @string outHeader :
+  outHeader := "" ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
-override method @primitiveGalgasType appendGeneratedHeader ?!@string ioHeader :
-#  @ACGalgasType t := self ; # Bug in GALGAS 1
-#  ioHeader .= [filewrapper builtinTypeGenerationTemplate.primitiveTypeHeader
-#    ![t typeIdentifierRepresentation]
-#    !t
-# ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @sortedlistGalgasType appendGeneratedHeader ?!@string ioHeader :
-#  @ACGalgasType t := self ; # Bug in GALGAS 1
-#  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
-#  ioHeader .= [filewrapper typeGenerationTemplate.sortedlistTypeHeader
-#    ![t typeIdentifierRepresentation]
-#    ![tt mAttributeList]
-##    ![tt mSortDescriptorList]
-# ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @listGalgasType appendGeneratedHeader ?!@string ioHeader :
-#  @ACGalgasType t := self ; # Bug in GALGAS 1
-#  @listGalgasType tt := self ; # Bug in GALGAS 1
-#  ioHeader .= [filewrapper typeGenerationTemplate.listTypeHeader
-#    ![t typeIdentifierRepresentation]
-#    ![tt mAttributeList]
-# ] ;
-end method ;
+override reader @semanticTypeForGeneration appendDeclaration -> @string outHeader :
+  outHeader := [filewrapper builtinTypeGenerationTemplate.unifiedTypeHeader
+    ![[mTypeIndex key] string]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mSuperType]
+    ![mTypeIndex mTypeKindEnum]
+    ![mTypeIndex mCurrentTypedAttributeList]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mMinusAssignOperatorArguments]
+    ![mTypeIndex mNativeAttributeList]
+    ![mTypeIndex mSuperClassForCodeGeneration]
+  ] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-# A P P E N D    G E N E R A T E D    I M P L E M E N T A T I O N           *
+# A P P E N D    G E N E R I C    T Y P E    I M P L E M E N T A T I O N    *
 #                                                                           *
+#  This code is common for all types                                        *
 #---------------------------------------------------------------------------*
 
-method @ACGalgasType appendGeneratedImplementation ?!@string unused ioImplementation :
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @listGalgasType appendGeneratedImplementation ?!@string ioImplementation :
-#  @ACGalgasType t := self ; # Bug in GALGAS 1
-#  @listGalgasType tt := self ; # Bug in GALGAS 1
-#  ioImplementation .= [filewrapper typeGenerationTemplate.listTypeImplementation
-#    ![t typeIdentifierRepresentation]
-#    ![tt mAttributeList]
-# ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @sortedlistGalgasType appendGeneratedImplementation ?!@string ioImplementation :
-#  @ACGalgasType t := self ; # Bug in GALGAS 1
-#  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
-#  ioImplementation .= [filewrapper typeGenerationTemplate.sortedlistTypeImplementation
-#    ![t typeIdentifierRepresentation]
-#    ![tt mAttributeList]
-#    ![tt mSortDescriptorList]
-# ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @primitiveGalgasType appendGeneratedImplementation ?!@string ioImplementation :
-#  @ACGalgasType t := self ; # Bug in GALGAS 1
-#  ioImplementation .= [filewrapper builtinTypeGenerationTemplate.primitiveTypeImplementation
-#    ![t typeIdentifierRepresentation]
-#    !t
-# ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# A P P E N D    G E N E R A T E D    I M P L E M E N T A T I O N           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @semanticDeclarationAST appendSpecificImplementation ->@string outImplementation :
+reader @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation :
   outImplementation := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listDeclarationAST appendSpecificImplementation ->@string outImplementation :
+override reader @primitiveTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
+  outImplementation := [filewrapper builtinTypeGenerationTemplate.unifiedTypeImplementation
+    ![[mTypeIndex key] string]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mSuperType]
+    ![mTypeIndex mTypeKindEnum]
+    ![mTypeIndex mCurrentTypedAttributeList]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mMinusAssignOperatorArguments]
+    ![mTypeIndex mNativeAttributeList]
+    ![mTypeIndex mSuperClassForCodeGeneration]
+  ] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    S P E C I F I C    I M P L E M E N T A T I O N             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := "" ;
-#  @ACGalgasType t := self ; # Bug in GALGAS 1
-#  @listGalgasType tt := self ; # Bug in GALGAS 1
-#  ioImplementation .= [filewrapper typeGenerationTemplate.listTypeImplementation
-#    ![t typeIdentifierRepresentation]
-#    ![tt mAttributeList]
-# ] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedListDeclarationAST appendSpecificImplementation ->@string outImplementation :
-  outImplementation := "" ;
+override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper builtinTypeGenerationTemplate.listTypeSpecificImplementation
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+#override reader @sortedListDeclarationAST appendSpecificImplementation ->@string outImplementation :
+#  outImplementation := "" ;
 #  @ACGalgasType t := self ; # Bug in GALGAS 1
 #  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
 #  ioImplementation .= [filewrapper typeGenerationTemplate.sortedlistTypeImplementation
@@ -515,7 +503,7 @@ override reader @sortedListDeclarationAST appendSpecificImplementation ->@string
 #    ![tt mAttributeList]
 #    ![tt mSortDescriptorList]
 # ] ;
-end reader ;
+#end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -528,52 +516,10 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
     if not [inDirectory directoryExists] then
       error here : "the '" . inDirectory . "' directory does not exist" ;
     else
-
-
-
-
-
-
-#    #--- Predefined types headers
-#      @string generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesHeaderEX
-#        !constructBuiltinTypeMap []
-#      ] ;
-#      foreach constructBuiltinTypeMap [] do
-#        [mType appendGeneratedHeader !?generatedCode] ;
-#      end foreach ;
-#      [@string generateFile
-#        !inDirectory
-#        !"predefined-types.h"
-#        !"//"
-#        !"\n\n" # Defaut user zone1
-#        !generatedCode
-#        !"\n\n" # Defaut user zone2
-#        !"#endif\n"
-#      ] ;
-#    #--- Predefined types implementation
-#      generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation] ;
-#      foreach constructBuiltinTypeMap [] do
-#        [mType appendGeneratedImplementation !?generatedCode] ;
-#      end foreach ;
-#      [@string generateFile
-#        !inDirectory
-#        !"predefined-types.cpp"
-#        !"//"
-#        !"\n\n" # Defaut user zone1
-#        !generatedCode
-#        !"\n\n" # Defaut user zone2
-#        !""
-#      ] ;
-
-
-
-
-
-
     #------ Add predefined types to semantics declarations
       @semanticDeclarationListAST predefinedTypeASTlist [emptyList] ;
       appendPredefinedTypesASTs !?predefinedTypeASTlist ;
-    #--- Predefined types headers
+    #------ Generate declarations
       @semanticContext semanticContext ;
       buildSemanticContext
         !predefinedTypeASTlist
@@ -588,63 +534,27 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
       @string generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesHeader
         ![[semanticContext mTypeMap] allKeys]
       ] ;
-      foreach [semanticContext mTypeMap] do
-        generatedCode .= [filewrapper builtinTypeGenerationTemplate.unifiedTypeHeader
-          ![key string]
-          ![key identifierRepresentation]
-          !mIsConcrete
-          !mSuperType
-          !mTypeKindEnum
-          !mCurrentTypedAttributeList
-          !mConstructorMap
-          !mReaderMap
-          !mModifierMap
-          !mInstanceMethodMap
-          !mClassMethodMap
-          !mEnumerationDescriptor
-          !mHandledOperatorFlags
-          !mAddAssignOperatorArguments
-          !mMinusAssignOperatorArguments
-          !mNativeAttributeList
-          !mSuperClassForCodeGeneration
-        ] ;
+      foreach decoratedDeclarationListForGeneration do
+        generatedCode .= [mDeclaration appendDeclaration] ;
       end foreach ;
       [@string generateFile
         !inDirectory
-        !"predefined-types-2.h"
+        !"predefined-types.h"
         !"//"
         !"\n\n" # Defaut user zone1
         !generatedCode
         !"\n\n" # Defaut user zone2
         !"#endif\n"
       ] ;
-    #--- Predefined types implementation
+    #------ Generate implementation
       generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation] ;
-      foreach [semanticContext mTypeMap] do
-        generatedCode .= [filewrapper builtinTypeGenerationTemplate.unifiedTypeImplementation
-          ![key string]
-          ![key identifierRepresentation]
-          !mIsConcrete
-          !mSuperType
-          !mTypeKindEnum
-          !mCurrentTypedAttributeList
-          !mConstructorMap
-          !mReaderMap
-          !mModifierMap
-          !mInstanceMethodMap
-          !mClassMethodMap
-          !mEnumerationDescriptor
-          !mHandledOperatorFlags
-          !mAddAssignOperatorArguments
-          !mMinusAssignOperatorArguments
-          !mNativeAttributeList
-          !mSuperClassForCodeGeneration
-        ] ;
-        generatedCode .= [mDeclarationAST appendSpecificImplementation] ;
+      foreach decoratedDeclarationListForGeneration do
+        generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
+        generatedCode .= [mDeclaration appendSpecificImplementation] ;
       end foreach ;
       [@string generateFile
         !inDirectory
-        !"predefined-types-2.cpp"
+        !"predefined-types.cpp"
         !"//"
         !"\n\n" # Defaut user zone1
         !generatedCode

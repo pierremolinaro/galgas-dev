@@ -213,7 +213,7 @@ function binaryXorOperator -> @uint outMask : outMask := 1 << 12 ; end function 
 function unaryNotOperator -> @uint outMask : outMask := 1 << 13 ; end function ;
 
 function binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end function ; # exp1 . exp2
-function concatAssignOperator -> @uint outMask : outMask := 1 << 15 ; end function ; # var .= exp ;
+function dotAssignOperator -> @uint outMask : outMask := 1 << 15 ; end function ; # var .= exp ;
 
 function doNotGenererateObjectCompare -> @uint outMask : outMask := 1 << 28 ; end function ;
 function generateDescriptionReaderUtilityMethod -> @uint outMask : outMask := 1 << 29 ; end function ;
@@ -243,7 +243,6 @@ map @unifiedTypeMap {
   @unifiedTypeMapIndexList mMinusAssignOperatorArguments ; # Empty list if -= operator is not supported
   @nativeAttributeList mNativeAttributeList ; # Generating type declaration
   @string mSuperClassForCodeGeneration ;
-  @semanticDeclarationAST mDeclarationAST ;
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;
