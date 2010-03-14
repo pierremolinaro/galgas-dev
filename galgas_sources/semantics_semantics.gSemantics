@@ -1421,6 +1421,8 @@ class @C_mapindexToImplement extends @typeEntityToGenerate {
   @lstring mMapTypeName feature nogetter ;
 #--- Map attributes
   @typeListeAttributsSemantiques mMapAttributesList feature nogetter ;
+#--- Map readers (search) for implementing as constructors
+  @EXmapMethodMap mMapReaderMethodMap feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

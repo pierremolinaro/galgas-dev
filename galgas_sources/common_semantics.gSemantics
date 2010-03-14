@@ -3244,12 +3244,30 @@ class @typeGalgasUndefinedMapindexType extends @AC_galgasType {
 
 class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
   @lstring mMapTypeName feature nogetter ;
+  @typeGalgasMapType mMapType ;
   @typeListeAttributsSemantiques mMapAttributesList ;
 
 #--- Associated map features
   @typeTableBlocsDeTable aTableMethodesSurcharger feature nogetter ;
   @mapModifierMap mModifierMethodMap feature nogetter ;
   @EXmapMethodMap mReaderMethodMap feature nogetter ;
+
+#--- A mapindex accepts search methods as constructors
+  override method handleConstructorInvocation
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+    !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
+  :
+    outReturnedType := self ;
+    outHasLexiqueAndLocationArguments := true ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    if [inClassMethodName string] != "null" then
+      [mReaderMethodMap searchKey !inClassMethodName ?*] ;
+      outAccessorTypesList += !mMapType ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_lstring new] ![@lstring new !"" !here] ;
+    end if ;
+  end method ;
 
 #--- A mapindex only accept 'makeRegularIndex' type method call
   override
@@ -3277,6 +3295,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
         ![@typeGalgasMapindexType new
            !mMapindexTypeName
            !mMapTypeName
+           !mMapType
            !mMapAttributesList
            !aTableMethodesSurcharger
            !mModifierMethodMap

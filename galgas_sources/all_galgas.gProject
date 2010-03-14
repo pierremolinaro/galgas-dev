@@ -90,8 +90,6 @@ project all_galgas:
   semantics "semanticsInstanceMethodsEX.gSemantics" : makefile ;
   semantics "semanticsClassMethodsEX.gSemantics" : makefile ;
   semantics "semanticsSemanticsEX.gSemantics" : makefile ;
-#  semantics "semanticsDecoration.gSemantics" : makefile ;
-#  semantics "semanticsGeneration.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
 
 #--- Syntax Component

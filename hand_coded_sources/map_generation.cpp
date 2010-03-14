@@ -448,6 +448,17 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << " reader_" << currentAttribute._mAttributeName (HERE) << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     currentAttribute.next () ;
   }
+  inHfile << "//--- Constructors from map readers\n" ;
+  GGS_EXmapMethodMap::cEnumerator currentConstructor (mMapReaderMethodMap, true) ;
+  while (currentConstructor.hasCurrentObject ()) {
+    inHfile << "  public : static GGS_" << mMapindexTypeName
+            << " constructor_" << currentConstructor._key (HERE)
+            << " (C_Compiler & inLexique,\n"
+            << "              const GGS_" << mMapTypeName << " & inMap,\n"
+            << "              const GGS_lstring & inKey\n"
+            << "              COMMA_LOCATION_ARGS) ;\n" ;
+    currentConstructor.next () ;
+  }
   inHfile <<  "} ;\n\n" ;
  }
 
@@ -540,6 +551,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    outIndex.drop () ;\n"
                "  }\n"
                "}\n\n" ;
+
+  GGS_EXmapMethodMap::cEnumerator currentConstructor (mMapReaderMethodMap, true) ;
+  while (currentConstructor.hasCurrentObject ()) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "GGS_" << mMapindexTypeName << " GGS_" << mMapindexTypeName << "::constructor_" << currentConstructor._key (HERE)
+              << " (C_Compiler & inLexique,\n"
+                 "              const GGS_" << mMapTypeName << " & inMap,\n"
+                 "              const GGS_lstring & inKey\n"
+                 "              COMMA_LOCATION_ARGS) {\n" 
+                 "  GGS_" << mMapindexTypeName << " result ;\n"
+                 "  inMap.searchIndex (inLexique, inKey, GGS_" << mMapTypeName << "::kSearchMessage_" << currentConstructor._key (HERE) << ", result.mIndex COMMA_THERE) ;\n"
+                 "  return result ;\n"
+                 "}\n\n" ;
+    currentConstructor.next () ;
+  }
 
 //--- Attribute access (readers)
 
