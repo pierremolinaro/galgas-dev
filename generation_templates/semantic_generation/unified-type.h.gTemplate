@@ -68,26 +68,6 @@ end if
   %                                     const PMSInt32 inIndentation) const ;\n%
 end if
 
-if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
-  %//--------------------------------- += operator
-  friend void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
-  foreach ADD_ASSIGN_ARGUMENT_LIST do index IDX
-    %,\n%!^%const GALGAS_%![mType identifierRepresentation]% * inOperand%![IDX string]
-  end foreach
-  %) ;
-%
-end if
-
-if [MINUS_ASSIGN_ARGUMENT_LIST length] > 0 then
-  %//--------------------------------- -= operator
-  friend void minusAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
-  foreach MINUS_ASSIGN_ARGUMENT_LIST do index IDX
-    %,\n%!^%const GALGAS_%![mType identifierRepresentation]% * inOperand%![IDX string]
-  end foreach
-  %) ;
-%
-end if
-
 %
 //--------------------------------- Modifiers
 %
@@ -331,14 +311,34 @@ if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
 end if
 
 
-if (SUPPORTED_OPERATORS & concatAssignOperator []) != 0 then
-  %//--------------------------------- Append operator\n%
-  %  protected : static GALGAS_%!TYPE_IDENTIFIER% * dotAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult,\n%
-                                                  !^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand\n%
-                                                  !^%COMMA_LOCATION_ARGS) ;\n\n%
+if (SUPPORTED_OPERATORS & dotAssignOperator []) != 0 then
+  %//--------------------------------- .= operator\n%
+  %  friend void dotAssign_operation (GALGAS_%!TYPE_IDENTIFIER% * & ioResult,\n%
+  %                                   const GALGAS_%!TYPE_IDENTIFIER% * inOperand\n%
+  %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
-if ((SUPPORTED_OPERATORS & (incDecOperator [] | concatAssignOperator [])) != 0)
+if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
+  %//--------------------------------- += operator
+  friend void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
+  foreach ADD_ASSIGN_ARGUMENT_LIST do index IDX
+    %,\n%!^%const GALGAS_%![mType identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+  %\n%!^%COMMA_LOCATION_ARGS) ;
+%
+end if
+
+if [MINUS_ASSIGN_ARGUMENT_LIST length] > 0 then
+  %//--------------------------------- -= operator
+  friend void minusAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
+  foreach MINUS_ASSIGN_ARGUMENT_LIST do index IDX
+    %,\n%!^%const GALGAS_%![mType identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+  %\n%!^%COMMA_LOCATION_ARGS) ;
+%
+end if
+
+if ((SUPPORTED_OPERATORS & (incDecOperator [] | dotAssignOperator [])) != 0)
  | ([MODIFIER_MAP count] > 0)
  | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0)
  | ([MINUS_ASSIGN_ARGUMENT_LIST length] > 0) then
@@ -368,7 +368,7 @@ end foreach
 %
 //--------------------------------- Instance Method Invocation\n%
 foreach INSTANCE_METHOD_MAP do
-  %  friend inline void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
+  %  friend void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
   foreach mParameterList do index IDX
     %,\n%!^
     if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -391,7 +391,7 @@ foreach INSTANCE_METHOD_MAP do
 end foreach
 %//--------------------------------- Modifier invocation\n%
 foreach MODIFIER_MAP do
-  %  friend inline void modifierCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
+  %  friend void modifierCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
   foreach mParameterList do index IDX
     %,\n%!^
     if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -449,114 +449,3 @@ end if
 #---------------- END OF CLASS DECLARATION
 %} ;
 
-%foreach MODIFIER_MAP do
-  %//---------------------------------------------------------------------------*\n\n%
-  %inline void modifierCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
-  foreach mParameterList do index IDX
-    %,\n%!^
-    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & outArgument% ![IDX string]
-    else # argumentIn
-      %GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    end if
-  end foreach
-  if mHasCompilerArgument then
-    %,\n%!^%C_Compiler * inCompiler\n%
-    !^%COMMA_LOCATION_ARGS%
-  else
-    %\n%!^%COMMA_LOCATION_ARGS%
-  end if  
-  %) {\n
-  if (ioResult != NULL) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-    ioResult->modifier_%![key identifierRepresentation]% (%
-  foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %outArgument% ![IDX string]
-    else # argumentIn
-      %inArgument% ![IDX string]
-    end if
-    between %, %
-  end foreach
-  if [mParameterList length] > 0 then
-    if mHasCompilerArgument then
-      %, inCompiler COMMA_THERE%
-    else
-      % COMMA_THERE%
-    end if
-  else
-    if mHasCompilerArgument then
-      %inCompiler COMMA_THERE%
-    else
-      %THERE%
-    end if
-  end if
-  %) ;  
-  }
-}\n\n%
-end foreach
-
-foreach INSTANCE_METHOD_MAP do
-  %//---------------------------------------------------------------------------*\n\n%
-  %inline void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
-  foreach mParameterList do index IDX
-    %,\n%!^
-    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & outArgument% ![IDX string]
-    else # argumentIn
-      %GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    end if
-  end foreach
-  if mHasCompilerArgument then
-    %,\n%!^%C_Compiler * inCompiler\n%
-    !^%COMMA_LOCATION_ARGS%
-  else
-    %\n%!^%COMMA_LOCATION_ARGS%
-  end if  
-  %) {
-  if (inObject != NULL) {
-    macroRetainObjectThere (inObject) ;
-    inObject->method_%![key identifierRepresentation]% (%
-  foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %outArgument% ![IDX string]
-    else # argumentIn
-      %inArgument% ![IDX string]
-    end if
-    between %, %
-  end foreach
-  if [mParameterList length] > 0 then
-    if mHasCompilerArgument then
-      %, inCompiler COMMA_THERE%
-    else
-      % COMMA_THERE%
-    end if
-  else
-    if mHasCompilerArgument then
-      %inCompiler COMMA_THERE%
-    else
-      %THERE%
-    end if
-  end if
-  %) ;  
-    macroReleaseObjectThere (inObject) ;
-  }
-}\n\n%
-end foreach
-%

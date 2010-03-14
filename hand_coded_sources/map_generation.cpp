@@ -561,7 +561,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "              const GGS_lstring & inKey\n"
                  "              COMMA_LOCATION_ARGS) {\n" 
                  "  GGS_" << mMapindexTypeName << " result ;\n"
+                 "  result.mState = kRegular ;\n"
+                 "  result.mKey = inKey ;\n"
                  "  inMap.searchIndex (inLexique, inKey, GGS_" << mMapTypeName << "::kSearchMessage_" << currentConstructor._key (HERE) << ", result.mIndex COMMA_THERE) ;\n"
+                 "  if (result.mIndex.retrieve () == NULL) {\n"
+                 "    result.drop () ;\n"
+                 "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;
     currentConstructor.next () ;
