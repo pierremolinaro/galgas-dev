@@ -17,977 +17,433 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsTypeFeatures :
-import "semanticsTypes.gSemantics" ;
-import semantics semanticsTypesEX in "semanticsTypesEX.gSemantics" ;
+  import "semanticsTypes.gSemantics" ;
+  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  G A L G A S    A B S T R A C T  T Y P E                                  *
+#  G E T    E N U M E R A T I O N    L I S T                                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract reader @ACGalgasType typeName -> @string outTypeName ;
+override method @stringsetPredefinedTypeAST getEnumerationList
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@enumerationDescriptorList outEnumerationList
+:
+  @unifiedTypeMapIndex stringTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringTypeIndex] ;
+  outEnumerationList := [@enumerationDescriptorList emptyList] ;
+  outEnumerationList += !stringTypeIndex !"key" ;
+end method ;
 
 #---------------------------------------------------------------------------*
-
-reader @ACGalgasType typeIdentifierRepresentation -> @string outTypeName :
-  @ACGalgasType t := self ;
-  outTypeName := [[t typeName] identifierRepresentation] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  D A T A    T Y P E                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @dataGalgasType typeName -> @string outTypeName :
-  outTypeName := "data" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  T Y P E    T Y P E                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @typeGalgasType typeName -> @string outTypeName :
-  outTypeName := "type" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  O B J E C T    T Y P E                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @objectGalgasType typeName -> @string outTypeName :
-  outTypeName := "object" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  F U N C T I O N    T Y P E                                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @functionGalgasType typeName -> @string outTypeName :
-  outTypeName := "function" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L O C A T I O N    T Y P E                                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @locationGalgasType typeName -> @string outTypeName :
-  outTypeName := "location" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  S T R I N G    T Y P E                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @stringGalgasType typeName -> @string outTypeName :
-  outTypeName := "string" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  C H A R    T Y P E                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @charGalgasType typeName -> @string outTypeName :
-  outTypeName := "char" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  B O O L    T Y P E                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @boolGalgasType typeName -> @string outTypeName :
-  outTypeName := "bool" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  U I N T    T Y P E                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @uintGalgasType typeName -> @string outTypeName :
-  outTypeName := "uint" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  S I N T    T Y P E                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @sintGalgasType typeName -> @string outTypeName :
-  outTypeName := "sint" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  U I N T 6 4    T Y P E                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @uint64GalgasType typeName -> @string outTypeName :
-  outTypeName := "uint64" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  S I N T 6 4    T Y P E                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @sint64GalgasType typeName -> @string outTypeName :
-  outTypeName := "sint64" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  D O U B L E    T Y P E                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @doubleGalgasType typeName -> @string outTypeName :
-  outTypeName := "double" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L S T R I N G    T Y P E                                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @lstringGalgasType typeName -> @string outTypeName :
-  outTypeName := "lstring" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L C H A R    T Y P E                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @lcharGalgasType typeName -> @string outTypeName :
-  outTypeName := "lchar" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L B O O L    T Y P E                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @lboolGalgasType typeName -> @string outTypeName :
-  outTypeName := "lbool" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L U I N T    T Y P E                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @luintGalgasType typeName -> @string outTypeName :
-  outTypeName := "luint" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L S I N T    T Y P E                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @lsintGalgasType typeName -> @string outTypeName :
-  outTypeName := "lsint" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L U I N T 6 4    T Y P E                                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @luint64GalgasType typeName -> @string outTypeName :
-  outTypeName := "luint64" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L S I N T 6 4    T Y P E                                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @lsint64GalgasType typeName -> @string outTypeName :
-  outTypeName := "lsint64" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L D O U B L E    T Y P E                                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @ldoubleGalgasType typeName -> @string outTypeName :
-  outTypeName := "ldouble" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  S T R I N G S E T    T Y P E                                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @stringsetGalgasType typeName -> @string outTypeName :
-  outTypeName := "stringset" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  B I N A R Y S E T    T Y P E                                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @binarysetGalgasType typeName -> @string outTypeName :
-  outTypeName := "binaryset" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  C L A S S    T Y P E                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @classGalgasType typeName -> @string outTypeName :
-  outTypeName := [mClassName string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    L I S T    T Y P E                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @listGalgasType typeName -> @string outTypeName :
-  outTypeName := [mListTypeName string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    L I S T M A P    T Y P E                                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @listmapGalgasType typeName -> @string outTypeName :
-  outTypeName := [mListmapTypeName string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    S T R U C T    T Y P E                                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @structGalgasType typeName -> @string outTypeName :
-  outTypeName := [mStructTypeName string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    S O R T E D    L I S T    T Y P E                                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @sortedlistGalgasType typeName -> @string outTypeName :
-  outTypeName := [mListTypeName string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    M A P   T Y P E                                                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @mapType typeName -> @string outTypeName :
-  outTypeName := [mMapTypeName string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    M A P    I N D E X    T Y P E                                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @mapindexType typeName -> @string outTypeName :
-  outTypeName := [mMapIndexTypeName string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    E N U M    T Y P E                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @enumType typeName -> @string outTypeName :
-  outTypeName := [mEnumTypeName string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# E N U M E R A B L E                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @enumerableTypeDescriptionList {
-  @ACGalgasType mType ;
-  @string mEnumerationName ;
-}
-
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType enumerable -> @enumerableTypeDescriptionList outResult :
-  outResult := [@enumerableTypeDescriptionList emptyList] ; # Means this type is not enumerable
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @stringsetGalgasType enumerable -> @enumerableTypeDescriptionList outResult :
-  outResult := [@enumerableTypeDescriptionList emptyList] ;
-  outResult += ![@stringGalgasType new] !"key" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# I S    C O M P A R A B L E   (handles '<=', '>=', '<' and '>' operators)  *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType isComparable-> @bool outResult :
-  outResult := false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @boolGalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @dataGalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @doubleGalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uintGalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sintGalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uint64GalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sint64GalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @charGalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @stringGalgasType isComparable -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    &    O P E R A T O R                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType accept_and_operator -> @bool outResult :
-  outResult := false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @boolGalgasType accept_and_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @stringsetGalgasType accept_and_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @binarysetGalgasType accept_and_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uintGalgasType accept_and_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sintGalgasType accept_and_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uint64GalgasType accept_and_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sint64GalgasType accept_and_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    |    O P E R A T O R                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType accept_or_operator -> @bool outResult :
-  outResult := false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @boolGalgasType accept_or_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @stringsetGalgasType accept_or_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @binarysetGalgasType accept_or_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uintGalgasType accept_or_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sintGalgasType accept_or_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uint64GalgasType accept_or_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sint64GalgasType accept_or_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    ^    O P E R A T O R                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType accept_xor_operator -> @bool outResult :
-  outResult := false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @boolGalgasType accept_xor_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @binarysetGalgasType accept_xor_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uintGalgasType accept_xor_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sintGalgasType accept_xor_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uint64GalgasType accept_xor_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sint64GalgasType accept_xor_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    not    O P E R A T O R                                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType accept_not_operator -> @bool outResult :
-  outResult := false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @boolGalgasType accept_not_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    +    O P E R A T O R                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType accept_add_operator -> @bool outResult :
-  outResult := false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uintGalgasType accept_add_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sintGalgasType accept_add_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uint64GalgasType accept_add_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sint64GalgasType accept_add_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @doubleGalgasType accept_add_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
-#    -    O P E R A T O R                                                   *
+#  G E T    S U P P O R T E D    O P E R A T O R    F L A G S               *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @ACGalgasType accept_sub_operator -> @bool outResult :
-  outResult := false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @stringsetGalgasType accept_sub_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uintGalgasType accept_sub_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
-
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType accept_sub_operator -> @bool outResult :
-  outResult := true ;
+override reader @stringPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := binaryConcatOperator [] | concatAssignOperator [] | generateNativeNewConstructor []
+    | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType accept_sub_operator -> @bool outResult :
-  outResult := true ;
+override reader @charPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType accept_sub_operator -> @bool outResult :
-  outResult := true ;
+override reader @boolPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryNotOperator []
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @doubleGalgasType accept_sub_operator -> @bool outResult :
-  outResult := true ;
+override reader @uintPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
+    | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
+    | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#    *    O P E R A T O R                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_mul_operator -> @bool outResult :
-  outResult := false ;
+override reader @sintPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
+    | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
+    | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []  | incDecOperator [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType accept_mul_operator -> @bool outResult :
-  outResult := true ;
+override reader @uint64PredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
+    | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
+    | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType accept_mul_operator -> @bool outResult :
-  outResult := true ;
+override reader @sint64PredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
+    | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
+    | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
+    | generateNativeNewConstructor []  | incDecOperator []  | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType accept_mul_operator -> @bool outResult :
-  outResult := true ;
+override reader @doublePredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
+    | unaryPlusOperator [] | unaryMinusOperator []
+    |generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType accept_mul_operator -> @bool outResult :
-  outResult := true ;
+override reader @stringsetPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := unaryPlusOperator [] | unaryMinusOperator [] | binarySubOperator []
+    | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
+    | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @doubleGalgasType accept_mul_operator -> @bool outResult :
-  outResult := true ;
+override reader @binarysetPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
+    | generateNativeNewConstructor [] | generateVirtualDestructor []
+    | unaryTildeOperator [] | binaryShiftOperator []
+    | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#    /    O P E R A T O R                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_div_operator -> @bool outResult :
-  outResult := false ;
+override reader @typePredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType accept_div_operator -> @bool outResult :
-  outResult := true ;
+override reader @objectPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateNativeNewConstructor [] | generateVirtualDestructor []
+   | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType accept_div_operator -> @bool outResult :
-  outResult := true ;
+override reader @dataPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateNativeNewConstructor [] | generateVirtualDestructor []
+    | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType accept_div_operator -> @bool outResult :
-  outResult := true ;
+override reader @functionPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType accept_div_operator -> @bool outResult :
-  outResult := true ;
+override reader @lboolPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @doubleGalgasType accept_div_operator -> @bool outResult :
-  outResult := true ;
+override reader @lcharPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    mod    O P E R A T O R                                                 *
-#                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_mod_operator -> @bool outResult :
-  outResult := false ;
+override reader @ldoublePredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType accept_mod_operator -> @bool outResult :
-  outResult := true ;
+override reader @locationPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor []
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType accept_mod_operator -> @bool outResult :
-  outResult := true ;
+override reader @lsintPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType accept_mod_operator -> @bool outResult :
-  outResult := true ;
+override reader @lsint64PredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType accept_mod_operator -> @bool outResult :
-  outResult := true ;
+override reader @luintPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    unary minus    O P E R A T O R                                         *
-#                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_unary_minus_operator -> @bool outResult :
-  outResult := false ;
+override reader @luint64PredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType accept_unary_minus_operator -> @bool outResult :
-  outResult := true ;
+override reader @lstringPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType accept_unary_minus_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
+override method @stringsetPredefinedTypeAST getAddAssignArgumentList
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@unifiedTypeMapIndexList outAddAssignArgumentList
+:
+  @unifiedTypeMapIndex stringTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringTypeIndex] ;
+  outAddAssignArgumentList := [@unifiedTypeMapIndexList listWithValue !stringTypeIndex] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @doubleGalgasType accept_unary_minus_operator -> @bool outResult :
-  outResult := true ;
-end reader ;
+override method @stringsetPredefinedTypeAST getMinusAssignArgumentList
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@unifiedTypeMapIndexList outAddAssignArgumentList
+:
+  @unifiedTypeMapIndex stringTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringTypeIndex] ;
+  outAddAssignArgumentList := [@unifiedTypeMapIndexList listWithValue !stringTypeIndex] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    increment, decrement    O P E R A T O R S                              *
+#  G E T    N A T I V E    A T T R I B U T E    L I S T                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_inc_dec_operator -> @bool outResult :
-  outResult := false ;
+override reader @boolPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"bool" !false !"mBoolValue" !false !"boolValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType accept_inc_dec_operator -> @bool outResult :
-  outResult := true ;
+override reader @stringsetPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"cStringsetNode" !true !"mRoot" !false !"" ;
+  outList += !"PMUInt32" !false !"mCount" !false !"" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType accept_inc_dec_operator -> @bool outResult :
-  outResult := true ;
+override reader @charPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"utf32" !false !"mCharValue" !false !"charValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType accept_inc_dec_operator -> @bool outResult :
-  outResult := true ;
+override reader @stringPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"C_String" !false !"mString" !true !"stringValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType accept_inc_dec_operator -> @bool outResult :
-  outResult := true ;
+override reader @uintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"PMUInt32" !false !"mUIntValue" !false !"uintValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#    shift ('<<' and '>>')    O P E R A T O R S                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_shift_operator -> @bool outResult :
-  outResult := false ;
+override reader @sintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"PMSInt32" !false !"mSIntValue" !false !"sintValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @binarysetGalgasType accept_shift_operator -> @bool outResult :
-  outResult := true ;
+override reader @uint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"PMUInt64" !false !"mUInt64Value" !false !"uint64Value" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType accept_shift_operator -> @bool outResult :
-  outResult := true ;
+override reader @sint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"PMSInt64" !false !"mSInt64Value" !false !"sint64Value" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType accept_shift_operator -> @bool outResult :
-  outResult := true ;
+override reader @doublePredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"double" !false !"mDoubleValue" !false !"doubleValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType accept_shift_operator -> @bool outResult :
-  outResult := true ;
+override reader @locationPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"C_LocationInSource" !false !"mStartLocationInSource" !true !"startLocation" ;
+  outList += !"C_LocationInSource" !false !"mEndLocationInSource" !true !"endLocation" ;
+  outList += !"C_SourceTextInString" !true !"mSourceText" !false !"sourceText" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType accept_shift_operator -> @bool outResult :
-  outResult := true ;
+override reader @objectPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_root" !true !"mEmbeddedObject" !false !"embeddedObject" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#    ~    O P E R A T O R                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_tilde_operator -> @bool outResult :
-  outResult := false ;
+override reader @typePredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"C_galgas_type_descriptor" !true !"mTypeDescriptor" !false !"embeddedTypeDescriptor" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @binarysetGalgasType accept_tilde_operator -> @bool outResult :
-  outResult := true ;
+override reader @functionPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"C_galgas_function_descriptor" !true !"mFunctionDescriptor" !false !"functionDescriptor" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uintGalgasType accept_tilde_operator -> @bool outResult :
-  outResult := true ;
+override reader @lstringPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_string" !true !"mString" !false !"stringValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @uint64GalgasType accept_tilde_operator -> @bool outResult :
-  outResult := true ;
+override reader @lcharPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_char" !true !"mChar" !false !"charValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sintGalgasType accept_tilde_operator -> @bool outResult :
-  outResult := true ;
+override reader @luintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_uint" !true !"mUInt" !false !"uintValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sint64GalgasType accept_tilde_operator -> @bool outResult :
-  outResult := true ;
+override reader @lsintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_sint" !true !"mSInt" !false !"sintValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    .= A P P E N D    O P E R A T O R                                      *
-#                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_append_operator -> @bool outResult :
-  outResult := false ;
+override reader @luint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_uint_36__34_" !true !"mUInt64" !false !"uint64Value" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType accept_append_operator -> @bool outResult :
-  outResult := true ;
+override reader @lsint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_sint_36__34_" !true !"mSInt64" !false !"sint64Value" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    . (concat)    O P E R A T O R                                          *
-#                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType accept_concat_operator -> @bool outResult :
-  outResult := false ;
+override reader @lboolPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_bool" !true !"mBool" !false !"boolValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringGalgasType accept_concat_operator -> @bool outResult :
-  outResult := true ;
+override reader @ldoublePredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"GALGAS_double" !true !"mDouble" !false !"doubleValue" ;
+  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    += A D D    O P E R A T O R                                            *
-#                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @ACGalgasType add_assign_operator -> @typeList outResult :
-  outResult := [@typeList emptyList] ; # Means += operator is not accepted 
+override reader @binarysetPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"C_BDD" !false !"mBDD" !true !"bdd" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @stringsetGalgasType add_assign_operator -> @typeList outResult :
-  outResult := [@typeList emptyList] ;
-  outResult += ![@stringGalgasType new] ;
+override reader @dataPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
+  outList := [@nativeAttributeList emptyList] ;
+  outList += !"uint8Array" !false !"mData" !true !"" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

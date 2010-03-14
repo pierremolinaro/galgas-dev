@@ -184,7 +184,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_location
+override method @locationPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -193,7 +193,7 @@ routine readerMapFor_location
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"locationIndex" !"uint" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"line" !"uint" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"column" !"uint" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -248,17 +248,17 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_string
+override method @stringPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
   enterReaderFor_string_lstring_types !?ioUnifiedTypeMap !?outMap ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_char
+override method @charPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -283,11 +283,11 @@ routine readerMapFor_char
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"unicodeName" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"unicodeToLower" !"char" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"unicodeToUpper" !"char" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_bool
+override method @boolPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -298,11 +298,11 @@ routine readerMapFor_bool
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint" !"sint" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uint64" !"uint64" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint64" !"sint64" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_uint
+override method @uintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -317,11 +317,11 @@ routine readerMapFor_uint
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"hexString" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"xString" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isUnicodeValueAssigned" !"bool" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_sint
+override method @sintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -331,11 +331,11 @@ routine readerMapFor_sint
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint64" !"sint64" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uint" !"uint" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"string" !"string" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_uint64
+override method @uint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -348,11 +348,11 @@ routine readerMapFor_uint64
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"string" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"hexString" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"xString" !"string" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_sint64
+override method @sint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -362,11 +362,11 @@ routine readerMapFor_sint64
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint" !"sint" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uint" !"uint" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"string" !"string" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_double
+override method @doublePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -376,11 +376,11 @@ routine readerMapFor_double
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint" !"sint" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uint64" !"uint64" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint64" !"sint64" !true ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_lstring
+override method @lstringPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -400,11 +400,11 @@ routine readerMapFor_lstring
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"string" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"location" !"location" !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !false !"location" ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_lchar
+override method @lcharPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -412,22 +412,22 @@ routine readerMapFor_lchar
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"char" !"char" !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !false !"location" ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"location" !"location" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_lbool
+override method @lboolPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"bool" !"bool" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"location" !"location" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_luint
+override method @luintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -436,11 +436,11 @@ routine readerMapFor_luint
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"location" !"location" !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"string" !"string" !false  !"uint";
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !false !"location" ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_lsint
+override method @lsintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -449,11 +449,11 @@ routine readerMapFor_lsint
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"string" !"string" !false  !"sint";
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"location" !"location" !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !false !"location" ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_luint64
+override method @luint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -462,11 +462,11 @@ routine readerMapFor_luint64
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"location" !"location" !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"string" !"string" !false  !"uint64";
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !false !"location" ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_lsint64
+override method @lsint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -475,11 +475,11 @@ routine readerMapFor_lsint64
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"string" !"string" !false !"sint64" ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"location" !"location" !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !false !"location" ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_ldouble
+override method @ldoublePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -488,11 +488,11 @@ routine readerMapFor_ldouble
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"string" !"string" !false !"double" ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"location" !"location" !false ;
   enterBaseReaderWithoutArgumentWithConversion !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !false !"location" ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_stringset
+override method @stringsetPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -500,11 +500,11 @@ routine readerMapFor_stringset
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"hasKey" !"string" !"bool" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"count" !"uint" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringList" !"stringlist" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_binaryset
+override method @binarysetPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -512,7 +512,7 @@ routine readerMapFor_binaryset
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isFull" !"bool" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isEmpty" !"bool" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"significantVariableCount" !"uint" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"ITE" !"binaryset" !"binaryset" !"binaryset" !true ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"ITE" !"binaryset" !"binaryset" !"binaryset" !false ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndex" !"uint" !"binaryset" !true ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndexAndBeyond" !"uint" !"binaryset" !true ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndex" !"uint" !"binaryset" !true ;
@@ -521,7 +521,7 @@ routine readerMapFor_binaryset
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"compressedValueCount" !"uint64" !false ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"uint64ValueList" !"uint" !"uint64list" !true ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringValueList" !"uint" !"stringlist" !true ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringValueListWithNameList" !"uint" !"stringlist" !"stringlist" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringValueListWithNameList" !"uint" !"stringlist" !"stringlist" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"predicateStringValue" !"string" !false ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"compressedStringValueList" !"uint" !"stringlist" !true ;
   enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"swap21" !"uint" !"uint" !"binaryset" !false ;
@@ -539,13 +539,13 @@ routine readerMapFor_binaryset
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"strictGreaterThan" !"binaryset" !"binaryset" !false ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"strictLowerThan" !"binaryset" !"binaryset" !false ;
   enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"binarySetByTranslatingFromIndex" !"uint" !"uint" !"binaryset" !false ;
-  enterBaseReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"containsValue" !"uint64" !"uint" !"uint" !"binaryset" !false ;
+  enterBaseReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"containsValue" !"uint64" !"uint" !"uint" !"bool" !false ;
   enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"existsOnBitRange" !"uint" !"uint" !"binaryset" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_type
+override method @typePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -553,31 +553,31 @@ routine readerMapFor_type
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"name" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"hasSuperclass" !"bool" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"superclass" !"type" !true ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_object
+override method @objectPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"objectType" !"type" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_data
+override method @dataPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"length" !"uint" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine readerMapFor_function
+override method @functionPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
@@ -585,170 +585,8 @@ routine readerMapFor_function
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"name" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"resultType" !"type" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"formalParameterTypeList" !"typelist" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"location" !"object" !false ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @classGalgasType readerMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  if [mSuperClassIndex isNull] then
-#    commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-#  else
-#    @string superClassType := [mSuperClassIndex mType] ;
-#    outMap := [superClassType readerMap] ;
-#  end if ;
-#  foreach mAttributeList do
-#    @string t := [mAttributeTypeIndex mType] ;
-#    [!?outMap insertKey
-#      !mAttributeName
-#      ![@typeList emptyList]
-#      !false
-#      !t
-#      ![@readerQualifier isBasic]
-#      !""
-#    ] ;
-#  end foreach ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-routine readerMapFor_list
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap
-:
-  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"length" !"uint" !false ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @listGalgasType readerMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  outMap := readerMapFor_list [] ;
-#  enterBaseReaderWithUintArgument !?outMap !?ioUnifiedTypeMap !"subListFromIndex" !self !false ;
-#  enterBaseReaderWith2UintArguments !?outMap !?ioUnifiedTypeMap !"subListWithRange" !self !false ;
-#  foreach mAttributeList do
-#    @string t := [mAttributeTypeIndex mType] ;
-#    [!?outMap insertKey
-#      ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
-#      ![@typeList listWithValue !"uint"]
-#      !false
-#      !t
-#      ![@readerQualifier isBasic]
-#      !""
-#    ] ;
-#  end foreach ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-routine readerMapFor_listmap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap
-:
-  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"hasKey" !"string" !"bool" !false ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"allKeys" !"stringset" !false ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"count" !"uint" !false ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"keyList" !"stringlist" !false ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @listmapGalgasType readerMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  outMap := readerMapFor_listmap [] ;
-#  @string t := [mAssociatedListTypeIndex mType] ;
-#  enterBaseReaderWithStringArgument !?outMap !?ioUnifiedTypeMap !"listForKey" !t !false ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @structGalgasType readerMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-#  foreach mAttributeList do
-#    @string t := [mAttributeTypeIndex mType] ;
-#    [!?outMap insertKey
-#      !mAttributeName
-#      ![@typeList emptyList]
-#      !false
-#      !t
-#      ![@readerQualifier isBasic]
-#      !""
-#    ] ;
-#  end foreach ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @sortedlistGalgasType readerMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"length" !self !false ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#routine readerMapFor_map
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-#  enterBaseReaderWithStringArgument !?outMap !?ioUnifiedTypeMap !"hasKey" !"bool" !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"locationForKey" !"location" !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"count" !"uint" !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"allKeys" !"stringset" !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"keyList" !build_lstringlist_type [] !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"unsolvedIndexCount" !"uint" !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"unsolvedIndexKeyStringList" !"stringlist" !false ;
-#end routine ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @mapType readerMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  outMap := readerMapFor_map [] ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"overriddenMap" !self !false ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @mapindexType readerMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isRegular" !"bool" !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isNull" !"bool" !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isSolved" !"bool" !false ;
-#  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"key" ![@lstringGalgasType new] !false ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @enumType readerMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@readerMap outMap
-#:
-#  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-#  foreach mEnumMessageMap do
-#    enterBaseReaderWithoutArgument !?outMap ![key string] ![@lstringGalgasType new] !false ;
-#  end foreach ;
-#end reader ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"location" !"object" !true ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

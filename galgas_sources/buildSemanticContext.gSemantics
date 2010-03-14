@@ -31,60 +31,6 @@ semantics buildSemanticContext :
   import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S        *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract class @predefinedTypeAST extends @semanticDeclarationAST {
-  @string mPredefinedTypeName ;
-}
-
-class @binarysetPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @boolPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @uintPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @uint64PredefinedTypeAST extends @predefinedTypeAST {}
-
-class @sintPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @sint64PredefinedTypeAST extends @predefinedTypeAST {}
-
-class @charPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @doublePredefinedTypeAST extends @predefinedTypeAST {}
-
-class @stringPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lboolPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @luintPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @luint64PredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lsintPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lsint64PredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lcharPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @ldoublePredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lstringPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @locationPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @stringsetPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @objectPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @functionPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @typePredefinedTypeAST extends @predefinedTypeAST {}
-
-#---------------------------------------------------------------------------*
 
 routine appendPredefinedListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -128,14 +74,17 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function"] ;
   ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type"] ;
   ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset"] ;
+  ioDeclarationListASTs += ![@dataPredefinedTypeAST new !"data"] ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"luint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint64" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint64" ;
+#  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint" ;
+#  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint64" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"object" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"function" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"string" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"lstring" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"type" ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -206,6 +155,7 @@ struct @semanticContext {
   @functionMap mFunctionMap ;
   @descendantClassListMap mDescendantClassListMap ;
   @filewrapperMap mFilewrapperMap ;
+  @semanticDeclarationListAST mOrderedSemanticDeclarationListAST ;
 }
 
 #---------------------------------------------------------------------------*
@@ -309,6 +259,21 @@ override method @classDeclarationAST collectType
 :
   [!?ioCollectedTypeMap insertKey !mClassTypeName] ;
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
+  foreach mAbstractMethodList do
+    foreach mSignature do
+      [!?ioCollectedTypeMap insertKey !mFormalParameterTypeName] ;
+    end foreach ;
+  end foreach ;
+  foreach mOverridenMethodList do
+    foreach mSignature do
+      [!?ioCollectedTypeMap insertKey !mFormalParameterTypeName] ;
+    end foreach ;
+  end foreach ;
+  foreach mMethodList do
+    foreach mSignature do
+      [!?ioCollectedTypeMap insertKey !mFormalParameterTypeName] ;
+    end foreach ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -331,149 +296,7 @@ abstract method @semanticDeclarationAST enterType
 
 #---------------------------------------------------------------------------*
 
-override method @uintPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap [emptyMap];
-  @readerMap readerMap  [emptyMap] ;
-  constructorMapFor_uint !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_uint !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @uint64PredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  constructorMapFor_uint64 !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_uint64 !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @sintPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  constructorMapFor_sint !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_sint !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @sint64PredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  constructorMapFor_sint64 !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_sint64 !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @charPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  constructorMapFor_char !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_char !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @doublePredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @readerMap readerMap ;
-  readerMapFor_double !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    ![@constructorMap emptyMap]
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @stringPredefinedTypeAST enterType
+override method @predefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
   @constructorMap constructorMap ;
@@ -481,397 +304,37 @@ override method @stringPredefinedTypeAST enterType
   @modifierMap modifierMap ;
   @instanceMethodMap instanceMethodMap ;
   @classMethodMap classMethodMap ;
-  constructorMapFor_string !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_string !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_string !?ioSemanticContext.mTypeMap ?modifierMap ;
-  instanceMethodMapFor_string !?ioSemanticContext.mTypeMap ?instanceMethodMap ;
-  classMethodMapFor_string !?ioSemanticContext.mTypeMap ?classMethodMap ;
+  @predefinedTypeAST t := self ; # Bug in GALGAS 1
+  [t getConstructorMap !?ioSemanticContext.mTypeMap ?constructorMap] ;
+  [t getReaderMap !?ioSemanticContext.mTypeMap ?readerMap] ;
+  [t getModifierMap !?ioSemanticContext.mTypeMap ?modifierMap] ;
+  [t getInstanceMethodMap !?ioSemanticContext.mTypeMap ?instanceMethodMap] ;
+  [t getClassMethodMap !?ioSemanticContext.mTypeMap ?classMethodMap] ;
+  @unifiedTypeMapIndexList addAssignArgumentList ;
+  [t getAddAssignArgumentList !?ioSemanticContext.mTypeMap ?addAssignArgumentList] ;
+  @unifiedTypeMapIndexList minusAssignArgumentList ;
+  [t getMinusAssignArgumentList !?ioSemanticContext.mTypeMap ?minusAssignArgumentList] ;
+  @enumerationDescriptorList enumerationList ;
+  [t getEnumerationList !?ioSemanticContext.mTypeMap ?enumerationList] ;
   [!?ioSemanticContext.mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum primitiveType]
+    ![@typedAttributeList emptyList]
     ![@typedAttributeList emptyList]
     !constructorMap
     !readerMap
     !modifierMap
     !instanceMethodMap
     !classMethodMap
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @lboolPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_lbool !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_lbool !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_lbool !?ioSemanticContext.mTypeMap ?modifierMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @luintPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_luint !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_luint !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_luint !?ioSemanticContext.mTypeMap ?modifierMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @luint64PredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_luint64 !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_luint64 !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_luint64 !?ioSemanticContext.mTypeMap ?modifierMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @lsintPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_lsint !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_lsint !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_lsint !?ioSemanticContext.mTypeMap ?modifierMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @lsint64PredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_lsint64 !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_lsint64 !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_lsint64 !?ioSemanticContext.mTypeMap ?modifierMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @lcharPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_lchar !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_lchar !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_lchar !?ioSemanticContext.mTypeMap ?modifierMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @ldoublePredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_ldouble !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_ldouble !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_ldouble !?ioSemanticContext.mTypeMap ?modifierMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @lstringPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_lstring !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_lstring !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_lstring !?ioSemanticContext.mTypeMap ?modifierMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @locationPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @readerMap readerMap ;
-  readerMapFor_location !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    ![@constructorMap emptyMap]
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @stringsetPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_data !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_data !?ioSemanticContext.mTypeMap ?readerMap ;
-  modifierMapFor_data !?ioSemanticContext.mTypeMap ?modifierMap ;
-  instanceMethodMapFor_data !?ioSemanticContext.mTypeMap ?instanceMethodMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    !instanceMethodMap
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @objectPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @readerMap readerMap ;
-  readerMapFor_object !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    ![@constructorMap emptyMap]
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @functionPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  constructorMapFor_function !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_function !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @typePredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-#--- Enter "type" builtin type
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  constructorMapFor_type !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_type !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @binarysetPredefinedTypeAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-#--- Enter "type" builtin type
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  constructorMapFor_binaryset !?ioSemanticContext.mTypeMap ?constructorMap ;
-  readerMapFor_binaryset !?ioSemanticContext.mTypeMap ?readerMap ;
-  [!?ioSemanticContext.mTypeMap insertKey
-    ![@lstring new !mPredefinedTypeName !here]
-    !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    ![@modifierMap emptyMap]
-    ![@instanceMethodMap emptyMap]
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
+    !enumerationList
+    ![t getSupportedOperatorFlags]
+    !addAssignArgumentList
+    !minusAssignArgumentList
+    ![t getNativeAttributeList]
+    !if mPredefinedTypeName == "stringset" then "enumerable" else "root" end
+    !self
   ] ;
 end method ;
 
@@ -978,6 +441,7 @@ override method @mapDeclarationAST enterType
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum mapType]
+    ![@typedAttributeList emptyList]
     !typedAttributeList
     !constructorMap
     !readerMap
@@ -985,6 +449,12 @@ override method @mapDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
+    !0
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+    !"map"
+    !self
   ] ;
 end method ;
 
@@ -1000,8 +470,9 @@ override method @mapindexDeclarationAST enterType
     !mAssociatedMapTypeName
     ?2*
     ?typeKindEnum
+    ?*
     ?mapTypedAttributeList
-    ?6*
+    ?12*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be a map type" ;
@@ -1058,6 +529,7 @@ override method @mapindexDeclarationAST enterType
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum mapIndexType]
+    ![@typedAttributeList emptyList]
     !mapTypedAttributeList
     !constructorMap
     !readerMap
@@ -1065,6 +537,12 @@ override method @mapindexDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
+    !0
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+    !"mapindex"
+    !self
   ] ;
 end method ;
 
@@ -1097,12 +575,19 @@ override method @enumDeclarationAST enterType
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
+    ![@typedAttributeList emptyList]
     !constructorMap
     !readerMap
     !modifierMap
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
+    !0
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+    !"root"
+    !self
   ] ;
 end method ;
 
@@ -1192,6 +677,7 @@ override method @sortedListDeclarationAST enterType
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum sortedListType]
+    ![@typedAttributeList emptyList]
     !typedAttributeList
     !constructorMap
     !readerMap
@@ -1199,6 +685,12 @@ override method @sortedListDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
+    !0
+    !constructorAttributeTypeList
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+    !"sortedlist"
+    !self
   ] ;
 end method ;
 
@@ -1250,6 +742,7 @@ override method @structDeclarationAST enterType
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum structType]
+    ![@typedAttributeList emptyList]
     !typedAttributeList
     !constructorMap
     !readerMap
@@ -1257,6 +750,12 @@ override method @structDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
+    !0
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+    !"struct"
+    !self
   ] ;
 end method ;
 
@@ -1293,19 +792,19 @@ override method @listDeclarationAST enterType
   [!?constructorMap insertKey
     ![@lstring new !"listWithValue" !here]
     !constructorAttributeTypeList
-    !true
+    !false
     !listTypeIndex
   ] ;
 #--- Readers
   @readerMap readerMap [emptyMap] ;
-  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext.mTypeMap !"length" !"uint" !false ;
-  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" ![mListTypeName string] !false ;
-  enterBaseReaderWith2Arguments !?readerMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"uint" !"uint" ![mListTypeName string] !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext.mTypeMap !"length" !"uint" !false ;
+#  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" ![mListTypeName string] !false ;
+#  enterBaseReaderWith2Arguments !?readerMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"uint" !"uint" ![mListTypeName string] !false ;
   foreach typedAttributeList do
     [!?readerMap insertOrReplace
       ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
       ![@unifiedTypeMapIndexList listWithValue !uintType]
-      !false
+      !true
       !mAttributeTypeIndex
       ![@readerQualifier isBasic]
       !""
@@ -1352,12 +851,19 @@ override method @listDeclarationAST enterType
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum listType]
     !typedAttributeList
+    ![@typedAttributeList emptyList]
     !constructorMap
     !readerMap
     !modifierMap
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
+    !binaryConcatOperator [] | doNotGenererateObjectCompare []
+    !constructorAttributeTypeList
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+    !"list"
+    !self
   ] ;
 end method ;
 
@@ -1369,21 +875,50 @@ override method @classDeclarationAST enterType
   @unifiedTypeMapIndex uintType ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioSemanticContext.mTypeMap ?uintType] ;
 #---
-  @typedAttributeList typedAttributeList [emptyList] ;
+  @readerMap readerMap ;
+  @modifierMap modifierMap ;
+  @instanceMethodMap instanceMethodMap ;
+  @classMethodMap classMethodMap ;
+  @typedAttributeList inheritedTypedAttributeList ;
 #--- Handle super class
   @unifiedTypeMapIndex superClassIndex ;
   if [mSuperClassName string] == "" then
     superClassIndex := [@unifiedTypeMapIndex null] ;
+    readerMap := [@readerMap emptyMap] ;
+    modifierMap := [@modifierMap emptyMap] ;
+    instanceMethodMap := [@instanceMethodMap emptyMap] ;
+    classMethodMap := [@classMethodMap emptyMap] ;
+    inheritedTypedAttributeList := [@typedAttributeList emptyList] ;
   else
     [@unifiedTypeMapIndex makeRegularIndex !mSuperClassName !?ioSemanticContext.mTypeMap ?superClassIndex] ;
+    @typeKindEnum typeKindEnum ;
+    [[ioSemanticContext mTypeMap] searchKey
+      !mSuperClassName
+      ?2*
+      ?typeKindEnum
+      ?*
+      ?inheritedTypedAttributeList
+      ?*
+      ?readerMap
+      ?modifierMap
+      ?instanceMethodMap
+      ?classMethodMap
+      ?7*
+    ] ;
+    if typeKindEnum != [@typeKindEnum classType] then
+      error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
+    end if ;
   end if ;
 #--- Current class Index
-    @unifiedTypeMapIndex classIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mClassTypeName !?ioSemanticContext.mTypeMap ?classIndex] ;
-#--- Constructors
+  @unifiedTypeMapIndex classIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex !mClassTypeName !?ioSemanticContext.mTypeMap ?classIndex] ;
+#--- Constructor
   @constructorMap constructorMap [emptyMap] ;
   if not mIsAbstract then
     @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
+    foreach inheritedTypedAttributeList do
+      constructorAttributeTypeList += !mAttributeTypeIndex ;
+    end foreach ;
     foreach mAttributeList do
       @unifiedTypeMapIndex attributeTypeIndex ;
       [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
@@ -1396,25 +931,75 @@ override method @classDeclarationAST enterType
       !classIndex
     ] ;
   end if ;
-#--- Readers
-  @readerMap readerMap [emptyMap] ;
-#--- Modifiers
-  @modifierMap modifierMap [emptyMap] ;
-#--- Instance methods
-  @instanceMethodMap instanceMethodMap [emptyMap] ;
+#--- Append methods
+  foreach mAbstractMethodList do
+    @formalParameterSignature formalArgumentList [emptyList] ;
+    foreach mSignature do
+      @unifiedTypeMapIndex typeIndex ;
+      [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext.mTypeMap ?typeIndex] ;
+      formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
+    end foreach ;
+    [!?instanceMethodMap insertOrReplace
+      !mMethodName
+      !formalArgumentList
+      !true
+    ] ;
+  end foreach ;
+  foreach mOverridenMethodList do
+    @formalParameterSignature formalArgumentList [emptyList] ;
+    foreach mSignature do
+      @unifiedTypeMapIndex typeIndex ;
+      [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext.mTypeMap ?typeIndex] ;
+      formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
+    end foreach ;
+    [!?instanceMethodMap insertOrReplace
+      !mMethodName
+      !formalArgumentList
+      !true
+    ] ;
+  end foreach ;
+  foreach mMethodList do
+    @formalParameterSignature formalArgumentList [emptyList] ;
+    foreach mSignature do
+      @unifiedTypeMapIndex typeIndex ;
+      [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext.mTypeMap ?typeIndex] ;
+      formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
+    end foreach ;
+    [!?instanceMethodMap insertOrReplace
+      !mMethodName
+      !formalArgumentList
+      !true
+    ] ;
+  end foreach ;
+#--- Typed attribute list
+  @typedAttributeList currentClassTypedAttributeList [emptyList] ;
+  @typedAttributeList allTypedAttributeList := inheritedTypedAttributeList ;
+  foreach mAttributeList do
+    @unifiedTypeMapIndex attributeTypeIndex ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    currentClassTypedAttributeList += !attributeTypeIndex !mAttributeName ;
+    allTypedAttributeList += !attributeTypeIndex !mAttributeName ;
+  end foreach ;
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
     !mClassTypeName
     !not mIsAbstract # Concrete Type
-    !superClassIndex # No super type
+    !superClassIndex
     ![@typeKindEnum classType]
-    !typedAttributeList
+    !allTypedAttributeList
+    !currentClassTypedAttributeList
     !constructorMap
     !readerMap
     !modifierMap
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
+    !0
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+    !if [superClassIndex isNull] then "root" else [[superClassIndex key] string] end
+    !self
   ] ;
 end method ;
 
@@ -1477,8 +1062,9 @@ override method @listmapDeclarationAST enterType
     !mAssociatedListTypeName
     ?2*
     ?typeKindEnum
+    ?*
     ?listTypedAttributeList
-    ?6*
+    ?12*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1505,12 +1091,19 @@ override method @listmapDeclarationAST enterType
   @enumerationDescriptorList enumeratorDescriptor [emptyList] ;
   enumeratorDescriptor += !stringTypeIndex !"key" ;
   enumeratorDescriptor += !associatedListTypeIndex !"value" ;
+#--- Add assign operator description
+  @unifiedTypeMapIndexList addAssignOperatorDescription [emptyList] ;
+  addAssignOperatorDescription += !stringTypeIndex ;
+  foreach listTypedAttributeList do
+    addAssignOperatorDescription += !mAttributeTypeIndex ;
+  end foreach ;
 #--- Enter type in type map
   [!?ioSemanticContext.mTypeMap insertKey
     !mListmapTypeName
     !true # Concrete Type
     ![@unifiedTypeMapIndex null] # No super type
     ![@typeKindEnum mapIndexType]
+    ![@typedAttributeList emptyList]
     !listTypedAttributeList
     !constructorMap
     !readerMap
@@ -1518,6 +1111,12 @@ override method @listmapDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumeratorDescriptor
+    !0
+    !addAssignOperatorDescription
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+    !"listmap"
+    !self
   ] ;
 end method ;
 
@@ -1617,12 +1216,9 @@ routine buildSemanticContext
   ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
-#------ Add predefined types to semantics declarations
-  @semanticDeclarationListAST semanticDeclarationList := inSemanticDeclarationList ;
-  appendPredefinedTypesASTs !?semanticDeclarationList ;
-#--- Collect all type, for checking there is no undefined type
+#--- Collect all types, for checking there is no undefined type
   @collectedTypeMap collectedTypeMap [emptyMap] ;
-  foreach semanticDeclarationList do
+  foreach inSemanticDeclarationList do
     [mSemanticDeclaration collectType !?collectedTypeMap] ;
   end foreach ;
 #--- Check there is no undefined type
@@ -1646,7 +1242,7 @@ routine buildSemanticContext
 #  - a list map appears after its associated list
   @partiallyOrderedSemanticDeclarationListAST partiallyOrderedSemanticDeclarationListAST [emptySortedList] ;
   if [@uint errorCount] == 0 then
-    foreach semanticDeclarationList do
+    foreach inSemanticDeclarationList do
       [mSemanticDeclaration enterOrderedDeclaration !?partiallyOrderedSemanticDeclarationListAST] ;  
     end foreach ;
   end if ;
@@ -1688,20 +1284,12 @@ routine buildSemanticContext
     ![@functionMap emptyMap]
     ![@descendantClassListMap emptyMap]
     ![@filewrapperMap emptyMap]
+    !orderedSemanticDeclarationListAST
   ] ;
 #--- Loop throught all declarations
   if [@uint errorCount] == 0 then
     foreach orderedSemanticDeclarationListAST do
       [mSemanticDeclaration enterType !?outSemanticContext] ;
-    end foreach ;
-  end if ;
-#--- Check type cross references are correct
-# * class inheritance graph has no circularity
-# * mapindex type refers to an actual map type
-# * listmap type refers to an actual list type
-  if [@uint errorCount] == 0 then
-    foreach [outSemanticContext mTypeMap] do
-#      [mType checkTypeCrossReferences ![[outSemanticContext mTypeMap] count]] ;
     end foreach ;
   end if ;
 end routine ;

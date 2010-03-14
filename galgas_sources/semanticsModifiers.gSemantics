@@ -100,7 +100,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_string
+override method @stringPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
@@ -109,99 +109,99 @@ routine modifierMapFor_string
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"incIndentation" !true ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"decIndentation" !true ;
   enterModifierWith2InputArguments !?outModifierMap !?ioUnifiedTypeMap !"char" !"uint" !"setCharacterAtIndex" !true ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_lstring
+override method @lstringPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"string" !"setString" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"location" !"setLocation" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_lchar
+override method @lcharPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"char" !"setChar" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"location" !"setLocation" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_lbool
+override method @lboolPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"bool" !"setBool" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"location" !"setLocation" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_luint
+override method @luintPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"setUint" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"location" !"setLocation" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_lsint
+override method @lsintPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"sint" !"setSint" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"location" !"setLocation" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_luint64
+override method @luint64PredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint64" !"setUint64" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"location" !"setLocation" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_lsint64
+override method @lsint64PredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"sint64" !"setSint64" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"location" !"setLocation" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_ldouble
+override method @ldoublePredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"double" !"setDouble" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"location" !"setLocation" !false ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-routine modifierMapFor_data
+override method @dataPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
@@ -213,142 +213,7 @@ routine modifierMapFor_data
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"appendUIntLE" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"string" !"appendUTF8String" !false ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"data" !"appendData" !false ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @classGalgasType modifierMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@modifierMap outModifierMap
-#:
-#  if [mSuperClassIndex isNull] then
-#    outModifierMap := [@modifierMap emptyMap] ;
-#  else
-#    @ACGalgasType superClassType := [mSuperClassIndex mType] ;
-#    outModifierMap := [superClassType modifierMap] ;
-#  end if ;
-#  foreach mAttributeList do
-#    @ACGalgasType t := [mAttributeTypeIndex mType] ;
-#  #--- set...Attribute... method
-#    @formalParameterSignature accessorSignature [emptyList] ;
-#    accessorSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#    accessorSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#    [!?outModifierMap insertKey
-#      ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] ![mAttributeName location]]
-#      !accessorSignature
-#      !true
-#    ] ;
-#  end foreach ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @listGalgasType modifierMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@modifierMap outModifierMap
-#:
-#  outModifierMap := [@modifierMap emptyMap] ;
-#  @formalParameterSignature extractSignature [emptyList] ;
-#  @formalParameterSignature inputSignature [emptyList] ;
-#  foreach mAttributeList do
-#    @ACGalgasType t  := [mAttributeTypeIndex mType] ;
-#    extractSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
-#    inputSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#  end foreach ;
-#  [!?outModifierMap insertKey
-#    ![@lstring new !"popFirst" !here]
-#    !extractSignature
-#    !true
-#  ] ;
-#  [!?outModifierMap insertKey
-#    ![@lstring new !"popLast" !here]
-#    !extractSignature
-#    !true
-#  ] ;
-#  [!?outModifierMap insertKey
-#    ![@lstring new !"prependValue" !here]
-#    !inputSignature
-#    !true
-#  ] ;
-#  foreach mAttributeList do
-#    @ACGalgasType t := [mAttributeTypeIndex mType] ;
-#    @formalParameterSignature signature [emptyList] ;
-#    signature += ![@uintGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#    signature += !t ![@formalArgumentPassingModeAST argumentOut] ;
-#    [!?outModifierMap insertKey
-#      ![@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
-#      !signature
-#      !true
-#    ] ;
-#  end foreach ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @sortedlistGalgasType modifierMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@modifierMap outModifierMap
-#:
-#  outModifierMap := [@modifierMap emptyMap] ;
-#  @formalParameterSignature extractSignature [emptyList] ;
-#  foreach mAttributeList do
-#    @ACGalgasType t := [mAttributeTypeIndex mType] ;
-#    extractSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
-#  end foreach ;
-#  [!?outModifierMap insertKey
-#    ![@lstring new !"popSmallest" !here]
-#    !extractSignature
-#    !true
-#  ] ;
-#  [!?outModifierMap insertKey
-#    ![@lstring new !"popGreatest" !here]
-#    !extractSignature
-#    !true
-#  ] ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @mapType modifierMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  !@modifierMap outModifierMap
-#:
-#  outModifierMap := [@modifierMap emptyMap] ;
-#  @formalParameterSignature insertSignature [emptyList] ;
-#  @formalParameterSignature removeSignature [emptyList] ;
-#  insertSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#  removeSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#  foreach mAttributeList do
-#    @ACGalgasType t := [mAttributeTypeIndex mType] ;
-#    insertSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#    removeSignature += !t ![@formalArgumentPassingModeAST argumentOut] ;
-#  #--- set...Attribute...forKey methods
-#    @formalParameterSignature accessorSignature [emptyList] ;
-#    accessorSignature += ![@lstringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#    accessorSignature += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#    [!?outModifierMap insertKey
-#      ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]]
-#      !accessorSignature
-#      !true
-#    ] ;
-#  end foreach ;
-##--- Insert Methods
-#  foreach mInsertMethodMap do
-#    [!?outModifierMap insertKey
-#      !key
-#      !insertSignature
-#      !true
-#    ] ;
-#  end foreach ;
-##--- Remove methods
-#  foreach mRemoveMethodMap do
-#    [!?outModifierMap insertKey
-#      !key
-#      !removeSignature
-#      !true
-#    ] ;
-#  end foreach ;
-#end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

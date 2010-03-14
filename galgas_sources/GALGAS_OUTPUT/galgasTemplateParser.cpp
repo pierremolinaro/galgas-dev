@@ -283,7 +283,7 @@ void galgasTemplateParser::rule_galgasTemplateParser_template_5F_instruction_i5_
       }else if (cond_9687.isBuiltAndFalse ()) {
         var_cas_cppName = GGS_typeOperandName ::constructor_new (inLexique, var_cas_instructionLocation, operand_9454->mAttributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (275)), var_cas_mapStyle, var_cas_iteratorNewStyle COMMA_HERE) ;
       }
-      GGS_lstring  var_cas_implicitVariableName = GGS_lstring ::constructor_new (inLexique, (var_cas_foreachPrefix).operator_concat (operand_9454->mAttributeName), operand_9454->mAttributeName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (277)) COMMA_HERE) ;
+      GGS_lstring  var_cas_implicitVariableName = GGS_lstring ::constructor_new (inLexique, (var_cas_foreachPrefix).operator_concat (operand_9454->mAttributeName), GGS_location (inLexique) COMMA_HERE) ;
       var_cas_templateVariableMap.modifier_insertKey (inLexique, var_cas_implicitVariableName, operand_9454->mAttributType, var_cas_cppName COMMA_SOURCE_FILE_AT_LINE (278)) ;
       var_cas_firstOne = GGS_bool (false) ;
     }

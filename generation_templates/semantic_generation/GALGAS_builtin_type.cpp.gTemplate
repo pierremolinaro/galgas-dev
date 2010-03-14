@@ -44,7 +44,7 @@ if [TYPE accept_inc_dec_operator] | [TYPE accept_append_operator] | ([[TYPE modi
 void GALGAS_%!TYPE_NAME%::insulate (%?COL_0%GALGAS_%!TYPE_NAME% * & ioOperand
 %                                   !COL_0%COMMA_LOCATION_ARGS) {
   if (ioOperand->retainCount () > 1) {
-    GALGAS_%!TYPE_NAME% * p = GALGAS_%!TYPE_NAME%::constructor_new (%
+    GALGAS_%!TYPE_NAME% * p = GALGAS_%!TYPE_NAME%::constructor_new(%
     foreach [TYPE attributeDescriptionList]
       do %ioOperand->%!mAttributeName
       between %, %

@@ -1,0 +1,69 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  metamodel that defines expression                                        *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticAnalysis :
+  import "semanticsDecoratedTypes.gSemantics" ;
+  import semantics semanticsDecoratedTypes in "semanticsDecoratedTypes.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationAST performSemanticAnalysis
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @predefinedTypeAST performSemanticAnalysis
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
+    ![@unifiedTypeMapIndex null]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    P E R F O R M     S E M A N T I C     A N A L Y S I S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
+:
+  outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
+  
+  foreach [inSemanticContext mOrderedSemanticDeclarationListAST] do
+    [mSemanticDeclaration performSemanticAnalysis
+      !inSemanticContext
+      !?outDecoratedDeclarationListForGeneration
+    ] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

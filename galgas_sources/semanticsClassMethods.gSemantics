@@ -42,7 +42,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine classMethodMapFor_string
+override method @stringPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@classMethodMap outClassMethodMap
 :
@@ -66,24 +66,7 @@ routine classMethodMapFor_string
     !argList
     !true
   ] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @mapindexType classMethodMap ->@classMethodMap outClassMethodMap :
-#  outClassMethodMap := [@classMethodMap emptyMap] ;
-#  @formalParameterSignatureEXX argList [emptyList] ;
-#  @ACGalgasType tSelf := self ;
-#  @ACGalgasType t := [mIndexOfMapType mType] ;
-#  argList += ![@stringGalgasType new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-#  argList += !t ![@formalArgumentPassingModeAST argumentInOut] ;
-#  argList += !tSelf ![@formalArgumentPassingModeAST argumentOut] ;
-#  [!?outClassMethodMap insertKey
-#    ![@lstring new !"makeRegularIndex" !here]
-#    !argList
-#    !true
-#  ] ;
-#end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

@@ -68,14 +68,14 @@ routine getGALGAS_2_source_file_list
   !@stringlist out_fileList
 :
   out_fileList := [@stringlist emptyList] ;
-  out_fileList += !"AC_GALGAS_Enumerable.cpp" ;
-  out_fileList += !"AC_GALGAS_Enumerable.h" ;
-  out_fileList += !"AC_GALGAS_Array.cpp" ;
-  out_fileList += !"AC_GALGAS_Array.h" ;
-  out_fileList += !"AC_GALGAS_SortedList.cpp" ;
-  out_fileList += !"AC_GALGAS_SortedList.h" ;
-  out_fileList += !"AC_GALGAS_root.cpp" ;
-  out_fileList += !"AC_GALGAS_root.h" ;
+  out_fileList += !"GALGAS_enumerable.cpp" ;
+  out_fileList += !"GALGAS_enumerable.h" ;
+  out_fileList += !"GALGAS_list.cpp" ;
+  out_fileList += !"GALGAS_list.h" ;
+  out_fileList += !"GALGAS_sortedlist.cpp" ;
+  out_fileList += !"GALGAS_sortedlist.h" ;
+  out_fileList += !"GALGAS_root.cpp" ;
+  out_fileList += !"GALGAS_root.h" ;
   out_fileList += !"GALGAS_binaryset.cpp" ;
   out_fileList += !"GALGAS_bool.cpp" ;
   out_fileList += !"GALGAS_char.cpp" ;

@@ -12,7 +12,7 @@ const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% (%?^%"%!TYPE_
 
 GALGAS_%!TYPE_NAME%::GALGAS_%!TYPE_NAME% (%?COL0%const enum_%!TYPE_NAME% inValue
 %                                         !COL0%COMMA_LOCATION_ARGS) :
-AC_GALGAS_root (THERE),
+GALGAS_root (THERE),
 mEnumValue (inValue) {
 }
 

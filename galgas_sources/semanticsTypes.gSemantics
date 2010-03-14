@@ -43,7 +43,7 @@ list @unifiedTypeMapIndexList {
 
 map @constructorMap {
   @unifiedTypeMapIndexList mArgumentTypeList ;
-  @bool mHasLexique ;
+  @bool mHasCompilerArgument ;
   @unifiedTypeMapIndex mReturnedType ;
   insert insertKey error message "the '%K' constructor has been already defined" ;
   search searchKey error message "the '%K' constuctor is not declared" ;
@@ -161,7 +161,64 @@ enum @typeKindEnum {
   listMapType,
   structType
 }{
+  reader kind :
+  primitiveType -> "primitive" ;
+  classType -> "class" ;
+  enumType -> "enumeration" ;
+  listType -> "list" ;
+  sortedListType -> "sorted list" ;
+  mapType -> "map" ;
+  mapIndexType -> "map index" ;
+  listMapType -> "list map" ;
+  structType -> "struct" ;
+  end reader ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  N A T I V E    A T T R I B U T E    L I S T                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @nativeAttributeList {
+  @string mCppClassName ;
+  @bool mIsPointer ;
+  @string mAttributeName ;
+  @bool mUseReferenceForConstructor ;
+  @string mGetterName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O P E R A T O R    F L A G S                                             *
+#                                                                           *
+# Theses masks are used for the mHandledOperatorFlags attribut of the       *
+# @unifiedTypeMap map, for indicating the handled operators.                *
+#---------------------------------------------------------------------------*
+
+function binaryAddOperator -> @uint outMask : outMask := 1 ; end function ;
+function binarySubOperator -> @uint outMask : outMask := 1 << 1 ; end function ;
+function binaryMulOperator -> @uint outMask : outMask := 1 << 2 ; end function ;
+function binaryDivOperator -> @uint outMask : outMask := 1 << 3 ; end function ;
+function binaryModOperator -> @uint outMask : outMask := 1 << 4 ; end function ;
+function binaryShiftOperator -> @uint outMask : outMask := 1 << 5 ; end function ;
+function unaryPlusOperator -> @uint outMask : outMask := 1 << 6 ; end function ;
+function unaryMinusOperator -> @uint outMask : outMask := 1 << 7 ; end function ;
+function unaryTildeOperator -> @uint outMask : outMask := 1 << 8 ; end function ;
+function incDecOperator -> @uint outMask : outMask := 1 << 9 ; end function ;
+
+function binaryAndOperator -> @uint outMask : outMask := 1 << 10 ; end function ;
+function binaryOrOperator -> @uint outMask : outMask := 1 << 11 ; end function ;
+function binaryXorOperator -> @uint outMask : outMask := 1 << 12 ; end function ;
+function unaryNotOperator -> @uint outMask : outMask := 1 << 13 ; end function ;
+
+function binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end function ; # exp1 . exp2
+function concatAssignOperator -> @uint outMask : outMask := 1 << 15 ; end function ; # var .= exp ;
+
+function doNotGenererateObjectCompare -> @uint outMask : outMask := 1 << 28 ; end function ;
+function generateDescriptionReaderUtilityMethod -> @uint outMask : outMask := 1 << 29 ; end function ;
+function generateNativeNewConstructor -> @uint outMask : outMask := 1 << 30 ; end function ;
+function generateVirtualDestructor -> @uint outMask : outMask := 1 << 31 ; end function ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -173,13 +230,20 @@ map @unifiedTypeMap {
   @bool mIsConcrete ; # false if abstract class
   @unifiedTypeMapIndex mSuperType ;
   @typeKindEnum mTypeKindEnum ;
-  @typedAttributeList mTypedAttributeList ;
+  @typedAttributeList mInheritedTypedAttributeList ;
+  @typedAttributeList mCurrentTypedAttributeList ;
   @constructorMap mConstructorMap ;
   @readerMap mReaderMap ;
   @modifierMap mModifierMap ;
   @instanceMethodMap mInstanceMethodMap ;
   @classMethodMap mClassMethodMap ;
   @enumerationDescriptorList mEnumerationDescriptor ; # Empty List if cannot be enumerated
+  @uint mHandledOperatorFlags ;
+  @unifiedTypeMapIndexList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
+  @unifiedTypeMapIndexList mMinusAssignOperatorArguments ; # Empty list if -= operator is not supported
+  @nativeAttributeList mNativeAttributeList ; # Generating type declaration
+  @string mSuperClassForCodeGeneration ;
+  @semanticDeclarationAST mDeclarationAST ;
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;
@@ -188,6 +252,160 @@ map @unifiedTypeMap {
 #---------------------------------------------------------------------------*
 
 mapindex @unifiedTypeMapIndex (@unifiedTypeMap) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @predefinedTypeAST extends @semanticDeclarationAST {
+  @string mPredefinedTypeName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @binarysetPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @boolPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @uintPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @uint64PredefinedTypeAST extends @predefinedTypeAST {}
+
+class @sintPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @sint64PredefinedTypeAST extends @predefinedTypeAST {}
+
+class @charPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @doublePredefinedTypeAST extends @predefinedTypeAST {}
+
+class @stringPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @lboolPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @luintPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @luint64PredefinedTypeAST extends @predefinedTypeAST {}
+
+class @lsintPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @lsint64PredefinedTypeAST extends @predefinedTypeAST {}
+
+class @lcharPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @ldoublePredefinedTypeAST extends @predefinedTypeAST {}
+
+class @lstringPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @locationPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @stringsetPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @objectPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @functionPredefinedTypeAST extends @predefinedTypeAST {}
+
+class @typePredefinedTypeAST extends @predefinedTypeAST {}
+
+class @dataPredefinedTypeAST extends @predefinedTypeAST {}
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getConstructorMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@constructorMap outConstructorMap
+:
+  outConstructorMap := [@constructorMap emptyMap] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getReaderMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@readerMap outReaderMap
+:
+  outReaderMap := [@readerMap emptyMap] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@modifierMap outModifierMap
+:
+  outModifierMap := [@modifierMap emptyMap] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getInstanceMethodMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap
+:
+  outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getClassMethodMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap
+:
+  outClassMethodMap := [@classMethodMap emptyMap] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+reader @predefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := 0 ; # No supported operator
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getAddAssignArgumentList
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@unifiedTypeMapIndexList outAddAssignArgumentList
+:
+  outAddAssignArgumentList := [@unifiedTypeMapIndexList emptyList] ; # += is not supported
+end method ;
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getMinusAssignArgumentList
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@unifiedTypeMapIndexList outAddAssignArgumentList
+:
+  outAddAssignArgumentList := [@unifiedTypeMapIndexList emptyList] ; # -= is not supported
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G E T    N A T I V E    A T T R I B U T E    L I S T                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @predefinedTypeAST getNativeAttributeList
+  -> @nativeAttributeList outNativeAttributeList
+:
+  outNativeAttributeList := [@nativeAttributeList emptyList] ; # -= is not supported
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G E T    E N U M E R A T I O N    L I S T                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getEnumerationList
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@enumerationDescriptorList outEnumerationList
+:
+  outEnumerationList := [@enumerationDescriptorList emptyList] ; # Enumeration is not supported
+end method ;
 
 #---------------------------------------------------------------------------*
 

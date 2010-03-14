@@ -71,26 +71,28 @@ project all_galgas:
   syntax    "semanticsComponent.gSyntax" : makefile ;
   grammar   "semanticsSLRgrammar.gGrammar" : makefile ;
   semantics "semanticsTypes.gSemantics" : makefile ;
+  semantics "semanticsTypeFeatures.gSemantics" : makefile ;
   semantics "semanticsConstructors.gSemantics" : makefile ;
   semantics "semanticsReaders.gSemantics" : makefile ;
   semantics "semanticsModifiers.gSemantics" : makefile ;
   semantics "semanticsInstanceMethods.gSemantics" : makefile ;
   semantics "semanticsClassMethods.gSemantics" : makefile ;
   semantics "buildSemanticContext.gSemantics" : makefile ;
+  semantics "semanticsDecoratedTypes.gSemantics" : makefile ;
+  semantics "semanticAnalysis.gSemantics" : makefile ;
+  semantics "generatePredefinedTypes.gSemantics" : makefile ;
 
   semantics "semanticsTypesEX.gSemantics" : makefile ;
-  semantics "semanticsTypeFeatures.gSemantics" : makefile ;
+  semantics "semanticsTypeFeaturesEX.gSemantics" : makefile ;
   semantics "semanticsConstructorsEX.gSemantics" : makefile ;
   semantics "semanticsReadersEX.gSemantics" : makefile ;
   semantics "semanticsModifiersEX.gSemantics" : makefile ;
   semantics "semanticsInstanceMethodsEX.gSemantics" : makefile ;
   semantics "semanticsClassMethodsEX.gSemantics" : makefile ;
   semantics "semanticsSemanticsEX.gSemantics" : makefile ;
-  semantics "semanticsDecoratedTypes.gSemantics" : makefile ;
-  semantics "semanticsDecoration.gSemantics" : makefile ;
-  semantics "semanticsGeneration.gSemantics" : makefile ;
+#  semantics "semanticsDecoration.gSemantics" : makefile ;
+#  semantics "semanticsGeneration.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
-  semantics "generatePredefinedTypes.gSemantics" : makefile ;
 
 #--- Syntax Component
   semantics "syntaxMetamodel.gSemantics" : makefile ;

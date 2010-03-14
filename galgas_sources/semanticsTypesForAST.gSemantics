@@ -1195,18 +1195,18 @@ list @methodDefinitionListAST {
 
 #---------------------------------------------------------------------------*
 
-list @classMessageDefinitionListAST {
-  @lstring mMessageName ;
-  @lstring mMessageValue ;
-}
+#list @classMessageDefinitionListAST {
+#  @lstring mMessageName ;
+#  @lstring mMessageValue ;
+#}
 
 #---------------------------------------------------------------------------*
 
-list @lazyAttributeListAST {
-  @location mLocationMagicNumber ;
-  @attributeInCollectionListAST mAttributeList ;
-  @semanticInstructionListAST mInstructionList ;
-}
+#list @lazyAttributeListAST {
+#  @location mLocationMagicNumber ;
+#  @attributeInCollectionListAST mAttributeList ;
+#  @semanticInstructionListAST mInstructionList ;
+#}
 
 #---------------------------------------------------------------------------*
 
@@ -1219,9 +1219,9 @@ class @classDeclarationAST extends @semanticDeclarationAST {
   @abstractMethodDefinitionListAST mAbstractMethodList ;
   @overridenMethodDefinitionListAST mOverridenMethodList ;
   @methodDefinitionListAST mMethodList ;
-  @classMessageDefinitionListAST mMessageList ;
-  @lazyAttributeListAST mLazyAttributeList ;
-  @string mClassMessage ;
+#  @classMessageDefinitionListAST mMessageList ;
+#  @lazyAttributeListAST mLazyAttributeList ;
+#  @string mClassMessage ;
 }
 
 #---------------------------------------------------------------------------*

@@ -8,15 +8,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_NAME% : public AC_GALGAS_Array {
-//--- Constructor
+class GALGAS_%!TYPE_NAME% : public GALGAS_list {
+//--------------------------------- C++ constructor
   protected : GALGAS_%!TYPE_NAME% (LOCATION_ARGS) ;
 
-//--- No copy
-  private : GALGAS_%!TYPE_NAME% (const GALGAS_%!TYPE_NAME% &) ;
-  private : GALGAS_%!TYPE_NAME% & operator = (const GALGAS_%!TYPE_NAME% &) ;
-
-//--- GALGAS constructors
+//--------------------------------- GALGAS constructors
   public : static GALGAS_%!TYPE_NAME% * constructor_emptyList (LOCATION_ARGS) ;
 
   public : static GALGAS_%!TYPE_NAME% * constructor_listWithValue (%?COL0
@@ -26,33 +22,82 @@ class GALGAS_%!TYPE_NAME% : public AC_GALGAS_Array {
   end foreach
   %\n%!COL0%COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- . (concat) operator
-  public : static GALGAS_%!TYPE_NAME% * operator_concat (%?COL1%const GALGAS_%!TYPE_NAME% * inOperand1,
-%!COL1%const GALGAS_%!TYPE_NAME% * inOperand2
-%!COL1%COMMA_LOCATION_ARGS) ;
+//--------------------------------- No copy
+  private : GALGAS_%!TYPE_NAME% (const GALGAS_%!TYPE_NAME% &) ;
+  private : GALGAS_%!TYPE_NAME% & operator = (const GALGAS_%!TYPE_NAME% &) ;
 
-//--- Modifier handling
-  protected : static void insulate (GALGAS_%!TYPE_NAME% * & ioObject) ;
-  
-//--- Introspection
-  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
-
-//--- Friend
+//--------------------------------- += operator
   friend void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
   foreach ATTRIBUTE_LIST
   do index IDX %,\n                                   const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   end foreach
 %) ;
-  
-  friend void modifier_prependValue (GALGAS_%!TYPE_NAME% * & ioResult,
-%foreach ATTRIBUTE_LIST
-  do index IDX 
-%                                     const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
-  between %,\n%
-end foreach%
-                                     COMMA_LOCATION_ARGS) ;
 
-  friend void modifier_popFirst (GALGAS_%!TYPE_NAME% * & ioResult,
+//--------------------------------- Modifiers
+  protected : void modifier_popFirst (%?^
+foreach ATTRIBUTE_LIST
+  do index IDX 
+  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%!^
+end foreach
+    %C_Compiler * inCompiler
+    %!^%COMMA_LOCATION_ARGS) ;
+
+  protected : void modifier_popLast (%?^
+foreach ATTRIBUTE_LIST
+  do index IDX 
+    %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%!^
+end foreach
+    %C_Compiler * inCompiler
+    %!^%COMMA_LOCATION_ARGS) ;
+
+%foreach ATTRIBUTE_LIST do
+%  protected : void modifier_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%AtIndex (%?^
+                                            %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttributeValue,
+                                         %!^%const GALGAS_uint * inIndex,
+                                         %!^%C_Compiler * inCompiler
+                                         %!^%COMMA_LOCATION_ARGS) ;
+%end foreach%
+
+//--------------------------------- Instance Methods
+  protected : void method_first (%
+foreach ATTRIBUTE_LIST do index IDX 
+%                            GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
+end foreach
+%                            C_Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) ;
+
+  protected : void method_last (%
+foreach ATTRIBUTE_LIST
+  do index IDX 
+%                           GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
+end foreach
+%                           C_Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------- Modifiers
+  friend void modifierCall_popFirst (GALGAS_%!TYPE_NAME% * & ioResult,
 %foreach ATTRIBUTE_LIST
   do index IDX 
 %                                 GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
@@ -60,7 +105,7 @@ end foreach
 %                                 C_Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  friend void modifier_popLast (GALGAS_%!TYPE_NAME% * & ioResult,
+  friend void modifierCall_popLast (GALGAS_%!TYPE_NAME% * & ioResult,
 %foreach ATTRIBUTE_LIST
   do index IDX 
 %                                GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
@@ -68,27 +113,16 @@ end foreach
 %                                C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
-  friend void dotAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult,
-                                   const GALGAS_%!TYPE_NAME% * inOperand
-                                   COMMA_LOCATION_ARGS) ;
 %foreach ATTRIBUTE_LIST do
 %
-  friend void modifier_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%AtIndex (%?^%GALGAS_%!TYPE_NAME% * & ioList,
+  friend void modifierCall_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%AtIndex (%?^%GALGAS_%!TYPE_NAME% * & ioList,
                                          %!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttributeValue,
                                          %!^%const GALGAS_uint * inIndex,
                                          %!^%C_Compiler * inCompiler
                                          %!^%COMMA_LOCATION_ARGS) ;
-%
-end foreach
-foreach ATTRIBUTE_LIST do
-%
-  friend GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * readerCall_%![mAttributeName string]%AtIndex (%?^%const GALGAS_%!TYPE_NAME% * inList,
-                                               %!^%const GALGAS_uint * inIndex,
-                                               %!^%C_Compiler * inCompiler
-                                               %!^%COMMA_LOCATION_ARGS) ;
-%
-end foreach
-%
+%end foreach%
+
+//--------------------------------- Instance Methods
   friend void method_first (const GALGAS_%!TYPE_NAME% * inList,
 %foreach ATTRIBUTE_LIST do index IDX 
 %                            GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
@@ -104,6 +138,39 @@ end foreach
 %                           C_Compiler * inCompiler
                            COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- . (concat) operator
+  public : static GALGAS_%!TYPE_NAME% * operator_concat (%?COL1%const GALGAS_%!TYPE_NAME% * inOperand1,
+%!COL1%const GALGAS_%!TYPE_NAME% * inOperand2
+%!COL1%COMMA_LOCATION_ARGS) ;
+
+
+//--- Modifier handling
+  protected : static void insulate (GALGAS_%!TYPE_NAME% * & ioObject) ;
+  
+//--- Introspection
+  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  
+  friend void modifierCall_prependValue (GALGAS_%!TYPE_NAME% * & ioResult,
+%foreach ATTRIBUTE_LIST
+  do index IDX 
+%                                     const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  between %,\n%
+end foreach%
+                                     COMMA_LOCATION_ARGS) ;
+ 
+  friend void dotAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult,
+                                   const GALGAS_%!TYPE_NAME% * inOperand
+                                   COMMA_LOCATION_ARGS) ;
+%
+foreach ATTRIBUTE_LIST do
+%
+  friend GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * readerCall_%![mAttributeName string]%AtIndex (%?^%const GALGAS_%!TYPE_NAME% * inList,
+                                               %!^%const GALGAS_uint * inIndex,
+                                               %!^%C_Compiler * inCompiler
+                                               %!^%COMMA_LOCATION_ARGS) ;
+%
+end foreach
+%
   friend GALGAS_%!TYPE_NAME% * readerCall_subListWithRange (%?^%const GALGAS_%!TYPE_NAME% * inList,
                                           %!^%const GALGAS_uint * inIndex,
                                           %!^%const GALGAS_uint * inLength,
@@ -139,7 +206,7 @@ void addAssign_operation (GALGAS_%!TYPE_NAME% * & ioResult%
   end foreach
 %) ;
 
-void modifier_popFirst (GALGAS_%!TYPE_NAME% * & ioResult,
+void modifierCall_popFirst (GALGAS_%!TYPE_NAME% * & ioResult,
 %foreach ATTRIBUTE_LIST
   do index IDX 
 %                        GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
@@ -147,7 +214,7 @@ end foreach
 %                        C_Compiler * inCompiler
                         COMMA_LOCATION_ARGS) ;
 
-void modifier_popLast (GALGAS_%!TYPE_NAME% * & ioResult,
+void modifierCall_popLast (GALGAS_%!TYPE_NAME% * & ioResult,
 %foreach ATTRIBUTE_LIST
   do index IDX 
 %                       GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string]%,\n%
@@ -155,7 +222,7 @@ end foreach
 %                       C_Compiler * inCompiler
                        COMMA_LOCATION_ARGS) ;
 
-void modifier_prependValue (GALGAS_%!TYPE_NAME% * & ioResult%
+void modifierCall_prependValue (GALGAS_%!TYPE_NAME% * & ioResult%
   foreach ATTRIBUTE_LIST
   do index IDX %,\n                          const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   end foreach
@@ -180,7 +247,7 @@ end foreach
 
 %foreach ATTRIBUTE_LIST do
 %
-void modifier_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%AtIndex (GALGAS_%!TYPE_NAME% * & ioList,
+void modifierCall_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%AtIndex (GALGAS_%!TYPE_NAME% * & ioList,
                                          const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttributeValue,
                                          const GALGAS_uint * inIndex,
                                          C_Compiler * inCompiler

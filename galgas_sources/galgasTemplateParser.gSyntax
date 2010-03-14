@@ -274,7 +274,7 @@ rule <template_instruction>
     else
       cppName := [@typeOperandName new !instructionLocation ![mAttributeName string] !mapStyle !iteratorNewStyle] ;
     end if ;
-    @lstring implicitVariableName [new !foreachPrefix . mAttributeName ! [mAttributeName location]] ;
+    @lstring implicitVariableName [new !foreachPrefix . mAttributeName !here] ;
     [!?templateVariableMap insertKey !implicitVariableName !mAttributType !cppName] ;
     firstOne := false ;
   end foreach ;
