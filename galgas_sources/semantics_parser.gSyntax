@@ -5790,6 +5790,7 @@ rule <semantics_declaration>
     @AC_galgasType t := [@typeGalgasMapindexType new 
       !mapindexTypeName
       !mapTypeName
+      !mapType
       !mapAttributesList
       !tableMethodesSurcharger
       !modifierMethodMap
@@ -5800,6 +5801,7 @@ rule <semantics_declaration>
       !mapindexTypeName
       !mapTypeName
       !mapAttributesList
+      !readerMethodMap
     ] ;
     listeEntitesAengendrer += !e ;
   end select ;
@@ -5839,6 +5841,7 @@ label importSemantics
     @AC_galgasType t := [@typeGalgasMapindexType new 
       !mapindexTypeName
       !mapTypeName
+      !mapType
       !mapAttributesList
       !tableMethodesSurcharger
       !modifierMethodMap
