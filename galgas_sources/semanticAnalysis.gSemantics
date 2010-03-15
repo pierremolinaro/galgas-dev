@@ -66,6 +66,25 @@ override method @listDeclarationAST performSemanticAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @structDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  @typedAttributeList typedAttributeList [emptyList] ;
+  foreach mAttributeList do
+    typedAttributeList +=
+      ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mAttributeTypeName]
+      !mAttributeName
+    ;
+  end foreach ;
+  ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
+    ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mStructTypeName]
+    !typedAttributeList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    P E R F O R M     S E M A N T I C     A N A L Y S I S                  *
 #                                                                           *

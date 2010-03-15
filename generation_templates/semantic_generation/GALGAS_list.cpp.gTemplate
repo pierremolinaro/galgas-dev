@@ -174,6 +174,39 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (const GA
 
 //---------------------------------------------------------------------------*
 
+GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (%?^%const GALGAS_uint * inOperand0,
+                                               %!^%const GALGAS_uint * inOperand1,
+                                               %!^%C_Compiler * inCompiler
+                                               %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
+  if ((inOperand0 != NULL) && (inOperand1 != NULL)) {
+    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
+    const bool ok = subListWithRange (result, inOperand0, inOperand1, inCompiler COMMA_THERE) ;
+    if (! ok) {
+      result = NULL ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (%?^%const GALGAS_uint * inIndex,
+                                               %!^%C_Compiler * inCompiler
+                                               %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
+  if (inIndex != NULL) {
+    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
+    const bool ok = subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+    if (! ok) {
+      result = NULL ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 void dotAssign_operation (GALGAS_%!TYPE_IDENTIFIER% * & ioResult,
                           const GALGAS_%!TYPE_IDENTIFIER% * inOperand
                           COMMA_LOCATION_ARGS) {
@@ -190,6 +223,19 @@ foreach ATTRIBUTE_LIST do index IDX
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
   %  attributeDirectWrite (inOperand, inIndex, %![IDX string]%, inCompiler COMMA_THERE) ;\n%
+  %}\n\n%
+end foreach
+%
+%
+foreach ATTRIBUTE_LIST do index IDX
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint * inIndex,\n%
+  %                                              %!^%C_Compiler * inCompiler\n%
+  %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
+  %  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * result = NULL ;\n%
+  %  result = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributeDirectRead (inIndex, %![IDX string]%, inCompiler COMMA_THERE) ;\n%
+  %  macroValidObjectThere (result, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
+  %  return result ;\n%
   %}\n\n%
 end foreach
 %

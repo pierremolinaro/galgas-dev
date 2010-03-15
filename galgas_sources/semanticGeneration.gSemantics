@@ -92,6 +92,12 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+  template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
 
 #  template primitiveTypeImplementation "GALGAS_builtin_type.cpp.gTemplate"
 #    ?@string TYPE_NAME
@@ -202,6 +208,16 @@ end reader ;
 
 override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := [filewrapper builtinTypeGenerationTemplate.listTypeSpecificImplementation
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper builtinTypeGenerationTemplate.structTypeSpecificImplementation
+    ![[mTypeIndex key] string]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
   ] ;

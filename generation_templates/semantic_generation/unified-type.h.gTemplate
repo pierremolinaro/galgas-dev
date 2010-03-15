@@ -9,6 +9,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% 
 //---------------------------------------------------------------------------*
 
 class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%![SUPER_CLASS_FOR_GENERATION identifierRepresentation]% {
+%
+
+if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeList []) != 0 then%
 //--------------------------------- C++ constructor\n%
   %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach NATIVE_ATTRIBUTE_LIST
@@ -20,6 +23,22 @@ class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%![SUPER_CLASS_FOR_GENERATION id
   else
     %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
   end if
+end if
+
+
+if (SUPPORTED_OPERATORS & generateCppConstructorWithAttributeList []) != 0 then%
+//--------------------------------- C++ constructor\n%
+  %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
+  foreach CURRENT_TYPE_ATTRIBUTE_LIST
+    do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttribute_% ![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+  if [CURRENT_TYPE_ATTRIBUTE_LIST length] == 0 then
+    %LOCATION_ARGS) ;\n\n%
+  else
+    %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+  end if
+end if
 
 if (SUPPORTED_OPERATORS & generateNativeNewConstructor []) != 0 then
   %//--------------------------------- Native constructor\n%
@@ -432,7 +451,7 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Enumeration handling
   protected : virtual void populateEnumerationArray (const GALGAS_root * ioEnumerationArray [],
                                                      const bool inAscending) const ;
-  public : virtual PMUInt32 count (void) const ;
+//  public : virtual PMUInt32 count (void) const ;
 
 //--------------------------------- Enumerator declaration
   public : class cEnumerator : public AC_GALGAS_Enumerator {
