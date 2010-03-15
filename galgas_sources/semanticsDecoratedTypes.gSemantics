@@ -1278,8 +1278,8 @@ class @listTypeForGeneration extends @semanticTypeForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @structDeclarationForGeneration extends @semanticTypeForGeneration {
-  @typedAttributeList mCurrentTypedAttributeList ;
+class @structTypeForGeneration extends @semanticTypeForGeneration {
+  @typedAttributeList mTypedAttributeList ;
 }
 
 #---------------------------------------------------------------------------*

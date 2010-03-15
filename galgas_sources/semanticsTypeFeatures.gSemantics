@@ -46,7 +46,8 @@ override reader @stringPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binaryConcatOperator [] | dotAssignOperator [] | generateNativeNewConstructor []
-    | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor [] ;
+    | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -54,7 +55,8 @@ end reader ;
 override reader @charPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
+   | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -63,7 +65,8 @@ override reader @boolPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryNotOperator []
-    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -74,7 +77,8 @@ override reader @uintPredefinedTypeAST getSupportedOperatorFlags
   outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
     | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
-    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator [] ;
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator []
+    | generateCppConstructorWithNativeAttributeList []  ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -85,7 +89,8 @@ override reader @sintPredefinedTypeAST getSupportedOperatorFlags
   outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
     | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
-    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []  | incDecOperator [] ;
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []  | incDecOperator []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -96,7 +101,8 @@ override reader @uint64PredefinedTypeAST getSupportedOperatorFlags
   outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
     | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
-    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator [] ;
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator []
+    | generateCppConstructorWithNativeAttributeList []  ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -107,7 +113,8 @@ override reader @sint64PredefinedTypeAST getSupportedOperatorFlags
   outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
     | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
-    | generateNativeNewConstructor []  | incDecOperator []  | generateDescriptionReaderUtilityMethod [] ;
+    | generateNativeNewConstructor []  | incDecOperator []  | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -117,7 +124,8 @@ override reader @doublePredefinedTypeAST getSupportedOperatorFlags
 :
   outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
     | unaryPlusOperator [] | unaryMinusOperator []
-    |generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
+    |generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -128,7 +136,8 @@ override reader @stringsetPredefinedTypeAST getSupportedOperatorFlags
   outFlags := unaryPlusOperator [] | unaryMinusOperator [] | binarySubOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
     | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor []
-    | generateNativeNewConstructor [] ;
+    | generateNativeNewConstructor []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -139,7 +148,8 @@ override reader @binarysetPredefinedTypeAST getSupportedOperatorFlags
   outFlags := binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
     | generateNativeNewConstructor [] | generateVirtualDestructor []
     | unaryTildeOperator [] | binaryShiftOperator []
-    | generateDescriptionReaderUtilityMethod [] ;
+    | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -147,7 +157,8 @@ end reader ;
 override reader @typePredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -156,7 +167,8 @@ override reader @objectPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := generateNativeNewConstructor [] | generateVirtualDestructor []
-   | generateDescriptionReaderUtilityMethod [] ;
+   | generateDescriptionReaderUtilityMethod []
+   | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -165,7 +177,8 @@ override reader @dataPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := generateNativeNewConstructor [] | generateVirtualDestructor []
-    | generateDescriptionReaderUtilityMethod [] ;
+    | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -173,7 +186,8 @@ end reader ;
 override reader @functionPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -181,7 +195,8 @@ end reader ;
 override reader @lboolPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -189,7 +204,8 @@ end reader ;
 override reader @lcharPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -197,7 +213,8 @@ end reader ;
 override reader @ldoublePredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -206,7 +223,8 @@ override reader @locationPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := generateVirtualDestructor []
-    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] ;
+    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -214,7 +232,8 @@ end reader ;
 override reader @lsintPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -222,7 +241,8 @@ end reader ;
 override reader @lsint64PredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -230,7 +250,8 @@ end reader ;
 override reader @luintPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -238,7 +259,8 @@ end reader ;
 override reader @luint64PredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -246,7 +268,8 @@ end reader ;
 override reader @lstringPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod [] ;
+  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
+    | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*

@@ -49,6 +49,21 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine appendStructASTForTypeWithLocation
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+  ??@string inElementTypeName
+:
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] ;
+  attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] ;
+  ioDeclarationListASTs += ![@structDeclarationAST new
+    ![@lstring new !"l" . inElementTypeName !here]
+    !attributeList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
@@ -60,14 +75,6 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@charPredefinedTypeAST new !"char"] ;
   ioDeclarationListASTs += ![@doublePredefinedTypeAST new !"double"] ;
   ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string"] ;
-  ioDeclarationListASTs += ![@lboolPredefinedTypeAST new !"lbool"] ;
-  ioDeclarationListASTs += ![@luintPredefinedTypeAST new !"luint"] ;
-  ioDeclarationListASTs += ![@luint64PredefinedTypeAST new !"luint64"] ;
-  ioDeclarationListASTs += ![@lsintPredefinedTypeAST new !"lsint"] ;
-  ioDeclarationListASTs += ![@lsint64PredefinedTypeAST new !"lsint64"] ;
-  ioDeclarationListASTs += ![@lcharPredefinedTypeAST new !"lchar"] ;
-  ioDeclarationListASTs += ![@ldoublePredefinedTypeAST new !"ldouble"] ;
-  ioDeclarationListASTs += ![@lstringPredefinedTypeAST new !"lstring"] ;
   ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location"] ;
   ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset"] ;
   ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object"] ;
@@ -85,6 +92,22 @@ routine appendPredefinedTypesASTs
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"string" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"lstring" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"type" ;
+#  ioDeclarationListASTs += ![@lboolPredefinedTypeAST new !"lbool"] ;
+#  ioDeclarationListASTs += ![@luintPredefinedTypeAST new !"luint"] ;
+#  ioDeclarationListASTs += ![@luint64PredefinedTypeAST new !"luint64"] ;
+#  ioDeclarationListASTs += ![@lsintPredefinedTypeAST new !"lsint"] ;
+#  ioDeclarationListASTs += ![@lsint64PredefinedTypeAST new !"lsint64"] ;
+#  ioDeclarationListASTs += ![@lcharPredefinedTypeAST new !"lchar"] ;
+#  ioDeclarationListASTs += ![@ldoublePredefinedTypeAST new !"ldouble"] ;
+#  ioDeclarationListASTs += ![@lstringPredefinedTypeAST new !"lstring"] ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"bool" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint64" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"sint" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"sint64" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"char" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -705,12 +728,12 @@ override method @structDeclarationAST enterType
     @unifiedTypeMapIndex attributeTypeIndex ;
     [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
     constructorAttributeTypeList += !attributeTypeIndex ;
-    typedAttributeList += !attributeTypeIndex !mAttributeTypeName ;
+    typedAttributeList += !attributeTypeIndex !mAttributeName ;
   end foreach ;
   [!?constructorMap insertKey
     ![@lstring new !"new" !here]
     !constructorAttributeTypeList
-    !true
+    !false
     !structTypeIndex
   ] ;
 #--- Readers
@@ -745,11 +768,13 @@ override method @structDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
-    !0
+    !generateVirtualDestructor []
+      | generateCppConstructorWithAttributeList []
+      | generateDescriptionReaderUtilityMethod []
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !"struct"
+    !"root"
   ] ;
 end method ;
 
@@ -859,7 +884,7 @@ override method @listDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | generateCppConstructorWithNativeAttributeList []
     !constructorAttributeTypeList
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
