@@ -127,7 +127,8 @@ override reader @stringsetPredefinedTypeAST getSupportedOperatorFlags
 :
   outFlags := unaryPlusOperator [] | unaryMinusOperator [] | binarySubOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
-    | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor [] ;
+    | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor []
+    | generateNativeNewConstructor [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*

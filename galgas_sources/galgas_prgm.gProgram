@@ -20,7 +20,6 @@
 program galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
-  import semantics semanticsSemanticsEX in "semanticsSemanticsEX.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
   import semantics galgas_routines in "galgas_routines.gSemantics" ;
   import semantics projectCreation in "projectCreation.gSemantics" ;
@@ -35,7 +34,7 @@ program galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
   import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
   import semantics syntaxCompilation in "syntaxCompilation.gSemantics" ;
-  import semantics generatePredefinedTypes in "generatePredefinedTypes.gSemantics" ;
+  import semantics semanticGeneration in "semanticGeneration.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
