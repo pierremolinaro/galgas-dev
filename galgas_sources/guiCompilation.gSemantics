@@ -24,7 +24,6 @@ import "allASTTypes.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
 import "optionCompilation.gSemantics" ;
 
-import semantics semanticsSemanticsEX in "semanticsSemanticsEX.gSemantics" ;
 import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics optionCompilation in "optionCompilation.gSemantics" ;

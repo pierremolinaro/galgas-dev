@@ -33,12 +33,6 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::typeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
-}
-
-//---------------------------------------------------------------------------*
-
 void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioObject
                 %!^%COMMA_LOCATION_ARGS) {
   if (ioObject->retainCount () > 1) {
@@ -164,75 +158,6 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   end foreach
 %}
 
-%foreach ATTRIBUTE_LIST do index IDX
-%
-//---------------------------------------------------------------------------*
-
-GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * readerCall_%![mAttributeName string]%AtIndex (const GALGAS_%!TYPE_IDENTIFIER% * inList,
-                                        const GALGAS_uint * inIndex,
-                                        C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * result = NULL ;
-  if ((inList != NULL) && (inIndex != NULL)) {
-    result = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) inList->attributeDirectRead (inIndex, %![IDX string]%, inCompiler COMMA_THERE) ;
-    macroValidObject (result, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;
-  }
-  return result ; 
-}
-%
-end foreach
-
-foreach ATTRIBUTE_LIST do index IDX
-%
-//---------------------------------------------------------------------------*
-
-void modifierCall_set%![[mAttributeName string] stringByCapitalizingFirstCharacter]%AtIndex (GALGAS_%!TYPE_IDENTIFIER% * & ioList,
-                                         const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttributeValue,
-                                         const GALGAS_uint * inIndex,
-                                         C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
-  if (ioList != NULL) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioList COMMA_THERE) ;
-    ioList->attributeDirectWrite (inAttributeValue, inIndex, %![IDX string]%, inCompiler COMMA_THERE) ;
-  }
-}
-%
-end foreach%
-//---------------------------------------------------------------------------*
-
-GALGAS_%!TYPE_IDENTIFIER% * readerCall_subListWithRange (const GALGAS_%!TYPE_IDENTIFIER% * inList,
-                                             const GALGAS_uint * inIndex,
-                                             const GALGAS_uint * inLength,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
-  if (inList != NULL) {
-    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
-    const bool ok = inList->subListWithRange (result, inIndex, inLength, inCompiler COMMA_THERE) ;
-    if (! ok) {
-      result = NULL ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-GALGAS_%!TYPE_IDENTIFIER% * readerCall_subListFromIndex (const GALGAS_%!TYPE_IDENTIFIER% * inList,
-                                             const GALGAS_uint * inIndex,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
-  if (inList != NULL) {
-    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
-    const bool ok = inList->subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-    if (! ok) {
-      result = NULL ;
-    }
-  }
-  return result ;
-}
-
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (const GALGAS_%!TYPE_IDENTIFIER% * inOperand1,
@@ -257,7 +182,17 @@ void dotAssign_operation (GALGAS_%!TYPE_IDENTIFIER% * & ioResult,
     ioResult->appendList (inOperand) ;
   }
 }
-
+%
+foreach ATTRIBUTE_LIST do index IDX
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand,\n%
+  %                                              %!^%const GALGAS_uint * inIndex,\n%
+  %                                              %!^%C_Compiler * inCompiler\n%
+  %                                              %!^%COMMA_LOCATION_ARGS) {\n%
+  %  attributeDirectWrite (inOperand, inIndex, %![IDX string]%, inCompiler COMMA_THERE) ;\n%
+  %}\n\n%
+end foreach
+%
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (const GALGAS_%!TYPE_IDENTIFIER% * inEnumeratedObject,
@@ -265,13 +200,3 @@ GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (const GALGAS_%!TYPE_IDENTIF
 AC_GALGAS_Enumerator (inEnumeratedObject, inAscending) {
 }
 
-%foreach ATTRIBUTE_LIST do index IDX
-%//---------------------------------------------------------------------------*
-
-const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::attribute_%![mAttributeName string]% (void) const {
-  const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * result = (const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) directAccess (%![IDX string]% COMMA_HERE) ;
-  macroValidObject (result, const GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;
-  return result ;
-}
-%end foreach
-%

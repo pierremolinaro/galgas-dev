@@ -80,16 +80,7 @@ project all_galgas:
   semantics "buildSemanticContext.gSemantics" : makefile ;
   semantics "semanticsDecoratedTypes.gSemantics" : makefile ;
   semantics "semanticAnalysis.gSemantics" : makefile ;
-  semantics "generatePredefinedTypes.gSemantics" : makefile ;
-
-  semantics "semanticsTypesEX.gSemantics" : makefile ;
-  semantics "semanticsTypeFeaturesEX.gSemantics" : makefile ;
-  semantics "semanticsConstructorsEX.gSemantics" : makefile ;
-  semantics "semanticsReadersEX.gSemantics" : makefile ;
-  semantics "semanticsModifiersEX.gSemantics" : makefile ;
-  semantics "semanticsInstanceMethodsEX.gSemantics" : makefile ;
-  semantics "semanticsClassMethodsEX.gSemantics" : makefile ;
-  semantics "semanticsSemanticsEX.gSemantics" : makefile ;
+  semantics "semanticGeneration.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
 
 #--- Syntax Component
