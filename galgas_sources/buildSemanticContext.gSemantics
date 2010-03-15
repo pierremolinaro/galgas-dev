@@ -67,6 +67,14 @@ end routine ;
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"root" !""] ; # Type, super type
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
+
   ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool"] ;
   ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint"] ;
   ioDeclarationListASTs += ![@uint64PredefinedTypeAST new !"uint64"] ;
@@ -76,12 +84,13 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@doublePredefinedTypeAST new !"double"] ;
   ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string"] ;
   ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location"] ;
-  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset"] ;
+#  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset"] ;
   ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object"] ;
   ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function"] ;
   ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type"] ;
   ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset"] ;
   ioDeclarationListASTs += ![@dataPredefinedTypeAST new !"data"] ;
+
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"luint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint64" ;
@@ -92,14 +101,7 @@ routine appendPredefinedTypesASTs
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"string" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"lstring" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"type" ;
-#  ioDeclarationListASTs += ![@lboolPredefinedTypeAST new !"lbool"] ;
-#  ioDeclarationListASTs += ![@luintPredefinedTypeAST new !"luint"] ;
-#  ioDeclarationListASTs += ![@luint64PredefinedTypeAST new !"luint64"] ;
-#  ioDeclarationListASTs += ![@lsintPredefinedTypeAST new !"lsint"] ;
-#  ioDeclarationListASTs += ![@lsint64PredefinedTypeAST new !"lsint64"] ;
-#  ioDeclarationListASTs += ![@lcharPredefinedTypeAST new !"lchar"] ;
-#  ioDeclarationListASTs += ![@ldoublePredefinedTypeAST new !"ldouble"] ;
-#  ioDeclarationListASTs += ![@lstringPredefinedTypeAST new !"lstring"] ;
+
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"bool" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint64" ;
@@ -203,8 +205,7 @@ routine collectAttributeTypes
   ?!@collectedTypeMap ioCollectedTypeMap
 :
   foreach inAttributeList do
-    @collectedTypeMapIndex attributeTypeIndex ;
-    [@collectedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioCollectedTypeMap ?attributeTypeIndex] ;
+    [@collectedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioCollectedTypeMap ?*] ;
   end foreach ;
 end routine ;
 
@@ -213,6 +214,17 @@ end routine ;
 method @semanticDeclarationAST collectType
   ?!@collectedTypeMap unused ioCollectedTypeMap
 :
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @genericTypeTypeAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey ![@lstring new !mTypeName !here]] ;
+  if mSuperTypeName != "" then
+    [@collectedTypeMapIndex makeRegularIndex ![@lstring new !mSuperTypeName !here] !?ioCollectedTypeMap ?*] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -284,17 +296,17 @@ override method @classDeclarationAST collectType
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
   foreach mAbstractMethodList do
     foreach mSignature do
-      [!?ioCollectedTypeMap insertKey !mFormalParameterTypeName] ;
+      [@collectedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioCollectedTypeMap ?*] ;
     end foreach ;
   end foreach ;
   foreach mOverridenMethodList do
     foreach mSignature do
-      [!?ioCollectedTypeMap insertKey !mFormalParameterTypeName] ;
+      [@collectedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioCollectedTypeMap ?*] ;
     end foreach ;
   end foreach ;
   foreach mMethodList do
     foreach mSignature do
-      [!?ioCollectedTypeMap insertKey !mFormalParameterTypeName] ;
+      [@collectedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioCollectedTypeMap ?*] ;
     end foreach ;
   end foreach ;
 end method ;
@@ -305,6 +317,7 @@ override method @listmapDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
   [!?ioCollectedTypeMap insertKey !mListmapTypeName] ;
+  [@collectedTypeMapIndex makeRegularIndex !mAssociatedListTypeName !?ioCollectedTypeMap ?*] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -339,10 +352,12 @@ override method @predefinedTypeAST enterType
   [t getMinusAssignArgumentList !?ioSemanticContext.mTypeMap ?minusAssignArgumentList] ;
   @enumerationDescriptorList enumerationList ;
   [t getEnumerationList !?ioSemanticContext.mTypeMap ?enumerationList] ;
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext.mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
+    !superTypeIndex
     ![@typeKindEnum primitiveType]
     ![@typedAttributeList emptyList]
     ![@typedAttributeList emptyList]
@@ -356,7 +371,51 @@ override method @predefinedTypeAST enterType
     !addAssignArgumentList
     !minusAssignArgumentList
     ![t getNativeAttributeList]
-    !if mPredefinedTypeName == "stringset" then "enumerable" else "root" end
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @genericTypeTypeAST enterType
+  ?!@semanticContext ioSemanticContext
+:
+#--- uint type index
+#  @unifiedTypeMapIndex uintType ;
+#  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioSemanticContext.mTypeMap ?uintType] ;
+#--- Super type index
+  @unifiedTypeMapIndex superTypeIndex ;
+  if mSuperTypeName == "" then
+    superTypeIndex := [@unifiedTypeMapIndex null] ;
+  else
+    [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !mSuperTypeName !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
+  end if ;
+#--- Constructors
+  @constructorMap constructorMap [emptyMap] ;
+#--- Readers
+  @readerMap readerMap [emptyMap] ;
+#  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext.mTypeMap !"length" !"uint" !false ;
+#--- Modifiers
+  @modifierMap modifierMap [emptyMap] ;
+#--- Instance methods
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    ![@lstring new !mTypeName !here]
+    !false # Abstract Type
+    !superTypeIndex
+    ![@typeKindEnum listType]
+    ![@typedAttributeList emptyList]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+    !0
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
   ] ;
 end method ;
 
@@ -458,10 +517,12 @@ override method @mapDeclarationAST enterType
     ] ;
   end foreach ;
 #--- Enter in type map
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"map" !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext.mTypeMap insertKey
     !mMapTypeName
     !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
+    !superTypeIndex
     ![@typeKindEnum mapType]
     ![@typedAttributeList emptyList]
     !typedAttributeList
@@ -475,7 +536,6 @@ override method @mapDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !"map"
   ] ;
 end method ;
 
@@ -493,7 +553,7 @@ override method @mapindexDeclarationAST enterType
     ?typeKindEnum
     ?*
     ?mapTypedAttributeList
-    ?11*
+    ?10*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be a map type" ;
@@ -545,10 +605,13 @@ override method @mapindexDeclarationAST enterType
     ] ;
   end foreach ;
 #--- Enter type in type map
+#log mMapIndexTypeName ;
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext.mTypeMap insertKey
     !mMapIndexTypeName
     !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
+    !superTypeIndex
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
     !mapTypedAttributeList
@@ -562,7 +625,6 @@ override method @mapindexDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !"mapindex"
   ] ;
 end method ;
 
@@ -589,10 +651,13 @@ override method @enumDeclarationAST enterType
     enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext.mTypeMap ![mEnumMessageName string] !"string" !false ;
   end foreach ;
 #--- Enter type in type map
+#log mEnumTypeName ;
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext.mTypeMap insertKey
     !mEnumTypeName
     !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
+    !superTypeIndex
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
     ![@typedAttributeList emptyList]
@@ -606,7 +671,6 @@ override method @enumDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !"root"
   ] ;
 end method ;
 
@@ -691,10 +755,13 @@ override method @sortedListDeclarationAST enterType
     !true
   ] ;
 #--- Enter in type map
+#log mSortedListTypeName ;
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"sortedlist" !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext.mTypeMap insertKey
     !mSortedListTypeName
     !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
+    !superTypeIndex
     ![@typeKindEnum sortedListType]
     ![@typedAttributeList emptyList]
     !typedAttributeList
@@ -708,7 +775,6 @@ override method @sortedListDeclarationAST enterType
     !constructorAttributeTypeList
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !"sortedlist"
   ] ;
 end method ;
 
@@ -755,10 +821,13 @@ override method @structDeclarationAST enterType
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Enter in type map
+#log mStructTypeName ;
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext.mTypeMap insertKey
     !mStructTypeName
     !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
+    !superTypeIndex
     ![@typeKindEnum structType]
     ![@typedAttributeList emptyList]
     !typedAttributeList
@@ -774,7 +843,6 @@ override method @structDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !"root"
   ] ;
 end method ;
 
@@ -871,10 +939,13 @@ override method @listDeclarationAST enterType
     !true
   ] ;
 #--- Enter in type map
+#log mListTypeName ;
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"list" !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext.mTypeMap insertKey
     !mListTypeName
     !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
+    !superTypeIndex
     ![@typeKindEnum listType]
     !typedAttributeList
     ![@typedAttributeList emptyList]
@@ -888,7 +959,6 @@ override method @listDeclarationAST enterType
     !constructorAttributeTypeList
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !"list"
   ] ;
 end method ;
 
@@ -908,7 +978,7 @@ override method @classDeclarationAST enterType
 #--- Handle super class
   @unifiedTypeMapIndex superClassIndex ;
   if [mSuperClassName string] == "" then
-    superClassIndex := [@unifiedTypeMapIndex null] ;
+    superClassIndex := [@unifiedTypeMapIndex searchKey ![ioSemanticContext mTypeMap] ![@lstring new !"root" !here]] ;
     readerMap := [@readerMap emptyMap] ;
     modifierMap := [@modifierMap emptyMap] ;
     instanceMethodMap := [@instanceMethodMap emptyMap] ;
@@ -928,7 +998,7 @@ override method @classDeclarationAST enterType
       ?modifierMap
       ?instanceMethodMap
       ?classMethodMap
-      ?6*
+      ?5*
     ] ;
     if typeKindEnum != [@typeKindEnum classType] then
       error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
@@ -1006,6 +1076,7 @@ override method @classDeclarationAST enterType
     allTypedAttributeList += !attributeTypeIndex !mAttributeName ;
   end foreach ;
 #--- Enter in type map
+#log mClassTypeName ;
   [!?ioSemanticContext.mTypeMap insertKey
     !mClassTypeName
     !not mIsAbstract # Concrete Type
@@ -1023,7 +1094,6 @@ override method @classDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !if [superClassIndex isNull] then "root" else [[superClassIndex key] string] end
   ] ;
 end method ;
 
@@ -1088,7 +1158,7 @@ override method @listmapDeclarationAST enterType
     ?typeKindEnum
     ?*
     ?listTypedAttributeList
-    ?11*
+    ?10*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1122,10 +1192,13 @@ override method @listmapDeclarationAST enterType
     addAssignOperatorDescription += !mAttributeTypeIndex ;
   end foreach ;
 #--- Enter type in type map
+#log mListmapTypeName ;
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"listmap" !here] !?ioSemanticContext.mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext.mTypeMap insertKey
     !mListmapTypeName
     !true # Concrete Type
-    ![@unifiedTypeMapIndex null] # No super type
+    !superTypeIndex
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
     !listTypedAttributeList
@@ -1139,7 +1212,6 @@ override method @listmapDeclarationAST enterType
     !addAssignOperatorDescription
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
-    !"listmap"
   ] ;
 end method ;
 
@@ -1169,7 +1241,15 @@ end method ;
 override method @predefinedTypeAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" !mPredefinedTypeName !self ;
+  ioPartiallyOrderedDeclarationList += !"root" !mPredefinedTypeName !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @genericTypeTypeAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  ioPartiallyOrderedDeclarationList += !mSuperTypeName !mTypeName !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1185,7 +1265,7 @@ end method ;
 override method @listDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mListTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"list" ![mListTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1193,7 +1273,7 @@ end method ;
 override method @structDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mStructTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"root" ![mStructTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1201,7 +1281,7 @@ end method ;
 override method @enumDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mEnumTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"root" ![mEnumTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1209,7 +1289,7 @@ end method ;
 override method @sortedListDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mSortedListTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"sortedlist" ![mSortedListTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1283,6 +1363,7 @@ routine buildSemanticContext
       if [alreadyDefinedTypes hasKey !mDependanceString] then
         orderedSemanticDeclarationListAST += !mSemanticDeclaration ;
         alreadyDefinedTypes += !mTypeString ;
+#        log mTypeString ;
         progress := true ;
       else
         partiallyOrderedSemanticDeclarationListAST += !mDependanceString !mTypeString !mSemanticDeclaration ;

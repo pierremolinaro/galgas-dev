@@ -244,7 +244,6 @@ map @unifiedTypeMap {
   @unifiedTypeMapIndexList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
   @unifiedTypeMapIndexList mMinusAssignOperatorArguments ; # Empty list if -= operator is not supported
   @nativeAttributeList mNativeAttributeList ; # Generating type declaration
-  @string mSuperClassForCodeGeneration ;
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;
@@ -258,6 +257,13 @@ mapindex @unifiedTypeMapIndex (@unifiedTypeMap) ;
 #                                                                           *
 #  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S        *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+class @genericTypeTypeAST extends @semanticDeclarationAST {
+  @string mTypeName ;
+  @string mSuperTypeName ;
+}
+
 #---------------------------------------------------------------------------*
 
 abstract class @predefinedTypeAST extends @semanticDeclarationAST {
@@ -283,22 +289,6 @@ class @charPredefinedTypeAST extends @predefinedTypeAST {}
 class @doublePredefinedTypeAST extends @predefinedTypeAST {}
 
 class @stringPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lboolPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @luintPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @luint64PredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lsintPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lsint64PredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lcharPredefinedTypeAST extends @predefinedTypeAST {}
-
-class @ldoublePredefinedTypeAST extends @predefinedTypeAST {}
-
-class @lstringPredefinedTypeAST extends @predefinedTypeAST {}
 
 class @locationPredefinedTypeAST extends @predefinedTypeAST {}
 

@@ -1264,7 +1264,16 @@ class @primitiveTypeForGeneration extends @semanticTypeForGeneration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    L I S T    D E C L A R A T I O N                                       *
+#    G E N E R I C    L I S T    T Y P E    D E C L A R A T I O N           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @genericListTypeForGeneration extends @semanticTypeForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    T Y P E    D E C L A R A T I O N                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 

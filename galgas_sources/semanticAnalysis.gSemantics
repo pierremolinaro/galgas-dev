@@ -39,8 +39,9 @@ override method @predefinedTypeAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
+  const @unifiedTypeMapIndex idx [searchKey ![inSemanticContext mTypeMap] ![@lstring new !mPredefinedTypeName !here]] ;
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] ![@lstring new !mPredefinedTypeName !here]]
+    !idx
   ] ;
 
 end method ;

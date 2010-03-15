@@ -192,83 +192,11 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lboolPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lcharPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @ldoublePredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
 override reader @locationPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := generateVirtualDestructor []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lsintPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lsint64PredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @luintPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @luint64PredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lstringPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateVirtualDestructor [] | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
@@ -390,70 +318,6 @@ end reader ;
 override reader @functionPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
   outList += !"C_galgas_function_descriptor" !true !"mFunctionDescriptor" !false !"functionDescriptor" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lstringPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_string" !true !"mString" !false !"stringValue" ;
-  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lcharPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_char" !true !"mChar" !false !"charValue" ;
-  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @luintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_uint" !true !"mUInt" !false !"uintValue" ;
-  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lsintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_sint" !true !"mSInt" !false !"sintValue" ;
-  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @luint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_uint_36__34_" !true !"mUInt64" !false !"uint64Value" ;
-  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lsint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_sint_36__34_" !true !"mSInt64" !false !"sint64Value" ;
-  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lboolPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_bool" !true !"mBool" !false !"boolValue" ;
-  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @ldoublePredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_double" !true !"mDouble" !false !"doubleValue" ;
-  outList += !"GALGAS_location" !true !"mLocation" !false !"locationValue" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

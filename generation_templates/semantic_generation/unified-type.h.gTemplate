@@ -8,7 +8,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% 
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%![SUPER_CLASS_FOR_GENERATION identifierRepresentation]% {
+class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation]% {
 %
 
 if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeList []) != 0 then%
@@ -448,12 +448,7 @@ foreach READER_MAP do
   end if
 end foreach
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
-%//--------------------------------- Enumeration handling
-  protected : virtual void populateEnumerationArray (const GALGAS_root * ioEnumerationArray [],
-                                                     const bool inAscending) const ;
-//  public : virtual PMUInt32 count (void) const ;
-
-//--------------------------------- Enumerator declaration
+%//--------------------------------- Enumerator declaration
   public : class cEnumerator : public AC_GALGAS_Enumerator {
     public : cEnumerator (const GALGAS_%!TYPE_IDENTIFIER% * inEnumeratedObject,
                           const bool inAscending) ;

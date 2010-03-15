@@ -47,7 +47,6 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
     ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-    ?@string SUPER_CLASS_FOR_GENERATION
   ;
 
   template unifiedTypeImplementation "unified-type.cpp.gTemplate"
@@ -67,7 +66,6 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
     ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-    ?@string SUPER_CLASS_FOR_GENERATION
   ;
 
   template predefinedTypesHeader "types-predeclaration.h.gTemplate"
@@ -142,7 +140,6 @@ override reader @semanticTypeForGeneration appendDeclaration -> @string outHeade
     ![mTypeIndex mAddAssignOperatorArguments]
     ![mTypeIndex mMinusAssignOperatorArguments]
     ![mTypeIndex mNativeAttributeList]
-    ![mTypeIndex mSuperClassForCodeGeneration]
   ] ;
 end reader ;
 
@@ -177,7 +174,6 @@ override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@st
     ![mTypeIndex mAddAssignOperatorArguments]
     ![mTypeIndex mMinusAssignOperatorArguments]
     ![mTypeIndex mNativeAttributeList]
-    ![mTypeIndex mSuperClassForCodeGeneration]
   ] ;
 end reader ;
 
@@ -268,30 +264,34 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendDeclaration] ;
       end foreach ;
-      [@string generateFile
-        !inDirectory
-        !"predefined-types.h"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        !generatedCode
-        !"\n\n" # Defaut user zone2
-        !"#endif\n"
-      ] ;
+      if [@uint errorCount] == 0 then
+        [@string generateFile
+          !inDirectory
+          !"predefined-types.h"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !generatedCode
+          !"\n\n" # Defaut user zone2
+          !"#endif\n"
+        ] ;
+      end if ;
     #------ Generate implementation
       generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
         generatedCode .= [mDeclaration appendSpecificImplementation] ;
       end foreach ;
-      [@string generateFile
-        !inDirectory
-        !"predefined-types.cpp"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        !generatedCode
-        !"\n\n" # Defaut user zone2
-        !""
-      ] ;
+      if [@uint errorCount] == 0 then
+        [@string generateFile
+          !inDirectory
+          !"predefined-types.cpp"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !generatedCode
+          !"\n\n" # Defaut user zone2
+          !""
+        ] ;
+      end if ;
     end if ;
   end if ;
 end routine ;
