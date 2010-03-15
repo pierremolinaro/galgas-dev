@@ -1021,7 +1021,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                "  ioString << \"|-key \" ;\n"
                "  ioString.appendSigned (inElementIndex) ;\n"
-               "  ioString << \":\" << mKey.reader_description (inIndentation + 1) ;\n" ;
+               "  ioString << \":\" << mKey.reader_description (inIndentation + 1) ;\n"
+               "  ioString << (mIsDefined ? \"\" : \"(not solved)\") ;\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   while (current.hasCurrentObject ()) {
     inCppFile << "  ioString << \"\\n\" ;\n"
