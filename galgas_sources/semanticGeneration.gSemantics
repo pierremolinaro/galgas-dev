@@ -30,6 +30,17 @@ semantics semanticGeneration :
 
 filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
+  template genericTypeHeader "generic-type.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+  ;
+
+  template genericTypeImplementation "generic-type.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@unifiedTypeMapIndex SUPER_TYPE_INDEX
+  ;
+
   template unifiedTypeHeader "unified-type.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -95,19 +106,6 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
-
-
-#  template primitiveTypeImplementation "GALGAS_builtin_type.cpp.gTemplate"
-#    ?@string TYPE_NAME
-#    ?@ACGalgasType TYPE
-#  ;
-#  template primitiveTypeHeader "GALGAS_builtin_type.h.gTemplate"
-#    ?@string TYPE_NAME
-#    ?@ACGalgasType TYPE
-#  ;
-#  template predefinedTypesHeaderEX "predefined_types.h.gTemplate"
-#    ?@typeMap TYPE_MAP
-#  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -144,6 +142,15 @@ override reader @semanticTypeForGeneration appendDeclaration -> @string outHeade
 end reader ;
 
 #---------------------------------------------------------------------------*
+
+override reader @genericTypeForGeneration appendDeclaration -> @string outHeader :
+  outHeader := [filewrapper builtinTypeGenerationTemplate.genericTypeHeader
+    ![[mTypeIndex key] string]
+    ![mTypeIndex identifierRepresentation]
+  ] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    G E N E R I C    T Y P E    I M P L E M E N T A T I O N    *
 #                                                                           *
@@ -174,6 +181,17 @@ override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@st
     ![mTypeIndex mAddAssignOperatorArguments]
     ![mTypeIndex mMinusAssignOperatorArguments]
     ![mTypeIndex mNativeAttributeList]
+  ] ;
+end reader ;
+
+
+#---------------------------------------------------------------------------*
+
+override reader @genericTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
+  outImplementation := [filewrapper builtinTypeGenerationTemplate.genericTypeImplementation
+    ![[mTypeIndex key] string]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mSuperType]
   ] ;
 end reader ;
 

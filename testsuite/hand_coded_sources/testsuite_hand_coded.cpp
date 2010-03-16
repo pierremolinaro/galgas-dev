@@ -51,7 +51,7 @@ routine_test_galgas2 (C_Compiler & /*inLexique */) {
   GALGAS_uintlist * aList = GALGAS_uintlist::constructor_emptyList (HERE) ;
   C_Object::retain (aList COMMA_HERE) ;
    for (PMUInt32 i=0 ; i<TEST_SIZE ; i++) {
-    addAssign_operation (aList, GALGAS_uint::constructor_new (i COMMA_HERE)) ;
+    addAssign_operation (aList, GALGAS_uint::constructor_new (i COMMA_HERE) COMMA_HERE) ;
   }
 
   macroReleaseObject (n) ;

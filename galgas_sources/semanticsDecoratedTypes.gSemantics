@@ -1268,7 +1268,7 @@ class @primitiveTypeForGeneration extends @semanticTypeForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @genericListTypeForGeneration extends @semanticTypeForGeneration {
+class @genericTypeForGeneration extends @semanticTypeForGeneration {
 }
 
 #---------------------------------------------------------------------------*
