@@ -137,7 +137,7 @@ routine compileGuiComponent
         !?ioParsedComponentStruct
         ?*
       ;
-      context.mImportedOptionComponentList += ![[mValue lastPathComponent] stringByDeletingPathExtension] ;
+      context->mImportedOptionComponentList += ![[mValue lastPathComponent] stringByDeletingPathExtension] ;
     end if ;
   end foreach ;
 #--- Nib and main classes
@@ -150,7 +150,7 @@ routine compileGuiComponent
       if [x length] != 2 then
         error mValue:"the string string should conform to \"nib_name.nib_main_class\"" ;
       else
-        context.mNibAndClassList +=
+        context->mNibAndClassList +=
           ![x mValueAtIndex !0]
           ![x mValueAtIndex !1]
         ;
@@ -162,7 +162,7 @@ routine compileGuiComponent
   #--- Check lexique
     @lexiqueComponentAST lexiqueComponentRoot ;
     if [mLexiqueFileName pathExtension] != "gLexique" then
-      error mLexiqueFileName:"the file extension for a lexique component should be 'gLexique'" -> lexiqueComponentRoot ;
+      error mLexiqueFileName:"the file extension for a lexique component should be 'gLexique'" : lexiqueComponentRoot ;
     else
       @lstring lexiqueFullPathName [new
         ![mLexiqueFileName absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
@@ -214,7 +214,7 @@ routine compileGuiComponent
     @string blockComment := "" ;
     foreach mSimpleAttributes do
       if [mKey string] == "fileExtension" then
-        [!?context.mExtensionMap insertKey !mValue ![[mLexiqueFileName lastPathComponent] stringByDeletingPathExtension]] ;
+        [!?context->mExtensionMap insertKey !mValue ![[mLexiqueFileName lastPathComponent] stringByDeletingPathExtension]] ;
         hasAssociatedExtension := true ;
       elsif [mKey string] == "title" then
         if hasTabViewTitle then
@@ -241,7 +241,7 @@ routine compileGuiComponent
       error mLexiqueFileName:"the 'title' key should be defined once (it is not defined)" ;
     end if ;
   #---
-    context.mWithLexiqueList +=
+    context->mWithLexiqueList +=
       ![[mLexiqueFileName lastPathComponent] stringByDeletingPathExtension]
       !blockComment
       !tabViewTitle

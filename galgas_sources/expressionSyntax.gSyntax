@@ -256,9 +256,15 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression :
-  @lstring identifier ;
-  $identifier$ ? identifier ;
-  outExpression := [@varInExpressionAST new !identifier] ;
+  $identifier$ ? @lstring identifier ;
+  @lstringlist structFieldList [emptyList] ;
+  repeat
+  while
+    $->$ ;
+    $identifier$ ?@lstring fieldName ;
+    structFieldList += !fieldName ;
+  end repeat ;
+  outExpression := [@varInExpressionAST new !identifier !structFieldList] ;
 end rule ;
 
 #------------------------------------------------------------------------------*

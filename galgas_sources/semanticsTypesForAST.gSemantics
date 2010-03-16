@@ -299,6 +299,7 @@ class @functionCallExpressionAST extends @semanticExpressionAST {
 
 class @varInExpressionAST extends @semanticExpressionAST {
   @lstring mVarName ;
+  @lstringlist mStructFieldList ;
 }
 
 #---------------------------------------------------------------------------*

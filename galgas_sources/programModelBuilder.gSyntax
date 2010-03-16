@@ -48,10 +48,6 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
 #--- Loop on import declarations
   repeat
   while
-    $import__$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  while
     $import$ ;
     select
       $semantics$ ;

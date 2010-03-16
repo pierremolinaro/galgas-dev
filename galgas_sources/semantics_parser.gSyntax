@@ -1698,7 +1698,7 @@ label importSemantics
     outMessageMap := [model mMessageMap] ;
   else
     error superClassName: "the '@" . [superClassName string] . "' type is not a class"
-     -> outSuperClasses, outAttributeList, outMessageMap ;
+     : outSuperClasses, outAttributeList, outMessageMap ;
   end cast ;
   outSuperClasses += ![superClassName string] ;
 
@@ -2900,7 +2900,7 @@ rule <type_parsing>
   elsif [inTableEnAvant hasKey ![outTypeName string]] then
     [inTableEnAvant searchKey !outTypeName ? outTypeDefinition] ;
   else
-    error outTypeName: "the '@" . [outTypeName string] . "' type is not defined" -> outTypeDefinition ;
+    error outTypeName: "the '@" . [outTypeName string] . "' type is not defined" : outTypeDefinition ;
   end if ;
 end rule ;
 
@@ -2946,7 +2946,7 @@ end rule ;
 #                                                                           *
 #                 A S S I G N M E N T    I N S T R U C T I O N              *
 #                                                                           *
-#                            idf.field1.field2... := ... ;                  *
+#                            idf->field1->field2... := ... ;                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -2965,7 +2965,7 @@ rule <instruction_beginning_with_identifier>
 #--- Struct attributes
   @lstringlist structAttributeList [emptyList] ;
   repeat
-    $.$ ;
+    $->$ ;
     @lstring structAttributeName ;
     $identifier$ ? structAttributeName ;
     structAttributeList += !structAttributeName ;
@@ -3035,7 +3035,7 @@ rule <instruction_beginning_with_identifier_and_structure_access>
     if [mTypeName1 string] != [mTypeName2 string] then
       error here: "for '.=' operator, listmap type @" . mTypeName1
       . " of target object is not compatible with listmap type @" . mTypeName2
-      . " of source expression" -> sourceExpressionConverter ;
+      . " of source expression" : sourceExpressionConverter ;
     else
       sourceExpressionConverter := "" ;
     end if ;
@@ -3043,7 +3043,7 @@ rule <instruction_beginning_with_identifier_and_structure_access>
     if [mTypeName1 string] != [mTypeName2 string] then
       error here: "for '.=' operator, list type @" . mTypeName1
       . " of target object is not compatible with list type @" . mTypeName2
-      . " of source expression" -> sourceExpressionConverter ;
+      . " of source expression" : sourceExpressionConverter ;
     else
       sourceExpressionConverter := "" ;
     end if ;
@@ -3051,7 +3051,7 @@ rule <instruction_beginning_with_identifier_and_structure_access>
     if [mTypeName1 string] != [mTypeName2 string] then
       error here: "for '.=' operator, sortedlist type @" . mTypeName1
       . " of target object is not compatible with sortedlist type @" . mTypeName2
-      . " of source expression" -> sourceExpressionConverter ;
+      . " of source expression" : sourceExpressionConverter ;
     else
       sourceExpressionConverter := "" ;
     end if ;
@@ -3062,7 +3062,7 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   else
     error here: "for '.=' operator, " . [inTargetType messageGalgasType]
     . " target object type is not compatible with " . [sourceType messageGalgasType]
-    . " source expression type" -> sourceExpressionConverter ;
+    . " source expression type" : sourceExpressionConverter ;
   end match ;
 #--- Generate instruction
   @typeInstruction instruction := [@C_dotEqualInstruction new
@@ -3138,11 +3138,11 @@ rule <input_parameters_list>
   if [listeAttributsSemantiques length] < [listeCibles length] then
     error here : "too much arguments: " . [[listeAttributsSemantiques length] string]
       . " expected, " . [[listeCibles length] string] . " found" 
-      -> outAllVariablesList, listeAffectationParametresEffectifs ;
+      : outAllVariablesList, listeAffectationParametresEffectifs ;
   elsif ([listeAttributsSemantiques length] > [listeCibles length]) & not ellipsis then
     error here : "argument(s) missing: " . [[listeAttributsSemantiques length] string]
       . " expected, " . [[listeCibles length] string] . " found"
-      -> outAllVariablesList, listeAffectationParametresEffectifs ;
+      : outAllVariablesList, listeAffectationParametresEffectifs ;
   else
     listeAffectationParametresEffectifs := [@L_assignedVariables emptyList] ;
     outAllVariablesList := [@typeCplusPlusNameList emptyList] ;
@@ -3189,7 +3189,7 @@ rule <instruction_beginning_with_identifier>
   @lstringlist structAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     @lstring structAttributeName ;
     $identifier$ ? structAttributeName ;
     structAttributeList += !structAttributeName ;
@@ -3496,7 +3496,7 @@ rule <parse_parameters_list>
     @lstringlist structAttributeList [emptyList] ;
     repeat
     while
-      $.$ ;
+      $->$ ;
       $identifier$ ? @lstring structAttributeName ;
       @typeGalgasStructType structType := (cast typeArgument if >= @typeGalgasStructType else error structAttributeName) ;
       @bool found := false ;
@@ -3582,76 +3582,6 @@ rule <semantic_instruction>
     !inSemanticContext
   ;
   $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#       Simple extract instruction                                          *
-#---------------------------------------------------------------------------*
-
-rule <extract_instruction>
-  ??@typeTableEnAvant unused inTableEnAvant
-  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ?!@typeVariablesMap ioVariablesMap
-  ?@typeCplusPlusName inSourceVarCppName
-  ?@lstring nomTypeSource
-  ?@typeClassInheritedMessagesMap tableMessagesAbstraits
-  ?!@typeInstructionList ioInstructionList
-  ??@EXsemanticContext inSemanticContext
-:
-  warning here:"simple extract instruction is obsolete: use cast expression instead" ;
-#--- Nom de la classe pour la conversion
-  $->$ ;
-  @lstring nomClasse ;
-  $type_name$ ? nomClasse ;
-#--- Obtenir les caracteristiques de la classe nommee
-  @AC_semanticsEntity entite ;
-  [ioComponentSemanticsEntitiesMap searchKey !nomClasse ?entite] ;
-  @AC_galgasType leType := [(cast entite if >= @typeEntiteType else error nomClasse) aDefType] ;
-  @typeGalgasClassType classType := (cast leType if >= @typeGalgasClassType else error nomClasse) ;
-  @typeListeAttributsSemantiques listeAttributsSemantiques := [classType mAttributeList] ;
-  @typeSuperClassesMap tableDesClassesAncetres := [classType mAncestorClassesMap] ;
-#--- Verify class is an heir of variable type
-  if not [tableDesClassesAncetres hasKey ![nomTypeSource string]] then
-    error nomClasse : "This class does not inherit from '@" . [nomTypeSource string] . "'" ;
-  end if ;
-#--- Arguments
-  @L_assignedVariables listeAffectationParametresEffectifs ;
-  @typeCplusPlusNameList allVariablesList ;
-  $($ ;
-  <input_parameters_list>
-    !ioComponentSemanticsEntitiesMap
-    ?listeAffectationParametresEffectifs
-    ?allVariablesList
-    !listeAttributsSemantiques
-    !?ioVariablesMap
-    !?ioInstructionList
-  ;
-  $)$ ;
-#------------------------------------------------- Error message
-  $error$ ;
-  @typeExpression errorExpression ;
-  @AC_galgasType errorExpressionType ;
-  <expression>
-    !ioComponentSemanticsEntitiesMap
-    !inOptionsComponentsMapForUse
-    !inSemanticContext
-    !?ioVariablesMap
-    ?errorExpression
-    ?errorExpressionType
-  ;
-#--- Verifier que la variable est d'une type contenant une location localisant l'error
-  [errorExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
-  $:$ ;
-  @lstring messageName ;
-  $identifier$ ? messageName ;
-  [tableMessagesAbstraits searchKey !messageName] ;
-#------------------------------------------------- Generate instruction
-  ioInstructionList += ![@typeSimpleExtractInstruction new !inSourceVarCppName
-                                                       !nomClasse
-                                                       !listeAffectationParametresEffectifs
-                                                       !errorExpression
-                                                       !messageName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -4036,7 +3966,7 @@ rule <instruction_beginning_with_identifier>
   else
     error nomVarDest :
      "'" . [nomVarDest string] . "' should name a routine or an extern routine"
-     -> signatureRoutine, isExternActionCall
+     : signatureRoutine, isExternActionCall
     ;
   end cast ;
 #--- Arguments effectifs
@@ -4136,7 +4066,7 @@ rule <semantic_instruction>
     @lstringlist structAttributeList [emptyList] ;
     repeat
     while
-      $.$ ;
+      $->$ ;
       @lstring structAttributeName ;
       $identifier$ ? structAttributeName ;
       structAttributeList += !structAttributeName ;
@@ -4450,7 +4380,7 @@ rule <error_instruction>
   @varToDropList variablesToDrop [emptyList] ;
   select
   or
-    $->$ ;
+    $:$ ;
     repeat
       @lstring nomVariable ;
       $identifier$ ? nomVariable ;
@@ -4972,7 +4902,7 @@ rule <semantic_instruction>
   @lstringlist structAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     @lstring structAttributeName ;
     $identifier$ ? structAttributeName ;
     structAttributeList += !structAttributeName ;
@@ -5437,7 +5367,7 @@ rule <parse_match_operand>
     [type getTypeName ?actualTypeName] ; 
     error variableName : "the type of this variable is '@" . actualTypeName
       . "' ; I was expected an enumeration type or an abstract type" 
-      -> outBaseTypeName, outIsEnumeration, outEnumMessageMap ;
+      : outBaseTypeName, outIsEnumeration, outEnumMessageMap ;
   end cast ;
 end rule ;
 
@@ -6553,7 +6483,7 @@ rule <semantics_declaration_beginning_by_abstract>
     ?signatureForGrammarComponent
   ;
   const @lstring kKey [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
+  [!?ioSemanticContext->mCategoryMethodMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -6611,7 +6541,7 @@ label importSemantics
   ;
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
   if not [[ioSemanticContext mCategoryMethodMap] hasKey ![key string]] then
-    [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+    [!?ioSemanticContext->mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
   end if ;
   $;$ ;
 end rule ;
@@ -6655,7 +6585,7 @@ rule <semantics_declaration>
     ?signatureForGrammarComponent
   ;
   const @lstring kKey [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
+  [!?ioSemanticContext->mCategoryMethodMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -6766,7 +6696,7 @@ label importSemantics
   ;
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
   if not [[ioSemanticContext mCategoryMethodMap] hasKey ![key string]] then
-    [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+    [!?ioSemanticContext->mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
   end if ;
 #--- Instructions
   $:$ ;
@@ -6818,7 +6748,7 @@ rule <semantics_declaration_beginning_by_abstract>
   @AC_galgasType returnedType := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
 #---- Insert in category reader map ----------------------------
   const @lstring kKey [new ![className string] . ":" . [readerName string] ![readerName location]] ;
-  [!?ioSemanticContext. mCategoryReaderMap insertKey !kKey !categoryMethodKind !listeDeTypes !returnedType] ;
+  [!?ioSemanticContext-> mCategoryReaderMap insertKey !kKey !categoryMethodKind !listeDeTypes !returnedType] ;
 #---- Get class attribute list ---------------------------------
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
   @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
@@ -6885,7 +6815,7 @@ label importSemantics
 #---- Insert in category reader map ----------------------------
   @lstring key [new ![className string] . ":" . [readerName string] ![readerName location]] ;
   if not [[ioSemanticContext mCategoryReaderMap] hasKey ![key string]] then
-    [!?ioSemanticContext. mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
+    [!?ioSemanticContext-> mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
   end if ;
   $;$ ;
 end rule ;
@@ -6940,7 +6870,7 @@ rule <semantics_declaration>
   [!?methodLocalVariablesMap insertOutArgument !returnedVariableName !returnedType !returnedCppVarName] ;
 #---- Insert in category reader map ----------------------------
   const @lstring kKey [new ![className string] . ":" . [readerName string] ![readerName location]] ;
-  [!?ioSemanticContext. mCategoryReaderMap insertKey !kKey !categoryMethodKind !listeDeTypes !returnedType] ;
+  [!?ioSemanticContext-> mCategoryReaderMap insertKey !kKey !categoryMethodKind !listeDeTypes !returnedType] ;
 #---- Get class attribute list ---------------------------------
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
   @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
@@ -7072,7 +7002,7 @@ label importSemantics
 #---- Insert in category reader map ----------------------------
   @lstring key [new ![className string] . ":" . [readerName string] ![readerName location]] ;
   if not [[ioSemanticContext mCategoryReaderMap] hasKey ![key string]] then
-    [!?ioSemanticContext. mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
+    [!?ioSemanticContext-> mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
   end if ;
 #--- Instructions
   $:$ ;
@@ -7116,7 +7046,7 @@ rule <semantics_declaration_beginning_by_abstract>
   ;
 #---- Insert in category reader map ----------------------------
   @lstring kKey [new ![className string] . ":" . [templateName string] ![templateName location]] ;
-  [!?ioSemanticContext.mCategoryTemplateMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
+  [!?ioSemanticContext->mCategoryTemplateMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -7175,7 +7105,7 @@ label importSemantics
 #---- Insert in category template map ----------------------------
   @lstring key [new ![className string] . ":" . [templateName string] ![templateName location]] ;
   if not [[ioSemanticContext mCategoryTemplateMap] hasKey ![key string]] then
-    [!?ioSemanticContext.mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+    [!?ioSemanticContext->mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
   end if ;
   $;$ ;
 end rule ;
@@ -7222,7 +7152,7 @@ rule <semantics_declaration>
   @templateVariableMap categoryTemplateVariableMap [emptyMap] ;
 #---- Insert in template reader map ----------------------------
   const @lstring kKey [new ![className string] . ":" . [templateName string] ![templateName location]] ;
-  [!?ioSemanticContext.mCategoryTemplateMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
+  [!?ioSemanticContext->mCategoryTemplateMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -7346,7 +7276,7 @@ label importSemantics
 #---- Insert in category template map ----------------------------
   @lstring key [new ![className string] . ":" . [templateName string] ![templateName location]] ;
   if not [[ioSemanticContext mCategoryTemplateMap] hasKey ![key string]] then
-    [!?ioSemanticContext.mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+    [!?ioSemanticContext->mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
   end if ;
 #--- Instructions
   $:$ ;
@@ -8042,7 +7972,7 @@ rule <semantics_declaration>
     $;$ ;
   end repeat ;
 #--- Enter in wrapper map
-  [!?ioSemanticContext.mFilewrappers insertKey !wrapperName !regularFileMap !templateMap] ;
+  [!?ioSemanticContext->mFilewrappers insertKey !wrapperName !regularFileMap !templateMap] ;
   $}$ ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
@@ -8135,7 +8065,7 @@ label importSemantics
   end repeat ;
 #--- Enter in wrapper map
   if not [[ioSemanticContext mFilewrappers] hasKey ![wrapperName string]] then
-    [!?ioSemanticContext.mFilewrappers insertKey !wrapperName !regularFileMap !templateMap] ;
+    [!?ioSemanticContext->mFilewrappers insertKey !wrapperName !regularFileMap !templateMap] ;
   end if ;
   $}$ ;
 end rule ;

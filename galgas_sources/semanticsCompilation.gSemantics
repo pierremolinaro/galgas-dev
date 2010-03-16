@@ -42,7 +42,7 @@ routine parseSemanticComponent
     [[ioParsedComponentStruct mParsedSemanticsComponentMap] searchKey !basenameKey ?outSemanticsComponentRoot] ;
   else
     grammar semanticsSLRgrammar in inSourceFile ?outSemanticsComponentRoot ;
-    [!?ioParsedComponentStruct.mParsedSemanticsComponentMap insertKey !basenameKey !outSemanticsComponentRoot] ;
+    [!?ioParsedComponentStruct->mParsedSemanticsComponentMap insertKey !basenameKey !outSemanticsComponentRoot] ;
   end if ;
 end routine ;
 

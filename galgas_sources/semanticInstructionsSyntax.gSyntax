@@ -80,7 +80,7 @@ rule <semantic_declaration>
   $end$ ;
   $routine$ ;
   $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@routineDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@routineDeclarationAST new
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -102,7 +102,7 @@ rule <semantic_declaration>
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@externRoutineDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@externRoutineDeclarationAST new
     !mActionName
     !mFormalParameterList
   ] ;
@@ -122,7 +122,7 @@ rule <semantic_declaration>
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@routinePrototypeDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@routinePrototypeDeclarationAST new
     !mActionName
     !mFormalParameterList
   ] ;
@@ -150,7 +150,7 @@ rule <semantic_declaration>
   $end$ ;
   $function$ ;
   $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@functionDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@functionDeclarationAST new
     !mRoutineName
     !mFormalParameterList
     !resultTypeName
@@ -182,7 +182,7 @@ rule <semantic_declaration>
     $end$ ;
     $once$ ;
     $;$ ;
-    ioSemanticDeclarations.mSemanticDeclarationList += ![@lazyFunctionDeclarationAST new
+    ioSemanticDeclarations->mSemanticDeclarationList += ![@lazyFunctionDeclarationAST new
       !mRoutineName
       !resultTypeName
       !resultVariableName
@@ -209,7 +209,7 @@ rule <semantic_declaration>
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
   $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@externFunctionDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@externFunctionDeclarationAST new
     !mActionName
     !mFormalParameterList
     !resultTypeName
@@ -283,7 +283,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -310,7 +310,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -330,7 +330,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -578,7 +578,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist mReceiverStructAttributes [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     $identifier$ ?@lstring structAttribute ;
     mReceiverStructAttributes += !structAttribute ;
   end repeat ;
@@ -613,7 +613,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist mBuiltVariableList [emptyList] ;
   select
   or
-    $->$ ;
+    $:$ ;
     repeat
      @lstring builtVariableName ;
      $identifier$ ? builtVariableName ;
@@ -692,7 +692,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist structAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     $identifier$ ?@lstring mStructFieldName ;
     structAttributeList += !mStructFieldName ;
   end repeat ;
@@ -958,7 +958,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -987,7 +987,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -1015,7 +1015,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $.$ ;
+    $->$ ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -1094,7 +1094,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   repeat
     select
       $identifier$ ? @lstring loggedVariableName ;
-      logList += !loggedVariableName ![@varInExpressionAST new !loggedVariableName] ;
+      logList += !loggedVariableName ![@varInExpressionAST new !loggedVariableName ![@lstringlist emptyList]] ;
     or
       $literal_string$ ? @lstring logMessage ;
       $:$ ;

@@ -36,7 +36,7 @@ routine compileSyntaxComponent
     [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?syntaxComponentRoot] ;
   else
     grammar syntaxSLRgrammar in inSourceFile ?syntaxComponentRoot ;
-    [!?ioParsedComponentStruct.mParsedSyntaxComponentMap insertKey !basenameKey !syntaxComponentRoot] ;
+    [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey !basenameKey !syntaxComponentRoot] ;
   end if ;
 #--- Check component name
   @lstring componentName := [syntaxComponentRoot mSyntaxComponentName] ;
