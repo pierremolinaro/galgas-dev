@@ -71,9 +71,9 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"root"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
 
   ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool"] ;
   ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint"] ;

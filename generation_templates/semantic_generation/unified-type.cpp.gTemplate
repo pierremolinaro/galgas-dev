@@ -4,9 +4,10 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ("%?^!TYPE_NAME%",
-                                                 %!^%NULL,
-                                                 %!^%(genericObjectCompareFunctionType) GALGAS_%!TYPE_IDENTIFIER%::objectCompare) ;
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ("%?^!TYPE_NAME%",
+                       %!^%& kTypeDescriptor_GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation]%,
+                       %!^%(genericObjectCompareFunctionType) GALGAS_%!TYPE_IDENTIFIER%::objectCompare) ;
 
 //---------------------------------------------------------------------------*
 

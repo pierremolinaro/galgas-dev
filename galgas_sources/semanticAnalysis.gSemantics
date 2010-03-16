@@ -86,6 +86,17 @@ override method @structDeclarationAST performSemanticAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @genericTypeTypeAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  ioSemanticDeclarationListForGeneration += ![@genericTypeForGeneration new
+    ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] ![@lstring new !mTypeName !here]]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    P E R F O R M     S E M A N T I C     A N A L Y S I S                  *
 #                                                                           *

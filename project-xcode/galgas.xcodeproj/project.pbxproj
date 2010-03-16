@@ -1522,15 +1522,11 @@
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D15AC370486D014006FF6A4 /* cocoaGalgas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgas.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF019274114C305400BCB475 /* GALGAS_builtin_type.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_builtin_type.cpp.gTemplate; sourceTree = "<group>"; };
-		CF019275114C305400BCB475 /* GALGAS_builtin_type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_builtin_type.h.gTemplate; sourceTree = "<group>"; };
 		CF019276114C305400BCB475 /* GALGAS_enum.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_enum.cpp.gTemplate; sourceTree = "<group>"; };
 		CF019278114C305400BCB475 /* GALGAS_list.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_list.cpp.gTemplate; sourceTree = "<group>"; };
 		CF01927A114C305400BCB475 /* GALGAS_sortedlist.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_sortedlist.cpp.gTemplate; sourceTree = "<group>"; };
-		CF01927B114C305400BCB475 /* GALGAS_sortedlist.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_sortedlist.h.gTemplate; sourceTree = "<group>"; };
 		CF01927C114C305400BCB475 /* GALGAS_struct.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_struct.cpp.gTemplate; sourceTree = "<group>"; };
 		CF01927E114C305400BCB475 /* predefined_types.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = predefined_types.cpp.gTemplate; sourceTree = "<group>"; };
-		CF01927F114C305400BCB475 /* predefined_types.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = predefined_types.h.gTemplate; sourceTree = "<group>"; };
 		CF019280114C305400BCB475 /* semantic-file.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "semantic-file.cpp.gTemplate"; sourceTree = "<group>"; };
 		CF019281114C305400BCB475 /* semantic-file.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "semantic-file.h.gTemplate"; sourceTree = "<group>"; };
 		CF019282114C305400BCB475 /* types-predeclaration.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "types-predeclaration.h.gTemplate"; sourceTree = "<group>"; };
@@ -2122,6 +2118,8 @@
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		CFC51EEE10D3BBB4008BF80F /* GALGAS_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_type.cpp; sourceTree = "<group>"; };
 		CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_binaryset.cpp; sourceTree = "<group>"; };
+		CFC954AC115008D3001F6E8E /* generic-type.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "generic-type.cpp.gTemplate"; sourceTree = "<group>"; };
+		CFC954AD115008D3001F6E8E /* generic-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "generic-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFCB12570D9D74330016BE3F /* galgasTemplateGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgasTemplateGrammar.cpp; sourceTree = "<group>"; };
 		CFCB12580D9D74330016BE3F /* galgasTemplateGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgasTemplateGrammar.h; sourceTree = "<group>"; };
 		CFCB12590D9D74330016BE3F /* galgasTemplateParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgasTemplateParser.cpp; sourceTree = "<group>"; };
@@ -2900,18 +2898,16 @@
 		CFDA06AD10FF97730078F15E /* semantic_generation */ = {
 			isa = PBXGroup;
 			children = (
+				CFC954AC115008D3001F6E8E /* generic-type.cpp.gTemplate */,
+				CFC954AD115008D3001F6E8E /* generic-type.h.gTemplate */,
 				CF81CFD4114CF6EC00B6945A /* unified-type.cpp.gTemplate */,
 				CF81CFD5114CF6EC00B6945A /* unified-type.h.gTemplate */,
 				CFE4FB98114E2BA700DB2D43 /* predefined-type-specific.cpp.gTemplate */,
 				CF019278114C305400BCB475 /* GALGAS_list.cpp.gTemplate */,
 				CF01927C114C305400BCB475 /* GALGAS_struct.cpp.gTemplate */,
-				CF019274114C305400BCB475 /* GALGAS_builtin_type.cpp.gTemplate */,
-				CF019275114C305400BCB475 /* GALGAS_builtin_type.h.gTemplate */,
 				CF019276114C305400BCB475 /* GALGAS_enum.cpp.gTemplate */,
 				CF01927A114C305400BCB475 /* GALGAS_sortedlist.cpp.gTemplate */,
-				CF01927B114C305400BCB475 /* GALGAS_sortedlist.h.gTemplate */,
 				CF01927E114C305400BCB475 /* predefined_types.cpp.gTemplate */,
-				CF01927F114C305400BCB475 /* predefined_types.h.gTemplate */,
 				CF019280114C305400BCB475 /* semantic-file.cpp.gTemplate */,
 				CF019281114C305400BCB475 /* semantic-file.h.gTemplate */,
 				CF019282114C305400BCB475 /* types-predeclaration.h.gTemplate */,
