@@ -149,7 +149,7 @@ routine matchConcatOperatorForTemplate
   else
     error here : "concatenation operator error: @" . [inLeftExpressionType messageGalgasType] .
            " and @" . [inRightExpressionType messageGalgasType] . " objects cannot be concatened" 
-           -> outResultType ;
+           : outResultType ;
   end match ;
 end routine ;
 
@@ -182,7 +182,7 @@ routine matchAndOperatorForTemplate
   else
     error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
            " & " . [inRightExpressionType messageGalgasType] . ") is not valid" 
-           -> outResultType ;
+           : outResultType ;
   end match ;
 end routine ;
 
@@ -215,7 +215,7 @@ routine matchOrOperatorForTemplate
   else
     error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
            " | " . [inRightExpressionType messageGalgasType] . ") is not valid" 
-           -> outResultType ;
+           : outResultType ;
   end match ;
 end routine ;
 
@@ -246,7 +246,7 @@ routine matchXorOperatorForTemplate
   else
     error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
            " | " . [inRightExpressionType messageGalgasType] . ") is not valid" 
-           -> outResultType ;
+           : outResultType ;
   end match ;
 end routine ;
 
@@ -288,7 +288,7 @@ routine checkLogicalNegateOperatorForTemplate
   else
     error here : "the ~ operator is not defined for an "
     . [inOperandType messageGalgasType] . " object"
-    -> outResultType ;
+    : outResultType ;
   end cast ;
 end routine ;
 
@@ -408,7 +408,7 @@ routine left_shift_types_checkForTemplate
   else
     error here : "shift between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
-      -> outResultType
+      : outResultType
     ;
   end match ;
 end routine ;
@@ -434,7 +434,7 @@ routine right_shift_types_checkForTemplate
   else
     error here : "shift between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
-      -> outResultType
+      : outResultType
     ;
   end match ;
 end routine ;
@@ -462,7 +462,7 @@ routine addition_types_checkForTemplate
   else
     error here : "addition between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
-      -> outResultType
+      : outResultType
     ;
   end match ;
 end routine ;
@@ -492,7 +492,7 @@ routine substraction_types_checkForTemplate
   else
     error here : "substraction between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
-      -> outResultType
+      : outResultType
     ;
   end match ;
 end routine ;
@@ -520,7 +520,7 @@ routine multiply_types_checkForTemplate
   else
     error here : "multiplication between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
-      -> outResultType
+      : outResultType
     ;
   end match ;
 end routine ;
@@ -548,7 +548,7 @@ routine divide_types_checkForTemplate
   else
     error here : "division between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
-      -> outResultType
+      : outResultType
     ;
   end match ;
 end routine ;
@@ -576,7 +576,7 @@ routine modulo_types_checkForTemplate
   else
     error here : "modulo between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
-      -> outResultType
+      : outResultType
     ;
   end match ;
 end routine ;
@@ -599,7 +599,7 @@ routine unary_minus_type_checkForTemplate
   else
     error here : "unary minus for " . [inExpressionType messageGalgasType]
       . " is not valid"
-      -> outResultType
+      : outResultType
     ;
   end cast ;
 end routine ;
@@ -1572,7 +1572,7 @@ rule <factor>
       elsif [readerName string] == "comment" then
         outResultType := [@typeGalgas_string new] ;
       else
-        error readerName:"only the 'value', 'char', 'string' and 'comment' readers are defined" ->outResultType ;
+        error readerName:"only the 'value', 'char', 'string' and 'comment' readers are defined" :outResultType ;
       end if ;
       outExpression := [@typeOptionAccess new !"galgas_cli_options" !optionName ![readerName string]] ;
     or
@@ -1593,7 +1593,7 @@ rule <factor>
           outResultType := [@typeGalgas_string new] ;
         else
           error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
-            -> outResultType ;
+            : outResultType ;
         end if ;
       elsif [readerName string] == "char" then
         outResultType := [@typeGalgas_char new] ;
@@ -1602,7 +1602,7 @@ rule <factor>
       elsif [readerName string] == "comment" then
         outResultType := [@typeGalgas_string new] ;
       else
-        error readerName:"only the 'value', 'char', 'string' and 'comment' readers are defined" ->outResultType ;
+        error readerName:"only the 'value', 'char', 'string' and 'comment' readers are defined" :outResultType ;
       end if ;
       outExpression := [@typeOptionAccess new ![optionComponentName string] !optionName ![readerName string]] ;
     end select ;
@@ -1644,7 +1644,7 @@ rule <factor>
   else
     error functionName :
      "'" . [functionName string] . "' should name a function or an extern function"
-     -> signatureRoutine, isExternActionCall, outResultType
+     : signatureRoutine, isExternActionCall, outResultType
     ;
   end cast ;
 #--- Actual arguments

@@ -49,7 +49,7 @@ end method ;
 override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  with xyz_ : !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mDefaultErrorMessageName do
+  with xyz_ : !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mDefaultErrorMessageName do
     xyz_mMessageIsUsed := true ;
   end with ;
 end method ;
@@ -97,7 +97,7 @@ end method ;
 override method @lexicalStringMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string] ;
+  ioLexiqueAnalysisContext->mUnicodeStringToGenerate += ![mString string] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -105,8 +105,8 @@ end method ;
 override method @lexicalStringNotMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string] ;
-  with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mErrorMessage do
+  ioLexiqueAnalysisContext->mUnicodeStringToGenerate += ![mString string] ;
+  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mErrorMessage do
     mMessageIsUsed := true ;
   end with ;
 end method ;
@@ -425,7 +425,7 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap unused ioTagMap
 :
   foreach mLexicalSendSearchList do
-    with !?ioLexiqueAnalysisContext.mLexicalTokenListMap searchKey !mSearchListName do
+    with !?ioLexiqueAnalysisContext->mLexicalTokenListMap searchKey !mSearchListName do
       mShouldBeGenerated := true ;
     end with ;
     [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*] ;
@@ -524,7 +524,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
   end if ;
 #--- Check error messages are actually defined
   foreach mErrorMessageList do
-    with xyz_ : !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mValue do
+    with xyz_ : !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mValue do
       xyz_mMessageIsUsed := true ;
     end with ;
   end foreach ;
@@ -572,7 +572,7 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
-  with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mErrorMessageName do
+  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mErrorMessageName do
     mMessageIsUsed := true ;
   end with ;
 end method ;
@@ -583,7 +583,7 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
-  with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mWarningMessageName do
+  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mWarningMessageName do
     mMessageIsUsed := true ;
   end with ;
 end method ;
@@ -677,7 +677,7 @@ routine parseLexiqueComponent
     [[ioParsedComponentStruct mParsedLexiqueComponentMap] searchKey !key ?outLexiqueComponentRoot] ;
   else
     grammar lexiqueLL1grammar in inSourceFile ?outLexiqueComponentRoot ;
-    [!?ioParsedComponentStruct.mParsedLexiqueComponentMap insertKey !key !outLexiqueComponentRoot] ;
+    [!?ioParsedComponentStruct->mParsedLexiqueComponentMap insertKey !key !outLexiqueComponentRoot] ;
   end if ;
 end routine ;
 
@@ -758,7 +758,7 @@ routine compileLexiqueComponent
 #--------------------------------------- Build style map
   @uint styleIndex := 1 ;
   foreach [lexiqueComponentRoot mLexicalStyleList] do
-    [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex] ;
+    [!?lexiqueAnalysisContext->mStyleMap insertKey !mName !mComment !styleIndex] ;
     styleIndex ++ ;
   end foreach ;
 #--------------------------------------- Build lexical analysis context struct
@@ -766,7 +766,7 @@ routine compileLexiqueComponent
     if [lexicalTypeMap hasKey ![mTypeName string]] then
       @lexicalTypeEnum lexicalType ;
       [lexicalTypeMap searchKey !mTypeName ?lexicalType] ;
-      [!?lexiqueAnalysisContext.mLexicalAttributeMap insertKey !mName !lexicalType] ;
+      [!?lexiqueAnalysisContext->mLexicalAttributeMap insertKey !mName !lexicalType] ;
     else
       @string m := "" ;
       m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
@@ -791,7 +791,7 @@ routine compileLexiqueComponent
       [[lexiqueAnalysisContext  mLexicalAttributeMap] searchKey !mValue ?attributeLexicalType] ;
       argumentTypeList += ![mValue string] !attributeLexicalType ;
     end foreach ;
-    [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList] ;
+    [!?lexiqueAnalysisContext->mTerminalMap insertKey !mName !argumentTypeList] ;
     @bool isEndOfTemplateMark := false ;
     foreach mOptionList do
       if [mValue string] != "templateEndMark" then
@@ -802,7 +802,7 @@ routine compileLexiqueComponent
         isEndOfTemplateMark := true ;
       end if ;
     end foreach ;
-    lexiqueAnalysisContext.mTerminalList +=
+    lexiqueAnalysisContext->mTerminalList +=
       !mName
       !argumentTypeList
       ![mSyntaxErrorMessage string]
@@ -835,23 +835,23 @@ routine compileLexiqueComponent
           isEndOfTemplateMark := true ;
         end if ;
       end foreach ;
-      lexiqueAnalysisContext.mTerminalList +=
+      lexiqueAnalysisContext->mTerminalList +=
         !mTerminalSpelling
         !argumentTypeList
         !syntaxErrorMessage
         !isEndOfTemplateMark
         !terminalStyleIndex
       ;
-      [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
+      [!?lexiqueAnalysisContext->mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
       tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ![mTerminalSpelling string] ;
-      lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEntrySpelling string] ;
+      lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mEntrySpelling string] ;
     end foreach ;
-    [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false] ;
+    [!?lexiqueAnalysisContext->mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false] ;
   end foreach ;
 #--------------------------------------- Build Message map
   foreach [lexiqueComponentRoot mLexicalMessageDeclarationList] do
-    [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false] ;
+    [!?lexiqueAnalysisContext->mLexicalMessageMap insertKey !mMessageName !mMessageValue !false] ;
   end foreach ;
 #--------------------------------------- Check rules
   foreach [lexiqueComponentRoot mLexicalRuleList] do
@@ -865,8 +865,8 @@ routine compileLexiqueComponent
   end foreach ;
 #--------------------------------------- Template delimiters
   foreach [lexiqueComponentRoot mTemplateDelimitorList] do
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mStartString string] ;
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEndString string] ;
+   lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mStartString string] ;
+   lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mEndString string] ;
    @bool preservesStartDelimiter := false ;
    foreach mOptionList do
      if [mValue string] != "preserved" then
@@ -877,12 +877,12 @@ routine compileLexiqueComponent
        preservesStartDelimiter := true ;
      end if ;
    end foreach ;
-   lexiqueAnalysisContext. mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter ;
+   lexiqueAnalysisContext->mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter ;
   end foreach ;
 #--------------------------------------- Template replacements
   foreach [lexiqueComponentRoot mTemplateReplacementList] do
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mMatchString string] ;
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mReplacementString string] ;
+   lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mMatchString string] ;
+   lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mReplacementString string] ;
    # § TODO Check replacement function
   end foreach ;
 #--------------------------------------- Build Header file

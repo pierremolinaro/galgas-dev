@@ -73,7 +73,7 @@ routine parseOptionComponent
     [[ioParsedComponentStruct mParsedOptionComponentMap] searchKey !key ?outOptionComponentRoot] ;
   else
     grammar optionLL1grammar in inSourceFile ?outOptionComponentRoot ;
-    [!?ioParsedComponentStruct.mParsedOptionComponentMap insertKey !key !outOptionComponentRoot] ;
+    [!?ioParsedComponentStruct->mParsedOptionComponentMap insertKey !key !outOptionComponentRoot] ;
   end if ;
 end routine ;
 

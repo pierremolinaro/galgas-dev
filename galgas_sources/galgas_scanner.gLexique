@@ -77,7 +77,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "here",
   "if",
   "import",
-  "import__",
+#  "import__",
   "in",
   "index",
   "insert",

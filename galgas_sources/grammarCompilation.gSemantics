@@ -471,7 +471,7 @@ routine compileGrammarComponent
       else
         @string sourceFilePath := [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
         grammar syntaxSLRgrammar in [@lstring new !sourceFilePath ![mValue location]] ?syntaxComponentRoot ;
-        [!?ioParsedComponentStruct.mParsedSyntaxComponentMap insertKey ![@lstring new !syntaxComponentName ![mValue location]] !syntaxComponentRoot] ;
+        [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey ![@lstring new !syntaxComponentName ![mValue location]] !syntaxComponentRoot] ;
       end if ;
     #--- Handle lexique component
       @string currentLexiqueName := [[[syntaxComponentRoot mImportedLexiqueReference] lastPathComponent] stringByDeletingPathExtension] ;

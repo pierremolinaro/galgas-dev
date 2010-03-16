@@ -487,9 +487,9 @@ routine enter_group
     !inGroupPath
     !inGroupContentsKeyList
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mProjectGroupList += !group ;
-  ioXcodeProjectDescription.mMainGroupChildrenList += ![group PBXGroupKey] !inGroupName ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mProjectGroupList += !group ;
+  ioXcodeProjectDescription->mMainGroupChildrenList += ![group PBXGroupKey] !inGroupName ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -511,8 +511,8 @@ routine enter_subgroup
     !inSubGroupPath
     !inSubGroupContentsKeyList
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mProjectGroupList += !group ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mProjectGroupList += !group ;
   ioSuperGroupContentsKeyList += ![group PBXGroupKey] !inSubGroupName ;
 end routine ;
 
@@ -546,8 +546,8 @@ routine enter_cpp_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_cppSourceFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -560,8 +560,8 @@ routine enter_h_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_hSourceFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -574,8 +574,8 @@ routine enter_pch_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_pchSourceFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -588,8 +588,8 @@ routine enter_m_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_mSourceFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -602,8 +602,8 @@ routine enter_mm_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_mmSourceFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -616,8 +616,8 @@ routine enter_gif_file_in_group
 :
   @lstring key [new !inFile !here] ;
   @Xcode_PBXFileReference_gifFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inFile ;
 end routine ;
 
@@ -630,8 +630,8 @@ routine enter_tiff_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_tiffFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -644,8 +644,8 @@ routine enter_png_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_pngFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -658,8 +658,8 @@ routine enter_plist_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_plistFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -672,8 +672,8 @@ routine enter_framework_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_frameworkFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -686,8 +686,8 @@ routine enter_icns_file_in_group
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_icnsFile ref [new ![ioXcodeProjectDescription mSequenceNumber] !inCppFile] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
@@ -751,12 +751,12 @@ routine enter_xib_in_group
     ![in_lproj_dir stringByDeletingPathExtension]
     ! in_lproj_dir . "/" . in_xib_fileName
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
   @lstring key [new !in_xib_fileName !here] ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   @string PBXVariantGroupKey := [[[[ioXcodeProjectDescription mSequenceNumber] string] md5] rightSubString!24] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mPBXVariantGroup_list +=
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mPBXVariantGroup_list +=
     !PBXVariantGroupKey
     ![ref PBXFileReferenceKey]
     !in_xib_fileName
@@ -777,12 +777,12 @@ routine enter_plist_strings_in_group
     ![in_lproj_dir stringByDeletingPathExtension]
     ! in_lproj_dir . "/" . in_plist_string_fileName
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
   @lstring key [new !in_plist_string_fileName !here] ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !key !ref] ;
   @string PBXVariantGroupKey := [[[[ioXcodeProjectDescription mSequenceNumber] string] md5] rightSubString!24] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mPBXVariantGroup_list +=
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mPBXVariantGroup_list +=
     !PBXVariantGroupKey
     ![ref PBXFileReferenceKey]
     !in_plist_string_fileName
@@ -801,8 +801,8 @@ routine enter_file_for_sources_build_phase
   @Xcode_PBXFileReference_abstract ref ;
   [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref] ;
   @Xcode_PBXBuildFile build_file [new ![ioXcodeProjectDescription mSequenceNumber] !ref] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mAllBuildFileList += !build_file ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mAllBuildFileList += !build_file ;
   ioBuildPhaseList += !build_file ;
 end routine ;
 
@@ -834,8 +834,8 @@ routine enter_files_for_resources_build_phase
     @Xcode_PBXFileReference_abstract ref ;
     [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref] ;
     @Xcode_PBXBuildFile build_file [new ![ioXcodeProjectDescription mSequenceNumber] !ref] ;
-    ioXcodeProjectDescription.mSequenceNumber ++ ;
-    ioXcodeProjectDescription.mAllBuildFileList += !build_file ;
+    ioXcodeProjectDescription->mSequenceNumber ++ ;
+    ioXcodeProjectDescription->mAllBuildFileList += !build_file ;
     ioBuildPhaseList += !build_file ;
   end foreach ;
 end routine ;
@@ -852,8 +852,8 @@ routine enter_files_for_frameworks_build_phase
     @Xcode_PBXFileReference_abstract ref ;
     [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref] ;
     @Xcode_PBXBuildFile build_file [new ![ioXcodeProjectDescription mSequenceNumber] !ref] ;
-    ioXcodeProjectDescription.mSequenceNumber ++ ;
-    ioXcodeProjectDescription.mAllBuildFileList += !build_file ;
+    ioXcodeProjectDescription->mSequenceNumber ++ ;
+    ioXcodeProjectDescription->mAllBuildFileList += !build_file ;
     ioBuildPhaseList += !build_file ;
   end foreach ;
 end routine ;
@@ -874,9 +874,9 @@ end routine ;
 #:
 #  @Xcode_PBXFileReference_CompiledMachOExecutable toolFileReference [new !inProductFileName] ;
 #  @lstring projectNameKey [new !inProductFileName !here] ;
-#  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
+#  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
 #
-#  ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
+#  ioXcodeProjectDescription->mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
 ##--- Source Build Phase
 #  @Xcode_PBXSourcesBuildPhase compileSourcesBuildPhase [new
 #    !"Sources"
@@ -889,20 +889,20 @@ end routine ;
 #      !"Frameworks"
 #      !inFrameworkKeyList
 #    ] ;
-#    ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
+#    ioXcodeProjectDescription->mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
 #    buildPhases += ![frameworksBuildPhase PBXFrameworksBuildPhaseKey] ;
 #  end if ;
 #
-#  ioXcodeProjectDescription.mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
+#  ioXcodeProjectDescription->mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
 #  if inPrecompiledHeaderPath != "" then
 #    inTargetSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
 #    inTargetSettings  += !"GCC_PREFIX_HEADER = \"" . inPrecompiledHeaderPath . "\";" ;
 #  end if ;
 #  inTargetSettings += !"PRODUCT_NAME = \"" . inProductFileName . "\";" ;
 #  @Xcode_XCBuildConfiguration toolTargetBuildConfiguration [new !inTargetSettings] ;
-#  ioXcodeProjectDescription.mBuildConfigurationList += !toolTargetBuildConfiguration ;
+#  ioXcodeProjectDescription->mBuildConfigurationList += !toolTargetBuildConfiguration ;
 #  outTargetKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-#  ioXcodeProjectDescription.mTargetList +=
+#  ioXcodeProjectDescription->mTargetList +=
 #    !outTargetKey
 #    !inTargetName
 #    !toolTargetBuildConfiguration
@@ -928,18 +928,18 @@ routine add_tool_target
   !@string outTargetKey
 :
   @Xcode_PBXFileReference_CompiledMachOExecutable toolFileReference [new ![ioXcodeProjectDescription mSequenceNumber] !inProductFileName] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
   @lstring projectNameKey [new !inProductFileName !here] ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
 
-  ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
+  ioXcodeProjectDescription->mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
 #--- Source Build Phase
   @Xcode_PBXSourcesBuildPhase compileSourcesBuildPhase [new
     ![ioXcodeProjectDescription mSequenceNumber]
     !"Sources"
     !inSourcesToCompileKeyList
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
   @stringlist buildPhases [listWithValue ![compileSourcesBuildPhase PBXSourcesBuildPhaseKey]] ;
 #--- Define Frameworks Build Phase
   if [inFrameworkKeyList length] > 0 then
@@ -948,12 +948,12 @@ routine add_tool_target
       !"Frameworks"
       !inFrameworkKeyList
     ] ;
-    ioXcodeProjectDescription.mSequenceNumber ++ ;
-    ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
+    ioXcodeProjectDescription->mSequenceNumber ++ ;
+    ioXcodeProjectDescription->mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
     buildPhases += ![frameworksBuildPhase PBXFrameworksBuildPhaseKey] ;
   end if ;
 
-  ioXcodeProjectDescription.mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
+  ioXcodeProjectDescription->mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
   if inPrecompiledHeaderPath != "" then
     inTargetSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
     inTargetSettings  += !"GCC_PREFIX_HEADER = \"" . inPrecompiledHeaderPath . "\";" ;
@@ -964,12 +964,12 @@ routine add_tool_target
     ![ioXcodeProjectDescription mSequenceNumber] + 1
     !inTargetSettings
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mBuildConfigurationList += !toolTargetBuildConfiguration ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mBuildConfigurationList += !toolTargetBuildConfiguration ;
   outTargetKey := [[[[ioXcodeProjectDescription mSequenceNumber] string] md5] rightSubString!24] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mTargetList +=
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mTargetList +=
     !outTargetKey
     !inTargetName
     !toolTargetBuildConfiguration
@@ -999,19 +999,19 @@ routine add_app_target
   @stringlist buildPhases [emptyList] ;
 #--- Define Product Application File Reference
   @Xcode_PBXFileReference_Application toolFileReference [new ![ioXcodeProjectDescription mSequenceNumber] !inProductFileName] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
   @lstring projectNameKey [new !inProductFileName !here] ;
-  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
+  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
 #--- Enter Product Application in "Products" Group
-  ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
+  ioXcodeProjectDescription->mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
 #--- Define Resources Build Phase
   @Xcode_PBXResourcesBuildPhase resourcesBuildPhase [new
     ![ioXcodeProjectDescription mSequenceNumber]
     !"Resources"
     !inResourcesToCompileList
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mPBXResourcesBuildPhase_list += !resourcesBuildPhase ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mPBXResourcesBuildPhase_list += !resourcesBuildPhase ;
   buildPhases += ![resourcesBuildPhase PBXResourcesBuildPhaseKey] ;
 #--- Define Sources Build Phase
   @Xcode_PBXSourcesBuildPhase compileSourcesBuildPhase [new
@@ -1019,8 +1019,8 @@ routine add_app_target
     !"Sources"
     !inSourcesToCompileKeyList
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
   buildPhases += ![compileSourcesBuildPhase PBXSourcesBuildPhaseKey] ;
 #--- Define Frameworks Build Phase
   @Xcode_PBXFrameworksBuildPhase frameworksBuildPhase [new
@@ -1028,8 +1028,8 @@ routine add_app_target
     !"Frameworks"
     !inFrameworksToCompileList
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
   buildPhases += ![frameworksBuildPhase PBXFrameworksBuildPhaseKey] ;
 #--- Define Target Settings
   if inPrecompiledHeaderPath != "" then
@@ -1046,9 +1046,9 @@ routine add_app_target
   @stringlist targetDependencyKeyList [emptyList] ;
   foreach inDirectDependencyList do
     @Xcode_targetDependencyDescription d [new ![ioXcodeProjectDescription mSequenceNumber] !mValue] ;
-    ioXcodeProjectDescription.mSequenceNumber ++ ;
+    ioXcodeProjectDescription->mSequenceNumber ++ ;
     targetDependencyKeyList += ![d PBXTargetDependencyKey] ;
-    ioXcodeProjectDescription.mDependencyList += !d ;
+    ioXcodeProjectDescription->mDependencyList += !d ;
   end foreach ;
 #--- Define Build Configuration
   @Xcode_XCBuildConfiguration toolTargetBuildConfiguration [new
@@ -1056,12 +1056,12 @@ routine add_app_target
     ![ioXcodeProjectDescription mSequenceNumber] + 1
     !inTargetSettings
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mBuildConfigurationList += !toolTargetBuildConfiguration ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mBuildConfigurationList += !toolTargetBuildConfiguration ;
   outTargetKey := [[[[ioXcodeProjectDescription mSequenceNumber] string] md5] rightSubString!24] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mTargetList +=
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mTargetList +=
     !outTargetKey
     !inTargetName
     !toolTargetBuildConfiguration
@@ -1346,9 +1346,9 @@ routine generateXCodeFile
     ![ioXcodeProjectDescription mSequenceNumber] + 1
     !inProjectDefaultSettings
   ] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mBuildConfigurationList += !defaultProjectConfiguration ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mBuildConfigurationList += !defaultProjectConfiguration ;
 #--- "Products" Group
   enter_group
     !?ioXcodeProjectDescription
@@ -1358,8 +1358,8 @@ routine generateXCodeFile
   ;
 #--- Main Group
   @Xcode_PBXGroup mainGroup [new ![ioXcodeProjectDescription mSequenceNumber] !"" !"" ![ioXcodeProjectDescription mMainGroupChildrenList]] ;
-  ioXcodeProjectDescription.mSequenceNumber ++ ;
-  ioXcodeProjectDescription.mProjectGroupList += !mainGroup ;
+  ioXcodeProjectDescription->mSequenceNumber ++ ;
+  ioXcodeProjectDescription->mProjectGroupList += !mainGroup ;
 #--- Build Project contents string
   @string fileNewContents ;
   buildXcodeProjectString

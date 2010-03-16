@@ -1111,20 +1111,6 @@ class @typeForeachInstruction extends @typeInstruction {
   @typeInstructionList mAfterInstructionList ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#                    Instruction 'extract ...'                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeSimpleExtractInstruction extends @typeInstruction {
-  @typeCplusPlusName aNomVariable ;
-  @lstring aNomClasse ;
-  @L_assignedVariables aListeAffectationParametresEffectifs ;
-  @typeExpression mErrorLocationExpression ;
-  @lstring aNomMessage ;
-}
-
 #----------------------------------------------------------------------*
 #                                                                      *
 #                    Structured instruction 'extract ...'              *

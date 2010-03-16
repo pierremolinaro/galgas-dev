@@ -87,7 +87,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring mAssociatedListTypeName ;
   $)$ ;
   $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@listmapDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@listmapDeclarationAST new
     !mListmapTypeName
     !mAssociatedListTypeName
   ] ;
@@ -180,7 +180,7 @@ rule <semantic_declaration>
     <map_method_declaration> !? mRemoveMethodList ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@mapDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@mapDeclarationAST new
     !mMapTypeName
     !mAssociatedEnumTypeName
     !mAssociatedTerminaisonMethodName
@@ -214,7 +214,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring mMapTypeName ;
   $)$ ;
   $;$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@mapindexDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@mapindexDeclarationAST new
     !mMapIndexName
     !mMapTypeName
   ] ;
@@ -463,7 +463,7 @@ rule <semantic_declaration>
 #      $;$ ;
     end repeat ;
     $}$ ;
-    ioSemanticDeclarations.mSemanticDeclarationList += ![@classDeclarationAST new
+    ioSemanticDeclarations->mSemanticDeclarationList += ![@classDeclarationAST new
       !mIsAbstract
       !mClassTypeName
       !mSuperClassName # Empty if no super class
@@ -498,7 +498,7 @@ rule <semantic_declaration>
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@structDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@structDeclarationAST new
     !mListTypeName
     !mAttributeList
   ] ;
@@ -522,7 +522,7 @@ rule <semantic_declaration>
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@listDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@listDeclarationAST new
     !mListTypeName
     !mAttributeList
   ] ;
@@ -589,7 +589,7 @@ rule <semantic_declaration>
     $,$ ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@sortedListDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@sortedListDeclarationAST new
     !mSortedListTypeName
     !mAttributeList
     !mSortDescriptorList
@@ -671,7 +671,7 @@ rule <semantic_declaration>
     <enum_message_declaration> !? mEnumMessageList ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@enumDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@enumDeclarationAST new
     !mEnumTypeName
     !mConstantList
     !mEnumMessageList
@@ -721,7 +721,7 @@ rule <semantic_declaration>
     ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@filewrapperDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@filewrapperDeclarationAST new
     !mFilewrapperName
     !mFilewrapperPath
     !mFilewrapperExtensionList
@@ -745,7 +745,7 @@ rule <semantic_declaration>
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  ioSemanticDeclarations.mAbstractCategoryMethodListMap += ![mClassName string] !mMethodName !mFormalParameterList ;
+  ioSemanticDeclarations->mAbstractCategoryMethodListMap += ![mClassName string] !mMethodName !mFormalParameterList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -768,7 +768,7 @@ rule <semantic_declaration>
   $end$ ;
   $method$ ;
   $;$ ;
-  ioSemanticDeclarations.mCategoryMethodListMap +=
+  ioSemanticDeclarations->mCategoryMethodListMap +=
     ![mClassName string]
     !mMethodName
     !mFormalParameterList
@@ -797,7 +797,7 @@ rule <semantic_declaration>
   $end$ ;
   $method$ ;
   $;$ ;
-  ioSemanticDeclarations.mOverridingCategoryMethodListMap +=
+  ioSemanticDeclarations->mOverridingCategoryMethodListMap +=
     ![mClassName string]
     !mMethodName
     !mFormalParameterList
@@ -824,7 +824,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
   $;$ ;
-  ioSemanticDeclarations.mAbstractCategoryReaderListMap +=
+  ioSemanticDeclarations->mAbstractCategoryReaderListMap +=
     ![mClassName string]
     !mReaderName
     !mFormalInputParameterList
@@ -855,7 +855,7 @@ rule <semantic_declaration>
   $end$ ;
   $reader$ ;
   $;$ ;
-  ioSemanticDeclarations.mCategoryReaderListMap +=
+  ioSemanticDeclarations->mCategoryReaderListMap +=
     ![mClassName string]
     !mMethodName
     !mFormalInputParameterList
@@ -889,7 +889,7 @@ rule <semantic_declaration>
   $end$ ;
   $reader$ ;
   $;$ ;
-  ioSemanticDeclarations.mOverridingCategoryReaderListMap +=
+  ioSemanticDeclarations->mOverridingCategoryReaderListMap +=
     ![mClassName string]
     !mMethodName
     !mFormalInputParameterList
