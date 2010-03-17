@@ -5,7 +5,7 @@
 
 #include "galgas2/predefined-types.h"
 %
-foreach SEMANTIC_DECLARATION_LIST do
-  %class GALGAS_%!mValue% ;\n%
+foreach TYPE_PREDECLARATION_LIST do
+  %class GALGAS_%![mValue identifierRepresentation]% ;\n%
 end foreach
 %

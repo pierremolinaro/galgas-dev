@@ -1,0 +1,150 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Compile all galgas sources                                               *
+#                                                                           *
+#  Copyright (C) 1997, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+project all_galgas_2:
+#--- Command Line Options
+  option "galgas_cli_options.gOption" : makefile ;
+
+#--- Common Scanner
+  lexique "galgas_scanner.gLexique" : makefile ;
+
+#--- Cocoa Interface
+  gui       "cocoaGalgas.gGui" ;
+
+#--- Project Creation
+  semantics "projectCreation.gSemantics" : makefile ;
+
+#--- Template
+  lexique   "galgasTemplateScanner.gLexique" : makefile ;
+  syntax    "templateExpressionParser.gSyntax" : makefile ;
+  syntax    "galgasTemplateParser.gSyntax" : makefile ;
+  grammar   "galgasTemplateGrammar.gGrammar" : makefile ;
+ 
+#--- Lexique Component
+  semantics "lexiqueTypesForAST.gSemantics" : makefile ;
+  syntax    "lexiqueSyntax.gSyntax" : makefile ;
+  grammar   "lexiqueLL1grammar.gGrammar" : makefile ;
+  semantics "lexiqueSemantics.gSemantics" : makefile ;
+  semantics "predefinedLexicalActions.gSemantics" : makefile ;
+  semantics "lexiqueGeneration.gSemantics" : makefile ;
+  semantics "lexiqueCocoaGeneration.gSemantics" : makefile ;
+  semantics "lexiqueCompilation.gSemantics" : makefile ;
+
+#--- Option Component
+  semantics "optionTypesForAST.gSemantics" : makefile ;
+  syntax    "optionSyntax.gSyntax" : makefile ;
+  grammar   "optionLL1grammar.gGrammar" : makefile ;
+  semantics "optionSemantics.gSemantics" : makefile ;
+  semantics "optionCompilation.gSemantics" : makefile ;
+
+#--- GUI component
+  semantics "guiTypesForAST.gSemantics" : makefile ;
+  syntax    "guiSyntax.gSyntax" : makefile ;
+  grammar   "guiGrammar.gGrammar" : makefile ;
+  semantics "guiCompilation.gSemantics" : makefile ;
+
+#--- All AST types
+  semantics "allASTTypes.gSemantics" : makefile ;
+
+#--- Semantics Component
+  semantics "semanticsTypesForAST.gSemantics" : makefile ;
+  syntax    "expressionSyntax.gSyntax" : makefile ;
+  syntax    "parameterArgumentSyntax.gSyntax" : makefile ;
+  syntax    "semanticInstructionsSyntax.gSyntax" : makefile ;
+  syntax    "semanticDeclarationsSyntax.gSyntax" : makefile ;
+  syntax    "semanticsComponent.gSyntax" : makefile ;
+  grammar   "semanticsSLRgrammar.gGrammar" : makefile ;
+  semantics "semanticsTypes.gSemantics" : makefile ;
+  semantics "semanticsTypeFeatures.gSemantics" : makefile ;
+  semantics "semanticsConstructors.gSemantics" : makefile ;
+  semantics "semanticsReaders.gSemantics" : makefile ;
+  semantics "semanticsModifiers.gSemantics" : makefile ;
+  semantics "semanticsInstanceMethods.gSemantics" : makefile ;
+  semantics "semanticsClassMethods.gSemantics" : makefile ;
+  semantics "buildSemanticContext.gSemantics" : makefile ;
+  semantics "semanticsDecoratedTypes.gSemantics" : makefile ;
+  semantics "semanticAnalysis.gSemantics" : makefile ;
+  semantics "semanticGeneration.gSemantics" : makefile ;
+  semantics "semanticsCompilation.gSemantics" : makefile ;
+
+#--- Syntax Component
+  semantics "syntaxMetamodel.gSemantics" : makefile ;
+  syntax    "syntaxModelBuilder.gSyntax" : makefile ;
+  grammar   "syntaxSLRgrammar.gGrammar" : makefile ;
+  semantics "syntaxCompilation.gSemantics" : makefile ;
+
+#--- Grammar component
+  semantics "grammarMetamodel.gSemantics" : makefile ;
+  syntax    "grammarModelBuilder.gSyntax" : makefile ;
+  grammar   "grammarLL1grammar.gGrammar" : makefile ;
+  semantics "grammarSemantics.gSemantics" : makefile ;
+  semantics "grammarCompilation.gSemantics" : makefile ;
+
+#--- Program component
+  semantics "programMetamodel.gSemantics" : makefile ;
+  syntax    "programModelBuilder.gSyntax" : makefile ;
+  grammar   "programSLRgrammar.gGrammar" : makefile ;
+
+#--- Project component
+  semantics "galgas_routines.gSemantics" : makefile ;
+  semantics "projectMetamodel.gSemantics" : makefile ;
+  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
+  semantics "XcodeProjectGeneration.gSemantics" : makefile ;
+  syntax    "projectModelBuilder.gSyntax" : makefile ;
+  grammar   "projectLL1grammar.gGrammar" : makefile ;
+
+#--- Main program
+  program "galgas_prgm.gProgram" : makefile ;
+
+#--- Hand coded sources
+  extern "assignment_instructions.cpp" : makefile ;
+  extern "buildPureBNFgrammar.cpp" : makefile ;
+  extern "call_instructions.cpp" : makefile ;
+  extern "categoryMethods.cpp" : makefile ;
+  extern "cDecisionTableElement.cpp" : makefile ;
+  extern "class_generation.cpp" : makefile ;
+  extern "cVocabulary.cpp" : makefile ;
+  extern "domain_generation.cpp" : makefile ;
+  extern "empty_strings_computations.cpp" : makefile ;
+  extern "enum_generation.cpp" : makefile ;
+  extern "extern_type_generation.cpp" : makefile ;
+  extern "filewrapper_template_generation.cpp" : makefile ;
+  extern "FIRST_computations.cpp" : makefile ;
+  extern "follow_by_empty_computation.cpp" : makefile ;
+  extern "FOLLOW_computations.cpp" : makefile ;
+  extern "foreach_instructions.cpp" : makefile ;
+  extern "grammarComputations.cpp" : makefile ;
+  extern "if_instruction.cpp" : makefile ;
+  extern "list_generation.cpp" : makefile ;
+  extern "LL1_computations.cpp" : makefile ;
+  extern "LR1_computations.cpp" : makefile ;
+  extern "map_generation.cpp" : makefile ;
+  extern "parser_generation.cpp" : makefile ;
+  extern "parser_instructions.cpp" : makefile ;
+  extern "prgm_generation.cpp" : makefile ;
+  extern "printOriginalGrammar.cpp" : makefile ;
+  extern "semantics_generation.cpp" : makefile ;
+  extern "semantics_instructions.cpp" : makefile ;
+  extern "SLR_computations.cpp" : makefile ;
+  extern "struct_generation.cpp" : makefile ;
+  extern "useful_symbols_computations.cpp" : makefile ;
+  extern "wrapper_generation.cpp" : makefile ;
+end project ;
+
+#---------------------------------------------------------------------------*

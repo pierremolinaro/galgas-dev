@@ -1123,7 +1123,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  cElement * p = (cElement *) inPtr ;\n"
                "  PMSInt32 attributeIndex = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation, p->mIsDefined) ;\n"
                "}\n\n" ;
 
 //--- 'removeElement' method
@@ -1213,7 +1213,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
   }
   inCppFile << "    GGS_location existingKeyLocation ;\n"
-               "    internalInsert (inKey, (void *) & info, elementID, existingKeyLocation) ;\n"
+               "    internalInsert (inKey, (void *) & info, elementID, existingKeyLocation, true) ;\n"
                "    if (elementID < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "    }\n"

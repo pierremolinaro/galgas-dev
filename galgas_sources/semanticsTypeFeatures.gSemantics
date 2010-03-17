@@ -22,6 +22,19 @@ semantics semanticsTypeFeatures :
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  G E T    S U P E R    T Y P E                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+override method @stringsetPredefinedTypeAST getSuperType
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@unifiedTypeMapIndex outSuperType
+:
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"enumerable" !here] !?ioUnifiedTypeMap ?outSuperType] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  G E T    E N U M E R A T I O N    L I S T                                *
 #                                                                           *
 #---------------------------------------------------------------------------*

@@ -72,8 +72,8 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
 #  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
 
   ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool"] ;
   ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint"] ;
@@ -353,7 +353,7 @@ override method @predefinedTypeAST enterType
   @enumerationDescriptorList enumerationList ;
   [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList] ;
   @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  [t getSuperType !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
@@ -821,7 +821,6 @@ override method @structDeclarationAST enterType
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Enter in type map
-#log mStructTypeName ;
   @unifiedTypeMapIndex superTypeIndex ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
@@ -978,7 +977,7 @@ override method @classDeclarationAST enterType
 #--- Handle super class
   @unifiedTypeMapIndex superClassIndex ;
   if [mSuperClassName string] == "" then
-    superClassIndex := [@unifiedTypeMapIndex searchKey ![ioSemanticContext mTypeMap] ![@lstring new !"root" !here]] ;
+    [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext->mTypeMap ?superClassIndex] ;
     readerMap := [@readerMap emptyMap] ;
     modifierMap := [@modifierMap emptyMap] ;
     instanceMethodMap := [@instanceMethodMap emptyMap] ;
@@ -1160,7 +1159,7 @@ override method @listmapDeclarationAST enterType
     ?listTypedAttributeList
     ?10*
   ] ;
-  if typeKindEnum != [@typeKindEnum mapType] then
+  if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
     listTypedAttributeList := [@typedAttributeList emptyList] ;
   end if ;
@@ -1192,7 +1191,6 @@ override method @listmapDeclarationAST enterType
     addAssignOperatorDescription += !mAttributeTypeIndex ;
   end foreach ;
 #--- Enter type in type map
-#log mListmapTypeName ;
   @unifiedTypeMapIndex superTypeIndex ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"listmap" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
@@ -1246,6 +1244,14 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @stringsetPredefinedTypeAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  ioPartiallyOrderedDeclarationList += !"enumerable" !mPredefinedTypeName !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @genericTypeTypeAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
@@ -1257,7 +1263,8 @@ end method ;
 override method @classDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += ![mSuperClassName string] ![mClassTypeName string] !self ;
+  const @string actualSuperTypeName := if [mSuperClassName string] == "" then "root" else [mSuperClassName string] end ;
+  ioPartiallyOrderedDeclarationList += !actualSuperTypeName ![mClassTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1298,6 +1305,14 @@ override method @listmapDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
   ioPartiallyOrderedDeclarationList += ![mAssociatedListTypeName string] ![mListmapTypeName string] !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapDeclarationAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  ioPartiallyOrderedDeclarationList += !"map" ![mMapTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1363,7 +1378,7 @@ routine buildSemanticContext
       if [alreadyDefinedTypes hasKey !mDependanceString] then
         orderedSemanticDeclarationListAST += !mSemanticDeclaration ;
         alreadyDefinedTypes += !mTypeString ;
-#        log mTypeString ;
+#        message "ENTERING @" : mTypeString . "\n" ;
         progress := true ;
       else
         partiallyOrderedSemanticDeclarationListAST += !mDependanceString !mTypeString !mSemanticDeclaration ;
@@ -1378,7 +1393,10 @@ routine buildSemanticContext
       do s.= "@" . mTypeString ;
       between s .= ", " ;
     end foreach ;
-    s .= " classes" ;
+    s .= " classes; detail:" ;
+    foreach partiallyOrderedSemanticDeclarationListAST
+      do s.= "\n  - @" . mTypeString . " inherits from @" . mDependanceString ;
+    end foreach ;
     error here : s ;
   end if ;
 #--- Build initial semantic context
@@ -1392,9 +1410,11 @@ routine buildSemanticContext
   ] ;
 #--- Loop throught all declarations
   if [@uint errorCount] == 0 then
+#    message "************** ENTER TYPES ************************\n" ;
     foreach orderedSemanticDeclarationListAST do
       [mSemanticDeclaration enterType !?outSemanticContext] ;
     end foreach ;
+#    message "************** TYPES ENTERED ************************\n" ;
   end if ;
 end routine ;
 

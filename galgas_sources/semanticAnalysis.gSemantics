@@ -28,7 +28,7 @@ semantics semanticAnalysis :
 #---------------------------------------------------------------------------*
 
 method @semanticDeclarationAST performSemanticAnalysis
-  ??@semanticContext unused inSemanticContext
+  ?!@semanticContext unused inSemanticContext
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 :
 end method ;
@@ -36,10 +36,11 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ?!@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
-  const @unifiedTypeMapIndex idx [searchKey ![inSemanticContext mTypeMap] ![@lstring new !mPredefinedTypeName !here]] ;
+  @unifiedTypeMapIndex idx ;
+  [@unifiedTypeMapIndex makeRegularIndex  ![@lstring new !mPredefinedTypeName !here] !?inSemanticContext->mTypeMap ?idx] ;
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
     !idx
   ] ;
@@ -49,18 +50,22 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ?!@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
+    @unifiedTypeMapIndex idx ;
+    [@unifiedTypeMapIndex makeRegularIndex  !mAttributeTypeName !?inSemanticContext->mTypeMap ?idx] ;
     typedAttributeList +=
-      ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mAttributeTypeName]
+      !idx
       !mAttributeName
     ;
   end foreach ;
+  @unifiedTypeMapIndex idx ;
+  [@unifiedTypeMapIndex makeRegularIndex !mListTypeName !?inSemanticContext->mTypeMap ?idx] ;
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mListTypeName]
+    !idx
     !typedAttributeList
   ] ;
 
@@ -69,18 +74,22 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @structDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ?!@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
+    @unifiedTypeMapIndex idx ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?inSemanticContext->mTypeMap ?idx] ;
     typedAttributeList +=
-      ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mAttributeTypeName]
+      !idx
       !mAttributeName
     ;
   end foreach ;
+  @unifiedTypeMapIndex idx ;
+  [@unifiedTypeMapIndex makeRegularIndex !mStructTypeName !?inSemanticContext->mTypeMap ?idx] ;
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mStructTypeName]
+    !idx
     !typedAttributeList
   ] ;
 end method ;
@@ -88,11 +97,13 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @genericTypeTypeAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ?!@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
+  @unifiedTypeMapIndex idx ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !mTypeName !here] !?inSemanticContext->mTypeMap ?idx] ;
   ioSemanticDeclarationListForGeneration += ![@genericTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] ![@lstring new !mTypeName !here]]
+    !idx
   ] ;
 end method ;
 
@@ -103,14 +114,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 routine performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ?!@semanticContext inSemanticContext
   !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
 :
   outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
   
   foreach [inSemanticContext mOrderedSemanticDeclarationListAST] do
     [mSemanticDeclaration performSemanticAnalysis
-      !inSemanticContext
+      !?inSemanticContext
       !?outDecoratedDeclarationListForGeneration
     ] ;
   end foreach ;

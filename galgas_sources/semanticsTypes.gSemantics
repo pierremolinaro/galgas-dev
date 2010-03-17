@@ -305,6 +305,16 @@ class @dataPredefinedTypeAST extends @predefinedTypeAST {}
 
 #---------------------------------------------------------------------------*
 
+method @predefinedTypeAST getSuperType
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@unifiedTypeMapIndex outSuperType
+:
+#--- By default, super type is the @root type
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioUnifiedTypeMap ?outSuperType] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 method @predefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@constructorMap outConstructorMap
