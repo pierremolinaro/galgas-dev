@@ -84,7 +84,7 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@doublePredefinedTypeAST new !"double"] ;
   ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string"] ;
   ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location"] ;
-#  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset"] ;
+  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset"] ;
   ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object"] ;
   ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function"] ;
   ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type"] ;

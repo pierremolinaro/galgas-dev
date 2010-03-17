@@ -137,7 +137,8 @@ override reader @stringsetPredefinedTypeAST getSupportedOperatorFlags
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
     | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor []
     | generateNativeNewConstructor []
-    | generateCppConstructorWithNativeAttributeList [] ;
+    | generateCppConstructorWithNativeAttributeList []
+    | generateEnumerationHelperMethods [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*

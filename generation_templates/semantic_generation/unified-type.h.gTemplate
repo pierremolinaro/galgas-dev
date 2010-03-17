@@ -447,6 +447,15 @@ foreach READER_MAP do
     %) ;\n\n%
   end if
 end foreach
+
+if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
+%//--------------------------------- Enumeration helper methods
+  protected : virtual void populateEnumerationArray (const GALGAS_root * ioEnumerationArray [],
+                                                     const bool inAscending) const ;
+  public : virtual PMUInt32 count (void) const ;
+
+%end if
+
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Enumerator declaration
   public : class cEnumerator : public AC_GALGAS_Enumerator {
