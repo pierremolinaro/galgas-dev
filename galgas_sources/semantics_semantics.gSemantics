@@ -472,7 +472,7 @@ class @typeHereExpression extends @typeExpression {
 
 class @typeConstructorExpression extends @typeExpression {
   @AC_galgasType mType ;
-  @string mClassMethodName ;
+  @lstring mConstructorName ;
   @bool mHasLexiqueAndLocationArguments ;
   @typeExpressionList mExpressionList ;
 }

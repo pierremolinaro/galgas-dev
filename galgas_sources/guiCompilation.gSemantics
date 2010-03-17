@@ -19,7 +19,6 @@
 
 semantics guiCompilation :
 
-import "semanticsSemantics.gSemantics" ;
 import "allASTTypes.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
 import "optionCompilation.gSemantics" ;

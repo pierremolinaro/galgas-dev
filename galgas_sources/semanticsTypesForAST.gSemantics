@@ -1146,6 +1146,12 @@ list @mapMethodListAST {
 
 #---------------------------------------------------------------------------*
 
+list @insertOrReplaceDeclarationListAST {
+  @location mInsertOrReplaceDeclarationLocation ; # §
+}
+
+#---------------------------------------------------------------------------*
+
 class @mapDeclarationAST extends @semanticDeclarationAST {
   @lstring mMapTypeName ;
   @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
@@ -1154,6 +1160,7 @@ class @mapDeclarationAST extends @semanticDeclarationAST {
   @mapMethodListAST mInsertMethodList ;
   @mapMethodListAST mSearchMethodList ;
   @mapMethodListAST mRemoveMethodList ;
+  @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1203,11 +1210,11 @@ list @methodDefinitionListAST {
 
 #---------------------------------------------------------------------------*
 
-#list @lazyAttributeListAST {
-#  @location mLocationMagicNumber ;
-#  @attributeInCollectionListAST mAttributeList ;
-#  @semanticInstructionListAST mInstructionList ;
-#}
+list @lazyAttributeListAST {
+  @location mLocationMagicNumber ;
+  @attributeInCollectionListAST mAttributeList ;
+  @semanticInstructionListAST mInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -1221,7 +1228,7 @@ class @classDeclarationAST extends @semanticDeclarationAST {
   @overridenMethodDefinitionListAST mOverridenMethodList ;
   @methodDefinitionListAST mMethodList ;
 #  @classMessageDefinitionListAST mMessageList ;
-#  @lazyAttributeListAST mLazyAttributeList ;
+  @lazyAttributeListAST mLazyAttributeList ;
 #  @string mClassMessage ;
 }
 

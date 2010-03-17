@@ -4206,7 +4206,7 @@ rule <semantic_instruction>
   #--- Build source expression
     sourceExpression := [@typeConstructorExpression new 
       !targetVarType
-      ![constructorName string]
+      !constructorName
       !hasLexiqueAndLocationArguments
       !expressionList
     ] ;
@@ -5669,7 +5669,7 @@ rule <optional_assignment>
 #--- Generate instruction
   @typeExpression  e := [@typeConstructorExpression new 
     !inVariableType
-    ![constructorName string]
+    !constructorName
     !hasLexiqueAndLocationArguments
     !expressionList
   ] ;

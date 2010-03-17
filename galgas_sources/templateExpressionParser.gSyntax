@@ -1475,7 +1475,7 @@ rule <factor>
     ;
     outExpression := [@typeConstructorExpression new
       !type
-      ![mClassMethodName string]
+      !mClassMethodName
       !hasLexiqueAndLocationArguments
       !expressionList
     ] ;

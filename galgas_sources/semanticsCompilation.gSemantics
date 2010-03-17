@@ -17,13 +17,31 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsCompilation :
-  import "semanticsSemantics.gSemantics" ;
+#  import "semanticsSemantics.gSemantics" ;
   import "allASTTypes.gSemantics" ;
-  import "buildSemanticContext.gSemantics" ;
+  import "semanticGeneration.gSemantics" ;
 
   import semantics allASTTypes in "allASTTypes.gSemantics" ;
-  import semantics buildSemanticContext in "buildSemanticContext.gSemantics" ;
+#  import semantics buildSemanticContext in "buildSemanticContext.gSemantics" ;
+  import semantics semanticGeneration in "semanticGeneration.gSemantics" ;
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper typeGenerationTemplate in "../generation_templates/semantic_generation" {
+} {
+  template semanticFileHeader "semantic-file.h.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@lstringlist TYPE_PREDECLARATION_LIST
+  ;
+  template semanticFileImplementation "semantic-file.cpp.gTemplate"
+    ?@string COMPONENT_NAME
+  ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -116,33 +134,59 @@ routine compileSemanticsComponent
     ![semanticsComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
-##---- Build semantic context
-#  @semanticContextEX semanticContextEX ;
-#  buildSemanticContextEX !semanticDeclarationList ![semanticsComponentRoot mEndOfSourceFile] ?semanticContextEX ;
-#  @semanticContext semanticContext ;
-#  buildSemanticContext !semanticDeclarationList ![semanticsComponentRoot mEndOfSourceFile] ?semanticContext ;
-##--- Check type declarations
-#  if [@uint errorCount] == 0 then
-#    foreach [semanticContextEX mTypeMap] do
-#      @constructorMapEXX constructorMap := [mType constructorMap] ;
-#      @readerMapEXX readerMap := [mType readerMap] ;
-#      @modifierMapEXX modifierMap := [mType modifierMap] ;
-#    end foreach ;
-#  end if ;
-##--- Perform semantic analysis of all declarations
-#  foreach semanticDeclarationList do
-#    [mSemanticDeclaration semanticAnalysis
-#      !?semanticContextEX
-#    ] ;
-#  end foreach ;
-##--- Perform semantic analysis of declarations of this component
-#  @semanticDeclarationSortedListForGeneration declarationSortedListForGeneration [emptySortedList] ;
-#  foreach semanticDeclarationList do
-#    [mSemanticDeclaration decorateAbstractSyntaxTree
-#      !semanticContextEX
-#      !?declarationSortedListForGeneration
-#    ] ;
-#  end foreach ;
+#------ Add predefined types to semantics declarations
+  appendPredefinedTypesASTs !?semanticDeclarationList ;
+#------ Generate declarations
+  @semanticContext semanticContext ;
+  buildSemanticContext
+    !semanticDeclarationList
+    ![semanticsComponentRoot mEndOfSourceFile]
+    ?semanticContext
+  ;
+#------ Semantic Analysis
+  @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+  performSemanticAnalysis
+    !?semanticContext
+    ?decoratedDeclarationListForGeneration
+  ;
+#------ Generate Header File
+  if [@uint errorCount] == 0 then
+    @string headerString := [filewrapper typeGenerationTemplate.semanticFileHeader
+      ![componentName string]
+      ![[semanticContext mTypeMap] keyList]
+    ] ;
+    foreach decoratedDeclarationListForGeneration do
+      headerString .= [mDeclaration appendDeclaration] ;
+    end foreach ;
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !headerString
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ] ;
+  end if ;
+#------ Generate Implementation File
+  if [@uint errorCount] == 0 then
+    @string implementationString := [filewrapper typeGenerationTemplate.semanticFileImplementation
+      ![componentName string]
+    ] ;
+    foreach decoratedDeclarationListForGeneration do
+      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+      implementationString .= [mDeclaration appendSpecificImplementation] ;
+    end foreach ;
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !implementationString
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ] ;
+  end if ;
 ##--- Perform Code Generation
 #  if [@uint errorCount] == 0 then
 #    @stringlist predeclarationList [emptyList] ;

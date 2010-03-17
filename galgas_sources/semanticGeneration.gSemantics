@@ -264,18 +264,20 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
     #------ Add predefined types to semantics declarations
       @semanticDeclarationListAST predefinedTypeASTlist [emptyList] ;
       appendPredefinedTypesASTs !?predefinedTypeASTlist ;
-    #------ Generate declarations
+    #------ Build Semantic Context
       @semanticContext semanticContext ;
       buildSemanticContext
         !predefinedTypeASTlist
         !here
         ?semanticContext
       ;
+    #------ Semantic Analysis
       @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
       performSemanticAnalysis
-        !semanticContext
+        !?semanticContext
         ?decoratedDeclarationListForGeneration
       ;
+    #------ Generate Code
       @string generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesHeader
         ![[semanticContext mTypeMap] allKeys]
       ] ;

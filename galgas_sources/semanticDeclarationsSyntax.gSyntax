@@ -166,6 +166,7 @@ rule <semantic_declaration>
   @mapMethodListAST mInsertMethodList [emptyList] ;
   @mapMethodListAST mSearchMethodList [emptyList] ;
   @mapMethodListAST mRemoveMethodList [emptyList] ;
+  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
@@ -178,6 +179,12 @@ rule <semantic_declaration>
   while
     $remove$ ;
     <map_method_declaration> !? mRemoveMethodList ;
+  while
+    $insert$ ;
+    $or$ ;
+    $replace$ ;
+    insertOrReplaceDeclarationListAST += !here ;
+    $;$ ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations->mSemanticDeclarationList += ![@mapDeclarationAST new
@@ -188,6 +195,7 @@ rule <semantic_declaration>
     !mInsertMethodList
     !mSearchMethodList
     !mRemoveMethodList
+    !insertOrReplaceDeclarationListAST
   ] ;
 end rule ;
 
@@ -366,31 +374,31 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-#nonterminal <lazy_attribute_declaration> ?!@lazyAttributeListAST ioLazyAttributeList ;
+nonterminal <lazy_attribute_declaration> ?!@lazyAttributeListAST ioLazyAttributeList ;
 
 #---------------------------------------------------------------------------*
 
-#rule <lazy_attribute_declaration> ?!@lazyAttributeListAST ioLazyAttributeList :
-#  $once$ ;
-#  @attributeInCollectionListAST attributeTypeAndNameList [emptyList] ;
-#  repeat
-#    $type_name$ ?@lstring  attributeTypeName ;
-#    $identifier$ ? @lstring attributeName ;
-#    attributeTypeAndNameList += !attributeTypeName !attributeName ; # ![@lstringlist emptyList] ;
-#  while
-#  end repeat ;
-#  $:$ ;
-#  @semanticInstructionListAST mInstructionList ;
-#  <semantic_instruction_list> ? mInstructionList ;
-#  $end$ ;
-#  $once$ ;
-#  $;$ ;
-#  ioLazyAttributeList +=
-#    !here
-#    !attributeTypeAndNameList
-#    !mInstructionList
-#  ;
-#end rule ;
+rule <lazy_attribute_declaration> ?!@lazyAttributeListAST ioLazyAttributeList :
+  $once$ ;
+  @attributeInCollectionListAST attributeTypeAndNameList [emptyList] ;
+  repeat
+    $type_name$ ?@lstring  attributeTypeName ;
+    $identifier$ ? @lstring attributeName ;
+    attributeTypeAndNameList += !attributeTypeName !attributeName ; # ![@lstringlist emptyList] ;
+  while
+  end repeat ;
+  $:$ ;
+  @semanticInstructionListAST mInstructionList ;
+  <semantic_instruction_list> ? mInstructionList ;
+  $end$ ;
+  $once$ ;
+  $;$ ;
+  ioLazyAttributeList +=
+    !here
+    !attributeTypeAndNameList
+    !mInstructionList
+  ;
+end rule ;
 
 #---------------------------------------------------------------------------*
 
@@ -435,7 +443,7 @@ rule <semantic_declaration>
     @overridenMethodDefinitionListAST mOverridenMethodList [emptyList] ;
     @methodDefinitionListAST mMethodList [emptyList] ;
 #    @classMessageDefinitionListAST mMessageList [emptyList] ;
-#    @lazyAttributeListAST mLazyAttributeList [emptyList] ;
+    @lazyAttributeListAST mLazyAttributeList [emptyList] ;
     repeat
     while
       <attribute_declaration> !? mAttributeList ;
@@ -447,8 +455,8 @@ rule <semantic_declaration>
       <class_method_declaration> !? mMethodList ;
 #    while
 #      <class_message_declaration> !? mMessageList ;
-#    while
-#      <lazy_attribute_declaration> !? mLazyAttributeList ;
+    while
+      <lazy_attribute_declaration> !? mLazyAttributeList ;
 #    while
 #      $message$ ;
 #      if [mClassMessage length] > 0 then
@@ -473,7 +481,7 @@ rule <semantic_declaration>
       !mOverridenMethodList
       !mMethodList
 #      !mMessageList
-#      !mLazyAttributeList
+      !mLazyAttributeList
 #      !mClassMessage
     ] ;
   end select ;

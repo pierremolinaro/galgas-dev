@@ -122,7 +122,7 @@ rule <actual_parameter_list> !@actualParameterListAST outActualParameterList :
     @lstringlist structAttributeList [emptyList] ;
     repeat
     while
-      $.$ ;
+      $->$ ;
       $identifier$ ? @lstring structAttributeName ;
       structAttributeList += !structAttributeName ;
     end repeat ;

@@ -53,16 +53,16 @@ function outputDirectory
   end if ;
 end function ;
 
-##---------------------------------------------------------------------------*
-#
+#---------------------------------------------------------------------------*
+
 #routine checkCategoryMethodDefinitionForClass
 #  ??@string inClassNameForErrorSignaling
 #  ??@string inClassName
 #  ??@lstring inAbstractCategoryMethodName
-#  ??@descendantClassListMapEX inDescendantClassListMap
+#  ??@descendantClassListMap inDescendantClassListMap
 #  ??@overridingMultiMethodListMapAST inOverridingCategoryMethodListMap
 #:
-#  @classIndexListEX descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
+#  @classIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
 #  foreach descendantClasses do
 #    @lstring descendantClassName := [mClassMapindex key] ;
 #    @ACGalgasType t := [mClassMapindex mType] ;
@@ -71,7 +71,7 @@ end function ;
 #    when >= @classGalgasType classType do
 #      isAbstract := [classType mIsAbstract] ;
 #    else
-#      error descendantClassName: "the '@" . descendantClassName . "' type should be a class" -> isAbstract ;
+#      error descendantClassName: "the '@" . descendantClassName . "' type should be a class" : isAbstract ;
 #    end cast ;
 #    @overridingMultiMethodListAST overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
 #    @bool found := false ;
@@ -145,25 +145,32 @@ routine performProjectGlobalCheckings
   ??@parsedComponentStruct inParsedComponentStruct
   ??@location inEndOfSourceFile
 :
-#--- Build all declaration list
   @semanticDeclarationListAST semanticDeclarationList [emptyList] ;
+#------ Add predefined types to semantics declarations
+  appendPredefinedTypesASTs !?semanticDeclarationList ;
+#--- Build all declaration list
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
     semanticDeclarationList .= [[mRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   end foreach ;
-##---- Build semantic context
-#  @semanticContextEX semanticContext ;
-#  buildSemanticContextEX !semanticDeclarationList !inEndOfSourceFile ?semanticContext ;
-##--- Check that for every abstract category method, an overridden category method
-##    defined in an concrete subclass
-#  if [@uint errorCount] == 0 then
-#    @abstractMultiMethodListMapAST abstractCategoryMethodListMap [emptyMap] ;
-#    @multiMethodListMapAST categoryMethodListMap [emptyMap] ;
-#    @overridingMultiMethodListMapAST overridingCategoryMethodListMap [emptyMap];
-#    foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-#      abstractCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryMethodListMap] ;
-#      overridingCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryMethodListMap] ;
-#    end foreach ;
-#    @descendantClassListMapEX descendantClassListMap := [semanticContext mDescendantClassListMap] ;
+#------ Generate declarations
+  @semanticContext semanticContext ;
+  buildSemanticContext
+    !semanticDeclarationList
+    !inEndOfSourceFile
+    ?semanticContext
+  ;
+#--- Check that for every abstract multi method, an overridden multi method
+#    defined in an concrete subclass
+  if [@uint errorCount] == 0 then
+    @abstractMultiMethodListMapAST abstractCategoryMethodListMap [emptyMap] ;
+    @multiMethodListMapAST categoryMethodListMap [emptyMap] ;
+    @overridingMultiMethodListMapAST overridingCategoryMethodListMap [emptyMap];
+    foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+      abstractCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryMethodListMap] ;
+      overridingCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryMethodListMap] ;
+    end foreach ;
+    @descendantClassListMap descendantClassListMap := [semanticContext mDescendantClassListMap] ;
+    log descendantClassListMap ;
 #    foreach abstractCategoryMethodListMap do
 #      foreach object do
 #        checkCategoryMethodDefinitionForClass
@@ -175,7 +182,7 @@ routine performProjectGlobalCheckings
 #        ;
 #      end foreach ;
 #    end foreach ;
-#  end if ;
+  end if ;
 ##--- Check that for every abstract category reader, an overridden category reader
 ##    defined in an concrete subclass
 #  if [@uint errorCount] == 0 then

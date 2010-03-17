@@ -436,7 +436,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   select
     mIndexVariableName := [@lstring new !"" !here] ;
   or
-    $:$ ;
+    $index$ ;
     $identifier$ ? mIndexVariableName ;
   end select ;
   @semanticExpressionAST mWhileExpression ;

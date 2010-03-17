@@ -909,7 +909,7 @@ void cPtr_typeConstructorExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mType (HERE)->generateCppClassName (ioCppFile) ;
   const bool hasLexiqueAndLocationArguments = mHasLexiqueAndLocationArguments.boolValue () ;
-  ioCppFile << "::constructor_" << mClassMethodName << " (" ;
+  ioCppFile << "::constructor_" << mConstructorName << " (" ;
   if (hasLexiqueAndLocationArguments) {
     ioCppFile << "inLexique" ;
   }
@@ -925,7 +925,9 @@ generateExpression (AC_OutputStream & ioCppFile) const {
     current.next () ;
   }
   if (hasLexiqueAndLocationArguments) {
-    ioCppFile << " COMMA_HERE" ;
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << cStringWithSigned (mConstructorName.lineNumber ())
+              << ")" ;
   }
   ioCppFile << ")" ;
 }
