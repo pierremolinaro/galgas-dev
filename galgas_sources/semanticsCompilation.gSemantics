@@ -135,17 +135,19 @@ routine compileSemanticsComponent
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
 #------ Add predefined types to semantics declarations
-  appendPredefinedTypesASTs !?semanticDeclarationList ;
+  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
+  appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
 #------ Generate declarations
   @semanticContext semanticContext ;
   buildSemanticContext
-    !semanticDeclarationList
+    !semanticDeclarationListWithPredefinedTypes
     ![semanticsComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;
 #------ Semantic Analysis
   @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
+    !semanticDeclarationList
     !?semanticContext
     ?decoratedDeclarationListForGeneration
   ;
@@ -184,7 +186,7 @@ routine compileSemanticsComponent
       !"\n\n" # Defaut user zone1
       !implementationString
       !"\n\n" # Defaut user zone2
-      !"#endif\n"
+      !"\n"
     ] ;
   end if ;
 ##--- Perform Code Generation

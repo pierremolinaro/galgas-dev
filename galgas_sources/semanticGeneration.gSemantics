@@ -274,6 +274,7 @@ routine generateHeadersOfBuiltinTypes ??@string inDirectory :
     #------ Semantic Analysis
       @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
       performSemanticAnalysis
+        !predefinedTypeASTlist
         !?semanticContext
         ?decoratedDeclarationListForGeneration
       ;

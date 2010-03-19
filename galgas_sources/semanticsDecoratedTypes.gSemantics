@@ -383,20 +383,20 @@ semantics semanticsDecoratedTypes :
 #    argumentInOut -> " &" ;
 #  end reader ;
 #}
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  F O R M A L    P A R A M E T E R    L I S T                              *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#list @formalParameterListForGeneration {
-#  @formalArgumentPassingModeForGeneration mFormalParameterPassingMode ;
-#  @lstring mFormalParameterTypeName ;
-#  @lstring mFormalParameterName ;
-#  @bool mIsUnused ;
-#}
-#
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    P A R A M E T E R    L I S T                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalParameterListForGeneration {
+  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
+  @unifiedTypeMapIndex mFormalParameterType ;
+  @lstring mFormalParameterName ;
+  @bool mIsUnused ;
+}
+
 ##---------------------------------------------------------------------------*
 ##                                                                           *
 ##  F O R M A L    I N P U T    P A R A M E T E R    L I S T                 *
@@ -460,22 +460,22 @@ semantics semanticsDecoratedTypes :
 #  @lstring mActualParameterName ;
 #}
 #
-##---------------------------------------------------------------------------*
-#
-#abstract class @syntaxInstructionForGeneration {
-#  @location mStartLocation feature nogetter ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#abstract class @semanticInstructionForGeneration extends @syntaxInstructionForGeneration {
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#list @semanticInstructionListForGeneration {
-#  @semanticInstructionForGeneration mInstruction ;
-#}
+#---------------------------------------------------------------------------*
+
+abstract class @syntaxInstructionForGeneration {
+  @location mStartLocation feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticInstructionForGeneration extends @syntaxInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticInstructionListForGeneration {
+  @semanticInstructionForGeneration mInstruction ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -486,6 +486,16 @@ abstract class @semanticDeclarationForGeneration {
 
 list @semanticDeclarationListForGeneration {
   @semanticDeclarationForGeneration mDeclaration ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    T Y P E    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @semanticTypeForGeneration extends @semanticDeclarationForGeneration {
+  @unifiedTypeMapIndex mTypeIndex ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1191,26 +1201,26 @@ list @semanticDeclarationListForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#list @abstractMethodDefinitionListForGeneration {
-#  @lstring mMethodName ;
-#  @formalParameterListForGeneration mSignature ;
-#}
+list @abstractMethodDefinitionListForGeneration {
+  @lstring mMethodName ;
+  @formalParameterListForGeneration mSignature ;
+}
 
 #---------------------------------------------------------------------------*
 
-#list @overridenMethodDefinitionListForGeneration {
-#  @lstring mMethodName ;
-#  @formalParameterListForGeneration mSignature ;
-#  @semanticInstructionListForGeneration mInstructionList ;
-#}
+list @overridenMethodDefinitionListForGeneration {
+  @lstring mMethodName ;
+  @formalParameterListForGeneration mSignature ;
+  @semanticInstructionListForGeneration mInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 
-#list @methodDefinitionListForGeneration {
-#  @lstring mMethodName ;
-#  @formalParameterListForGeneration mSignature ;
-#  @semanticInstructionListForGeneration mInstructionList ;
-#}
+list @methodDefinitionListForGeneration {
+  @lstring mMethodName ;
+  @formalParameterListForGeneration mSignature ;
+  @semanticInstructionListForGeneration mInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -1229,28 +1239,18 @@ list @semanticDeclarationListForGeneration {
 
 #---------------------------------------------------------------------------*
 
-#class @classDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @bool mIsAbstract ;
-#  @lstring mClassTypeName ;
-#  @lstring mSuperClassName ; # Empty if no super class
+class @classDeclarationForGeneration extends @semanticTypeForGeneration {
+  @bool mIsAbstract ;
+  @lstring mClassTypeName ;
+  @unifiedTypeMapIndex mSuperClass ; # Null if no super class
 #  @lstringlist mClassFeatureList ;
-#  @attributeInCollectionListForGeneration mAttributeList ;
-#  @abstractMethodDefinitionListForGeneration mAbstractMethodList ;
-#  @overridenMethodDefinitionListForGeneration mOverridenMethodList ;
-#  @methodDefinitionListForGeneration mMethodList ;
-##  @classMessageDefinitionListForGeneration mMessageList ;
-##  @lazyAttributeListForGeneration mLazyAttributeList ;
-##  @string mClassMessage ;
-#}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    T Y P E    D E C L A R A T I O N                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract class @semanticTypeForGeneration extends @semanticDeclarationForGeneration {
-  @unifiedTypeMapIndex mTypeIndex ;
+  @typedAttributeList mTypedAttributeList ;
+  @abstractMethodDefinitionListForGeneration mAbstractMethodList ;
+  @overridenMethodDefinitionListForGeneration mOverridenMethodList ;
+  @methodDefinitionListForGeneration mMethodList ;
+#  @classMessageDefinitionListForGeneration mMessageList ;
+#  @lazyAttributeListForGeneration mLazyAttributeList ;
+#  @string mClassMessage ;
 }
 
 #---------------------------------------------------------------------------*

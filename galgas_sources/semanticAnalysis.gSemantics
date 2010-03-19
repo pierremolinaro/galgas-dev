@@ -108,18 +108,72 @@ override method @genericTypeTypeAST performSemanticAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @classDeclarationAST performSemanticAnalysis
+  ?!@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  @typedAttributeList typedAttributeList [emptyList] ;
+  foreach mAttributeList do
+    @unifiedTypeMapIndex idx ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?inSemanticContext->mTypeMap ?idx] ;
+    typedAttributeList +=
+      !idx
+      !mAttributeName
+    ;
+  end foreach ;
+  @unifiedTypeMapIndex superClassIndex ;
+  if [mSuperClassName string] == "" then
+    [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"class" !here] !?inSemanticContext->mTypeMap ?superClassIndex] ;
+  else
+    [@unifiedTypeMapIndex makeRegularIndex !mSuperClassName !?inSemanticContext->mTypeMap ?superClassIndex] ;
+  end if ;
+  @unifiedTypeMapIndex idx ;
+  [@unifiedTypeMapIndex makeRegularIndex !mClassTypeName !?inSemanticContext->mTypeMap ?idx] ;
+#--- Abstract methods
+  @abstractMethodDefinitionListForGeneration abstractMethodList [emptyList] ;
+  foreach mAbstractMethodList do
+    if not mIsAbstract then
+      error mMethodName : "a concrete class cannot declare an abstract method" ;
+    end if ;
+  end foreach ;
+#--- Overriden methods
+  @overridenMethodDefinitionListForGeneration overridenMethodList [emptyList] ;
+  foreach mOverridenMethodList do
+
+  end foreach ;
+#--- Base methods
+  @methodDefinitionListForGeneration methodList [emptyList] ;
+  foreach mMethodList do
+
+  end foreach ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@classDeclarationForGeneration new
+    !idx
+    !mIsAbstract
+    !mClassTypeName
+    !superClassIndex
+    !typedAttributeList
+    !abstractMethodList
+    !overridenMethodList
+    !methodList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    P E R F O R M     S E M A N T I C     A N A L Y S I S                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 routine performSemanticAnalysis
+  ??@semanticDeclarationListAST inDeclarationList
   ?!@semanticContext inSemanticContext
   !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
 :
   outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
   
-  foreach [inSemanticContext mOrderedSemanticDeclarationListAST] do
+  foreach inDeclarationList do
     [mSemanticDeclaration performSemanticAnalysis
       !?inSemanticContext
       !?outDecoratedDeclarationListForGeneration
