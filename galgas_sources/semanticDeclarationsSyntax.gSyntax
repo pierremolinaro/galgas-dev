@@ -310,42 +310,20 @@ nonterminal <class_abstract_method_declaration>
 rule <class_abstract_method_declaration>
   ?!@abstractMethodDefinitionListAST ioAbstractMethodDefinitionList
 :
+  @bool isOverriding ;
+  select
+    isOverriding := false ;
+  or
+    $override$ ;
+    isOverriding := true ;
+  end select ;
   $abstract$ ;
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
   @formalParameterListAST mSignature ;
   <formal_parameter_list> ? mSignature ;
   $;$ ;
-  ioAbstractMethodDefinitionList += !mMethodName !mSignature ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-nonterminal <class_overriden_method_declaration>
-  ?!@overridenMethodDefinitionListAST ioOverridenMethodDefinitionList
-;
-
-#---------------------------------------------------------------------------*
-
-rule <class_overriden_method_declaration>
-  ?!@overridenMethodDefinitionListAST ioOverridenMethodDefinitionList
-:
-  $override$ ;
-  $method$ ;
-  $identifier$ ? @lstring mMethodName ;
-  @formalParameterListAST mSignature ;
-  <formal_parameter_list> ? mSignature ;
-  $:$ ;
-  @semanticInstructionListAST mInstructionList ;
-  <semantic_instruction_list> ? mInstructionList ;
-  $end$ ;
-  $method$ ;
-  $;$ ;
-  ioOverridenMethodDefinitionList +=
-    !mMethodName
-    !mSignature
-    !mInstructionList
-  ;
+  ioAbstractMethodDefinitionList += !isOverriding !mMethodName !mSignature ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -355,6 +333,13 @@ nonterminal <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefini
 #---------------------------------------------------------------------------*
 
 rule <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefinitionList :
+  @bool isOverriding ;
+  select
+    isOverriding := false ;
+  or
+    $override$ ;
+    isOverriding := true ;
+  end select ;
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
   @formalParameterListAST mSignature ;
@@ -366,6 +351,7 @@ rule <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefinitionLis
   $method$ ;
   $;$ ;
   ioMethodDefinitionList +=
+    !isOverriding
     !mMethodName
     !mSignature
     !mInstructionList
@@ -440,7 +426,6 @@ rule <semantic_declaration>
   #--- Class properties
     @attributeInCollectionListAST mAttributeList [emptyList] ;
     @abstractMethodDefinitionListAST mAbstractMethodList [emptyList] ;
-    @overridenMethodDefinitionListAST mOverridenMethodList [emptyList] ;
     @methodDefinitionListAST mMethodList [emptyList] ;
 #    @classMessageDefinitionListAST mMessageList [emptyList] ;
     @lazyAttributeListAST mLazyAttributeList [emptyList] ;
@@ -449,8 +434,6 @@ rule <semantic_declaration>
       <attribute_declaration> !? mAttributeList ;
     while
       <class_abstract_method_declaration> !? mAbstractMethodList ;
-    while
-      <class_overriden_method_declaration> !? mOverridenMethodList ;
     while
       <class_method_declaration> !? mMethodList ;
 #    while
@@ -478,7 +461,6 @@ rule <semantic_declaration>
       !classFeatureList
       !mAttributeList
       !mAbstractMethodList
-      !mOverridenMethodList
       !mMethodList
 #      !mMessageList
       !mLazyAttributeList
