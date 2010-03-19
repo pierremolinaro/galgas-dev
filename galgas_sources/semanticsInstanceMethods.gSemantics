@@ -25,12 +25,13 @@ semantics semanticsInstanceMethods :
 
 routine enterInstanceMethodWithoutArgument
   ?!@instanceMethodMap ioInstanceMethodMap
-  ??@string inInstanceMethodName
+  ??@lstring inInstanceMethodName
   ??@bool inHasCompilerArgument
 :
   [!?ioInstanceMethodMap insertOrReplace
-    ![@lstring new !inInstanceMethodName !here]
+    !inInstanceMethodName
     ![@formalParameterSignature emptyList]
+    ![inInstanceMethodName location]
     !inHasCompilerArgument
   ] ;
 end routine ;
@@ -41,7 +42,7 @@ routine enterInstanceMethodWithInputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inInputArgumentTypeName
-  ??@string inInstanceMethodName
+  ??@lstring inInstanceMethodName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapIndex argumentTypeIndex ;
@@ -49,8 +50,9 @@ routine enterInstanceMethodWithInputArgument
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioInstanceMethodMap insertOrReplace
-    ![@lstring new !inInstanceMethodName !here]
+    !inInstanceMethodName
     !argList
+    ![inInstanceMethodName location]
     !inHasCompilerArgument
   ] ;
 end routine ;
@@ -61,7 +63,7 @@ routine enterInstanceMethodWithOutputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inInputArgumentTypeName
-  ??@string inInstanceMethodName
+  ??@lstring inInstanceMethodName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapIndex argumentTypeIndex ;
@@ -69,8 +71,9 @@ routine enterInstanceMethodWithOutputArgument
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
   [!?ioInstanceMethodMap insertOrReplace
-    ![@lstring new !inInstanceMethodName !here]
+    !inInstanceMethodName
     !argList
+    ![inInstanceMethodName location]
     !inHasCompilerArgument
   ] ;
 end routine ;
@@ -82,7 +85,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
   !@instanceMethodMap outInstanceMethodMap
 :
   outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"writeToFile" !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToFile" !here] !true ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -92,10 +95,10 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   !@instanceMethodMap outInstanceMethodMap
 :
   outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"writeToFile" !true ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"writeToExecutableFile" !true ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"makeDirectoryAndWriteToFile" !true ;
-  enterInstanceMethodWithoutArgument !?outInstanceMethodMap !"makeDirectory" !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToFile" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToExecutableFile" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"makeDirectoryAndWriteToFile" !here] !true ;
+  enterInstanceMethodWithoutArgument !?outInstanceMethodMap ![@lstring new !"makeDirectory" !here] !true ;
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapIndex t ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?t] ;
@@ -105,6 +108,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   [!?outInstanceMethodMap insertOrReplace
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     !argList
+    !here
     !true
   ] ;
 end method ;

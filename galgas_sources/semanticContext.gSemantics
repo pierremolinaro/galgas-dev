@@ -174,7 +174,6 @@ struct @semanticContext {
   @routineMap mRoutineMap ;
   @functionMap mFunctionMap ;
   @filewrapperMap mFilewrapperMap ;
-  @semanticDeclarationListAST mOrderedSemanticDeclarationListAST ;
 }
 
 #---------------------------------------------------------------------------*
@@ -289,11 +288,6 @@ override method @classDeclarationAST collectType
   [!?ioCollectedTypeMap insertKey !mClassTypeName] ;
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
   foreach mAbstractMethodList do
-    foreach mSignature do
-      [@collectedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioCollectedTypeMap ?*] ;
-    end foreach ;
-  end foreach ;
-  foreach mOverridenMethodList do
     foreach mSignature do
       [@collectedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioCollectedTypeMap ?*] ;
     end foreach ;
@@ -479,6 +473,7 @@ override method @mapDeclarationAST enterType
     [!?instanceMethodMap insertOrReplace
       !mMethodName
       !removeMethodFormalArgumentList
+      ![mMethodName location]
       !true
     ] ;
   end foreach ;
@@ -741,11 +736,13 @@ override method @sortedListDeclarationAST enterType
   [!?instanceMethodMap insertOrReplace
     ![@lstring new !"greatest" !here]
     !modifierFormalArgumentList
+    !here
     !true
   ] ;
   [!?instanceMethodMap insertOrReplace
     ![@lstring new !"smallest" !here]
     !modifierFormalArgumentList
+    !here
     !true
   ] ;
 #--- Enter in type map
@@ -924,11 +921,13 @@ override method @listDeclarationAST enterType
   [!?instanceMethodMap insertOrReplace
     ![@lstring new !"first" !here]
     !modifierOutputFormalArgumentList
+    !here
     !true
   ] ;
   [!?instanceMethodMap insertOrReplace
     ![@lstring new !"last" !here]
     !modifierOutputFormalArgumentList
+    !here
     !true
   ] ;
 #--- Enter in type map
@@ -1030,19 +1029,7 @@ override method @classDeclarationAST enterType
     [!?instanceMethodMap insertOrReplace
       !mMethodName
       !formalArgumentList
-      !true
-    ] ;
-  end foreach ;
-  foreach mOverridenMethodList do
-    @formalParameterSignature formalArgumentList [emptyList] ;
-    foreach mSignature do
-      @unifiedTypeMapIndex typeIndex ;
-      [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext->mTypeMap ?typeIndex] ;
-      formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
-    end foreach ;
-    [!?instanceMethodMap insertOrReplace
-      !mMethodName
-      !formalArgumentList
+      ![mMethodName location]
       !true
     ] ;
   end foreach ;
@@ -1056,6 +1043,7 @@ override method @classDeclarationAST enterType
     [!?instanceMethodMap insertOrReplace
       !mMethodName
       !formalArgumentList
+      ![mMethodName location]
       !true
     ] ;
   end foreach ;
@@ -1399,7 +1387,6 @@ routine buildSemanticContext
     ![@routineMap emptyMap]
     ![@functionMap emptyMap]
     ![@filewrapperMap emptyMap]
-    !orderedSemanticDeclarationListAST
   ] ;
 #--- Loop throught all declarations
   if [@uint errorCount] == 0 then

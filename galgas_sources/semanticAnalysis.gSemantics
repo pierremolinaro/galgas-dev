@@ -23,6 +23,41 @@ semantics semanticAnalysis :
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    C H E C K    M E T H O D    S I G N A T U R E                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine checkMethodSignatures
+  ??@formalParameterListForGeneration inTestedSignature
+  ??@location inErrorLocation
+  ??@formalParameterSignature inReferenceSignature
+  ??@location inReferenceLocation
+:
+  if [inTestedSignature length] != [inReferenceSignature length] then
+    error inErrorLocation:"this method declares " . [[inTestedSignature length] string]
+    . " formal parameter(s), but overriden method declares " . [[inReferenceSignature length] string]
+    ;
+    error inReferenceLocation:"overriden method is declared here" ;
+  else
+    foreach inReferenceSignature prefixedby ref_, inTestedSignature do
+      if ref_mFormalParameterPassingMode != mFormalParameterPassingMode then
+        error mFormalParameterName : "the '" . mFormalParameterName . "' formal parameter is declared as "
+        . [mFormalParameterPassingMode formalArgumentMessage] . ", but overriden method declares it as " 
+        . [ref_mFormalParameterPassingMode formalArgumentMessage] ;
+        error inReferenceLocation:"overriden method is declared here" ;
+      end if ;
+      if [[mFormalParameterType key] string] != [[ref_mParameterType key] string] then
+        error mFormalParameterName : "the '" . mFormalParameterName . "' formal parameter has the '@"
+        . [mFormalParameterType key] . "' type, but overriden method declares with the '@" 
+        . [ref_mParameterType key] . "' type" ;
+        error inReferenceLocation:"overriden method is declared here" ;
+      end if ;
+    end foreach ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S            *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -113,6 +148,7 @@ override method @classDeclarationAST performSemanticAnalysis
   ?!@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
+#------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
     @unifiedTypeMapIndex idx ;
@@ -122,32 +158,91 @@ override method @classDeclarationAST performSemanticAnalysis
       !mAttributeName
     ;
   end foreach ;
+#------ Inherited instance methods
+  @instanceMethodMap inheritedInstanceMethodMap ;
+  if [mSuperClassName string] == "" then
+    inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
+  else
+    [[inSemanticContext mTypeMap] searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?6*] ;
+  end if ;
+#------ Super type
   @unifiedTypeMapIndex superClassIndex ;
   if [mSuperClassName string] == "" then
     [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"class" !here] !?inSemanticContext->mTypeMap ?superClassIndex] ;
   else
     [@unifiedTypeMapIndex makeRegularIndex !mSuperClassName !?inSemanticContext->mTypeMap ?superClassIndex] ;
   end if ;
+#------ Self type
   @unifiedTypeMapIndex idx ;
   [@unifiedTypeMapIndex makeRegularIndex !mClassTypeName !?inSemanticContext->mTypeMap ?idx] ;
-#--- Abstract methods
+#------ Abstract methods
   @abstractMethodDefinitionListForGeneration abstractMethodList [emptyList] ;
   foreach mAbstractMethodList do
+  #--- Check a concrete class does not declare an abstract method
     if not mIsAbstract then
       error mMethodName : "a concrete class cannot declare an abstract method" ;
     end if ;
+  #--- Compute method signature
+    @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+    foreach mSignature do
+      formalParameterListForGeneration +=
+        !mFormalParameterPassingMode
+        ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mFormalParameterTypeName]
+        !mFormalParameterName
+        !mIsUnused
+      ;
+    end foreach ;
+  #--- Check overriding status
+    if mIsOverriding then
+      @formalParameterSignature inheritedSignature ;
+      @location inheritedDeclarationLocation ;
+      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedSignature ?inheritedDeclarationLocation ?*] ;
+      checkMethodSignatures
+        !formalParameterListForGeneration
+        ![mMethodName location]
+        !inheritedSignature
+        !inheritedDeclarationLocation
+      ;
+    elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
+      error mMethodName : "this method cannot be declared as abstract, it is already declared in super class" ;
+    end if ;
+    abstractMethodList += !mIsOverriding !mMethodName !formalParameterListForGeneration ;
   end foreach ;
-#--- Overriden methods
-  @overridenMethodDefinitionListForGeneration overridenMethodList [emptyList] ;
-  foreach mOverridenMethodList do
-
-  end foreach ;
-#--- Base methods
+#------ Base methods
   @methodDefinitionListForGeneration methodList [emptyList] ;
   foreach mMethodList do
-
+  #--- Compute method signature
+    @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+    foreach mSignature do
+      formalParameterListForGeneration +=
+        !mFormalParameterPassingMode
+        ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mFormalParameterTypeName]
+        !mFormalParameterName
+        !mIsUnused
+      ;
+    end foreach ;
+  #--- Check overriding status
+    if mIsOverriding then
+      @formalParameterSignature inheritedSignature ;
+      @location inheritedDeclarationLocation ;
+      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedSignature ?inheritedDeclarationLocation ?*] ;
+      checkMethodSignatures
+        !formalParameterListForGeneration
+        ![mMethodName location]
+        !inheritedSignature
+        !inheritedDeclarationLocation
+      ;
+    elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
+      error mMethodName : "this method cannot be declared as abstract, it is already declared in super class" ;
+    end if ;
+    methodList +=
+      !mIsOverriding
+      !mMethodName
+      !formalParameterListForGeneration
+      ![@semanticInstructionListForGeneration emptyList]
+    ;
   end foreach ;
-#---
+#------
   ioSemanticDeclarationListForGeneration += ![@classDeclarationForGeneration new
     !idx
     !mIsAbstract
@@ -155,7 +250,6 @@ override method @classDeclarationAST performSemanticAnalysis
     !superClassIndex
     !typedAttributeList
     !abstractMethodList
-    !overridenMethodList
     !methodList
   ] ;
 end method ;

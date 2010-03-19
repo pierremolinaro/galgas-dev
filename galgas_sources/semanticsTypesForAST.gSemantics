@@ -351,7 +351,7 @@ enum @formalArgumentPassingModeAST {
     argumentConstantIn -> "a constant input (??) formal argument" ;
     argumentIn -> "an input (?) formal argument" ;
     argumentOut -> "an output (!) formal argument" ;
-    argumentInOut -> "an input/output (?!) argument" ;
+    argumentInOut -> "an input/output (?!) formal argument" ;
   end reader ;
 
   reader formalArgumentString :
@@ -1181,21 +1181,15 @@ class @mapindexDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @abstractMethodDefinitionListAST {
+  @bool mIsOverriding ;
   @lstring mMethodName ;
   @formalParameterListAST mSignature ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @overridenMethodDefinitionListAST {
-  @lstring mMethodName ;
-  @formalParameterListAST mSignature ;
-  @semanticInstructionListAST mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @methodDefinitionListAST {
+  @bool mIsOverriding ;
   @lstring mMethodName ;
   @formalParameterListAST mSignature ;
   @semanticInstructionListAST mInstructionList ;
@@ -1225,7 +1219,6 @@ class @classDeclarationAST extends @semanticDeclarationAST {
   @lstringlist mClassFeatureList ;
   @attributeInCollectionListAST mAttributeList ;
   @abstractMethodDefinitionListAST mAbstractMethodList ;
-  @overridenMethodDefinitionListAST mOverridenMethodList ;
   @methodDefinitionListAST mMethodList ;
 #  @classMessageDefinitionListAST mMessageList ;
   @lazyAttributeListAST mLazyAttributeList ;

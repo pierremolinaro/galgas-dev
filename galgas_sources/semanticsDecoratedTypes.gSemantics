@@ -1202,21 +1202,15 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 #---------------------------------------------------------------------------*
 
 list @abstractMethodDefinitionListForGeneration {
+  @bool mIsOverriding ;
   @lstring mMethodName ;
   @formalParameterListForGeneration mSignature ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @overridenMethodDefinitionListForGeneration {
-  @lstring mMethodName ;
-  @formalParameterListForGeneration mSignature ;
-  @semanticInstructionListForGeneration mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @methodDefinitionListForGeneration {
+  @bool mIsOverriding ;
   @lstring mMethodName ;
   @formalParameterListForGeneration mSignature ;
   @semanticInstructionListForGeneration mInstructionList ;
@@ -1246,7 +1240,6 @@ class @classDeclarationForGeneration extends @semanticTypeForGeneration {
 #  @lstringlist mClassFeatureList ;
   @typedAttributeList mTypedAttributeList ;
   @abstractMethodDefinitionListForGeneration mAbstractMethodList ;
-  @overridenMethodDefinitionListForGeneration mOverridenMethodList ;
   @methodDefinitionListForGeneration mMethodList ;
 #  @classMessageDefinitionListForGeneration mMessageList ;
 #  @lazyAttributeListForGeneration mLazyAttributeList ;
