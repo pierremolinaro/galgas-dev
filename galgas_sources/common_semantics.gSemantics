@@ -3263,10 +3263,10 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
     outHasLexiqueAndLocationArguments := true ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     if [inClassMethodName string] != "null" then
-      error inClassMethodName : "only 'null' constructor is defined for a mapindex" ;
-#      [mReaderMethodMap searchKey !inClassMethodName ?*] ;
-#      outAccessorTypesList += !mMapType ![@lstring new !"" !here] ;
-#      outAccessorTypesList += ![@typeGalgas_lstring new] ![@lstring new !"" !here] ;
+#      error inClassMethodName : "only 'null' constructor is defined for a mapindex" ;
+      [mReaderMethodMap searchKey !inClassMethodName ?*] ;
+      outAccessorTypesList += !mMapType ![@lstring new !"" !here] ;
+      outAccessorTypesList += ![@typeGalgas_lstring new] ![@lstring new !"" !here] ;
     end if ;
   end method ;
 

@@ -998,7 +998,7 @@ class @typeMethodInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @abstracMultiMethodListAST {
-  @lstring mAbstractCategoryMethodName ;
+  @lstring mAbstractMultiMethodName ;
   @formalParameterListAST mAbstractCategoryFormalParameterList ;
 }
 
@@ -1013,7 +1013,7 @@ listmap @abstractMultiMethodListMapAST (@abstracMultiMethodListAST) ;
 #---------------------------------------------------------------------------*
 
 list @multiMethodListAST {
-  @lstring mCategoryMethodName ;
+  @lstring mMultiMethodName ;
   @formalParameterListAST mCategoryFormalParameterList ;
   @semanticInstructionListAST mRoutineInstructionList ;
 }
@@ -1029,7 +1029,7 @@ listmap @multiMethodListMapAST (@multiMethodListAST) ;
 #---------------------------------------------------------------------------*
 
 list @overridingMultiMethodListAST {
-  @lstring mOverridingCategoryMethodName ;
+  @lstring mOverridingMultiMethodMethodName ;
   @formalParameterListAST mOverridingCategoryFormalParameterList ;
   @semanticInstructionListAST mRoutineInstructionList ;
 }
@@ -1045,7 +1045,7 @@ listmap @overridingMultiMethodListMapAST (@overridingMultiMethodListAST) ;
 #---------------------------------------------------------------------------*
 
 list @abstractMultiReaderListAST {
-  @lstring mAbstractCategoryReaderName ;
+  @lstring mAbstractMultiReaderName ;
   @formalInputParameterListAST mAbstractCategoryFormalInputParameterList ;
   @lstring mReturnedTypeName ;
 }
@@ -1061,7 +1061,7 @@ listmap @abstractMultiReaderListMapAST (@abstractMultiReaderListAST) ;
 #---------------------------------------------------------------------------*
 
 list @multiReaderListAST {
-  @lstring mCategoryReaderName ;
+  @lstring mMultiReaderName ;
   @formalInputParameterListAST mReaderCategoryFormalInputParameterList ;
   @lstring mReturnedTypeName ;
   @lstring mReturnedVariableName ;
@@ -1079,7 +1079,7 @@ listmap @multiReaderListMapAST (@multiReaderListAST) ;
 #---------------------------------------------------------------------------*
 
 list @overridingMultiReaderListAST {
-  @lstring mOverridingCategoryReaderName ;
+  @lstring mOverridingMultiReaderName ;
   @formalInputParameterListAST mOverridingReaderFormalInputParameterList ;
   @lstring mReturnedTypeName ;
   @lstring mReturnedVariableName ;

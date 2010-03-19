@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics buildSemanticContext :
+semantics semanticContext :
   import "semanticsClassMethods.gSemantics" ;
   import "semanticsInstanceMethods.gSemantics" ;
   import "semanticsModifiers.gSemantics" ;
@@ -69,6 +69,9 @@ routine appendPredefinedTypesASTs
 :
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"root" !""] ; # Type, super type
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"class" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"struct" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enum" !"root"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
 #  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
@@ -162,14 +165,6 @@ map @filewrapperMap {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    D E S C E N D A N T    C L A S S    L I S T M A P                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-listmap @descendantClassListMap (@unifiedTypeMapIndexList) ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    S E M A N T I C    C O N T E X T                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -178,7 +173,6 @@ struct @semanticContext {
   @unifiedTypeMap mTypeMap ;
   @routineMap mRoutineMap ;
   @functionMap mFunctionMap ;
-  @descendantClassListMap mDescendantClassListMap ;
   @filewrapperMap mFilewrapperMap ;
   @semanticDeclarationListAST mOrderedSemanticDeclarationListAST ;
 }
@@ -653,7 +647,7 @@ override method @enumDeclarationAST enterType
 #--- Enter type in type map
 #log mEnumTypeName ;
   @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"enum" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mEnumTypeName
     !true # Concrete Type
@@ -822,7 +816,7 @@ override method @structDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Enter in type map
   @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"struct" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mStructTypeName
     !true # Concrete Type
@@ -977,7 +971,7 @@ override method @classDeclarationAST enterType
 #--- Handle super class
   @unifiedTypeMapIndex superClassIndex ;
   if [mSuperClassName string] == "" then
-    [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext->mTypeMap ?superClassIndex] ;
+    [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"class" !here] !?ioSemanticContext->mTypeMap ?superClassIndex] ;
     readerMap := [@readerMap emptyMap] ;
     modifierMap := [@modifierMap emptyMap] ;
     instanceMethodMap := [@instanceMethodMap emptyMap] ;
@@ -1263,7 +1257,7 @@ end method ;
 override method @classDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  const @string actualSuperTypeName := if [mSuperClassName string] == "" then "root" else [mSuperClassName string] end ;
+  const @string actualSuperTypeName := if [mSuperClassName string] == "" then "class" else [mSuperClassName string] end ;
   ioPartiallyOrderedDeclarationList += !actualSuperTypeName ![mClassTypeName string] !self ;
 end method ;
 
@@ -1280,7 +1274,7 @@ end method ;
 override method @structDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"root" ![mStructTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"struct" ![mStructTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1288,7 +1282,7 @@ end method ;
 override method @enumDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"root" ![mEnumTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"enum" ![mEnumTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1404,7 +1398,6 @@ routine buildSemanticContext
     ![@unifiedTypeMap emptyMap]
     ![@routineMap emptyMap]
     ![@functionMap emptyMap]
-    ![@descendantClassListMap emptyMap]
     ![@filewrapperMap emptyMap]
     !orderedSemanticDeclarationListAST
   ] ;

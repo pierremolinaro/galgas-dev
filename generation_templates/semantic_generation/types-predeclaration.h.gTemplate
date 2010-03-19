@@ -6,6 +6,11 @@
 
 #include "galgas2/GALGAS_list.h"
 #include "galgas2/GALGAS_sortedlist.h"
+#include "galgas2/GALGAS_struct.h"
+#include "galgas2/GALGAS_enum.h"
+#include "galgas2/GALGAS_class.h"
+#include "galgas2/GALGAS_map.h"
+#include "galgas2/GALGAS_listmap.h"
 #include "strings/C_String.h"
 #include "collections/TC_Array.h"
 #include "galgas-utilities/C_LocationInSource.h"

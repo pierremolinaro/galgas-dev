@@ -18,8 +18,8 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsDecoratedTypes :
-  import "buildSemanticContext.gSemantics" ;
-  import semantics buildSemanticContext in "buildSemanticContext.gSemantics" ;
+  import "semanticContext.gSemantics" ;
+  import semantics semanticContext in "semanticContext.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
