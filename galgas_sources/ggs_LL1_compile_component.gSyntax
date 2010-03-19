@@ -27,7 +27,7 @@ import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics guiCompilation in "guiCompilation.gSemantics" ;
 import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
 import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
-import semantics galgas_routines in "galgas_routines.gSemantics" ;
+import semantics projectGlobalCheckings in "projectGlobalCheckings.gSemantics" ;
 
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 

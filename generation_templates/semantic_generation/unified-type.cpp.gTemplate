@@ -36,7 +36,9 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
   end if
   %)) ;
   return result ;
-}%
+}
+
+%
 end if
 
 foreach MODIFIER_MAP do

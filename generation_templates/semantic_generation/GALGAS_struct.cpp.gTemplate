@@ -5,7 +5,7 @@ foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   between %,\n%!^
 end foreach% \n%!^%COMMA_LOCATION_ARGS) :
-GALGAS_root (THERE)%
+GALGAS_struct (THERE)%
 foreach ATTRIBUTE_LIST
   do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (NULL)%
 end foreach% {

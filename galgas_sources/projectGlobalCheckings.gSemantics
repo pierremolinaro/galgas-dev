@@ -1,0 +1,332 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS LL1 routines                                                      *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics projectGlobalCheckings :
+  import "semanticsCompilation.gSemantics" ;
+  import "projectMetamodel.gSemantics" ;
+  import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
+  import semantics optionSemantics in "optionSemantics.gSemantics" ;
+  import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+  import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
+  import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
+  import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
+  import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
+  import semantics programMetamodel in "programMetamodel.gSemantics" ;
+  import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
+  import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
+
+  import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
+  import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
+  import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
+  import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
+  import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
+  import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E S C E N D A N T    C L A S S    L I S T M A P                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+listmap @descendantClassListMap (@unifiedTypeMapIndexList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M U L T I    M E T H O D    M A P                                        *
+#                                                                           *
+# Used for checking a multi-method is defined once for a type               *
+#---------------------------------------------------------------------------*
+
+map @multiMethodMap {
+  insert insertKey error message "the '%K' multi method is already declared in %L" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M U L T I    R E A D E R    M A P                                        *
+#                                                                           *
+# Used for checking a multi-method is defined once for a type               *
+#---------------------------------------------------------------------------*
+
+map @multiReaderMap {
+  insert insertKey error message "the '%K' multi reader is already declared in %L" ;
+}
+
+#---------------------------------------------------------------------------*
+
+function outputDirectory
+  ??@lstring inSourceFile
+->
+  @string outOuputDirectory
+:
+  if [inSourceFile characterAtIndex !0] == '/' then
+    outOuputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+    outOuputDirectory .= "/GALGAS_OUTPUT" ;
+  else
+    outOuputDirectory := "GALGAS_OUTPUT" ;
+  end if ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+routine checkMultiMethodDefinitionForClass
+  ??@string inClassNameForErrorSignaling
+  ??@string inClassName
+  ??@lstring inAbstractCategoryMethodName
+  ??@descendantClassListMap inDescendantClassListMap
+  ??@overridingMultiMethodListMapAST inOverridingCategoryMethodListMap
+  ??@unifiedTypeMap inUnifiedTypeMap
+:
+  const @unifiedTypeMapIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
+  foreach descendantClasses do
+    const @lstring descendantClassName := [mType key] ;
+    @overridingMultiMethodListAST overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
+    @bool found := false ;
+    foreach overridingMethods while not found do
+      found := [inAbstractCategoryMethodName string] == [mOverridingMultiMethodMethodName string] ;
+    end foreach ;
+    if not found then
+      @bool isConcrete ;
+      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?14*] ;
+      if not isConcrete then # Does not work in GALGAS 1, mType is an undefined mapindex type
+#      if not [mType mIsConcrete] then # Does not work in GALGAS 1, mType is an undefined mapindex type
+        checkMultiMethodDefinitionForClass
+          !inClassNameForErrorSignaling
+          ![descendantClassName string]
+          !inAbstractCategoryMethodName
+          !inDescendantClassListMap
+          !inOverridingCategoryMethodListMap
+          !inUnifiedTypeMap
+        ;
+      else
+        error inAbstractCategoryMethodName: "an abstract multi method '" . inAbstractCategoryMethodName . "' is defined for abstract class '@"
+        . inClassNameForErrorSignaling
+        . "', but concrete descendant class '@" . descendantClassName . "' does not implement this method" ; 
+      end if ;
+    end if ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine checkMultiReaderDefinitionForClass
+  ??@string inClassNameForErrorSignaling
+  ??@string inClassName
+  ??@lstring inAbstractCategoryReaderName
+  ??@descendantClassListMap inDescendantClassListMap
+  ??@overridingMultiReaderListMapAST inOverridingCategoryReaderListMap
+  ??@unifiedTypeMap inUnifiedTypeMap
+:
+  const @unifiedTypeMapIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
+  foreach descendantClasses do
+    @lstring descendantClassName := [mType key] ;
+    @overridingMultiReaderListAST overridingReaders := [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]] ;
+    @bool found := false ;
+    foreach overridingReaders while not found do
+      found := [inAbstractCategoryReaderName string] == [mOverridingMultiReaderName string] ;
+    end foreach ;
+    if not found then
+      @bool isConcrete ;
+      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?14*] ;
+      if not isConcrete then # Does not work in GALGAS 1, mType is an undefined mapindex type
+#      if not [mType mIsConcrete] then # Does not work in GALGAS 1, mType is an undefined mapindex type
+        checkMultiReaderDefinitionForClass
+          !inClassNameForErrorSignaling
+          ![descendantClassName string]
+          !inAbstractCategoryReaderName
+          !inDescendantClassListMap
+          !inOverridingCategoryReaderListMap
+          !inUnifiedTypeMap
+        ;
+      else
+        error inAbstractCategoryReaderName: "an abstract category reader '" . inAbstractCategoryReaderName . "' is defined for abstract class '@"
+        . inClassNameForErrorSignaling
+        . "', but concrete descendant class '@" . descendantClassName . "' does not implement this reader" ; 
+      end if ;
+    end if ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine performProjectGlobalCheckings
+  ??@parsedComponentStruct inParsedComponentStruct
+  ??@location inEndOfSourceFile
+:
+  @semanticDeclarationListAST semanticDeclarationList [emptyList] ;
+#------ Add predefined types to semantics declarations
+  appendPredefinedTypesASTs !?semanticDeclarationList ;
+#--- Build all declaration list
+  foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+    semanticDeclarationList .= [[mRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+  end foreach ;
+#------ Generate declarations
+  @semanticContext semanticContext ;
+  buildSemanticContext
+    !semanticDeclarationList
+    !inEndOfSourceFile
+    ?semanticContext
+  ;
+#------ Build descendant type list map
+# For every type, a list of its directed descendants is associated
+    @descendantClassListMap descendantClassListMap [emptyMap] ;
+    foreach [semanticContext mTypeMap] do
+       if not [mSuperType isNull] then
+         descendantClassListMap +=
+           ![[mSuperType key] string]
+           ![@unifiedTypeMapIndex searchKey ![semanticContext mTypeMap] !key]
+         ;
+       end if ;
+    end foreach ;
+#------ Check multi methods
+  if [@uint errorCount] == 0 then
+    @abstractMultiMethodListMapAST abstractCategoryMethodListMap [emptyMap] ;
+    @multiMethodListMapAST categoryMethodListMap [emptyMap] ;
+    @overridingMultiMethodListMapAST overridingCategoryMethodListMap [emptyMap];
+    foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+      abstractCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryMethodListMap] ;
+      categoryMethodListMap .= [[mRoot mSemanticDeclarations] mCategoryMethodListMap] ;
+      overridingCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryMethodListMap] ;
+    end foreach ;
+  #--- A given abstract multi method id defined only once for a class
+    foreach abstractCategoryMethodListMap do
+      @multiMethodMap multiMethodMap [emptyMap] ;
+      foreach object do
+        [!?multiMethodMap insertKey !mAbstractMultiMethodName] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given base multi method id defined only once for a class
+    foreach categoryMethodListMap do
+      @multiMethodMap multiMethodMap [emptyMap] ;
+      foreach object do
+        [!?multiMethodMap insertKey !mMultiMethodName] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given overriding multi method id defined only once for a class
+    foreach overridingCategoryMethodListMap do
+      @multiMethodMap multiMethodMap [emptyMap] ;
+      foreach object do
+        [!?multiMethodMap insertKey !mOverridingMultiMethodMethodName] ;
+      end foreach ;
+    end foreach ;  
+#    log abstractCategoryMethodListMap ;
+  #------ Check that for every abstract multi method, an overridden multi method
+  #    defined in an concrete subclass
+    foreach abstractCategoryMethodListMap do
+      foreach object do
+        checkMultiMethodDefinitionForClass
+          !key
+          !key
+          !mAbstractMultiMethodName
+          !descendantClassListMap
+          !overridingCategoryMethodListMap
+          ![semanticContext mTypeMap]
+        ;
+      end foreach ;
+    end foreach ;
+  #------ Check multi readers
+##--- Check that for every abstract category reader, an overridden category reader
+##    defined in an concrete subclass
+  #--- Get all readers
+    @abstractMultiReaderListMapAST abstractCategoryReaderListMap [emptyMap] ;
+    @multiReaderListMapAST categoryReaderListMap [emptyMap] ;
+    @overridingMultiReaderListMapAST overridingCategoryReaderListMap [emptyMap];
+    foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+      abstractCategoryReaderListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryReaderListMap] ;
+      categoryReaderListMap .= [[mRoot mSemanticDeclarations] mCategoryReaderListMap] ;
+      overridingCategoryReaderListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryReaderListMap] ;
+    end foreach ;
+  #--- A given abstract multi reader id defined only once for a class
+    foreach abstractCategoryReaderListMap do
+      @multiReaderMap multiReaderMap [emptyMap] ;
+      foreach object do
+        [!?multiReaderMap insertKey !mAbstractMultiReaderName] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given base multi reader id defined only once for a class
+    foreach categoryReaderListMap do
+      @multiReaderMap multiReaderMap [emptyMap] ;
+      foreach object do
+        [!?multiReaderMap insertKey !mMultiReaderName] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given overriding multi reader id defined only once for a class
+    foreach overridingCategoryReaderListMap do
+      @multiReaderMap multiReaderMap [emptyMap] ;
+      foreach object do
+        [!?multiReaderMap insertKey !mOverridingMultiReaderName] ;
+      end foreach ;
+    end foreach ;  
+  #--- Check every abstract multi reader is implemented by every inherited concrete type
+    foreach abstractCategoryReaderListMap do
+      foreach object do
+        checkMultiReaderDefinitionForClass
+          !key
+          !key
+          !mAbstractMultiReaderName
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
+          ![semanticContext mTypeMap]
+        ;
+      end foreach ;
+    end foreach ;
+  end if ;
+end routine ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   PROJECT                                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+listmap @targetFileListMap (@stringlist) ;
+
+#------------------------------------------------------------------------------*
+
+map @sourceFileMap {
+  @string mFullPath ;
+  @sourceFileKind mSourceKind ;
+  insert insertKey error message "the '%K' source base name has been already declared in %L" ;
+  search searchKey error message "the '%K' source base name is not declared" ;
+}
+
+#------------------------------------------------------------------------------*
+
+filewrapper fileListTemplateFileWrapper in "../generation_templates/file_list_template" {
+ "mke"
+} {
+#--- Project
+  template fileListTemplate "/file_list_template.mke.gTemplate"
+    ?@string HAND_CODED_SOURCES_SUB_DIRS
+    ?@string GALGAS_SOURCE_LIST
+    ?@string HAND_CODED_SOURCE_LIST
+  ;
+}
+
+#---------------------------------------------------------------------------*
+
+#abstract reader @root truc -> @uint out ;
+#override reader @list truc -> @uint out : out := 3 ; end reader ;
+#override reader @class truc -> @uint out : out := 3 ; end reader ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
+
+#---------------------------------------------------------------------------*

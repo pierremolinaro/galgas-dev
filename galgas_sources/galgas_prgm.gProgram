@@ -21,7 +21,7 @@ program galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-  import semantics galgas_routines in "galgas_routines.gSemantics" ;
+  import semantics projectGlobalCheckings in "projectGlobalCheckings.gSemantics" ;
   import semantics projectCreation in "projectCreation.gSemantics" ;
   import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
   import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
