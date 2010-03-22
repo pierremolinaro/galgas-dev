@@ -654,8 +654,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
-                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
+                    "#if CURRENT_LIBPM_VERSION != VERSION_OF_LIBPM_USED_BY_GALGAS_COMPILER\n"
+                    "  #error \"This file has been compiled with a version of GALGAS that uses libpm version VERSION_OF_LIBPM_USED_BY_GALGAS_COMPILER, different than the current version (CURRENT_LIBPM_VERSION) of libpm\"\n"
                     "#endif\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
