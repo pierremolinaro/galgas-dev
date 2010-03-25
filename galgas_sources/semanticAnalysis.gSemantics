@@ -63,7 +63,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 method @semanticDeclarationAST performSemanticAnalysis
-  ?!@semanticContext unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 :
 end method ;
@@ -71,13 +71,11 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST performSemanticAnalysis
-  ?!@semanticContext inSemanticContext
+  ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
-  @unifiedTypeMapIndex idx ;
-  [@unifiedTypeMapIndex makeRegularIndex  ![@lstring new !mPredefinedTypeName !here] !?inSemanticContext->mTypeMap ?idx] ;
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
-    !idx
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
   ] ;
 
 end method ;
@@ -85,22 +83,18 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listDeclarationAST performSemanticAnalysis
-  ?!@semanticContext inSemanticContext
+  ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex idx ;
-    [@unifiedTypeMapIndex makeRegularIndex  !mAttributeTypeName !?inSemanticContext->mTypeMap ?idx] ;
     typedAttributeList +=
-      !idx
+      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
   end foreach ;
-  @unifiedTypeMapIndex idx ;
-  [@unifiedTypeMapIndex makeRegularIndex !mListTypeName !?inSemanticContext->mTypeMap ?idx] ;
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
-    !idx
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mListTypeName]
     !typedAttributeList
   ] ;
 
@@ -109,22 +103,18 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @structDeclarationAST performSemanticAnalysis
-  ?!@semanticContext inSemanticContext
+  ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex idx ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?inSemanticContext->mTypeMap ?idx] ;
     typedAttributeList +=
-      !idx
+      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
   end foreach ;
-  @unifiedTypeMapIndex idx ;
-  [@unifiedTypeMapIndex makeRegularIndex !mStructTypeName !?inSemanticContext->mTypeMap ?idx] ;
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
-    !idx
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mStructTypeName]
     !typedAttributeList
   ] ;
 end method ;
@@ -132,29 +122,25 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @genericTypeTypeAST performSemanticAnalysis
-  ?!@semanticContext inSemanticContext
+  ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
-  @unifiedTypeMapIndex idx ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !mTypeName !here] !?inSemanticContext->mTypeMap ?idx] ;
   ioSemanticDeclarationListForGeneration += ![@genericTypeForGeneration new
-    !idx
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap ![@lstring new !mTypeName !here]]
   ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @classDeclarationAST performSemanticAnalysis
-  ?!@semanticContext inSemanticContext
+  ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex idx ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?inSemanticContext->mTypeMap ?idx] ;
     typedAttributeList +=
-      !idx
+      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
   end foreach ;
@@ -163,18 +149,15 @@ override method @classDeclarationAST performSemanticAnalysis
   if [mSuperClassName string] == "" then
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   else
-    [[inSemanticContext mTypeMap] searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?6*] ;
+    [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?6*] ;
   end if ;
 #------ Super type
   @unifiedTypeMapIndex superClassIndex ;
   if [mSuperClassName string] == "" then
-    [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"class" !here] !?inSemanticContext->mTypeMap ?superClassIndex] ;
+    superClassIndex := [@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap ![@lstring new !"class" !here]] ;
   else
-    [@unifiedTypeMapIndex makeRegularIndex !mSuperClassName !?inSemanticContext->mTypeMap ?superClassIndex] ;
+    superClassIndex := [@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
   end if ;
-#------ Self type
-  @unifiedTypeMapIndex idx ;
-  [@unifiedTypeMapIndex makeRegularIndex !mClassTypeName !?inSemanticContext->mTypeMap ?idx] ;
 #------ Abstract methods
   @abstractMethodDefinitionListForGeneration abstractMethodList [emptyList] ;
   foreach mAbstractMethodList do
@@ -187,7 +170,7 @@ override method @classDeclarationAST performSemanticAnalysis
     foreach mSignature do
       formalParameterListForGeneration +=
         !mFormalParameterPassingMode
-        ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mFormalParameterTypeName]
+        ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName]
         !mFormalParameterName
         !mIsUnused
       ;
@@ -216,7 +199,7 @@ override method @classDeclarationAST performSemanticAnalysis
     foreach mSignature do
       formalParameterListForGeneration +=
         !mFormalParameterPassingMode
-        ![@unifiedTypeMapIndex searchKey ![inSemanticContext mTypeMap] !mFormalParameterTypeName]
+        ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName]
         !mFormalParameterName
         !mIsUnused
       ;
@@ -244,7 +227,7 @@ override method @classDeclarationAST performSemanticAnalysis
   end foreach ;
 #------
   ioSemanticDeclarationListForGeneration += ![@classDeclarationForGeneration new
-    !idx
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mClassTypeName]
     !mIsAbstract
     !mClassTypeName
     !superClassIndex
@@ -262,14 +245,14 @@ end method ;
 
 routine performSemanticAnalysis
   ??@semanticDeclarationListAST inDeclarationList
-  ?!@semanticContext inSemanticContext
+  ??@semanticContext inSemanticContext
   !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
 :
   outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
   
   foreach inDeclarationList do
     [mSemanticDeclaration performSemanticAnalysis
-      !?inSemanticContext
+      !inSemanticContext
       !?outDecoratedDeclarationListForGeneration
     ] ;
   end foreach ;

@@ -664,6 +664,15 @@ class @typeClassToTypeOperand extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+#   F I E L D    A C C E S S                                                *
+#---------------------------------------------------------------------------*
+
+class @typeFieldAccessOperation extends @typeExpression {
+  @typeExpression mExpression ;
+  @lstring mFieldName ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   C A L L    T E S T    M E T H O D    F O R    M A P                     *
 #---------------------------------------------------------------------------*
 
