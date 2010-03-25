@@ -9,9 +9,7 @@ map @classMap {
   search searchKey error message "the '%K' class is not declared" ;
 }
 
-mapindex @classMapIndex (@classMap) {
-  search searchKey error message "the '%K' class is not declared" ;
-}
+mapindex @classMapIndex (@classMap) ;
 
 sortedlist @classesToGenerateList {
   @lstring mClassName ;
