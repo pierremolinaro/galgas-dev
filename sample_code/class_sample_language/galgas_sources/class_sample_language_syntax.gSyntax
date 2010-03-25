@@ -55,9 +55,8 @@ rule <start_symbol> :
       @bool ok := true ;
       loop [classMap count] :
       while ok & [superClassIndex isRegular] do
-        @lstring superClassName ;
-        @classMapIndex superSuperClassIndex ;
-        [superClassIndex searchKey ?superClassName ?superSuperClassIndex] ;
+        const @lstring superClassName := [superClassIndex key] ;
+        const @classMapIndex superSuperClassIndex := [superClassIndex mSuperClassIndex] ;
         ok := not [superClassSet hasKey ![superClassName string]] ;
         superClassSet += ![superClassName string] ;
         classPath := [superClassName string] . "." . classPath ;
