@@ -671,8 +671,8 @@ map @typeSuperClassesMap {
 #---------------------------------------------------------------------------*
 
 list @typeListeAttributsSemantiques {
-  @AC_galgasType mAttributType feature nogetter ;
-  @lstring mAttributeName feature nogetter ;
+  @AC_galgasType mAttributType ;
+  @lstring mAttributeName ;
 }
 
 #---------------------------------------------------------------------------*

@@ -980,6 +980,42 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeFieldAccessOperation::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  mExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << "." << mFieldName ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFieldAccessOperation::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFieldAccessOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFieldAccessOperation::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
