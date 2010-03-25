@@ -1974,6 +1974,7 @@
 		CF76F4CA090E741200036FAC /* grammar_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_parser.h; sourceTree = "<group>"; };
 		CF76F4D8090E742800036FAC /* program_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = program_parser.h; sourceTree = "<group>"; };
 		CF76F4DF090E743800036FAC /* galgas_start.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_start.h; sourceTree = "<group>"; };
+		CF774FC6115BD22A00B3EBE4 /* version_libpm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version_libpm.h; sourceTree = "<group>"; };
 		CF7A1403058CEFE2007126C1 /* galgasDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsDecoratedTypes.cpp; sourceTree = "<group>"; };
 		CF7B55721146AEE90068C5E6 /* semanticsDecoratedTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsDecoratedTypes.h; sourceTree = "<group>"; };
@@ -3343,6 +3344,7 @@
 		CFF5381C057A545B00854C83 /* libpm */ = {
 			isa = PBXGroup;
 			children = (
+				CF774FC6115BD22A00B3EBE4 /* version_libpm.h */,
 				CF4ED36D10D9256F00B4F6AA /* cocoa_debug */,
 				CFB9E4850DF28AC500885084 /* collections */,
 				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
