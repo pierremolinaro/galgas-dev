@@ -1611,6 +1611,7 @@
 		CF24DF12114C29FE00ACF6DE /* GALGAS_sortedlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GALGAS_sortedlist.h; sourceTree = "<group>"; };
 		CF24DF19114C2A0A00ACF6DE /* GALGAS_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_list.cpp; sourceTree = "<group>"; };
 		CF24DF1A114C2A0A00ACF6DE /* GALGAS_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GALGAS_list.h; sourceTree = "<group>"; };
+		CF27F9FA1154060E000B61E7 /* include_typeFieldAccessOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFieldAccessOperation.h; sourceTree = "<group>"; };
 		CF288E53111DEA68004E4E82 /* galgas_prgm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_prgm.cpp; sourceTree = "<group>"; };
 		CF288E54111DEA68004E4E82 /* galgas_prgm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas_prgm.h; sourceTree = "<group>"; };
 		CF2DEAA51101C4C400AE8D35 /* semanticsTypeFeatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsTypeFeatures.cpp; sourceTree = "<group>"; };
@@ -2508,6 +2509,7 @@
 		CF6A7BF9114858E30034A94E /* include-files */ = {
 			isa = PBXGroup;
 			children = (
+				CF27F9FA1154060E000B61E7 /* include_typeFieldAccessOperation.h */,
 				CF6A7BFA114858E30034A94E /* include_AC_elseOrDefaultForCastInstruction.h */,
 				CF6A7BFB114858E30034A94E /* include_AC_galgasType.h */,
 				CF6A7BFC114858E30034A94E /* include_AC_semanticsEntity.h */,

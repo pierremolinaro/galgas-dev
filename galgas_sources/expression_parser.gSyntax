@@ -100,6 +100,16 @@ nonterminal <factor>
 label parse
 ;
 
+nonterminal <primary>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+label parse
+;
+
 nonterminal <read_access>
   !@lstring nomAttribut
   !@typeCplusPlusName nomCppEntite
@@ -1125,11 +1135,115 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    <var>                                                  *
+#   F A C T O R    :    <primary>                                              *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  <primary>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?outExpression
+    ?outResultType
+  ;
+  repeat
+  while
+    $->$ ;
+    $identifier$ ?@lstring fieldName ;
+    cast outResultType :
+    when == @typeGalgasStructType st do
+      @bool found := false ;
+      foreach [st mAttributeList] while not found do
+        found := [fieldName string] == [mAttributeName string] ;
+        outResultType := mAttributType ;
+      end foreach ;
+      if found then
+        outExpression := [@typeFieldAccessOperation new !outExpression !fieldName] ;
+      else
+        error fieldName : "this structure does have a '" . fieldName . "' field" ;
+      end if ;
+    else
+      error fieldName : "only a structure accepts field access" ;
+    end cast ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    not FACTOR                                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  @location operatorLocation := here ;
+  $not$ ;
+  @typeExpression ifCondition ;
+  @AC_galgasType operandType ;
+  <factor>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?ifCondition
+    ?operandType
+  ;
+  outExpression := [@typeTestComplement new !operatorLocation !ifCondition] ;
+  checkNotOperator !operandType ?outResultType ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    ~ FACTOR                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  @location operatorLocation := here ;
+  $~$ ;
+  @typeExpression ifCondition ;
+  @AC_galgasType operandType ;
+  <factor>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?ifCondition
+    ?operandType
+  ;
+  outExpression := [@typeLogicalNegate new !operatorLocation !ifCondition] ;
+  checkLogicalNegateOperator !operandType ?outResultType ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    <var>                                                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1149,7 +1263,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
@@ -1258,7 +1372,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
@@ -1280,71 +1394,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    not FACTOR                                             *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <factor>
-  ??@M_semanticsEntitiesForUse inEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@EXsemanticContext inSemanticContext
-  ?!@typeVariablesMap ioVariablesMap
-  !@typeExpression outExpression
-  !@AC_galgasType outResultType
-:
-  @location operatorLocation := here ;
-  $not$ ;
-  @typeExpression ifCondition ;
-  @AC_galgasType operandType ;
-  <factor>
-    !inEntitiesMap
-    !inOptionsComponentsMapForUse
-    !inSemanticContext
-    !?ioVariablesMap
-    ?ifCondition
-    ?operandType
-  ;
-  outExpression := [@typeTestComplement new !operatorLocation !ifCondition] ;
-  checkNotOperator !operandType ?outResultType ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    ~ FACTOR                                               *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <factor>
-  ??@M_semanticsEntitiesForUse inEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@EXsemanticContext inSemanticContext
-  ?!@typeVariablesMap ioVariablesMap
-  !@typeExpression outExpression
-  !@AC_galgasType outResultType
-:
-  @location operatorLocation := here ;
-  $~$ ;
-  @typeExpression ifCondition ;
-  @AC_galgasType operandType ;
-  <factor>
-    !inEntitiesMap
-    !inOptionsComponentsMapForUse
-    !inSemanticContext
-    !?ioVariablesMap
-    ?ifCondition
-    ?operandType
-  ;
-  outExpression := [@typeLogicalNegate new !operatorLocation !ifCondition] ;
-  checkLogicalNegateOperator !operandType ?outResultType ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
 #   F A C T O R    :    true                                                   *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1363,7 +1417,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1382,7 +1436,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1407,7 +1461,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1427,7 +1481,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1447,7 +1501,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1467,7 +1521,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1487,7 +1541,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1506,7 +1560,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1526,7 +1580,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1545,7 +1599,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1566,7 +1620,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
@@ -1633,12 +1687,11 @@ end rule ;
 #                                                                              *
 #                         F A C T O R                                          *
 #                                                                              *
-#   description          :   [expression description]                          *
 #   reader call          :   [expression reader !... ]                         *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
@@ -1706,7 +1759,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
@@ -1755,7 +1808,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext unused inSemanticContext
@@ -1828,7 +1881,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
@@ -1890,7 +1943,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
@@ -1952,11 +2005,6 @@ rule <read_access>
   ?!@typeVariablesMap ioVariablesMap
 :
   $identifier$ ? nomVariable ;
-#  repeat
-#  while
-#    $->$ ;
-#    $identifier$ ?* ;
-#  end repeat ;
   [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ; 
 end rule ;
 
