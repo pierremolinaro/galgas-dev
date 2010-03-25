@@ -148,7 +148,7 @@ routine compileSemanticsComponent
   @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
     !semanticDeclarationList
-    !?semanticContext
+    !semanticContext
     ?decoratedDeclarationListForGeneration
   ;
 #------ Generate Header File
