@@ -1897,6 +1897,21 @@ class @typeGalgas_data extends @AC_galgasType {
     outTypeName := "data" ;
   end method ;
 
+#--- list object accepts to be enumerated (foreach instruction)
+  override
+  method acceptForeachInstruction
+    ??@M_semanticsEntitiesForUse unused inSemanticsEntitiesForUse
+    ??@location unused inErrorLocation
+    !@typeListeAttributsSemantiques outForeachList
+    !@localConstantBuildStyleEnum outStyle
+    !@bool outNewStyle
+  :
+    outNewStyle := false ;
+    outForeachList := [@typeListeAttributsSemantiques emptyList] ;
+    outForeachList += ![@typeGalgas_uint new] ![@lstring new !"data" !here] ;
+    outStyle := [@localConstantBuildStyleEnum listStyle] ;
+  end method ;
+  
 #--- Constructor
   override method handleConstructorInvocation
     ??@lstring inClassMethodName
