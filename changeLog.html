@@ -18,9 +18,15 @@
  <body>
   <div style="font: Verdana; font-size:small;">
    <p><strong>GALGAS ChangeLog</strong></p>
+   <p>1.9.11</p>
+   <ul>
+     <li>Added <a href="http://galgas.rts-software.org/doku.php?id=data#enumeration_with_foreach_instruction">enumeration of @data objects</a>;</li>
+     <li>Syntax change for the <a href="http://galgas.rts-software.org/doku.php?id=error_instruction">syntax instruction</a>;</li>
+     <li>Syntax change for accessing the <a href="http://galgas.rts-software.org/doku.php?id=struct_types#field_access">struct fields</a>;</li>
+   </ul>
    <p>1.9.10</p>
    <ul>
-    <li>Added <code>--output-abstract-syntax-tree</code> option that ouputs the abstract syntax tree in a .dot file (suitable for Graphviz);</li>
+    <li>Added <code>--output-concrete-syntax-tree</code> option that ouputs the concrete syntax tree in a .dot file (suitable for Graphviz);</li>
     <li>Added default value for <code>@uint</code> and <code>@string</code> command line options;</li>
     <li><span class="hilite">SYNTAX CHANGE</span>: <code>enum</code> declarations use no longer <code>constructor</code> keyword; the legacy construct is still supported, an explanation warning is issued;</li>
     <li>Added <a href="http://galgas.rts-software.org/doku.php?uint_type#xstring">xString reader on @uint type</a>;</li>

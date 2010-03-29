@@ -34,6 +34,15 @@ override method @stringsetPredefinedTypeAST getSuperType
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @dataPredefinedTypeAST getSuperType
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@unifiedTypeMapIndex outSuperType
+:
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"enumerable" !here] !?ioUnifiedTypeMap ?outSuperType] ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  G E T    E N U M E R A T I O N    L I S T                                *
 #                                                                           *
@@ -47,6 +56,18 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !stringTypeIndex !"key" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @dataPredefinedTypeAST getEnumerationList
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@enumerationDescriptorList outEnumerationList
+:
+  @unifiedTypeMapIndex uintTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioUnifiedTypeMap ?uintTypeIndex] ;
+  outEnumerationList := [@enumerationDescriptorList emptyList] ;
+  outEnumerationList += !uintTypeIndex !"data" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -192,7 +213,8 @@ override reader @dataPredefinedTypeAST getSupportedOperatorFlags
 :
   outFlags := generateNativeNewConstructor [] | generateVirtualDestructor []
     | generateDescriptionReaderUtilityMethod []
-    | generateCppConstructorWithNativeAttributeList [] ;
+    | generateCppConstructorWithNativeAttributeList []
+    | generateEnumerationHelperMethods [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
