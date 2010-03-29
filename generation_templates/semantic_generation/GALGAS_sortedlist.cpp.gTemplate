@@ -20,7 +20,7 @@ PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%const GALGAS_
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOperand
-                     %?^%COMMA_LOCATION_ARGS) {
+                     %!^%COMMA_LOCATION_ARGS) {
   if ((ioOperand != NULL) && (ioOperand->retainCount () > 1)) {
     GALGAS_%!TYPE_IDENTIFIER% * p = NULL ;
     macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
