@@ -106,7 +106,7 @@ routine checkMultiMethodDefinitionForClass
     end foreach ;
     if not found then
       @bool isConcrete ;
-      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?14*] ;
+      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?15*] ;
       if not isConcrete then # Does not work in GALGAS 1, mType is an undefined mapindex type
 #      if not [mType mIsConcrete] then # Does not work in GALGAS 1, mType is an undefined mapindex type
         checkMultiMethodDefinitionForClass
@@ -146,7 +146,7 @@ routine checkMultiReaderDefinitionForClass
     end foreach ;
     if not found then
       @bool isConcrete ;
-      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?14*] ;
+      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?15*] ;
       if not isConcrete then # Does not work in GALGAS 1, mType is an undefined mapindex type
 #      if not [mType mIsConcrete] then # Does not work in GALGAS 1, mType is an undefined mapindex type
         checkMultiReaderDefinitionForClass

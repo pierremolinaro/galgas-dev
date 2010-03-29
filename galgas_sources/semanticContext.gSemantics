@@ -274,6 +274,7 @@ override method @predefinedTypeAST enterType
     !addAssignArgumentList
     !minusAssignArgumentList
     ![t getNativeAttributeList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 
@@ -319,6 +320,7 @@ override method @genericTypeTypeAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 
@@ -440,6 +442,7 @@ override method @mapDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 
@@ -457,7 +460,7 @@ override method @mapindexDeclarationAST enterType
     ?typeKindEnum
     ?*
     ?mapTypedAttributeList
-    ?10*
+    ?11*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be a map type" ;
@@ -529,6 +532,7 @@ override method @mapindexDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 
@@ -571,10 +575,11 @@ override method @enumDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
-    !0
+    !generateDescriptionReaderUtilityMethod []
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    !mConstantList
   ] ;
 end method ;
 
@@ -719,6 +724,7 @@ override method @listDeclarationAST enterType
     !constructorAttributeTypeList
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 
@@ -804,6 +810,7 @@ override method @sortedListDeclarationAST enterType
     !constructorAttributeTypeList
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 
@@ -871,6 +878,7 @@ override method @structDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 
@@ -910,7 +918,7 @@ override method @classDeclarationAST enterType
       ?modifierMap
       ?instanceMethodMap
       ?classMethodMap
-      ?5*
+      ?6*
     ] ;
     if typeKindEnum != [@typeKindEnum classType] then
       error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
@@ -995,6 +1003,7 @@ override method @classDeclarationAST enterType
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 
@@ -1059,7 +1068,7 @@ override method @listmapDeclarationAST enterType
     ?typeKindEnum
     ?*
     ?listTypedAttributeList
-    ?10*
+    ?11*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1112,6 +1121,7 @@ override method @listmapDeclarationAST enterType
     !addAssignOperatorDescription
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 

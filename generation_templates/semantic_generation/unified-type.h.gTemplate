@@ -10,6 +10,23 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% 
 
 class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation]% {
 %
+if [ENUM_CONSTANT_LIST length] > 0 then
+%//--------------------------------- Enumeration type declaration
+  private : typedef enum {%
+  foreach ENUM_CONSTANT_LIST
+    do %kEnum_%![mValue identifierRepresentation]
+    between %, %
+  end foreach
+  %} enumeration ;
+
+//--------------------------------- Private attribute
+  private : enumeration mEnumValue ;
+
+//--------------------------------- C++ constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (const enumeration inValue COMMA_LOCATION_ARGS) ;
+
+%
+end if
 
 if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeList []) != 0 then%
 //--------------------------------- C++ constructor\n%

@@ -1308,23 +1308,25 @@ class @sortedListTypeForGeneration extends @semanticTypeForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @enumMessageAssociationListForGeneration {
-  @lstring mConstantName ;
-  @lstring mMessage ;
+sortedlist @enumMessageAssociationSortedListForGeneration {
+  @uint mConstantIndex ;
+  @string mConstantName ;
+  @string mMessage ;
+}{
+  mConstantIndex <
 }
 
 #---------------------------------------------------------------------------*
 
 list @enumMessageListForGeneration {
-  @lstring mEnumMessageName ;
-  @enumMessageAssociationListForGeneration mMessageAssociationList ;
+  @string mEnumMessageName ;
+  @enumMessageAssociationSortedListForGeneration mMessageAssociationList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @enumDeclarationForGeneration extends @semanticDeclarationForGeneration {
-  @lstring mEnumTypeName ;
-  @lstringlist mConstantList ;
+class @enumTypeForGeneration extends @semanticTypeForGeneration {
+  @stringlist mConstantList ;
   @enumMessageListForGeneration mEnumMessageList ;
 }
 

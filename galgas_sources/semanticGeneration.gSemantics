@@ -58,6 +58,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
+    ?@lstringlist ENUM_CONSTANT_LIST
   ;
 
   template unifiedTypeImplementation "unified-type.cpp.gTemplate"
@@ -86,6 +87,13 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
+  ;
+
+  template enumTypeSpecificImplementation "GALGAS_enum.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@stringlist CONSTANT_LIST
+    ?@enumMessageListForGeneration ENUM_MESSAGE_LIST
   ;
 
   template listTypeSpecificImplementation "GALGAS_list.cpp.gTemplate"
@@ -136,6 +144,7 @@ override reader @semanticTypeForGeneration appendDeclaration -> @string outHeade
     ![mTypeIndex mAddAssignOperatorArguments]
     ![mTypeIndex mMinusAssignOperatorArguments]
     ![mTypeIndex mNativeAttributeList]
+    ![mTypeIndex mEnumConstantList]
   ] ;
 end reader ;
 
@@ -242,6 +251,17 @@ override reader @structTypeForGeneration appendSpecificImplementation ->@string 
     ![[mTypeIndex key] string]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @enumTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
+    ![[mTypeIndex key] string]
+    ![mTypeIndex identifierRepresentation]
+    !mConstantList
+    !mEnumMessageList
   ] ;
  end reader ;
 
