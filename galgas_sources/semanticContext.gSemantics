@@ -756,7 +756,7 @@ override method @sortedListDeclarationAST enterType
   ] ;
 #--- Readers
   @readerMap readerMap [emptyMap] ;
-  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"length" !"uint" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"length" !"uint" !false ;
 #--- Modifiers
   @modifierMap modifierMap [emptyMap] ;
   [!?modifierMap insertOrReplace
