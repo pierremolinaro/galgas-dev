@@ -166,6 +166,63 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+map @constantIndexMap {
+  @uint mIndex ;
+  insert insertKey error message "the '%K' constant is already declared" ;
+  search searchKey error message "the '%K' constant is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+override method @enumDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Constant list
+  @stringlist constantList [emptyList] ;
+  @constantIndexMap constantMap [emptyMap] ;
+  foreach mConstantList do
+    constantList += ![mValue string] ;
+    [!?constantMap insertKey !mValue ![constantMap count]] ;
+  end foreach ;
+  const @stringset constantSet := [constantMap allKeys] ;
+#--- Messages
+  @enumMessageListForGeneration enumMessageList [emptyList] ;
+  @stringset messageNameSet [emptySet] ;
+  foreach mEnumMessageList do
+    if [messageNameSet hasKey ![mEnumMessageName string]] then
+      error mEnumMessageName : "this message is already declared for this enum type" ;
+    end if ;
+    messageNameSet += ![mEnumMessageName string] ;
+    @enumMessageAssociationSortedListForGeneration enumMessageAssociationSortedListForGeneration [emptySortedList] ;
+    @stringset usedConstantSet [emptySet] ; # For checking no constant is missed
+    foreach mMessageAssociationList do
+      @uint constantIndex ;
+      [constantMap searchKey !mConstantName ?constantIndex] ;
+      usedConstantSet += ![mConstantName string] ;
+      enumMessageAssociationSortedListForGeneration +=
+        !constantIndex
+        ![mConstantName string]
+        ![mMessage string]
+      ;
+    end foreach ;
+    const @stringset missedConstantSet := constantSet - usedConstantSet ;
+    foreach missedConstantSet do
+      error mEnumMessageName : "the '" . mEnumMessageName . "' message definition does not name the '"
+        . key . "' constant" ;
+    end foreach ;
+    enumMessageList += ![mEnumMessageName string] !enumMessageAssociationSortedListForGeneration ;
+  end foreach ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@enumTypeForGeneration new
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
+    !constantList
+    !enumMessageList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @genericTypeTypeAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -194,7 +251,7 @@ override method @classDeclarationAST performSemanticAnalysis
   if [mSuperClassName string] == "" then
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   else
-    [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?6*] ;
+    [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?7*] ;
   end if ;
 #------ Super type
   @unifiedTypeMapIndex superClassIndex ;

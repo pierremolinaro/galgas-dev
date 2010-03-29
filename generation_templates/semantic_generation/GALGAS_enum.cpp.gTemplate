@@ -1,34 +1,24 @@
 //---------------------------------------------------------------------------*
-//                                                                           *
-//%!["'" . TYPE_NAME . "' enum" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_NAME% (%?^%"%!TYPE_NAME%",
-                                                       %!^%NULL,
-                                                       %!^%(genericObjectCompareFunctionType) GALGAS_%!TYPE_NAME%::objectCompare) ;
-
-//---------------------------------------------------------------------------*
-
-GALGAS_%!TYPE_NAME%::GALGAS_%!TYPE_NAME% (%?COL0%const enum_%!TYPE_NAME% inValue
-%                                         !COL0%COMMA_LOCATION_ARGS) :
-GALGAS_root (THERE),
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^%const enumeration inValue
+%                                         !^%COMMA_LOCATION_ARGS) :
+GALGAS_enum (THERE),
 mEnumValue (inValue) {
 }
 
 %
 foreach CONSTANT_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%!TYPE_NAME% * GALGAS_%!TYPE_NAME%::constructor_%![mValue identifierRepresentation]% (LOCATION_ARGS) {\n%
-  %  GALGAS_%!TYPE_NAME% * result = NULL ;\n%
-  %  macroMyNew (result, GALGAS_%!TYPE_NAME% (kEnum_%![mValue identifierRepresentation]% COMMA_THERE)) ;\n%
+  %GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (LOCATION_ARGS) {\n%
+  %  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;\n%
+  %  macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (kEnum_%![mValue identifierRepresentation]% COMMA_THERE)) ;\n%
   %  return result ;\n%
   %}\n\n%
 end foreach
 
 foreach ENUM_MESSAGE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_string * GALGAS_%!TYPE_NAME%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) {\n%
+  %GALGAS_string * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) {\n%
   %  GALGAS_string * result = NULL ;\n%
   %  switch (mEnumValue) {\n%
   foreach mMessageAssociationList do
@@ -43,8 +33,8 @@ end foreach
 
 foreach ENUM_MESSAGE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_string * readerCall_%![mEnumMessageName identifierRepresentation]% (%?COL%const GALGAS_%!TYPE_NAME% * inReceiver\n%
-                                                                               !COL%COMMA_LOCATION_ARGS) {\n%
+  %GALGAS_string * readerCall_%![mEnumMessageName identifierRepresentation]% (%?^%const GALGAS_%!TYPE_IDENTIFIER% * inReceiver\n%
+                                                                               !^%COMMA_LOCATION_ARGS) {\n%
   %  GALGAS_string * result = NULL ;\n%
   %  if (NULL != inReceiver) {\n%
   %    result = nReceiver->reader_%![mEnumMessageName identifierRepresentation]% (THERE) ;\n%
@@ -55,30 +45,23 @@ end foreach
 %
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_NAME%::description (%?COL_D%C_String & ioString,
-%                                       !COL_D%const PMSInt32 /* inIndentation */) const {
-  ioString << "<enum @%!TYPE_NAME%: " ;
-  switch (mEnumValue) {\n%
-foreach CONSTANT_LIST do
-%  case kEnum_%![mValue identifierRepresentation]%:\n%
-%    ioString << %![mValue utf8Representation]% ;\n%
-%    break ;\n%
-end foreach
-%  }\n
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+%                                       !^%const PMSInt32 /* inIndentation */) const {
+  const char * gEnumNameArray [%![[CONSTANT_LIST length] string]%] = {%
+foreach CONSTANT_LIST
+   do %\n    %![mValue utf8Representation]
+   between %,%
+end foreach%
+  } ;
+  ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArray [mEnumValue] << ">" ;
 }
 
 //---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_NAME%::objectCompare (%?^%const GALGAS_%!TYPE_NAME% * inOperand1,
-                                      %!^%const GALGAS_%!TYPE_NAME% * inOperand2) {
-  macroValidObject (inOperand1, const GALGAS_%!TYPE_NAME%) ;
-  macroValidObject (inOperand2, const GALGAS_%!TYPE_NAME%) ;
+PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand1,
+                                      %!^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand2) {
+  macroValidObject (inOperand1, const GALGAS_%!TYPE_IDENTIFIER%) ;
+  macroValidObject (inOperand2, const GALGAS_%!TYPE_IDENTIFIER%) ;
   return ((PMSInt32) inOperand1->mEnumValue) - ((PMSInt32) inOperand2->mEnumValue) ;
-}
-
-//---------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_%!TYPE_NAME%::typeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_%!TYPE_NAME% ;
 }
 

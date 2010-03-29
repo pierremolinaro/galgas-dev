@@ -106,17 +106,30 @@ routine appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 
-  @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
-  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
-  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
-  @sortedListSortDescriptorListAST sortAttributeList [emptyList] ;
-  sortAttributeList += ![@lstring new !"toto" !here] !true ;
-  sortAttributeList += ![@lstring new !"tata" !here] !false ;
-  ioDeclarationListASTs += ![@sortedListDeclarationAST new
-    ![@lstring new !"Ze_Sorted_List" !here]
-    !attributeList
-    !sortAttributeList
+#--- Example of sorted list
+#  @attributeInCollectionListAST attributeList [emptyList] ;
+#  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
+#  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
+#  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
+#  @sortedListSortDescriptorListAST sortAttributeList [emptyList] ;
+#  sortAttributeList += ![@lstring new !"toto" !here] !true ;
+#  sortAttributeList += ![@lstring new !"tata" !here] !false ;
+#  ioDeclarationListASTs += ![@sortedListDeclarationAST new
+#    ![@lstring new !"Ze_Sorted_List" !here]
+#    !attributeList
+#    !sortAttributeList
+#  ] ;
+
+#--- Example of enum
+  @lstringlist constantList [emptyList] ;
+  constantList += ![@lstring new !"ze_First" !here] ;
+  constantList += ![@lstring new !"ze_Second" !here] ;
+  constantList += ![@lstring new !"ze_Third" !here] ;
+  @enumMessageListAST enumMessageListAST [emptyList] ;
+  ioDeclarationListASTs += ![@enumDeclarationAST new
+    ![@lstring new !"Ze_enumeration" !here]
+    !constantList
+    !enumMessageListAST
   ] ;
 end routine ;
 
