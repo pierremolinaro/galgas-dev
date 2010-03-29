@@ -1290,18 +1290,17 @@ class @structTypeForGeneration extends @semanticTypeForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#list @sortedListSortDescriptorListForGeneration {
-#  @lstring mSortedAttributeName ;
-#  @bool mAscending ;
-#}
+list @sortDescriptorListForGeneration {
+  @uint mAttributeIndex ;
+  @bool mAscendingOrder ;
+}
 
 #---------------------------------------------------------------------------*
 
-#class @sortedListDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @lstring mSortedListTypeName ;
-#  @typedAttributeList mCurrentTypedAttributeList ;
-#  @sortedListSortDescriptorListForGeneration mSortDescriptorList ;
-#}
+class @sortedListTypeForGeneration extends @semanticTypeForGeneration {
+  @typedAttributeList mTypedAttributeList ;
+  @sortDescriptorListForGeneration mSortDescriptorList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

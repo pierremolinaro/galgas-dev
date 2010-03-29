@@ -102,6 +102,51 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+map @attributeIndexMap {
+  @uint mIndex ;
+  insert insertKey error message "the '%K' attribute is already declared" ;
+  search searchKey error message "the '%K' attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Attribute
+  @typedAttributeList typedAttributeList [emptyList] ;
+  @attributeIndexMap attributeIndexMap [emptyMap] ;
+  foreach mAttributeList do
+    typedAttributeList +=
+      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !mAttributeName
+    ;
+    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
+  end foreach ;
+#--- Sort descriptor
+  @stringset attributesUsedForSorting [emptySet] ;
+  @sortDescriptorListForGeneration sortDescriptorList [emptyList] ;
+  foreach mSortDescriptorList do
+    @uint attributeIndex ;
+    [attributeIndexMap searchKey !mSortedAttributeName ?attributeIndex] ;
+    sortDescriptorList += !attributeIndex !mAscending ;
+    if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
+      error mSortedAttributeName : "the '" . mSortedAttributeName . "' is already used for sorting" ;
+    end if ;
+    attributesUsedForSorting += ![mSortedAttributeName string] ;
+  end foreach ;
+#--- Generate type
+  ioSemanticDeclarationListForGeneration += ![@sortedListTypeForGeneration new
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
+    !typedAttributeList
+    !sortDescriptorList
+  ] ;
+
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @structDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration

@@ -1,0 +1,208 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Generate predefined types                                                *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics predefinedTypes :
+  import "semanticGeneration.gSemantics" ;
+
+  import semantics semanticGeneration in "semanticGeneration.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+routine appendPredefinedListTypeAST
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+  ??@string inElementTypeName
+:
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList +=
+    ![@lstring new !inElementTypeName !here]
+    ![@lstring new !"mValue" !here]
+  ;
+  ioDeclarationListASTs += ![@listDeclarationAST new
+    ![@lstring new !inElementTypeName . "list" !here]
+    !attributeList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine appendStructASTForTypeWithLocation
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+  ??@string inElementTypeName
+:
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] ;
+  attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] ;
+  ioDeclarationListASTs += ![@structDeclarationAST new
+    ![@lstring new !"l" . inElementTypeName !here]
+    !attributeList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine appendPredefinedTypesASTs
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+:
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"root" !""] ; # Type, super type
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"class" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"struct" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enum" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
+
+  ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool"] ;
+  ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint"] ;
+  ioDeclarationListASTs += ![@uint64PredefinedTypeAST new !"uint64"] ;
+  ioDeclarationListASTs += ![@sintPredefinedTypeAST new !"sint"] ;
+  ioDeclarationListASTs += ![@sint64PredefinedTypeAST new !"sint64"] ;
+  ioDeclarationListASTs += ![@charPredefinedTypeAST new !"char"] ;
+  ioDeclarationListASTs += ![@doublePredefinedTypeAST new !"double"] ;
+  ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string"] ;
+  ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location"] ;
+  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset"] ;
+  ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object"] ;
+  ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function"] ;
+  ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type"] ;
+  ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset"] ;
+  ioDeclarationListASTs += ![@dataPredefinedTypeAST new !"data"] ;
+
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"luint" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint64" ;
+#  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint" ;
+#  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint64" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"object" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"function" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"string" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"lstring" ;
+  appendPredefinedListTypeAST !?ioDeclarationListASTs !"type" ;
+
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"bool" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint64" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"sint" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"sint64" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"char" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
+  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
+
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
+  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
+  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
+  @sortedListSortDescriptorListAST sortAttributeList [emptyList] ;
+  sortAttributeList += ![@lstring new !"toto" !here] !true ;
+  sortAttributeList += ![@lstring new !"tata" !here] !false ;
+  ioDeclarationListASTs += ![@sortedListDeclarationAST new
+    ![@lstring new !"Ze_Sorted_List" !here]
+    !attributeList
+    !sortAttributeList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper predefinedTypeGenerationTemplate in "../generation_templates/semantic_generation" {
+} {
+  template predefinedTypesHeader "types-predeclaration.h.gTemplate"
+    ?@stringset TYPE_LIST
+  ;
+
+  template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
+  ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# G E N E R A T E    P R E D E F I N E D    T Y P E    F I L E S            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine generatePredefinedTypeFiles ??@string inDirectory :
+  if inDirectory != "" then
+    if not [inDirectory directoryExists] then
+      error here : "the '" . inDirectory . "' directory does not exist" ;
+    else
+    #------ Add predefined types to semantics declarations
+      @semanticDeclarationListAST predefinedTypeASTlist [emptyList] ;
+      appendPredefinedTypesASTs !?predefinedTypeASTlist ;
+    #------ Build Semantic Context
+      @semanticContext semanticContext ;
+      buildSemanticContext
+        !predefinedTypeASTlist
+        !here
+        ?semanticContext
+      ;
+    #------ Semantic Analysis
+      @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+      performSemanticAnalysis
+        !predefinedTypeASTlist
+        !semanticContext
+        ?decoratedDeclarationListForGeneration
+      ;
+    #------ Generate Code
+      @string generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeader
+        ![[semanticContext mTypeMap] allKeys]
+      ] ;
+      foreach decoratedDeclarationListForGeneration do
+        generatedCode .= [mDeclaration appendDeclaration] ;
+      end foreach ;
+      if [@uint errorCount] == 0 then
+        [@string generateFile
+          !inDirectory
+          !"predefined-types.h"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !generatedCode
+          !"\n\n" # Defaut user zone2
+          !"#endif\n"
+        ] ;
+      end if ;
+    #------ Generate implementation
+      generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation] ;
+      foreach decoratedDeclarationListForGeneration do
+        generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
+        generatedCode .= [mDeclaration appendSpecificImplementation] ;
+      end foreach ;
+      if [@uint errorCount] == 0 then
+        [@string generateFile
+          !inDirectory
+          !"predefined-types.cpp"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !generatedCode
+          !"\n\n" # Defaut user zone2
+          !""
+        ] ;
+      end if ;
+    end if ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

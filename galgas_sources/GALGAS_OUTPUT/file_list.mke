@@ -121,6 +121,7 @@ SOURCES += semanticsDecoratedTypes.cpp
 SOURCES += semanticAnalysis.cpp
 SOURCES += semanticGeneration.cpp
 SOURCES += semanticsCompilation.cpp
+SOURCES += predefinedTypes.cpp
 SOURCES += syntaxMetamodel.cpp
 SOURCES += syntaxModelBuilder.cpp
 SOURCES += syntaxSLRgrammar.cpp

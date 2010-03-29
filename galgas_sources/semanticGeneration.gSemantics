@@ -28,7 +28,7 @@ semantics semanticGeneration :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_generation" {
+filewrapper typeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
   template genericTypeHeader "generic-type.h.gTemplate"
     ?@string TYPE_NAME
@@ -79,10 +79,6 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
-  template predefinedTypesHeader "types-predeclaration.h.gTemplate"
-    ?@stringset TYPE_LIST
-  ;
-
   template predefinedTypeSpecificImplementation "predefined-type-specific.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
     ?@modifierMap MODIFIER_MAP
@@ -92,13 +88,15 @@ filewrapper builtinTypeGenerationTemplate in "../generation_templates/semantic_g
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
-  template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
-  ;
-
-
   template listTypeSpecificImplementation "GALGAS_list.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
   ;
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
@@ -121,7 +119,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @semanticTypeForGeneration appendDeclaration -> @string outHeader :
-  outHeader := [filewrapper builtinTypeGenerationTemplate.unifiedTypeHeader
+  outHeader := [filewrapper typeGenerationTemplate.unifiedTypeHeader
     ![[mTypeIndex key] string]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mIsConcrete]
@@ -144,7 +142,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @genericTypeForGeneration appendDeclaration -> @string outHeader :
-  outHeader := [filewrapper builtinTypeGenerationTemplate.genericTypeHeader
+  outHeader := [filewrapper typeGenerationTemplate.genericTypeHeader
     ![[mTypeIndex key] string]
     ![mTypeIndex identifierRepresentation]
   ] ;
@@ -164,7 +162,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
-  outImplementation := [filewrapper builtinTypeGenerationTemplate.unifiedTypeImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.unifiedTypeImplementation
     ![[mTypeIndex key] string]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mIsConcrete]
@@ -188,7 +186,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @genericTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
-  outImplementation := [filewrapper builtinTypeGenerationTemplate.genericTypeImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.genericTypeImplementation
     ![[mTypeIndex key] string]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mSuperType]
@@ -208,7 +206,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @primitiveTypeForGeneration appendSpecificImplementation -> @string outImplementation :
-  outImplementation := [filewrapper builtinTypeGenerationTemplate.predefinedTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.predefinedTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mModifierMap]
     ![mTypeIndex mHandledOperatorFlags]
@@ -221,101 +219,31 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper builtinTypeGenerationTemplate.listTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sortedListTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+    !mSortDescriptorList
   ] ;
  end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper builtinTypeGenerationTemplate.structTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
     ![[mTypeIndex key] string]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
   ] ;
  end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @sortedListDeclarationAST appendSpecificImplementation ->@string outImplementation :
-#  outImplementation := "" ;
-#  @ACGalgasType t := self ; # Bug in GALGAS 1
-#  @sortedlistGalgasType tt := self ; # Bug in GALGAS 1
-#  ioImplementation .= [filewrapper typeGenerationTemplate.sortedlistTypeImplementation
-#    ![t typeIdentifierRepresentation]
-#    ![tt mAttributeList]
-#    ![tt mSortDescriptorList]
-# ] ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# G E N E R A T E    B U I L T I N    T Y P E S                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine generateHeadersOfBuiltinTypes ??@string inDirectory :
-  if inDirectory != "" then
-    if not [inDirectory directoryExists] then
-      error here : "the '" . inDirectory . "' directory does not exist" ;
-    else
-    #------ Add predefined types to semantics declarations
-      @semanticDeclarationListAST predefinedTypeASTlist [emptyList] ;
-      appendPredefinedTypesASTs !?predefinedTypeASTlist ;
-    #------ Build Semantic Context
-      @semanticContext semanticContext ;
-      buildSemanticContext
-        !predefinedTypeASTlist
-        !here
-        ?semanticContext
-      ;
-    #------ Semantic Analysis
-      @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
-      performSemanticAnalysis
-        !predefinedTypeASTlist
-        !semanticContext
-        ?decoratedDeclarationListForGeneration
-      ;
-    #------ Generate Code
-      @string generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesHeader
-        ![[semanticContext mTypeMap] allKeys]
-      ] ;
-      foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendDeclaration] ;
-      end foreach ;
-      if [@uint errorCount] == 0 then
-        [@string generateFile
-          !inDirectory
-          !"predefined-types.h"
-          !"//"
-          !"\n\n" # Defaut user zone1
-          !generatedCode
-          !"\n\n" # Defaut user zone2
-          !"#endif\n"
-        ] ;
-      end if ;
-    #------ Generate implementation
-      generatedCode := [filewrapper builtinTypeGenerationTemplate.predefinedTypesImplementation] ;
-      foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
-        generatedCode .= [mDeclaration appendSpecificImplementation] ;
-      end foreach ;
-      if [@uint errorCount] == 0 then
-        [@string generateFile
-          !inDirectory
-          !"predefined-types.cpp"
-          !"//"
-          !"\n\n" # Defaut user zone1
-          !generatedCode
-          !"\n\n" # Defaut user zone2
-          !""
-        ] ;
-      end if ;
-    end if ;
-  end if ;
-end routine ;
 
 #---------------------------------------------------------------------------*
 
