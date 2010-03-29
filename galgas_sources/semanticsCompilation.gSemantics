@@ -36,6 +36,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
 } {
   template semanticFileHeader "semantic-file.h.gTemplate"
     ?@string COMPONENT_NAME
+    ?@lstringlist IMPORTED_COMPONENT_LIST
     ?@lstringlist TYPE_PREDECLARATION_LIST
   ;
   template semanticFileImplementation "semantic-file.cpp.gTemplate"
@@ -147,7 +148,7 @@ routine compileSemanticsComponent
 #------ Semantic Analysis
   @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
-    !semanticDeclarationList
+    ![[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;
@@ -155,6 +156,7 @@ routine compileSemanticsComponent
   if [@uint errorCount] == 0 then
     @string headerString := [filewrapper typeGenerationTemplate.semanticFileHeader
       ![componentName string]
+      ![semanticsComponentRoot mImportedComponentFileNameList]
       ![[semanticContext mTypeMap] keyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
@@ -189,45 +191,6 @@ routine compileSemanticsComponent
       !"\n"
     ] ;
   end if ;
-##--- Perform Code Generation
-#  if [@uint errorCount] == 0 then
-#    @stringlist predeclarationList [emptyList] ;
-#    foreach declarationSortedListForGeneration do
-#    
-#    end foreach ;
-#    @string headerString := [filewrapper typeGenerationTemplate.semanticFileHeader
-#      ![componentName string]
-#      !predeclarationList
-#    ] ;
-#    @string implementationString := [filewrapper typeGenerationTemplate.semanticFileImplementation
-#      ![componentName string]
-#    ] ;
-#    foreach semanticDeclarationList do
-#      [mSemanticDeclaration generateCode
-#        !?semanticContextEX
-#        !?headerString
-#        !?implementationString
-#      ] ;
-#    end foreach ;
-#    [@string generateFile
-#      !inOutputDirectory
-#      ![componentName string] . ".h"
-#      !"//"
-#      !"\n\n" # Defaut user zone1
-#      !headerString
-#      !"\n\n" # Defaut user zone2
-#      !"#endif\n"
-#    ] ;
-#    [@string generateFile
-#      !inOutputDirectory
-#      ![componentName string] . ".cpp"
-#      !"//"
-#      !"\n\n" # Defaut user zone1
-#      !implementationString
-#      !"\n\n" # Defaut user zone2
-#      !"\n"
-#    ] ;
-#  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
