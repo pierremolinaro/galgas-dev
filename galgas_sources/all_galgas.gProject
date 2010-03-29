@@ -82,6 +82,7 @@ project all_galgas:
   semantics "semanticAnalysis.gSemantics" : makefile ;
   semantics "semanticGeneration.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
+  semantics "predefinedTypes.gSemantics" : makefile ;
 
 #--- Syntax Component
   semantics "syntaxMetamodel.gSemantics" : makefile ;

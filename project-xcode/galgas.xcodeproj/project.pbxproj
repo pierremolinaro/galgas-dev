@@ -898,6 +898,12 @@
 		CFB577010FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
 		CFB577020FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
 		CFB577030FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
+		CFB6B6DA1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
+		CFB6B6DB1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
+		CFB6B6DC1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
+		CFB6B6DD1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
+		CFB6B6DE1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
+		CFB6B6DF1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
 		CFB76EE70E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
 		CFB76EE90E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
 		CFB76EEB0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
@@ -2119,6 +2125,8 @@
 		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
 		CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_actions.cpp; sourceTree = "<group>"; };
 		CFB576FD0FC340DE000B1844 /* scanner_actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner_actions.h; sourceTree = "<group>"; };
+		CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedTypes.cpp; sourceTree = "<group>"; };
+		CFB6B6D91160D26100604D8C /* predefinedTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = predefinedTypes.h; sourceTree = "<group>"; };
 		CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseForXcodeProjectGeneration.cpp; sourceTree = "<group>"; };
 		CFB76EE60E8D7DA300F826A9 /* baseForXcodeProjectGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseForXcodeProjectGeneration.h; sourceTree = "<group>"; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
@@ -3156,6 +3164,8 @@
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */,
+				CFB6B6D91160D26100604D8C /* predefinedTypes.h */,
 				CFBC4D0F11523723006CAD14 /* semanticContext.cpp */,
 				CFBC4D1011523723006CAD14 /* semanticContext.h */,
 				CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */,
@@ -4101,6 +4111,7 @@
 				CFFA4725115383630060C9CD /* GALGAS_class.cpp in Sources */,
 				CFFA472E115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA4739115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
+				CFB6B6DA1160D26100604D8C /* predefinedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4325,6 +4336,7 @@
 				CFFA4727115383630060C9CD /* GALGAS_class.cpp in Sources */,
 				CFFA4730115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473B115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
+				CFB6B6DC1160D26100604D8C /* predefinedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4549,6 +4561,7 @@
 				CFFA4728115383630060C9CD /* GALGAS_class.cpp in Sources */,
 				CFFA4731115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473C115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
+				CFB6B6DD1160D26100604D8C /* predefinedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4812,6 +4825,7 @@
 				CFFA4726115383630060C9CD /* GALGAS_class.cpp in Sources */,
 				CFFA472F115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473A115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
+				CFB6B6DB1160D26100604D8C /* predefinedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5036,6 +5050,7 @@
 				CFFA4729115383630060C9CD /* GALGAS_class.cpp in Sources */,
 				CFFA4732115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473D115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
+				CFB6B6DE1160D26100604D8C /* predefinedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5260,6 +5275,7 @@
 				CFFA472A115383630060C9CD /* GALGAS_class.cpp in Sources */,
 				CFFA4733115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473E115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
+				CFB6B6DF1160D26100604D8C /* predefinedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

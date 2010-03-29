@@ -456,6 +456,14 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 
 %end if
 
+if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
+%//--------------------------------- Abstract method for comparing two sorted list elements
+  protected : virtual PMSInt32
+  compareSortedListElements (const GALGAS_root * inLeftAttributeList [],
+                             const GALGAS_root * inRightAttributeList []) const ;
+
+%end if
+
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Enumerator declaration
   public : class cEnumerator : public AC_GALGAS_Enumerator {

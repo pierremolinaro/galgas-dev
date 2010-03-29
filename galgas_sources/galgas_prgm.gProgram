@@ -34,7 +34,7 @@ program galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
   import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
   import semantics syntaxCompilation in "syntaxCompilation.gSemantics" ;
-  import semantics semanticGeneration in "semanticGeneration.gSemantics" ;
+  import semantics predefinedTypes in "predefinedTypes.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
@@ -49,7 +49,7 @@ before {
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ;
   end if ;
-  generateHeadersOfBuiltinTypes
+  generatePredefinedTypeFiles
     ![option galgas_cli_options.generateHeadersOfBuiltinTypes value]
   ;
 }

@@ -19,7 +19,9 @@
 
 semantics projectGlobalCheckings :
   import "semanticsCompilation.gSemantics" ;
+  import "predefinedTypes.gSemantics" ;
   import "projectMetamodel.gSemantics" ;
+
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
@@ -29,6 +31,7 @@ semantics projectGlobalCheckings :
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
   import semantics programMetamodel in "programMetamodel.gSemantics" ;
   import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
+  import semantics predefinedTypes in "predefinedTypes.gSemantics" ;
   import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
@@ -318,12 +321,6 @@ filewrapper fileListTemplateFileWrapper in "../generation_templates/file_list_te
     ?@string HAND_CODED_SOURCE_LIST
   ;
 }
-
-#---------------------------------------------------------------------------*
-
-#abstract reader @root truc -> @uint out ;
-#override reader @list truc -> @uint out : out := 3 ; end reader ;
-#override reader @class truc -> @uint out : out := 3 ; end reader ;
 
 #---------------------------------------------------------------------------*
 

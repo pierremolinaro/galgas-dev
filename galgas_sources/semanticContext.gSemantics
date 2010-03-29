@@ -31,91 +31,6 @@ semantics semanticContext :
   import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
 
 #---------------------------------------------------------------------------*
-
-routine appendPredefinedListTypeAST
-  ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ??@string inElementTypeName
-:
-  @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList +=
-    ![@lstring new !inElementTypeName !here]
-    ![@lstring new !"mValue" !here]
-  ;
-  ioDeclarationListASTs += ![@listDeclarationAST new
-    ![@lstring new !inElementTypeName . "list" !here]
-    !attributeList
-  ] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine appendStructASTForTypeWithLocation
-  ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ??@string inElementTypeName
-:
-  @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] ;
-  attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] ;
-  ioDeclarationListASTs += ![@structDeclarationAST new
-    ![@lstring new !"l" . inElementTypeName !here]
-    !attributeList
-  ] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine appendPredefinedTypesASTs
-  ?!@semanticDeclarationListAST ioDeclarationListASTs
-:
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"root" !""] ; # Type, super type
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"root"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"class" !"root"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"struct" !"root"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enum" !"root"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
-
-  ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool"] ;
-  ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint"] ;
-  ioDeclarationListASTs += ![@uint64PredefinedTypeAST new !"uint64"] ;
-  ioDeclarationListASTs += ![@sintPredefinedTypeAST new !"sint"] ;
-  ioDeclarationListASTs += ![@sint64PredefinedTypeAST new !"sint64"] ;
-  ioDeclarationListASTs += ![@charPredefinedTypeAST new !"char"] ;
-  ioDeclarationListASTs += ![@doublePredefinedTypeAST new !"double"] ;
-  ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string"] ;
-  ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location"] ;
-  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset"] ;
-  ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object"] ;
-  ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function"] ;
-  ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type"] ;
-  ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset"] ;
-  ioDeclarationListASTs += ![@dataPredefinedTypeAST new !"data"] ;
-
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"luint" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint64" ;
-#  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint" ;
-#  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint64" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"object" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"function" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"string" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"lstring" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"type" ;
-
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"bool" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint64" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"sint" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"sint64" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"char" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
-end routine ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #  R O U T I N E   M A P                                                    *
 #                                                                           *
@@ -692,152 +607,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclarationAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-  @unifiedTypeMapIndex uintType ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioSemanticContext->mTypeMap ?uintType] ;
-#--- Element type index
-  @unifiedTypeMapIndex listTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mSortedListTypeName !?ioSemanticContext->mTypeMap ?listTypeIndex] ;
-#--- Enumeration description
-  @enumerationDescriptorList enumerationDescriptor [emptyList] ;
-  @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
-  @formalParameterSignature modifierFormalArgumentList [emptyList] ;
-  @typedAttributeList typedAttributeList [emptyList] ;
-  foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
-    typedAttributeList += !attributeTypeIndex !mAttributeName ;
-    enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
-    constructorAttributeTypeList += !attributeTypeIndex ;
-    modifierFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
-  end foreach ;
-#--- Constructors
-  @constructorMap constructorMap [emptyMap] ;
-  enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptySortedList" ![mSortedListTypeName string] !false ;
-#--- Readers
-  @readerMap readerMap [emptyMap] ;
-  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"length" !"uint" !false ;
-#--- Modifiers
-  @modifierMap modifierMap [emptyMap] ;
-  [!?modifierMap insertOrReplace
-    ![@lstring new !"popGreatest" !here]
-    !modifierFormalArgumentList
-    !true
-  ] ;
-  [!?modifierMap insertOrReplace
-    ![@lstring new !"popSmallest" !here]
-    !modifierFormalArgumentList
-    !true
-  ] ;
-#--- Instance methods
-  @instanceMethodMap instanceMethodMap [emptyMap] ;
-  [!?instanceMethodMap insertOrReplace
-    ![@lstring new !"greatest" !here]
-    !modifierFormalArgumentList
-    !here
-    !true
-  ] ;
-  [!?instanceMethodMap insertOrReplace
-    ![@lstring new !"smallest" !here]
-    !modifierFormalArgumentList
-    !here
-    !true
-  ] ;
-#--- Enter in type map
-#log mSortedListTypeName ;
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"sortedlist" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
-  [!?ioSemanticContext->mTypeMap insertKey
-    !mSortedListTypeName
-    !true # Concrete Type
-    !superTypeIndex
-    ![@typeKindEnum sortedListType]
-    ![@typedAttributeList emptyList]
-    !typedAttributeList
-    !constructorMap
-    !readerMap
-    !modifierMap
-    !instanceMethodMap
-    ![@classMethodMap emptyMap]
-    !enumerationDescriptor
-    !0
-    !constructorAttributeTypeList
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@nativeAttributeList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @structDeclarationAST enterType
-  ?!@semanticContext ioSemanticContext
-:
-#--- Struct type index
-  @unifiedTypeMapIndex structTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mStructTypeName !?ioSemanticContext->mTypeMap ?structTypeIndex] ;
-#--- Constructors
-  @constructorMap constructorMap [emptyMap] ;
-  @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
-  @typedAttributeList typedAttributeList [emptyList] ;
-  foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
-    constructorAttributeTypeList += !attributeTypeIndex ;
-    typedAttributeList += !attributeTypeIndex !mAttributeName ;
-  end foreach ;
-  [!?constructorMap insertKey
-    ![@lstring new !"new" !here]
-    !constructorAttributeTypeList
-    !false
-    !structTypeIndex
-  ] ;
-#--- Readers
-  @readerMap readerMap [emptyMap] ;
-  foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
-    [!?readerMap insertOrReplace
-      !mAttributeName
-      ![@unifiedTypeMapIndexList emptyList]
-      !false
-      !attributeTypeIndex
-      ![@readerQualifier isBasic]
-      !""
-    ] ;
-  end foreach ;
-#--- Modifiers
-  @modifierMap modifierMap [emptyMap] ;
-#--- Instance methods
-  @instanceMethodMap instanceMethodMap [emptyMap] ;
-#--- Enter in type map
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"struct" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
-  [!?ioSemanticContext->mTypeMap insertKey
-    !mStructTypeName
-    !true # Concrete Type
-    !superTypeIndex
-    ![@typeKindEnum structType]
-    ![@typedAttributeList emptyList]
-    !typedAttributeList
-    !constructorMap
-    !readerMap
-    !modifierMap
-    !instanceMethodMap
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-    !generateVirtualDestructor []
-      | generateCppConstructorWithAttributeList []
-      | generateDescriptionReaderUtilityMethod []
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@nativeAttributeList emptyList]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @listDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
@@ -931,7 +700,6 @@ override method @listDeclarationAST enterType
     !true
   ] ;
 #--- Enter in type map
-#log mListTypeName ;
   @unifiedTypeMapIndex superTypeIndex ;
   [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"list" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
@@ -949,6 +717,158 @@ override method @listDeclarationAST enterType
     !enumerationDescriptor
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | generateCppConstructorWithNativeAttributeList []
     !constructorAttributeTypeList
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+:
+  @unifiedTypeMapIndex uintType ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioSemanticContext->mTypeMap ?uintType] ;
+#--- Element type index
+  @unifiedTypeMapIndex listTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex !mSortedListTypeName !?ioSemanticContext->mTypeMap ?listTypeIndex] ;
+#--- Enumeration description
+  @enumerationDescriptorList enumerationDescriptor [emptyList] ;
+  @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
+  @formalParameterSignature modifierFormalArgumentList [emptyList] ;
+  @typedAttributeList typedAttributeList [emptyList] ;
+  foreach mAttributeList do
+    @unifiedTypeMapIndex attributeTypeIndex ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    typedAttributeList += !attributeTypeIndex !mAttributeName ;
+    enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
+    constructorAttributeTypeList += !attributeTypeIndex ;
+    modifierFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  end foreach ;
+#--- Constructors
+  @constructorMap constructorMap [emptyMap] ;
+  enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptySortedList" ![mSortedListTypeName string] !false ;
+  [!?constructorMap insertKey
+    ![@lstring new !"sortedListWithValue" !here]
+    !constructorAttributeTypeList
+    !false
+    !listTypeIndex
+  ] ;
+#--- Readers
+  @readerMap readerMap [emptyMap] ;
+  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"length" !"uint" !false ;
+#--- Modifiers
+  @modifierMap modifierMap [emptyMap] ;
+  [!?modifierMap insertOrReplace
+    ![@lstring new !"popGreatest" !here]
+    !modifierFormalArgumentList
+    !true
+  ] ;
+  [!?modifierMap insertOrReplace
+    ![@lstring new !"popSmallest" !here]
+    !modifierFormalArgumentList
+    !true
+  ] ;
+#--- Instance methods
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  [!?instanceMethodMap insertOrReplace
+    ![@lstring new !"greatest" !here]
+    !modifierFormalArgumentList
+    !here
+    !true
+  ] ;
+  [!?instanceMethodMap insertOrReplace
+    ![@lstring new !"smallest" !here]
+    !modifierFormalArgumentList
+    !here
+    !true
+  ] ;
+#--- Enter in type map
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"sortedlist" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  [!?ioSemanticContext->mTypeMap insertKey
+    !mSortedListTypeName
+    !true # Concrete Type
+    !superTypeIndex
+    ![@typeKindEnum sortedListType]
+    !typedAttributeList
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    !enumerationDescriptor
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
+      | generateCppConstructorWithNativeAttributeList [] | generateSortedListComparisonMethod []
+    !constructorAttributeTypeList
+    ![@unifiedTypeMapIndexList emptyList]
+    ![@nativeAttributeList emptyList]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @structDeclarationAST enterType
+  ?!@semanticContext ioSemanticContext
+:
+#--- Struct type index
+  @unifiedTypeMapIndex structTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex !mStructTypeName !?ioSemanticContext->mTypeMap ?structTypeIndex] ;
+#--- Constructors
+  @constructorMap constructorMap [emptyMap] ;
+  @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
+  @typedAttributeList typedAttributeList [emptyList] ;
+  foreach mAttributeList do
+    @unifiedTypeMapIndex attributeTypeIndex ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    constructorAttributeTypeList += !attributeTypeIndex ;
+    typedAttributeList += !attributeTypeIndex !mAttributeName ;
+  end foreach ;
+  [!?constructorMap insertKey
+    ![@lstring new !"new" !here]
+    !constructorAttributeTypeList
+    !false
+    !structTypeIndex
+  ] ;
+#--- Readers
+  @readerMap readerMap [emptyMap] ;
+  foreach mAttributeList do
+    @unifiedTypeMapIndex attributeTypeIndex ;
+    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    [!?readerMap insertOrReplace
+      !mAttributeName
+      ![@unifiedTypeMapIndexList emptyList]
+      !false
+      !attributeTypeIndex
+      ![@readerQualifier isBasic]
+      !""
+    ] ;
+  end foreach ;
+#--- Modifiers
+  @modifierMap modifierMap [emptyMap] ;
+#--- Instance methods
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+#--- Enter in type map
+  @unifiedTypeMapIndex superTypeIndex ;
+  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"struct" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  [!?ioSemanticContext->mTypeMap insertKey
+    !mStructTypeName
+    !true # Concrete Type
+    !superTypeIndex
+    ![@typeKindEnum structType]
+    ![@typedAttributeList emptyList]
+    !typedAttributeList
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+    !generateVirtualDestructor []
+      | generateCppConstructorWithAttributeList []
+      | generateDescriptionReaderUtilityMethod []
+    ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
   ] ;

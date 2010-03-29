@@ -217,6 +217,7 @@ function unaryNotOperator -> @uint outMask : outMask := 1 << 13 ; end function ;
 function binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end function ; # exp1 . exp2
 function dotAssignOperator -> @uint outMask : outMask := 1 << 15 ; end function ; # var .= exp ;
 
+function generateSortedListComparisonMethod -> @uint outMask : outMask := 1 << 24 ; end function ;
 function generateEnumerationHelperMethods -> @uint outMask : outMask := 1 << 25 ; end function ;
 function generateCppConstructorWithAttributeList -> @uint outMask : outMask := 1 << 26 ; end function ;
 function generateCppConstructorWithNativeAttributeList -> @uint outMask : outMask := 1 << 27 ; end function ;
