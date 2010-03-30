@@ -3964,7 +3964,6 @@ void C_Grammar_galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & i
     parameter_5.drop () ;
     parameter_6.drop () ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3996,7 +3995,6 @@ void C_Grammar_galgasTemplateGrammar::_performSourceStringParsing_ (C_Compiler &
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*

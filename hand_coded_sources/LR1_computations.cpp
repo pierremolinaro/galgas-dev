@@ -1426,7 +1426,6 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << "  }\n"
-                          "  C_Object::garbage () ;\n"
                           "}\n\n" ;
       //--- Define string parsing static method
         generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
@@ -1473,7 +1472,6 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "    }\n"
                           "  }\n"
                           "  macroReleaseObject (scanner_) ;\n"
-                          "  C_Object::garbage () ;\n"
                           "}\n\n" ;
         currentAltForNonTerminal.next () ;
       }

@@ -469,7 +469,6 @@ void C_Grammar_grammarLL_31_grammar::_performSourceStringParsing_ (C_Compiler & 
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
