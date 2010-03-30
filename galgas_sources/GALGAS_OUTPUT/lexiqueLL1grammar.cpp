@@ -1258,7 +1258,6 @@ void C_Grammar_lexiqueLL_31_grammar::_performSourceStringParsing_ (C_Compiler & 
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*

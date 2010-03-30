@@ -20233,7 +20233,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_ (C_Compil
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20265,7 +20264,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_ (C_Comp
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20313,7 +20311,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importLexi
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20340,7 +20337,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importLe
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20389,7 +20385,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSynt
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20417,7 +20412,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSy
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20467,7 +20461,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSema
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20496,7 +20489,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSe
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20546,7 +20538,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importGram
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20575,7 +20566,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importGr
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20623,7 +20613,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importOpti
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20650,7 +20639,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importOp
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20697,7 +20685,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_compileFil
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20723,7 +20710,6 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_compileF
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*

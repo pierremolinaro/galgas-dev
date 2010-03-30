@@ -11767,7 +11767,6 @@ void C_Grammar_semanticsSLRgrammar::_performSourceFileParsing_ (C_Compiler & inC
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
     parameter_1.drop () ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11794,7 +11793,6 @@ void C_Grammar_semanticsSLRgrammar::_performSourceStringParsing_ (C_Compiler & i
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*

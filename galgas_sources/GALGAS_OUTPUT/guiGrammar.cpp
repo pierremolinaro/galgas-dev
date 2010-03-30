@@ -450,7 +450,6 @@ void C_Grammar_guiGrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
     _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
     parameter_1.drop () ;
   }
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -477,7 +476,6 @@ void C_Grammar_guiGrammar::_performSourceStringParsing_ (C_Compiler & inCompiler
     }
   }
   macroReleaseObject (scanner_) ;
-  C_Object::garbage () ;
 }
 
 //---------------------------------------------------------------------------*

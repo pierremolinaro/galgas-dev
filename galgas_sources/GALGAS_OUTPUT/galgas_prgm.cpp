@@ -1067,7 +1067,6 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     macroReleaseObject (_commonLexique) ;
   }
   C_PrologueEpilogue::runEpilogueActions () ;
-  C_Object::garbage () ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     C_Object::checkAllObjectsHaveBeenReleased () ;
   #endif

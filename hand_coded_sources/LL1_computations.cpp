@@ -766,7 +766,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    }\n"
                           "  }\n"
                           "  macroReleaseObject (scanner_) ;\n"
-                          "  C_Object::garbage () ;\n"
                           "}\n\n" ;
         currentAltForNonTerminal.next () ;
       }

@@ -315,7 +315,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    macroReleaseObject (_commonLexique) ;\n"
                     "  }\n"
                     "  C_PrologueEpilogue::runEpilogueActions () ;\n"
-                    "  C_Object::garbage () ;\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "    C_Object::checkAllObjectsHaveBeenReleased () ;\n"
                     "  #endif\n"
