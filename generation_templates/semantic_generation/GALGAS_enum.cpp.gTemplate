@@ -18,42 +18,32 @@ end foreach
 
 foreach ENUM_MESSAGE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_string * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) {\n%
-  %  GALGAS_string * result = NULL ;\n%
-  %  switch (mEnumValue) {\n%
-  foreach mMessageAssociationList do
-  %  case kEnum_%![mConstantName identifierRepresentation]%:\n%
-  %    result = GALGAS_string::constructor_new (%![mMessage utf8Representation]% COMMA_THERE) ;\n%
-  %    break ;\n%
+  %static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [%![[CONSTANT_LIST length] string]%] = {%
+  foreach mMessageAssociationList
+     do %\n  %![mMessage utf8Representation]
+     between %,%
   end foreach
-  %  }\n%
-  %  return result ;\n%
+  %\n} ;\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_string * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  return GALGAS_string::constructor_new (gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [mEnumValue] COMMA_THERE) ;\n%
   %}\n\n%
 end foreach
 
-foreach ENUM_MESSAGE_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_string * readerCall_%![mEnumMessageName identifierRepresentation]% (%?^%const GALGAS_%!TYPE_IDENTIFIER% * inReceiver\n%
-                                                                               !^%COMMA_LOCATION_ARGS) {\n%
-  %  GALGAS_string * result = NULL ;\n%
-  %  if (NULL != inReceiver) {\n%
-  %    result = nReceiver->reader_%![mEnumMessageName identifierRepresentation]% (THERE) ;\n%
-  %  }\n%
-  %  return result ;\n%
-  %}\n\n%
-end foreach
-%
+%//---------------------------------------------------------------------------*
+
+static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] string]%] = {%
+foreach CONSTANT_LIST
+   do %\n  %![mValue utf8Representation]
+   between %,%
+end foreach%
+} ;
+
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 %                                       !^%const PMSInt32 /* inIndentation */) const {
-  const char * gEnumNameArray [%![[CONSTANT_LIST length] string]%] = {%
-foreach CONSTANT_LIST
-   do %\n    %![mValue utf8Representation]
-   between %,%
-end foreach%
-  } ;
-  ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArray [mEnumValue] << ">" ;
+  ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnumValue] << ">" ;
 }
 
 //---------------------------------------------------------------------------*

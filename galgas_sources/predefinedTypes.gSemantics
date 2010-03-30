@@ -121,16 +121,21 @@ routine appendPredefinedTypesASTs
 #  ] ;
 
 #--- Example of enum
-  @lstringlist constantList [emptyList] ;
-  constantList += ![@lstring new !"ze_First" !here] ;
-  constantList += ![@lstring new !"ze_Second" !here] ;
-  constantList += ![@lstring new !"ze_Third" !here] ;
-  @enumMessageListAST enumMessageListAST [emptyList] ;
-  ioDeclarationListASTs += ![@enumDeclarationAST new
-    ![@lstring new !"Ze_enumeration" !here]
-    !constantList
-    !enumMessageListAST
-  ] ;
+#  @lstringlist constantList [emptyList] ;
+#  constantList += ![@lstring new !"ze_First" !here] ;
+#  constantList += ![@lstring new !"ze_Second" !here] ;
+#  constantList += ![@lstring new !"ze_Third" !here] ;
+#  @enumMessageListAST enumMessageListAST [emptyList] ;
+#  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
+#  enumMessageAssociationListAST += ![@lstring new !"ze_Third" !here] ![@lstring new !"third" !here] ;
+#  enumMessageAssociationListAST += ![@lstring new !"ze_First" !here] ![@lstring new !"first" !here] ;
+#  enumMessageAssociationListAST += ![@lstring new !"ze_Second" !here] ![@lstring new !"second" !here] ;
+#  enumMessageListAST += ![@lstring new !"ze_message" !here] !enumMessageAssociationListAST ;
+#  ioDeclarationListASTs += ![@enumDeclarationAST new
+#    ![@lstring new !"Ze_enumeration" !here]
+#    !constantList
+#    !enumMessageListAST
+#  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
