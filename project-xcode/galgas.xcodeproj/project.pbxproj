@@ -5538,7 +5538,7 @@
 		CF6DF18E09E3F23700506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = i386;
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
