@@ -34,7 +34,6 @@ routine_test_dictionary (void) {
     dictionary.minusAssign_operation (GGS_string (true, s)) ;
   }
   printf ("Delete Test Done\n") ;
-  cPtrDictionaryNode::printStats () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -101,7 +100,6 @@ routine_test_galgas2 (C_Compiler & /*inLexique */) {
 
 //--- End of tests
   printf ("*** GALGAS 2 Test Done\n") ;
-  C_Object::garbage () ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     C_Object::checkAllObjectsHaveBeenReleased () ;
   #endif
