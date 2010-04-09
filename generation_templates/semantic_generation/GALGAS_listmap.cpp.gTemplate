@@ -47,30 +47,6 @@ void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (const GALGAS_%!TYPE_IDENTIFIER% * inOperand1,
-                                                        const GALGAS_%!TYPE_IDENTIFIER% * inOperand2
-                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
-  if ((inOperand1 != NULL) && (inOperand2 != NULL)) {
-    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
-    result->appendList (inOperand1) ;
-    result->appendList (inOperand2) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-void dotAssign_operation (GALGAS_%!TYPE_IDENTIFIER% * & ioResult,
-                          const GALGAS_%!TYPE_IDENTIFIER% * inOperand
-                          COMMA_LOCATION_ARGS) {
-  if ((ioResult != NULL) && (inOperand != NULL)) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-    ioResult->appendList (inOperand) ;
-  }
-}
-//---------------------------------------------------------------------------*
-
 GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (const GALGAS_%!TYPE_IDENTIFIER% * inEnumeratedObject,
                                              const bool inAscending) :
 AC_GALGAS_Enumerator (inEnumeratedObject, inAscending) {
