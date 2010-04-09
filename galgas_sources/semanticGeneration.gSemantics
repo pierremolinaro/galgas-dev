@@ -59,6 +59,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
     ?@lstringlist ENUM_CONSTANT_LIST
+    ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
   ;
 
   template unifiedTypeImplementation "unified-type.cpp.gTemplate"
@@ -98,6 +99,12 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
 
   template listTypeSpecificImplementation "GALGAS_list.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+  template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@string ASSOCIATED_LISTTYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
@@ -145,6 +152,7 @@ override reader @semanticTypeForGeneration appendDeclaration -> @string outHeade
     ![mTypeIndex mMinusAssignOperatorArguments]
     ![mTypeIndex mNativeAttributeList]
     ![mTypeIndex mEnumConstantList]
+    ![mTypeIndex mPrivateDataMemberList]
   ] ;
 end reader ;
 
@@ -231,6 +239,16 @@ override reader @listTypeForGeneration appendSpecificImplementation ->@string ou
   outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @listmapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
+    ![mTypeIndex identifierRepresentation]
+    ![mAssociatedListTypeIndex identifierRepresentation]
+    !mAssociatedListTypedAttributeList
   ] ;
  end reader ;
 

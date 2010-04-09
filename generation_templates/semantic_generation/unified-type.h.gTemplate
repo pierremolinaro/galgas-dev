@@ -398,7 +398,7 @@ foreach NATIVE_ATTRIBUTE_LIST do
     %  public : inline %if mIsPointer then %const % end if!mCppClassName % % if mIsPointer then % * % end if !mGetterName% (void) const { return %!mAttributeName% ; }\n%
   end if
 end foreach
-foreach CURRENT_TYPE_ATTRIBUTE_LIST do
+foreach PRIVATE_DATA_NUMBER_TYPED_LIST do
   %  private : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * mAttribute_% ![mAttributeName identifierRepresentation]% ;\n%
 end foreach
 %
