@@ -249,6 +249,7 @@ map @unifiedTypeMap {
   @unifiedTypeMapIndexList mMinusAssignOperatorArguments ; # Empty list if -= operator is not supported
   @nativeAttributeList mNativeAttributeList ; # Generating type declaration
   @lstringlist mEnumConstantList ;
+  @typedAttributeList mPrivateDataMemberList ;
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;

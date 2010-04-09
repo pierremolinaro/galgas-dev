@@ -223,6 +223,24 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @listmapDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Check associated list is actually a list
+  @typeKindEnum typeKindEnum ;
+  @typedAttributeList listTypeAttributeList ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?13*] ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@listmapTypeForGeneration new
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
+    !listTypeAttributeList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @genericTypeTypeAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -251,7 +269,7 @@ override method @classDeclarationAST performSemanticAnalysis
   if [mSuperClassName string] == "" then
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   else
-    [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?7*] ;
+    [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?8*] ;
   end if ;
 #------ Super type
   @unifiedTypeMapIndex superClassIndex ;

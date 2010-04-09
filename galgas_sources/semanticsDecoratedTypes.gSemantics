@@ -1148,17 +1148,6 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    L I S T M A P    D E C L A R A T I O N                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#class @listmapDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @lstring mListmapTypeName ;
-#  @lstring mAssociatedListTypeName ;
-#}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    M A P    D E C L A R A T I O N                                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1244,6 +1233,17 @@ class @classDeclarationForGeneration extends @semanticTypeForGeneration {
 #  @classMessageDefinitionListForGeneration mMessageList ;
 #  @lazyAttributeListForGeneration mLazyAttributeList ;
 #  @string mClassMessage ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T M A P    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listmapTypeForGeneration extends @semanticTypeForGeneration {
+  @unifiedTypeMapIndex mAssociatedListTypeIndex ;
+  @typedAttributeList mAssociatedListTypedAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
