@@ -753,7 +753,7 @@ generate_header_file (C_Compiler & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  inLexique.generateFile ("//",
+  inLexique.generateFileInGALGAS_OUTPUT ("//",
                           nomComposant + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
@@ -1362,7 +1362,7 @@ generate_cpp_file (C_Compiler & inLexique,
   generatedZone3.appendCppHyphenLineComment () ;
 
 //--- Generate file
-  inLexique.generateFile ("//",
+  inLexique.generateFileInGALGAS_OUTPUT ("//",
                           nomComposant + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,

@@ -415,7 +415,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   const C_String separateFileName = C_String ("include_") + aNomClasse + ".h" ;
   if (mHasGeneratedInSeparateFileSetting.boolValue ()) {
     generatedZone3.appendCppHyphenLineComment () ;
-    inLexique.generateFile ("//",
+    inLexique.generateFileInGALGAS_OUTPUT ("//",
                             separateFileName,
                             "\n\n", // User Zone 1
                             generatedZone2,
