@@ -57,7 +57,7 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  inLexique.generateFile ("//",
+  inLexique.generateFileInGALGAS_OUTPUT ("//",
                           inProgramComponentName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
@@ -324,7 +324,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  return returnCode ;\n"
                     "}\n\n" ;
 //--- Generate file
-  inLexique.generateFile ("//",
+  inLexique.generateFileInGALGAS_OUTPUT ("//",
                           inProgramComponentName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,

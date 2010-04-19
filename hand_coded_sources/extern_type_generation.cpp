@@ -85,7 +85,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   C_String generatedZone3 ;
   generatedZone3 << "} ;\n\n" ;
 
-  inLexique.generateFile ("//",
+  inLexique.generateFileInGALGAS_OUTPUT ("//",
                           C_String ("GGS_") + mGalgasName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
