@@ -190,10 +190,10 @@
   }
 //--- Add Update Tab view
   NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
-  NSTabViewItem * updateTabViewItem = [[[NSTabViewItem alloc] init] autorelease] ;
-  [updateTabViewItem setView:mUpdateView] ;
-  [updateTabViewItem setLabel:@"Update"] ;
-  [prefsTabView addTabViewItem:updateTabViewItem] ;
+  NSTabViewItem * tabViewItem = [[[NSTabViewItem alloc] init] autorelease] ;
+  [tabViewItem setView:mUpdateView] ;
+  [tabViewItem setLabel:@"Update"] ;
+  [prefsTabView addTabViewItem:tabViewItem] ;
 //--- Add bindings
   [mCheckUpdateAtStartUpCheckBox
     bind:@"value"
@@ -240,6 +240,14 @@
   if ([ud boolForKey:@"GGS_check_update_at_start_up"]) {
     [self checkForNewVersion:nil] ;
   }
+//----------------------------------------- Change Log Tab Item
+//--- Add 'ChangeLog' tab item
+  tabViewItem = [[[NSTabViewItem alloc] init] autorelease] ;
+  [tabViewItem setView:mViewForChangeLogInPreferencePane] ;
+  [tabViewItem setLabel:@"Change Log"] ;
+  [prefsTabView addTabViewItem:tabViewItem] ;
+  NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
+  [[mChangeLogInPreferencePaneWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 //--------------------------------------------------------------------------*

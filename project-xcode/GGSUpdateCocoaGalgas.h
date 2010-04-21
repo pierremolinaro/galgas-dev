@@ -22,6 +22,8 @@
   @private IBOutlet NSButton * mPerformUpdateButton ;
   @private IBOutlet NSTextField * mNewVersionTextField ;
   @private IBOutlet WebView * mChangeLogWebView ;
+  @private IBOutlet NSView * mViewForChangeLogInPreferencePane ;
+  @private IBOutlet WebView * mChangeLogInPreferencePaneWebView ;
   
   @private IBOutlet NSView * mUpdateView ;
   
