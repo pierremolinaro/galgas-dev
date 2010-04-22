@@ -1161,15 +1161,16 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 
 #---------------------------------------------------------------------------*
 
-#class @mapDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @lstring mMapTypeName ;
+class @mapTypeForGeneration extends @semanticTypeForGeneration {
+  @lstring mMapTypeName ;
 #  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
 #  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
-#  @attributeInCollectionListForGeneration mAttributeList ;
+  @typedAttributeList mTypedAttributeList ;
 #  @mapMethodListForGeneration mInsertMethodList ;
 #  @mapMethodListForGeneration mSearchMethodList ;
 #  @mapMethodListForGeneration mRemoveMethodList ;
-#}
+  @bool mHasInsertOrReplaceModifier ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1222,7 +1223,7 @@ list @methodDefinitionListForGeneration {
 
 #---------------------------------------------------------------------------*
 
-class @classDeclarationForGeneration extends @semanticTypeForGeneration {
+class @classTypeForGeneration extends @semanticTypeForGeneration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
   @unifiedTypeMapIndex mSuperClass ; # Null if no super class

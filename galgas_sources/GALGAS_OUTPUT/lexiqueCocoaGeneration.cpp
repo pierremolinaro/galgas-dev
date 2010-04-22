@@ -83,7 +83,7 @@ findCategoryReader__lexicalExpressionAST__generateCocoaConditionCode (AC_galgasC
   if (inClassPtr->slotID () < gDispatchTableForReader__lexicalExpressionAST__generateCocoaConditionCode.count ()) {
     result = gDispatchTableForReader__lexicalExpressionAST__generateCocoaConditionCode (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryReader__lexicalExpressionAST__generateCocoaConditionCode (superClassPtr) ;
@@ -251,7 +251,7 @@ findCategoryReader__lexicalRoutineOrFunctionFormalInputArgumentAST__generateCoco
   if (inClassPtr->slotID () < gDispatchTableForReader__lexicalRoutineOrFunctionFormalInputArgumentAST__generateCocoaRoutineOrFunctionArgument.count ()) {
     result = gDispatchTableForReader__lexicalRoutineOrFunctionFormalInputArgumentAST__generateCocoaRoutineOrFunctionArgument (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryReader__lexicalRoutineOrFunctionFormalInputArgumentAST__generateCocoaRoutineOrFunctionArgument (superClassPtr) ;
@@ -400,7 +400,7 @@ findCategoryReader__abstractLexicalRoutineActualArgumentAST__generateCocoaRoutin
   if (inClassPtr->slotID () < gDispatchTableForReader__abstractLexicalRoutineActualArgumentAST__generateCocoaRoutineArgument.count ()) {
     result = gDispatchTableForReader__abstractLexicalRoutineActualArgumentAST__generateCocoaRoutineArgument (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryReader__abstractLexicalRoutineActualArgumentAST__generateCocoaRoutineArgument (superClassPtr) ;
@@ -494,7 +494,7 @@ findCategoryReader__lexicalSendDefaultActionAST__generateCocoaDefaultSendCode (A
   if (inClassPtr->slotID () < gDispatchTableForReader__lexicalSendDefaultActionAST__generateCocoaDefaultSendCode.count ()) {
     result = gDispatchTableForReader__lexicalSendDefaultActionAST__generateCocoaDefaultSendCode (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryReader__lexicalSendDefaultActionAST__generateCocoaDefaultSendCode (superClassPtr) ;
@@ -578,7 +578,7 @@ findCategoryReader__lexicalInstructionAST__generateCocoaInstructionCode (AC_galg
   if (inClassPtr->slotID () < gDispatchTableForReader__lexicalInstructionAST__generateCocoaInstructionCode.count ()) {
     result = gDispatchTableForReader__lexicalInstructionAST__generateCocoaInstructionCode (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryReader__lexicalInstructionAST__generateCocoaInstructionCode (superClassPtr) ;
@@ -959,7 +959,7 @@ findCategoryReader__abstractLexicalRuleAST__generateCocoaCode (AC_galgasClassRun
   if (inClassPtr->slotID () < gDispatchTableForReader__abstractLexicalRuleAST__generateCocoaCode.count ()) {
     result = gDispatchTableForReader__abstractLexicalRuleAST__generateCocoaCode (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryReader__abstractLexicalRuleAST__generateCocoaCode (superClassPtr) ;

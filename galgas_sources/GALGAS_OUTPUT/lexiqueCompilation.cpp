@@ -73,7 +73,7 @@ findCategoryMethod__lexicalSendDefaultActionAST__checkLexicalDefaultAction (AC_g
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalSendDefaultActionAST__checkLexicalDefaultAction.count ()) {
     result = gDispatchTableForMethod__lexicalSendDefaultActionAST__checkLexicalDefaultAction (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalSendDefaultActionAST__checkLexicalDefaultAction (superClassPtr) ;
@@ -146,7 +146,7 @@ findCategoryMethod__lexicalExpressionAST__checkLexicalExpression (AC_galgasClass
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalExpressionAST__checkLexicalExpression.count ()) {
     result = gDispatchTableForMethod__lexicalExpressionAST__checkLexicalExpression (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalExpressionAST__checkLexicalExpression (superClassPtr) ;
@@ -290,7 +290,7 @@ findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexical
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalFunctionCallArgument.count ()) {
     result = gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalFunctionCallArgument (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalFunctionCallArgument (superClassPtr) ;
@@ -463,7 +463,7 @@ findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexical
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalRoutineCallArgument.count ()) {
     result = gDispatchTableForMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalRoutineCallArgument (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalRoutineCallArgument (superClassPtr) ;
@@ -636,7 +636,7 @@ findCategoryMethod__abstractLexicalRoutineActualArgumentAST__checkLexicalRoutine
   if (inClassPtr->slotID () < gDispatchTableForMethod__abstractLexicalRoutineActualArgumentAST__checkLexicalRoutineCallArgument.count ()) {
     result = gDispatchTableForMethod__abstractLexicalRoutineActualArgumentAST__checkLexicalRoutineCallArgument (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__abstractLexicalRoutineActualArgumentAST__checkLexicalRoutineCallArgument (superClassPtr) ;
@@ -729,7 +729,7 @@ findCategoryMethod__lexicalInstructionAST__checkLexicalInstruction (AC_galgasCla
   if (inClassPtr->slotID () < gDispatchTableForMethod__lexicalInstructionAST__checkLexicalInstruction.count ()) {
     result = gDispatchTableForMethod__lexicalInstructionAST__checkLexicalInstruction (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__lexicalInstructionAST__checkLexicalInstruction (superClassPtr) ;
@@ -1127,7 +1127,7 @@ findCategoryMethod__abstractLexicalRuleAST__checkLexicalRule (AC_galgasClassRunT
   if (inClassPtr->slotID () < gDispatchTableForMethod__abstractLexicalRuleAST__checkLexicalRule.count ()) {
     result = gDispatchTableForMethod__abstractLexicalRuleAST__checkLexicalRule (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__abstractLexicalRuleAST__checkLexicalRule (superClassPtr) ;

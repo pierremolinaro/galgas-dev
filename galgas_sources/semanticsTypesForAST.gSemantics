@@ -1147,15 +1147,15 @@ list @mapMethodListAST {
 #---------------------------------------------------------------------------*
 
 list @insertOrReplaceDeclarationListAST {
-  @location mInsertOrReplaceDeclarationLocation ; # §
+  @location mInsertOrReplaceDeclarationLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @mapDeclarationAST extends @semanticDeclarationAST {
   @lstring mMapTypeName ;
-  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
-  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
+#  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
+#  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
   @attributeInCollectionListAST mAttributeList ;
   @mapMethodListAST mInsertMethodList ;
   @mapMethodListAST mSearchMethodList ;

@@ -108,6 +108,12 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+  template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@bool HAS_INSERT_OR_REPLACE 
+  ;
+
   template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
@@ -249,6 +255,16 @@ override reader @listmapTypeForGeneration appendSpecificImplementation ->@string
     ![mTypeIndex identifierRepresentation]
     ![mAssociatedListTypeIndex identifierRepresentation]
     !mAssociatedListTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+    !mHasInsertOrReplaceModifier
   ] ;
  end reader ;
 

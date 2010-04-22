@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ("%?^!TYPE_NAME%",
+kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% (%?^%"%!TYPE_NAME%",
                        %!^%& kTypeDescriptor_GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation]%,
                        %!^%(genericObjectCompareFunctionType) GALGAS_%!TYPE_IDENTIFIER%::objectCompare) ;
 
@@ -62,7 +62,7 @@ foreach MODIFIER_MAP do
   else
     %\n%!^%COMMA_LOCATION_ARGS%
   end if  
-  %) {\n
+  %) {
   if (ioResult != NULL) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
     ioResult->modifier_%![key identifierRepresentation]% (%

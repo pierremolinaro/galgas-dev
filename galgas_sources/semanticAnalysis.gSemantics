@@ -252,6 +252,35 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @mapDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+#------ Enter attributes
+  @typedAttributeList typedAttributeList [emptyList] ;
+  foreach mAttributeList do
+    typedAttributeList +=
+      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !mAttributeName
+    ;
+  end foreach ;
+#--- Warn for duplicated declarations or 'insertOrReplace' modifier
+  foreach mInsertOrReplaceDeclarationListAST index IDX do
+    if IDX > 0 then
+      warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' modifier is already declared" ;
+    end if ;
+  end foreach ;
+#--- Enter map declaration
+  ioSemanticDeclarationListForGeneration += ![@mapTypeForGeneration new
+    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mMapTypeName]
+    !mMapTypeName
+    !typedAttributeList
+    ![mInsertOrReplaceDeclarationListAST length] > 0
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @classDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -346,7 +375,7 @@ override method @classDeclarationAST performSemanticAnalysis
     ;
   end foreach ;
 #------
-  ioSemanticDeclarationListForGeneration += ![@classDeclarationForGeneration new
+  ioSemanticDeclarationListForGeneration += ![@classTypeForGeneration new
     ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mClassTypeName]
     !mIsAbstract
     !mClassTypeName

@@ -66,7 +66,7 @@ findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstru
   if (inClassPtr->slotID () < gDispatchTableForMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1.count ()) {
     result = gDispatchTableForMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__abstractSyntaxInstructionForGrammarAnalysis__fixSyntaxInstructionList_V1 (superClassPtr) ;

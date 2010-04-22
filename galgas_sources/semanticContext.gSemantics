@@ -348,7 +348,7 @@ override method @mapDeclarationAST enterType
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
 #--- Readers
-  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
@@ -410,13 +410,23 @@ override method @mapDeclarationAST enterType
       !""
     ] ;
   end foreach ;
-#--- Enter "set...Attribute...forKey" modifiers
+#---------- Handle "insertOrReplace" modifier
+  if [mInsertOrReplaceDeclarationListAST length] >= 1 then
+    @location insertOrReplaceLocation ;
+    [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation] ;
+    [!?modifierMap insertOrReplace
+      ![@lstring new !"insertOrReplace" !insertOrReplaceLocation]
+      !insertMethodFormalArgumentList
+      !false
+    ] ;
+  end if ;
+#---------- Enter "set...Attribute...forKey" modifiers
   foreach mAttributeList do
     const @lstring accessorName [new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
     @unifiedTypeMapIndex attributeTypeIndex ;
     [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
-    accessorFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
     accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
     [!?modifierMap insertOrReplace
       !accessorName
@@ -440,7 +450,7 @@ override method @mapDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
-    !0
+    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
     ![@unifiedTypeMapIndexList emptyList]
     ![@unifiedTypeMapIndexList emptyList]
     ![@nativeAttributeList emptyList]
