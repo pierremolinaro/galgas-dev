@@ -106,11 +106,30 @@ routine appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 
-#--- Example of listmap type
-  ioDeclarationListASTs += ![@listmapDeclarationAST new
-    ![@lstring new !"zeListMap" !here]
-    ![@lstring new !"uintlist" !here]
+#--- Example of map type
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
+  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
+  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
+  @mapMethodListAST insertMethodList [emptyList] ;
+  @mapMethodListAST searchMethodList [emptyList] ;
+  @mapMethodListAST removeMethodList [emptyList] ;
+  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
+  ioDeclarationListASTs += ![@mapDeclarationAST new
+    ![@lstring new !"zeMap" !here]
+    !attributeList
+    !insertMethodList
+    !searchMethodList
+    !removeMethodList
+    !insertOrReplaceDeclarationListAST
   ] ;
+
+#--- Example of listmap type
+#  ioDeclarationListASTs += ![@listmapDeclarationAST new
+#    ![@lstring new !"zeListMap" !here]
+#    ![@lstring new !"uintlist" !here]
+#  ] ;
+
 #--- Example of sorted list
 #  @attributeInCollectionListAST attributeList [emptyList] ;
 #  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;

@@ -148,18 +148,18 @@ rule <semantic_declaration>
 #--- Map type name
   $type_name$ ? @lstring mMapTypeName ;
 #--- Enum type name
-  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
-  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
-  select
-    mAssociatedEnumTypeName := [@lstring new !"" !here] ;
-    mAssociatedTerminaisonMethodName := [@lstring new !"" !here] ;
-  or
-    $($ ;
-    $type_name$ ? mAssociatedEnumTypeName ;
-    $:$ ;
-    $identifier$ ? mAssociatedTerminaisonMethodName ;
-    $)$ ;
-  end select ;
+#  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
+#  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
+#  select
+#    mAssociatedEnumTypeName := [@lstring new !"" !here] ;
+#    mAssociatedTerminaisonMethodName := [@lstring new !"" !here] ;
+#  or
+#    $($ ;
+#    $type_name$ ? mAssociatedEnumTypeName ;
+#    $:$ ;
+#    $identifier$ ? mAssociatedTerminaisonMethodName ;
+#    $)$ ;
+#  end select ;
 #--- Map properties
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
@@ -189,8 +189,8 @@ rule <semantic_declaration>
   $}$ ;
   ioSemanticDeclarations->mSemanticDeclarationList += ![@mapDeclarationAST new
     !mMapTypeName
-    !mAssociatedEnumTypeName
-    !mAssociatedTerminaisonMethodName
+#    !mAssociatedEnumTypeName
+#    !mAssociatedTerminaisonMethodName
     !mAttributeList
     !mInsertMethodList
     !mSearchMethodList

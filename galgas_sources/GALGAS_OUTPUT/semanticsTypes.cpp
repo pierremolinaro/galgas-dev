@@ -10666,7 +10666,7 @@ findCategoryMethod__predefinedTypeAST__getSuperType (AC_galgasClassRunTimeInform
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getSuperType.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getSuperType (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getSuperType (superClassPtr) ;
@@ -10717,7 +10717,7 @@ findCategoryMethod__predefinedTypeAST__getConstructorMap (AC_galgasClassRunTimeI
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getConstructorMap.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getConstructorMap (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getConstructorMap (superClassPtr) ;
@@ -10768,7 +10768,7 @@ findCategoryMethod__predefinedTypeAST__getReaderMap (AC_galgasClassRunTimeInform
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getReaderMap.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getReaderMap (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getReaderMap (superClassPtr) ;
@@ -10819,7 +10819,7 @@ findCategoryMethod__predefinedTypeAST__getModifierMap (AC_galgasClassRunTimeInfo
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getModifierMap.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getModifierMap (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getModifierMap (superClassPtr) ;
@@ -10870,7 +10870,7 @@ findCategoryMethod__predefinedTypeAST__getInstanceMethodMap (AC_galgasClassRunTi
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getInstanceMethodMap.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getInstanceMethodMap (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getInstanceMethodMap (superClassPtr) ;
@@ -10921,7 +10921,7 @@ findCategoryMethod__predefinedTypeAST__getClassMethodMap (AC_galgasClassRunTimeI
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getClassMethodMap.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getClassMethodMap (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getClassMethodMap (superClassPtr) ;
@@ -10981,7 +10981,7 @@ findCategoryReader__predefinedTypeAST__getSupportedOperatorFlags (AC_galgasClass
   if (inClassPtr->slotID () < gDispatchTableForReader__predefinedTypeAST__getSupportedOperatorFlags.count ()) {
     result = gDispatchTableForReader__predefinedTypeAST__getSupportedOperatorFlags (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryReader__predefinedTypeAST__getSupportedOperatorFlags (superClassPtr) ;
@@ -11035,7 +11035,7 @@ findCategoryMethod__predefinedTypeAST__getAddAssignArgumentList (AC_galgasClassR
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getAddAssignArgumentList.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getAddAssignArgumentList (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getAddAssignArgumentList (superClassPtr) ;
@@ -11086,7 +11086,7 @@ findCategoryMethod__predefinedTypeAST__getMinusAssignArgumentList (AC_galgasClas
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getMinusAssignArgumentList.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getMinusAssignArgumentList (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getMinusAssignArgumentList (superClassPtr) ;
@@ -11146,7 +11146,7 @@ findCategoryReader__predefinedTypeAST__getNativeAttributeList (AC_galgasClassRun
   if (inClassPtr->slotID () < gDispatchTableForReader__predefinedTypeAST__getNativeAttributeList.count ()) {
     result = gDispatchTableForReader__predefinedTypeAST__getNativeAttributeList (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryReader__predefinedTypeAST__getNativeAttributeList (superClassPtr) ;
@@ -11200,7 +11200,7 @@ findCategoryMethod__predefinedTypeAST__getEnumerationList (AC_galgasClassRunTime
   if (inClassPtr->slotID () < gDispatchTableForMethod__predefinedTypeAST__getEnumerationList.count ()) {
     result = gDispatchTableForMethod__predefinedTypeAST__getEnumerationList (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__predefinedTypeAST__getEnumerationList (superClassPtr) ;

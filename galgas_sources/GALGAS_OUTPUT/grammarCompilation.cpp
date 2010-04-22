@@ -250,7 +250,7 @@ findCategoryMethod__syntaxInstructionAST__transformInstruction (AC_galgasClassRu
   if (inClassPtr->slotID () < gDispatchTableForMethod__syntaxInstructionAST__transformInstruction.count ()) {
     result = gDispatchTableForMethod__syntaxInstructionAST__transformInstruction (inClassPtr->slotID () COMMA_HERE) ;
   }
-  if (result == NULL) {
+  if (NULL == result) {
     AC_galgasClassRunTimeInformationEX * superClassPtr = inClassPtr->superClassPtr () ;
     if (superClassPtr != NULL) {
       result = findCategoryMethod__syntaxInstructionAST__transformInstruction (superClassPtr) ;
