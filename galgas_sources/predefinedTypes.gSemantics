@@ -111,7 +111,7 @@ routine appendPredefinedTypesASTs
   attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
   attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
   attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
-  @mapMethodListAST insertMethodList [emptyList] ;
+  @insertMethodListAST insertMethodList [emptyList] ;
   @mapMethodListAST searchMethodList [emptyList] ;
   @mapMethodListAST removeMethodList [emptyList] ;
   @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;

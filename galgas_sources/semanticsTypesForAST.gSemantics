@@ -1137,11 +1137,17 @@ class @listmapDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+list @insertMethodListAST {
+  @lstring mMethodName ;
+  @lstring mErrorMessage ;
+  @lstring mShadowErrorMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @mapMethodListAST {
   @lstring mMethodName ;
-  @lstring mAlternateMethodName ; # §
   @lstring mErrorMessage ;
-  @lstring mShadowErrorMessage ; # §
 }
 
 #---------------------------------------------------------------------------*
@@ -1154,10 +1160,8 @@ list @insertOrReplaceDeclarationListAST {
 
 class @mapDeclarationAST extends @semanticDeclarationAST {
   @lstring mMapTypeName ;
-#  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
-#  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
   @attributeInCollectionListAST mAttributeList ;
-  @mapMethodListAST mInsertMethodList ;
+  @insertMethodListAST mInsertMethodList ;
   @mapMethodListAST mSearchMethodList ;
   @mapMethodListAST mRemoveMethodList ;
   @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST ;

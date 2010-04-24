@@ -6037,6 +6037,7 @@ rule <semantics_declaration>
         $,$ ;
         @lstring shadowErrorMessageString ;
         $literal_string$ ? shadowErrorMessageString ;
+#        warning shadowErrorMessageString : "shadow message" ;
         check_KL_escapeCharacters !shadowErrorMessageString ;
         shadowErrorMessage := [shadowErrorMessageString string] ;
       end select ;
@@ -6443,7 +6444,7 @@ rule <map_method>
   or
     $,$ ;
     $identifier$ ?getIndexMethodName ;
-#    warning getIndexMethodName : "use an alternate method is obsolete" ;
+    warning getIndexMethodName : "use an alternate method is obsolete in GALGAS 1.9.12 and later" ;
   end select ;
   $error$ ;
   $message$ ;
