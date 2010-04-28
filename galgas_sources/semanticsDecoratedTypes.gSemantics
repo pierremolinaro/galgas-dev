@@ -1166,7 +1166,7 @@ class @mapTypeForGeneration extends @semanticTypeForGeneration {
 #  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
 #  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
   @typedAttributeList mTypedAttributeList ;
-#  @mapMethodListForGeneration mInsertMethodList ;
+  @insertMethodListAST mInsertMethodList ;
 #  @mapMethodListForGeneration mSearchMethodList ;
 #  @mapMethodListForGeneration mRemoveMethodList ;
   @bool mHasInsertOrReplaceModifier ;

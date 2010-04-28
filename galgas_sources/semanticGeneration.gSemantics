@@ -111,6 +111,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
   template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
+    ?@insertMethodListAST INSERT_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE 
   ;
 
@@ -264,6 +265,7 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
   outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
+    !mInsertMethodList
     !mHasInsertOrReplaceModifier
   ] ;
  end reader ;
