@@ -25,7 +25,25 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
   }
 }
 
-%if HAS_INSERT_OR_REPLACE then
+%foreach INSERT_METHOD_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%const GALGAS_lstring * inKey%
+    foreach ATTRIBUTE_LIST
+      do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inArgument%![IDX string]
+    end foreach
+    %,\n %!^%C_Compiler * inCompiler%
+    %\n %!^%COMMA_LOCATION_ARGS) {\n%
+  %  const GALGAS_root * attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
+  foreach ATTRIBUTE_LIST
+    do index IDX %, inArgument%![IDX string]
+  end foreach
+  %} ;\n%
+  %  performInsert (attributes, inCompiler, %![mErrorMessage utf8Representation]% COMMA_THERE) ;\n%
+  %}\n\n%
+end foreach
+
+
+if HAS_INSERT_OR_REPLACE then
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertOrReplace (%?^%const GALGAS_lstring * inKey%
     foreach ATTRIBUTE_LIST
