@@ -67,6 +67,29 @@ foreach SEARCH_METHOD_LIST do
   %}\n\n%
 end foreach
 
+
+foreach REMOVE_METHOD_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%const GALGAS_lstring * inKey%
+    foreach ATTRIBUTE_LIST
+      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outArgument%![IDX string]
+    end foreach
+    %,\n %!^%C_Compiler * inCompiler%
+    %\n %!^%COMMA_LOCATION_ARGS) {\n%
+  block 2 :
+    %const utf32 kRemoveErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
+    %const GALGAS_root ** attributes = performRemove (inKey, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
+    %if (NULL != attributes) {\n%
+    foreach ATTRIBUTE_LIST do index IDX
+      %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes [%![IDX + 1 string]%] ;\n%
+      %  macroValidObject (outArgument%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
+    end foreach
+    %  macroMyDeletePODArray (attributes) ;\n%
+    %}\n%
+  end block
+  %}\n\n%
+end foreach
+
 if HAS_INSERT_OR_REPLACE then
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertOrReplace (%?^%const GALGAS_lstring * inKey%

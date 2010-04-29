@@ -123,6 +123,10 @@ routine appendPredefinedTypesASTs
     ![@lstring new !"%K unknown et %% !" !here]
   ;
   @mapMethodListAST removeMethodList [emptyList] ;
+  removeMethodList +=
+    ![@lstring new !"removeKey" !here]
+    ![@lstring new !"%K unknown et %% !" !here]
+  ;
   @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
   ioDeclarationListASTs += ![@mapDeclarationAST new
     ![@lstring new !"zeMap" !here]

@@ -113,6 +113,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@insertMethodListAST INSERT_METHOD_LIST
     ?@mapMethodListAST SEARCH_METHOD_LIST
+    ?@mapMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE 
   ;
 
@@ -268,6 +269,7 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
     !mTypedAttributeList
     !mInsertMethodList
     !mSearchMethodList
+    !mRemoveMethodList
     !mHasInsertOrReplaceModifier
   ] ;
  end reader ;
