@@ -39,13 +39,33 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
   end foreach
   %} ;\n%
   block 2 :
-  %const utf32 kInsertErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
-  %const utf32 kShadowErrorMessage [%![[mShadowErrorMessage length] + 1 string]%] = %![mShadowErrorMessage utf32Representation]% ;\n%
-  %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+    %const utf32 kInsertErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
+    %const utf32 kShadowErrorMessage [%![[mShadowErrorMessage length] + 1 string]%] = %![mShadowErrorMessage utf32Representation]% ;\n%
+    %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
   end block
   %}\n\n%
 end foreach
 
+foreach SEARCH_METHOD_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mMethodName identifierRepresentation]% (%?^%const GALGAS_lstring * inKey%
+    foreach ATTRIBUTE_LIST
+      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outArgument%![IDX string]
+    end foreach
+    %,\n %!^%C_Compiler * inCompiler%
+    %\n %!^%COMMA_LOCATION_ARGS) const {\n%
+  block 2 :
+    %const utf32 kSearchErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
+    %const GALGAS_root ** attributes = performSearch (inKey, inCompiler, kSearchErrorMessage COMMA_THERE) ;\n%
+    %if (NULL != attributes) {\n%
+    foreach ATTRIBUTE_LIST do index IDX
+      %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes [%![IDX + 1 string]%] ;\n%
+      %  macroValidObject (outArgument%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
+    end foreach
+    %}\n%
+  end block
+  %}\n\n%
+end foreach
 
 if HAS_INSERT_OR_REPLACE then
   %//---------------------------------------------------------------------------*\n\n%

@@ -118,6 +118,10 @@ routine appendPredefinedTypesASTs
     ![@lstring new !"" !here]
   ;
   @mapMethodListAST searchMethodList [emptyList] ;
+  searchMethodList +=
+    ![@lstring new !"searchKey" !here]
+    ![@lstring new !"%K unknown et %% !" !here]
+  ;
   @mapMethodListAST removeMethodList [emptyList] ;
   @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
   ioDeclarationListASTs += ![@mapDeclarationAST new
@@ -130,41 +134,41 @@ routine appendPredefinedTypesASTs
   ] ;
 
 #--- Example of listmap type
-#  ioDeclarationListASTs += ![@listmapDeclarationAST new
-#    ![@lstring new !"zeListMap" !here]
-#    ![@lstring new !"uintlist" !here]
-#  ] ;
+  ioDeclarationListASTs += ![@listmapDeclarationAST new
+    ![@lstring new !"zeListMap" !here]
+    ![@lstring new !"uintlist" !here]
+  ] ;
 
 #--- Example of sorted list
-#  @attributeInCollectionListAST attributeList [emptyList] ;
-#  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
-#  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
-#  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
-#  @sortedListSortDescriptorListAST sortAttributeList [emptyList] ;
-#  sortAttributeList += ![@lstring new !"toto" !here] !true ;
-#  sortAttributeList += ![@lstring new !"tata" !here] !false ;
-#  ioDeclarationListASTs += ![@sortedListDeclarationAST new
-#    ![@lstring new !"Ze_Sorted_List" !here]
-#    !attributeList
-#    !sortAttributeList
-#  ] ;
+  attributeList := [@attributeInCollectionListAST emptyList] ;
+  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
+  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
+  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
+  @sortedListSortDescriptorListAST sortAttributeList [emptyList] ;
+  sortAttributeList += ![@lstring new !"toto" !here] !true ;
+  sortAttributeList += ![@lstring new !"tata" !here] !false ;
+  ioDeclarationListASTs += ![@sortedListDeclarationAST new
+    ![@lstring new !"Ze_Sorted_List" !here]
+    !attributeList
+    !sortAttributeList
+  ] ;
 
 #--- Example of enum
-#  @lstringlist constantList [emptyList] ;
-#  constantList += ![@lstring new !"ze_First" !here] ;
-#  constantList += ![@lstring new !"ze_Second" !here] ;
-#  constantList += ![@lstring new !"ze_Third" !here] ;
-#  @enumMessageListAST enumMessageListAST [emptyList] ;
-#  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
-#  enumMessageAssociationListAST += ![@lstring new !"ze_Third" !here] ![@lstring new !"third" !here] ;
-#  enumMessageAssociationListAST += ![@lstring new !"ze_First" !here] ![@lstring new !"first" !here] ;
-#  enumMessageAssociationListAST += ![@lstring new !"ze_Second" !here] ![@lstring new !"second" !here] ;
-#  enumMessageListAST += ![@lstring new !"ze_message" !here] !enumMessageAssociationListAST ;
-#  ioDeclarationListASTs += ![@enumDeclarationAST new
-#    ![@lstring new !"Ze_enumeration" !here]
-#    !constantList
-#    !enumMessageListAST
-#  ] ;
+  @lstringlist constantList [emptyList] ;
+  constantList += ![@lstring new !"ze_First" !here] ;
+  constantList += ![@lstring new !"ze_Second" !here] ;
+  constantList += ![@lstring new !"ze_Third" !here] ;
+  @enumMessageListAST enumMessageListAST [emptyList] ;
+  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
+  enumMessageAssociationListAST += ![@lstring new !"ze_Third" !here] ![@lstring new !"third" !here] ;
+  enumMessageAssociationListAST += ![@lstring new !"ze_First" !here] ![@lstring new !"first" !here] ;
+  enumMessageAssociationListAST += ![@lstring new !"ze_Second" !here] ![@lstring new !"second" !here] ;
+  enumMessageListAST += ![@lstring new !"ze_message" !here] !enumMessageAssociationListAST ;
+  ioDeclarationListASTs += ![@enumDeclarationAST new
+    ![@lstring new !"Ze_enumeration" !here]
+    !constantList
+    !enumMessageListAST
+  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

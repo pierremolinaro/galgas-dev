@@ -262,6 +262,12 @@ map @insertMethodMap {
 
 #---------------------------------------------------------------------------*
 
+map @searchMethodMap {
+  insert insertKey error message "the '%K' search method is already declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 override method @mapDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -307,6 +313,24 @@ override method @mapDeclarationAST performSemanticAnalysis
       end foreach ;
     end foreach ;
   end foreach ;
+#--- Enter search methods
+  @searchMethodMap searchMethodMap [emptyMap] ;
+  foreach mSearchMethodList do
+    [!?searchMethodMap insertKey !mMethodName] ;
+  #--- Check error message escape sequences : only %K or %%
+    foreach [mErrorMessage componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
+      [!?explodedArray popFirst ?*] ;
+      foreach explodedArray do
+        if [mValue length] > 0 then
+          const @char c := [mValue characterAtIndex !0] ;
+          if c != 'K' then
+            error mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a search error message" ;
+          end if ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  end foreach ;
 #--- Warn for duplicated declarations or 'insertOrReplace' modifier
   foreach mInsertOrReplaceDeclarationListAST index IDX do
     if IDX > 0 then
@@ -325,6 +349,7 @@ override method @mapDeclarationAST performSemanticAnalysis
     !mMapTypeName
     !typedAttributeList
     !mInsertMethodList
+    !mSearchMethodList
     !hasInsertOrReplaceModifier
   ] ;
 end method ;
