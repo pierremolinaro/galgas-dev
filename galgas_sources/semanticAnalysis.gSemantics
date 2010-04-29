@@ -82,16 +82,26 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+map @attributeIndexMap {
+  @uint mIndex ;
+  insert insertKey error message "the '%K' attribute is already declared" ;
+  search searchKey error message "the '%K' attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 override method @listDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
+  @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
+    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
     ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mListTypeName]
@@ -99,14 +109,6 @@ override method @listDeclarationAST performSemanticAnalysis
   ] ;
 
 end method ;
-
-#---------------------------------------------------------------------------*
-
-map @attributeIndexMap {
-  @uint mIndex ;
-  insert insertKey error message "the '%K' attribute is already declared" ;
-  search searchKey error message "the '%K' attribute is not declared" ;
-}
 
 #---------------------------------------------------------------------------*
 
@@ -152,11 +154,13 @@ override method @structDeclarationAST performSemanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
+  @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
+    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
     ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mStructTypeName]
@@ -264,11 +268,13 @@ override method @mapDeclarationAST performSemanticAnalysis
 :
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
+  @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
+    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
   end foreach ;
 #--- Enter insert modifiers
   @insertMethodMap insertMethodMap [emptyMap] ;
@@ -283,6 +289,19 @@ override method @mapDeclarationAST performSemanticAnalysis
           const @char c := [mValue characterAtIndex !0] ;
           if (c != 'K') & (c != 'L') then
             error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in an insert error message" ;
+          end if ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  #--- Check shadow error message escape sequences : only %K, %L or %%
+    foreach [mShadowErrorMessage componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
+      [!?explodedArray popFirst ?*] ;
+      foreach explodedArray do
+        if [mValue length] > 0 then
+          const @char c := [mValue characterAtIndex !0] ;
+          if (c != 'K') & (c != 'L') then
+            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in a shadow error message" ;
           end if ;
         end if ;
       end foreach ;
@@ -318,11 +337,13 @@ override method @classDeclarationAST performSemanticAnalysis
 :
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
+  @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
+    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
   end foreach ;
 #------ Inherited instance methods
   @instanceMethodMap inheritedInstanceMethodMap ;

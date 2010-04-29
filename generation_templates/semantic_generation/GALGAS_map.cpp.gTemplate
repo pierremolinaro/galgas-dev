@@ -38,7 +38,11 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
     do index IDX %, inArgument%![IDX string]
   end foreach
   %} ;\n%
-  %  performInsert (attributes, inCompiler, %![mErrorMessage utf8Representation]% COMMA_THERE) ;\n%
+  block 2 :
+  %const utf32 kInsertErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
+  %const utf32 kShadowErrorMessage [%![[mShadowErrorMessage length] + 1 string]%] = %![mShadowErrorMessage utf32Representation]% ;\n%
+  %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+  end block
   %}\n\n%
 end foreach
 
