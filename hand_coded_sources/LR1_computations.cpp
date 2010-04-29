@@ -1371,7 +1371,6 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "  if (sourceFileName.fileExists ()) {\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner_ = NULL ;\n"
                           "    macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
-                          "    macroRetainObject (scanner_) ;\n"
                           "    if (scanner_->needsCompiling ()) {\n"
                           "      if (scanner_->sourceText () != NULL) {\n"
                           "        scanner_->mPerformGeneration = inCompiler.mPerformGeneration ;\n" ;
@@ -1448,7 +1447,6 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner_ = NULL ;\n"
                           "  macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (& inCompiler, inCompiler.ioParametersPtr (), _inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
-                          "  macroRetainObject (scanner_) ;\n"
                           "  scanner_->mPerformGeneration = inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                    gActionTableIndex, gSuccessorTable,\n"

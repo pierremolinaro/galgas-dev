@@ -223,7 +223,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     PMSInt32 idx = 0 ;
     while (currentDomainRelation.hasCurrentObject ()) {
       inCppFile << " && inValue_" << cStringWithSigned (idx) << ".isBuilt ()" ;
-      domainRelationNames (idx COMMA_HERE) = currentDomainRelation._mValue (HERE).string () ;
+      domainRelationNames.addObject (currentDomainRelation._mValue (HERE).string ()) ;
       idx ++ ;
       currentDomainRelation.next () ;
     }
