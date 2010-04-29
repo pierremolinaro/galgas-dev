@@ -1152,22 +1152,13 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#list @mapMethodListForGeneration {
-#  @lstring mMethodName ;
-#  @lstring mAlternateMethodName ; # §
-#  @lstring mErrorMessage ;
-#  @lstring mShadowErrorMessage ; # §
-#}
-
-#---------------------------------------------------------------------------*
-
 class @mapTypeForGeneration extends @semanticTypeForGeneration {
   @lstring mMapTypeName ;
 #  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
 #  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
   @typedAttributeList mTypedAttributeList ;
   @insertMethodListAST mInsertMethodList ;
-#  @mapMethodListForGeneration mSearchMethodList ;
+  @mapMethodListAST mSearchMethodList ;
 #  @mapMethodListForGeneration mRemoveMethodList ;
   @bool mHasInsertOrReplaceModifier ;
 }
