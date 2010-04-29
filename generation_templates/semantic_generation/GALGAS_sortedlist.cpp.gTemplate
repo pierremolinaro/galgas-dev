@@ -93,7 +93,7 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (%?^%cons
                                                     %!^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand2
                                                     %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
-  if ((inOperand1 != NULL) && (inOperand2 != NULL)) {
+  if ((NULL != inOperand1) && (NULL != inOperand2)) {
     result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE) ;
     result->appendSortedList (inOperand1) ;
     result->appendSortedList (inOperand2) ;

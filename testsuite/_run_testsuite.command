@@ -1,8 +1,8 @@
 #!/bin/sh
 
 LIBPM_PATH_ENV_VAR="`dirname $0`/../../libpm" && export LIBPM_PATH_ENV_VAR &&
-GALGAS_TOOL=`dirname $0`/../makefile_macosx/galgas &&
-cd `dirname $0`/../makefile_macosx && make galgas &&
+GALGAS_TOOL=`dirname $0`/../makefile_macosx/galgas_debug &&
+cd `dirname $0`/../makefile_macosx && make galgas_debug &&
 cd `dirname $0` && $GALGAS_TOOL galgas_sources/all_testsuite.gProject -v --Werror &&
 cd `dirname $0`/makefile_macosx && make --warn-undefined-variables all -j 2 &&
 echo "*** Running test suite" &&

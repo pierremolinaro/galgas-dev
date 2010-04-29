@@ -137,11 +137,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   //--- Build galgas io object
     C_galgas_io * galgasIOptr = NULL ;
     macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;
-    macroRetainObject (galgasIOptr) ;
   //--- Common lexique object
     C_Compiler * _commonLexique = NULL ;
     macroMyNew (_commonLexique, C_Compiler (NULL, "", "", galgasIOptr COMMA_HERE)) ;
-    macroRetainObject (_commonLexique) ;
   //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)
     #ifdef SIOUX_IS_IMPLEMENTED
       SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;

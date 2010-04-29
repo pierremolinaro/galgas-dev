@@ -164,7 +164,7 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (const GA
                                                         const GALGAS_%!TYPE_IDENTIFIER% * inOperand2
                                                         COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
-  if ((inOperand1 != NULL) && (inOperand2 != NULL)) {
+  if ((NULL != inOperand1) && (NULL != inOperand2)) {
     result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
     result->appendList (inOperand1) ;
     result->appendList (inOperand2) ;
@@ -179,7 +179,7 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (
                                                %!^%C_Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
-  if ((inOperand0 != NULL) && (inOperand1 != NULL)) {
+  if ((inOperand0 != NULL) && (NULL != inOperand1)) {
     result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
     const bool ok = subListWithRange (result, inOperand0, inOperand1, inCompiler COMMA_THERE) ;
     if (! ok) {

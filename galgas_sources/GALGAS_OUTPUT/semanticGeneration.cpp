@@ -2501,7 +2501,7 @@ result << " * inOperand2\n"
   "  GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << " * result = NULL ;\n"
-  "  if ((inOperand1 != NULL) && (inOperand2 != NULL)) {\n"
+  "  if ((NULL != inOperand1) && (NULL != inOperand2)) {\n"
   "    result = GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << "::constructor_emptyList (THERE) ;\n"
@@ -2532,7 +2532,7 @@ result << "COMMA_LOCATION_ARGS) const {\n"
   "  GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << " * result = NULL ;\n"
-  "  if ((inOperand0 != NULL) && (inOperand1 != NULL)) {\n"
+  "  if ((inOperand0 != NULL) && (NULL != inOperand1)) {\n"
   "    result = GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << "::constructor_emptyList (THERE) ;\n"
@@ -3473,7 +3473,7 @@ result << "COMMA_LOCATION_ARGS) {\n"
   "  GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << " * result = NULL ;\n"
-  "  if ((inOperand1 != NULL) && (inOperand2 != NULL)) {\n"
+  "  if ((NULL != inOperand1) && (NULL != inOperand2)) {\n"
   "    result = GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << "::constructor_emptySortedList (THERE) ;\n"
