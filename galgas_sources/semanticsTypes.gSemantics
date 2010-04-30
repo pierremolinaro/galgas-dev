@@ -27,12 +27,12 @@ import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-mapindex @unifiedTypeMapIndex ;
+mapproxy @unifiedTypeMapProxy ;
 
 #---------------------------------------------------------------------------*
 
-list @unifiedTypeMapIndexList {
-  @unifiedTypeMapIndex mType ;
+list @unifiedTypeMapProxyList {
+  @unifiedTypeMapProxy mType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -42,9 +42,9 @@ list @unifiedTypeMapIndexList {
 #---------------------------------------------------------------------------*
 
 map @constructorMap {
-  @unifiedTypeMapIndexList mArgumentTypeList ;
+  @unifiedTypeMapProxyList mArgumentTypeList ;
   @bool mHasCompilerArgument ;
-  @unifiedTypeMapIndex mReturnedType ;
+  @unifiedTypeMapProxy mReturnedType ;
   insert insertKey error message "the '%K' constructor has been already defined" ;
   search searchKey error message "the '%K' constuctor is not declared" ;
 }
@@ -63,9 +63,9 @@ enum @readerQualifier {
 #---------------------------------------------------------------------------*
 
 map @readerMap {
-  @unifiedTypeMapIndexList mArgumentTypeList ;
+  @unifiedTypeMapProxyList mArgumentTypeList ;
   @bool mHasLexiqueArgument ;
-  @unifiedTypeMapIndex mReturnedType ;
+  @unifiedTypeMapProxy mReturnedType ;
   @readerQualifier mQualifier ;
   @string mImplicitConversionReader ;
   insert insertKey error message "the '%K' reader is already declared" ;
@@ -80,7 +80,7 @@ map @readerMap {
 #---------------------------------------------------------------------------*
 
 list @formalParameterSignature {
-  @unifiedTypeMapIndex mParameterType ;
+  @unifiedTypeMapProxy mParameterType ;
   @formalArgumentPassingModeAST mFormalParameterPassingMode ;
 }
 
@@ -131,7 +131,7 @@ map @classMethodMap {
 #---------------------------------------------------------------------------*
 
 list @enumerationDescriptorList {
-  @unifiedTypeMapIndex mEnumeratedType ;
+  @unifiedTypeMapProxy mEnumeratedType ;
   @string mEnumerationName ;
 }
 
@@ -142,7 +142,7 @@ list @enumerationDescriptorList {
 #---------------------------------------------------------------------------*
 
 list @typedAttributeList {
-  @unifiedTypeMapIndex mAttributeTypeIndex ;
+  @unifiedTypeMapProxy mAttributeTypeIndex ;
   @lstring mAttributeName ;
 }
 
@@ -234,7 +234,7 @@ function generateVirtualDestructor -> @uint outMask : outMask := 1 << 31 ; end f
 
 map @unifiedTypeMap {
   @bool mIsConcrete ; # false if abstract class
-  @unifiedTypeMapIndex mSuperType ;
+  @unifiedTypeMapProxy mSuperType ;
   @typeKindEnum mTypeKindEnum ;
   @typedAttributeList mInheritedTypedAttributeList ;
   @typedAttributeList mCurrentTypedAttributeList ;
@@ -245,8 +245,8 @@ map @unifiedTypeMap {
   @classMethodMap mClassMethodMap ;
   @enumerationDescriptorList mEnumerationDescriptor ; # Empty List if cannot be enumerated
   @uint mHandledOperatorFlags ;
-  @unifiedTypeMapIndexList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
-  @unifiedTypeMapIndexList mMinusAssignOperatorArguments ; # Empty list if -= operator is not supported
+  @unifiedTypeMapProxyList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
+  @unifiedTypeMapProxyList mMinusAssignOperatorArguments ; # Empty list if -= operator is not supported
   @nativeAttributeList mNativeAttributeList ; # Generating type declaration
   @lstringlist mEnumConstantList ;
   @typedAttributeList mPrivateDataMemberList ;
@@ -257,7 +257,7 @@ map @unifiedTypeMap {
 
 #---------------------------------------------------------------------------*
 
-mapindex @unifiedTypeMapIndex (@unifiedTypeMap) ;
+mapproxy @unifiedTypeMapProxy (@unifiedTypeMap) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -312,10 +312,10 @@ class @dataPredefinedTypeAST extends @predefinedTypeAST {}
 
 method @predefinedTypeAST getSuperType
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapIndex outSuperType
+  !@unifiedTypeMapProxy outSuperType
 :
 #--- By default, super type is the @root type
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioUnifiedTypeMap ?outSuperType] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"root" !here] ?outSuperType] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -375,18 +375,18 @@ end reader ;
 
 method @predefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@unifiedTypeMapIndexList outAddAssignArgumentList
+  !@unifiedTypeMapProxyList outAddAssignArgumentList
 :
-  outAddAssignArgumentList := [@unifiedTypeMapIndexList emptyList] ; # += is not supported
+  outAddAssignArgumentList := [@unifiedTypeMapProxyList emptyList] ; # += is not supported
 end method ;
 
 #---------------------------------------------------------------------------*
 
 method @predefinedTypeAST getMinusAssignArgumentList
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@unifiedTypeMapIndexList outAddAssignArgumentList
+  !@unifiedTypeMapProxyList outAddAssignArgumentList
 :
-  outAddAssignArgumentList := [@unifiedTypeMapIndexList emptyList] ; # -= is not supported
+  outAddAssignArgumentList := [@unifiedTypeMapProxyList emptyList] ; # -= is not supported
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -29,8 +29,8 @@ routine enterClassMethodWithStringInputArgument
   ??@string inClassMethodName
   ??@bool inHasCompilerArgument
 :
-  @unifiedTypeMapIndex argumentTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?argumentTypeIndex] ;
+  @unifiedTypeMapProxy argumentTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"string" !here] ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioClassMethodMap insertOrReplace
@@ -51,8 +51,8 @@ override method @stringPredefinedTypeAST getClassMethodMap
   enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !true ;
   enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !true ;
   enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !true ;
-  @unifiedTypeMapIndex stringType ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringType] ;
+  @unifiedTypeMapProxy stringType ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"string" !here] ?stringType] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;

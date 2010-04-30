@@ -38,14 +38,14 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
   template genericTypeImplementation "generic-type.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMapIndex SUPER_TYPE_INDEX
+    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
   ;
 
   template unifiedTypeHeader "unified-type.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@bool IS_CONCRETE # false if abstract class
-    ?@unifiedTypeMapIndex SUPER_TYPE_INDEX
+    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
     ?@typeKindEnum TYPE_KIND
     ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
     ?@constructorMap CONSTRUCTOR_MAP
@@ -55,8 +55,8 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@classMethodMap CLASS_METHOD_MAP
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapProxyList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
     ?@lstringlist ENUM_CONSTANT_LIST
     ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
@@ -66,7 +66,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@bool IS_CONCRETE # false if abstract class
-    ?@unifiedTypeMapIndex SUPER_TYPE_INDEX
+    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
     ?@typeKindEnum TYPE_KIND
     ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
     ?@constructorMap CONSTRUCTOR_MAP
@@ -76,8 +76,8 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@classMethodMap CLASS_METHOD_MAP
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapProxyList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
@@ -85,8 +85,8 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@string TYPE_IDENTIFIER
     ?@modifierMap MODIFIER_MAP
     ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapIndexList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMapIndexList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapProxyList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 

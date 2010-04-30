@@ -392,7 +392,7 @@ semantics semanticsDecoratedTypes :
 
 list @formalParameterListForGeneration {
   @formalArgumentPassingModeAST mFormalParameterPassingMode ;
-  @unifiedTypeMapIndex mFormalParameterType ;
+  @unifiedTypeMapProxy mFormalParameterType ;
   @lstring mFormalParameterName ;
   @bool mIsUnused ;
 }
@@ -495,7 +495,7 @@ list @semanticDeclarationListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @semanticTypeForGeneration extends @semanticDeclarationForGeneration {
-  @unifiedTypeMapIndex mTypeIndex ;
+  @unifiedTypeMapProxy mTypeIndex ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1203,7 +1203,7 @@ list @methodDefinitionListForGeneration {
 class @classTypeForGeneration extends @semanticTypeForGeneration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
-  @unifiedTypeMapIndex mSuperClass ; # Null if no super class
+  @unifiedTypeMapProxy mSuperClass ; # Null if no super class
 #  @lstringlist mClassFeatureList ;
   @typedAttributeList mTypedAttributeList ;
   @abstractMethodDefinitionListForGeneration mAbstractMethodList ;
@@ -1220,7 +1220,7 @@ class @classTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @listmapTypeForGeneration extends @semanticTypeForGeneration {
-  @unifiedTypeMapIndex mAssociatedListTypeIndex ;
+  @unifiedTypeMapProxy mAssociatedListTypeIndex ;
   @typedAttributeList mAssociatedListTypedAttributeList ;
 }
 

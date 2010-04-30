@@ -1169,12 +1169,12 @@ class @mapDeclarationAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    M A P    I N D E X    D E C L A R A T I O N                            *
+#    M A P    P R O X Y    D E C L A R A T I O N                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @mapindexDeclarationAST extends @semanticDeclarationAST {
-  @lstring mMapIndexTypeName ;
+class @mapProxyDeclarationAST extends @semanticDeclarationAST {
+  @lstring mMapProxyTypeName ;
   @lstring mAssociatedMapTypeName ;
 }
 

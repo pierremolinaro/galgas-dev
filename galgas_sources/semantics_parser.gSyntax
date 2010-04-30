@@ -5693,7 +5693,7 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@EXsemanticContext unused ioSemanticContext
 :
-  $mapindex$ ;
+  $mapproxy$ ;
   @lstring mapindexTypeName ;
   $type_name$ ? mapindexTypeName ;
   select
@@ -5744,7 +5744,7 @@ label importSemantics
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@EXsemanticContext unused ioSemanticContext
 :
-  $mapindex$ ;
+  $mapproxy$ ;
   @lstring mapindexTypeName ;
   $type_name$ ? mapindexTypeName ;
   select

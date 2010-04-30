@@ -64,6 +64,7 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"class" !"root"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"struct" !"root"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"enum" !"root"] ;
+  ioDeclarationListASTs += ![@genericTypeTypeAST new !"mapproxy" !"root"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
 #  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
@@ -89,8 +90,6 @@ routine appendPredefinedTypesASTs
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"luint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint64" ;
-#  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint" ;
-#  appendPredefinedListTypeAST !?ioDeclarationListASTs !"sint64" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"object" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"function" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"string" ;

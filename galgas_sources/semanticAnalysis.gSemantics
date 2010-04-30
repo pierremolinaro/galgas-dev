@@ -75,7 +75,7 @@ override method @predefinedTypeAST performSemanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
   ] ;
 
 end method ;
@@ -98,13 +98,13 @@ override method @listDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
-      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
     [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mListTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
     !typedAttributeList
   ] ;
 
@@ -121,7 +121,7 @@ override method @sortedListDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
-      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
     [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
@@ -140,7 +140,7 @@ override method @sortedListDeclarationAST performSemanticAnalysis
   end foreach ;
 #--- Generate type
   ioSemanticDeclarationListForGeneration += ![@sortedListTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
     !typedAttributeList
     !sortDescriptorList
   ] ;
@@ -157,13 +157,13 @@ override method @structDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
-      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
     [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mStructTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
     !typedAttributeList
   ] ;
 end method ;
@@ -219,7 +219,7 @@ override method @enumDeclarationAST performSemanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration += ![@enumTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
     !constantList
     !enumMessageList
   ] ;
@@ -237,8 +237,8 @@ override method @listmapDeclarationAST performSemanticAnalysis
   [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?13*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@listmapTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
     !listTypeAttributeList
   ] ;
 end method ;
@@ -250,7 +250,7 @@ override method @genericTypeTypeAST performSemanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration += ![@genericTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap ![@lstring new !mTypeName !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mTypeName !here]]
   ] ;
 end method ;
 
@@ -277,7 +277,7 @@ override method @mapDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
-      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
     [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
@@ -362,7 +362,7 @@ override method @mapDeclarationAST performSemanticAnalysis
   end if ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration += ![@mapTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mMapTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
     !mMapTypeName
     !typedAttributeList
     !mInsertMethodList
@@ -383,7 +383,7 @@ override method @classDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
-      ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
     [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
@@ -396,11 +396,11 @@ override method @classDeclarationAST performSemanticAnalysis
     [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?8*] ;
   end if ;
 #------ Super type
-  @unifiedTypeMapIndex superClassIndex ;
+  @unifiedTypeMapProxy superClassIndex ;
   if [mSuperClassName string] == "" then
-    superClassIndex := [@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap ![@lstring new !"class" !here]] ;
+    superClassIndex := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"class" !here]] ;
   else
-    superClassIndex := [@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
+    superClassIndex := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
   end if ;
 #------ Abstract methods
   @abstractMethodDefinitionListForGeneration abstractMethodList [emptyList] ;
@@ -414,7 +414,7 @@ override method @classDeclarationAST performSemanticAnalysis
     foreach mSignature do
       formalParameterListForGeneration +=
         !mFormalParameterPassingMode
-        ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName]
+        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName]
         !mFormalParameterName
         !mIsUnused
       ;
@@ -443,7 +443,7 @@ override method @classDeclarationAST performSemanticAnalysis
     foreach mSignature do
       formalParameterListForGeneration +=
         !mFormalParameterPassingMode
-        ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName]
+        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName]
         !mFormalParameterName
         !mIsUnused
       ;
@@ -471,7 +471,7 @@ override method @classDeclarationAST performSemanticAnalysis
   end foreach ;
 #------
   ioSemanticDeclarationListForGeneration += ![@classTypeForGeneration new
-    ![@unifiedTypeMapIndex searchKey !inSemanticContext->mTypeMap !mClassTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
     !mIsAbstract
     !mClassTypeName
     !superClassIndex

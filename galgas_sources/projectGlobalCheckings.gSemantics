@@ -47,7 +47,7 @@ semantics projectGlobalCheckings :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-listmap @descendantClassListMap (@unifiedTypeMapIndexList) ;
+listmap @descendantClassListMap (@unifiedTypeMapProxyList) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -96,7 +96,7 @@ routine checkMultiMethodDefinitionForClass
   ??@overridingMultiMethodListMapAST inOverridingCategoryMethodListMap
   ??@unifiedTypeMap inUnifiedTypeMap
 :
-  const @unifiedTypeMapIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
+  const @unifiedTypeMapProxyList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
     const @lstring descendantClassName := [mType key] ;
     @overridingMultiMethodListAST overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
@@ -136,7 +136,7 @@ routine checkMultiReaderDefinitionForClass
   ??@overridingMultiReaderListMapAST inOverridingCategoryReaderListMap
   ??@unifiedTypeMap inUnifiedTypeMap
 :
-  const @unifiedTypeMapIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
+  const @unifiedTypeMapProxyList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
     @lstring descendantClassName := [mType key] ;
     @overridingMultiReaderListAST overridingReaders := [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]] ;
@@ -193,7 +193,7 @@ routine performProjectGlobalCheckings
        if not [mSuperType isNull] then
          descendantClassListMap +=
            ![[mSuperType key] string]
-           ![@unifiedTypeMapIndex searchKey ![semanticContext mTypeMap] !key]
+           ![@unifiedTypeMapProxy searchKey ![semanticContext mTypeMap] !key]
          ;
        end if ;
     end foreach ;
