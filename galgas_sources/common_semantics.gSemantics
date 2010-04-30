@@ -3267,7 +3267,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
   @mapModifierMap mModifierMethodMap feature nogetter ;
   @EXmapMethodMap mReaderMethodMap feature nogetter ;
 
-#--- A mapindex accepts search methods as constructors
+#--- A mapindex accepts map search methods as constructors
   override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
@@ -3285,18 +3285,14 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
     end if ;
   end method ;
 
-#--- A mapindex only accept 'makeRegularIndex' type method call
+#--- A mapindex only accept 'makeRegularProxy' type method call
   override
   method handleClassMethodCall
     ??@lstring inTypeMethodName
     !@L_EXsignature outTypeMethodSignature
   :
-    if [inTypeMethodName string] == "makeRegularIndex" then
+    if [inTypeMethodName string] == "makeRegularProxy" then
       outTypeMethodSignature := [@L_EXsignature emptyList] ;
-      outTypeMethodSignature +=
-        ![@typeGalgas_lstring new]
-        ![@formalArgumentPassingModeAST argumentIn]
-      ;
       outTypeMethodSignature +=
         ![@typeGalgasMapType new
            !mMapTypeName
@@ -3306,6 +3302,10 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
            !mReaderMethodMap
          ]
         ![@formalArgumentPassingModeAST argumentInOut]
+      ;
+      outTypeMethodSignature +=
+        ![@typeGalgas_lstring new]
+        ![@formalArgumentPassingModeAST argumentIn]
       ;
       outTypeMethodSignature +=
         ![@typeGalgasMapindexType new
@@ -3320,7 +3320,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
         ![@formalArgumentPassingModeAST argumentOut]
       ;
     else
-      error inTypeMethodName : "a map index only accepts 'makeRegularIndex' type method" : outTypeMethodSignature ;
+      error inTypeMethodName : "a map index only accepts 'makeRegularProxy' type method" : outTypeMethodSignature ;
     end if ;
   end method ;
 

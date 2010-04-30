@@ -29,18 +29,18 @@ semantics semanticsTypeFeatures :
 
 override method @stringsetPredefinedTypeAST getSuperType
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapIndex outSuperType
+  !@unifiedTypeMapProxy outSuperType
 :
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"enumerable" !here] !?ioUnifiedTypeMap ?outSuperType] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"enumerable" !here] ?outSuperType] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @dataPredefinedTypeAST getSuperType
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapIndex outSuperType
+  !@unifiedTypeMapProxy outSuperType
 :
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"enumerable" !here] !?ioUnifiedTypeMap ?outSuperType] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"enumerable" !here] ?outSuperType] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -53,8 +53,8 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
 :
-  @unifiedTypeMapIndex stringTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringTypeIndex] ;
+  @unifiedTypeMapProxy stringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"string" !here] ?stringTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !stringTypeIndex !"key" ;
 end method ;
@@ -65,8 +65,8 @@ override method @dataPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
 :
-  @unifiedTypeMapIndex uintTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioUnifiedTypeMap ?uintTypeIndex] ;
+  @unifiedTypeMapProxy uintTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"uint" !here] ?uintTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !uintTypeIndex !"data" ;
 end method ;
@@ -241,22 +241,22 @@ end reader ;
 
 override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapIndexList outAddAssignArgumentList
+  !@unifiedTypeMapProxyList outAddAssignArgumentList
 :
-  @unifiedTypeMapIndex stringTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringTypeIndex] ;
-  outAddAssignArgumentList := [@unifiedTypeMapIndexList listWithValue !stringTypeIndex] ;
+  @unifiedTypeMapProxy stringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"string" !here] ?stringTypeIndex] ;
+  outAddAssignArgumentList := [@unifiedTypeMapProxyList listWithValue !stringTypeIndex] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @stringsetPredefinedTypeAST getMinusAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapIndexList outAddAssignArgumentList
+  !@unifiedTypeMapProxyList outAddAssignArgumentList
 :
-  @unifiedTypeMapIndex stringTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioUnifiedTypeMap ?stringTypeIndex] ;
-  outAddAssignArgumentList := [@unifiedTypeMapIndexList listWithValue !stringTypeIndex] ;
+  @unifiedTypeMapProxy stringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"string" !here] ?stringTypeIndex] ;
+  outAddAssignArgumentList := [@unifiedTypeMapProxyList listWithValue !stringTypeIndex] ;
 end method ;
 
 #---------------------------------------------------------------------------*

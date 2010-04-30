@@ -216,7 +216,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <obsolete_declaration> :
-  $mapindex$ ;
+  $mapproxy$ ;
   $type_name$ ? * ;
   $;$ ;
 end rule ;
@@ -226,13 +226,13 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationStructAST ioSemanticDeclarations
 :
-  $mapindex$ ;
+  $mapproxy$ ;
   $type_name$ ?@lstring mMapIndexName ;
   $($ ;
   $type_name$ ? @lstring mMapTypeName ;
   $)$ ;
   $;$ ;
-  ioSemanticDeclarations->mSemanticDeclarationList += ![@mapindexDeclarationAST new
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@mapProxyDeclarationAST new
     !mMapIndexName
     !mMapTypeName
   ] ;

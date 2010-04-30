@@ -49,8 +49,8 @@ map @routineMap {
 #---------------------------------------------------------------------------*
 
 map @functionMap {
-  @unifiedTypeMapIndexList mFunctionSignature ;
-  @unifiedTypeMapIndex mResultTypeIndex ;
+  @unifiedTypeMapProxyList mFunctionSignature ;
+  @unifiedTypeMapProxy mResultTypeIndex ;
   insert insertKey error message "the '%K' function has been already declared in %L" ;
   search searchKey error message "the '%K' function is not declared" ;
 }
@@ -62,7 +62,7 @@ map @functionMap {
 #---------------------------------------------------------------------------*
 
 map @filewrapperTemplateMap {
-  @unifiedTypeMapIndexList mTemplateSignature ;
+  @unifiedTypeMapProxyList mTemplateSignature ;
   @lstring mFilewrapperTemplatePath ;
   insert insertKey error message "the '%K' filewrapper template has been already declared in %L" ;
   search searchKey error message "the '%K' filewrapper template is not declared" ;
@@ -98,13 +98,13 @@ struct @semanticContext {
 #---------------------------------------------------------------------------*
 
 map @collectedTypeMap {
-  insert insertKey error message "the '%K' type has been already defined" ;
+  insert insertKey error message "the '%K' type has been already defined in %L" ;
   search searchKey error message "the '%K' type is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
 
-mapindex @collectedTypeMapIndex (@collectedTypeMap) ;
+mapproxy @collectedTypeMapIndex (@collectedTypeMap) ;
 
 #---------------------------------------------------------------------------*
 
@@ -113,7 +113,7 @@ routine collectAttributeTypes
   ?!@collectedTypeMap ioCollectedTypeMap
 :
   foreach inAttributeList do
-    [@collectedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioCollectedTypeMap ?*] ;
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap !mAttributeTypeName ?*] ;
   end foreach ;
 end routine ;
 
@@ -131,7 +131,7 @@ override method @genericTypeTypeAST collectType
 :
   [!?ioCollectedTypeMap insertKey ![@lstring new !mTypeName !here]] ;
   if mSuperTypeName != "" then
-    [@collectedTypeMapIndex makeRegularIndex ![@lstring new !mSuperTypeName !here] !?ioCollectedTypeMap ?*] ;
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![@lstring new !mSuperTypeName !here] ?*] ;
   end if ;
 end method ;
 
@@ -154,10 +154,10 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapindexDeclarationAST collectType
+override method @mapProxyDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
-  [!?ioCollectedTypeMap insertKey !mMapIndexTypeName] ;
+  [!?ioCollectedTypeMap insertKey !mMapProxyTypeName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -204,12 +204,12 @@ override method @classDeclarationAST collectType
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
   foreach mAbstractMethodList do
     foreach mSignature do
-      [@collectedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioCollectedTypeMap ?*] ;
+      [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap !mFormalParameterTypeName ?*] ;
     end foreach ;
   end foreach ;
   foreach mMethodList do
     foreach mSignature do
-      [@collectedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioCollectedTypeMap ?*] ;
+      [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap !mFormalParameterTypeName ?*] ;
     end foreach ;
   end foreach ;
 end method ;
@@ -220,7 +220,7 @@ override method @listmapDeclarationAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
   [!?ioCollectedTypeMap insertKey !mListmapTypeName] ;
-  [@collectedTypeMapIndex makeRegularIndex !mAssociatedListTypeName !?ioCollectedTypeMap ?*] ;
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap !mAssociatedListTypeName ?*] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -249,13 +249,13 @@ override method @predefinedTypeAST enterType
   [t getModifierMap !?ioSemanticContext->mTypeMap ?modifierMap] ;
   [t getInstanceMethodMap !?ioSemanticContext->mTypeMap ?instanceMethodMap] ;
   [t getClassMethodMap !?ioSemanticContext->mTypeMap ?classMethodMap] ;
-  @unifiedTypeMapIndexList addAssignArgumentList ;
+  @unifiedTypeMapProxyList addAssignArgumentList ;
   [t getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?addAssignArgumentList] ;
-  @unifiedTypeMapIndexList minusAssignArgumentList ;
+  @unifiedTypeMapProxyList minusAssignArgumentList ;
   [t getMinusAssignArgumentList !?ioSemanticContext->mTypeMap ?minusAssignArgumentList] ;
   @enumerationDescriptorList enumerationList ;
   [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList] ;
-  @unifiedTypeMapIndex superTypeIndex ;
+  @unifiedTypeMapProxy superTypeIndex ;
   [t getSuperType !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
@@ -285,14 +285,14 @@ override method @genericTypeTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- uint type index
-#  @unifiedTypeMapIndex uintType ;
-#  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioSemanticContext->mTypeMap ?uintType] ;
+#  @unifiedTypeMapProxy uintType ;
+#  [@unifiedTypeMapProxy makeRegularProxy ![@lstring new !"uint" !here] !?ioSemanticContext->mTypeMap ?uintType] ;
 #--- Super type index
-  @unifiedTypeMapIndex superTypeIndex ;
+  @unifiedTypeMapProxy superTypeIndex ;
   if mSuperTypeName == "" then
-    superTypeIndex := [@unifiedTypeMapIndex null] ;
+    superTypeIndex := [@unifiedTypeMapProxy null] ;
   else
-    [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !mSuperTypeName !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !mSuperTypeName !here] ?superTypeIndex] ;
   end if ;
 #--- Constructors
   @constructorMap constructorMap [emptyMap] ;
@@ -318,8 +318,8 @@ override method @genericTypeTypeAST enterType
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     !0
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -337,14 +337,14 @@ override method @mapDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @enumerationDescriptorList enumerationDescriptor [emptyList] ;
 #--- string type index
-  @unifiedTypeMapIndex stringTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioSemanticContext->mTypeMap ?stringTypeIndex] ;
+  @unifiedTypeMapProxy stringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"string" !here] ?stringTypeIndex] ;
 #--- lstring type index
-  @unifiedTypeMapIndex lstringTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?ioSemanticContext->mTypeMap ?lstringTypeIndex] ;
+  @unifiedTypeMapProxy lstringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"lstring" !here] ?lstringTypeIndex] ;
 #--- current map type index
-  @unifiedTypeMapIndex currentMapTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mMapTypeName !?ioSemanticContext->mTypeMap ?currentMapTypeIndex] ;
+  @unifiedTypeMapProxy currentMapTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mMapTypeName ?currentMapTypeIndex] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
 #--- Readers
@@ -356,8 +356,8 @@ override method @mapDeclarationAST enterType
   @formalParameterSignature removeMethodFormalArgumentList [emptyList] ;
   removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     typedAttributeList += !attributeTypeIndex !mAttributeName ;
     enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
     insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
@@ -399,11 +399,11 @@ override method @mapDeclarationAST enterType
 #--- Enter "attributeForKey" readers
   foreach mAttributeList do
     const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     [!?readerMap insertOrReplace
       !accessorName
-      ![@unifiedTypeMapIndexList listWithValue !stringTypeIndex]
+      ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]
       !true
       !attributeTypeIndex
       ![@readerQualifier isBasic]
@@ -423,8 +423,8 @@ override method @mapDeclarationAST enterType
 #---------- Enter "set...Attribute...forKey" modifiers
   foreach mAttributeList do
     const @lstring accessorName [new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
     accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
     accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
@@ -435,8 +435,8 @@ override method @mapDeclarationAST enterType
     ] ;
   end foreach ;
 #--- Enter in type map
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"map" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"map" !here] ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapTypeName
     !true # Concrete Type
@@ -451,8 +451,8 @@ override method @mapDeclarationAST enterType
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -461,7 +461,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapindexDeclarationAST enterType
+override method @mapProxyDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Check associated map is really a map
@@ -486,29 +486,29 @@ override method @mapindexDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
 #--- Associated map type index
-  @unifiedTypeMapIndex associatedMapTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mAssociatedMapTypeName !?ioSemanticContext->mTypeMap ?associatedMapTypeIndex] ;
+  @unifiedTypeMapProxy associatedMapTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAssociatedMapTypeName ?associatedMapTypeIndex] ;
 #--- lstring type index
-  @unifiedTypeMapIndex lstringTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?ioSemanticContext->mTypeMap ?lstringTypeIndex] ;
+  @unifiedTypeMapProxy lstringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"lstring" !here] ?lstringTypeIndex] ;
 #--- currentType type index
-  @unifiedTypeMapIndex currentTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?ioSemanticContext->mTypeMap ?currentTypeIndex] ;
+  @unifiedTypeMapProxy currentTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"lstring" !here] ?currentTypeIndex] ;
 #--- Handle map type name
-  @unifiedTypeMapIndex mapTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mMapIndexTypeName !?ioSemanticContext->mTypeMap ?mapTypeIndex] ;
+  @unifiedTypeMapProxy mapTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mMapProxyTypeName ?mapTypeIndex] ;
 #--- class method
   @formalParameterSignature argList [emptyList] ;
   argList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !associatedMapTypeIndex ![@formalArgumentPassingModeAST argumentInOut] ;
   argList += !currentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
   [!?classMethodMap insertOrReplace
-    ![@lstring new !"makeRegularIndex" !here]
+    ![@lstring new !"makeRegularProxy" !here]
     !argList
     !false
   ] ;
 #--- null constructor
-  enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"null" ![mMapIndexTypeName string] !false ;
+  enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"null" ![mMapProxyTypeName string] !false ;
 #--- readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isSolved" !"bool" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isNull" !"bool" !false ;
@@ -517,7 +517,7 @@ override method @mapindexDeclarationAST enterType
     const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
     [!?readerMap insertOrReplace
       !accessorName
-      ![@unifiedTypeMapIndexList emptyList]
+      ![@unifiedTypeMapProxyList emptyList]
       !true
       !mAttributeTypeIndex
       ![@readerQualifier isBasic]
@@ -526,10 +526,10 @@ override method @mapindexDeclarationAST enterType
   end foreach ;
 #--- Enter type in type map
 #log mMapIndexTypeName ;
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"root" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"root" !here] ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
-    !mMapIndexTypeName
+    !mMapProxyTypeName
     !true # Concrete Type
     !superTypeIndex
     ![@typeKindEnum mapIndexType]
@@ -542,8 +542,8 @@ override method @mapindexDeclarationAST enterType
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     !0
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -562,8 +562,8 @@ override method @enumDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
 #--- currentType type index
-  @unifiedTypeMapIndex currentTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mEnumTypeName !?ioSemanticContext->mTypeMap ?currentTypeIndex] ;
+  @unifiedTypeMapProxy currentTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mEnumTypeName ?currentTypeIndex] ;
 #--- Constructors
   foreach mConstantList do
     enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap ![mValue string] ![mEnumTypeName string] !false ;
@@ -574,8 +574,8 @@ override method @enumDeclarationAST enterType
   end foreach ;
 #--- Enter type in type map
 #log mEnumTypeName ;
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"enum" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"enum" !here] ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mEnumTypeName
     !true # Concrete Type
@@ -590,8 +590,8 @@ override method @enumDeclarationAST enterType
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     !generateDescriptionReaderUtilityMethod []
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     !mConstantList
     ![@typedAttributeList emptyList]
@@ -605,10 +605,10 @@ override method @filewrapperDeclarationAST enterType
 :
   @filewrapperTemplateMap filewrapperTemplateMap [emptyMap] ;
   foreach mFilewrapperTemplateList do
-    @unifiedTypeMapIndexList templateSignature [emptyList] ;
+    @unifiedTypeMapProxyList templateSignature [emptyList] ;
     foreach mFilewrapperTemplateFormalInputParameters do
-      @unifiedTypeMapIndex parameterTypeIndex ;
-      [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext->mTypeMap ?parameterTypeIndex] ;
+      @unifiedTypeMapProxy parameterTypeIndex ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mFormalParameterTypeName ?parameterTypeIndex] ;
       templateSignature += !parameterTypeIndex ;
     end foreach ;
     [!?filewrapperTemplateMap insertKey
@@ -633,19 +633,19 @@ override method @listDeclarationAST enterType
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     typedAttributeList += !attributeTypeIndex !mAttributeName ;
   end foreach ;
 #--- uint type index
-  @unifiedTypeMapIndex uintType ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioSemanticContext->mTypeMap ?uintType] ;
+  @unifiedTypeMapProxy uintType ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"uint" !here] ?uintType] ;
 #--- Element type index
-  @unifiedTypeMapIndex listTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mListTypeName !?ioSemanticContext->mTypeMap ?listTypeIndex] ;
+  @unifiedTypeMapProxy listTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mListTypeName ?listTypeIndex] ;
 #--- Attribute description
   @enumerationDescriptorList enumerationDescriptor [emptyList] ;
-  @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
+  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
   @formalParameterSignature modifierOutputFormalArgumentList [emptyList] ;
   @formalParameterSignature modifierInputFormalArgumentList [emptyList] ;
   foreach typedAttributeList do
@@ -671,7 +671,7 @@ override method @listDeclarationAST enterType
   foreach typedAttributeList do
     [!?readerMap insertOrReplace
       ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
-      ![@unifiedTypeMapIndexList listWithValue !uintType]
+      ![@unifiedTypeMapProxyList listWithValue !uintType]
       !true
       !mAttributeTypeIndex
       ![@readerQualifier isBasic]
@@ -720,8 +720,8 @@ override method @listDeclarationAST enterType
     !true
   ] ;
 #--- Enter in type map
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"list" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"list" !here] ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mListTypeName
     !true # Concrete Type
@@ -737,7 +737,7 @@ override method @listDeclarationAST enterType
     !enumerationDescriptor
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | generateCppConstructorWithNativeAttributeList []
     !constructorAttributeTypeList
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -749,19 +749,19 @@ end method ;
 override method @sortedListDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  @unifiedTypeMapIndex uintType ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioSemanticContext->mTypeMap ?uintType] ;
+  @unifiedTypeMapProxy uintType ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"uint" !here] ?uintType] ;
 #--- Element type index
-  @unifiedTypeMapIndex listTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mSortedListTypeName !?ioSemanticContext->mTypeMap ?listTypeIndex] ;
+  @unifiedTypeMapProxy listTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy!?ioSemanticContext->mTypeMap !mSortedListTypeName  ?listTypeIndex] ;
 #--- Enumeration description
   @enumerationDescriptorList enumerationDescriptor [emptyList] ;
-  @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
+  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
   @formalParameterSignature modifierFormalArgumentList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     typedAttributeList += !attributeTypeIndex !mAttributeName ;
     enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
     constructorAttributeTypeList += !attributeTypeIndex ;
@@ -806,8 +806,8 @@ override method @sortedListDeclarationAST enterType
     !true
   ] ;
 #--- Enter in type map
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"sortedlist" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"sortedlist" !here] ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mSortedListTypeName
     !true # Concrete Type
@@ -824,7 +824,7 @@ override method @sortedListDeclarationAST enterType
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
       | generateCppConstructorWithNativeAttributeList [] | generateSortedListComparisonMethod []
     !constructorAttributeTypeList
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -837,15 +837,15 @@ override method @structDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Struct type index
-  @unifiedTypeMapIndex structTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mStructTypeName !?ioSemanticContext->mTypeMap ?structTypeIndex] ;
+  @unifiedTypeMapProxy structTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mStructTypeName ?structTypeIndex] ;
 #--- Constructors
   @constructorMap constructorMap [emptyMap] ;
-  @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
+  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     constructorAttributeTypeList += !attributeTypeIndex ;
     typedAttributeList += !attributeTypeIndex !mAttributeName ;
   end foreach ;
@@ -858,11 +858,11 @@ override method @structDeclarationAST enterType
 #--- Readers
   @readerMap readerMap [emptyMap] ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     [!?readerMap insertOrReplace
       !mAttributeName
-      ![@unifiedTypeMapIndexList emptyList]
+      ![@unifiedTypeMapProxyList emptyList]
       !false
       !attributeTypeIndex
       ![@readerQualifier isBasic]
@@ -874,8 +874,8 @@ override method @structDeclarationAST enterType
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Enter in type map
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"struct" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"struct" !here] ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mStructTypeName
     !true # Concrete Type
@@ -892,8 +892,8 @@ override method @structDeclarationAST enterType
     !generateVirtualDestructor []
       | generateCppConstructorWithAttributeList []
       | generateDescriptionReaderUtilityMethod []
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     !typedAttributeList
@@ -905,8 +905,8 @@ end method ;
 override method @classDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  @unifiedTypeMapIndex uintType ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?ioSemanticContext->mTypeMap ?uintType] ;
+  @unifiedTypeMapProxy uintType ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"uint" !here] ?uintType] ;
 #---
   @readerMap readerMap ;
   @modifierMap modifierMap ;
@@ -914,16 +914,16 @@ override method @classDeclarationAST enterType
   @classMethodMap classMethodMap ;
   @typedAttributeList inheritedTypedAttributeList ;
 #--- Handle super class
-  @unifiedTypeMapIndex superClassIndex ;
+  @unifiedTypeMapProxy superClassIndex ;
   if [mSuperClassName string] == "" then
-    [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"class" !here] !?ioSemanticContext->mTypeMap ?superClassIndex] ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"class" !here] ?superClassIndex] ;
     readerMap := [@readerMap emptyMap] ;
     modifierMap := [@modifierMap emptyMap] ;
     instanceMethodMap := [@instanceMethodMap emptyMap] ;
     classMethodMap := [@classMethodMap emptyMap] ;
     inheritedTypedAttributeList := [@typedAttributeList emptyList] ;
   else
-    [@unifiedTypeMapIndex makeRegularIndex !mSuperClassName !?ioSemanticContext->mTypeMap ?superClassIndex] ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mSuperClassName ?superClassIndex] ;
     @typeKindEnum typeKindEnum ;
     [[ioSemanticContext mTypeMap] searchKey
       !mSuperClassName
@@ -943,18 +943,18 @@ override method @classDeclarationAST enterType
     end if ;
   end if ;
 #--- Current class Index
-  @unifiedTypeMapIndex classIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mClassTypeName !?ioSemanticContext->mTypeMap ?classIndex] ;
+  @unifiedTypeMapProxy classIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mClassTypeName ?classIndex] ;
 #--- Constructor
   @constructorMap constructorMap [emptyMap] ;
   if not mIsAbstract then
-    @unifiedTypeMapIndexList constructorAttributeTypeList [emptyList] ;
+    @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
     foreach inheritedTypedAttributeList do
       constructorAttributeTypeList += !mAttributeTypeIndex ;
     end foreach ;
     foreach mAttributeList do
-      @unifiedTypeMapIndex attributeTypeIndex ;
-      [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+      @unifiedTypeMapProxy attributeTypeIndex ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
       constructorAttributeTypeList += !attributeTypeIndex ;
     end foreach ;
     [!?constructorMap insertKey
@@ -968,8 +968,8 @@ override method @classDeclarationAST enterType
   foreach mAbstractMethodList do
     @formalParameterSignature formalArgumentList [emptyList] ;
     foreach mSignature do
-      @unifiedTypeMapIndex typeIndex ;
-      [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext->mTypeMap ?typeIndex] ;
+      @unifiedTypeMapProxy typeIndex ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mFormalParameterTypeName ?typeIndex] ;
       formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
     end foreach ;
     [!?instanceMethodMap insertOrReplace
@@ -982,8 +982,8 @@ override method @classDeclarationAST enterType
   foreach mMethodList do
     @formalParameterSignature formalArgumentList [emptyList] ;
     foreach mSignature do
-      @unifiedTypeMapIndex typeIndex ;
-      [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext->mTypeMap ?typeIndex] ;
+      @unifiedTypeMapProxy typeIndex ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mFormalParameterTypeName ?typeIndex] ;
       formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
     end foreach ;
     [!?instanceMethodMap insertOrReplace
@@ -997,8 +997,8 @@ override method @classDeclarationAST enterType
   @typedAttributeList currentClassTypedAttributeList [emptyList] ;
   @typedAttributeList allTypedAttributeList := inheritedTypedAttributeList ;
   foreach mAttributeList do
-    @unifiedTypeMapIndex attributeTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext->mTypeMap ?attributeTypeIndex] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     currentClassTypedAttributeList += !attributeTypeIndex !mAttributeName ;
     allTypedAttributeList += !attributeTypeIndex !mAttributeName ;
   end foreach ;
@@ -1018,8 +1018,8 @@ override method @classDeclarationAST enterType
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     !0
-    ![@unifiedTypeMapIndexList emptyList]
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -1034,8 +1034,8 @@ override method @externRoutineDeclarationAST enterType # Handles also routine de
 #--- Build signature
   @formalParameterSignature routineSignature [emptyList] ;
   foreach mFormalParameterList do
-    @unifiedTypeMapIndex parameterTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext->mTypeMap ?parameterTypeIndex] ;
+    @unifiedTypeMapProxy parameterTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mFormalParameterTypeName ?parameterTypeIndex] ;
     routineSignature += !parameterTypeIndex !mFormalParameterPassingMode ;
   end foreach ;
 #--- Enter routine in routine map
@@ -1048,15 +1048,15 @@ override method @externFunctionDeclarationAST enterType # Handles also function 
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
-  @unifiedTypeMapIndexList functionSignature [emptyList] ;
+  @unifiedTypeMapProxyList functionSignature [emptyList] ;
   foreach mFormalParameterList do
-    @unifiedTypeMapIndex parameterTypeIndex ;
-    [@unifiedTypeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext->mTypeMap ?parameterTypeIndex] ;
+    @unifiedTypeMapProxy parameterTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mFormalParameterTypeName ?parameterTypeIndex] ;
     functionSignature += !parameterTypeIndex ;
   end foreach ;
 #--- Result type
-  @unifiedTypeMapIndex resultTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mResultTypeName !?ioSemanticContext->mTypeMap ?resultTypeIndex] ;
+  @unifiedTypeMapProxy resultTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mResultTypeName ?resultTypeIndex] ;
 #--- Enter function in routine map
   [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName !functionSignature !resultTypeIndex] ;
 end method ;
@@ -1067,10 +1067,10 @@ override method @lazyFunctionDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Result type
-  @unifiedTypeMapIndex resultTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mResultTypeName !?ioSemanticContext->mTypeMap ?resultTypeIndex] ;
+  @unifiedTypeMapProxy resultTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mResultTypeName ?resultTypeIndex] ;
 #--- Enter function in routine map
-  [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName ![@unifiedTypeMapIndexList emptyList] !resultTypeIndex] ;
+  [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName ![@unifiedTypeMapProxyList emptyList] !resultTypeIndex] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1099,14 +1099,14 @@ override method @listmapDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
 #--- Associated map type index
-  @unifiedTypeMapIndex associatedListTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mAssociatedListTypeName !?ioSemanticContext->mTypeMap ?associatedListTypeIndex] ;
+  @unifiedTypeMapProxy associatedListTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mAssociatedListTypeName ?associatedListTypeIndex] ;
 #--- currentType type index
-  @unifiedTypeMapIndex currentTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex !mListmapTypeName !?ioSemanticContext->mTypeMap ?currentTypeIndex] ;
+  @unifiedTypeMapProxy currentTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mListmapTypeName ?currentTypeIndex] ;
 #--- currentType type index
-  @unifiedTypeMapIndex stringTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?ioSemanticContext->mTypeMap ?stringTypeIndex] ;
+  @unifiedTypeMapProxy stringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"string" !here] ?stringTypeIndex] ;
 #--- readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
 #--- Constructors
@@ -1116,14 +1116,14 @@ override method @listmapDeclarationAST enterType
   enumeratorDescriptor += !stringTypeIndex !"key" ;
   enumeratorDescriptor += !associatedListTypeIndex !"value" ;
 #--- Add assign operator description
-  @unifiedTypeMapIndexList addAssignOperatorDescription [emptyList] ;
+  @unifiedTypeMapProxyList addAssignOperatorDescription [emptyList] ;
   addAssignOperatorDescription += !stringTypeIndex ;
   foreach listTypedAttributeList do
     addAssignOperatorDescription += !mAttributeTypeIndex ;
   end foreach ;
 #--- Enter type in type map
-  @unifiedTypeMapIndex superTypeIndex ;
-  [@unifiedTypeMapIndex makeRegularIndex ![@lstring new !"listmap" !here] !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![@lstring new !"listmap" !here] ?superTypeIndex] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mListmapTypeName
     !true # Concrete Type
@@ -1139,7 +1139,7 @@ override method @listmapDeclarationAST enterType
     !enumeratorDescriptor
     !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
     !addAssignOperatorDescription
-    ![@unifiedTypeMapIndexList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -1250,10 +1250,10 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapindexDeclarationAST enterOrderedDeclaration
+override method @mapProxyDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += ![mAssociatedMapTypeName string] ![mMapIndexTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += ![mAssociatedMapTypeName string] ![mMapProxyTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
