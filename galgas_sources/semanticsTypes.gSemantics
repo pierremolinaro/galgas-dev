@@ -315,7 +315,7 @@ method @predefinedTypeAST getSuperType
   !@unifiedTypeMapProxy outSuperType
 :
 #--- By default, super type is the @root type
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"root" !here] ?outSuperType] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"root" ?outSuperType] ;
 end method ;
 
 #---------------------------------------------------------------------------*

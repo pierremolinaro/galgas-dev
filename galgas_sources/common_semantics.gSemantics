@@ -3304,7 +3304,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
         ![@formalArgumentPassingModeAST argumentInOut]
       ;
       outTypeMethodSignature +=
-        ![@typeGalgas_lstring new]
+        ![@typeGalgas_string new]
         ![@formalArgumentPassingModeAST argumentIn]
       ;
       outTypeMethodSignature +=
@@ -4146,6 +4146,9 @@ routine handleReaderCall
     elsif [inReaderName string] == "isNull" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inReaderName string] == "keyString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
     elsif [inReaderName string] == "key" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_lstring new] ;
