@@ -30,7 +30,7 @@ routine enterConstructorWithoutArgument
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inReturnedTypeName !here] ?returnedTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioConstructorMap insertKey
     ![@lstring new !inConstructorName !here]
     ![@unifiedTypeMapProxyList emptyList]
@@ -50,9 +50,9 @@ routine enterConstructorWithArgument
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inReturnedTypeName !here] ?returnedTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inArgument1TypeName !here] ?t] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   [!?ioConstructorMap insertKey
     ![@lstring new !inConstructorName !here]
     ![@unifiedTypeMapProxyList listWithValue !t]
@@ -73,12 +73,12 @@ routine enterConstructorWith2Arguments
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inReturnedTypeName !here] ?returnedTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @unifiedTypeMapProxyList argumentTypeList [emptyList] ;
   @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inArgument1TypeName !here] ?t] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argumentTypeList += !t ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inArgument2TypeName !here] ?t] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argumentTypeList += !t ;
   [!?ioConstructorMap insertKey
     ![@lstring new !inConstructorName !here]
@@ -101,14 +101,14 @@ routine enterConstructorWith3Arguments
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inReturnedTypeName !here] ?returnedTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inArgument1TypeName !here] ?t] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   @unifiedTypeMapProxyList argumentTypeList [emptyList] ;
   argumentTypeList += !t ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inArgument2TypeName !here] ?t] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argumentTypeList += !t ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inArgument3TypeName !here] ?t] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
   argumentTypeList += !t ;
   [!?ioConstructorMap insertKey
     ![@lstring new !inConstructorName !here]

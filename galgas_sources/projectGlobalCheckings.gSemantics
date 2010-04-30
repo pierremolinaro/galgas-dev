@@ -192,7 +192,7 @@ routine performProjectGlobalCheckings
     foreach [semanticContext mTypeMap] do
        if not [mSuperType isNull] then
          descendantClassListMap +=
-           ![[mSuperType key] string]
+           ![mSuperType keyString]
            ![@unifiedTypeMapProxy searchKey ![semanticContext mTypeMap] !key]
          ;
        end if ;

@@ -46,10 +46,10 @@ routine checkMethodSignatures
         . [ref_mFormalParameterPassingMode formalArgumentMessage] ;
         error inReferenceLocation:"overriden method is declared here" ;
       end if ;
-      if [[mFormalParameterType key] string] != [[ref_mParameterType key] string] then
+      if [[mFormalParameterType key] string] != [ref_mParameterType keyString] then
         error mFormalParameterName : "the '" . mFormalParameterName . "' formal parameter has the '@"
         . [mFormalParameterType key] . "' type, but overriden method declares with the '@" 
-        . [ref_mParameterType key] . "' type" ;
+        . [ref_mParameterType keyString] . "' type" ;
         error inReferenceLocation:"overriden method is declared here" ;
       end if ;
     end foreach ;

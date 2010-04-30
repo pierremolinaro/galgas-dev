@@ -46,7 +46,7 @@ routine enterInstanceMethodWithInputArgument
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inInputArgumentTypeName !here] ?argumentTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioInstanceMethodMap insertOrReplace
@@ -67,7 +67,7 @@ routine enterInstanceMethodWithOutputArgument
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !inInputArgumentTypeName !here] ?argumentTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
   [!?ioInstanceMethodMap insertOrReplace
@@ -101,9 +101,9 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   enterInstanceMethodWithoutArgument !?outInstanceMethodMap ![@lstring new !"makeDirectory" !here] !true ;
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"string" !here] ?t] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?t] ;
   argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap ![@lstring new !"bool" !here] ?t] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"bool" ?t] ;
   argList += !t ![@formalArgumentPassingModeAST argumentOut] ;
   [!?outInstanceMethodMap insertOrReplace
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
