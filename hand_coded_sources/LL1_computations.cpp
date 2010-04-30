@@ -721,7 +721,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
       //--- Define string parsing static method
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
-                       << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
+                       << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (C_Compiler & inCompiler"
                           ",\n                                "
                           "GGS_string * inSentStringPtr"
