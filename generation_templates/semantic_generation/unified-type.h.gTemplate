@@ -379,7 +379,7 @@ if ((SUPPORTED_OPERATORS & (incDecOperator [] | dotAssignOperator [])) != 0)
  | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0)
  | ([MINUS_ASSIGN_ARGUMENT_LIST length] > 0) then
   %//--------------------------------- Modifier utility method\n%
-  %  protected : static void insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOperand\n%
+  %  public : static void insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOperand\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 

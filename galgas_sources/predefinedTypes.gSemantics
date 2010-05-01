@@ -67,7 +67,6 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"mapproxy" !"root"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"set" !"enumerable"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
 
@@ -105,6 +104,12 @@ routine appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 
+#--- Example of map proxy type
+  ioDeclarationListASTs += ![@mapProxyDeclarationAST new
+    ![@lstring new !"zeMap-Proxy" !here]
+    ![@lstring new !"ze-Map" !here]
+  ] ;
+
 #--- Example of map type
   @attributeInCollectionListAST attributeList [emptyList] ;
   attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
@@ -128,7 +133,7 @@ routine appendPredefinedTypesASTs
   ;
   @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
   ioDeclarationListASTs += ![@mapDeclarationAST new
-    ![@lstring new !"zeMap" !here]
+    ![@lstring new !"ze-Map" !here]
     !attributeList
     !insertMethodList
     !searchMethodList
@@ -138,7 +143,7 @@ routine appendPredefinedTypesASTs
 
 #--- Example of listmap type
   ioDeclarationListASTs += ![@listmapDeclarationAST new
-    ![@lstring new !"zeListMap" !here]
+    ![@lstring new !"ze-List-Map" !here]
     ![@lstring new !"uintlist" !here]
   ] ;
 
@@ -151,7 +156,7 @@ routine appendPredefinedTypesASTs
   sortAttributeList += ![@lstring new !"toto" !here] !true ;
   sortAttributeList += ![@lstring new !"tata" !here] !false ;
   ioDeclarationListASTs += ![@sortedListDeclarationAST new
-    ![@lstring new !"Ze_Sorted_List" !here]
+    ![@lstring new !"Ze-Sorted-List" !here]
     !attributeList
     !sortAttributeList
   ] ;
@@ -168,7 +173,7 @@ routine appendPredefinedTypesASTs
   enumMessageAssociationListAST += ![@lstring new !"ze_Second" !here] ![@lstring new !"second" !here] ;
   enumMessageListAST += ![@lstring new !"ze_message" !here] !enumMessageAssociationListAST ;
   ioDeclarationListASTs += ![@enumDeclarationAST new
-    ![@lstring new !"Ze_enumeration" !here]
+    ![@lstring new !"Ze-enumeration" !here]
     !constantList
     !enumMessageListAST
   ] ;
