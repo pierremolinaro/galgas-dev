@@ -156,36 +156,69 @@ end foreach
 //--------------------------------- Instance Methods
 %
 foreach INSTANCE_METHOD_MAP do
-  %  protected : void method_%![key identifierRepresentation]% (%?^
-  foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & outArgument% ![IDX string]
-    else # argumentIn
-      %GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    end if
-  between %,\n%!^
-  end foreach
-  if [mParameterList length] == 0 then
-    if mHasCompilerArgument then
-      %C_Compiler * inCompiler\n%
-      !^%COMMA_LOCATION_ARGS%
+  if mQualifier != [@readerQualifier isInherited] then
+    %  protected : virtual void method_%![key identifierRepresentation]% (%?^
+    foreach mParameterList do index IDX
+      if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %const GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
+      elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGAS_% ![mParameterType identifierRepresentation] % * & ioArgument% ![IDX string]
+      elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGAS_% ![mParameterType identifierRepresentation] % * & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
+      end if
+    between %,\n%!^
+    end foreach
+    if [mParameterList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        !^%LOCATION_ARGS%
+      end if  
     else
-      !^%LOCATION_ARGS%
-    end if  
-  else
+      if mHasCompilerArgument then
+        %,\n%!^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        %\n%!^%COMMA_LOCATION_ARGS%
+      end if  
+    end if
+    %) const %
+    if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isOverridingAbstract]) then
+      %= 0 %
+    end if
+    %;\n\n%
+  end if
+end foreach
+%
+//--------------------------------- Instance Method Invocation\n%
+foreach INSTANCE_METHOD_MAP do
+  if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isBasic]) then
+    %  friend void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
+    foreach mParameterList do index IDX
+      %,\n%!^
+      if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %const GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
+      elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGAS_% ![mParameterType identifierRepresentation] % * & ioArgument% ![IDX string]
+      elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGAS_% ![mParameterType identifierRepresentation] % * & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
+      end if
+    end foreach
     if mHasCompilerArgument then
       %,\n%!^%C_Compiler * inCompiler\n%
       !^%COMMA_LOCATION_ARGS%
     else
       %\n%!^%COMMA_LOCATION_ARGS%
     end if  
+    %) ;\n\n%
   end if
-  %) const ;\n\n%
 end foreach
+
 %
 //--------------------------------- Class Methods
 %
@@ -415,30 +448,7 @@ end foreach
 foreach PRIVATE_DATA_NUMBER_TYPED_LIST do
   %  protected : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
 end foreach
-%
-//--------------------------------- Instance Method Invocation\n%
-foreach INSTANCE_METHOD_MAP do
-  %  friend void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
-  foreach mParameterList do index IDX
-    %,\n%!^
-    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & outArgument% ![IDX string]
-    else # argumentIn
-      %GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    end if
-  end foreach
-  if mHasCompilerArgument then
-    %,\n%!^%C_Compiler * inCompiler\n%
-    !^%COMMA_LOCATION_ARGS%
-  else
-    %\n%!^%COMMA_LOCATION_ARGS%
-  end if  
-  %) ;\n\n%
-end foreach
+
 %//--------------------------------- Modifier invocation\n%
 foreach MODIFIER_MAP do
   %  friend void modifierCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%

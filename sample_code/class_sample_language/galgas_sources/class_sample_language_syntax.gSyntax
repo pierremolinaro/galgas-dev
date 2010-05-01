@@ -21,7 +21,7 @@ rule <start_symbol> :
     or
       $:$ ;
       $identifier$ ? superClassName ;
-      [@classMapIndex makeRegularIndex !superClassName !?classMap ?superClassIndex] ;
+      [@classMapIndex makeRegularProxy !?classMap ![superClassName string] ?superClassIndex] ;
     end select ;
     [!?classMap insertKey !className !superClassIndex] ;
     $;$ ;

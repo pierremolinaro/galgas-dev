@@ -28,11 +28,12 @@ routine enterInstanceMethodWithoutArgument
   ??@lstring inInstanceMethodName
   ??@bool inHasCompilerArgument
 :
-  [!?ioInstanceMethodMap insertOrReplace
+  [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
     ![@formalParameterSignature emptyList]
     ![inInstanceMethodName location]
     !inHasCompilerArgument
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
@@ -49,11 +50,12 @@ routine enterInstanceMethodWithInputArgument
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [!?ioInstanceMethodMap insertOrReplace
+  [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
     !argList
     ![inInstanceMethodName location]
     !inHasCompilerArgument
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
@@ -70,11 +72,12 @@ routine enterInstanceMethodWithOutputArgument
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
-  [!?ioInstanceMethodMap insertOrReplace
+  [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
     !argList
     ![inInstanceMethodName location]
     !inHasCompilerArgument
+    ![@readerQualifier isBasic]
   ] ;
 end routine ;
 
@@ -105,11 +108,12 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"bool" ?t] ;
   argList += !t ![@formalArgumentPassingModeAST argumentOut] ;
-  [!?outInstanceMethodMap insertOrReplace
+  [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     !argList
     !here
     !true
+    ![@readerQualifier isBasic]
   ] ;
 end method ;
 

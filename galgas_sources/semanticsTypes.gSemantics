@@ -52,7 +52,7 @@ map @constructorMap {
 #---------------------------------------------------------------------------*
 
 enum @readerQualifier {
-  isAbstract, isBasic, isInherited, isOverriding
+  isAbstract, isBasic, isInherited, isOverriding, isOverridingAbstract
 }{
 }
 
@@ -104,7 +104,7 @@ map @instanceMethodMap {
   @formalParameterSignature mParameterList ;
   @location mDeclarationLocation ;
   @bool mHasCompilerArgument ;
-  insert or replace ;
+  @readerQualifier mQualifier ;
   insert insertKey error message "the '%K' instance method is already declared" ;
   search searchKey error message "the '%K' instance method is not declared" ;
   search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class" ;
