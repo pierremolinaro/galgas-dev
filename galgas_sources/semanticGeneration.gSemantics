@@ -48,6 +48,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
     ?@typeKindEnum TYPE_KIND
     ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
+    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
     ?@constructorMap CONSTRUCTOR_MAP
     ?@readerMap READER_MAP
     ?@modifierMap MODIFIER_MAP
@@ -136,6 +137,15 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapMethodListAST SEARCH_METHOD_LIST
   ;
+
+  template classTypeSpecificImplementation "GALGAS_class.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
+    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -158,6 +168,7 @@ override reader @semanticTypeForGeneration appendDeclaration -> @string outHeade
     ![mTypeIndex mSuperType]
     ![mTypeIndex mTypeKindEnum]
     ![mTypeIndex mCurrentTypedAttributeList]
+    ![mTypeIndex mInheritedTypedAttributeList]
     ![mTypeIndex mConstructorMap]
     ![mTypeIndex mReaderMap]
     ![mTypeIndex mModifierMap]
@@ -322,6 +333,19 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@strin
     ![mAssociatedMapTypeProxy identifierRepresentation]
     !mAssociatedMapTypedAttributeList
     !mSearchMethodList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @classTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
+    ![[mTypeIndex key] string]
+    ![mTypeIndex identifierRepresentation]
+    !if [mSuperClass isNull] then "class" else [mSuperClass identifierRepresentation] end
+    !mTypedAttributeList
+    !mAllTypedAttributeList
+    ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
   ] ;
  end reader ;
 

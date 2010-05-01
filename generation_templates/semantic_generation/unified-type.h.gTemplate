@@ -43,7 +43,7 @@ if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeList []) != 0
 end if
 
 
-if (SUPPORTED_OPERATORS & generateCppConstructorWithAttributeList []) != 0 then%
+if (SUPPORTED_OPERATORS & generateCppConstructorWithCurrentAttributeList []) != 0 then%
 //--------------------------------- C++ constructor\n%
   %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach CURRENT_TYPE_ATTRIBUTE_LIST
@@ -57,14 +57,28 @@ if (SUPPORTED_OPERATORS & generateCppConstructorWithAttributeList []) != 0 then%
   end if
 end if
 
+if (SUPPORTED_OPERATORS & generateCppConstructorWithAllAttributeList []) != 0 then%
+//--------------------------------- C++ constructor\n%
+  %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
+  foreach INHERITED_ATTRIBUTE_LIST
+    do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttribute_% ![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+  if [INHERITED_ATTRIBUTE_LIST length] == 0 then
+    %LOCATION_ARGS) ;\n\n%
+  else
+    %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+  end if
+end if
+
 if (SUPPORTED_OPERATORS & generateNativeNewConstructor []) != 0 then
   %//--------------------------------- Native constructor\n%
-  %  public : static GALGAS_%!TYPE_IDENTIFIER% * constructor_new (%?COL_01
+  %  public : static GALGAS_%!TYPE_IDENTIFIER% * constructor_new (%?^
   foreach NATIVE_ATTRIBUTE_LIST
     do %const % !mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
-    between %,\n%!COL_01
+    between %,\n%!^
   end foreach
-  %\n%!COL_01 %COMMA_LOCATION_ARGS) ;\n\n%
+  %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & generateVirtualDestructor []) != 0 then
@@ -399,7 +413,7 @@ foreach NATIVE_ATTRIBUTE_LIST do
   end if
 end foreach
 foreach PRIVATE_DATA_NUMBER_TYPED_LIST do
-  %  private : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * mAttribute_% ![mAttributeName identifierRepresentation]% ;\n%
+  %  protected : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
 end foreach
 %
 //--------------------------------- Instance Method Invocation\n%

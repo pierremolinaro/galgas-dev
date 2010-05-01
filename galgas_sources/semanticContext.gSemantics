@@ -930,7 +930,7 @@ override method @structDeclarationAST enterType
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     !generateVirtualDestructor []
-      | generateCppConstructorWithAttributeList []
+      | generateCppConstructorWithCurrentAttributeList []
       | generateDescriptionReaderUtilityMethod []
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
@@ -971,9 +971,8 @@ override method @classDeclarationAST enterType
       !mSuperClassName
       ?2*
       ?typeKindEnum
-      ?*
       ?inheritedTypedAttributeList
-      ?*
+      ?2*
       ?readerMap
       ?modifierMap
       ?instanceMethodMap
@@ -1059,12 +1058,12 @@ override method @classDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
-    !0
+    !generateCppConstructorWithAllAttributeList [] | generateVirtualDestructor []
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
+    !currentClassTypedAttributeList
     ![@mapMethodListAST emptyList]
     ![@mapMethodListAST emptyList]
   ] ;

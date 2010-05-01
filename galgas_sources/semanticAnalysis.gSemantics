@@ -397,11 +397,23 @@ override method @classDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
+#------ Super type
+  @unifiedTypeMapProxy superClassIndex ;
+  if [mSuperClassName string] == "" then
+    superClassIndex := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"class" !here]] ;
+  else
+    superClassIndex := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
+  end if ;
 #------ Enter attributes
+  @typedAttributeList allAttributeList := [superClassIndex mInheritedTypedAttributeList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !mAttributeName
+    ;
+    allAttributeList +=
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
@@ -413,13 +425,6 @@ override method @classDeclarationAST performSemanticAnalysis
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   else
     [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?10*] ;
-  end if ;
-#------ Super type
-  @unifiedTypeMapProxy superClassIndex ;
-  if [mSuperClassName string] == "" then
-    superClassIndex := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"class" !here]] ;
-  else
-    superClassIndex := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
   end if ;
 #------ Abstract methods
   @abstractMethodDefinitionListForGeneration abstractMethodList [emptyList] ;
@@ -494,6 +499,7 @@ override method @classDeclarationAST performSemanticAnalysis
     !mIsAbstract
     !mClassTypeName
     !superClassIndex
+    !allAttributeList
     !typedAttributeList
     !abstractMethodList
     !methodList

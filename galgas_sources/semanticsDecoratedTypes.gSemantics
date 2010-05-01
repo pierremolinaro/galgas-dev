@@ -1204,6 +1204,7 @@ class @classTypeForGeneration extends @semanticTypeForGeneration {
   @lstring mClassTypeName ;
   @unifiedTypeMapProxy mSuperClass ; # Null if no super class
 #  @lstringlist mClassFeatureList ;
+  @typedAttributeList mAllTypedAttributeList ; # Inherited followed by current attributes
   @typedAttributeList mTypedAttributeList ;
   @abstractMethodDefinitionListForGeneration mAbstractMethodList ;
   @methodDefinitionListForGeneration mMethodList ;
