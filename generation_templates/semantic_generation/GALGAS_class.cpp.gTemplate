@@ -1,0 +1,58 @@
+//---------------------------------------------------------------------------*
+
+%if [CURRENT_ATTRIBUTE_LIST length] == 0 then
+  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% * /* inOperand1 */,\n%
+  %                                           %!^%const GALGAS_%!TYPE_IDENTIFIER% * /* inOperand2 */) {\n%
+  %  return 0 ;\n%
+  %}\n\n%
+else
+  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand1,\n%
+  %                                           %!^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand2) {\n%
+  %  macroValidObject (inOperand1, const GALGAS_%!TYPE_IDENTIFIER%) ;\n%
+  %  macroValidObject (inOperand2, const GALGAS_%!TYPE_IDENTIFIER%) ;\n%
+  %  PMSInt32 result = 0 ;\n%
+  foreach ALL_ATTRIBUTE_LIST do
+     %  if (0 == result) {\n%
+     %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+     %  }\n%
+  end foreach
+  %  return result ;\n%
+  %}\n\n%
+end if
+%
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
+  foreach ALL_ATTRIBUTE_LIST
+    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttribute_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+  %\n%!^%COMMA_LOCATION_ARGS) :\n%
+  %GALGAS_%!SUPER_TYPE_IDENTIFIER% (%
+  foreach INHERITED_ATTRIBUTE_LIST
+    do %inAttribute_%![mAttributeName identifierRepresentation]
+    between %, %
+  end foreach
+  if [INHERITED_ATTRIBUTE_LIST length] > 0 then
+    % COMMA_THERE)%
+  else
+    %THERE)%
+  end if
+  foreach CURRENT_ATTRIBUTE_LIST do
+    %,\n%
+    %mAttribute_%![mAttributeName identifierRepresentation]% (NULL)%
+  end foreach
+% {
+% foreach CURRENT_ATTRIBUTE_LIST do
+    %  macroAssignObject (mAttribute_%![mAttributeName identifierRepresentation]%, (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) inAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+  end foreach
+%}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
+% foreach CURRENT_ATTRIBUTE_LIST do
+    %  macroReleaseObject (mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+  end foreach
+%}
+
