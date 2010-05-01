@@ -97,59 +97,61 @@ foreach MODIFIER_MAP do
 end foreach
 
 foreach INSTANCE_METHOD_MAP do
-  %//---------------------------------------------------------------------------*\n\n%
-  %void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
-  foreach mParameterList do index IDX
-    %,\n%!^
-    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mParameterType identifierRepresentation] % * & outArgument% ![IDX string]
-    else # argumentIn
-      %GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
-    end if
-  end foreach
-  if mHasCompilerArgument then
-    %,\n%!^%C_Compiler * inCompiler\n%
-    !^%COMMA_LOCATION_ARGS%
-  else
-    %\n%!^%COMMA_LOCATION_ARGS%
-  end if  
-  %) {
-  if (inObject != NULL) {
-    macroRetainObjectThere (inObject) ;
-    inObject->method_%![key identifierRepresentation]% (%
-  foreach mParameterList do index IDX
-    if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %inArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %ioArgument% ![IDX string]
-    elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %outArgument% ![IDX string]
-    else # argumentIn
-      %inArgument% ![IDX string]
-    end if
-    between %, %
-  end foreach
-  if [mParameterList length] > 0 then
+  if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isBasic]) then
+    %//---------------------------------------------------------------------------*\n\n%
+    %void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
+    foreach mParameterList do index IDX
+      %,\n%!^
+      if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %const GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
+      elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGAS_% ![mParameterType identifierRepresentation] % * & ioArgument% ![IDX string]
+      elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGAS_% ![mParameterType identifierRepresentation] % * & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGAS_% ![mParameterType identifierRepresentation] % * inArgument% ![IDX string]
+      end if
+    end foreach
     if mHasCompilerArgument then
-      %, inCompiler COMMA_THERE%
+      %,\n%!^%C_Compiler * inCompiler\n%
+      !^%COMMA_LOCATION_ARGS%
     else
-      % COMMA_THERE%
-    end if
-  else
-    if mHasCompilerArgument then
-      %inCompiler COMMA_THERE%
+      %\n%!^%COMMA_LOCATION_ARGS%
+    end if  
+    %) {\n%
+    %  if (inObject != NULL) {\n%
+    %    macroRetainObjectThere (inObject) ;\n%
+    %    inObject->method_%![key identifierRepresentation]% (%
+    foreach mParameterList do index IDX
+      if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %inArgument% ![IDX string]
+      elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %ioArgument% ![IDX string]
+      elsif mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %outArgument% ![IDX string]
+      else # argumentIn
+        %inArgument% ![IDX string]
+      end if
+      between %, %
+    end foreach
+    if [mParameterList length] > 0 then
+      if mHasCompilerArgument then
+        %, inCompiler COMMA_THERE%
+      else
+        % COMMA_THERE%
+      end if
     else
-      %THERE%
+      if mHasCompilerArgument then
+        %inCompiler COMMA_THERE%
+      else
+        %THERE%
+      end if
     end if
+    %) ;\n% 
+    %    macroReleaseObjectThere (inObject) ;\n%
+    %  }\n%
+    %}\n\n%
   end if
-  %) ;  
-    macroReleaseObjectThere (inObject) ;
-  }
-}\n\n%
 end foreach
 
 foreach READER_MAP do
@@ -217,3 +219,4 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
     %}\n\n%
   end foreach
 end if
+

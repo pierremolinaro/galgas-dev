@@ -393,19 +393,25 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+map @declaredMethodMap { # This map is used for checking a method is declared once within a class
+  insert insertKey error message "the '%K' method is already declared in %L for this class" ;
+}
+
+#---------------------------------------------------------------------------*
+
 override method @classDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Super type
-  @unifiedTypeMapProxy superClassIndex ;
+  @unifiedTypeMapProxy superClassProxy ;
   if [mSuperClassName string] == "" then
-    superClassIndex := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"class" !here]] ;
+    superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"class" !here]] ;
   else
-    superClassIndex := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
+    superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
   end if ;
 #------ Enter attributes
-  @typedAttributeList allAttributeList := [superClassIndex mInheritedTypedAttributeList] ;
+  @typedAttributeList allAttributeList := [superClassProxy mInheritedTypedAttributeList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeIndexMap [emptyMap] ;
   foreach mAttributeList do
@@ -419,13 +425,16 @@ override method @classDeclarationAST performSemanticAnalysis
     ;
     [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
   end foreach ;
+#------ Check a method is defined once within class
+  @declaredMethodMap classMethodMap [emptyMap] ;
+  foreach mAbstractMethodList do
+   [!?classMethodMap insertKey !mMethodName] ;
+  end foreach ;
+  foreach mMethodList do
+   [!?classMethodMap insertKey !mMethodName] ;
+  end foreach ;
 #------ Inherited instance methods
-  @instanceMethodMap inheritedInstanceMethodMap ;
-  if [mSuperClassName string] == "" then
-    inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
-  else
-    [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?10*] ;
-  end if ;
+  @instanceMethodMap inheritedInstanceMethodMap := [superClassProxy mInstanceMethodMap] ;
 #------ Abstract methods
   @abstractMethodDefinitionListForGeneration abstractMethodList [emptyList] ;
   foreach mAbstractMethodList do
@@ -447,7 +456,7 @@ override method @classDeclarationAST performSemanticAnalysis
     if mIsOverriding then
       @formalParameterSignature inheritedSignature ;
       @location inheritedDeclarationLocation ;
-      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedSignature ?inheritedDeclarationLocation ?*] ;
+      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedSignature ?inheritedDeclarationLocation ?2*] ;
       checkMethodSignatures
         !formalParameterListForGeneration
         ![mMethodName location]
@@ -459,8 +468,9 @@ override method @classDeclarationAST performSemanticAnalysis
     end if ;
     abstractMethodList += !mIsOverriding !mMethodName !formalParameterListForGeneration ;
   end foreach ;
-#------ Base methods
+#------ Methods
   @methodDefinitionListForGeneration methodList [emptyList] ;
+  @stringset definedMethodSet [emptySet] ;
   foreach mMethodList do
   #--- Compute method signature
     @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
@@ -476,7 +486,7 @@ override method @classDeclarationAST performSemanticAnalysis
     if mIsOverriding then
       @formalParameterSignature inheritedSignature ;
       @location inheritedDeclarationLocation ;
-      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedSignature ?inheritedDeclarationLocation ?*] ;
+      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedSignature ?inheritedDeclarationLocation ?2*] ;
       checkMethodSignatures
         !formalParameterListForGeneration
         ![mMethodName location]
@@ -484,8 +494,9 @@ override method @classDeclarationAST performSemanticAnalysis
         !inheritedDeclarationLocation
       ;
     elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
-      error mMethodName : "this method cannot be declared as abstract, it is already declared in super class" ;
+      error mMethodName : "this method should be declared as overridding, as it is already declared in super class" ;
     end if ;
+    definedMethodSet += ![mMethodName string] ;
     methodList +=
       !mIsOverriding
       !mMethodName
@@ -493,12 +504,20 @@ override method @classDeclarationAST performSemanticAnalysis
       ![@semanticInstructionListForGeneration emptyList]
     ;
   end foreach ;
+#------ Check a concrete class has no abstract method
+  foreach inheritedInstanceMethodMap do
+    if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isOverridingAbstract]) then
+      if not [definedMethodSet hasKey ![key string]] then
+        error key : "the '@" . mClassTypeName . "' class is declared concrete, but the '" . key . "' method declared in a super class is not implemented" ;
+      end if ;    
+    end if ;
+  end foreach ;
 #------
   ioSemanticDeclarationListForGeneration += ![@classTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
     !mIsAbstract
     !mClassTypeName
-    !superClassIndex
+    !superClassProxy
     !allAttributeList
     !typedAttributeList
     !abstractMethodList

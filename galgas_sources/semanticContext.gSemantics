@@ -390,11 +390,12 @@ override method @mapDeclarationAST enterType
   end foreach ;
 #--- Handle search methods
   foreach mSearchMethodList do
-    [!?instanceMethodMap insertOrReplace
+    [!?instanceMethodMap insertKey
       !mMethodName
       !removeMethodFormalArgumentList
       ![mMethodName location]
       !true
+      ![@readerQualifier isBasic]
     ] ;
   end foreach ;
 #--- Enter "attributeForKey" readers
@@ -743,17 +744,19 @@ override method @listDeclarationAST enterType
   end foreach ;
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
-  [!?instanceMethodMap insertOrReplace
+  [!?instanceMethodMap insertKey
     ![@lstring new !"first" !here]
     !modifierOutputFormalArgumentList
     !here
     !true
+      ![@readerQualifier isBasic]
   ] ;
-  [!?instanceMethodMap insertOrReplace
+  [!?instanceMethodMap insertKey
     ![@lstring new !"last" !here]
     !modifierOutputFormalArgumentList
     !here
     !true
+    ![@readerQualifier isBasic]
   ] ;
 #--- Enter in type map
   @unifiedTypeMapProxy superTypeProxy ;
@@ -831,17 +834,19 @@ override method @sortedListDeclarationAST enterType
   ] ;
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
-  [!?instanceMethodMap insertOrReplace
+  [!?instanceMethodMap insertKey
     ![@lstring new !"greatest" !here]
     !modifierFormalArgumentList
     !here
     !true
+    ![@readerQualifier isBasic]
   ] ;
-  [!?instanceMethodMap insertOrReplace
+  [!?instanceMethodMap insertKey
     ![@lstring new !"smallest" !here]
     !modifierFormalArgumentList
     !here
     !true
+    ![@readerQualifier isBasic]
   ] ;
 #--- Enter in type map
   @unifiedTypeMapProxy superTypeProxy ;
@@ -952,8 +957,7 @@ override method @classDeclarationAST enterType
 #---
   @readerMap readerMap ;
   @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
+  @instanceMethodMap inheritedInstanceMethodMap ;
   @typedAttributeList inheritedTypedAttributeList ;
 #--- Handle super class
   @unifiedTypeMapProxy superClassIndex ;
@@ -961,8 +965,7 @@ override method @classDeclarationAST enterType
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"class" ?superClassIndex] ;
     readerMap := [@readerMap emptyMap] ;
     modifierMap := [@modifierMap emptyMap] ;
-    instanceMethodMap := [@instanceMethodMap emptyMap] ;
-    classMethodMap := [@classMethodMap emptyMap] ;
+    inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
     inheritedTypedAttributeList := [@typedAttributeList emptyList] ;
   else
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mSuperClassName string] ?superClassIndex] ;
@@ -975,9 +978,8 @@ override method @classDeclarationAST enterType
       ?2*
       ?readerMap
       ?modifierMap
-      ?instanceMethodMap
-      ?classMethodMap
-      ?9*
+      ?inheritedInstanceMethodMap
+      ?10*
     ] ;
     if typeKindEnum != [@typeKindEnum classType] then
       error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
@@ -1005,7 +1007,18 @@ override method @classDeclarationAST enterType
       !classIndex
     ] ;
   end if ;
-#--- Append methods
+#------------------------ Method map
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  foreach inheritedInstanceMethodMap do
+    [!?instanceMethodMap insertKey
+      !key
+      !mParameterList
+      !mDeclarationLocation
+      !mHasCompilerArgument
+      ![@readerQualifier isInherited]
+    ] ;
+  end foreach ;
+#------------------------ Abstract methods
   foreach mAbstractMethodList do
     @formalParameterSignature formalArgumentList [emptyList] ;
     foreach mSignature do
@@ -1013,13 +1026,19 @@ override method @classDeclarationAST enterType
       [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalParameterTypeName string] ?typeIndex] ;
       formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
     end foreach ;
-    [!?instanceMethodMap insertOrReplace
-      !mMethodName
-      !formalArgumentList
-      ![mMethodName location]
-      !true
-    ] ;
+    with !?instanceMethodMap hasKey ![mMethodName string] do
+      mQualifier := [@readerQualifier isOverridingAbstract] ;
+    else
+      [!?instanceMethodMap insertKey
+        !mMethodName
+        !formalArgumentList
+        ![mMethodName location]
+        !true
+        ![@readerQualifier isAbstract]
+      ] ;
+      end with ;
   end foreach ;
+#------------------------ Concrete methods
   foreach mMethodList do
     @formalParameterSignature formalArgumentList [emptyList] ;
     foreach mSignature do
@@ -1027,12 +1046,17 @@ override method @classDeclarationAST enterType
       [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalParameterTypeName string] ?typeIndex] ;
       formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
     end foreach ;
-    [!?instanceMethodMap insertOrReplace
-      !mMethodName
-      !formalArgumentList
-      ![mMethodName location]
-      !true
-    ] ;
+    with !?instanceMethodMap hasKey ![mMethodName string] do
+      mQualifier := [@readerQualifier isOverriding] ;
+    else
+      [!?instanceMethodMap insertKey
+        !mMethodName
+        !formalArgumentList
+        ![mMethodName location]
+        !true
+        ![@readerQualifier isBasic]
+      ] ;
+    end with ;
   end foreach ;
 #--- Typed attribute list
   @typedAttributeList currentClassTypedAttributeList [emptyList] ;
@@ -1044,7 +1068,6 @@ override method @classDeclarationAST enterType
     allTypedAttributeList += !attributeTypeIndex !mAttributeName ;
   end foreach ;
 #--- Enter in type map
-#log mClassTypeName ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mClassTypeName
     !not mIsAbstract # Concrete Type
@@ -1058,7 +1081,7 @@ override method @classDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
-    !generateCppConstructorWithAllAttributeList [] | generateVirtualDestructor []
+    !generateCppConstructorWithAllAttributeList [] | generateVirtualDestructor [] | if mIsAbstract then 0 else generateDescriptionReaderUtilityMethod [] end
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]

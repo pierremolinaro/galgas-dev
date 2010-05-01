@@ -145,6 +145,8 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
   ;
 }
 
@@ -346,6 +348,8 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
     !mTypedAttributeList
     !mAllTypedAttributeList
     ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
+    !mIsAbstract
+    !mMethodList
   ] ;
  end reader ;
 

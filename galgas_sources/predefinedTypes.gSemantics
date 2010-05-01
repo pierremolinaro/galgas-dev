@@ -183,13 +183,26 @@ routine appendPredefinedTypesASTs
   attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
   attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
   attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
+  @abstractMethodDefinitionListAST abstractMethodDefinitionListAST [emptyList] ;
+  @formalParameterListAST firstMethodFormalParameters [emptyList] ;
+  firstMethodFormalParameters +=
+    ![@formalArgumentPassingModeAST argumentIn]
+    ![@lstring new !"string" !here]
+    ![@lstring new !"parameter" !here]
+    !false
+  ;
+  abstractMethodDefinitionListAST +=
+    !false # Is not overriding
+    ![@lstring new !"first_method" !here]
+    !firstMethodFormalParameters 
+  ;
   ioDeclarationListASTs += ![@classDeclarationAST new
     !true # Is abstract
     ![@lstring new !"Ze-abstract-class" !here]
     ![@lstring new !"" !here] # No super class
     ![@lstringlist emptyList] # Class feature
     !attributeList
-    ![@abstractMethodDefinitionListAST emptyList]
+    !abstractMethodDefinitionListAST
     ![@methodDefinitionListAST emptyList]
     ![@lazyAttributeListAST emptyList]
   ] ;
@@ -198,6 +211,13 @@ routine appendPredefinedTypesASTs
   attributeList += ![@lstring new !"luint" !here] ![@lstring new !"toto2" !here] ;
   attributeList += ![@lstring new !"lstring" !here] ![@lstring new !"tutu2" !here] ;
   attributeList += ![@lstring new !"lchar" !here] ![@lstring new !"tata2" !here] ;
+  @methodDefinitionListAST concreteMethodDefinitionListAST [emptyList] ;
+  concreteMethodDefinitionListAST +=
+    !true # Is overriding
+    ![@lstring new !"first_method" !here]
+    !firstMethodFormalParameters
+    ![@semanticInstructionListAST emptyList]
+  ;
   ioDeclarationListASTs += ![@classDeclarationAST new
     !false # Is concrete
     ![@lstring new !"Ze-class" !here]
@@ -205,7 +225,7 @@ routine appendPredefinedTypesASTs
     ![@lstringlist emptyList] # Class feature
     !attributeList
     ![@abstractMethodDefinitionListAST emptyList]
-    ![@methodDefinitionListAST emptyList]
+    !concreteMethodDefinitionListAST
     ![@lazyAttributeListAST emptyList]
   ] ;
 
