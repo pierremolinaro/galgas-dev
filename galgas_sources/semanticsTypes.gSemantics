@@ -250,6 +250,8 @@ map @unifiedTypeMap {
   @nativeAttributeList mNativeAttributeList ; # Generating type declaration
   @lstringlist mEnumConstantList ;
   @typedAttributeList mPrivateDataMemberList ;
+  @mapMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
+  @mapMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;

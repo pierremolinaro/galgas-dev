@@ -1151,16 +1151,15 @@ class @mapTypeForGeneration extends @semanticTypeForGeneration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    M A P    I N D E X    D E C L A R A T I O N                            *
+#    M A P    P R O X Y    D E C L A R A T I O N                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @mapindexDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @lstring mMapIndexTypeName ;
-#  @lstring mMapTypeName ;
-#  @lstring mSearchMethodName ;
-#  @lstring mSearchMethodErrorMessage ;
-#}
+class @mapProxyTypeForGeneration extends @semanticTypeForGeneration {
+  @unifiedTypeMapProxy mAssociatedMapTypeProxy ;
+  @typedAttributeList mAssociatedMapTypedAttributeList ;
+  @mapMethodListAST mSearchMethodList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

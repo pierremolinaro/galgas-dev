@@ -121,7 +121,6 @@ SOURCES += semanticsDecoratedTypes.cpp
 SOURCES += semanticAnalysis.cpp
 SOURCES += semanticGeneration.cpp
 SOURCES += semanticsCompilation.cpp
-SOURCES += predefinedTypes.cpp
 SOURCES += syntaxMetamodel.cpp
 SOURCES += syntaxModelBuilder.cpp
 SOURCES += syntaxSLRgrammar.cpp
@@ -141,22 +140,6 @@ SOURCES += XcodeProjectGeneration.cpp
 SOURCES += projectModelBuilder.cpp
 SOURCES += projectLL1grammar.cpp
 SOURCES += galgas_prgm.cpp
-SOURCES += common_semantics.cpp
-SOURCES += semantics_semantics.cpp
-SOURCES += expression_parser.cpp
-SOURCES += semantics_parser.cpp
-SOURCES += domain_parser.cpp
-SOURCES += parser_semantics.cpp
-SOURCES += parser_parser.cpp
-SOURCES += scanner_semantics.cpp
-SOURCES += cocoa_parser.cpp
-SOURCES += cli_options_parser.cpp
-SOURCES += scanner_parser.cpp
-SOURCES += grammar_parser.cpp
-SOURCES += program_parser.cpp
-SOURCES += ggs_LL1_compile_component.cpp
-SOURCES += galgas_start.cpp
-SOURCES += galgas_LL1_grammar.cpp
 
 
 #---------------------------------------------------------------*

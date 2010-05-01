@@ -255,12 +255,12 @@ override method @predefinedTypeAST enterType
   [t getMinusAssignArgumentList !?ioSemanticContext->mTypeMap ?minusAssignArgumentList] ;
   @enumerationDescriptorList enumerationList ;
   [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList] ;
-  @unifiedTypeMapProxy superTypeIndex ;
-  [t getSuperType !?ioSemanticContext->mTypeMap ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeProxy ;
+  [t getSuperType !?ioSemanticContext->mTypeMap ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum primitiveType]
     ![@typedAttributeList emptyList]
     ![@typedAttributeList emptyList]
@@ -276,6 +276,8 @@ override method @predefinedTypeAST enterType
     ![t getNativeAttributeList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
+    ![@mapMethodListAST emptyList]
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -284,15 +286,12 @@ end method ;
 override method @genericTypeTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
-#--- uint type index
-#  @unifiedTypeMapProxy uintType ;
-#  [@unifiedTypeMapProxy makeRegularProxy ![@lstring new !"uint" !here] !?ioSemanticContext->mTypeMap ?uintType] ;
 #--- Super type index
-  @unifiedTypeMapProxy superTypeIndex ;
+  @unifiedTypeMapProxy superTypeProxy ;
   if mSuperTypeName == "" then
-    superTypeIndex := [@unifiedTypeMapProxy null] ;
+    superTypeProxy := [@unifiedTypeMapProxy null] ;
   else
-    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mSuperTypeName ?superTypeIndex] ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mSuperTypeName ?superTypeProxy] ;
   end if ;
 #--- Constructors
   @constructorMap constructorMap [emptyMap] ;
@@ -307,7 +306,7 @@ override method @genericTypeTypeAST enterType
   [!?ioSemanticContext->mTypeMap insertKey
     ![@lstring new !mTypeName !here]
     !false # Abstract Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum listType]
     ![@typedAttributeList emptyList]
     ![@typedAttributeList emptyList]
@@ -323,6 +322,8 @@ override method @genericTypeTypeAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
+    ![@mapMethodListAST emptyList]
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -435,12 +436,12 @@ override method @mapDeclarationAST enterType
     ] ;
   end foreach ;
 #--- Enter in type map
-  @unifiedTypeMapProxy superTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"map" ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"map" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapTypeName
     !true # Concrete Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum mapType]
     ![@typedAttributeList emptyList]
     !typedAttributeList
@@ -456,6 +457,8 @@ override method @mapDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
+    !mSearchMethodList
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -467,6 +470,7 @@ override method @mapProxyDeclarationAST enterType
 #--- Check associated map is really a map
   @typedAttributeList mapTypedAttributeList ;
   @typeKindEnum typeKindEnum ;
+  @mapMethodListAST searchMethodList ;
   [[ioSemanticContext mTypeMap] searchKey
     !mAssociatedMapTypeName
     ?2*
@@ -474,6 +478,8 @@ override method @mapProxyDeclarationAST enterType
     ?*
     ?mapTypedAttributeList
     ?12*
+    ?searchMethodList
+    ?*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be a map type" ;
@@ -488,50 +494,76 @@ override method @mapProxyDeclarationAST enterType
 #--- Associated map type index
   @unifiedTypeMapProxy associatedMapTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAssociatedMapTypeName string] ?associatedMapTypeIndex] ;
+#--- string type index
+  @unifiedTypeMapProxy stringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"string" ?stringTypeIndex] ;
 #--- lstring type index
   @unifiedTypeMapProxy lstringTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"lstring" ?lstringTypeIndex] ;
-#--- currentType type index
-  @unifiedTypeMapProxy currentTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"lstring" ?currentTypeIndex] ;
 #--- Handle map type name
-  @unifiedTypeMapProxy mapTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mMapProxyTypeName string] ?mapTypeIndex] ;
+  @unifiedTypeMapProxy mapProxyTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mMapProxyTypeName string] ?mapProxyTypeProxy] ;
 #--- class method
   @formalParameterSignature argList [emptyList] ;
-  argList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !associatedMapTypeIndex ![@formalArgumentPassingModeAST argumentInOut] ;
-  argList += !currentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
-  [!?classMethodMap insertOrReplace
+  argList += !mapProxyTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  [!?classMethodMap insertKey
     ![@lstring new !"makeRegularProxy" !here]
     !argList
     !false
   ] ;
 #--- null constructor
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"null" ![mMapProxyTypeName string] !false ;
+#--- Search methods of associated map as constructors
+  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
+  constructorAttributeTypeList += !associatedMapTypeIndex ;
+  constructorAttributeTypeList += !lstringTypeIndex ;
+  foreach searchMethodList do
+    [!?constructorMap insertKey
+      !mMethodName
+      !constructorAttributeTypeList
+      !true
+      !mapProxyTypeProxy
+    ] ;
+  end foreach ;
 #--- readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isSolved" !"bool" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isNull" !"bool" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isRegular" !"bool" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"key" !"lstring" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keyString" !"string" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"identifierRepresentation" !"string" !false ;
 #--- Enter associated map attribute names as readers
+  const @readerMap inheritedReaderMap := readerMap ;
   foreach mapTypedAttributeList do
-    const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
-    [!?readerMap insertOrReplace
-      !accessorName
-      ![@unifiedTypeMapProxyList emptyList]
-      !true
-      !mAttributeTypeIndex
-      ![@readerQualifier isBasic]
-      !""
-    ] ;
+    if [inheritedReaderMap hasKey ![mAttributeName string]] then
+      @string s := "" ;
+      foreach [inheritedReaderMap allKeys]
+        do s .= "'" . key . "'" ;
+        between s .= ", " ;
+      end foreach ;
+      error mAttributeName : "the map has a associated map proxy, which has predefined readers: " . s
+       . "; you cannot use theses names for naming an attribute of this map" ;
+    else
+      [!?readerMap insertKey
+        !mAttributeName
+        ![@unifiedTypeMapProxyList emptyList]
+        !true
+        !mAttributeTypeIndex
+        ![@readerQualifier isBasic]
+        !""
+      ] ;
+    end if ;
   end foreach ;
 #--- Enter type in type map
 #log mMapIndexTypeName ;
-  @unifiedTypeMapProxy superTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"root" ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"mapproxy" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapProxyTypeName
     !true # Concrete Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
     !mapTypedAttributeList
@@ -539,14 +571,16 @@ override method @mapProxyDeclarationAST enterType
     !readerMap
     !modifierMap
     !instanceMethodMap
-    ![@classMethodMap emptyMap]
+    !classMethodMap
     ![@enumerationDescriptorList emptyList]
-    !0
+    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
+    ![@mapMethodListAST emptyList]
+    !searchMethodList
   ] ;
 end method ;
 
@@ -574,12 +608,12 @@ override method @enumDeclarationAST enterType
   end foreach ;
 #--- Enter type in type map
 #log mEnumTypeName ;
-  @unifiedTypeMapProxy superTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"enum" ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"enum" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mEnumTypeName
     !true # Concrete Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
     ![@typedAttributeList emptyList]
@@ -595,6 +629,8 @@ override method @enumDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     !mConstantList
     ![@typedAttributeList emptyList]
+    ![@mapMethodListAST emptyList]
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -720,12 +756,12 @@ override method @listDeclarationAST enterType
     !true
   ] ;
 #--- Enter in type map
-  @unifiedTypeMapProxy superTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"list" ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"list" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mListTypeName
     !true # Concrete Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum listType]
     !typedAttributeList
     ![@typedAttributeList emptyList]
@@ -741,6 +777,8 @@ override method @listDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
+    ![@mapMethodListAST emptyList]
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -806,12 +844,12 @@ override method @sortedListDeclarationAST enterType
     !true
   ] ;
 #--- Enter in type map
-  @unifiedTypeMapProxy superTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"sortedlist" ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"sortedlist" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mSortedListTypeName
     !true # Concrete Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum sortedListType]
     !typedAttributeList
     ![@typedAttributeList emptyList]
@@ -828,6 +866,8 @@ override method @sortedListDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
+    ![@mapMethodListAST emptyList]
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -874,12 +914,12 @@ override method @structDeclarationAST enterType
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Enter in type map
-  @unifiedTypeMapProxy superTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"struct" ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"struct" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mStructTypeName
     !true # Concrete Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum structType]
     ![@typedAttributeList emptyList]
     !typedAttributeList
@@ -897,6 +937,8 @@ override method @structDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     !typedAttributeList
+    ![@mapMethodListAST emptyList]
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -936,7 +978,7 @@ override method @classDeclarationAST enterType
       ?modifierMap
       ?instanceMethodMap
       ?classMethodMap
-      ?7*
+      ?9*
     ] ;
     if typeKindEnum != [@typeKindEnum classType] then
       error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
@@ -1023,6 +1065,8 @@ override method @classDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
+    ![@mapMethodListAST emptyList]
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -1086,7 +1130,7 @@ override method @listmapDeclarationAST enterType
     ?2*
     ?typeKindEnum
     ?listTypedAttributeList
-    ?13*
+    ?15*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1122,12 +1166,12 @@ override method @listmapDeclarationAST enterType
     addAssignOperatorDescription += !mAttributeTypeIndex ;
   end foreach ;
 #--- Enter type in type map
-  @unifiedTypeMapProxy superTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"listmap" ?superTypeIndex] ;
+  @unifiedTypeMapProxy superTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"listmap" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mListmapTypeName
     !true # Concrete Type
-    !superTypeIndex
+    !superTypeProxy
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
     !listTypedAttributeList
@@ -1143,6 +1187,8 @@ override method @listmapDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
+    ![@mapMethodListAST emptyList]
+    ![@mapMethodListAST emptyList]
   ] ;
 end method ;
 

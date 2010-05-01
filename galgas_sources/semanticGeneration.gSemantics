@@ -128,6 +128,14 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
+
+  template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@mapMethodListAST SEARCH_METHOD_LIST
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -302,6 +310,18 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
     ![mTypeIndex identifierRepresentation]
     !mConstantList
     !mEnumMessageList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
+    ![[mTypeIndex key] string]
+    ![mTypeIndex identifierRepresentation]
+    ![mAssociatedMapTypeProxy identifierRepresentation]
+    !mAssociatedMapTypedAttributeList
+    !mSearchMethodList
   ] ;
  end reader ;
 

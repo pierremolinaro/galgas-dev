@@ -234,7 +234,7 @@ override method @listmapDeclarationAST performSemanticAnalysis
 #--- Check associated list is actually a list
   @typeKindEnum typeKindEnum ;
   @typedAttributeList listTypeAttributeList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?13*] ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?15*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@listmapTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
@@ -374,6 +374,25 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @mapProxyDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Get attribute list of associated map
+  @typedAttributeList listTypeAttributeList ;
+  @mapMethodListAST searchMethodList ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedMapTypeName ?4* ?listTypeAttributeList ?12* ?searchMethodList ?*] ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@mapProxyTypeForGeneration new
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedMapTypeName]
+    !listTypeAttributeList
+    !searchMethodList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @classDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -393,7 +412,7 @@ override method @classDeclarationAST performSemanticAnalysis
   if [mSuperClassName string] == "" then
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   else
-    [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?8*] ;
+    [inSemanticContext->mTypeMap searchKey !mSuperClassName ?8* ?inheritedInstanceMethodMap ?10*] ;
   end if ;
 #------ Super type
   @unifiedTypeMapProxy superClassIndex ;
