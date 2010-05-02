@@ -999,7 +999,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                     << "_" << cStringWithUnsigned (currentStateIndex) << "_" << cStringWithUnsigned (currentActionIndex) << " (C_Compiler & inCompiler,\n"
                     << "                                 const GGS_location & inLocation\n"
                     << "                                 COMMA_LOCATION_ARGS) {\n"
-                    << "  const utf32 kIssueMessage [" << cStringWithUnsigned (message.length () + 1) << "] = " << message.utf32Representation () << " ;\n"
+                    << "  const utf32 kIssueMessage [" << cStringWithSigned (message.length () + 1) << "] = " << message.utf32Representation () << " ;\n"
                     << "  C_String issueMessage ; issueMessage << kIssueMessage ;\n"
                     << "  inLocation."
                     << ((transitionEnumerator._mTransitionMessageKind (HERE).enumValue () == GGS_mapAutomatonMessageKind::enum_warningMessage) ? "signalSemanticWarning" : "signalSemanticError")
