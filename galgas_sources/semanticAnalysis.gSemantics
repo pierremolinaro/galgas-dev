@@ -18,8 +18,8 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticAnalysis :
-  import "semanticsDecoratedTypes.gSemantics" ;
-  import semantics semanticsDecoratedTypes in "semanticsDecoratedTypes.gSemantics" ;
+  import "semanticInstructionsAnalysis.gSemantics" ;
+  import semantics semanticInstructionsAnalysis in "semanticInstructionsAnalysis.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -496,22 +496,39 @@ override method @classDeclarationAST performSemanticAnalysis
     elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
       error mMethodName : "this method should be declared as overridding, as it is already declared in super class" ;
     end if ;
+  #--- Insert formal parameters in variable map
+    @variableMap variableMap [emptyMap] ;
+    foreach mSignature do
+      [!?variableMap insertKey !mFormalParameterName ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName] !"prefixe_"] ;
+    end foreach ;
+  #---  Analyze instruction list
+    @semanticInstructionListForGeneration semanticInstructionListForGeneration [emptyList] ;
+    foreach mInstructionList do
+      [mInstruction analyzeSemanticInstruction
+        !inSemanticContext
+        !?semanticInstructionListForGeneration
+        !?variableMap
+      ] ;
+    end foreach ;
+  #---
     definedMethodSet += ![mMethodName string] ;
     methodList +=
       !mIsOverriding
       !mMethodName
       !formalParameterListForGeneration
-      ![@semanticInstructionListForGeneration emptyList]
+      !semanticInstructionListForGeneration
     ;
   end foreach ;
 #------ Check a concrete class has no abstract method
-  foreach inheritedInstanceMethodMap do
-    if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isOverridingAbstract]) then
-      if not [definedMethodSet hasKey ![key string]] then
-        error key : "the '@" . mClassTypeName . "' class is declared concrete, but the '" . key . "' method declared in a super class is not implemented" ;
-      end if ;    
-    end if ;
-  end foreach ;
+  if not mIsAbstract then
+    foreach inheritedInstanceMethodMap do
+      if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isOverridingAbstract]) then
+        if not [definedMethodSet hasKey ![key string]] then
+          error key : "the '@" . mClassTypeName . "' class is declared concrete, but the '" . key . "' method declared in a super class is not implemented" ;
+        end if ;    
+      end if ;
+    end foreach ;
+  end if ;
 #------
   ioSemanticDeclarationListForGeneration += ![@classTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]

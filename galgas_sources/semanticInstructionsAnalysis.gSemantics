@@ -1,0 +1,335 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  metamodel that defines expression                                        *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticInstructionsAnalysis :
+  import "semanticsDecoratedTypes.gSemantics" ;
+  import semantics semanticsDecoratedTypes in "semanticsDecoratedTypes.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    V A R I A B L E    M A P                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @variableMap {
+  @unifiedTypeMapProxy mTypeProxy ;
+  @string mNamePrefix ;
+  insert insertKey error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  search searchKey error message "the '%K' variable is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N S T R U C T I O N    A N A L Y S I S                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @semanticInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationWithInitializationAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@localVariableDeclarationWithInitializationAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localConstantDeclarationWithSourceExpressionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@localConstantDeclarationWithSourceExpressionASTanalyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@localVariableDeclarationAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @localConstantDeclarationWithConstructorCallAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@localConstantDeclarationWithConstructorCallAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @assignmentInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Check target variable
+  @unifiedTypeMapProxy targetType ;
+  @string targetPrefix ;
+  [ioVariableMap searchKey !mTargetVariableName ?targetType ?targetPrefix] ;
+  message "@assignmentInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @appendInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@appendInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sendInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@sendInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @foreachInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@foreachInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @ifInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@ifInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @errorInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@errorInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @warningInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@warningInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @routineCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@routineCallInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @matchInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@matchInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @castInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@castInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @addInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@addInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @removeInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@removeInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @incrementInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@incrementInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @decrementInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@decrementInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @loopInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@loopInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @messageInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@messageInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @logInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@logInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@grammarInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @withInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@withInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @switchInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@switchInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @typeMethodCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@typeMethodCallInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @methodCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@methodCallInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @modifierCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  message "@modifierCallInstructionAST analyzeSemanticInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

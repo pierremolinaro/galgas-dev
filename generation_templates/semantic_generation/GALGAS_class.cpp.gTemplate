@@ -114,7 +114,7 @@ GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
 
 foreach CONCRETE_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::method_first_5F_method (%?^
+  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mMethodName identifierRepresentation]% (%?^
   foreach mSignature do index IDX
     if mFormalParameterPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mFormalParameterType identifierRepresentation] % * /* inArgument% ![IDX string]% */%

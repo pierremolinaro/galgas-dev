@@ -1393,6 +1393,12 @@
 		CFF991E7110B6CC30055EE27 /* C_galgas_function_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991B9110B6CC20055EE27 /* C_galgas_function_descriptor.cpp */; };
 		CFF991E8110B6CC30055EE27 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991BB110B6CC20055EE27 /* C_galgas_io.cpp */; };
 		CFF991E9110B6CC30055EE27 /* C_galgas_type_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991BD110B6CC20055EE27 /* C_galgas_type_descriptor.cpp */; };
+		CFFA4047118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */; };
+		CFFA4048118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */; };
+		CFFA4049118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */; };
+		CFFA404A118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */; };
+		CFFA404B118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */; };
+		CFFA404C118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */; };
 		CFFA46E0115380950060C9CD /* GALGAS_struct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA46DE115380950060C9CD /* GALGAS_struct.cpp */; };
 		CFFA46E1115380950060C9CD /* GALGAS_struct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA46DE115380950060C9CD /* GALGAS_struct.cpp */; };
 		CFFA46E2115380950060C9CD /* GALGAS_struct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA46DE115380950060C9CD /* GALGAS_struct.cpp */; };
@@ -2313,6 +2319,8 @@
 		CFF991BD110B6CC20055EE27 /* C_galgas_type_descriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_type_descriptor.cpp; sourceTree = "<group>"; };
 		CFF991BE110B6CC20055EE27 /* C_galgas_type_descriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_type_descriptor.h; sourceTree = "<group>"; };
 		CFF991BF110B6CC20055EE27 /* galgas_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas_header.h; sourceTree = "<group>"; };
+		CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticInstructionsAnalysis.cpp; sourceTree = "<group>"; };
+		CFFA4046118CAEC300E56DE2 /* semanticInstructionsAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticInstructionsAnalysis.h; sourceTree = "<group>"; };
 		CFFA46DE115380950060C9CD /* GALGAS_struct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_struct.cpp; sourceTree = "<group>"; };
 		CFFA46DF115380950060C9CD /* GALGAS_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GALGAS_struct.h; sourceTree = "<group>"; };
 		CFFA4718115382E80060C9CD /* GALGAS_enum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_enum.cpp; sourceTree = "<group>"; };
@@ -3170,6 +3178,8 @@
 				CFBC4D1011523723006CAD14 /* semanticContext.h */,
 				CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */,
 				CFE4FC18114E4C9000DB2D43 /* semanticGeneration.h */,
+				CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */,
+				CFFA4046118CAEC300E56DE2 /* semanticInstructionsAnalysis.h */,
 				CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */,
 				CF5DF68C114D36E900B96CB0 /* semanticAnalysis.h */,
 				CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */,
@@ -4112,6 +4122,7 @@
 				CFFA472E115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA4739115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
 				CFB6B6DA1160D26100604D8C /* predefinedTypes.cpp in Sources */,
+				CFFA4047118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4337,6 +4348,7 @@
 				CFFA4730115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473B115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
 				CFB6B6DC1160D26100604D8C /* predefinedTypes.cpp in Sources */,
+				CFFA4049118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4562,6 +4574,7 @@
 				CFFA4731115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473C115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
 				CFB6B6DD1160D26100604D8C /* predefinedTypes.cpp in Sources */,
+				CFFA404A118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4826,6 +4839,7 @@
 				CFFA472F115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473A115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
 				CFB6B6DB1160D26100604D8C /* predefinedTypes.cpp in Sources */,
+				CFFA4048118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5051,6 +5065,7 @@
 				CFFA4732115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473D115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
 				CFB6B6DE1160D26100604D8C /* predefinedTypes.cpp in Sources */,
+				CFFA404B118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5276,6 +5291,7 @@
 				CFFA4733115383D70060C9CD /* GALGAS_map.cpp in Sources */,
 				CFFA473E115384480060C9CD /* GALGAS_listmap.cpp in Sources */,
 				CFB6B6DF1160D26100604D8C /* predefinedTypes.cpp in Sources */,
+				CFFA404C118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -985,7 +985,7 @@ class @switchInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeMethodInstructionAST extends @semanticInstructionAST {
+class @typeMethodCallInstructionAST extends @semanticInstructionAST {
   @lstring mTypeName ;
   @lstring mMethodName ;
   @actualParameterListAST mActualParameterList ;
