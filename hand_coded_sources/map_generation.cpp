@@ -669,7 +669,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Constructor\n"
              "  public : elementOf_GGS_" << mMapTypeName << " (const GGS_lstring & inKey,\n"
              "                                     const PMSInt32 inIndex,\n"
-             "                                     const e_" << mMapTypeName << " & inInfo) ;\n"
+             "                                     const e_" << mMapTypeName << " & inInfo,\n"
+             "                                     const PMUInt32 inInitialState = 0) ;\n"
              "//--- Get pointers\n"
              "  public : inline elementOf_GGS_" << mMapTypeName << " * nextObject (void) const { return (elementOf_GGS_" << mMapTypeName << " *) mNextItem ; }\n"
              "  public : inline elementOf_GGS_" << mMapTypeName << " * infObject (void) const { return (elementOf_GGS_" << mMapTypeName << " *) mInfPtr ; }\n"
@@ -719,7 +720,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                           COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Create an element\n"
              "  protected : virtual AC_galgas_map_element *\n"
-             "  new_element (const GGS_lstring & inKey, void * inInfo) ;\n\n"
+             "  new_element (const GGS_lstring & inKey, void * inInfo, const PMUInt32 inInitialState) ;\n\n"
              "//--- Assign information to an existing element\n"
              "  protected : virtual void\n"
              "  assignInfo (AC_galgas_map_element * inPtr, void * inInfo) ;\n\n"
@@ -868,8 +869,9 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   inHfile << "//--- Internal method for inserting an element\n"
              "  protected : void insertElement (C_Compiler & inLexique,\n"
-             "                                   const utf32 * inErrorMessage,\n"
-             "                                   const GGS_lstring & inKey,\n" ;
+             "                                  const PMUInt32 inInitialState,\n"
+             "                                  const utf32 * inErrorMessage,\n"
+             "                                  const GGS_lstring & inKey,\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   PMSInt32 attributeIndex = 0 ;
   while (current.hasCurrentObject ()) {
@@ -980,6 +982,65 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & /* inTargetFileName */,
                                 PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
+//------------------------------------ Construire l'automate associé à la table
+  const PMUInt32 actionCount = mActionCount.uintValue () ;
+  if (actionCount > 0) {
+    inCppFile.appendCppTitleComment (C_String ("AUTOMATON FOR '@") + mMapTypeName + "' MAP") ;
+  //--- Generate issue routines
+    GGS_mapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
+    PMUInt32 currentStateIndex = 0 ;
+    while (stateEnumerator.hasCurrentObject ()) {
+      GGS_mapStateTransitionSortedList::cEnumerator transitionEnumerator (stateEnumerator._mTransitionList (HERE), true) ;
+      PMUInt32 currentActionIndex = 0 ;
+      while (transitionEnumerator.hasCurrentObject ()) {
+        if (transitionEnumerator._mTransitionMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
+          const C_String message = transitionEnumerator._mTransitionMessage (HERE).string () ;
+          inCppFile << "static void issueRoutineFor_" << mMapTypeName.identifierRepresentation ()
+                    << "_" << cStringWithUnsigned (currentStateIndex) << "_" << cStringWithUnsigned (currentActionIndex) << " (C_Compiler & inCompiler,\n"
+                    << "                                 const GGS_location & inLocation\n"
+                    << "                                 COMMA_LOCATION_ARGS) {\n"
+                    << "  const utf32 kIssueMessage [" << cStringWithUnsigned (message.length () + 1) << "] = " << message.utf32Representation () << " ;\n"
+                    << "  C_String issueMessage ; issueMessage << kIssueMessage ;\n"
+                    << "  inLocation."
+                    << ((transitionEnumerator._mTransitionMessageKind (HERE).enumValue () == GGS_mapAutomatonMessageKind::enum_warningMessage) ? "signalSemanticWarning" : "signalSemanticError")
+                    << " (inCompiler, issueMessage COMMA_THERE) ;\n"
+                    << "}\n\n" ;
+          inCppFile.appendCppHyphenLineComment () ;
+        }
+        transitionEnumerator.next () ;
+        currentActionIndex ++ ;
+      }
+      stateEnumerator.next () ;
+      currentStateIndex ++ ;
+    }
+    const PMUInt32 stateCount = (PMUInt32) mMapStateSortedList.count () ;
+    inCppFile << "const cMapAutomatonTransition kAutomaton_" << mMapTypeName.identifierRepresentation () << " [" << cStringWithUnsigned (stateCount) << "] [" << cStringWithUnsigned (actionCount) << "] = {\n" ;
+    stateEnumerator.rewind () ;
+    currentStateIndex = 0 ;
+    while (stateEnumerator.hasCurrentObject ()) {
+      inCppFile << "  { // State '" << stateEnumerator._mStateName (HERE) << "'\n" ;
+      GGS_mapStateTransitionSortedList::cEnumerator transitionEnumerator (stateEnumerator._mTransitionList (HERE), true) ;
+      PMUInt32 currentActionIndex = 0 ;
+      while (transitionEnumerator.hasCurrentObject ()) {
+        inCppFile << "    {" << cStringWithUnsigned (transitionEnumerator._mTargetStateIndex (HERE).uintValue ()) << ", " ;
+        if (transitionEnumerator._mTransitionMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
+          inCppFile << "issueRoutineFor_" << mMapTypeName.identifierRepresentation ()
+                    << "_" << cStringWithUnsigned (currentStateIndex) << "_" << cStringWithUnsigned (currentActionIndex) ;
+        }else{
+          inCppFile << "NULL" ;
+        }
+        inCppFile << "}, // '" << transitionEnumerator._mActionName (HERE) << "' -> '" << transitionEnumerator._mTargetStateName (HERE) << "'\n" ;
+        transitionEnumerator.next () ;
+        currentActionIndex ++ ;
+      }
+      inCppFile << "  },\n" ;
+      stateEnumerator.next () ;
+      currentStateIndex ++ ;
+    }
+    inCppFile << "} ;\n\n" ;
+  }
+
+//------------------------------------
   if (mNonExternAttributesList.count () > 0) {
     inCppFile.appendCppTitleComment (C_String ("class 'e_") + mMapTypeName + "'") ;
     inCppFile << "e_" << mMapTypeName << "::e_" << mMapTypeName << " (void) :\n" ;
@@ -1006,8 +1067,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "elementOf_GGS_" << mMapTypeName << "::\n"
                "elementOf_GGS_" << mMapTypeName << " (const GGS_lstring & inKey,\n"
                "              const PMSInt32 inIndex,\n"
-               "              const e_" << mMapTypeName << " & inInfo) :\n"
-               "AC_galgas_map_element (inKey, inIndex),\n"
+               "              const e_" << mMapTypeName << " & inInfo,\n"
+               "              const PMUInt32 inInitialState) :\n"
+               "AC_galgas_map_element (inKey, inIndex, inInitialState),\n"
                "mInfo (inInfo) {\n"
                "}\n\n" ;
 
@@ -1063,11 +1125,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- 'new_element' method
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "AC_galgas_map_element * GGS_" << mMapTypeName << "::\n"
-               "new_element (const GGS_lstring & inKey, void * inInfo) {\n"
+               "new_element (const GGS_lstring & inKey, void * inInfo, const PMUInt32 inInitialState) {\n"
                "  MF_Assert (reinterpret_cast <e_" << mMapTypeName << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  AC_galgas_map_element * p = NULL ;\n"
                "  e_" << mMapTypeName << " * info = (e_" << mMapTypeName << " *) inInfo ;\n"
-               "  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;\n"
+               "  macroMyNew (p, cElement (inKey, nextIndex (), * info, inInitialState)) ;\n"
                "  return p ;\n"
                "}\n\n" ;
 
@@ -1123,7 +1185,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  cElement * p = (cElement *) inPtr ;\n"
                "  PMSInt32 attributeIndex = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation, p->mIsDefined) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation, p->mIsDefined, p->mCurrentState) ;\n"
                "}\n\n" ;
 
 //--- 'removeElement' method
@@ -1180,12 +1242,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mMapTypeName << "::\n"
                "insertElement (C_Compiler & inLexique,\n"
-               "                const utf32 * inErrorMessage,\n"
-               "                const GGS_lstring & inKey,\n" ;
+               "               const PMUInt32 inInitialState,\n"
+               "               const utf32 * inErrorMessage,\n"
+               "               const GGS_lstring & inKey,\n" ;
   current.rewind () ;
   PMSInt32 attributeIndex = 0 ;
   while (current.hasCurrentObject ()) {
-    inCppFile << "                const " ;
+    inCppFile << "               const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "inParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
     attributeIndex ++ ;
@@ -1213,7 +1276,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
   }
   inCppFile << "    GGS_location existingKeyLocation ;\n"
-               "    internalInsert (inKey, (void *) & info, elementID, existingKeyLocation, true) ;\n"
+               "    internalInsert (inKey, (void *) & info, elementID, existingKeyLocation, true, inInitialState) ;\n"
                "    if (elementID < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "    }\n"
@@ -1448,6 +1511,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     
     }
     inCppFile << "  insertElement (inLexique,\n"
+                 "                 " << cStringWithUnsigned (currentInsertMethod._mStateOrActionIndex (HERE).uintValue ()) << ",\n"
                  "                 kInsertMessage_" << currentInsertMethod._mMethodName (HERE) << ",\n"
                  "                 inKey,\n" ;
     for (PMSInt32 i=0 ; i<mNonExternAttributesList.count () ; i++) {

@@ -499,7 +499,29 @@ override method @classDeclarationAST performSemanticAnalysis
   #--- Insert formal parameters in variable map
     @variableMap variableMap [emptyMap] ;
     foreach mSignature do
-      [!?variableMap insertKey !mFormalParameterName ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName] !"prefixe_"] ;
+      const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName] ;
+      switch mFormalParameterPassingMode
+      when argumentIn :
+        if mIsUnused then
+          [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+        else
+          [!?variableMap insertInputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+        end if ;
+      when argumentOut :
+        [!?variableMap insertOutputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+      when argumentInOut :
+        if mIsUnused then
+          [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+        else
+          [!?variableMap insertInputOutputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+        end if ;
+      when argumentConstantIn :
+        if mIsUnused then
+          [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+        else
+          [!?variableMap insertConstantInputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+        end if ;
+      end switch ;
     end foreach ;
   #---  Analyze instruction list
     @semanticInstructionListForGeneration semanticInstructionListForGeneration [emptyList] ;

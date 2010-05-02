@@ -462,7 +462,6 @@ label parse
 
 nonterminal <map_method>
   !@lstring methodName
-  !@lstring getIndexMethodName
   !@lstring outMessage
 label parse
 ;
@@ -5824,14 +5823,14 @@ rule <semantics_declaration>
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      insertMethodList += !nomMethode ![errorMessage string] !true !"" ; # Bool parameter has any value
+      insertMethodList += !nomMethode ![errorMessage string] !true !"" !0 ; # Bool parameter has any value
     while 
       $search$ ;
       @lstring nomMethode ;
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      searchMethodList += !nomMethode ![errorMessage string] !true !"" ; # Bool parameter has any value
+      searchMethodList += !nomMethode ![errorMessage string] !true !"" !0 ; # Bool parameter has any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -5943,18 +5942,6 @@ rule <semantics_declaration>
     listeEntitesAengendrer += !def ;
     $}$ ;
   or #------------------ New Map
-    @lstring enumTypeName ;
-    @lstring checkFinalStateMethod ;
-    select
-      enumTypeName := [@lstring new !"" !here] ;
-      checkFinalStateMethod := [@lstring new !"" !here] ;
-    or
-      $($ ;
-      $type_name$ ? enumTypeName ;
-      $:$ ;
-      $identifier$ ? checkFinalStateMethod ;
-      $)$ ;
-    end select ;
     ${$ ;
   #--- Parse Map attributes
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
@@ -5969,11 +5956,78 @@ rule <semantics_declaration>
       ?listeAttributsSemantiquesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
+  #--- Declaration des états
+    @mapStateList mapStateList [emptyList] ;
+    repeat
+    while
+      $state$ ;
+      $identifier$ ? @lstring stateName ;
+      @mapAutomatonMessageKind stateMessageKind ;
+      @lstring stateMessage ;
+      select
+        stateMessageKind := [@mapAutomatonMessageKind noMessage] ;
+        stateMessage := [@lstring new !"" !here] ;
+      or
+        $warning$ ;
+        $literal_string$ ? stateMessage ;
+        stateMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+      or
+        $error$ ;
+        $literal_string$ ? stateMessage ;
+        stateMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+      end select ;
+      ${$ ;
+      @mapStateTransitionList transitionList [emptyList] ;
+      repeat
+      while
+        $identifier$ ? @lstring actionName ;
+        $->$ ;
+        $identifier$ ? @lstring targetStateName ;
+        @mapAutomatonMessageKind transitionMessageKind ;
+        @lstring transitionMessage ;
+        select
+          transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+          transitionMessage := [@lstring new !"" !here] ;
+        or
+          $warning$ ;
+          $literal_string$ ? transitionMessage ;
+          transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+        or
+          $error$ ;
+          $literal_string$ ? transitionMessage ;
+          transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+        end select ;
+        transitionList +=
+          !actionName
+          !targetStateName
+          !transitionMessageKind
+          !transitionMessage
+        ;
+      end repeat ;
+      mapStateList +=
+        !stateName
+        !stateMessageKind
+        !stateMessage
+        !transitionList
+      ;
+      $}$ ;
+    end repeat ;
+  #--- Analyze map automaton
+    @mapAutomatonStateMap mapAutomatonStateMap [emptyMap] ;
+    foreach mapStateList do
+      [!?mapAutomatonStateMap insertKey !mStateName ![mapAutomatonStateMap count]] ;
+    end foreach ;
+    foreach mapStateList do
+      foreach mTransitionList do
+        [mapAutomatonStateMap searchKey !mTargetStateName ?*] ;
+      end foreach ;
+    end foreach ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [emptyList] ;
     @insertOrSearchMethodList searchMethodList [emptyList] ;
     @insertOrSearchMethodList removeMethodList [emptyList] ;
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
+    @stringset initialStateSet [emptySet] ;
   #--- Build insert and search method map
     @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
     @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
@@ -5982,11 +6036,15 @@ rule <semantics_declaration>
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @EXmapMethodMap mapReaderMethodMap [emptyMap] ;
     @bool hasInsertOrReplaceMethod := false ;
+    @mapAutomatonActionMap mapAutomatonActionMap [emptyMap] ;
     repeat
     while
       $insert$ ;
       $or$ ;
       $replace$ ;
+      if [mapStateList length] > 0 then
+        error here: "as map state automaton is defined, the 'insertOrReplace' modifier cannot be used" ;
+      end if ;
       $;$ ;
       hasInsertOrReplaceMethod := true ;
       #--- Enter insert method in modifier map
@@ -5999,9 +6057,8 @@ rule <semantics_declaration>
     while
       $remove$ ;
       @lstring methodName ;
-      @lstring getIndexMethodName ;
       @lstring errorMessage ;
-      <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
+      <map_method> ?methodName ?errorMessage ;
       check_KL_escapeCharacters !errorMessage ;
       $;$ ;
     #--- Insert method
@@ -6011,24 +6068,25 @@ rule <semantics_declaration>
         methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
-      removeMethodList += !methodName ![errorMessage string] !false !"" ;
-   #-- Insert And Get Index Method
-      if [getIndexMethodName string] != "" then
-        @L_EXsignature getIndexMethodSignature [emptyList] ;
-        getIndexMethodSignature += !lstringType !inPassingMode ;
-        getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques do
-          getIndexMethodSignature += !mAttributType !outPassingMode ;      
-        end foreach ;
-        [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        removeMethodList += !getIndexMethodName ![errorMessage string] !true !"" ;
-      end if ;
+      removeMethodList += !methodName ![errorMessage string] !false !"" !0 ;
     while
       $insert$ ;
-      @lstring methodName ;
-      @lstring getIndexMethodName ;
-      @lstring errorMessage ;
-      <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
+      $identifier$ ?@lstring methodName ;
+      @uint initialAutomatonState ;
+      select
+        if [mapStateList length] > 0 then
+          error methodName: "as map state automaton is defined, an insert method should name a state as key initial state" ;
+        end if ;
+        initialAutomatonState := 0 ;
+      or
+        $state$ ;
+        $identifier$ ? @lstring insertStateName ;
+        [mapAutomatonStateMap searchKey !insertStateName ?initialAutomatonState] ;
+        initialStateSet += ![insertStateName string] ;
+      end select ;
+      $error$ ;
+      $message$ ;
+      $literal_string$ ?@lstring errorMessage ;
       check_KL_escapeCharacters !errorMessage ;
       @string shadowErrorMessage ;
       select
@@ -6037,7 +6095,6 @@ rule <semantics_declaration>
         $,$ ;
         @lstring shadowErrorMessageString ;
         $literal_string$ ? shadowErrorMessageString ;
-#        warning shadowErrorMessageString : "shadow message" ;
         check_KL_escapeCharacters !shadowErrorMessageString ;
         shadowErrorMessage := [shadowErrorMessageString string] ;
       end select ;
@@ -6049,24 +6106,31 @@ rule <semantics_declaration>
         methodSignature += !mAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
-      insertMethodList += !methodName ![errorMessage string] !false !shadowErrorMessage ;
-   #-- Insert And Get Index Method
-      if [getIndexMethodName string] != "" then
-        @L_EXsignature getIndexMethodSignature [emptyList] ;
-        getIndexMethodSignature += !lstringType !inPassingMode ;
-        getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques do
-          getIndexMethodSignature += !mAttributType !inPassingMode ;      
-        end foreach ;
-        [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        insertMethodList += !getIndexMethodName ![errorMessage string] !true !shadowErrorMessage ;
-      end if ;
+      insertMethodList += !methodName ![errorMessage string] !false !shadowErrorMessage !initialAutomatonState ;
     while
       $search$ ;
       @lstring methodName ;
-      @lstring getIndexMethodName ;
       @lstring errorMessage ;
-      <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
+      $identifier$ ?methodName ;
+      @uint actionIndex ;
+      select
+        if [mapStateList length] > 0 then
+          error methodName: "as map state automaton is defined, a search method should name an automaton action" ;
+        end if ;
+        actionIndex := 0 ;
+      or
+        $action$ ;
+        $identifier$ ?@lstring actionName ;
+        if not [mapAutomatonActionMap hasKey ![actionName string]] then
+          actionIndex := [mapAutomatonActionMap count] ;
+          [!?mapAutomatonActionMap insertKey !actionName ![mapAutomatonActionMap count]] ;
+        else
+          [mapAutomatonActionMap searchKey !actionName ?actionIndex] ;
+        end if ;
+      end select ;
+      $error$ ;
+      $message$ ;
+      $literal_string$ ? errorMessage ;
       check_K_escapeCharacters !errorMessage ;
       $;$ ;
     #--- Insert search method in modifier map
@@ -6076,18 +6140,7 @@ rule <semantics_declaration>
         methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
-      searchMethodList += !methodName ![errorMessage string] !false !"" ;
-    #--- Insert 'Get Index' search method in modifier map (if any)
-      if [getIndexMethodName string] != "" then
-        @L_EXsignature getIndexMethodSignature [emptyList] ;
-        getIndexMethodSignature += !lstringType !inPassingMode ;
-        getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques do
-         getIndexMethodSignature += !mAttributType !outPassingMode ;      
-        end foreach ;
-        [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        searchMethodList += !getIndexMethodName ![errorMessage string] !true !"" ;
-      end if ;
+      searchMethodList += !methodName ![errorMessage string] !false !"" !actionIndex ;
     end repeat ;
   #--- Modifiers "Set'Value'ForKey"
     foreach tableAttributs do
@@ -6109,17 +6162,85 @@ rule <semantics_declaration>
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
+  #--- Check automaton actions are all defined
+    const @stringset allActions := [mapAutomatonActionMap allKeys] ;
+    @mapStateSortedList mapStateSortedList [emptySortedList] ;
+    foreach mapStateList do
+      @stringset actionsForCurrentState [emptySet] ;
+      @mapStateTransitionSortedList mapStateTransitionSortedList [emptySortedList] ;
+      foreach mTransitionList do
+        @uint actionIndex ;
+        [mapAutomatonActionMap searchKey !mActionName ?actionIndex] ;
+        if [actionsForCurrentState hasKey ![mActionName string]] then
+          error mActionName : "the '" . mActionName . "' action is already used for this state" ;
+        end if ;
+        actionsForCurrentState += ![mActionName string] ;
+        @uint targetStateIndex ;
+        [mapAutomatonStateMap searchKey !mTargetStateName ?targetStateIndex] ;
+        mapStateTransitionSortedList +=
+          !actionIndex
+          ![mActionName string]
+          !targetStateIndex
+          ![mTargetStateName string]
+          !mTransitionMessageKind
+          ![mTransitionMessage string]
+        ;
+      end foreach ;
+      @uint stateIndex ;
+      [mapAutomatonStateMap searchKey !mStateName ?stateIndex] ;
+      mapStateSortedList +=
+        !stateIndex
+        ![mStateName string]
+        !mStateMessageKind
+        ![mStateMessage string]
+        !mapStateTransitionSortedList
+      ;
+      @stringset missingActions := allActions - actionsForCurrentState ;
+      if [missingActions count] > 0 then
+        @string s := "" ;
+        foreach missingActions
+          do s .= "'" . key . "'" ;
+          between s .= ", " ;
+        end foreach ;
+        error mStateName : "the following actions are not named in a transition from this state: " . s ;
+      end if ;
+    end foreach ;
+  #--- Check for useful automaton states
+    @stringset accessibleStates := initialStateSet ;
+    @bool progress := true ;
+    loop [mapStateList length] + 1 : while progress do
+      progress := false ;
+      foreach mapStateList do
+        if [accessibleStates hasKey ![mStateName string]] then
+          foreach mTransitionList do
+            if not [accessibleStates hasKey ![mTargetStateName string]] then
+              accessibleStates += ![mTargetStateName string] ;
+              progress := true ;
+            end if ;
+          end foreach ;
+        end if ;
+      end foreach ;
+    end loop ;
+    const @stringset uselessStates := [mapAutomatonStateMap allKeys] - accessibleStates ;
+    if [uselessStates count] > 0 then
+      @string s := "" ;
+      foreach uselessStates
+        do s .= "'" . key . "'" ;
+        between s .= ", " ;
+      end foreach ;
+      warning here : "the following map automaton states are useless: " . s ;
+    end if ;
   #--- Insertion dans la map des classes definies dans le fichier source courant
     @typeEntityToGenerate def := [@C_mapToImplement new
       !mapTypeName
-      !enumTypeName
-      !checkFinalStateMethod
       !listeTousAttributsSemantiques
       !tableAttributs
       !insertMethodList
       !searchMethodList
       !removeMethodList
       !hasInsertOrReplaceMethod
+      !mapStateSortedList
+      ![mapAutomatonActionMap count]
     ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
@@ -6159,14 +6280,14 @@ label importSemantics
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      insertMethodList += !nomMethode ![errorMessage string] !true !"" ; #bool parameter can have any value
+      insertMethodList += !nomMethode ![errorMessage string] !true !"" !0 ; #bool parameter can have any value
     while 
       $search$ ;
       @lstring nomMethode ;
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      searchMethodList += !nomMethode ![errorMessage string] !true !"" ; #bool parameter can have any value
+      searchMethodList += !nomMethode ![errorMessage string] !true !"" !0 ; #bool parameter can have any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -6272,14 +6393,6 @@ label importSemantics
     [!?ioModelMap insertKey !mapTypeName !type] ;
     $}$ ;
   or
-    select
-    or
-      $($ ;
-      $type_name$ ? * ;
-      $:$ ;
-      $identifier$ ? * ;
-      $)$ ;
-    end select ;
     ${$ ;
   #--- Map attributes
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
@@ -6294,13 +6407,42 @@ label importSemantics
       ?listeAttributsSemantiquesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
+  #--- Declaration des états
+    repeat
+    while
+      $state$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $warning$ ;
+        $literal_string$ ? * ;
+      or
+        $error$ ;
+        $literal_string$ ? * ;
+      end select ;
+      ${$ ;
+      repeat
+      while
+        $identifier$ ? * ;
+        $->$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $warning$ ;
+          $literal_string$ ? * ;
+        or
+          $error$ ;
+          $literal_string$ ? * ;
+        end select ;
+      end repeat ;
+      $}$ ;
+    end repeat ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
     const @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
     const @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
     const @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
-    const @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @EXmapMethodMap mapReaderMethodMap [emptyMap] ;
     @bool hasInsertOrReplaceMethod := false ;
@@ -6321,8 +6463,7 @@ label importSemantics
     while
       $remove$ ;
       @lstring methodName ;
-      @lstring getIndexMethodName ;
-      <map_method> ?methodName ?getIndexMethodName ?* ;
+      <map_method> ?methodName ?* ;
       $;$ ;
     #--- Enter insert method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
@@ -6331,21 +6472,18 @@ label importSemantics
         methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
-    #--- Enter 'GetIndex' insert method in modifier map (if any)
-      if [getIndexMethodName string] != "" then
-        @L_EXsignature getIndexMethodSignature [emptyList] ;
-        getIndexMethodSignature += !lstringType !inPassingMode ;
-        getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques do
-          getIndexMethodSignature += !mAttributType !outPassingMode ;      
-        end foreach ;
-        [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-      end if ;
     while
       $insert$ ;
       @lstring methodName ;
-      @lstring getIndexMethodName ;
-      <map_method> ?methodName ?getIndexMethodName ?* ;
+      $identifier$ ?methodName ;
+      select
+      or
+        $state$ ;
+        $identifier$ ? * ;
+      end select ;
+      $error$ ;
+      $message$ ;
+      $literal_string$ ? * ;
       select
       or
         $,$ ;
@@ -6359,21 +6497,18 @@ label importSemantics
         methodSignature += !mAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
-    #--- Enter 'GetIndex' insert method in modifier map (if any)
-      if [getIndexMethodName string] != "" then
-        @L_EXsignature getIndexMethodSignature [emptyList] ;
-        getIndexMethodSignature += !lstringType !inPassingMode ;
-        getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques do
-          getIndexMethodSignature += !mAttributType !inPassingMode ;      
-        end foreach ;
-        [!?mapModifierMethodMap insertKey !getIndexMethodName ! getIndexMethodSignature] ;
-      end if ;
     while
       $search$ ;
       @lstring methodName ;
-      @lstring getIndexMethodName ;
-      <map_method> ?methodName ?getIndexMethodName ?* ;
+      $identifier$ ?methodName ;
+      select
+      or
+        $action$ ;
+        $identifier$ ?* ;
+      end select ;
+      $error$ ;
+      $message$ ;
+      $literal_string$ ? * ;
       $;$ ;
     #--- Enter search method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
@@ -6382,16 +6517,6 @@ label importSemantics
         methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
-    #--- Enter 'Get Index' search method in modifier map (if any)
-      if [getIndexMethodName string] != "" then
-        @L_EXsignature getIndexMethodSignature := [@L_EXsignature emptyList] ;
-        getIndexMethodSignature += !lstringType !inPassingMode ; # Key
-        getIndexMethodSignature += !luintType !outPassingMode ; # Returned Index
-        foreach listeTousAttributsSemantiques do
-          getIndexMethodSignature += !mAttributType !outPassingMode ;      
-        end foreach ;
-        [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-      end if ;
     end repeat ;
   #--- Modifiers "Set'Value'ForKey"
     foreach tableAttributs do
@@ -6435,17 +6560,9 @@ end rule ;
 
 rule <map_method>
   !@lstring methodName
-  !@lstring getIndexMethodName
   !@lstring outMessage
 :
   $identifier$ ?methodName ;
-  select
-    getIndexMethodName := [@lstring new !"" !here] ;
-  or
-    $,$ ;
-    $identifier$ ?getIndexMethodName ;
-    warning getIndexMethodName : "use an alternate method is obsolete in GALGAS 1.9.12 and later" ;
-  end select ;
   $error$ ;
   $message$ ;
   $literal_string$ ? outMessage ;
