@@ -1211,7 +1211,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   <actual_parameter_list> ? mActualParameterList ;
   $]$ ;
   $;$ ;
-  outInstruction := [@typeMethodInstructionAST new
+  outInstruction := [@typeMethodCallInstructionAST new
     !instructionLocation
     !mTypeName
     !mMethodName
@@ -1220,9 +1220,5 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
 end rule ;
 
 #---------------------------------------------------------------------------*
-
-#nonterminal <sdfgh> ;
-#rule <sdfgh> : $bof$ ; end rule ;
-
 
 end syntax ;

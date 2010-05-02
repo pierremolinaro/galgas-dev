@@ -79,6 +79,7 @@ project all_galgas_2:
   semantics "semanticsClassMethods.gSemantics" : makefile ;
   semantics "semanticContext.gSemantics" : makefile ;
   semantics "semanticsDecoratedTypes.gSemantics" : makefile ;
+  semantics "semanticInstructionsAnalysis.gSemantics" : makefile ;
   semantics "semanticAnalysis.gSemantics" : makefile ;
   semantics "semanticGeneration.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
