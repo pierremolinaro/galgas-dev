@@ -46,7 +46,7 @@ routine_check_KL_escapeCharacters (C_Compiler & inLexique,
         if ((UNICODE_VALUE (*cString) != 'K') && (UNICODE_VALUE (*cString) != 'L') && (UNICODE_VALUE (*cString) != '%')) {
           C_String errorMessage ;
           errorMessage << "unknown escape sequence: only %K, %L and %% sequences are defined" ;
-          inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
+          inString.signalSemanticError (inLexique, errorMessage COMMA_THERE) ;
         }
         gotPercent = false ;
       }else if (UNICODE_VALUE (*cString) == '%') {
@@ -57,7 +57,7 @@ routine_check_KL_escapeCharacters (C_Compiler & inLexique,
     if (gotPercent) {
       C_String errorMessage ;
       errorMessage << "string ends with a single %: only %K, %L and %% sequences are defined" ;
-      inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
+      inString.signalSemanticError (inLexique, errorMessage COMMA_THERE) ;
     }
   }
 }
@@ -76,7 +76,7 @@ routine_check_K_escapeCharacters (C_Compiler & inLexique,
         if ((UNICODE_VALUE (*cString) != 'K') && (UNICODE_VALUE (*cString) != '%')) {
           C_String errorMessage ;
           errorMessage << "unknown escape sequence: only %K and %% sequences are defined" ;
-          inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
+          inString.signalSemanticError (inLexique, errorMessage COMMA_THERE) ;
         }
         gotPercent = false ;
       }else if (UNICODE_VALUE (*cString) == '%') {
@@ -87,7 +87,7 @@ routine_check_K_escapeCharacters (C_Compiler & inLexique,
     if (gotPercent) {
       C_String errorMessage ;
       errorMessage << "string ends with a single %: only %K and %% sequences are defined" ;
-      inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
+      inString.signalSemanticError (inLexique, errorMessage COMMA_THERE) ;
     }
   }
 }

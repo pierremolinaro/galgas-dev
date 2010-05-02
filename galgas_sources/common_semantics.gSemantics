@@ -2348,6 +2348,7 @@ list @insertOrSearchMethodList {
   @string mErrorMessage ;
   @bool mIsGetIndexMethod ;
   @string mShadowErrorMessage ;
+  @uint mStateOrActionIndex ; # State for insert, action for search
 }
 
 #---------------------------------------------------------------------------*
