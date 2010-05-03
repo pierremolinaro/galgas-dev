@@ -113,8 +113,8 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@insertMethodListAST INSERT_METHOD_LIST
-    ?@mapMethodListAST SEARCH_METHOD_LIST
-    ?@mapMethodListAST REMOVE_METHOD_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+    ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE 
   ;
 
@@ -135,7 +135,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
-    ?@mapMethodListAST SEARCH_METHOD_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
   ;
 
   template classTypeSpecificImplementation "GALGAS_class.cpp.gTemplate"

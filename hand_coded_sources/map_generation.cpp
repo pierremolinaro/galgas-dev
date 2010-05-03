@@ -737,6 +737,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n\n" ;
 
+//--- 
+  if (actionCount > 0) {
+    inHfile << "//--- Check Automaton State Method\n"
+               "  public : void method_checkAutomatonStates (C_Compiler & inLexique,\n"
+               "                                             const GGS_location & inErrorLocation\n"
+               "                                             COMMA_LOCATION_ARGS) const ;\n\n" ;
+  }
+
 //--- Modifiers "set'Value'ForKey"
   inHfile << "//--- Modifiers \"set'Value'ForKey\"\n" ;
   GGS_typeSemanticAttributesMap::cEnumerator currentAttributeForSetter (mAttributeMap, true) ;
@@ -1049,7 +1057,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "} ;\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
-    inCppFile << " const cMapAutomatonFinalIssue kFinalIssue_" << mMapTypeName.identifierRepresentation () << " [" << cStringWithUnsigned (stateCount) << "] = {\n" ;
+    inCppFile << "static const cMapAutomatonFinalIssue kFinalIssue_" << mMapTypeName.identifierRepresentation () << " [" << cStringWithUnsigned (stateCount) << "] = {\n" ;
     stateEnumerator.rewind () ;
     currentStateIndex = 0 ;
     while (stateEnumerator.hasCurrentObject ()) {
@@ -1245,7 +1253,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  if (isBuilt () && inKey.isBuilt ()) {\n"
                  "    removedElement = internalRemove (inKey) ;\n"
                  "    if (removedElement == NULL) {\n"
-                 "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n" ;
+                 "      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;\n" ;
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hasCurrentObject ()) {
@@ -1347,7 +1355,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (cElement *) p ;\n"
                "    if (node == NULL) {\n"
-               "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n"
+               "      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
                "  if (node == NULL) {\n" ;
@@ -1373,6 +1381,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    }\n"
                "  }\n"
                "}\n\n" ;
+
+//--- 
+  if (actionCount > 0) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << mMapTypeName << "::method_checkAutomatonStates (C_Compiler & inLexique,\n"
+                 "                                             const GGS_location & inErrorLocation\n"
+                 "                                             COMMA_LOCATION_ARGS) const {\n"
+                 "  checkAutomatonStates (inLexique, inErrorLocation, kFinalIssue_" << mMapTypeName.identifierRepresentation () << " COMMA_THERE) ;\n"
+                 "}\n\n" ;
+  }
 
 //--- Implement modifiers "set'Value'ForKey"
   GGS_typeSemanticAttributesMap::cEnumerator currentAttributeForSetter (mAttributeMap, true) ;
@@ -1543,8 +1561,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
       inCppFile << "  const bool shadowExists = internal_search_in_overridden_maps (inKey) != NULL ;\n"
                    "  if (shadowExists) {\n"
-                   "    emitMapSemanticErrorMessage (inLexique, inKey, kShadowMessage_" << currentInsertMethod._mMethodName (HERE) << "\n"
-                << "                                 COMMA_THERE) ;\n" ;
+                   "    inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, kShadowMessage_"
+                << currentInsertMethod._mMethodName (HERE)
+                << " COMMA_THERE) ;\n" ;
       if (currentInsertMethod._mIsGetIndexMethod (HERE).boolValue ()) {
         inCppFile << "    outIndex.drop () ;\n" ;
       }

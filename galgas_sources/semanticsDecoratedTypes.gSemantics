@@ -1144,8 +1144,8 @@ class @mapTypeForGeneration extends @semanticTypeForGeneration {
   @lstring mMapTypeName ;
   @typedAttributeList mTypedAttributeList ;
   @insertMethodListAST mInsertMethodList ;
-  @mapMethodListAST mSearchMethodList ;
-  @mapMethodListAST mRemoveMethodList ;
+  @mapSearchMethodListAST mSearchMethodList ;
+  @mapRemoveMethodListAST mRemoveMethodList ;
   @bool mHasInsertOrReplaceModifier ;
 }
 
@@ -1158,7 +1158,7 @@ class @mapTypeForGeneration extends @semanticTypeForGeneration {
 class @mapProxyTypeForGeneration extends @semanticTypeForGeneration {
   @unifiedTypeMapProxy mAssociatedMapTypeProxy ;
   @typedAttributeList mAssociatedMapTypedAttributeList ;
-  @mapMethodListAST mSearchMethodList ;
+  @mapSearchMethodListAST mSearchMethodList ;
 }
 
 #---------------------------------------------------------------------------*

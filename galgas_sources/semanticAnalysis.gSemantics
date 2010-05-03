@@ -380,7 +380,7 @@ override method @mapProxyDeclarationAST performSemanticAnalysis
 :
 #--- Get attribute list of associated map
   @typedAttributeList listTypeAttributeList ;
-  @mapMethodListAST searchMethodList ;
+  @mapSearchMethodListAST searchMethodList ;
   [inSemanticContext->mTypeMap searchKey !mAssociatedMapTypeName ?4* ?listTypeAttributeList ?12* ?searchMethodList ?*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@mapProxyTypeForGeneration new
@@ -532,6 +532,7 @@ override method @classDeclarationAST performSemanticAnalysis
         !?variableMap
       ] ;
     end foreach ;
+    [variableMap checkAutomatonStates !mEndOfMethodLocation] ;
   #---
     definedMethodSet += ![mMethodName string] ;
     methodList +=
