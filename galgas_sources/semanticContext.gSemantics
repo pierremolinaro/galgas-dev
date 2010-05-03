@@ -276,8 +276,8 @@ override method @predefinedTypeAST enterType
     ![t getNativeAttributeList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
-    ![@mapMethodListAST emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -322,8 +322,8 @@ override method @genericTypeTypeAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
-    ![@mapMethodListAST emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -459,7 +459,7 @@ override method @mapDeclarationAST enterType
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
     !mSearchMethodList
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -471,7 +471,7 @@ override method @mapProxyDeclarationAST enterType
 #--- Check associated map is really a map
   @typedAttributeList mapTypedAttributeList ;
   @typeKindEnum typeKindEnum ;
-  @mapMethodListAST searchMethodList ;
+  @mapSearchMethodListAST searchMethodList ;
   [[ioSemanticContext mTypeMap] searchKey
     !mAssociatedMapTypeName
     ?2*
@@ -580,7 +580,7 @@ override method @mapProxyDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
     !searchMethodList
   ] ;
 end method ;
@@ -630,8 +630,8 @@ override method @enumDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     !mConstantList
     ![@typedAttributeList emptyList]
-    ![@mapMethodListAST emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -780,8 +780,8 @@ override method @listDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
-    ![@mapMethodListAST emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -871,8 +871,8 @@ override method @sortedListDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
-    ![@mapMethodListAST emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -942,8 +942,8 @@ override method @structDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     !typedAttributeList
-    ![@mapMethodListAST emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -1087,8 +1087,8 @@ override method @classDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     !currentClassTypedAttributeList
-    ![@mapMethodListAST emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 
@@ -1209,8 +1209,8 @@ override method @listmapDeclarationAST enterType
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
-    ![@mapMethodListAST emptyList]
-    ![@mapMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
   ] ;
 end method ;
 

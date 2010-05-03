@@ -1133,6 +1133,35 @@ class @listmapDeclarationAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    M A P    A U T O M A T O N                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @mapAutomatonMessageKind {
+  noMessage, warningMessage, errorMessage
+}{
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapStateTransitionList {
+  @lstring mActionName ;
+  @lstring mTargetStateName ;
+  @mapAutomatonMessageKind mTransitionMessageKind ;
+  @lstring mTransitionMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapStateList {
+  @lstring mStateName ;
+  @mapAutomatonMessageKind mStateMessageKind ;
+  @lstring mStateMessage ;
+  @mapStateTransitionList mTransitionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    M A P    D E C L A R A T I O N                                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1141,11 +1170,20 @@ list @insertMethodListAST {
   @lstring mMethodName ;
   @lstring mErrorMessage ;
   @lstring mShadowErrorMessage ;
+  @lstring mInitialStateName ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @mapMethodListAST {
+list @mapSearchMethodListAST {
+  @lstring mMethodName ;
+  @lstring mErrorMessage ;
+  @lstring mActionName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapRemoveMethodListAST {
   @lstring mMethodName ;
   @lstring mErrorMessage ;
 }
@@ -1162,9 +1200,10 @@ class @mapDeclarationAST extends @semanticDeclarationAST {
   @lstring mMapTypeName ;
   @attributeInCollectionListAST mAttributeList ;
   @insertMethodListAST mInsertMethodList ;
-  @mapMethodListAST mSearchMethodList ;
-  @mapMethodListAST mRemoveMethodList ;
+  @mapSearchMethodListAST mSearchMethodList ;
+  @mapRemoveMethodListAST mRemoveMethodList ;
   @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST ;
+  @mapStateList mMapStateList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1197,6 +1236,7 @@ list @methodDefinitionListAST {
   @lstring mMethodName ;
   @formalParameterListAST mSignature ;
   @semanticInstructionListAST mInstructionList ;
+  @location mEndOfMethodLocation ;
 }
 
 #---------------------------------------------------------------------------*

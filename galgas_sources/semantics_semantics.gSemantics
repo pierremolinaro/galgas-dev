@@ -1354,13 +1354,6 @@ class @typeDefinitionTableAimplementer extends @typeEntityToGenerate {
 #         M A P                                                             *
 #---------------------------------------------------------------------------*
 
-enum @mapAutomatonMessageKind {
-  noMessage, warningMessage, errorMessage
-}{
-}
-
-#---------------------------------------------------------------------------*
-
 map @mapAutomatonStateMap {
   @uint mStateIndex ;
   insert insertKey error message "redefinition of '%K' map automaton state" ;
@@ -1373,24 +1366,6 @@ map @mapAutomatonActionMap {
   @uint mActionIndex ;
   insert insertKey error message "redefinition of '%K' map automaton action" ;
   search searchKey error message "undefined '%K' map automaton action" ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @mapStateTransitionList {
-  @lstring mActionName ;
-  @lstring mTargetStateName ;
-  @mapAutomatonMessageKind mTransitionMessageKind ;
-  @lstring mTransitionMessage ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @mapStateList {
-  @lstring mStateName ;
-  @mapAutomatonMessageKind mStateMessageKind ;
-  @lstring mStateMessage ;
-  @mapStateTransitionList mTransitionList ;
 }
 
 #---------------------------------------------------------------------------*

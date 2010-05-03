@@ -402,7 +402,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -5665,7 +5665,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -6063,7 +6063,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -6393,7 +6393,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -7004,7 +7004,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -7429,7 +7429,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -7844,7 +7844,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -8450,7 +8450,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -9105,7 +9105,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -9535,7 +9535,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -13453,7 +13453,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -15297,7 +15297,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -15764,7 +15764,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -16232,7 +16232,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -17138,7 +17138,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -24401,7 +24401,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -25038,7 +25038,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -25768,7 +25768,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -26205,7 +26205,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -26621,7 +26621,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -27032,7 +27032,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -27895,7 +27895,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -28355,7 +28355,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -28749,7 +28749,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -29176,7 +29176,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -32264,7 +32264,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -32703,7 +32703,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -33121,7 +33121,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -34395,7 +34395,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -35062,7 +35062,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -35503,7 +35503,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -38660,7 +38660,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -39691,7 +39691,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -40184,7 +40184,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -40663,7 +40663,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -41196,7 +41196,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -41722,7 +41722,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -42163,7 +42163,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -42593,7 +42593,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -44080,7 +44080,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {
@@ -50242,7 +50242,7 @@ searchElement (C_Compiler & inLexique,
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
-      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
+      inLexique.semanticErrorUsingPerCentK (inKey.string (), inKey, inErrorMessage COMMA_THERE) ;
     }
   }
   if (node == NULL) {

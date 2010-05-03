@@ -5970,10 +5970,12 @@ rule <semantics_declaration>
       or
         $warning$ ;
         $literal_string$ ? stateMessage ;
+        check_K_escapeCharacters !stateMessage ;
         stateMessageKind := [@mapAutomatonMessageKind warningMessage] ;
       or
         $error$ ;
         $literal_string$ ? stateMessage ;
+        check_K_escapeCharacters !stateMessage ;
         stateMessageKind := [@mapAutomatonMessageKind errorMessage] ;
       end select ;
       ${$ ;
@@ -5991,10 +5993,12 @@ rule <semantics_declaration>
         or
           $warning$ ;
           $literal_string$ ? transitionMessage ;
+          check_K_escapeCharacters !transitionMessage ;
           transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
         or
           $error$ ;
           $literal_string$ ? transitionMessage ;
+          check_K_escapeCharacters !transitionMessage ;
           transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
         end select ;
         transitionList +=
@@ -6034,7 +6038,7 @@ rule <semantics_declaration>
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @EXmapMethodMap mapReaderMethodMap [emptyMap] ;
+    @EXmapMethodMap mapSearchMethodMap [emptyMap] ;
     @bool hasInsertOrReplaceMethod := false ;
     @mapAutomatonActionMap mapAutomatonActionMap [emptyMap] ;
     repeat
@@ -6142,7 +6146,7 @@ rule <semantics_declaration>
       if [mapStateList length] > 0 then
         [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
       else
-        [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
+        [!?mapSearchMethodMap insertKey !methodName !methodSignature] ;
       end if ;
       searchMethodList += !methodName ![errorMessage string] !false !"" !actionIndex ;
     end repeat ;
@@ -6156,13 +6160,20 @@ rule <semantics_declaration>
         [!?mapModifierMethodMap insertKey ![@lstring new !modifierName !here] !modifierSignature] ;
       end if ;
     end foreach ;
+  #---
+    if [mapStateList length] > 0 then
+      [!?mapSearchMethodMap insertKey
+        ![@lstring new !"checkAutomatonStates" !here]
+        ![@L_EXsignature listWithValue ![@typeGalgas_location new] !inPassingMode]
+      ] ;
+    end if ;
   #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new
       !mapTypeName
       !listeTousAttributsSemantiques
       !tableMethodesBloc
       !mapModifierMethodMap
-      !mapReaderMethodMap
+      !mapSearchMethodMap
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
@@ -6343,10 +6354,10 @@ label importSemantics
     ;
   #--- Build insert and search method map
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
-    @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
-    @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
-    @AC_galgasType luintType := [@typeGalgas_luint new] ;
+    const @formalArgumentPassingModeAST inPassingMode [argumentIn] ;
+    const @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
+    const @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
+    const @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodList do
     #--- Insert Methods
       @L_EXsignature methodSignature [emptyList] ;
@@ -6450,7 +6461,7 @@ label importSemantics
     const @formalArgumentPassingModeAST outPassingMode [argumentOut] ;
     const @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @EXmapMethodMap mapReaderMethodMap [emptyMap] ;
+    @EXmapMethodMap mapSearchMethodMap [emptyMap] ;
     @bool hasInsertOrReplaceMethod := false ;
     repeat
     while
@@ -6525,7 +6536,7 @@ label importSemantics
       if hasAutomaton then
         [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
       else
-        [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
+        [!?mapSearchMethodMap insertKey !methodName !methodSignature] ;
       end if ;
     end repeat ;
   #--- Modifiers "Set'Value'ForKey"
@@ -6538,13 +6549,20 @@ label importSemantics
         [!?mapModifierMethodMap insertKey ![@lstring new !modifierName !here] !modifierSignature] ;
       end if ;
     end foreach ;
+  #---
+    if hasAutomaton then
+      [!?mapSearchMethodMap insertKey
+        ![@lstring new !"checkAutomatonStates" !here]
+        ![@L_EXsignature listWithValue ![@typeGalgas_location new] !inPassingMode]
+      ] ;
+    end if ;
   #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new
      !mapTypeName
      !listeTousAttributsSemantiques
      !tableMethodesBloc
      !mapModifierMethodMap
-     !mapReaderMethodMap
+     !mapSearchMethodMap
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;

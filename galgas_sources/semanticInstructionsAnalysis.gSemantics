@@ -40,7 +40,7 @@ map @variableMap {
   }
 
 #--- Local constant
-  state localConstant warning "unused local constant" {
+  state localConstant warning "the '%K' constant value is unused" {
     readAccess      -> usedLocalConstant
     writeAccess     -> usedLocalConstant error "a constant cannot be written"
     readWriteAccess -> usedLocalConstant error "a constant cannot be written"
@@ -48,13 +48,13 @@ map @variableMap {
   }
 
 #--- Local variable
-  state undefinedLocalVariable warning "unused local variable" {
+  state undefinedLocalVariable warning "the '%K' local variable value is unused" {
     readAccess      -> undefinedLocalVariable error "an undefined local variable cannot be read"
     writeAccess     -> definedLocalVariable
     readWriteAccess -> undefinedLocalVariable error "an undefined local variable cannot be read"
     dropAccess      -> undefinedLocalVariable warning "the local variable has no value"
   }
-  state definedLocalVariable warning "unused local variable value" {
+  state definedLocalVariable warning "the '%K' local variable value is unused" {
     readAccess      -> usedLocalVariable
     writeAccess     -> definedLocalVariable warning "the value has been changed without any read"
     readWriteAccess -> usedLocalVariable
@@ -74,7 +74,7 @@ map @variableMap {
   }
 
 #--- Output formal parameter
-  state undefinedOutputFormalParameter error "undefined output formal parameter" {
+  state undefinedOutputFormalParameter error "the '%K' output formal parameter is undefined" {
     readAccess      -> undefinedOutputFormalParameter error "an undefined output formal parameter cannot be read"
     writeAccess     -> definedOutputFormalParameter
     readWriteAccess -> undefinedOutputFormalParameter error "an undefined output formal parameter cannot be read"
@@ -88,7 +88,7 @@ map @variableMap {
   }
 
 #--- Input/Output formal parameter
-  state unusedInputOutputFormalParameter warning "the input/output formal parameter is unused" {
+  state unusedInputOutputFormalParameter warning "the '%K' input/output formal parameter is unused" {
     readAccess      -> usedInputOutputFormalParameter
     writeAccess     -> usedInputOutputFormalParameter
     readWriteAccess -> usedInputOutputFormalParameter
@@ -100,7 +100,7 @@ map @variableMap {
     readWriteAccess -> usedInputOutputFormalParameter
     dropAccess      -> droppedInputOutputFormalParameter
   }
-  state droppedInputOutputFormalParameter error "the input/ouput formal argument should be valuated at the end of the routine" {
+  state droppedInputOutputFormalParameter error "the '%K' input/ouput formal argument should be valuated at the end of the routine" {
     readAccess      -> droppedInputOutputFormalParameter error "a dropped input/output formal argument cannot be read"
     writeAccess     -> usedInputOutputFormalParameter
     readWriteAccess -> droppedInputOutputFormalParameter error "a dropped input/output formal argument cannot be read"
@@ -116,7 +116,7 @@ map @variableMap {
   }
 
 #--- Constant input formal parameter
-  state constantInputFormalParameter warning "the constant input formal parameter is not used and is not declared as unused" {
+  state constantInputFormalParameter warning "the constant '%K' input formal parameter is not used and is not declared as unused" {
     readAccess      -> usedConstantInputFormalParameter
     writeAccess     -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
     readWriteAccess -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
@@ -138,7 +138,7 @@ map @variableMap {
   }
 
 #--- Input formal parameter
-  state inputFormalParameter warning "the input formal parameter is not used and is not declared as unused" {
+  state inputFormalParameter warning "the '%K' input formal parameter is not used and is not declared as unused" {
     readAccess      -> usedInputFormalParameter
     writeAccess     -> usedInputFormalParameter
     readWriteAccess -> usedInputFormalParameter
@@ -257,7 +257,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
   @string targetPrefix ;
-  [!?ioVariableMap searchForReadAccess !mTargetVariableName ?targetType ?targetPrefix] ;
+  [!?ioVariableMap searchForWriteAccess !mTargetVariableName ?targetType ?targetPrefix] ;
   message "@assignmentInstructionAST analyzeSemanticInstruction\n" ;
 end method ;
 

@@ -120,13 +120,15 @@ routine appendPredefinedTypesASTs
     ![@lstring new !"insertKey" !here]
     ![@lstring new !"redefinition of %K (first definition was in %L) et %% !" !here]
     ![@lstring new !"" !here]
+    ![@lstring new !"" !here] # No state
   ;
-  @mapMethodListAST searchMethodList [emptyList] ;
+  @mapSearchMethodListAST searchMethodList [emptyList] ;
   searchMethodList +=
     ![@lstring new !"searchKey" !here]
     ![@lstring new !"%K unknown et %% !" !here]
+    ![@lstring new !"" !here] # No action
   ;
-  @mapMethodListAST removeMethodList [emptyList] ;
+  @mapRemoveMethodListAST removeMethodList [emptyList] ;
   removeMethodList +=
     ![@lstring new !"removeKey" !here]
     ![@lstring new !"%K unknown et %% !" !here]
@@ -139,6 +141,7 @@ routine appendPredefinedTypesASTs
     !searchMethodList
     !removeMethodList
     !insertOrReplaceDeclarationListAST
+    ![@mapStateList emptyList]
   ] ;
 
 #--- Example of listmap type
@@ -217,6 +220,7 @@ routine appendPredefinedTypesASTs
     ![@lstring new !"first_method" !here]
     !firstMethodFormalParameters
     ![@semanticInstructionListAST emptyList]
+    !here
   ;
   ioDeclarationListASTs += ![@classDeclarationAST new
     !false # Is concrete
