@@ -995,20 +995,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     PMUInt32 currentStateIndex = 0 ;
     while (stateEnumerator.hasCurrentObject ()) {
       GGS_mapStateTransitionSortedList::cEnumerator transitionEnumerator (stateEnumerator._mTransitionList (HERE), true) ;
+      if (stateEnumerator._mStateMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
+        const C_String stateMessage = stateEnumerator._mStateMessage (HERE).string () ;
+        inCppFile << "static const utf32 kStateMessageForMap_" << mMapTypeName.identifierRepresentation ()
+                  << "_" << cStringWithUnsigned (currentStateIndex)
+                  << " [" << cStringWithSigned (stateMessage.length () + 1) << "] = " << stateMessage.utf32Representation () << " ;\n\n" ;
+      }
       PMUInt32 currentActionIndex = 0 ;
       while (transitionEnumerator.hasCurrentObject ()) {
         if (transitionEnumerator._mTransitionMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
           const C_String message = transitionEnumerator._mTransitionMessage (HERE).string () ;
-          inCppFile << "static void issueRoutineFor_" << mMapTypeName.identifierRepresentation ()
-                    << "_" << cStringWithUnsigned (currentStateIndex) << "_" << cStringWithUnsigned (currentActionIndex) << " (C_Compiler & inCompiler,\n"
-                    << "                                 const GGS_location & inLocation\n"
-                    << "                                 COMMA_LOCATION_ARGS) {\n"
-                    << "  const utf32 kIssueMessage [" << cStringWithSigned (message.length () + 1) << "] = " << message.utf32Representation () << " ;\n"
-                    << "  C_String issueMessage ; issueMessage << kIssueMessage ;\n"
-                    << "  inLocation."
-                    << ((transitionEnumerator._mTransitionMessageKind (HERE).enumValue () == GGS_mapAutomatonMessageKind::enum_warningMessage) ? "signalSemanticWarning" : "signalSemanticError")
-                    << " (inCompiler, issueMessage COMMA_THERE) ;\n"
-                    << "}\n\n" ;
+          inCppFile << "static const utf32 kIssueMessageForMap_" << mMapTypeName.identifierRepresentation ()
+                    << "_" << cStringWithUnsigned (currentStateIndex) << "_" << cStringWithUnsigned (currentActionIndex)
+                    << " [" << cStringWithSigned (message.length () + 1) << "] = " << message.utf32Representation () << " ;\n\n" ;
           inCppFile.appendCppHyphenLineComment () ;
         }
         transitionEnumerator.next () ;
@@ -1027,8 +1026,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       PMUInt32 currentActionIndex = 0 ;
       while (transitionEnumerator.hasCurrentObject ()) {
         inCppFile << "    {" << cStringWithUnsigned (transitionEnumerator._mTargetStateIndex (HERE).uintValue ()) << ", " ;
+        switch (transitionEnumerator._mTransitionMessageKind (HERE).enumValue ()) {
+        case GGS_mapAutomatonMessageKind::enum_warningMessage : inCppFile << "kMapAutomatonIssueWarning" ; break ;
+        case GGS_mapAutomatonMessageKind::enum_errorMessage : inCppFile << "kMapAutomatonIssueError" ; break ;
+        case GGS_mapAutomatonMessageKind::enum_noMessage : inCppFile << "kMapAutomatonNoIssue" ; break ;
+        default : break ;
+        }
+        inCppFile << ", " ;
         if (transitionEnumerator._mTransitionMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
-          inCppFile << "issueRoutineFor_" << mMapTypeName.identifierRepresentation ()
+          inCppFile << "kIssueMessageForMap_" << mMapTypeName.identifierRepresentation ()
                     << "_" << cStringWithUnsigned (currentStateIndex) << "_" << cStringWithUnsigned (currentActionIndex) ;
         }else{
           inCppFile << "NULL" ;
@@ -1038,6 +1044,30 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
         currentActionIndex ++ ;
       }
       inCppFile << "  },\n" ;
+      stateEnumerator.next () ;
+      currentStateIndex ++ ;
+    }
+    inCppFile << "} ;\n\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << " const cMapAutomatonFinalIssue kFinalIssue_" << mMapTypeName.identifierRepresentation () << " [" << cStringWithUnsigned (stateCount) << "] = {\n" ;
+    stateEnumerator.rewind () ;
+    currentStateIndex = 0 ;
+    while (stateEnumerator.hasCurrentObject ()) {
+      inCppFile << "  {" ;
+      switch (stateEnumerator._mStateMessageKind (HERE).enumValue ()) {
+      case GGS_mapAutomatonMessageKind::enum_warningMessage : inCppFile << "kMapAutomatonIssueWarning" ; break ;
+      case GGS_mapAutomatonMessageKind::enum_errorMessage : inCppFile << "kMapAutomatonIssueError" ; break ;
+      case GGS_mapAutomatonMessageKind::enum_noMessage : inCppFile << "kMapAutomatonNoIssue" ; break ;
+      default : break ;
+      }
+      inCppFile << ", " ;
+      if (stateEnumerator._mStateMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
+        inCppFile << "kStateMessageForMap_" << mMapTypeName.identifierRepresentation ()
+                  << "_" << cStringWithUnsigned (currentStateIndex) ;
+      }else{
+        inCppFile << "NULL" ;
+      }
+      inCppFile << "}, // State '" << stateEnumerator._mStateName (HERE) << "'\n" ;
       stateEnumerator.next () ;
       currentStateIndex ++ ;
     }
