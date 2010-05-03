@@ -257,7 +257,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
   @string targetPrefix ;
-  [ioVariableMap searchForReadAccess !mTargetVariableName ?targetType ?targetPrefix] ;
+  [!?ioVariableMap searchForReadAccess !mTargetVariableName ?targetType ?targetPrefix] ;
   message "@assignmentInstructionAST analyzeSemanticInstruction\n" ;
 end method ;
 

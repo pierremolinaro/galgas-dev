@@ -6139,7 +6139,11 @@ rule <semantics_declaration>
       foreach listeTousAttributsSemantiques do
         methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
-      [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
+      if [mapStateList length] > 0 then
+        [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
+      else
+        [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
+      end if ;
       searchMethodList += !methodName ![errorMessage string] !false !"" !actionIndex ;
     end repeat ;
   #--- Modifiers "Set'Value'ForKey"
@@ -6408,10 +6412,12 @@ label importSemantics
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Declaration des états
+    @bool hasAutomaton := false ;
     repeat
     while
       $state$ ;
       $identifier$ ? * ;
+      hasAutomaton := true ;
       select
       or
         $warning$ ;
@@ -6516,7 +6522,11 @@ label importSemantics
       foreach listeTousAttributsSemantiques do
         methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
-      [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
+      if hasAutomaton then
+        [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
+      else
+        [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
+      end if ;
     end repeat ;
   #--- Modifiers "Set'Value'ForKey"
     foreach tableAttributs do

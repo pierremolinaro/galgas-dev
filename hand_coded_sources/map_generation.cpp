@@ -697,6 +697,8 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 
 void cPtr_C_mapToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
+  const PMUInt32 actionCount = mActionCount.uintValue () ;
+  const C_String constForSearchMethods = (actionCount == 0) ? "const " : "" ;
   inHfile.appendCppTitleComment (C_String ("Map '@") + mMapTypeName + "'") ;
 
   inHfile << "class elementOf_GGS_" << mMapTypeName << " ;\n\n" ;
@@ -829,7 +831,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   currentSearchMethod.rewind () ;
   while (currentSearchMethod.hasCurrentObject ()) {
     inHfile << "//--- '" << currentSearchMethod._mMethodName (HERE) << "' Search Method\n"
-               "  public : void method_" 
+               "  public : void " << ((actionCount == 0) ? "method_" : "modifier_")
             << currentSearchMethod._mMethodName (HERE)
             << " (C_Compiler & inLexique"
             << ",\n                                const GGS_lstring & inKey" ;
@@ -845,7 +847,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
       attributeIndex ++ ;
       current.next () ;
     }
-    inHfile << " COMMA_LOCATION_ARGS) const ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) " << constForSearchMethods << ";\n" ;
     currentSearchMethod.next () ;
   }
 
@@ -886,8 +888,9 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   
   inHfile << "//--- Internal method for searching for an element\n"
              "  protected : void searchElement (C_Compiler & inLexique,\n"
-             "                                   const utf32 * inErrorMessage,\n"
-             "                                   const GGS_lstring & inKey,\n" ;
+             "                                  const PMUInt32 inActionIndex,\n"
+             "                                  const utf32 * inErrorMessage,\n"
+             "                                  const GGS_lstring & inKey,\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
   while (current.hasCurrentObject ()) {
@@ -897,8 +900,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     attributeIndex ++ ;
     current.next () ;
   }
-  inHfile << "                                   GGS_luint * outIndex\n"
-             "                                   COMMA_LOCATION_ARGS) const ;\n" ;
+  inHfile << "                                  GGS_luint * outIndex\n"
+             "                                  COMMA_LOCATION_ARGS) " << constForSearchMethods << ";\n" ;
 //--- Declaring insert or replace modifier
   if (mHasInsertOrReplaceModifier.boolValue ()) {
     inHfile << "//--- 'insertOrReplace' Modifier\n" ;
@@ -984,6 +987,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const bool /* inGenerateDebug */) const {
 //------------------------------------ Construire l'automate associé à la table
   const PMUInt32 actionCount = mActionCount.uintValue () ;
+  const C_String constForSearchMethods = (actionCount == 0) ? "const " : "" ;
   if (actionCount > 0) {
     inCppFile.appendCppTitleComment (C_String ("AUTOMATON FOR '@") + mMapTypeName + "' MAP") ;
   //--- Generate issue routines
@@ -1014,7 +1018,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       currentStateIndex ++ ;
     }
     const PMUInt32 stateCount = (PMUInt32) mMapStateSortedList.count () ;
-    inCppFile << "const cMapAutomatonTransition kAutomaton_" << mMapTypeName.identifierRepresentation () << " [" << cStringWithUnsigned (stateCount) << "] [" << cStringWithUnsigned (actionCount) << "] = {\n" ;
+    inCppFile << "static const cMapAutomatonTransition kAutomaton_" << mMapTypeName.identifierRepresentation () << " [" << cStringWithUnsigned (stateCount) << "] [" << cStringWithUnsigned (actionCount) << "] = {\n" ;
     stateEnumerator.rewind () ;
     currentStateIndex = 0 ;
     while (stateEnumerator.hasCurrentObject ()) {
@@ -1290,6 +1294,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mMapTypeName << "::\n"
                "searchElement (C_Compiler & inLexique,\n"
+               "               const PMUInt32 " << ((actionCount > 0) ? "inActionIndex" : "/* inActionIndex */") << ",\n"
                "               const utf32 * inErrorMessage,\n"
                "               const GGS_lstring & inKey,\n" ;
   current.rewind () ;
@@ -1302,10 +1307,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
   }
   inCppFile << "               GGS_luint * outIndex\n"
-               "               COMMA_LOCATION_ARGS) const {\n"
+               "               COMMA_LOCATION_ARGS) " << constForSearchMethods << "{\n"
                "  cElement * node = NULL  ;\n"
-               "  if (isBuilt () && inKey.isBuilt ()) {\n"
-               "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
+               "  if (isBuilt () && inKey.isBuilt ()) {\n" ;
+  if (actionCount > 0) {
+    inCppFile << "    insulateMap () ;\n" ;
+  }
+  inCppFile << "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (cElement *) p ;\n"
                "    if (node == NULL) {\n"
@@ -1318,8 +1326,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "    if (outIndex != NULL) {\n"
                  "      outIndex->drop () ;\n"
-                 "     }\n"
+                 "    }\n"
                  "  }else{\n" ;
+  if (actionCount > 0) {
+    inCppFile << "    node->performTransition (inLexique, inKey, kAutomaton_" << mMapTypeName.identifierRepresentation () << " [node->mCurrentState][inActionIndex] COMMA_THERE) ;\n" ;
+  }
   current.rewind () ;
   attributeIndex = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1381,7 +1392,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (currentSearchMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapTypeName << "::\n"
-              << "method_" << currentSearchMethod._mMethodName (HERE)
+              << ((actionCount == 0) ? "method_" : "modifier_") << currentSearchMethod._mMethodName (HERE)
               << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentSearchMethod._mIsGetIndexMethod (HERE).boolValue ()) {
@@ -1396,19 +1407,20 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       attributeIndex ++ ;
       current.next () ;
     }
-    inCppFile << " COMMA_LOCATION_ARGS) const {\n" ;
+    inCppFile << " COMMA_LOCATION_ARGS) " << constForSearchMethods << "{\n" ;
     inCppFile << "  searchElement (inLexique,\n"
-                 "                  kSearchMessage_" << currentSearchMethod._mMethodName (HERE) << ",\n"
-                 "                  inKey,\n" ;
+                 "                 " << cStringWithUnsigned (currentSearchMethod._mStateOrActionIndex (HERE).uintValue ()) << ",\n"
+                 "                 kSearchMessage_" << currentSearchMethod._mMethodName (HERE) << ",\n"
+                 "                 inKey,\n" ;
     for (PMSInt32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "                  outParameter" << cStringWithSigned (i) << ",\n" ;
+      inCppFile << "                 outParameter" << cStringWithSigned (i) << ",\n" ;
     }
     if (currentSearchMethod._mIsGetIndexMethod (HERE).boolValue ()) {
-      inCppFile << "                  & outIndex\n" ;
+      inCppFile << "                 & outIndex\n" ;
     }else{
-      inCppFile << "                  NULL\n" ;
+      inCppFile << "                 NULL\n" ;
     }
-    inCppFile << "                  COMMA_THERE) ;\n"
+    inCppFile << "                 COMMA_THERE) ;\n"
                  "}\n\n" ;
     currentSearchMethod.next () ;
   }
@@ -1518,11 +1530,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "                 inParameter" << cStringWithSigned (i) << ",\n" ;
     }
     if (currentInsertMethod._mIsGetIndexMethod (HERE).boolValue ()) {
-      inCppFile << "                 & outIndex\n" ;
+      inCppFile << "                & outIndex\n" ;
     }else{
-      inCppFile << "                 NULL\n" ;
+      inCppFile << "                NULL\n" ;
     }
-    inCppFile << "                 COMMA_THERE) ;\n" ;
+    inCppFile << "                COMMA_THERE) ;\n" ;
     if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
       inCppFile.incIndentation (-2) ;
       inCppFile << "  }\n" ;
