@@ -23,8 +23,9 @@ semantics semanticsDecoratedTypes :
 
 #---------------------------------------------------------------------------*
 
-#abstract class @semanticExpressionForGeneration {
-#}
+abstract class @semanticExpressionForGeneration {
+  @unifiedTypeMapProxy mType ;
+}
 
 ##---------------------------------------------------------------------------*
 #
@@ -40,67 +41,68 @@ semantics semanticsDecoratedTypes :
 #}
 #
 ##---------------------------------------------------------------------------*
-#
-#class @selfInExpressionForGeneration extends @semanticExpressionForGeneration {
-#}
-#
+
+class @selfInExpressionForGeneration extends @semanticExpressionForGeneration {
+  @string mSelfCppName ;
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @hereExpressionForGeneration extends @semanticExpressionForGeneration {
-#}
-#
+
+class @hereExpressionForGeneration extends @semanticExpressionForGeneration {
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @trueExpressionForGeneration extends @semanticExpressionForGeneration {
-#}
-#
+
+class @trueExpressionForGeneration extends @semanticExpressionForGeneration {
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @falseExpressionForGeneration extends @semanticExpressionForGeneration {
-#}
-#
+
+class @falseExpressionForGeneration extends @semanticExpressionForGeneration {
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @literalCharExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lchar mCharacter ;
-#}
-#
+
+class @literalCharExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lchar mCharacter ;
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @literalStringExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @stringlist mStringSequence ;
-#}
-#
+
+class @literalStringExpressionForGeneration extends @semanticExpressionForGeneration {
+  @stringlist mStringSequence ;
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @literalDoubleExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @ldouble mValue ;
-#}
-#
+
+class @literalDoubleExpressionForGeneration extends @semanticExpressionForGeneration {
+  @ldouble mValue ;
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @literalUIntExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @luint mValue ;
-#}
-#
+
+class @literalUIntExpressionForGeneration extends @semanticExpressionForGeneration {
+  @luint mValue ;
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @literalUInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @luint64 mValue ;
-#}
-#
+
+class @literalUInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
+  @luint64 mValue ;
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @literalSIntExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lsint mValue ;
-#}
-#
+
+class @literalSIntExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lsint mValue ;
+}
+
 ##---------------------------------------------------------------------------*
-#
-#class @literalSInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lsint64 mValue ;
-#}
-#
+
+class @literalSInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lsint64 mValue ;
+}
+
 ##---------------------------------------------------------------------------*
 #
 #class @constructorExpressionForGeneration extends @semanticExpressionForGeneration {

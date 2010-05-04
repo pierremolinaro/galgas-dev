@@ -312,7 +312,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   current.rewind () ;
   while (current.hasCurrentObject ()) {
     inHfile << "  public : void\n"
-               "  modifier_set" << current._mAttributeName (HERE).stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
+               "  modifier_set" << current._mAttributeName (HERE).stringByCapitalizingFirstCharacter () << "AtIndex (C_Compiler & inLexique,\n"
                "                              const " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << " & inObject,\n"
@@ -1016,7 +1016,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomListe << "::\n"
-                 "modifier_set" << current._mAttributeName (HERE).stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
+                 "modifier_set" << current._mAttributeName (HERE).stringByCapitalizingFirstCharacter () << "AtIndex (C_Compiler & inLexique,\n"
                  "                              const " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & inObject,\n"

@@ -750,7 +750,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   GGS_typeSemanticAttributesMap::cEnumerator currentAttributeForSetter (mAttributeMap, true) ;
   while (currentAttributeForSetter.hasCurrentObject ()) {
     if (currentAttributeForSetter._mHasSetter (HERE).boolValue ()) {
-      inHfile << "  public : void modifier_set" << currentAttributeForSetter._key (HERE).stringWithUpperCaseFirstLetter ()
+      inHfile << "  public : void modifier_set" << currentAttributeForSetter._key (HERE).stringByCapitalizingFirstCharacter ()
               << "ForKey (C_Compiler & inLexique,\n"
                  "                        const " ;
       currentAttributeForSetter._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
@@ -936,9 +936,19 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
               "                                            COMMA_LOCATION_ARGS) ;\n"
 //--- Generate 'overriddenMap' reader declaration
               "  public : GGS_" << mMapTypeName << " reader_overriddenMap (C_Compiler & inLexique\n"
-              "                                            COMMA_LOCATION_ARGS) const ;\n"
+              "                                            COMMA_LOCATION_ARGS) const ;\n\n"
+              "//--------------------------------- Key stringset (for map with an associated automaton)\n" ;
+//--- Keys enumerator
+  GGS_mapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
+  while (stateEnumerator.hasCurrentObject ()) {
+    inHfile << "  public : GGS_stringset reader_stringSetWithKeysOf"
+            << stateEnumerator._mStateName (HERE).string ().stringByCapitalizingFirstCharacter ()
+            << "State (C_Compiler & inLexique\n"
+               "                                                          COMMA_LOCATION_ARGS) const ;\n" ;
+    stateEnumerator.next () ;
+  }
 //--- Enumerator declaration
-             "//--------------------------------- Map Enumerator\n"
+  inHfile << "//--------------------------------- Map Enumerator\n"
              "  public : class cEnumerator : public cAbstractMapEnumerator {\n"
              "  //--- Constructors\n"
              "    public : inline cEnumerator (const GGS_" << mMapTypeName << " & inMap,\n"
@@ -1398,7 +1408,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (currentAttributeForSetter._mHasSetter (HERE).boolValue ()) {
       inCppFile.appendCppHyphenLineComment () ;
       inCppFile << "void GGS_" << mMapTypeName << "::\n"
-                   "modifier_set" << currentAttributeForSetter._key (HERE).stringWithUpperCaseFirstLetter ()
+                   "modifier_set" << currentAttributeForSetter._key (HERE).stringByCapitalizingFirstCharacter ()
                 << "ForKey (C_Compiler & inLexique,\n"
                  "                        const " ;
       currentAttributeForSetter._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
@@ -1413,7 +1423,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "    if (node == NULL) {\n"
                  "      C_String errorMessage ;\n"
                  "      errorMessage << \"the '\" << inKey << \"' key does not exist when calling 'set"
-              << currentAttributeForSetter._key (HERE).stringWithUpperCaseFirstLetter ()
+              << currentAttributeForSetter._key (HERE).stringByCapitalizingFirstCharacter ()
               << "ForKey' modifier\" ;\n"
                  "      inLexique.onTheFlyRunTimeError (errorMessage COMMA_THERE) ;\n"
                  "    }else{\n"
@@ -1741,6 +1751,20 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "    insertOrReplaceElement (inKey, (void *) & info) ;\n"
                  "  }\n"
                  "}\n\n" ;
+  }
+//--- Keys enumerator
+  GGS_mapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
+  PMUInt32 currentStateIndex = 0 ;
+  while (stateEnumerator.hasCurrentObject ()) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "GGS_stringset GGS_" << mMapTypeName << "::reader_stringSetWithKeysOf"
+              << stateEnumerator._mStateName (HERE).string ().stringByCapitalizingFirstCharacter ()
+              << "State (C_Compiler & /* inLexique */\n"
+                 "                                                          COMMA_UNUSED_LOCATION_ARGS) const {\n"
+                 "  return stringSetWithKeysOfState (" << cStringWithUnsigned (currentStateIndex) << ") ;\n"
+                 "}\n\n" ;
+    stateEnumerator.next () ;
+    currentStateIndex ++ ;
   }
 }
 

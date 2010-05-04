@@ -275,7 +275,7 @@ end rule ;
 
 rule <factor> !@semanticExpressionAST outExpression :
   $self$ ;
-  outExpression := [@selfInExpressionAST new] ;
+  outExpression := [@selfInExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*

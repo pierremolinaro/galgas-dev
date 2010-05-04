@@ -226,7 +226,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "  public : void" ;
-    inHfile << " modifier_set" << current->mAttributeName.stringWithUpperCaseFirstLetter ()
+    inHfile << " modifier_set" << current->mAttributeName.stringByCapitalizingFirstCharacter ()
             << " (C_Compiler & inLexique, const " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
     inHfile  << " & inValue COMMA_LOCATION_ARGS) ;\n" ;
@@ -895,7 +895,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "void GGS_" << aNomClasse << "::\n" ;
-    inCppFile << "modifier_set" << current->mAttributeName.stringWithUpperCaseFirstLetter ()
+    inCppFile << "modifier_set" << current->mAttributeName.stringByCapitalizingFirstCharacter ()
             << " (C_Compiler & /* inLexique */, const " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile  << "& inValue COMMA_UNUSED_LOCATION_ARGS) {\n"
