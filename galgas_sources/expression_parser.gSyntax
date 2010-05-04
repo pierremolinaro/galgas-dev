@@ -363,6 +363,12 @@ routine comparison_types_check
                   "', I have got the map type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
+  when @typeGalgasUndefinedMapindexType (@lstring attNomType1 ...) :: @typeGalgasUndefinedMapindexType (@lstring attNomType2 ...) :
+    if [attNomType1 string] != [attNomType2 string] then
+      error here : "I was expecting the map index type '@" . [attNomType1 string] .
+                                "', I have got the map index type '@" . [attNomType2 string] . "\"" ;
+    end if ;
+
   when @typeGalgasUndefinedClassType (@lstring kNomType1)
     :: @typeGalgasUndefinedClassType (@lstring kNomType2) :
     if [kNomType1 string] != [kNomType2 string] then

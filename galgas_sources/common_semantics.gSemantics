@@ -2286,8 +2286,7 @@ routine checkSignature_ForGrammarComponent
   elsif [inFormalReferenceSignature length] > [inFormalTestedSignature length] then
     error inFormalTestedLocation : "too much formal parameters (from prototype in " . [inFormalReferenceLocation locationString] . ")" ;
   else
-    foreach inFormalReferenceSignature,
-            inFormalTestedSignature prefixedby others_ do
+    foreach inFormalReferenceSignature, inFormalTestedSignature prefixedby others_ do
       if mFormalArgumentPassingModeForGrammarAnalysis != others_mFormalArgumentPassingModeForGrammarAnalysis then
         error others_mGalgasTypeNameForGrammarAnalysis : "Prototype has " . [mFormalArgumentPassingModeForGrammarAnalysis formalArgumentMessage] .
                        ", and " . [mFormalArgumentPassingModeForGrammarAnalysis formalArgumentMessage] . " has been found" ;

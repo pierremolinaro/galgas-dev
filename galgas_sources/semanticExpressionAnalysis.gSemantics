@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  metamodel that defines expression                                        *
+#  Semantic Analysis of expression                                          *
 #                                                                           *
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
 #                                                                           *
@@ -186,6 +186,24 @@ map @variableMap {
 }
 
 #---------------------------------------------------------------------------*
+
+routine checkAssignmentTypes
+  ??@unifiedTypeMapProxy inTargetType
+  ??@unifiedTypeMapProxy inSourceType
+  ??@location inErrorLocation
+:
+  @unifiedTypeMapProxy sourceType := inSourceType ;
+  @bool ok := inTargetType == inSourceType ;
+  loop [@uint max] : while (not ok) & (not [[sourceType mSuperType] isNull]) do
+    sourceType := [sourceType mSuperType] ;
+    ok := inTargetType == inSourceType ;
+  end loop ;
+  if not ok then
+    error inErrorLocation : "target object type is '@" . [inTargetType key] . "' and cannot be assigned by an '@" . [inSourceType key] . "' object" ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S           *
 #                                                                           *
@@ -341,11 +359,32 @@ end method ;
 
 override method @constructorExpressionAST analyzeSemanticExpression
   ??@semanticContextForInstructionAnalysis inSemanticContext
-  ?!@variableMap unused ioVariableMap
+  ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
-  message "@constructorExpressionAST analyzeSemanticExpression\n" ;
+#--- Type name
+  @constructorMap constructorMap ;
+  [inSemanticContext->mTypeMap searchKey !mTypeName ?5* ?constructorMap ?13*] ;
+#--- Search contructor
+  @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
+  @bool hasCompilerArgument ;
+  @unifiedTypeMapProxy returnedType ;
+  [constructorMap searchKey !mConstructorName ?constructorFormalArgumentTypeList ?hasCompilerArgument ?returnedType] ;
+#--- Analysis arguments
+  if [mExpressions length] != [constructorFormalArgumentTypeList length] then
+    error mConstructorName: "calling the '" . mConstructorName . "' constructor of '@" . mTypeName . "' requires "
+    . [[constructorFormalArgumentTypeList length] string] . " parameter(s), while this call has "
+    . [[mExpressions length] string] . " parameter(s)" : outExpression ;
+  else
+    @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
+    foreach mExpressions, constructorFormalArgumentTypeList do
+      @semanticExpressionForGeneration exp ;
+      [mExpression analyzeSemanticExpression !inSemanticContext !?ioVariableMap ?exp] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      constructorEffectiveParameterList += !exp ;
+    end foreach ;
+    outExpression := [@constructorExpressionForGeneration new !returnedType !mConstructorName !constructorEffectiveParameterList] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*

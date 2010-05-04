@@ -43,7 +43,9 @@ nonterminal <term> !@semanticExpressionAST outExpression ;
 
 nonterminal <factor> !@semanticExpressionAST outExpression ;
 
-nonterminal <output_expression_list> !@outSemanticExpressionListAST outExpressionList ;
+nonterminal <output_expression_list>
+  !@semanticExpressionListAST outExpressionList
+;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -511,8 +513,8 @@ rule <factor> !@semanticExpressionAST outExpression :
     @lstring readerName ;
     $identifier$ ? readerName ;
   #--- Actual parameters
-    @outSemanticExpressionListAST expressionList ;
-    <output_expression_list> ? expressionList ;
+    @semanticExpressionListAST expressionList ;
+    <output_expression_list> ?expressionList ;
     outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
   or
   #--- Class name
@@ -522,8 +524,8 @@ rule <factor> !@semanticExpressionAST outExpression :
     @lstring constructorName ;
     $identifier$ ? constructorName ;
   #--- Actual arguments
-    @outSemanticExpressionListAST expressionList ;
-    <output_expression_list> ? expressionList ;
+    @semanticExpressionListAST expressionList ;
+    <output_expression_list> ?expressionList ;
     outExpression := [@constructorExpressionAST new
       !className
       !constructorName
@@ -564,8 +566,8 @@ rule <factor> !@semanticExpressionAST outExpression :
       or
         @lstring filewrapperTemplateName ;
         $identifier$ ? filewrapperTemplateName ;
-        @outSemanticExpressionListAST expressionList ;
-        <output_expression_list> ? expressionList ;
+        @semanticExpressionListAST expressionList ;
+        <output_expression_list> ?expressionList ;
         outExpression := [@filewrapperTemplateInExpressionAST new
           !filewrapperName
           !filewrapperTemplateName
@@ -588,8 +590,8 @@ end rule ;
 rule <factor> !@semanticExpressionAST outExpression :
   $identifier$ ? @lstring functionName ;
   $[$ ;
-  @outSemanticExpressionListAST expressionList ;
-  <output_expression_list> ? expressionList ;
+  @semanticExpressionListAST expressionList ;
+  <output_expression_list> ?expressionList ;
   outExpression := [@functionCallExpressionAST new
     !functionName
     !expressionList
@@ -619,19 +621,17 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <output_expression_list>  !@outSemanticExpressionListAST outExpressionList:
-  @semanticExpressionListAST expressionList [emptyList] ;
+rule <output_expression_list>
+  !@semanticExpressionListAST outExpressionList
+:
+  outExpressionList := [@semanticExpressionListAST emptyList] ;
   repeat
   while
     $!$ ;
     @semanticExpressionAST expression ;
     <expression> ? expression ;
-    expressionList += !expression ;
+    outExpressionList += !expression !here ;
   end repeat ;
-  outExpressionList := [@outSemanticExpressionListAST new
-    !expressionList
-    !here
-  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

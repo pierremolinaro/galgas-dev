@@ -28,19 +28,12 @@ abstract class @semanticExpressionForGeneration {
 }
 
 ##---------------------------------------------------------------------------*
-#
-#list @semanticExpressionListForGeneration {
-#  @semanticExpressionForGeneration mExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @outSemanticExpressionListForGeneration {
-#  @semanticExpressionListForGeneration mExpression ;
-#  @location mEndOfExpressionLocation ;
-#}
-#
-##---------------------------------------------------------------------------*
+
+list @semanticExpressionListForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+}
+
+#---------------------------------------------------------------------------*
 
 class @selfInExpressionForGeneration extends @semanticExpressionForGeneration {
   @string mSelfCppName ;
@@ -103,14 +96,13 @@ class @literalSInt64ExpressionForGeneration extends @semanticExpressionForGenera
   @lsint64 mValue ;
 }
 
-##---------------------------------------------------------------------------*
-#
-#class @constructorExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lstring mTypeName ;
-#  @lstring mConstructorName ;
-#  @outSemanticExpressionListForGeneration mExpressions ;
-#}
-#
+#---------------------------------------------------------------------------*
+
+class @constructorExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lstring mConstructorName ;
+  @semanticExpressionListForGeneration mEffectiveParameterList ;
+}
+
 ##---------------------------------------------------------------------------*
 #
 #class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
