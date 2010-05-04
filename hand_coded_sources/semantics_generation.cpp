@@ -209,7 +209,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     currentArgument.next () ;
   }
-  inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n"
+  inCppFile << "\n                        COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  #ifdef DEBUG_TRACE_ENABLED\n"
                "    printf (\"ENTER routine_" << mRoutineName << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
                "  #endif\n" ;

@@ -39,7 +39,9 @@ nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstruct
 
 nonterminal <semantic_instruction> !@semanticInstructionAST outInstruction ;
 
-nonterminal <output_expression_list> !@outSemanticExpressionListAST outExpressionList ;
+nonterminal <output_expression_list>
+  !@semanticExpressionListAST outExpressionList
+;
 
 nonterminal <semantic_declaration>
  ?!@semanticDeclarationStructAST ioSemanticDeclarations
@@ -237,8 +239,8 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $[$ ;
     @lstring constructorName ;
     $identifier$ ? constructorName ;
-    @outSemanticExpressionListAST expressionList ;
-    <output_expression_list> ? expressionList ;
+    @semanticExpressionListAST expressionList ;
+    <output_expression_list> ?expressionList ;
     outInstruction := [@localVariableDeclarationWithInitializationAST new ![typeName location] !typeName !variableName !constructorName !expressionList] ;
     $]$ ;
   end select ;
@@ -264,8 +266,8 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $[$ ;
     @lstring constructorName ;
     $identifier$ ? constructorName ;
-    @outSemanticExpressionListAST expressionList ;
-    <output_expression_list> ? expressionList ;
+    @semanticExpressionListAST expressionList ;
+    <output_expression_list> ?expressionList ;
     outInstruction := [@localConstantDeclarationWithConstructorCallAST new ![typeName location] !typeName !variableName !constructorName !expressionList] ;
     $]$ ;
   end select ;
@@ -963,8 +965,8 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     mStructAttributeList += !attributeName ;
   end repeat ;
   $+=$ ;
-  @outSemanticExpressionListAST mExpressionList ;
-  <output_expression_list> ? mExpressionList ;
+  @semanticExpressionListAST mExpressionList ;
+  <output_expression_list> ?mExpressionList ;
   $;$ ;
   outInstruction := [@addInstructionAST new
     !instructionLocation

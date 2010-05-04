@@ -28,12 +28,6 @@ abstract class @semanticExpressionAST {
 
 list @semanticExpressionListAST {
   @semanticExpressionAST mExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @outSemanticExpressionListAST {
-  @semanticExpressionListAST mExpression ;
   @location mEndOfExpressionLocation ;
 }
 
@@ -105,7 +99,7 @@ class @literalSInt64ExpressionAST extends @semanticExpressionAST {
 class @constructorExpressionAST extends @semanticExpressionAST {
   @lstring mTypeName ;
   @lstring mConstructorName ;
-  @outSemanticExpressionListAST mExpressions ;
+  @semanticExpressionListAST mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -113,7 +107,7 @@ class @constructorExpressionAST extends @semanticExpressionAST {
 class @readerCallExpressionAST extends @semanticExpressionAST {
   @semanticExpressionAST mReceiver ;
   @lstring mReaderName ;
-  @outSemanticExpressionListAST mExpressions ;
+  @semanticExpressionListAST mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -293,7 +287,7 @@ class @ifExpressionAST extends @semanticExpressionAST {
 
 class @functionCallExpressionAST extends @semanticExpressionAST {
   @lstring mFunctionName ;
-  @outSemanticExpressionListAST mExpressions ;
+  @semanticExpressionListAST mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -336,7 +330,7 @@ class @filewrapperInExpressionAST extends @semanticExpressionAST {
 class @filewrapperTemplateInExpressionAST extends @semanticExpressionAST {
   @lstring mFilewrapperName ;
   @lstring mFilewrapperTemplateName ;
-  @outSemanticExpressionListAST mActualOutputParameterList ;
+  @semanticExpressionListAST mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -571,7 +565,7 @@ class @localVariableDeclarationWithInitializationAST extends @semanticInstructio
   @lstring mTypeName ;
   @lstring mVariableName ;
   @lstring mConstructorName ;
-  @outSemanticExpressionListAST mConstructorArguments ;
+  @semanticExpressionListAST mConstructorExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -596,7 +590,7 @@ class @localConstantDeclarationWithConstructorCallAST extends @semanticInstructi
   @lstring mTypeName ;
   @lstring mVariableName ;
   @lstring mConstructorName ;
-  @outSemanticExpressionListAST mConstructorArguments ;
+  @semanticExpressionListAST mConstructorExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -855,7 +849,7 @@ class @castInstructionAST extends @semanticInstructionAST {
 class @addInstructionAST extends @semanticInstructionAST {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
-  @outSemanticExpressionListAST mExpressionList ;
+  @semanticExpressionListAST mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
