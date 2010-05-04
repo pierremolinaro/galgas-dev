@@ -2,7 +2,7 @@
 #                                                                           *
 #  metamodel that defines expression                                        *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -18,172 +18,8 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticInstructionsAnalysis :
-  import "semanticsDecoratedTypes.gSemantics" ;
-  import semantics semanticsDecoratedTypes in "semanticsDecoratedTypes.gSemantics" ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    V A R I A B L E    M A P                                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @variableMap {
-  @unifiedTypeMapProxy mTypeProxy ;
-  @string mNamePrefix ;
-
-#--- Used local constant
-  state usedLocalConstant {
-    readAccess      -> usedLocalConstant
-    writeAccess     -> usedLocalConstant error "a constant cannot be written"
-    readWriteAccess -> usedLocalConstant error "a constant cannot be written"
-    dropAccess      -> usedLocalConstant error "a constant cannot be drop"
-  }
-
-#--- Local constant
-  state localConstant warning "the '%K' constant value is unused" {
-    readAccess      -> usedLocalConstant
-    writeAccess     -> usedLocalConstant error "a constant cannot be written"
-    readWriteAccess -> usedLocalConstant error "a constant cannot be written"
-    dropAccess      -> usedLocalConstant error "a constant cannot be drop"
-  }
-
-#--- Local variable
-  state undefinedLocalVariable warning "the '%K' local variable value is unused" {
-    readAccess      -> undefinedLocalVariable error "an undefined local variable cannot be read"
-    writeAccess     -> definedLocalVariable
-    readWriteAccess -> undefinedLocalVariable error "an undefined local variable cannot be read"
-    dropAccess      -> undefinedLocalVariable warning "the local variable has no value"
-  }
-  state definedLocalVariable warning "the '%K' local variable value is unused" {
-    readAccess      -> usedLocalVariable
-    writeAccess     -> definedLocalVariable warning "the value has been changed without any read"
-    readWriteAccess -> usedLocalVariable
-    dropAccess      -> droppedLocalVariable warning "the local variable has been dropped without any read"
-  }
-  state usedLocalVariable {
-    readAccess      -> usedLocalVariable
-    writeAccess     -> definedLocalVariable
-    readWriteAccess -> definedLocalVariable
-    dropAccess      -> droppedLocalVariable
-  }
-  state droppedLocalVariable {
-    readAccess      -> droppedLocalVariable error "a dropped local variable cannot be read"
-    writeAccess     -> definedLocalVariable
-    readWriteAccess -> definedLocalVariable error "a dropped local variable cannot be read"
-    dropAccess      -> droppedLocalVariable warning "the local variable is already dropped"
-  }
-
-#--- Output formal parameter
-  state undefinedOutputFormalParameter error "the '%K' output formal parameter is undefined" {
-    readAccess      -> undefinedOutputFormalParameter error "an undefined output formal parameter cannot be read"
-    writeAccess     -> definedOutputFormalParameter
-    readWriteAccess -> undefinedOutputFormalParameter error "an undefined output formal parameter cannot be read"
-    dropAccess      -> undefinedOutputFormalParameter warning "the output formal parameter has no value"
-  }
-  state definedOutputFormalParameter {
-    readAccess      -> definedOutputFormalParameter
-    writeAccess     -> definedOutputFormalParameter
-    readWriteAccess -> definedOutputFormalParameter
-    dropAccess      -> undefinedOutputFormalParameter
-  }
-
-#--- Input/Output formal parameter
-  state unusedInputOutputFormalParameter warning "the '%K' input/output formal parameter is unused" {
-    readAccess      -> usedInputOutputFormalParameter
-    writeAccess     -> usedInputOutputFormalParameter
-    readWriteAccess -> usedInputOutputFormalParameter
-    dropAccess      -> droppedInputOutputFormalParameter
-  }
-  state usedInputOutputFormalParameter {
-    readAccess      -> usedInputOutputFormalParameter
-    writeAccess     -> usedInputOutputFormalParameter
-    readWriteAccess -> usedInputOutputFormalParameter
-    dropAccess      -> droppedInputOutputFormalParameter
-  }
-  state droppedInputOutputFormalParameter error "the '%K' input/ouput formal argument should be valuated at the end of the routine" {
-    readAccess      -> droppedInputOutputFormalParameter error "a dropped input/output formal argument cannot be read"
-    writeAccess     -> usedInputOutputFormalParameter
-    readWriteAccess -> droppedInputOutputFormalParameter error "a dropped input/output formal argument cannot be read"
-    dropAccess      -> droppedInputOutputFormalParameter warning "the input/output formal argument is already dropped"
-  }
-
-#--- Input/Output formal parameter declared as unused
-  state inputOutputFormalParameterDeclaredAsUnused {
-    readAccess      -> usedInputOutputFormalParameter warning "the input/output formal parameter has been declared as unused"
-    writeAccess     -> usedInputOutputFormalParameter warning "the input/output formal parameter has been declared as unused"
-    readWriteAccess -> usedInputOutputFormalParameter warning "the input/output formal parameter has been declared as unused"
-    dropAccess      -> droppedInputOutputFormalParameter warning "the input/output formal parameter has been declared as unused"
-  }
-
-#--- Constant input formal parameter
-  state constantInputFormalParameter warning "the constant '%K' input formal parameter is not used and is not declared as unused" {
-    readAccess      -> usedConstantInputFormalParameter
-    writeAccess     -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be dropped"
-  }
-  state usedConstantInputFormalParameter {
-    readAccess      -> usedConstantInputFormalParameter
-    writeAccess     -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be dropped"
-  }
-
-#--- Constant input formal parameter declared as unused
-  state constantInputFormalParameterDeclaredAsUnused {
-    readAccess      -> usedConstantInputFormalParameter warning "the constant input formal parameter is declared as unused"
-    writeAccess     -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be dropped"
-  }
-
-#--- Input formal parameter
-  state inputFormalParameter warning "the '%K' input formal parameter is not used and is not declared as unused" {
-    readAccess      -> usedInputFormalParameter
-    writeAccess     -> usedInputFormalParameter
-    readWriteAccess -> usedInputFormalParameter
-    dropAccess      -> droppedInputFormalParameter
-  }
-  state usedInputFormalParameter {
-    readAccess      -> usedInputFormalParameter
-    writeAccess     -> usedInputFormalParameter
-    readWriteAccess -> usedInputFormalParameter
-    dropAccess      -> droppedInputFormalParameter
-  }
-  state droppedInputFormalParameter {
-    readAccess      -> droppedInputFormalParameter error "a dropped input formal parameter cannot be read"
-    writeAccess     -> usedInputFormalParameter
-    readWriteAccess -> droppedInputFormalParameter error "a dropped input formal parameter cannot be read"
-    dropAccess      -> droppedInputFormalParameter warning "the input formal parameter is already dropped"
-  }
-
-#--- Input formal parameter declared as unused
-  state inputFormalParameterDeclaredAsUnused {
-    readAccess      -> usedInputFormalParameter warning "the input formal parameter is declared as unused"
-    writeAccess     -> usedInputFormalParameter warning "the input formal parameter is declared as unused"
-    readWriteAccess -> usedInputFormalParameter warning "the input formal parameter is declared as unused"
-    dropAccess      -> droppedInputFormalParameter warning "the input formal parameter is declared as unused"
-  }
-
-#--- Insert methods 
-  insert insertLocalVariable state undefinedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertLocalConstant state localConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertUsedLocalConstant state usedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertInputFormalArgument state inputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertInputFormalArgumentDeclaredAsUnused state inputFormalParameterDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertConstantInputFormalArgument state constantInputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertConstantInputFormalArgumentDeclaredAsUnused state constantInputFormalParameterDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertOutputFormalArgument state undefinedOutputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertInputOutputFormalArgument state unusedInputOutputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertInputOutputFormalArgumentDeclaredAsUnused state inputOutputFormalParameterDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-
-
-#--- Search methods
-  search searchForReadAccess action readAccess error message "the '%K' variable is not declared" ;
-  search searchForWriteAccess action writeAccess error message "the '%K' variable is not declared" ;
-  search searchForReadWriteAccess action readWriteAccess error message "the '%K' variable is not declared" ;
-  search searchForDropAccess action dropAccess error message "the '%K' variable is not declared" ;
-}
+  import "semanticExpressionAnalysis.gSemantics" ;
+  import semantics semanticExpressionAnalysis in "semanticExpressionAnalysis.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -192,7 +28,7 @@ map @variableMap {
 #---------------------------------------------------------------------------*
 
 abstract method @semanticInstructionAST analyzeSemanticInstruction
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 ;
@@ -200,7 +36,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationWithInitializationAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -210,7 +46,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -220,7 +56,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localConstantDeclarationWithSourceExpressionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -230,7 +66,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -240,7 +76,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localConstantDeclarationWithConstructorCallAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -250,21 +86,28 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @assignmentInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression ;
+  [mSourceExpression analyzeSemanticExpression
+    !inSemanticContext
+    !?ioVariableMap
+    ?expression
+  ] ;
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
-  @string targetPrefix ;
-  [!?ioVariableMap searchForWriteAccess !mTargetVariableName ?targetType ?targetPrefix] ;
+  @string targetVariableCppName ;
+  [!?ioVariableMap searchForWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName] ;
   message "@assignmentInstructionAST analyzeSemanticInstruction\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @appendInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -274,7 +117,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sendInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -284,7 +127,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @foreachInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -294,7 +137,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @ifInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -304,7 +147,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @errorInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -314,7 +157,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @warningInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -324,7 +167,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @routineCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -334,7 +177,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @matchInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -344,7 +187,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @castInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -354,7 +197,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @addInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -364,7 +207,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @removeInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -374,7 +217,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @incrementInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -384,7 +227,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @decrementInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -394,7 +237,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @loopInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -404,7 +247,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @messageInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -414,7 +257,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @logInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -424,7 +267,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @grammarInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -434,7 +277,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @withInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -444,7 +287,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @switchInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -454,7 +297,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @typeMethodCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -464,7 +307,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @methodCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -474,7 +317,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @modifierCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :

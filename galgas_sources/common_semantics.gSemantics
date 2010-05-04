@@ -3123,6 +3123,9 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Search (method) map
   @EXmapMethodMap mReaderMethodMap ;
 
+#--- Automaton description
+  @mapStateList mMapStateList ;
+
 #--- By default, object does not accept 'with' instruction access
   override
   method check_with_InstructionAccess
@@ -3301,6 +3304,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
            !aTableMethodesSurcharger
            !mModifierMethodMap
            !mReaderMethodMap
+           ![@mapStateList emptyList]
          ]
         ![@formalArgumentPassingModeAST argumentInOut]
       ;
@@ -5081,7 +5085,7 @@ routine handleReaderCall
       error inReaderName :
          "sorted list supports only 'length' reader call" : outAccessorTypesList, outReturnedType ;
     end if ;
-  when >= @typeGalgasMapType do
+  when >= @typeGalgasMapType t do
     if [inReaderName string] == "description" then
       outReturnedType := [@typeGalgas_string new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -5123,8 +5127,16 @@ routine handleReaderCall
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := inReceiverType ;
     else
-      error inReaderName : "this reader is not defined"
-       : outAccessorTypesList, outReturnedType ;
+      @bool found := false ;
+      foreach [t mMapStateList] while not found do
+        found := [inReaderName string] == ("stringSetWithKeysOf" . [mStateName stringByCapitalizingFirstCharacter] . "State") ;
+      end foreach ;
+      if found then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_stringset new] ;
+      else
+        error inReaderName : "this reader is not defined" : outAccessorTypesList, outReturnedType ;
+      end if ;
     end if ;
   when >= @typeGalgasListmapType mapType do
     if [inReaderName string] == "description" then

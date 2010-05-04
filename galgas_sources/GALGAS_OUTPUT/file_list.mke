@@ -118,6 +118,7 @@ SOURCES += semanticsInstanceMethods.cpp
 SOURCES += semanticsClassMethods.cpp
 SOURCES += semanticContext.cpp
 SOURCES += semanticsDecoratedTypes.cpp
+SOURCES += semanticExpressionAnalysis.cpp
 SOURCES += semanticInstructionsAnalysis.cpp
 SOURCES += semanticAnalysis.cpp
 SOURCES += semanticGeneration.cpp

@@ -63,7 +63,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 method @semanticDeclarationAST performSemanticAnalysis
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContextForInstructionAnalysis unused inSemanticContext
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 :
 end method ;
@@ -71,7 +71,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
@@ -91,7 +91,7 @@ map @attributeIndexMap {
 #---------------------------------------------------------------------------*
 
 override method @listDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -113,7 +113,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Attribute
@@ -150,7 +150,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @structDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -179,7 +179,7 @@ map @constantIndexMap {
 #---------------------------------------------------------------------------*
 
 override method @enumDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Constant list
@@ -228,7 +228,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Check associated list is actually a list
@@ -246,7 +246,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @genericTypeTypeAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration += ![@genericTypeForGeneration new
@@ -269,7 +269,7 @@ map @searchMethodMap {
 #---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Enter attributes
@@ -375,7 +375,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapProxyDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Get attribute list of associated map
@@ -400,7 +400,7 @@ map @declaredMethodMap { # This map is used for checking a method is declared on
 #---------------------------------------------------------------------------*
 
 override method @classDeclarationAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
+  ??@semanticContextForInstructionAnalysis inSemanticContext
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Super type
@@ -576,11 +576,28 @@ routine performSemanticAnalysis
   ??@semanticContext inSemanticContext
   !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
 :
+
+  const @semanticContextForInstructionAnalysis semanticContext [new
+    !inSemanticContext->mTypeMap
+    !inSemanticContext->mRoutineMap
+    !inSemanticContext->mFunctionMap
+    !inSemanticContext->mFilewrapperMap
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"char" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"string" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint64" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint64" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"double" !here]]
+  ] ;
+
   outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
   
   foreach inDeclarationList do
     [mSemanticDeclaration performSemanticAnalysis
-      !inSemanticContext
+      !semanticContext
       !?outDecoratedDeclarationListForGeneration
     ] ;
   end foreach ;

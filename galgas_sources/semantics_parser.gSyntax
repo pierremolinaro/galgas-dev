@@ -5929,6 +5929,7 @@ rule <semantics_declaration>
       !tableMethodesBloc
       !mapModifierMethodMap
       ![@EXmapMethodMap emptyMap]
+      ![@mapStateList emptyList]
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
@@ -6174,6 +6175,7 @@ rule <semantics_declaration>
       !tableMethodesBloc
       !mapModifierMethodMap
       !mapSearchMethodMap
+      !mapStateList
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
@@ -6401,6 +6403,7 @@ label importSemantics
       !tableMethodesBloc
       !mapModifierMethodMap
       ![@EXmapMethodMap emptyMap]
+      ![@mapStateList emptyList]
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
@@ -6423,35 +6426,61 @@ label importSemantics
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Declaration des états
-    @bool hasAutomaton := false ;
+    @mapStateList mapStateList [emptyList] ;
     repeat
     while
       $state$ ;
-      $identifier$ ? * ;
-      hasAutomaton := true ;
+      $identifier$ ? @lstring stateName ;
+      @mapAutomatonMessageKind stateMessageKind ;
+      @lstring stateMessage ;
       select
+        stateMessageKind := [@mapAutomatonMessageKind noMessage] ;
+        stateMessage := [@lstring new !"" !here] ;
       or
         $warning$ ;
-        $literal_string$ ? * ;
+        $literal_string$ ? stateMessage ;
+        check_K_escapeCharacters !stateMessage ;
+        stateMessageKind := [@mapAutomatonMessageKind warningMessage] ;
       or
         $error$ ;
-        $literal_string$ ? * ;
+        $literal_string$ ? stateMessage ;
+        check_K_escapeCharacters !stateMessage ;
+        stateMessageKind := [@mapAutomatonMessageKind errorMessage] ;
       end select ;
       ${$ ;
+      @mapStateTransitionList transitionList [emptyList] ;
       repeat
       while
-        $identifier$ ? * ;
+        $identifier$ ? @lstring actionName ;
         $->$ ;
-        $identifier$ ? * ;
+        $identifier$ ? @lstring targetStateName ;
+        @mapAutomatonMessageKind transitionMessageKind ;
+        @lstring transitionMessage ;
         select
+          transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+          transitionMessage := [@lstring new !"" !here] ;
         or
           $warning$ ;
-          $literal_string$ ? * ;
+          $literal_string$ ? transitionMessage ;
+          transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
         or
           $error$ ;
-          $literal_string$ ? * ;
+          $literal_string$ ? transitionMessage ;
+          transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
         end select ;
+        transitionList +=
+          !actionName
+          !targetStateName
+          !transitionMessageKind
+          !transitionMessage
+        ;
       end repeat ;
+      mapStateList +=
+        !stateName
+        !stateMessageKind
+        !stateMessage
+        !transitionList
+      ;
       $}$ ;
     end repeat ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
@@ -6533,7 +6562,7 @@ label importSemantics
       foreach listeTousAttributsSemantiques do
         methodSignature += !mAttributType !outPassingMode ;      
       end foreach ;
-      if hasAutomaton then
+      if [mapStateList length] > 0 then
         [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
       else
         [!?mapSearchMethodMap insertKey !methodName !methodSignature] ;
@@ -6550,7 +6579,7 @@ label importSemantics
       end if ;
     end foreach ;
   #---
-    if hasAutomaton then
+    if [mapStateList length] > 0 then
       [!?mapSearchMethodMap insertKey
         ![@lstring new !"checkAutomatonStates" !here]
         ![@L_EXsignature listWithValue ![@typeGalgas_location new] !inPassingMode]
@@ -6563,6 +6592,7 @@ label importSemantics
      !tableMethodesBloc
      !mapModifierMethodMap
      !mapSearchMethodMap
+     !mapStateList
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;

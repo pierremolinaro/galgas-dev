@@ -59,7 +59,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "//--- '" << currentRelation._key (HERE) << "' relation\n"
                "  protected : C_BDD mBDDForRelation_" << currentRelation._key (HERE) << " ;\n" ;
     inHfile << "  public : void modifier_addTo"
-            << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
+            << currentRelation._key (HERE).stringByCapitalizingFirstCharacter ()
             << " (C_Compiler & inLexique" ;
     for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
       inHfile << ",\n                                    const GGS_uint & inValue_" << cStringWithSigned (i) ;
@@ -67,7 +67,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "\n"
                "                                    COMMA_LOCATION_ARGS) ;\n"
                "  public : void modifier_reset"
-            << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
+            << currentRelation._key (HERE).stringByCapitalizingFirstCharacter ()
             << " (C_Compiler & inLexique"
                "\n"
                "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
@@ -210,7 +210,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
-              << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
+              << currentRelation._key (HERE).stringByCapitalizingFirstCharacter ()
               << " (C_Compiler & /* inLexique */" ;
     for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
       inCppFile << ",\n                                    const GGS_uint & inValue_" << cStringWithSigned (i) ;
@@ -259,7 +259,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_reset"
-              << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
+              << currentRelation._key (HERE).stringByCapitalizingFirstCharacter ()
               << " (C_Compiler & /* inLexique */"
                  "\n"
                  "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
