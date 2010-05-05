@@ -322,7 +322,6 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 :
   outExpression := [@literalUIntExpressionForGeneration new !inSemanticContext->mDoubleType !mValue] ;
-  message "@literalUIntExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -364,7 +363,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
 :
 #--- Type name
   @constructorMap constructorMap ;
-  [inSemanticContext->mTypeMap searchKey !mTypeName ?5* ?constructorMap ?13*] ;
+  [inSemanticContext->mTypeMap searchKey !mTypeName ?6* ?constructorMap ?13*] ;
 #--- Search contructor
   @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
   @bool hasCompilerArgument ;

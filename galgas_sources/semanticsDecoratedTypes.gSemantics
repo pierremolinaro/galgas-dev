@@ -457,7 +457,6 @@ list @formalParameterListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @syntaxInstructionForGeneration {
-  @location mStartLocation feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -624,11 +623,11 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @assignmentInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mTargetVariableName ;
-#  @lstringlist mStructAttributeList ;
-#  @semanticExpressionForGeneration mSourceExpression ;
-#}
+class @assignmentInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mTargetCppName ;
+  @lstringlist mStructAttributeList ;
+  @semanticExpressionForGeneration mSourceExpression ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

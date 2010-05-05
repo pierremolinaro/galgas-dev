@@ -228,6 +228,14 @@ function generateNativeNewConstructor -> @uint outMask : outMask := 1 << 30 ; en
 function generateVirtualDestructor -> @uint outMask : outMask := 1 << 31 ; end function ;
 
 #---------------------------------------------------------------------------*
+
+map @attributeMap {
+  @unifiedTypeMapProxy mAttributeType ;
+  insert insertKey error message "the '%K' attribute has been already declared in %L" ;
+  search searchKey error message "the '%K' attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  U N I F I E D    T Y P E    M A P                                        *
 #                                                                           *
@@ -238,6 +246,7 @@ map @unifiedTypeMap {
   @unifiedTypeMapProxy mSuperType ;
   @typeKindEnum mTypeKindEnum ;
   @typedAttributeList mInheritedTypedAttributeList ;
+  @attributeMap mAttributeMap ; # struct, class
   @typedAttributeList mCurrentTypedAttributeList ;
   @constructorMap mConstructorMap ;
   @readerMap mReaderMap ;

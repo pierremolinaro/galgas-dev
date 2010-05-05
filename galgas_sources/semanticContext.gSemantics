@@ -263,6 +263,7 @@ override method @predefinedTypeAST enterType
     !superTypeProxy
     ![@typeKindEnum primitiveType]
     ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
     !constructorMap
     !readerMap
@@ -309,6 +310,7 @@ override method @genericTypeTypeAST enterType
     !superTypeProxy
     ![@typeKindEnum listType]
     ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
     !constructorMap
     !readerMap
@@ -445,6 +447,7 @@ override method @mapDeclarationAST enterType
     !superTypeProxy
     ![@typeKindEnum mapType]
     ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
     !typedAttributeList
     !constructorMap
     !readerMap
@@ -476,7 +479,7 @@ override method @mapProxyDeclarationAST enterType
     !mAssociatedMapTypeName
     ?2*
     ?typeKindEnum
-    ?*
+    ?2*
     ?mapTypedAttributeList
     ?12*
     ?searchMethodList
@@ -567,6 +570,7 @@ override method @mapProxyDeclarationAST enterType
     !superTypeProxy
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
     !mapTypedAttributeList
     !constructorMap
     !readerMap
@@ -617,6 +621,7 @@ override method @enumDeclarationAST enterType
     !superTypeProxy
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
     !constructorMap
     !readerMap
@@ -767,6 +772,7 @@ override method @listDeclarationAST enterType
     !superTypeProxy
     ![@typeKindEnum listType]
     !typedAttributeList
+    ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
     !constructorMap
     !readerMap
@@ -857,6 +863,7 @@ override method @sortedListDeclarationAST enterType
     !superTypeProxy
     ![@typeKindEnum sortedListType]
     !typedAttributeList
+    ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
     !constructorMap
     !readerMap
@@ -884,7 +891,8 @@ override method @structDeclarationAST enterType
 #--- Struct type index
   @unifiedTypeMapProxy structTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mStructTypeName string] ?structTypeIndex] ;
-#--- Constructors
+#--- Constructors and attribute map
+  @attributeMap attributeMap [emptyMap] ;
   @constructorMap constructorMap [emptyMap] ;
   @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -893,6 +901,7 @@ override method @structDeclarationAST enterType
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     constructorAttributeTypeList += !attributeTypeIndex ;
     typedAttributeList += !attributeTypeIndex !mAttributeName ;
+    [!?attributeMap insertKey !mAttributeTypeName !attributeTypeIndex] ;
   end foreach ;
   [!?constructorMap insertKey
     ![@lstring new !"new" !here]
@@ -927,6 +936,7 @@ override method @structDeclarationAST enterType
     !superTypeProxy
     ![@typeKindEnum structType]
     ![@typedAttributeList emptyList]
+    !attributeMap
     !typedAttributeList
     !constructorMap
     !readerMap
@@ -959,6 +969,7 @@ override method @classDeclarationAST enterType
   @modifierMap modifierMap ;
   @instanceMethodMap inheritedInstanceMethodMap ;
   @typedAttributeList inheritedTypedAttributeList ;
+  @attributeMap attributeMap [emptyMap] ;
 #--- Handle super class
   @unifiedTypeMapProxy superClassIndex ;
   if [mSuperClassName string] == "" then
@@ -967,6 +978,7 @@ override method @classDeclarationAST enterType
     modifierMap := [@modifierMap emptyMap] ;
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
     inheritedTypedAttributeList := [@typedAttributeList emptyList] ;
+    attributeMap := [@attributeMap emptyMap] ;
   else
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mSuperClassName string] ?superClassIndex] ;
     @typeKindEnum typeKindEnum ;
@@ -975,6 +987,7 @@ override method @classDeclarationAST enterType
       ?2*
       ?typeKindEnum
       ?inheritedTypedAttributeList
+      ?attributeMap
       ?2*
       ?readerMap
       ?modifierMap
@@ -985,21 +998,23 @@ override method @classDeclarationAST enterType
       error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
     end if ;
   end if ;
+#--- Build attribute Map and constructor argument list
+  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
+  foreach inheritedTypedAttributeList do
+    constructorAttributeTypeList += !mAttributeTypeIndex ;
+  end foreach ;
+  foreach mAttributeList do
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
+    constructorAttributeTypeList += !attributeTypeIndex ;
+    [!?attributeMap insertKey !mAttributeTypeName !attributeTypeIndex] ;
+  end foreach ;
 #--- Current class Index
   @unifiedTypeMapProxy classIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mClassTypeName string] ?classIndex] ;
 #--- Constructor
   @constructorMap constructorMap [emptyMap] ;
   if not mIsAbstract then
-    @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
-    foreach inheritedTypedAttributeList do
-      constructorAttributeTypeList += !mAttributeTypeIndex ;
-    end foreach ;
-    foreach mAttributeList do
-      @unifiedTypeMapProxy attributeTypeIndex ;
-      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
-      constructorAttributeTypeList += !attributeTypeIndex ;
-    end foreach ;
     [!?constructorMap insertKey
       ![@lstring new !"new" !here]
       !constructorAttributeTypeList
@@ -1074,6 +1089,7 @@ override method @classDeclarationAST enterType
     !superClassIndex
     ![@typeKindEnum classType]
     !allTypedAttributeList
+    !attributeMap
     !currentClassTypedAttributeList
     !constructorMap
     !readerMap
@@ -1152,7 +1168,7 @@ override method @listmapDeclarationAST enterType
     ?2*
     ?typeKindEnum
     ?listTypedAttributeList
-    ?15*
+    ?16*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1196,6 +1212,7 @@ override method @listmapDeclarationAST enterType
     !superTypeProxy
     ![@typeKindEnum mapIndexType]
     ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
     !listTypedAttributeList
     !constructorMap
     !readerMap
