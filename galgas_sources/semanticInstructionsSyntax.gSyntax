@@ -290,12 +290,14 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     mStructAttributeList += !attributeName ;
   end repeat ;
   $:=$ ;
+  const @location assignmentOperatorLocation := here ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
   $;$ ;
   outInstruction := [@assignmentInstructionAST new
     ![mTargetVariableName location]
     !mTargetVariableName
+    !assignmentOperatorLocation
     !mStructAttributeList
     !mSourceExpression
   ] ;
