@@ -198,6 +198,7 @@ class @typeWithInstruction extends @typeInstruction {
   @typeInstructionList mDoBranchInstructionList ;
   @typeInstructionList mElseBranchInstructionList ;
   @location mInstructionLocation ;
+  @bool mReadWriteAccess ;
 }
 
 #---------------------------------------------------------------------------*

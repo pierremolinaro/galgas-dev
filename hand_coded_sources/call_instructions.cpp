@@ -613,7 +613,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
                 << cStringWithSigned (mInstructionLocation.lineNumber ())
                 << ")) ;\n" ;
     }else{
-      ioCppFile << ".searchForTolerantWithInstruction (" ;
+      ioCppFile << "." ;
+      if (mReadWriteAccess.boolValue ()) {
+        ioCppFile << "searchForReadWriteWithInstruction" ;
+      }else{
+        ioCppFile << "searchForReadWithInstruction" ;
+      }
+      ioCppFile << " (" ;
       mKeyExpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << ") ;\n" ;
     }

@@ -63,7 +63,8 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 method @semanticDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 :
 end method ;
@@ -71,7 +72,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
@@ -91,17 +93,18 @@ map @attributeIndexMap {
 #---------------------------------------------------------------------------*
 
 override method @listDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
-  @attributeIndexMap attributeIndexMap [emptyMap] ;
+  @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
-    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
+    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
@@ -113,25 +116,26 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Attribute
   @typedAttributeList typedAttributeList [emptyList] ;
-  @attributeIndexMap attributeIndexMap [emptyMap] ;
+  @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
-    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
+    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
   end foreach ;
 #--- Sort descriptor
   @stringset attributesUsedForSorting [emptySet] ;
   @sortDescriptorListForGeneration sortDescriptorList [emptyList] ;
   foreach mSortDescriptorList do
     @uint attributeIndex ;
-    [attributeIndexMap searchKey !mSortedAttributeName ?attributeIndex] ;
+    [attributeMap searchKey !mSortedAttributeName ?attributeIndex] ;
     sortDescriptorList += !attributeIndex !mAscending ;
     if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
       error mSortedAttributeName : "the '" . mSortedAttributeName . "' is already used for sorting" ;
@@ -150,17 +154,18 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @structDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
-  @attributeIndexMap attributeIndexMap [emptyMap] ;
+  @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
-    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
+    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
@@ -179,7 +184,8 @@ map @constantIndexMap {
 #---------------------------------------------------------------------------*
 
 override method @enumDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Constant list
@@ -228,7 +234,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Check associated list is actually a list
@@ -246,7 +253,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @genericTypeTypeAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration += ![@genericTypeForGeneration new
@@ -269,18 +277,19 @@ map @searchMethodMap {
 #---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
-  @attributeIndexMap attributeIndexMap [emptyMap] ;
+  @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
-    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
+    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
   end foreach ;
 #--- Enter insert modifiers
   @insertMethodMap insertMethodMap [emptyMap] ;
@@ -375,7 +384,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapProxyDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Get attribute list of associated map
@@ -400,7 +410,8 @@ map @declaredMethodMap { # This map is used for checking a method is declared on
 #---------------------------------------------------------------------------*
 
 override method @classDeclarationAST performSemanticAnalysis
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Super type
@@ -413,7 +424,7 @@ override method @classDeclarationAST performSemanticAnalysis
 #------ Enter attributes
   @typedAttributeList allAttributeList := [superClassProxy mInheritedTypedAttributeList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
-  @attributeIndexMap attributeIndexMap [emptyMap] ;
+  @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     typedAttributeList +=
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
@@ -423,7 +434,7 @@ override method @classDeclarationAST performSemanticAnalysis
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
       !mAttributeName
     ;
-    [!?attributeIndexMap insertKey !mAttributeName ![attributeIndexMap count]] ;
+    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
   end foreach ;
 #------ Check a method is defined once within class
   @declaredMethodMap classMethodMap [emptyMap] ;
@@ -526,11 +537,16 @@ override method @classDeclarationAST performSemanticAnalysis
   #---  Analyze instruction list
     @semanticInstructionListForGeneration semanticInstructionListForGeneration [emptyList] ;
     foreach mInstructionList do
+  @unifiedTypeMapProxy p [searchKey !inSemanticContext->mTypeMap ![@lstring new !"cExpressionList" !here]] ;
+  log p ;
       [mInstruction analyzeSemanticInstruction
         !inSemanticContext
+        !inPredefinedTypes
         !?semanticInstructionListForGeneration
         !?variableMap
       ] ;
+  p := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"cExpressionList" !here]] ;
+  log p ;
     end foreach ;
     [variableMap checkAutomatonStates !mEndOfMethodLocation] ;
   #---
@@ -576,12 +592,7 @@ routine performSemanticAnalysis
   ??@semanticContext inSemanticContext
   !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
 :
-
-  const @semanticContextForInstructionAnalysis semanticContext [new
-    !inSemanticContext->mTypeMap
-    !inSemanticContext->mRoutineMap
-    !inSemanticContext->mFunctionMap
-    !inSemanticContext->mFilewrapperMap
+  const @predefinedTypes predefinedTypes [new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"char" !here]]
@@ -597,7 +608,8 @@ routine performSemanticAnalysis
   
   foreach inDeclarationList do
     [mSemanticDeclaration performSemanticAnalysis
-      !semanticContext
+      !inSemanticContext
+      !predefinedTypes
       !?outDecoratedDeclarationListForGeneration
     ] ;
   end foreach ;

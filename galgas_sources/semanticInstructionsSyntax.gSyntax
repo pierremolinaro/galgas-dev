@@ -684,14 +684,13 @@ end rule ;
 rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $with$ ;
   const @location instructionLocation := here ;
-  @lstring withPrefix ;
+  @bool readWriteAccess ;
   select
-    withPrefix := [@lstring new !"" !here] ;
+    readWriteAccess := false ;
   or
-    $identifier$ ? withPrefix ;
-    $:$ ;
+    $!?$ ;
+    readWriteAccess := true ;
   end select ;
-  $!?$ ;
   $identifier$ ?@lstring mTargetObjectName ;
   @lstringlist structAttributeList [emptyList] ;
   repeat
@@ -704,6 +703,13 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $!$ ;
   @semanticExpressionAST mKeyExpression ;
   <expression> ? mKeyExpression ;
+  @lstring withPrefix ;
+  select
+    withPrefix := [@lstring new !"" !here] ;
+  or
+    $prefixedby$ ;
+    $identifier$ ? withPrefix ;
+  end select ;
   $do$ ;
   @semanticInstructionListAST mDoBranchInstructions ;
   <semantic_instruction_list> ? mDoBranchInstructions ;
@@ -721,6 +727,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     !structAttributeList
     !mSearchMethodName
     !mKeyExpression
+    !readWriteAccess
     !mDoBranchInstructions
     !mElseBranchInstructions
   ] ;

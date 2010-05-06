@@ -128,7 +128,7 @@ category_method__terminalInstructionForGrammarAnalysis__fixSyntaxInstructionList
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_3160 != NULL) {
     GGS_uint  var_cas_terminalSymbolIndex ;
-    elementOf_GGS_terminalSymbolsMapForGrammarAnalysis * operand_3491 = (elementOf_GGS_terminalSymbolsMapForGrammarAnalysis *) var_cas_ioActuallyUsedTerminalSymbolMap.searchForTolerantWithInstruction (operand_3160->mTerminalSymbolName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (68))) ;
+    elementOf_GGS_terminalSymbolsMapForGrammarAnalysis * operand_3491 = (elementOf_GGS_terminalSymbolsMapForGrammarAnalysis *) var_cas_ioActuallyUsedTerminalSymbolMap.searchForReadWriteWithInstruction (operand_3160->mTerminalSymbolName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (68))) ;
     if (NULL != operand_3491) {
       var_cas_terminalSymbolIndex = operand_3491->mInfo.mTerminalIndex ;
     }else{

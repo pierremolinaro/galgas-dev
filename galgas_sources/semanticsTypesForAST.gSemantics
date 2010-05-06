@@ -953,6 +953,7 @@ class @withInstructionAST extends @semanticInstructionAST {
   @lstringlist mStructAttributeList ;
   @lstring mSearchMethodName ;
   @semanticExpressionAST mKeyExpression ;
+  @bool mReadWriteAccess ;
   @semanticInstructionListAST mDoBranchInstructions ;
   @semanticInstructionListAST mElseBranchInstructions ;
 }

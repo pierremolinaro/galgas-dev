@@ -215,7 +215,7 @@ void routine_handleNonTerminalDeclarations (C_Compiler & inLexique,
     const GGS_nonterminalDeclarationList::cElement * operand_6120 = NULL ;
     while (((operand_6120 = enumerator_6120.nextObject ()))) {
       macroValidPointer (operand_6120) ;
-      elementOf_GGS_nonTerminalSymbolMapForGrammarAnalysis * operand_6169 = (elementOf_GGS_nonTerminalSymbolMapForGrammarAnalysis *) var_cas_ioNonTerminalMapForGrammarAnalysis.searchForTolerantWithInstruction (operand_6120->mNonterminalName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (127))) ;
+      elementOf_GGS_nonTerminalSymbolMapForGrammarAnalysis * operand_6169 = (elementOf_GGS_nonTerminalSymbolMapForGrammarAnalysis *) var_cas_ioNonTerminalMapForGrammarAnalysis.searchForReadWriteWithInstruction (operand_6120->mNonterminalName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (127))) ;
       if (NULL != operand_6169) {
         ::routine_checkLabelMap (inLexique,  operand_6120->mNonterminalName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (129)),  operand_6120->mLabels,  operand_6120->mHasParseLabel,  var_cas_ioNonTerminalMapForGrammarAnalysis.reader_locationForKey (inLexique, operand_6120->mNonterminalName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (132)) COMMA_SOURCE_FILE_AT_LINE (132)),  operand_6169->mInfo.mNonterminalSymbolParametersMap COMMA_SOURCE_FILE_AT_LINE (128)) ;
       }else{
@@ -331,7 +331,7 @@ category_method__terminalCheckInstruction__transformInstruction (C_Compiler & in
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_8450 != NULL) {
     GGS_uint  var_cas_terminalSymbolIndex ;
-    elementOf_GGS_terminalSymbolsMapForGrammarAnalysis * operand_8781 = (elementOf_GGS_terminalSymbolsMapForGrammarAnalysis *) var_cas_ioActuallyUsedTerminalSymbolMap.searchForTolerantWithInstruction (operand_8450->mTerminalName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (194))) ;
+    elementOf_GGS_terminalSymbolsMapForGrammarAnalysis * operand_8781 = (elementOf_GGS_terminalSymbolsMapForGrammarAnalysis *) var_cas_ioActuallyUsedTerminalSymbolMap.searchForReadWriteWithInstruction (operand_8450->mTerminalName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (194))) ;
     if (NULL != operand_8781) {
       var_cas_terminalSymbolIndex = operand_8781->mInfo.mTerminalIndex ;
     }else{

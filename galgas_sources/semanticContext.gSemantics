@@ -901,7 +901,7 @@ override method @structDeclarationAST enterType
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     constructorAttributeTypeList += !attributeTypeIndex ;
     typedAttributeList += !attributeTypeIndex !mAttributeName ;
-    [!?attributeMap insertKey !mAttributeTypeName !attributeTypeIndex] ;
+    [!?attributeMap insertKey !mAttributeName !attributeTypeIndex] ;
   end foreach ;
   [!?constructorMap insertKey
     ![@lstring new !"new" !here]
@@ -1007,7 +1007,7 @@ override method @classDeclarationAST enterType
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     constructorAttributeTypeList += !attributeTypeIndex ;
-    [!?attributeMap insertKey !mAttributeTypeName !attributeTypeIndex] ;
+    [!?attributeMap insertKey !mAttributeName !attributeTypeIndex] ;
   end foreach ;
 #--- Current class Index
   @unifiedTypeMapProxy classIndex ;

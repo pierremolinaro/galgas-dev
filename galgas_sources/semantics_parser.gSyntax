@@ -4879,24 +4879,24 @@ rule <semantic_instruction>
   ??@EXsemanticContext inSemanticContext
 :
   $with$ ;
-#--- Local Prefix
-  @string prefixString ;
+  @bool readWriteAccess ;
   select
-    prefixString := "" ;
+    readWriteAccess := false ;
   or
-    $identifier$ ? @lstring thePrefix ;
-    prefixString := [thePrefix string] ;
-    $:$ ;
+    $!?$ ;
+    readWriteAccess := true ;
   end select ;
-#--- Map object reference
-  $!?$ ;
   $identifier$ ? @lstring nomVarDest ;
   @location instructionLocation := [nomVarDest location] ;
 #--- Perform an io access for target variable
   @AC_galgasType targetType ;
   @typeCplusPlusName accessedVariableCppName ;
   @string errorMessageName ;
-  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetType ?accessedVariableCppName] ;
+  if readWriteAccess then
+    [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetType ?accessedVariableCppName] ;
+  else
+    [!?ioVariablesMap searchForReadOnlyAccess !nomVarDest ?targetType ?accessedVariableCppName] ;
+  end if ;
 #--- Struct attributes
   @lstringlist structAttributeList [emptyList] ;
   repeat
@@ -4941,6 +4941,15 @@ rule <semantic_instruction>
     ?errorMessageName
     ?attributeList
   ] ;
+#--- Local Prefix
+  @string prefixString := "" ;
+  select
+    prefixString := "" ;
+  or
+    $prefixedby$ ;
+    $identifier$ ? @lstring thePrefix ;
+    prefixString := [thePrefix string] ;
+  end select ;
 #--- First branch
   @typeInstructionList doBranchInstructionList [emptyList] ;
   @typeInstructionList elseBranchInstructionList [emptyList] ;
@@ -4955,11 +4964,19 @@ rule <semantic_instruction>
       ] ;
     #--- Add map entry attributes as local variables
       foreach attributeList do
-        [!?ioVariablesMap insertWithInstructionLocalVariable
-          ![@lstring new !prefixString . [mAttributeName string] !instructionLocation]
-          !mAttributType
-          ![@typeOperandName new !instructionLocation ![mAttributeName string] !true !false]
-        ] ;
+        if readWriteAccess then
+          [!?ioVariablesMap insertWithInstructionLocalVariable
+            ![@lstring new !prefixString . [mAttributeName string] !instructionLocation]
+            !mAttributType
+            ![@typeOperandName new !instructionLocation ![mAttributeName string] !true !false]
+          ] ;
+        else
+          [!?ioVariablesMap insertUsedConstInArgumentNoShadow
+            ![@lstring new !prefixString . [mAttributeName string] !instructionLocation]
+            !mAttributType
+            ![@typeOperandName new !instructionLocation ![mAttributeName string] !true !false]
+          ] ;
+        end if ;
       end foreach ;
     #---
       $do$ ;
@@ -5000,6 +5017,7 @@ rule <semantic_instruction>
     !doBranchInstructionList
     !elseBranchInstructionList
     !instructionLocation
+    !readWriteAccess
   ] ;
   ioInstructionList += !instruction ;
 end rule ;
