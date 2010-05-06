@@ -209,11 +209,7 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-struct @semanticContextForInstructionAnalysis {
-  @unifiedTypeMap mTypeMap ;
-  @routineMap mRoutineMap ;
-  @functionMap mFunctionMap ;
-  @filewrapperMap mFilewrapperMap ;
+struct @predefinedTypes {
   @unifiedTypeMapProxy mLocationType ;
   @unifiedTypeMapProxy mBoolType ;
   @unifiedTypeMapProxy mCharType ;
@@ -232,7 +228,8 @@ struct @semanticContextForInstructionAnalysis {
 #---------------------------------------------------------------------------*
 
 abstract method @semanticExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 ;
@@ -240,7 +237,8 @@ abstract method @semanticExpressionAST analyzeSemanticExpression
 #---------------------------------------------------------------------------*
 
 override method @selfInExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
@@ -257,118 +255,145 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @hereExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mLocationType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mLocationType] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @trueExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @falseExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@falseExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@falseExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalCharExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalCharExpressionForGeneration new !inSemanticContext->mCharType !mCharacter] ;
+  outExpression := [@literalCharExpressionForGeneration new !inPredefinedTypes->mCharType !mCharacter] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalStringExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalStringExpressionForGeneration new !inSemanticContext->mStringType !mStringSequence] ;
+  outExpression := [@literalStringExpressionForGeneration new !inPredefinedTypes->mStringType !mStringSequence] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalDoubleExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalDoubleExpressionForGeneration new !inSemanticContext->mDoubleType !mValue] ;
+  outExpression := [@literalDoubleExpressionForGeneration new !inPredefinedTypes->mDoubleType !mValue] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalUIntExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalUIntExpressionForGeneration new !inSemanticContext->mDoubleType !mValue] ;
+  outExpression := [@literalUIntExpressionForGeneration new !inPredefinedTypes->mDoubleType !mValue] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalUInt64ExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalUInt64ExpressionForGeneration new !inSemanticContext->mUInt64Type !mValue] ;
+  outExpression := [@literalUInt64ExpressionForGeneration new !inPredefinedTypes->mUInt64Type !mValue] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalSIntExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalSIntExpressionForGeneration new !inSemanticContext->mSIntType !mValue] ;
+  outExpression := [@literalSIntExpressionForGeneration new !inPredefinedTypes->mSIntType !mValue] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalSInt64ExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalSInt64ExpressionForGeneration new !inSemanticContext->mSInt64Type !mValue] ;
+  outExpression := [@literalSInt64ExpressionForGeneration new !inPredefinedTypes->mSInt64Type !mValue] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @constructorExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-#--- Type name
+#--- Get constructor map from type map
   @constructorMap constructorMap ;
   [inSemanticContext->mTypeMap searchKey !mTypeName ?6* ?constructorMap ?13*] ;
 #--- Search contructor
   @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
-  [constructorMap searchKey !mConstructorName ?constructorFormalArgumentTypeList ?hasCompilerArgument ?returnedType] ;
+  with constructorMap hasKey ![mConstructorName string] do
+    constructorFormalArgumentTypeList := mArgumentTypeList ;
+    hasCompilerArgument := mHasCompilerArgument ;
+    returnedType := mReturnedType ;
+  else
+    @string s := "" ;
+    foreach constructorMap do
+      s .= "\n  - " . key ;
+      foreach mArgumentTypeList do
+        s .= " ?@" . [mType key] ;
+      end foreach ;
+    end foreach ;
+    error mConstructorName
+    : "the '@". mTypeName . "' type does not define the '" . mConstructorName . "' constructor; available constructors are:" . s
+    : constructorFormalArgumentTypeList, hasCompilerArgument, returnedType
+    ;
+  end with ;
 #--- Analysis arguments
   if [mExpressions length] != [constructorFormalArgumentTypeList length] then
     error mConstructorName: "calling the '" . mConstructorName . "' constructor of '@" . mTypeName . "' requires "
@@ -378,7 +403,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
     @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
     foreach mExpressions, constructorFormalArgumentTypeList do
       @semanticExpressionForGeneration exp ;
-      [mExpression analyzeSemanticExpression !inSemanticContext !?ioVariableMap ?exp] ;
+      [mExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?exp] ;
       checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
@@ -389,330 +414,409 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @readerCallExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
-  message "@readerCallExpressionAST analyzeSemanticExpression\n" ;
+#--- Expression analysis
+  @semanticExpressionForGeneration receiverExpression ;
+  [mReceiver analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?receiverExpression] ;
+  const @unifiedTypeMapProxy receiverType := [receiverExpression mType] ;
+#--- Get reader map
+  const @readerMap readerMap := [receiverType mReaderMap] ;
+#--- Search contructor
+  @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
+  @bool hasCompilerArgument ;
+  @unifiedTypeMapProxy returnedType ;
+  @string implicitConversionReader ;
+  with readerMap hasKey ![mReaderName string] do
+    readerFormalArgumentTypeList := mArgumentTypeList ;
+    hasCompilerArgument := mHasCompilerArgument ;
+    returnedType := mReturnedType ;
+    implicitConversionReader := mImplicitConversionReader ;
+  else
+    @string s := "" ;
+    foreach readerMap do
+      s .= "\n  - " . key ;
+      foreach mArgumentTypeList do
+        s .= " ?@" . [mType key] ;
+      end foreach ;
+    end foreach ;
+    error mReaderName
+    : "the '@". [receiverType key] . "' type does not define the '" . mReaderName . "' reader; available readers are:" . s
+    : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, implicitConversionReader
+    ;
+  end with ;
+#--- Analysis arguments
+  if [mExpressions length] != [readerFormalArgumentTypeList length] then
+    error mReaderName: "calling the '" . mReaderName . "' reader of '@" . [receiverType key] . "' requires "
+    . [[readerFormalArgumentTypeList length] string] . " parameter(s), while this call has "
+    . [[mExpressions length] string] . " parameter(s)" : outExpression ;
+  else
+    @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
+    foreach mExpressions, readerFormalArgumentTypeList do
+      @semanticExpressionForGeneration exp ;
+      [mExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?exp] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      constructorEffectiveParameterList += !exp ;
+    end foreach ;
+    outExpression := [@readerCallExpressionForGeneration new
+      ![receiverExpression mType]
+      !receiverExpression
+      !mReaderName
+      !constructorEffectiveParameterList
+      !returnedType
+      !implicitConversionReader
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @optionExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@optionExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @concatExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@concatExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @orExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@orExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @xorExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@xorExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @andExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@andExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @equalExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@equalExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @notEqualExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@notEqualExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @lowerOrEqualExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@lowerOrEqualExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @greaterOrEqualExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@greaterOrEqualExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @strictGreaterExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@strictGreaterExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @strictLowerExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@strictLowerExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @rightShiftExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@rightShiftExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @leftShiftExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@leftShiftExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @addExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@addExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @subExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@subExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @multiplicationExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@multiplicationExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @divisionExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@divisionExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @moduloExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@moduloExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @unaryMinusExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@unaryMinusExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @notExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@notExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @negateExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@negateExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @ifExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@ifExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @functionCallExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@functionCallExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @varInExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@varInExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalTypeInExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@literalTypeInExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @castInExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@castInExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperInExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@filewrapperInExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inSemanticContext->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
   message "@filewrapperTemplateInExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 

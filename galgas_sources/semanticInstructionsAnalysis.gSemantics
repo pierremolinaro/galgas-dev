@@ -28,7 +28,8 @@ semantics semanticInstructionsAnalysis :
 #---------------------------------------------------------------------------*
 
 abstract method @semanticInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 ;
@@ -36,7 +37,8 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationWithInitializationAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -46,7 +48,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -56,7 +59,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localConstantDeclarationWithSourceExpressionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -66,7 +70,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -76,7 +81,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localConstantDeclarationWithConstructorCallAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -86,14 +92,18 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @assignmentInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis inSemanticContext
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
+  @unifiedTypeMapProxy p [searchKey !inSemanticContext->mTypeMap ![@lstring new !"cExpressionList" !here]] ;
+  log p ;
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
   [mSourceExpression analyzeSemanticExpression
     !inSemanticContext
+    !inPredefinedTypes
     !?ioVariableMap
     ?expression
   ] ;
@@ -110,7 +120,11 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     end foreach ;
   end if ;
 #--- Check assignment type compatibility
+  log targetType ;
+  log "EXP " : [expression mType] ;
   checkAssignmentTypes !targetType ![expression mType] !mAssignmentOperatorLocation ;
+   p := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"cExpressionList" !here]] ;
+  log p ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@assignmentInstructionForGeneration new
     !targetVariableCppName
@@ -122,7 +136,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @appendInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -132,7 +147,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sendInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -142,7 +158,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @foreachInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -152,7 +169,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @ifInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -162,7 +180,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @errorInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -172,7 +191,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @warningInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -182,7 +202,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @routineCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -192,7 +213,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @matchInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -202,7 +224,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @castInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -212,7 +235,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @addInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -222,7 +246,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @removeInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -232,7 +257,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @incrementInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -242,7 +268,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @decrementInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -252,7 +279,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @loopInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -262,7 +290,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @messageInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -272,7 +301,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @logInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -282,7 +312,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @grammarInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -292,7 +323,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @withInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -302,7 +334,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @switchInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -312,7 +345,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @typeMethodCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -322,7 +356,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @methodCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :
@@ -332,7 +367,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @modifierCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContextForInstructionAnalysis unused inSemanticContext
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
 :

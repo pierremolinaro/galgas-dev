@@ -64,7 +64,7 @@ enum @readerQualifier {
 
 map @readerMap {
   @unifiedTypeMapProxyList mArgumentTypeList ;
-  @bool mHasLexiqueArgument ;
+  @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
   @readerQualifier mQualifier ;
   @string mImplicitConversionReader ;

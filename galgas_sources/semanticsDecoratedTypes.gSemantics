@@ -104,13 +104,15 @@ class @constructorExpressionForGeneration extends @semanticExpressionForGenerati
 }
 
 ##---------------------------------------------------------------------------*
-#
-#class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @semanticExpressionForGeneration mReceiver ;
-#  @lstring mReaderName ;
-#  @outSemanticExpressionListForGeneration mExpressions ;
-#}
-#
+
+class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiver ;
+  @lstring mReaderName ;
+  @semanticExpressionListForGeneration mExpressions ;
+  @unifiedTypeMapProxy mReturnedType ;
+  @string mImplicitConversionReader ;
+}
+
 ##---------------------------------------------------------------------------*
 #
 #class @optionExpressionForGeneration extends @semanticExpressionForGeneration {

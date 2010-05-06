@@ -264,13 +264,13 @@ foreach READER_MAP do
       between %,\n% !^
     end foreach
     if [mArgumentTypeList length] == 0 then
-      if mHasLexiqueArgument then
+      if mHasCompilerArgument then
         %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
       else
         %LOCATION_ARGS%
       end if
     else
-      if mHasLexiqueArgument then
+      if mHasCompilerArgument then
         %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
       else
         %\n% !^ %COMMA_LOCATION_ARGS%
@@ -480,7 +480,7 @@ foreach READER_MAP do
     foreach mArgumentTypeList
       do index IDX %,\n% !^ %const GALGAS_%![mType identifierRepresentation]% * inOperand% ![IDX string]
     end foreach
-    if mHasLexiqueArgument then
+    if mHasCompilerArgument then
       %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
     else
       %\n% !^ %COMMA_LOCATION_ARGS%

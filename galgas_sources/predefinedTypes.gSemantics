@@ -192,7 +192,7 @@ routine appendPredefinedTypesASTs
     ![@formalArgumentPassingModeAST argumentIn]
     ![@lstring new !"string" !here]
     ![@lstring new !"parameter" !here]
-    !false
+    !true # Is unused
   ;
   abstractMethodDefinitionListAST +=
     !false # Is not overriding
