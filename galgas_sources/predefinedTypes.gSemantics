@@ -281,7 +281,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       ;
     #------ Generate Code
       @string generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeader
-        ![[semanticContext mTypeMap] allKeys]
+        ![semanticContext->mTypeMap allKeys]
       ] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendDeclaration] ;

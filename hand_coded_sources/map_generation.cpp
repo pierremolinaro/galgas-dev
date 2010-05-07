@@ -1316,8 +1316,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     attributeIndex ++ ;
     current.next () ;
   }
-  inCppFile << "                GGS_luint * outIndex\n"
-               "                COMMA_LOCATION_ARGS) {\n"
+  inCppFile << "               GGS_luint * outIndex\n"
+               "               COMMA_LOCATION_ARGS) {\n"
                "  PMSInt32 elementID = - 1 ;\n"
                "  if (isBuilt ()\n" ;
   current.rewind () ;
@@ -1328,7 +1328,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
   }
   inCppFile<<  "   && inKey.isBuilt ()) {\n"
-               "    insulateMap () ;\n"
+               "    insulateMap (THERE) ;\n"
                "    e_" << mMapTypeName << " info  ;\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
@@ -1369,7 +1369,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  cElement * node = NULL  ;\n"
                "  if (isBuilt () && inKey.isBuilt ()) {\n" ;
   if (actionCount > 0) {
-    inCppFile << "    insulateMap () ;\n" ;
+    inCppFile << "    insulateMap (THERE) ;\n" ;
   }
   inCppFile << "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
@@ -1426,7 +1426,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                        const GGS_string & inKey\n"
                  "                        COMMA_LOCATION_ARGS) {\n"
                  "  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {\n"
-                 "    insulateMap () ;\n"
+                 "    insulateMap (THERE) ;\n"
                  "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
                  "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                  "    cElement * node = (cElement *) p ;\n"
@@ -1743,13 +1743,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       attributeIndex ++ ;
       currentAttribute.next () ;
     }
-    inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n"
+    inCppFile << " COMMA_LOCATION_ARGS) {\n"
                  "  if (isBuilt () && inKey.isBuilt ()" ;
     for (PMSInt32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
       inCppFile << "\n  && inParameter" << cStringWithSigned (i) << ".isBuilt ()" ;
     }
     inCppFile << ") {\n"
-                 "    insulateMap () ;\n"
+                 "    insulateMap (THERE) ;\n"
                  "    e_" << mMapTypeName << " info ;\n" ;
     currentAttribute.rewind () ;
     attributeIndex = 0 ;
