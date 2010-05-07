@@ -6142,7 +6142,7 @@ rule <semantics_declaration>
         end if ;
         actionIndex := 0 ;
       or
-        $action$ ;
+        $do$ ;
         $identifier$ ?@lstring actionName ;
         if not [mapAutomatonActionMap hasKey ![actionName string]] then
           actionIndex := [mapAutomatonActionMap count] ;
@@ -6567,7 +6567,7 @@ label importSemantics
       $identifier$ ?methodName ;
       select
       or
-        $action$ ;
+        $do$ ;
         $identifier$ ?* ;
       end select ;
       $error$ ;
