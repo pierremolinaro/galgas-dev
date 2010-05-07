@@ -97,8 +97,6 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
-  @unifiedTypeMapProxy p [searchKey !inSemanticContext->mTypeMap ![@lstring new !"cExpressionList" !here]] ;
-  log p ;
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
   [mSourceExpression analyzeSemanticExpression
@@ -120,11 +118,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     end foreach ;
   end if ;
 #--- Check assignment type compatibility
-  log targetType ;
-  log "EXP " : [expression mType] ;
   checkAssignmentTypes !targetType ![expression mType] !mAssignmentOperatorLocation ;
-   p := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"cExpressionList" !here]] ;
-  log p ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@assignmentInstructionForGeneration new
     !targetVariableCppName

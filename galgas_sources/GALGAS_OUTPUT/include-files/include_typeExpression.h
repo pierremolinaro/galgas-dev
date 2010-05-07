@@ -21,6 +21,8 @@ class GGS_typeExpressionList ;
 class cPtr_typeExpression : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
+  public : virtual bool isLValue (void) const { return false ; } ;
+
   public : virtual void
   generateExpression (AC_OutputStream & inCppFile) const = 0 ;
 

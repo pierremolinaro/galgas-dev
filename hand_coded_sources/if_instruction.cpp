@@ -980,6 +980,12 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
+bool cPtr_typeFieldAccessOperation::isLValue (void) const {
+  return mExpression (HERE)->isLValue () ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeFieldAccessOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
