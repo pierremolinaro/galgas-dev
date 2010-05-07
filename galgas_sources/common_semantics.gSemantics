@@ -3197,7 +3197,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
   end method ;
 
-#--- A map accepts 'emptyMap' constructor
+#--- Constructors
   override method handleConstructorInvocation
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
@@ -3208,6 +3208,10 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "emptyMap" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif ([mMapStateList length] == 0) & ([inClassMethodName string] == "mapWithKeyAndValue") then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_lstring new] ![@lstring new !"???" !here] ; # Unused second argument
+      outAccessorTypesList .= mAttributeList ;
     elsif [inClassMethodName string] == "mapWithMapToOverride" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgasUndefinedMapType new !mMapTypeName] ![@lstring new !"???" !here] ; # Unused second argument

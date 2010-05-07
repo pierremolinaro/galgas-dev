@@ -270,7 +270,7 @@ class @notExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
-class @negateExpressionAST extends @semanticExpressionAST {
+class @complementExpressionAST extends @semanticExpressionAST {
   @location mOperatorLocation ;
   @semanticExpressionAST mExpression ;
 }
@@ -278,6 +278,7 @@ class @negateExpressionAST extends @semanticExpressionAST {
 #---------------------------------------------------------------------------*
 
 class @ifExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
   @semanticExpressionAST mIfExpression ;
   @semanticExpressionAST mThenExpression ;
   @semanticExpressionAST mElseExpression ;

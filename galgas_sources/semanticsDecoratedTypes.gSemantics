@@ -113,179 +113,200 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
   @string mImplicitConversionReader ;
 }
 
-##---------------------------------------------------------------------------*
-#
-#class @optionExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lstring mOptionComponentName ;
-#  @lstring mOptionEntryName ;
-#  @lstring mOptionReaderName ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @concatExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @orExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @xorExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @andExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @equalExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @notEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @lowerOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @greaterOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @strictGreaterExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @strictLowerExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @rightShiftExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @leftShiftExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @addExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @subExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @multiplicationExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @divisionExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @moduloExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mLeftExpression ;
-#  @semanticExpressionForGeneration mRightExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @unaryMinusExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @notExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @negateExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @location mOperatorLocation ;
-#  @semanticExpressionForGeneration mExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @ifExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @semanticExpressionForGeneration mIfExpression ;
-#  @semanticExpressionForGeneration mThenExpression ;
-#  @semanticExpressionForGeneration mElseExpression ;
-#}
-#
+#---------------------------------------------------------------------------*
+
+class @optionValueExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lstring mOptionComponentName ;
+  @lstring mOptionEntryName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionCharExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lstring mOptionComponentName ;
+  @lstring mOptionEntryName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionStringExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lstring mOptionComponentName ;
+  @lstring mOptionEntryName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionCommentExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lstring mOptionComponentName ;
+  @lstring mOptionEntryName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @concatExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @orExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @xorExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @andExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @equalExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @notEqualExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lowerOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @greaterOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @strictGreaterExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @strictLowerExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @rightShiftExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @leftShiftExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @addExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @subExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @multiplicationExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @divisionExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @moduloExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mLeftExpression ;
+  @semanticExpressionForGeneration mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @unaryMinusExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @notExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @complementExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @ifExpressionForGeneration extends @semanticExpressionForGeneration {
+  @location mOperatorLocation ;
+  @semanticExpressionForGeneration mIfExpression ;
+  @semanticExpressionForGeneration mThenExpression ;
+  @semanticExpressionForGeneration mElseExpression ;
+}
+
 ##---------------------------------------------------------------------------*
 #
 #class @functionCallExpressionForGeneration extends @semanticExpressionForGeneration {

@@ -220,7 +220,7 @@ rule <semantic_declaration>
     select
       actionName := [@lstring new !"" !here] ;
     or
-      $action$ ;
+      $do$ ;
       $identifier$ ? actionName ;
     end select ;
     $error$ ;

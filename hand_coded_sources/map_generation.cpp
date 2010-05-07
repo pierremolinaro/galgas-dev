@@ -743,15 +743,30 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : inline GGS_" << mMapTypeName << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "  public : inline const GGS_" << mMapTypeName << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n\n"
              "//--- 'emptyMap' constructor\n"
-             "  public : static GGS_" << mMapTypeName << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n\n"
-             "//--- Method used for duplicate a map\n"
+             "  public : static GGS_" << mMapTypeName << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n\n" ;
+  if (actionCount == 0) {
+    inHfile << "//--- 'mapWithKeyAndValue' constructor\n"
+               "  public : static GGS_" << mMapTypeName << " constructor_mapWithKeyAndValue (C_Compiler & inLexique,\n"
+               "                                             const GGS_lstring & inKey\n" ;
+    GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
+    PMSInt32 attributeIndex = 0 ;
+    while (currentAttribute.hasCurrentObject ()) {
+      inHfile << ",\n                                             const " ;
+      currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
+      inHfile << "inValue" << cStringWithSigned (attributeIndex) ;
+      attributeIndex ++ ;
+      currentAttribute.next () ;
+    }
+    inHfile << "\n                                             COMMA_LOCATION_ARGS) ;\n\n" ;
+  }
+  inHfile << "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n\n" ;
 
 //--- 
   if (actionCount > 0) {
     inHfile << "//--- Check Automaton State Method\n"
                "  public : void method_checkAutomatonStates (C_Compiler & inLexique,\n"
-               "                                             const GGS_location & inErrorLocation\n"
+               "                                             const GGS_location & inErrorLocation"
                "                                             COMMA_LOCATION_ARGS) const ;\n\n" ;
   }
 
@@ -1775,6 +1790,40 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "}\n\n" ;
     stateEnumerator.next () ;
     currentStateIndex ++ ;
+  }
+
+//--- 'mapWithKeyAndValue' constructor
+  if (actionCount == 0) {
+    inCppFile << "//--- 'mapWithKeyAndValue' constructor\n"
+                   "GGS_" << mMapTypeName << " GGS_" << mMapTypeName << "::constructor_mapWithKeyAndValue (C_Compiler & inLexique,\n"
+               "                                             const GGS_lstring & inKey" ;
+    GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
+    PMSInt32 attributeIndex = 0 ;
+    while (currentAttribute.hasCurrentObject ()) {
+      inCppFile << ",\n                                             const " ;
+      currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
+      inCppFile << "inValue" << cStringWithSigned (attributeIndex) ;
+      attributeIndex ++ ;
+      currentAttribute.next () ;
+    }
+    inCppFile << "\n                                             COMMA_LOCATION_ARGS) {\n"
+                 "  GGS_" << mMapTypeName << " result = constructor_emptyMap (inLexique COMMA_THERE) ;\n"
+                 "  result.insertElement (inLexique,\n"
+                 "                        0,\n"
+                 "                        NULL,\n"
+                 "                        inKey,\n" ;
+    current.rewind () ;
+    attributeIndex = 0 ;
+    while (current.hasCurrentObject ()) {
+      inCppFile << "                        " ;
+      inCppFile << "inValue" << cStringWithSigned (attributeIndex) << ",\n" ;
+      attributeIndex ++ ;
+      current.next () ;
+    }
+    inCppFile << "                        NULL\n"
+                 "                        COMMA_THERE) ;\n"
+                   "  return result ;\n"
+                   "}\n\n" ;
   }
 }
 

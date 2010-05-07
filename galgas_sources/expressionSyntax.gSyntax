@@ -344,7 +344,7 @@ rule <factor> !@semanticExpressionAST outExpression :
   @location operatorLocation := here ;
   $~$ ;
   <factor> ? outExpression ;
-  outExpression := [@negateExpressionAST new !operatorLocation !outExpression] ;
+  outExpression := [@complementExpressionAST new !operatorLocation !outExpression] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -479,6 +479,7 @@ rule <factor> !@semanticExpressionAST outExpression :
   $if$ ;
   @semanticExpressionAST ifExpression ;
   <expression> ? ifExpression ;
+  const @location operatorLocation := here ;
   $then$ ;
   @semanticExpressionAST thenExpression ;
   <expression> ? thenExpression ;
@@ -487,6 +488,7 @@ rule <factor> !@semanticExpressionAST outExpression :
   <expression> ? elseExpression ;
   $end$ ;
   outExpression := [@ifExpressionAST new
+    !operatorLocation
     !ifExpression
     !thenExpression
     !elseExpression
