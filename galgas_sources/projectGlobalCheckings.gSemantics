@@ -189,11 +189,11 @@ routine performProjectGlobalCheckings
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
     @descendantClassListMap descendantClassListMap [emptyMap] ;
-    foreach [semanticContext mTypeMap] do
+    foreach semanticContext->mTypeMap do
        if not [mSuperType isNull] then
          descendantClassListMap +=
            ![mSuperType keyString]
-           ![@unifiedTypeMapProxy searchKey ![semanticContext mTypeMap] !key]
+           ![@unifiedTypeMapProxy searchKey !semanticContext->mTypeMap !key]
          ;
        end if ;
     end foreach ;
@@ -239,7 +239,7 @@ routine performProjectGlobalCheckings
           !mAbstractMultiMethodName
           !descendantClassListMap
           !overridingCategoryMethodListMap
-          ![semanticContext mTypeMap]
+          !semanticContext->mTypeMap
         ;
       end foreach ;
     end foreach ;
@@ -285,7 +285,7 @@ routine performProjectGlobalCheckings
           !mAbstractMultiReaderName
           !descendantClassListMap
           !overridingCategoryReaderListMap
-          ![semanticContext mTypeMap]
+          !semanticContext->mTypeMap
         ;
       end foreach ;
     end foreach ;
