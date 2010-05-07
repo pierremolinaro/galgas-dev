@@ -60,64 +60,24 @@ filewrapper optionGenerationTemplates in "../generation_templates/option_generat
 }
 
 #---------------------------------------------------------------------------*
-#                         parseOptionComponent                              *
+#                  semanticAnalysisOfOptionComponent                        *
 #---------------------------------------------------------------------------*
 
-routine parseOptionComponent
-  ??@lstring inSourceFile
-  ?!@parsedComponentStruct ioParsedComponentStruct
-  !@optionComponentAST outOptionComponentRoot
+routine semanticAnalysisOfOptionComponent
+  ??@optionComponentAST inOptionComponentRoot
+  !@commandLineOptionMap outBoolOptionMap
+  !@commandLineOptionMap outUIntOptionMap
+  !@commandLineOptionMap outStringOptionMap
 :
-  @lstring key [new ![[inSourceFile lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
-  if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [key string]] then
-    [[ioParsedComponentStruct mParsedOptionComponentMap] searchKey !key ?outOptionComponentRoot] ;
-  else
-    grammar optionLL1grammar in inSourceFile ?outOptionComponentRoot ;
-    [!?ioParsedComponentStruct->mParsedOptionComponentMap insertKey !key !outOptionComponentRoot] ;
-  end if ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine compileOptionComponent
-  ??@lstring inSourceFile
-  ??@string inOutputDirectory
-  ?!@parsedComponentStruct ioParsedComponentStruct
-:
-#--- Parse option component
-  @optionComponentAST optionComponentRoot ;
-  parseOptionComponent
-    !inSourceFile
-    !?ioParsedComponentStruct
-    ?optionComponentRoot
-  ;
-#  grammar optionLL1grammar in inSourceFile ?optionComponentRoot ;
-#--- Check component name
-  @lstring componentName := [optionComponentRoot mOptionComponentName] ;
-  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  if [componentName string] != basename then
-    warning componentName: "GALGAS checks "
-      "the component name ('" . [componentName string]
-    . "') against the source file base name ('" . basename . "'): they should be the same"
-    ;
-  end if ; 
-#--- Check component name
-  @string baseName := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  if [[optionComponentRoot mOptionComponentName] string] != baseName then
-    error [optionComponentRoot mOptionComponentName]: "the component name is '"
-    . [optionComponentRoot mOptionComponentName] . "' should be the file base name '"
-    . baseName . "'" ;
-  end if ;
-#--- Treewalking for defining option map
-  @commandLineOptionMap boolOptionMap [emptyMap] ;
-  @commandLineOptionMap uintOptionMap [emptyMap] ;
-  @commandLineOptionMap stringOptionMap [emptyMap] ;
+  outBoolOptionMap := [@commandLineOptionMap emptyMap] ;
+  outUIntOptionMap := [@commandLineOptionMap emptyMap] ;
+  outStringOptionMap := [@commandLineOptionMap emptyMap] ;
   @stringset optionNameSet [emptySet] ;
-  foreach [optionComponentRoot mOptions] do
+  foreach [inOptionComponentRoot mOptions] do
     if [optionNameSet hasKey ![mOptionInternalName string]] then
       error mOptionInternalName: "the '" . [mOptionInternalName string] . "' command line option has been already declared" ;
     elsif [mOptionTypeName string] == "bool" then
-      [!?boolOptionMap insertKey
+      [!?outBoolOptionMap insertKey
         !mOptionInternalName
         !mOptionInvocationLetter
         !mOptionInvocationString
@@ -128,7 +88,7 @@ routine compileOptionComponent
         error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)" ;      
       end if ;
     elsif [mOptionTypeName string] == "uint" then
-      [!?uintOptionMap insertKey
+      [!?outUIntOptionMap insertKey
         !mOptionInternalName
         !mOptionInvocationLetter
         !mOptionInvocationString
@@ -139,7 +99,7 @@ routine compileOptionComponent
         error mOptionDefaultValue:"an @uint option default value cannot be an @string value" ;      
       end if ;
     elsif [mOptionTypeName string] == "string" then
-      [!?stringOptionMap insertKey
+      [!?outStringOptionMap insertKey
         !mOptionInternalName
         !mOptionInvocationLetter
         !mOptionInvocationString
@@ -154,19 +114,87 @@ routine compileOptionComponent
     end if ;
     optionNameSet += ![mOptionInternalName string] ;
   end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                         parseOptionComponent                              *
+#---------------------------------------------------------------------------*
+
+routine parseOptionComponent
+  ??@lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  !@lstring outOptionComponentName
+  !@commandLineOptionMap outBoolOptionMap
+  !@commandLineOptionMap outUIntOptionMap
+  !@commandLineOptionMap outStringOptionMap
+:
+  outOptionComponentName := [@lstring new ![[inSourceFile lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
+  if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [outOptionComponentName string]] then
+    [ioParsedComponentStruct->mParsedOptionComponentMap searchKey !outOptionComponentName ?outBoolOptionMap ?outUIntOptionMap ?outStringOptionMap] ;
+  else
+    @optionComponentAST optionComponentAST ;
+    grammar optionLL1grammar in inSourceFile ?optionComponentAST ;
+  #--- Check component name
+    @lstring componentName := [optionComponentAST mOptionComponentName] ;
+    @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+    if [componentName string] != basename then
+      warning componentName: "GALGAS checks "
+        "the component name ('" . [componentName string]
+      . "') against the source file base name ('" . basename . "'): they should be the same"
+      ;
+    end if ; 
+  #--- Check component name
+    @string baseName := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+    if [[optionComponentAST mOptionComponentName] string] != baseName then
+      error [optionComponentAST mOptionComponentName]: "the component name is '"
+      . [optionComponentAST mOptionComponentName] . "' should be the file base name '"
+      . baseName . "'" ;
+    end if ;
+  #--- Semantic Analysis of option component
+    semanticAnalysisOfOptionComponent
+      !optionComponentAST
+      ?outBoolOptionMap
+      ?outUIntOptionMap
+      ?outStringOptionMap
+    ;
+  #--- Enter option component in parsed option component map
+    [!?ioParsedComponentStruct->mParsedOptionComponentMap insertKey !outOptionComponentName !outBoolOptionMap !outUIntOptionMap !outStringOptionMap] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileOptionComponent
+  ??@lstring inSourceFile
+  ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+#--- Parse option component
+  @commandLineOptionMap boolOptionMap ;
+  @commandLineOptionMap uintOptionMap ;
+  @commandLineOptionMap stringOptionMap ;
+  @lstring optionComponentName ;
+  parseOptionComponent
+    !inSourceFile
+    !?ioParsedComponentStruct
+    ?optionComponentName
+    ?boolOptionMap
+    ?uintOptionMap
+    ?stringOptionMap
+  ;
 #--- Generate header
   if [@uint errorCount] == 0 then
     [@string generateFile
       !inOutputDirectory
-      ![[optionComponentRoot mOptionComponentName] string] . ".h"
+      ![optionComponentName string] . ".h"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper optionGenerationTemplates.optionHeaderZone2
-        ![[optionComponentRoot mOptionComponentName] string]
+        ![optionComponentName string]
       ]
       !"\n\n" # Defaut user zone2
       ![filewrapper optionGenerationTemplates.optionHeaderZone3
-        ![[optionComponentRoot mOptionComponentName] string]
+        ![optionComponentName string]
         !boolOptionMap
         !uintOptionMap
         !stringOptionMap
@@ -177,11 +205,11 @@ routine compileOptionComponent
   if [@uint errorCount] == 0 then
     [@string generateFile
       !inOutputDirectory
-      ![[optionComponentRoot mOptionComponentName] string] . ".cpp"
+      ![optionComponentName string] . ".cpp"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper optionGenerationTemplates.optionImplementation
-        ![[optionComponentRoot mOptionComponentName] string]
+        ![optionComponentName string]
         !boolOptionMap
         !uintOptionMap
         !stringOptionMap
@@ -194,15 +222,15 @@ routine compileOptionComponent
   if [@uint errorCount] == 0 then
     [@string generateFile
       !inOutputDirectory
-      ![[optionComponentRoot mOptionComponentName] string] . "-cocoa.h"
+      ![optionComponentName string] . "-cocoa.h"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
-        ![[optionComponentRoot mOptionComponentName] string]
+        ![optionComponentName string]
       ]
       !"\n\n" # Defaut user zone2
       ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
-        ![[optionComponentRoot mOptionComponentName] string]
+        ![optionComponentName string]
       ]
     ] ;
   end if ;
@@ -210,11 +238,11 @@ routine compileOptionComponent
   if [@uint errorCount] == 0 then
     [@string generateFile
       !inOutputDirectory
-      ![[optionComponentRoot mOptionComponentName] string] . "-cocoa.m"
+      ![optionComponentName string] . "-cocoa.m"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper optionGenerationTemplates.optionImplementationCocoa
-        ![[optionComponentRoot mOptionComponentName] string]
+        ![optionComponentName string]
         !boolOptionMap
         !uintOptionMap
         !stringOptionMap
