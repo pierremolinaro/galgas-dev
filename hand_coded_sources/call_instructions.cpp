@@ -145,18 +145,16 @@ generateInstruction (AC_OutputStream & ioCppFile,
       }
     }
     if ((! handled) && (mCategoryMethodClassBaseName.string ().length () > 0)) {
-      C_String var ; var << "temp_" << cStringWithSigned (mMethodName.location ()) ;
-      C_String staticClassName ; mExpressionType (HERE)->generateCppClassName (staticClassName) ;
-      ioCppFile << "const " << staticClassName << " " << var << " = " ;
-      mExpression (HERE)->generateExpression (ioCppFile) ;
-      ioCppFile << " ;\n"
-                   "if (" << var << ".isBuilt ()) {\n"
-                   "  typeCategoryMethod__" << mCategoryMethodClassBaseName
+      ioCppFile << "{ typeCategoryMethod__" << mCategoryMethodClassBaseName
                 << "__" << mMethodName << " method = findCategoryMethod__"
                 << mCategoryMethodClassBaseName << "__" << mMethodName
-                << " (temp_" << cStringWithSigned (mMethodName.location ()) << ".galgasObjectRunTimeInfo ()) ;\n"
+                << " (" ;
+      mExpression (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << ".galgasObjectRunTimeInfo ()) ;\n"
                    "  if (method != NULL) {\n"
-                   "    method (inLexique, " << var << " (HERE)"  ;
+                   "    method (inLexique, " ;
+      mExpression (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << " (HERE)" ;
       GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
       while (argCourant.hasCurrentObject ()) {
         ioCppFile << ", " ;
@@ -169,25 +167,46 @@ generateInstruction (AC_OutputStream & ioCppFile,
                    "  }\n"
                    "}\n" ;
     }else if (! handled) {
-      C_String var ; var << "temp_" << cStringWithSigned (mMethodName.location ()) ;
-      ioCppFile << "const " ;
-      mExpressionType (HERE)->generateCppClassName (ioCppFile) ;
-      ioCppFile << " " << var << " = " ;
-      mExpression (HERE)->generateExpression (ioCppFile) ;
-      ioCppFile << " ;\n"
-                   "if (" << var << ".isBuilt ()) {\n"
-                   "  " << var << " (HERE)->method_"
-                << mMethodName << " (inLexique"  ;
-      GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
-      while (argCourant.hasCurrentObject ()) {
-        ioCppFile << ", " ;
-        argCourant._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
-        argCourant.next () ;
+      const bool isLValue = mExpression (HERE)->isLValue () ;
+      if (isLValue) {
+        ioCppFile << "if (" ;
+        mExpression (HERE)->generateExpression (ioCppFile) ;
+        ioCppFile << ".isBuilt ()) {\n"
+                     "  " ;
+        mExpression (HERE)->generateExpression (ioCppFile) ;
+        ioCppFile << " (HERE)->method_"
+                  << mMethodName << " (inLexique"  ;
+        GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
+        while (argCourant.hasCurrentObject ()) {
+          ioCppFile << ", " ;
+          argCourant._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+          argCourant.next () ;
+        }
+        ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+                  << cStringWithSigned (mMethodName.lineNumber ())
+                  << ")) ;\n"
+                     "}\n" ;
+      }else{
+        C_String var ; var << "temp_" << cStringWithSigned (mMethodName.location ()) ;
+        ioCppFile << "const " ;
+        mExpressionType (HERE)->generateCppClassName (ioCppFile) ;
+        ioCppFile << " " << var << " = " ;
+        mExpression (HERE)->generateExpression (ioCppFile) ;
+        ioCppFile << " ;\n"
+                     "if (" << var << ".isBuilt ()) {\n"
+                     "  " << var << " (HERE)->method_"
+                  << mMethodName << " (inLexique"  ;
+        GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
+        while (argCourant.hasCurrentObject ()) {
+          ioCppFile << ", " ;
+          argCourant._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+          argCourant.next () ;
+        }
+        ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+                  << cStringWithSigned (mMethodName.lineNumber ())
+                  << ")) ;\n"
+                     "}\n" ;
       }
-      ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-                << cStringWithSigned (mMethodName.lineNumber ())
-                << ")) ;\n"
-                   "}\n" ;
     }
   }
 }

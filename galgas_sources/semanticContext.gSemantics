@@ -238,7 +238,7 @@ abstract method @semanticDeclarationAST enterType
 override method @predefinedTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@predefinedTypeAST enterType\n" ;
+#  message "@predefinedTypeAST enterType\n" ;
   @constructorMap constructorMap ;
   @readerMap readerMap ;
   @modifierMap modifierMap ;
@@ -288,7 +288,7 @@ end method ;
 override method @genericTypeTypeAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@genericTypeTypeAST enterType\n" ;
+#  message "@genericTypeTypeAST enterType\n" ;
 #--- Super type index
   @unifiedTypeMapProxy superTypeProxy ;
   if mSuperTypeName == "" then
@@ -336,7 +336,7 @@ end method ;
 override method @mapDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@mapDeclarationAST enterType\n" ;
+#  message "@mapDeclarationAST enterType\n" ;
   @constructorMap constructorMap [emptyMap] ;
   @readerMap readerMap [emptyMap] ;
   @modifierMap modifierMap [emptyMap] ;
@@ -474,7 +474,7 @@ end method ;
 override method @mapProxyDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@mapProxyDeclarationAST enterType\n" ;
+#  message "@mapProxyDeclarationAST enterType\n" ;
 #--- Check associated map is really a map
   @typedAttributeList mapTypedAttributeList ;
   @typeKindEnum typeKindEnum ;
@@ -598,7 +598,7 @@ end method ;
 override method @enumDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@enumDeclarationAST enterType\n" ;
+#  message "@enumDeclarationAST enterType\n" ;
 #---
   @constructorMap constructorMap [emptyMap] ;
   @readerMap readerMap [emptyMap] ;
@@ -650,7 +650,7 @@ end method ;
 override method @filewrapperDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@filewrapperDeclarationAST enterType\n" ;
+#  message "@filewrapperDeclarationAST enterType\n" ;
   @filewrapperTemplateMap filewrapperTemplateMap [emptyMap] ;
   foreach mFilewrapperTemplateList do
     @unifiedTypeMapProxyList templateSignature [emptyList] ;
@@ -678,7 +678,7 @@ end method ;
 override method @listDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@listDeclarationAST enterType\n" ;
+#  message "@listDeclarationAST enterType\n" ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
@@ -803,7 +803,7 @@ end method ;
 override method @sortedListDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@sortedListDeclarationAST enterType\n" ;
+#  message "@sortedListDeclarationAST enterType\n" ;
   @unifiedTypeMapProxy uintType ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"uint" ?uintType] ;
 #--- Element type index
@@ -896,7 +896,7 @@ end method ;
 override method @structDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@structDeclarationAST enterType\n" ;
+#  message "@structDeclarationAST enterType\n" ;
 #--- Struct type index
   @unifiedTypeMapProxy structTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mStructTypeName string] ?structTypeIndex] ;
@@ -971,7 +971,7 @@ end method ;
 override method @classDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@classDeclarationAST enterType\n" ;
+#  message "@classDeclarationAST enterType\n" ;
   @unifiedTypeMapProxy uintType ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"uint" ?uintType] ;
 #---
@@ -1123,7 +1123,7 @@ end method ;
 override method @externRoutineDeclarationAST enterType # Handles also routine declaration
   ?!@semanticContext ioSemanticContext
 :
-  message "@externRoutineDeclarationAST enterType\n" ;
+#  message "@externRoutineDeclarationAST enterType\n" ;
 #--- Build signature
   @formalParameterSignature routineSignature [emptyList] ;
   foreach mFormalParameterList do
@@ -1140,7 +1140,7 @@ end method ;
 override method @externFunctionDeclarationAST enterType # Handles also function declaration
   ?!@semanticContext ioSemanticContext
 :
-  message "@externFunctionDeclarationAST enterType\n" ;
+#  message "@externFunctionDeclarationAST enterType\n" ;
 #--- Build signature
   @unifiedTypeMapProxyList functionSignature [emptyList] ;
   foreach mFormalParameterList do
@@ -1160,7 +1160,7 @@ end method ;
 override method @lazyFunctionDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@lazyFunctionDeclarationAST enterType\n" ;
+#  message "@lazyFunctionDeclarationAST enterType\n" ;
 #--- Result type
   @unifiedTypeMapProxy resultTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mResultTypeName string] ?resultTypeIndex] ;
@@ -1173,7 +1173,7 @@ end method ;
 override method @listmapDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-  message "@listmapDeclarationAST enterType: @" . [mListmapTypeName string] . "\n" ;
+#  message "@listmapDeclarationAST enterType: @" . [mListmapTypeName string] . "\n" ;
 #--- Check associated map is really a list
   @typedAttributeList listTypedAttributeList ;
   @typeKindEnum typeKindEnum ;
@@ -1242,10 +1242,6 @@ override method @listmapDeclarationAST enterType
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
   ] ;
-log "1 : " : ioSemanticContext ;
-  drop superTypeProxy, listTypedAttributeList, constructorMap, readerMap, modifierMap, instanceMethodMap, enumeratorDescriptor ;
-  drop associatedListTypeIndex, currentTypeIndex, stringTypeIndex, typeKindEnum, addAssignOperatorDescription ;
-log "2 : " : ioSemanticContext ;
 end method ;
 
 #---------------------------------------------------------------------------*

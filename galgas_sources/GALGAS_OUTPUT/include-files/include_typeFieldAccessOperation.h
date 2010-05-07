@@ -21,6 +21,8 @@ class cPtr_typeFieldAccessOperation : public cPtr_typeExpression {
   private : typedef cPtr_typeExpression inherited ;
 //--- START OF USER ZONE 2
 
+  public : virtual bool isLValue (void) const ;
+
   public : virtual void
   generateExpression (AC_OutputStream & inCppFile) const ;
 

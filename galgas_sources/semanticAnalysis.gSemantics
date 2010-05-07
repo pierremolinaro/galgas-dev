@@ -537,17 +537,13 @@ override method @classDeclarationAST performSemanticAnalysis
   #---  Analyze instruction list
     @semanticInstructionListForGeneration semanticInstructionListForGeneration [emptyList] ;
     foreach mInstructionList do
-  @unifiedTypeMapProxy p [searchKey !inSemanticContext->mTypeMap ![@lstring new !"cExpressionList" !here]] ;
-  log p ;
       [mInstruction analyzeSemanticInstruction
         !inSemanticContext
         !inPredefinedTypes
         !?semanticInstructionListForGeneration
         !?variableMap
       ] ;
-  p := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"cExpressionList" !here]] ;
-  log p ;
-    end foreach ;
+     end foreach ;
     [variableMap checkAutomatonStates !mEndOfMethodLocation] ;
   #---
     definedMethodSet += ![mMethodName string] ;
@@ -592,27 +588,27 @@ routine performSemanticAnalysis
   ??@semanticContext inSemanticContext
   !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
 :
-  const @predefinedTypes predefinedTypes [new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"char" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"string" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint64" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint64" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"double" !here]]
-  ] ;
-
   outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
-  
-  foreach inDeclarationList do
-    [mSemanticDeclaration performSemanticAnalysis
-      !inSemanticContext
-      !predefinedTypes
-      !?outDecoratedDeclarationListForGeneration
+  if [@uint errorCount] == 0 then
+    const @predefinedTypes predefinedTypes [new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"char" !here]]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"string" !here]]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint" !here]]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint" !here]]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint64" !here]]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint64" !here]]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"double" !here]]
     ] ;
-  end foreach ;
+    foreach inDeclarationList do
+      [mSemanticDeclaration performSemanticAnalysis
+        !inSemanticContext
+        !predefinedTypes
+        !?outDecoratedDeclarationListForGeneration
+      ] ;
+    end foreach ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
