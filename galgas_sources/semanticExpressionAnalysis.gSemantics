@@ -475,12 +475,33 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @optionExpressionAST analyzeSemanticExpression
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
+  @commandLineOptionMap boolOptionMap ;
+  @commandLineOptionMap uintOptionMap ;
+  @commandLineOptionMap stringOptionMap ;
+  [inSemanticContext->mOptionComponentMapForSemanticAnalysis searchKey
+    !mOptionComponentName
+    ?boolOptionMap
+    ?uintOptionMap
+    ?stringOptionMap
+  ] ;
+  with boolOptionMap hasKey ![mOptionEntryName string] do
+    outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
+  else
+    with uintOptionMap hasKey ![mOptionEntryName string] do
+       outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
+    else
+      with stringOptionMap hasKey ![mOptionEntryName string] do
+        outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
+      else
+        outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
+      end with ;
+    end with ;
+  end with ;
   message "@optionExpressionAST analyzeSemanticExpression\n" ;
 end method ;
 

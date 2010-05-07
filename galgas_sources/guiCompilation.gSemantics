@@ -134,7 +134,7 @@ routine compileGuiComponent
           ![mValue location]
         ]
         !?ioParsedComponentStruct
-        ?*
+        ?4*
       ;
       context->mImportedOptionComponentList += ![[mValue lastPathComponent] stringByDeletingPathExtension] ;
     end if ;

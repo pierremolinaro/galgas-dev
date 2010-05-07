@@ -67,29 +67,36 @@ end routine ;
 
 routine recursivelyImportSemanticComponent
   ?!@parsedComponentStruct ioParsedComponentStruct
+  ?!@lstringlist ioOptionComponentFileNameList
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
   ?!@stringset ioParsedFileSet
   ??@lstringlist inListOfFilesToParse
   ??@string inDirectory
 :
   foreach inListOfFilesToParse do
-    if not [ioParsedFileSet hasKey ![mValue string]] then
-      ioParsedFileSet += ![mValue string] ;
-      @string extension := [[mValue string] pathExtension] ;
-      if extension == "gSemantics" then
-        @lstring filePath [new
-          ![mValue absolutePathFromPath !inDirectory]
-          ![mValue location]
-        ] ;
+    const @lstring filePath [new
+      ![mValue absolutePathFromPath !inDirectory]
+      ![mValue location]
+    ] ;
+    if not [ioParsedFileSet hasKey ![filePath string]] then
+      ioParsedFileSet += ![filePath string] ;
+      const @string extension := [[filePath string] pathExtension] ;
+      if extension == "gOption" then
+        ioOptionComponentFileNameList += !filePath ;
+      elsif extension == "gSemantics" then
+      #--- Parse semantic component
         @semanticsComponentAST semanticsComponentRoot ;
         parseSemanticComponent
           !filePath
           !?ioParsedComponentStruct
           ?semanticsComponentRoot
         ;
-        ioSemanticDeclarationList := ioSemanticDeclarationList . [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+      #--- Add declaration to declaration list
+        ioSemanticDeclarationList .= [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+      #--- Import semantic components named in this file
         recursivelyImportSemanticComponent
           !?ioParsedComponentStruct
+          !?ioOptionComponentFileNameList
           !?ioSemanticDeclarationList
           !?ioParsedFileSet
           ![semanticsComponentRoot mImportedComponentFileNameList]
@@ -126,13 +133,37 @@ routine compileSemanticsComponent
 #--- Recursively parse all imported files
   @semanticDeclarationListAST semanticDeclarationList := [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
+  @lstringlist optionComponentFileNameList [emptyList] ;
   recursivelyImportSemanticComponent
     !?ioParsedComponentStruct
+    !?optionComponentFileNameList
     !?semanticDeclarationList
     !?parsedFileSet
     ![semanticsComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
+#--- Parse and perform semantic analysis of option components
+  @optionComponentMapForSemanticAnalysis optionComponentMapForSemanticAnalysis [emptyMap] ;
+  foreach optionComponentFileNameList do
+    @lstring optionComponentName ;
+    @commandLineOptionMap boolOptionMap ;
+    @commandLineOptionMap uintOptionMap ;
+    @commandLineOptionMap stringOptionMap ;
+    parseOptionComponent
+      !mValue
+      !?ioParsedComponentStruct
+      ?optionComponentName
+      ?boolOptionMap
+      ?uintOptionMap
+      ?stringOptionMap
+    ;
+    [!?optionComponentMapForSemanticAnalysis insertKey
+      !optionComponentName
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ] ;
+  end foreach ;
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
@@ -140,6 +171,7 @@ routine compileSemanticsComponent
   @semanticContext semanticContext ;
   buildSemanticContext
     !semanticDeclarationListWithPredefinedTypes
+    !optionComponentMapForSemanticAnalysis
     ![semanticsComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;

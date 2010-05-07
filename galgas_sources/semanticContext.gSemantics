@@ -23,12 +23,14 @@ semantics semanticContext :
   import "semanticsModifiers.gSemantics" ;
   import "semanticsReaders.gSemantics" ;
   import "semanticsConstructors.gSemantics" ;
+  import "optionCompilation.gSemantics" ;
 
   import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
   import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
   import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
   import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
   import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
+  import semantics optionCompilation in "optionCompilation.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -79,6 +81,16 @@ map @filewrapperMap {
 }
 
 #---------------------------------------------------------------------------*
+
+map @optionComponentMapForSemanticAnalysis {
+  @commandLineOptionMap mBoolOptionMap ;
+  @commandLineOptionMap mUIntOptionMap ;
+  @commandLineOptionMap mStringOptionMap ;
+  insert insertKey error message "redefintion of the '%K' option component: it has been already declared in %L" ;
+  search searchKey error message "the '%K' option component is not imported" ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    S E M A N T I C    C O N T E X T                                       *
 #                                                                           *
@@ -89,6 +101,7 @@ struct @semanticContext {
   @routineMap mRoutineMap ;
   @functionMap mFunctionMap ;
   @filewrapperMap mFilewrapperMap ;
+  @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1362,6 +1375,7 @@ end method ;
 
 routine buildSemanticContext
   ??@semanticDeclarationListAST inSemanticDeclarationList
+  ??@optionComponentMapForSemanticAnalysis inOptionComponentMapForSemanticAnalysis
   ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
@@ -1436,6 +1450,7 @@ routine buildSemanticContext
     ![@routineMap emptyMap]
     ![@functionMap emptyMap]
     ![@filewrapperMap emptyMap]
+    !inOptionComponentMapForSemanticAnalysis
   ] ;
 #--- Loop throught all declarations
   if [@uint errorCount] == 0 then
