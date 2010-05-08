@@ -40,16 +40,16 @@ routine checkMethodSignatures
     error inReferenceLocation:"overriden method is declared here" ;
   else
     foreach inReferenceSignature prefixedby ref_, inTestedSignature do
-      if ref_mFormalParameterPassingMode != mFormalParameterPassingMode then
-        error mFormalParameterName : "the '" . mFormalParameterName . "' formal parameter is declared as "
-        . [mFormalParameterPassingMode formalArgumentMessage] . ", but overriden method declares it as " 
-        . [ref_mFormalParameterPassingMode formalArgumentMessage] ;
+      if ref_mFormalArgumentPassingMode != mFormalArgumentPassingMode then
+        error mFormalArgumentName : "the '" . mFormalArgumentName . "' formal parameter is declared as "
+        . [mFormalArgumentPassingMode formalArgumentMessage] . ", but overriden method declares it as " 
+        . [ref_mFormalArgumentPassingMode formalArgumentMessage] ;
         error inReferenceLocation:"overriden method is declared here" ;
       end if ;
-      if [[mFormalParameterType key] string] != [ref_mParameterType keyString] then
-        error mFormalParameterName : "the '" . mFormalParameterName . "' formal parameter has the '@"
-        . [mFormalParameterType key] . "' type, but overriden method declares with the '@" 
-        . [ref_mParameterType keyString] . "' type" ;
+      if [[mFormalArgumentType key] string] != [ref_mFormalArgumentType keyString] then
+        error mFormalArgumentName : "the '" . mFormalArgumentName . "' formal parameter has the '@"
+        . [mFormalArgumentType key] . "' type, but overriden method declares with the '@" 
+        . [ref_mFormalArgumentType keyString] . "' type" ;
         error inReferenceLocation:"overriden method is declared here" ;
       end if ;
     end foreach ;
@@ -419,27 +419,27 @@ routine analyzeRoutineBody
 :
   @variableMap variableMap [emptyMap] ;
   foreach inRoutineSignature do
-    const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName] ;
-    switch mFormalParameterPassingMode
+    const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+    switch mFormalArgumentPassingMode
     when argumentIn :
       if mIsUnused then
-        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"prefixe_"] ;
       else
-        [!?variableMap insertInputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+        [!?variableMap insertInputFormalArgument !mFormalArgumentName !type !"prefixe_"] ;
       end if ;
     when argumentOut :
-      [!?variableMap insertOutputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+      [!?variableMap insertOutputFormalArgument !mFormalArgumentName !type !"prefixe_"] ;
     when argumentInOut :
       if mIsUnused then
-        [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+        [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"prefixe_"] ;
       else
-        [!?variableMap insertInputOutputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+        [!?variableMap insertInputOutputFormalArgument !mFormalArgumentName !type !"prefixe_"] ;
       end if ;
     when argumentConstantIn :
       if mIsUnused then
-        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"prefixe_"] ;
       else
-        [!?variableMap insertConstantInputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !type !"prefixe_"] ;
       end if ;
     end switch ;
   end foreach ;
@@ -506,9 +506,9 @@ override method @classDeclarationAST performSemanticAnalysis
     @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
     foreach mSignature do
       formalParameterListForGeneration +=
-        !mFormalParameterPassingMode
-        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName]
-        !mFormalParameterName
+        !mFormalArgumentPassingMode
+        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+        !mFormalArgumentName
         !mIsUnused
       ;
     end foreach ;
@@ -536,9 +536,9 @@ override method @classDeclarationAST performSemanticAnalysis
     @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
     foreach mSignature do
       formalParameterListForGeneration +=
-        !mFormalParameterPassingMode
-        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName]
-        !mFormalParameterName
+        !mFormalArgumentPassingMode
+        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+        !mFormalArgumentName
         !mIsUnused
       ;
     end foreach ;
@@ -616,23 +616,23 @@ routine analyzeFunctionBody
 #--- Enter formal parameters
   outSignatureForGeneration := [@formalInputParameterListForGeneration emptyList] ;
   foreach inFunctionSignature do
-    const @unifiedTypeMapProxy parameterType [searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName] ;
+    const @unifiedTypeMapProxy parameterType [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
     outSignatureForGeneration +=
       !parameterType
-      !mFormalParameterName
+      !mFormalArgumentName
       !mIsUnused
     ;
     if mIsConstant then
       if mIsUnused then
-        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalParameterName !parameterType !"prefixe_"] ;
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !"prefixe_"] ;
       else
-        [!?variableMap insertConstantInputFormalArgument !mFormalParameterName !parameterType !"prefixe_"] ;
+        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !parameterType !"prefixe_"] ;
       end if ;
     else
       if mIsUnused then
-        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalParameterName !parameterType !"prefixe_"] ;
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !"prefixe_"] ;
       else
-        [!?variableMap insertInputFormalArgument !mFormalParameterName !parameterType !"prefixe_"] ;
+        [!?variableMap insertInputFormalArgument !mFormalArgumentName !parameterType !"prefixe_"] ;
       end if ;
     end if ;
   end foreach ;

@@ -92,9 +92,10 @@ rule <actual_parameter_list> !@actualParameterListAST outActualParameterList :
   repeat
   while
     $?$ ;
+    const @location qualifierLocation := here ;
     select
       $*$ ;
-      outActualParameterList += ![@inputJokerActualParameterAST new] ;
+      outActualParameterList += ![@inputJokerActualParameterAST new !qualifierLocation !0] ;
     or
       @luint count ;
       $unsigned_literal_integer$ ? count ;
@@ -105,18 +106,25 @@ rule <actual_parameter_list> !@actualParameterListAST outActualParameterList :
       else
         loop n :
         while n > 0 do
-          outActualParameterList += ![@inputJokerActualParameterAST new] ;
+          outActualParameterList += ![@inputJokerActualParameterAST new !qualifierLocation !n] ;
           n -- ;
         end loop ;
       end if ;
     end select ;
   while
     $!$ ;
+    const @location qualifierLocation := here ;
     @semanticExpressionAST e ;
     <expression> ? e ;
-    outActualParameterList += ![@outputActualParameterAST new !e] ;
+    const @location endOfExpressionLocation := here ;
+    outActualParameterList += ![@outputActualParameterAST new
+      !qualifierLocation
+      !e
+      !endOfExpressionLocation
+    ] ;
   while
     $!?$ ;
+    const @location qualifierLocation := here ;
     @lstring outputInputActualParameterName ;
     $identifier$ ?outputInputActualParameterName ;
     @lstringlist structAttributeList [emptyList] ;
@@ -126,18 +134,27 @@ rule <actual_parameter_list> !@actualParameterListAST outActualParameterList :
       $identifier$ ? @lstring structAttributeName ;
       structAttributeList += !structAttributeName ;
     end repeat ;
-    outActualParameterList += ![@outputInputActualParameterAST new !outputInputActualParameterName !structAttributeList] ;
+    outActualParameterList += ![@outputInputActualParameterAST new 
+      !qualifierLocation
+      !outputInputActualParameterName
+      !structAttributeList
+    ] ;
   while
     $?$ ;
-    @lstring declarationTypeName ;
-    select
-      declarationTypeName := [@lstring new !"" !here] ;
-    or
-      $type_name$ ? declarationTypeName ;
-    end select ;
+    const @location qualifierLocation := here ;
+#    @lstring declarationTypeName ;
+#    select
+#      declarationTypeName := [@lstring new !"" !here] ;
+#    or
+#      $type_name$ ? declarationTypeName ;
+#    end select ;
     @lstring inputActualParameterName ;
     $identifier$ ?inputActualParameterName ;
-    outActualParameterList += ![@inputActualParameterAST new !declarationTypeName !inputActualParameterName] ;
+    outActualParameterList += ![@inputActualParameterAST new
+      !qualifierLocation
+#      !declarationTypeName
+      !inputActualParameterName
+    ] ;
   end repeat ;
 end rule ;
 

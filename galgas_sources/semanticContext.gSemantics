@@ -217,12 +217,12 @@ override method @classDeclarationAST collectType
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
   foreach mAbstractMethodList do
     foreach mSignature do
-      [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalParameterTypeName string] ?*] ;
+      [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
     end foreach ;
   end foreach ;
   foreach mMethodList do
     foreach mSignature do
-      [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalParameterTypeName string] ?*] ;
+      [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
     end foreach ;
   end foreach ;
 end method ;
@@ -669,7 +669,7 @@ override method @filewrapperDeclarationAST enterType
     @unifiedTypeMapProxyList templateSignature [emptyList] ;
     foreach mFilewrapperTemplateFormalInputParameters do
       @unifiedTypeMapProxy parameterTypeIndex ;
-      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalParameterTypeName string] ?parameterTypeIndex] ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?parameterTypeIndex] ;
       templateSignature += !parameterTypeIndex ;
     end foreach ;
     [!?filewrapperTemplateMap insertKey
@@ -1061,8 +1061,8 @@ override method @classDeclarationAST enterType
     @formalParameterSignature formalArgumentList [emptyList] ;
     foreach mSignature do
       @unifiedTypeMapProxy typeIndex ;
-      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalParameterTypeName string] ?typeIndex] ;
-      formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?typeIndex] ;
+      formalArgumentList += !typeIndex !mFormalArgumentPassingMode ;
     end foreach ;
     with !?instanceMethodMap hasKey ![mMethodName string] do
       mQualifier := [@readerQualifier isOverridingAbstract] ;
@@ -1081,8 +1081,8 @@ override method @classDeclarationAST enterType
     @formalParameterSignature formalArgumentList [emptyList] ;
     foreach mSignature do
       @unifiedTypeMapProxy typeIndex ;
-      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalParameterTypeName string] ?typeIndex] ;
-      formalArgumentList += !typeIndex !mFormalParameterPassingMode ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?typeIndex] ;
+      formalArgumentList += !typeIndex !mFormalArgumentPassingMode ;
     end foreach ;
     with !?instanceMethodMap hasKey ![mMethodName string] do
       mQualifier := [@readerQualifier isOverriding] ;
@@ -1141,8 +1141,8 @@ override method @externRoutineDeclarationAST enterType # Handles also routine de
   @formalParameterSignature routineSignature [emptyList] ;
   foreach mFormalParameterList do
     @unifiedTypeMapProxy parameterTypeIndex ;
-    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalParameterTypeName string] ?parameterTypeIndex] ;
-    routineSignature += !parameterTypeIndex !mFormalParameterPassingMode ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?parameterTypeIndex] ;
+    routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode ;
   end foreach ;
 #--- Enter routine in routine map
   [!?ioSemanticContext->mRoutineMap insertKey !mRoutineName !routineSignature] ;
@@ -1158,7 +1158,7 @@ override method @externFunctionDeclarationAST enterType # Handles also function 
   @unifiedTypeMapProxyList functionSignature [emptyList] ;
   foreach mFormalParameterList do
     @unifiedTypeMapProxy parameterTypeIndex ;
-    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalParameterTypeName string] ?parameterTypeIndex] ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?parameterTypeIndex] ;
     functionSignature += !parameterTypeIndex ;
   end foreach ;
 #--- Result type

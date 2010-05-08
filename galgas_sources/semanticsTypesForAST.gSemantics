@@ -365,6 +365,13 @@ enum @formalArgumentPassingModeAST {
     argumentInOut -> "?!" ;
   end reader ;
 
+  reader correspondingEffectiveParameterString :
+    argumentConstantIn -> "!" ;
+    argumentIn -> "!" ;
+    argumentOut -> "?" ;
+    argumentInOut -> "!?" ;
+  end reader ;
+
   reader generation1ForFormalParameter :
     argumentConstantIn -> "const " ;
     argumentIn -> "" ;
@@ -387,9 +394,9 @@ enum @formalArgumentPassingModeAST {
 #---------------------------------------------------------------------------*
 
 list @formalParameterListAST {
-  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
-  @lstring mFormalParameterTypeName ;
-  @lstring mFormalParameterName ;
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
+  @lstring mFormalArgumentTypeName ;
+  @lstring mFormalArgumentName ;
   @bool mIsUnused ;
 }
 
@@ -400,8 +407,8 @@ list @formalParameterListAST {
 #---------------------------------------------------------------------------*
 
 list @formalInputParameterListAST {
-  @lstring mFormalParameterTypeName ;
-  @lstring mFormalParameterName ;
+  @lstring mFormalArgumentTypeName ;
+  @lstring mFormalArgumentName ;
   @bool mIsUnused ;
   @bool mIsConstant ;
 }
@@ -413,12 +420,14 @@ list @formalInputParameterListAST {
 #---------------------------------------------------------------------------*
 
 abstract class @actualParameterAST {
+  @location mQualifierLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @outputActualParameterAST extends @actualParameterAST {
   @semanticExpressionAST mOutputActualParameterExpression ;
+  @location mEndOfExpressionLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -431,13 +440,14 @@ class @outputInputActualParameterAST extends @actualParameterAST {
 #---------------------------------------------------------------------------*
 
 class @inputActualParameterAST extends @actualParameterAST {
-  @lstring mDeclarationTypeName ;
+#  @lstring mDeclarationTypeName ; # Empty string if no type declaration
   @lstring mInputActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @inputJokerActualParameterAST extends @actualParameterAST {
+  @uint mJokerIndex ;
 }
 
 #---------------------------------------------------------------------------*
@@ -719,8 +729,8 @@ class @modifierCallInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 class @errorInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mReceiverExpression ;
-  @semanticExpressionAST mErrorExpression ;
+  @semanticExpressionAST mLocationExpression ;
+  @semanticExpressionAST mMessageExpression ;
   @lstringlist mBuiltVariableList ;
 }
 
@@ -731,8 +741,8 @@ class @errorInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 class @warningInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mReceiverExpression ;
-  @semanticExpressionAST mWarningExpression ;
+  @semanticExpressionAST mLocationExpression ;
+  @semanticExpressionAST mMessageExpression ;
 }
 
 #---------------------------------------------------------------------------*
