@@ -198,7 +198,7 @@ override method @terminalCheckInstruction transformInstruction
     [!?ioActuallyUsedTerminalSymbolMap insertKey !mTerminalName !terminalSymbolIndex] ;
   end with ;
   ioSyntaxInstructionList += ![@terminalInstructionForGrammarAnalysis new
-    !mStartLocation
+    !mInstructionLocation
     !mTerminalName
     !terminalSymbolIndex
   ] ;
@@ -215,7 +215,7 @@ override method @nonterminalCallInstruction transformInstruction
   @uint nonTerminalSymbolIndex ;
   [inNonTerminalSymbolMap searchKey !mNonterminalName ?nonTerminalSymbolIndex ?*] ;
   ioSyntaxInstructionList += ![@nonTerminalInstructionForGrammarAnalysis new
-    !mStartLocation
+    !mInstructionLocation
     !mNonterminalName
     !nonTerminalSymbolIndex
   ] ;
@@ -255,7 +255,7 @@ override method @repeatInstruction transformInstruction
   end foreach ;
 
   ioSyntaxInstructionList += ![@repeatInstructionForGrammarAnalysis new
-    !mStartLocation
+    !mInstructionLocation
     !repeatBranchList
     !addedNonTerminalIndex
   ] ;
@@ -286,7 +286,7 @@ override method @selectInstruction transformInstruction
   end foreach ;
 
   ioSyntaxInstructionList += ![@selectInstructionForGrammarAnalysis new
-    !mStartLocation
+    !mInstructionLocation
     !selectBranchList
     !addedNonTerminalIndex
   ] ;

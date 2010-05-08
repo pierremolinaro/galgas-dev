@@ -52,7 +52,7 @@ map @routineMap {
 
 map @functionMap {
   @unifiedTypeMapProxyList mFunctionSignature ;
-  @unifiedTypeMapProxy mResultTypeIndex ;
+  @unifiedTypeMapProxy mResultType ;
   insert insertKey error message "the '%K' function has been already declared in %L" ;
   search searchKey error message "the '%K' function is not declared" ;
 }

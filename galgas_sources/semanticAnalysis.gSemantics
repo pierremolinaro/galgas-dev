@@ -409,6 +409,55 @@ map @declaredMethodMap { # This map is used for checking a method is declared on
 
 #---------------------------------------------------------------------------*
 
+routine analyzeRoutineBody
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@formalParameterListAST inRoutineSignature
+  ??@semanticInstructionListAST inInstructionList
+  ??@location inEndOfMethodLocation
+  !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
+:
+  @variableMap variableMap [emptyMap] ;
+  foreach inRoutineSignature do
+    const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName] ;
+    switch mFormalParameterPassingMode
+    when argumentIn :
+      if mIsUnused then
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+      else
+        [!?variableMap insertInputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+      end if ;
+    when argumentOut :
+      [!?variableMap insertOutputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+    when argumentInOut :
+      if mIsUnused then
+        [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+      else
+        [!?variableMap insertInputOutputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+      end if ;
+    when argumentConstantIn :
+      if mIsUnused then
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
+      else
+        [!?variableMap insertConstantInputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
+      end if ;
+    end switch ;
+  end foreach ;
+#---  Analyze instruction list
+  outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+  foreach inInstructionList do
+    [mInstruction analyzeSemanticInstruction
+      !inSemanticContext
+      !inPredefinedTypes
+      !?outSemanticInstructionListForGeneration
+      !?variableMap
+    ] ;
+   end foreach ;
+  [variableMap checkAutomatonStates !inEndOfMethodLocation] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 override method @classDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
@@ -507,44 +556,16 @@ override method @classDeclarationAST performSemanticAnalysis
     elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
       error mMethodName : "this method should be declared as overridding, as it is already declared in super class" ;
     end if ;
-  #--- Insert formal parameters in variable map
-    @variableMap variableMap [emptyMap] ;
-    foreach mSignature do
-      const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName] ;
-      switch mFormalParameterPassingMode
-      when argumentIn :
-        if mIsUnused then
-          [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
-        else
-          [!?variableMap insertInputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
-        end if ;
-      when argumentOut :
-        [!?variableMap insertOutputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
-      when argumentInOut :
-        if mIsUnused then
-          [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
-        else
-          [!?variableMap insertInputOutputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
-        end if ;
-      when argumentConstantIn :
-        if mIsUnused then
-          [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalParameterName !type !"prefixe_"] ;
-        else
-          [!?variableMap insertConstantInputFormalArgument !mFormalParameterName !type !"prefixe_"] ;
-        end if ;
-      end switch ;
-    end foreach ;
-  #---  Analyze instruction list
-    @semanticInstructionListForGeneration semanticInstructionListForGeneration [emptyList] ;
-    foreach mInstructionList do
-      [mInstruction analyzeSemanticInstruction
-        !inSemanticContext
-        !inPredefinedTypes
-        !?semanticInstructionListForGeneration
-        !?variableMap
-      ] ;
-     end foreach ;
-    [variableMap checkAutomatonStates !mEndOfMethodLocation] ;
+  #---
+    @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+    analyzeRoutineBody
+      !inSemanticContext
+      !inPredefinedTypes
+      !mSignature
+      !mInstructionList
+      !mEndOfMethodLocation
+      ?semanticInstructionListForGeneration
+    ;
   #---
     definedMethodSet += ![mMethodName string] ;
     methodList +=
@@ -574,6 +595,93 @@ override method @classDeclarationAST performSemanticAnalysis
     !typedAttributeList
     !abstractMethodList
     !methodList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+routine analyzeFunctionBody
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@formalInputParameterListAST inFunctionSignature
+  ??@semanticInstructionListAST inInstructionList
+  ??@lstring inReturnVariableName
+  ??@lstring inResultTypeName
+  ??@location inEndOfFunctionLocation
+  !@formalInputParameterListForGeneration outSignatureForGeneration
+  !@unifiedTypeMapProxy outReturnedType
+  !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
+:
+  @variableMap variableMap [emptyMap] ;
+#--- Enter formal parameters
+  outSignatureForGeneration := [@formalInputParameterListForGeneration emptyList] ;
+  foreach inFunctionSignature do
+    const @unifiedTypeMapProxy parameterType [searchKey !inSemanticContext->mTypeMap !mFormalParameterTypeName] ;
+    outSignatureForGeneration +=
+      !parameterType
+      !mFormalParameterName
+      !mIsUnused
+    ;
+    if mIsConstant then
+      if mIsUnused then
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalParameterName !parameterType !"prefixe_"] ;
+      else
+        [!?variableMap insertConstantInputFormalArgument !mFormalParameterName !parameterType !"prefixe_"] ;
+      end if ;
+    else
+      if mIsUnused then
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalParameterName !parameterType !"prefixe_"] ;
+      else
+        [!?variableMap insertInputFormalArgument !mFormalParameterName !parameterType !"prefixe_"] ;
+      end if ;
+    end if ;
+  end foreach ;
+#--- Enter return variable
+  outReturnedType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !inResultTypeName] ;
+  [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !"prefixe_"] ;
+#---  Analyze instruction list
+  outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+  foreach inInstructionList do
+    [mInstruction analyzeSemanticInstruction
+      !inSemanticContext
+      !inPredefinedTypes
+      !?outSemanticInstructionListForGeneration
+      !?variableMap
+    ] ;
+   end foreach ;
+  [variableMap checkAutomatonStates !inEndOfFunctionLocation] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+override method @functionDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Analyse function body  
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  @formalInputParameterListForGeneration formalInputParameterList ;
+  @unifiedTypeMapProxy returnType ;
+  analyzeFunctionBody
+    !inSemanticContext
+    !inPredefinedTypes
+    !mFormalParameterList
+    !mFunctionInstructionList
+    !mResultVariableName
+    !mResultTypeName
+    !mEndOfFunctionInstructionList
+    ?formalInputParameterList
+    ?returnType
+    ?semanticInstructionListForGeneration
+  ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@functionDeclarationForGeneration new
+    !mFunctionName
+    !formalInputParameterList
+    !mResultVariableName
+    !returnType
+    !semanticInstructionListForGeneration
   ] ;
 end method ;
 
