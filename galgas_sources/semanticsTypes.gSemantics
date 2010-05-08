@@ -80,8 +80,8 @@ map @readerMap {
 #---------------------------------------------------------------------------*
 
 list @formalParameterSignature {
-  @unifiedTypeMapProxy mParameterType ;
-  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
+  @unifiedTypeMapProxy mFormalArgumentType ;
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
 }
 
 #---------------------------------------------------------------------------*

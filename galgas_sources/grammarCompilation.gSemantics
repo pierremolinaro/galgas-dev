@@ -38,7 +38,7 @@ function transformLabelMap
   foreach inLabels do
     @signatureForGrammarAnalysis formalParametersList [emptyList] ;
     foreach mFormalParameters do
-      formalParametersList += !mFormalParameterPassingMode !mFormalParameterTypeName ;
+      formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName ;
     end foreach ;
     [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
       !mLabelName
@@ -78,21 +78,21 @@ routine checkLabelMap
         . if [formalParametersList length] > 1 then "s" else "" end ;
     else
       foreach mFormalParameters, formalParametersList do
-        if mFormalArgumentPassingModeForGrammarAnalysis != mFormalParameterPassingMode then
+        if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
           error mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared with "
           . [mFormalArgumentPassingModeForGrammarAnalysis formalArgumentString]
           . " passing mode, but declaration at "
           . [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
-          . " is declared with " . [mFormalParameterPassingMode formalArgumentString] . " passing mode" ;
+          . " is declared with " . [mFormalArgumentPassingMode formalArgumentString] . " passing mode" ;
         end if ;
-        if [mGalgasTypeNameForGrammarAnalysis string] != [mFormalParameterTypeName string] then
+        if [mGalgasTypeNameForGrammarAnalysis string] != [mFormalArgumentTypeName string] then
           error mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared of '@"
           . mGalgasTypeNameForGrammarAnalysis
           . "' type, but declaration at "
           . [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
-          . " is declared with '@" . mFormalParameterTypeName . "' type" ;
+          . " is declared with '@" . mFormalArgumentTypeName . "' type" ;
         end if ;
       end foreach ;
     end if ;

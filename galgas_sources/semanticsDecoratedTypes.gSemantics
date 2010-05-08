@@ -357,50 +357,6 @@ class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
 #  @semanticExpressionForGeneration mActualOutputParameterList ;
 #}
 #
-##---------------------------------------------------------------------------*
-##                                                                           *
-##   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S          *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#enum @formalArgumentPassingModeForGeneration {
-#  argumentIn, argumentOut, argumentInOut, argumentConstantIn
-#}{
-#  reader formalArgumentMessage :
-#    argumentConstantIn -> "a constant input (??) formal argument" ;
-#    argumentIn -> "an input (?) formal argument" ;
-#    argumentOut -> "an output (!) formal argument" ;
-#    argumentInOut -> "an input/output (?!) argument" ;
-#  end reader ;
-#
-#  reader formalArgumentString :
-#    argumentConstantIn -> "'??'" ;
-#    argumentIn -> "'?'" ;
-#    argumentOut -> "'!'" ;
-#    argumentInOut -> "'?!'" ;
-#  end reader ;
-#
-#  reader string :
-#    argumentConstantIn -> "??" ;
-#    argumentIn -> "?" ;
-#    argumentOut -> "!" ;
-#    argumentInOut -> "?!" ;
-#  end reader ;
-#
-#  reader generation1ForFormalParameter :
-#    argumentConstantIn -> "const " ;
-#    argumentIn -> "" ;
-#    argumentOut -> "" ;
-#    argumentInOut -> "" ;
-#  end reader ;
-#
-#  reader generation2ForFormalParameter :
-#    argumentConstantIn -> "" ;
-#    argumentIn -> "" ;
-#    argumentOut -> " &" ;
-#    argumentInOut -> " &" ;
-#  end reader ;
-#}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -409,9 +365,9 @@ class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 list @formalParameterListForGeneration {
-  @formalArgumentPassingModeAST mFormalParameterPassingMode ;
-  @unifiedTypeMapProxy mFormalParameterType ;
-  @lstring mFormalParameterName ;
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
+  @unifiedTypeMapProxy mFormalArgumentType ;
+  @lstring mFormalArgumentName ;
   @bool mIsUnused ;
 }
 
@@ -427,46 +383,47 @@ list @formalInputParameterListForGeneration {
   @bool mIsUnused ;
 }
 
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  A C T U A L    P A R A M E T E R                                         *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#abstract class @actualParameterForGeneration {
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @outputActualParameterForGeneration extends @actualParameterForGeneration {
-#  @semanticExpressionForGeneration mOutputActualParameterExpression ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @outputInputActualParameterForGeneration extends @actualParameterForGeneration {
-#  @lstring mOutputInputActualParameterName ;
-#  @lstringlist mStructAttributeList ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @inputActualParameterForGeneration extends @actualParameterForGeneration {
-#  @lstring mDeclarationTypeName ;
-#  @lstring mInputActualParameterName ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @inputJokerActualParameterForGeneration extends @actualParameterForGeneration {
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#list @actualParameterListForGeneration {
-#  @actualParameterForGeneration mActualParameter ;
-#}
-#
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    P A R A M E T E R                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @actualParameterForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputActualParameterForGeneration extends @actualParameterForGeneration {
+  @semanticExpressionForGeneration mOutputActualParameterExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputInputActualParameterForGeneration extends @actualParameterForGeneration {
+  @string mOutputInputVariableCppName ;
+  @lstringlist mStructAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputActualParameterForGeneration extends @actualParameterForGeneration {
+  @string mInputActualCppName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @actualParameterListForGeneration {
+  @actualParameterForGeneration mActualParameter ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @temporaryInputVariableForRoutineInvocationForGeneration {
+  @unifiedTypeMapProxy mType ;
+  @string mCppName ;
+}
+
 ##---------------------------------------------------------------------------*
 ##                                                                           *
 ##  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
@@ -613,15 +570,6 @@ class @localVariableDeclarationForGeneration extends @semanticInstructionForGene
 
 #---------------------------------------------------------------------------*
 
-#class @localVariableDeclarationWithInitializationForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mTypeName ;
-#  @lstring mVariableName ;
-#  @lstring mConstructorName ;
-#  @semanticExpressionForGeneration mConstructorArguments ;
-#}
-
-#---------------------------------------------------------------------------*
-
 class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration extends @semanticInstructionForGeneration {
   @unifiedTypeMapProxy mTargetType ;
   @bool mIsConstant ;
@@ -659,11 +607,11 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @appendInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mTargetVariableName ;
-#  @lstringlist mStructAttributeList ;
-#  @semanticExpressionForGeneration mSourceExpression ;
-#}
+class @appendInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mTargetVariableName ;
+  @lstringlist mStructAttributeList ;
+  @semanticExpressionForGeneration mSourceExpression ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -673,9 +621,9 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @sendInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @semanticExpressionForGeneration mSourceExpression ;
-#}
+class @sendInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mSourceExpression ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -750,11 +698,11 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @semanticExpressionForGeneration mReceiverExpression ;
-#  @lstring mMethodName ;
-#  @actualParameterListForGeneration mActualParameterList ;
-#}
+class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
+  @lstring mMethodName ;
+  @actualParameterListForGeneration mActualParameterList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -775,11 +723,12 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @errorInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @semanticExpressionForGeneration mReceiverExpression ;
-#  @semanticExpressionForGeneration mErrorExpression ;
-#  @lstringlist mBuiltVariableList ;
-#}
+class @errorInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
+  @bool mUseLocationReader ;
+  @semanticExpressionForGeneration mErrorExpression ;
+  @stringlist mBuiltVariableCppNameList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -787,10 +736,11 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @warningInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @semanticExpressionForGeneration mReceiverExpression ;
-#  @semanticExpressionForGeneration mWarningExpression ;
-#}
+class @warningInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
+  @bool mUseLocationReader ;
+  @semanticExpressionForGeneration mWarningExpression ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -798,10 +748,11 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @routineCallInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mRoutineName ;
-#  @actualParameterListForGeneration mActualParameterList ;
-#}
+class @routineCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @lstring mRoutineName ;
+  @actualParameterListForGeneration mActualParameterList ;
+  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

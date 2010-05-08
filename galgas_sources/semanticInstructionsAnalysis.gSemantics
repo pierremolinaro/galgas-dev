@@ -174,118 +174,405 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @appendInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mTargetVariableName
-  : "unhandled instruction @appendInstructionAST"
-  ;
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression ;
+  [mSourceExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?expression
+  ] ;
+#--- Check target variable
+  @unifiedTypeMapProxy targetType ;
+  @string targetVariableCppName ;
+  [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName] ;
+  foreach mStructAttributeList do
+    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?targetType] ;
+  end foreach ;
+#--- Check target variable type support '.=' operator
+  if ([targetType mHandledOperatorFlags] & dotAssignOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '.=' operator"
+    ;
+  end if ;
+#--- Check assignment type compatibility
+  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@appendInstructionForGeneration new
+    !targetVariableCppName
+    !mStructAttributeList
+    !expression
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @sendInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mInstructionLocation
-  : "unhandled instruction @sendInstructionAST"
-  ;
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression ;
+  [mSourceExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?expression
+  ] ;
+#--- Check source expression type is @string
+  if [expression mType] != inPredefinedTypes->mStringType then
+    error mInstructionLocation
+    :"the send expression type is '@" . [[expression mType] key] . "'; it should be of the '@string' type"
+    ;
+  end if ;
+  ioInstructionListForGeneration += ![@sendInstructionForGeneration new !expression] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @foreachInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+routine analyzeErrorOrWarningInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@semanticExpressionAST inLocationExpression
+  ??@semanticExpressionAST inMessageExpression
+  ??@location inErrorLocation
+  ??@string inErrorOrWarningString
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outLocationExpression
+  !@semanticExpressionForGeneration outMessageExpression
+  !@bool outUseLocationReader
 :
-  error mInstructionLocation
-  : "unhandled instruction @foreachInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @ifInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mInstructionLocation
-  : "unhandled instruction @ifInstructionAST"
-  ;
-end method ;
+#--- Analyze location expression
+  [inLocationExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?outLocationExpression
+  ] ;
+#--- Check location expression type is either @location either has a correct location reader
+  outUseLocationReader := [outLocationExpression mType] != inPredefinedTypes->mLocationType ;
+  if outUseLocationReader then
+    const @readerMap readerMap := [[outLocationExpression mType] mReaderMap] ;
+    with readerMap hasKey !"location" do
+      if [mArgumentTypeList length] != 0 then
+        error inErrorLocation
+        :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mType] key]
+        . "' and defines a 'location' reader with arguments; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
+        ;      
+      elsif mReturnedType != inPredefinedTypes->mLocationType then
+        error inErrorLocation
+        :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mType] key]
+        . "' and defines a 'location' reader that returns an '@" . [mReturnedType key]
+        . "' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
+        ;      
+      end if ;
+    else
+      error inErrorLocation
+      :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mType] key]
+      . "' and does not define a 'location' reader; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
+      ;
+    end with ;
+  end if ;
+#--- Analyze message expression
+  [inMessageExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?outMessageExpression
+  ] ;
+#--- Check message expression type is @string
+  if [outMessageExpression mType] != inPredefinedTypes->mStringType then
+    error inErrorLocation
+    :"the " . inErrorOrWarningString . " message expression type is '@" . [[outMessageExpression mType] key] . "'; it should be of the '@string' type"
+    ;
+  end if ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
 override method @errorInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mInstructionLocation
-  : "unhandled instruction @errorInstructionAST"
+#---
+  @semanticExpressionForGeneration locationExpression ;
+  @semanticExpressionForGeneration messageExpression ;
+  @bool useLocationReader ;
+  analyzeErrorOrWarningInstruction
+    !inSemanticContext
+    !inPredefinedTypes
+    !mLocationExpression
+    !mMessageExpression
+    !mInstructionLocation
+    !"error"
+    !?ioVariableMap
+    ?locationExpression
+    ?messageExpression
+    ?useLocationReader
   ;
+#--- Handle dropped variables
+  @stringlist builtVariableCppNameList [emptyList] ;
+  foreach mBuiltVariableList do
+    @string varCppName ;
+    [!?ioVariableMap searchForWriteAccess !mValue ?* ?varCppName] ;
+    builtVariableCppNameList += !varCppName ;
+  end foreach ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@errorInstructionForGeneration new
+    !locationExpression
+    !useLocationReader
+    !messageExpression
+    !builtVariableCppNameList
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @warningInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#---
+  @semanticExpressionForGeneration locationExpression ;
+  @semanticExpressionForGeneration messageExpression ;
+  @bool useLocationReader ;
+  analyzeErrorOrWarningInstruction
+    !inSemanticContext
+    !inPredefinedTypes
+    !mLocationExpression
+    !mMessageExpression
+    !mInstructionLocation
+    !"warning"
+    !?ioVariableMap
+    ?locationExpression
+    ?messageExpression
+    ?useLocationReader
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@warningInstructionForGeneration new
+    !locationExpression
+    !useLocationReader
+    !messageExpression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+abstract method @actualParameterAST checkAgainstFormalArgument
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@temporaryInputVariableForRoutineInvocationForGeneration ioTemporaryInputVariableForRoutineInvocationForGeneration
+  ?!@stringset ioExclusiveVariableSet
+;
+
+#---------------------------------------------------------------------------*
+
+override method @outputActualParameterAST checkAgainstFormalArgument
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+:
+  if (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentIn])
+   | (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentConstantIn]) then
+    error mQualifierLocation
+    :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
+    . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
+    ;
+  else
+    @semanticExpressionForGeneration expression ;
+    [mOutputActualParameterExpression analyzeSemanticExpression
+      !inSemanticContext
+      !inPredefinedTypes
+      !?ioVariableMap
+      ?expression
+    ] ;
+  #--- Check effective expression type against formal argument type
+    checkAssignmentTypes !inFormalArgumentType ![expression mType] !mEndOfExpressionLocation ;
+  #--- Generate actual parameter
+    ioActualParameterListForGeneration += ![@outputActualParameterForGeneration new
+      !expression
+    ] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @outputInputActualParameterAST checkAgainstFormalArgument
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
+  ?!@stringset ioExclusiveVariableSet
 :
-  error mInstructionLocation
-  : "unhandled instruction @warningInstructionAST"
-  ;
+  if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
+    error mQualifierLocation
+    :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
+    . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
+    ;
+  end if ;
+#--- Analyze input/output variable
+  @unifiedTypeMapProxy parameterType ;
+  @string variableCppName ;
+  [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?parameterType ?variableCppName] ;
+  foreach mStructAttributeList do
+    const @attributeMap attributeMap := [parameterType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?parameterType] ;
+  end foreach ;
+#--- Check type
+  if inFormalArgumentType != parameterType then
+    error mOutputInputActualParameterName
+    :"the parameter object has the '@" . [parameterType key]
+    . "', it should be the same as the corresponding formal argument: '@" . [inFormalArgumentType key] . "'"
+    ;
+  end if ;
+#--- Check for exclusive access
+  if [ioExclusiveVariableSet hasKey ![mOutputInputActualParameterName string]] then
+    error mOutputInputActualParameterName
+    :"this variable is already named as input or output/input effective parameter"
+    ;
+  end if ;
+  ioExclusiveVariableSet += ![mOutputInputActualParameterName string] ;
+#--- Generate actual parameter
+  ioActualParameterListForGeneration += ![@outputInputActualParameterForGeneration new
+    !variableCppName
+    !mStructAttributeList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @inputActualParameterAST checkAgainstFormalArgument
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
+  ?!@stringset ioExclusiveVariableSet
+:
+  if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
+    error mQualifierLocation
+    :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
+    . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
+    ;
+  end if ;
+  @unifiedTypeMapProxy parameterType ;
+  @string targetVariableCppName ;
+  [!?ioVariableMap searchForWriteAccess !mInputActualParameterName ?parameterType ?targetVariableCppName] ;
+#--- Check type
+  if inFormalArgumentType != parameterType then
+    error mInputActualParameterName
+    :"the parameter object has the '@" . [parameterType key]
+    . "', it should be the same as the corresponding formal argument: '@" . [inFormalArgumentType key] . "'"
+    ;
+  end if ;
+#--- Check for exclusive access
+  if [ioExclusiveVariableSet hasKey ![mInputActualParameterName string]] then
+    error mInputActualParameterName
+    :"this variable is already named as input or output/input effective parameter"
+    ;
+  end if ;
+  ioExclusiveVariableSet += ![mInputActualParameterName string] ;
+#--- Generate actual parameter
+  ioActualParameterListForGeneration += ![@inputActualParameterForGeneration new
+    !targetVariableCppName
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @inputJokerActualParameterAST checkAgainstFormalArgument
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@temporaryInputVariableForRoutineInvocationForGeneration ioTemporaryInputVariableForRoutineInvocationForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+:
+  if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
+    error mQualifierLocation
+    :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
+    . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
+    ;
+  else
+    const @string cppVarName := "joker_" . [[mQualifierLocation locationIndex] string] . "_" . [mJokerIndex string] ;
+  #--- Add temporary variable
+    ioTemporaryInputVariableForRoutineInvocationForGeneration += !inFormalArgumentType !cppVarName ;
+  #--- Generate actual parameter
+    ioActualParameterListForGeneration += ![@inputActualParameterForGeneration new
+      !cppVarName
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @routineCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mRoutineName
-  : "unhandled instruction @routineCallInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @matchInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mInstructionLocation
-  : "unhandled instruction @matchInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @castInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mInstructionLocation
-  : "unhandled instruction @castInstructionAST"
-  ;
+#--- Get routine signature
+  @formalParameterSignature routineSignature ;
+  [inSemanticContext->mRoutineMap searchKey !mRoutineName ?routineSignature] ;
+#--- Check effective parameters
+  if [routineSignature length] != [mActualParameterList length] then
+    error mRoutineName
+    :"the '" . mRoutineName . "' routine header defines " . [[routineSignature length] string] 
+    . " formal argument(s), but this invocation names "
+    . [[mActualParameterList length] string] . " argument(s)"
+    ;
+  else
+    @actualParameterListForGeneration actualParameterListForGeneration [emptyList] ;
+    @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration [emptyList] ;
+    @stringset exclusiveVariableSet [emptySet] ;
+    foreach routineSignature, mActualParameterList do
+      [mActualParameter checkAgainstFormalArgument
+        !inSemanticContext
+        !inPredefinedTypes
+        !mFormalArgumentType
+        !mFormalArgumentPassingMode
+        !?ioVariableMap
+        !?actualParameterListForGeneration
+        !?temporaryInputVariableForRoutineInvocationForGeneration
+        !?exclusiveVariableSet
+      ] ;
+    end foreach ;
+  #--- Generate instruction
+    ioInstructionListForGeneration += ![@routineCallInstructionForGeneration new
+      !mRoutineName
+      !actualParameterListForGeneration
+      !temporaryInputVariableForRoutineInvocationForGeneration
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -342,19 +629,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @loopInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mInstructionLocation
-  : "unhandled instruction @loopInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @messageInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
@@ -376,45 +650,6 @@ override method @logInstructionAST analyzeSemanticInstruction
 :
   error mInstructionLocation
   : "unhandled instruction @logInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @grammarInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mGrammarComponentName
-  : "unhandled instruction @grammarInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @withInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mTargetObjectName
-  : "unhandled instruction @withInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @switchInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mInstructionLocation
-  : "unhandled instruction @switchInstructionAST"
   ;
 end method ;
 
@@ -454,6 +689,110 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
 :
   error mReceiverName
   : "unhandled instruction @modifierCallInstructionAST"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  error mGrammarComponentName
+  : "unhandled instruction @grammarInstructionAST"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @foreachInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  error mInstructionLocation
+  : "unhandled instruction @foreachInstructionAST"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @ifInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  error mInstructionLocation
+  : "unhandled instruction @ifInstructionAST"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @withInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  error mTargetObjectName
+  : "unhandled instruction @withInstructionAST"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @switchInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  error mInstructionLocation
+  : "unhandled instruction @switchInstructionAST"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @matchInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  error mInstructionLocation
+  : "unhandled instruction @matchInstructionAST"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @loopInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  error mInstructionLocation
+  : "unhandled instruction @loopInstructionAST"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @castInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+  error mInstructionLocation
+  : "unhandled instruction @castInstructionAST"
   ;
 end method ;
 
