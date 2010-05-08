@@ -151,7 +151,14 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
   outFormalInputParameterList := [@formalInputParameterListAST emptyList] ;
   repeat
   while
-    $?$ ;
+    @bool isConstant ;
+    select
+      $?$ ;
+      isConstant := false ;
+    or
+      $??$ ;
+      isConstant := true ;
+    end select ;
     $type_name$ ?@lstring mFormalParameterTypeName ;
     @bool mIsUnused ;
     select
@@ -165,6 +172,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
       !mFormalParameterTypeName
       !mFormalParameterName
       !mIsUnused
+      !isConstant
     ;
   end repeat ;
 end rule ;

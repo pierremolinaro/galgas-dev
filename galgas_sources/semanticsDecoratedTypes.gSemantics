@@ -307,19 +307,20 @@ class @ifExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mElseExpression ;
 }
 
-##---------------------------------------------------------------------------*
-#
-#class @functionCallExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lstring mFunctionName ;
-#  @outSemanticExpressionListForGeneration mExpressions ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lstring mVarName ;
-#}
-#
+#---------------------------------------------------------------------------*
+
+class @functionCallExpressionForGeneration extends @semanticExpressionForGeneration {
+  @lstring mFunctionName ;
+  @semanticExpressionListForGeneration mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
+  @string mCppVarName ;
+  @lstringlist mStructFieldList ;
+}
+
 ##---------------------------------------------------------------------------*
 #
 #class @literalTypeInExpressionForGeneration extends @semanticExpressionForGeneration {
@@ -353,7 +354,7 @@ class @ifExpressionForGeneration extends @semanticExpressionForGeneration {
 #class @filewrapperTemplateInExpressionForGeneration extends @semanticExpressionForGeneration {
 #  @lstring mFilewrapperName ;
 #  @lstring mFilewrapperTemplateName ;
-#  @outSemanticExpressionListForGeneration mActualOutputParameterList ;
+#  @semanticExpressionForGeneration mActualOutputParameterList ;
 #}
 #
 ##---------------------------------------------------------------------------*
@@ -414,18 +415,18 @@ list @formalParameterListForGeneration {
   @bool mIsUnused ;
 }
 
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  F O R M A L    I N P U T    P A R A M E T E R    L I S T                 *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#list @formalInputParameterListForGeneration {
-#  @lstring mFormalParameterTypeName ;
-#  @lstring mFormalParameterName ;
-#  @bool mIsUnused ;
-#}
-#
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalInputParameterListForGeneration {
+  @unifiedTypeMapProxy mFormalParameterType ;
+  @lstring mFormalParameterName ;
+  @bool mIsUnused ;
+}
+
 ##---------------------------------------------------------------------------*
 ##                                                                           *
 ##  A C T U A L    P A R A M E T E R                                         *
@@ -578,9 +579,13 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @functionDeclarationForGeneration extends @externFunctionDeclarationForGeneration {
-#  @semanticInstructionListForGeneration mFunctionInstructionList ;
-#}
+class @functionDeclarationForGeneration extends @semanticDeclarationForGeneration {
+  @lstring mFunctionName ;
+  @formalInputParameterListForGeneration mFormalParameterList ;
+  @lstring mResultVariableName ;
+  @unifiedTypeMapProxy mReturnType ;
+  @semanticInstructionListForGeneration mFunctionInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -601,10 +606,10 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @localVariableDeclarationForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mTypeName ;
-#  @lstring mVariableName ;
-#}
+class @localVariableDeclarationForGeneration extends @semanticInstructionForGeneration {
+  @unifiedTypeMapProxy mVariableType ;
+  @string mCppVariableName ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -612,33 +617,27 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 #  @lstring mTypeName ;
 #  @lstring mVariableName ;
 #  @lstring mConstructorName ;
-#  @outSemanticExpressionListForGeneration mConstructorArguments ;
+#  @semanticExpressionForGeneration mConstructorArguments ;
 #}
 
 #---------------------------------------------------------------------------*
 
-#class @localVariableDeclarationWithAssignmentForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mTypeName ;
-#  @lstring mVariableName ;
-#  @semanticExpressionForGeneration mSourceExpression ;
-#}
+class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration extends @semanticInstructionForGeneration {
+  @unifiedTypeMapProxy mTargetType ;
+  @bool mIsConstant ;
+  @string mCppVariableName ;
+  @semanticExpressionForGeneration mSourceExpression ;
+}
 
 #---------------------------------------------------------------------------*
 
-#class @localConstantDeclarationWithSourceExpressionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mTypeName ;
-#  @lstring mVariableName ;
-#  @semanticExpressionForGeneration mSourceExpression ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @localConstantDeclarationWithConstructorCallForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mTypeName ;
-#  @lstring mVariableName ;
-#  @lstring mConstructorName ;
-#  @outSemanticExpressionListForGeneration mConstructorArguments ;
-#}
+class @localVariableOrConstantDeclarationWithConstructorCallForGeneration extends @semanticInstructionForGeneration {
+  @unifiedTypeMapProxy mTargetType ;
+  @bool mIsConstant ;
+  @string mCppVariableName ;
+  @string mConstructorName ;
+  @semanticExpressionListForGeneration mConstructorArguments ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -896,7 +895,7 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 #class @addInstructionForGeneration extends @semanticInstructionForGeneration {
 #  @lstring mReceiverName ;
 #  @lstringlist mStructAttributeList ;
-#  @outSemanticExpressionListForGeneration mExpressionList ;
+#  @semanticExpressionForGeneration mExpressionList ;
 #}
 
 #---------------------------------------------------------------------------*

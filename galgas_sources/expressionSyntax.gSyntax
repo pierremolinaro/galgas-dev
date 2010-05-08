@@ -296,6 +296,7 @@ rule <factor> !@semanticExpressionAST outExpression :
     $cast$ ;
     @semanticExpressionAST receiverExpression ;
     <expression> ? receiverExpression ;
+    const @location endOfReceiverExpression := here ;
     $if$ ;
     @bool useKindOfClass ;
     select
@@ -313,6 +314,7 @@ rule <factor> !@semanticExpressionAST outExpression :
     <expression> ? errorLocationExpression ;
     outExpression := [@castInExpressionAST new
       !receiverExpression
+      !endOfReceiverExpression
       !useKindOfClass
       !typeName
       !errorLocationExpression

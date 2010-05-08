@@ -33,6 +33,8 @@ nonterminal <expression> !@semanticExpressionAST outExpression ;
 
 nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
 
+nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
+
 nonterminal <actual_parameter_list> !@actualParameterListAST outActualParameterList ;
 
 nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
@@ -141,23 +143,25 @@ rule <semantic_declaration>
 :
   $function$ ;
   $identifier$ ? @lstring mRoutineName ;
-  @formalParameterListAST mFormalParameterList ;
-  <formal_parameter_list> ? mFormalParameterList ;
+  @formalInputParameterListAST formalInputParameterList ;
+  <formal_input_parameter_list> ? formalInputParameterList ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
   $:$ ;
-  @semanticInstructionListAST mRoutineInstructionList ;
-  <semantic_instruction_list> ? mRoutineInstructionList ;
+  @semanticInstructionListAST functionInstructionList ;
+  <semantic_instruction_list> ? functionInstructionList ;
   $end$ ;
+  const @location endOfFunctionInstructionList := here ;
   $function$ ;
   $;$ ;
   ioSemanticDeclarations->mSemanticDeclarationList += ![@functionDeclarationAST new
     !mRoutineName
-    !mFormalParameterList
+    !formalInputParameterList
     !resultTypeName
     !resultVariableName
-    !mRoutineInstructionList
+    !functionInstructionList
+    !endOfFunctionInstructionList
   ] ;
 end rule ;
 
@@ -205,15 +209,15 @@ rule <semantic_declaration>
   $extern$ ;
   $function$ ;
   $identifier$ ? @lstring mActionName ;
-  @formalParameterListAST mFormalParameterList ;
-  <formal_parameter_list> ? mFormalParameterList ;
+  @formalInputParameterListAST formalInputParameterList ;
+  <formal_input_parameter_list> ? formalInputParameterList ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
   $;$ ;
   ioSemanticDeclarations->mSemanticDeclarationList += ![@externFunctionDeclarationAST new
     !mActionName
-    !mFormalParameterList
+    !formalInputParameterList
     !resultTypeName
     !resultVariableName
   ] ;
@@ -234,14 +238,27 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $:=$ ;
     @semanticExpressionAST sourceExpression ;
     <expression> ? sourceExpression ;
-    outInstruction := [@localVariableDeclarationWithAssignmentAST new ![typeName location] !typeName !variableName !sourceExpression] ;
+    outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
+      ![typeName location]
+      !false
+      !typeName
+      !variableName
+      !sourceExpression
+    ] ;
   or
     $[$ ;
     @lstring constructorName ;
     $identifier$ ? constructorName ;
     @semanticExpressionListAST expressionList ;
     <output_expression_list> ?expressionList ;
-    outInstruction := [@localVariableDeclarationWithInitializationAST new ![typeName location] !typeName !variableName !constructorName !expressionList] ;
+    outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
+      ![typeName location]
+      !false # Is not Constant
+      !typeName
+      !variableName
+      !constructorName
+      !expressionList
+    ] ;
     $]$ ;
   end select ;
   $;$ ;
@@ -261,14 +278,27 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $:=$ ;
     @semanticExpressionAST sourceExpression ;
     <expression> ? sourceExpression ;
-    outInstruction := [@localConstantDeclarationWithSourceExpressionAST new  ![typeName location] !typeName !variableName !sourceExpression] ;
+    outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
+      ![typeName location]
+      !true # Is Constant
+      !typeName
+      !variableName
+      !sourceExpression
+    ] ;
   or
     $[$ ;
     @lstring constructorName ;
     $identifier$ ? constructorName ;
     @semanticExpressionListAST expressionList ;
     <output_expression_list> ?expressionList ;
-    outInstruction := [@localConstantDeclarationWithConstructorCallAST new ![typeName location] !typeName !variableName !constructorName !expressionList] ;
+    outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
+      ![typeName location]
+      !true # is constant
+      !typeName
+      !variableName
+      !constructorName
+      !expressionList
+    ] ;
     $]$ ;
   end select ;
   $;$ ;
@@ -290,14 +320,12 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     mStructAttributeList += !attributeName ;
   end repeat ;
   $:=$ ;
-  const @location assignmentOperatorLocation := here ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
   $;$ ;
   outInstruction := [@assignmentInstructionAST new
     ![mTargetVariableName location]
     !mTargetVariableName
-    !assignmentOperatorLocation
     !mStructAttributeList
     !mSourceExpression
   ] ;

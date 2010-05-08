@@ -166,7 +166,8 @@ map @variableMap {
   }
 
 #--- Insert methods 
-  insert insertLocalVariable state undefinedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertUndefinedLocalVariable state undefinedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertDefinedLocalVariable state definedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertLocalConstant state localConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertUsedLocalConstant state usedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertInputFormalArgument state inputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
@@ -364,23 +365,26 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @constructorExpressionAST analyzeSemanticExpression
+routine analyzeConstructorInvocation
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression
+  ??@lstring inTypeName
+  ??@lstring inConstructorName
+  ??@semanticExpressionListAST inConstuctorEffectiveParameterExpressions
+  !@unifiedTypeMapProxy outReturnedType
+  !@semanticExpressionListForGeneration outConstructorEffectiveParameterList 
 :
 #--- Get constructor map from type map
   @constructorMap constructorMap ;
-  [inSemanticContext->mTypeMap searchKey !mTypeName ?6* ?constructorMap ?13*] ;
+  [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?13*] ;
 #--- Search contructor
   @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
   @bool hasCompilerArgument ;
-  @unifiedTypeMapProxy returnedType ;
-  with constructorMap hasKey ![mConstructorName string] do
+  with constructorMap hasKey ![inConstructorName string] do
     constructorFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
-    returnedType := mReturnedType ;
+    outReturnedType := mReturnedType ;
   else
     @string s := "" ;
     foreach constructorMap do
@@ -390,26 +394,51 @@ override method @constructorExpressionAST analyzeSemanticExpression
       end foreach ;
       s .= " -> @" . [mReturnedType key] ;
     end foreach ;
-    error mConstructorName
-    : "the '@". mTypeName . "' type does not define the '" . mConstructorName . "' constructor; available constructors are:" . s
-    : constructorFormalArgumentTypeList, hasCompilerArgument, returnedType
+    error inConstructorName
+    : "the '@". inTypeName . "' type does not define the '" . inConstructorName . "' constructor; available constructors are:" . s
+    : constructorFormalArgumentTypeList, hasCompilerArgument, outReturnedType
     ;
   end with ;
 #--- Analysis arguments
-  if [mExpressions length] != [constructorFormalArgumentTypeList length] then
-    error mConstructorName: "calling the '" . mConstructorName . "' constructor of '@" . mTypeName . "' requires "
+  if [inConstuctorEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
+    error inConstructorName
+    : "calling the '" . inConstructorName . "' constructor of '@" . inTypeName . "' requires "
     . [[constructorFormalArgumentTypeList length] string] . " parameter(s), while this call has "
-    . [[mExpressions length] string] . " parameter(s)" : outExpression ;
+    . [[inConstuctorEffectiveParameterExpressions length] string] . " parameter(s)" 
+    : outConstructorEffectiveParameterList ;
   else
-    @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
-    foreach mExpressions, constructorFormalArgumentTypeList do
+    outConstructorEffectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
+    foreach inConstuctorEffectiveParameterExpressions, constructorFormalArgumentTypeList do
       @semanticExpressionForGeneration exp ;
       [mExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?exp] ;
       checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
-      constructorEffectiveParameterList += !exp ;
+      outConstructorEffectiveParameterList += !exp ;
     end foreach ;
-    outExpression := [@constructorExpressionForGeneration new !returnedType !mConstructorName !constructorEffectiveParameterList] ;
   end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+override method @constructorExpressionAST analyzeSemanticExpression
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+  @unifiedTypeMapProxy returnedType ;
+  @semanticExpressionListForGeneration constructorEffectiveParameterList ;
+  analyzeConstructorInvocation
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    !mTypeName
+    !mConstructorName
+    !mExpressions
+    ?returnedType
+    ?constructorEffectiveParameterList
+  ;
+#--
+  outExpression := [@constructorExpressionForGeneration new !returnedType !mConstructorName !constructorEffectiveParameterList] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1276,85 +1305,129 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @functionCallExpressionAST analyzeSemanticExpression
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ?!@variableMap unused ioVariableMap
+  ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
-  message "@functionCallExpressionAST analyzeSemanticExpression\n" ;
+#--- Retrieve function features
+  @unifiedTypeMapProxyList functionSignature ;
+  @unifiedTypeMapProxy resultType ;
+  [inSemanticContext->mFunctionMap searchKey !mFunctionName ?functionSignature ?resultType] ;
+#--- Analyze effective parameters
+  if [functionSignature length] != [mExpressions length] then
+    error mFunctionName
+    :"the '" . mFunctionName . "' function header declares " . [[functionSignature length] string]
+      . " formal parameter(s), but this function call names " . [[mExpressions length] string]
+      . " effective argument(s)"
+    : outExpression
+    ;
+  else
+    @semanticExpressionListForGeneration semanticExpressionListForGeneration [emptyList] ;
+    foreach functionSignature, mExpressions do
+      @semanticExpressionForGeneration expression ;
+      [mExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?expression] ;
+      checkAssignmentTypes !mType ![expression mType] !mEndOfExpressionLocation ;
+      semanticExpressionListForGeneration += !expression ;
+    end foreach ;
+    outExpression := [@functionCallExpressionForGeneration new
+      !resultType
+      !mFunctionName
+      !semanticExpressionListForGeneration
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @varInExpressionAST analyzeSemanticExpression
   ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
-  ?!@variableMap unused ioVariableMap
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
-  message "@varInExpressionAST analyzeSemanticExpression\n" ;
+  @unifiedTypeMapProxy type ;
+  @string sourceVariableCppName ;
+  [!?ioVariableMap searchForReadAccess !mVarName ?type ?sourceVariableCppName] ;
+  foreach mStructFieldList do
+    const @attributeMap attributeMap := [type mAttributeMap] ;
+    [attributeMap searchKey !mValue ?type] ;
+  end foreach ;
+  outExpression := [@varInExpressionForGeneration new
+    !type
+    !sourceVariableCppName
+    !mStructFieldList
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalTypeInExpressionAST analyzeSemanticExpression
   ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
-  message "@literalTypeInExpressionAST analyzeSemanticExpression\n" ;
+  error mLiteralTypeName
+  : "unhandled expression"
+  : outExpression
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @castInExpressionAST analyzeSemanticExpression
   ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
-  message "@castInExpressionAST analyzeSemanticExpression\n" ;
+  error mEndOfReceiverExpression
+  : "unhandled expression"
+  : outExpression
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
   ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@predefinedTypes unused  inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
-  message "@filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression\n" ;
+  error mFilewrapperName
+  : "unhandled expression"
+  : outExpression
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperInExpressionAST analyzeSemanticExpression
   ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
-  message "@filewrapperInExpressionAST analyzeSemanticExpression\n" ;
+  error mFilewrapperName
+  : "unhandled expression"
+  : outExpression
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
-  message "@filewrapperTemplateInExpressionAST analyzeSemanticExpression\n" ;
+  error mFilewrapperName
+  : "unhandled expression"
+  : outExpression
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*

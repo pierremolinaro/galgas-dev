@@ -34,7 +34,6 @@ grammar programSLRgrammar "SLR" :
   ; # SLR
 
   unused <actual_input_parameter_list> ;
-  unused <formal_input_parameter_list> ;
 end grammar ;
 
 #---------------------------------------------------------------------------*
