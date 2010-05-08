@@ -3192,7 +3192,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   :
     outNewStyle := false ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
-    outForeachList += ![@typeGalgas_lstring new] ![@lstring new !"key" !here] ;
+    outForeachList += ![@typeGalgas_lstring new] ![@lstring new !"lkey" !here] ;
     outForeachList := outForeachList . mAttributeList ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
   end method ;
@@ -3401,14 +3401,14 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
     @bool found := false ;
     outModifierSignature := [@L_EXsignature emptyList] ;
     foreach mNonExternAttributesMap while not found do
-      @string testedModifierName := "set" . [[key string] stringByCapitalizingFirstCharacter] ;
+      @string testedModifierName := "set" . [[lkey string] stringByCapitalizingFirstCharacter] ;
       if [inModifierName string] == testedModifierName then
         found := true ;
         if mHasSetter then
           outModifierSignature += !mAttributType ![@formalArgumentPassingModeAST argumentIn] ;
         else
-          error inModifierName:"This modifier corresponds to the '" . key . "' attribute that is not declared as settable" ;
-          warning key:"attribute declaration pointed out by previous error" ;
+          error inModifierName:"This modifier corresponds to the '" . lkey . "' attribute that is not declared as settable" ;
+          warning lkey:"attribute declaration pointed out by previous error" ;
         end if ;
       end if ;
     end foreach ;
@@ -3440,7 +3440,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
         end if ;
       end if ;
       foreach mAncestorClassesMap while outCategoryMethodClassBaseName == "" do
-        @lstring superKey [new ![key string] . ":" . [inMethodName string] ![inMethodName location]] ;
+        @lstring superKey [new ![lkey string] . ":" . [inMethodName string] ![inMethodName location]] ;
         if [inCategoryMethodMap hasKey ![superKey string]] then
           @categoryMethodKind categoryMethodKind ;
           [inCategoryMethodMap searchKey !superKey ?categoryMethodKind ?outMethodSignature] ;
@@ -4076,16 +4076,16 @@ routine handleReaderCall
       @string s := "" ;
       foreach [t mDomainRelationMap] while not found do
         if [mDomains length] == 1 then
-          s .= " " . [key string] . "StringValueList" ;
-          found := [inReaderName string] == ([key string] . "StringValueList") ;
+          s .= " " . [lkey string] . "StringValueList" ;
+          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
           outReturnedType := EXbuild_stringlist_type [] ;
         elsif [mDomains length] == 2 then
-          s .= " " . [key string] . "StringValueList" ;
-          found := [inReaderName string] == ([key string] . "StringValueList") ;
+          s .= " " . [lkey string] . "StringValueList" ;
+          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
           outReturnedType := EXbuild_string2list_type [] ;
         elsif [mDomains length] == 3 then
-          s .= " " . [key string] . "StringValueList" ;
-          found := [inReaderName string] == ([key string] . "StringValueList") ;
+          s .= " " . [lkey string] . "StringValueList" ;
+          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
           outReturnedType := EXbuild_string3list_type [] ;
         end if ;
       end foreach ;
@@ -4154,10 +4154,10 @@ routine handleReaderCall
     elsif [inReaderName string] == "isNull" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_bool new] ;
-    elsif [inReaderName string] == "keyString" then
+    elsif [inReaderName string] == "key" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_string new] ;
-    elsif [inReaderName string] == "key" then
+    elsif [inReaderName string] == "lkey" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_lstring new] ;
     elsif [inReaderName string] == "identifierRepresentation" then
@@ -4190,9 +4190,12 @@ routine handleReaderCall
     elsif [inReaderName string] == "isNull" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_bool new] ;
-    elsif [inReaderName string] == "key" then
+    elsif [inReaderName string] == "lkey" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_lstring new] ;
+    elsif [inReaderName string] == "key" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outReturnedType := [@typeGalgas_string new] ;
     elsif [inReaderName string] == "identifierRepresentation" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_string new] ;
@@ -5246,9 +5249,9 @@ routine handleReaderCall
       #--- Search for lazy attribute in super classes
         foreach [t mAncestorClassesMap] while not found do
           @AC_semanticsEntity entite ;
-          [ioEntitiesMap searchKey !key ?entite] ;
-          @AC_galgasType type := [(cast entite if >= @typeEntiteType else error key) aDefType] ;
-          @typeGalgasClassType classType := (cast type if >= @typeGalgasClassType else error key) ;
+          [ioEntitiesMap searchKey !lkey ?entite] ;
+          @AC_galgasType type := [(cast entite if >= @typeEntiteType else error lkey) aDefType] ;
+          @typeGalgasClassType classType := (cast type if >= @typeGalgasClassType else error lkey) ;
           foreach [classType mLazyAttributeList] while not found do
             foreach mComputedAttributeTypeAndNameList while not found do
               outReturnedType := mAttributType ;
@@ -5269,7 +5272,7 @@ routine handleReaderCall
             end if ;
           end if ;
           foreach [t mAncestorClassesMap] while outCategoryReaderClassBaseName == "" do
-            @lstring superKey [new ![key string] . ":" . [inReaderName string] ![inReaderName location]] ;
+            @lstring superKey [new ![lkey string] . ":" . [inReaderName string] ![inReaderName location]] ;
             if [inCategoryReaderMap hasKey ![superKey string]] then
               @categoryMethodKind categoryMethodKind ;
               [inCategoryReaderMap searchKey !superKey ?categoryMethodKind ?signature ?outReturnedType] ;
@@ -5393,14 +5396,14 @@ routine importSemanticsComponent
     end foreach ;
   #--- Add imported types
     foreach modelMap do
-      if not [ioModelMap hasKey ![key string]] then
-        [!?ioModelMap insertKey !key !mType] ;
+      if not [ioModelMap hasKey ![lkey string]] then
+        [!?ioModelMap insertKey !lkey !mType] ;
       end if ;
     end foreach ;
   #--- Add actions
     foreach actionMap do
-      if not [ioActionMap hasKey ![key string]] then
-        [!?ioActionMap insertKey !key !mSignature !mIsExtern] ;
+      if not [ioActionMap hasKey ![lkey string]] then
+        [!?ioActionMap insertKey !lkey !mSignature !mIsExtern] ;
       end if ;
     end foreach ;
   #--- Flag component as imported

@@ -26,7 +26,7 @@
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
     if mIsExtern then
-      %\nvoid scanner_routine_%![key string]% (C_Lexique & inLexique%
+      %\nvoid scanner_routine_%![lkey string]% (C_Lexique & inLexique%
       foreach mLexicalRoutineFormalArgumentList do
         %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
                              ![mLexicalFormalArgumentType cppTypeName]
@@ -48,7 +48,7 @@
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
     if mIsExtern then
-      %\n%![mReturnedLexicalType cppTypeName]% scanner_function_%![key string]% (C_Lexique & inLexique%
+      %\n%![mReturnedLexicalType cppTypeName]% scanner_function_%![lkey string]% (C_Lexique & inLexique%
       foreach mLexicalTypeList do
         %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
       end foreach
@@ -65,7 +65,7 @@
 class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : %![mLexicalType cppTypeName]% mLexicalAttribute_%![key identifierRepresentation]% ;\n%
+    %  public : %![mLexicalType cppTypeName]% mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
   end foreach
 %
   public : cTokenFor_%!LEXIQUE_IDENTIFIER% (void) ;

@@ -674,15 +674,15 @@ rule <galgas_component>
   $;$ ;
 #--- Check that all routines have been implemented
   foreach tableNomRoutinesDeclarees do
-    if not [tableRoutinesAimplementer hasKey ![key string]] then
-      error key : "the routine '" . [key string] .
+    if not [tableRoutinesAimplementer hasKey ![lkey string]] then
+      error lkey : "the routine '" . lkey .
                          "' is not implemented in the component" ;
     end if ;
   end foreach ;
 #--- Check that all forward types have been implemented
   foreach tableEnAvant do
-    if not [componentEntitiesMap hasKey ![key string]] then
-      error key : "the '@" . [key string] .
+    if not [componentEntitiesMap hasKey ![lkey string]] then
+      error lkey : "the '@" . lkey .
                          "' forward type is not implemented in the component" ;
     end if ;
   end foreach ;
@@ -963,7 +963,7 @@ rule <import_headers_semantics_and_grammars>
           @AC_galgasType type := [(cast e if >= @typeEntiteType else error mGalgasTypeNameForGrammarAnalysis) aDefType] ;
           formalParametersList += !type !mFormalArgumentPassingModeForGrammarAnalysis ;
         end foreach ;
-        [!?grammarAltMap insertKey !key !formalParametersList] ;
+        [!?grammarAltMap insertKey !lkey !formalParametersList] ;
       end foreach ;
       @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap !lexiqueClassName] ;
       [!?ioComponentSemanticsEntitiesMap insertKey !grammarComponentName !e] ;
@@ -973,9 +973,9 @@ rule <import_headers_semantics_and_grammars>
       buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
       outInclusionsForImplementationFile += ![fileNameWithPath string] ;
       foreach grammarComponentsMap do
-        if not [ioGrammarComponentsMap hasKey ![key string]] then
+        if not [ioGrammarComponentsMap hasKey ![lkey string]] then
           [!?ioGrammarComponentsMap insertKey
-            !key
+            !lkey
             !mNonterminalSymbolParametersMap
             !mLexiqueName
             !mOptionsMap
@@ -1003,15 +1003,15 @@ rule <import_headers_semantics_and_grammars>
         @M_optionComponents importedOptionsComponentsMap ;
         [ioSemanticsComponentsMap searchKey !componentName ?5* ?importedOptionsComponentsMap ?importedEntities] ;
         foreach importedEntities do
-          if not [ioComponentSemanticsEntitiesMap hasKey ![key string]] then
-            [!?ioComponentSemanticsEntitiesMap insertKey !key !aDefEntite] ;
+          if not [ioComponentSemanticsEntitiesMap hasKey ![lkey string]] then
+            [!?ioComponentSemanticsEntitiesMap insertKey !lkey !aDefEntite] ;
           end if ;
         end foreach ;
 #        message "'IMPORTING '" . sourceFile . "' DONE\n" ;
       #--- Check that every used option component is already declared
         foreach importedOptionsComponentsMap do
-          if not [ioOptionsComponentsMapForUse hasKey ![key string]] then
-            error here: "the '" . [key string] . "' option component must have been imported" ;
+          if not [ioOptionsComponentsMapForUse hasKey ![lkey string]] then
+            error here: "the '" . lkey . "' option component must have been imported" ;
           end if ;
         end foreach ;
       end if ;
@@ -1081,8 +1081,8 @@ label importSemantics
       @M_semanticsEntitiesForUse importedEntities ;
       [ioSemanticsComponentsMap searchKey !componentName ?5* ?* ?importedEntities] ;
       foreach importedEntities do
-        if not [ioComponentSemanticsEntitiesMap hasKey ![key string]] then
-          [!?ioComponentSemanticsEntitiesMap insertKey !key !aDefEntite] ;
+        if not [ioComponentSemanticsEntitiesMap hasKey ![lkey string]] then
+          [!?ioComponentSemanticsEntitiesMap insertKey !lkey !aDefEntite] ;
         end if ;
       end foreach ;
     #--- Import semantics component
@@ -1880,8 +1880,8 @@ rule <once_reader>
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
   foreach tableAttributsHerites do
-    @typeCplusPlusName nomCpp := [@typeDirectName new ![key location] ![key string]] ;
-    [!?methodLocalVariablesMap insertUsedConstInArgument !key !mAttributType !nomCpp] ;
+    @typeCplusPlusName nomCpp := [@typeDirectName new ![lkey location] ![lkey string]] ;
+    [!?methodLocalVariablesMap insertUsedConstInArgument !lkey !mAttributType !nomCpp] ;
   end foreach ;
 #--- Header
   $once$ ;
@@ -2125,8 +2125,8 @@ rule <class_declaration>
     end if ;
   #--- Verify that all inherited messages are defined
     foreach inheritedMessageMap do
-      if not [tableMessagesClasseConcrete hasKey ![key string]] then
-        error here : "the message '" . [key string] . "' is not defined" ;
+      if not [tableMessagesClasseConcrete hasKey ![lkey string]] then
+        error here : "the message '" . lkey . "' is not defined" ;
       end if ;
   end foreach ;
   #--- Inserer dans la map des classes utilisables
@@ -2353,8 +2353,8 @@ label importSemantics
     end repeat ;
   #--- Verify that all inherited messages are defined
     foreach inheritedMessageMap do
-      if not [tableMessagesClasseConcrete hasKey ![key string]] then
-        error here : "the message '" .  [key string] . "' is not defined" ;
+      if not [tableMessagesClasseConcrete hasKey ![lkey string]] then
+        error here : "the message '" .  lkey . "' is not defined" ;
       end if ;
   end foreach ;
   #--- Inserer dans la map des classes utilisables
@@ -2441,8 +2441,8 @@ rule <parse_method>
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
   foreach tableAttributsHerites do
-    @typeCplusPlusName nomCpp := [@typeDirectName new ![key location] ![key string]] ;
-    [!?methodLocalVariablesMap insertUsedConstInArgument !key !mAttributType !nomCpp] ;
+    @typeCplusPlusName nomCpp := [@typeDirectName new ![lkey location] ![lkey string]] ;
+    [!?methodLocalVariablesMap insertUsedConstInArgument !lkey !mAttributType !nomCpp] ;
   end foreach ;
 #--- Insert the predefined "self" variable
   @AC_galgasType typeDefinition := [@typeGalgasClassType new 
@@ -4955,10 +4955,9 @@ rule <semantic_instruction>
   @typeInstructionList elseBranchInstructionList [emptyList] ;
   block ioVariablesMap.testBloc () :
     block ioVariablesMap.testPart () :
-    #--- Add map entry key as constant
+    #--- Add map entry lkey as constant
       [!?ioVariablesMap insertUsedConstInArgument
-
-        ![@lstring new !prefixString . "key" !instructionLocation]
+        ![@lstring new !prefixString . "lkey" !instructionLocation]
         ![@typeGalgas_lstring new]
         ![@typeKeyName new !instructionLocation !false]
       ] ;
@@ -6172,7 +6171,7 @@ rule <semantics_declaration>
   #--- Modifiers "Set'Value'ForKey"
     foreach tableAttributs do
       if mHasSetter then
-        @string modifierName := "set" . [[key string] stringByCapitalizingFirstCharacter] . "ForKey" ;
+        @string modifierName := "set" . [[lkey string] stringByCapitalizingFirstCharacter] . "ForKey" ;
         @L_EXsignature modifierSignature [emptyList] ;
         modifierSignature += !mAttributType !inPassingMode ; 
         modifierSignature += ![@typeGalgas_string new] !inPassingMode ; 
@@ -6589,7 +6588,7 @@ label importSemantics
   #--- Modifiers "Set'Value'ForKey"
     foreach tableAttributs do
       if mHasSetter then
-        @string modifierName := "set" . [[key string] stringByCapitalizingFirstCharacter] . "ForKey" ;
+        @string modifierName := "set" . [[lkey string] stringByCapitalizingFirstCharacter] . "ForKey" ;
         @L_EXsignature modifierSignature [emptyList] ;
         modifierSignature += !mAttributType !inPassingMode ; 
         modifierSignature += ![@typeGalgas_string new] !inPassingMode ; 
@@ -6688,9 +6687,9 @@ rule <semantics_declaration_beginning_by_abstract>
   @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
 #--- Check no super class defines this method
   foreach ancestorClassesMap do
-    @string keyClassMethod := [key string]  . ":" . [methodName string] ;
+    @string keyClassMethod := [lkey string]  . ":" . [methodName string] ;
     if [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] then
-      error methodName: "this method is already defined for super class @" . key
+      error methodName: "this method is already defined for super class @" . lkey
       . ": you should use the 'override' key word" ;
     end if ;
   end foreach ;
@@ -6792,8 +6791,8 @@ rule <semantics_declaration>
     baseClassName := "" ;
     @bool found := false ;
     foreach ancestorClassesMap while not found do
-      @string keyClassMethod := [key string]  . ":" . [methodName string] ;
-      baseClassName := [key string] ;
+      @string keyClassMethod := [lkey string]  . ":" . [methodName string] ;
+      baseClassName := [lkey string] ;
       found := [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] ;
       if found then
         @categoryMethodKind localCategoryMethodKind ;
@@ -6813,9 +6812,9 @@ rule <semantics_declaration>
     end if ;
   else #--- Check no super class defines this method
     foreach ancestorClassesMap do
-      @string keyClassMethod := [key string]  . ":" . [methodName string] ;
+      @string keyClassMethod := [lkey string]  . ":" . [methodName string] ;
       if [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] then
-        error methodName: "this method is already defined for super class @" . key
+        error methodName: "this method is already defined for super class @" . lkey
         . ": you should use the 'override' key word" ;
      end if ;
     end foreach ;
@@ -6952,9 +6951,9 @@ rule <semantics_declaration_beginning_by_abstract>
   @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
 #--- Check no super class defines this method
   foreach ancestorClassesMap do
-    @string keyClassMethod := [key string]  . ":" . [readerName string] ;
+    @string keyClassMethod := [lkey string]  . ":" . [readerName string] ;
     if [[ioSemanticContext mCategoryReaderMap] hasKey !keyClassMethod] then
-      error readerName: "this reader is already defined for super class @" . key
+      error readerName: "this reader is already defined for super class @" . lkey
       . ": you should use the 'override' key word" ;
     end if ;
   end foreach ;
@@ -7076,8 +7075,8 @@ rule <semantics_declaration>
     baseClassName := "" ;
     @bool found := false ;
     foreach ancestorClassesMap while not found do
-      @string keyClassMethod := [key string]  . ":" . [readerName string] ;
-      baseClassName := [key string] ;
+      @string keyClassMethod := [lkey string]  . ":" . [readerName string] ;
+      baseClassName := [lkey string] ;
       found := [[ioSemanticContext mCategoryReaderMap] hasKey !keyClassMethod] ;
       if found then
         @categoryMethodKind localCategoryMethodKind ;
@@ -7109,9 +7108,9 @@ rule <semantics_declaration>
     end if ;
   else #--- Check no super class defines this method
     foreach ancestorClassesMap do
-      @string keyClassMethod := [key string]  . ":" . [readerName string] ;
+      @string keyClassMethod := [lkey string]  . ":" . [readerName string] ;
       if [[ioSemanticContext mCategoryReaderMap] hasKey !keyClassMethod] then
-        error readerName: "this reader is already defined for super class @" . key
+        error readerName: "this reader is already defined for super class @" . lkey
         . ": you should use the 'override' key word" ;
      end if ;
     end foreach ;
@@ -7251,9 +7250,9 @@ rule <semantics_declaration_beginning_by_abstract>
   @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
 #--- Check no super class defines this method
   foreach ancestorClassesMap do
-    @string keyClassMethod := [key string]  . ":" . [templateName string] ;
+    @string keyClassMethod := [lkey string]  . ":" . [templateName string] ;
     if [[ioSemanticContext mCategoryTemplateMap] hasKey !keyClassMethod] then
-      error templateName: "this template is already defined for super class @" . key
+      error templateName: "this template is already defined for super class @" . lkey
       . ": you should use the 'override' key word" ;
     end if ;
   end foreach ;
@@ -7359,8 +7358,8 @@ rule <semantics_declaration>
     baseClassName := "" ;
     @bool found := false ;
     foreach ancestorClassesMap while not found do
-      @string keyClassMethod := [key string]  . ":" . [templateName string] ;
-      baseClassName := [key string] ;
+      @string keyClassMethod := [lkey string]  . ":" . [templateName string] ;
+      baseClassName := [lkey string] ;
       found := [[ioSemanticContext mCategoryTemplateMap] hasKey !keyClassMethod] ;
       if found then
         @categoryMethodKind localCategoryMethodKind ;
@@ -7384,9 +7383,9 @@ rule <semantics_declaration>
     end if ;
   else #--- Check no super class defines this method
     foreach ancestorClassesMap do
-      @string keyClassMethod := [key string]  . ":" . [templateName string] ;
+      @string keyClassMethod := [lkey string]  . ":" . [templateName string] ;
       if [[ioSemanticContext mCategoryTemplateMap] hasKey !keyClassMethod] then
-        error templateName: "this template is already defined for super class @" . key
+        error templateName: "this template is already defined for super class @" . lkey
         . ": you should use the 'override' key word" ;
      end if ;
     end foreach ;
@@ -8900,7 +8899,7 @@ rule <semantics_declaration>
     end repeat ;
     @string s := "" ;
     foreach constantMap
-    do s .= [key string] ;
+    do s .= [lkey string] ;
     between s .= ", " ;
     end foreach ;
     warning here : "Old style declaration: now write '... {" . s . "} ..." ;
@@ -8932,7 +8931,7 @@ rule <semantics_declaration>
   #--- Build message string list
     @lstringlist messageStringList [emptyList] ;
     foreach constantMap do
-      @lstring name := [@lstring new ![key string] !here] ;
+      @lstring name := [@lstring new ![lkey string] !here] ;
       @lstring cstString ;
       [cstMessageStringMap searchKey !name ?cstString] ;
       messageStringList += !cstString ;

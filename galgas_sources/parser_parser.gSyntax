@@ -369,8 +369,8 @@ rule <galgas_component>
   end repeat ;
 #--- Check that all routines have been implemented
   foreach tableNomRoutinesDeclarees do
-    if not [tableRoutinesAimplementer hasKey ![key string]] then
-      error key : "the routine '" . [key string] .
+    if not [tableRoutinesAimplementer hasKey ![lkey string]] then
+      error lkey : "the routine '" . [lkey string] .
                          "' is not implemented within the component" ;
     end if ;
   end foreach ;
@@ -1000,8 +1000,8 @@ rule <syntax_declaration>
   checkLabelSignatures !?altProductionsMap ;
 #--- Check that all label rules are implemented
   foreach nonterminalSymbolAltMap do
-    if [key string] != "parse" & not [altProductionsMap hasKey ![key string]] then
-      error here : "the '" . [key string] . "' label is not implemented within the rule" ;
+    if [lkey string] != "parse" & not [altProductionsMap hasKey ![lkey string]] then
+      error here : "the '" . lkey . "' label is not implemented within the rule" ;
     end if ;
   end foreach ;
 #--- Generate production

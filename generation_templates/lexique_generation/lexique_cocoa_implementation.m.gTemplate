@@ -20,7 +20,7 @@
   self = [super init] ;
   if (self) {\n%
   foreach LEXICAL_ATTRIBUTE_MAP do
-    %    mLexicalAttribute_%![key string]% = % ![mLexicalType cocoaInitializationCode] % ;\n%
+    %    mLexicalAttribute_%![lkey string]% = % ![mLexicalType cocoaInitializationCode] % ;\n%
   end foreach
 %  }
   return self ;
@@ -31,7 +31,7 @@
 - (void) dealloc {
 %  foreach LEXICAL_ATTRIBUTE_MAP do
      if mLexicalType == [@lexicalTypeEnum lexicalType_string] then
-   %  [mLexicalAttribute_%![key string]% release] ;\n%
+   %  [mLexicalAttribute_%![lkey string]% release] ;\n%
      end if
   end foreach
 %  [super dealloc] ;
@@ -90,17 +90,17 @@
     if tokenList_mShouldBeGenerated then
       %//---------------------------------------------------------------------------*\n%
       %//                                                                           *\n%
-      %//             Key words table '%![tokenList_key string]%'                            *\n%
+      %//             Key words table '%![tokenList_lkey string]%'                            *\n%
       %//                                                                           *\n%
       %//---------------------------------------------------------------------------*\n\n%
-      %static const C_cocoa_lexique_table_entry ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_key string]% [%![[tokenList_mExplicitTokenListMap count] string]%] = {\n%
+      %static const C_cocoa_lexique_table_entry ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]% [%![[tokenList_mExplicitTokenListMap count] string]%] = {\n%
         foreach tokenList_mTokenSortedList
         do %  {@%![mName utf8Representation]%, %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
         between %,\n%
         end foreach
       %\n} ;\n\n%
-      %static SInt32 search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_key string]% (NSString * inSearchedString) {\n%
-      %  return searchStringInTable (inSearchedString, ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_key string]%, %![[tokenList_mExplicitTokenListMap count] string]%) ;\n%
+      %static SInt32 search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]% (NSString * inSearchedString) {\n%
+      %  return searchStringInTable (inSearchedString, ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]%, %![[tokenList_mExplicitTokenListMap count] string]%) ;\n%
       %}\n\n%
     end if
   end foreach
@@ -137,7 +137,7 @@
     }
     if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
 %  foreach LEXICAL_ATTRIBUTE_MAP do
-    %      %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%![key string] ![mLexicalType cocoaReset] % ;\n%
+    %      %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%![lkey string] ![mLexicalType cocoaReset] % ;\n%
   end foreach
 %      mTokenFirstLocation = mCurrentLocation ;
 %
@@ -161,7 +161,7 @@
       [self advance] ;
     }%else
   foreach LEXICAL_ATTRIBUTE_MAP do
-    %    %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%![key string] ![mLexicalType cocoaReset] % ;\n%
+    %    %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%![lkey string] ![mLexicalType cocoaReset] % ;\n%
   end foreach
 %    mTokenFirstLocation = mCurrentLocation ;
 %

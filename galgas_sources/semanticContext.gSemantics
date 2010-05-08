@@ -1049,7 +1049,7 @@ override method @classDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   foreach inheritedInstanceMethodMap do
     [!?instanceMethodMap insertKey
-      !key
+      !lkey
       !mParameterList
       !mDeclarationLocation
       !mHasCompilerArgument

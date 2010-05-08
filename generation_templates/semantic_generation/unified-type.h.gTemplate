@@ -89,7 +89,7 @@ end if
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%
   foreach CONSTRUCTOR_MAP do
-    %  public : static GALGAS_%![mReturnedType identifierRepresentation]% * constructor_%![key identifierRepresentation]% (%?^
+    %  public : static GALGAS_%![mReturnedType identifierRepresentation]% * constructor_%![lkey identifierRepresentation]% (%?^
     foreach mArgumentTypeList
       do index IDX %const GALGAS_% ![mType identifierRepresentation] % * inOperand%![IDX string]
       between %,\n%!^
@@ -122,7 +122,7 @@ end if
 //--------------------------------- Modifiers
 %
 foreach MODIFIER_MAP do
-  %  protected : void modifier_%![key identifierRepresentation]% (%?^
+  %  protected : void modifier_%![lkey identifierRepresentation]% (%?^
   foreach mParameterList do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
@@ -157,7 +157,7 @@ end foreach
 %
 foreach INSTANCE_METHOD_MAP do
   if mQualifier != [@readerQualifier isInherited] then
-    %  protected : virtual void method_%![key identifierRepresentation]% (%?^
+    %  protected : virtual void method_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
@@ -196,7 +196,7 @@ end foreach
 //--------------------------------- Instance Method Invocation\n%
 foreach INSTANCE_METHOD_MAP do
   if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isBasic]) then
-    %  friend void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
+    %  friend void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
     foreach mParameterList do index IDX
       %,\n%!^
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -223,7 +223,7 @@ end foreach
 //--------------------------------- Class Methods
 %
 foreach CLASS_METHOD_MAP do
-  %  public : static void class_method_%![key identifierRepresentation]% (%?^
+  %  public : static void class_method_%![lkey identifierRepresentation]% (%?^
   foreach mParameterList do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
@@ -258,7 +258,7 @@ end foreach
 %
 foreach READER_MAP do
   if (mQualifier != [@readerQualifier isInherited]) & (mImplicitConversionReader == "") then
-    %  protected : virtual GALGAS_% ![mReturnedType identifierRepresentation] % * reader_% ![key identifierRepresentation] % (%?^
+    %  protected : virtual GALGAS_% ![mReturnedType identifierRepresentation] % * reader_% ![lkey identifierRepresentation] % (%?^
     foreach mArgumentTypeList
       do index IDX %const GALGAS_%![mType identifierRepresentation]% * inOperand% ![IDX string]
       between %,\n% !^
@@ -451,7 +451,7 @@ end foreach
 
 %//--------------------------------- Modifier invocation\n%
 foreach MODIFIER_MAP do
-  %  friend void modifierCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
+  %  friend void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
   foreach mParameterList do index IDX
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -475,7 +475,7 @@ end foreach
 %//--------------------------------- Reader invocation declaration\n%
 foreach READER_MAP do
   if mQualifier == [@readerQualifier isBasic] then
-    %  friend GALGAS_% ![mReturnedType identifierRepresentation] % * readerCall_% ![key identifierRepresentation] % (%?^
+    %  friend GALGAS_% ![mReturnedType identifierRepresentation] % * readerCall_% ![lkey identifierRepresentation] % (%?^
     %const GALGAS_%!TYPE_IDENTIFIER% * inObject%
     foreach mArgumentTypeList
       do index IDX %,\n% !^ %const GALGAS_%![mType identifierRepresentation]% * inOperand% ![IDX string]

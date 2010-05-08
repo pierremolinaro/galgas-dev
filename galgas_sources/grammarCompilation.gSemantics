@@ -108,9 +108,9 @@ routine checkLabelMap
   end if ;
 #---
   foreach inNonterminalSymbolLabelMapForGrammarAnalysis do
-    if not [labelStringSet hasKey ![key string]] then
+    if not [labelStringSet hasKey ![lkey string]] then
       error inNonTerminalLocation :
-        "this non terminal does not declare the '" . key . "' label, but declaration at "
+        "this non terminal does not declare the '" . lkey . "' label, but declaration at "
           . [inOriginalNonTerminalLocation locationString]
           . " does" ;
     end if ;
