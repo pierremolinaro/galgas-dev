@@ -321,22 +321,22 @@ rule <galgas_component>
       ;
     #--- Build nonterminal symbol map for grammar
       foreach importedNonterminalSymbolsMap prefixedby first_ do
-        if [nonterminalSymbolsMapForGrammar hasKey ![first_key string]] then
+        if [nonterminalSymbolsMapForGrammar hasKey ![first_lkey string]] then
           @nonterminalSymbolLabelMapForGrammarAnalysis altSignatureMap ;
-          [nonterminalSymbolsMapForGrammar searchKey !first_key ?* ?altSignatureMap] ;
+          [nonterminalSymbolsMapForGrammar searchKey !first_lkey ?* ?altSignatureMap] ;
           foreach altSignatureMap do
             @nonterminalSymbolLabelMapForGrammarAnalysis temp := first_mNonterminalSymbolParametersMap ;
             @signatureForGrammarAnalysis importedAltSignature ;
-            [temp searchKey !key ?importedAltSignature] ;
-            checkSignature_ForGrammarComponent !importedAltSignature !mFormalParametersList ![key location] ![key location] ;
+            [temp searchKey !lkey ?importedAltSignature] ;
+            checkSignature_ForGrammarComponent !importedAltSignature !mFormalParametersList ![lkey location] ![lkey location] ;
           end foreach ;
           foreach first_mNonterminalSymbolParametersMap prefixedby others_ do
-            if [others_key string] != "parse" then
-              [altSignatureMap searchKey !others_key ?*] ;
+            if [others_lkey string] != "parse" then
+              [altSignatureMap searchKey !others_lkey ?*] ;
             end if ;
           end foreach ;
         else
-          [!?nonterminalSymbolsMapForGrammar insertKey !first_key ![nonterminalSymbolsMapForGrammar count] !first_mNonterminalSymbolParametersMap] ;
+          [!?nonterminalSymbolsMapForGrammar insertKey !first_lkey ![nonterminalSymbolsMapForGrammar count] !first_mNonterminalSymbolParametersMap] ;
         end if ;
       end foreach ;
     end select ;
@@ -405,11 +405,11 @@ rule <galgas_component>
 #--- Check signatures (added 8/13/2004)
   foreach startSymbolAltMap do
     @signatureForGrammarAnalysis altMap ;
-    [grammarAltMap searchKey !key ?altMap] ;
-    checkSignature_ForGrammarComponent !mFormalParametersList !altMap !here ![key location] ;
+    [grammarAltMap searchKey !lkey ?altMap] ;
+    checkSignature_ForGrammarComponent !mFormalParametersList !altMap !here ![lkey location] ;
   end foreach ;
   foreach grammarAltMap do
-    [startSymbolAltMap searchKey !key ?*] ;
+    [startSymbolAltMap searchKey !lkey ?*] ;
   end foreach ;
 #--- Unused symbols declaration
   @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar [emptyMap] ;

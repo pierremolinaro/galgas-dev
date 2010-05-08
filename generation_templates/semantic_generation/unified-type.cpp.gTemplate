@@ -43,7 +43,7 @@ end if
 
 foreach MODIFIER_MAP do
   %//---------------------------------------------------------------------------*\n\n%
-  %void modifierCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
+  %void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
   foreach mParameterList do index IDX
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -65,7 +65,7 @@ foreach MODIFIER_MAP do
   %) {
   if (ioResult != NULL) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-    ioResult->modifier_%![key identifierRepresentation]% (%
+    ioResult->modifier_%![lkey identifierRepresentation]% (%
   foreach mParameterList do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %inArgument% ![IDX string]
@@ -99,7 +99,7 @@ end foreach
 foreach INSTANCE_METHOD_MAP do
   if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isBasic]) then
     %//---------------------------------------------------------------------------*\n\n%
-    %void instanceMethodCall_%![key identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
+    %void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * inObject%
     foreach mParameterList do index IDX
       %,\n%!^
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -121,7 +121,7 @@ foreach INSTANCE_METHOD_MAP do
     %) {\n%
     %  if (inObject != NULL) {\n%
     %    macroRetainObjectThere (inObject) ;\n%
-    %    inObject->method_%![key identifierRepresentation]% (%
+    %    inObject->method_%![lkey identifierRepresentation]% (%
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %inArgument% ![IDX string]
@@ -157,7 +157,7 @@ end foreach
 foreach READER_MAP do
   if mQualifier == [@readerQualifier isBasic] then
     %//---------------------------------------------------------------------------*\n\n%
-    %GALGAS_% ![mReturnedType identifierRepresentation] % * readerCall_% ![key identifierRepresentation] % (%?COL
+    %GALGAS_% ![mReturnedType identifierRepresentation] % * readerCall_% ![lkey identifierRepresentation] % (%?COL
     %const GALGAS_%!TYPE_IDENTIFIER% * inObject%
     foreach mArgumentTypeList
       do index IDX %,\n% !COL %const GALGAS_%![mType identifierRepresentation]% * inOperand_% ![IDX string]
@@ -171,7 +171,7 @@ foreach READER_MAP do
     %  GALGAS_%![mReturnedType identifierRepresentation]% * result = NULL ;\n%
     %  if (inObject != NULL) {\n%
     if mImplicitConversionReader == "" then
-      %    result = inObject->reader_%![key identifierRepresentation]% (%
+      %    result = inObject->reader_%![lkey identifierRepresentation]% (%
       foreach mArgumentTypeList
         do index IDX %inOperand_% ![IDX string]
         between %, %
@@ -190,7 +190,7 @@ foreach READER_MAP do
         end if
       end if
     else
-      %    result = readerCall_%![key identifierRepresentation]% (inObject->reader_%![mImplicitConversionReader identifierRepresentation]% (THERE)%
+      %    result = readerCall_%![lkey identifierRepresentation]% (inObject->reader_%![mImplicitConversionReader identifierRepresentation]% (THERE)%
       foreach mArgumentTypeList
         do index IDX %, inOperand_% ![IDX string]
       end foreach

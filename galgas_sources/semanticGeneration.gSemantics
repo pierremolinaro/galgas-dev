@@ -164,7 +164,7 @@ end reader ;
 
 override reader @semanticTypeForGeneration appendDeclaration -> @string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.unifiedTypeHeader
-    ![[mTypeIndex key] string]
+    ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mIsConcrete]
     ![mTypeIndex mSuperType]
@@ -190,7 +190,7 @@ end reader ;
 
 override reader @genericTypeForGeneration appendDeclaration -> @string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.genericTypeHeader
-    ![[mTypeIndex key] string]
+    ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
   ] ;
 end reader ;
@@ -210,7 +210,7 @@ end reader ;
 
 override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.unifiedTypeImplementation
-    ![[mTypeIndex key] string]
+    ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mIsConcrete]
     ![mTypeIndex mSuperType]
@@ -234,7 +234,7 @@ end reader ;
 
 override reader @genericTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.genericTypeImplementation
-    ![[mTypeIndex key] string]
+    ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mSuperType]
   ] ;
@@ -309,7 +309,7 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
 
 override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
-    ![[mTypeIndex key] string]
+    ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
   ] ;
@@ -319,7 +319,7 @@ override reader @structTypeForGeneration appendSpecificImplementation ->@string 
 
 override reader @enumTypeForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
-    ![[mTypeIndex key] string]
+    ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mConstantList
     !mEnumMessageList
@@ -330,7 +330,7 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
 
 override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
-    ![[mTypeIndex key] string]
+    ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mAssociatedMapTypeProxy identifierRepresentation]
     !mAssociatedMapTypedAttributeList
@@ -342,7 +342,7 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@strin
 
 override reader @classTypeForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
-    ![[mTypeIndex key] string]
+    ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !if [mSuperClass isNull] then "class" else [mSuperClass identifierRepresentation] end
     !mTypedAttributeList

@@ -46,10 +46,10 @@ routine checkMethodSignatures
         . [ref_mFormalArgumentPassingMode formalArgumentMessage] ;
         error inReferenceLocation:"overriden method is declared here" ;
       end if ;
-      if [[mFormalArgumentType key] string] != [ref_mFormalArgumentType keyString] then
+      if [mFormalArgumentType key] != [ref_mFormalArgumentType key] then
         error mFormalArgumentName : "the '" . mFormalArgumentName . "' formal parameter has the '@"
         . [mFormalArgumentType key] . "' type, but overriden method declares with the '@" 
-        . [ref_mFormalArgumentType keyString] . "' type" ;
+        . [ref_mFormalArgumentType key] . "' type" ;
         error inReferenceLocation:"overriden method is declared here" ;
       end if ;
     end foreach ;
@@ -579,8 +579,8 @@ override method @classDeclarationAST performSemanticAnalysis
   if not mIsAbstract then
     foreach inheritedInstanceMethodMap do
       if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isOverridingAbstract]) then
-        if not [definedMethodSet hasKey ![key string]] then
-          error key : "the '@" . mClassTypeName . "' class is declared concrete, but the '" . key . "' method declared in a super class is not implemented" ;
+        if not [definedMethodSet hasKey ![lkey string]] then
+          error lkey : "the '@" . mClassTypeName . "' class is declared concrete, but the '" . lkey . "' method declared in a super class is not implemented" ;
         end if ;    
       end if ;
     end foreach ;

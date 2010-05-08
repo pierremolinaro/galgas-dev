@@ -473,7 +473,7 @@ routine printPredefinedLexicalActions :
   @string s := "" ;
   s .= "**************** Prefined lexical routines  ****************\n" ;
   foreach lexicalRoutineMap do
-    s .= key ;
+    s .= lkey ;
     foreach mLexicalRoutineFormalArgumentList do
       s .= " " . [mLexicalFormalArgumentMode lexicalFormalModeName] . "@" . [mLexicalFormalArgumentType lexicalTypeBaseName] . " " . mArgumentNameForComment ;
     end foreach ;
@@ -484,7 +484,7 @@ routine printPredefinedLexicalActions :
     end foreach ;
     s .= " ;\n" ;
     if mReplacementRoutineName != "" then
-      s .= "Note: the '" . key . "' routine is obsolete: use '" . mReplacementRoutineName . "' routine.\n" ;
+      s .= "Note: the '" . lkey . "' routine is obsolete: use '" . mReplacementRoutineName . "' routine.\n" ;
     end if ;
     s .= "\n" ;
   end foreach ;
@@ -494,13 +494,13 @@ routine printPredefinedLexicalActions :
 #--------------------------------------- Display lexical functions
   s .= "**************** Prefined lexical functions ****************\n" ;
   foreach lexicalFunctionMap do
-    s .= key ;
+    s .= lkey ;
     foreach mLexicalTypeList do
       s .= " ?@" . [mLexicalType lexicalTypeBaseName]. " " . mArgumentNameForComment ;
     end foreach ;
     s .= " -> @" . [mReturnedLexicalType lexicalTypeBaseName] . " ;\n" ;
     if mReplacementFunctionName != "" then
-      s .= "Note: the '" . key . "' function is obsolete: use '" . mReplacementFunctionName . "' function.\n" ;
+      s .= "Note: the '" . lkey . "' function is obsolete: use '" . mReplacementFunctionName . "' function.\n" ;
     end if ;
     s .= "\n" ;
   end foreach ;

@@ -18,8 +18,8 @@
 //---------------------------------------------------------------------------*
 
 %foreach BOOL_OPTION_MAP do
-  %C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![key identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![key utf8Representation]%,\n%
+  %C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[[mOptionChar char] uint] string]%,\n%
   %                                         %![mOptionString utf8Representation]%,\n%
   %                                         %![mComment utf8Representation]%) ;\n\n%
@@ -31,8 +31,8 @@ end foreach
 //---------------------------------------------------------------------------*
 
 %foreach UINT_OPTION_MAP do
-  %C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![key identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![key utf8Representation]%,\n%
+  %C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[[mOptionChar char] uint] string]%,\n%
   %                                         %![mOptionString utf8Representation]%,\n%
   %                                         %![mComment utf8Representation]%,\n%
@@ -45,8 +45,8 @@ end foreach
 //---------------------------------------------------------------------------*
 
 %foreach STRING_OPTION_MAP do
-  %C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![key identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![key utf8Representation]%,\n%
+  %C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[[mOptionChar char] uint] string]%,\n%
   %                                         %![mOptionString utf8Representation]%,\n%
   %                                         %![mComment utf8Representation]%,\n%

@@ -9,13 +9,13 @@ end foreach
 %
 foreach NON_TERMINAL_MAP do
   foreach mNonterminalSymbolParametersMap prefixedBy label_ do
-    %  public : virtual void nt_%![key identifierRepresentation]%_%![label_key identifierRepresentation]% (%?COLUMN1 %C_Lexique_%!LEXIQUE_CLASS% &%
+    %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?COLUMN1 %C_Lexique_%!LEXIQUE_CLASS% &%
     foreach label_mFormalParametersList do
         %,\n%!COLUMN1 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
     end foreach
     %) ;\n\n%
-    if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [key string] then
-      %  public : static void _performSourceFileParsing_%![label_key identifierRepresentation]% (%?COLUMN2%C_Compiler & inCompiler,\n%
+    if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
+      %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?COLUMN2%C_Compiler & inCompiler,\n%
       !COLUMN2%const C_String & inDependancyExtension,\n%
       !COLUMN2%const C_String & inDependancyPath,\n%
       !COLUMN2%GGS_string * inSentStringPtr,\n%
@@ -24,7 +24,7 @@ foreach NON_TERMINAL_MAP do
         %,\n%!COLUMN2 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
       end foreach
       %\n%!COLUMN2%COMMA_LOCATION_ARGS) ;\n\n%
-      %  public : static void _performSourceStringParsing_%![label_key identifierRepresentation]% (%?COLUMN3%C_Compiler & inCompiler,\n%
+      %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?COLUMN3%C_Compiler & inCompiler,\n%
       !COLUMN3%GGS_string * inSentStringPtr,\n%
       !COLUMN3%const GGS_string inSourceString%
       foreach label_mFormalParametersList do

@@ -33,7 +33,7 @@
 cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
   foreach LEXICAL_ATTRIBUTE_MAP
   before % :\n%
-  do %mLexicalAttribute_%![key identifierRepresentation]% ()%
+  do %mLexicalAttribute_%![lkey identifierRepresentation]% ()%
   between %,\n%
   end foreach
 % {
@@ -75,7 +75,7 @@ C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError C
 //---------------------------------------------------------------------------*
 %
   foreach LEXICAL_MESSAGE_MAP do
-   %\nstatic const utf32 gLexicalMessage_%![key string]% [] = % ![mLexicalMessage utf32Representation]% ;\n%
+   %\nstatic const utf32 gLexicalMessage_%![lkey string]% [] = % ![mLexicalMessage utf32Representation]% ;\n%
   end foreach
 %
 //---------------------------------------------------------------------------*
@@ -120,18 +120,18 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage 
   foreach LEXICAL_TOKEN_LIST_MAP prefixedby tokenList_ do
     %//---------------------------------------------------------------------------*\n%
     %//                                                                           *\n%
-    %//             Key words table '%![tokenList_key string]%'                            *\n%
+    %//             Key words table '%![tokenList_lkey string]%'                            *\n%
     %//                                                                           *\n%
     %//---------------------------------------------------------------------------*\n%
-    %\nstatic const PMSInt32 ktable_size_%![tokenList_key string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
-    %static const C_unicode_lexique_table_entry ktable_for_%![tokenList_key string]% [ktable_size_%![tokenList_key string]%] = {\n%
+    %\nstatic const PMSInt32 ktable_size_%![tokenList_lkey string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
+    %static const C_unicode_lexique_table_entry ktable_for_%![tokenList_lkey string]% [ktable_size_%![tokenList_lkey string]%] = {\n%
       foreach tokenList_mTokenSortedList
       do %  C_unicode_lexique_table_entry (kUnicodeString_%![mName identifierRepresentation]%, %![mLength string]%, C_Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
       between %,\n%
       end foreach
     %\n} ;\n\n%
-    %PMSInt16 C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%![tokenList_key string]% (const C_String & inSearchedString) {\n%
-    %  return searchInList (inSearchedString, ktable_for_%![tokenList_key string]%, ktable_size_%![tokenList_key string]%) ;\n%
+    %PMSInt16 C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%![tokenList_lkey string]% (const C_String & inSearchedString) {\n%
+    %  return searchInList (inSearchedString, ktable_for_%![tokenList_lkey string]%, ktable_size_%![tokenList_lkey string]%) ;\n%
     %}\n\n%
   end foreach
 %
@@ -275,7 +275,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
     }
     if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
 %  foreach LEXICAL_ATTRIBUTE_MAP do
-    %    token.mLexicalAttribute_%![key identifierRepresentation] ![mLexicalType initialization] % ;\n%
+    %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
   end foreach
 %    mTokenFirstLocation = mCurrentLocation ;
     try{
@@ -300,7 +300,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
     }
   %else
   foreach LEXICAL_ATTRIBUTE_MAP do
-    %    token.mLexicalAttribute_%![key identifierRepresentation] ![mLexicalType initialization] % ;\n%
+    %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
   end foreach
 %    mTokenFirstLocation = mCurrentLocation ;
     try{
@@ -342,7 +342,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
   ptr->mTemplateStringBeforeToken = inToken.mTemplateStringBeforeToken ;
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
-    %  ptr->mLexicalAttribute_%![key identifierRepresentation]% = inToken.mLexicalAttribute_%![key identifierRepresentation]% ;\n%
+    %  ptr->mLexicalAttribute_%![lkey identifierRepresentation]% = inToken.mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
   end foreach
 %  enterTokenFromPointer (ptr) ;
 }
@@ -354,9 +354,9 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
     %//---------------------------------------------------------------------------*\n\n%
-    ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![key identifierRepresentation]% (void) const {\n%
+    ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
-    %  return ptr->mLexicalAttribute_%![key identifierRepresentation]% ;\n%
+    %  return ptr->mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
     %}\n\n%
   end foreach
 %//---------------------------------------------------------------------------*
@@ -366,9 +366,9 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
     %//---------------------------------------------------------------------------*\n\n%
-    %void C_Lexique_%!LEXIQUE_IDENTIFIER%::assignFromAttribute_%![key identifierRepresentation]% (GGS_l%![mLexicalType lexicalTypeBaseName]% & outValue) const {\n%
+    %void C_Lexique_%!LEXIQUE_IDENTIFIER%::assignFromAttribute_%![lkey identifierRepresentation]% (GGS_l%![mLexicalType lexicalTypeBaseName]% & outValue) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
-    %  outValue = GGS_l%![mLexicalType lexicalTypeBaseName]% (* this, ptr->mLexicalAttribute_%![key identifierRepresentation]%) ;\n%
+    %  outValue = GGS_l%![mLexicalType lexicalTypeBaseName]% (* this, ptr->mLexicalAttribute_%![lkey identifierRepresentation]%) ;\n%
     %}\n\n%
   end foreach
 %//---------------------------------------------------------------------------*
@@ -378,11 +378,11 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
     %//---------------------------------------------------------------------------*\n\n%
-    %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% * C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![key identifierRepresentation]% (void) const {\n%
+    %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% * C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
     %  macroValidObject (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER%) ;\n%
     %  GALGAS_location * currentLocation = GALGAS_location::constructor_new (ptr->mStartLocation, ptr->mEndLocation, sourceText () COMMA_HERE) ;\n%
-    %  GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% * value = GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (ptr->mLexicalAttribute_%![key identifierRepresentation]% COMMA_HERE) ;\n%
+    %  GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% * value = GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (ptr->mLexicalAttribute_%![lkey identifierRepresentation]% COMMA_HERE) ;\n%
     %  return GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (value, currentLocation COMMA_HERE) ;\n%
     %}\n\n%
   end foreach

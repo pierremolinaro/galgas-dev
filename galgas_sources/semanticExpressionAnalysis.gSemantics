@@ -388,7 +388,7 @@ routine analyzeConstructorInvocation
   else
     @string s := "" ;
     foreach constructorMap do
-      s .= "\n  - " . key ;
+      s .= "\n  - " . lkey ;
       foreach mArgumentTypeList do
         s .= " ?@" . [mType key] ;
       end foreach ;
@@ -468,7 +468,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   else
     @string s := "" ;
     foreach readerMap do
-      s .= "\n  - " . key ;
+      s .= "\n  - " . lkey ;
       foreach mArgumentTypeList do
         s .= " ?@" . [mType key] ;
       end foreach ;
@@ -561,13 +561,13 @@ override method @optionExpressionAST analyzeSemanticExpression
   else
     @string s := "" ;
     foreach boolOptionMap do
-      s .= "\n-  '" . key . "' @bool option;" ;
+      s .= "\n-  '" . lkey . "' @bool option;" ;
     end foreach ;
     foreach uintOptionMap do
-      s .= "\n-  '" . key . "' @uint option;" ;
+      s .= "\n-  '" . lkey . "' @uint option;" ;
     end foreach ;
     foreach stringOptionMap do
-      s .= "\n-  '" . key . "' @string option;" ;
+      s .= "\n-  '" . lkey . "' @string option;" ;
     end foreach ;
     error mOptionEntryName
     : "the '" . mOptionComponentName . "' option component does not define the '" . mOptionEntryName . "' option; available options:" . s
@@ -741,9 +741,9 @@ override method @equalExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
-  if [[leftType key] string] != [[rightType key] string] then
+  if [[leftType lkey] string] != [[rightType lkey] string] then
     error mOperatorLocation
-    : "left operand type is '@" . [leftType key] . "', right operand type is '@" . [rightType key] . "': '==' operator requires the types are the same"
+    : "left operand type is '@" . [leftType lkey] . "', right operand type is '@" . [rightType lkey] . "': '==' operator requires the types are the same"
     :outExpression
     ;
   else
@@ -774,7 +774,7 @@ override method @notEqualExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
-  if [[leftType key] string] != [[rightType key] string] then
+  if [[leftType lkey] string] != [[rightType lkey] string] then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "', right operand type is '@" . [rightType key] . "': '!=' operator requires the types are the same"
     :outExpression
@@ -812,7 +812,7 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
     : "left operand type is '@" . [leftType key] . "' and does not support the '<=' operator"
     :outExpression
     ;
-  elsif [[leftType key] string] != [[rightType key] string] then
+  elsif [leftType key] != [rightType key] then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "', right operand type is '@" . [rightType key] . "': '<=' operator requires the types are the same"
     :outExpression
@@ -850,7 +850,7 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
     : "left operand type is '@" . [leftType key] . "' and does not support the '>=' operator"
     :outExpression
     ;
-  elsif [[leftType key] string] != [[rightType key] string] then
+  elsif [leftType key] != [rightType key] then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "', right operand type is '@" . [rightType key] . "': '>=' operator requires the types are the same"
     :outExpression
@@ -888,7 +888,7 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
     : "left operand type is '@" . [leftType key] . "' and does not support the '>' operator"
     :outExpression
     ;
-  elsif [[leftType key] string] != [[rightType key] string] then
+  elsif [leftType key] != [rightType key] then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "', right operand type is '@" . [rightType key] . "': '>' operator requires the types are the same"
     :outExpression
@@ -926,7 +926,7 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
     : "left operand type is '@" . [leftType key] . "' and does not support the '<' operator"
     :outExpression
     ;
-  elsif [[leftType key] string] != [[rightType key] string] then
+  elsif [leftType key] != [rightType key] then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "', right operand type is '@" . [rightType key] . "': '<' operator requires the types are the same"
     :outExpression
@@ -964,7 +964,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
     : "left operand type is '@" . [leftType key] . "' and does not support a shift operator"
     :outExpression
     ;
-  elsif [[rightType key] string] != "uint" then
+  elsif [rightType key] != "uint" then
     error mOperatorLocation
     : "for a shift operator, right operand type should be '@uint': it is '@" . [rightType key] . "'"
     :outExpression
@@ -1002,7 +1002,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
     : "left operand type is '@" . [leftType key] . "' and does not support a shift operator"
     :outExpression
     ;
-  elsif [[rightType key] string] != "uint" then
+  elsif [rightType key] != "uint" then
     error mOperatorLocation
     : "for a shift operator, right operand type should be '@uint': it is '@" . [rightType key] . "'"
     :outExpression
@@ -1280,7 +1280,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   @semanticExpressionForGeneration else_expression ;
   [mElseExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?else_expression] ;
 #--- Check 'if' expression is boolean
-  if [[[if_expression mType] key] string] != "bool" then
+  if [[if_expression mType] key] != "bool" then
     error mOperatorLocation
     :"the test expression type is '@" . [[if_expression mType] key] . "', it should be '@bool'"
     :outExpression

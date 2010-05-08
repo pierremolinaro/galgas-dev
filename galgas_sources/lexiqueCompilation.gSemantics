@@ -772,7 +772,7 @@ routine compileLexiqueComponent
       m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
       @bool firstLoop := true ;
       foreach lexicalTypeMap do
-        m .= " @" . key ;
+        m .= " @" . lkey ;
       between
         m .= "," ;
       end foreach ;
@@ -860,7 +860,7 @@ routine compileLexiqueComponent
 #--------------------------------------- Warn for unused messages
   foreach [lexiqueAnalysisContext mLexicalMessageMap] do
     if not mMessageIsUsed then
-      warning key:"unused message" ;
+      warning lkey:"unused message" ;
     end if ;
   end foreach ;
 #--------------------------------------- Template delimiters

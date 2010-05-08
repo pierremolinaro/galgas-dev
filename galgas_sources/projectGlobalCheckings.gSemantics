@@ -98,7 +98,7 @@ routine checkMultiMethodDefinitionForClass
 :
   const @unifiedTypeMapProxyList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
-    const @lstring descendantClassName := [mType key] ;
+    const @lstring descendantClassName := [mType lkey] ;
     @overridingMultiMethodListAST overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
     @bool found := false ;
     foreach overridingMethods while not found do
@@ -138,7 +138,7 @@ routine checkMultiReaderDefinitionForClass
 :
   const @unifiedTypeMapProxyList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
-    @lstring descendantClassName := [mType key] ;
+    @lstring descendantClassName := [mType lkey] ;
     @overridingMultiReaderListAST overridingReaders := [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]] ;
     @bool found := false ;
     foreach overridingReaders while not found do
@@ -193,8 +193,8 @@ routine performProjectGlobalCheckings
     foreach semanticContext->mTypeMap do
        if not [mSuperType isNull] then
          descendantClassListMap +=
-           ![mSuperType keyString]
-           ![@unifiedTypeMapProxy searchKey !semanticContext->mTypeMap !key]
+           ![mSuperType key]
+           ![@unifiedTypeMapProxy searchKey !semanticContext->mTypeMap !lkey]
          ;
        end if ;
     end foreach ;
