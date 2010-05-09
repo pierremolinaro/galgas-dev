@@ -6206,6 +6206,86 @@ rule <semantics_declaration>
       end foreach ;
       warning here : "the following map automaton states are useless: " . s ;
     end if ;
+  #---------------------------------- override methods
+    repeat
+    while
+      $override$ ;
+      $identifier$ ? @lstring overrideName ;
+      ${$ ;
+      @stringset handledStates [emptySet] ;
+      repeat
+        $identifier$ ? @lstring startStateName ;
+        [mapAutomatonStateMap searchKey !startStateName ?*] ;
+        if [handledStates hasKey ![startStateName string]] then
+          error startStateName : "this state is already named" ;
+        end if ;
+        handledStates += ![startStateName string] ;
+        ${$ ;
+        repeat
+          $identifier$ ? @lstring currentStateName ;
+          [mapAutomatonStateMap searchKey !currentStateName ?*] ;
+          $->$ ;
+          $identifier$ ? @lstring finalStateName ;
+          [mapAutomatonStateMap searchKey !finalStateName ?*] ;
+          @mapAutomatonMessageKind transitionMessageKind ;
+          @lstring transitionMessage ;
+          select
+            transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+            transitionMessage := [@lstring new !"" !here] ;
+          or
+            $warning$ ;
+            $literal_string$ ? transitionMessage ;
+            check_K_escapeCharacters !transitionMessage ;
+            transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+          or
+            $error$ ;
+            $literal_string$ ? transitionMessage ;
+            check_K_escapeCharacters !transitionMessage ;
+            transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+          end select ;
+        while
+        end repeat ;
+        $}$ ;
+      while
+      end repeat ;
+      @stringset missingStates := [mapAutomatonStateMap allKeys] - handledStates ;
+      if [missingStates count] > 0 then
+        @string s := "" ;
+        foreach missingStates do
+          s .= " " . key ;
+        end foreach ;
+        error here: "the following states should be named:" . s ;
+      end if ;
+      $}$ ;
+      ${$ ;
+      repeat
+        $identifier$ ? @lstring currentStateName ;
+        ${$ ;
+        repeat
+          $identifier$ ? @lstring finalStateName ;
+          @mapAutomatonMessageKind transitionMessageKind ;
+          @lstring transitionMessage ;
+          select
+            transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+            transitionMessage := [@lstring new !"" !here] ;
+          or
+            $warning$ ;
+            $literal_string$ ? transitionMessage ;
+            check_K_escapeCharacters !transitionMessage ;
+            transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+          or
+            $error$ ;
+            $literal_string$ ? transitionMessage ;
+            check_K_escapeCharacters !transitionMessage ;
+            transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+          end select ;
+        while
+        end repeat ;
+        $}$ ;
+      while
+      end repeat ;
+      $}$ ;
+    end repeat ;
   #--- Insertion dans la map des classes definies dans le fichier source courant
     @typeEntityToGenerate def := [@C_mapToImplement new
       !mapTypeName
@@ -6544,6 +6624,70 @@ label importSemantics
         ![@L_EXsignature listWithValue ![@typeGalgas_location new] !inPassingMode]
       ] ;
     end if ;
+  #---------------------------------- override methods
+    repeat
+    while
+      $override$ ;
+      $identifier$ ? @lstring overrideName ;
+      ${$ ;
+      repeat
+        $identifier$ ? @lstring startStateName ;
+        ${$ ;
+        repeat
+          $identifier$ ? @lstring currentStateName ;
+          $->$ ;
+          $identifier$ ? @lstring finalStateName ;
+          @mapAutomatonMessageKind transitionMessageKind ;
+          @lstring transitionMessage ;
+          select
+            transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+            transitionMessage := [@lstring new !"" !here] ;
+          or
+            $warning$ ;
+            $literal_string$ ? transitionMessage ;
+            check_K_escapeCharacters !transitionMessage ;
+            transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+          or
+            $error$ ;
+            $literal_string$ ? transitionMessage ;
+            check_K_escapeCharacters !transitionMessage ;
+            transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+          end select ;
+        while
+        end repeat ;
+        $}$ ;
+      while
+      end repeat ;
+      $}$ ;
+      ${$ ;
+      repeat
+        $identifier$ ? @lstring currentStateName ;
+        ${$ ;
+        repeat
+          $identifier$ ? @lstring finalStateName ;
+          @mapAutomatonMessageKind transitionMessageKind ;
+          @lstring transitionMessage ;
+          select
+            transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+            transitionMessage := [@lstring new !"" !here] ;
+          or
+            $warning$ ;
+            $literal_string$ ? transitionMessage ;
+            check_K_escapeCharacters !transitionMessage ;
+            transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+          or
+            $error$ ;
+            $literal_string$ ? transitionMessage ;
+            check_K_escapeCharacters !transitionMessage ;
+            transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+          end select ;
+        while
+        end repeat ;
+        $}$ ;
+      while
+      end repeat ;
+      $}$ ;
+    end repeat ;
   #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new
      !mapTypeName

@@ -178,12 +178,76 @@ map @variableMap {
   insert insertInputOutputFormalArgument state unusedInputOutputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertInputOutputFormalArgumentDeclaredAsUnused state inputOutputFormalParameterDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
 
-
 #--- Search methods
   search searchForReadAccess do readAccess error message "the '%K' variable is not declared" ;
   search searchForWriteAccess do writeAccess error message "the '%K' variable is not declared" ;
   search searchForReadWriteAccess do readWriteAccess error message "the '%K' variable is not declared" ;
   search searchForDropAccess do dropAccess error message "the '%K' variable is not declared" ;
+
+#--- override definitions
+  override selectBlock {
+    constantInputFormalParameter {
+      constantInputFormalParameter -> constantInputFormalParameter
+    }
+    inputFormalParameterDeclaredAsUnused {
+      inputFormalParameterDeclaredAsUnused -> inputFormalParameterDeclaredAsUnused
+    }
+    constantInputFormalParameterDeclaredAsUnused {
+      constantInputFormalParameterDeclaredAsUnused -> constantInputFormalParameterDeclaredAsUnused
+    }
+    definedLocalVariable {
+      definedLocalVariable -> definedLocalVariable
+    }
+    localConstant {
+      localConstant -> localConstant
+    }
+    definedOutputFormalParameter {
+      definedOutputFormalParameter -> definedOutputFormalParameter
+    }
+    droppedInputFormalParameter {
+      droppedInputFormalParameter -> droppedInputFormalParameter
+    }
+    droppedInputOutputFormalParameter {
+      droppedInputOutputFormalParameter -> droppedInputOutputFormalParameter
+    }
+    droppedLocalVariable {
+      droppedLocalVariable -> droppedLocalVariable
+    }
+    inputFormalParameter {
+      inputFormalParameter -> inputFormalParameter
+    }
+    inputOutputFormalParameterDeclaredAsUnused {
+      inputOutputFormalParameterDeclaredAsUnused -> inputOutputFormalParameterDeclaredAsUnused
+    }
+    undefinedLocalVariable {
+      undefinedLocalVariable -> undefinedLocalVariable
+    }
+    undefinedOutputFormalParameter {
+      undefinedOutputFormalParameter -> undefinedOutputFormalParameter
+    }
+    unusedInputOutputFormalParameter {
+      unusedInputOutputFormalParameter -> unusedInputOutputFormalParameter
+    }
+    usedConstantInputFormalParameter {
+      usedConstantInputFormalParameter -> usedConstantInputFormalParameter
+    }
+    usedInputFormalParameter {
+      usedInputFormalParameter -> usedInputFormalParameter
+    }
+    usedInputOutputFormalParameter {
+      usedInputOutputFormalParameter -> usedInputOutputFormalParameter
+    }
+    usedLocalConstant {
+      usedLocalConstant -> usedLocalConstant
+    }
+    usedLocalVariable {
+      usedLocalVariable -> usedLocalVariable
+    }
+  }{
+    inputFormalParameterDeclaredAsUnused {
+      inputFormalParameterDeclaredAsUnused
+    }
+  }
 }
 
 #---------------------------------------------------------------------------*
