@@ -386,18 +386,27 @@ routine analyzeConstructorInvocation
     hasCompilerArgument := mHasCompilerArgument ;
     outReturnedType := mReturnedType ;
   else
-    @string s := "" ;
-    foreach constructorMap do
-      s .= "\n  - " . lkey ;
-      foreach mArgumentTypeList do
-        s .= " ?@" . [mType key] ;
+    if [constructorMap count] == 0 then
+      error inConstructorName
+      : "the '@". inTypeName . "' type does not define any constructor"
+      : constructorFormalArgumentTypeList, hasCompilerArgument, outReturnedType
+      ;
+    else
+      @string s := "" ;
+      foreach constructorMap do
+        s .= "\n  - " . lkey ;
+        foreach mArgumentTypeList do
+          s .= " ?@" . [mType key] ;
+        end foreach ;
+        s .= " -> @" . [mReturnedType key] ;
       end foreach ;
-      s .= " -> @" . [mReturnedType key] ;
-    end foreach ;
-    error inConstructorName
-    : "the '@". inTypeName . "' type does not define the '" . inConstructorName . "' constructor; available constructors are:" . s
-    : constructorFormalArgumentTypeList, hasCompilerArgument, outReturnedType
-    ;
+      error inConstructorName
+      : "the '@". inTypeName . "' type does not define the '" . inConstructorName . "' constructor; "
+      . if [constructorMap count] > 1 then "available constructors are" else "available constructor is" end
+      . ":" . s
+      : constructorFormalArgumentTypeList, hasCompilerArgument, outReturnedType
+      ;
+    end if ;
   end with ;
 #--- Analysis arguments
   if [inConstuctorEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then

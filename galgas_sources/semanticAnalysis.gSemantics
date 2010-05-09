@@ -697,7 +697,7 @@ routine performSemanticAnalysis
   !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
 :
   outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
-  if [@uint errorCount] == 0 then
+#  if [@uint errorCount] == 0 then
     const @predefinedTypes predefinedTypes [new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
@@ -716,7 +716,7 @@ routine performSemanticAnalysis
         !?outDecoratedDeclarationListForGeneration
       ] ;
     end foreach ;
-  end if ;
+#  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
