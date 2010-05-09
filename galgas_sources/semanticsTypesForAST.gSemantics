@@ -853,18 +853,6 @@ class @addInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    R E M O V E    I N S T R U C T I O N      - =                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @removeInstructionAST extends @semanticInstructionAST {
-  @lstring mReceiverName ;
-  @lstringlist mStructAttributeList ;
-  @semanticExpressionAST mExpression ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    I N C R E M E N T    I N S T R U C T I O N                             *
 #                                                                           *
 #---------------------------------------------------------------------------*

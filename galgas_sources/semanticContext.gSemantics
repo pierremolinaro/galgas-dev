@@ -265,8 +265,6 @@ override method @predefinedTypeAST enterType
   [t getClassMethodMap !?ioSemanticContext->mTypeMap ?classMethodMap] ;
   @unifiedTypeMapProxyList addAssignArgumentList ;
   [t getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?addAssignArgumentList] ;
-  @unifiedTypeMapProxyList minusAssignArgumentList ;
-  [t getMinusAssignArgumentList !?ioSemanticContext->mTypeMap ?minusAssignArgumentList] ;
   @enumerationDescriptorList enumerationList ;
   [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList] ;
   @unifiedTypeMapProxy superTypeProxy ;
@@ -287,7 +285,6 @@ override method @predefinedTypeAST enterType
     !enumerationList
     ![t getSupportedOperatorFlags]
     !addAssignArgumentList
-    !minusAssignArgumentList
     ![t getNativeAttributeList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -334,7 +331,6 @@ override method @genericTypeTypeAST enterType
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     !0
-    ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
@@ -473,7 +469,6 @@ override method @mapDeclarationAST enterType
     !enumerationDescriptor
     !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -498,7 +493,7 @@ override method @mapProxyDeclarationAST enterType
     ?typeKindEnum
     ?2*
     ?mapTypedAttributeList
-    ?12*
+    ?11*
     ?searchMethodList
     ?*
   ] ;
@@ -597,7 +592,6 @@ override method @mapProxyDeclarationAST enterType
     ![@enumerationDescriptorList emptyList]
     !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -648,7 +642,6 @@ override method @enumDeclarationAST enterType
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     !generateDescriptionReaderUtilityMethod []
-    ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     !mConstantList
@@ -802,7 +795,6 @@ override method @listDeclarationAST enterType
     !enumerationDescriptor
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | generateCppConstructorWithNativeAttributeList []
     !constructorAttributeTypeList
-    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -895,7 +887,6 @@ override method @sortedListDeclarationAST enterType
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
       | generateCppConstructorWithNativeAttributeList [] | generateSortedListComparisonMethod []
     !constructorAttributeTypeList
-    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -970,7 +961,6 @@ override method @structDeclarationAST enterType
       | generateCppConstructorWithCurrentAttributeList []
       | generateDescriptionReaderUtilityMethod []
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     !typedAttributeList
@@ -1015,7 +1005,7 @@ override method @classDeclarationAST enterType
       ?readerMap
       ?modifierMap
       ?inheritedInstanceMethodMap
-      ?10*
+      ?9*
     ] ;
     if typeKindEnum != [@typeKindEnum classType] then
       error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
@@ -1122,7 +1112,6 @@ override method @classDeclarationAST enterType
     ![@enumerationDescriptorList emptyList]
     !generateCppConstructorWithAllAttributeList [] | generateVirtualDestructor [] | if mIsAbstract then 0 else generateDescriptionReaderUtilityMethod [] end
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     !currentClassTypedAttributeList
@@ -1195,7 +1184,7 @@ override method @listmapDeclarationAST enterType
     ?2*
     ?typeKindEnum
     ?listTypedAttributeList
-    ?16*
+    ?15*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1248,7 +1237,6 @@ override method @listmapDeclarationAST enterType
     !enumeratorDescriptor
     !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
     !addAssignOperatorDescription
-    ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]

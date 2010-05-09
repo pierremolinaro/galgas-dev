@@ -256,7 +256,6 @@ map @unifiedTypeMap {
   @enumerationDescriptorList mEnumerationDescriptor ; # Empty List if cannot be enumerated
   @uint mHandledOperatorFlags ;
   @unifiedTypeMapProxyList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
-  @unifiedTypeMapProxyList mMinusAssignOperatorArguments ; # Empty list if -= operator is not supported
   @nativeAttributeList mNativeAttributeList ; # Generating type declaration
   @lstringlist mEnumConstantList ;
   @typedAttributeList mPrivateDataMemberList ;
@@ -390,15 +389,6 @@ method @predefinedTypeAST getAddAssignArgumentList
   !@unifiedTypeMapProxyList outAddAssignArgumentList
 :
   outAddAssignArgumentList := [@unifiedTypeMapProxyList emptyList] ; # += is not supported
-end method ;
-
-#---------------------------------------------------------------------------*
-
-method @predefinedTypeAST getMinusAssignArgumentList
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@unifiedTypeMapProxyList outAddAssignArgumentList
-:
-  outAddAssignArgumentList := [@unifiedTypeMapProxyList emptyList] ; # -= is not supported
 end method ;
 
 #---------------------------------------------------------------------------*

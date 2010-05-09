@@ -694,31 +694,6 @@ class @sendInstructionForGeneration extends @semanticInstructionForGeneration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  M E T H O D    C A L L    I N S T R U C T I O N                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
-  @semanticExpressionForGeneration mReceiverExpression ;
-  @lstring mMethodName ;
-  @actualParameterListForGeneration mActualParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  M O D I F I E R    C A L L    I N S T R U C T I O N                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#class @modifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mReceiverName ;
-#  @lstringlist mReceiverStructAttributes ;
-#  @lstring mModifierName ;
-#  @actualParameterListForGeneration mActualParameterList ;
-#}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    E R R O R    I N S T R U C T I O N                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -751,6 +726,49 @@ class @warningInstructionForGeneration extends @semanticInstructionForGeneration
 class @routineCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mRoutineName ;
   @actualParameterListForGeneration mActualParameterList ;
+  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeMethodInstructionForGeneration extends @semanticInstructionForGeneration {
+  @lstring mTypeName ;
+  @lstring mMethodName ;
+  @actualParameterListForGeneration mActualParameterList ;
+  @bool mHasCompilerArgument ;
+  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E T H O D    C A L L    I N S T R U C T I O N                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
+  @lstring mMethodName ;
+  @actualParameterListForGeneration mActualParameterList ;
+  @bool mHasCompilerArgument ;
+  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D I F I E R    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @modifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mReceiverCppName ;
+  @lstringlist mReceiverStructAttributes ;
+  @lstring mModifierName ;
+  @actualParameterListForGeneration mActualParameterList ;
+  @bool mHasCompilerArgument ;
   @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
 }
 
@@ -839,15 +857,15 @@ class @routineCallInstructionForGeneration extends @semanticInstructionForGenera
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    A D D    I N S T R U C T I O N      + =                                *
+#    A D D    A S S I G N    I N S T R U C T I O N      + =                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @addInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mReceiverName ;
-#  @lstringlist mStructAttributeList ;
-#  @semanticExpressionForGeneration mExpressionList ;
-#}
+class @addAssignInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mReceiverCppName ;
+  @lstringlist mStructAttributeList ;
+  @semanticExpressionListForGeneration mExpressionList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -969,18 +987,6 @@ class @routineCallInstructionForGeneration extends @semanticInstructionForGenera
 #class @switchInstructionForGeneration extends @semanticInstructionForGeneration {
 #  @semanticExpressionForGeneration mSwitchExpression ;
 #  @switchBranchesForGeneration mBranches ;
-#}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#class @typeMethodInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mTypeName ;
-#  @lstring mMethodName ;
-#  @actualParameterListForGeneration mActualParameterList ;
 #}
 
 #---------------------------------------------------------------------------*

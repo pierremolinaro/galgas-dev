@@ -57,7 +57,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@uint SUPPORTED_OPERATORS
     ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMapProxyList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
     ?@lstringlist ENUM_CONSTANT_LIST
     ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
@@ -78,7 +77,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@uint SUPPORTED_OPERATORS
     ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMapProxyList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
@@ -87,7 +85,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@modifierMap MODIFIER_MAP
     ?@uint SUPPORTED_OPERATORS
     ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMapProxyList MINUS_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
@@ -179,7 +176,6 @@ override reader @semanticTypeForGeneration appendDeclaration -> @string outHeade
     ![mTypeIndex mEnumerationDescriptor]
     ![mTypeIndex mHandledOperatorFlags]
     ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mMinusAssignOperatorArguments]
     ![mTypeIndex mNativeAttributeList]
     ![mTypeIndex mEnumConstantList]
     ![mTypeIndex mPrivateDataMemberList]
@@ -224,7 +220,6 @@ override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@st
     ![mTypeIndex mEnumerationDescriptor]
     ![mTypeIndex mHandledOperatorFlags]
     ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mMinusAssignOperatorArguments]
     ![mTypeIndex mNativeAttributeList]
   ] ;
 end reader ;
@@ -258,7 +253,6 @@ override reader @primitiveTypeForGeneration appendSpecificImplementation -> @str
     ![mTypeIndex mModifierMap]
     ![mTypeIndex mHandledOperatorFlags]
     ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mMinusAssignOperatorArguments]
     ![mTypeIndex mNativeAttributeList]
   ] ;
 end reader ;

@@ -3277,64 +3277,6 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   - =    I N S T R U C T I O N                                            *
-#                                                                           *
-#  variable -= !source_exp !... !source_exp ;                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <instruction_beginning_with_identifier_and_structure_access>
-  ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionList ioInstructionList
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@EXsemanticContext inSemanticContext
-  ??@typeCplusPlusName inNomCppVariableSource
-  ??@AC_galgasType inTargetType
-  ??@lstringlist inStructAttributeList
-:
-  $-=$ ;
-#--- Does the variable class accept the += operator ?
-  @typeListeAttributsSemantiques formalParametersList ;
-  [inTargetType handleMinusAssignOperatorCall !here ?formalParametersList] ;
-#--- Parse argument list
-  @typeTypesList typeList := [@typeTypesList emptyList] ;
-  @typeExpressionList expressionList [emptyList] ;
-  repeat
-    $!$ ;
-    @typeExpression expression ;
-    @AC_galgasType resultType ;
-    <expression> 
-      !ioComponentSemanticsEntitiesMap
-      !inOptionsComponentsMapForUse
-      !inSemanticContext
-      !?ioVariablesMap
-      ?expression
-      ?resultType
-    ;
-    typeList += !resultType !here ;
-    expressionList += !expression ;
-  while
-  end repeat ;
-#--- Check expression types list against formal parameter list
-  if [formalParametersList length] != [typeList length] then
-    error here : [[typeList length] string] . " argument(s), while " . [[formalParametersList length] string] . " are needed" ;
-  else
-    foreach formalParametersList, typeList do
-      checkAssignmentTypesCompatibility
-        !mAttributType
-        !mType
-        !mEndOfExpressionLocation
-        !true
-      ;
-    end foreach ;
-  end if ;
-  @typeInstruction instruction := [@typeRemoveInstruction new !inNomCppVariableSource !inStructAttributeList !expressionList] ;
-  ioInstructionList += !instruction ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   I N C R E M E N T    I N S T R U C T I O N                              *
 #                                                                           *
 #  variable ++ ;                                                            *

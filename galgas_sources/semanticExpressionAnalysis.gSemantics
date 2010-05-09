@@ -377,7 +377,7 @@ routine analyzeConstructorInvocation
 :
 #--- Get constructor map from type map
   @constructorMap constructorMap ;
-  [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?13*] ;
+  [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?12*] ;
 #--- Search contructor
   @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
   @bool hasCompilerArgument ;
