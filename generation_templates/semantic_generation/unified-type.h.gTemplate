@@ -411,20 +411,9 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %
 end if
 
-if [MINUS_ASSIGN_ARGUMENT_LIST length] > 0 then
-  %//--------------------------------- -= operator
-  friend void minusAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
-  foreach MINUS_ASSIGN_ARGUMENT_LIST do index IDX
-    %,\n%!^%const GALGAS_%![mType identifierRepresentation]% * inOperand%![IDX string]
-  end foreach
-  %\n%!^%COMMA_LOCATION_ARGS) ;
-%
-end if
-
 if ((SUPPORTED_OPERATORS & (incDecOperator [] | dotAssignOperator [])) != 0)
  | ([MODIFIER_MAP count] > 0)
- | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0)
- | ([MINUS_ASSIGN_ARGUMENT_LIST length] > 0) then
+ | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0) then
   %//--------------------------------- Modifier utility method\n%
   %  public : static void insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOperand\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%

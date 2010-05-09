@@ -73,6 +73,25 @@ end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  G E T    M O D I F I E R    M A P                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+override method @stringsetPredefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@modifierMap outModifierMap
+:
+  @unifiedTypeMapProxy stringType ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringType] ;
+  outModifierMap := [@modifierMap mapWithKeyAndValue
+    ![@lstring new !"removeKey" !here]
+    ![@formalParameterSignature listWithValue !stringType ![@formalArgumentPassingModeAST argumentIn]]
+    !false # No Compiler argument
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  G E T    S U P P O R T E D    O P E R A T O R    F L A G S               *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -240,17 +259,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override method @stringsetPredefinedTypeAST getAddAssignArgumentList
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapProxyList outAddAssignArgumentList
-:
-  @unifiedTypeMapProxy stringTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
-  outAddAssignArgumentList := [@unifiedTypeMapProxyList listWithValue !stringTypeIndex] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @stringsetPredefinedTypeAST getMinusAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@unifiedTypeMapProxyList outAddAssignArgumentList
 :

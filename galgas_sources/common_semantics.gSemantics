@@ -2,7 +2,7 @@
 #                                                                           *
 #  Common semantics definitions                                             *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2010 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -505,17 +505,6 @@ abstract class @AC_galgasType feature generatedInSeparateFile {
   :
     error inTypeMethodName : "This type method is not defined" : outTypeMethodSignature ;
   end method ;
-
-#--- By default, class does not accept operator "-=" call
-  method handleMinusAssignOperatorCall 
-    ??@location inErrorLocation
-    !@typeListeAttributsSemantiques outParametersList
-  :
-    error inErrorLocation :
-       "variables of this type do not support call of '-=' operator"
-       : outParametersList ;
-  end method ;
-
 
 #--- By default, class does not accept operator "+=" call
   method handleAddAssignOperatorCall 
@@ -1822,15 +1811,19 @@ class @typeGalgas_stringset extends @AC_galgasType {
     outParametersList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
   end method ;
 
-#--- stringset accepts operator "-=" call
+#--- @stringset accepts 'removeKey' modifier call
   override
-  method handleMinusAssignOperatorCall
-    ??@location unused inErrorLocation
-    !@typeListeAttributsSemantiques outParametersList
+  method handleModifierCall
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
   :
-    outParametersList := [@typeListeAttributsSemantiques emptyList] ;
-    @AC_galgasType t := [@typeGalgas_string new] ;
-    outParametersList += !t ![@lstring new !""! here] ;
+    if [inModifierName string] == "removeKey" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+    else
+      error inModifierName : "@stringset only accepts the 'removeKey' modifier"
+       : outModifierSignature ;
+    end if ;
   end method ;
 
 #--- stringset object accepts to be enumerated (foreach instruction)

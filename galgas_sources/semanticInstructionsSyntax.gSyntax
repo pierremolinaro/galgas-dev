@@ -1015,36 +1015,6 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    R E M O V E    I N S T R U C T I O N      - =                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction> !@semanticInstructionAST outInstruction :
-  @lstring mReceiverName ;
-  $identifier$ ? mReceiverName ;
-  const @location instructionLocation := here ;
-  @lstringlist mStructAttributeList [emptyList] ;
-  repeat
-  while
-    $->$ ;
-    $identifier$ ? @lstring attributeName ;
-    mStructAttributeList += !attributeName ;
-  end repeat ;
-  $-=$ ;
-  $!$ ;
-  @semanticExpressionAST mExpression ;
-  <expression> ? mExpression ;
-  $;$ ;
-  outInstruction := [@removeInstructionAST new
-    !instructionLocation
-    !mReceiverName
-    !mStructAttributeList
-    !mExpression
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    A P P E N D    I N S T R U C T I O N    . =                            *
 #                                                                           *
 #---------------------------------------------------------------------------*

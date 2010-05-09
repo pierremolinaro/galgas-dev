@@ -173,46 +173,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @appendInstructionAST analyzeSemanticInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
-:
-#--- Analyze source expression
-  @semanticExpressionForGeneration expression ;
-  [mSourceExpression analyzeSemanticExpression
-    !inSemanticContext
-    !inPredefinedTypes
-    !?ioVariableMap
-    ?expression
-  ] ;
-#--- Check target variable
-  @unifiedTypeMapProxy targetType ;
-  @string targetVariableCppName ;
-  [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName] ;
-  foreach mStructAttributeList do
-    const @attributeMap attributeMap := [targetType mAttributeMap] ;
-    [attributeMap searchKey !mValue ?targetType] ;
-  end foreach ;
-#--- Check target variable type support '.=' operator
-  if ([targetType mHandledOperatorFlags] & dotAssignOperator []) == 0 then
-    error mInstructionLocation
-    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '.=' operator"
-    ;
-  end if ;
-#--- Check assignment type compatibility
-  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
-#--- Generate instruction
-  ioInstructionListForGeneration += ![@appendInstructionForGeneration new
-    !targetVariableCppName
-    !mStructAttributeList
-    !expression
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @sendInstructionAST analyzeSemanticInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
@@ -534,6 +494,45 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+routine analyzeRoutineArguments
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@lstring inRoutineName
+  ??@string inInvokedEntityName
+  ??@formalParameterSignature inRoutineSignature
+  ??@actualParameterListAST inActualParameterList
+  ?!@variableMap ioVariableMap
+  !@actualParameterListForGeneration outActualParameterListForGeneration
+  !@temporaryInputVariableForRoutineInvocationForGeneration outTemporaryInputVariableForRoutineInvocationForGeneration
+:
+  if [inRoutineSignature length] != [inActualParameterList length] then
+    error inRoutineName
+    :"the '" . inRoutineName . "' " . inInvokedEntityName . " header defines " . [[inRoutineSignature length] string] 
+    . " formal argument(s), but this invocation names "
+    . [[inActualParameterList length] string] . " argument(s)"
+    : outActualParameterListForGeneration, outTemporaryInputVariableForRoutineInvocationForGeneration
+    ;
+  else
+    outActualParameterListForGeneration := [@actualParameterListForGeneration emptyList] ;
+    outTemporaryInputVariableForRoutineInvocationForGeneration := [@temporaryInputVariableForRoutineInvocationForGeneration emptyList] ;
+    @stringset exclusiveVariableSet [emptySet] ;
+    foreach inRoutineSignature, inActualParameterList do
+      [mActualParameter checkAgainstFormalArgument
+        !inSemanticContext
+        !inPredefinedTypes
+        !mFormalArgumentType
+        !mFormalArgumentPassingMode
+        !?ioVariableMap
+        !?outActualParameterListForGeneration
+        !?outTemporaryInputVariableForRoutineInvocationForGeneration
+        !?exclusiveVariableSet
+      ] ;
+    end foreach ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 override method @routineCallInstructionAST analyzeSemanticInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
@@ -544,61 +543,233 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature ;
   [inSemanticContext->mRoutineMap searchKey !mRoutineName ?routineSignature] ;
 #--- Check effective parameters
-  if [routineSignature length] != [mActualParameterList length] then
-    error mRoutineName
-    :"the '" . mRoutineName . "' routine header defines " . [[routineSignature length] string] 
-    . " formal argument(s), but this invocation names "
-    . [[mActualParameterList length] string] . " argument(s)"
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mRoutineName
+    !"routine"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+    ?temporaryInputVariableForRoutineInvocationForGeneration
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@routineCallInstructionForGeneration new
+    !mRoutineName
+    !actualParameterListForGeneration
+    !temporaryInputVariableForRoutineInvocationForGeneration
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @typeMethodCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Get type method map for the named type
+  const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Get type method signature
+  @formalParameterSignature routineSignature ;
+  @bool hasCompilerArgument ;
+  [[type mClassMethodMap] searchKey !mMethodName ?routineSignature ?hasCompilerArgument] ;
+#--- Check effective parameters
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mMethodName
+    !"class method"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+    ?temporaryInputVariableForRoutineInvocationForGeneration
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@typeMethodInstructionForGeneration new
+    !mTypeName
+    !mMethodName
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+    !temporaryInputVariableForRoutineInvocationForGeneration
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @methodCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze receiver expression
+  @semanticExpressionForGeneration receiverExpression ;
+  [mReceiverExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?receiverExpression] ;
+#--- Get type method signature
+  @formalParameterSignature routineSignature ;
+  @bool hasCompilerArgument ;
+  [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?routineSignature ?* ?hasCompilerArgument ?*] ;
+#--- Check effective parameters
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mMethodName
+    !"instance method"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+    ?temporaryInputVariableForRoutineInvocationForGeneration
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
+    !receiverExpression
+    !mMethodName
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+    !temporaryInputVariableForRoutineInvocationForGeneration
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @modifierCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Check receiver object
+  @unifiedTypeMapProxy receiverType ;
+  @string receiverVariableCppName ;
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName] ;
+  foreach mReceiverStructAttributes do
+    const @attributeMap attributeMap := [receiverType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?receiverType] ;
+  end foreach ;
+#--- Get modifier signature
+  @formalParameterSignature routineSignature ;
+  @bool hasCompilerArgument ;
+  [[receiverType mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument] ;
+#--- Check effective parameters
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mModifierName
+    !"modifier"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+    ?temporaryInputVariableForRoutineInvocationForGeneration
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@modifierCallInstructionForGeneration new
+    !receiverVariableCppName
+    !mReceiverStructAttributes
+    !mModifierName
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+    !temporaryInputVariableForRoutineInvocationForGeneration
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @appendInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression ;
+  [mSourceExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?expression
+  ] ;
+#--- Check target variable
+  @unifiedTypeMapProxy targetType ;
+  @string targetVariableCppName ;
+  [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName] ;
+  foreach mStructAttributeList do
+    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?targetType] ;
+  end foreach ;
+#--- Check target variable type support '.=' operator
+  if ([targetType mHandledOperatorFlags] & dotAssignOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '.=' operator"
+    ;
+  end if ;
+#--- Check assignment type compatibility
+  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@appendInstructionForGeneration new
+    !targetVariableCppName
+    !mStructAttributeList
+    !expression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @addInstructionAST analyzeSemanticInstruction # +=
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Check target variable
+  @unifiedTypeMapProxy targetType ;
+  @string targetVariableCppName ;
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName] ;
+  foreach mStructAttributeList do
+    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?targetType] ;
+  end foreach ;
+#--- Check target variable type support '+=' operator
+  const @unifiedTypeMapProxyList addAssignOperatorArguments:= [targetType mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
+  if [addAssignOperatorArguments length] == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '+=' operator"
+    ;
+#--- Analyze source expressions
+  elsif [mExpressions length] != [addAssignOperatorArguments length] then
+    error mInstructionLocation
+    : "calling the '+=' operator on an '@" . [targetType key] . "' object requires "
+    . [[addAssignOperatorArguments length] string] . " parameter(s), while this invocation has "
+    . [[mExpressions length] string] . " parameter(s)" 
     ;
   else
-    @actualParameterListForGeneration actualParameterListForGeneration [emptyList] ;
-    @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration [emptyList] ;
-    @stringset exclusiveVariableSet [emptySet] ;
-    foreach routineSignature, mActualParameterList do
-      [mActualParameter checkAgainstFormalArgument
-        !inSemanticContext
-        !inPredefinedTypes
-        !mFormalArgumentType
-        !mFormalArgumentPassingMode
-        !?ioVariableMap
-        !?actualParameterListForGeneration
-        !?temporaryInputVariableForRoutineInvocationForGeneration
-        !?exclusiveVariableSet
-      ] ;
+    @semanticExpressionListForGeneration effectiveParameterList [emptyList] ;
+    foreach mExpressions, addAssignOperatorArguments do
+      @semanticExpressionForGeneration exp ;
+      [mExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?exp] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      effectiveParameterList += !exp ;
     end foreach ;
   #--- Generate instruction
-    ioInstructionListForGeneration += ![@routineCallInstructionForGeneration new
-      !mRoutineName
-      !actualParameterListForGeneration
-      !temporaryInputVariableForRoutineInvocationForGeneration
+    ioInstructionListForGeneration += ![@addAssignInstructionForGeneration new
+      !targetVariableCppName
+      !mStructAttributeList
+      !effectiveParameterList
     ] ;
   end if ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @addInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mReceiverName
-  : "unhandled instruction @addInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @removeInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mReceiverName
-  : "unhandled instruction @removeInstructionAST"
-  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -650,45 +821,6 @@ override method @logInstructionAST analyzeSemanticInstruction
 :
   error mInstructionLocation
   : "unhandled instruction @logInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @typeMethodCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mTypeName
-  : "unhandled instruction @typeMethodCallInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @methodCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mMethodName
-  : "unhandled instruction @methodCallInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @modifierCallInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mReceiverName
-  : "unhandled instruction @modifierCallInstructionAST"
   ;
 end method ;
 

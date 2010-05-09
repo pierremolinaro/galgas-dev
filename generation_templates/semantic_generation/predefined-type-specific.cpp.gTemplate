@@ -1,7 +1,6 @@
 %if ((SUPPORTED_OPERATORS & (incDecOperator [] | dotAssignOperator [])) != 0)
  | ([MODIFIER_MAP count] > 0)
- | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0)
- | ([MINUS_ASSIGN_ARGUMENT_LIST length] > 0) then
+ | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0) then
 %//---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOperand
