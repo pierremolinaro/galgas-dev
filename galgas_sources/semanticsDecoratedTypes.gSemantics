@@ -869,26 +869,14 @@ class @addAssignInstructionForGeneration extends @semanticInstructionForGenerati
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    R E M O V E    I N S T R U C T I O N      - =                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#class @removeInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mReceiverName ;
-#  @lstringlist mStructAttributeList ;
-#  @semanticExpressionForGeneration mExpression ;
-#}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    I N C R E M E N T    I N S T R U C T I O N                             *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @incrementInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mReceiverName ;
-#  @lstringlist mStructAttributeList ;
-#}
+class @incrementInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mReceiverCppName ;
+  @lstringlist mStructAttributeList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -896,10 +884,10 @@ class @addAssignInstructionForGeneration extends @semanticInstructionForGenerati
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @decrementInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mReceiverName ;
-#  @lstringlist mStructAttributeList ;
-#}
+class @decrementInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mReceiverCppName ;
+  @lstringlist mStructAttributeList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -920,9 +908,9 @@ class @addAssignInstructionForGeneration extends @semanticInstructionForGenerati
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @messageInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @semanticExpressionForGeneration mExpression ;
-#}
+class @messageInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -930,16 +918,10 @@ class @addAssignInstructionForGeneration extends @semanticInstructionForGenerati
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#list @logListForGeneration {
-#  @lstring mLogMessage ;
-#  @semanticExpressionForGeneration mLogExpression ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @logInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @logListForGeneration mLogList ;
-#}
+class @logInstructionForGeneration extends @semanticInstructionForGeneration {
+  @lstring mLogMessage ;
+  @semanticExpressionForGeneration mLogExpression ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

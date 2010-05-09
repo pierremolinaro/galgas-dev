@@ -777,12 +777,28 @@ end method ;
 override method @incrementInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mReceiverName
-  : "unhandled instruction @incrementInstructionAST"
-  ;
+#--- Check target variable
+  @unifiedTypeMapProxy targetType ;
+  @string targetVariableCppName ;
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName] ;
+  foreach mStructAttributeList do
+    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?targetType] ;
+  end foreach ;
+#--- Check target type accepts incrementation
+  if ([targetType mHandledOperatorFlags] & incDecOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '++' operator"
+    ;
+  end if ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@incrementInstructionForGeneration new
+    !targetVariableCppName
+    !mStructAttributeList
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -790,38 +806,81 @@ end method ;
 override method @decrementInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mReceiverName
-  : "unhandled instruction @decrementInstructionAST"
-  ;
+#--- Check target variable
+  @unifiedTypeMapProxy targetType ;
+  @string targetVariableCppName ;
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName] ;
+  foreach mStructAttributeList do
+    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?targetType] ;
+  end foreach ;
+#--- Check target type accepts incrementation
+  if ([targetType mHandledOperatorFlags] & incDecOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '++' operator"
+    ;
+  end if ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@decrementInstructionForGeneration new
+    !targetVariableCppName
+    !mStructAttributeList
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @messageInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mInstructionLocation
-  : "unhandled instruction @messageInstructionAST"
-  ;
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression ;
+  [mExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?expression
+  ] ;
+#--- Check message type is @string
+  if [expression mType] != inPredefinedTypes->mStringType then
+    error mInstructionLocation
+    :"the expression has the '@" . [[expression mType] key] . "' type, but the 'message' instruction requires an '@string' expression"
+    ;
+  end if ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@messageInstructionForGeneration new
+    !expression
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @logInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mInstructionLocation
-  : "unhandled instruction @logInstructionAST"
-  ;
+  foreach mLogList do
+  #--- Analyze source expression
+    @semanticExpressionForGeneration expression ;
+    [mLogExpression analyzeSemanticExpression
+      !inSemanticContext
+      !inPredefinedTypes
+      !?ioVariableMap
+      ?expression
+    ] ;
+  #--- Generate instruction
+    ioInstructionListForGeneration += ![@logInstructionForGeneration new
+      !mLogMessage
+      !expression
+    ] ;  
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -833,7 +892,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   ?!@variableMap unused ioVariableMap
 :
   error mGrammarComponentName
-  : "unhandled instruction @grammarInstructionAST"
+  : "unhandled instruction: grammarInstructionAST"
   ;
 end method ;
 

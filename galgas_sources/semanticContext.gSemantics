@@ -1379,74 +1379,68 @@ routine buildSemanticContext
     foreach undefinedClasses do
       errorMessage .= "\n-  @" . mValue ;
     end foreach ;
-    error inEndOfSourceFile : errorMessage ;
+    error inEndOfSourceFile : errorMessage : outSemanticContext ;
   elsif [undefinedClasses length] > 1 then
     @string errorMessage := "there are " . [[undefinedClasses length] string] . " undefined types:" ;
     foreach undefinedClasses do
       errorMessage .= "\n-  @" . mValue ;
     end foreach ;
-    error inEndOfSourceFile : errorMessage ;
-  end if ;
-#------ Build ordered types list, so that
-#  - a class appears after its super class
-#  - a map index appears after its associated map
-#  - a list map appears after its associated list
-  @partiallyOrderedSemanticDeclarationListAST partiallyOrderedSemanticDeclarationListAST [emptySortedList] ;
-  if [@uint errorCount] == 0 then
+    error inEndOfSourceFile : errorMessage : outSemanticContext ;
+  else # No undefined types
+  #------ Build ordered types list, so that
+  #  - a class appears after its super class
+  #  - a map index appears after its associated map
+  #  - a list map appears after its associated list
+    @partiallyOrderedSemanticDeclarationListAST partiallyOrderedSemanticDeclarationListAST [emptySortedList] ;
     foreach inSemanticDeclarationList do
       [mSemanticDeclaration enterOrderedDeclaration !?partiallyOrderedSemanticDeclarationListAST] ;  
     end foreach ;
-  end if ;
-#---
-  @semanticDeclarationListAST orderedSemanticDeclarationListAST [emptyList] ;
-  @stringset alreadyDefinedTypes [emptySet] ;
-  alreadyDefinedTypes += !"" ;
-  @bool progress := true ;
-  loop [partiallyOrderedSemanticDeclarationListAST length] :
-  while ([partiallyOrderedSemanticDeclarationListAST length] > 0) & progress do
-    progress := false ;
-    const @partiallyOrderedSemanticDeclarationListAST r := partiallyOrderedSemanticDeclarationListAST ;
-    partiallyOrderedSemanticDeclarationListAST := [@partiallyOrderedSemanticDeclarationListAST emptySortedList] ;
-    foreach r do
-      if [alreadyDefinedTypes hasKey !mDependanceString] then
-        orderedSemanticDeclarationListAST += !mSemanticDeclaration ;
-        alreadyDefinedTypes += !mTypeString ;
-#        message "ENTERING @" : mTypeString . "\n" ;
-        progress := true ;
-      else
-        partiallyOrderedSemanticDeclarationListAST += !mDependanceString !mTypeString !mSemanticDeclaration ;
-      end if ;
-    end foreach ;
-  end loop ;
-#--- Remain in partiallyOrderedSemanticDeclarationListAST only
-#    circular definitions
-  if [partiallyOrderedSemanticDeclarationListAST length] > 0 then
-    @string s := "inheritance circularities involving the " ;
-    foreach partiallyOrderedSemanticDeclarationListAST
-      do s.= "@" . mTypeString ;
-      between s .= ", " ;
-    end foreach ;
-    s .= " classes; detail:" ;
-    foreach partiallyOrderedSemanticDeclarationListAST
-      do s.= "\n  - @" . mTypeString . " inherits from @" . mDependanceString ;
-    end foreach ;
-    error here : s ;
-  end if ;
-#--- Build initial semantic context
-  outSemanticContext := [@semanticContext new
-    ![@unifiedTypeMap emptyMap]
-    ![@routineMap emptyMap]
-    ![@functionMap emptyMap]
-    ![@filewrapperMap emptyMap]
-    !inOptionComponentMapForSemanticAnalysis
-  ] ;
-#--- Loop throught all declarations
-  if [@uint errorCount] == 0 then
-#    message "************** ENTER TYPES ************************\n" ;
-    foreach orderedSemanticDeclarationListAST do
-      [mSemanticDeclaration enterType !?outSemanticContext] ;
-    end foreach ;
-#    message "************** TYPES ENTERED ************************\n" ;
+  #---
+    @semanticDeclarationListAST orderedSemanticDeclarationListAST [emptyList] ;
+    @stringset alreadyDefinedTypes [emptySet] ;
+    alreadyDefinedTypes += !"" ;
+    @bool progress := true ;
+    loop [partiallyOrderedSemanticDeclarationListAST length] :
+    while ([partiallyOrderedSemanticDeclarationListAST length] > 0) & progress do
+      progress := false ;
+      const @partiallyOrderedSemanticDeclarationListAST r := partiallyOrderedSemanticDeclarationListAST ;
+      partiallyOrderedSemanticDeclarationListAST := [@partiallyOrderedSemanticDeclarationListAST emptySortedList] ;
+      foreach r do
+        if [alreadyDefinedTypes hasKey !mDependanceString] then
+          orderedSemanticDeclarationListAST += !mSemanticDeclaration ;
+          alreadyDefinedTypes += !mTypeString ;
+          progress := true ;
+        else
+          partiallyOrderedSemanticDeclarationListAST += !mDependanceString !mTypeString !mSemanticDeclaration ;
+        end if ;
+      end foreach ;
+    end loop ;
+  #--- Remain in partiallyOrderedSemanticDeclarationListAST only circular definitions
+    if [partiallyOrderedSemanticDeclarationListAST length] > 0 then
+      @string s := "inheritance circularities involving the " ;
+      foreach partiallyOrderedSemanticDeclarationListAST
+        do s.= "@" . mTypeString ;
+        between s .= ", " ;
+      end foreach ;
+      s .= " classes; detail:" ;
+      foreach partiallyOrderedSemanticDeclarationListAST
+        do s.= "\n  - @" . mTypeString . " inherits from @" . mDependanceString ;
+      end foreach ;
+      error inEndOfSourceFile : s : outSemanticContext ;
+    else
+    #--- Build initial semantic context
+      outSemanticContext := [@semanticContext new
+        ![@unifiedTypeMap emptyMap]
+        ![@routineMap emptyMap]
+        ![@functionMap emptyMap]
+        ![@filewrapperMap emptyMap]
+        !inOptionComponentMapForSemanticAnalysis
+      ] ;
+    #--- Loop throught all declarations
+      foreach orderedSemanticDeclarationListAST do
+        [mSemanticDeclaration enterType !?outSemanticContext] ;
+      end foreach ;
+    end if ;
   end if ;
 end routine ;
 

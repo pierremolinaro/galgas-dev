@@ -7,7 +7,7 @@
 //---------------------------------------------------------------------------*
 
 void
-routine_test_dictionary (void) {
+routine_test_dictionary (C_Compiler & inCompiler) {
   const PMSInt32 TEST_SIZE = 1000000 ;
   GGS_stringset dictionary (GGS_stringset::constructor_emptySet ()) ;
 //--- First insertion
@@ -19,7 +19,7 @@ routine_test_dictionary (void) {
 //--- First remove
   for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
     C_String s ; s << cStringWithSigned (i) ;
-    dictionary.minusAssign_operation (GGS_string (true, s)) ;
+    dictionary.modifier_removeKey (inCompiler, GGS_string (true, s) COMMA_HERE) ;
   }
   printf ("Delete Test Done\n") ;
 //--- Second insertion
@@ -31,7 +31,7 @@ routine_test_dictionary (void) {
 //--- Second Remove
   for (PMSInt32 i=0 ; i<TEST_SIZE ; i++) {
     C_String s ; s << cStringWithSigned (i) ;
-    dictionary.minusAssign_operation (GGS_string (true, s)) ;
+    dictionary.modifier_removeKey (inCompiler, GGS_string (true, s) COMMA_HERE) ;
   }
   printf ("Delete Test Done\n") ;
 }
@@ -39,7 +39,7 @@ routine_test_dictionary (void) {
 //---------------------------------------------------------------------------*
 
 static void
-routine_test_galgas2 (C_Compiler & /*inLexique */) {
+routine_test_galgas2 (C_Compiler & /* inCompiler */) {
   printf ("*************************************** GALGAS 2 Tests\n") ;
   printf ("*** Test on list\n") ;
   GALGAS_uint * n = GALGAS_uint::constructor_new (2 COMMA_HERE) ;
