@@ -5889,6 +5889,7 @@ rule <semantics_declaration>
       !mapModifierMethodMap
       ![@EXmapMethodMap emptyMap]
       ![@mapStateList emptyList]
+      ![@lstringlist emptyList]
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
@@ -6127,17 +6128,6 @@ rule <semantics_declaration>
         ![@L_EXsignature listWithValue ![@typeGalgas_location new] !inPassingMode]
       ] ;
     end if ;
-  #--- Insertion dans la map des entites utilisables
-    @AC_galgasType c := [@typeGalgasMapType new
-      !mapTypeName
-      !listeTousAttributsSemantiques
-      !tableMethodesBloc
-      !mapModifierMethodMap
-      !mapSearchMethodMap
-      !mapStateList
-    ] ;
-    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
   #--- Check automaton actions are all defined
     const @stringset allActions := [mapAutomatonActionMap allKeys] ;
     @mapStateSortedList mapStateSortedList [emptySortedList] ;
@@ -6207,84 +6197,193 @@ rule <semantics_declaration>
       warning here : "the following map automaton states are useless: " . s ;
     end if ;
   #---------------------------------- override methods
+  #--- Compute needed associations
+    @stringset neededAssociations [emptySet] ;
+    @stringset accessibilityGraph [emptySet] ;
+    foreach mapAutomatonStateMap do
+      @stringset reachableStates [emptySet] ;
+      reachableStates += ![lkey string] ;
+      @bool progress := true ;
+      loop [mapAutomatonStateMap count] + 1 : while progress do
+        progress := false ;
+        foreach mapStateList do
+          if [mStateName string] == [lkey string] then
+            foreach mTransitionList do
+              if not [reachableStates hasKey ![mTargetStateName string]] then
+                reachableStates += ![mTargetStateName string] ;
+                accessibilityGraph += ![lkey string] . ":" . [mTargetStateName string] ;
+                progress := true ;
+              end if ;
+            end foreach ;
+          end if ;
+        end foreach ;
+      end loop ;
+      foreach reachableStates do
+        if [lkey string] != key then
+          neededAssociations += ![lkey string] . ":" . key ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  #---
+    @mapOverrideList mapOverrideList [emptyList] ;
+    @lstringlist overrideNameList [emptyList] ;
     repeat
     while
       $override$ ;
       $identifier$ ? @lstring overrideName ;
+      overrideNameList += !overrideName ;
       ${$ ;
-      @stringset handledStates [emptySet] ;
+      @stringset handledAssociations [emptySet] ;
+      @stringset neededCombinaisons [emptySet] ;
+      @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride [emptySortedList] ;
       repeat
-        $identifier$ ? @lstring startStateName ;
-        [mapAutomatonStateMap searchKey !startStateName ?*] ;
-        if [handledStates hasKey ![startStateName string]] then
-          error startStateName : "this state is already named" ;
-        end if ;
-        handledStates += ![startStateName string] ;
-        ${$ ;
-        repeat
-          $identifier$ ? @lstring currentStateName ;
-          [mapAutomatonStateMap searchKey !currentStateName ?*] ;
-          $->$ ;
-          $identifier$ ? @lstring finalStateName ;
-          [mapAutomatonStateMap searchKey !finalStateName ?*] ;
-          @mapAutomatonMessageKind transitionMessageKind ;
-          @lstring transitionMessage ;
-          select
-            transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
-            transitionMessage := [@lstring new !"" !here] ;
-          or
-            $warning$ ;
-            $literal_string$ ? transitionMessage ;
-            check_K_escapeCharacters !transitionMessage ;
-            transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
-          or
-            $error$ ;
-            $literal_string$ ? transitionMessage ;
-            check_K_escapeCharacters !transitionMessage ;
-            transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
-          end select ;
-        while
-        end repeat ;
-        $}$ ;
       while
+        $identifier$ ? @lstring startStateName ;
+        @uint startStateNameIndex ;
+        [mapAutomatonStateMap searchKey !startStateName ?startStateNameIndex] ;
+        $:$ ;
+        $identifier$ ? @lstring currentStateName ;
+        @uint currentStateNameIndex ;
+        [mapAutomatonStateMap searchKey !currentStateName ?currentStateNameIndex] ;
+        const @string association := [startStateName string] . ":" . [currentStateName string] ;
+        if not [neededAssociations hasKey !association] then
+          error currentStateName
+          :"the '" . association . "' association is useless" ;
+        end if ;
+        if [handledAssociations hasKey !association] then
+          error currentStateName
+          :"the '" . association . "' association is already defined" ;
+        end if ;
+        handledAssociations += !association ;
+        $->$ ;
+        $identifier$ ? @lstring finalStateName ;
+        @uint finalStateNameIndex ;
+        [mapAutomatonStateMap searchKey !finalStateName ?finalStateNameIndex] ;
+        if [startStateName string] != [finalStateName string] then
+          neededCombinaisons += ![startStateName string] . ":" . [finalStateName string] ;
+          neededCombinaisons += ![finalStateName string] . ":" . [startStateName string] ;
+        end if ;
+        if not [accessibilityGraph hasKey ![startStateName string] . ":" . [finalStateName string]] then
+          error finalStateName
+          : "the '" . finalStateName . "' state is not reachable from '" . startStateName . "' state"
+          ;
+        end if ;
+        @mapAutomatonMessageKind transitionMessageKind ;
+        @lstring transitionMessage ;
+        select
+          transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+          transitionMessage := [@lstring new !"" !here] ;
+        or
+          $warning$ ;
+          $literal_string$ ? transitionMessage ;
+          check_K_escapeCharacters !transitionMessage ;
+          transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+        or
+          $error$ ;
+          $literal_string$ ? transitionMessage ;
+          check_K_escapeCharacters !transitionMessage ;
+          transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+        end select ;
+        branchBehaviourSortedListForMapOverride +=
+          !startStateNameIndex
+          ![startStateName string]
+          !currentStateNameIndex
+          ![currentStateName string]
+          !finalStateNameIndex
+          ![finalStateName string]
+          !transitionMessageKind
+          ![transitionMessage string]
+        ;
       end repeat ;
-      @stringset missingStates := [mapAutomatonStateMap allKeys] - handledStates ;
-      if [missingStates count] > 0 then
+      @stringset forgottenAssociations := neededAssociations - handledAssociations ;
+      if [forgottenAssociations count] > 0 then
         @string s := "" ;
-        foreach missingStates do
-          s .= " " . key ;
+        foreach forgottenAssociations do
+          s .= "\n  - " . key ;
         end foreach ;
-        error here: "the following states should be named:" . s ;
+        error here: "the following associations should be defined:" . s ;
       end if ;
       $}$ ;
       ${$ ;
+      @stringset definedCombinaisons [emptySet] ;
+      @branchBehaviourSortedListForMapOverride branchCombinationSortedListForMapOverride [emptySortedList] ;
       repeat
-        $identifier$ ? @lstring currentStateName ;
-        ${$ ;
-        repeat
-          $identifier$ ? @lstring finalStateName ;
-          @mapAutomatonMessageKind transitionMessageKind ;
-          @lstring transitionMessage ;
-          select
-            transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
-            transitionMessage := [@lstring new !"" !here] ;
-          or
-            $warning$ ;
-            $literal_string$ ? transitionMessage ;
-            check_K_escapeCharacters !transitionMessage ;
-            transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
-          or
-            $error$ ;
-            $literal_string$ ? transitionMessage ;
-            check_K_escapeCharacters !transitionMessage ;
-            transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
-          end select ;
-        while
-        end repeat ;
-        $}$ ;
       while
+        $identifier$ ? @lstring branchStateName ;
+        @uint branchStateNameIndex ;
+        [mapAutomatonStateMap searchKey !branchStateName ?branchStateNameIndex] ;
+        $:$ ;
+        $identifier$ ? @lstring otherBranchStateName ;
+        @uint otherBranchStateNameIndex ;
+        [mapAutomatonStateMap searchKey !otherBranchStateName ?otherBranchStateNameIndex] ;
+        const @string combinaison := [branchStateName string] . ":" . [otherBranchStateName string] ;
+        if not [neededCombinaisons hasKey !combinaison] then
+          error otherBranchStateName
+          :"the '" . branchStateName . ":" . otherBranchStateName . "' combinaison is useless" ;
+        end if ;
+        if [definedCombinaisons hasKey !combinaison] then
+          error otherBranchStateName
+          :"the '" . branchStateName . ":" . otherBranchStateName . "' combinaison is already defined" ;
+        end if ;
+        definedCombinaisons += !combinaison ;
+        $->$ ;
+        $identifier$ ? @lstring resultingStateName ;
+        @uint resultingStateNameIndex ;
+        [mapAutomatonStateMap searchKey !resultingStateName ?resultingStateNameIndex] ;
+        if ([branchStateName string] != [resultingStateName string])
+         & ([otherBranchStateName string] != [resultingStateName string])
+         & not [accessibilityGraph hasKey ![branchStateName string] . ":" . [resultingStateName string]] then
+          error resultingStateName
+          :"the '" . resultingStateName . "' state cannot be reached from the '" . resultingStateName . "' state" ;
+        end if ;
+        @mapAutomatonMessageKind transitionMessageKind ;
+        @lstring transitionMessage ;
+        select
+          transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+          transitionMessage := [@lstring new !"" !here] ;
+          definedCombinaisons += ![otherBranchStateName string] . ":" . [branchStateName string] ;
+          branchCombinationSortedListForMapOverride +=
+            !otherBranchStateNameIndex
+            ![otherBranchStateName string]
+            !branchStateNameIndex
+            ![branchStateName string]
+            !resultingStateNameIndex
+            ![resultingStateName string]
+            !transitionMessageKind
+            ![transitionMessage string]
+          ;
+        or
+          $warning$ ;
+          $literal_string$ ? transitionMessage ;
+          check_K_escapeCharacters !transitionMessage ;
+          transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+        or
+          $error$ ;
+          $literal_string$ ? transitionMessage ;
+          check_K_escapeCharacters !transitionMessage ;
+          transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+        end select ;
+        branchCombinationSortedListForMapOverride +=
+          !branchStateNameIndex
+          ![branchStateName string]
+          !otherBranchStateNameIndex
+          ![otherBranchStateName string]
+          !resultingStateNameIndex
+          ![resultingStateName string]
+          !transitionMessageKind
+          ![transitionMessage string]
+        ;
       end repeat ;
+      @stringset forgottenCombinaisons := neededCombinaisons - definedCombinaisons ;
+      if [forgottenCombinaisons count] > 0 then
+        @string s := "" ;
+        foreach forgottenCombinaisons do
+          s .= "\n  - " . key ;
+        end foreach ;
+        warning here: [[forgottenCombinaisons count] string] . " combinaisons are forgotten:" . s ;
+      end if ;
       $}$ ;
+      mapOverrideList += !overrideName !branchBehaviourSortedListForMapOverride !branchCombinationSortedListForMapOverride ;
     end repeat ;
   #--- Insertion dans la map des classes definies dans le fichier source courant
     @typeEntityToGenerate def := [@C_mapToImplement new
@@ -6297,8 +6396,21 @@ rule <semantics_declaration>
       !hasInsertOrReplaceMethod
       !mapStateSortedList
       ![mapAutomatonActionMap count]
+      !mapOverrideList
     ] ;
     listeEntitesAengendrer += !def ;
+  #--- Insertion dans la map des entites utilisables
+    @AC_galgasType c := [@typeGalgasMapType new
+      !mapTypeName
+      !listeTousAttributsSemantiques
+      !tableMethodesBloc
+      !mapModifierMethodMap
+      !mapSearchMethodMap
+      !mapStateList
+      !overrideNameList
+    ] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
     $}$ ;
   end select ;
 label importSemantics
@@ -6443,6 +6555,7 @@ label importSemantics
       !mapModifierMethodMap
       ![@EXmapMethodMap emptyMap]
       ![@mapStateList emptyList]
+      ![@lstringlist emptyList]
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
@@ -6625,66 +6738,46 @@ label importSemantics
       ] ;
     end if ;
   #---------------------------------- override methods
+    @lstringlist overrideNameList [emptyList] ;
     repeat
     while
       $override$ ;
       $identifier$ ? @lstring overrideName ;
+      overrideNameList += !overrideName ;
       ${$ ;
       repeat
-        $identifier$ ? @lstring startStateName ;
-        ${$ ;
-        repeat
-          $identifier$ ? @lstring currentStateName ;
-          $->$ ;
-          $identifier$ ? @lstring finalStateName ;
-          @mapAutomatonMessageKind transitionMessageKind ;
-          @lstring transitionMessage ;
-          select
-            transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
-            transitionMessage := [@lstring new !"" !here] ;
-          or
-            $warning$ ;
-            $literal_string$ ? transitionMessage ;
-            check_K_escapeCharacters !transitionMessage ;
-            transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
-          or
-            $error$ ;
-            $literal_string$ ? transitionMessage ;
-            check_K_escapeCharacters !transitionMessage ;
-            transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
-          end select ;
-        while
-        end repeat ;
-        $}$ ;
       while
+        $identifier$ ? * ;
+        $:$ ;
+        $identifier$ ? * ;
+        $->$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $warning$ ;
+          $literal_string$ ? * ;
+        or
+          $error$ ;
+          $literal_string$ ? * ;
+        end select ;
       end repeat ;
       $}$ ;
       ${$ ;
       repeat
-        $identifier$ ? @lstring currentStateName ;
-        ${$ ;
-        repeat
-          $identifier$ ? @lstring finalStateName ;
-          @mapAutomatonMessageKind transitionMessageKind ;
-          @lstring transitionMessage ;
-          select
-            transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
-            transitionMessage := [@lstring new !"" !here] ;
-          or
-            $warning$ ;
-            $literal_string$ ? transitionMessage ;
-            check_K_escapeCharacters !transitionMessage ;
-            transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
-          or
-            $error$ ;
-            $literal_string$ ? transitionMessage ;
-            check_K_escapeCharacters !transitionMessage ;
-            transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
-          end select ;
-        while
-        end repeat ;
-        $}$ ;
       while
+        $identifier$ ? * ;
+        $:$ ;
+        $identifier$ ? * ;
+        $->$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $warning$ ;
+          $literal_string$ ? * ;
+        or
+          $error$ ;
+          $literal_string$ ? * ;
+        end select ;
       end repeat ;
       $}$ ;
     end repeat ;
@@ -6696,6 +6789,7 @@ label importSemantics
      !mapModifierMethodMap
      !mapSearchMethodMap
      !mapStateList
+     !overrideNameList
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;

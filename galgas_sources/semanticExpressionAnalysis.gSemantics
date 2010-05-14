@@ -74,109 +74,118 @@ map @variableMap {
   }
 
 #--- Output formal parameter
-  state undefinedOutputFormalParameter error "the '%K' output formal parameter is undefined" {
-    readAccess      -> undefinedOutputFormalParameter error "an undefined output formal parameter cannot be read"
-    writeAccess     -> definedOutputFormalParameter
-    readWriteAccess -> undefinedOutputFormalParameter error "an undefined output formal parameter cannot be read"
-    dropAccess      -> undefinedOutputFormalParameter warning "the output formal parameter has no value"
+  state undefinedOutputFormalArgument error "the '%K' output formal parameter is undefined" {
+    readAccess      -> undefinedOutputFormalArgument error "an undefined output formal parameter cannot be read"
+    writeAccess     -> definedOutputFormalArgument
+    readWriteAccess -> undefinedOutputFormalArgument error "an undefined output formal parameter cannot be read"
+    dropAccess      -> undefinedOutputFormalArgument warning "the output formal parameter has no value"
   }
-  state definedOutputFormalParameter {
-    readAccess      -> definedOutputFormalParameter
-    writeAccess     -> definedOutputFormalParameter
-    readWriteAccess -> definedOutputFormalParameter
-    dropAccess      -> undefinedOutputFormalParameter
+  state definedOutputFormalArgument {
+    readAccess      -> definedOutputFormalArgument
+    writeAccess     -> definedOutputFormalArgument
+    readWriteAccess -> definedOutputFormalArgument
+    dropAccess      -> undefinedOutputFormalArgument
   }
 
 #--- Input/Output formal parameter
-  state unusedInputOutputFormalParameter warning "the '%K' input/output formal parameter is unused" {
-    readAccess      -> usedInputOutputFormalParameter
-    writeAccess     -> usedInputOutputFormalParameter
-    readWriteAccess -> usedInputOutputFormalParameter
-    dropAccess      -> droppedInputOutputFormalParameter
+  state unusedInputOutputFormalArgument warning "the '%K' input/output formal parameter is unused" {
+    readAccess      -> usedInputOutputFormalArgument
+    writeAccess     -> usedInputOutputFormalArgument
+    readWriteAccess -> usedInputOutputFormalArgument
+    dropAccess      -> droppedInputOutputFormalArgument
   }
-  state usedInputOutputFormalParameter {
-    readAccess      -> usedInputOutputFormalParameter
-    writeAccess     -> usedInputOutputFormalParameter
-    readWriteAccess -> usedInputOutputFormalParameter
-    dropAccess      -> droppedInputOutputFormalParameter
+  state usedInputOutputFormalArgument {
+    readAccess      -> usedInputOutputFormalArgument
+    writeAccess     -> usedInputOutputFormalArgument
+    readWriteAccess -> usedInputOutputFormalArgument
+    dropAccess      -> droppedInputOutputFormalArgument
   }
-  state droppedInputOutputFormalParameter error "the '%K' input/ouput formal argument should be valuated at the end of the routine" {
-    readAccess      -> droppedInputOutputFormalParameter error "a dropped input/output formal argument cannot be read"
-    writeAccess     -> usedInputOutputFormalParameter
-    readWriteAccess -> droppedInputOutputFormalParameter error "a dropped input/output formal argument cannot be read"
-    dropAccess      -> droppedInputOutputFormalParameter warning "the input/output formal argument is already dropped"
+  state droppedInputOutputFormalArgument error "the '%K' input/ouput formal argument should be valuated at the end of the routine" {
+    readAccess      -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"
+    writeAccess     -> usedInputOutputFormalArgument
+    readWriteAccess -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"
+    dropAccess      -> droppedInputOutputFormalArgument warning "the input/output formal argument is already dropped"
   }
 
 #--- Input/Output formal parameter declared as unused
-  state inputOutputFormalParameterDeclaredAsUnused {
-    readAccess      -> usedInputOutputFormalParameter warning "the input/output formal parameter has been declared as unused"
-    writeAccess     -> usedInputOutputFormalParameter warning "the input/output formal parameter has been declared as unused"
-    readWriteAccess -> usedInputOutputFormalParameter warning "the input/output formal parameter has been declared as unused"
-    dropAccess      -> droppedInputOutputFormalParameter warning "the input/output formal parameter has been declared as unused"
+  state inputOutputFormalArgumentDeclaredAsUnused {
+    readAccess      -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
+    writeAccess     -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
+    readWriteAccess -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
+    dropAccess      -> droppedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
   }
 
 #--- Constant input formal parameter
-  state constantInputFormalParameter warning "the constant '%K' input formal parameter is not used and is not declared as unused" {
-    readAccess      -> usedConstantInputFormalParameter
-    writeAccess     -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be dropped"
+  state constantInputFormalArgument warning "the constant '%K' input formal parameter is not used and is not declared as unused" {
+    readAccess      -> usedConstantInputFormalArgument
+    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
   }
-  state usedConstantInputFormalParameter {
-    readAccess      -> usedConstantInputFormalParameter
-    writeAccess     -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be dropped"
+  state usedConstantInputFormalArgument {
+    readAccess      -> usedConstantInputFormalArgument
+    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
   }
 
 #--- Constant input formal parameter declared as unused
-  state constantInputFormalParameterDeclaredAsUnused {
-    readAccess      -> usedConstantInputFormalParameter warning "the constant input formal parameter is declared as unused"
-    writeAccess     -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalParameter error "a constant input formal parameter cannot be dropped"
+  state constantInputFormalArgumentDeclaredAsUnused {
+    readAccess      -> usedConstantInputFormalArgument warning "the constant input formal parameter is declared as unused"
+    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
   }
 
 #--- Input formal parameter
   state inputFormalParameter warning "the '%K' input formal parameter is not used and is not declared as unused" {
-    readAccess      -> usedInputFormalParameter
-    writeAccess     -> usedInputFormalParameter
-    readWriteAccess -> usedInputFormalParameter
-    dropAccess      -> droppedInputFormalParameter
+    readAccess      -> usedInputFormalArgument
+    writeAccess     -> usedInputFormalArgument
+    readWriteAccess -> usedInputFormalArgument
+    dropAccess      -> droppedInputFormalArgument
   }
-  state usedInputFormalParameter {
-    readAccess      -> usedInputFormalParameter
-    writeAccess     -> usedInputFormalParameter
-    readWriteAccess -> usedInputFormalParameter
-    dropAccess      -> droppedInputFormalParameter
+  state usedInputFormalArgument {
+    readAccess      -> usedInputFormalArgument
+    writeAccess     -> usedInputFormalArgument
+    readWriteAccess -> usedInputFormalArgument
+    dropAccess      -> droppedInputFormalArgument
   }
-  state droppedInputFormalParameter {
-    readAccess      -> droppedInputFormalParameter error "a dropped input formal parameter cannot be read"
-    writeAccess     -> usedInputFormalParameter
-    readWriteAccess -> droppedInputFormalParameter error "a dropped input formal parameter cannot be read"
-    dropAccess      -> droppedInputFormalParameter warning "the input formal parameter is already dropped"
+  state droppedInputFormalArgument {
+    readAccess      -> droppedInputFormalArgument error "a dropped input formal parameter cannot be read"
+    writeAccess     -> usedInputFormalArgument
+    readWriteAccess -> droppedInputFormalArgument error "a dropped input formal parameter cannot be read"
+    dropAccess      -> droppedInputFormalArgument warning "the input formal parameter is already dropped"
   }
 
 #--- Input formal parameter declared as unused
-  state inputFormalParameterDeclaredAsUnused {
-    readAccess      -> usedInputFormalParameter warning "the input formal parameter is declared as unused"
-    writeAccess     -> usedInputFormalParameter warning "the input formal parameter is declared as unused"
-    readWriteAccess -> usedInputFormalParameter warning "the input formal parameter is declared as unused"
-    dropAccess      -> droppedInputFormalParameter warning "the input formal parameter is declared as unused"
+  state inputFormalArgumentDeclaredAsUnused {
+    readAccess      -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
+    writeAccess     -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
+    readWriteAccess -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
+    dropAccess      -> droppedInputFormalArgument warning "the input formal parameter is declared as unused"
+  }
+
+#--- Current instance attribute
+  state currentInstanceAttribute {
+    readAccess      -> currentInstanceAttribute
+    writeAccess     -> currentInstanceAttribute error "an attribute cannot be written"
+    readWriteAccess -> currentInstanceAttribute error "an attribute cannot be modified"
+    dropAccess      -> currentInstanceAttribute error "an attribute cannot be dropped"
   }
 
 #--- Insert methods 
+  insert insertNonMutableAttribute state currentInstanceAttribute error message "redefinition of '%K' attribute (previous declaration was in %L)" ;
   insert insertUndefinedLocalVariable state undefinedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertDefinedLocalVariable state definedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertLocalConstant state localConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertUsedLocalConstant state usedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertInputFormalArgument state inputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertInputFormalArgumentDeclaredAsUnused state inputFormalParameterDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertConstantInputFormalArgument state constantInputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertConstantInputFormalArgumentDeclaredAsUnused state constantInputFormalParameterDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertOutputFormalArgument state undefinedOutputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertInputOutputFormalArgument state unusedInputOutputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
-  insert insertInputOutputFormalArgumentDeclaredAsUnused state inputOutputFormalParameterDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertInputFormalArgumentDeclaredAsUnused state inputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertConstantInputFormalArgument state constantInputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertConstantInputFormalArgumentDeclaredAsUnused state constantInputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertOutputFormalArgument state undefinedOutputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertInputOutputFormalArgument state unusedInputOutputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertInputOutputFormalArgumentDeclaredAsUnused state inputOutputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)" ;
 
 #--- Search methods
   search searchForReadAccess do readAccess error message "the '%K' variable is not declared" ;
@@ -186,67 +195,57 @@ map @variableMap {
 
 #--- override definitions
   override selectBlock {
-    constantInputFormalParameter {
-      constantInputFormalParameter -> constantInputFormalParameter
-    }
-    inputFormalParameterDeclaredAsUnused {
-      inputFormalParameterDeclaredAsUnused -> inputFormalParameterDeclaredAsUnused
-    }
-    constantInputFormalParameterDeclaredAsUnused {
-      constantInputFormalParameterDeclaredAsUnused -> constantInputFormalParameterDeclaredAsUnused
-    }
-    definedLocalVariable {
-      definedLocalVariable -> definedLocalVariable
-    }
-    localConstant {
-      localConstant -> localConstant
-    }
-    definedOutputFormalParameter {
-      definedOutputFormalParameter -> definedOutputFormalParameter
-    }
-    droppedInputFormalParameter {
-      droppedInputFormalParameter -> droppedInputFormalParameter
-    }
-    droppedInputOutputFormalParameter {
-      droppedInputOutputFormalParameter -> droppedInputOutputFormalParameter
-    }
-    droppedLocalVariable {
-      droppedLocalVariable -> droppedLocalVariable
-    }
-    inputFormalParameter {
-      inputFormalParameter -> inputFormalParameter
-    }
-    inputOutputFormalParameterDeclaredAsUnused {
-      inputOutputFormalParameterDeclaredAsUnused -> inputOutputFormalParameterDeclaredAsUnused
-    }
-    undefinedLocalVariable {
-      undefinedLocalVariable -> undefinedLocalVariable
-    }
-    undefinedOutputFormalParameter {
-      undefinedOutputFormalParameter -> undefinedOutputFormalParameter
-    }
-    unusedInputOutputFormalParameter {
-      unusedInputOutputFormalParameter -> unusedInputOutputFormalParameter
-    }
-    usedConstantInputFormalParameter {
-      usedConstantInputFormalParameter -> usedConstantInputFormalParameter
-    }
-    usedInputFormalParameter {
-      usedInputFormalParameter -> usedInputFormalParameter
-    }
-    usedInputOutputFormalParameter {
-      usedInputOutputFormalParameter -> usedInputOutputFormalParameter
-    }
-    usedLocalConstant {
-      usedLocalConstant -> usedLocalConstant
-    }
-    usedLocalVariable {
-      usedLocalVariable -> usedLocalVariable
-    }
+    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    definedLocalVariable:droppedLocalVariable -> droppedLocalVariable
+    definedLocalVariable:usedLocalVariable -> usedLocalVariable
+    definedOutputFormalArgument:undefinedOutputFormalArgument -> undefinedOutputFormalArgument
+    droppedInputFormalArgument:usedInputFormalArgument -> usedInputFormalArgument
+    droppedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    droppedLocalVariable:definedLocalVariable -> definedLocalVariable
+    inputFormalParameter:droppedInputFormalArgument -> droppedInputFormalArgument
+    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
+    inputFormalArgumentDeclaredAsUnused:droppedInputFormalArgument -> droppedInputFormalArgument
+    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
+    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
+    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    localConstant:usedLocalConstant -> usedLocalConstant
+    undefinedLocalVariable:definedLocalVariable -> definedLocalVariable
+    undefinedOutputFormalArgument:definedOutputFormalArgument -> definedOutputFormalArgument
+    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
+    unusedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    usedInputFormalArgument:droppedInputFormalArgument -> droppedInputFormalArgument
+    usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
+    usedLocalVariable:definedLocalVariable -> definedLocalVariable
+    usedLocalVariable:droppedLocalVariable -> droppedLocalVariable
   }{
-    inputFormalParameterDeclaredAsUnused {
-      inputFormalParameterDeclaredAsUnused
-    }
+    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    definedLocalVariable:droppedLocalVariable -> definedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
+    definedLocalVariable:undefinedLocalVariable -> definedLocalVariable error "this branch lets the '%K' variable undefined, while previous ones define it"
+    definedLocalVariable:usedLocalVariable -> usedLocalVariable
+    definedOutputFormalArgument:undefinedOutputFormalArgument -> definedOutputFormalArgument error "this branch lets the '%K' variable undefined, while previous ones define it"
+    droppedInputFormalArgument:inputFormalParameter -> droppedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
+    droppedInputFormalArgument:inputFormalArgumentDeclaredAsUnused -> droppedInputFormalArgument
+    droppedInputFormalArgument:usedInputFormalArgument -> usedInputFormalArgument error "this branch defines the '%K' input formal argument, while previous ones let it dropped"
+    droppedInputOutputFormalArgument:inputOutputFormalArgumentDeclaredAsUnused -> inputOutputFormalArgumentDeclaredAsUnused error "this branch lets the '%K' input formal argument defined, while previous ones drop it"
+    droppedInputOutputFormalArgument:unusedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
+    droppedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
+    droppedLocalVariable:definedLocalVariable -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
+    droppedLocalVariable:usedLocalVariable -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
+    inputFormalParameter:droppedInputFormalArgument ->inputFormalParameter error "this branch drops the '%K' input formal argument, while previous let it defined"
+    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
+    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
+    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused error "this branch drops the '%K' input formal argument defined, while previous ones let it defined"
+    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused
+    localConstant:usedLocalConstant -> usedLocalConstant
+    undefinedLocalVariable:definedLocalVariable -> definedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
+    undefinedOutputFormalArgument:definedOutputFormalArgument -> definedOutputFormalArgument error "this branch defines the '%K' output formal argument, while previous ones let it undefined"
+    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it undefined"
+    unusedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    usedInputFormalArgument:droppedInputFormalArgument -> usedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
+    usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> usedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it defined"
+    usedLocalVariable:droppedLocalVariable -> usedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
   }
 }
 
@@ -391,7 +390,7 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalUIntExpressionForGeneration new !inPredefinedTypes->mDoubleType !mValue] ;
+  outExpression := [@literalUIntExpressionForGeneration new !inPredefinedTypes->mUIntType !mValue] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -539,18 +538,27 @@ override method @readerCallExpressionAST analyzeSemanticExpression
     returnedType := mReturnedType ;
     implicitConversionReader := mImplicitConversionReader ;
   else
-    @string s := "" ;
-    foreach readerMap do
-      s .= "\n  - " . lkey ;
-      foreach mArgumentTypeList do
-        s .= " ?@" . [mType key] ;
+    if [readerMap count] == 0 then
+      error mReaderName
+      : "the '@". [receiverType key] . "' type does not define any reader"
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, implicitConversionReader
+      ;
+    else
+      @string s := "" ;
+      foreach readerMap do
+        s .= "\n  - " . lkey ;
+        foreach mArgumentTypeList do
+          s .= " ?@" . [mType key] ;
+        end foreach ;
+        s .= " -> @" . [mReturnedType key] ;
       end foreach ;
-      s .= " -> @" . [mReturnedType key] ;
-    end foreach ;
-    error mReaderName
-    : "the '@". [receiverType key] . "' type does not define the '" . mReaderName . "' reader; available readers are:" . s
-    : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, implicitConversionReader
-    ;
+      error mReaderName
+      : "the '@". [receiverType key] . "' type does not define the '" . mReaderName . "' reader; available "
+      . if [readerMap count] > 1 then "readers are" else "reader is" end
+      . ":" . s
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, implicitConversionReader
+      ;
+    end if ;
   end with ;
 #--- Analysis arguments
   if [mExpressions length] != [readerFormalArgumentTypeList length] then
@@ -566,11 +574,10 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       constructorEffectiveParameterList += !exp ;
     end foreach ;
     outExpression := [@readerCallExpressionForGeneration new
-      ![receiverExpression mType]
+      !returnedType
       !receiverExpression
       !mReaderName
       !constructorEffectiveParameterList
-      !returnedType
       !implicitConversionReader
     ] ;
   end if ;
@@ -880,7 +887,7 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
-  if ([leftType mHandledOperatorFlags] & doNotGenererateObjectCompare []) == 0 then
+  if ([leftType mHandledOperatorFlags] & isComparable []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support the '<=' operator"
     :outExpression
@@ -918,7 +925,7 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
-  if ([leftType mHandledOperatorFlags] & doNotGenererateObjectCompare []) == 0 then
+  if ([leftType mHandledOperatorFlags] & isComparable []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support the '>=' operator"
     :outExpression
@@ -956,7 +963,7 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
-  if ([leftType mHandledOperatorFlags] & doNotGenererateObjectCompare []) == 0 then
+  if ([leftType mHandledOperatorFlags] & isComparable []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support the '>' operator"
     :outExpression
@@ -994,7 +1001,7 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
-  if ([leftType mHandledOperatorFlags] & doNotGenererateObjectCompare []) == 0 then
+  if ([leftType mHandledOperatorFlags] & isComparable []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support the '<' operator"
     :outExpression

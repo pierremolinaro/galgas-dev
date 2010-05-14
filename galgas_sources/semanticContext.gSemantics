@@ -1094,6 +1094,14 @@ override method @classDeclarationAST enterType
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     currentClassTypedAttributeList += !attributeTypeIndex !mAttributeName ;
     allTypedAttributeList += !attributeTypeIndex !mAttributeName ;
+    [!?readerMap insertKey
+      !mAttributeName
+      ![@unifiedTypeMapProxyList emptyList] # No argument
+      !false # No Compiler argument
+      !attributeTypeIndex # Returned type
+      ![@readerQualifier isBasic]
+      !""
+    ] ;
   end foreach ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
@@ -1125,7 +1133,6 @@ end method ;
 override method @externRoutineDeclarationAST enterType # Handles also routine declaration
   ?!@semanticContext ioSemanticContext
 :
-#  message "@externRoutineDeclarationAST enterType\n" ;
 #--- Build signature
   @formalParameterSignature routineSignature [emptyList] ;
   foreach mFormalParameterList do
@@ -1353,6 +1360,22 @@ override method @mapProxyDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
   ioPartiallyOrderedDeclarationList += ![mAssociatedMapTypeName string] ![mMapProxyTypeName string] !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externFunctionDeclarationAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  ioPartiallyOrderedDeclarationList += !"" !"" !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externRoutineDeclarationAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  ioPartiallyOrderedDeclarationList += !"" !"" !self ;
 end method ;
 
 #---------------------------------------------------------------------------*

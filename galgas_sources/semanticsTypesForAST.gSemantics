@@ -508,21 +508,13 @@ class @externRoutineDeclarationAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    R O U T I N E    P R O T O T Y P E    D E C L A R A T I O N            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @routinePrototypeDeclarationAST extends @externRoutineDeclarationAST {
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    R O U T I N E    D E C L A R A T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @routineDeclarationAST extends @routinePrototypeDeclarationAST {
+class @routineDeclarationAST extends @externRoutineDeclarationAST {
   @semanticInstructionListAST mRoutineInstructionList ;
+  @location mEndOfRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -688,13 +680,15 @@ class @foreachInstructionAST extends @semanticInstructionAST {
 list @ifBranchListAST {
   @semanticExpressionAST mIFexpression ;
   @semanticInstructionListAST mIFinstructionList ;
+  @location mEndOfBranch ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @ifInstructionAST extends @semanticInstructionAST {
-  @ifBranchListAST mBranchList ; # [1, *]
+  @ifBranchListAST mBranchList ;
   @semanticInstructionListAST mElseInstructionList ;
+  @location mEndOf_if_instruction ;
 }
 
 #---------------------------------------------------------------------------*

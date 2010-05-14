@@ -898,6 +898,73 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+routine analyzeSemanticInstructionList
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@semanticInstructionListAST inSemanticInstructionListAST
+  ?!@variableMap ioVariableMap
+  !@semanticInstructionListForGeneration outInstructionListForGeneration
+:
+  outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+  foreach inSemanticInstructionListAST do
+    [mInstruction analyzeSemanticInstruction
+      !inSemanticContext
+      !inPredefinedTypes
+      !?outInstructionListForGeneration
+      !?ioVariableMap
+    ] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+override method @ifInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  @ifBranchListForGeneration ifBranchListForGeneration [emptyList] ;
+  foreach mBranchList do
+    [!?ioVariableMap beginBranch] ;
+      @semanticExpressionForGeneration expression ;
+      [mIFexpression analyzeSemanticExpression
+        !inSemanticContext
+        !inPredefinedTypes
+        !?ioVariableMap
+        ?expression
+      ] ;
+      @semanticInstructionListForGeneration instructionList ;
+      analyzeSemanticInstructionList
+        !inSemanticContext
+        !inPredefinedTypes
+        !mIFinstructionList
+        !?ioVariableMap
+        ?instructionList
+      ;
+      ifBranchListForGeneration += !expression !instructionList ;
+    [!?ioVariableMap endBranch !mEndOfBranch] ;
+  end foreach ;
+  [!?ioVariableMap beginBranch] ;
+    @semanticInstructionListForGeneration else_instructionList ;
+    analyzeSemanticInstructionList
+      !inSemanticContext
+      !inPredefinedTypes
+      !mElseInstructionList
+      !?ioVariableMap
+      ?else_instructionList
+    ;
+  [!?ioVariableMap endBranch !mEndOf_if_instruction] ;
+  [!?ioVariableMap endOverride !mEndOf_if_instruction] ;
+  ioInstructionListForGeneration += ![@ifInstructionForGeneration new
+    !ifBranchListForGeneration
+    !else_instructionList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @foreachInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
@@ -906,19 +973,6 @@ override method @foreachInstructionAST analyzeSemanticInstruction
 :
   error mInstructionLocation
   : "unhandled instruction @foreachInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @ifInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  error mInstructionLocation
-  : "unhandled instruction @ifInstructionAST"
   ;
 end method ;
 

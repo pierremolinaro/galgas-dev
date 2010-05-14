@@ -994,9 +994,24 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
     current.next () ;
   }
-  inHfile << "  } ;\n"
+  inHfile << "  } ;\n" ;
+//--- Map overrides
+  GGS_mapOverrideList::cEnumerator currentOverride (mMapOverrideList, true) ;
+  while (currentOverride.hasCurrentObject ()) {
+    inHfile << "//--- Override '" << currentOverride._mOverrideName (HERE) << "'\n"
+               "  public : void modifier_beginOverrideFor"
+            << currentOverride._mOverrideName (HERE).string ().stringByCapitalizingFirstCharacter ().identifierRepresentation ()
+            << " (C_Compiler & inLexique" 
+               "\n                                COMMA_LOCATION_ARGS) ;\n\n" ;
+     currentOverride.next () ;
+  }
+  if (mMapOverrideList.count () > 0) {
+    inHfile << "  public : void modifier_endBranch (C_Compiler & inCompiler,\n"
+               "                                    const GGS_location & inErrorLocation\n"
+               "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
+  }
 //--- End of class Declaration
-              "} ;\n\n" ;
+  inHfile << "} ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1794,9 +1809,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- 'mapWithKeyAndValue' constructor
   if (actionCount == 0) {
-    inCppFile << "//--- 'mapWithKeyAndValue' constructor\n"
-                   "GGS_" << mMapTypeName << " GGS_" << mMapTypeName << "::constructor_mapWithKeyAndValue (C_Compiler & inLexique,\n"
-               "                                             const GGS_lstring & inKey" ;
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "GGS_" << mMapTypeName << " GGS_" << mMapTypeName << "::constructor_mapWithKeyAndValue (C_Compiler & inLexique,\n"
+                 "                                             const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
     PMSInt32 attributeIndex = 0 ;
     while (currentAttribute.hasCurrentObject ()) {
@@ -1824,6 +1839,177 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                        COMMA_THERE) ;\n"
                    "  return result ;\n"
                    "}\n\n" ;
+  }
+//--- Map overrides
+  GGS_mapOverrideList::cEnumerator currentOverride (mMapOverrideList, true) ;
+  while (currentOverride.hasCurrentObject ()) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "// Override '" << currentOverride._mOverrideName (HERE) << "'\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+  //--- Issue message for branch behaviour
+    GGS_branchBehaviourSortedListForMapOverride::cEnumerator branchBehaviourOverride (currentOverride._mBranchBehaviourSortedListForMapOverride (HERE), true) ; ;
+    while (branchBehaviourOverride.hasCurrentObject ()) {
+      if (branchBehaviourOverride._mStateMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
+        inCppFile.appendCppHyphenLineComment () ;
+        const C_String stateMessage = branchBehaviourOverride._mBehaviourMessage (HERE).string () ;
+        inCppFile << "static const utf32 kIssueBranchOverrideMessage_"
+                  << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+                  << "_forMap_"
+                  << mMapTypeName.identifierRepresentation ()
+                  << "_" << cStringWithUnsigned (branchBehaviourOverride._mStartStateIndex (HERE).uintValue ())
+                  << "_" << cStringWithUnsigned (branchBehaviourOverride._mCurrentStateIndex (HERE).uintValue ())
+                  << " [" << cStringWithSigned (stateMessage.length () + 1) << "] = " << stateMessage.utf32Representation () << " ;\n\n" ;
+      }
+      branchBehaviourOverride.next () ;
+    }
+  //--- Branch behaviour
+    inCppFile << "static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_"
+              << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+              << "_forMap_"
+              << mMapTypeName.identifierRepresentation ()
+              << " [" << cStringWithSigned (currentOverride._mBranchBehaviourSortedListForMapOverride (HERE).count ()) << "] = {\n" ;
+    
+    branchBehaviourOverride.rewind () ;
+    while (branchBehaviourOverride.hasCurrentObject ()) {
+      inCppFile << "  {"
+                << cStringWithUnsigned (branchBehaviourOverride._mStartStateIndex (HERE).uintValue ())
+                << ", "
+                << cStringWithUnsigned (branchBehaviourOverride._mCurrentStateIndex (HERE).uintValue ())
+                << ", "
+                << cStringWithUnsigned (branchBehaviourOverride._mFinalStateIndex (HERE).uintValue ())
+                << ", " ;
+      switch (branchBehaviourOverride._mStateMessageKind (HERE).enumValue ()) {
+      case GGS_mapAutomatonMessageKind::enum_warningMessage :
+        inCppFile << "kMapAutomatonIssueWarning, kIssueBranchOverrideMessage_"
+                  << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+                  << "_forMap_"
+                  << mMapTypeName.identifierRepresentation ()
+                  << "_" << cStringWithUnsigned (branchBehaviourOverride._mStartStateIndex (HERE).uintValue ())
+                  << "_" << cStringWithUnsigned (branchBehaviourOverride._mCurrentStateIndex (HERE).uintValue ()) ;
+         break ;
+      case GGS_mapAutomatonMessageKind::enum_errorMessage :
+        inCppFile << "kMapAutomatonIssueError, kIssueBranchOverrideMessage_"
+                  << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+                  << "_forMap_"
+                  << mMapTypeName.identifierRepresentation ()
+                  << "_" << cStringWithUnsigned (branchBehaviourOverride._mStartStateIndex (HERE).uintValue ())
+                  << "_" << cStringWithUnsigned (branchBehaviourOverride._mCurrentStateIndex (HERE).uintValue ()) ;
+        break ;
+      case GGS_mapAutomatonMessageKind::enum_noMessage :
+        inCppFile << "kMapAutomatonNoIssue, NULL" ;
+        break ;
+      default : break ;
+      }
+      inCppFile << "}, // "
+                << branchBehaviourOverride._mStartStateName (HERE).string ()
+                << ", "
+                << branchBehaviourOverride._mCurrentStateName (HERE).string ()
+                << ", "
+                << branchBehaviourOverride._mFinalStateName (HERE).string ()
+                << "\n"
+                ;
+      branchBehaviourOverride.next () ;
+    }
+    inCppFile << "} ;\n\n" ;
+  //--- Issue message for branch combination
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "// Override '" << currentOverride._mOverrideName (HERE) << "'\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+    GGS_branchBehaviourSortedListForMapOverride::cEnumerator branchCombinationOverride (currentOverride._mBranchCombinationSortedListForMapOverride (HERE), true) ; ;
+    while (branchCombinationOverride.hasCurrentObject ()) {
+      if (branchCombinationOverride._mStateMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
+        inCppFile.appendCppHyphenLineComment () ;
+        const C_String stateMessage = branchCombinationOverride._mBehaviourMessage (HERE).string () ;
+        inCppFile << "static const utf32 kIssueBranchCombinationMessage_"
+                  << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+                  << "_forMap_"
+                  << mMapTypeName.identifierRepresentation ()
+                  << "_" << cStringWithUnsigned (branchCombinationOverride._mStartStateIndex (HERE).uintValue ())
+                  << "_" << cStringWithUnsigned (branchCombinationOverride._mCurrentStateIndex (HERE).uintValue ())
+                  << " [" << cStringWithSigned (stateMessage.length () + 1) << "] = " << stateMessage.utf32Representation () << " ;\n\n" ;
+      }
+      branchCombinationOverride.next () ;
+    }
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_"
+              << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+              << "_forMap_"
+              << mMapTypeName.identifierRepresentation ()
+              << " [" << cStringWithSigned (currentOverride._mBranchCombinationSortedListForMapOverride (HERE).count ()) << "] = {\n" ;
+    branchCombinationOverride.rewind () ;
+    while (branchCombinationOverride.hasCurrentObject ()) {
+      inCppFile << "  {"
+                << cStringWithUnsigned (branchCombinationOverride._mStartStateIndex (HERE).uintValue ())
+                << ", "
+                << cStringWithUnsigned (branchCombinationOverride._mCurrentStateIndex (HERE).uintValue ())
+                << ", "
+                << cStringWithUnsigned (branchCombinationOverride._mFinalStateIndex (HERE).uintValue ())
+                << ", " ;
+      switch (branchCombinationOverride._mStateMessageKind (HERE).enumValue ()) {
+      case GGS_mapAutomatonMessageKind::enum_warningMessage :
+        inCppFile << "kMapAutomatonIssueWarning, kIssueBranchCombinationMessage_"
+                  << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+                  << "_forMap_"
+                  << mMapTypeName.identifierRepresentation ()
+                  << "_" << cStringWithUnsigned (branchCombinationOverride._mStartStateIndex (HERE).uintValue ())
+                  << "_" << cStringWithUnsigned (branchCombinationOverride._mCurrentStateIndex (HERE).uintValue ()) ;
+         break ;
+      case GGS_mapAutomatonMessageKind::enum_errorMessage :
+        inCppFile << "kMapAutomatonIssueError, kIssueBranchCombinationMessage_"
+                  << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+                  << "_forMap_"
+                  << mMapTypeName.identifierRepresentation ()
+                  << "_" << cStringWithUnsigned (branchCombinationOverride._mStartStateIndex (HERE).uintValue ())
+                  << "_" << cStringWithUnsigned (branchCombinationOverride._mCurrentStateIndex (HERE).uintValue ()) ;
+        break ;
+      case GGS_mapAutomatonMessageKind::enum_noMessage :
+        inCppFile << "kMapAutomatonNoIssue, NULL" ;
+        break ;
+      default : break ;
+      }
+      inCppFile << "}, // "
+                << branchCombinationOverride._mStartStateName (HERE).string ()
+                << ", "
+                << branchCombinationOverride._mCurrentStateName (HERE).string ()
+                << ", "
+                << branchCombinationOverride._mFinalStateName (HERE).string ()
+                << "\n"
+                ;
+      branchCombinationOverride.next () ;
+    }
+    inCppFile << "} ;\n\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << mMapTypeName << "::modifier_beginOverrideFor"
+            << currentOverride._mOverrideName (HERE).string ().stringByCapitalizingFirstCharacter ().identifierRepresentation ()
+            << " (C_Compiler & inLexique" 
+               "\n                                COMMA_LOCATION_ARGS) {\n"
+               "  if (isBuilt ()) {\n"
+               "    beginOverride (kBranchBehaviourForOverride_"
+              << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+              << "_forMap_"
+              << mMapTypeName.identifierRepresentation ()
+              << ", " << cStringWithSigned (currentOverride._mBranchBehaviourSortedListForMapOverride (HERE).count ())
+              << ",\n"
+              << "                   kBranchCombinationForOverride_"
+              << currentOverride._mOverrideName (HERE).identifierRepresentation ()
+              << "_forMap_"
+              << mMapTypeName.identifierRepresentation ()
+              << ", " << cStringWithSigned (currentOverride._mBranchCombinationSortedListForMapOverride (HERE).count ())
+              << ",\n"
+              << "                   \"" << currentOverride._mOverrideName (HERE).string () << "\""
+              << ",\n"
+              << "                   inLexique COMMA_THERE) ;\n"
+                 "  }\n"
+                 "}\n\n" ;
+    currentOverride.next () ;
+  }
+  if (mMapOverrideList.count () > 0) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << mMapTypeName << "::modifier_endBranch (C_Compiler & inCompiler,\n"
+                 "                       const GGS_location & inErrorLocation\n"
+                 "                       COMMA_LOCATION_ARGS) {\n"
+                 "  internalEndBranch (inCompiler, inErrorLocation, kFinalIssue_" << mMapTypeName.identifierRepresentation () << " COMMA_THERE) ;\n"
+                 "}\n\n" ;
   }
 }
 
