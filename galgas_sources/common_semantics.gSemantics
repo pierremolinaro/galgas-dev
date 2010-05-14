@@ -3118,6 +3118,9 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Automaton description
   @mapStateList mMapStateList ;
 
+#--- Override list
+  @lstringlist mOverrideNameList ;
+
 #--- By default, object does not accept 'with' instruction access
   override
   method check_with_InstructionAccess
@@ -3150,14 +3153,33 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
-    [mModifierMethodMap searchKey !inModifierName ?outModifierSignature] ;
-    if not [mModifierMethodMap hasKey ![inModifierName string]] then
-      foreach mAttributeList do 
-        @string setValueForKeyName := "set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ;
-        if setValueForKeyName == [inModifierName string] then
-          warning mAttributeName:"'" . mAttributeName  . "' attribute is declared here" ;
-        end if ;
-      end foreach ;
+    @bool found := false ;
+    outModifierSignature := [@L_EXsignature emptyList] ;
+    if [mOverrideNameList length] > 0 then
+      if [inModifierName string] == "beginBranch" then
+        found := true ;
+      elsif [inModifierName string] == "endOverride" then
+        found := true ;
+        outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingModeAST argumentIn] ;
+      elsif [inModifierName string] == "endBranch" then
+        found := true ;
+        outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingModeAST argumentIn] ;
+      else
+        foreach mOverrideNameList while not found do
+          found := [inModifierName string] == ("beginOverrideFor" . [mValue stringByCapitalizingFirstCharacter]) ;
+        end foreach ;
+      end if ;
+    end if ;
+    if not found then
+      [mModifierMethodMap searchKey !inModifierName ?outModifierSignature] ;
+      if not [mModifierMethodMap hasKey ![inModifierName string]] then
+        foreach mAttributeList do 
+          @string setValueForKeyName := "set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ;
+          if setValueForKeyName == [inModifierName string] then
+            warning mAttributeName:"'" . mAttributeName  . "' attribute is declared here" ;
+          end if ;
+        end foreach ;
+      end if ;
     end if ;
   end method ;
 
@@ -3301,6 +3323,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
            !mModifierMethodMap
            !mReaderMethodMap
            ![@mapStateList emptyList]
+           ![@lstringlist emptyList]
          ]
         ![@formalArgumentPassingModeAST argumentInOut]
       ;

@@ -82,12 +82,14 @@ rule <semantic_declaration>
   @semanticInstructionListAST mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $end$ ;
+  const @location endOfInstructionList := here ;
   $routine$ ;
   $;$ ;
   ioSemanticDeclarations->mSemanticDeclarationList += ![@routineDeclarationAST new
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
+    !endOfInstructionList
   ] ;
 end rule ;
 
@@ -119,17 +121,13 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationStructAST unused ioSemanticDeclarations
 :
+#--- For compatibility with GALGAS 1
   $routine$ ;
-  $identifier$ ? @lstring mActionName ;
-  @formalParameterListAST mFormalParameterList ;
-  <formal_parameter_list> ? mFormalParameterList ;
+  $identifier$ ? * ;
+  <formal_parameter_list> ? * ;
   $;$ ;
-  ioSemanticDeclarations->mSemanticDeclarationList += ![@routinePrototypeDeclarationAST new
-    !mActionName
-    !mFormalParameterList
-  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -551,7 +549,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $then$ ;
     @semanticInstructionListAST mIFinstructionList ;
     <semantic_instruction_list> ? mIFinstructionList ;
-    mBranchList += !mIFexpressionList !mIFinstructionList ;
+    mBranchList += !mIFexpressionList !mIFinstructionList !here ;
   while
     $elsif$ ;
   end repeat ;
@@ -563,12 +561,14 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     <semantic_instruction_list> ? mElseInstructionList ;
   end select ;
   $end$ ;
+  const @location endOfInstruction := here ;
   $if$ ;
   $;$ ;
   outInstruction := [@ifInstructionAST new
     !instructionLocation
     !mBranchList
     !mElseInstructionList
+    !endOfInstruction
   ] ;
 end rule ;
 

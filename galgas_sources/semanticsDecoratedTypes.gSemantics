@@ -109,7 +109,6 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
   @semanticExpressionForGeneration mReceiver ;
   @lstring mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;
-  @unifiedTypeMapProxy mReturnedType ;
   @string mImplicitConversionReader ;
 }
 
@@ -680,17 +679,17 @@ class @sendInstructionForGeneration extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#list @ifBranchListForGeneration {
-#  @semanticExpressionForGeneration mIFexpression ;
-#  @semanticInstructionListForGeneration mIFinstructionList ;
-#}
+list @ifBranchListForGeneration {
+  @semanticExpressionForGeneration mIFexpression ;
+  @semanticInstructionListForGeneration mIFinstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 
-#class @ifInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @ifBranchListForGeneration mBranchList ; # [1, *]
-#  @semanticInstructionListForGeneration mElseInstructionList ;
-#}
+class @ifInstructionForGeneration extends @semanticInstructionForGeneration {
+  @ifBranchListForGeneration mBranchList ; # [1, *]
+  @semanticInstructionListForGeneration mElseInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

@@ -1384,6 +1384,29 @@ sortedlist @mapStateSortedList {
 
 #---------------------------------------------------------------------------*
 
+sortedlist @branchBehaviourSortedListForMapOverride {
+  @uint mStartStateIndex ;
+  @string mStartStateName ;
+  @uint mCurrentStateIndex ;
+  @string mCurrentStateName ;
+  @uint mFinalStateIndex ;
+  @string mFinalStateName ;
+  @mapAutomatonMessageKind mStateMessageKind ;
+  @string mBehaviourMessage ;
+}{
+  mStartStateIndex <, mCurrentStateIndex <
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapOverrideList {
+  @lstring mOverrideName ;
+  @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride ;
+  @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @C_mapToImplement extends @typeEntityToGenerate {
   @lstring mMapTypeName feature nogetter ;
   @typeListeAttributsSemantiques mNonExternAttributesList feature nogetter ;
@@ -1394,6 +1417,7 @@ class @C_mapToImplement extends @typeEntityToGenerate {
   @bool mHasInsertOrReplaceModifier ;
   @mapStateSortedList mMapStateSortedList ;
   @uint mActionCount ;
+  @mapOverrideList mMapOverrideList ;
 }
 
 #---------------------------------------------------------------------------*
