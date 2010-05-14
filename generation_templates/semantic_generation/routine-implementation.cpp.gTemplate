@@ -1,0 +1,28 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Routine '" . ROUTINE_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler%
+  foreach FORMAL_ARGUMENT_LIST do index IDX
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+      %,\n%!^%const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument_% ![mFormalArgumentName string]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+      %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument_% ![mFormalArgumentName string]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+      %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & outArgument_% ![mFormalArgumentName string]
+    else # argumentIn
+      %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument_% ![mFormalArgumentName string]
+    end if
+  end foreach
+
+                     %\n %!^%COMMA_LOCATION_ARGS) {
+%
+  block 2 :
+    foreach ROUTINE_INSTRUCTION_LIST do
+      ![mInstruction generateInstruction]
+    end foreach
+  end block
+%}
+

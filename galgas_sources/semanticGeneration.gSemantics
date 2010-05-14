@@ -18,9 +18,9 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticGeneration :
-  import "semanticAnalysis.gSemantics" ;
+  import "semanticInstructionGeneration.gSemantics" ;
 
-  import semantics semanticAnalysis in "semanticAnalysis.gSemantics" ;
+  import semantics semanticInstructionGeneration in "semanticInstructionGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -145,6 +145,18 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@bool IS_ABSTRACT
     ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
   ;
+
+  template routineDeclaration "routine-declaration.h.gTemplate"
+    ?@string ROUTINE_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+
+  template routineImplementation "routine-implementation.cpp.gTemplate"
+    ?@string ROUTINE_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@semanticInstructionListForGeneration ROUTINE_INSTRUCTION_LIST
+  ;
+
 }
 
 #---------------------------------------------------------------------------*
@@ -155,6 +167,15 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
 
 reader @semanticDeclarationForGeneration appendDeclaration -> @string outHeader :
   outHeader := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @routinePrototypeDeclarationForGeneration appendDeclaration -> @string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.routineDeclaration
+    !mRoutineName
+    !mFormalArgumentList
+  ] ; 
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -346,6 +367,16 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
     !mMethodList
   ] ;
  end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @routineImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.routineImplementation
+    !mRoutineName
+    !mFormalArgumentList
+    !mRoutineInstructionList
+  ] ; 
+end reader ;
 
 #---------------------------------------------------------------------------*
 

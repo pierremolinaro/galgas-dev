@@ -310,7 +310,7 @@ override method @selfInExpressionAST analyzeSemanticExpression
     @string selfCppName ;
     @unifiedTypeMapProxy selfType ;
     [!?ioVariableMap searchForReadAccess ![@lstring new !"self" !here] ?selfType ?selfCppName] ;
-    outExpression := [@selfInExpressionForGeneration new !selfType !selfCppName] ;
+    outExpression := [@selfInExpressionForGeneration new !selfType !mSelfLocation !selfCppName] ;
   else
     error mSelfLocation: "'self' cannot be used in this context" : outExpression ;
   end if ;
@@ -324,7 +324,7 @@ override method @hereExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mLocationType] ;
+  outExpression := [@hereExpressionForGeneration new !inPredefinedTypes->mLocationType !mLocation] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -335,7 +335,7 @@ override method @trueExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
+  outExpression := [@trueExpressionForGeneration new !inPredefinedTypes->mBoolType !mLocation] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -346,7 +346,7 @@ override method @falseExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@falseExpressionForGeneration new !inPredefinedTypes->mBoolType] ;
+  outExpression := [@falseExpressionForGeneration new !inPredefinedTypes->mBoolType !mLocation] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -357,7 +357,7 @@ override method @literalCharExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalCharExpressionForGeneration new !inPredefinedTypes->mCharType !mCharacter] ;
+  outExpression := [@literalCharExpressionForGeneration new !inPredefinedTypes->mCharType ![mCharacter location] ![mCharacter char]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -368,7 +368,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalStringExpressionForGeneration new !inPredefinedTypes->mStringType !mStringSequence] ;
+  outExpression := [@literalStringExpressionForGeneration new !inPredefinedTypes->mStringType !mLocation !mStringSequence] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -379,7 +379,7 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalDoubleExpressionForGeneration new !inPredefinedTypes->mDoubleType !mValue] ;
+  outExpression := [@literalDoubleExpressionForGeneration new !inPredefinedTypes->mDoubleType ![mValue location] ![mValue double]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -390,7 +390,7 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalUIntExpressionForGeneration new !inPredefinedTypes->mUIntType !mValue] ;
+  outExpression := [@literalUIntExpressionForGeneration new !inPredefinedTypes->mUIntType ![mValue location] ![mValue uint]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -401,7 +401,7 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalUInt64ExpressionForGeneration new !inPredefinedTypes->mUInt64Type !mValue] ;
+  outExpression := [@literalUInt64ExpressionForGeneration new !inPredefinedTypes->mUInt64Type ![mValue location] ![mValue uint64]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -412,7 +412,7 @@ override method @literalSIntExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalSIntExpressionForGeneration new !inPredefinedTypes->mSIntType !mValue] ;
+  outExpression := [@literalSIntExpressionForGeneration new !inPredefinedTypes->mSIntType ![mValue location] ![mValue sint]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -423,7 +423,7 @@ override method @literalSInt64ExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalSInt64ExpressionForGeneration new !inPredefinedTypes->mSInt64Type !mValue] ;
+  outExpression := [@literalSInt64ExpressionForGeneration new !inPredefinedTypes->mSInt64Type ![mValue location] ![mValue sint64]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -436,23 +436,23 @@ routine analyzeConstructorInvocation
   ??@lstring inConstructorName
   ??@semanticExpressionListAST inConstuctorEffectiveParameterExpressions
   !@unifiedTypeMapProxy outReturnedType
-  !@semanticExpressionListForGeneration outConstructorEffectiveParameterList 
+  !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
+  !@bool outHasCompilerArgument
 :
 #--- Get constructor map from type map
   @constructorMap constructorMap ;
   [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?12*] ;
 #--- Search contructor
   @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
-  @bool hasCompilerArgument ;
   with constructorMap hasKey ![inConstructorName string] do
     constructorFormalArgumentTypeList := mArgumentTypeList ;
-    hasCompilerArgument := mHasCompilerArgument ;
+    outHasCompilerArgument := mHasCompilerArgument ;
     outReturnedType := mReturnedType ;
   else
     if [constructorMap count] == 0 then
       error inConstructorName
       : "the '@". inTypeName . "' type does not define any constructor"
-      : constructorFormalArgumentTypeList, hasCompilerArgument, outReturnedType
+      : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       ;
     else
       @string s := "" ;
@@ -467,7 +467,7 @@ routine analyzeConstructorInvocation
       : "the '@". inTypeName . "' type does not define the '" . inConstructorName . "' constructor; "
       . if [constructorMap count] > 1 then "available constructors are" else "available constructor is" end
       . ":" . s
-      : constructorFormalArgumentTypeList, hasCompilerArgument, outReturnedType
+      : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       ;
     end if ;
   end with ;
@@ -499,6 +499,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
 :
   @unifiedTypeMapProxy returnedType ;
   @semanticExpressionListForGeneration constructorEffectiveParameterList ;
+  @bool hasCompilerArgument ;
   analyzeConstructorInvocation
     !inSemanticContext
     !inPredefinedTypes
@@ -508,9 +509,16 @@ override method @constructorExpressionAST analyzeSemanticExpression
     !mExpressions
     ?returnedType
     ?constructorEffectiveParameterList
+    ?hasCompilerArgument
   ;
 #--
-  outExpression := [@constructorExpressionForGeneration new !returnedType !mConstructorName !constructorEffectiveParameterList] ;
+  outExpression := [@constructorExpressionForGeneration new
+    !returnedType
+    ![mConstructorName location]
+    ![mConstructorName string]
+    !constructorEffectiveParameterList
+    !hasCompilerArgument
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -575,8 +583,9 @@ override method @readerCallExpressionAST analyzeSemanticExpression
     end foreach ;
     outExpression := [@readerCallExpressionForGeneration new
       !returnedType
+      ![mReaderName location]
       !receiverExpression
-      !mReaderName
+      ![mReaderName string]
       !constructorEffectiveParameterList
       !implicitConversionReader
     ] ;
@@ -614,26 +623,30 @@ override method @optionExpressionAST analyzeSemanticExpression
     if [mOptionReaderName string] == "value" then
       outExpression := [@optionValueExpressionForGeneration new
         !returnedType
-        !mOptionComponentName
-        !mOptionEntryName
+        ![mOptionComponentName location]
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]
       ] ;
     elsif [mOptionReaderName string] == "char" then
       outExpression := [@optionCharExpressionForGeneration new
         !inPredefinedTypes->mCharType
-        !mOptionComponentName
-        !mOptionEntryName
+        ![mOptionComponentName location]
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]
       ] ;
     elsif [mOptionReaderName string] == "string" then
       outExpression := [@optionStringExpressionForGeneration new
         !inPredefinedTypes->mStringType
-        !mOptionComponentName
-        !mOptionEntryName
+        ![mOptionComponentName location]
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]
       ] ;
     elsif [mOptionReaderName string] == "comment" then
       outExpression := [@optionCommentExpressionForGeneration new
         !inPredefinedTypes->mStringType
-        !mOptionComponentName
-        !mOptionEntryName
+        ![mOptionComponentName location]
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]
       ] ;
     else
       error mOptionReaderName:"only the 'value', 'char', 'string' and 'comment' readers are defined for an option" :outExpression ;
@@ -1412,7 +1425,8 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     end foreach ;
     outExpression := [@functionCallExpressionForGeneration new
       !resultType
-      !mFunctionName
+      ![mFunctionName location]
+      ![mFunctionName string]
       !semanticExpressionListForGeneration
     ] ;
   end if ;
@@ -1435,6 +1449,7 @@ override method @varInExpressionAST analyzeSemanticExpression
   end foreach ;
   outExpression := [@varInExpressionForGeneration new
     !type
+    ![mVarName location]
     !sourceVariableCppName
     !mStructFieldList
   ] ;

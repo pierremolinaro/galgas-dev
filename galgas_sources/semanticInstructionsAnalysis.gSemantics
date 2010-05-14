@@ -45,6 +45,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
 #--- Analyze constructor call
   @unifiedTypeMapProxy returnedType ;
   @semanticExpressionListForGeneration constructorEffectiveParameterList ;
+  @bool hasCompilerArgument ;
   analyzeConstructorInvocation
     !inSemanticContext
     !inPredefinedTypes
@@ -54,6 +55,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     !mConstructorExpressions
     ?returnedType
     ?constructorEffectiveParameterList
+    ?hasCompilerArgument
   ;
 #--- Check variable type
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
@@ -76,6 +78,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     !targetVariableCppName
     ![mConstructorName string]
     !constructorEffectiveParameterList
+    !hasCompilerArgument
   ] ;
 end method ;
 
@@ -634,7 +637,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #--- Generate instruction
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
     !receiverExpression
-    !mMethodName
+    ![mMethodName string]
     !actualParameterListForGeneration
     !hasCompilerArgument
     !temporaryInputVariableForRoutineInvocationForGeneration

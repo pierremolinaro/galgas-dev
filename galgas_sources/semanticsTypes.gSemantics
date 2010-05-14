@@ -159,7 +159,7 @@ enum @typeKindEnum {
   listType,
   sortedListType,
   mapType,
-  mapIndexType,
+  mapProxyType,
   listMapType,
   structType
 }{
@@ -170,7 +170,7 @@ enum @typeKindEnum {
   listType -> "list" ;
   sortedListType -> "sorted list" ;
   mapType -> "map" ;
-  mapIndexType -> "map index" ;
+  mapProxyType -> "map proxy" ;
   listMapType -> "list map" ;
   structType -> "struct" ;
   end reader ;

@@ -471,7 +471,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   end select ;
   @semanticExpressionAST mWhileExpression ;
   select
-    mWhileExpression := [@trueExpressionAST new] ;
+    mWhileExpression := [@trueExpressionAST new !here] ;
   or
     $while$ ;
     <expression> ? mWhileExpression ;

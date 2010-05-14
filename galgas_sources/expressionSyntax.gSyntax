@@ -357,7 +357,7 @@ end rule ;
 
 rule <factor> !@semanticExpressionAST outExpression :
   $true$ ;
-  outExpression := [@trueExpressionAST new] ;
+  outExpression := [@trueExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -368,7 +368,7 @@ end rule ;
 
 rule <factor> !@semanticExpressionAST outExpression :
   $false$ ;
-  outExpression := [@falseExpressionAST new] ;
+  outExpression := [@falseExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -385,7 +385,7 @@ rule <factor> !@semanticExpressionAST outExpression :
     literalStringList += ![literalString string] ;
   while
   end repeat ;
-  outExpression := [@literalStringExpressionAST new !literalStringList] ;
+  outExpression := [@literalStringExpressionAST new !here !literalStringList] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -468,7 +468,7 @@ end rule ;
 
 rule <factor> !@semanticExpressionAST outExpression :
   $here$ ;
-  outExpression := [@hereExpressionAST new] ;
+  outExpression := [@hereExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
