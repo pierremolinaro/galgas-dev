@@ -25,6 +25,7 @@ semantics semanticsDecoratedTypes :
 
 abstract class @semanticExpressionForGeneration {
   @unifiedTypeMapProxy mType ;
+  @location mLocation ;
 }
 
 ##---------------------------------------------------------------------------*
@@ -57,7 +58,7 @@ class @falseExpressionForGeneration extends @semanticExpressionForGeneration {
 ##---------------------------------------------------------------------------*
 
 class @literalCharExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lchar mCharacter ;
+  @char mCharacter ;
 }
 
 ##---------------------------------------------------------------------------*
@@ -69,45 +70,46 @@ class @literalStringExpressionForGeneration extends @semanticExpressionForGenera
 ##---------------------------------------------------------------------------*
 
 class @literalDoubleExpressionForGeneration extends @semanticExpressionForGeneration {
-  @ldouble mValue ;
+  @double mValue ;
 }
 
 ##---------------------------------------------------------------------------*
 
 class @literalUIntExpressionForGeneration extends @semanticExpressionForGeneration {
-  @luint mValue ;
+  @uint mValue ;
 }
 
 ##---------------------------------------------------------------------------*
 
 class @literalUInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
-  @luint64 mValue ;
+  @uint64 mValue ;
 }
 
 ##---------------------------------------------------------------------------*
 
 class @literalSIntExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lsint mValue ;
+  @sint mValue ;
 }
 
 ##---------------------------------------------------------------------------*
 
 class @literalSInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lsint64 mValue ;
+  @sint64 mValue ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @constructorExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lstring mConstructorName ;
+  @string mConstructorName ;
   @semanticExpressionListForGeneration mEffectiveParameterList ;
+  @bool mHasCompilerArgument ;
 }
 
 ##---------------------------------------------------------------------------*
 
 class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiver ;
-  @lstring mReaderName ;
+  @string mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;
   @string mImplicitConversionReader ;
 }
@@ -115,35 +117,34 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
 #---------------------------------------------------------------------------*
 
 class @optionValueExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lstring mOptionComponentName ;
-  @lstring mOptionEntryName ;
+  @string mOptionComponentName ;
+  @string mOptionEntryName ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @optionCharExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lstring mOptionComponentName ;
-  @lstring mOptionEntryName ;
+  @string mOptionComponentName ;
+  @string mOptionEntryName ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @optionStringExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lstring mOptionComponentName ;
-  @lstring mOptionEntryName ;
+  @string mOptionComponentName ;
+  @string mOptionEntryName ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @optionCommentExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lstring mOptionComponentName ;
-  @lstring mOptionEntryName ;
+  @string mOptionComponentName ;
+  @string mOptionEntryName ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @concatExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -151,7 +152,6 @@ class @concatExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @orExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -159,7 +159,6 @@ class @orExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @xorExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -167,7 +166,6 @@ class @xorExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @andExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -175,7 +173,6 @@ class @andExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @equalExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -183,7 +180,6 @@ class @equalExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @notEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -191,7 +187,6 @@ class @notEqualExpressionForGeneration extends @semanticExpressionForGeneration 
 #---------------------------------------------------------------------------*
 
 class @lowerOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -199,7 +194,6 @@ class @lowerOrEqualExpressionForGeneration extends @semanticExpressionForGenerat
 #---------------------------------------------------------------------------*
 
 class @greaterOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -207,7 +201,6 @@ class @greaterOrEqualExpressionForGeneration extends @semanticExpressionForGener
 #---------------------------------------------------------------------------*
 
 class @strictGreaterExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -215,7 +208,6 @@ class @strictGreaterExpressionForGeneration extends @semanticExpressionForGenera
 #---------------------------------------------------------------------------*
 
 class @strictLowerExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -223,7 +215,6 @@ class @strictLowerExpressionForGeneration extends @semanticExpressionForGenerati
 #---------------------------------------------------------------------------*
 
 class @rightShiftExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -231,7 +222,6 @@ class @rightShiftExpressionForGeneration extends @semanticExpressionForGeneratio
 #---------------------------------------------------------------------------*
 
 class @leftShiftExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -239,7 +229,6 @@ class @leftShiftExpressionForGeneration extends @semanticExpressionForGeneration
 #---------------------------------------------------------------------------*
 
 class @addExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -247,7 +236,6 @@ class @addExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @subExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -255,7 +243,6 @@ class @subExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @multiplicationExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -263,7 +250,6 @@ class @multiplicationExpressionForGeneration extends @semanticExpressionForGener
 #---------------------------------------------------------------------------*
 
 class @divisionExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -271,7 +257,6 @@ class @divisionExpressionForGeneration extends @semanticExpressionForGeneration 
 #---------------------------------------------------------------------------*
 
 class @moduloExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }
@@ -279,28 +264,24 @@ class @moduloExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @unaryMinusExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @notExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @complementExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @ifExpressionForGeneration extends @semanticExpressionForGeneration {
-  @location mOperatorLocation ;
   @semanticExpressionForGeneration mIfExpression ;
   @semanticExpressionForGeneration mThenExpression ;
   @semanticExpressionForGeneration mElseExpression ;
@@ -309,7 +290,7 @@ class @ifExpressionForGeneration extends @semanticExpressionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @functionCallExpressionForGeneration extends @semanticExpressionForGeneration {
-  @lstring mFunctionName ;
+  @string mFunctionName ;
   @semanticExpressionListForGeneration mExpressions ;
 }
 
@@ -488,33 +469,24 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    E X T E R N    R O U T I N E    D E C L A R A T I O N                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#class @externRoutineDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @lstring mRoutineName ;
-#  @formalParameterListForGeneration mFormalParameterList ;
-#}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    R O U T I N E    P R O T O T Y P E    D E C L A R A T I O N            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#class @routinePrototypeDeclarationForGeneration extends @externRoutineDeclarationForGeneration {
-#}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    R O U T I N E    D E C L A R A T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @routineDeclarationForGeneration extends @routinePrototypeDeclarationForGeneration {
-#  @semanticInstructionListForGeneration mRoutineInstructionList ;
-#}
+class @routinePrototypeDeclarationForGeneration extends @semanticDeclarationForGeneration {
+  @string mRoutineName ;
+  @formalParameterListForGeneration mFormalArgumentList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    I M P L E M E N T A T I O N                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routineImplementationForGeneration extends @routinePrototypeDeclarationForGeneration {
+  @semanticInstructionListForGeneration mRoutineInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -584,6 +556,7 @@ class @localVariableOrConstantDeclarationWithConstructorCallForGeneration extend
   @string mCppVariableName ;
   @string mConstructorName ;
   @semanticExpressionListForGeneration mConstructorArguments ;
+  @bool mHasCompilerArgument ;
 }
 
 #---------------------------------------------------------------------------*
@@ -750,7 +723,7 @@ class @typeMethodInstructionForGeneration extends @semanticInstructionForGenerat
 
 class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
-  @lstring mMethodName ;
+  @string mMethodName ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
   @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;

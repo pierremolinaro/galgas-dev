@@ -421,7 +421,7 @@ routine analyzeRoutineBody
   @variableMap variableMap [emptyMap] ;
 #--- Enter instance attributes
   foreach inTypedAttributeList do
-    [!?variableMap insertNonMutableAttribute !mAttributeName !mAttributeTypeIndex !"*_attribute_*"] ;
+    [!?variableMap insertNonMutableAttribute !mAttributeName !mAttributeTypeIndex !"mAttribute_". [mAttributeName identifierRepresentation]] ;
   end foreach ;
 #--- Enter formal arguments
   foreach inRoutineSignature do
@@ -429,23 +429,23 @@ routine analyzeRoutineBody
     switch mFormalArgumentPassingMode
     when argumentIn :
       if mIsUnused then
-        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"prefixe_"] ;
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"inArgument_" . [mFormalArgumentName identifierRepresentation]] ;
       else
-        [!?variableMap insertInputFormalArgument !mFormalArgumentName !type !"prefixe_"] ;
+        [!?variableMap insertInputFormalArgument !mFormalArgumentName !type !"inArgument_" . [mFormalArgumentName identifierRepresentation]] ;
       end if ;
     when argumentOut :
-      [!?variableMap insertOutputFormalArgument !mFormalArgumentName !type !"prefixe_"] ;
+      [!?variableMap insertOutputFormalArgument !mFormalArgumentName !type !"outArgument_" . [mFormalArgumentName identifierRepresentation]] ;
     when argumentInOut :
       if mIsUnused then
-        [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"prefixe_"] ;
+        [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"ioArgument_" . [mFormalArgumentName identifierRepresentation]] ;
       else
-        [!?variableMap insertInputOutputFormalArgument !mFormalArgumentName !type !"prefixe_"] ;
+        [!?variableMap insertInputOutputFormalArgument !mFormalArgumentName !type !"ioArgument_" . [mFormalArgumentName identifierRepresentation]] ;
       end if ;
     when argumentConstantIn :
       if mIsUnused then
-        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"prefixe_"] ;
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"inArgument_" . [mFormalArgumentName identifierRepresentation]] ;
       else
-        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !type !"prefixe_"] ;
+        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !type !"inArgument_" . [mFormalArgumentName identifierRepresentation]] ;
       end if ;
     end switch ;
   end foreach ;
@@ -461,6 +461,63 @@ routine analyzeRoutineBody
    end foreach ;
   [variableMap checkAutomatonStates !inEndOfMethodLocation] ;
 end routine ;
+
+#---------------------------------------------------------------------------*
+
+override method @externRoutineDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  @formalParameterListForGeneration formalArgumentList [emptyList] ;
+  foreach mFormalArgumentList do
+    formalArgumentList +=
+      !mFormalArgumentPassingMode
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      !mFormalArgumentName
+      !mIsUnused
+    ;
+  end foreach ;
+  ioSemanticDeclarationListForGeneration += ![@routinePrototypeDeclarationForGeneration new
+    ![mRoutineName string]
+    !formalArgumentList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @routineDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  @formalParameterListForGeneration formalArgumentList [emptyList] ;
+  foreach mFormalArgumentList do
+    formalArgumentList +=
+      !mFormalArgumentPassingMode
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      !mFormalArgumentName
+      !mIsUnused
+    ;
+  end foreach ;
+#--- Instruction list
+  @semanticInstructionListForGeneration instructionList ;
+  analyzeRoutineBody
+    !inSemanticContext
+    !inPredefinedTypes
+    !mFormalArgumentList
+    ![@typedAttributeList emptyList]
+    !mRoutineInstructionList
+    !mEndOfRoutineInstructionList
+    ?instructionList
+  ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@routineImplementationForGeneration new
+    ![mRoutineName string]
+    !formalArgumentList
+    !instructionList
+  ] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

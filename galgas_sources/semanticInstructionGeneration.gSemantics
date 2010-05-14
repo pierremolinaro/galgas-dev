@@ -1,0 +1,205 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Generate predefined types                                                *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticInstructionGeneration :
+  import "semanticExpressionGeneration.gSemantics" ;
+
+  import semantics semanticExpressionGeneration in "semanticExpressionGeneration.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           I N S T R U C T I O N    G E N E R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "??\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "//--- @localVariableOrConstantDeclarationWithSourceExpressionForGeneration\n" ;
+  @string sourceVar ;
+  [mSourceExpression generateExpression !?outImplementation ?sourceVar] ;
+  if mIsConstant then
+    outImplementation .= "const " ;
+  end if ;
+  outImplementation .= "GALGAS_" . [mTargetType identifierRepresentation] . " * " . mCppVariableName
+                    . " = " . sourceVar . " ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @localVariableDeclarationForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "//--- @localVariableDeclarationForGeneration\n" ;
+  outImplementation .= "GALGAS_" . [mVariableType identifierRepresentation] . " * " . mCppVariableName . " = NULL ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @assignmentInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@assignmentInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @appendInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@appendInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @sendInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@sendInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @ifInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@ifInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @errorInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@errorInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @warningInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@warningInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @routineCallInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@routineCallInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @typeMethodInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@typeMethodInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+abstract method @actualParameterForGeneration generateActualParameter
+  ?!@string ioImplementation
+  !@string outCppName
+;
+
+#---------------------------------------------------------------------------*
+
+override method @outputActualParameterForGeneration generateActualParameter
+  ?!@string ioImplementation
+  !@string outCppName
+:
+  [mOutputActualParameterExpression generateExpression !?ioImplementation ?outCppName] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @outputInputActualParameterForGeneration generateActualParameter
+  ?!@string ioImplementation
+  !@string outCppName
+:
+  foreach mStructAttributeList do
+    ioImplementation .= "(handle field)\n" ;
+  end foreach ;
+  outCppName := mOutputInputVariableCppName ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @inputActualParameterForGeneration generateActualParameter
+  ?!@string ioImplementation
+  !@string outCppName
+:
+  outCppName := mInputActualCppName ;
+  ioImplementation .= "macroReleaseObject (" . outCppName . ") ;\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override reader @methodCallInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "//--- @methodCallInstructionForGeneration\n" ;
+#--- Receiver expression
+  @string receiverVar ;
+  [mReceiverExpression generateExpression !?outImplementation ?receiverVar] ;
+#---
+  @stringlist parameterCppNameList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?outImplementation ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+#--- Generate method call
+  outImplementation .= "instanceMethodCall_" . [mMethodName identifierRepresentation] . " ("
+                    . receiverVar ;
+  foreach parameterCppNameList do
+    outImplementation .= ", " . mValue ;
+  end foreach ;
+  if mHasCompilerArgument then
+    outImplementation .= ", inCompiler" ;
+  end if ;
+  outImplementation .= " COMMA_THERE) ;\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @modifierCallInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@modifierCallInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @addAssignInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@addAssignInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @incrementInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@incrementInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @decrementInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@decrementInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @messageInstructionForGeneration generateInstruction -> @string outImplementation :
+  outImplementation := "@messageInstructionForGeneration generateInstruction\n" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

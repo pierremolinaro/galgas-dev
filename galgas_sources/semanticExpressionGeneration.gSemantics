@@ -1,0 +1,434 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Generate predefined types                                                *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticExpressionGeneration :
+  import "semanticAnalysis.gSemantics" ;
+
+  import semantics semanticAnalysis in "semanticAnalysis.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           E X P R E S S I O N    G E N E R A T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "?exp name?" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selfInExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@selfInExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @hereExpressionForGeneration generateExpression
+  ?!@string ioImplementation
+  !@string outCppName
+:
+  outCppName := "temp_" . [[mLocation locationIndex] string] ;
+  ioImplementation .= "GALGAS_location * " . outCppName 
+                   . " = inCompiler->here (THERE) ;\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @trueExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@trueExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @falseExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@falseExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @literalCharExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@literalCharExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @literalStringExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@literalStringExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @literalDoubleExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@literalDoubleExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @literalUIntExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@literalUIntExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @literalUInt64ExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@literalUInt64ExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @literalSIntExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@literalSIntExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @literalSInt64ExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@literalSInt64ExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @constructorExpressionForGeneration generateExpression
+  ?!@string ioImplementation
+  !@string outCppName
+:
+  @stringlist parameterList [emptyList] ;
+  foreach mEffectiveParameterList do
+    @string parameter ;
+    [mExpression generateExpression !?ioImplementation ?parameter] ;
+    parameterList += !parameter ;  
+  end foreach ;
+  outCppName := "temp_" . [[mLocation locationIndex] string] ;
+  ioImplementation .= "GALGAS_" . [mType identifierRepresentation]
+                   . " * " . outCppName
+                   . " = GALGAS_"  . [mType identifierRepresentation]
+                   . "::constructor_" . [mConstructorName identifierRepresentation]
+                   . " (" ;
+  foreach parameterList
+    do ioImplementation .= mValue ;
+    between ioImplementation .= ", " ;
+  end foreach ;
+  @bool needsComma := [parameterList length] > 0 ;
+  if mHasCompilerArgument then
+    if needsComma then
+      ioImplementation .= ", " ;
+    end if ;
+    ioImplementation .= "inCompiler" ;
+    needsComma := true ;
+  end if ;
+  if needsComma then
+    ioImplementation .= " COMMA_THERE) ;\n" ;
+  else
+    ioImplementation .= "THERE) ;\n" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @readerCallExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@readerCallExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @optionValueExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@optionValueExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @optionCharExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@optionCharExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @optionStringExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@optionStringExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @optionCommentExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@optionCommentExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @concatExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@concatExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @orExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@orExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @xorExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@xorExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @andExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@andExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @equalExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@equalExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @notEqualExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@notEqualExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lowerOrEqualExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@lowerOrEqualExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @greaterOrEqualExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@greaterOrEqualExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @strictGreaterExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@strictGreaterExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @strictLowerExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@strictLowerExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @rightShiftExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@rightShiftExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @leftShiftExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@leftShiftExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @addExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@addExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @subExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@subExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @multiplicationExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@multiplicationExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @divisionExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@divisionExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @moduloExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@moduloExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @unaryMinusExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@unaryMinusExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @notExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@notExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @complementExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@complementExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @ifExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@ifExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @functionCallExpressionForGeneration generateExpression
+  ?!@string unused ioImplementation
+  !@string outCppName
+:
+  outCppName := "(@functionCallExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @varInExpressionForGeneration generateExpression
+  ?!@string ioImplementation
+  !@string outCppName
+:
+  foreach mStructFieldList do
+    ioImplementation .= "(handle field)\n" ;
+  end foreach ;
+  ioImplementation .= "macroRetainObject (" . mCppVarName . ") ;\n" ;
+  outCppName := mCppVarName ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

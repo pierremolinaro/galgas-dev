@@ -82,6 +82,8 @@ project all_galgas:
   semantics "semanticExpressionAnalysis.gSemantics" : makefile ;
   semantics "semanticInstructionsAnalysis.gSemantics" : makefile ;
   semantics "semanticAnalysis.gSemantics" : makefile ;
+  semantics "semanticExpressionGeneration.gSemantics" : makefile ;
+  semantics "semanticInstructionGeneration.gSemantics" : makefile ;
   semantics "semanticGeneration.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
   semantics "predefinedTypes.gSemantics" : makefile ;

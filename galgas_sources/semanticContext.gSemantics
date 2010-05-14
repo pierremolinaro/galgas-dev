@@ -573,14 +573,13 @@ override method @mapProxyDeclarationAST enterType
     end if ;
   end foreach ;
 #--- Enter type in type map
-#log mMapIndexTypeName ;
   @unifiedTypeMapProxy superTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"mapproxy" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapProxyTypeName
     !true # Concrete Type
     !superTypeProxy
-    ![@typeKindEnum mapIndexType]
+    ![@typeKindEnum mapProxyType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     !mapTypedAttributeList
@@ -631,7 +630,7 @@ override method @enumDeclarationAST enterType
     !mEnumTypeName
     !true # Concrete Type
     !superTypeProxy
-    ![@typeKindEnum mapIndexType]
+    ![@typeKindEnum enumType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -1135,7 +1134,7 @@ override method @externRoutineDeclarationAST enterType # Handles also routine de
 :
 #--- Build signature
   @formalParameterSignature routineSignature [emptyList] ;
-  foreach mFormalParameterList do
+  foreach mFormalArgumentList do
     @unifiedTypeMapProxy parameterTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?parameterTypeIndex] ;
     routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode ;
@@ -1232,7 +1231,7 @@ override method @listmapDeclarationAST enterType
     !mListmapTypeName
     !true # Concrete Type
     !superTypeProxy
-    ![@typeKindEnum mapIndexType]
+    ![@typeKindEnum listMapType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     !listTypedAttributeList

@@ -40,16 +40,19 @@ class @selfInExpressionAST extends @semanticExpressionAST {
 #---------------------------------------------------------------------------*
 
 class @hereExpressionAST extends @semanticExpressionAST {
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @trueExpressionAST extends @semanticExpressionAST {
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @falseExpressionAST extends @semanticExpressionAST {
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -61,6 +64,7 @@ class @literalCharExpressionAST extends @semanticExpressionAST {
 #---------------------------------------------------------------------------*
 
 class @literalStringExpressionAST extends @semanticExpressionAST {
+  @location mLocation ;
   @stringlist mStringSequence ;
 }
 
@@ -503,7 +507,7 @@ list @semanticDeclarationListAST {
 
 class @externRoutineDeclarationAST extends @semanticDeclarationAST {
   @lstring mRoutineName ;
-  @formalParameterListAST mFormalParameterList ;
+  @formalParameterListAST mFormalArgumentList ;
 }
 
 #---------------------------------------------------------------------------*
