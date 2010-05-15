@@ -7,7 +7,7 @@
 void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler%
   foreach FORMAL_ARGUMENT_LIST do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %,\n%!^%const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument_% ![mFormalArgumentName string]
+      %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * const inArgument_% ![mFormalArgumentName string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument_% ![mFormalArgumentName string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -19,10 +19,19 @@ void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^%C_Compiler * inComp
 
                      %\n %!^%COMMA_LOCATION_ARGS) {
 %
-  block 2 :
-    foreach ROUTINE_INSTRUCTION_LIST do
-      ![mInstruction generateInstruction]
-    end foreach
-  end block
+#--- Retain 'in' arguments
+  foreach FORMAL_ARGUMENT_LIST do index IDX
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
+      %macroRetainObject (inArgument_% ![mFormalArgumentName string] %) ;\n%
+    end if
+  end foreach
+#--- Generate body
+  !generateRoutineBody [!ROUTINE_INSTRUCTION_LIST]
+#--- Release 'in' arguments
+  foreach FORMAL_ARGUMENT_LIST do index IDX
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
+      %macroReleaseObject (inArgument_% ![mFormalArgumentName string] %) ;\n%
+    end if
+  end foreach
 %}
 

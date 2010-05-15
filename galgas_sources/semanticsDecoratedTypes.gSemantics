@@ -64,7 +64,7 @@ class @literalCharExpressionForGeneration extends @semanticExpressionForGenerati
 ##---------------------------------------------------------------------------*
 
 class @literalStringExpressionForGeneration extends @semanticExpressionForGeneration {
-  @stringlist mStringSequence ;
+  @string mString ;
 }
 
 ##---------------------------------------------------------------------------*
@@ -108,7 +108,7 @@ class @constructorExpressionForGeneration extends @semanticExpressionForGenerati
 ##---------------------------------------------------------------------------*
 
 class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mReceiver ;
+  @semanticExpressionForGeneration mReceiverExpression ;
   @string mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;
   @string mImplicitConversionReader ;
@@ -573,6 +573,17 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  D R O P    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @dropInstructionForGeneration extends @semanticInstructionForGeneration {
+  @stringlist mDropList ;
+  @string mComment ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  D O T    A S S I G N M E N T    I N S T R U C T I O N                    *
 #                                                                           *
 #  VARIABLE .= EXPRESSION ;                                                 *
@@ -652,16 +663,11 @@ class @sendInstructionForGeneration extends @semanticInstructionForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @ifBranchListForGeneration {
-  @semanticExpressionForGeneration mIFexpression ;
-  @semanticInstructionListForGeneration mIFinstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @ifInstructionForGeneration extends @semanticInstructionForGeneration {
-  @ifBranchListForGeneration mBranchList ; # [1, *]
-  @semanticInstructionListForGeneration mElseInstructionList ;
+  @semanticExpressionForGeneration mIFexpression ;
+  @location mInstructionLocation ;
+  @semanticInstructionListForGeneration m_then_instructionList ;
+  @semanticInstructionListForGeneration m_else_instructionList ;
 }
 
 #---------------------------------------------------------------------------*

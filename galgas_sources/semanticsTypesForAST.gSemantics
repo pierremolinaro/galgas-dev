@@ -681,17 +681,11 @@ class @foreachInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @ifBranchListAST {
-  @semanticExpressionAST mIFexpression ;
-  @semanticInstructionListAST mIFinstructionList ;
-  @location mEndOfBranch ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @ifInstructionAST extends @semanticInstructionAST {
-  @ifBranchListAST mBranchList ;
-  @semanticInstructionListAST mElseInstructionList ;
+  @semanticExpressionAST m_if_expression ;
+  @semanticInstructionListAST m_then_instructionList ;
+  @location mEndOf_then_branch ;
+  @semanticInstructionListAST m_else_instructionList ;
   @location mEndOf_if_instruction ;
 }
 
@@ -909,6 +903,16 @@ list @logListAST {
 
 class @logInstructionAST extends @semanticInstructionAST {
   @logListAST mLogList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  D R O P    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @dropInstructionAST extends @semanticInstructionAST {
+  @lstringlist mDropList ;
 }
 
 #---------------------------------------------------------------------------*

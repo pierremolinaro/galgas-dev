@@ -131,3 +131,11 @@ foreach CONCRETE_METHOD_LIST do
   %}\n\n%
 end foreach
 
+foreach CURRENT_ATTRIBUTE_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+  %  macroRetainObject (mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+  %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %}\n\n%
+end foreach
+

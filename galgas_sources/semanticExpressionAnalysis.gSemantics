@@ -368,7 +368,11 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalStringExpressionForGeneration new !inPredefinedTypes->mStringType !mLocation !mStringSequence] ;
+  @string s := "" ;
+  foreach mStringSequence do
+    s .= mValue ;
+  end foreach ;
+  outExpression := [@literalStringExpressionForGeneration new !inPredefinedTypes->mStringType !mLocation !s] ;
 end method ;
 
 #---------------------------------------------------------------------------*

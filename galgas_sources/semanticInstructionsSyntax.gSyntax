@@ -331,6 +331,26 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    D R O P    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $drop$ ;
+  const @location instructionLocation := here ;
+  @lstringlist dropList [emptyList] ;
+  repeat
+    $identifier$ ?@lstring variableName ;
+    dropList += !variableName ;
+  while
+    $,$ ;
+  end repeat ;
+  $;$ ;
+  outInstruction := [@dropInstructionAST new !instructionLocation !dropList] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    I N C R E M E N T    I N S T R U C T I O N                             *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -539,37 +559,49 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstructionAST outInstruction :
-  $if$ ;
+nonterminal <if_branch> !@semanticInstructionAST outInstruction ;
+
+#---------------------------------------------------------------------------*
+
+rule <if_branch> !@semanticInstructionAST outInstruction :
   const @location instructionLocation := here ;
-  @ifBranchListAST mBranchList [emptyList] ;
-  repeat
-    @semanticExpressionAST mIFexpressionList ;
-    <expression> ?mIFexpressionList ;
-    $then$ ;
-    @semanticInstructionListAST mIFinstructionList ;
-    <semantic_instruction_list> ? mIFinstructionList ;
-    mBranchList += !mIFexpressionList !mIFinstructionList !here ;
-  while
-    $elsif$ ;
-  end repeat ;
-  @semanticInstructionListAST mElseInstructionList ;
+  @semanticExpressionAST if_expression ;
+  <expression> ?if_expression ;
+  $then$ ;
+  @semanticInstructionListAST then_instructionList ;
+  <semantic_instruction_list> ? then_instructionList ;
+  const @location endOf_then_branchLocation := here ;
+  @semanticInstructionListAST else_instructionList ;
   select
-    mElseInstructionList := [@semanticInstructionListAST emptyList] ;
+    else_instructionList := [@semanticInstructionListAST emptyList] ;
   or
     $else$ ;
-    <semantic_instruction_list> ? mElseInstructionList ;
+    <semantic_instruction_list> ? else_instructionList ;
+  or
+    $elsif$ ;
+    @semanticInstructionAST instruction ;
+    <if_branch> ? instruction ;
+    else_instructionList := [@semanticInstructionListAST emptyList] ;
+    else_instructionList += !instruction ;
   end select ;
-  $end$ ;
-  const @location endOfInstruction := here ;
-  $if$ ;
-  $;$ ;
   outInstruction := [@ifInstructionAST new
     !instructionLocation
-    !mBranchList
-    !mElseInstructionList
-    !endOfInstruction
+    !if_expression
+    !then_instructionList
+    !endOf_then_branchLocation
+    !else_instructionList
+    !here
   ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $if$ ;
+  <if_branch> ?outInstruction ;
+  $end$ ;
+  $if$ ;
+  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
