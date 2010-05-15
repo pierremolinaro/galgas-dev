@@ -32,6 +32,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist ioLocalVariableCppNameList
 ;
 
 #---------------------------------------------------------------------------*
@@ -41,6 +42,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist ioLocalVariableCppNameList
 :
 #--- Analyze constructor call
   @unifiedTypeMapProxy returnedType ;
@@ -66,6 +68,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
   end if ;
 #--- Declare variable (or constant)
   const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+  ioLocalVariableCppNameList += !targetVariableCppName ;
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName] ;
   else
@@ -89,6 +92,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist ioLocalVariableCppNameList
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -101,6 +105,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 #--- Check target variable
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
   const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+  ioLocalVariableCppNameList += !targetVariableCppName ;
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName] ;
   else
@@ -124,10 +129,12 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist ioLocalVariableCppNameList
 :
 #--- Check target variable
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
   const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+  ioLocalVariableCppNameList += !targetVariableCppName ;
   [!?ioVariableMap insertUndefinedLocalVariable !mVariableName !targetType !targetVariableCppName] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
@@ -143,6 +150,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -181,6 +189,7 @@ override method @sendInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -266,6 +275,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #---
   @semanticExpressionForGeneration locationExpression ;
@@ -306,6 +316,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #---
   @semanticExpressionForGeneration locationExpression ;
@@ -541,6 +552,7 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Get routine signature
   @formalParameterSignature routineSignature ;
@@ -574,6 +586,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Get type method map for the named type
   const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mTypeName] ;
@@ -612,6 +625,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Analyze receiver expression
   @semanticExpressionForGeneration receiverExpression ;
@@ -651,6 +665,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Check receiver object
   @unifiedTypeMapProxy receiverType ;
@@ -696,6 +711,7 @@ override method @appendInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -736,6 +752,7 @@ override method @addInstructionAST analyzeSemanticInstruction # +=
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
@@ -782,6 +799,7 @@ override method @incrementInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
@@ -811,6 +829,7 @@ override method @decrementInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
@@ -840,6 +859,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -868,6 +888,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
   foreach mLogList do
   #--- Analyze source expression
@@ -888,11 +909,34 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @dropInstructionAST analyzeSemanticInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  @stringlist cppNameDropList [emptyList] ;
+  foreach mDropList do
+    @string variableCppName ;
+    [!?ioVariableMap searchForDropAccess !mValue ?* ?variableCppName] ;
+    cppNameDropList += !variableCppName ;
+  end foreach ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@dropInstructionForGeneration new
+     !cppNameDropList
+     !"drop instruction"
+  ] ;  
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @grammarInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
   error mGrammarComponentName
   : "unhandled instruction: grammarInstructionAST"
@@ -905,18 +949,33 @@ routine analyzeSemanticInstructionList
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@semanticInstructionListAST inSemanticInstructionListAST
+  ??@location inEndOfBranchLocation
   ?!@variableMap ioVariableMap
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 :
   outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+#--- Begin branch
+  [!?ioVariableMap beginBranch] ;
+#--- Instruction list
+  @stringlist localVariableCppNameList [emptyList] ;
   foreach inSemanticInstructionListAST do
     [mInstruction analyzeSemanticInstruction
       !inSemanticContext
       !inPredefinedTypes
       !?outInstructionListForGeneration
       !?ioVariableMap
+      !?localVariableCppNameList
     ] ;
   end foreach ;
+#--- Drop local variables
+  if [localVariableCppNameList length] > 0 then
+    outInstructionListForGeneration += ![@dropInstructionForGeneration new
+      !localVariableCppNameList
+      !"end of scope"
+    ] ;  
+  end if ;
+#--- Branch end
+  [!?ioVariableMap endBranch !inEndOfBranchLocation] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -926,42 +985,43 @@ override method @ifInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
+#--- Test expression
+  @semanticExpressionForGeneration if_expression ;
+  [m_if_expression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?if_expression
+  ] ;
   [!?ioVariableMap beginOverrideForSelectBlock] ;
-  @ifBranchListForGeneration ifBranchListForGeneration [emptyList] ;
-  foreach mBranchList do
-    [!?ioVariableMap beginBranch] ;
-      @semanticExpressionForGeneration expression ;
-      [mIFexpression analyzeSemanticExpression
-        !inSemanticContext
-        !inPredefinedTypes
-        !?ioVariableMap
-        ?expression
-      ] ;
-      @semanticInstructionListForGeneration instructionList ;
-      analyzeSemanticInstructionList
-        !inSemanticContext
-        !inPredefinedTypes
-        !mIFinstructionList
-        !?ioVariableMap
-        ?instructionList
-      ;
-      ifBranchListForGeneration += !expression !instructionList ;
-    [!?ioVariableMap endBranch !mEndOfBranch] ;
-  end foreach ;
-  [!?ioVariableMap beginBranch] ;
-    @semanticInstructionListForGeneration else_instructionList ;
-    analyzeSemanticInstructionList
-      !inSemanticContext
-      !inPredefinedTypes
-      !mElseInstructionList
-      !?ioVariableMap
-      ?else_instructionList
-    ;
-  [!?ioVariableMap endBranch !mEndOf_if_instruction] ;
+#--- Then branch
+  @semanticInstructionListForGeneration then_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !m_then_instructionList
+    !mEndOf_then_branch
+    !?ioVariableMap
+    ?then_instructionList
+  ;
+#--- else branch
+  @semanticInstructionListForGeneration else_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !m_else_instructionList
+    !mEndOf_if_instruction
+    !?ioVariableMap
+    ?else_instructionList
+  ;
   [!?ioVariableMap endOverride !mEndOf_if_instruction] ;
+#--- Generate instruction
   ioInstructionListForGeneration += ![@ifInstructionForGeneration new
-    !ifBranchListForGeneration
+    !if_expression
+    !mEndOf_then_branch
+    !then_instructionList
     !else_instructionList
   ] ;
 end method ;
@@ -973,6 +1033,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
   error mInstructionLocation
   : "unhandled instruction @foreachInstructionAST"
@@ -986,6 +1047,7 @@ override method @withInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
   error mTargetObjectName
   : "unhandled instruction @withInstructionAST"
@@ -999,6 +1061,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
   error mInstructionLocation
   : "unhandled instruction @switchInstructionAST"
@@ -1012,6 +1075,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
   error mInstructionLocation
   : "unhandled instruction @matchInstructionAST"
@@ -1025,6 +1089,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
   error mInstructionLocation
   : "unhandled instruction @loopInstructionAST"
@@ -1038,6 +1103,7 @@ override method @castInstructionAST analyzeSemanticInstruction
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
 :
   error mInstructionLocation
   : "unhandled instruction @castInstructionAST"

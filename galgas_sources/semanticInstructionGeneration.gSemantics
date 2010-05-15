@@ -28,108 +28,222 @@ semantics semanticInstructionGeneration :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "??\n" ;
-end reader ;
+method @semanticInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "?UNHANDLED INSTRUCTION?\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "//--- @localVariableOrConstantDeclarationWithSourceExpressionForGeneration\n" ;
+function generateRoutineBody
+  ??@semanticInstructionListForGeneration inInstructionList
+  ->@string outGeneratedCode
+:
+  outGeneratedCode := "" ;
+  @uint temporaryVariableIndex := 0 ;
+  [!?outGeneratedCode incIndentation !2] ;
+  foreach inInstructionList do
+    [mInstruction generateInstruction !?temporaryVariableIndex !?outGeneratedCode] ;
+  end foreach ;
+  [!?outGeneratedCode decIndentation !2] ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+routine generateInstructionList
+  ??@semanticInstructionListForGeneration inInstructionList
+  ?!@uint ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  [!?ioGeneratedCode incIndentation !2] ;
+  foreach inInstructionList do
+    [mInstruction generateInstruction !?ioTemporaryVariableIndex !?ioGeneratedCode] ;
+  end foreach ;
+  [!?ioGeneratedCode decIndentation !2] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @localVariableOrConstantDeclarationWithSourceExpressionForGeneration\n" ;
   @string sourceVar ;
-  [mSourceExpression generateExpression !?outImplementation ?sourceVar] ;
+  [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?sourceVar] ;
   if mIsConstant then
-    outImplementation .= "const " ;
+    ioGeneratedCode .= "const " ;
   end if ;
-  outImplementation .= "GALGAS_" . [mTargetType identifierRepresentation] . " * " . mCppVariableName
+  ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation] . " * " . mCppVariableName
                     . " = " . sourceVar . " ;\n" ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @localVariableDeclarationForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "//--- @localVariableDeclarationForGeneration\n" ;
-  outImplementation .= "GALGAS_" . [mVariableType identifierRepresentation] . " * " . mCppVariableName . " = NULL ;\n" ;
-end reader ;
+override method @localVariableDeclarationForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @localVariableDeclarationForGeneration\n" ;
+  ioGeneratedCode .= "GALGAS_" . [mVariableType identifierRepresentation] . " * " . mCppVariableName . " = NULL ;\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction\n" ;
-end reader ;
+override method @localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @assignmentInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@assignmentInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @assignmentInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@assignmentInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @appendInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@appendInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @dropInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @dropInstructionForGeneration\n" ;
+  foreach mDropList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // " . mComment . "\n" ;
+  end foreach ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @sendInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@sendInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @appendInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@appendInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @ifInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@ifInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @sendInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@sendInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @errorInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@errorInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @ifInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @ifInstructionForGeneration\n" ;
+#--- Generate test expression
+  @string cppVarName ;
+  [mIFexpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?cppVarName] ;
+#--- If test expression is not valuated, skip if instruction
+  ioGeneratedCode .= "if (NULL != " . cppVarName . ") {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  ioGeneratedCode .= "macroValidObject (" . cppVarName . ", GALGAS_bool) ;\n" ;
+  const @string testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "const bool " . testVar . " = " . cppVarName . "->boolValue () ;\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . cppVarName . ") ; // Release test temporary variable\n" ;
+  ioGeneratedCode .= "if (" . testVar . ") {\n" ;
+  generateInstructionList !m_then_instructionList !?ioTemporaryVariableIndex !?ioGeneratedCode ;
+  if [m_else_instructionList length] > 0 then
+    ioGeneratedCode .= "}else{\n" ;
+    generateInstructionList !m_else_instructionList !?ioTemporaryVariableIndex !?ioGeneratedCode ;
+  end if ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @warningInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@warningInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @errorInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@errorInstructionForGeneration\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @routineCallInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@routineCallInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @warningInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @warningInstructionForGeneration\n" ;
+#--- Receiver expression
+  @string receiverCppVarName ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?receiverCppVarName] ;
+#--- Receiver expression
+  @string messageCppVarName ;
+  [mWarningExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?messageCppVarName] ;
+#--- Generate warning instruction
+  ioGeneratedCode .= "inCompiler->emitSemanticWarning (" . receiverCppVarName . ", " . messageCppVarName . " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . receiverCppVarName . ") ; // Release receiver temporary variable\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . messageCppVarName . ") ; // Release message temporary variable\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @typeMethodInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@typeMethodInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @routineCallInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@routineCallInstructionForGeneration generateInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @typeMethodInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@typeMethodInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
 abstract method @actualParameterForGeneration generateActualParameter
+  ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
+  ?!@stringlist ioParametersToReleaseList
   !@string outCppName
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @outputActualParameterForGeneration generateActualParameter
+  ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
+  ?!@stringlist ioParametersToReleaseList
   !@string outCppName
 :
-  [mOutputActualParameterExpression generateExpression !?ioImplementation ?outCppName] ;
+  [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioTemporaryVariableIndex ?outCppName] ;
+  ioParametersToReleaseList += !outCppName ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @outputInputActualParameterForGeneration generateActualParameter
+  ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
+  ?!@stringlist unused ioParametersToReleaseList
   !@string outCppName
 :
   foreach mStructAttributeList do
-    ioImplementation .= "(handle field)\n" ;
+    ioImplementation .= "(handle field in @outputInputActualParameterForGeneration)\n" ;
   end foreach ;
   outCppName := mOutputInputVariableCppName ;
 end method ;
@@ -137,68 +251,99 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @inputActualParameterForGeneration generateActualParameter
+  ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
+  ?!@stringlist unused ioParametersToReleaseList
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
-  ioImplementation .= "macroReleaseObject (" . outCppName . ") ;\n" ;
+  ioImplementation .= "macroReleaseObject (" . outCppName . ") ; // Release input parameter\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @methodCallInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "//--- @methodCallInstructionForGeneration\n" ;
+override method @methodCallInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @methodCallInstructionForGeneration\n" ;
 #--- Receiver expression
   @string receiverVar ;
-  [mReceiverExpression generateExpression !?outImplementation ?receiverVar] ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?receiverVar] ;
 #---
   @stringlist parameterCppNameList [emptyList] ;
+  @stringlist parametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?outImplementation ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  outImplementation .= "instanceMethodCall_" . [mMethodName identifierRepresentation] . " ("
+  ioGeneratedCode .= "instanceMethodCall_" . [mMethodName identifierRepresentation] . " ("
                     . receiverVar ;
   foreach parameterCppNameList do
-    outImplementation .= ", " . mValue ;
+    ioGeneratedCode .= ", " . mValue ;
   end foreach ;
   if mHasCompilerArgument then
-    outImplementation .= ", inCompiler" ;
+    ioGeneratedCode .= ", inCompiler" ;
   end if ;
-  outImplementation .= " COMMA_THERE) ;\n" ;
-end reader ;
+  ioGeneratedCode .= " COMMA_THERE) ;\n" ;
+#--- Release receiver temporary variable
+  ioGeneratedCode .= "macroReleaseObject (" . receiverVar . ") ; // Release receiver temporary variable\n" ;
+#--- Release temporary variables
+  foreach parametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
+  end foreach ;
+#--- Release temporary input variables (joker in source)
+  foreach mTemporaryInputVariableList do
+    ioGeneratedCode .= "macroReleaseObject (" . mCppName . ") ; // Release temporary input variables (joker in source)\n" ;
+  end foreach ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @modifierCallInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@modifierCallInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @modifierCallInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@modifierCallInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @addAssignInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@addAssignInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @addAssignInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@addAssignInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @incrementInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@incrementInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @incrementInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@incrementInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @decrementInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@decrementInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @decrementInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@decrementInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @messageInstructionForGeneration generateInstruction -> @string outImplementation :
-  outImplementation := "@messageInstructionForGeneration generateInstruction\n" ;
-end reader ;
+override method @messageInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@messageInstructionForGeneration generateInstruction\n" ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

@@ -451,14 +451,24 @@ routine analyzeRoutineBody
   end foreach ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+  @stringlist localVariableCppNameList [emptyList] ;
   foreach inInstructionList do
     [mInstruction analyzeSemanticInstruction
       !inSemanticContext
       !inPredefinedTypes
       !?outSemanticInstructionListForGeneration
       !?variableMap
+      !?localVariableCppNameList
     ] ;
    end foreach ;
+#--- Drop all local variables
+  if [localVariableCppNameList length] > 0 then
+    outSemanticInstructionListForGeneration += ![@dropInstructionForGeneration new
+      !localVariableCppNameList
+      !"end of scope"
+    ] ;  
+  end if ;
+#---
   [variableMap checkAutomatonStates !inEndOfMethodLocation] ;
 end routine ;
 
@@ -705,14 +715,24 @@ routine analyzeFunctionBody
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !"prefixe_"] ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+  @stringlist localVariableCppNameList [emptyList] ;
   foreach inInstructionList do
     [mInstruction analyzeSemanticInstruction
       !inSemanticContext
       !inPredefinedTypes
       !?outSemanticInstructionListForGeneration
       !?variableMap
+      !?localVariableCppNameList
     ] ;
    end foreach ;
+#--- Drop all local variables
+  if [localVariableCppNameList length] > 0 then
+    outSemanticInstructionListForGeneration += ![@dropInstructionForGeneration new
+      !localVariableCppNameList
+      !"end of scope"
+    ] ;  
+  end if ;
+#---
   [variableMap checkAutomatonStates !inEndOfFunctionLocation] ;
 end routine ;
 

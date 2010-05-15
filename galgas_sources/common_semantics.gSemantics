@@ -5136,7 +5136,7 @@ routine handleReaderCall
     elsif [inReaderName string] == "allKeys" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_stringset new] ;
-    elsif [inReaderName string] == "keyList" then
+    elsif [inReaderName string] == "allKeyList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := EXbuild_lstringlist_type [] ;
     elsif [inReaderName string] == "unsolvedIndexCount" then

@@ -994,6 +994,7 @@ override method @classDeclarationAST enterType
   else
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mSuperClassName string] ?superClassIndex] ;
     @typeKindEnum typeKindEnum ;
+    @readerMap inheritedReaderMap ;
     [ioSemanticContext->mTypeMap searchKey
       !mSuperClassName
       ?2*
@@ -1001,11 +1002,24 @@ override method @classDeclarationAST enterType
       ?inheritedTypedAttributeList
       ?attributeMap
       ?2*
-      ?readerMap
+      ?inheritedReaderMap
       ?modifierMap
       ?inheritedInstanceMethodMap
       ?9*
     ] ;
+  #--- Mark all readers as inherited
+    readerMap := [@readerMap emptyMap] ;
+    foreach inheritedReaderMap do
+      [!?readerMap insertKey
+        !lkey
+        !mArgumentTypeList
+        !mHasCompilerArgument
+        !mReturnedType
+        ![@readerQualifier isInherited]
+        !mImplicitConversionReader
+      ] ; 
+    end foreach ;
+  #---
     if typeKindEnum != [@typeKindEnum classType] then
       error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
     end if ;

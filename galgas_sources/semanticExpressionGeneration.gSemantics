@@ -29,7 +29,8 @@ semantics semanticExpressionGeneration :
 #---------------------------------------------------------------------------*
 
 method @semanticExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "?exp name?" ;
@@ -38,7 +39,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @selfInExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@selfInExpressionForGeneration generateExpression)" ;
@@ -47,18 +49,20 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @hereExpressionForGeneration generateExpression
-  ?!@string ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "temp_" . [[mLocation locationIndex] string] ;
-  ioImplementation .= "GALGAS_location * " . outCppName 
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_location * " . outCppName 
                    . " = inCompiler->here (THERE) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @trueExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@trueExpressionForGeneration generateExpression)" ;
@@ -67,7 +71,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @falseExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@falseExpressionForGeneration generateExpression)" ;
@@ -76,7 +81,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalCharExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@literalCharExpressionForGeneration generateExpression)" ;
@@ -85,16 +91,25 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalStringExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@literalStringExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @literalStringExpressionForGeneration\n" ;
+  ioGeneratedCode .= "static const utf32 kString_" . [[mLocation locationIndex] string] . " ["
+                   . [[mString length] + 1 string] . "] = " . [mString utf32Representation] . ";\n" ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_string * " . outCppName
+                   . " = GALGAS_string::constructor_new (kString_"
+                   . [[mLocation locationIndex] string]
+                   . " COMMA_HERE) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @literalDoubleExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@literalDoubleExpressionForGeneration generateExpression)" ;
@@ -103,7 +118,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalUIntExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@literalUIntExpressionForGeneration generateExpression)" ;
@@ -112,7 +128,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalUInt64ExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@literalUInt64ExpressionForGeneration generateExpression)" ;
@@ -121,7 +138,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalSIntExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@literalSIntExpressionForGeneration generateExpression)" ;
@@ -130,7 +148,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalSInt64ExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@literalSInt64ExpressionForGeneration generateExpression)" ;
@@ -139,62 +158,98 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @constructorExpressionForGeneration generateExpression
-  ?!@string ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
   @stringlist parameterList [emptyList] ;
   foreach mEffectiveParameterList do
     @string parameter ;
-    [mExpression generateExpression !?ioImplementation ?parameter] ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?parameter] ;
     parameterList += !parameter ;  
   end foreach ;
-  outCppName := "temp_" . [[mLocation locationIndex] string] ;
-  ioImplementation .= "GALGAS_" . [mType identifierRepresentation]
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation]
                    . " * " . outCppName
                    . " = GALGAS_"  . [mType identifierRepresentation]
                    . "::constructor_" . [mConstructorName identifierRepresentation]
                    . " (" ;
   foreach parameterList
-    do ioImplementation .= mValue ;
-    between ioImplementation .= ", " ;
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
   end foreach ;
   @bool needsComma := [parameterList length] > 0 ;
   if mHasCompilerArgument then
     if needsComma then
-      ioImplementation .= ", " ;
+      ioGeneratedCode .= ", " ;
     end if ;
-    ioImplementation .= "inCompiler" ;
+    ioGeneratedCode .= "inCompiler" ;
     needsComma := true ;
   end if ;
   if needsComma then
-    ioImplementation .= " COMMA_THERE) ;\n" ;
+    ioGeneratedCode .= " COMMA_THERE) ;\n" ;
   else
-    ioImplementation .= "THERE) ;\n" ;
+    ioGeneratedCode .= "THERE) ;\n" ;
   end if ;
+#--- Release constructor temporary parameters
+  foreach parameterList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release constructor temporary parameter\n" ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @readerCallExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@readerCallExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @readerCallExpressionForGeneration\n" ;
+#--- Receiver expression
+  @string receiverCppName ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?receiverCppName] ;
+#--- Reader operands
+  @stringlist readerArgumentCppNameList [emptyList] ;
+  foreach mExpressions do
+    @string argumentCppName ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?argumentCppName] ;
+    readerArgumentCppNameList += !argumentCppName ;
+  end foreach ;
+#--- Generate Reader call
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
+                   . " = readerCall_" . [mReaderName identifierRepresentation] . " ("
+                   . receiverCppName ;
+  foreach readerArgumentCppNameList do
+    ioGeneratedCode .= ", " . mValue ;
+  end foreach ;
+  ioGeneratedCode .= " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . receiverCppName . ") ; // Release temporary reader receiver\n" ;
+  foreach readerArgumentCppNameList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary reader operand\n" ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @optionValueExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@optionValueExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @optionValueExpressionForGeneration\n" ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName 
+                  . " = GALGAS_" . [mType identifierRepresentation] . "::constructor_new (gOption_" . [mOptionComponentName identifierRepresentation]
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".mValue COMMA_HERE) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @optionCharExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@optionCharExpressionForGeneration generateExpression)" ;
@@ -203,7 +258,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @optionStringExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@optionStringExpressionForGeneration generateExpression)" ;
@@ -212,7 +268,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @optionCommentExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@optionCommentExpressionForGeneration generateExpression)" ;
@@ -221,16 +278,31 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @concatExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@concatExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @concatExpressionForGeneration\n" ;
+#--- Left operand
+  @string leftTemporaryOperand ;
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?leftTemporaryOperand] ;
+#--- Right operand
+  @string rightTemporaryOperand ;
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?rightTemporaryOperand] ;
+#--- Generate Comparison
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName . " = GALGAS_string::operator_concat ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . leftTemporaryOperand . ") ; // Release temporary left operand\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . rightTemporaryOperand . ") ; // Release temporary right operand\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @orExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@orExpressionForGeneration generateExpression)" ;
@@ -239,7 +311,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @xorExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@xorExpressionForGeneration generateExpression)" ;
@@ -248,7 +321,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @andExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@andExpressionForGeneration generateExpression)" ;
@@ -257,61 +331,146 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @equalExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@equalExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @equalExpressionForGeneration\n" ;
+#--- Left operand
+  @string leftTemporaryOperand ;
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?leftTemporaryOperand] ;
+#--- Right operand
+  @string rightTemporaryOperand ;
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?rightTemporaryOperand] ;
+#--- Generate Comparison
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_isEqual ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . leftTemporaryOperand . ") ; // Release temporary left operand\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . rightTemporaryOperand . ") ; // Release temporary right operand\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @notEqualExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@notEqualExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @notEqualExpressionForGeneration\n" ;
+#--- Left operand
+  @string leftTemporaryOperand ;
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?leftTemporaryOperand] ;
+#--- Right operand
+  @string rightTemporaryOperand ;
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?rightTemporaryOperand] ;
+#--- Generate Comparison
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_isNotEqual ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . leftTemporaryOperand . ") ; // Release temporary left operand\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . rightTemporaryOperand . ") ; // Release temporary right operand\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @lowerOrEqualExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@lowerOrEqualExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @lowerOrEqualExpressionForGeneration\n" ;
+#--- Left operand
+  @string leftTemporaryOperand ;
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?leftTemporaryOperand] ;
+#--- Right operand
+  @string rightTemporaryOperand ;
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?rightTemporaryOperand] ;
+#--- Generate Comparison
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_infOrEqual ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . leftTemporaryOperand . ") ; // Release temporary left operand\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . rightTemporaryOperand . ") ; // Release temporary right operand\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @greaterOrEqualExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@greaterOrEqualExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @greaterOrEqualExpressionForGeneration\n" ;
+#--- Left operand
+  @string leftTemporaryOperand ;
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?leftTemporaryOperand] ;
+#--- Right operand
+  @string rightTemporaryOperand ;
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?rightTemporaryOperand] ;
+#--- Generate Comparison
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_supOrEqual ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . leftTemporaryOperand . ") ; // Release temporary left operand\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . rightTemporaryOperand . ") ; // Release temporary right operand\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @strictGreaterExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@strictGreaterExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @strictGreaterExpressionForGeneration\n" ;
+#--- Left operand
+  @string leftTemporaryOperand ;
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?leftTemporaryOperand] ;
+#--- Right operand
+  @string rightTemporaryOperand ;
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?rightTemporaryOperand] ;
+#--- Generate Comparison
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_strictSup ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . leftTemporaryOperand . ") ; // Release temporary left operand\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . rightTemporaryOperand . ") ; // Release temporary right operand\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @strictLowerExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
-  outCppName := "(@strictLowerExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @strictLowerExpressionForGeneration\n" ;
+#--- Left operand
+  @string leftTemporaryOperand ;
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?leftTemporaryOperand] ;
+#--- Right operand
+  @string rightTemporaryOperand ;
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?rightTemporaryOperand] ;
+#--- Generate Comparison
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_strictInf ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+#--- Release temporary variables
+  ioGeneratedCode .= "macroReleaseObject (" . leftTemporaryOperand . ") ; // Release temporary left operand\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . rightTemporaryOperand . ") ; // Release temporary right operand\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @rightShiftExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@rightShiftExpressionForGeneration generateExpression)" ;
@@ -320,7 +479,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @leftShiftExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@leftShiftExpressionForGeneration generateExpression)" ;
@@ -329,7 +489,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @addExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@addExpressionForGeneration generateExpression)" ;
@@ -338,7 +499,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @subExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@subExpressionForGeneration generateExpression)" ;
@@ -347,7 +509,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @multiplicationExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@multiplicationExpressionForGeneration generateExpression)" ;
@@ -356,7 +519,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @divisionExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@divisionExpressionForGeneration generateExpression)" ;
@@ -365,7 +529,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @moduloExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@moduloExpressionForGeneration generateExpression)" ;
@@ -374,7 +539,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @unaryMinusExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@unaryMinusExpressionForGeneration generateExpression)" ;
@@ -383,7 +549,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @notExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@notExpressionForGeneration generateExpression)" ;
@@ -392,7 +559,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @complementExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@complementExpressionForGeneration generateExpression)" ;
@@ -401,7 +569,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @ifExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@ifExpressionForGeneration generateExpression)" ;
@@ -410,7 +579,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @functionCallExpressionForGeneration generateExpression
-  ?!@string unused ioImplementation
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
   !@string outCppName
 :
   outCppName := "(@functionCallExpressionForGeneration generateExpression)" ;
@@ -419,14 +589,16 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @varInExpressionForGeneration generateExpression
-  ?!@string ioImplementation
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   !@string outCppName
 :
   foreach mStructFieldList do
-    ioImplementation .= "(handle field)\n" ;
+    ioGeneratedCode .= "(handle field in @varInExpressionForGeneration)\n" ;
   end foreach ;
-  ioImplementation .= "macroRetainObject (" . mCppVarName . ") ;\n" ;
-  outCppName := mCppVarName ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName . " = " . mCppVarName . " ;\n" ;
+  ioGeneratedCode .= "macroRetainObject (" . outCppName . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

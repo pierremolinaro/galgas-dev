@@ -187,7 +187,7 @@ routine compileSemanticsComponent
     @string headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       ![componentName string]
       ![semanticsComponentRoot mImportedComponentFileNameList]
-      ![semanticContext->mTypeMap keyList]
+      ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
       headerString .= [mDeclaration appendDeclaration] ;
