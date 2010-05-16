@@ -4,7 +4,12 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler%
+void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^
+  if USES_COMPILER_ARGUMENT then
+    %C_Compiler * inCompiler%
+  else
+    %C_Compiler * /* inCompiler */%
+  end if
   foreach FORMAL_ARGUMENT_LIST do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * const inArgument_% ![mFormalArgumentName string]
@@ -17,12 +22,12 @@ void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^%C_Compiler * inComp
     end if
   end foreach
 
-                     %\n %!^%COMMA_LOCATION_ARGS) {
+                     %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {
 %
 #--- Retain 'in' arguments
   foreach FORMAL_ARGUMENT_LIST do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
-      %macroRetainObject (inArgument_% ![mFormalArgumentName string] %) ;\n%
+      %  macroRetainObject (inArgument_% ![mFormalArgumentName string] %) ; // Retain 'in' argument\n%
     end if
   end foreach
 #--- Generate body
@@ -30,7 +35,7 @@ void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^%C_Compiler * inComp
 #--- Release 'in' arguments
   foreach FORMAL_ARGUMENT_LIST do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
-      %macroReleaseObject (inArgument_% ![mFormalArgumentName string] %) ;\n%
+      %  macroReleaseObject (inArgument_% ![mFormalArgumentName string] %) ; // Release 'in' argument\n%
     end if
   end foreach
 %}

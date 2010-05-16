@@ -6247,7 +6247,7 @@ rule <semantics_declaration>
         [mapAutomatonStateMap searchKey !currentStateName ?currentStateNameIndex] ;
         const @string association := [startStateName string] . ":" . [currentStateName string] ;
         if not [neededAssociations hasKey !association] then
-          error currentStateName
+          warning currentStateName
           :"the '" . association . "' association is useless" ;
         end if ;
         if [handledAssociations hasKey !association] then
@@ -6262,11 +6262,11 @@ rule <semantics_declaration>
         if [startStateName string] != [finalStateName string] then
           neededCombinaisons += ![startStateName string] . ":" . [finalStateName string] ;
           neededCombinaisons += ![finalStateName string] . ":" . [startStateName string] ;
-        end if ;
-        if not [accessibilityGraph hasKey ![startStateName string] . ":" . [finalStateName string]] then
-          error finalStateName
-          : "the '" . finalStateName . "' state is not reachable from '" . startStateName . "' state"
-          ;
+          if not [accessibilityGraph hasKey ![startStateName string] . ":" . [finalStateName string]] then
+            error finalStateName
+            : "the '" . finalStateName . "' state is not reachable from '" . startStateName . "' state"
+            ;
+          end if ;
         end if ;
         @mapAutomatonMessageKind transitionMessageKind ;
         @lstring transitionMessage ;
@@ -6301,7 +6301,7 @@ rule <semantics_declaration>
         foreach forgottenAssociations do
           s .= "\n  - " . key ;
         end foreach ;
-        error here: "the following associations should be defined:" . s ;
+        error here: [[forgottenAssociations count] string] . " associations should be defined:" . s ;
       end if ;
       $}$ ;
       ${$ ;
@@ -6374,13 +6374,15 @@ rule <semantics_declaration>
           ![transitionMessage string]
         ;
       end repeat ;
-      @stringset forgottenCombinaisons := neededCombinaisons - definedCombinaisons ;
-      if [forgottenCombinaisons count] > 0 then
-        @string s := "" ;
-        foreach forgottenCombinaisons do
-          s .= "\n  - " . key ;
-        end foreach ;
-        warning here: [[forgottenCombinaisons count] string] . " combinaisons are forgotten:" . s ;
+      if [forgottenAssociations count] == 0 then # Check only if all associations are defined
+        @stringset forgottenCombinaisons := neededCombinaisons - definedCombinaisons ;
+        if [forgottenCombinaisons count] > 0 then
+          @string s := "" ;
+          foreach forgottenCombinaisons do
+            s .= "\n  - " . key ;
+          end foreach ;
+          error here: [[forgottenCombinaisons count] string] . " combinaisons are forgotten:" . s ;
+        end if ;
       end if ;
       $}$ ;
       mapOverrideList += !overrideName !branchBehaviourSortedListForMapOverride !branchCombinationSortedListForMapOverride ;

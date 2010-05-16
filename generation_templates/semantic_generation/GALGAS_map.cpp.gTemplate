@@ -48,7 +48,7 @@ end foreach
 
 foreach SEARCH_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mMethodName identifierRepresentation]% (%?^%const GALGAS_lstring * inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring * const inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outArgument%![IDX string]
     end foreach
