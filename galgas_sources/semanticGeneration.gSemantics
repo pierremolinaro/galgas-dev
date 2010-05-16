@@ -155,6 +155,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
     ?@string ROUTINE_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@semanticInstructionListForGeneration ROUTINE_INSTRUCTION_LIST
+    ?@bool USES_COMPILER_ARGUMENT
   ;
 
 }
@@ -375,6 +376,7 @@ override reader @routineImplementationForGeneration appendSpecificImplementation
     !mRoutineName
     !mFormalArgumentList
     !mRoutineInstructionList
+    !mUsesCompilerArgument
   ] ; 
 end reader ;
 

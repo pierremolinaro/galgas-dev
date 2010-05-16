@@ -345,12 +345,6 @@ end method ;
 override method @mapDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-#  message "@mapDeclarationAST enterType\n" ;
-  @constructorMap constructorMap [emptyMap] ;
-  @readerMap readerMap [emptyMap] ;
-  @modifierMap modifierMap [emptyMap] ;
-  @instanceMethodMap instanceMethodMap [emptyMap] ;
-  @enumerationDescriptorList enumerationDescriptor [emptyList] ;
 #--- string type index
   @unifiedTypeMapProxy stringTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"string" ?stringTypeIndex] ;
@@ -360,6 +354,12 @@ override method @mapDeclarationAST enterType
 #--- current map type index
   @unifiedTypeMapProxy currentMapTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mMapTypeName string] ?currentMapTypeIndex] ;
+#---
+  @constructorMap constructorMap [emptyMap] ;
+  @readerMap readerMap [emptyMap] ;
+  @modifierMap modifierMap [emptyMap] ;
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
 #--- Readers

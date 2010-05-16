@@ -33,7 +33,45 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 ;
+
+#---------------------------------------------------------------------------*
+
+routine analyzeSemanticInstructionList
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@semanticInstructionListAST inSemanticInstructionListAST
+  ??@location inEndOfBranchLocation
+  ?!@variableMap ioVariableMap
+  !@semanticInstructionListForGeneration outInstructionListForGeneration
+  ?!@bool ioUsesCompilerArgument
+:
+  outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+#--- Begin branch
+  [!?ioVariableMap beginBranch] ;
+#--- Instruction list
+  @stringlist localVariableCppNameList [emptyList] ;
+  foreach inSemanticInstructionListAST do
+    [mInstruction analyzeSemanticInstruction
+      !inSemanticContext
+      !inPredefinedTypes
+      !?outInstructionListForGeneration
+      !?ioVariableMap
+      !?localVariableCppNameList
+      !?ioUsesCompilerArgument
+    ] ;
+  end foreach ;
+#--- Drop local variables
+  if [localVariableCppNameList length] > 0 then
+    outInstructionListForGeneration += ![@dropInstructionForGeneration new
+      !localVariableCppNameList
+      !"end of scope"
+    ] ;  
+  end if ;
+#--- Branch end
+  [!?ioVariableMap endBranch !inEndOfBranchLocation] ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
@@ -43,6 +81,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Analyze constructor call
   @unifiedTypeMapProxy returnedType ;
@@ -58,7 +97,11 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     ?returnedType
     ?constructorEffectiveParameterList
     ?hasCompilerArgument
+    !?ioUsesCompilerArgument
   ;
+  if hasCompilerArgument then
+    ioUsesCompilerArgument := true ;
+  end if ;
 #--- Check variable type
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
   if targetType != returnedType then
@@ -93,6 +136,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -101,6 +145,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     !inPredefinedTypes
     !?ioVariableMap
     ?expression
+    !?ioUsesCompilerArgument
   ] ;
 #--- Check target variable
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
@@ -130,6 +175,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
 #--- Check target variable
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
@@ -151,6 +197,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -159,6 +206,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     !inPredefinedTypes
     !?ioVariableMap
     ?expression
+    !?ioUsesCompilerArgument
   ] ;
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
@@ -190,6 +238,7 @@ override method @sendInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -198,6 +247,7 @@ override method @sendInstructionAST analyzeSemanticInstruction
     !inPredefinedTypes
     !?ioVariableMap
     ?expression
+    !?ioUsesCompilerArgument
   ] ;
 #--- Check source expression type is @string
   if [expression mType] != inPredefinedTypes->mStringType then
@@ -223,11 +273,13 @@ routine analyzeErrorOrWarningInstruction
   !@bool outUseLocationReader
 :
 #--- Analyze location expression
+  @bool useless := false ; 
   [inLocationExpression analyzeSemanticExpression
     !inSemanticContext
     !inPredefinedTypes
     !?ioVariableMap
     ?outLocationExpression
+    !?useless # Useless because 'warning' and 'error' instruction do use compiler argument
   ] ;
 #--- Check location expression type is either @location either has a correct location reader
   outUseLocationReader := [outLocationExpression mType] != inPredefinedTypes->mLocationType ;
@@ -259,6 +311,7 @@ routine analyzeErrorOrWarningInstruction
     !inPredefinedTypes
     !?ioVariableMap
     ?outMessageExpression
+    !?useless
   ] ;
 #--- Check message expression type is @string
   if [outMessageExpression mType] != inPredefinedTypes->mStringType then
@@ -276,7 +329,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
+  ioUsesCompilerArgument := true ;
 #---
   @semanticExpressionForGeneration locationExpression ;
   @semanticExpressionForGeneration messageExpression ;
@@ -317,7 +372,9 @@ override method @warningInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
+  ioUsesCompilerArgument := true ;
 #---
   @semanticExpressionForGeneration locationExpression ;
   @semanticExpressionForGeneration messageExpression ;
@@ -353,6 +410,7 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@temporaryInputVariableForRoutineInvocationForGeneration ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset ioExclusiveVariableSet
+  ?!@bool ioUsesCompilerArgument
 ;
 
 #---------------------------------------------------------------------------*
@@ -366,9 +424,10 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset unused ioExclusiveVariableSet
+  ?!@bool ioUsesCompilerArgument
 :
   if (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentIn])
-   | (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentConstantIn]) then
+   & (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentConstantIn]) then
     error mQualifierLocation
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
@@ -380,6 +439,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
       !inPredefinedTypes
       !?ioVariableMap
       ?expression
+      !?ioUsesCompilerArgument
     ] ;
   #--- Check effective expression type against formal argument type
     checkAssignmentTypes !inFormalArgumentType ![expression mType] !mEndOfExpressionLocation ;
@@ -401,6 +461,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset ioExclusiveVariableSet
+  ?!@bool unused ioUsesCompilerArgument
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
     error mQualifierLocation
@@ -448,6 +509,7 @@ override method @inputActualParameterAST checkAgainstFormalArgument
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset ioExclusiveVariableSet
+  ?!@bool unused ioUsesCompilerArgument
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
     error mQualifierLocation
@@ -489,6 +551,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@temporaryInputVariableForRoutineInvocationForGeneration ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset unused ioExclusiveVariableSet
+  ?!@bool unused ioUsesCompilerArgument
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
     error mQualifierLocation
@@ -518,6 +581,7 @@ routine analyzeRoutineArguments
   ?!@variableMap ioVariableMap
   !@actualParameterListForGeneration outActualParameterListForGeneration
   !@temporaryInputVariableForRoutineInvocationForGeneration outTemporaryInputVariableForRoutineInvocationForGeneration
+  ?!@bool ioUsesCompilerArgument
 :
   if [inRoutineSignature length] != [inActualParameterList length] then
     error inRoutineName
@@ -540,6 +604,7 @@ routine analyzeRoutineArguments
         !?outActualParameterListForGeneration
         !?outTemporaryInputVariableForRoutineInvocationForGeneration
         !?exclusiveVariableSet
+        !?ioUsesCompilerArgument
       ] ;
     end foreach ;
   end if ;
@@ -553,7 +618,9 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
+  ioUsesCompilerArgument := true ;
 #--- Get routine signature
   @formalParameterSignature routineSignature ;
   [inSemanticContext->mRoutineMap searchKey !mRoutineName ?routineSignature] ;
@@ -570,6 +637,7 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?actualParameterListForGeneration
     ?temporaryInputVariableForRoutineInvocationForGeneration
+    !?ioUsesCompilerArgument
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@routineCallInstructionForGeneration new
@@ -587,6 +655,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Get type method map for the named type
   const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mTypeName] ;
@@ -594,6 +663,9 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   [[type mClassMethodMap] searchKey !mMethodName ?routineSignature ?hasCompilerArgument] ;
+  if hasCompilerArgument then
+    ioUsesCompilerArgument := true ;
+  end if ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
@@ -607,6 +679,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?actualParameterListForGeneration
     ?temporaryInputVariableForRoutineInvocationForGeneration
+    !?ioUsesCompilerArgument
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@typeMethodInstructionForGeneration new
@@ -626,14 +699,24 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Analyze receiver expression
   @semanticExpressionForGeneration receiverExpression ;
-  [mReceiverExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?receiverExpression] ;
+  [mReceiverExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?receiverExpression
+    !?ioUsesCompilerArgument
+  ] ;
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?routineSignature ?* ?hasCompilerArgument ?*] ;
+  if hasCompilerArgument then
+    ioUsesCompilerArgument := true ;
+  end if ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
@@ -647,6 +730,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?actualParameterListForGeneration
     ?temporaryInputVariableForRoutineInvocationForGeneration
+    !?ioUsesCompilerArgument
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
@@ -666,6 +750,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Check receiver object
   @unifiedTypeMapProxy receiverType ;
@@ -679,6 +764,9 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   [[receiverType mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument] ;
+  if hasCompilerArgument then
+    ioUsesCompilerArgument := true ;
+  end if ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
@@ -692,6 +780,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?actualParameterListForGeneration
     ?temporaryInputVariableForRoutineInvocationForGeneration
+    !?ioUsesCompilerArgument
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@modifierCallInstructionForGeneration new
@@ -712,6 +801,7 @@ override method @appendInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -720,6 +810,7 @@ override method @appendInstructionAST analyzeSemanticInstruction
     !inPredefinedTypes
     !?ioVariableMap
     ?expression
+    !?ioUsesCompilerArgument
   ] ;
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
@@ -753,6 +844,7 @@ override method @addInstructionAST analyzeSemanticInstruction # +=
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool  ioUsesCompilerArgument
 :
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
@@ -779,7 +871,13 @@ override method @addInstructionAST analyzeSemanticInstruction # +=
     @semanticExpressionListForGeneration effectiveParameterList [emptyList] ;
     foreach mExpressions, addAssignOperatorArguments do
       @semanticExpressionForGeneration exp ;
-      [mExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?exp] ;
+      [mExpression analyzeSemanticExpression
+        !inSemanticContext
+        !inPredefinedTypes
+        !?ioVariableMap
+        ?exp
+        !?ioUsesCompilerArgument
+      ] ;
       checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
       effectiveParameterList += !exp ;
     end foreach ;
@@ -800,6 +898,7 @@ override method @incrementInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
@@ -830,6 +929,7 @@ override method @decrementInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
@@ -860,6 +960,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -868,6 +969,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
     !inPredefinedTypes
     !?ioVariableMap
     ?expression
+    !?ioUsesCompilerArgument
   ] ;
 #--- Check message type is @string
   if [expression mType] != inPredefinedTypes->mStringType then
@@ -889,6 +991,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
   foreach mLogList do
   #--- Analyze source expression
@@ -898,6 +1001,7 @@ override method @logInstructionAST analyzeSemanticInstruction
       !inPredefinedTypes
       !?ioVariableMap
       ?expression
+      !?ioUsesCompilerArgument
     ] ;
   #--- Generate instruction
     ioInstructionListForGeneration += ![@logInstructionForGeneration new
@@ -915,6 +1019,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
   @stringlist cppNameDropList [emptyList] ;
   foreach mDropList do
@@ -931,61 +1036,13 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @grammarInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-  ?!@stringlist unused ioLocalVariableCppNameList
-:
-  error mGrammarComponentName
-  : "unhandled instruction: grammarInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-routine analyzeSemanticInstructionList
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
-  ??@semanticInstructionListAST inSemanticInstructionListAST
-  ??@location inEndOfBranchLocation
-  ?!@variableMap ioVariableMap
-  !@semanticInstructionListForGeneration outInstructionListForGeneration
-:
-  outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
-#--- Begin branch
-  [!?ioVariableMap beginBranch] ;
-#--- Instruction list
-  @stringlist localVariableCppNameList [emptyList] ;
-  foreach inSemanticInstructionListAST do
-    [mInstruction analyzeSemanticInstruction
-      !inSemanticContext
-      !inPredefinedTypes
-      !?outInstructionListForGeneration
-      !?ioVariableMap
-      !?localVariableCppNameList
-    ] ;
-  end foreach ;
-#--- Drop local variables
-  if [localVariableCppNameList length] > 0 then
-    outInstructionListForGeneration += ![@dropInstructionForGeneration new
-      !localVariableCppNameList
-      !"end of scope"
-    ] ;  
-  end if ;
-#--- Branch end
-  [!?ioVariableMap endBranch !inEndOfBranchLocation] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 override method @ifInstructionAST analyzeSemanticInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
 :
 #--- Test expression
   @semanticExpressionForGeneration if_expression ;
@@ -994,6 +1051,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inPredefinedTypes
     !?ioVariableMap
     ?if_expression
+    !?ioUsesCompilerArgument
   ] ;
   [!?ioVariableMap beginOverrideForSelectBlock] ;
 #--- Then branch
@@ -1005,6 +1063,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !mEndOf_then_branch
     !?ioVariableMap
     ?then_instructionList
+    !?ioUsesCompilerArgument
   ;
 #--- else branch
   @semanticInstructionListForGeneration else_instructionList ;
@@ -1015,6 +1074,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !mEndOf_if_instruction
     !?ioVariableMap
     ?else_instructionList
+    !?ioUsesCompilerArgument
   ;
   [!?ioVariableMap endOverride !mEndOf_if_instruction] ;
 #--- Generate instruction
@@ -1029,14 +1089,230 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @foreachInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
+:
+#--- Analyze enumerated objects
+  @foreachInstructionEnumeratedObjectListForGeneration enumerationList [emptyList] ;
+  foreach mEnumeratedObjectList do
+  #--- Enumeration expression
+    @semanticExpressionForGeneration enumerationExpression ;
+    [mEnumeratedExpression analyzeSemanticExpression
+      !inSemanticContext
+      !inPredefinedTypes
+      !?ioVariableMap
+      ?enumerationExpression
+      !?ioUsesCompilerArgument
+    ] ;
+  #--- Check object can be enumerated
+    const @string enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+    const @enumerationDescriptorList enumerationDescriptorList := [[enumerationExpression mType] mEnumerationDescriptor] ;
+    if [enumerationDescriptorList length] == 0 then
+      error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
+  #--- Arguments
+    elsif ([mElementList length] == 0) & not mEndsWithEllipsis then
+      error mEndOfEnumerationExpression : "TO DO !" ;
+    elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
+      error mEndOfElementList
+      :"the '@" . [[enumerationExpression mType] key] . "' type requires "
+      . [[enumerationDescriptorList length] string] . " argument"
+      . if ([enumerationDescriptorList length] > 1) then "s" else "" end
+      . " for enumeration: this list provides "
+      . [[mElementList length] string]
+      ;
+    elsif (mEndsWithEllipsis) & ([mElementList length] > [enumerationDescriptorList length]) then
+      error mEndOfElementList
+      :"the '@" . [[enumerationExpression mType] key] . "' type requires "
+      . [[enumerationDescriptorList length] string] . " argument"
+      . if ([enumerationDescriptorList length] > 1) then "s" else "" end
+      . " or less for enumeration: this list provides "
+      . [[mElementList length] string]
+      ;
+    else
+      foreach mElementList, enumerationDescriptorList do
+        if [mConstantName string] != "" then # Empty string if joker
+          const @unifiedTypeMapProxy foundType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+          if foundType != mEnumeratedType then
+            error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
+          end if ;
+          [!?ioVariableMap insertUsedLocalConstant !mConstantName !mEnumeratedType !enumeratorCppName .".attribute_" . [mEnumerationName identifierRepresentation]. " ()"] ;
+        end if ;
+      end foreach ;
+    end if ;
+  #---
+    enumerationList += !mIsAscending !enumerationExpression !enumeratorCppName ;
+  end foreach ;
+#--- While expression
+  @semanticExpressionForGeneration whileExpression ;
+  [mWhileExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?whileExpression
+    !?ioUsesCompilerArgument
+  ] ;
+#--- Begin override for analyze foreach instruction list
+  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+#--- 'before' branch
+  @semanticInstructionListForGeneration before_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !mBeforeInstructionList
+    !mEndOf_before_branch
+    !?ioVariableMap
+    ?before_instructionList
+    !?ioUsesCompilerArgument
+  ;
+#--- Handle index
+  @string indexCppName := "" ; # Empty string if no index
+  if [mIndexVariableName string] != "" then
+    indexCppName := "index_" . [[mInstructionLocation locationIndex] string] ;
+    [!?ioVariableMap insertLocalConstant !mIndexVariableName !inPredefinedTypes->mUIntType !indexCppName] ;
+  end if ;
+#--- 'do' branch
+  if [mIndexVariableName length] > 0 then
+    error mIndexVariableName : "TO DO: handle index in foreach instruction" ;
+  end if ;
+  @semanticInstructionListForGeneration do_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !mDoInstructionList
+    !mEndOf_do_branch
+    !?ioVariableMap
+    ?do_instructionList
+    !?ioUsesCompilerArgument
+  ;
+#--- Remove index
+  if [mIndexVariableName string] != "" then
+    [!?ioVariableMap removeKey !mIndexVariableName ?* ?*] ;
+  end if ;
+#--- 'between' branch
+  @semanticInstructionListForGeneration between_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !mBetweenInstructionList
+    !mEndOf_between_branch
+    !?ioVariableMap
+    ?between_instructionList
+    !?ioUsesCompilerArgument
+  ;
+#--- 'after' branch
+  @semanticInstructionListForGeneration after_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !mAfterInstructionList
+    !mEndOf_after_branch
+    !?ioVariableMap
+    ?after_instructionList
+    !?ioUsesCompilerArgument
+  ;
+#--- End override
+  [!?ioVariableMap endOverride !mEndOf_foreach_instruction] ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@foreachInstructionForGeneration new
+    !enumerationList
+    !indexCppName
+    !whileExpression
+    !before_instructionList
+    !between_instructionList
+    !do_instructionList
+    !after_instructionList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @loopInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
+:
+#--- Variant expression
+  @semanticExpressionForGeneration variantExpression ;
+  [mVariantExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?variantExpression
+    !?ioUsesCompilerArgument
+  ] ;
+#--- Check variant expression type is @uint
+  if [variantExpression mType] != inPredefinedTypes->mUIntType then
+    error mEndOfVariantExpression
+    : "the variant expression type should be '@" . [inPredefinedTypes->mUIntType key] . "', but it has '@" . [[variantExpression mType] key] . "' type" ;
+  end if ;
+#--- Loop expression
+  @semanticExpressionForGeneration loopExpression ;
+  [mLoopExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?loopExpression
+    !?ioUsesCompilerArgument
+  ] ;
+#--- Check loop expression type is @bool
+  if [loopExpression mType] != inPredefinedTypes->mBoolType then
+    error mEndOfLoopExpression
+    : "the loop expression type should be '@" . [inPredefinedTypes->mBoolType key] . "', but it has '@" . [[loopExpression mType] key] . "' type" ;
+  end if ;
+#--- Begin override for analyze loop instruction list
+  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+#--- First branch
+  @semanticInstructionListForGeneration first_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !mFirstInstructions
+    !mEndOfFirstInstructions
+    !?ioVariableMap
+    ?first_instructionList
+    !?ioUsesCompilerArgument
+  ;
+#--- Second branch
+  @semanticInstructionListForGeneration second_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !mSecondInstructions
+    !mEndOfSecondInstructions
+    !?ioVariableMap
+    ?second_instructionList
+    !?ioUsesCompilerArgument
+  ;
+#--- End override
+  [!?ioVariableMap endOverride !mEndOfLoopInstruction] ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@loopInstructionForGeneration new
+    !variantExpression
+    !first_instructionList
+    !loopExpression
+    !second_instructionList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @castInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
   error mInstructionLocation
-  : "unhandled instruction @foreachInstructionAST"
+  : "unhandled instruction @castInstructionAST"
   ;
 end method ;
 
@@ -1048,6 +1324,7 @@ override method @withInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
   error mTargetObjectName
   : "unhandled instruction @withInstructionAST"
@@ -1062,6 +1339,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
   error mInstructionLocation
   : "unhandled instruction @switchInstructionAST"
@@ -1076,6 +1354,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
   error mInstructionLocation
   : "unhandled instruction @matchInstructionAST"
@@ -1084,29 +1363,16 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @loopInstructionAST analyzeSemanticInstruction
+override method @grammarInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool unused ioUsesCompilerArgument
 :
-  error mInstructionLocation
-  : "unhandled instruction @loopInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @castInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-  ?!@stringlist unused ioLocalVariableCppNameList
-:
-  error mInstructionLocation
-  : "unhandled instruction @castInstructionAST"
+  error mGrammarComponentName
+  : "unhandled instruction: @grammarInstructionAST"
   ;
 end method ;
 

@@ -632,25 +632,9 @@ class @sendInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @foreachInstructionEnumeratedObjectElementAST {
-}
-
-#---------------------------------------------------------------------------*
-
-class @foreachInstructionJokerAST extends @foreachInstructionEnumeratedObjectElementAST {
-}
-
-#---------------------------------------------------------------------------*
-
-class @foreachInstructionEnumeratedConstantAST extends @foreachInstructionEnumeratedObjectElementAST {
-  @lstring mTypeName ;
-  @lstring mConstantName ;
-}
-
-#---------------------------------------------------------------------------*
-
 list @foreachInstructionEnumeratedObjectElementListAST {
-  @foreachInstructionEnumeratedObjectElementAST mElement ;
+  @lstring mTypeName ; # Empty string if joker
+  @lstring mConstantName ;  # Empty string if joker
 }
 
 #---------------------------------------------------------------------------*
@@ -658,7 +642,9 @@ list @foreachInstructionEnumeratedObjectElementListAST {
 list @foreachInstructionEnumeratedObjectListAST {
   @bool mIsAscending ;
   @semanticExpressionAST mEnumeratedExpression ;
+  @location mEndOfEnumerationExpression ;
   @foreachInstructionEnumeratedObjectElementListAST mElementList ;
+  @location mEndOfElementList ;
   @bool mEndsWithEllipsis ;
   @lstring mPrefix ;
 }
@@ -670,9 +656,14 @@ class @foreachInstructionAST extends @semanticInstructionAST {
   @lstring mIndexVariableName ;
   @semanticExpressionAST mWhileExpression ;
   @semanticInstructionListAST mBeforeInstructionList ;
+  @location mEndOf_before_branch ;
   @semanticInstructionListAST mBetweenInstructionList ;
+  @location mEndOf_between_branch ;
   @semanticInstructionListAST mDoInstructionList ;
+  @location mEndOf_do_branch ;
   @semanticInstructionListAST mAfterInstructionList ;
+  @location mEndOf_after_branch ;
+  @location mEndOf_foreach_instruction ;
 }
 
 #---------------------------------------------------------------------------*
@@ -873,9 +864,14 @@ class @decrementInstructionAST extends @semanticInstructionAST {
 
 class @loopInstructionAST extends @semanticInstructionAST {
   @semanticExpressionAST mVariantExpression ;
+  @location mEndOfVariantExpression ;
   @semanticInstructionListAST mFirstInstructions ;
+  @location mEndOfFirstInstructions ;
   @semanticExpressionAST mLoopExpression ;
+  @location mEndOfLoopExpression ;
   @semanticInstructionListAST mSecondInstructions ;
+  @location mEndOfSecondInstructions ;
+  @location mEndOfLoopInstruction ;
 }
 
 #---------------------------------------------------------------------------*

@@ -486,20 +486,8 @@ class @routinePrototypeDeclarationForGeneration extends @semanticDeclarationForG
 
 class @routineImplementationForGeneration extends @routinePrototypeDeclarationForGeneration {
   @semanticInstructionListForGeneration mRoutineInstructionList ;
+  @bool mUsesCompilerArgument ;
 }
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#class @externFunctionDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @lstring mFunctionName ;
-#  @formalParameterListForGeneration mFormalParameterList ;
-#  @lstring mResultTypeName ;
-#  @lstring mResultVariableName ;
-#}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -513,6 +501,7 @@ class @functionDeclarationForGeneration extends @semanticDeclarationForGeneratio
   @lstring mResultVariableName ;
   @unifiedTypeMapProxy mReturnType ;
   @semanticInstructionListForGeneration mFunctionInstructionList ;
+  @bool mUsesCompilerArgument ;
 }
 
 #---------------------------------------------------------------------------*
@@ -591,7 +580,7 @@ class @dropInstructionForGeneration extends @semanticInstructionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @appendInstructionForGeneration extends @semanticInstructionForGeneration {
-  @string mTargetVariableName ;
+  @string mTargetVariableCppName ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionForGeneration mSourceExpression ;
 }
@@ -637,25 +626,26 @@ class @sendInstructionForGeneration extends @semanticInstructionForGeneration {
 
 #---------------------------------------------------------------------------*
 
-#list @foreachInstructionEnumeratedObjectListForGeneration {
-#  @bool mIsAscending ;
-#  @semanticExpressionForGeneration mEnumeratedExpression ;
+list @foreachInstructionEnumeratedObjectListForGeneration {
+  @bool mIsAscending ;
+  @semanticExpressionForGeneration mEnumeratedExpression ;
+  @string mEnumeratorCppName ;
 #  @foreachInstructionEnumeratedObjectElementListForGeneration mElementList ;
 #  @bool mEndsWithEllipsis ;
 #  @lstring mPrefix ;
-#}
+}
 
 #---------------------------------------------------------------------------*
 
-#class @foreachInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @foreachInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList ;
-#  @lstring mIndexVariableName ;
-#  @semanticExpressionForGeneration mWhileExpression ;
-#  @semanticInstructionListForGeneration mBeforeInstructionList ;
-#  @semanticInstructionListForGeneration mBetweenInstructionList ;
-#  @semanticInstructionListForGeneration mDoInstructionList ;
-#  @semanticInstructionListForGeneration mAfterInstructionList ;
-#}
+class @foreachInstructionForGeneration extends @semanticInstructionForGeneration {
+  @foreachInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList ;
+  @string mIndexVariableCppName ;  # Empty string if no index
+  @semanticExpressionForGeneration mWhileExpression ;
+  @semanticInstructionListForGeneration mBeforeInstructionList ;
+  @semanticInstructionListForGeneration mBetweenInstructionList ;
+  @semanticInstructionListForGeneration mDoInstructionList ;
+  @semanticInstructionListForGeneration mAfterInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -873,12 +863,12 @@ class @decrementInstructionForGeneration extends @semanticInstructionForGenerati
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @loopInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @semanticExpressionForGeneration mVariantExpression ;
-#  @semanticInstructionListForGeneration mFirstInstructions ;
-#  @semanticExpressionForGeneration mLoopExpression ;
-#  @semanticInstructionListForGeneration mSecondInstructions ;
-#}
+class @loopInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mVariantExpression ;
+  @semanticInstructionListForGeneration mFirstInstructions ;
+  @semanticExpressionForGeneration mLoopExpression ;
+  @semanticInstructionListForGeneration mSecondInstructions ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1112,6 +1102,7 @@ list @methodDefinitionListForGeneration {
   @lstring mMethodName ;
   @formalParameterListForGeneration mSignature ;
   @semanticInstructionListForGeneration mInstructionList ;
+  @bool mUsesCompilerArgument ;
 }
 
 #---------------------------------------------------------------------------*

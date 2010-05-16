@@ -416,6 +416,7 @@ rule <foreach_enumerated_object>
   end select ;
   @semanticExpressionAST mEnumeratedExpression ;
   <expression> ? mEnumeratedExpression ;
+  const @location endOfEnumerationExpression := here ;
   @foreachInstructionEnumeratedObjectElementListAST mElementList [emptyList] ;
   @bool mEndsWithEllipsis ;
   @lstring prefix ;
@@ -432,7 +433,7 @@ rule <foreach_enumerated_object>
     repeat
     while
       $*$ ;
-      mElementList += ![@foreachInstructionJokerAST new] ;
+      mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
     while
       @luint count ;
       $unsigned_literal_integer$ ?count ;
@@ -443,7 +444,7 @@ rule <foreach_enumerated_object>
       end if ;
       loop n :
       while n > 0 do
-        mElementList += ![@foreachInstructionJokerAST new] ;
+        mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
         n -- ;
       end loop ;
     while
@@ -451,8 +452,7 @@ rule <foreach_enumerated_object>
       $type_name$ ?typeName ;
       @lstring constantName ;
       $identifier$ ?constantName ;
-      @foreachInstructionEnumeratedConstantAST c [new !typeName !constantName] ;
-      mElementList += !c ;
+      mElementList += !typeName !constantName ;
     end repeat ;
     select
       mEndsWithEllipsis := false ;
@@ -465,7 +465,9 @@ rule <foreach_enumerated_object>
   ioForeachInstructionEnumeratedObjectList +=
     !ascending
     !mEnumeratedExpression
+    !endOfEnumerationExpression
     !mElementList
+    !here
     !mEndsWithEllipsis
     !prefix
   ;
@@ -503,9 +505,11 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $before$ ;
     <semantic_instruction_list> ? mBeforeInstructionList ;
   end select ;
+  const @location endof_before_branch := here ;
   $do$ ;
   @semanticInstructionListAST mDoInstructionList ;
   <semantic_instruction_list> ? mDoInstructionList ;
+  const @location endof_do_branch := here ;
   @semanticInstructionListAST mBetweenInstructionList ;
   select
     mBetweenInstructionList := [@semanticInstructionListAST emptyList] ;
@@ -513,6 +517,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $between$ ;
     <semantic_instruction_list> ? mBetweenInstructionList ;
   end select ;
+  const @location endof_between_branch := here ;
   @semanticInstructionListAST mAfterInstructionList ;
   select
     mAfterInstructionList := [@semanticInstructionListAST emptyList] ;
@@ -520,7 +525,9 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $after$ ;
     <semantic_instruction_list> ? mAfterInstructionList ;
   end select ;
+  const @location endof_after_branch := here ;
   $end$ ;
+  const @location endof_foreach_instruction := here ;
   $foreach$ ;
   $;$ ;
   outInstruction := [@foreachInstructionAST new
@@ -529,9 +536,14 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     !mIndexVariableName
     !mWhileExpression
     !mBeforeInstructionList
+    !endof_before_branch
     !mBetweenInstructionList
+    !endof_between_branch
     !mDoInstructionList
+    !endof_do_branch
     !mAfterInstructionList
+    !endof_after_branch
+    !endof_foreach_instruction
   ] ;
 end rule ;
 
@@ -820,7 +832,7 @@ rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
   repeat
   while
     $*$ ;
-    mElements += ![@foreachInstructionJokerAST new] ;
+    mElements +=  ![@lstring new !"" !here] ![@lstring new !"" !here] ;
   while
     @luint count ;
     $unsigned_literal_integer$ ?count ;
@@ -831,7 +843,7 @@ rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
     end if ;
     loop n :
     while n > 0 do
-      mElements += ![@foreachInstructionJokerAST new] ;
+      mElements += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
       n -- ;
     end loop ;
   while
@@ -839,8 +851,7 @@ rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
     $type_name$ ?typeName ;
     @lstring constantName ;
     $identifier$ ?constantName ;
-    @foreachInstructionEnumeratedConstantAST c [new !typeName !constantName] ;
-    mElements += !c ;
+    mElements += !typeName !constantName ;
   end repeat ;
   @bool mEndsWithEllipsis ;
   select
@@ -1083,24 +1094,34 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   const @location instructionLocation := here ;
   @semanticExpressionAST mVariantExpression ;
   <expression> ? mVariantExpression ;
+  const @location mEndOfVariantExpression := here ;
   $:$ ;
   @semanticInstructionListAST mFirstInstructions ;
   <semantic_instruction_list> ? mFirstInstructions ;
+  const @location mEndOfFirstInstructions := here ;
   $while$ ;
   @semanticExpressionAST mLoopExpression ;
   <expression> ? mLoopExpression ;
+  const @location mEndOfLoopExpression := here ;
   $do$ ;
   @semanticInstructionListAST mSecondInstructions ;
   <semantic_instruction_list> ? mSecondInstructions ;
+  const @location mEndOfSecondInstructions := here ;
   $end$ ;
+  const @location mEndOfLoopInstruction := here ;
   $loop$ ;
   $;$ ;
   outInstruction := [@loopInstructionAST new
     !instructionLocation
     !mVariantExpression
+    !mEndOfVariantExpression
     !mFirstInstructions
+    !mEndOfFirstInstructions
     !mLoopExpression
+    !mEndOfLoopExpression
     !mSecondInstructions
+    !mEndOfSecondInstructions
+    !mEndOfLoopInstruction
   ] ;
 end rule ;
 
