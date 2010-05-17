@@ -819,6 +819,7 @@ routine performSemanticAnalysis
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint64" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint64" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"double" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lstring" !here]]
   ] ;
   foreach inDeclarationList do
     [mSemanticDeclaration performSemanticAnalysis

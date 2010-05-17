@@ -1251,6 +1251,13 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_system::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_system " ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED

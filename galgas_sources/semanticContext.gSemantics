@@ -34,6 +34,26 @@ semantics semanticContext :
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  G R A M M A R   M A P                                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @grammarLabelMap {
+  @formalParameterSignature mLabelSignature ;
+  insert insertKey error message "the '%K' grammar label has been already declared in %L" ;
+  search searchKey error message "the '%K' grammar label is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @grammarMap {
+  @grammarLabelMap mLabelMap ;
+  insert insertKey error message "the '%K' grammar has been already declared in %L" ;
+  search searchKey error message "the '%K' grammar is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  R O U T I N E   M A P                                                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -101,6 +121,7 @@ struct @semanticContext {
   @routineMap mRoutineMap ;
   @functionMap mFunctionMap ;
   @filewrapperMap mFilewrapperMap ;
+  @grammarMap mGrammarMap ;
   @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis ;
 }
 
@@ -1472,6 +1493,7 @@ routine buildSemanticContext
         ![@routineMap emptyMap]
         ![@functionMap emptyMap]
         ![@filewrapperMap emptyMap]
+        ![@grammarMap emptyMap]
         !inOptionComponentMapForSemanticAnalysis
       ] ;
     #--- Loop throught all declarations

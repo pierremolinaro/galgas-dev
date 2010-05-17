@@ -79,9 +79,9 @@ routine semanticAnalysisOfOptionComponent
     elsif [mOptionTypeName string] == "bool" then
       [!?outBoolOptionMap insertKey
         !mOptionInternalName
-        !mOptionInvocationLetter
-        !mOptionInvocationString
-        !mOptionComment
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
         !"false"
       ] ;
       if mOptionDefaultValueKind != [@optionDefaultValueEnumAST noDefaultValue] then
@@ -90,9 +90,9 @@ routine semanticAnalysisOfOptionComponent
     elsif [mOptionTypeName string] == "uint" then
       [!?outUIntOptionMap insertKey
         !mOptionInternalName
-        !mOptionInvocationLetter
-        !mOptionInvocationString
-        !mOptionComment
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
         !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
       ] ;
       if mOptionDefaultValueKind == [@optionDefaultValueEnumAST stringDefaultValue] then
@@ -101,9 +101,9 @@ routine semanticAnalysisOfOptionComponent
     elsif [mOptionTypeName string] == "string" then
       [!?outStringOptionMap insertKey
         !mOptionInternalName
-        !mOptionInvocationLetter
-        !mOptionInvocationString
-        !mOptionComment
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
         ![mOptionDefaultValue string]
       ] ;
       if mOptionDefaultValueKind == [@optionDefaultValueEnumAST unsignedDefaultValue] then

@@ -91,6 +91,7 @@ message "a GALGAS option source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
+    ![@parsedGrammarComponentMap emptyMap]
   ] ;
   compileOptionComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
@@ -105,6 +106,7 @@ message "a GALGAS lexique source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
+    ![@parsedGrammarComponentMap emptyMap]
   ] ;
   compileLexiqueComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
@@ -120,6 +122,7 @@ message "a GALGAS semantics source file"
       ![@parsedLexiqueComponentMap emptyMap]
       ![@parsedSyntaxComponentMap emptyMap]
       ![@parsedOptionComponentMap emptyMap]
+      ![@parsedGrammarComponentMap emptyMap]
     ] ;
     compileSemanticsComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
   else
@@ -157,6 +160,7 @@ message "a GALGAS syntax source file"
       ![@parsedLexiqueComponentMap emptyMap]
       ![@parsedSyntaxComponentMap emptyMap]
       ![@parsedOptionComponentMap emptyMap]
+      ![@parsedGrammarComponentMap emptyMap]
     ] ;
     compileSyntaxComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
   else
@@ -193,6 +197,7 @@ message "a GALGAS grammar source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
+    ![@parsedGrammarComponentMap emptyMap]
   ] ;
   compileGrammarComponent
     !inSourceFile
@@ -211,6 +216,7 @@ message "a GALGAS GUI source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
+    ![@parsedGrammarComponentMap emptyMap]
   ] ;
   compileGuiComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
@@ -282,6 +288,7 @@ message "a GALGAS project source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
+    ![@parsedGrammarComponentMap emptyMap]
   ] ;
 #--- Parse galgas sources
   foreach projectSourceList do

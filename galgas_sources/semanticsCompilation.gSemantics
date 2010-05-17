@@ -19,9 +19,11 @@
 semantics semanticsCompilation :
   import "allASTTypes.gSemantics" ;
   import "predefinedTypes.gSemantics" ;
+  import "grammarCompilation.gSemantics" ;
 
   import semantics allASTTypes in "allASTTypes.gSemantics" ;
   import semantics predefinedTypes in "predefinedTypes.gSemantics" ;
+  import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -65,9 +67,16 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+list @grammarComponentASTList {
+  @grammarComponentAST mGrammarComponentAST ;
+}
+
+#---------------------------------------------------------------------------*
+
 routine recursivelyImportSemanticComponent
   ?!@parsedComponentStruct ioParsedComponentStruct
   ?!@lstringlist ioOptionComponentFileNameList
+  ?!@grammarComponentASTList ioGrammarComponentASTList
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
   ?!@stringset ioParsedFileSet
   ??@lstringlist inListOfFilesToParse
@@ -83,6 +92,14 @@ routine recursivelyImportSemanticComponent
       const @string extension := [[filePath string] pathExtension] ;
       if extension == "gOption" then
         ioOptionComponentFileNameList += !filePath ;
+      elsif extension == "gGrammar" then
+        @grammarComponentAST grammarComponentAST ;
+        parseGrammarComponent
+          !filePath
+          !?ioParsedComponentStruct
+          ?grammarComponentAST
+        ;
+        ioGrammarComponentASTList += !grammarComponentAST ;
       elsif extension == "gSemantics" then
       #--- Parse semantic component
         @semanticsComponentAST semanticsComponentRoot ;
@@ -97,6 +114,7 @@ routine recursivelyImportSemanticComponent
         recursivelyImportSemanticComponent
           !?ioParsedComponentStruct
           !?ioOptionComponentFileNameList
+          !?ioGrammarComponentASTList
           !?ioSemanticDeclarationList
           !?ioParsedFileSet
           ![semanticsComponentRoot mImportedComponentFileNameList]
@@ -105,6 +123,61 @@ routine recursivelyImportSemanticComponent
       end if ;
     end if ;
   end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine appendPredefinedOptionComponent
+ ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis
+:
+  @string2list optionNameList := [@system boolOptionNameList] ;
+  @commandLineOptionMap boolOptionMap [emptyMap] ;
+  foreach optionNameList do
+    if (mValue0 == "galgas_cli_options") then
+    [!?boolOptionMap insertKey
+      ![@lstring new !mValue1 !here]
+      ![@system boolOptionInvocationLetter !mValue0 !mValue1]
+      ![@system boolOptionInvocationString !mValue0 !mValue1]
+      ![@system boolOptionCommentString !mValue0 !mValue1]
+      !"" # Not used
+      ] ;
+    end if ;
+  end foreach ;
+#--- 
+  optionNameList := [@system uintOptionNameList] ;
+  @commandLineOptionMap uintOptionMap [emptyMap] ;
+  foreach optionNameList do
+    if (mValue0 == "galgas_cli_options") then
+    [!?uintOptionMap insertKey
+      ![@lstring new !mValue1 !here]
+      ![@system uintOptionInvocationLetter !mValue0 !mValue1]
+      ![@system uintOptionInvocationString !mValue0 !mValue1]
+      ![@system uintOptionCommentString !mValue0 !mValue1]
+      !"" # Not used
+      ] ;
+    end if ;
+  end foreach ;
+#--- 
+  optionNameList := [@system stringOptionNameList] ;
+  @commandLineOptionMap stringOptionMap [emptyMap] ;
+  foreach optionNameList do
+    if (mValue0 == "galgas_cli_options") then
+    [!?stringOptionMap insertKey
+      ![@lstring new !mValue1 !here]
+      ![@system stringOptionInvocationLetter !mValue0 !mValue1]
+      ![@system stringOptionInvocationString !mValue0 !mValue1]
+      ![@system stringOptionCommentString !mValue0 !mValue1]
+      !"" # Not used
+      ] ;
+    end if ;
+  end foreach ;
+#---
+  [!?ioOptionComponentMapForSemanticAnalysis insertKey
+    ![@lstring new !"galgas_cli_options" !here]
+    !boolOptionMap
+    !uintOptionMap
+    !stringOptionMap
+  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -134,9 +207,11 @@ routine compileSemanticsComponent
   @semanticDeclarationListAST semanticDeclarationList := [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
+  @grammarComponentASTList grammarComponentASTList [emptyList] ;
   recursivelyImportSemanticComponent
     !?ioParsedComponentStruct
     !?optionComponentFileNameList
+    !?grammarComponentASTList
     !?semanticDeclarationList
     !?parsedFileSet
     ![semanticsComponentRoot mImportedComponentFileNameList]
@@ -164,6 +239,8 @@ routine compileSemanticsComponent
       !stringOptionMap
     ] ;
   end foreach ;
+#--- Add predefined 'generic_galgas_cli_options' component
+  appendPredefinedOptionComponent !?optionComponentMapForSemanticAnalysis ;
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
@@ -175,6 +252,30 @@ routine compileSemanticsComponent
     ![semanticsComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;
+#--- Perform semantic analysis of grammar components
+  foreach grammarComponentASTList do
+  #--- Analyze start symbol labels
+    @grammarLabelMap grammarLabelMap [emptyMap] ;
+    foreach [mGrammarComponentAST mStartSymbolLabelList] do
+    #--- Analyze signature
+      @formalParameterSignature formalArgumentList [emptyList] ;
+      foreach mFormalArgumentList do
+        formalArgumentList +=
+          ![@unifiedTypeMapProxy searchKey !semanticContext->mTypeMap !mFormalArgumentTypeName]
+          !mFormalArgumentPassingMode
+        ;
+      end foreach ;
+      [!?grammarLabelMap insertKey
+        !mLabelName
+        !formalArgumentList
+      ] ;
+    end foreach ;
+  #--- Insert grammar in grammar map
+    [!?semanticContext->mGrammarMap insertKey
+      ![mGrammarComponentAST mGrammarName]
+      !grammarLabelMap
+    ] ;
+  end foreach ;
 #------ Semantic Analysis
   @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis

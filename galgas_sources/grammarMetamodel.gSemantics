@@ -23,15 +23,7 @@ import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-list @startSymbolLabelFormalParameterList {
-  @formalArgumentPassingModeAST mFormalAgumentPassingMode ;
-  @lstring mTypeName ;
-  @lstring mArgumentName ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @grammarComponentRoot {
+class @grammarComponentAST {
   @lstring mGrammarName ;
   @lstring mGrammarClass ;
   @lstringlist mSyntaxComponents ;

@@ -5428,6 +5428,78 @@ routine importSemanticsComponent
 end routine ;
 
 #---------------------------------------------------------------------------*
+
+class @typeGalgas_system extends @AC_galgasType {
+#--- Get type name
+  override
+  method getTypeName !@string outTypeName :
+    outTypeName := "system" ;
+  end method ;
+
+#--- By default, class does not accept constructor call
+  override method handleConstructorInvocation
+    ??@lstring inConstructorName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+    !@bool outHasLexiqueAndLocationArguments
+    !@AC_galgasType outReturnedType
+  :
+    outHasLexiqueAndLocationArguments := false ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    if [inConstructorName string] == "boolOptionNameList" then
+      outReturnedType := EXbuild_string2list_type [] ;
+    elsif [inConstructorName string] == "boolOptionInvocationLetter" then
+      outReturnedType := [@typeGalgas_char new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inConstructorName string] == "boolOptionInvocationString" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inConstructorName string] == "boolOptionCommentString" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inConstructorName string] == "uintOptionNameList" then
+      outReturnedType := EXbuild_string2list_type [] ;
+    elsif [inConstructorName string] == "uintOptionInvocationLetter" then
+      outReturnedType := [@typeGalgas_char new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inConstructorName string] == "uintOptionInvocationString" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inConstructorName string] == "uintOptionCommentString" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inConstructorName string] == "stringOptionNameList" then
+      outReturnedType := EXbuild_string2list_type [] ;
+    elsif [inConstructorName string] == "stringOptionInvocationLetter" then
+      outReturnedType := [@typeGalgas_char new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inConstructorName string] == "stringOptionInvocationString" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inConstructorName string] == "stringOptionCommentString" then
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    else
+      error inConstructorName : "This constructor is not defined"
+      : outAccessorTypesList, outReturnedType
+      ;
+    end if ;
+  end method ;
+
+#--- Error message
+  message messageGalgasType "an @system object" ;
+  message "an @system object" ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #         E N T E R    B U I L T I N    T Y P E S                           *
 #                                                                           *
@@ -5462,6 +5534,9 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
 
   e := [@typeEntiteType new ![@typeGalgas_location new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"location" !here] !e] ;
+
+  e := [@typeEntiteType new ![@typeGalgas_system new]] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"system" !here] !e] ;
 
   e := [@typeEntiteType new ![@typeGalgas_uint new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint" !here] !e] ;
