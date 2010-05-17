@@ -794,32 +794,17 @@ list @castInstructionBranchListAST {
   @lstring mTypeName ;
   @lstring mConstantVarName ; # Empty string if no constant var
   @bool mConstantVarNameIsUnused ; # true if no constant var
-  @semanticInstructionListAST mCastBranchInstructionList ;
+  @semanticInstructionListAST mInstructionList ;
+  @location mEndOfInstructions ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @elseOrDefaultForCastInstructionAST {
-}
-
-#---------------------------------------------------------------------------*
-
-class @elseForCastInstructionAST extends @elseOrDefaultForCastInstructionAST {
-  @semanticInstructionListAST mElseInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @defaultForCastInstructionAST extends @elseOrDefaultForCastInstructionAST {
-  @semanticExpressionAST mErrorLocationExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @castInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mExpression ;
+class @structuredCastInstructionAST extends @semanticInstructionAST {
+  @semanticExpressionAST mCastExpression ;
   @castInstructionBranchListAST mCastInstructionBranchList ;
-  @elseOrDefaultForCastInstructionAST mElseOrDefault ;
+  @semanticInstructionListAST mElseInstructionList ;
+  @location mEndOfCastInstruction ;
 }
 
 #---------------------------------------------------------------------------*

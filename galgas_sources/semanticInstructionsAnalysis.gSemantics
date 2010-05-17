@@ -38,9 +38,19 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
 
 #---------------------------------------------------------------------------*
 
+list @localConstantList {
+  @unifiedTypeMapProxy mType ;
+  @lstring mName ;
+  @bool mNoWarningIfUnused ;
+  @string mCppName ;
+}
+
+#---------------------------------------------------------------------------*
+
 routine analyzeSemanticInstructionList
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
+  ??@localConstantList inLocalConstantList
   ??@semanticInstructionListAST inSemanticInstructionListAST
   ??@location inEndOfBranchLocation
   ?!@variableMap ioVariableMap
@@ -50,6 +60,14 @@ routine analyzeSemanticInstructionList
   outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
 #--- Begin branch
   [!?ioVariableMap beginBranch] ;
+#--- Declare local constants
+  foreach inLocalConstantList do
+    if mNoWarningIfUnused then
+      [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName] ;
+    else
+      [!?ioVariableMap insertLocalConstant !mName !mType !mCppName] ;
+    end if ;
+  end foreach ;
 #--- Instruction list
   @stringlist localVariableCppNameList [emptyList] ;
   foreach inSemanticInstructionListAST do
@@ -1059,6 +1077,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   analyzeSemanticInstructionList
     !inSemanticContext
     !inPredefinedTypes
+    ![@localConstantList emptyList]
     !m_then_instructionList
     !mEndOf_then_branch
     !?ioVariableMap
@@ -1070,6 +1089,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   analyzeSemanticInstructionList
     !inSemanticContext
     !inPredefinedTypes
+    ![@localConstantList emptyList]
     !m_else_instructionList
     !mEndOf_if_instruction
     !?ioVariableMap
@@ -1162,6 +1182,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   analyzeSemanticInstructionList
     !inSemanticContext
     !inPredefinedTypes
+    ![@localConstantList emptyList]
     !mBeforeInstructionList
     !mEndOf_before_branch
     !?ioVariableMap
@@ -1169,34 +1190,35 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !?ioUsesCompilerArgument
   ;
 #--- Handle index
-  @string indexCppName := "" ; # Empty string if no index
+  @string indexCppName := "" ;
+  @localConstantList indexDeclaration [emptyList] ;
   if [mIndexVariableName string] != "" then
     indexCppName := "index_" . [[mInstructionLocation locationIndex] string] ;
-    [!?ioVariableMap insertLocalConstant !mIndexVariableName !inPredefinedTypes->mUIntType !indexCppName] ;
+    indexDeclaration +=
+      !inPredefinedTypes->mUIntType
+      !mIndexVariableName
+      !false # Warns if unused
+      !indexCppName
+    ;
   end if ;
 #--- 'do' branch
-  if [mIndexVariableName length] > 0 then
-    error mIndexVariableName : "TO DO: handle index in foreach instruction" ;
-  end if ;
   @semanticInstructionListForGeneration do_instructionList ;
   analyzeSemanticInstructionList
     !inSemanticContext
     !inPredefinedTypes
+    !indexDeclaration
     !mDoInstructionList
     !mEndOf_do_branch
     !?ioVariableMap
     ?do_instructionList
     !?ioUsesCompilerArgument
   ;
-#--- Remove index
-  if [mIndexVariableName string] != "" then
-    [!?ioVariableMap removeKey !mIndexVariableName ?* ?*] ;
-  end if ;
 #--- 'between' branch
   @semanticInstructionListForGeneration between_instructionList ;
   analyzeSemanticInstructionList
     !inSemanticContext
     !inPredefinedTypes
+    ![@localConstantList emptyList]
     !mBetweenInstructionList
     !mEndOf_between_branch
     !?ioVariableMap
@@ -1208,6 +1230,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   analyzeSemanticInstructionList
     !inSemanticContext
     !inPredefinedTypes
+    ![@localConstantList emptyList]
     !mAfterInstructionList
     !mEndOf_after_branch
     !?ioVariableMap
@@ -1273,6 +1296,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   analyzeSemanticInstructionList
     !inSemanticContext
     !inPredefinedTypes
+    ![@localConstantList emptyList]
     !mFirstInstructions
     !mEndOfFirstInstructions
     !?ioVariableMap
@@ -1284,6 +1308,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   analyzeSemanticInstructionList
     !inSemanticContext
     !inPredefinedTypes
+    ![@localConstantList emptyList]
     !mSecondInstructions
     !mEndOfSecondInstructions
     !?ioVariableMap
@@ -1303,17 +1328,87 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @castInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+override method @structuredCastInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
-  ?!@bool unused ioUsesCompilerArgument
+  ?!@bool ioUsesCompilerArgument
 :
-  error mInstructionLocation
-  : "unhandled instruction @castInstructionAST"
+#--- Expression
+  @semanticExpressionForGeneration castExpression ;
+  [mCastExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?castExpression
+    !?ioUsesCompilerArgument
+  ] ;
+#--- Begin override for analyze loop instruction list
+  [!?ioVariableMap beginOverrideForSelectBlock] ;
+#--- Branches
+  @castInstructionBranchListForGeneration castBranchList [emptyList] ;
+  foreach mCastInstructionBranchList do
+  #--- Get named type
+    const @unifiedTypeMapProxy type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  #--- Check named type is a descendant of receiver type
+    @unifiedTypeMapProxy t := type ;
+    @bool found := t == [castExpression mType] ;
+    loop [inSemanticContext->mTypeMap count] + 1 :
+    while (not found) & not [[t mSuperType] isNull] do
+      t := [t mSuperType] ;
+      found := t == [castExpression mType] ;
+    end loop ;
+    if not found then
+      error mTypeName
+      :"the '@" . mTypeName . "' is not a descendant of the '@" . [[castExpression mType] key] . "' type of the cast expression"
+      ;
+    end if ;
+  #--- Declare a local constant ?
+    @localConstantList localConstantList [emptyList] ;
+    if [mConstantVarName length] > 0 then
+      localConstantList +=
+        !type
+        !mConstantVarName
+        !false # Warns id not used
+        !"cast_" . [[[mConstantVarName location] locationIndex] string] . "_" . mConstantVarName
+      ;
+    end if ;
+  #--- Analyze instruction list
+    @semanticInstructionListForGeneration instructionList ;
+    analyzeSemanticInstructionList
+      !inSemanticContext
+      !inPredefinedTypes
+      !localConstantList
+      !mInstructionList
+      !mEndOfInstructions
+      !?ioVariableMap
+      ?instructionList
+      !?ioUsesCompilerArgument
+    ;
+    castBranchList += !mUseKindOfClass !type !instructionList ;
+  end foreach ;
+#--- else or default branch
+  @semanticInstructionListForGeneration else_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    ![@localConstantList emptyList]
+    !mElseInstructionList
+    !mEndOfCastInstruction
+    !?ioVariableMap
+    ?else_instructionList
+    !?ioUsesCompilerArgument
   ;
+#--- End override
+  [!?ioVariableMap endOverride !mEndOfCastInstruction] ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@structuredCastInstructionForGeneration new
+    !castExpression
+    !castBranchList
+    !else_instructionList
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
