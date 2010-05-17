@@ -212,7 +212,7 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
     %//%!["@" . TYPE_NAME . " " . [TYPE_KIND kind] . " enumeration" stringByLeftAndRightPadding !75 !' ']%*\n%
   foreach ENUMERATION_DESCRIPTOR_LIST do index IDX
     %//---------------------------------------------------------------------------*\n\n%
-    %GALGAS_%![mEnumeratedType identifierRepresentation]% * const GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::attribute_%![mEnumerationName identifierRepresentation]% (void) const {\n%
+    %GALGAS_%![mEnumeratedType identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::attribute_%![mEnumerationName identifierRepresentation]% (void) const {\n%
     %  GALGAS_%![mEnumeratedType identifierRepresentation]% * result = (GALGAS_%![mEnumeratedType identifierRepresentation]% *) directAccess (%![IDX string]% COMMA_HERE) ;\n%
     %  macroValidObject (result, GALGAS_%![mEnumeratedType identifierRepresentation]%) ;\n%
     %  return result ;\n%

@@ -23,6 +23,53 @@ semantics semanticsReaders :
 
 #---------------------------------------------------------------------------*
 
+routine enterInheritedReaderWithoutArgument
+  ?!@readerMap ioReaderMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inReaderName
+  ??@string inReturnedTypeName
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @unifiedTypeMapProxy returnedTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  [!?ioReaderMap insertOrReplace
+    ![@lstring new !inReaderName !here]
+    ![@unifiedTypeMapProxyList emptyList]
+    !inHasLexiqueAndLocationArguments
+    !returnedTypeIndex
+    ![@readerQualifier isInherited]
+    !""
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterInheritedReaderWithArgument
+  ?!@readerMap ioReaderMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inReaderName
+  ??@string inArgument1TypeName
+  ??@string inReturnedTypeName
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @unifiedTypeMapProxy returnedTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxy t ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  argList += !t ;
+  [!?ioReaderMap insertOrReplace
+    ![@lstring new !inReaderName !here]
+    !argList
+    !inHasLexiqueAndLocationArguments
+    !returnedTypeIndex
+    ![@readerQualifier isInherited]
+    !""
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine enterBaseReaderWithoutArgumentWithConversion
   ?!@readerMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -60,27 +107,6 @@ routine enterBaseReaderWithoutArgument
     !inHasLexiqueAndLocationArguments
     !""
   ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine enterInheritedReaderWithoutArgument
-  ?!@readerMap ioReaderMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ??@string inReaderName
-  ??@string inReturnedTypeName
-  ??@bool inHasLexiqueAndLocationArguments
-:
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  [!?ioReaderMap insertOrReplace
-    ![@lstring new !inReaderName !here]
-    ![@unifiedTypeMapProxyList emptyList]
-    !inHasLexiqueAndLocationArguments
-    !returnedTypeIndex
-    ![@readerQualifier isInherited]
-    !""
-  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

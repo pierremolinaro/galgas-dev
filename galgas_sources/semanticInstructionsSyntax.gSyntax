@@ -974,31 +974,47 @@ rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstruction
     !mConstantVarName
     !mConstantVarNameIsUnused
     !mCastBranchInstructionList
+    !here
   ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <cast_else_or_default> !@elseOrDefaultForCastInstructionAST outElseOrDefault ;
+nonterminal <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault ;
 
 #---------------------------------------------------------------------------*
 
-rule <cast_else_or_default> !@elseOrDefaultForCastInstructionAST outElseOrDefault
+rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault
 :
-  $else$ ;
-  @semanticInstructionListAST mElseInstructionList ;
-  <semantic_instruction_list> ? mElseInstructionList ;
-  outElseOrDefault := [@elseForCastInstructionAST new !mElseInstructionList] ;
+  outElseOrDefault := [@semanticInstructionListAST emptyList] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <cast_else_or_default> !@elseOrDefaultForCastInstructionAST outElseOrDefault :
+rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault
+:
+  $else$ ;
+  <semantic_instruction_list> ? outElseOrDefault ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault :
   $default$ ;
+  const @location instructionLocation := here ;
   $error$ ;
-  @semanticExpressionAST mErrorLocationExpression ;
-  <expression> ? mErrorLocationExpression ;
-  outElseOrDefault := [@defaultForCastInstructionAST new !mErrorLocationExpression] ;
+  @semanticExpressionAST errorLocationExpression ;
+  <expression> ? errorLocationExpression ;
+  outElseOrDefault := [@semanticInstructionListAST emptyList] ;
+  outElseOrDefault += ![@errorInstructionAST new
+    !instructionLocation
+    !errorLocationExpression
+    ![@literalStringExpressionAST new
+      !instructionLocation
+      ![@stringlist listWithValue !"cast instruction run-time error"]
+     ]
+    ![@lstringlist emptyList]
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1014,16 +1030,18 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     <cast_instruction_branch> !? mCastInstructionBranchList ;
   while
   end repeat ;
-  @elseOrDefaultForCastInstructionAST mElseOrDefault ;
+  @semanticInstructionListAST mElseOrDefault ;
   <cast_else_or_default> ? mElseOrDefault ;
   $end$ ;
+  const @location endOfInstructionLocation := here ;
   $cast$ ;
   $;$ ;
-  outInstruction := [@castInstructionAST new
+  outInstruction := [@structuredCastInstructionAST new
     !instructionLocation
     !mExpression
     !mCastInstructionBranchList
     !mElseOrDefault
+    !endOfInstructionLocation
   ] ;
 end rule ;
 

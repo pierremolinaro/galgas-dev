@@ -307,15 +307,15 @@ class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
 #  @lstring mVarName ;
 #}
 #
-##---------------------------------------------------------------------------*
-#
+#---------------------------------------------------------------------------*
+
 #class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
 #  @semanticExpressionForGeneration mReceiverExpression ;
 #  @bool mUseKindOfClass ;
 #  @lstring mTypeName ;
 #  @semanticExpressionForGeneration mErrorLocationExpression ;
 #}
-#
+
 ##---------------------------------------------------------------------------*
 #
 #class @filewrapperObjectInstanciationInExpressionForGeneration extends @semanticExpressionForGeneration {
@@ -790,38 +790,19 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#list @castInstructionBranchListForGeneration {
-#  @bool mUseKindOfClass ;
-#  @lstring mTypeName ;
-#  @lstring mConstantVarName ; # Empty string if no constant var
-#  @bool mConstantVarNameIsUnused ; # true if no constant var
-#  @semanticInstructionListForGeneration mCastBranchInstructionList ;
-#}
+list @castInstructionBranchListForGeneration {
+  @bool mUseKindOfClass ;
+  @unifiedTypeMapProxy mType ;
+  @semanticInstructionListForGeneration mInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 
-#abstract class @elseOrDefaultForCastInstructionForGeneration {
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @elseForCastInstructionForGeneration extends @elseOrDefaultForCastInstructionForGeneration {
-#  @semanticInstructionListForGeneration mElseInstructionList ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @defaultForCastInstructionForGeneration extends @elseOrDefaultForCastInstructionForGeneration {
-#  @semanticExpressionForGeneration mErrorLocationExpression ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @castInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @semanticExpressionForGeneration mExpression ;
-#  @castInstructionBranchListForGeneration mCastInstructionBranchList ;
-#  @elseOrDefaultForCastInstructionForGeneration mElseOrDefault ;
-#}
+class @structuredCastInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+  @castInstructionBranchListForGeneration mCastBranchList ;
+  @semanticInstructionListForGeneration mElseInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

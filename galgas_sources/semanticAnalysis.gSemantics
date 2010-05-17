@@ -413,6 +413,7 @@ routine analyzeRoutineBody
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@formalParameterListAST inRoutineSignature
+  ??@localConstantList inLocalConstantList
   ??@typedAttributeList inTypedAttributeList
   ??@semanticInstructionListAST inInstructionList
   ??@location inEndOfMethodLocation
@@ -421,6 +422,14 @@ routine analyzeRoutineBody
 :
   outUsesCompilerArgument := false ;
   @variableMap variableMap [emptyMap] ;
+#--- Declare local constants
+  foreach inLocalConstantList do
+    if mNoWarningIfUnused then
+      [!?variableMap insertUsedLocalConstant !mName !mType !mCppName] ;
+    else
+      [!?variableMap insertLocalConstant !mName !mType !mCppName] ;
+    end if ;
+  end foreach ;
 #--- Enter instance attributes
   foreach inTypedAttributeList do
     [!?variableMap insertNonMutableAttribute !mAttributeName !mAttributeTypeIndex !"mAttribute_". [mAttributeName identifierRepresentation]] ;
@@ -520,6 +529,7 @@ override method @routineDeclarationAST performSemanticAnalysis
     !inSemanticContext
     !inPredefinedTypes
     !mFormalArgumentList
+    ![@localConstantList emptyList]
     ![@typedAttributeList emptyList]
     !mRoutineInstructionList
     !mEndOfRoutineInstructionList
@@ -542,6 +552,8 @@ override method @classDeclarationAST performSemanticAnalysis
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
+#------ Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName] ;
 #------ Super type
   @unifiedTypeMapProxy superClassProxy ;
   if [mSuperClassName string] == "" then
@@ -642,6 +654,7 @@ override method @classDeclarationAST performSemanticAnalysis
       !inSemanticContext
       !inPredefinedTypes
       !mSignature
+      ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"(self)"]
       !allAttributeList
       !mInstructionList
       !mEndOfMethodLocation

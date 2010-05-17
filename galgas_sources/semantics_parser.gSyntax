@@ -6207,7 +6207,7 @@ rule <semantics_declaration>
       loop [mapAutomatonStateMap count] + 1 : while progress do
         progress := false ;
         foreach mapStateList do
-          if [mStateName string] == [lkey string] then
+          if [reachableStates hasKey ![mStateName string]] then
             foreach mTransitionList do
               if not [reachableStates hasKey ![mTargetStateName string]] then
                 reachableStates += ![mTargetStateName string] ;

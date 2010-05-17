@@ -502,7 +502,7 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
   
   //--- Attribute access\n%
     foreach ENUMERATION_DESCRIPTOR_LIST do
-%    public : GALGAS_%![mEnumeratedType identifierRepresentation]% * const attribute_%![mEnumerationName identifierRepresentation]% (void) const ;\n%
+%    public : GALGAS_%![mEnumeratedType identifierRepresentation]% * attribute_%![mEnumerationName identifierRepresentation]% (void) const ;\n%
     end foreach%
   } ;
 %

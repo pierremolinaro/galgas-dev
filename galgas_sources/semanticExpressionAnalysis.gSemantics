@@ -193,9 +193,6 @@ map @variableMap {
   search searchForReadWriteAccess do readWriteAccess error message "the '%K' variable is not declared" ;
   search searchForDropAccess do dropAccess error message "the '%K' variable is not declared" ;
 
-#--- Remove methods
-  remove removeKey error message "the '%K' variable is not declared" ;
-
 #--- 'selectBlock' override definitions
   override selectBlock {
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
@@ -221,6 +218,9 @@ map @variableMap {
     usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
     usedLocalVariable:definedLocalVariable -> definedLocalVariable
     usedLocalVariable:droppedLocalVariable -> droppedLocalVariable
+    droppedLocalVariable:usedLocalVariable -> usedLocalVariable
+    undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
+    undefinedLocalVariable:usedLocalVariable -> usedLocalVariable
   }{
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
@@ -249,6 +249,9 @@ map @variableMap {
     usedInputFormalArgument:droppedInputFormalArgument -> usedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
     usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> usedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it defined"
     usedLocalVariable:droppedLocalVariable -> usedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
+    droppedLocalVariable:undefinedLocalVariable -> droppedLocalVariable
+    undefinedLocalVariable:usedLocalVariable -> undefinedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
+    usedLocalVariable:undefinedLocalVariable -> usedLocalVariable error "this branch lets the '%K' variable undefined, while previous defines let it"
   }
 
 #--- 'repeatBlock' override definitions
@@ -276,6 +279,9 @@ map @variableMap {
     usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> usedInputOutputFormalArgument error "the repeated branch should not drop the '%K' input/output formal argument"
     usedLocalVariable:definedLocalVariable -> definedLocalVariable
     usedLocalVariable:droppedLocalVariable -> usedLocalVariable error "the repeated branch should not drop the '%K' variable"
+    droppedLocalVariable:usedLocalVariable -> droppedLocalVariable error "the repeated branch should not define the dropped '%K' variable"
+    undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
+    undefinedLocalVariable:usedLocalVariable -> undefinedLocalVariable error "the repeated branch should not define the '%K' variable"
   }{
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
@@ -285,6 +291,7 @@ map @variableMap {
     localConstant:usedLocalConstant -> usedLocalConstant
     inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
     usedInputOutputFormalArgument:unusedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    droppedLocalVariable:undefinedLocalVariable -> droppedLocalVariable
   }
 }
 
