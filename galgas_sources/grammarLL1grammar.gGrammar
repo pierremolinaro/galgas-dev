@@ -24,7 +24,7 @@ grammar grammarLL1grammar "LL1" :
   import syntax grammarModelBuilder in "grammarModelBuilder.gSyntax" ;
 
   root <grammar_component_start_symbol>
-    !@grammarComponentRoot outGrammarComponentRoot
+    !@grammarComponentAST outGrammarComponentRoot
   ; # LL1
 end grammar ;
 

@@ -1218,6 +1218,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   end select ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
+  const @location endOfSourceExpression := here ;
   @actualParameterListAST mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
 #--- Dependency (obsolete ?)
@@ -1234,6 +1235,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     !mGrammarComponentName
     !mLabelName
     !mSourceExpression
+    !endOfSourceExpression
     !sourceExpressionIsFile
     !mActualParameterList
   ] ;

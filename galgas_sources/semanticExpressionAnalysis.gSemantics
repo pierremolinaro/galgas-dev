@@ -329,6 +329,7 @@ struct @predefinedTypes {
   @unifiedTypeMapProxy mUInt64Type ;
   @unifiedTypeMapProxy mSInt64Type ;
   @unifiedTypeMapProxy mDoubleType ;
+  @unifiedTypeMapProxy mLStringType ;
 }
 
 #---------------------------------------------------------------------------*

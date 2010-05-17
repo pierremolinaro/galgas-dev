@@ -542,7 +542,7 @@ rule <factor> !@semanticExpressionAST outExpression :
       @lstring optionName ;
       $identifier$ ?optionName ;
       $identifier$ ?@lstring readerName ;
-      outExpression := [@optionExpressionAST new ![@lstring new !"generic_galgas_cli_options" !here] !optionName !readerName] ;
+      outExpression := [@optionExpressionAST new ![@lstring new !"galgas_cli_options" !here] !optionName !readerName] ;
     or
       $identifier$ ?@lstring optionComponentName ;
       $.$ ;

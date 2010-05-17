@@ -1116,6 +1116,9 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   ?!@stringlist unused ioLocalVariableCppNameList
   ?!@bool ioUsesCompilerArgument
 :
+#--- Begin override for foreach defined constants
+  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  [!?ioVariableMap beginBranch] ;
 #--- Analyze enumerated objects
   @foreachInstructionEnumeratedObjectListForGeneration enumerationList [emptyList] ;
   foreach mEnumeratedObjectList do
@@ -1238,6 +1241,9 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !?ioUsesCompilerArgument
   ;
 #--- End override
+  [!?ioVariableMap endOverride !mEndOf_foreach_instruction] ;
+#--- End override for foreach defined constants
+  [!?ioVariableMap endBranch !mEndOf_foreach_instruction] ;
   [!?ioVariableMap endOverride !mEndOf_foreach_instruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@foreachInstructionForGeneration new
@@ -1413,6 +1419,76 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @grammarInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
+:
+  ioUsesCompilerArgument := true ;
+#--- Search grammar in grammar map
+  @grammarLabelMap grammarLabelMap ;
+  [inSemanticContext->mGrammarMap searchKey
+    !mGrammarComponentName
+    ?grammarLabelMap
+  ] ;
+#--- Search label
+  @formalParameterSignature labelSignature ;
+  [grammarLabelMap searchKey
+    !mLabelName
+    ?labelSignature
+  ] ;
+#--- Check actual parameters
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableList ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mLabelName
+    !"label of the " . mGrammarComponentName . " grammar"
+    !labelSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+    ?temporaryInputVariableList
+    !?ioUsesCompilerArgument
+  ;
+#--- Parse source expression
+  @semanticExpressionForGeneration sourceExpression ;
+  [mSourceExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?sourceExpression
+    !?ioUsesCompilerArgument
+  ] ;
+#--- Check source expression type: @lstring for file, @string for source string itself
+  if mSourceExpressionIsFile then
+    if [sourceExpression mType] != inPredefinedTypes->mLStringType then
+      error mEndOfSourceExpression
+      :"this expression is a file reference and its type should be '@lstring', but it is '@" . [[sourceExpression mType] key] . "'"
+      ;
+    end if ;
+  elsif [sourceExpression mType] != inPredefinedTypes->mStringType then
+    error mEndOfSourceExpression
+    :"this expression is the source string and its type should be '@string', but it is '@" . [[sourceExpression mType] key] . "'"
+    ;
+  end if ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@grammarInstructionForGeneration new
+    ![mGrammarComponentName string]
+    ![mLabelName string]
+    !sourceExpression
+    !mSourceExpressionIsFile
+    !actualParameterListForGeneration
+    !temporaryInputVariableList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @withInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
@@ -1453,21 +1529,6 @@ override method @matchInstructionAST analyzeSemanticInstruction
 :
   error mInstructionLocation
   : "unhandled instruction @matchInstructionAST"
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @grammarInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-  ?!@stringlist unused ioLocalVariableCppNameList
-  ?!@bool unused ioUsesCompilerArgument
-:
-  error mGrammarComponentName
-  : "unhandled instruction: @grammarInstructionAST"
   ;
 end method ;
 

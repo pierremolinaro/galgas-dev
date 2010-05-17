@@ -33,7 +33,7 @@ list @syntaxInstructionList {
 
 list @nonTerminalLabelList {
   @lstring mLabelName ;
-  @formalParameterListAST mFormalParameters ;
+  @formalParameterListAST mFormalArgumentList ;
 }
 
 #---------------------------------------------------------------------------*

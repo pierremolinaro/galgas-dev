@@ -15,7 +15,7 @@ foreach BOOL_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
   %    identifier:@%![lkey utf8Representation]%\n%
-  %    commandChar:%![[[mOptionChar char] uint] string]%\n%
+  %    commandChar:%![[mOptionChar uint] string]%\n%
   %    commandString:@%![mOptionString utf8Representation]%\n%
   %    comment:@%![mComment utf8Representation]%\n%
   %    defaultValue:@""\n%
@@ -27,7 +27,7 @@ foreach UINT_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
   %    identifier:@%![lkey utf8Representation]%\n%
-  %    commandChar:%![[[mOptionChar char] uint] string]%\n%
+  %    commandChar:%![[mOptionChar uint] string]%\n%
   %    commandString:@%![mOptionString utf8Representation]%\n%
   %    comment:@%![mComment utf8Representation]%\n%
   %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
@@ -39,7 +39,7 @@ foreach STRING_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
   %    identifier:@%![lkey utf8Representation]%\n%
-  %    commandChar:%![[[mOptionChar char] uint] string]%\n%
+  %    commandChar:%![[mOptionChar uint] string]%\n%
   %    commandString:@%![mOptionString utf8Representation]%\n%
   %    comment:@%![mComment utf8Representation]%\n%
   %    defaultValue:@%![mDefaultValue utf8Representation]%\n%

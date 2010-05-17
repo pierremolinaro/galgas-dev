@@ -73,11 +73,20 @@ map @parsedSyntaxComponentMap {
 
 #---------------------------------------------------------------------------*
 
+map @parsedGrammarComponentMap {
+  @grammarComponentAST mGrammarComponentRoot ;
+  insert insertKey error message "the '%K' grammar component has already been parsed" ;
+  search searchKey error message "the '%K' grammar component is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @parsedComponentStruct {
   @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
   @parsedLexiqueComponentMap mParsedLexiqueComponentMap ;
   @parsedSyntaxComponentMap mParsedSyntaxComponentMap ;
   @parsedOptionComponentMap mParsedOptionComponentMap ;
+  @parsedGrammarComponentMap mParsedGrammarComponentMap ;
 }
 
 #---------------------------------------------------------------------------*

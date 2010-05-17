@@ -37,7 +37,7 @@ function transformLabelMap
   outNonterminalSymbolLabelMapForGrammarAnalysis := [@nonterminalSymbolLabelMapForGrammarAnalysis emptyMap] ;
   foreach inLabels do
     @signatureForGrammarAnalysis formalParametersList [emptyList] ;
-    foreach mFormalParameters do
+    foreach mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName ;
     end foreach ;
     [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
@@ -68,16 +68,16 @@ routine checkLabelMap
     labelStringSet += ![mLabelName string] ;
     @signatureForGrammarAnalysis formalParametersList ;
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?formalParametersList] ;
-    if [mFormalParameters length] != [formalParametersList length] then
-      error mLabelName: [[mFormalParameters length] string]
+    if [mFormalArgumentList length] != [formalParametersList length] then
+      error mLabelName: [[mFormalArgumentList length] string]
         . " formal parameter"
-        . if [mFormalParameters length] > 1 then "s" else "" end
+        . if [mFormalArgumentList length] > 1 then "s" else "" end
         . " declared here, but declaration at "
         . [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
         . "names " . [[formalParametersList length] string] . "parameter"
         . if [formalParametersList length] > 1 then "s" else "" end ;
     else
-      foreach mFormalParameters, formalParametersList do
+      foreach mFormalArgumentList, formalParametersList do
         if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
           error mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared with "
@@ -419,15 +419,38 @@ list @nonTerminalToAddList {
 filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
 } {
   template oldGrammarZone2Header "grammar-zone2.old.h.gTemplate"
-    ?@grammarComponentRoot GRAMMAR_COMPONENT_ROOT
+    ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT
   ;
   template oldGrammarZone3Header "grammar-zone3.old.h.gTemplate"
     ?@string LEXIQUE_CLASS
-    ?@grammarComponentRoot GRAMMAR_COMPONENT_ROOT
+    ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
   ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      C O M P I L E    G R A M M A R    C O M P O N E N T                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine parseGrammarComponent
+  ??@lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  !@grammarComponentAST outGrammarComponentRoot
+:
+  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  with ioParsedComponentStruct->mParsedGrammarComponentMap hasKey !basename do
+    outGrammarComponentRoot := mGrammarComponentRoot ;
+  else
+    grammar grammarLL1grammar in inSourceFile ?outGrammarComponentRoot ;
+    [!?ioParsedComponentStruct->mParsedGrammarComponentMap insertKey
+      ![@lstring new !basename !here]
+      !outGrammarComponentRoot
+    ] ;
+  end with ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -441,8 +464,8 @@ routine compileGrammarComponent
   ??@string inOutputDirectoryForHTMLFile
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  @grammarComponentRoot grammarComponentRoot ;
-  grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
+  @grammarComponentAST grammarComponentRoot ;
+  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ?grammarComponentRoot ;
 #---------------------------------------------------------- Check component name
   const @lstring grammarComponentName := [grammarComponentRoot mGrammarName] ;
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
