@@ -890,15 +890,14 @@ class @grammarInstructionForGeneration extends @semanticInstructionForGeneration
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @withInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstring mPrefix ;
-#  @lstring mTargetObjectName ;
-#  @lstringlist mStructAttributeList ;
-#  @lstring mSearchMethodName ;
-#  @semanticExpressionForGeneration mKeyExpression ;
-#  @semanticInstructionListForGeneration mDoBranchInstructions ;
-#  @semanticInstructionListForGeneration mElseBranchInstructions ;
-#}
+class @readWriteWithInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mReceiverVariableCppName ;
+  @lstringlist mStructAttributeList ;
+  @string mAccessName ;
+  @semanticExpressionForGeneration mKeyExpression ;
+  @semanticInstructionListForGeneration mDoBranchInstructions ;
+  @semanticInstructionListForGeneration mElseBranchInstructions ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

@@ -54,9 +54,9 @@ map @variableMap {
     readWriteAccess -> undefinedLocalVariable error "an undefined local variable cannot be read"
     dropAccess      -> undefinedLocalVariable warning "the local variable has no value"
   }
-  state definedLocalVariable warning "the '%K' local variable value is unused" {
+  state definedLocalVariable { # warning "the '%K' local variable value is unused" {
     readAccess      -> usedLocalVariable
-    writeAccess     -> definedLocalVariable warning "the value has been changed without any read"
+    writeAccess     -> definedLocalVariable # warning "the value has been changed without any read"
     readWriteAccess -> usedLocalVariable
     dropAccess      -> droppedLocalVariable warning "the local variable has been dropped without any read"
   }
@@ -506,7 +506,7 @@ routine analyzeConstructorInvocation
 :
 #--- Get constructor map from type map
   @constructorMap constructorMap ;
-  [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?12*] ;
+  [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?13*] ;
 #--- Search contructor
   @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
   with constructorMap hasKey ![inConstructorName string] do

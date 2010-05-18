@@ -17,8 +17,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOp
       % COMMA_THERE%
     end if
     %) ;
-    macroReleaseObject (ioOperand) ;
     macroRetainObject (p) ;
+    macroReleaseObject (ioOperand) ;
     ioOperand = p ;
   }
 }

@@ -126,6 +126,18 @@ map @classMethodMap {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  W I T H    A C C E S S O R    M A P                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @withAccessorMap {
+  @unifiedTypeMapProxyList mArgumentTypeList ;
+  insert insertKey error message "the '%K' 'with' accessor is already declared" ;
+  search searchKey error message "the '%K' 'with' accessor is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  E N U M E R A T I O N    D E S C R I P T O R    L I S T                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -262,6 +274,7 @@ map @unifiedTypeMap {
   @typedAttributeList mPrivateDataMemberList ;
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
   @mapSearchMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map
+  @withAccessorMap mWithAccessorMap ; # Method for with accessor
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;
@@ -322,13 +335,12 @@ class @dataPredefinedTypeAST extends @predefinedTypeAST {}
 
 #---------------------------------------------------------------------------*
 
-method @predefinedTypeAST getSuperType
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapProxy outSuperType
+reader @predefinedTypeAST getSuperTypeName
+  ->@string outSuperTypeName
 :
 #--- By default, super type is the @root type
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"root" ?outSuperType] ;
-end method ;
+  outSuperTypeName := "root" ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 

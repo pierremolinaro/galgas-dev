@@ -289,7 +289,7 @@ override method @predefinedTypeAST enterType
   @enumerationDescriptorList enumerationList ;
   [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList] ;
   @unifiedTypeMapProxy superTypeProxy ;
-  [t getSuperType !?ioSemanticContext->mTypeMap ?superTypeProxy] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![t getSuperTypeName] ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
@@ -311,6 +311,7 @@ override method @predefinedTypeAST enterType
     ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -358,6 +359,7 @@ override method @genericTypeTypeAST enterType
     ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -386,6 +388,7 @@ override method @mapDeclarationAST enterType
 #--- Readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keyList" !"lstringlist" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -473,6 +476,15 @@ override method @mapDeclarationAST enterType
       !true
     ] ;
   end foreach ;
+#--- Enter with access methods
+  @withAccessorMap withAccessorMap [emptyMap] ;
+  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]] ;
+  foreach mSearchMethodList do
+    [!?withAccessorMap insertKey
+      !mMethodName
+      ![@unifiedTypeMapProxyList listWithValue !lstringTypeIndex]
+    ] ;
+  end foreach ;
 #--- Enter in type map
   @unifiedTypeMapProxy superTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"map" ?superTypeProxy] ;
@@ -497,6 +509,7 @@ override method @mapDeclarationAST enterType
     ![@typedAttributeList emptyList]
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
+    !withAccessorMap
   ] ;
 end method ;
 
@@ -518,7 +531,7 @@ override method @mapProxyDeclarationAST enterType
     ?mapTypedAttributeList
     ?11*
     ?searchMethodList
-    ?*
+    ?2*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be a map type" ;
@@ -619,6 +632,7 @@ override method @mapProxyDeclarationAST enterType
     ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     !searchMethodList
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -670,6 +684,7 @@ override method @enumDeclarationAST enterType
     ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -822,6 +837,7 @@ override method @listDeclarationAST enterType
     ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -914,6 +930,7 @@ override method @sortedListDeclarationAST enterType
     ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -988,6 +1005,7 @@ override method @structDeclarationAST enterType
     !typedAttributeList
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -1028,7 +1046,7 @@ override method @classDeclarationAST enterType
       ?inheritedReaderMap
       ?modifierMap
       ?inheritedInstanceMethodMap
-      ?9*
+      ?10*
     ] ;
   #--- Mark all readers as inherited
     readerMap := [@readerMap emptyMap] ;
@@ -1161,6 +1179,7 @@ override method @classDeclarationAST enterType
     !currentClassTypedAttributeList
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -1227,7 +1246,7 @@ override method @listmapDeclarationAST enterType
     ?2*
     ?typeKindEnum
     ?listTypedAttributeList
-    ?15*
+    ?16*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1285,6 +1304,7 @@ override method @listmapDeclarationAST enterType
     ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
   ] ;
 end method ;
 
@@ -1314,7 +1334,8 @@ end method ;
 override method @predefinedTypeAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"root" !mPredefinedTypeName !self ;
+  @predefinedTypeAST t := self ; # Bug in GALGAS 1
+  ioPartiallyOrderedDeclarationList += ![t getSuperTypeName] !mPredefinedTypeName !self ;
 end method ;
 
 #---------------------------------------------------------------------------*

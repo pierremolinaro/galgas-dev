@@ -913,19 +913,35 @@ class @grammarInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  W I T H    I N S T R U C T I O N                                         *
+#  W I T H    I N S T R U C T I O N    ( R E A D    A C C E S S )           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @withInstructionAST extends @semanticInstructionAST {
+class @readAccessWithInstructionAST extends @semanticInstructionAST {
   @lstring mPrefix ;
-  @lstring mTargetObjectName ;
-  @lstringlist mStructAttributeList ;
+  @semanticExpressionAST mReceiverExpression ;
   @lstring mSearchMethodName ;
   @semanticExpressionAST mKeyExpression ;
-  @bool mReadWriteAccess ;
   @semanticInstructionListAST mDoBranchInstructions ;
   @semanticInstructionListAST mElseBranchInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  W I T H    I N S T R U C T I O N   ( R E A D / W R I T E    A C C E S S )*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
+  @lstring mPrefix ;
+  @lstring mReceiverName ;
+  @lstringlist mFieldList ;
+  @lstring mAccessName ;
+  @semanticExpressionAST mKeyExpression ;
+  @semanticInstructionListAST m_do_Instructions ;
+  @location mEndOf_do_instructions ;
+  @semanticInstructionListAST m_else_Instructions ;
+  @location mEndOf_else_instructions ;
 }
 
 #---------------------------------------------------------------------------*

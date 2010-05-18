@@ -47,10 +47,19 @@ list @localConstantList {
 
 #---------------------------------------------------------------------------*
 
+list @localInitializedVariableList {
+  @unifiedTypeMapProxy mType ;
+  @lstring mName ;
+  @string mCppName ;
+}
+
+#---------------------------------------------------------------------------*
+
 routine analyzeSemanticInstructionList
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@localConstantList inLocalConstantList
+  ??@localInitializedVariableList inLocalInitializedVariableList
   ??@semanticInstructionListAST inSemanticInstructionListAST
   ??@location inEndOfBranchLocation
   ?!@variableMap ioVariableMap
@@ -67,6 +76,10 @@ routine analyzeSemanticInstructionList
     else
       [!?ioVariableMap insertLocalConstant !mName !mType !mCppName] ;
     end if ;
+  end foreach ;
+#--- Declare local variables
+  foreach inLocalInitializedVariableList do
+    [!?ioVariableMap insertDefinedLocalVariable !mName !mType !mCppName] ;
   end foreach ;
 #--- Instruction list
   @stringlist localVariableCppNameList [emptyList] ;
@@ -1078,6 +1091,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
     !m_then_instructionList
     !mEndOf_then_branch
     !?ioVariableMap
@@ -1090,6 +1104,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
     !m_else_instructionList
     !mEndOf_if_instruction
     !?ioVariableMap
@@ -1138,7 +1153,14 @@ override method @foreachInstructionAST analyzeSemanticInstruction
       error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
   #--- Arguments
     elsif ([mElementList length] == 0) & not mEndsWithEllipsis then
-      error mEndOfEnumerationExpression : "TO DO !" ;
+      const @enumerationDescriptorList currentTypedAttributeList := [[enumerationExpression mType] mEnumerationDescriptor] ;
+      foreach currentTypedAttributeList do 
+       [!?ioVariableMap insertUsedLocalConstant
+         ![@lstring new ![mPrefix string] . mEnumerationName !mEndOfEnumerationExpression]
+         !mEnumeratedType
+         !enumeratorCppName .".attribute_" . [mEnumerationName identifierRepresentation]. " ()"
+       ] ;
+      end foreach ;
     elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
       error mEndOfElementList
       :"the '@" . [[enumerationExpression mType] key] . "' type requires "
@@ -1186,6 +1208,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
     !mBeforeInstructionList
     !mEndOf_before_branch
     !?ioVariableMap
@@ -1210,6 +1233,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     !indexDeclaration
+    ![@localInitializedVariableList emptyList]
     !mDoInstructionList
     !mEndOf_do_branch
     !?ioVariableMap
@@ -1222,6 +1246,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
     !mBetweenInstructionList
     !mEndOf_between_branch
     !?ioVariableMap
@@ -1234,6 +1259,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
     !mAfterInstructionList
     !mEndOf_after_branch
     !?ioVariableMap
@@ -1303,6 +1329,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
     !mFirstInstructions
     !mEndOfFirstInstructions
     !?ioVariableMap
@@ -1315,6 +1342,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
     !mSecondInstructions
     !mEndOfSecondInstructions
     !?ioVariableMap
@@ -1387,6 +1415,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       !inSemanticContext
       !inPredefinedTypes
       !localConstantList
+      ![@localInitializedVariableList emptyList]
       !mInstructionList
       !mEndOfInstructions
       !?ioVariableMap
@@ -1401,6 +1430,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
     !mElseInstructionList
     !mEndOfCastInstruction
     !?ioVariableMap
@@ -1489,7 +1519,121 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @withInstructionAST analyzeSemanticInstruction
+override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@bool ioUsesCompilerArgument
+:
+  ioUsesCompilerArgument := true ;
+#--- Analyze source expression
+  @semanticExpressionForGeneration keyExpression ;
+  [mKeyExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?keyExpression
+    !?ioUsesCompilerArgument
+  ] ;
+#--- Read/write access to receiver variable
+  @unifiedTypeMapProxy targetType ;
+  @string receiverVariableCppName ;
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?receiverVariableCppName] ;
+  foreach mFieldList do
+    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?targetType] ;
+  end foreach ;
+#--- Check this type handle 'with' access
+  const @withAccessorMap withAccessorMap := [targetType mWithAccessorMap] ;
+  @unifiedTypeMapProxyList argumentTypeList ;
+  with withAccessorMap hasKey ![mAccessName string] do
+    argumentTypeList := mArgumentTypeList ;
+  else
+    if [withAccessorMap count] == 0 then
+      error mAccessName
+      : "the '@". [targetType key] . "' type cannot be used in a 'with' instruction"
+      : argumentTypeList
+      ;
+    else
+      @string s := "" ;
+      foreach withAccessorMap do
+        s .= "\n  - " . lkey ;
+        foreach mArgumentTypeList do
+          s .= " ?@" . [mType key] ;
+        end foreach ;
+      end foreach ;
+      error mAccessName
+      : "the '@". [targetType key] . "' type does not define the '" . mAccessName . "' accessor for the 'with' instruction; available "
+      . if [withAccessorMap count] > 1 then "accessors are" else "accessor is" end
+      . ":" . s
+      : argumentTypeList
+      ;
+    end if ;
+  end with ;
+#--- Check parameter list
+  const @semanticExpressionListForGeneration effectiveExpressionList [listWithValue !keyExpression]  ;
+  if [effectiveExpressionList length] != [argumentTypeList length] then
+    error mAccessName: "calling the '" . mAccessName . "' accessor of '@" . [targetType key] . "' requires "
+    . [[argumentTypeList length] string] . " parameter(s), while this call has "
+    . [[effectiveExpressionList length] string] . " parameter(s)" ;
+  else
+    foreach effectiveExpressionList, argumentTypeList do
+      checkAssignmentTypes !mType ![mExpression mType] ![mAccessName location] ;
+    end foreach ;
+  end if ;
+#--- Enter in a select block
+  [!?ioVariableMap beginOverrideForSelectBlock] ;
+#--- 'do' branch
+  @localInitializedVariableList localInitializedVariableList [emptyList] ;
+  foreach [targetType mCurrentTypedAttributeList] do
+    localInitializedVariableList +=
+      !mAttributeTypeIndex
+      ![@lstring new ![mPrefix string] . mAttributeName ![mAccessName location]]
+      !"with_rw_access_for_" . [mAttributeName identifierRepresentation]
+    ;
+  end foreach ;
+  @semanticInstructionListForGeneration do_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    ![@localConstantList emptyList]
+    !localInitializedVariableList
+    !m_do_Instructions
+    !mEndOf_do_instructions
+    !?ioVariableMap
+    ?do_instructionList
+    !?ioUsesCompilerArgument
+  ;
+#--- else branch
+  @semanticInstructionListForGeneration else_instructionList ;
+  analyzeSemanticInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
+    !m_else_Instructions
+    !mEndOf_else_instructions
+    !?ioVariableMap
+    ?else_instructionList
+    !?ioUsesCompilerArgument
+  ;
+  [!?ioVariableMap endOverride !mEndOf_else_instructions] ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@readWriteWithInstructionForGeneration new
+    !receiverVariableCppName
+    !mFieldList
+    ![mAccessName string]
+    !keyExpression
+    !do_instructionList
+    !else_instructionList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
@@ -1497,8 +1641,8 @@ override method @withInstructionAST analyzeSemanticInstruction
   ?!@stringlist unused ioLocalVariableCppNameList
   ?!@bool unused ioUsesCompilerArgument
 :
-  error mTargetObjectName
-  : "unhandled instruction @withInstructionAST"
+  error mSearchMethodName
+  : "unhandled instruction @readAccessWithInstructionAST"
   ;
 end method ;
 
