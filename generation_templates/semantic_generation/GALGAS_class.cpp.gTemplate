@@ -122,7 +122,7 @@ GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
   end foreach
 %}\n\n%
 
-if not IS_ABSTRACT then
+if (not IS_ABSTRACT) & (SUPER_TYPE_IDENTIFIER != "class") then
 %//---------------------------------------------------------------------------*
 
 GALGAS_%!SUPER_TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_%!SUPER_TYPE_IDENTIFIER% (UNUSED_LOCATION_ARGS) const {
