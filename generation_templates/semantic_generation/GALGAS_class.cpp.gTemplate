@@ -10,8 +10,8 @@ else
   %                                           %!^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand2) {\n%
   %  macroValidObject (inOperand1, const GALGAS_%!TYPE_IDENTIFIER%) ;\n%
   %  macroValidObject (inOperand2, const GALGAS_%!TYPE_IDENTIFIER%) ;\n%
-  %  PMSInt32 result = 0 ;\n%
-  foreach ALL_ATTRIBUTE_LIST do
+  %  PMSInt32 result = GALGAS_%!TYPE_IDENTIFIER%::objectCompare (inOperand1, inOperand2) ;\n%
+  foreach CURRENT_ATTRIBUTE_LIST do
      %  if (0 == result) {\n%
      %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
      %  }\n%
@@ -74,11 +74,16 @@ end if
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
-    foreach ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttribute_%![mAttributeName identifierRepresentation]%,\n%!^
+  foreach ALL_ATTRIBUTE_LIST
+    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttribute_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
   end foreach
-  %C_Compiler * /* inCompiler */\n%
-  !^%COMMA_LOCATION_ARGS) {
+  if [ALL_ATTRIBUTE_LIST length] == 0 then
+    %LOCATION_ARGS%  
+  else
+    %\n%!^%COMMA_LOCATION_ARGS%
+  end if
+  %) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
   if (%
     foreach ALL_ATTRIBUTE_LIST
@@ -101,7 +106,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %  ioString << "<class @"\n%
   %           << typeDescriptor ()->mGalgasTypeName\n%
   %           << ":" ;\n%
-  foreach ALL_ATTRIBUTE_LIST
+  foreach CURRENT_ATTRIBUTE_LIST
     do %  mAttribute_%![mAttributeName identifierRepresentation]%->description (ioString, inIndentation + 1) ;\n%
     between %  ioString << ", " ;\n%
   end foreach
@@ -116,6 +121,16 @@ GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
     %  macroReleaseObject (mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
   end foreach
 %}\n\n%
+
+if not IS_ABSTRACT then
+%//---------------------------------------------------------------------------*
+
+GALGAS_%!SUPER_TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_%!SUPER_TYPE_IDENTIFIER% (UNUSED_LOCATION_ARGS) const {
+  macroRetainObject (this) ;
+  return (GALGAS_%!SUPER_TYPE_IDENTIFIER% *) this ;
+}
+
+%end if
 
 foreach CONCRETE_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%

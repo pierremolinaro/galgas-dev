@@ -111,7 +111,6 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;
-  @string mImplicitConversionReader ;
 }
 
 #---------------------------------------------------------------------------*

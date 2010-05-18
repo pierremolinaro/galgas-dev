@@ -794,7 +794,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  [[receiverType mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument] ;
+  [[receiverType mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?*] ;
   if hasCompilerArgument then
     ioUsesCompilerArgument := true ;
   end if ;

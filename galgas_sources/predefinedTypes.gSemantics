@@ -56,6 +56,26 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine appendClassASTForTypeWithLocation
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+  ??@string inElementTypeName
+:
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] ;
+  ioDeclarationListASTs += ![@classDeclarationAST new
+    !false # Is concrete
+    ![@lstring new !"l" . inElementTypeName !here]
+    ![@lstring new !inElementTypeName !here] # Super class
+    ![@lstringlist emptyList] # No feature
+    !attributeList
+    ![@abstractMethodDefinitionListAST emptyList]
+    ![@methodDefinitionListAST emptyList]
+    ![@lazyAttributeListAST emptyList]
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
@@ -95,14 +115,14 @@ routine appendPredefinedTypesASTs
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"lstring" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"type" ;
 
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"bool" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"uint64" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"sint" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"sint64" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"char" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
-  appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
+  appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"bool" ;
+  appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"uint" ;
+  appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"uint64" ;
+  appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"sint" ;
+  appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"sint64" ;
+  appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"char" ;
+  appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
+  appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 
 #--- Example of map proxy type
   ioDeclarationListASTs += ![@mapProxyDeclarationAST new
