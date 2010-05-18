@@ -756,13 +756,7 @@ end rule ;
 rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $with$ ;
   const @location instructionLocation := here ;
-  @bool readWriteAccess ;
-  select
-    readWriteAccess := false ;
-  or
-    $!?$ ;
-    readWriteAccess := true ;
-  end select ;
+  $!?$ ;
   $identifier$ ?@lstring mTargetObjectName ;
   @lstringlist structAttributeList [emptyList] ;
   repeat
@@ -785,6 +779,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $do$ ;
   @semanticInstructionListAST mDoBranchInstructions ;
   <semantic_instruction_list> ? mDoBranchInstructions ;
+  const @location endOf_do_instructions := here ;
   @semanticInstructionListAST mElseBranchInstructions ;
   select
     mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
@@ -792,14 +787,58 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $else$ ;
     <semantic_instruction_list> ? mElseBranchInstructions ;
   end select ;
-  outInstruction := [@withInstructionAST new
+  const @location endOf_else_instructions := here ;
+  outInstruction := [@readWriteAccessWithInstructionAST new
     !instructionLocation
     !withPrefix
     !mTargetObjectName
     !structAttributeList
     !mSearchMethodName
     !mKeyExpression
-    !readWriteAccess
+    !mDoBranchInstructions
+    !endOf_do_instructions
+    !mElseBranchInstructions
+    !endOf_else_instructions
+  ] ;
+  $end$ ;
+  $with$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $with$ ;
+  const @location instructionLocation := here ;
+  @semanticExpressionAST receiverExpression ;
+  <expression> ? receiverExpression ;
+  $identifier$ ?@lstring mSearchMethodName ;
+  $!$ ;
+  @semanticExpressionAST mKeyExpression ;
+  <expression> ? mKeyExpression ;
+  @lstring withPrefix ;
+  select
+    withPrefix := [@lstring new !"" !here] ;
+  or
+    $prefixedby$ ;
+    $identifier$ ? withPrefix ;
+  end select ;
+  $do$ ;
+  @semanticInstructionListAST mDoBranchInstructions ;
+  <semantic_instruction_list> ? mDoBranchInstructions ;
+  @semanticInstructionListAST mElseBranchInstructions ;
+  select
+    mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
+  or
+    $else$ ;
+    <semantic_instruction_list> ? mElseBranchInstructions ;
+  end select ;
+  outInstruction := [@readAccessWithInstructionAST new
+    !instructionLocation
+    !withPrefix
+    !receiverExpression
+    !mSearchMethodName
+    !mKeyExpression
     !mDoBranchInstructions
     !mElseBranchInstructions
   ] ;

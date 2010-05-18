@@ -408,6 +408,15 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @readWriteWithInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@readWriteWithInstructionForGeneration generateInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @foreachInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioGeneratedCode

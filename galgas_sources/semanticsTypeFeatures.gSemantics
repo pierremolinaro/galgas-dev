@@ -27,21 +27,19 @@ semantics semanticsTypeFeatures :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-override method @stringsetPredefinedTypeAST getSuperType
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapProxy outSuperType
+override reader @stringsetPredefinedTypeAST getSuperTypeName
+  ->@string outSuperTypeName
 :
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"enumerable" ?outSuperType] ;
-end method ;
+  outSuperTypeName := "enumerable" ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
-override method @dataPredefinedTypeAST getSuperType
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapProxy outSuperType
+override reader @dataPredefinedTypeAST  getSuperTypeName
+  ->@string outSuperTypeName
 :
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"enumerable" ?outSuperType] ;
-end method ;
+  outSuperTypeName := "enumerable" ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

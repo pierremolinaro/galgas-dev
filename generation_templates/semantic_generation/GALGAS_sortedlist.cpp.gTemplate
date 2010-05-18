@@ -110,8 +110,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
 %
-  foreach ATTRIBUTE_LIST
-  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  foreach ATTRIBUTE_LIST do index IDX
+    %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+    %  outOperand%![IDX string] % = NULL ;\n%
   end foreach
 %  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
@@ -134,8 +135,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
 %
-  foreach ATTRIBUTE_LIST
-  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  foreach ATTRIBUTE_LIST do index IDX
+    %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+    %  outOperand%![IDX string] % = NULL ;\n%
   end foreach
 %  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
@@ -158,8 +160,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
      %C_Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
 %
-  foreach ATTRIBUTE_LIST
-  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  foreach ATTRIBUTE_LIST do index IDX
+    %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+    %  outOperand%![IDX string] % = NULL ;\n%
   end foreach
 %  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
@@ -182,8 +185,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
      %C_Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
 %
-  foreach ATTRIBUTE_LIST
-  do index IDX %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+  foreach ATTRIBUTE_LIST do index IDX
+    %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
+    %  outOperand%![IDX string] % = NULL ;\n%
   end foreach
 %  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
