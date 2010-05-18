@@ -28,6 +28,13 @@ if [ENUM_CONSTANT_LIST length] > 0 then
 %
 end if
 
+if (SUPPORTED_OPERATORS & generateConstructorWithSelfObject []) != 0 then%
+//--------------------------------- C++ constructor
+  protected : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% * inObject COMMA_LOCATION_ARGS) ;
+
+%
+end if
+
 if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeList []) != 0 then%
 //--------------------------------- C++ constructor\n%
   %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
@@ -118,39 +125,67 @@ end if
   %                                     const PMSInt32 inIndentation) const ;\n%
 end if
 
-%
-//--------------------------------- Modifiers
-%
+%//--------------------------------- Modifier invocation\n%
 foreach MODIFIER_MAP do
-  %  protected : void modifier_%![lkey identifierRepresentation]% (%?^
-  foreach mParameterList do index IDX
-    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & outArgument% ![IDX string]
-    else # argumentIn
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
-    end if
-  between %,\n%!^
-  end foreach
-  if [mParameterList length] == 0 then
-    if mHasCompilerArgument then
-      %C_Compiler * inCompiler\n%
-      !^%COMMA_LOCATION_ARGS%
-    else
-      !^%LOCATION_ARGS%
-    end if  
-  else
+  if mQualifier == [@readerQualifier isBasic] then
+    %  friend void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
+    foreach mParameterList do index IDX
+      %,\n%!^
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
+      end if
+    end foreach
     if mHasCompilerArgument then
       %,\n%!^%C_Compiler * inCompiler\n%
       !^%COMMA_LOCATION_ARGS%
     else
       %\n%!^%COMMA_LOCATION_ARGS%
     end if  
+    %) ;\n\n%
   end if
-  %) ;\n\n%
+end foreach
+
+%
+//--------------------------------- Modifiers
+%
+foreach MODIFIER_MAP do
+  if mQualifier != [@readerQualifier isInherited] then
+    %  protected : void modifier_%![lkey identifierRepresentation]% (%?^
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
+      end if
+    between %,\n%!^
+    end foreach
+    if [mParameterList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        !^%LOCATION_ARGS%
+      end if  
+    else
+      if mHasCompilerArgument then
+        %,\n%!^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        %\n%!^%COMMA_LOCATION_ARGS%
+      end if  
+    end if
+    %) ;\n\n%
+  end if
 end foreach
 %
 //--------------------------------- Instance Methods
@@ -257,7 +292,7 @@ end foreach
 //--------------------------------- Readers
 %
 foreach READER_MAP do
-  if (mQualifier != [@readerQualifier isInherited]) & (mImplicitConversionReader == "") then
+  if mQualifier != [@readerQualifier isInherited] then
     %  protected : virtual GALGAS_% ![mReturnedType identifierRepresentation] % * reader_% ![lkey identifierRepresentation] % (%?^
     foreach mArgumentTypeList
       do index IDX %const GALGAS_%![mType identifierRepresentation]% * inOperand% ![IDX string]
@@ -281,6 +316,23 @@ foreach READER_MAP do
       % = 0%
     end if
     % ;\n\n%
+  end if
+end foreach
+
+%//--------------------------------- Reader invocation declaration\n%
+foreach READER_MAP do
+  if mQualifier == [@readerQualifier isBasic] then
+    %  friend GALGAS_% ![mReturnedType identifierRepresentation] % * readerCall_% ![lkey identifierRepresentation] % (%?^
+    %const GALGAS_%!TYPE_IDENTIFIER% * inObject%
+    foreach mArgumentTypeList
+      do index IDX %,\n% !^ %const GALGAS_%![mType identifierRepresentation]% * inOperand% ![IDX string]
+    end foreach
+    if mHasCompilerArgument then
+      %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+    else
+      %\n% !^ %COMMA_LOCATION_ARGS%
+    end if
+    %) ;\n\n%
   end if
 end foreach
 
@@ -436,46 +488,6 @@ foreach NATIVE_ATTRIBUTE_LIST do
 end foreach
 foreach PRIVATE_DATA_NUMBER_TYPED_LIST do
   %  protected : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-end foreach
-
-%//--------------------------------- Modifier invocation\n%
-foreach MODIFIER_MAP do
-  %  friend void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
-  foreach mParameterList do index IDX
-    %,\n%!^
-    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & outArgument% ![IDX string]
-    else # argumentIn
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
-    end if
-  end foreach
-  if mHasCompilerArgument then
-    %,\n%!^%C_Compiler * inCompiler\n%
-    !^%COMMA_LOCATION_ARGS%
-  else
-    %\n%!^%COMMA_LOCATION_ARGS%
-  end if  
-  %) ;\n\n%
-end foreach
-%//--------------------------------- Reader invocation declaration\n%
-foreach READER_MAP do
-  if mQualifier == [@readerQualifier isBasic] then
-    %  friend GALGAS_% ![mReturnedType identifierRepresentation] % * readerCall_% ![lkey identifierRepresentation] % (%?^
-    %const GALGAS_%!TYPE_IDENTIFIER% * inObject%
-    foreach mArgumentTypeList
-      do index IDX %,\n% !^ %const GALGAS_%![mType identifierRepresentation]% * inOperand% ![IDX string]
-    end foreach
-    if mHasCompilerArgument then
-      %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
-    else
-      %\n% !^ %COMMA_LOCATION_ARGS%
-    end if
-    %) ;\n\n%
-  end if
 end foreach
 
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then

@@ -391,7 +391,7 @@ override method @mapDeclarationAST enterType
 #--- Readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keyList" !"lstringlist" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyList" !"lstringlist" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -416,6 +416,7 @@ override method @mapDeclarationAST enterType
         !mMethodName
         !insertMethodFormalArgumentList
         !true
+        ![@readerQualifier isBasic]
       ] ;
     end if ;
   end foreach ;
@@ -428,6 +429,7 @@ override method @mapDeclarationAST enterType
         !mMethodName
         !removeMethodFormalArgumentList
         !true
+        ![@readerQualifier isBasic]
       ] ;
     end if ;
   end foreach ;
@@ -452,7 +454,6 @@ override method @mapDeclarationAST enterType
       !true
       !attributeTypeIndex
       ![@readerQualifier isBasic]
-      !""
     ] ;
   end foreach ;
 #---------- Handle "insertOrReplace" modifier
@@ -463,6 +464,7 @@ override method @mapDeclarationAST enterType
       ![@lstring new !"insertOrReplace" !insertOrReplaceLocation]
       !insertMethodFormalArgumentList
       !false
+      ![@readerQualifier isBasic]
     ] ;
   end if ;
 #---------- Enter "set...Attribute...forKey" modifiers
@@ -477,6 +479,7 @@ override method @mapDeclarationAST enterType
       !accessorName
       !accessorFormalArgumentList
       !true
+      ![@readerQualifier isBasic]
     ] ;
   end foreach ;
 #--- Enter with access methods
@@ -607,7 +610,6 @@ override method @mapProxyDeclarationAST enterType
         !true
         !mAttributeTypeIndex
         ![@readerQualifier isBasic]
-        !""
       ] ;
     end if ;
   end foreach ;
@@ -770,7 +772,6 @@ override method @listDeclarationAST enterType
       !true
       !mAttributeTypeIndex
       ![@readerQualifier isBasic]
-      !""
     ] ;
   end foreach ;
 #--- Modifiers
@@ -779,16 +780,19 @@ override method @listDeclarationAST enterType
     ![@lstring new !"popFirst" !here]
     !modifierOutputFormalArgumentList
     !true
+    ![@readerQualifier isBasic]
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popLast" !here]
     !modifierOutputFormalArgumentList
     !true
+    ![@readerQualifier isBasic]
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"prependValue" !here]
     !modifierInputFormalArgumentList
     !false
+    ![@readerQualifier isBasic]
   ] ;
   foreach typedAttributeList do
     @formalParameterSignature setterFormalArgumentList [emptyList] ;
@@ -798,6 +802,7 @@ override method @listDeclarationAST enterType
       ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
       !setterFormalArgumentList
       !true
+      ![@readerQualifier isBasic]
     ] ;
   end foreach ;
 #--- Instance methods
@@ -807,7 +812,7 @@ override method @listDeclarationAST enterType
     !modifierOutputFormalArgumentList
     !here
     !true
-      ![@readerQualifier isBasic]
+    ![@readerQualifier isBasic]
   ] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"last" !here]
@@ -886,11 +891,13 @@ override method @sortedListDeclarationAST enterType
     ![@lstring new !"popGreatest" !here]
     !modifierFormalArgumentList
     !true
+    ![@readerQualifier isBasic]
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popSmallest" !here]
     !modifierFormalArgumentList
     !true
+    ![@readerQualifier isBasic]
   ] ;
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
@@ -975,7 +982,6 @@ override method @structDeclarationAST enterType
       !false
       !attributeTypeIndex
       ![@readerQualifier isBasic]
-      !""
     ] ;
   end foreach ;
 #--- Modifiers
@@ -1039,6 +1045,7 @@ override method @classDeclarationAST enterType
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mSuperClassName string] ?superClassIndex] ;
     @typeKindEnum typeKindEnum ;
     @readerMap inheritedReaderMap ;
+    @modifierMap inheritedModifierMap ;
     [ioSemanticContext->mTypeMap searchKey
       !mSuperClassName
       ?2*
@@ -1047,10 +1054,24 @@ override method @classDeclarationAST enterType
       ?attributeMap
       ?2*
       ?inheritedReaderMap
-      ?modifierMap
+      ?inheritedModifierMap
       ?inheritedInstanceMethodMap
       ?10*
     ] ;
+  #---
+    if typeKindEnum != [@typeKindEnum classType] then
+      error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
+    end if ;
+  #--- Mark all modifiers as inherited
+    modifierMap := [@modifierMap emptyMap] ;
+    foreach inheritedModifierMap do
+      [!?modifierMap insertKey
+        !lkey
+        !mParameterList
+        !mHasCompilerArgument
+        ![@readerQualifier isInherited]
+      ] ; 
+    end foreach ;
   #--- Mark all readers as inherited
     readerMap := [@readerMap emptyMap] ;
     foreach inheritedReaderMap do
@@ -1060,13 +1081,16 @@ override method @classDeclarationAST enterType
         !mHasCompilerArgument
         !mReturnedType
         ![@readerQualifier isInherited]
-        !mImplicitConversionReader
       ] ; 
     end foreach ;
-  #---
-    if typeKindEnum != [@typeKindEnum classType] then
-      error mSuperClassName : "the @" . mSuperClassName . " should be a class type" ;
-    end if ;
+  #--- Add reader to access super object
+    [!?readerMap insertKey
+      !mSuperClassName
+      ![@unifiedTypeMapProxyList emptyList]
+      !false
+      !superClassIndex
+      ![@readerQualifier isBasic]
+    ] ; 
   end if ;
 #--- Build attribute Map and constructor argument list
   @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
@@ -1088,7 +1112,7 @@ override method @classDeclarationAST enterType
     [!?constructorMap insertKey
       ![@lstring new !"new" !here]
       !constructorAttributeTypeList
-      !true
+      !false
       !classIndex
     ] ;
   end if ;
@@ -1157,7 +1181,6 @@ override method @classDeclarationAST enterType
       !false # No Compiler argument
       !attributeTypeIndex # Returned type
       ![@readerQualifier isBasic]
-      !""
     ] ;
   end foreach ;
 #--- Enter in type map

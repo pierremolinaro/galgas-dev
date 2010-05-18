@@ -611,17 +611,15 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
-  @string implicitConversionReader ;
   with readerMap hasKey ![mReaderName string] do
     readerFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
-    implicitConversionReader := mImplicitConversionReader ;
   else
     if [readerMap count] == 0 then
       error mReaderName
       : "the '@". [receiverType key] . "' type does not define any reader"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, implicitConversionReader
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType
       ;
     else
       @string s := "" ;
@@ -636,7 +634,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       : "the '@". [receiverType key] . "' type does not define the '" . mReaderName . "' reader; available "
       . if [readerMap count] > 1 then "readers are" else "reader is" end
       . ":" . s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, implicitConversionReader
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType
       ;
     end if ;
   end with ;
@@ -659,7 +657,6 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       !receiverExpression
       ![mReaderName string]
       !constructorEffectiveParameterList
-      !implicitConversionReader
     ] ;
   end if ;
 end method ;

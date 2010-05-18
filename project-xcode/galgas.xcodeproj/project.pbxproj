@@ -4174,6 +4174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFFB8944110CBFF1006248FD /* predefined-types.cpp in Sources */,
 				CF0E1957110756E4007B64E7 /* GALGAS_uint_36__34_.cpp in Sources */,
 				CF0E1958110756E4007B64E7 /* GALGAS_uint.cpp in Sources */,
 				CF0E1959110756E5007B64E7 /* GALGAS_sint_36__34_.cpp in Sources */,
@@ -4355,7 +4356,6 @@
 				CFF991CD110B6CC20055EE27 /* C_galgas_type_descriptor.cpp in Sources */,
 				CFFB8829110C99B8006248FD /* semanticsClassMethods.cpp in Sources */,
 				CFFB885C110CA1C4006248FD /* semanticsInstanceMethods.cpp in Sources */,
-				CFFB8944110CBFF1006248FD /* predefined-types.cpp in Sources */,
 				CFD396F1110E1EAF001549E6 /* cpp-allocation.cpp in Sources */,
 				CFD396F9110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF288E57111DEA68004E4E82 /* galgas_prgm.cpp in Sources */,
