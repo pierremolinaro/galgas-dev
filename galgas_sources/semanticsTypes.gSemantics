@@ -165,7 +165,6 @@ list @typedAttributeList {
 #---------------------------------------------------------------------------*
 
 enum @typeKindEnum {
-  primitiveType,
   classType,
   enumType,
   listType,
@@ -176,7 +175,6 @@ enum @typeKindEnum {
   structType
 }{
   reader kind :
-  primitiveType -> "primitive" ;
   classType -> "class" ;
   enumType -> "enumeration" ;
   listType -> "list" ;

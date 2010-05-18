@@ -290,12 +290,15 @@ override method @predefinedTypeAST enterType
   [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList] ;
   @unifiedTypeMapProxy superTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![t getSuperTypeName] ?superTypeProxy] ;
+  @unifiedTypeMapProxy selfTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mPredefinedTypeName ?selfTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     !superTypeProxy
-    ![@typeKindEnum primitiveType]
-    ![@typedAttributeList emptyList]
+    ![@typeKindEnum classType]
+#    ![@typedAttributeList emptyList]
+    ![@typedAttributeList listWithValue !selfTypeProxy ![@lstring new !mPredefinedTypeName !here]]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
     !constructorMap

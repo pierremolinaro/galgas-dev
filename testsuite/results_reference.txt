@@ -243,7 +243,7 @@ LOGGING r: <@uint:5>
   A2 B0 C2
   A2 B5 C3
 *************************************** begin of introspection test
---- Type list (44 types)
+--- Type list (45 types)
   @A
   @B
   @MyDomain
@@ -282,6 +282,7 @@ LOGGING r: <@uint:5>
   @stringlist
   @stringset
   @struct
+  @system
   @type
   @typelist
   @uint
