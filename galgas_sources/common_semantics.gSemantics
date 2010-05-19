@@ -981,6 +981,9 @@ class @typeGalgas_string extends @AC_galgasType {
     if [inModifierName string] == "setCapacity" then
       outModifierSignature := [@L_EXsignature emptyList] ;
       outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingModeAST argumentIn] ;
+    elsif [inModifierName string] == "appendSpacesUntilColumn" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingModeAST argumentIn] ;
     elsif [inModifierName string] == "incIndentation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
       outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingModeAST argumentIn] ;
@@ -3986,6 +3989,7 @@ end routine ;
 
 once stringReaderMap -> @EXreaderMap outMap :
   outMap := [@EXreaderMap emptyMap] ;
+  EXenterReaderWithoutArgument !?outMap !"currentColumn" ![@typeGalgas_uint new] !false ;
   EXenterReaderWithoutArgument !?outMap !"description" ![@typeGalgas_string new] !false ;
   EXenterReaderWithoutArgument !?outMap !"object" ![@typeGalgas_object new] !false ;
   EXenterReaderWithoutArgument !?outMap !"dynamicType" ![@typeGalgas_type new] !false ;

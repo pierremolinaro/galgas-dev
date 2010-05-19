@@ -485,7 +485,6 @@ class @routinePrototypeDeclarationForGeneration extends @semanticDeclarationForG
 
 class @routineImplementationForGeneration extends @routinePrototypeDeclarationForGeneration {
   @semanticInstructionListForGeneration mRoutineInstructionList ;
-  @bool mUsesCompilerArgument ;
 }
 
 #---------------------------------------------------------------------------*
@@ -500,7 +499,6 @@ class @functionDeclarationForGeneration extends @semanticDeclarationForGeneratio
   @lstring mResultVariableName ;
   @unifiedTypeMapProxy mReturnType ;
   @semanticInstructionListForGeneration mFunctionInstructionList ;
-  @bool mUsesCompilerArgument ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1079,7 +1077,6 @@ list @methodDefinitionListForGeneration {
   @lstring mMethodName ;
   @formalParameterListForGeneration mSignature ;
   @semanticInstructionListForGeneration mInstructionList ;
-  @bool mUsesCompilerArgument ;
 }
 
 #---------------------------------------------------------------------------*

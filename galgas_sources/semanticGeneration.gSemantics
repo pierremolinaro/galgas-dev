@@ -153,12 +153,58 @@ filewrapper typeGenerationTemplate in "../generation_templates/semantic_generati
 
   template routineImplementation "routine-implementation.cpp.gTemplate"
     ?@string ROUTINE_NAME
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@semanticInstructionListForGeneration ROUTINE_INSTRUCTION_LIST
-    ?@bool USES_COMPILER_ARGUMENT
+    ?@string ROUTINE_IMPLEMENTATION
   ;
 
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# R O U T I N E    I M P L E M E N A T I O N                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+function generateRoutine
+  ??@string inRoutineName
+  ??@formalParameterListForGeneration inFormalArgumentList
+  ??@semanticInstructionListForGeneration inInstructionList
+  ->@string outGeneratedCode
+:
+  outGeneratedCode := "void routine_" . [inRoutineName identifierRepresentation] . " (" ;
+  const @uint colRef := [outGeneratedCode currentColumn] ;
+#--- Compiler argument
+#  if USES_COMPILER_ARGUMENT then
+  outGeneratedCode .= "C_Compiler * inCompiler" ;
+#  else
+#    %C_Compiler * /* inCompiler */%
+#  end if
+  foreach inFormalArgumentList index IDX do
+    outGeneratedCode .= ",\n" ;
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+    switch mFormalArgumentPassingMode 
+    when argumentConstantIn :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * const inArgument_" . [mFormalArgumentName identifierRepresentation] ;
+    when argumentInOut :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * & ioArgument_" . [mFormalArgumentName identifierRepresentation] ;
+    when argumentOut :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * & outArgument_" . [mFormalArgumentName identifierRepresentation] ;
+    when argumentIn :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * inArgument_" . [mFormalArgumentName identifierRepresentation] ;
+    end switch ;
+  end foreach ;
+  outGeneratedCode .= "\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
+#--- Generate body
+  outGeneratedCode .= generateRoutineBody [!inInstructionList] ;
+#--- Release 'in' arguments
+  foreach inFormalArgumentList index IDX do
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
+      outGeneratedCode .= "  macroReleaseObject (inArgument_" . [mFormalArgumentName string] . ") ; // Release 'in' argument\n" ;
+    end if ;
+  end foreach ;
+  outGeneratedCode .= "}\n\n" ;
+end function ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -374,9 +420,7 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
 override reader @routineImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.routineImplementation
     !mRoutineName
-    !mFormalArgumentList
-    !mRoutineInstructionList
-    !mUsesCompilerArgument
+    !generateRoutine [!mRoutineName !mFormalArgumentList !mRoutineInstructionList]
   ] ; 
 end reader ;
 
