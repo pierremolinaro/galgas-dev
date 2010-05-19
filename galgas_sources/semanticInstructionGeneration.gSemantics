@@ -28,6 +28,7 @@ abstract method @actualParameterForGeneration generateActualParameter
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist ioParametersToReleaseList
+  ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 ;
 
@@ -37,9 +38,10 @@ override method @outputActualParameterForGeneration generateActualParameter
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist ioParametersToReleaseList
+  ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioTemporaryVariableIndex ?outCppName] ;
+  [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName] ;
   ioParametersToReleaseList += !outCppName ;
 end method ;
 
@@ -49,6 +51,7 @@ override method @outputInputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist unused ioParametersToReleaseList
+  ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
   foreach mStructAttributeList do
@@ -63,6 +66,7 @@ override method @inputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist unused ioParametersToReleaseList
+  ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
@@ -77,6 +81,7 @@ end method ;
 
 method @semanticInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "?UNHANDLED INSTRUCTION?\n" ;
@@ -88,11 +93,12 @@ function generateRoutineBody
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
+  @stringset unusedVariableCppNameSet [emptySet] ;
   outGeneratedCode := "" ;
   @uint temporaryVariableIndex := 0 ;
   [!?outGeneratedCode incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !?temporaryVariableIndex !?outGeneratedCode] ;
+    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?outGeneratedCode] ;
   end foreach ;
   [!?outGeneratedCode decIndentation !2] ;
 end function ;
@@ -102,11 +108,12 @@ end function ;
 routine generateInstructionList
   ??@semanticInstructionListForGeneration inInstructionList
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   [!?ioGeneratedCode incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !?ioTemporaryVariableIndex !?ioGeneratedCode] ;
+    [mInstruction generateInstruction !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode] ;
   end foreach ;
   [!?ioGeneratedCode decIndentation !2] ;
 end routine ;
@@ -115,11 +122,12 @@ end routine ;
 
 override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @localVariableOrConstantDeclarationWithSourceExpressionForGeneration\n" ;
   @string sourceVar ;
-  [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?sourceVar] ;
+  [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   if mIsConstant then
     ioGeneratedCode .= "const " ;
   end if ;
@@ -131,6 +139,7 @@ end method ;
 
 override method @localVariableDeclarationForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @localVariableDeclarationForGeneration\n" ;
@@ -141,6 +150,7 @@ end method ;
 
 override method @localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction\n" ;
@@ -150,11 +160,12 @@ end method ;
 
 override method @assignmentInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @assignmentInstructionForGeneration\n" ;
   @string sourceVar ;
-  [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?sourceVar] ;
+  [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   foreach mStructAttributeList do
     ioGeneratedCode .= "(TO DO handle field in @assignmentInstructionForGeneration)\n" ;
   end foreach ;
@@ -166,6 +177,7 @@ end method ;
 
 override method @dropInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @dropInstructionForGeneration\n" ;
@@ -178,11 +190,12 @@ end method ;
 
 override method @appendInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @appendInstructionForGeneration\n" ;
   @string sourceVar ;
-  [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?sourceVar] ;
+  [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   foreach mStructAttributeList do
     ioGeneratedCode .= "(TO DO handle field in @appendInstructionForGeneration)\n" ;
   end foreach ;
@@ -194,6 +207,7 @@ end method ;
 
 override method @sendInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@sendInstructionForGeneration generateInstruction\n" ;
@@ -203,12 +217,13 @@ end method ;
 
 override method @ifInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @ifInstructionForGeneration\n" ;
 #--- Generate test expression
   @string cppVarName ;
-  [mIFexpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?cppVarName] ;
+  [mIFexpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppVarName] ;
 #--- If test expression is not valuated, skip if instruction
   ioGeneratedCode .= "if (NULL != " . cppVarName . ") {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
@@ -217,10 +232,10 @@ override method @ifInstructionForGeneration generateInstruction
   ioGeneratedCode .= "const bool " . testVar . " = " . cppVarName . "->boolValue () ;\n" ;
   ioGeneratedCode .= "macroReleaseObject (" . cppVarName . ") ; // Release test temporary variable\n" ;
   ioGeneratedCode .= "if (" . testVar . ") {\n" ;
-  generateInstructionList !m_then_instructionList !?ioTemporaryVariableIndex !?ioGeneratedCode ;
+  generateInstructionList !m_then_instructionList !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   if [m_else_instructionList length] > 0 then
     ioGeneratedCode .= "}else{\n" ;
-    generateInstructionList !m_else_instructionList !?ioTemporaryVariableIndex !?ioGeneratedCode ;
+    generateInstructionList !m_else_instructionList !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   end if ;
   ioGeneratedCode .= "}\n" ;
   [!?ioGeneratedCode decIndentation !2] ;
@@ -231,15 +246,16 @@ end method ;
 
 override method @errorInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @errorInstructionForGeneration\n" ;
 #--- Receiver expression
   @string receiverCppVarName ;
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?receiverCppVarName] ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName] ;
 #--- Receiver expression
   @string messageCppVarName ;
-  [mErrorExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?messageCppVarName] ;
+  [mErrorExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName] ;
 #--- Generate warning instruction
   ioGeneratedCode .= "inCompiler->emitSemanticError (" . receiverCppVarName . ", " . messageCppVarName . " COMMA_HERE) ;\n" ;
 #--- Release temporary variables
@@ -255,15 +271,16 @@ end method ;
 
 override method @warningInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @warningInstructionForGeneration\n" ;
 #--- Receiver expression
   @string receiverCppVarName ;
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?receiverCppVarName] ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName] ;
 #--- Receiver expression
   @string messageCppVarName ;
-  [mWarningExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?messageCppVarName] ;
+  [mWarningExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName] ;
 #--- Generate warning instruction
   ioGeneratedCode .= "inCompiler->emitSemanticWarning (" . receiverCppVarName . ", " . messageCppVarName . " COMMA_HERE) ;\n" ;
 #--- Release temporary variables
@@ -275,18 +292,19 @@ end method ;
 
 override method @methodCallInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @methodCallInstructionForGeneration\n" ;
 #--- Receiver expression
   @string receiverVar ;
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?receiverVar] ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverVar] ;
 #---
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist parametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -315,6 +333,7 @@ end method ;
 
 override method @routineCallInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset  ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @routineCallInstructionForGeneration\n" ;
@@ -323,7 +342,7 @@ override method @routineCallInstructionForGeneration generateInstruction
   @stringlist parametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -347,6 +366,7 @@ end method ;
 
 override method @typeMethodInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@typeMethodInstructionForGeneration generateInstruction\n" ;
@@ -356,6 +376,7 @@ end method ;
 
 override method @modifierCallInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@modifierCallInstructionForGeneration generateInstruction\n" ;
@@ -365,6 +386,7 @@ end method ;
 
 override method @addAssignInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@addAssignInstructionForGeneration generateInstruction\n" ;
@@ -374,6 +396,7 @@ end method ;
 
 override method @incrementInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@incrementInstructionForGeneration generateInstruction\n" ;
@@ -383,6 +406,7 @@ end method ;
 
 override method @decrementInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@decrementInstructionForGeneration generateInstruction\n" ;
@@ -392,6 +416,7 @@ end method ;
 
 override method @messageInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@messageInstructionForGeneration generateInstruction\n" ;
@@ -401,6 +426,7 @@ end method ;
 
 override method @loopInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@loopInstructionForGeneration generateInstruction\n" ;
@@ -410,6 +436,7 @@ end method ;
 
 override method @readWriteWithInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "@readWriteWithInstructionForGeneration generateInstruction\n" ;
@@ -419,13 +446,14 @@ end method ;
 
 override method @foreachInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @foreachInstructionForGeneration\n" ;
   @stringlist enumerationVarCppNameList [emptyList] ;
   foreach mEnumeratedObjectList do
     @string enumerationVar ;
-    [mEnumeratedExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?enumerationVar] ;
+    [mEnumeratedExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?enumerationVar] ;
     enumerationVarCppNameList += !enumerationVar ;
   end foreach ;
   foreach mEnumeratedObjectList, enumerationVarCppNameList do
@@ -445,7 +473,7 @@ override method @foreachInstructionForGeneration generateInstruction
       ioGeneratedCode .= "bool " . boolVarCppName . " = true ;\n" ;
     else
       @string whileVar ;
-      [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?whileVar] ;
+      [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
       ioGeneratedCode .= "bool " . boolVarCppName . " = (NULL == " . whileVar . ") ? false : " . whileVar . "->boolValue () ;\n" ;
       ioGeneratedCode .= "macroReleaseObject (" . whileVar . ") ;\n" ;
     end if ;
@@ -456,6 +484,7 @@ override method @foreachInstructionForGeneration generateInstruction
     generateInstructionList
       !mBeforeInstructionList
       !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
     ;
     [!?ioGeneratedCode incIndentation !2] ;
@@ -469,12 +498,13 @@ override method @foreachInstructionForGeneration generateInstruction
     generateInstructionList
       !mDoInstructionList
       !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
     ;
   #--- Compute 'while' expression
     if not whileExpressionIsAllwaysTrue then
       @string whileVar ;
-      [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex ?whileVar] ;
+      [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
       ioGeneratedCode .= boolVarCppName . " = (NULL == " . whileVar . ") ? false : " . whileVar . "->boolValue () ;\n" ;
       ioGeneratedCode .= "macroReleaseObject (" . whileVar . ") ;\n" ;
     end if ;
@@ -489,6 +519,7 @@ override method @foreachInstructionForGeneration generateInstruction
       generateInstructionList
         !mBetweenInstructionList
         !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
         !?ioGeneratedCode
       ;
       ioGeneratedCode .= "}\n" ;
@@ -506,6 +537,7 @@ override method @foreachInstructionForGeneration generateInstruction
     generateInstructionList
       !mBeforeInstructionList
       !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
     ;
     [!?ioGeneratedCode decIndentation !2] ;
@@ -527,6 +559,7 @@ override method @foreachInstructionForGeneration generateInstruction
     generateInstructionList
       !mDoInstructionList
       !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
     ;
   #--- Generate 'between' instruction
@@ -541,6 +574,7 @@ override method @foreachInstructionForGeneration generateInstruction
       generateInstructionList
         !mBetweenInstructionList
         !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
         !?ioGeneratedCode
       ;
       ioGeneratedCode .= "}\n" ;

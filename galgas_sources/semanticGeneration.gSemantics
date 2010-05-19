@@ -170,6 +170,29 @@ function generateRoutine
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
+#--- Build unused variable set
+  @stringset unusedVariableCppNameSet [emptySet] ;
+  foreach inFormalArgumentList index IDX do
+    switch mFormalArgumentPassingMode 
+    when argumentConstantIn :
+      unusedVariableCppNameSet += !"inArgument_" . [mFormalArgumentName identifierRepresentation] ;
+    when argumentInOut :
+      unusedVariableCppNameSet += !"ioArgument_" . [mFormalArgumentName identifierRepresentation] ;
+    when argumentOut :
+      unusedVariableCppNameSet += !"outArgument_" . [mFormalArgumentName identifierRepresentation] ;
+    when argumentIn :
+      unusedVariableCppNameSet += !"inArgument_" . [mFormalArgumentName identifierRepresentation] ;
+    end switch ;
+  end foreach ;
+#--- Generate body
+  @uint temporaryVariableIndex := 0 ;
+  @string routineBody := "" ;
+  [!?routineBody incIndentation !2] ;
+  foreach inInstructionList do
+    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+  end foreach ;
+  [!?routineBody decIndentation !2] ;
+#--- Generate header
   outGeneratedCode := "void routine_" . [inRoutineName identifierRepresentation] . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #--- Compiler argument
@@ -195,8 +218,8 @@ function generateRoutine
   outGeneratedCode .= "\n" ;
   [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
   outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
-#--- Generate body
-  outGeneratedCode .= generateRoutineBody [!inInstructionList] ;
+#--- Generate routine body
+  outGeneratedCode .= routineBody ;
 #--- Release 'in' arguments
   foreach inFormalArgumentList index IDX do
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
