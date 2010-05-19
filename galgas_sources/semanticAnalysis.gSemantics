@@ -418,9 +418,7 @@ routine analyzeRoutineBody
   ??@semanticInstructionListAST inInstructionList
   ??@location inEndOfMethodLocation
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
-  !@bool outUsesCompilerArgument
 :
-  outUsesCompilerArgument := false ;
   @variableMap variableMap [emptyMap] ;
 #--- Declare local constants
   foreach inLocalConstantList do
@@ -470,7 +468,6 @@ routine analyzeRoutineBody
       !?outSemanticInstructionListForGeneration
       !?variableMap
       !?localVariableCppNameList
-      !?outUsesCompilerArgument
     ] ;
    end foreach ;
 #--- Drop all local variables
@@ -524,7 +521,6 @@ override method @routineDeclarationAST performSemanticAnalysis
   end foreach ;
 #--- Instruction list
   @semanticInstructionListForGeneration instructionList ;
-  @bool usesCompilerArgument ;
   analyzeRoutineBody
     !inSemanticContext
     !inPredefinedTypes
@@ -534,14 +530,12 @@ override method @routineDeclarationAST performSemanticAnalysis
     !mRoutineInstructionList
     !mEndOfRoutineInstructionList
     ?instructionList
-    ?usesCompilerArgument
   ;
 #---
   ioSemanticDeclarationListForGeneration += ![@routineImplementationForGeneration new
     ![mRoutineName string]
     !formalArgumentList
     !instructionList
-    !usesCompilerArgument
   ] ;
 end method ;
 
@@ -649,7 +643,6 @@ override method @classDeclarationAST performSemanticAnalysis
     end if ;
   #---
     @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-    @bool usesCompilerArgument ;
     analyzeRoutineBody
       !inSemanticContext
       !inPredefinedTypes
@@ -659,7 +652,6 @@ override method @classDeclarationAST performSemanticAnalysis
       !mInstructionList
       !mEndOfMethodLocation
       ?semanticInstructionListForGeneration
-      ?usesCompilerArgument
     ;
   #---
     definedMethodSet += ![mMethodName string] ;
@@ -668,7 +660,6 @@ override method @classDeclarationAST performSemanticAnalysis
       !mMethodName
       !formalParameterListForGeneration
       !semanticInstructionListForGeneration
-      !usesCompilerArgument
     ;
   end foreach ;
 #------ Check a concrete class has no abstract method
@@ -707,9 +698,7 @@ routine analyzeFunctionBody
   !@formalInputParameterListForGeneration outSignatureForGeneration
   !@unifiedTypeMapProxy outReturnedType
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
-  !@bool outUsesCompilerArgument
 :
-  outUsesCompilerArgument := false ;
   @variableMap variableMap [emptyMap] ;
 #--- Enter formal parameters
   outSignatureForGeneration := [@formalInputParameterListForGeneration emptyList] ;
@@ -747,7 +736,6 @@ routine analyzeFunctionBody
       !?outSemanticInstructionListForGeneration
       !?variableMap
       !?localVariableCppNameList
-      !?outUsesCompilerArgument
     ] ;
    end foreach ;
 #--- Drop all local variables
@@ -772,7 +760,6 @@ override method @functionDeclarationAST performSemanticAnalysis
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   @formalInputParameterListForGeneration formalInputParameterList ;
   @unifiedTypeMapProxy returnType ;
-  @bool usesCompilerArgument ;
   analyzeFunctionBody
     !inSemanticContext
     !inPredefinedTypes
@@ -784,7 +771,6 @@ override method @functionDeclarationAST performSemanticAnalysis
     ?formalInputParameterList
     ?returnType
     ?semanticInstructionListForGeneration
-    ?usesCompilerArgument
   ;
 #---
   ioSemanticDeclarationListForGeneration += ![@functionDeclarationForGeneration new
@@ -793,7 +779,6 @@ override method @functionDeclarationAST performSemanticAnalysis
     !mResultVariableName
     !returnType
     !semanticInstructionListForGeneration
-    !usesCompilerArgument
   ] ;
 end method ;
 

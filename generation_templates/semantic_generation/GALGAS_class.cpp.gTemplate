@@ -146,11 +146,11 @@ foreach CONCRETE_METHOD_LIST do
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument_% ![mFormalArgumentName identifierRepresentation]%,\n%!^
     end if
   end foreach
-  if mUsesCompilerArgument then
+#  if mUsesCompilerArgument then
     %C_Compiler * inCompiler\n%
-  else
-    %C_Compiler * /* inCompiler */\n%
-  end if
+#  else
+#    %C_Compiler * /* inCompiler */\n%
+#  end if
   !^%COMMA_UNUSED_LOCATION_ARGS) const {\n%
   #--- Retain 'in' arguments
     foreach mSignature do index IDX
