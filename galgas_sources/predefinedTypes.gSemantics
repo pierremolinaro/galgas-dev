@@ -289,7 +289,6 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       @semanticContext semanticContext ;
       buildSemanticContext
         !predefinedTypeASTlist
-        ![@optionComponentMapForSemanticAnalysis emptyMap]
         !here
         ?semanticContext
       ;

@@ -165,12 +165,14 @@ class @blockInstruction extends @syntaxInstructionAST {
 
 #---------------------------------------------------------------------------*
 
-class @syntaxComponentRoot {
+struct @syntaxComponentAST {
   @lstring mSyntaxComponentName ;
-  @lstring mImportedLexiqueReference ;
+  @lstring mImportedLexiqueFilePath ; 
+  @lstringlist mImportedComponentFileNameList ;
   @nonterminalDeclarationList mNonterminalDeclarationList ;
   @syntaxRuleList mRuleList ;
   @semanticDeclarationStructAST mSemanticDeclarations ;
+  @location mEndOfSourceFile ;
 }
 
 #---------------------------------------------------------------------------*

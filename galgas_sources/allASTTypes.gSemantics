@@ -66,7 +66,7 @@ map @parsedSemanticsComponentMap {
 #---------------------------------------------------------------------------*
 
 map @parsedSyntaxComponentMap {
-  @syntaxComponentRoot mSyntaxComponentRoot ;
+  @syntaxComponentAST mSyntaxComponentRoot ;
   insert insertKey error message "the '%K' syntax component has already been parsed" ;
   search searchKey error message "the '%K' syntax component is not parsed" ;
 }

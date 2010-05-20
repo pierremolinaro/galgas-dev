@@ -368,6 +368,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
   end foreach ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@errorInstructionForGeneration new
+    !mInstructionLocation
     !locationExpression
     !useLocationReader
     !messageExpression
@@ -402,6 +403,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@warningInstructionForGeneration new
+    !mInstructionLocation
     !locationExpression
     !useLocationReader
     !messageExpression
@@ -721,6 +723,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
+    !mInstructionLocation
     !receiverExpression
     ![mMethodName string]
     !actualParameterListForGeneration
@@ -810,6 +813,7 @@ override method @appendInstructionAST analyzeSemanticInstruction
   checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@appendInstructionForGeneration new
+    !mInstructionLocation
     !targetVariableCppName
     !mStructAttributeList
     !expression
@@ -1050,8 +1054,8 @@ override method @ifInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap endOverride !mEndOf_if_instruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@ifInstructionForGeneration new
-    !if_expression
     !mEndOf_then_branch
+    !if_expression
     !then_instructionList
     !else_instructionList
   ] ;
@@ -1202,6 +1206,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap endOverride !mEndOf_foreach_instruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@foreachInstructionForGeneration new
+    !mInstructionLocation
     !enumerationList
     !indexCppName
     !whileExpression

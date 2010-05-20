@@ -1,0 +1,19 @@
+#ifndef %!COMPONENT_NAME%_ENTITIES_DEFINED
+#define %!COMPONENT_NAME%_ENTITIES_DEFINED
+
+//---------------------------------------------------------------------------*
+
+#include "galgas2/predefined-types.h"
+
+//---------------------------------------------------------------------------*
+
+% foreach IMPORTED_COMPONENT_LIST do
+    %#include "%![[mValue lastPathComponent] stringByDeletingPathExtension]%.h"\n%
+  end foreach%
+//---------------------------------------------------------------------------*
+
+%
+foreach TYPE_PREDECLARATION_LIST do
+  %class GALGAS_%![mValue identifierRepresentation]% ;\n%
+end foreach
+%

@@ -32,7 +32,7 @@ grammar syntaxSLRgrammar "SLR" :
   import syntax semanticDeclarationsSyntax in "semanticDeclarationsSyntax.gSyntax" ;
 
   root <syntax_component_start_symbol>
-    !@syntaxComponentRoot outSyntaxComponentRoot
+    !@syntaxComponentAST outSyntaxComponentRoot
   ; # SLR
 
 #  unused <sdfgh> ;

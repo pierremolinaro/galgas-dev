@@ -1344,7 +1344,7 @@ class @filewrapperDeclarationAST extends @semanticDeclarationAST {
 
 class @semanticsComponentAST {
   @lstring mSemanticsComponentName  ;
-  @lstringlist mImportedComponentFileNameList  ;
+  @lstringlist mImportedComponentFileNameList ;
   @semanticDeclarationStructAST mSemanticDeclarations  ;
   @location mEndOfSourceFile  ;
 }

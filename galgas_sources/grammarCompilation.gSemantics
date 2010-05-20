@@ -488,7 +488,7 @@ routine compileGrammarComponent
       error mValue: "a syntax component file should have '.ggs' or '.gSyntax' as path extension" ;
     else
       @string syntaxComponentName := [[mValue lastPathComponent] stringByDeletingPathExtension] ;
-      @syntaxComponentRoot syntaxComponentRoot ;
+      @syntaxComponentAST syntaxComponentRoot ;
       if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey !syntaxComponentName] then
         [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey ![@lstring new !syntaxComponentName !here] ?syntaxComponentRoot] ;
       else
@@ -497,7 +497,7 @@ routine compileGrammarComponent
         [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey ![@lstring new !syntaxComponentName ![mValue location]] !syntaxComponentRoot] ;
       end if ;
     #--- Handle lexique component
-      @string currentLexiqueName := [[[syntaxComponentRoot mImportedLexiqueReference] lastPathComponent] stringByDeletingPathExtension] ;
+      @string currentLexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
       if lexiqueComponentName == "" then
         lexiqueComponentName := currentLexiqueName ;
       elsif lexiqueComponentName != currentLexiqueName then
