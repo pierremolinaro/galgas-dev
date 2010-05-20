@@ -1277,6 +1277,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap endOverride !mEndOfLoopInstruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@loopInstructionForGeneration new
+    !mInstructionLocation
     !variantExpression
     !first_instructionList
     !loopExpression
