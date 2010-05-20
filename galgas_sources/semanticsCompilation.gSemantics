@@ -127,9 +127,32 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine appendPredefinedOptionComponent
- ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis
+routine buildOptionComponentMapForSemanticAnalysis
+  ??@lstringlist inOptionComponentFileNameList
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis
 :
+  foreach inOptionComponentFileNameList do
+    @lstring optionComponentName ;
+    @commandLineOptionMap boolOptionMap ;
+    @commandLineOptionMap uintOptionMap ;
+    @commandLineOptionMap stringOptionMap ;
+    parseOptionComponent
+      !mValue
+      !?ioParsedComponentStruct
+      ?optionComponentName
+      ?boolOptionMap
+      ?uintOptionMap
+      ?stringOptionMap
+    ;
+    [!?ioOptionComponentMapForSemanticAnalysis insertKey
+      !optionComponentName
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ] ;
+  end foreach ;
+#--- Add predefined option component
   @string2list optionNameList := [@system boolOptionNameList] ;
   @commandLineOptionMap boolOptionMap [emptyMap] ;
   foreach optionNameList do
@@ -182,12 +205,44 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine buildGrammarComponentMapForSemanticAnalysis
+  ??@grammarComponentASTList inGrammarComponentASTList
+  ?!@semanticContext ioSemanticContext
+:
+#--- Perform semantic analysis of grammar components
+  foreach inGrammarComponentASTList do
+  #--- Analyze start symbol labels
+    @grammarLabelMap grammarLabelMap [emptyMap] ;
+    foreach [mGrammarComponentAST mStartSymbolLabelList] do
+    #--- Analyze signature
+      @formalParameterSignature formalArgumentList [emptyList] ;
+      foreach mFormalArgumentList do
+        formalArgumentList +=
+          ![@unifiedTypeMapProxy searchKey !ioSemanticContext->mTypeMap !mFormalArgumentTypeName]
+          !mFormalArgumentPassingMode
+        ;
+      end foreach ;
+      [!?grammarLabelMap insertKey
+        !mLabelName
+        !formalArgumentList
+      ] ;
+    end foreach ;
+  #--- Insert grammar in grammar map
+    [!?ioSemanticContext->mGrammarMap insertKey
+      ![mGrammarComponentAST mGrammarName]
+      !grammarLabelMap
+    ] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine compileSemanticsComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-#--- Parse source file
+#--- Parsing
   @semanticsComponentAST semanticsComponentRoot ;
   parseSemanticComponent
     !inSourceFile
@@ -217,65 +272,27 @@ routine compileSemanticsComponent
     ![semanticsComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
-#--- Parse and perform semantic analysis of option components
-  @optionComponentMapForSemanticAnalysis optionComponentMapForSemanticAnalysis [emptyMap] ;
-  foreach optionComponentFileNameList do
-    @lstring optionComponentName ;
-    @commandLineOptionMap boolOptionMap ;
-    @commandLineOptionMap uintOptionMap ;
-    @commandLineOptionMap stringOptionMap ;
-    parseOptionComponent
-      !mValue
-      !?ioParsedComponentStruct
-      ?optionComponentName
-      ?boolOptionMap
-      ?uintOptionMap
-      ?stringOptionMap
-    ;
-    [!?optionComponentMapForSemanticAnalysis insertKey
-      !optionComponentName
-      !boolOptionMap
-      !uintOptionMap
-      !stringOptionMap
-    ] ;
-  end foreach ;
-#--- Add predefined 'generic_galgas_cli_options' component
-  appendPredefinedOptionComponent !?optionComponentMapForSemanticAnalysis ;
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
-#------ Generate declarations
+#------ Build semantic context
   @semanticContext semanticContext ;
   buildSemanticContext
     !semanticDeclarationListWithPredefinedTypes
-    !optionComponentMapForSemanticAnalysis
     ![semanticsComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;
+#--- Build option component map for analysis
+  buildOptionComponentMapForSemanticAnalysis
+    !optionComponentFileNameList
+    !?ioParsedComponentStruct
+    !?semanticContext->mOptionComponentMapForSemanticAnalysis
+  ;
 #--- Perform semantic analysis of grammar components
-  foreach grammarComponentASTList do
-  #--- Analyze start symbol labels
-    @grammarLabelMap grammarLabelMap [emptyMap] ;
-    foreach [mGrammarComponentAST mStartSymbolLabelList] do
-    #--- Analyze signature
-      @formalParameterSignature formalArgumentList [emptyList] ;
-      foreach mFormalArgumentList do
-        formalArgumentList +=
-          ![@unifiedTypeMapProxy searchKey !semanticContext->mTypeMap !mFormalArgumentTypeName]
-          !mFormalArgumentPassingMode
-        ;
-      end foreach ;
-      [!?grammarLabelMap insertKey
-        !mLabelName
-        !formalArgumentList
-      ] ;
-    end foreach ;
-  #--- Insert grammar in grammar map
-    [!?semanticContext->mGrammarMap insertKey
-      ![mGrammarComponentAST mGrammarName]
-      !grammarLabelMap
-    ] ;
-  end foreach ;
+  buildGrammarComponentMapForSemanticAnalysis
+    !grammarComponentASTList
+    !?semanticContext
+  ;
 #------ Semantic Analysis
   @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis

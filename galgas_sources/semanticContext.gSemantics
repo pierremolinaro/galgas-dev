@@ -388,6 +388,7 @@ override method @mapDeclarationAST enterType
   @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
+  enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] ![mMapTypeName string] !false ;
 #--- Readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
@@ -1469,7 +1470,6 @@ end method ;
 
 routine buildSemanticContext
   ??@semanticDeclarationListAST inSemanticDeclarationList
-  ??@optionComponentMapForSemanticAnalysis inOptionComponentMapForSemanticAnalysis
   ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
@@ -1541,7 +1541,7 @@ routine buildSemanticContext
         ![@functionMap emptyMap]
         ![@filewrapperMap emptyMap]
         ![@grammarMap emptyMap]
-        !inOptionComponentMapForSemanticAnalysis
+        ![@optionComponentMapForSemanticAnalysis emptyMap]
       ] ;
     #--- Loop throught all declarations
       foreach orderedSemanticDeclarationListAST do

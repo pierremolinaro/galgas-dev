@@ -17,21 +17,41 @@
 #---------------------------------------------------------------------------*
 
 semantics syntaxCompilation :
-import "allASTTypes.gSemantics" ;
-import semantics allASTTypes in "allASTTypes.gSemantics" ;
+import "semanticsCompilation.gSemantics" ;
+
+import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
+} {
+  template syntaxFileHeader "syntax-file.h.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@lstringlist IMPORTED_COMPONENT_LIST
+    ?@lstringlist TYPE_PREDECLARATION_LIST
+  ;
+  template syntaxFileImplementation "syntax-file.cpp.gTemplate"
+    ?@string COMPONENT_NAME
+  ;
+}
+
 
 #---------------------------------------------------------------------------*
 
 routine compileSyntaxComponent
   ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
+  ??@string inOutputDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
 #--- Parse source file
-  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  @lstring basenameKey [new !basename !here] ;
-  @syntaxComponentRoot syntaxComponentRoot ;
+  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  const @lstring basenameKey [new !basename !here] ;
+  @syntaxComponentAST syntaxComponentRoot ;
   if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey ! basename] then
     [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?syntaxComponentRoot] ;
   else
@@ -39,15 +59,94 @@ routine compileSyntaxComponent
     [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey !basenameKey !syntaxComponentRoot] ;
   end if ;
 #--- Check component name
-  @lstring componentName := [syntaxComponentRoot mSyntaxComponentName] ;
+  const @lstring componentName := [syntaxComponentRoot mSyntaxComponentName] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
     . "') against the source file base name ('" . basename . "'): they should be identical"
     ;
+  end if ; 
+#--- Recursively parse all imported files
+  @semanticDeclarationListAST semanticDeclarationList := [[syntaxComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+  @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
+  @lstringlist optionComponentFileNameList [emptyList] ;
+  @grammarComponentASTList grammarComponentASTList [emptyList] ;
+  recursivelyImportSemanticComponent
+    !?ioParsedComponentStruct
+    !?optionComponentFileNameList
+    !?grammarComponentASTList
+    !?semanticDeclarationList
+    !?parsedFileSet
+    ![syntaxComponentRoot mImportedComponentFileNameList]
+    ![inSourceFile stringByDeletingLastPathComponent]
+  ;
+#------ Add predefined types to semantics declarations
+  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
+  appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
+#------ Build semantic context
+  @semanticContext semanticContext ;
+  buildSemanticContext
+    !semanticDeclarationListWithPredefinedTypes
+    ![syntaxComponentRoot mEndOfSourceFile]
+    ?semanticContext
+  ;
+#--- Build option component map for analysis
+  buildOptionComponentMapForSemanticAnalysis
+    !optionComponentFileNameList
+    !?ioParsedComponentStruct
+    !?semanticContext->mOptionComponentMapForSemanticAnalysis
+  ;
+#--- Perform semantic analysis of grammar components
+  buildGrammarComponentMapForSemanticAnalysis
+    !grammarComponentASTList
+    !?semanticContext
+  ;
+#------ Semantic Analysis
+  @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+  performSemanticAnalysis
+    ![[syntaxComponentRoot mSemanticDeclarations] mSemanticDeclarationList]
+    !semanticContext
+    ?decoratedDeclarationListForGeneration
+  ;
+#------ Generate Header File
+  if [@uint errorCount] == 0 then
+    @string headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
+      ![componentName string]
+      ![syntaxComponentRoot mImportedComponentFileNameList]
+      ![semanticContext->mTypeMap allKeyList]
+    ] ;
+    foreach decoratedDeclarationListForGeneration do
+      headerString .= [mDeclaration appendDeclaration] ;
+    end foreach ;
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !headerString
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ] ;
   end if ;
-#--- Semantics analysis
-
+#------ Generate Implementation File
+  if [@uint errorCount] == 0 then
+    @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementation
+      ![componentName string]
+    ] ;
+    foreach decoratedDeclarationListForGeneration do
+      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+      implementationString .= [mDeclaration appendSpecificImplementation] ;
+    end foreach ;
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !implementationString
+      !"\n\n" # Defaut user zone2
+      !"\n"
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

@@ -120,7 +120,7 @@ end function ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-filewrapper typeGenerationTemplate in "../generation_templates/semantic_generation" {
+filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
   template genericTypeHeader "generic-type.h.gTemplate"
     ?@string TYPE_NAME
@@ -263,7 +263,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @routinePrototypeDeclarationForGeneration appendDeclaration -> @string outHeader :
-  outHeader := [filewrapper typeGenerationTemplate.routineDeclaration
+  outHeader := [filewrapper semanticComponentGenerationTemplate.routineDeclaration
     !mRoutineName
     !mFormalArgumentList
   ] ; 
@@ -272,7 +272,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @semanticTypeForGeneration appendDeclaration -> @string outHeader :
-  outHeader := [filewrapper typeGenerationTemplate.unifiedTypeHeader
+  outHeader := [filewrapper semanticComponentGenerationTemplate.unifiedTypeHeader
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mIsConcrete]
@@ -297,7 +297,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @genericTypeForGeneration appendDeclaration -> @string outHeader :
-  outHeader := [filewrapper typeGenerationTemplate.genericTypeHeader
+  outHeader := [filewrapper semanticComponentGenerationTemplate.genericTypeHeader
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
   ] ;
@@ -317,7 +317,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.unifiedTypeImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.unifiedTypeImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mIsConcrete]
@@ -340,7 +340,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @genericTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.genericTypeImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.genericTypeImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mSuperType]
@@ -360,7 +360,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @primitiveTypeForGeneration appendSpecificImplementation -> @string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.predefinedTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.predefinedTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mModifierMap]
     ![mTypeIndex mHandledOperatorFlags]
@@ -372,7 +372,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.listTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
   ] ;
@@ -381,7 +381,7 @@ override reader @listTypeForGeneration appendSpecificImplementation ->@string ou
 #---------------------------------------------------------------------------*
 
 override reader @listmapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.listmapTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     ![mAssociatedListTypeIndex identifierRepresentation]
     !mAssociatedListTypedAttributeList
@@ -391,7 +391,7 @@ override reader @listmapTypeForGeneration appendSpecificImplementation ->@string
 #---------------------------------------------------------------------------*
 
 override reader @mapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.mapTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
     !mInsertMethodList
@@ -404,7 +404,7 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
 #---------------------------------------------------------------------------*
 
 override reader @sortedListTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.sortedlistTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
     !mSortDescriptorList
@@ -414,7 +414,7 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
 #---------------------------------------------------------------------------*
 
 override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.structTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
@@ -424,7 +424,7 @@ override reader @structTypeForGeneration appendSpecificImplementation ->@string 
 #---------------------------------------------------------------------------*
 
 override reader @enumTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.enumTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mConstantList
@@ -435,7 +435,7 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
 #---------------------------------------------------------------------------*
 
 override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.mapProxyTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mAssociatedMapTypeProxy identifierRepresentation]
@@ -447,7 +447,7 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@strin
 #---------------------------------------------------------------------------*
 
 override reader @classTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.classTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !if [mSuperClass isNull] then "class" else [mSuperClass identifierRepresentation] end
@@ -462,7 +462,7 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
 #---------------------------------------------------------------------------*
 
 override reader @routineImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.routineImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.routineImplementation
     !mRoutineName
     !generateProcedure [
       !"routine_" . [mRoutineName identifierRepresentation]

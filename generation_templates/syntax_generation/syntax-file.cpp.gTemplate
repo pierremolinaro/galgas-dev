@@ -6,12 +6,11 @@
 //---------------------------------------------------------------------------*
 
 #include "%!COMPONENT_NAME%.h"
-#include "C_Compiler.h"
 
 //---------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define SOURCE_FILE_AT_LINE(line) "%!COMPONENT_NAME%.gSemantics", line
+  #define SOURCE_FILE_AT_LINE(line) "%!COMPONENT_NAME%.gSyntax", line
   #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)
 #else
   #define SOURCE_FILE_AT_LINE(line) 

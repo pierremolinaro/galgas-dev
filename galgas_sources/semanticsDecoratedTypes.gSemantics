@@ -577,6 +577,7 @@ class @dropInstructionForGeneration extends @semanticInstructionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @appendInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @string mTargetVariableCppName ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionForGeneration mSourceExpression ;
@@ -632,6 +633,7 @@ list @foreachInstructionEnumeratedObjectListForGeneration {
 #---------------------------------------------------------------------------*
 
 class @foreachInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @foreachInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList ;
   @string mIndexVariableCppName ;  # Empty string if no index
   @semanticExpressionForGeneration mWhileExpression ;
@@ -648,8 +650,8 @@ class @foreachInstructionForGeneration extends @semanticInstructionForGeneration
 #---------------------------------------------------------------------------*
 
 class @ifInstructionForGeneration extends @semanticInstructionForGeneration {
-  @semanticExpressionForGeneration mIFexpression ;
   @location mInstructionLocation ;
+  @semanticExpressionForGeneration mIFexpression ;
   @semanticInstructionListForGeneration m_then_instructionList ;
   @semanticInstructionListForGeneration m_else_instructionList ;
 }
@@ -661,6 +663,7 @@ class @ifInstructionForGeneration extends @semanticInstructionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @errorInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @semanticExpressionForGeneration mReceiverExpression ;
   @bool mUseLocationReader ;
   @semanticExpressionForGeneration mErrorExpression ;
@@ -674,6 +677,7 @@ class @errorInstructionForGeneration extends @semanticInstructionForGeneration {
 #---------------------------------------------------------------------------*
 
 class @warningInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @semanticExpressionForGeneration mReceiverExpression ;
   @bool mUseLocationReader ;
   @semanticExpressionForGeneration mWarningExpression ;
@@ -712,6 +716,7 @@ class @typeMethodInstructionForGeneration extends @semanticInstructionForGenerat
 #---------------------------------------------------------------------------*
 
 class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mMethodName ;
   @actualParameterListForGeneration mActualParameterList ;

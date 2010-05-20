@@ -183,7 +183,6 @@ routine performProjectGlobalCheckings
   @semanticContext semanticContext ;
   buildSemanticContext
     !semanticDeclarationList
-    ![@optionComponentMapForSemanticAnalysis emptyMap]
     !inEndOfSourceFile
     ?semanticContext
   ;

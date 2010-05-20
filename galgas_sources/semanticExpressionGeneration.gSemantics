@@ -85,7 +85,7 @@ override method @hereExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_location * " . outCppName 
-                   . " = " . compilerCppName [] . "->here (HERE) ;\n" ;
+                   . " = " . compilerCppName [] . "->here (SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -99,7 +99,7 @@ override method @trueExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @trueExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_bool * " . outCppName
-                   . " = GALGAS_bool::constructor_new (true COMMA_HERE) ;\n" ;
+                   . " = GALGAS_bool::constructor_new (true COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -113,7 +113,7 @@ override method @falseExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @falseExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_bool * " . outCppName
-                   . " = GALGAS_bool::constructor_new (false COMMA_HERE) ;\n" ;
+                   . " = GALGAS_bool::constructor_new (false COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -142,7 +142,7 @@ override method @literalStringExpressionForGeneration generateExpression
   ioGeneratedCode .= "GALGAS_string * " . outCppName
                    . " = GALGAS_string::constructor_new (kString_"
                    . [[mLocation locationIndex] string]
-                   . " COMMA_HERE) ;\n" ;
+                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -156,7 +156,7 @@ override method @literalDoubleExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalDoubleExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_double * " . outCppName
-                   . " = GALGAS_double::constructor_new (" . [mValue string]. " COMMA_HERE) ;\n" ;
+                   . " = GALGAS_double::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -170,7 +170,7 @@ override method @literalUIntExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalUIntExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_uint * " . outCppName
-                   . " = GALGAS_uint::constructor_new (" . [mValue string]. " COMMA_HERE) ;\n" ;
+                   . " = GALGAS_uint::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -184,7 +184,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalUInt64ExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_uint_36__34_ * " . outCppName
-                   . " = GALGAS_uint_36__34_::constructor_new (" . [mValue string]. " COMMA_HERE) ;\n" ;
+                   . " = GALGAS_uint_36__34_::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -198,7 +198,7 @@ override method @literalSIntExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalSIntExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_sint * " . outCppName
-                   . " = GALGAS_sint::constructor_new (" . [mValue string]. " COMMA_HERE) ;\n" ;
+                   . " = GALGAS_sint::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -212,7 +212,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalSInt64ExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_sint_36__34_ * " . outCppName
-                   . " = GALGAS_sint_36__34_::constructor_new (" . [mValue string]. " COMMA_HERE) ;\n" ;
+                   . " = GALGAS_sint_36__34_::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -249,9 +249,9 @@ override method @constructorExpressionForGeneration generateExpression
     needsComma := true ;
   end if ;
   if needsComma then
-    ioGeneratedCode .= " COMMA_HERE) ;\n" ;
+    ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
   else
-    ioGeneratedCode .= "HERE) ;\n" ;
+    ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
   end if ;
 end method ;
 
@@ -282,7 +282,7 @@ override method @readerCallExpressionForGeneration generateExpression
   foreach readerArgumentCppNameList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
-  ioGeneratedCode .= " COMMA_HERE) ;\n" ;
+  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 #--- Release temporary variables
   ioGeneratedCode .= "macroReleaseObject (" . receiverCppName . ") ; // Release reader receiver\n" ;
 end method ;
@@ -299,7 +299,7 @@ override method @optionValueExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName 
                   . " = GALGAS_" . [mType identifierRepresentation] . "::constructor_new (gOption_" . [mOptionComponentName identifierRepresentation]
-                  . "_" . [mOptionEntryName identifierRepresentation] . ".mValue COMMA_HERE) ;\n" ;
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".mValue COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -353,7 +353,7 @@ override method @concatExpressionForGeneration generateExpression
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName . " = GALGAS_string::operator_concat ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -375,7 +375,7 @@ override method @orExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::operator_or ("
-                  . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                  . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -397,7 +397,7 @@ override method @xorExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::operator_xor ("
-                  . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                  . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -419,7 +419,7 @@ override method @andExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::operator_and ("
-                  . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                  . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -440,7 +440,7 @@ override method @equalExpressionForGeneration generateExpression
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_isEqual ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -461,7 +461,7 @@ override method @notEqualExpressionForGeneration generateExpression
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_isNotEqual ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -482,7 +482,7 @@ override method @lowerOrEqualExpressionForGeneration generateExpression
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_infOrEqual ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -503,7 +503,7 @@ override method @greaterOrEqualExpressionForGeneration generateExpression
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_supOrEqual ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -524,7 +524,7 @@ override method @strictGreaterExpressionForGeneration generateExpression
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_strictSup ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -545,7 +545,7 @@ override method @strictLowerExpressionForGeneration generateExpression
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_bool * " . outCppName . " = operator_strictInf ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -566,7 +566,7 @@ override method @rightShiftExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . " * " . outCppName . " = GALGAS_"
                   . [[mLeftExpression mType] identifierRepresentation] . "::right_shift_operation ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -587,7 +587,7 @@ override method @leftShiftExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . " * " . outCppName . " = GALGAS_"
                   . [[mLeftExpression mType] identifierRepresentation] . "::left_shift_operation ("
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_HERE) ;\n" ;
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -609,7 +609,7 @@ override method @addExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::add_operation ("
-                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_HERE) ;\n" ;
+                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -632,7 +632,7 @@ override method @subExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::substract_operation ("
-                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_HERE) ;\n" ;
+                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -655,7 +655,7 @@ override method @multiplicationExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::multiply_operation ("
-                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_HERE) ;\n" ;
+                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -678,7 +678,7 @@ override method @divisionExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::divide_operation ("
-                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_HERE) ;\n" ;
+                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -701,7 +701,7 @@ override method @moduloExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::modulo_operation ("
-                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_HERE) ;\n" ;
+                  . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation locationIndex] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 

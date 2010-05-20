@@ -32,7 +32,7 @@ import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 nonterminal <expression> !@semanticExpressionAST outExpression ;
 
-nonterminal <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoot ;
+nonterminal <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot ;
 
 nonterminal <nonterminal_declaration> ?!@nonterminalDeclarationList ioNonterminalDeclarationList ;
 
@@ -64,7 +64,7 @@ nonterminal <obsolete_declaration> ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoot :
+rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot :
   $syntax$ ;
 #--- Semantics Component Name
   $identifier$ ? @lstring mSyntaxComponentName ;
@@ -74,21 +74,34 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
   $literal_string$ ? @lstring importedLexiqueReference ;
   $;$ ;
 #--- Loop on import declarations
+  @lstringlist importedComponentPathList [emptyList] ;
   repeat
   while
     $import$ ;
     select
+      $literal_string$ ? @lstring path ;
+      importedComponentPathList += !path ;
+    or
       $semantics$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     or
       $lexique$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     or
       $grammar$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     or
       $option$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     end select ;
-    $identifier$ ?* ;
-    $in$ ;
-    $literal_string$ ? * ;
     $;$ ;
   end repeat ;
 #--- Loop on declarations
@@ -115,14 +128,17 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
   end repeat ;
 #--- end
   $end$ ;
+  const @location endOfSource := here ;
   $syntax$ ;
   $;$ ;
-  outSyntaxComponentRoot := [@syntaxComponentRoot new
+  outSyntaxComponentRoot := [@syntaxComponentAST new
     !mSyntaxComponentName
     !importedLexiqueReference
+    !importedComponentPathList
     !mNonterminalDeclarationList
     !mRuleList
     !mSemanticDeclarations
+    !endOfSource
   ] ;
 end rule ;
 
