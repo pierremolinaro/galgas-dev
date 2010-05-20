@@ -257,7 +257,8 @@ override method @errorInstructionForGeneration generateInstruction
   @string messageCppVarName ;
   [mErrorExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName] ;
 #--- Generate warning instruction
-  ioGeneratedCode .= "inCompiler->emitSemanticError (" . receiverCppVarName . ", " . messageCppVarName . " COMMA_HERE) ;\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .= compilerCppName [] . "->emitSemanticError (" . receiverCppVarName . ", " . messageCppVarName . " COMMA_HERE) ;\n" ;
 #--- Release temporary variables
   ioGeneratedCode .= "macroReleaseObject (" . receiverCppVarName . ") ; // Release receiver temporary variable\n" ;
   ioGeneratedCode .= "macroReleaseObject (" . messageCppVarName . ") ; // Release message temporary variable\n" ;
@@ -282,7 +283,8 @@ override method @warningInstructionForGeneration generateInstruction
   @string messageCppVarName ;
   [mWarningExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName] ;
 #--- Generate warning instruction
-  ioGeneratedCode .= "inCompiler->emitSemanticWarning (" . receiverCppVarName . ", " . messageCppVarName . " COMMA_HERE) ;\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .= compilerCppName [] . "->emitSemanticWarning (" . receiverCppVarName . ", " . messageCppVarName . " COMMA_HERE) ;\n" ;
 #--- Release temporary variables
   ioGeneratedCode .= "macroReleaseObject (" . receiverCppVarName . ") ; // Release receiver temporary variable\n" ;
   ioGeneratedCode .= "macroReleaseObject (" . messageCppVarName . ") ; // Release message temporary variable\n" ;
@@ -314,7 +316,8 @@ override method @methodCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
   if mHasCompilerArgument then
-    ioGeneratedCode .= ", inCompiler" ;
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    ioGeneratedCode .= ", " . compilerCppName [] ;
   end if ;
   ioGeneratedCode .= " COMMA_HERE) ;\n" ;
 #--- Release receiver temporary variable
@@ -346,12 +349,12 @@ override method @routineCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= "routine_" . [mRoutineName identifierRepresentation] . " (inCompiler" ;
-  @bool needsComma := false ;
+  ioGeneratedCode .= "routine_" . [mRoutineName identifierRepresentation] . " (" ;
   foreach parameterCppNameList do
-    ioGeneratedCode .= ", " . mValue ;
+    ioGeneratedCode .= mValue . ", " ;
   end foreach ;
-  ioGeneratedCode .= " COMMA_HERE) ;\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .=  compilerCppName [] . " COMMA_HERE) ;\n" ;
 #--- Release temporary variables
   foreach parametersToReleaseList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
@@ -425,11 +428,44 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @loopInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@loopInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "//-------- @loopInstructionForGeneration\n" ;
+#--- Variant expression
+  @string variantCppVarName ;
+  [mVariantExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantCppVarName] ;
+  ioGeneratedCode .= "if (NULL != " . variantCppVarName . ") {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  const @string variantVar := "variant_" . [[mInstructionLocation locationIndex] string] ;
+  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantCppVarName . "->uintValue () ;\n"
+                  . "macroReleaseObject (" . variantCppVarName . ") ;\n" ;
+  const @string loopVar := "loop_" . [[mInstructionLocation locationIndex] string] ;
+  ioGeneratedCode .= "bool " . loopVar . " = true ;\n"
+                  . "while (" . loopVar . ") {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  generateInstructionList !mFirstInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  @string loopExpressionVar ;
+  [mLoopExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?loopExpressionVar] ;
+  ioGeneratedCode .= loopVar . " = NULL != " . loopExpressionVar . " ;\n"
+                   . "if (" . loopVar . ") {\n"
+                   . "  " . loopVar . " = " . loopExpressionVar . "->boolValue () ;\n"
+                   . "  macroReleaseObject (" . loopExpressionVar . ") ;\n"
+                   . "}\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .= "if (" . loopVar . " && (0 == " . variantVar . ")) {\n"
+                     "  " . loopVar . " = false ;\n"
+                     "  " . compilerCppName [] . "->loopRunTimeVariantError (HERE) ;\n"
+                     "}\n"
+                   . "if (" . loopVar . ") {\n" ;
+  ioGeneratedCode .= "  " . variantVar . " -- ;\n" ;
+  generateInstructionList !mSecondInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -530,7 +566,8 @@ override method @foreachInstructionForGeneration generateInstruction
       ioGeneratedCode .= "  " . mEnumeratorCppName . ".next() ;\n" ;
     end foreach ;
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGAS_uint::increment_operation (" . mIndexVariableCppName . ", inCompiler COMMA_HERE) ;\n" ;
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+      ioGeneratedCode .= "GALGAS_uint::increment_operation (" . mIndexVariableCppName . ", " . compilerCppName [] . " COMMA_HERE) ;\n" ;
     end if ;
     ioGeneratedCode .= "}\n" ;
   #--- Generate 'after' instruction
@@ -585,7 +622,8 @@ override method @foreachInstructionForGeneration generateInstruction
       ioGeneratedCode .= "  " . mEnumeratorCppName . ".next() ;\n" ;
     end foreach ;
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGAS_uint::increment_operation (" . mIndexVariableCppName . ", inCompiler COMMA_HERE) ;\n" ;
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+      ioGeneratedCode .= "GALGAS_uint::increment_operation (" . mIndexVariableCppName . ", " . compilerCppName [] . " COMMA_HERE) ;\n" ;
     end if ;
     ioGeneratedCode .= "}\n" ;
     if mIndexVariableCppName != "" then

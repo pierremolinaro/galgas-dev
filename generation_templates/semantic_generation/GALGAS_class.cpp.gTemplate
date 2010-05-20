@@ -102,12 +102,12 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
-  %                              %!^%const PMSInt32 inIndentation) const {\n%
+  %                              %!^%const PMSInt32 /* inIndentation */) const {\n%
   %  ioString << "<class @"\n%
   %           << typeDescriptor ()->mGalgasTypeName\n%
   %           << ":" ;\n%
   foreach CURRENT_ATTRIBUTE_LIST
-    do %  mAttribute_%![mAttributeName identifierRepresentation]%->description (ioString, inIndentation + 1) ;\n%
+    do %//  mAttribute_%![mAttributeName identifierRepresentation]%->description (ioString, inIndentation + 1) ;\n%
     between %  ioString << ", " ;\n%
   end foreach
   %  ioString << ">" ;\n%
@@ -134,39 +134,12 @@ GALGAS_%!SUPER_TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_%!SUPER_TYPE
 
 foreach CONCRETE_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mMethodName identifierRepresentation]% (%?^
-  foreach mSignature do
-    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * const inArgument_% ![mFormalArgumentName identifierRepresentation]%,\n%!^
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument_% ![mFormalArgumentName identifierRepresentation]%,\n%!^
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & outArgument_% ![mFormalArgumentName identifierRepresentation]%,\n%!^
-    else # argumentIn
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument_% ![mFormalArgumentName identifierRepresentation]%,\n%!^
-    end if
-  end foreach
-#  if mUsesCompilerArgument then
-    %C_Compiler * inCompiler\n%
-#  else
-#    %C_Compiler * /* inCompiler */\n%
-#  end if
-  !^%COMMA_UNUSED_LOCATION_ARGS) const {\n%
-  #--- Retain 'in' arguments
-    foreach mSignature do index IDX
-      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
-        %  macroRetainObject (inArgument_% ![mFormalArgumentName string] %) ; // Retain 'in' argument\n%
-      end if
-    end foreach
-  #--- Generate body
-    !generateRoutineBody [!mInstructionList]
-  #--- Release 'in' arguments
-    foreach mSignature do index IDX
-      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
-        %  macroReleaseObject (inArgument_% ![mFormalArgumentName string] %) ; // Release 'in' argument\n%
-      end if
-    end foreach
-  %}\n\n%
+  !generateProcedure [
+    !"GALGAS_" . TYPE_IDENTIFIER . "::method_" . [mMethodName identifierRepresentation]
+    !mSignature
+    !mInstructionList
+    !true # Method is const
+  ]
 end foreach
 
 foreach CURRENT_ATTRIBUTE_LIST do

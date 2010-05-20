@@ -436,12 +436,10 @@ end if
 if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
   %//--------------------------------- << and >> shift operators\n%
   %  public : static GALGAS_%!TYPE_IDENTIFIER% * left_shift_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand,\n%
-  !^%const GALGAS_uint * inShiftOperand,\n%
-  !^%C_Compiler * inCompiler\n%
+  !^%const GALGAS_uint * inShiftOperand\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
   %  public : static GALGAS_%!TYPE_IDENTIFIER% * right_shift_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand,\n%
-  !^%const GALGAS_uint * inShiftOperand,\n%
-  !^%C_Compiler * inCompiler\n%
+  !^%const GALGAS_uint * inShiftOperand\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 

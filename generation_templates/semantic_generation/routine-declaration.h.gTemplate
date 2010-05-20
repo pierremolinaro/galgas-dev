@@ -4,18 +4,19 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler%
+void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^
   foreach FORMAL_ARGUMENT_LIST do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * const inArgument% ![IDX string]
+      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * const inArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
+      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & outArgument% ![IDX string]
+      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & outArgument% ![IDX string]
     else # argumentIn
-      %,\n%!^%GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
+      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
     end if
+    %,\n%!^
   end foreach
-
-                     %\n %!^%COMMA_LOCATION_ARGS) ;
+  %C_Compiler * inCompiler%
+  %\n %!^%COMMA_LOCATION_ARGS) ;
 

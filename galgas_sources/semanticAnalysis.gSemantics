@@ -412,12 +412,13 @@ map @declaredMethodMap { # This map is used for checking a method is declared on
 routine analyzeRoutineBody
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ??@formalParameterListAST inRoutineSignature
+  ??@formalParameterListAST inRoutineSignatureAST
   ??@localConstantList inLocalConstantList
   ??@typedAttributeList inTypedAttributeList
   ??@semanticInstructionListAST inInstructionList
   ??@location inEndOfMethodLocation
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
+  !@formalParameterListForGeneration outRoutineSignature
 :
   @variableMap variableMap [emptyMap] ;
 #--- Declare local constants
@@ -433,30 +434,37 @@ routine analyzeRoutineBody
     [!?variableMap insertNonMutableAttribute !mAttributeName !mAttributeTypeIndex !"mAttribute_". [mAttributeName identifierRepresentation]] ;
   end foreach ;
 #--- Enter formal arguments
-  foreach inRoutineSignature do
+  outRoutineSignature := [@formalParameterListForGeneration emptyList] ;
+  foreach inRoutineSignatureAST do
     const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+    @string formalArgumentCppName ;
     switch mFormalArgumentPassingMode
     when argumentIn :
+      formalArgumentCppName := "inArgument_" . [mFormalArgumentName identifierRepresentation] ;
       if mIsUnused then
-        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"inArgument_" . [mFormalArgumentName identifierRepresentation]] ;
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
       else
-        [!?variableMap insertInputFormalArgument !mFormalArgumentName !type !"inArgument_" . [mFormalArgumentName identifierRepresentation]] ;
+        [!?variableMap insertInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
       end if ;
     when argumentOut :
-      [!?variableMap insertOutputFormalArgument !mFormalArgumentName !type !"outArgument_" . [mFormalArgumentName identifierRepresentation]] ;
+      formalArgumentCppName := "outArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      [!?variableMap insertOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
     when argumentInOut :
+      formalArgumentCppName := "ioArgument_" . [mFormalArgumentName identifierRepresentation] ;
       if mIsUnused then
-        [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"ioArgument_" . [mFormalArgumentName identifierRepresentation]] ;
+        [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
       else
-        [!?variableMap insertInputOutputFormalArgument !mFormalArgumentName !type !"ioArgument_" . [mFormalArgumentName identifierRepresentation]] ;
+        [!?variableMap insertInputOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
       end if ;
     when argumentConstantIn :
+      formalArgumentCppName := "constinArgument_" . [mFormalArgumentName identifierRepresentation] ;
       if mIsUnused then
-        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !"inArgument_" . [mFormalArgumentName identifierRepresentation]] ;
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
       else
-        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !type !"inArgument_" . [mFormalArgumentName identifierRepresentation]] ;
+        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
       end if ;
     end switch ;
+    outRoutineSignature += !mFormalArgumentPassingMode !type !mFormalArgumentName !formalArgumentCppName ;
   end foreach ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
@@ -494,7 +502,7 @@ override method @externRoutineDeclarationAST performSemanticAnalysis
       !mFormalArgumentPassingMode
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       !mFormalArgumentName
-      !mIsUnused
+      ![mFormalArgumentName string] # §
     ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@routinePrototypeDeclarationForGeneration new
@@ -510,16 +518,8 @@ override method @routineDeclarationAST performSemanticAnalysis
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
-  @formalParameterListForGeneration formalArgumentList [emptyList] ;
-  foreach mFormalArgumentList do
-    formalArgumentList +=
-      !mFormalArgumentPassingMode
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
-      !mFormalArgumentName
-      !mIsUnused
-    ;
-  end foreach ;
 #--- Instruction list
+  @formalParameterListForGeneration formalArgumentList [emptyList] ;
   @semanticInstructionListForGeneration instructionList ;
   analyzeRoutineBody
     !inSemanticContext
@@ -530,6 +530,7 @@ override method @routineDeclarationAST performSemanticAnalysis
     !mRoutineInstructionList
     !mEndOfRoutineInstructionList
     ?instructionList
+    ?formalArgumentList
   ;
 #---
   ioSemanticDeclarationListForGeneration += ![@routineImplementationForGeneration new
@@ -594,7 +595,7 @@ override method @classDeclarationAST performSemanticAnalysis
         !mFormalArgumentPassingMode
         ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
         !mFormalArgumentName
-        !mIsUnused
+        ![mFormalArgumentName string]
       ;
     end foreach ;
   #--- Check overriding status
@@ -617,16 +618,20 @@ override method @classDeclarationAST performSemanticAnalysis
   @methodDefinitionListForGeneration methodList [emptyList] ;
   @stringset definedMethodSet [emptySet] ;
   foreach mMethodList do
-  #--- Compute method signature
+  #---
     @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
-    foreach mSignature do
-      formalParameterListForGeneration +=
-        !mFormalArgumentPassingMode
-        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
-        !mFormalArgumentName
-        !mIsUnused
-      ;
-    end foreach ;
+    @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+    analyzeRoutineBody
+      !inSemanticContext
+      !inPredefinedTypes
+      !mSignature
+      ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"(self)"]
+      !allAttributeList
+      !mInstructionList
+      !mEndOfMethodLocation
+      ?semanticInstructionListForGeneration
+      ?formalParameterListForGeneration
+    ;
   #--- Check overriding status
     if mIsOverriding then
       @formalParameterSignature inheritedSignature ;
@@ -641,18 +646,6 @@ override method @classDeclarationAST performSemanticAnalysis
     elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
       error mMethodName : "this method should be declared as overridding, as it is already declared in super class" ;
     end if ;
-  #---
-    @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-    analyzeRoutineBody
-      !inSemanticContext
-      !inPredefinedTypes
-      !mSignature
-      ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"(self)"]
-      !allAttributeList
-      !mInstructionList
-      !mEndOfMethodLocation
-      ?semanticInstructionListForGeneration
-    ;
   #---
     definedMethodSet += ![mMethodName string] ;
     methodList +=

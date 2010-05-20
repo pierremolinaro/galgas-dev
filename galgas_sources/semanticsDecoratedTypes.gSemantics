@@ -347,7 +347,7 @@ list @formalParameterListForGeneration {
   @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
   @unifiedTypeMapProxy mFormalArgumentType ;
   @lstring mFormalArgumentName ;
-  @bool mIsUnused ;
+  @string mFormalArgumentCppName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -839,6 +839,7 @@ class @decrementInstructionForGeneration extends @semanticInstructionForGenerati
 #---------------------------------------------------------------------------*
 
 class @loopInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @semanticExpressionForGeneration mVariantExpression ;
   @semanticInstructionListForGeneration mFirstInstructions ;
   @semanticExpressionForGeneration mLoopExpression ;
