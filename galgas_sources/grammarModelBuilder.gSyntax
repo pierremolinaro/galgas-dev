@@ -31,7 +31,7 @@ nonterminal <grammar_component_start_symbol>
 
 nonterminal <grammar_start_symbol_label>
   ??@lstring inLabelName
-  ?!@nonTerminalLabelList ioLabelList
+  ?!@nonTerminalLabelListAST ioLabelList
 ;
 
 nonterminal <label_formal_parameter>
@@ -85,7 +85,7 @@ rule <grammar_component_start_symbol>
   $root$ ;
   $non_terminal_symbol$ ?@lstring  mStartSymbol ;
   @bool startSymbolHasParseLabel := false ;
-  @nonTerminalLabelList mLabelList [emptyList] ;
+  @nonTerminalLabelListAST mLabelList [emptyList] ;
   <grammar_start_symbol_label> ![@lstring new !"" !here] !?mLabelList ;
   repeat
   while
@@ -135,7 +135,7 @@ end rule ;
 
 rule <grammar_start_symbol_label>
   ??@lstring inLabelName
-  ?!@nonTerminalLabelList ioLabelList
+  ?!@nonTerminalLabelListAST ioLabelList
 :
   @stringset argumentNameSet [emptySet] ;
   @formalParameterListAST mFormalParameterList [emptyList] ;
@@ -148,7 +148,7 @@ rule <grammar_start_symbol_label>
     end if ;
     argumentNameSet += ![argumentName string] ;
   end repeat ;
-  ioLabelList += !inLabelName !mFormalParameterList ;
+  ioLabelList += !inLabelName !mFormalParameterList !here ;
 end rule ;
 
 #---------------------------------------------------------------------------*

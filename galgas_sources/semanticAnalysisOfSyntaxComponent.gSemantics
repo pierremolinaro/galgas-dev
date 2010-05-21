@@ -1,0 +1,420 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Syntax component semantic analysis                                       *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics semanticAnalysisOfSyntaxComponent :
+import "semanticsCompilation.gSemantics" ;
+
+import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
+import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S Y N T A X    D E C L A R A T I O N S                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @nonterminalLabelMap {
+  @formalParameterListForGeneration mSignature ;
+  @location mEndOfArgumentLocation ;
+  insert insertKey error message "the '%K' nonterminal label has been already declared in %L" ;
+  search searchKey error message "the '%K' nonterminal label is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @ruleIndexMap {
+  @uint mRuleIndex ;
+  insert insertKey error message "the '%K' rule has been already declared [INTERNAL ERROR]" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @nonterminalDeclarationMap {
+  @nonterminalLabelMap mLabelMap ;
+  @bool mHasParseLabel ;
+  insert insertKey error message "the '%K' nonterminal has been already declared in %L" ;
+  search searchKey error message "the '%K' nonterminal is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @ruleDeclarationList {
+  @string mNonterminalName ;
+  @uint mRuleIndex ;
+  @nonterminalLabelMap mLabelMap ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @syntaxDeclarationForGeneration extends @semanticDeclarationForGeneration {
+  @string mComponentName ;
+  @string mLexiqueName ;
+  @nonterminalDeclarationMap mNonterminalDeclarationMap ;
+  @ruleDeclarationList mRuleDeclarationList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
+} {
+  template syntaxFileHeader "syntax-file.h.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@lstringlist IMPORTED_COMPONENT_LIST
+    ?@lstringlist TYPE_PREDECLARATION_LIST
+  ;
+
+  template syntaxFileImplementation "syntax-file.cpp.gTemplate"
+    ?@string COMPONENT_NAME
+  ;
+
+  template syntaxAnalyserClassDeclaration "syntax-analyser-class.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@string LEXIQUE_NAME
+    ?@nonterminalDeclarationMap NONTERMINAL_MAP
+    ?@ruleDeclarationList RULE_DECLARATION_LIST
+  ;
+}
+
+#---------------------------------------------------------------------------*
+
+override reader @syntaxDeclarationForGeneration appendDeclaration -> @string outHeader :
+  outHeader := [filewrapper syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration
+    !mComponentName
+    !mLexiqueName
+    !mNonterminalDeclarationMap
+    !mRuleDeclarationList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           B U I L D    N O N T E R M I N A L    M A P                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine enterNonterminalNonTerminalInMapAndCheck
+  ??@lstring inNonTerminalName
+  ??@nonterminalLabelMap inNonterminalLabelMap
+  ??@bool inHasParseLabel
+  ?!@nonterminalDeclarationMap ioNonterminalDeclarationMap 
+:
+  with ioNonterminalDeclarationMap hasKey ![inNonTerminalName string] do
+    if mHasParseLabel != inHasParseLabel then
+      error inNonTerminalName
+      : "the '" . inNonTerminalName . "' is redeclared "
+      . if mHasParseLabel then "with" else "without" end
+      . " 'parse' label, but first declaration declares it "
+      . if inHasParseLabel then "with" else "without" end
+      . " 'parse' label"
+      ;
+    end if ;
+    const @stringset firstDeclarationLabelSet := [mLabelMap allKeys] ;
+    const @stringset reDeclarationLabelSet := [inNonterminalLabelMap allKeys] ;
+    const @stringset missingLabelSet := firstDeclarationLabelSet - reDeclarationLabelSet ;
+    if [missingLabelSet count] > 0 then
+      @string s := "" ;
+      foreach missingLabelSet do
+        s .= "\n-  " . key ;
+      end foreach ;
+      error inNonTerminalName
+      : "the '" . inNonTerminalName . "' nonterminal is redeclared without the following label(s):" . s
+      ;
+    end if ;
+    const @stringset newLabelSet := reDeclarationLabelSet - firstDeclarationLabelSet ;
+    if [newLabelSet count] > 0 then
+      @string s := "" ;
+      foreach newLabelSet do
+        s .= "\n-  " . key ;
+      end foreach ;
+      error inNonTerminalName
+      : "the '" . inNonTerminalName . "' nonterminal is redeclared with the new label(s):" . s
+      ;
+    end if ;
+    if ([missingLabelSet count] == 0) & ([newLabelSet count] == 0) then
+      foreach mLabelMap, inNonterminalLabelMap prefixedby new_ do
+        @formalParameterSignature newSignature [emptyList] ;
+        foreach new_mSignature do
+          newSignature += !mFormalArgumentType !mFormalArgumentPassingMode ;
+        end foreach ;
+        checkMethodSignatures
+          !mSignature
+          !mEndOfArgumentLocation
+          !newSignature
+          !new_mEndOfArgumentLocation
+        ;
+      end foreach ;
+    end if ;
+  else
+    [!?ioNonterminalDeclarationMap insertKey !inNonTerminalName !inNonterminalLabelMap !inHasParseLabel] ;
+  end with ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine buildNonterminalDeclarationsMap
+  ??@nonterminalDeclarationListAST inNonterminalDeclarationList
+  ??@semanticContext inSemanticContext
+  !@nonterminalDeclarationMap outNonterminalDeclarationMap
+:
+  outNonterminalDeclarationMap := [@nonterminalDeclarationMap emptyMap] ;
+#--- Nonterminal declaration list
+  foreach inNonterminalDeclarationList do
+    @nonterminalLabelMap nonterminalLabelMap [emptyMap] ;
+    foreach mLabels do
+      @formalParameterListForGeneration signature [emptyList] ;
+      foreach mFormalArgumentList do
+        const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+        signature += !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string] ;
+      end foreach ;
+      [!?nonterminalLabelMap insertKey !mLabelName !signature !mEndOfArgumentLocation] ;
+    end foreach ;
+    enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !mHasParseLabel !?outNonterminalDeclarationMap ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @syntaxInstructionAST analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@stringlist ioLocalVariableCppNameList
+;
+
+#---------------------------------------------------------------------------*
+
+override method @semanticInstructionAST analyzeSyntaxInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@stringlist ioLocalVariableCppNameList
+:
+  @semanticInstructionAST t := self ; # Bug in GALGAS 1
+  [t analyzeSemanticInstruction
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioInstructionListForGeneration
+    !?ioVariableMap
+    !?ioLocalVariableCppNameList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @nonterminalCallInstruction analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  message "@nonterminalCallInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @terminalCheckInstruction analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  message "@terminalCheckInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @repeatInstruction analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  message "@repeatInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selectInstruction analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  message "@selectInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @parseDoInstruction analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  message "@parseDoInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @parseLoopInstruction analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  message "@parseLoopInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @parseWhenInstruction analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  message "@parseWhenInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @blockInstruction analyzeSyntaxInstruction
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+  ?!@stringlist unused ioLocalVariableCppNameList
+:
+  message "@blockInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           B U I L D    C O N T E X T                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine semanticAnalysisOfRuleLabel
+  ??@formalParameterListAST inFormalArguments
+  ??@syntaxInstructionList inSyntaxInstructionList
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  !@formalParameterListForGeneration outSignature
+:
+  @variableMap variableMap [emptyMap] ;
+  buildLocalVariableMapAndSignature
+    !inSemanticContext
+    !inFormalArguments
+    !?variableMap
+    ?outSignature
+  ;
+#--- Semantic analysis of instruction list
+  @semanticInstructionListForGeneration instructionListForGeneration [emptyList] ;
+  @stringlist localVariableCppNameList [emptyList] ;
+  foreach inSyntaxInstructionList do
+    [mInstruction analyzeSyntaxInstruction
+      !inSemanticContext
+      !inPredefinedTypes
+      !?instructionListForGeneration
+      !?variableMap
+      !?localVariableCppNameList
+    ] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           B U I L D    C O N T E X T                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine buildContextFromRuleHeadersAndNonterminalDeclarations
+  ??@nonterminalDeclarationListAST inNonterminalDeclarationList
+  ??@syntaxRuleListAST inRuleList
+  ??@string inComponentName
+  ??@string inLexiqueName
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
+:
+  @nonterminalDeclarationMap nonterminalDeclarationMap [emptyMap] ;
+  buildNonterminalDeclarationsMap
+    !inNonterminalDeclarationList
+    !inSemanticContext
+    ?nonterminalDeclarationMap
+  ;
+#--- Rule list
+  @ruleIndexMap ruleIndexMap [emptyMap] ;
+  @ruleDeclarationList ruleDeclarationList [emptyList] ;
+  foreach inRuleList do
+    @nonterminalLabelMap nonterminalLabelMap [emptyMap] ;
+    foreach mLabelList do
+      @formalParameterListForGeneration signature ;
+      semanticAnalysisOfRuleLabel
+        !mFormalArguments
+        !mSyntaxInstructionList
+        !inSemanticContext
+        !inPredefinedTypes
+        ?signature
+      ;
+      [!?nonterminalLabelMap insertKey !mLabelName !signature !mEndOfArgumentLocation] ;
+    end foreach ;
+    @uint ruleIndex ;
+    with !?ruleIndexMap hasKey ![mNonterminalName string] do
+      ruleIndex := mRuleIndex ;
+      mRuleIndex ++ ;
+    else
+      [!?ruleIndexMap insertKey !mNonterminalName !0] ;
+      ruleIndex := 0 ;
+    end with ;
+    with nonterminalDeclarationMap hasKey ![mNonterminalName string] do
+      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !mHasParseLabel !?nonterminalDeclarationMap ;
+    else
+      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !false !?nonterminalDeclarationMap ;
+    end with ;
+    ruleDeclarationList += ![mNonterminalName string] !ruleIndex !nonterminalLabelMap ;
+  end foreach ;
+#---
+  outSyntaxDeclarationForGeneration := [@syntaxDeclarationForGeneration new
+    !inComponentName
+    !inLexiqueName
+    !nonterminalDeclarationMap
+    !ruleDeclarationList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

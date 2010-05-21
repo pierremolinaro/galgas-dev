@@ -17,29 +17,10 @@
 #---------------------------------------------------------------------------*
 
 semantics syntaxCompilation :
-import "semanticsCompilation.gSemantics" ;
+import "semanticAnalysisOfSyntaxComponent.gSemantics" ;
 
-import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
+import semantics semanticAnalysisOfSyntaxComponent in "semanticAnalysisOfSyntaxComponent.gSemantics" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#           G E N E R A T I O N    F I L E W R A P P E R S                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
-} {
-  template syntaxFileHeader "syntax-file.h.gTemplate"
-    ?@string COMPONENT_NAME
-    ?@lstringlist IMPORTED_COMPONENT_LIST
-    ?@lstringlist TYPE_PREDECLARATION_LIST
-  ;
-  template syntaxFileImplementation "syntax-file.cpp.gTemplate"
-    ?@string COMPONENT_NAME
-  ;
-}
-
 
 #---------------------------------------------------------------------------*
 
@@ -90,6 +71,18 @@ routine compileSyntaxComponent
     ![syntaxComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;
+#--- Build semantic context from rule headers and non terminal declaration
+  const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
+  @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
+  buildContextFromRuleHeadersAndNonterminalDeclarations
+    ![syntaxComponentRoot mNonterminalDeclarationList]
+    ![syntaxComponentRoot mRuleList]
+    ![componentName string]
+    ![[[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation]
+    !semanticContext
+    !predefinedTypes
+    ?syntaxDeclarationForGeneration
+  ;
 #--- Build option component map for analysis
   buildOptionComponentMapForSemanticAnalysis
     !optionComponentFileNameList
@@ -108,6 +101,7 @@ routine compileSyntaxComponent
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;
+  decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration ;
 #------ Generate Header File
   if [@uint errorCount] == 0 then
     @string headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader

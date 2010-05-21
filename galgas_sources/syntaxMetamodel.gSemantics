@@ -31,32 +31,34 @@ list @syntaxInstructionList {
 
 #---------------------------------------------------------------------------*
 
-list @nonTerminalLabelList {
+list @nonTerminalLabelListAST {
   @lstring mLabelName ;
   @formalParameterListAST mFormalArgumentList ;
+  @location mEndOfArgumentLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @nonterminalDeclarationList {
+list @nonterminalDeclarationListAST {
   @lstring mNonterminalName ;
-  @nonTerminalLabelList mLabels ;
+  @nonTerminalLabelListAST mLabels ;
   @bool mHasParseLabel ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @syntaxRuleLabelList {
+list @syntaxRuleLabelListAST {
   @lstring mLabelName ;
-  @formalParameterListAST mFormalParameters ;
+  @formalParameterListAST mFormalArguments ;
+  @location mEndOfArgumentLocation ;
   @syntaxInstructionList mSyntaxInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @syntaxRuleList {
+list @syntaxRuleListAST {
   @lstring mNonterminalName ;
-  @syntaxRuleLabelList mLabelList ;
+  @syntaxRuleLabelListAST mLabelList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -169,8 +171,8 @@ struct @syntaxComponentAST {
   @lstring mSyntaxComponentName ;
   @lstring mImportedLexiqueFilePath ; 
   @lstringlist mImportedComponentFileNameList ;
-  @nonterminalDeclarationList mNonterminalDeclarationList ;
-  @syntaxRuleList mRuleList ;
+  @nonterminalDeclarationListAST mNonterminalDeclarationList ;
+  @syntaxRuleListAST mRuleList ;
   @semanticDeclarationStructAST mSemanticDeclarations ;
   @location mEndOfSourceFile ;
 }
