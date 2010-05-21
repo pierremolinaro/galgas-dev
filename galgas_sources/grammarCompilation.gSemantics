@@ -30,7 +30,7 @@ import option galgas_cli_options in "galgas_cli_options.gOption" ;
 #---------------------------------------------------------------------------*
 
 function transformLabelMap
-  ??@nonTerminalLabelList inLabels
+  ??@nonTerminalLabelListAST inLabels
   ??@bool inHasParseLabel
   -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
 :
@@ -58,7 +58,7 @@ end function ;
 
 routine checkLabelMap
   ??@location inNonTerminalLocation
-  ??@nonTerminalLabelList inLabels
+  ??@nonTerminalLabelListAST inLabels
   ??@bool inHasParseLabel
   ??@location inOriginalNonTerminalLocation
   ??@nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
@@ -121,7 +121,7 @@ end routine ;
 
 routine handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
-  ??@nonterminalDeclarationList inNonterminalDeclarationList
+  ??@nonterminalDeclarationListAST inNonterminalDeclarationList
 :
   foreach inNonterminalDeclarationList do
     with !?ioNonTerminalMapForGrammarAnalysis hasKey ![mNonterminalName string] do
@@ -368,7 +368,7 @@ end method ;
 routine buildRuleList
   ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
   ??@lstring inSyntaxComponentName
-  ??@syntaxRuleList inRuleList
+  ??@syntaxRuleListAST inRuleList
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis
   ?!@uint ioAddedNonTerminalCount
@@ -379,7 +379,7 @@ routine buildRuleList
     @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap ;
     [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?nonTerminalIndex ?nonterminalSymbolParametersMap] ;
   #--- Retrieve instruction list from first label
-    @syntaxInstructionList parsedSyntaxInstructionList ; [mLabelList first ?* ?* ?parsedSyntaxInstructionList] ;
+    @syntaxInstructionList parsedSyntaxInstructionList ; [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList] ;
   #--- Transform instruction list
     @syntaxInstructionListForGrammarAnalysis instructionList [emptyList] ;
     transformInstructionList

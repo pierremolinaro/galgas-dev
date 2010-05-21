@@ -602,7 +602,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "      message << \"bound entry for '\" << mKey.string () << \"' key has been deleted\" ;\n"
                  "      inLexique.onTheFlyRunTimeError (message COMMA_THERE) ;\n"
                  "    }else if (! mIndex.retrieve ()->mIsDefined) {\n"
-                 "      inLexique.onTheFlyRunTimeError (\"entry is not solved\" COMMA_THERE) ;\n"
+                 "      inLexique.onTheFlyRunTimeError (C_String (\"entry '\") + mKey.string () + \"' is not solved\" COMMA_THERE) ;\n"
                  "    }else{\n"
                  "      MF_Assert (reinterpret_cast <const elementOf_GGS_" << mMapTypeName << " *> (mIndex.retrieve ()) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                  "      const elementOf_GGS_" << mMapTypeName << " * p = (const elementOf_GGS_" << mMapTypeName << " *) mIndex.retrieve () ;\n"

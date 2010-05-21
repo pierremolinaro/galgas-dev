@@ -409,6 +409,48 @@ map @declaredMethodMap { # This map is used for checking a method is declared on
 
 #---------------------------------------------------------------------------*
 
+routine buildLocalVariableMapAndSignature
+  ??@semanticContext inSemanticContext
+  ??@formalParameterListAST inRoutineSignatureAST
+  ?!@variableMap ioVariableMap
+  !@formalParameterListForGeneration outRoutineSignature
+:
+  outRoutineSignature := [@formalParameterListForGeneration emptyList] ;
+  foreach inRoutineSignatureAST do
+    const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+    @string formalArgumentCppName ;
+    switch mFormalArgumentPassingMode
+    when argumentIn :
+      formalArgumentCppName := "inArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      if mIsUnused then
+        [!?ioVariableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
+      else
+        [!?ioVariableMap insertInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
+      end if ;
+    when argumentOut :
+      formalArgumentCppName := "outArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      [!?ioVariableMap insertOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
+    when argumentInOut :
+      formalArgumentCppName := "ioArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      if mIsUnused then
+        [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
+      else
+        [!?ioVariableMap insertInputOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
+      end if ;
+    when argumentConstantIn :
+      formalArgumentCppName := "constinArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      if mIsUnused then
+        [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
+      else
+        [!?ioVariableMap insertConstantInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
+      end if ;
+    end switch ;
+    outRoutineSignature += !mFormalArgumentPassingMode !type !mFormalArgumentName !formalArgumentCppName ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine analyzeRoutineBody
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
@@ -434,38 +476,12 @@ routine analyzeRoutineBody
     [!?variableMap insertNonMutableAttribute !mAttributeName !mAttributeTypeIndex !"mAttribute_". [mAttributeName identifierRepresentation]] ;
   end foreach ;
 #--- Enter formal arguments
-  outRoutineSignature := [@formalParameterListForGeneration emptyList] ;
-  foreach inRoutineSignatureAST do
-    const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
-    @string formalArgumentCppName ;
-    switch mFormalArgumentPassingMode
-    when argumentIn :
-      formalArgumentCppName := "inArgument_" . [mFormalArgumentName identifierRepresentation] ;
-      if mIsUnused then
-        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
-      else
-        [!?variableMap insertInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
-      end if ;
-    when argumentOut :
-      formalArgumentCppName := "outArgument_" . [mFormalArgumentName identifierRepresentation] ;
-      [!?variableMap insertOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
-    when argumentInOut :
-      formalArgumentCppName := "ioArgument_" . [mFormalArgumentName identifierRepresentation] ;
-      if mIsUnused then
-        [!?variableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
-      else
-        [!?variableMap insertInputOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
-      end if ;
-    when argumentConstantIn :
-      formalArgumentCppName := "constinArgument_" . [mFormalArgumentName identifierRepresentation] ;
-      if mIsUnused then
-        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
-      else
-        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
-      end if ;
-    end switch ;
-    outRoutineSignature += !mFormalArgumentPassingMode !type !mFormalArgumentName !formalArgumentCppName ;
-  end foreach ;
+  buildLocalVariableMapAndSignature
+    !inSemanticContext
+    !inRoutineSignatureAST
+    !?variableMap
+    ?outRoutineSignature
+  ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
   @stringlist localVariableCppNameList [emptyList] ;
@@ -777,17 +793,15 @@ end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    P E R F O R M     S E M A N T I C     A N A L Y S I S                  *
+#    P R E D E F I N E D    T Y P E S                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine performSemanticAnalysis
-  ??@semanticDeclarationListAST inDeclarationList
+function buildPredefinedTypes
   ??@semanticContext inSemanticContext
-  !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
+  ->@predefinedTypes outPredefinedTypes
 :
-  outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
-  const @predefinedTypes predefinedTypes [new
+  outPredefinedTypes := [@predefinedTypes new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"char" !here]]
@@ -799,6 +813,21 @@ routine performSemanticAnalysis
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"double" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lstring" !here]]
   ] ;
+end function ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    P E R F O R M     S E M A N T I C     A N A L Y S I S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine performSemanticAnalysis
+  ??@semanticDeclarationListAST inDeclarationList
+  ??@semanticContext inSemanticContext
+  !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
+:
+  const @predefinedTypes predefinedTypes := buildPredefinedTypes [!inSemanticContext] ;
+  outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
   foreach inDeclarationList do
     [mSemanticDeclaration performSemanticAnalysis
       !inSemanticContext

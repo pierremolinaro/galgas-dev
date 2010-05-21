@@ -28,7 +28,7 @@ class @grammarComponentAST {
   @lstring mGrammarClass ;
   @lstringlist mSyntaxComponents ;
   @lstring mStartSymbolName ;
-  @nonTerminalLabelList mStartSymbolLabelList ;
+  @nonTerminalLabelListAST mStartSymbolLabelList ;
   @bool mStartSymbolHasParseLabel ;
   @lstringlist mUnusedNonterminalList ;
   @location mEndOfSourceText ;

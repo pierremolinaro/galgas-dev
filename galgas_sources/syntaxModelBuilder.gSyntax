@@ -34,9 +34,9 @@ nonterminal <expression> !@semanticExpressionAST outExpression ;
 
 nonterminal <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot ;
 
-nonterminal <nonterminal_declaration> ?!@nonterminalDeclarationList ioNonterminalDeclarationList ;
+nonterminal <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList ;
 
-nonterminal <syntax_rule_declaration> ?!@syntaxRuleList ioRuleList ;
+nonterminal <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList ;
 
 nonterminal <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList ;
 
@@ -105,8 +105,8 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
     $;$ ;
   end repeat ;
 #--- Loop on declarations
-  @nonterminalDeclarationList mNonterminalDeclarationList [emptyList] ;
-  @syntaxRuleList mRuleList [emptyList] ;
+  @nonterminalDeclarationListAST mNonterminalDeclarationList [emptyList] ;
+  @syntaxRuleListAST mRuleList [emptyList] ;
   @semanticDeclarationStructAST mSemanticDeclarations [new
     ![@semanticDeclarationListAST emptyList]
     ![@abstractMultiMethodListMapAST emptyMap]
@@ -148,26 +148,27 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-nonterminal <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelList ioNonTerminalLabelList ;
+nonterminal <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList ;
 
 #---------------------------------------------------------------------------*
 
-rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelList ioNonTerminalLabelList :
+rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList :
   @formalParameterListAST mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
   ioNonTerminalLabelList +=
     !inLabelName
     !mFormalParameters
+    !here
   ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <nonterminal_declaration> ?!@nonterminalDeclarationList ioNonterminalDeclarationList :
+rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList :
   @bool mHasParseLabel := false ;
   $nonterminal$ ;
   $non_terminal_symbol$ ? @lstring mNonterminalName ;
-  @nonTerminalLabelList mLabels [emptyList] ;
+  @nonTerminalLabelListAST mLabels [emptyList] ;
   <nonterminal_label_declaration> ![@lstring new !"" !here] !?mLabels ;
   repeat
   while
@@ -200,34 +201,36 @@ end rule ;
 
 nonterminal <syntax_rule_label>
   ??@lstring inLabelName
-  ?!@syntaxRuleLabelList ioLabelList
+  ?!@syntaxRuleLabelListAST ioLabelList
 ;
 
 #------------------------------------------------------------------------------*
 
 rule <syntax_rule_label>
   ??@lstring inLabelName
-  ?!@syntaxRuleLabelList ioLabelList
+  ?!@syntaxRuleLabelListAST ioLabelList
 :
   @formalParameterListAST mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
+  const @location endOfArguments := here ;
   $:$ ;
   @syntaxInstructionList mSyntaxInstructionList ;
   <syntax_instruction_list> ? mSyntaxInstructionList ;
   ioLabelList +=
     !inLabelName
     !mFormalParameters
+    !endOfArguments
     !mSyntaxInstructionList
   ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <syntax_rule_declaration> ?!@syntaxRuleList ioRuleList :
+rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList :
   $rule$ ;
   $non_terminal_symbol$ ? @lstring mNonterminalName ;
   @lstring labelName [new !"" !here] ;
-  @syntaxRuleLabelList mLabelList [emptyList] ;
+  @syntaxRuleLabelListAST mLabelList [emptyList] ;
   repeat
     <syntax_rule_label> !labelName !? mLabelList ;
   while

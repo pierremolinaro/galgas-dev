@@ -129,6 +129,7 @@ SOURCES += predefinedTypes.cpp
 SOURCES += syntaxMetamodel.cpp
 SOURCES += syntaxModelBuilder.cpp
 SOURCES += syntaxSLRgrammar.cpp
+SOURCES += semanticAnalysisOfSyntaxComponent.cpp
 SOURCES += syntaxCompilation.cpp
 SOURCES += grammarMetamodel.cpp
 SOURCES += grammarModelBuilder.cpp
