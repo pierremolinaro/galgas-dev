@@ -402,7 +402,7 @@ class @lexiqueComponentAST {
   @bool mIsTemplate feature nogetter ;
   @metamodelTemplateDelimitorListAST mTemplateDelimitorList ;
   @templateReplacementListAST mTemplateReplacementList ;
-  @lexicalAttributeListAST mLexicalAttributeList  ;
+  @lexicalAttributeListAST mLexicalAttributeList ;
   @lexicalStyleListAST mLexicalStyleList ;
   @terminalDeclarationListAST mTerminalDeclarationList  ;
   @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList ;

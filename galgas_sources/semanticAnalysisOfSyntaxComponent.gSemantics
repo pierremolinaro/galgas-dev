@@ -18,7 +18,9 @@
 
 semantics semanticAnalysisOfSyntaxComponent :
 import "semanticsCompilation.gSemantics" ;
+import "lexiqueCompilation.gSemantics" ;
 
+import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
 
@@ -198,8 +200,9 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist ioLocalVariableCppNameList
@@ -210,6 +213,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
 override method @semanticInstructionAST analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@stringlist ioLocalVariableCppNameList
@@ -229,6 +233,7 @@ end method ;
 override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -241,6 +246,7 @@ end method ;
 override method @terminalCheckInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -253,6 +259,7 @@ end method ;
 override method @repeatInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -265,6 +272,7 @@ end method ;
 override method @selectInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -277,6 +285,7 @@ end method ;
 override method @parseDoInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -289,6 +298,7 @@ end method ;
 override method @parseLoopInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -301,6 +311,7 @@ end method ;
 override method @parseWhenInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -313,6 +324,7 @@ end method ;
 override method @blockInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
+  ??@terminalMap unused inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -331,6 +343,7 @@ routine semanticAnalysisOfRuleLabel
   ??@syntaxInstructionList inSyntaxInstructionList
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
   !@formalParameterListForGeneration outSignature
 :
   @variableMap variableMap [emptyMap] ;
@@ -347,6 +360,7 @@ routine semanticAnalysisOfRuleLabel
     [mInstruction analyzeSyntaxInstruction
       !inSemanticContext
       !inPredefinedTypes
+      !inTerminalMap
       !?instructionListForGeneration
       !?variableMap
       !?localVariableCppNameList
@@ -356,17 +370,18 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#           B U I L D    C O N T E X T                                      *
+#           S E M A N T I C    A N A L Y S I S                              *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine buildContextFromRuleHeadersAndNonterminalDeclarations
+routine semanticAnalysisOfSyntaxComponent
   ??@nonterminalDeclarationListAST inNonterminalDeclarationList
   ??@syntaxRuleListAST inRuleList
   ??@string inComponentName
   ??@string inLexiqueName
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
   !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
 :
   @nonterminalDeclarationMap nonterminalDeclarationMap [emptyMap] ;
@@ -387,6 +402,7 @@ routine buildContextFromRuleHeadersAndNonterminalDeclarations
         !mSyntaxInstructionList
         !inSemanticContext
         !inPredefinedTypes
+        !inTerminalMap
         ?signature
       ;
       [!?nonterminalLabelMap insertKey !mLabelName !signature !mEndOfArgumentLocation] ;
