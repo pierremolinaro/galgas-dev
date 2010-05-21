@@ -682,6 +682,51 @@ routine parseLexiqueComponent
 end routine ;
 
 #---------------------------------------------------------------------------*
+#          B U I L D    L E X I C A L    T Y P E    M A P                   *
+#---------------------------------------------------------------------------*
+
+once buildLexicalTypeMap
+  ->@lexicalTypeMap outLexicalTypeMap
+:
+  outLexicalTypeMap := [@lexicalTypeMap emptyMap] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"string" !here] ![@lexicalTypeEnum lexicalType_string]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"char"   !here] ![@lexicalTypeEnum lexicalType_char]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"uint"   !here] ![@lexicalTypeEnum lexicalType_uint]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"uint64" !here] ![@lexicalTypeEnum lexicalType_uint64]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"sint"   !here] ![@lexicalTypeEnum lexicalType_sint]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"sint64" !here] ![@lexicalTypeEnum lexicalType_sint64]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"double" !here] ![@lexicalTypeEnum lexicalType_double]] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+#   B U I L D    L E X I C A L    A T T R I B U T E    M A P                *
+#---------------------------------------------------------------------------*
+
+routine buildLexicalAttributeMap
+  ??@lexicalTypeMap inLexicalTypeMap
+  ??@lexicalAttributeListAST inLexicalAttributeList
+  ?!@lexicalAttributeMap ioLexicalAttributeMap
+:
+  foreach inLexicalAttributeList do
+    if [inLexicalTypeMap hasKey ![mTypeName string]] then
+      @lexicalTypeEnum lexicalType ;
+      [inLexicalTypeMap searchKey !mTypeName ?lexicalType] ;
+      [!?ioLexicalAttributeMap insertKey !mName !lexicalType] ;
+    else
+      @string m := "" ;
+      m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
+      @bool firstLoop := true ;
+      foreach inLexicalTypeMap do
+        m .= " @" . lkey ;
+      between
+        m .= "," ;
+      end foreach ;
+      error mTypeName: m ;
+    end if ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
 #                         compileLexiqueComponent                           *
 #---------------------------------------------------------------------------*
 
@@ -706,14 +751,7 @@ routine compileLexiqueComponent
     ;
   end if ; 
 #--------------------------------------- Lexical attribute type name map
-  @lexicalTypeMap lexicalTypeMap [emptyMap] ;
-  [!?lexicalTypeMap insertKey ![@lstring new !"string" !here] ![@lexicalTypeEnum lexicalType_string]] ;
-  [!?lexicalTypeMap insertKey ![@lstring new !"char"   !here] ![@lexicalTypeEnum lexicalType_char]] ;
-  [!?lexicalTypeMap insertKey ![@lstring new !"uint"   !here] ![@lexicalTypeEnum lexicalType_uint]] ;
-  [!?lexicalTypeMap insertKey ![@lstring new !"uint64" !here] ![@lexicalTypeEnum lexicalType_uint64]] ;
-  [!?lexicalTypeMap insertKey ![@lstring new !"sint"   !here] ![@lexicalTypeEnum lexicalType_sint]] ;
-  [!?lexicalTypeMap insertKey ![@lstring new !"sint64" !here] ![@lexicalTypeEnum lexicalType_sint64]] ;
-  [!?lexicalTypeMap insertKey ![@lstring new !"double" !here] ![@lexicalTypeEnum lexicalType_double]] ;
+  const @lexicalTypeMap lexicalTypeMap := buildLexicalTypeMap [] ;
 #--------------------------------------- Build lexical routine map
   @lexicalRoutineMap lexicalRoutineMap ;
   buildLexicalRoutineMap ?lexicalRoutineMap ;
@@ -761,24 +799,12 @@ routine compileLexiqueComponent
     [!?lexiqueAnalysisContext->mStyleMap insertKey !mName !mComment !styleIndex] ;
     styleIndex ++ ;
   end foreach ;
-#--------------------------------------- Build lexical analysis context struct
-  foreach [lexiqueComponentRoot mLexicalAttributeList] do
-    if [lexicalTypeMap hasKey ![mTypeName string]] then
-      @lexicalTypeEnum lexicalType ;
-      [lexicalTypeMap searchKey !mTypeName ?lexicalType] ;
-      [!?lexiqueAnalysisContext->mLexicalAttributeMap insertKey !mName !lexicalType] ;
-    else
-      @string m := "" ;
-      m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
-      @bool firstLoop := true ;
-      foreach lexicalTypeMap do
-        m .= " @" . lkey ;
-      between
-        m .= "," ;
-      end foreach ;
-      error mTypeName: m ;
-    end if ;
-  end foreach ;
+#--------------------------------------- Build lexical attribute map
+  buildLexicalAttributeMap
+   !lexicalTypeMap
+   ![lexiqueComponentRoot mLexicalAttributeList]
+   !?lexiqueAnalysisContext->mLexicalAttributeMap
+  ;
 #--------------------------------------- Build terminal map
   foreach [lexiqueComponentRoot mTerminalDeclarationList] do
     @uint terminalStyleIndex := 0 ;
@@ -788,7 +814,7 @@ routine compileLexiqueComponent
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [[lexiqueAnalysisContext  mLexicalAttributeMap] searchKey !mValue ?attributeLexicalType] ;
+      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
       argumentTypeList += ![mValue string] !attributeLexicalType ;
     end foreach ;
     [!?lexiqueAnalysisContext->mTerminalMap insertKey !mName !argumentTypeList] ;
@@ -818,7 +844,7 @@ routine compileLexiqueComponent
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [[lexiqueAnalysisContext mLexicalAttributeMap] searchKey !mValue ?attributeLexicalType] ;
+      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
       argumentTypeList += ![mValue string] !attributeLexicalType ;
     end foreach ;
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
