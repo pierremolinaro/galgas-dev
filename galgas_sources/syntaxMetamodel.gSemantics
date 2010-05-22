@@ -92,13 +92,16 @@ class @terminalCheckInstruction extends @syntaxInstructionAST {
 
 list @listOfSyntaxInstructionList {
   @syntaxInstructionList mSyntaxInstructionList ;
+  @location mEndOf_instructions ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @repeatInstruction extends @syntaxInstructionAST {
   @syntaxInstructionList mRepeatedInstructionList ;
+  @location mEndOf_repeated_instructions_branch ;
   @listOfSyntaxInstructionList mRepeatBranchList ;
+  @location mEndOf_repeat_instruction ;
 }
 
 #---------------------------------------------------------------------------*
@@ -109,6 +112,7 @@ class @repeatInstruction extends @syntaxInstructionAST {
 
 class @selectInstruction extends @syntaxInstructionAST {
   @listOfSyntaxInstructionList mSelectBranchList ;
+  @location mEndOf_select_instruction ;
 }
 
 #---------------------------------------------------------------------------*

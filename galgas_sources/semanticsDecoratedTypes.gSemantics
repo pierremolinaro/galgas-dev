@@ -416,12 +416,7 @@ list @temporaryInputVariableForRoutineInvocationForGeneration {
 #
 #---------------------------------------------------------------------------*
 
-abstract class @syntaxInstructionForGeneration {
-}
-
-#---------------------------------------------------------------------------*
-
-abstract class @semanticInstructionForGeneration extends @syntaxInstructionForGeneration {
+abstract class @semanticInstructionForGeneration {
 }
 
 #---------------------------------------------------------------------------*

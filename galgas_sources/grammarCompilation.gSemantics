@@ -301,7 +301,7 @@ override method @parseDoInstruction transformInstruction
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   @syntaxInstructionList syntaxInstructionList ;
-  [mParseDoBranchList first ?syntaxInstructionList] ;
+  [mParseDoBranchList first ?syntaxInstructionList ?*] ;
 
   transformInstructionList
     !syntaxInstructionList

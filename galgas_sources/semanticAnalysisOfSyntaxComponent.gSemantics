@@ -244,40 +244,163 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @terminalCheckInstruction analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ??@terminalMap unused inTerminalMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-  ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@variableMap ioVariableMap
+  ?!@stringlist ioLocalVariableCppNameList
 :
-  message "@terminalCheckInstruction\n" ;
+  @lexicalSentValueList sentAttributeList ;
+  [inTerminalMap searchKey !mTerminalName ?sentAttributeList] ;
+#---
+  if [mActualInputParameterList length] != [sentAttributeList length] then
+    error mTerminalName
+    : "naming the '$" . mTerminalName . "$' requires " . [[sentAttributeList length] string]
+    . "parameter" . if [sentAttributeList length] > 0 then "s" else "" end
+    . ", but this instruction names "
+    . [[mActualInputParameterList length] string] . " parameter" 
+    . if [mActualInputParameterList length] > 0 then "s" else "" end
+    ;
+  end if ;
+#---
+  foreach mActualInputParameterList, sentAttributeList do
+    if [mActualParameterName length] > 0 then # Empty string if joker
+      @unifiedTypeMapProxy type ;
+      @string cppName ;
+      if [mActualParameterTypeName length] > 0 then
+        cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+        type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mActualParameterTypeName] ;
+        [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName] ;
+        ioLocalVariableCppNameList += !cppName ;
+      else
+        [!?ioVariableMap searchForWriteAccess !mActualParameterName ?type ?cppName] ;
+      end if ;
+      @unifiedTypeMapProxy expectedType ;
+      switch mLexicalType
+      when lexicalType_string : expectedType := inPredefinedTypes->mStringType ;
+      when lexicalType_char : expectedType := inPredefinedTypes->mCharType ;
+      when lexicalType_uint : expectedType := inPredefinedTypes->mUIntType ;
+      when lexicalType_uint64 : expectedType := inPredefinedTypes->mUInt64Type ;
+      when lexicalType_sint : expectedType := inPredefinedTypes->mSIntType ;
+      when lexicalType_sint64 : expectedType := inPredefinedTypes->mSInt64Type ;
+      when lexicalType_double : expectedType := inPredefinedTypes->mDoubleType ;
+      end switch ;
+      if expectedType != type then
+        error mActualParameterName
+        : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+        . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+        ;
+      end if ;
+    end if ;
+  end foreach ;
+#---
 end method ;
 
 #---------------------------------------------------------------------------*
 
+routine analyzeSyntaxInstructionList
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
+  ??@syntaxInstructionList inSemanticInstructionListAST
+  ??@location inEndOfBranchLocation
+  ?!@variableMap ioVariableMap
+  !@semanticInstructionListForGeneration outInstructionListForGeneration
+:
+  outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+#--- Begin branch
+  [!?ioVariableMap beginBranch] ;
+#--- Instruction list
+  @stringlist localVariableCppNameList [emptyList] ;
+  foreach inSemanticInstructionListAST do
+    [mInstruction analyzeSyntaxInstruction
+      !inSemanticContext
+      !inPredefinedTypes
+      !inTerminalMap
+      !?outInstructionListForGeneration
+      !?ioVariableMap
+      !?localVariableCppNameList
+    ] ;
+  end foreach ;
+#--- Drop local variables
+  if [localVariableCppNameList length] > 0 then
+    outInstructionListForGeneration += ![@dropInstructionForGeneration new
+      !localVariableCppNameList
+      !"end of scope"
+    ] ;  
+  end if ;
+#--- Branch end
+  [!?ioVariableMap endBranch !inEndOfBranchLocation] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 override method @repeatInstruction analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ??@terminalMap unused inTerminalMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
 :
-  message "@repeatInstruction\n" ;
+#--- Begin block
+  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+#--- Repeated instructions
+  @semanticInstructionListForGeneration repeated_instructionList ;
+  analyzeSyntaxInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !inTerminalMap
+    !mRepeatedInstructionList
+    !mEndOf_repeated_instructions_branch
+    !?ioVariableMap
+    ?repeated_instructionList
+  ;
+#--- 'while' blocks
+  foreach mRepeatBranchList do
+    @semanticInstructionListForGeneration instructionList ;
+    analyzeSyntaxInstructionList
+      !inSemanticContext
+      !inPredefinedTypes
+      !inTerminalMap
+      !mSyntaxInstructionList
+      !mEndOf_instructions
+      !?ioVariableMap
+      ?instructionList
+    ;
+  end foreach ;
+#--- End block
+  [!?ioVariableMap endOverride !mEndOf_repeat_instruction] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @selectInstruction analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ??@terminalMap unused inTerminalMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
 :
-  message "@selectInstruction\n" ;
+#--- Begin block
+  [!?ioVariableMap beginOverrideForSelectBlock] ;
+#--- 'or' blocks
+  foreach mSelectBranchList do
+    @semanticInstructionListForGeneration instructionList ;
+    analyzeSyntaxInstructionList
+      !inSemanticContext
+      !inPredefinedTypes
+      !inTerminalMap
+      !mSyntaxInstructionList
+      !mEndOf_instructions
+      !?ioVariableMap
+      ?instructionList
+    ;
+  end foreach ;
+#--- End block
+  [!?ioVariableMap endOverride !mEndOf_select_instruction] ;
 end method ;
 
 #---------------------------------------------------------------------------*
