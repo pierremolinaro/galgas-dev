@@ -9536,7 +9536,7 @@ void C_Grammar_programSLRgrammar::_performSourceFileParsing_ (C_Compiler & inCom
           C_Grammar_programSLRgrammar _grammar ;
           _grammar.nt_program_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -9573,7 +9573,7 @@ void C_Grammar_programSLRgrammar::_performSourceStringParsing_ (C_Compiler & inC
       C_Grammar_programSLRgrammar _grammar ;
       _grammar.nt_program_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }

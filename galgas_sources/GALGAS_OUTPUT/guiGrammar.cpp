@@ -432,7 +432,7 @@ void C_Grammar_guiGrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
           C_Grammar_guiGrammar _grammar ;
           _grammar.nt_gui_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -469,7 +469,7 @@ void C_Grammar_guiGrammar::_performSourceStringParsing_ (C_Compiler & inCompiler
       C_Grammar_guiGrammar _grammar ;
       _grammar.nt_gui_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }

@@ -918,7 +918,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << ") ;\n"
                           "          if (inSentStringPtr != NULL) {\n"
-                          "            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;\n"
                           "          }\n"
                           "        }\n" ;
         generatedZone3 << "      }else{\n"
@@ -994,7 +994,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << ") ;\n"
                           "      if (inSentStringPtr != NULL) {\n"
-                          "        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;\n"
                           "      }\n"
                           "    }\n"
                           "  }\n"

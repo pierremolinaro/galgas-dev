@@ -12118,7 +12118,7 @@ void C_Grammar_semanticsSLRgrammar::_performSourceFileParsing_ (C_Compiler & inC
           C_Grammar_semanticsSLRgrammar _grammar ;
           _grammar.nt_semantics_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -12155,7 +12155,7 @@ void C_Grammar_semanticsSLRgrammar::_performSourceStringParsing_ (C_Compiler & i
       C_Grammar_semanticsSLRgrammar _grammar ;
       _grammar.nt_semantics_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }

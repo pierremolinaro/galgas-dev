@@ -20476,7 +20476,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_ (C_Compil
           C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
           _grammar.nt_galgas_5F_start_5F_symbol_ (*scanner_, parameter_1, parameter_2, parameter_3, parameter_4, parameter_5, parameter_6) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -20516,7 +20516,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_ (C_Comp
       C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
       _grammar.nt_galgas_5F_start_5F_symbol_ (*scanner_, parameter_1, parameter_2, parameter_3, parameter_4, parameter_5, parameter_6) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }
@@ -20552,7 +20552,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importLexi
           C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
           _grammar.nt_galgas_5F_start_5F_symbol_importLexique (*scanner_, parameter_1) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -20587,7 +20587,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importLe
       C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
       _grammar.nt_galgas_5F_start_5F_symbol_importLexique (*scanner_, parameter_1) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }
@@ -20624,7 +20624,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSynt
           C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
           _grammar.nt_galgas_5F_start_5F_symbol_importSyntax (*scanner_, parameter_1, parameter_2) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -20660,7 +20660,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSy
       C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
       _grammar.nt_galgas_5F_start_5F_symbol_importSyntax (*scanner_, parameter_1, parameter_2) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }
@@ -20698,7 +20698,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSema
           C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
           _grammar.nt_galgas_5F_start_5F_symbol_importSemantics (*scanner_, parameter_1, parameter_2, parameter_3) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -20735,7 +20735,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSe
       C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
       _grammar.nt_galgas_5F_start_5F_symbol_importSemantics (*scanner_, parameter_1, parameter_2, parameter_3) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }
@@ -20773,7 +20773,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importGram
           C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
           _grammar.nt_galgas_5F_start_5F_symbol_importGrammarForSemantics (*scanner_, parameter_1, parameter_2, parameter_3) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -20810,7 +20810,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importGr
       C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
       _grammar.nt_galgas_5F_start_5F_symbol_importGrammarForSemantics (*scanner_, parameter_1, parameter_2, parameter_3) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }
@@ -20846,7 +20846,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importOpti
           C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
           _grammar.nt_galgas_5F_start_5F_symbol_importOptions (*scanner_, parameter_1) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -20881,7 +20881,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importOp
       C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
       _grammar.nt_galgas_5F_start_5F_symbol_importOptions (*scanner_, parameter_1) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }
@@ -20916,7 +20916,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_compileFil
           C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
           _grammar.nt_galgas_5F_start_5F_symbol_compileFile (*scanner_) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -20950,7 +20950,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_compileF
       C_Grammar_galgas_5F_LL_31__5F_grammar _grammar ;
       _grammar.nt_galgas_5F_start_5F_symbol_compileFile (*scanner_) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }

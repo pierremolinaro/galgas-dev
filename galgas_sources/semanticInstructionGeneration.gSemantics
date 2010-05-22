@@ -216,6 +216,16 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @grammarInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@grammarInstructionForGeneration generateInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @ifInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet

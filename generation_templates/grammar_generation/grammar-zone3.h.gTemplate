@@ -1,0 +1,72 @@
+//---------------------------------------------------------------------------*
+
+class cGrammar_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]% : %?COLUMN_CLASS_DECLARATION
+foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
+  do %public cParser_% ![[[mValue string] stringByDeletingPathExtension] identifierRepresentation]
+  between %,\n%!COLUMN_CLASS_DECLARATION
+end foreach
+% {
+%
+foreach NON_TERMINAL_MAP do
+  foreach mNonterminalSymbolParametersMap prefixedBy label_ do
+    %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^ %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler%
+    foreach label_mFormalParametersList do index IDX
+      %,\n%!^
+      if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * const inArgument% ![IDX string]
+      elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * inArgument% ![IDX string]
+      end if
+    end foreach
+    %) ;\n\n%
+    if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
+      %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+      !^%const C_String & inDependancyExtension,\n%
+      !^%const C_String & inDependancyPath,\n%
+      !^%GALGAS_string * inSentStringPtr,\n%
+      !^%GALGAS_lstring * const inFileName%
+      foreach label_mFormalParametersList do index IDX
+        %,\n%!^
+        if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * const inArgument% ![IDX string]
+        elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * & ioArgument% ![IDX string]
+        elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * & outArgument% ![IDX string]
+        else # argumentIn
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * inArgument% ![IDX string]
+        end if
+      end foreach
+      %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
+      %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+      !^%GALGAS_string * inSentStringPtr,\n%
+      !^%GALGAS_string * const inSourceString%
+      foreach label_mFormalParametersList do index IDX
+        %,\n%!^
+        if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * const inArgument% ![IDX string]
+        elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * & ioArgument% ![IDX string]
+        elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * & outArgument% ![IDX string]
+        else # argumentIn
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * inArgument% ![IDX string]
+        end if
+      end foreach
+      %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+    end if
+  end foreach
+end foreach%
+%foreach ADDED_NON_TERMINAL_LIST
+  do %  public : virtual PMSInt32 select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (C_Lexique_%!LEXIQUE_IDENTIFIER% &) ;\n%
+  between %\n%
+end foreach
+%} ;
+
+//---------------------------------------------------------------------------*
+
+#endif
