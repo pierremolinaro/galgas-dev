@@ -31,7 +31,8 @@ import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
 #---------------------------------------------------------------------------*
 
 map @nonterminalLabelMap {
-  @formalParameterListForGeneration mSignature ;
+  @formalParameterListForGeneration mSignatureForGeneration ;
+  @formalParameterSignature mSignature ;
   @location mEndOfArgumentLocation ;
   insert insertKey error message "the '%K' nonterminal label has been already declared in %L" ;
   search searchKey error message "the '%K' nonterminal label is not declared" ;
@@ -39,14 +40,7 @@ map @nonterminalLabelMap {
 
 #---------------------------------------------------------------------------*
 
-map @ruleIndexMap {
-  @uint mRuleIndex ;
-  insert insertKey error message "the '%K' rule has been already declared [INTERNAL ERROR]" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @nonterminalDeclarationMap {
+map @nonterminalMap {
   @nonterminalLabelMap mLabelMap ;
   @bool mHasParseLabel ;
   insert insertKey error message "the '%K' nonterminal has been already declared in %L" ;
@@ -59,6 +53,7 @@ list @ruleDeclarationList {
   @string mNonterminalName ;
   @uint mRuleIndex ;
   @nonterminalLabelMap mLabelMap ;
+  @bool mHasParseLabel ;
 }
 
 #---------------------------------------------------------------------------*
@@ -66,8 +61,9 @@ list @ruleDeclarationList {
 class @syntaxDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @string mComponentName ;
   @string mLexiqueName ;
-  @nonterminalDeclarationMap mNonterminalDeclarationMap ;
+  @nonterminalMap mNonterminalDeclarationMap ;
   @ruleDeclarationList mRuleDeclarationList ;
+  @uint mSelectMethodCount ;
 }
 
 #---------------------------------------------------------------------------*
@@ -80,6 +76,7 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
 } {
   template syntaxFileHeader "syntax-file.h.gTemplate"
     ?@string COMPONENT_NAME
+    ?@string LEXIQUE_NAME
     ?@lstringlist IMPORTED_COMPONENT_LIST
     ?@lstringlist TYPE_PREDECLARATION_LIST
   ;
@@ -91,19 +88,28 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
   template syntaxAnalyserClassDeclaration "syntax-analyser-class.gTemplate"
     ?@string COMPONENT_NAME
     ?@string LEXIQUE_NAME
-    ?@nonterminalDeclarationMap NONTERMINAL_MAP
+    ?@nonterminalMap NONTERMINAL_MAP
     ?@ruleDeclarationList RULE_DECLARATION_LIST
+    ?@uintlist SELECT_METHOD_LIST
   ;
 }
 
 #---------------------------------------------------------------------------*
 
 override reader @syntaxDeclarationForGeneration appendDeclaration -> @string outHeader :
+  @uintlist selectMethodList [emptyList] ;
+  @uint idx := 0 ;
+  loop mSelectMethodCount + 1 :
+  while idx < mSelectMethodCount do
+    selectMethodList += !idx ;
+    idx ++ ;
+  end loop ;
   outHeader := [filewrapper syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration
     !mComponentName
     !mLexiqueName
     !mNonterminalDeclarationMap
     !mRuleDeclarationList
+    !selectMethodList
   ] ; 
 end reader ;
 
@@ -117,7 +123,7 @@ routine enterNonterminalNonTerminalInMapAndCheck
   ??@lstring inNonTerminalName
   ??@nonterminalLabelMap inNonterminalLabelMap
   ??@bool inHasParseLabel
-  ?!@nonterminalDeclarationMap ioNonterminalDeclarationMap 
+  ?!@nonterminalMap ioNonterminalDeclarationMap 
 :
   with ioNonterminalDeclarationMap hasKey ![inNonTerminalName string] do
     if mHasParseLabel != inHasParseLabel then
@@ -158,7 +164,7 @@ routine enterNonterminalNonTerminalInMapAndCheck
           newSignature += !mFormalArgumentType !mFormalArgumentPassingMode ;
         end foreach ;
         checkMethodSignatures
-          !mSignature
+          !mSignatureForGeneration
           !mEndOfArgumentLocation
           !newSignature
           !new_mEndOfArgumentLocation
@@ -175,19 +181,21 @@ end routine ;
 routine buildNonterminalDeclarationsMap
   ??@nonterminalDeclarationListAST inNonterminalDeclarationList
   ??@semanticContext inSemanticContext
-  !@nonterminalDeclarationMap outNonterminalDeclarationMap
+  !@nonterminalMap outNonterminalDeclarationMap
 :
-  outNonterminalDeclarationMap := [@nonterminalDeclarationMap emptyMap] ;
+  outNonterminalDeclarationMap := [@nonterminalMap emptyMap] ;
 #--- Nonterminal declaration list
   foreach inNonterminalDeclarationList do
     @nonterminalLabelMap nonterminalLabelMap [emptyMap] ;
     foreach mLabels do
-      @formalParameterListForGeneration signature [emptyList] ;
+      @formalParameterListForGeneration signatureForGeneration [emptyList] ;
+      @formalParameterSignature signature [emptyList] ;
       foreach mFormalArgumentList do
         const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
-        signature += !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string] ;
+        signatureForGeneration += !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string] ;
+        signature += !t !mFormalArgumentPassingMode ;
       end foreach ;
-      [!?nonterminalLabelMap insertKey !mLabelName !signature !mEndOfArgumentLocation] ;
+      [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation] ;
     end foreach ;
     enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !mHasParseLabel !?outNonterminalDeclarationMap ;
   end foreach ;
@@ -203,8 +211,10 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@nonterminalMap inNonterminalMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount
   ?!@stringlist ioLocalVariableCppNameList
 ;
 
@@ -214,8 +224,10 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap unused inTerminalMap
+  ??@nonterminalMap unused inNonterminalMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@uint unused ioSelectMethodCount
   ?!@stringlist ioLocalVariableCppNameList
 :
   @semanticInstructionAST t := self ; # Bug in GALGAS 1
@@ -231,14 +243,46 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @nonterminalCallInstruction analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
   ??@terminalMap unused inTerminalMap
+  ??@nonterminalMap inNonterminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@variableMap ioVariableMap
+  ?!@uint unused ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
 :
-  message "@nonterminalCallInstruction\n" ;
+  @nonterminalLabelMap labelMap ;
+  @bool hasParseLabel ;
+  [inNonterminalMap searchKey !mNonterminalName ?labelMap ?hasParseLabel] ;
+  @formalParameterSignature signature ;
+  if [mLabelName string] == "parse" then
+    if not hasParseLabel then
+      error mLabelName
+      : "the '<" . mNonterminalName . ">' nonterminal does not declare the 'parse' label"
+      : signature
+      ;
+    else
+      signature := [@formalParameterSignature emptyList] ;
+    end if ;
+  else
+    [labelMap searchKey !mLabelName ?* ?signature ?*] ;
+  end if ;
+#--- call arguments
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mNonterminalName
+    !"'<" . mNonterminalName . ">' nonterminal declaration"
+    !signature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+    ?temporaryInputVariableForRoutineInvocationForGeneration
+  ;
+
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -247,8 +291,10 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@nonterminalMap unused inNonterminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@uint unused ioSelectMethodCount
   ?!@stringlist ioLocalVariableCppNameList
 :
   @lexicalSentValueList sentAttributeList ;
@@ -303,9 +349,11 @@ routine analyzeSyntaxInstructionList
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@nonterminalMap inNonterminalMap
   ??@syntaxInstructionList inSemanticInstructionListAST
   ??@location inEndOfBranchLocation
   ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 :
   outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
@@ -318,8 +366,10 @@ routine analyzeSyntaxInstructionList
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inNonterminalMap
       !?outInstructionListForGeneration
       !?ioVariableMap
+      !?ioSelectMethodCount
       !?localVariableCppNameList
     ] ;
   end foreach ;
@@ -340,10 +390,13 @@ override method @repeatInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@nonterminalMap inNonterminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
 :
+  ioSelectMethodCount ++ ;
 #--- Begin block
   [!?ioVariableMap beginOverrideForRepeatBlock] ;
 #--- Repeated instructions
@@ -352,9 +405,11 @@ override method @repeatInstruction analyzeSyntaxInstruction
     !inSemanticContext
     !inPredefinedTypes
     !inTerminalMap
+    !inNonterminalMap
     !mRepeatedInstructionList
     !mEndOf_repeated_instructions_branch
     !?ioVariableMap
+    !?ioSelectMethodCount
     ?repeated_instructionList
   ;
 #--- 'while' blocks
@@ -364,9 +419,11 @@ override method @repeatInstruction analyzeSyntaxInstruction
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inNonterminalMap
       !mSyntaxInstructionList
       !mEndOf_instructions
       !?ioVariableMap
+      !?ioSelectMethodCount
       ?instructionList
     ;
   end foreach ;
@@ -380,10 +437,13 @@ override method @selectInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@nonterminalMap inNonterminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
 :
+  ioSelectMethodCount ++ ;
 #--- Begin block
   [!?ioVariableMap beginOverrideForSelectBlock] ;
 #--- 'or' blocks
@@ -393,9 +453,11 @@ override method @selectInstruction analyzeSyntaxInstruction
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inNonterminalMap
       !mSyntaxInstructionList
       !mEndOf_instructions
       !?ioVariableMap
+      !?ioSelectMethodCount
       ?instructionList
     ;
   end foreach ;
@@ -406,40 +468,135 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseDoInstruction analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ??@terminalMap unused inTerminalMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap  inTerminalMap
+  ??@nonterminalMap inNonterminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
 :
-  message "@parseDoInstruction\n" ;
+#--- Begin block
+  [!?ioVariableMap beginOverrideForSelectBlock] ;
+#--- 'or' blocks
+  foreach mParseDoBranchList do
+    @semanticInstructionListForGeneration instructionList ;
+    analyzeSyntaxInstructionList
+      !inSemanticContext
+      !inPredefinedTypes
+      !inTerminalMap
+      !inNonterminalMap
+      !mSyntaxInstructionList
+      !mEndOf_instructions
+      !?ioVariableMap
+      !?ioSelectMethodCount
+      ?instructionList
+    ;
+  end foreach ;
+#--- End block
+  [!?ioVariableMap endOverride !mEndOfParseDoInstruction] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseLoopInstruction analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ??@terminalMap unused inTerminalMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
+  ??@nonterminalMap inNonterminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
 :
-  message "@parseLoopInstruction\n" ;
+#--- Variant expression
+  @semanticExpressionForGeneration variant_expression ;
+  [mVariantExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?variant_expression
+  ] ;
+  if [variant_expression mType] != inPredefinedTypes->mUIntType then
+    error mEndOfVariantExpression
+    :"the variant expression type is '@" . [[variant_expression mType] key]
+    . "', but it should be '@" . [inPredefinedTypes->mUIntType key] . "' type"
+    ;
+  end if ;
+#--- While expression
+  @semanticExpressionForGeneration while_expression ;
+  [mWhileExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?while_expression
+  ] ;
+  if [while_expression mType] != inPredefinedTypes->mBoolType then
+    error mEndOfWhileExpression
+    :"the variant expression type is '@" . [[variant_expression mType] key]
+    . "', but it should be '@" . [inPredefinedTypes->mBoolType key] . "' type"
+    ;
+  end if ;
+#--- 'do' instructions
+#--- Begin block
+  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+#--- 'or' blocks
+  @semanticInstructionListForGeneration instructionList ;
+  analyzeSyntaxInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !inTerminalMap
+    !inNonterminalMap
+    !mDoInstructionList
+    !mEndOfInstructionList
+    !?ioVariableMap
+    !?ioSelectMethodCount
+    ?instructionList
+  ;
+#--- End block
+  [!?ioVariableMap endOverride !mEndOfInstructionList] ;
+#---
+
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseWhenInstruction analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ??@terminalMap unused inTerminalMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@terminalMap inTerminalMap
+  ??@nonterminalMap inNonterminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-  ?!@stringlist unused ioLocalVariableCppNameList
+  ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount
+  ?!@stringlist ioLocalVariableCppNameList
 :
-  message "@parseWhenInstruction\n" ;
+  @uint localSelectMethodCount := ioSelectMethodCount ;
+  foreach mWhenBranchList do
+    localSelectMethodCount := ioSelectMethodCount ;
+    @semanticExpressionForGeneration when_expression ;
+    [mWhenExpression analyzeSemanticExpression
+      !inSemanticContext
+      !inPredefinedTypes
+      !?ioVariableMap
+      ?when_expression
+    ] ;
+    @semanticInstructionListForGeneration instructionListForGeneration [emptyList] ;
+    foreach mParseDoBranchList do
+      [mInstruction analyzeSyntaxInstruction
+        !inSemanticContext
+        !inPredefinedTypes
+        !inTerminalMap
+        !inNonterminalMap
+        !?instructionListForGeneration
+        !?ioVariableMap
+        !?localSelectMethodCount
+        !?ioLocalVariableCppNameList
+      ] ;
+    end foreach ;
+  end foreach ;
+  ioSelectMethodCount := localSelectMethodCount ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -448,8 +605,10 @@ override method @blockInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ??@terminalMap unused inTerminalMap
+  ??@nonterminalMap unused inNonterminalMap
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
+  ?!@uint unused ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
 :
   message "@blockInstruction\n" ;
@@ -467,15 +626,24 @@ routine semanticAnalysisOfRuleLabel
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
-  !@formalParameterListForGeneration outSignature
+  ??@nonterminalMap inNonterminalMap
+  ?!@uint ioSelectMethodCount
+  !@formalParameterListForGeneration outSignatureForGeneration
+  !@formalParameterSignature outSignature
 :
   @variableMap variableMap [emptyMap] ;
   buildLocalVariableMapAndSignature
     !inSemanticContext
     !inFormalArguments
     !?variableMap
-    ?outSignature
+    ?outSignatureForGeneration
   ;
+#---
+  outSignature := [@formalParameterSignature emptyList] ;
+  foreach outSignatureForGeneration do
+    outSignature += !mFormalArgumentType !mFormalArgumentPassingMode ;
+
+  end foreach ;
 #--- Semantic analysis of instruction list
   @semanticInstructionListForGeneration instructionListForGeneration [emptyList] ;
   @stringlist localVariableCppNameList [emptyList] ;
@@ -484,8 +652,10 @@ routine semanticAnalysisOfRuleLabel
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inNonterminalMap
       !?instructionListForGeneration
       !?variableMap
+      !?ioSelectMethodCount
       !?localVariableCppNameList
     ] ;
   end foreach ;
@@ -507,50 +677,69 @@ routine semanticAnalysisOfSyntaxComponent
   ??@terminalMap inTerminalMap
   !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
 :
-  @nonterminalDeclarationMap nonterminalDeclarationMap [emptyMap] ;
+#------------ Build nonterminal map
+  @nonterminalMap nonterminalMap [emptyMap] ;
   buildNonterminalDeclarationsMap
     !inNonterminalDeclarationList
     !inSemanticContext
-    ?nonterminalDeclarationMap
+    ?nonterminalMap
   ;
-#--- Rule list
-  @ruleIndexMap ruleIndexMap [emptyMap] ;
-  @ruleDeclarationList ruleDeclarationList [emptyList] ;
+#------------ Build nonterminal map from rule headers
   foreach inRuleList do
     @nonterminalLabelMap nonterminalLabelMap [emptyMap] ;
     foreach mLabelList do
-      @formalParameterListForGeneration signature ;
+      @formalParameterListForGeneration signatureForGeneration [emptyList] ;
+      @formalParameterSignature signature [emptyList] ;
+      foreach mFormalArguments do
+        const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+        signatureForGeneration += !mFormalArgumentPassingMode !type !mFormalArgumentName !"argument_" . mFormalArgumentName ;
+        signature += !type !mFormalArgumentPassingMode ;
+      end foreach ;
+      [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation] ;
+    end foreach ;
+    with nonterminalMap hasKey ![mNonterminalName string] do
+      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !mHasParseLabel !?nonterminalMap ;
+    else
+      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !false !?nonterminalMap ;
+    end with ;
+  end foreach ;
+#--- Rule list
+  @uint selectMethodCount := 0 ;
+  @ruleDeclarationList ruleDeclarationList [emptyList] ;
+  @uint newRuleIndex := 0 ;
+  foreach inRuleList do
+    @nonterminalLabelMap nonterminalLabelMap [emptyMap] ;
+    @uint localSelectMethodCount := selectMethodCount ;
+    foreach mLabelList do
+      localSelectMethodCount := selectMethodCount ;
+      @formalParameterListForGeneration signatureForGeneration ;
+      @formalParameterSignature signature ;
       semanticAnalysisOfRuleLabel
         !mFormalArguments
         !mSyntaxInstructionList
         !inSemanticContext
         !inPredefinedTypes
         !inTerminalMap
+        !nonterminalMap
+        !?localSelectMethodCount
+        ?signatureForGeneration
         ?signature
       ;
-      [!?nonterminalLabelMap insertKey !mLabelName !signature !mEndOfArgumentLocation] ;
+      [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation] ;
     end foreach ;
-    @uint ruleIndex ;
-    with !?ruleIndexMap hasKey ![mNonterminalName string] do
-      ruleIndex := mRuleIndex ;
-      mRuleIndex ++ ;
-    else
-      [!?ruleIndexMap insertKey !mNonterminalName !0] ;
-      ruleIndex := 0 ;
-    end with ;
-    with nonterminalDeclarationMap hasKey ![mNonterminalName string] do
-      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !mHasParseLabel !?nonterminalDeclarationMap ;
-    else
-      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !false !?nonterminalDeclarationMap ;
-    end with ;
-    ruleDeclarationList += ![mNonterminalName string] !ruleIndex !nonterminalLabelMap ;
+    selectMethodCount := localSelectMethodCount ;
+    @bool hasParseLabel ;
+    [nonterminalMap searchKey !mNonterminalName ?* ?hasParseLabel] ;
+    ruleDeclarationList += ![mNonterminalName string] !newRuleIndex !nonterminalLabelMap !hasParseLabel ;
+    newRuleIndex ++ ;
   end foreach ;
 #---
   outSyntaxDeclarationForGeneration := [@syntaxDeclarationForGeneration new
     !inComponentName
     !inLexiqueName
-    !nonterminalDeclarationMap
+    !nonterminalMap
     !ruleDeclarationList
+    !selectMethodCount
   ] ;
 end routine ;
 

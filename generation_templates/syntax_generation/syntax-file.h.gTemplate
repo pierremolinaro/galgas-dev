@@ -7,6 +7,10 @@
 
 //---------------------------------------------------------------------------*
 
+#include "%!LEXIQUE_NAME%.h"
+
+//---------------------------------------------------------------------------*
+
 % foreach IMPORTED_COMPONENT_LIST do
     %#include "%![[mValue lastPathComponent] stringByDeletingPathExtension]%.h"\n%
   end foreach%

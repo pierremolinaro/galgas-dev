@@ -3944,7 +3944,7 @@ void C_Grammar_galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & i
           C_Grammar_galgasTemplateGrammar _grammar ;
           _grammar.nt_lexique_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1, parameter_2, parameter_3, parameter_4, parameter_5, parameter_6) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
           }
         }
       }else{
@@ -3988,7 +3988,7 @@ void C_Grammar_galgasTemplateGrammar::_performSourceStringParsing_ (C_Compiler &
       C_Grammar_galgasTemplateGrammar _grammar ;
       _grammar.nt_lexique_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1, parameter_2, parameter_3, parameter_4, parameter_5, parameter_6) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
+        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
       }
     }
   }

@@ -589,7 +589,7 @@ routine analyzeRoutineArguments
 :
   if [inRoutineSignature length] != [inActualParameterList length] then
     error inRoutineName
-    :"the '" . inRoutineName . "' " . inInvokedEntityName . " header defines " . [[inRoutineSignature length] string] 
+    :"the " . inInvokedEntityName . " defines " . [[inRoutineSignature length] string] 
     . " formal argument(s), but this invocation names "
     . [[inActualParameterList length] string] . " argument(s)"
     : outActualParameterListForGeneration, outTemporaryInputVariableForRoutineInvocationForGeneration
@@ -632,7 +632,7 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     !mRoutineName
-    !"routine"
+    !"'" . mRoutineName . "' routine header"
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
@@ -669,7 +669,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     !mMethodName
-    !"class method"
+    !"'" . mMethodName . "' class method header"
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
@@ -714,7 +714,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     !mMethodName
-    !"instance method"
+    !"'" . mMethodName . "' instance method header"
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
@@ -760,7 +760,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !inSemanticContext
     !inPredefinedTypes
     !mModifierName
-    !"modifier"
+    !"'" . mModifierName . "' modifier header"
     !routineSignature
     !mActualParameterList
     !?ioVariableMap

@@ -123,6 +123,7 @@ class @selectInstruction extends @syntaxInstructionAST {
 
 class @parseDoInstruction extends @syntaxInstructionAST {
   @listOfSyntaxInstructionList mParseDoBranchList ;
+  @location mEndOfParseDoInstruction ;
 }
 
 #---------------------------------------------------------------------------*
@@ -133,8 +134,11 @@ class @parseDoInstruction extends @syntaxInstructionAST {
 
 class @parseLoopInstruction extends @syntaxInstructionAST {
   @semanticExpressionAST mVariantExpression ;
+  @location mEndOfVariantExpression ;
   @semanticExpressionAST mWhileExpression ;
+  @location mEndOfWhileExpression ;
   @syntaxInstructionList mDoInstructionList ;
+  @location mEndOfInstructionList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -396,11 +396,13 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   while
   end repeat ;
   $end$ ;
+  const @location endOfInstruction := here ;
   $parse$ ;
   $;$ ;
   outInstruction := [@parseDoInstruction new
     !instructionLocation
     !mParseDoBranchList
+    !endOfInstruction
   ] ;
 end rule ;
 
@@ -449,20 +451,26 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $loop$ ;
   @semanticExpressionAST variantExpression ;
   <expression> ? variantExpression ;
+  const @location endOfVariantExpression := here ;
   $while$ ;
   @semanticExpressionAST whileExpression ;
   <expression> ? whileExpression ;
+  const @location endOfWhileExpression := here ;
   $do$ ;
   @syntaxInstructionList instructionList ;
   <syntax_instruction_list> ? instructionList ;
   $end$ ;
+  const @location endOfInstructionList := here ;
   $parse$ ;
   $;$ ;
   outInstruction := [@parseLoopInstruction new
     !instructionLocation
     !variantExpression
+    !endOfVariantExpression
     !whileExpression
+    !endOfWhileExpression
     !instructionList
+    !endOfInstructionList
   ] ;
 end rule ;
 

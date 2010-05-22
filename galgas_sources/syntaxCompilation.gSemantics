@@ -29,7 +29,7 @@ import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine buildTokenMap
+routine buildTerminalMap
   ??@lexiqueComponentAST inLexiqueComponentRoot
   !@terminalMap outTerminalMap
 :
@@ -139,15 +139,16 @@ routine compileSyntaxComponent
   ;
 #--- Build token map
   @terminalMap terminalMap ;
-  buildTokenMap !lexiqueComponentRoot ?terminalMap ;
+  buildTerminalMap !lexiqueComponentRoot ?terminalMap ;
 #--- Build semantic context from rule headers and non terminal declaration
   const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
   @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
+  const @string lexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
   semanticAnalysisOfSyntaxComponent
     ![syntaxComponentRoot mNonterminalDeclarationList]
     ![syntaxComponentRoot mRuleList]
     ![componentName string]
-    ![[[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation]
+    ![lexiqueName identifierRepresentation]
     !semanticContext
     !predefinedTypes
     !terminalMap
@@ -165,6 +166,7 @@ routine compileSyntaxComponent
   if [@uint errorCount] == 0 then
     @string headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
       ![componentName string]
+      !lexiqueName
       ![syntaxComponentRoot mImportedComponentFileNameList]
       ![semanticContext->mTypeMap allKeyList]
     ] ;
