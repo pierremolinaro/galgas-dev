@@ -77,12 +77,13 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
   template syntaxFileHeader "syntax-file.h.gTemplate"
     ?@string COMPONENT_NAME
     ?@string LEXIQUE_NAME
-    ?@lstringlist IMPORTED_COMPONENT_LIST
+    ?@stringlist IMPORTED_COMPONENT_LIST
     ?@lstringlist TYPE_PREDECLARATION_LIST
   ;
 
   template syntaxFileImplementation "syntax-file.cpp.gTemplate"
     ?@string COMPONENT_NAME
+    ?@stringlist IMPORTED_COMPONENT_LIST
   ;
 
   template syntaxAnalyserClassDeclaration "syntax-analyser-class.gTemplate"

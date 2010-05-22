@@ -36,11 +36,12 @@ filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_
 } {
   template semanticFileHeader "semantic-file.h.gTemplate"
     ?@string COMPONENT_NAME
-    ?@lstringlist IMPORTED_COMPONENT_LIST
+    ?@stringlist IMPORTED_COMPONENT_LIST
     ?@lstringlist TYPE_PREDECLARATION_LIST
   ;
   template semanticFileImplementation "semantic-file.cpp.gTemplate"
     ?@string COMPONENT_NAME
+    ?@stringlist IMPORTED_COMPONENT_LIST
   ;
 }
 
@@ -79,6 +80,8 @@ routine recursivelyImportSemanticComponent
   ?!@grammarComponentASTList ioGrammarComponentASTList
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
   ?!@stringset ioParsedFileSet
+  ?!@stringlist ioHeaderIncludeList
+  ?!@stringlist ioImplementationIncludeList
   ??@lstringlist inListOfFilesToParse
   ??@string inDirectory
 :
@@ -92,6 +95,7 @@ routine recursivelyImportSemanticComponent
       const @string extension := [[filePath string] pathExtension] ;
       if extension == "gOption" then
         ioOptionComponentFileNameList += !filePath ;
+        ioImplementationIncludeList += ![[filePath lastPathComponent] stringByDeletingPathExtension] ;
       elsif extension == "gGrammar" then
         @grammarComponentAST grammarComponentAST ;
         parseGrammarComponent
@@ -100,6 +104,7 @@ routine recursivelyImportSemanticComponent
           ?grammarComponentAST
         ;
         ioGrammarComponentASTList += !grammarComponentAST ;
+        ioImplementationIncludeList += ![[grammarComponentAST mGrammarName] string] ;
       elsif extension == "gSemantics" then
       #--- Parse semantic component
         @semanticsComponentAST semanticsComponentRoot ;
@@ -108,6 +113,7 @@ routine recursivelyImportSemanticComponent
           !?ioParsedComponentStruct
           ?semanticsComponentRoot
         ;
+        ioHeaderIncludeList += ![[semanticsComponentRoot mSemanticsComponentName] string] ;
       #--- Add declaration to declaration list
         ioSemanticDeclarationList .= [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
       #--- Import semantic components named in this file
@@ -117,6 +123,8 @@ routine recursivelyImportSemanticComponent
           !?ioGrammarComponentASTList
           !?ioSemanticDeclarationList
           !?ioParsedFileSet
+          !?ioHeaderIncludeList
+          !?ioImplementationIncludeList
           ![semanticsComponentRoot mImportedComponentFileNameList]
           !inDirectory
         ;
@@ -263,12 +271,16 @@ routine compileSemanticsComponent
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
+  @stringlist headerIncludeList [emptyList] ;
+  @stringlist implementationIncludeList [emptyList] ;
   recursivelyImportSemanticComponent
     !?ioParsedComponentStruct
     !?optionComponentFileNameList
     !?grammarComponentASTList
     !?semanticDeclarationList
     !?parsedFileSet
+    !?headerIncludeList
+    !?implementationIncludeList
     ![semanticsComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
@@ -304,7 +316,7 @@ routine compileSemanticsComponent
   if [@uint errorCount] == 0 then
     @string headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       ![componentName string]
-      ![semanticsComponentRoot mImportedComponentFileNameList]
+      !headerIncludeList
       ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
@@ -324,6 +336,7 @@ routine compileSemanticsComponent
   if [@uint errorCount] == 0 then
     @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       ![componentName string]
+      !implementationIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
