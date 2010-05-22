@@ -323,21 +323,25 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   @location mRepeatInstructionLocation := here ;
   @syntaxInstructionList mRepeatedInstructionList ;
   <syntax_instruction_list> ? mRepeatedInstructionList ;
+  const @location endOf_repeated_instructions := here ;
   @listOfSyntaxInstructionList mRepeatBranchList [emptyList] ;
   repeat
     $while$ ;
     @syntaxInstructionList mInstructionList ;
     <syntax_instruction_list> ? mInstructionList ;
-    mRepeatBranchList += ! mInstructionList ;
+    mRepeatBranchList += ! mInstructionList !here ;
   while
   end repeat ;
   $end$ ;
+  const @location endOf_repeat_instruction := here ;
   $repeat$ ;
   $;$ ;
   outInstruction := [@repeatInstruction new
     !mRepeatInstructionLocation
     !mRepeatedInstructionList
+    !endOf_repeated_instructions
     !mRepeatBranchList
+    !endOf_repeat_instruction
   ] ;
 end rule ;
 
@@ -353,19 +357,21 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   @listOfSyntaxInstructionList mSelectBranchList [emptyList] ;
   @syntaxInstructionList instructionList ;
   <syntax_instruction_list> ? instructionList ;
-  mSelectBranchList += !instructionList ;
+  mSelectBranchList += !instructionList !here ;
   repeat
     $or$ ;
     <syntax_instruction_list> ? instructionList ;
-    mSelectBranchList += !instructionList ;
+    mSelectBranchList += !instructionList !here ;
   while
   end repeat ;
   $end$ ;
+  const @location endOf_select_instruction := here ;
   $select$ ;
   $;$ ;
   outInstruction := [@selectInstruction new
     !mSelectInstructionLocation
     !mSelectBranchList
+    !endOf_select_instruction
   ] ;
 end rule ;
 
@@ -382,11 +388,11 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   @listOfSyntaxInstructionList mParseDoBranchList [emptyList] ;
   @syntaxInstructionList instructionList ;
   <syntax_instruction_list> ? instructionList ;
-  mParseDoBranchList += !instructionList ;
+  mParseDoBranchList += !instructionList !here ;
   repeat
     $rewind$ ;
     <syntax_instruction_list> ? instructionList ;
-    mParseDoBranchList += !instructionList ;
+    mParseDoBranchList += !instructionList  !here;
   while
   end repeat ;
   $end$ ;
