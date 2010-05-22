@@ -1179,8 +1179,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
       generatedZone3 << "PMSInt32 cGrammar_" << inTargetFileName.identifierRepresentation ()
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
               << " (C_Lexique_" << inLexiqueName.identifierRepresentation ()
-              << " & inLexique) {\n"
-                 "  return inLexique.nextProductionIndex () ;\n"
+              << " * inLexique) {\n"
+                 "  return inLexique->nextProductionIndex () ;\n"
                  "}\n\n" ;
     }
   }

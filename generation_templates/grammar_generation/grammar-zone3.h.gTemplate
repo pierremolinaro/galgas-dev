@@ -62,7 +62,7 @@ foreach NON_TERMINAL_MAP do
   end foreach
 end foreach%
 %foreach ADDED_NON_TERMINAL_LIST
-  do %  public : virtual PMSInt32 select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (C_Lexique_%!LEXIQUE_IDENTIFIER% &) ;\n%
+  do %  public : virtual PMSInt32 select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (C_Lexique_%!LEXIQUE_IDENTIFIER% *) ;\n%
   between %\n%
 end foreach
 %} ;

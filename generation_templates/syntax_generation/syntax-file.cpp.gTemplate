@@ -9,6 +9,11 @@
 
 //---------------------------------------------------------------------------*
 
+% foreach IMPORTED_COMPONENT_LIST do
+    %#include "%!mValue%.h"\n%
+  end foreach%
+//---------------------------------------------------------------------------*
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define SOURCE_FILE_AT_LINE(line) "%!COMPONENT_NAME%.gSyntax", line
   #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)

@@ -380,22 +380,61 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @modifierCallInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @typeMethodInstructionForGeneration\n" ;
+  foreach mReceiverStructAttributes do
+    ioGeneratedCode .= "(handle struct field)\n" ;
+  end foreach ;
+#--- Parameters
+  @stringlist parameterCppNameList [emptyList] ;
+  @stringlist parametersToReleaseList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+#--- Generate method call
+  ioGeneratedCode .= "modifierCall_" . [mModifierName identifierRepresentation] . " (" . mReceiverCppName ;
+  foreach parameterCppNameList do
+    ioGeneratedCode .= ", "  . mValue ;
+  end foreach ;
+  if mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    ioGeneratedCode .=  ", " . compilerCppName [] ;
+  end if ;
+  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
+#--- Release temporary variables
+  foreach parametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
+  end foreach ;
+#--- Release temporary input variables (joker in source)
+  foreach mTemporaryInputVariableList do
+    ioGeneratedCode .= "macroReleaseObject (" . mCppName . ") ; // Release temporary input variables (joker in source)\n" ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @typeMethodInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@typeMethodInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "@modifierCallInstructionForGeneration generateInstruction\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @modifierCallInstructionForGeneration generateInstruction
+override method @structuredCastInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@modifierCallInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "@structuredCastInstructionForGeneration generateInstruction\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

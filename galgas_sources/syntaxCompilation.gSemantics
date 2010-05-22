@@ -100,12 +100,16 @@ routine compileSyntaxComponent
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
+  @stringlist headerIncludeList [emptyList] ;
+  @stringlist implementationIncludeList [emptyList] ;
   recursivelyImportSemanticComponent
     !?ioParsedComponentStruct
     !?optionComponentFileNameList
     !?grammarComponentASTList
     !?semanticDeclarationList
     !?parsedFileSet
+    !?headerIncludeList
+    !?implementationIncludeList
     ![syntaxComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
@@ -167,7 +171,7 @@ routine compileSyntaxComponent
     @string headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
       ![componentName string]
       !lexiqueName
-      ![syntaxComponentRoot mImportedComponentFileNameList]
+      !headerIncludeList
       ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
@@ -187,6 +191,7 @@ routine compileSyntaxComponent
   if [@uint errorCount] == 0 then
     @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementation
       ![componentName string]
+      !implementationIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;

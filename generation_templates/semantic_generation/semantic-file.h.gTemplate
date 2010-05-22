@@ -8,7 +8,7 @@
 //---------------------------------------------------------------------------*
 
 % foreach IMPORTED_COMPONENT_LIST do
-    %#include "%![[mValue lastPathComponent] stringByDeletingPathExtension]%.h"\n%
+    %#include "%!mValue%.h"\n%
   end foreach%
 //---------------------------------------------------------------------------*
 
