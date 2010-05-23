@@ -27,13 +27,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
 
 %foreach INSERT_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%const GALGAS_lstring * inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring * inKey%
     foreach ATTRIBUTE_LIST
-      do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inArgument%![IDX string]
+      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inArgument%![IDX string]
     end foreach
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
-  %  const GALGAS_root * attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
+  %  GALGAS_root * attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
   foreach ATTRIBUTE_LIST
     do index IDX %, inArgument%![IDX string]
   end foreach
@@ -48,15 +48,16 @@ end foreach
 
 foreach SEARCH_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring * const inKey%
+  %static const utf32 kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring * inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outArgument%![IDX string]
     end foreach
     %,\n %!^%C_Compiler * inCompiler%
-    %\n %!^%COMMA_LOCATION_ARGS) const {\n%
+    %\n %!^%COMMA_LOCATION_ARGS) {\n%
   block 2 :
-    %const utf32 kSearchErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
-    %const GALGAS_root ** attributes = performSearch (inKey, inCompiler, kSearchErrorMessage COMMA_THERE) ;\n%
+    %GALGAS_root ** attributes = performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% COMMA_THERE) ;\n%
     %if (NULL != attributes) {\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes [%![IDX + 1 string]%] ;\n%
@@ -70,7 +71,7 @@ end foreach
 
 foreach REMOVE_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%const GALGAS_lstring * inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring * inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outArgument%![IDX string]
     end foreach
@@ -78,7 +79,7 @@ foreach REMOVE_METHOD_LIST do
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
   block 2 :
     %const utf32 kRemoveErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
-    %const GALGAS_root ** attributes = performRemove (inKey, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
+    %GALGAS_root ** attributes = performRemove (inKey, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
     %if (NULL != attributes) {\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes [%![IDX + 1 string]%] ;\n%
@@ -92,12 +93,12 @@ end foreach
 
 if HAS_INSERT_OR_REPLACE then
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertOrReplace (%?^%const GALGAS_lstring * inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertOrReplace (%?^%GALGAS_lstring * inKey%
     foreach ATTRIBUTE_LIST
-      do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inArgument%![IDX string]
+      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inArgument%![IDX string]
     end foreach
     %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-  %  const GALGAS_root * attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
+  %  GALGAS_root * attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
   foreach ATTRIBUTE_LIST
     do index IDX %, inArgument%![IDX string]
   end foreach
@@ -108,9 +109,9 @@ end if
 
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%const GALGAS_string * inKey,\n%
+  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%GALGAS_string * inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
-  %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
+  %                                               %!^%COMMA_LOCATION_ARGS) {\n%
   %  GALGAS_root * result = readAttributeForKey (inKey, inCompiler, %![IDX + 1 string]% COMMA_THERE) ;\n%
   %  macroNullOrValidObject (result, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
   %  return (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) result ;\n%
@@ -119,8 +120,8 @@ end foreach
 
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%const GALGAS_string * inKey,\n%
-  %                           %!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttributeValue,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_string * inKey,\n%
+  %                           %!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttributeValue,\n%
   %                           %!^%C_Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%
   %  writeAttributeForKey (inKey, inAttributeValue, inCompiler, %![IDX + 1 string]% COMMA_THERE) ;\n%
@@ -133,3 +134,24 @@ GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (const GALGAS_%!TYPE_IDENTIF
 AC_GALGAS_Enumerator (inEnumeratedObject, inAscending) {
 }
 
+%
+
+foreach WITH_ACCESSOR_MAP do
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_root ** readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+  !^%GALGAS_%!TYPE_IDENTIFIER% * & ioMap,\n%
+  !^%GALGAS_%![mArgumentType identifierRepresentation]% * inKey\n%
+  !^%COMMA_LOCATION_ARGS) {\n%
+  %  GALGAS_root ** result = NULL ;\n%
+  %  if ((NULL != ioMap) && (NULL != inKey)) {\n%
+  %    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioMap COMMA_THERE) ;\n%
+  if [lkey string] == "hasKey" then
+  %    result = ioMap->performSearch (inKey, inCompiler COMMA_THERE) ;\n%
+  else
+  %    result = ioMap->performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% COMMA_THERE) ;\n%
+  end if
+  %  }\n%
+  %  macroReleaseObject (inKey) ; // Release 'in' argument\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach

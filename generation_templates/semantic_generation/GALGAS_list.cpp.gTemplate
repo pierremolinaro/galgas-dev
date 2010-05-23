@@ -16,12 +16,12 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (LO
 
 GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   between %,\n%!^
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
-  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
   foreach ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]
   between %, %
@@ -48,12 +48,12 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
 
 void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
   foreach ATTRIBUTE_LIST
-  do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (ioResult != NULL) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-    const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %
@@ -67,12 +67,12 @@ void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   between %,\n%!^
   end foreach
   %\n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (inOperand0 != NULL) {
-    const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %
@@ -90,7 +90,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
       between %, %
@@ -109,7 +109,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
       between %, %
@@ -127,8 +127,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string] %,\n%!^
   end foreach
   %C_Compiler * inCompiler
-  %!^%COMMA_LOCATION_ARGS) const {
-  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+  %!^%COMMA_LOCATION_ARGS) {
+  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
       between %, %
@@ -146,8 +146,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * & outOperand%![IDX string] %,\n%!^
   end foreach
   %C_Compiler * inCompiler
-  %!^%COMMA_LOCATION_ARGS) const {
-  const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+  %!^%COMMA_LOCATION_ARGS) {
+  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
       between %, %
@@ -160,8 +160,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (const GALGAS_%!TYPE_IDENTIFIER% * inOperand1,
-                                                        const GALGAS_%!TYPE_IDENTIFIER% * inOperand2
+GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (GALGAS_%!TYPE_IDENTIFIER% * inOperand1,
+                                                        GALGAS_%!TYPE_IDENTIFIER% * inOperand2
                                                         COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
   if ((NULL != inOperand1) && (NULL != inOperand2)) {
@@ -174,10 +174,10 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (const GA
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (%?^%const GALGAS_uint * inOperand0,
-                                               %!^%const GALGAS_uint * inOperand1,
+GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (%?^%GALGAS_uint * inOperand0,
+                                               %!^%GALGAS_uint * inOperand1,
                                                %!^%C_Compiler * inCompiler
-                                               %!^%COMMA_LOCATION_ARGS) const {
+                                               %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
   if ((inOperand0 != NULL) && (NULL != inOperand1)) {
     result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
@@ -191,9 +191,9 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (%?^%const GALGAS_uint * inIndex,
+GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (%?^%GALGAS_uint * inIndex,
                                                %!^%C_Compiler * inCompiler
-                                               %!^%COMMA_LOCATION_ARGS) const {
+                                               %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
   if (inIndex != NULL) {
     result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
@@ -208,7 +208,7 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (
 //---------------------------------------------------------------------------*
 
 void dotAssign_operation (GALGAS_%!TYPE_IDENTIFIER% * & ioResult,
-                          const GALGAS_%!TYPE_IDENTIFIER% * inOperand
+                          GALGAS_%!TYPE_IDENTIFIER% * inOperand
                           COMMA_LOCATION_ARGS) {
   if ((ioResult != NULL) && (inOperand != NULL)) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
@@ -218,8 +218,8 @@ void dotAssign_operation (GALGAS_%!TYPE_IDENTIFIER% * & ioResult,
 %
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand,\n%
-  %                                              %!^%const GALGAS_uint * inIndex,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand,\n%
+  %                                              %!^%GALGAS_uint * inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
   %  attributeDirectWrite (inOperand, inIndex, %![IDX string]%, inCompiler COMMA_THERE) ;\n%
@@ -229,9 +229,9 @@ end foreach
 %
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint * inIndex,\n%
+  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%GALGAS_uint * inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
-  %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
+  %                                              %!^%COMMA_LOCATION_ARGS) {\n%
   %  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * result = NULL ;\n%
   %  result = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributeDirectRead (inIndex, %![IDX string]%, inCompiler COMMA_THERE) ;\n%
   %  macroValidObjectThere (result, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%

@@ -285,6 +285,10 @@ override method @readerCallExpressionForGeneration generateExpression
   foreach readerArgumentCppNameList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
+  if mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    ioGeneratedCode .= ", " . compilerCppName [] ;
+  end if ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 #--- Release temporary variables
   ioGeneratedCode .= "macroReleaseObject (" . receiverCppName . ") ; // Release reader receiver\n" ;
@@ -355,7 +359,7 @@ override method @concatExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName . " = GALGAS_string::operator_concat ("
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName . " = GALGAS_" . [mType identifierRepresentation] . "::operator_concat ("
                    . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 

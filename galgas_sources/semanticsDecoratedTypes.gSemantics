@@ -111,6 +111,7 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;
+  @bool mHasCompilerArgument ;
 }
 
 #---------------------------------------------------------------------------*
@@ -392,6 +393,13 @@ class @inputActualParameterForGeneration extends @actualParameterForGeneration {
 
 #---------------------------------------------------------------------------*
 
+class @inputJokerParameterForGeneration extends @actualParameterForGeneration {
+  @string mInputActualCppName ;
+  @unifiedTypeMapProxy mFormalArgumentType ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @actualParameterListForGeneration {
   @actualParameterForGeneration mActualParameter ;
 }
@@ -532,9 +540,10 @@ class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration exten
 #---------------------------------------------------------------------------*
 
 class @localVariableOrConstantDeclarationWithConstructorCallForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @unifiedTypeMapProxy mTargetType ;
   @bool mIsConstant ;
-  @string mCppVariableName ;
+  @string mTargetVariableCppName ;
   @string mConstructorName ;
   @semanticExpressionListForGeneration mConstructorArguments ;
   @bool mHasCompilerArgument ;
@@ -787,6 +796,7 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
 list @castInstructionBranchListForGeneration {
   @bool mUseKindOfClass ;
   @unifiedTypeMapProxy mType ;
+  @string mCastedVarCppName ; # Empty string if no var
   @semanticInstructionListForGeneration mInstructionList ;
 }
 
@@ -806,6 +816,7 @@ class @structuredCastInstructionForGeneration extends @semanticInstructionForGen
 
 class @addAssignInstructionForGeneration extends @semanticInstructionForGeneration {
   @string mReceiverCppName ;
+  @location mInstructionLocation ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionListForGeneration mExpressionList ;
 }
@@ -817,7 +828,9 @@ class @addAssignInstructionForGeneration extends @semanticInstructionForGenerati
 #---------------------------------------------------------------------------*
 
 class @incrementInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @string mReceiverCppName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @lstringlist mStructAttributeList ;
 }
 
@@ -828,7 +841,9 @@ class @incrementInstructionForGeneration extends @semanticInstructionForGenerati
 #---------------------------------------------------------------------------*
 
 class @decrementInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @string mReceiverCppName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @lstringlist mStructAttributeList ;
 }
 
@@ -854,6 +869,7 @@ class @loopInstructionForGeneration extends @semanticInstructionForGeneration {
 
 class @messageInstructionForGeneration extends @semanticInstructionForGeneration {
   @semanticExpressionForGeneration mExpression ;
+  @location mInstructionLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -890,6 +906,7 @@ class @grammarInstructionForGeneration extends @semanticInstructionForGeneration
 
 class @readWriteWithInstructionForGeneration extends @semanticInstructionForGeneration {
   @string mReceiverVariableCppName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @lstringlist mStructAttributeList ;
   @string mAccessName ;
   @semanticExpressionForGeneration mKeyExpression ;
@@ -1045,6 +1062,7 @@ class @mapTypeForGeneration extends @semanticTypeForGeneration {
   @mapSearchMethodListAST mSearchMethodList ;
   @mapRemoveMethodListAST mRemoveMethodList ;
   @bool mHasInsertOrReplaceModifier ;
+  @withAccessorMap mWithAccessorMap ; # Method for with accessor
 }
 
 #---------------------------------------------------------------------------*

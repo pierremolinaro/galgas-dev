@@ -38,7 +38,7 @@ function generateProcedure
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
-  foreach inFormalArgumentList index IDX do
+  foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentConstantIn, argumentOut, argumentIn :
     when argumentInOut :
@@ -57,7 +57,7 @@ function generateProcedure
   outGeneratedCode := "void " . inProcedureName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
-  foreach inFormalArgumentList index IDX do
+  foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentConstantIn :
       outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * const " ;
@@ -152,6 +152,8 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
     ?@lstringlist ENUM_CONSTANT_LIST
     ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
+    ?@withAccessorMap WITH_ACCESSOR_MAP
+
   ;
 
   template unifiedTypeImplementation "unified-type.cpp.gTemplate"
@@ -205,6 +207,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE 
+    ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
 
   template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.gTemplate"
@@ -291,6 +294,7 @@ override reader @semanticTypeForGeneration appendDeclaration -> @string outHeade
     ![mTypeIndex mNativeAttributeList]
     ![mTypeIndex mEnumConstantList]
     ![mTypeIndex mPrivateDataMemberList]
+    ![mTypeIndex mWithAccessorMap]
   ] ;
 end reader ;
 
@@ -398,6 +402,7 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
     !mSearchMethodList
     !mRemoveMethodList
     !mHasInsertOrReplaceModifier
+    !mWithAccessorMap
   ] ;
  end reader ;
 

@@ -12,7 +12,7 @@ kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% (%?^%"%!TYPE_NAME%",
 %if (SUPPORTED_OPERATORS & generateConstructorWithSelfObject []) != 0 then%
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% * inObject COMMA_LOCATION_ARGS) :
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inObject COMMA_LOCATION_ARGS) :
 GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation]% (THERE)%
   foreach NATIVE_ATTRIBUTE_LIST
     do %,\n%!mAttributeName% (%!mDefaultValue%)%
@@ -68,7 +68,7 @@ foreach MODIFIER_MAP do
     foreach mParameterList do index IDX
       %,\n%!^
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % * inArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -83,13 +83,21 @@ foreach MODIFIER_MAP do
     else
       %\n%!^%COMMA_LOCATION_ARGS%
     end if  
-    %) {
-    if (ioResult != NULL) {
-      GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-      ioResult->modifier_%![lkey identifierRepresentation]% (%
+    %) {\n%
+    %//--- Release 'output' arguments\n%
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %  macroReleaseObject (outArgument%![IDX string]%) ; // Release 'output' argument\n%
+        %  outArgument%![IDX string]% = NULL ;\n%
+      end if
+    end foreach
+    %//---\n%
+    %  if (NULL != ioResult) {\n%
+    %    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;\n%
+    %    ioResult->modifier_%![lkey identifierRepresentation]% (%
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %inArgument% ![IDX string]
+        %constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
         %ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -114,6 +122,14 @@ foreach MODIFIER_MAP do
     end if
     %) ;\n% 
     %  }\n%
+    %//---\n%
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %  macroReleaseObject (constinArgument%![IDX string]%) ; // Release 'const in' argument\n%
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
+        %  macroReleaseObject (inArgument%![IDX string]%) ; // Release 'in' argument\n%
+      end if
+    end foreach
     %}\n\n%
   end if
 end foreach
@@ -125,7 +141,7 @@ foreach INSTANCE_METHOD_MAP do
     foreach mParameterList do index IDX
       %,\n%!^
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * const inArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -141,12 +157,20 @@ foreach INSTANCE_METHOD_MAP do
       %\n%!^%COMMA_LOCATION_ARGS%
     end if  
     %) {\n%
+    %//--- Release 'output' arguments\n%
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %  macroReleaseObject (outArgument%![IDX string]%) ; // Release 'output' argument\n%
+        %  outArgument%![IDX string]% = NULL ;\n%
+      end if
+    end foreach
+    %//---\n%
     %  if (inObject != NULL) {\n%
     %    macroRetainObjectThere (inObject) ;\n%
     %    inObject->method_%![lkey identifierRepresentation]% (%
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %inArgument% ![IDX string]
+        %constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
         %ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -172,6 +196,14 @@ foreach INSTANCE_METHOD_MAP do
     %) ;\n% 
     %    macroReleaseObjectThere (inObject) ;\n%
     %  }\n%
+    %//---\n%
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %  macroReleaseObject (constinArgument%![IDX string]%) ; // Release 'const in' argument\n%
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
+        %  macroReleaseObject (inArgument%![IDX string]%) ; // Release 'in' argument\n%
+      end if
+    end foreach
     %}\n\n%
   end if
 end foreach
@@ -180,9 +212,9 @@ foreach READER_MAP do
   if mQualifier == [@readerQualifier isBasic] then
     %//---------------------------------------------------------------------------*\n\n%
     %GALGAS_% ![mReturnedType identifierRepresentation] % * readerCall_% ![lkey identifierRepresentation] % (%?COL
-    %const GALGAS_%!TYPE_IDENTIFIER% * inObject%
+    %GALGAS_%!TYPE_IDENTIFIER% * inObject%
     foreach mArgumentTypeList
-      do index IDX %,\n% !COL %const GALGAS_%![mType identifierRepresentation]% * inOperand_% ![IDX string]
+      do index IDX %,\n% !COL %GALGAS_%![mType identifierRepresentation]% * inOperand_% ![IDX string]
     end foreach
     if mHasCompilerArgument then
       %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
@@ -212,6 +244,11 @@ foreach READER_MAP do
     end if
     %) ;\n%
     %  }\n%
+    %//---\n%
+    foreach mArgumentTypeList do index IDX
+      %  macroReleaseObject (inOperand_%![IDX string]%) ; // Release 'in' argument\n%
+    end foreach
+    %//---\n%
     %  return result ;\n%
     %}\n\n%
   end if
@@ -222,7 +259,7 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
     %//%!["@" . TYPE_NAME . " " . [TYPE_KIND kind] . " enumeration" stringByLeftAndRightPadding !75 !' ']%*\n%
   foreach ENUMERATION_DESCRIPTOR_LIST do index IDX
     %//---------------------------------------------------------------------------*\n\n%
-    %GALGAS_%![mEnumeratedType identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::attribute_%![mEnumerationName identifierRepresentation]% (void) const {\n%
+    %GALGAS_%![mEnumeratedType identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::attribute_%![mEnumerationName identifierRepresentation]% (void) {\n%
     %  GALGAS_%![mEnumeratedType identifierRepresentation]% * result = (GALGAS_%![mEnumeratedType identifierRepresentation]% *) directAccess (%![IDX string]% COMMA_HERE) ;\n%
     %  macroValidObject (result, GALGAS_%![mEnumeratedType identifierRepresentation]%) ;\n%
     %  return result ;\n%

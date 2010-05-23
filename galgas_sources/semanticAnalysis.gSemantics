@@ -278,7 +278,7 @@ map @searchMethodMap {
 
 override method @mapDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
+  ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Enter attributes
@@ -369,6 +369,15 @@ override method @mapDeclarationAST performSemanticAnalysis
     [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceDeclarationLocation] ;
     error insertOrReplaceDeclarationLocation : "the insertOrReplace' modifier cannot be declared : an insert modifier or a remove modifier has been declared with this name" ;
   end if ;
+#--- Enter 'with' accessors
+  @withAccessorMap withAccessorMap [emptyMap] ;
+  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !inPredefinedTypes->mStringType] ;
+  foreach mSearchMethodList do
+    [!?withAccessorMap insertKey
+      !mMethodName
+      !inPredefinedTypes->mLStringType
+    ] ;
+  end foreach ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration += ![@mapTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
@@ -378,6 +387,7 @@ override method @mapDeclarationAST performSemanticAnalysis
     !mSearchMethodList
     !mRemoveMethodList
     !hasInsertOrReplaceModifier
+    !withAccessorMap
   ] ;
 end method ;
 

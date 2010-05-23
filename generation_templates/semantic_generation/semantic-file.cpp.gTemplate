@@ -6,7 +6,8 @@
 //---------------------------------------------------------------------------*
 
 #include "%!COMPONENT_NAME%.h"
-#include "C_Compiler.h"
+#include "galgas-utilities/C_Compiler.h"
+#include "galgas/C_galgas_CLI_Options.h"
 
 //---------------------------------------------------------------------------*
 
