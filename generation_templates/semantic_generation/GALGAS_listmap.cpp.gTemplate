@@ -28,14 +28,14 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
 //---------------------------------------------------------------------------*
 
 void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
-      %,\n%!^%const GALGAS_string * inKey%
+      %,\n%!^%GALGAS_string * inKey%
   foreach ATTRIBUTE_LIST
-  do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (ioResult != NULL) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-    const GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %

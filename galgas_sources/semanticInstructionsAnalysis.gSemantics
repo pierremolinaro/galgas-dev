@@ -142,6 +142,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
   end if ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithConstructorCallForGeneration new
+    !mInstructionLocation
     !targetType
     !mIsConstant
     !targetVariableCppName
@@ -568,8 +569,9 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   #--- Add temporary variable
     ioTemporaryInputVariableForRoutineInvocationForGeneration += !inFormalArgumentType !cppVarName ;
   #--- Generate actual parameter
-    ioActualParameterListForGeneration += ![@inputActualParameterForGeneration new
+    ioActualParameterListForGeneration += ![@inputJokerParameterForGeneration new
       !cppVarName
+      !inFormalArgumentType
     ] ;
   end if ;
 end method ;
@@ -866,6 +868,7 @@ override method @addInstructionAST analyzeSemanticInstruction # +=
   #--- Generate instruction
     ioInstructionListForGeneration += ![@addAssignInstructionForGeneration new
       !targetVariableCppName
+      !mInstructionLocation
       !mStructAttributeList
       !effectiveParameterList
     ] ;
@@ -897,7 +900,9 @@ override method @incrementInstructionAST analyzeSemanticInstruction
   end if ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@incrementInstructionForGeneration new
+    !mInstructionLocation
     !targetVariableCppName
+    !targetType
     !mStructAttributeList
   ] ;
 end method ;
@@ -922,12 +927,14 @@ override method @decrementInstructionAST analyzeSemanticInstruction
 #--- Check target type accepts incrementation
   if ([targetType mHandledOperatorFlags] & incDecOperator []) == 0 then
     error mInstructionLocation
-    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '++' operator"
+    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '--' operator"
     ;
   end if ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@decrementInstructionForGeneration new
+    !mInstructionLocation
     !targetVariableCppName
+    !targetType
     !mStructAttributeList
   ] ;
 end method ;
@@ -958,6 +965,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
 #--- Generate instruction
   ioInstructionListForGeneration += ![@messageInstructionForGeneration new
     !expression
+    !mInstructionLocation
   ] ;
 end method ;
 
@@ -1328,14 +1336,18 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       ;
     end if ;
   #--- Declare a local constant ?
+    @string localConstantName ;
     @localConstantList localConstantList [emptyList] ;
     if [mConstantVarName length] > 0 then
+      localConstantName := "cast_" . [[[mConstantVarName location] locationIndex] string] . "_" . mConstantVarName ;
       localConstantList +=
         !type
         !mConstantVarName
         !false # Warns id not used
-        !"cast_" . [[[mConstantVarName location] locationIndex] string] . "_" . mConstantVarName
+        !localConstantName
       ;
+    else
+      localConstantName := "" ; # No constant
     end if ;
   #--- Analyze instruction list
     @semanticInstructionListForGeneration instructionList ;
@@ -1349,7 +1361,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       !?ioVariableMap
       ?instructionList
     ;
-    castBranchList += !mUseKindOfClass !type !instructionList ;
+    castBranchList += !mUseKindOfClass !type !localConstantName !instructionList ;
   end foreach ;
 #--- else or default branch
   @semanticInstructionListForGeneration else_instructionList ;
@@ -1468,7 +1480,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   const @withAccessorMap withAccessorMap := [targetType mWithAccessorMap] ;
   @unifiedTypeMapProxyList argumentTypeList ;
   with withAccessorMap hasKey ![mAccessName string] do
-    argumentTypeList := mArgumentTypeList ;
+    argumentTypeList := [@unifiedTypeMapProxyList listWithValue !mArgumentType] ;
   else
     if [withAccessorMap count] == 0 then
       error mAccessName
@@ -1478,10 +1490,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     else
       @string s := "" ;
       foreach withAccessorMap do
-        s .= "\n  - " . lkey ;
-        foreach mArgumentTypeList do
-          s .= " ?@" . [mType key] ;
-        end foreach ;
+        s .= "\n  - " . lkey ." ?@" . [mArgumentType key] ;
       end foreach ;
       error mAccessName
       : "the '@". [targetType key] . "' type does not define the '" . mAccessName . "' accessor for the 'with' instruction; available "
@@ -1540,6 +1549,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Generate instruction
   ioInstructionListForGeneration += ![@readWriteWithInstructionForGeneration new
     !receiverVariableCppName
+    !targetType
     !mFieldList
     ![mAccessName string]
     !keyExpression

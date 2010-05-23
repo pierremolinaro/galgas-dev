@@ -483,13 +483,13 @@ override method @mapDeclarationAST enterType
       ![@readerQualifier isBasic]
     ] ;
   end foreach ;
-#--- Enter with access methods
+#--- Enter 'with' accessors
   @withAccessorMap withAccessorMap [emptyMap] ;
-  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]] ;
+  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !stringTypeIndex] ;
   foreach mSearchMethodList do
     [!?withAccessorMap insertKey
       !mMethodName
-      ![@unifiedTypeMapProxyList listWithValue !lstringTypeIndex]
+      !lstringTypeIndex
     ] ;
   end foreach ;
 #--- Enter in type map

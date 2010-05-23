@@ -636,6 +636,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       !receiverExpression
       ![mReaderName string]
       !constructorEffectiveParameterList
+      !hasCompilerArgument
     ] ;
   end if ;
 end method ;

@@ -25,7 +25,7 @@ foreach ENUM_MESSAGE_LIST do
   end foreach
   %\n} ;\n\n%
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_string * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %GALGAS_string * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) {\n%
   %  return GALGAS_string::constructor_new (gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [mEnumValue] COMMA_THERE) ;\n%
   %}\n\n%
 end foreach
