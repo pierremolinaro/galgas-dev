@@ -173,7 +173,7 @@ override method @literalUIntExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalUIntExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_uint * " . outCppName
-                   . " = GALGAS_uint::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " = GALGAS_uint::constructor_new (" . [mValue string]. "U COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -187,7 +187,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalUInt64ExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_uint_36__34_ * " . outCppName
-                   . " = GALGAS_uint_36__34_::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " = GALGAS_uint_36__34_::constructor_new (" . [mValue string]. "ULL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -201,7 +201,7 @@ override method @literalSIntExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalSIntExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_sint * " . outCppName
-                   . " = GALGAS_sint::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " = GALGAS_sint::constructor_new (" . [mValue string]. "L COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -215,7 +215,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalSInt64ExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_sint_36__34_ * " . outCppName
-                   . " = GALGAS_sint_36__34_::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " = GALGAS_sint_36__34_::constructor_new (" . [mValue string]. "LL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -784,12 +784,32 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @functionCallExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  outCppName := "(@functionCallExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @functionCallExpressionForGeneration\n" ;
+#---
+  @stringlist parameterList [emptyList] ;
+  foreach mExpressions do
+    @string parameter ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter] ;
+    parameterList += !parameter ;  
+  end foreach ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation]
+                   . " * " . outCppName
+                   . " = function_" . [mFunctionName identifierRepresentation]
+                   . " (" ;
+  foreach parameterList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
+  end foreach ;
+  ioGeneratedCode .= ", " ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .= compilerCppName [] ;
+  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

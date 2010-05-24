@@ -306,7 +306,7 @@ routine checkAssignmentTypes
   @bool ok := inTargetType == inSourceType ;
   loop [@uint max] : while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType := [sourceType mSuperType] ;
-    ok := inTargetType == inSourceType ;
+    ok := inTargetType == sourceType ;
   end loop ;
   if not ok then
     error inErrorLocation : "target object type is '@" . [inTargetType key] . "' and cannot be assigned by an '@" . [inSourceType key] . "' object" ;
@@ -329,7 +329,14 @@ struct @predefinedTypes {
   @unifiedTypeMapProxy mUInt64Type ;
   @unifiedTypeMapProxy mSInt64Type ;
   @unifiedTypeMapProxy mDoubleType ;
+  @unifiedTypeMapProxy mLBoolType ;
+  @unifiedTypeMapProxy mLCharType ;
   @unifiedTypeMapProxy mLStringType ;
+  @unifiedTypeMapProxy mLUIntType ;
+  @unifiedTypeMapProxy mLSIntType ;
+  @unifiedTypeMapProxy mLUInt64Type ;
+  @unifiedTypeMapProxy mLSInt64Type ;
+  @unifiedTypeMapProxy mLDoubleType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -731,10 +738,19 @@ routine checkDiadicOperator
     error inErrorLocation
     : "left operand type is '@" . [inLeftType key] . "' and does not accept '" . inOperatorNameForErrorMessage . "' operator (right operand type is '@" . [inRightType key] . ")"
     ;
-  elsif inLeftType != inRightType then
-    error inErrorLocation
-    : "left operand type of '" . inOperatorNameForErrorMessage . "' operator is '@" . [inLeftType key] . "', right operand type is '@" . [inRightType key] . "'; they should be the same"
-    ;
+  else
+    @unifiedTypeMapProxy rightType := inRightType ;
+    @bool ok := inLeftType == rightType ;
+    loop [@uint max] : while (not ok) & (not [[rightType mSuperType] isNull]) do
+      rightType := [rightType mSuperType] ;
+      ok := inLeftType == rightType ;
+    end loop ;
+    if not ok then
+      error inErrorLocation
+      : "left operand type of '" . inOperatorNameForErrorMessage . "' operator is '@" . [inLeftType key]
+      . "', right operand type is '@" . [inRightType key] . "', it should be the same or inherits from left operand type"
+      ;
+    end if ;
   end if ;
 end routine ;
 

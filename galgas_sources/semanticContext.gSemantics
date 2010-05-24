@@ -1231,10 +1231,9 @@ end method ;
 override method @externFunctionDeclarationAST enterType # Handles also function declaration
   ?!@semanticContext ioSemanticContext
 :
-#  message "@externFunctionDeclarationAST enterType\n" ;
 #--- Build signature
   @unifiedTypeMapProxyList functionSignature [emptyList] ;
-  foreach mFormalParameterList do
+  foreach mFormalArgumentList do
     @unifiedTypeMapProxy parameterTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?parameterTypeIndex] ;
     functionSignature += !parameterTypeIndex ;

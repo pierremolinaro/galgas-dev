@@ -22,24 +22,24 @@ if [ENUM_CONSTANT_LIST length] > 0 then
 //--------------------------------- Private attribute
   private : enumeration mEnumValue ;
 
-//--------------------------------- C++ constructor
+//--------------------------------- C++ constructor (for enumeration type)
   public : GALGAS_%!TYPE_IDENTIFIER% (const enumeration inValue COMMA_LOCATION_ARGS) ;
 
 %
 end if
 
 if (SUPPORTED_OPERATORS & generateConstructorWithSelfObject []) != 0 then%
-//--------------------------------- C++ constructor
+//--------------------------------- C++ constructor (for inheritance for predefined type)
   protected : GALGAS_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inObject COMMA_LOCATION_ARGS) ;
 
 %
 end if
 
 if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeList []) != 0 then%
-//--------------------------------- C++ constructor\n%
+//--------------------------------- C++ constructor (with native attributes)\n%
   %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach NATIVE_ATTRIBUTE_LIST
-    do %const % !mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
+    do %const %!mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
     between %,\n%!^
   end foreach
   if [NATIVE_ATTRIBUTE_LIST length] == 0 then
@@ -51,10 +51,10 @@ end if
 
 
 if (SUPPORTED_OPERATORS & generateCppConstructorWithCurrentAttributeList []) != 0 then%
-//--------------------------------- C++ constructor\n%
+//--------------------------------- C++ constructor (with current attributes)\n%
   %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach CURRENT_TYPE_ATTRIBUTE_LIST
-    do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttribute_% ![mAttributeName identifierRepresentation]
+    do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inAttribute_% ![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   if [CURRENT_TYPE_ATTRIBUTE_LIST length] == 0 then
@@ -477,7 +477,7 @@ if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
 //--------------------------------- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
 
-//--------------------------------- Private data member\n%
+//--------------------------------- Private data member(s)\n%
 foreach NATIVE_ATTRIBUTE_LIST do
   %  private : %if mIsPointer then %const % end if !mCppClassName % % if mIsPointer then %* % end if !mAttributeName% ;\n%
   if [mGetterName length] > 0 then
@@ -485,7 +485,7 @@ foreach NATIVE_ATTRIBUTE_LIST do
   end if
 end foreach
 foreach PRIVATE_DATA_NUMBER_TYPED_LIST do
-  %  protected : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  public : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
 end foreach
 
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then

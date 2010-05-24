@@ -246,6 +246,12 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   ;
 
+  template functionDeclaration "function-declaration.h.gTemplate"
+    ?@string FUNCTION_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@string RETURN_TYPE_IDENTIFIER
+  ;
+
   template routineImplementation "routine-implementation.cpp.gTemplate"
     ?@string ROUTINE_NAME
     ?@string ROUTINE_IMPLEMENTATION
@@ -269,6 +275,16 @@ override reader @routinePrototypeDeclarationForGeneration appendDeclaration -> @
   outHeader := [filewrapper semanticComponentGenerationTemplate.routineDeclaration
     !mRoutineName
     !mFormalArgumentList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @functionPrototypeDeclarationForGeneration appendDeclaration -> @string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
+    !mFunctionName
+    !mFormalArgumentList
+    ![mReturnType identifierRepresentation]
   ] ; 
 end reader ;
 

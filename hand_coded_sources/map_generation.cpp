@@ -506,14 +506,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
                "operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
-               "                   (mState == inOperand.mState)) ;\n"
+               "                   (mState == inOperand.mState) && (mIndex.retrieve () == inOperand.mIndex.retrieve ())) ;\n"
                "}\n\n" ;
               
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
                "operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
-               "                   (mState != inOperand.mState)) ;\n"
+               "                   (mState != inOperand.mState) || (mIndex.retrieve () != inOperand.mIndex.retrieve ())) ;\n"
                "}\n\n" ;
               
   inCppFile.appendCppHyphenLineComment () ;

@@ -529,7 +529,7 @@ class @routineDeclarationAST extends @externRoutineDeclarationAST {
 
 class @externFunctionDeclarationAST extends @semanticDeclarationAST {
   @lstring mFunctionName ;
-  @formalInputParameterListAST mFormalParameterList ;
+  @formalInputParameterListAST mFormalArgumentList ;
   @lstring mResultTypeName ;
   @lstring mResultVariableName ;
 }

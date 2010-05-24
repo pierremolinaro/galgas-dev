@@ -773,6 +773,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   ioInstructionListForGeneration += ![@modifierCallInstructionForGeneration new
     !receiverVariableCppName
     !mReceiverStructAttributes
+    !receiverType
     !mModifierName
     !actualParameterListForGeneration
     !hasCompilerArgument
@@ -1432,7 +1433,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   if mSourceExpressionIsFile then
     if [sourceExpression mType] != inPredefinedTypes->mLStringType then
       error mEndOfSourceExpression
-      :"this expression is a file reference and its type should be '@lstring', but it is '@" . [[sourceExpression mType] key] . "'"
+      :"this expression is the source file path and its type should be '@lstring', but it is '@" . [[sourceExpression mType] key] . "'"
       ;
     end if ;
   elsif [sourceExpression mType] != inPredefinedTypes->mStringType then
@@ -1441,14 +1442,25 @@ override method @grammarInstructionAST analyzeSemanticInstruction
     ;
   end if ;
 #--- Generate instruction
-  ioInstructionListForGeneration += ![@grammarInstructionForGeneration new
-    ![mGrammarComponentName string]
-    ![mLabelName string]
-    !sourceExpression
-    !mSourceExpressionIsFile
-    !actualParameterListForGeneration
-    !temporaryInputVariableList
-  ] ;
+  if mSourceExpressionIsFile then
+    ioInstructionListForGeneration += ![@grammarInstructionWithSourceFileForGeneration new
+      !mInstructionLocation
+      ![mGrammarComponentName string]
+      ![mLabelName string]
+      !sourceExpression
+      !actualParameterListForGeneration
+      !temporaryInputVariableList
+    ] ;
+  else
+    ioInstructionListForGeneration += ![@grammarInstructionWithSourceExpressionForGeneration new
+      !mInstructionLocation
+      ![mGrammarComponentName string]
+      ![mLabelName string]
+      !sourceExpression
+      !actualParameterListForGeneration
+      !temporaryInputVariableList
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*

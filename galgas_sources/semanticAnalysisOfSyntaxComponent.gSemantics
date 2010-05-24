@@ -325,13 +325,13 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
       end if ;
       @unifiedTypeMapProxy expectedType ;
       switch mLexicalType
-      when lexicalType_string : expectedType := inPredefinedTypes->mStringType ;
-      when lexicalType_char : expectedType := inPredefinedTypes->mCharType ;
-      when lexicalType_uint : expectedType := inPredefinedTypes->mUIntType ;
-      when lexicalType_uint64 : expectedType := inPredefinedTypes->mUInt64Type ;
-      when lexicalType_sint : expectedType := inPredefinedTypes->mSIntType ;
-      when lexicalType_sint64 : expectedType := inPredefinedTypes->mSInt64Type ;
-      when lexicalType_double : expectedType := inPredefinedTypes->mDoubleType ;
+      when lexicalType_string : expectedType := inPredefinedTypes->mLStringType ;
+      when lexicalType_char : expectedType := inPredefinedTypes->mLCharType ;
+      when lexicalType_uint : expectedType := inPredefinedTypes->mLUIntType ;
+      when lexicalType_uint64 : expectedType := inPredefinedTypes->mLUInt64Type ;
+      when lexicalType_sint : expectedType := inPredefinedTypes->mLSIntType ;
+      when lexicalType_sint64 : expectedType := inPredefinedTypes->mLSInt64Type ;
+      when lexicalType_double : expectedType := inPredefinedTypes->mLDoubleType ;
       end switch ;
       if expectedType != type then
         error mActualParameterName
