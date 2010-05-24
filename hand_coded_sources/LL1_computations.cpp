@@ -1109,8 +1109,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
-                          "GALGAS_string * inSentStringPtr"
-                          ",\n                                "
                           "GALGAS_string * const inSourceString" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1138,19 +1136,18 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  if (NULL != inSourceString) {\n"
                           "    const C_String sourceString = inSourceString->stringValue () ;\n"
-                          "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inCompiler->ioParametersPtr (), sourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
-                          "    scanner_->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
-        generatedZone3 << "    const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
-                          "                                                     gFirstProductionIndexes, gDecision, gDecisionIndexes, "
+                          "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                          "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inCompiler->ioParametersPtr (), sourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+                          "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
+        generatedZone3 << "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
+                          "                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
-                          "    if (ok && ! scanner_->mParseOnlyFlag) {\n"
-                          "      cGrammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
-                          "    " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE).identifierRepresentation ()
+                          "    if (ok && ! scanner->mParseOnlyFlag) {\n"
+                          "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                          "      grammar.nt_" << nonTerminal._key (HERE).identifierRepresentation ()
                        << "_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (scanner_" ;
+                       << " (scanner" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1159,11 +1156,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
-                          "      if (inSentStringPtr != NULL) {\n"
-                          "        dotAssign_operation (inSentStringPtr, scanner_->sentString () COMMA_HERE) ;\n"
-                          "      }\n"
-                          "    }\n"
-                          "    macroReleaseObject (scanner_) ;\n"
+                           "    }\n"
+                          "    macroReleaseObject (scanner) ;\n"
                           "  }\n"
                           "}\n\n" ;
         currentAltForNonTerminal.next () ;

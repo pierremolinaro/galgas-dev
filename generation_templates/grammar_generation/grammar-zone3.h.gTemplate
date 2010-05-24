@@ -43,7 +43,6 @@ foreach NON_TERMINAL_MAP do
       end foreach
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
       %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
-      !^%GALGAS_string * inSentStringPtr,\n%
       !^%GALGAS_string * const inSourceString%
       foreach label_mFormalParametersList do index IDX
         %,\n%!^

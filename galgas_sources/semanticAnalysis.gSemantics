@@ -517,6 +517,28 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+override method @externFunctionDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  @formalInputParameterListForGeneration formalArgumentList [emptyList] ;
+  foreach mFormalArgumentList do
+    formalArgumentList +=
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      !mFormalArgumentName
+      !mIsUnused
+    ;
+  end foreach ;
+  ioSemanticDeclarationListForGeneration += ![@functionPrototypeDeclarationForGeneration new
+    ![mFunctionName string]
+    !formalArgumentList
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mResultTypeName]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @externRoutineDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
@@ -716,6 +738,7 @@ routine analyzeFunctionBody
   ??@location inEndOfFunctionLocation
   !@formalInputParameterListForGeneration outSignatureForGeneration
   !@unifiedTypeMapProxy outReturnedType
+  !@string outResultVariableCppName
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 :
   @variableMap variableMap [emptyMap] ;
@@ -744,7 +767,8 @@ routine analyzeFunctionBody
   end foreach ;
 #--- Enter return variable
   outReturnedType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !inResultTypeName] ;
-  [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !"prefixe_"] ;
+  outResultVariableCppName := "result_" . [inResultTypeName identifierRepresentation] ;
+  [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName] ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
   @stringlist localVariableCppNameList [emptyList] ;
@@ -779,24 +803,26 @@ override method @functionDeclarationAST performSemanticAnalysis
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   @formalInputParameterListForGeneration formalInputParameterList ;
   @unifiedTypeMapProxy returnType ;
+  @string resultVariableCppName ;
   analyzeFunctionBody
     !inSemanticContext
     !inPredefinedTypes
-    !mFormalParameterList
+    !mFormalArgumentList
     !mFunctionInstructionList
     !mResultVariableName
     !mResultTypeName
     !mEndOfFunctionInstructionList
     ?formalInputParameterList
     ?returnType
+    ?resultVariableCppName
     ?semanticInstructionListForGeneration
   ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@functionDeclarationForGeneration new
-    !mFunctionName
+  ioSemanticDeclarationListForGeneration += ![@functionImplementationForGeneration new
+    ![mFunctionName string]
     !formalInputParameterList
-    !mResultVariableName
     !returnType
+    !resultVariableCppName
     !semanticInstructionListForGeneration
   ] ;
 end method ;
@@ -821,7 +847,14 @@ function buildPredefinedTypes
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint64" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint64" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"double" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lbool" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lchar" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lstring" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"luint" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lsint" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"luint64" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lsint64" !here]]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"ldouble" !here]]
   ] ;
 end function ;
 
