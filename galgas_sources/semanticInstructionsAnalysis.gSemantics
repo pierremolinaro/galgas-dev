@@ -1468,6 +1468,8 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?keyExpression
   ] ;
+#--- Object Array cpp name
+  const @string objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
 #--- Read/write access to receiver variable
   @unifiedTypeMapProxy targetType ;
   @string receiverVariableCppName ;
@@ -1515,11 +1517,11 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap beginOverrideForSelectBlock] ;
 #--- 'do' branch
   @localInitializedVariableList localInitializedVariableList [emptyList] ;
-  foreach [targetType mCurrentTypedAttributeList] do
+  foreach [targetType mCurrentTypedAttributeList] index IDX do
     localInitializedVariableList +=
       !mAttributeTypeIndex
       ![@lstring new ![mPrefix string] . mAttributeName ![mAccessName location]]
-      !"with_rw_access_for_" . [mAttributeName identifierRepresentation]
+      !"((GALGAS_" . [mAttributeTypeIndex identifierRepresentation] . " **) " . objectArrayCppName . ") [" . [IDX+1 string] . "] /* " . [mAttributeName identifierRepresentation] . " */"
     ;
   end foreach ;
   @semanticInstructionListForGeneration do_instructionList ;
@@ -1552,6 +1554,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !targetType
     !mFieldList
     ![mAccessName string]
+    !objectArrayCppName
     !keyExpression
     !do_instructionList
     !else_instructionList

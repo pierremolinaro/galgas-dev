@@ -71,7 +71,7 @@ override method @selfInExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  outCppName := "(@selfInExpressionForGeneration generateExpression)" ;
+  outCppName := "this" ;
 end method ;
 
 #---------------------------------------------------------------------------*

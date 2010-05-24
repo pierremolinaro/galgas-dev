@@ -37,12 +37,11 @@ abstract method @actualParameterForGeneration generateActualParameter
 override method @outputActualParameterForGeneration generateActualParameter
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
-  ?!@stringlist ioParametersToReleaseList
+  ?!@stringlist unused ioParametersToReleaseList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
   [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName] ;
-  ioParametersToReleaseList += !outCppName ;
   [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
 end method ;
 
@@ -80,12 +79,13 @@ end method ;
 override method @inputJokerParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
-  ?!@stringlist unused ioParametersToReleaseList
+  ?!@stringlist ioParametersToReleaseList
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
   ioImplementation .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * " . outCppName . " = NULL ; // Joker input parameter\n" ;
+  ioParametersToReleaseList += !mInputActualCppName ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -675,10 +675,20 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   @string keyVarCppName ;
   [mKeyExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?keyVarCppName] ;
 #---
-  ioGeneratedCode .= "// key var " . keyVarCppName . "\n" ;
-  ioGeneratedCode .= "// Receiver " . mReceiverVariableCppName . "\n" ;
-  ioGeneratedCode .= "// Receiver type GALGAS_" . [mReceiverType identifierRepresentation] . "\n" ;
-  ioGeneratedCode .= "@readWriteWithInstructionForGeneration generateInstruction\n" ;
+  foreach [mReceiverType mCurrentTypedAttributeList] index IDX do
+    ioGeneratedCode .= "// index " . [IDX+1 string] . ": attribute '" . mAttributeName . "', type @" . [mAttributeTypeIndex key] . "\n" ;
+  end foreach ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName] ;
+  ioGeneratedCode .= "GALGAS_root ** " . mObjectArrayCppName . " = readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
+                  .  ", " . mReceiverVariableCppName . ", " . keyVarCppName . " COMMA_HERE) ;\n"
+                  .  "if (NULL != " . mObjectArrayCppName . ") {\n" ;
+  generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  if [mElseBranchInstructions length] > 0 then
+    ioGeneratedCode .= "}else{\n" ;
+    generateInstructionList !mElseBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  end if ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
