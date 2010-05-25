@@ -47,6 +47,70 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#           C O M P I L E    ' B E F O R E '                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine compileBeforeClause
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@programComponentAST inProgramComponentAST
+  ?!@semanticDeclarationListForGeneration ioDecoratedDeclarationListForGeneration
+:
+#--- Analyse 'before' instructions
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  analyzeRoutineBody
+    !inSemanticContext
+    !inPredefinedTypes
+    ![@formalParameterListAST emptyList] # Routine signature : no argument
+    ![@localConstantList emptyList] # No local constant
+    ![@typedAttributeList emptyList] # No attribute (not a method)
+    ![inProgramComponentAST mPrologueInstructionList]
+    ![inProgramComponentAST mEndOfPrologue]
+    ?semanticInstructionListForGeneration
+    ?*
+  ;
+  ioDecoratedDeclarationListForGeneration += ![@routineImplementationForGeneration new
+    !"before"
+    ![@formalParameterListForGeneration emptyList]
+    !semanticInstructionListForGeneration
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           C O M P I L E    ' A F T E R '                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine compileAfterClause
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@programComponentAST inProgramComponentAST
+  ?!@semanticDeclarationListForGeneration ioDecoratedDeclarationListForGeneration
+:
+#--- Analyse 'before' instructions
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  analyzeRoutineBody
+    !inSemanticContext
+    !inPredefinedTypes
+    ![@formalParameterListAST emptyList] # Routine signature : no argument
+    ![@localConstantList emptyList] # No local constant
+    ![@typedAttributeList emptyList] # No attribute (not a method)
+    ![inProgramComponentAST mEpilogueInstructionList]
+    ![inProgramComponentAST mEndOfEpilogue]
+    ?semanticInstructionListForGeneration
+    ?*
+  ;
+  ioDecoratedDeclarationListForGeneration += ![@routineImplementationForGeneration new
+    !"after"
+    ![@formalParameterListForGeneration emptyList]
+    !semanticInstructionListForGeneration
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #           C O M P I L E    S Y N T A X    C O M P O N E N T               *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -115,38 +179,29 @@ routine compileProgramComponent
     !?ioParsedComponentStruct
     !?semanticContext->mOptionComponentMapForSemanticAnalysis
   ;
-##--- Parse lexique component
-#  @lexiqueComponentAST lexiqueComponentRoot ;
-#  parseLexiqueComponent
-#    ![syntaxComponentRoot mImportedLexiqueFilePath]
-#    !?ioParsedComponentStruct
-#    ?lexiqueComponentRoot
-#  ;
-##--- Build token map
-#  @terminalMap terminalMap ;
-#  buildTerminalMap !lexiqueComponentRoot ?terminalMap ;
-##--- Build semantic context from rule headers and non terminal declaration
-#  const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
-#  @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
-#  const @string lexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
-#  semanticAnalysisOfSyntaxComponent
-#    ![syntaxComponentRoot mNonterminalDeclarationList]
-#    ![syntaxComponentRoot mRuleList]
-#    ![componentName string]
-#    ![lexiqueName identifierRepresentation]
-#    !semanticContext
-#    !predefinedTypes
-#    !terminalMap
-#    ?syntaxDeclarationForGeneration
-#  ;
-##------ Semantic Analysis
-#  @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
-#  performSemanticAnalysis
-#    ![[syntaxComponentRoot mSemanticDeclarations] mSemanticDeclarationList]
-#    !semanticContext
-#    ?decoratedDeclarationListForGeneration
-#  ;
-#  decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration ;
+#------ Semantic Analysis
+  @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+  performSemanticAnalysis
+    ![[programComponentAST mSemanticDeclarations] mSemanticDeclarationList]
+    !semanticContext
+    ?decoratedDeclarationListForGeneration
+  ;
+#--- Predefined types
+  const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
+#--- Analyse 'before' instructions
+  compileBeforeClause
+    !semanticContext
+    !predefinedTypes
+    !programComponentAST
+    !?decoratedDeclarationListForGeneration
+  ;
+#--- Analyse 'after' instructions
+  compileAfterClause
+    !semanticContext
+    !predefinedTypes
+    !programComponentAST
+    !?decoratedDeclarationListForGeneration
+  ;
 #------ Generate Header File
   if [@uint errorCount] == 0 then
     @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
@@ -154,9 +209,9 @@ routine compileProgramComponent
       !headerIncludeList
       ![semanticContext->mTypeMap allKeyList]
     ] ;
-#    foreach decoratedDeclarationListForGeneration do
-#      headerString .= [mDeclaration appendDeclaration] ;
-#    end foreach ;
+    foreach decoratedDeclarationListForGeneration do
+      headerString .= [mDeclaration appendDeclaration] ;
+    end foreach ;
     [@string generateFile
       !inOutputDirectory
       ![componentName string] . ".h"
@@ -173,10 +228,10 @@ routine compileProgramComponent
       ![componentName string]
       !implementationIncludeList
     ] ;
-#    foreach decoratedDeclarationListForGeneration do
-#      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-#      implementationString .= [mDeclaration appendSpecificImplementation] ;
-#    end foreach ;
+    foreach decoratedDeclarationListForGeneration do
+      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+      implementationString .= [mDeclaration appendSpecificImplementation] ;
+    end foreach ;
     [@string generateFile
       !inOutputDirectory
       ![componentName string] . ".cpp"

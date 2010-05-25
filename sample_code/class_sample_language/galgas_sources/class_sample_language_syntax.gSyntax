@@ -55,7 +55,7 @@ rule <start_symbol> :
       @bool ok := true ;
       loop [classMap count] :
       while ok & [superClassIndex isRegular] do
-        const @lstring superClassName := [superClassIndex key] ;
+        const @lstring superClassName := [superClassIndex lkey] ;
         const @classMapIndex superSuperClassIndex := [superClassIndex mSuperClassIndex] ;
         ok := not [superClassSet hasKey ![superClassName string]] ;
         superClassSet += ![superClassName string] ;
@@ -81,7 +81,7 @@ rule <start_symbol> :
       codeToGenerate .= [kClassName string] ;
       if [kSuperClassIndex isRegular] then
         codeToGenerate .= " : " ;
-        codeToGenerate .= [[kSuperClassIndex key] string] ;
+        codeToGenerate .= [kSuperClassIndex key] ;
       end if ;
       codeToGenerate .= " { } ;\n" ;
     end foreach ;

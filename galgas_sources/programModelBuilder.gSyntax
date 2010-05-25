@@ -74,6 +74,7 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
   ${$ ;
   @semanticInstructionListAST mPrologueInstructionList [emptyList] ;
   <semantic_instruction_list> ? mPrologueInstructionList ;
+  const @location endOfPrologue := here ;
   $}$ ;
 #--- Program rules
   @semanticDeclarationStructAST mSemanticDeclarations [new
@@ -117,6 +118,7 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
   ${$ ;
   @semanticInstructionListAST mEpilogueInstructionList ;
   <semantic_instruction_list> ? mEpilogueInstructionList ;
+  const @location endOfEpilogue := here ;
   $}$ ;
 #---
   $end$ ;
@@ -128,7 +130,9 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     !mVersionString
     !importedComponentFileNameList
     !mPrologueInstructionList
+    !endOfPrologue
     !mEpilogueInstructionList
+    !endOfEpilogue
     !mProgramRules
     !mSemanticDeclarations
     !endOfSourceFile
