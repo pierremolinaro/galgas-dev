@@ -55,18 +55,30 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
       importedComponentFileNameList += !importedComponentFileName ;
     or
       $semantics$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     or
       $lexique$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     or
       $grammar$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     or
       $syntax$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     or
       $option$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ? * ;
     end select ;
-    $identifier$ ?* ;
-    $in$ ;
-    $literal_string$ ? * ;
     $;$ ;
   end repeat ;
 #--- Prologue
@@ -96,6 +108,13 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     $literal_string$ ? @lstring mSourceFileHelp ;
     $??$ ;
     $type_name$ ? @lstring typeName ;
+    @bool isUnused ;
+    select
+      isUnused := false ;
+    or
+      $unused$ ;
+      isUnused := true ;
+    end select ;
     if [typeName string] != "lstring" then
       error typeName : "the only type allowed here is '@lstring'" ;
     end if ;
@@ -103,12 +122,15 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     ${$ ;
     @semanticInstructionListAST mInstructionList ;
     <semantic_instruction_list> ? mInstructionList ;
+    const @location endOfInstructionList := here ;
     $}$ ;
     mProgramRules +=
       !mSourceFileExtension
       !mSourceFileHelp
       !mSourceFileVariableName
+      !isUnused
       !mInstructionList
+      !endOfInstructionList
     ;
   while
     <semantic_declaration> !?mSemanticDeclarations ;
