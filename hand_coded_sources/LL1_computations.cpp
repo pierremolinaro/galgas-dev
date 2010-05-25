@@ -998,12 +998,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
-                          "const C_String & inDependancyExtension"
-                          ",\n                                "
-                          "const C_String & inDependancyPath"
-                          ",\n                                "
-                          "GALGAS_string * inSentStringPtr"
-                          ",\n                                "
                           "GALGAS_lstring * const inFilePath" ;
         GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
         PMSInt16 numeroParametre = 1 ;
@@ -1039,11 +1033,11 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    }\n"
                           "    if (filePath.fileExists ()) {\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inDependancyExtension, inDependancyPath, inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner_, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;\n"
                           "    if (scanner_->needsCompiling ()) {\n"
                           "      if (scanner_->sourceText () != NULL) {\n"
-                          "        scanner_->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
-        generatedZone3 << "        const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
+                          "        scanner_->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
+                          "        const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                         gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
@@ -1061,11 +1055,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
-                          "          if (inSentStringPtr != NULL) {\n"
-                          "            dotAssign_operation (inSentStringPtr, scanner_->sentString () COMMA_HERE) ;\n"
-                          "          }\n"
-                          "        }\n" ;
-        generatedZone3 << "      }else{\n"
+                          "        }\n"
+                          "      }else{\n"
                           "        C_String message ;\n"
                           "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
                           "        GALGAS_location * errorLocation = readerCall_location (inFilePath COMMA_THERE) ;\n"

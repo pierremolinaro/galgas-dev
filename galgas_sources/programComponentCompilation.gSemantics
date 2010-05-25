@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  Syntax component compilation                                             *
+#  Program component compilation                                            *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -41,6 +41,7 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
   template programFileImplementation "program-file.cpp.gTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
+    ?@programRuleList PROGRAM_RULE_LIST
   ;
 
 }
@@ -57,7 +58,6 @@ routine compileBeforeClause
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationListForGeneration ioDecoratedDeclarationListForGeneration
 :
-#--- Analyse 'before' instructions
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   analyzeRoutineBody
     !inSemanticContext
@@ -79,6 +79,49 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#           C O M P I L E    P R O G R A M    R U L E S                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine compileProgramRules
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ??@programComponentAST inProgramComponentAST
+  ?!@semanticDeclarationListForGeneration ioDecoratedDeclarationListForGeneration
+:
+  @uint ruleIndex := 0 ;
+  foreach [inProgramComponentAST mProgramRules] do
+    @formalParameterListAST argumentList [emptyList] ;
+    argumentList +=
+      ![@formalArgumentPassingModeAST argumentConstantIn]
+      ![@lstring new !"lstring" !here]
+      !mSourceFileVariableName
+      !mSourceFileVariableNameIsUnused
+    ;
+    @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+    @formalParameterListForGeneration routineSignature ;
+    analyzeRoutineBody
+      !inSemanticContext
+      !inPredefinedTypes
+      !argumentList
+      ![@localConstantList emptyList] # No local constant
+      ![@typedAttributeList emptyList] # No attribute (not a method)
+      !mInstructionList
+      !mEndOfInstructionList
+      ?semanticInstructionListForGeneration
+      ?routineSignature
+    ;
+    ioDecoratedDeclarationListForGeneration += ![@routineImplementationForGeneration new
+      !"programRule_" . [ruleIndex string]
+      !routineSignature
+      !semanticInstructionListForGeneration
+    ] ;
+    ruleIndex ++ ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #           C O M P I L E    ' A F T E R '                                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -89,7 +132,6 @@ routine compileAfterClause
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationListForGeneration ioDecoratedDeclarationListForGeneration
 :
-#--- Analyse 'before' instructions
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   analyzeRoutineBody
     !inSemanticContext
@@ -111,7 +153,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#           C O M P I L E    S Y N T A X    C O M P O N E N T               *
+#           C O M P I L E    P R O G R A M    C O M P O N E N T             *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -195,6 +237,13 @@ routine compileProgramComponent
     !programComponentAST
     !?decoratedDeclarationListForGeneration
   ;
+#--- Analyse program rules
+  compileProgramRules
+    !semanticContext
+    !predefinedTypes
+    !programComponentAST
+    !?decoratedDeclarationListForGeneration
+  ;
 #--- Analyse 'after' instructions
   compileAfterClause
     !semanticContext
@@ -227,6 +276,7 @@ routine compileProgramComponent
     @string implementationString := [filewrapper programFileGenerationTemplate.programFileImplementation
       ![componentName string]
       !implementationIncludeList
+      ![programComponentAST mProgramRules]
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;

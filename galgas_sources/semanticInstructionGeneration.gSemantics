@@ -256,11 +256,38 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @grammarInstructionWithSourceFileForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@grammarInstructionWithSourceFileForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "//-------- @grammarInstructionWithSourceFileForGeneration\n" ;
+#--- Source string
+  @string sourceVar ;
+  [mSourceFileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
+#--- Parameters
+  @stringlist parameterCppNameList [emptyList] ;
+  @stringlist parametersToReleaseList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+  ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
+                  .  "::_performSourceFileParsing_" . [mLabelName identifierRepresentation] 
+                  .  " (" . compilerCppName [] . ", " . sourceVar ;
+  foreach parameterCppNameList do
+    ioGeneratedCode .= ", " . mValue ;
+  end foreach ;
+  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+#--- Release temporary variables
+  foreach parametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
+  end foreach ;
+#--- Release temporary input variables (joker in source)
+  foreach mTemporaryInputVariableList do
+    ioGeneratedCode .= "macroReleaseObject (" . mCppName . ") ; // Release temporary input variables (joker in source)\n" ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -271,7 +298,7 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//---- @grammarInstructionWithSourceExpressionForGeneration\n" ;
-#--- Sourece string
+#--- Source string
   @string sourceVar ;
   [mSourceStringExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
 #--- Parameters

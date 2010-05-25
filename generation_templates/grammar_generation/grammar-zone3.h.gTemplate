@@ -25,9 +25,6 @@ foreach NON_TERMINAL_MAP do
     %) ;\n\n%
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
       %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
-      !^%const C_String & inDependancyExtension,\n%
-      !^%const C_String & inDependancyPath,\n%
-      !^%GALGAS_string * inSentStringPtr,\n%
       !^%GALGAS_lstring * const inFileName%
       foreach label_mFormalParametersList do index IDX
         %,\n%!^

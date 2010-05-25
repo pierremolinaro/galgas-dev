@@ -27,7 +27,9 @@ list @programRuleList {
   @lstring mSourceFileExtension ;
   @lstring mSourceFileHelp ;
   @lstring mSourceFileVariableName ;
+  @bool mSourceFileVariableNameIsUnused ;
   @semanticInstructionListAST mInstructionList ;
+  @location mEndOfInstructionList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -7,6 +7,9 @@
 
 #include "%!COMPONENT_NAME%.h"
 #include "galgas/C_galgas_CLI_Options.h"
+#include "command_line_interface/F_Analyze_CLI_Options.h"
+#include "utilities/F_DisplayException.h"
+#include "utilities/cpp-allocation.h"
 
 //---------------------------------------------------------------------------*
 
@@ -22,4 +25,125 @@
   #define SOURCE_FILE_AT_LINE(line) 
   #define COMMA_SOURCE_FILE_AT_LINE(line) 
 #endif
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                      M A I N    F O R    L I B P M                        *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+int mainForLIBPM  (const int argc, const char * argv []) {
+  bool verboseOptionOn = true ;
+  PMSInt16 returnCode = 0 ; // No error
+//--- Fix parameters for BDD package
+  C_BDD::setHashMapSize (19) ;
+  C_BDD::setITEcacheSize (17) ;
+  C_BDD::setANDcacheSize (1) ;
+  C_BDD::forAllOnBitsGreaterCacheSize (18) ;
+  C_PrologueEpilogue::runPrologueActions () ;
+  {
+  //--- Input/output parameters
+    const char * extensions [] = {
+%
+  foreach PROGRAM_RULE_LIST do
+    %      %![mSourceFileExtension utf8Representation]%,\n%
+  end foreach
+%      NULL
+    } ;    
+    const char * helpMessages [] = {
+%
+  foreach PROGRAM_RULE_LIST do
+    %      %![mSourceFileHelp utf8Representation]%,\n%
+  end foreach
+%      NULL
+    } ;    
+    TC_UniqueArray <C_String> sourceFilesArray ;
+  //--- Analyze Command Line Options
+    F_Analyze_CLI_Options (argc, argv,
+      #ifndef DO_NOT_GENERATE_CHECKINGS
+        "version GALGAS_BETA_VERSION" " [debug]",
+      #else
+        "version GALGAS_BETA_VERSION",
+      #endif
+                           sourceFilesArray,
+                           extensions,
+                           helpMessages) ;
+  //--- Build galgas io object
+    C_galgas_io * galgasIOptr = NULL ;
+    macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;
+  //--- Common lexique object
+    C_Compiler * commonLexique = NULL ;
+    macroMyNew (commonLexique, C_Compiler (NULL, "", "", galgasIOptr COMMA_HERE)) ;
+  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)
+    #ifdef SIOUX_IS_IMPLEMENTED
+      SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;
+    #endif
+  //--- Enable 64 bit alloc debug ? Only if compiled in 64 bit and in debug mode
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      #ifdef __LP64__
+        if (gOption_generic_5F_cli_5F_options_enable_5F_allocation_5F_debugging.mValue) {
+          enableAllocDebugFor64BitTool () ;
+        }
+      #endif
+    #endif
+    try{
+      verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
+      routine_before (commonLexique COMMA_HERE) ;
+      for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
+        try {
+          const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
+          GALGAS_string * sfp = GALGAS_string::constructor_new (sourceFilesArray (i COMMA_HERE) COMMA_HERE) ;
+          GALGAS_location * location = commonLexique->here (HERE) ;
+          GALGAS_lstring * sourceFilePath = GALGAS_lstring::constructor_new (sfp, location COMMA_HERE) ;
+          PMSInt16 r = 0 ;
+          %
+ foreach PROGRAM_RULE_LIST 
+    do index IDX
+      %if (fileExtension == %![mSourceFileExtension utf8Representation]%) {\n%
+      %            routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+    between %          }else %
+  end foreach
+%          }else{
+            printf ("*** Error: unhandled extension for file '\%s' ***\\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
+            macroReleaseObject (sfp) ;
+            r = 1 ;
+          }
+          if (r != 0) {
+            returnCode = r ;
+          }
+        }catch (C_ScanOrParseOnlyExceptionEX) { // Raised when scan only or parse only options are set
+          // Do nothing: accept silently exception
+        }
+      }
+    //--- Error or warnings ?
+      if (commonLexique->totalErrorCount () > 0) {
+        returnCode = 1 ; // Error code
+      }else if (commonLexique->totalWarningCount () > 0) {
+        if (gOption_galgas_5F_cli_5F_options_treat_5F_warnings_5F_as_5F_error.mValue) {
+          returnCode = 1 ; // Error code
+          if (verboseOptionOn) {
+            printf ("** Note: warnings are treated as errors. **\\n") ;
+          }
+        }
+      }
+    //--- Epilogue
+      routine_after (commonLexique COMMA_HERE) ;
+    }catch (const M_STD_NAMESPACE exception & e) {
+      F_default_display_exception (e) ;
+      returnCode = 1 ; // Error code
+    }catch (...) {
+      throw ;
+    }
+    macroReleaseObject (galgasIOptr) ;
+    macroReleaseObject (commonLexique) ;
+  }
+  C_PrologueEpilogue::runEpilogueActions () ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    C_Object::checkAllObjectsHaveBeenReleased () ;
+  #endif
+  displayAllocationStats () ;
+  displayAllocatedBlockSizeStats () ;
+  displayAllocatedBlocksInfo () ;
+  return returnCode ;
+}
 
