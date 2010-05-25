@@ -1,0 +1,194 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Syntax component compilation                                             *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics programComponentCompilation :
+import "semanticAnalysisOfSyntaxComponent.gSemantics" ;
+import "programSLRgrammar.gGrammar" ;
+
+import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
+import semantics semanticAnalysisOfSyntaxComponent in "semanticAnalysisOfSyntaxComponent.gSemantics" ;
+import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
+} {
+  template programFileHeader "program-file.h.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@stringlist IMPORTED_COMPONENT_LIST
+    ?@lstringlist TYPE_PREDECLARATION_LIST
+  ;
+
+  template programFileImplementation "program-file.cpp.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@stringlist IMPORTED_COMPONENT_LIST
+  ;
+
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           C O M P I L E    S Y N T A X    C O M P O N E N T               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine compileProgramComponent
+  ??@lstring inSourceFile
+  ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+  @programComponentAST programComponentRoot ;
+
+#--- Parse source file
+  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  const @lstring basenameKey [new !basename !here] ;
+  @programComponentAST programComponentAST ;
+  if [ioParsedComponentStruct->mParsedSyntaxComponentMap hasKey !basename] then
+    [ioParsedComponentStruct->mParsedProgramComponentMap searchKey !basenameKey ?programComponentAST] ;
+  else
+    grammar programSLRgrammar in inSourceFile ?programComponentAST ;
+    [!?ioParsedComponentStruct->mParsedProgramComponentMap insertKey !basenameKey !programComponentAST] ;
+  end if ;
+#--- Check component name
+  const @lstring componentName := [programComponentAST mProgramComponentName] ;
+  if [componentName string] != basename then
+    warning componentName: "GALGAS checks "
+      "the component name ('" . [componentName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ; 
+#--- Recursively parse all imported files
+  @semanticDeclarationListAST semanticDeclarationList := [[programComponentAST mSemanticDeclarations] mSemanticDeclarationList] ;
+  @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
+  @lstringlist optionComponentFileNameList [emptyList] ;
+  @grammarComponentASTList grammarComponentASTList [emptyList] ;
+  @stringlist headerIncludeList [emptyList] ;
+  @stringlist implementationIncludeList [emptyList] ;
+  recursivelyImportSemanticComponent
+    !?ioParsedComponentStruct
+    !?optionComponentFileNameList
+    !?grammarComponentASTList
+    !?semanticDeclarationList
+    !?parsedFileSet
+    !?headerIncludeList
+    !?implementationIncludeList
+    ![programComponentAST mImportedComponentFileNameList]
+    ![inSourceFile stringByDeletingLastPathComponent]
+  ;
+#------ Add predefined types to semantics declarations
+  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
+  appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
+#------ Build semantic context
+  @semanticContext semanticContext ;
+  buildSemanticContext
+    !semanticDeclarationListWithPredefinedTypes
+    ![programComponentAST mEndOfSourceFile]
+    ?semanticContext
+  ;
+#--- Perform semantic analysis of grammar components
+  buildGrammarComponentMapForSemanticAnalysis
+    !grammarComponentASTList
+    !?semanticContext
+  ;
+#--- Build option component map for analysis
+  buildOptionComponentMapForSemanticAnalysis
+    !optionComponentFileNameList
+    !?ioParsedComponentStruct
+    !?semanticContext->mOptionComponentMapForSemanticAnalysis
+  ;
+##--- Parse lexique component
+#  @lexiqueComponentAST lexiqueComponentRoot ;
+#  parseLexiqueComponent
+#    ![syntaxComponentRoot mImportedLexiqueFilePath]
+#    !?ioParsedComponentStruct
+#    ?lexiqueComponentRoot
+#  ;
+##--- Build token map
+#  @terminalMap terminalMap ;
+#  buildTerminalMap !lexiqueComponentRoot ?terminalMap ;
+##--- Build semantic context from rule headers and non terminal declaration
+#  const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
+#  @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
+#  const @string lexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+#  semanticAnalysisOfSyntaxComponent
+#    ![syntaxComponentRoot mNonterminalDeclarationList]
+#    ![syntaxComponentRoot mRuleList]
+#    ![componentName string]
+#    ![lexiqueName identifierRepresentation]
+#    !semanticContext
+#    !predefinedTypes
+#    !terminalMap
+#    ?syntaxDeclarationForGeneration
+#  ;
+##------ Semantic Analysis
+#  @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+#  performSemanticAnalysis
+#    ![[syntaxComponentRoot mSemanticDeclarations] mSemanticDeclarationList]
+#    !semanticContext
+#    ?decoratedDeclarationListForGeneration
+#  ;
+#  decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration ;
+#------ Generate Header File
+  if [@uint errorCount] == 0 then
+    @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
+      ![componentName string]
+      !headerIncludeList
+      ![semanticContext->mTypeMap allKeyList]
+    ] ;
+#    foreach decoratedDeclarationListForGeneration do
+#      headerString .= [mDeclaration appendDeclaration] ;
+#    end foreach ;
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !headerString
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ] ;
+  end if ;
+#------ Generate Implementation File
+  if [@uint errorCount] == 0 then
+    @string implementationString := [filewrapper programFileGenerationTemplate.programFileImplementation
+      ![componentName string]
+      !implementationIncludeList
+    ] ;
+#    foreach decoratedDeclarationListForGeneration do
+#      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+#      implementationString .= [mDeclaration appendSpecificImplementation] ;
+#    end foreach ;
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !implementationString
+      !"\n\n" # Defaut user zone2
+      !"\n"
+    ] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

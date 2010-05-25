@@ -30,7 +30,7 @@ grammar programSLRgrammar "SLR" :
   import syntax programModelBuilder in "programModelBuilder.gSyntax" ;
 
   root <program_component_start_symbol>
-    !@programComponentRoot outProgramComponentRoot
+    !@programComponentAST outProgramComponentRoot
   ; # SLR
 
   unused <actual_input_parameter_list> ;

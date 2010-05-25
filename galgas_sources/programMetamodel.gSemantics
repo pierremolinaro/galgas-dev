@@ -32,13 +32,15 @@ list @programRuleList {
 
 #---------------------------------------------------------------------------*
 
-class @programComponentRoot {
-  @lstring mProgramName ;
+struct @programComponentAST {
+  @lstring mProgramComponentName ;
   @lstring mVersionString ;
+  @lstringlist mImportedComponentFileNameList ;
   @semanticInstructionListAST mPrologueInstructionList ;
   @semanticInstructionListAST mEpilogueInstructionList ;
   @programRuleList mProgramRules ;
   @semanticDeclarationStructAST mSemanticDeclarations ;
+  @location mEndOfSourceFile ;
 }
 
 #---------------------------------------------------------------------------*

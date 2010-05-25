@@ -1,0 +1,25 @@
+#include "version_libpm.h"
+#if CURRENT_LIBPM_VERSION != VERSION_OF_LIBPM_USED_BY_GALGAS_COMPILER
+  #error "This file has been compiled with a version of GALGAS that uses libpm version VERSION_OF_LIBPM_USED_BY_GALGAS_COMPILER, different than the current version (CURRENT_LIBPM_VERSION) of libpm"
+#endif
+
+//---------------------------------------------------------------------------*
+
+#include "%!COMPONENT_NAME%.h"
+#include "galgas/C_galgas_CLI_Options.h"
+
+//---------------------------------------------------------------------------*
+
+% foreach IMPORTED_COMPONENT_LIST do
+    %#include "%!mValue%.h"\n%
+  end foreach%
+//---------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define SOURCE_FILE_AT_LINE(line) "%!COMPONENT_NAME%.gProgram", line
+  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)
+#else
+  #define SOURCE_FILE_AT_LINE(line) 
+  #define COMMA_SOURCE_FILE_AT_LINE(line) 
+#endif
+
