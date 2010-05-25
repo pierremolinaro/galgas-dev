@@ -290,8 +290,6 @@ override method @readerCallExpressionForGeneration generateExpression
     ioGeneratedCode .= ", " . compilerCppName [] ;
   end if ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
-#--- Release temporary variables
-  ioGeneratedCode .= "macroReleaseObject (" . receiverCppName . ") ; // Release reader receiver\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
