@@ -37,7 +37,9 @@ struct @programComponentAST {
   @lstring mVersionString ;
   @lstringlist mImportedComponentFileNameList ;
   @semanticInstructionListAST mPrologueInstructionList ;
+  @location mEndOfPrologue ;
   @semanticInstructionListAST mEpilogueInstructionList ;
+  @location mEndOfEpilogue ;
   @programRuleList mProgramRules ;
   @semanticDeclarationStructAST mSemanticDeclarations ;
   @location mEndOfSourceFile ;
