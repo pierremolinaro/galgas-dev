@@ -251,6 +251,12 @@
 		CF31B5420DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5440DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5460DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
+		CF34D4B911ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
+		CF34D4BA11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
+		CF34D4BB11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
+		CF34D4BC11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
+		CF34D4BD11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
+		CF34D4BE11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
 		CF3CE55D1149409E00662480 /* AC_GGS_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3CE5511149409E00662480 /* AC_GGS_class.cpp */; };
 		CF3CE55E1149409E00662480 /* AC_GGS_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3CE5531149409E00662480 /* AC_GGS_domain.cpp */; };
 		CF3CE55F1149409E00662480 /* AC_GGS_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3CE5551149409E00662480 /* AC_GGS_list.cpp */; };
@@ -1663,6 +1669,8 @@
 		CF2DEAA61101C4C400AE8D35 /* semanticsTypeFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsTypeFeatures.h; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
+		CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = programComponentCompilation.cpp; sourceTree = "<group>"; };
+		CF34D4B811ABD1EA0020730A /* programComponentCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = programComponentCompilation.h; sourceTree = "<group>"; };
 		CF3CE5511149409E00662480 /* AC_GGS_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GGS_class.cpp; sourceTree = "<group>"; };
 		CF3CE5521149409E00662480 /* AC_GGS_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_GGS_class.h; sourceTree = "<group>"; };
 		CF3CE5531149409E00662480 /* AC_GGS_domain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GGS_domain.cpp; sourceTree = "<group>"; };
@@ -3367,6 +3375,8 @@
 		CFF537F4057A52D900854C83 /* Program Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */,
+				CF34D4B811ABD1EA0020730A /* programComponentCompilation.h */,
 				CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */,
 				CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */,
 				CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */,
@@ -4178,6 +4188,7 @@
 				CFC7E13A119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
 				CF26397C11A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E0D11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
+				CF34D4B911ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4409,6 +4420,7 @@
 				CFC7E13C119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
 				CF26397E11A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E0F11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
+				CF34D4BB11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4640,6 +4652,7 @@
 				CFC7E13D119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
 				CF26397F11A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E1011A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
+				CF34D4BC11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4910,6 +4923,7 @@
 				CFC7E13B119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
 				CF26397D11A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E0E11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
+				CF34D4BA11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5141,6 +5155,7 @@
 				CFC7E13E119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
 				CF26398011A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E1111A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
+				CF34D4BD11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5372,6 +5387,7 @@
 				CFC7E13F119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
 				CF26398111A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E1211A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
+				CF34D4BE11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

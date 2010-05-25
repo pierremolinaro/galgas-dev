@@ -106,6 +106,7 @@ project all_galgas:
   semantics "programMetamodel.gSemantics" : makefile ;
   syntax    "programModelBuilder.gSyntax" : makefile ;
   grammar   "programSLRgrammar.gGrammar" : makefile ;
+  semantics "programComponentCompilation.gSemantics" : makefile ;
 
 #--- Project component
   semantics "projectGlobalCheckings.gSemantics" : makefile ;

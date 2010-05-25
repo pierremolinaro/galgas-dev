@@ -26,7 +26,7 @@ import semantics programMetamodel in "programMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <program_component_start_symbol> !@programComponentRoot outProgramComponentRoot ;
+nonterminal <program_component_start_symbol> !@programComponentAST outProgramComponentRoot ;
 
 nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
 
@@ -40,20 +40,24 @@ nonterminal <semantic_declaration>
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <program_component_start_symbol> !@programComponentRoot outProgramComponentRoot :
+rule <program_component_start_symbol> !@programComponentAST outProgramComponentRoot :
   $program$ ;
   $identifier$ ? @lstring mProgramName ;
   $literal_string$ ? @lstring mVersionString ;
   $:$ ;
 #--- Loop on import declarations
+  @lstringlist importedComponentFileNameList [emptyList] ;
   repeat
   while
     $import$ ;
     select
+      $literal_string$ ? @lstring importedComponentFileName ;
+      importedComponentFileNameList += !importedComponentFileName ;
+    or
       $semantics$ ;
     or
       $lexique$ ;
-   or
+    or
       $grammar$ ;
     or
       $syntax$ ;
@@ -116,15 +120,18 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
   $}$ ;
 #---
   $end$ ;
+  const @location endOfSourceFile := here ;
   $program$ ;
   $;$ ;
-  outProgramComponentRoot := [@programComponentRoot new
+  outProgramComponentRoot := [@programComponentAST new
     !mProgramName
     !mVersionString
+    !importedComponentFileNameList
     !mPrologueInstructionList
     !mEpilogueInstructionList
     !mProgramRules
     !mSemanticDeclarations
+    !endOfSourceFile
   ] ;
 end rule ;
 

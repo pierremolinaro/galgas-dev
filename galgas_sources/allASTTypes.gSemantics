@@ -26,6 +26,7 @@ semantics allASTTypes :
   import "syntaxMetamodel.gSemantics" ;
   import "grammarMetamodel.gSemantics" ;
   import "optionSemantics.gSemantics" ;
+  import "programMetamodel.gSemantics" ;
 
 import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
 import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
@@ -35,6 +36,7 @@ import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
 import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 import semantics optionSemantics in "optionSemantics.gSemantics" ;
+import semantics programMetamodel in "programMetamodel.gSemantics" ;
 
 
 #---------------------------------------------------------------------------*
@@ -81,12 +83,21 @@ map @parsedGrammarComponentMap {
 
 #---------------------------------------------------------------------------*
 
+map @parsedProgramComponentMap {
+  @programComponentAST mProgramComponentAST ;
+  insert insertKey error message "the '%K' program component has already been parsed" ;
+  search searchKey error message "the '%K' program component is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @parsedComponentStruct {
   @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
   @parsedLexiqueComponentMap mParsedLexiqueComponentMap ;
   @parsedSyntaxComponentMap mParsedSyntaxComponentMap ;
   @parsedOptionComponentMap mParsedOptionComponentMap ;
   @parsedGrammarComponentMap mParsedGrammarComponentMap ;
+  @parsedProgramComponentMap mParsedProgramComponentMap ;
 }
 
 #---------------------------------------------------------------------------*

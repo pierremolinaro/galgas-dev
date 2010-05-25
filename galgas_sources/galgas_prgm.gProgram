@@ -35,10 +35,9 @@ program galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
   import semantics syntaxCompilation in "syntaxCompilation.gSemantics" ;
   import semantics predefinedTypes in "predefinedTypes.gSemantics" ;
+  import semantics programComponentCompilation in "programComponentCompilation.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
-  import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
-  import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -92,6 +91,7 @@ message "a GALGAS option source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
+    ![@parsedProgramComponentMap emptyMap]
   ] ;
   compileOptionComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
@@ -107,6 +107,7 @@ message "a GALGAS lexique source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
+    ![@parsedProgramComponentMap emptyMap]
   ] ;
   compileLexiqueComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
@@ -123,6 +124,7 @@ message "a GALGAS semantics source file"
       ![@parsedSyntaxComponentMap emptyMap]
       ![@parsedOptionComponentMap emptyMap]
       ![@parsedGrammarComponentMap emptyMap]
+      ![@parsedProgramComponentMap emptyMap]
     ] ;
     compileSemanticsComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
   else
@@ -161,6 +163,7 @@ message "a GALGAS syntax source file"
       ![@parsedSyntaxComponentMap emptyMap]
       ![@parsedOptionComponentMap emptyMap]
       ![@parsedGrammarComponentMap emptyMap]
+      ![@parsedProgramComponentMap emptyMap]
     ] ;
     compileSyntaxComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
   else
@@ -198,6 +201,7 @@ message "a GALGAS grammar source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
+    ![@parsedProgramComponentMap emptyMap]
   ] ;
   compileGrammarComponent
     !inSourceFile
@@ -217,6 +221,7 @@ message "a GALGAS GUI source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
+    ![@parsedProgramComponentMap emptyMap]
   ] ;
   compileGuiComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
@@ -227,8 +232,15 @@ when . "gProgram"
 message "a GALGAS program source file"
 ??@lstring inSourceFile {
   if [option galgas_cli_options.newCodeGeneration value] then
-    @programComponentRoot programComponentRoot ;
-    grammar programSLRgrammar in inSourceFile ? programComponentRoot ;
+    @parsedComponentStruct parsedComponentStruct [new
+      ![@parsedSemanticsComponentMap emptyMap]
+      ![@parsedLexiqueComponentMap emptyMap]
+      ![@parsedSyntaxComponentMap emptyMap]
+      ![@parsedOptionComponentMap emptyMap]
+      ![@parsedGrammarComponentMap emptyMap]
+      ![@parsedProgramComponentMap emptyMap]
+    ] ;
+    compileProgramComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
   else
     @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
     @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
@@ -289,6 +301,7 @@ message "a GALGAS project source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
+    ![@parsedProgramComponentMap emptyMap]
   ] ;
 #--- Parse galgas sources
   foreach projectSourceList do
@@ -392,7 +405,7 @@ message "a GALGAS project source file"
     when programSourceFile :
       if extension == "gProgram" then
         if [option galgas_cli_options.newCodeGeneration value] then
-  #       compileProgramComponent !fullFilePath ! outputDirectory ;
+          compileProgramComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
         else
           @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
           @M_semanticsComponents semanticsComponentsMap [emptyMap] ;

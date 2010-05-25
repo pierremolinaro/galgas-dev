@@ -215,6 +215,7 @@ rule <galgas_component>
         ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
         ![@parsedGrammarComponentMap emptyMap]
+        ![@parsedProgramComponentMap emptyMap]
       ] ;
       compileOptionComponent !fileName !s2 !?parsedComponentStruct ;
     elsif (sourceFileKind == [@EXsourceFileKind lexiqueSourceFile]) & ([fileName pathExtension] == "gLexique") then
@@ -225,6 +226,7 @@ rule <galgas_component>
         ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
         ![@parsedGrammarComponentMap emptyMap]
+        ![@parsedProgramComponentMap emptyMap]
       ] ;
       compileLexiqueComponent !fileName !s2 !?parsedComponentStruct ;
     elsif (sourceFileKind == [@EXsourceFileKind guiSourceFile]) & ([fileName pathExtension] == "gGui") then
@@ -235,6 +237,7 @@ rule <galgas_component>
         ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
         ![@parsedGrammarComponentMap emptyMap]
+        ![@parsedProgramComponentMap emptyMap]
       ] ;
       @string absoluteFilePath := [fileName absolutePathFromPath ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]] ;
       compileGuiComponent ![@lstring new !absoluteFilePath ![fileName location]] !s2 !?parsedComponentStruct ;
@@ -246,6 +249,7 @@ rule <galgas_component>
         ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
         ![@parsedGrammarComponentMap emptyMap]
+        ![@parsedProgramComponentMap emptyMap]
       ] ;
       const @string absoluteFilePath := [fileName absolutePathFromPath ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]] ;
       compileGrammarComponent
