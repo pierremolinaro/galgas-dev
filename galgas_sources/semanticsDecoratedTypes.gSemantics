@@ -404,13 +404,6 @@ list @actualParameterListForGeneration {
   @actualParameterForGeneration mActualParameter ;
 }
 
-#---------------------------------------------------------------------------*
-
-list @temporaryInputVariableForRoutineInvocationForGeneration {
-  @unifiedTypeMapProxy mType ;
-  @string mCppName ;
-}
-
 ##---------------------------------------------------------------------------*
 ##                                                                           *
 ##  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
@@ -690,7 +683,6 @@ class @warningInstructionForGeneration extends @semanticInstructionForGeneration
 class @routineCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @lstring mRoutineName ;
   @actualParameterListForGeneration mActualParameterList ;
-  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -704,7 +696,6 @@ class @typeMethodInstructionForGeneration extends @semanticInstructionForGenerat
   @lstring mMethodName ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
-  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -719,7 +710,6 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
   @string mMethodName ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
-  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -735,7 +725,6 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
   @lstring mModifierName ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
-  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -890,7 +879,6 @@ class @grammarInstructionWithSourceFileForGeneration extends @semanticInstructio
   @string mLabelName ;
   @semanticExpressionForGeneration mSourceFileExpression ;
   @actualParameterListForGeneration mActualParameterList ;
-  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -901,7 +889,6 @@ class @grammarInstructionWithSourceExpressionForGeneration extends @semanticInst
   @string mLabelName ;
   @semanticExpressionForGeneration mSourceStringExpression ;
   @actualParameterListForGeneration mActualParameterList ;
-  @temporaryInputVariableForRoutineInvocationForGeneration mTemporaryInputVariableList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -919,6 +906,60 @@ class @readWriteWithInstructionForGeneration extends @semanticInstructionForGene
   @semanticExpressionForGeneration mKeyExpression ;
   @semanticInstructionListForGeneration mDoBranchInstructions ;
   @semanticInstructionListForGeneration mElseBranchInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T E R M I N A L    C H E C K    I N S T R U C T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @terminalCheckInstructionForGeneration extends @semanticInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R E P E A T    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @repeatInstructionForGeneration extends @semanticInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S E L E C T    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selectInstructionForGeneration extends @semanticInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P A R S E    D O    I N S T R U C T I O N                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseDoInstructionForGeneration extends @semanticInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P A R S E    L O O P    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseLoopInstructionForGeneration extends @semanticInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P A R S E    W H E N    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseWhenInstructionForGeneration extends @semanticInstructionForGeneration {
 }
 
 #---------------------------------------------------------------------------*

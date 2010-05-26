@@ -41,21 +41,6 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine appendStructASTForTypeWithLocation
-  ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ??@string inElementTypeName
-:
-  @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] ;
-  attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] ;
-  ioDeclarationListASTs += ![@structDeclarationAST new
-    ![@lstring new !"l" . inElementTypeName !here]
-    !attributeList
-  ] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 routine appendClassASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ??@string inElementTypeName
@@ -125,133 +110,133 @@ routine appendPredefinedTypesASTs
   appendClassASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 
 #--- Example of map proxy type
-  ioDeclarationListASTs += ![@mapProxyDeclarationAST new
-    ![@lstring new !"zeMap-Proxy" !here]
-    ![@lstring new !"ze-Map" !here]
-  ] ;
+#  ioDeclarationListASTs += ![@mapProxyDeclarationAST new
+#    ![@lstring new !"zeMap-Proxy" !here]
+#    ![@lstring new !"ze-Map" !here]
+#  ] ;
 
 #--- Example of map type
-  @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
-  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
-  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
-  @insertMethodListAST insertMethodList [emptyList] ;
-  insertMethodList +=
-    ![@lstring new !"insertKey" !here]
-    ![@lstring new !"redefinition of %K (first definition was in %L) et %% !" !here]
-    ![@lstring new !"" !here]
-    ![@lstring new !"" !here] # No state
-  ;
-  @mapSearchMethodListAST searchMethodList [emptyList] ;
-  searchMethodList +=
-    ![@lstring new !"searchKey" !here]
-    ![@lstring new !"%K unknown et %% !" !here]
-    ![@lstring new !"" !here] # No action
-  ;
-  @mapRemoveMethodListAST removeMethodList [emptyList] ;
-  removeMethodList +=
-    ![@lstring new !"removeKey" !here]
-    ![@lstring new !"%K unknown et %% !" !here]
-  ;
-  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
-  ioDeclarationListASTs += ![@mapDeclarationAST new
-    ![@lstring new !"ze-Map" !here]
-    !attributeList
-    !insertMethodList
-    !searchMethodList
-    !removeMethodList
-    !insertOrReplaceDeclarationListAST
-    ![@mapStateList emptyList]
-  ] ;
+#  @attributeInCollectionListAST attributeList [emptyList] ;
+#  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
+#  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
+#  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
+#  @insertMethodListAST insertMethodList [emptyList] ;
+#  insertMethodList +=
+#    ![@lstring new !"insertKey" !here]
+#    ![@lstring new !"redefinition of %K (first definition was in %L) et %% !" !here]
+#    ![@lstring new !"" !here]
+#    ![@lstring new !"" !here] # No state
+#  ;
+#  @mapSearchMethodListAST searchMethodList [emptyList] ;
+#  searchMethodList +=
+#    ![@lstring new !"searchKey" !here]
+#    ![@lstring new !"%K unknown et %% !" !here]
+#    ![@lstring new !"" !here] # No action
+#  ;
+#  @mapRemoveMethodListAST removeMethodList [emptyList] ;
+#  removeMethodList +=
+#    ![@lstring new !"removeKey" !here]
+#    ![@lstring new !"%K unknown et %% !" !here]
+#  ;
+#  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
+#  ioDeclarationListASTs += ![@mapDeclarationAST new
+#    ![@lstring new !"ze-Map" !here]
+#    !attributeList
+#    !insertMethodList
+#    !searchMethodList
+#    !removeMethodList
+#    !insertOrReplaceDeclarationListAST
+#    ![@mapStateList emptyList]
+#  ] ;
 
 #--- Example of listmap type
-  ioDeclarationListASTs += ![@listmapDeclarationAST new
-    ![@lstring new !"ze-List-Map" !here]
-    ![@lstring new !"uintlist" !here]
-  ] ;
+#  ioDeclarationListASTs += ![@listmapDeclarationAST new
+#    ![@lstring new !"ze-List-Map" !here]
+#    ![@lstring new !"uintlist" !here]
+#  ] ;
 
 #--- Example of sorted list
-  attributeList := [@attributeInCollectionListAST emptyList] ;
-  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
-  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
-  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
-  @sortedListSortDescriptorListAST sortAttributeList [emptyList] ;
-  sortAttributeList += ![@lstring new !"toto" !here] !true ;
-  sortAttributeList += ![@lstring new !"tata" !here] !false ;
-  ioDeclarationListASTs += ![@sortedListDeclarationAST new
-    ![@lstring new !"Ze-Sorted-List" !here]
-    !attributeList
-    !sortAttributeList
-  ] ;
+#  attributeList := [@attributeInCollectionListAST emptyList] ;
+#  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
+#  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
+#  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
+#  @sortedListSortDescriptorListAST sortAttributeList [emptyList] ;
+#  sortAttributeList += ![@lstring new !"toto" !here] !true ;
+#  sortAttributeList += ![@lstring new !"tata" !here] !false ;
+#  ioDeclarationListASTs += ![@sortedListDeclarationAST new
+#    ![@lstring new !"Ze-Sorted-List" !here]
+#    !attributeList
+#    !sortAttributeList
+#  ] ;
 
 #--- Example of enum
-  @lstringlist constantList [emptyList] ;
-  constantList += ![@lstring new !"ze_First" !here] ;
-  constantList += ![@lstring new !"ze_Second" !here] ;
-  constantList += ![@lstring new !"ze_Third" !here] ;
-  @enumMessageListAST enumMessageListAST [emptyList] ;
-  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
-  enumMessageAssociationListAST += ![@lstring new !"ze_Third" !here] ![@lstring new !"third" !here] ;
-  enumMessageAssociationListAST += ![@lstring new !"ze_First" !here] ![@lstring new !"first" !here] ;
-  enumMessageAssociationListAST += ![@lstring new !"ze_Second" !here] ![@lstring new !"second" !here] ;
-  enumMessageListAST += ![@lstring new !"ze_message" !here] !enumMessageAssociationListAST ;
-  ioDeclarationListASTs += ![@enumDeclarationAST new
-    ![@lstring new !"Ze-enumeration" !here]
-    !constantList
-    !enumMessageListAST
-  ] ;
+#  @lstringlist constantList [emptyList] ;
+#  constantList += ![@lstring new !"ze_First" !here] ;
+#  constantList += ![@lstring new !"ze_Second" !here] ;
+#  constantList += ![@lstring new !"ze_Third" !here] ;
+#  @enumMessageListAST enumMessageListAST [emptyList] ;
+#  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
+#  enumMessageAssociationListAST += ![@lstring new !"ze_Third" !here] ![@lstring new !"third" !here] ;
+#  enumMessageAssociationListAST += ![@lstring new !"ze_First" !here] ![@lstring new !"first" !here] ;
+#  enumMessageAssociationListAST += ![@lstring new !"ze_Second" !here] ![@lstring new !"second" !here] ;
+#  enumMessageListAST += ![@lstring new !"ze_message" !here] !enumMessageAssociationListAST ;
+#  ioDeclarationListASTs += ![@enumDeclarationAST new
+#    ![@lstring new !"Ze-enumeration" !here]
+#    !constantList
+#    !enumMessageListAST
+#  ] ;
 
 #--- Examples of classes
-  attributeList := [@attributeInCollectionListAST emptyList] ;
-  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
-  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
-  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
-  @abstractMethodDefinitionListAST abstractMethodDefinitionListAST [emptyList] ;
-  @formalParameterListAST firstMethodFormalParameters [emptyList] ;
-  firstMethodFormalParameters +=
-    ![@formalArgumentPassingModeAST argumentIn]
-    ![@lstring new !"string" !here]
-    ![@lstring new !"parameter" !here]
-    !true # Is unused
-  ;
-  abstractMethodDefinitionListAST +=
-    !false # Is not overriding
-    ![@lstring new !"first_method" !here]
-    !firstMethodFormalParameters 
-  ;
-  ioDeclarationListASTs += ![@classDeclarationAST new
-    !true # Is abstract
-    ![@lstring new !"Ze-abstract-class" !here]
-    ![@lstring new !"" !here] # No super class
-    ![@lstringlist emptyList] # Class feature
-    !attributeList
-    !abstractMethodDefinitionListAST
-    ![@methodDefinitionListAST emptyList]
-    ![@lazyAttributeListAST emptyList]
-  ] ;
-
-  attributeList := [@attributeInCollectionListAST emptyList] ;
-  attributeList += ![@lstring new !"luint" !here] ![@lstring new !"toto2" !here] ;
-  attributeList += ![@lstring new !"lstring" !here] ![@lstring new !"tutu2" !here] ;
-  attributeList += ![@lstring new !"lchar" !here] ![@lstring new !"tata2" !here] ;
-  @methodDefinitionListAST concreteMethodDefinitionListAST [emptyList] ;
-  concreteMethodDefinitionListAST +=
-    !true # Is overriding
-    ![@lstring new !"first_method" !here]
-    !firstMethodFormalParameters
-    ![@semanticInstructionListAST emptyList]
-    !here
-  ;
-  ioDeclarationListASTs += ![@classDeclarationAST new
-    !false # Is concrete
-    ![@lstring new !"Ze-class" !here]
-    ![@lstring new !"Ze-abstract-class" !here]
-    ![@lstringlist emptyList] # Class feature
-    !attributeList
-    ![@abstractMethodDefinitionListAST emptyList]
-    !concreteMethodDefinitionListAST
-    ![@lazyAttributeListAST emptyList]
-  ] ;
+#  attributeList := [@attributeInCollectionListAST emptyList] ;
+#  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"toto" !here] ;
+#  attributeList += ![@lstring new !"string" !here] ![@lstring new !"tutu" !here] ;
+#  attributeList += ![@lstring new !"char" !here] ![@lstring new !"tata" !here] ;
+#  @abstractMethodDefinitionListAST abstractMethodDefinitionListAST [emptyList] ;
+#  @formalParameterListAST firstMethodFormalParameters [emptyList] ;
+#  firstMethodFormalParameters +=
+#    ![@formalArgumentPassingModeAST argumentIn]
+#    ![@lstring new !"string" !here]
+#    ![@lstring new !"parameter" !here]
+#    !true # Is unused
+#  ;
+#  abstractMethodDefinitionListAST +=
+#    !false # Is not overriding
+#    ![@lstring new !"first_method" !here]
+#    !firstMethodFormalParameters 
+#  ;
+#  ioDeclarationListASTs += ![@classDeclarationAST new
+#    !true # Is abstract
+#    ![@lstring new !"Ze-abstract-class" !here]
+#    ![@lstring new !"" !here] # No super class
+#    ![@lstringlist emptyList] # Class feature
+#    !attributeList
+#    !abstractMethodDefinitionListAST
+#    ![@methodDefinitionListAST emptyList]
+#    ![@lazyAttributeListAST emptyList]
+#  ] ;
+#
+#  attributeList := [@attributeInCollectionListAST emptyList] ;
+#  attributeList += ![@lstring new !"luint" !here] ![@lstring new !"toto2" !here] ;
+#  attributeList += ![@lstring new !"lstring" !here] ![@lstring new !"tutu2" !here] ;
+#  attributeList += ![@lstring new !"lchar" !here] ![@lstring new !"tata2" !here] ;
+#  @methodDefinitionListAST concreteMethodDefinitionListAST [emptyList] ;
+#  concreteMethodDefinitionListAST +=
+#    !true # Is overriding
+#    ![@lstring new !"first_method" !here]
+#    !firstMethodFormalParameters
+#    ![@semanticInstructionListAST emptyList]
+#    !here
+#  ;
+#  ioDeclarationListASTs += ![@classDeclarationAST new
+#    !false # Is concrete
+#    ![@lstring new !"Ze-class" !here]
+#    ![@lstring new !"Ze-abstract-class" !here]
+#    ![@lstringlist emptyList] # Class feature
+#    !attributeList
+#    ![@abstractMethodDefinitionListAST emptyList]
+#    !concreteMethodDefinitionListAST
+#    ![@lazyAttributeListAST emptyList]
+#  ] ;
 
 end routine ;
 

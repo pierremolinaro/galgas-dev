@@ -138,6 +138,7 @@ foreach CONCRETE_METHOD_LIST do
     !mSignature
     !mInstructionList
     !false # Method is not const
+    !"C_Compiler"
   ]
 end foreach
 

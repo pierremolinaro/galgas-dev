@@ -81,17 +81,20 @@ engendrerAppelProduction (const PMSInt16 nombreDeParametres,
                           const cVocabulary & inVocabulary,
                           const C_String & inAltName,
                           AC_OutputStream & fichierCPP) const {
-  fichierCPP << "rule_" << mSourceFileName.identifierRepresentation ()
+  fichierCPP << "  rule_" << mSourceFileName.identifierRepresentation ()
              << "_" << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE).identifierRepresentation ()
              << "_i" << cStringWithUnsigned (mProductionIndex)
-             << "_" << inAltName.identifierRepresentation ()
-             << " (inLexique" ;
-  for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
-    fichierCPP << "," ;
-    if ((i % 5) == 4) {
-      fichierCPP << "\n                 " ;
-     }
-     fichierCPP << " parameter_" << cStringWithSigned (i) ;
+             << "_" << inAltName.identifierRepresentation () << "(" ;
+  if (gOption_galgas_5F_cli_5F_options_newCodeGeneration.mValue) {
+    for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
+       fichierCPP << "parameter_" << cStringWithSigned (i)  << ", " ;
+    }
+    fichierCPP << "inLexique" ;
+  }else{
+    fichierCPP << "inLexique" ;
+    for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
+      fichierCPP << ", parameter_" << cStringWithSigned (i) ;
+    }
   }
   fichierCPP << ") ;\n" ;
 }
