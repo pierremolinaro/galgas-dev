@@ -27,7 +27,7 @@ semantics semanticInstructionGeneration :
 abstract method @actualParameterForGeneration generateActualParameter
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
-  ?!@stringlist ioParametersToReleaseList
+  ?!@stringlist ioJokerParametersToReleaseList
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 ;
@@ -37,7 +37,7 @@ abstract method @actualParameterForGeneration generateActualParameter
 override method @outputActualParameterForGeneration generateActualParameter
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
-  ?!@stringlist unused ioParametersToReleaseList
+  ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
@@ -50,7 +50,7 @@ end method ;
 override method @outputInputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
-  ?!@stringlist unused ioParametersToReleaseList
+  ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
@@ -66,7 +66,7 @@ end method ;
 override method @inputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
-  ?!@stringlist unused ioParametersToReleaseList
+  ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
@@ -79,13 +79,13 @@ end method ;
 override method @inputJokerParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
-  ?!@stringlist ioParametersToReleaseList
+  ?!@stringlist ioJokerParametersToReleaseList
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
   ioImplementation .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * " . outCppName . " = NULL ; // Joker input parameter\n" ;
-  ioParametersToReleaseList += !mInputActualCppName ;
+  ioJokerParametersToReleaseList += !mInputActualCppName ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -266,10 +266,10 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   [mSourceFileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
-  @stringlist parametersToReleaseList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
   ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
@@ -281,12 +281,8 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 #--- Release temporary variables
-  foreach parametersToReleaseList do
-    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
-  end foreach ;
-#--- Release temporary input variables (joker in source)
-  foreach mTemporaryInputVariableList do
-    ioGeneratedCode .= "macroReleaseObject (" . mCppName . ") ; // Release temporary input variables (joker in source)\n" ;
+  foreach jokerParametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
   end foreach ;
 end method ;
 
@@ -303,10 +299,10 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   [mSourceStringExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
-  @stringlist parametersToReleaseList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
   ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
@@ -318,12 +314,8 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 #--- Release temporary variables
-  foreach parametersToReleaseList do
-    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
-  end foreach ;
-#--- Release temporary input variables (joker in source)
-  foreach mTemporaryInputVariableList do
-    ioGeneratedCode .= "macroReleaseObject (" . mCppName . ") ; // Release temporary input variables (joker in source)\n" ;
+  foreach jokerParametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
   end foreach ;
 end method ;
 
@@ -431,10 +423,10 @@ override method @methodCallInstructionForGeneration generateInstruction
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverVar] ;
 #---
   @stringlist parameterCppNameList [emptyList] ;
-  @stringlist parametersToReleaseList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -451,12 +443,8 @@ override method @methodCallInstructionForGeneration generateInstruction
 #--- Release receiver temporary variable
   ioGeneratedCode .= "macroReleaseObject (" . receiverVar . ") ; // Release receiver temporary variable\n" ;
 #--- Release temporary variables
-  foreach parametersToReleaseList do
-    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
-  end foreach ;
-#--- Release temporary input variables (joker in source)
-  foreach mTemporaryInputVariableList do
-    ioGeneratedCode .= "macroReleaseObject (" . mCppName . ") ; // Release temporary input variables (joker in source)\n" ;
+  foreach jokerParametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
   end foreach ;
 end method ;
 
@@ -470,10 +458,10 @@ override method @routineCallInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @routineCallInstructionForGeneration\n" ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
-  @stringlist parametersToReleaseList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -484,12 +472,8 @@ override method @routineCallInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .=  compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[[mRoutineName location] line] string] . ")) ;\n" ;
 #--- Release temporary variables
-  foreach parametersToReleaseList do
-    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
-  end foreach ;
-#--- Release temporary input variables (joker in source)
-  foreach mTemporaryInputVariableList do
-    ioGeneratedCode .= "macroReleaseObject (" . mCppName . ") ; // Release temporary input variables (joker in source)\n" ;
+  foreach jokerParametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
   end foreach ;
 end method ;
 
@@ -521,10 +505,10 @@ override method @modifierCallInstructionForGeneration generateInstruction
   end if ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
-  @stringlist parametersToReleaseList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?parametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -539,12 +523,8 @@ override method @modifierCallInstructionForGeneration generateInstruction
   end if ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
 #--- Release temporary variables
-  foreach parametersToReleaseList do
-    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release method call temporary output parameters\n" ;
-  end foreach ;
-#--- Release temporary input variables (joker in source)
-  foreach mTemporaryInputVariableList do
-    ioGeneratedCode .= "macroReleaseObject (" . mCppName . ") ; // Release temporary input variables (joker in source)\n" ;
+  foreach jokerParametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
   end foreach ;
 end method ;
 

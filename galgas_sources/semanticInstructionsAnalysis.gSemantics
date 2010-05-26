@@ -420,7 +420,6 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-  ?!@temporaryInputVariableForRoutineInvocationForGeneration ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset ioExclusiveVariableSet
 ;
 
@@ -433,7 +432,6 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-  ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset unused ioExclusiveVariableSet
 :
   if (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentIn])
@@ -468,7 +466,6 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-  ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset ioExclusiveVariableSet
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
@@ -515,7 +512,6 @@ override method @inputActualParameterAST checkAgainstFormalArgument
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-  ?!@temporaryInputVariableForRoutineInvocationForGeneration unused ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset ioExclusiveVariableSet
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
@@ -556,7 +552,6 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-  ?!@temporaryInputVariableForRoutineInvocationForGeneration ioTemporaryInputVariableForRoutineInvocationForGeneration
   ?!@stringset unused ioExclusiveVariableSet
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
@@ -566,8 +561,6 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
     ;
   else
     const @string cppVarName := "joker_" . [[mQualifierLocation locationIndex] string] . "_" . [mJokerIndex string] ;
-  #--- Add temporary variable
-    ioTemporaryInputVariableForRoutineInvocationForGeneration += !inFormalArgumentType !cppVarName ;
   #--- Generate actual parameter
     ioActualParameterListForGeneration += ![@inputJokerParameterForGeneration new
       !cppVarName
@@ -587,18 +580,16 @@ routine analyzeRoutineArguments
   ??@actualParameterListAST inActualParameterList
   ?!@variableMap ioVariableMap
   !@actualParameterListForGeneration outActualParameterListForGeneration
-  !@temporaryInputVariableForRoutineInvocationForGeneration outTemporaryInputVariableForRoutineInvocationForGeneration
 :
   if [inRoutineSignature length] != [inActualParameterList length] then
     error inRoutineName
     :"the " . inInvokedEntityName . " defines " . [[inRoutineSignature length] string] 
     . " formal argument(s), but this invocation names "
     . [[inActualParameterList length] string] . " argument(s)"
-    : outActualParameterListForGeneration, outTemporaryInputVariableForRoutineInvocationForGeneration
+    : outActualParameterListForGeneration
     ;
   else
     outActualParameterListForGeneration := [@actualParameterListForGeneration emptyList] ;
-    outTemporaryInputVariableForRoutineInvocationForGeneration := [@temporaryInputVariableForRoutineInvocationForGeneration emptyList] ;
     @stringset exclusiveVariableSet [emptySet] ;
     foreach inRoutineSignature, inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
@@ -608,7 +599,6 @@ routine analyzeRoutineArguments
         !mFormalArgumentPassingMode
         !?ioVariableMap
         !?outActualParameterListForGeneration
-        !?outTemporaryInputVariableForRoutineInvocationForGeneration
         !?exclusiveVariableSet
       ] ;
     end foreach ;
@@ -629,7 +619,6 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
   [inSemanticContext->mRoutineMap searchKey !mRoutineName ?routineSignature] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
-  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
   analyzeRoutineArguments
     !inSemanticContext
     !inPredefinedTypes
@@ -639,13 +628,11 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     !mActualParameterList
     !?ioVariableMap
     ?actualParameterListForGeneration
-    ?temporaryInputVariableForRoutineInvocationForGeneration
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@routineCallInstructionForGeneration new
     !mRoutineName
     !actualParameterListForGeneration
-    !temporaryInputVariableForRoutineInvocationForGeneration
   ] ;
 end method ;
 
@@ -666,7 +653,6 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   [[type mClassMethodMap] searchKey !mMethodName ?routineSignature ?hasCompilerArgument] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
-  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
   analyzeRoutineArguments
     !inSemanticContext
     !inPredefinedTypes
@@ -676,7 +662,6 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !mActualParameterList
     !?ioVariableMap
     ?actualParameterListForGeneration
-    ?temporaryInputVariableForRoutineInvocationForGeneration
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@typeMethodInstructionForGeneration new
@@ -684,7 +669,6 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !mMethodName
     !actualParameterListForGeneration
     !hasCompilerArgument
-    !temporaryInputVariableForRoutineInvocationForGeneration
   ] ;
 end method ;
 
@@ -711,7 +695,6 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?routineSignature ?* ?hasCompilerArgument ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
-  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
   analyzeRoutineArguments
     !inSemanticContext
     !inPredefinedTypes
@@ -721,7 +704,6 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !mActualParameterList
     !?ioVariableMap
     ?actualParameterListForGeneration
-    ?temporaryInputVariableForRoutineInvocationForGeneration
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
@@ -730,7 +712,6 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     ![mMethodName string]
     !actualParameterListForGeneration
     !hasCompilerArgument
-    !temporaryInputVariableForRoutineInvocationForGeneration
   ] ;
 end method ;
 
@@ -757,7 +738,6 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   [[receiverType mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
-  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableForRoutineInvocationForGeneration ;
   analyzeRoutineArguments
     !inSemanticContext
     !inPredefinedTypes
@@ -767,7 +747,6 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !mActualParameterList
     !?ioVariableMap
     ?actualParameterListForGeneration
-    ?temporaryInputVariableForRoutineInvocationForGeneration
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@modifierCallInstructionForGeneration new
@@ -777,7 +756,6 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !mModifierName
     !actualParameterListForGeneration
     !hasCompilerArgument
-    !temporaryInputVariableForRoutineInvocationForGeneration
   ] ;
 end method ;
 
@@ -1409,7 +1387,6 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   ] ;
 #--- Check actual parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
-  @temporaryInputVariableForRoutineInvocationForGeneration temporaryInputVariableList ;
   analyzeRoutineArguments
     !inSemanticContext
     !inPredefinedTypes
@@ -1419,7 +1396,6 @@ override method @grammarInstructionAST analyzeSemanticInstruction
     !mActualParameterList
     !?ioVariableMap
     ?actualParameterListForGeneration
-    ?temporaryInputVariableList
   ;
 #--- Parse source expression
   @semanticExpressionForGeneration sourceExpression ;
@@ -1449,7 +1425,6 @@ override method @grammarInstructionAST analyzeSemanticInstruction
       ![mLabelName string]
       !sourceExpression
       !actualParameterListForGeneration
-      !temporaryInputVariableList
     ] ;
   else
     ioInstructionListForGeneration += ![@grammarInstructionWithSourceExpressionForGeneration new
@@ -1458,7 +1433,6 @@ override method @grammarInstructionAST analyzeSemanticInstruction
       ![mLabelName string]
       !sourceExpression
       !actualParameterListForGeneration
-      !temporaryInputVariableList
     ] ;
   end if ;
 end method ;

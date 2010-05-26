@@ -117,7 +117,7 @@ project all_galgas:
   grammar   "projectLL1grammar.gGrammar" : makefile ;
 
 #--- Main program
-  program "galgas_prgm.gProgram" : makefile ;
+  program   "galgas_prgm.gProgram" : makefile ;
 
 #--- Old style components
   semantics "common_semantics.gSemantics" : makefile ;

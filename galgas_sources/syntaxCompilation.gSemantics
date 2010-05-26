@@ -197,6 +197,23 @@ routine compileSyntaxComponent
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       implementationString .= [mDeclaration appendSpecificImplementation] ;
     end foreach ;
+    const @string lexiqueCppName := "C_Lexique_"
+    . [[[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
+    foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
+      foreach mLabelImplementationList do
+        const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+        . "::rule_" . [componentName identifierRepresentation] . "_"
+        . [mNonterminalName identifierRepresentation]
+        . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation] ;
+        implementationString .= generateProcedure [
+          !ruleName
+          !mSignatureForGeneration
+          !mInstructionListForGeneration
+          !false
+          !lexiqueCppName
+        ] ;
+      end foreach ;
+    end foreach ;
     [@string generateFile
       !inOutputDirectory
       ![componentName string] . ".cpp"

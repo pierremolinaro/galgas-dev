@@ -9,9 +9,8 @@ end foreach
 %
 foreach NON_TERMINAL_MAP do
   foreach mNonterminalSymbolParametersMap prefixedBy label_ do
-    %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^ %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler%
+    %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
     foreach label_mFormalParametersList do index IDX
-      %,\n%!^
       if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * const inArgument% ![IDX string]
       elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
@@ -21,8 +20,9 @@ foreach NON_TERMINAL_MAP do
       else # argumentIn
         %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % * inArgument% ![IDX string]
       end if
+      %,\n%!^
     end foreach
-    %) ;\n\n%
+    %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
       %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
       !^%GALGAS_lstring * const inFileName%
