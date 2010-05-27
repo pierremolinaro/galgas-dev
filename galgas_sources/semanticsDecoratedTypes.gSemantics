@@ -942,6 +942,10 @@ class @terminalCheckInstructionForGeneration extends @semanticInstructionForGene
 #---------------------------------------------------------------------------*
 
 class @nonterminalInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
+  @string mNonterminalName ;
+  @string mLabelName ;
+  @actualParameterListForGeneration mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -994,6 +998,9 @@ class @parseLoopInstructionForGeneration extends @semanticInstructionForGenerati
 #---------------------------------------------------------------------------*
 
 class @parseWhenInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mWhenExpression ;
+  @semanticInstructionListForGeneration mInstructionList ;
+  @semanticInstructionListForGeneration mElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*

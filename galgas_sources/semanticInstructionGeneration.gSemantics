@@ -42,7 +42,6 @@ override method @outputActualParameterForGeneration generateActualParameter
   !@string outCppName
 :
   [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName] ;
-  [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -67,11 +66,12 @@ override method @inputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
   ioImplementation .= "macroReleaseObject (" . outCppName . ") ; // Release input parameter\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
 end method ;
 
 #---------------------------------------------------------------------------*

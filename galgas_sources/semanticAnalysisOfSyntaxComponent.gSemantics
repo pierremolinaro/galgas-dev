@@ -299,21 +299,40 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ;
 #---
   ioInstructionListForGeneration += ![@nonterminalInstructionForGeneration new
-#    !mTerminalName
-#    !inLexiqueName
-#    !mInstructionLocation
-#    !terminalCheckAssignementList
+    !mInstructionLocation
+    ![mNonterminalName string]
+    ![mLabelName string]
+    !actualParameterListForGeneration
   ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @nonterminalInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@nonterminalCallInstruction\n" ;
+  ioGeneratedCode .= "//-------- @nonterminalInstructionForGeneration\n" ;
+#--- Parameters
+  @stringlist parameterCppNameList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+#--- Generate method call
+  ioGeneratedCode .= "nt_" . [mNonterminalName identifierRepresentation] . "_" . [mLabelName identifierRepresentation] . " (" ;
+  foreach parameterCppNameList do
+    ioGeneratedCode .= mValue . ", " ;
+  end foreach ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .=  compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+#--- Release temporary variables
+  foreach jokerParametersToReleaseList do
+    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -768,46 +787,83 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount
   ?!@stringlist ioLocalVariableCppNameList
 :
+#--- When expression
+  @semanticExpressionForGeneration when_expression ;
+  [mWhenExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?when_expression
+  ] ;
+#--- 'when' branch
   @uint localSelectMethodCount := ioSelectMethodCount ;
-  foreach mWhenBranchList do
-    localSelectMethodCount := ioSelectMethodCount ;
-    @semanticExpressionForGeneration when_expression ;
-    [mWhenExpression analyzeSemanticExpression
+  @semanticInstructionListForGeneration when_instructionListForGeneration [emptyList] ;
+  foreach mWhenInstructionList do
+    [mInstruction analyzeSyntaxInstruction
       !inSemanticContext
       !inPredefinedTypes
+      !inTerminalMap
+      !inLexiqueName
+      !inNonterminalMap
+      !inComponentName
+      !?when_instructionListForGeneration
       !?ioVariableMap
-      ?when_expression
+      !?localSelectMethodCount
+      !?ioLocalVariableCppNameList
     ] ;
-    @semanticInstructionListForGeneration instructionListForGeneration [emptyList] ;
-    foreach mParseDoBranchList do
-      [mInstruction analyzeSyntaxInstruction
-        !inSemanticContext
-        !inPredefinedTypes
-        !inTerminalMap
-        !inLexiqueName
-        !inNonterminalMap
-        !inComponentName
-        !?instructionListForGeneration
-        !?ioVariableMap
-        !?localSelectMethodCount
-        !?ioLocalVariableCppNameList
-      ] ;
-    end foreach ;
   end foreach ;
-  ioSelectMethodCount := localSelectMethodCount ;
+#--- 'else' branch
+  @semanticInstructionListForGeneration else_instructionListForGeneration [emptyList] ;
+  foreach mElseInstructionList do
+    [mInstruction analyzeSyntaxInstruction
+      !inSemanticContext
+      !inPredefinedTypes
+      !inTerminalMap
+      !inLexiqueName
+      !inNonterminalMap
+      !inComponentName
+      !?else_instructionListForGeneration
+      !?ioVariableMap
+      !?ioSelectMethodCount
+      !?ioLocalVariableCppNameList
+    ] ;
+  end foreach ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@parseWhenInstructionForGeneration new
+    !when_expression
+    !when_instructionListForGeneration
+    !else_instructionListForGeneration
   ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseWhenInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@parseWhenInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "//--------- @parseWhenInstructionForGeneration\n" ;
+  @string sourceVar ;
+  [mWhenExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
+  const @string boolVarCppName := "parseWhen_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "const bool " . boolVarCppName . " = (NULL != " . sourceVar . ") && (" . sourceVar . "->boolValue ()) ;\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . sourceVar . ") ; // Release 'when' expression\n" ;
+  ioGeneratedCode .= "if (" . boolVarCppName . ") {\n" ;
+  generateInstructionList
+    !mInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
+  ioGeneratedCode .= "}else{\n" ;
+  generateInstructionList
+    !mElseInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
