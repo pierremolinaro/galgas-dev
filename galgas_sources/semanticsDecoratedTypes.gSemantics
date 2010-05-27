@@ -28,7 +28,7 @@ abstract class @semanticExpressionForGeneration {
   @location mLocation ;
 }
 
-##---------------------------------------------------------------------------*
+#---------------------------------------------------------------------------*
 
 list @semanticExpressionListForGeneration {
   @semanticExpressionForGeneration mExpression ;
@@ -424,6 +424,12 @@ abstract class @semanticInstructionForGeneration {
 
 list @semanticInstructionListForGeneration {
   @semanticInstructionForGeneration mInstruction ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @listOfSemanticInstructionListForGeneration {
+  @semanticInstructionListForGeneration mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -914,7 +920,28 @@ class @readWriteWithInstructionForGeneration extends @semanticInstructionForGene
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+list @terminalCheckAssignementList {
+  @string mTypeName ; # Empty string if no declaration
+  @string mTargetVarCppName ;
+  @string mSourceLexicalAttributeName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @terminalCheckInstructionForGeneration extends @semanticInstructionForGeneration {
+  @lstring mTerminalName ;
+  @string mLexiqueIdentifier ;
+  @location mInstructionLocation ;
+  @terminalCheckAssignementList mTerminalCheckAssignementList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  N O N    T E R M I N A L    I N S T R U C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @nonterminalInstructionForGeneration extends @semanticInstructionForGeneration {
 }
 
 #---------------------------------------------------------------------------*
@@ -924,6 +951,10 @@ class @terminalCheckInstructionForGeneration extends @semanticInstructionForGene
 #---------------------------------------------------------------------------*
 
 class @repeatInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mSyntaxComponentName ;
+  @uint mChoiceIndex ;
+  @semanticInstructionListForGeneration m_repeated_instructionList ;
+  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration ;
 }
 
 #---------------------------------------------------------------------------*
@@ -933,6 +964,9 @@ class @repeatInstructionForGeneration extends @semanticInstructionForGeneration 
 #---------------------------------------------------------------------------*
 
 class @selectInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mSyntaxComponentName ;
+  @uint mChoiceIndex ;
+  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration ;
 }
 
 #---------------------------------------------------------------------------*

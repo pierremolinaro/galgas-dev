@@ -90,15 +90,15 @@ map @variableMap {
 #--- Input/Output formal parameter
   state unusedInputOutputFormalArgument warning "the '%K' input/output formal parameter is unused" {
     readAccess      -> usedInputOutputFormalArgument
-    writeAccess     -> usedInputOutputFormalArgument
+    writeAccess     -> usedInputOutputFormalArgument #warning "writing the '%K' input/output formal parameter is obsolete"
     readWriteAccess -> usedInputOutputFormalArgument
-    dropAccess      -> droppedInputOutputFormalArgument
+    dropAccess      -> droppedInputOutputFormalArgument #warning "dropping the '%K' input/output formal parameter is obsolete"
   }
   state usedInputOutputFormalArgument {
     readAccess      -> usedInputOutputFormalArgument
-    writeAccess     -> usedInputOutputFormalArgument
+    writeAccess     -> usedInputOutputFormalArgument # warning "writing the '%K' input/output formal parameter is obsolete"
     readWriteAccess -> usedInputOutputFormalArgument
-    dropAccess      -> droppedInputOutputFormalArgument
+    dropAccess      -> droppedInputOutputFormalArgument #warning "dropping the '%K' input/output formal parameter is obsolete"
   }
   state droppedInputOutputFormalArgument error "the '%K' input/ouput formal argument should be valuated at the end of the routine" {
     readAccess      -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"

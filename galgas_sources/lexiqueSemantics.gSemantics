@@ -125,7 +125,7 @@ map @lexicalAttributeMap {
 #---------------------------------------------------------------------------*
 
 list @lexicalSentValueList {
-  @string mAttributeName ;
+  @string mLexicalAttributeName ;
   @lexicalTypeEnum mLexicalType ;
 }
 
