@@ -158,7 +158,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * 
    %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
    foreach mSentAttributeList do
      %      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;\n%
-     %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
+     %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mLexicalAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
    end foreach
    %      break ;\n%
 end foreach

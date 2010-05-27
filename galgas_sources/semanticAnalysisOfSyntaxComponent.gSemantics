@@ -222,7 +222,9 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
+  ??@string inComponentName
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -235,7 +237,9 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap unused inTerminalMap
+  ??@string unused inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
+  ??@string unused inComponentName
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
@@ -257,8 +261,10 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap unused inTerminalMap
+  ??@string unused inLexiqueName
   ??@nonterminalMap inNonterminalMap
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ??@string unused inComponentName
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
@@ -291,7 +297,23 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !?ioVariableMap
     ?actualParameterListForGeneration
   ;
+#---
+  ioInstructionListForGeneration += ![@nonterminalInstructionForGeneration new
+#    !mTerminalName
+#    !inLexiqueName
+#    !mInstructionLocation
+#    !terminalCheckAssignementList
+  ] ;
+end method ;
 
+#---------------------------------------------------------------------------*
+
+override method @nonterminalInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@nonterminalCallInstruction\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -300,7 +322,9 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
+  ??@string unused inComponentName
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
@@ -319,6 +343,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     ;
   end if ;
 #---
+  @terminalCheckAssignementList terminalCheckAssignementList [emptyList] ;
   foreach mActualInputParameterList, sentAttributeList do
     if [mActualParameterName length] > 0 then # Empty string if joker
       @unifiedTypeMapProxy type ;
@@ -347,10 +372,19 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
         . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
         ;
       end if ;
+      terminalCheckAssignementList +=
+        ![mActualParameterTypeName string]
+        !cppName
+        !mLexicalAttributeName
+      ;
     end if ;
   end foreach ;
 #---
   ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
+    !mTerminalName
+    !inLexiqueName
+    !mInstructionLocation
+    !terminalCheckAssignementList
   ] ;
 end method ;
 
@@ -358,10 +392,24 @@ end method ;
 
 override method @terminalCheckInstructionForGeneration generateInstruction
   ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@terminalCheckInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "//-------- @terminalCheckInstructionForGeneration\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"
+                  . mLexiqueIdentifier . "::kToken_" . [mTerminalName identifierRepresentation]
+                  . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  foreach mTerminalCheckAssignementList do
+    if mTypeName != "" then
+      ioGeneratedCode .= "GALGAS_" . [mTypeName identifierRepresentation] . " * " ;
+    else
+      ioGeneratedCode .= "macroReleaseObject (" . mTargetVarCppName . ") ;\n" ;
+    end if ;
+    ioGeneratedCode .= mTargetVarCppName . " = " . compilerCppName [] . "->synthetizedAttribute_"
+                    . [mSourceLexicalAttributeName identifierRepresentation]
+                    . " () ;\n" ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -370,7 +418,9 @@ routine analyzeSyntaxInstructionList
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
+  ??@string  inComponentName
   ??@syntaxInstructionList inSemanticInstructionListAST
   ??@location inEndOfBranchLocation
   ?!@variableMap ioVariableMap
@@ -387,7 +437,9 @@ routine analyzeSyntaxInstructionList
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inLexiqueName
       !inNonterminalMap
+      !inComponentName
       !?outInstructionListForGeneration
       !?ioVariableMap
       !?ioSelectMethodCount
@@ -411,12 +463,15 @@ override method @repeatInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
+  ??@string inComponentName
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
 :
+  const @uint choiceIndex := ioSelectMethodCount ;
   ioSelectMethodCount ++ ;
 #--- Begin block
   [!?ioVariableMap beginOverrideForRepeatBlock] ;
@@ -426,7 +481,9 @@ override method @repeatInstruction analyzeSyntaxInstruction
     !inSemanticContext
     !inPredefinedTypes
     !inTerminalMap
+    !inLexiqueName
     !inNonterminalMap
+    !inComponentName
     !mRepeatedInstructionList
     !mEndOf_repeated_instructions_branch
     !?ioVariableMap
@@ -434,35 +491,70 @@ override method @repeatInstruction analyzeSyntaxInstruction
     ?repeated_instructionList
   ;
 #--- 'while' blocks
+  @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
   foreach mRepeatBranchList do
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inLexiqueName
       !inNonterminalMap
+      !inComponentName
       !mSyntaxInstructionList
       !mEndOf_instructions
       !?ioVariableMap
       !?ioSelectMethodCount
       ?instructionList
     ;
+    listOfSemanticInstructionListForGeneration += !instructionList ;
   end foreach ;
 #--- End block
   [!?ioVariableMap endOverride !mEndOf_repeat_instruction] ;
 #---
   ioInstructionListForGeneration += ![@repeatInstructionForGeneration new
+    !inComponentName
+    !choiceIndex
+    !repeated_instructionList
+    !listOfSemanticInstructionListForGeneration
   ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @repeatInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@repeatInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "//-------- @repeatInstructionForGeneration\n" ;
+  const @string repeatFlagCppName := "repeatFlag_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "bool " . repeatFlagCppName . " = true ;\n" ;
+  ioGeneratedCode .= "while (" . repeatFlagCppName . ") {\n" ;
+  generateInstructionList
+    !m_repeated_instructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  ioGeneratedCode .= "switch (select_" . [mSyntaxComponentName identifierRepresentation] . "_" . [mChoiceIndex string] . " (" . compilerCppName [] . ")) {\n" ;
+  foreach mListOfSemanticInstructionListForGeneration index IDX do
+    ioGeneratedCode .= "case " . [IDX + 2 string] . ": {\n" ;
+    generateInstructionList
+      !mInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !?ioGeneratedCode
+    ;
+    ioGeneratedCode .= "} break ;\n" ;
+  end foreach ;
+  ioGeneratedCode .= "default:\n" ;
+  ioGeneratedCode .= "  " . repeatFlagCppName . " = false ;\n" ;
+  ioGeneratedCode .= "  break ;\n" ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -471,44 +563,68 @@ override method @selectInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
+  ??@string  inComponentName
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
   ?!@stringlist unused ioLocalVariableCppNameList
 :
+  const @uint choiceIndex := ioSelectMethodCount ;
   ioSelectMethodCount ++ ;
 #--- Begin block
   [!?ioVariableMap beginOverrideForSelectBlock] ;
 #--- 'or' blocks
+  @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
   foreach mSelectBranchList do
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inLexiqueName
       !inNonterminalMap
+      !inComponentName
       !mSyntaxInstructionList
       !mEndOf_instructions
       !?ioVariableMap
       !?ioSelectMethodCount
       ?instructionList
     ;
+    listOfSemanticInstructionListForGeneration += !instructionList ;
   end foreach ;
 #--- End block
   [!?ioVariableMap endOverride !mEndOf_select_instruction] ;
   ioInstructionListForGeneration += ![@selectInstructionForGeneration new
-  ] ;
+    !inComponentName
+    !choiceIndex
+    !listOfSemanticInstructionListForGeneration
+ ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @selectInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@selectInstructionForGeneration generateInstruction\n" ;
+ ioGeneratedCode .= "//-------- \n" ;
+  ioGeneratedCode .= "switch (select_" . [mSyntaxComponentName identifierRepresentation] . "_" . [mChoiceIndex string] . " (" . compilerCppName [] . ")) {\n" ;
+  foreach mListOfSemanticInstructionListForGeneration index IDX do
+    ioGeneratedCode .= "case " . [IDX + 1 string] . ": {\n" ;
+    generateInstructionList
+      !mInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !?ioGeneratedCode
+    ;
+    ioGeneratedCode .= "} break ;\n" ;
+  end foreach ;
+  ioGeneratedCode .= "default:\n" ;
+  ioGeneratedCode .= "  break ;\n" ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -517,7 +633,9 @@ override method @parseDoInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap  inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
+  ??@string inComponentName
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -532,7 +650,9 @@ override method @parseDoInstruction analyzeSyntaxInstruction
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inLexiqueName
       !inNonterminalMap
+      !inComponentName
       !mSyntaxInstructionList
       !mEndOf_instructions
       !?ioVariableMap
@@ -563,7 +683,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
+  ??@string inComponentName
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -606,7 +728,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !inSemanticContext
     !inPredefinedTypes
     !inTerminalMap
+    !inLexiqueName
     !inNonterminalMap
+    !inComponentName
     !mDoInstructionList
     !mEndOfInstructionList
     !?ioVariableMap
@@ -636,7 +760,9 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
+  ??@string inComponentName
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -658,7 +784,9 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
         !inSemanticContext
         !inPredefinedTypes
         !inTerminalMap
+        !inLexiqueName
         !inNonterminalMap
+        !inComponentName
         !?instructionListForGeneration
         !?ioVariableMap
         !?localSelectMethodCount
@@ -688,7 +816,9 @@ override method @blockInstruction analyzeSyntaxInstruction
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ??@terminalMap unused inTerminalMap
+  ??@string unused inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
+  ??@string unused inComponentName
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@uint unused ioSelectMethodCount
@@ -710,7 +840,9 @@ routine semanticAnalysisOfRuleLabel
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
+  ??@string inComponentName
   ?!@uint ioSelectMethodCount
   !@formalParameterListForGeneration outSignatureForGeneration
   !@formalParameterSignature outSignature
@@ -737,7 +869,9 @@ routine semanticAnalysisOfRuleLabel
       !inSemanticContext
       !inPredefinedTypes
       !inTerminalMap
+      !inLexiqueName
       !inNonterminalMap
+      !inComponentName
       !?outInstructionListForGeneration
       !?variableMap
       !?ioSelectMethodCount
@@ -806,7 +940,9 @@ routine semanticAnalysisOfSyntaxComponent
         !inSemanticContext
         !inPredefinedTypes
         !inTerminalMap
+        !inLexiqueName
         !nonterminalMap
+        !inComponentName
         !?localSelectMethodCount
         ?signatureForGeneration
         ?signature
