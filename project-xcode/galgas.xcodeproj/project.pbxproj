@@ -156,6 +156,12 @@
 		CF21A4F20BAEE75C00C34B66 /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
 		CF21A50F0BAEEB4300C34B66 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF21A5100BAEEB4700C34B66 /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
+		CF22211811AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
+		CF22211911AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
+		CF22211A11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
+		CF22211B11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
+		CF22211C11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
+		CF22211D11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
 		CF24DF0B114C29F300ACF6DE /* GALGAS_root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF24DF09114C29F300ACF6DE /* GALGAS_root.cpp */; };
 		CF24DF0C114C29F300ACF6DE /* GALGAS_root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF24DF09114C29F300ACF6DE /* GALGAS_root.cpp */; };
 		CF24DF0D114C29F300ACF6DE /* GALGAS_root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF24DF09114C29F300ACF6DE /* GALGAS_root.cpp */; };
@@ -1653,6 +1659,8 @@
 		CF1BD01110D2DBD800A0D648 /* C_galgas_class_inspector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_class_inspector.cpp; sourceTree = "<group>"; };
 		CF1BD01210D2DBD800A0D648 /* C_galgas_class_inspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_class_inspector.h; sourceTree = "<group>"; };
 		CF1F0914115164FD00FAFD22 /* GALGAS_stringset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_stringset.cpp; sourceTree = "<group>"; };
+		CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = syntaxSignature.cpp; sourceTree = "<group>"; };
+		CF22211711AEE9EF000CEDFF /* syntaxSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntaxSignature.h; sourceTree = "<group>"; };
 		CF24DF09114C29F300ACF6DE /* GALGAS_root.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_root.cpp; sourceTree = "<group>"; };
 		CF24DF0A114C29F300ACF6DE /* GALGAS_root.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GALGAS_root.h; sourceTree = "<group>"; };
 		CF24DF11114C29FE00ACF6DE /* GALGAS_sortedlist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_sortedlist.cpp; sourceTree = "<group>"; };
@@ -3311,6 +3319,8 @@
 		CFF537AA057A51A000854C83 /* Parser Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */,
+				CF22211711AEE9EF000CEDFF /* syntaxSignature.h */,
 				CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */,
 				CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */,
 				CF0EA32410654C9A00679ABC /* syntaxCompilation.cpp */,
@@ -4189,6 +4199,7 @@
 				CF26397C11A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E0D11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4B911ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
+				CF22211811AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4421,6 +4432,7 @@
 				CF26397E11A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E0F11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4BB11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
+				CF22211A11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4653,6 +4665,7 @@
 				CF26397F11A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E1011A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4BC11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
+				CF22211B11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4924,6 +4937,7 @@
 				CF26397D11A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E0E11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4BA11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
+				CF22211911AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5156,6 +5170,7 @@
 				CF26398011A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E1111A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4BD11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
+				CF22211C11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5388,6 +5403,7 @@
 				CF26398111A1B5EB00D55487 /* GGS_system.cpp in Sources */,
 				CFC07E1211A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4BE11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
+				CF22211D11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
