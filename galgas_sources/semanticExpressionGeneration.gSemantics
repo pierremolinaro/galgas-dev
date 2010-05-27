@@ -764,7 +764,7 @@ override method @complementExpressionForGeneration generateExpression
 #--- Generate
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . outCppName
-                  . " = GALGAS_" . [mType identifierRepresentation] . "::operator_complement ("
+                  . " = GALGAS_" . [mType identifierRepresentation] . "::operator_tilde ("
                   . operand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 

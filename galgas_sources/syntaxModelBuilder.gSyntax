@@ -412,29 +412,65 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+nonterminal <branchOfParseWhenInstruction> !@syntaxInstructionList outInstructionList ;
+
+#---------------------------------------------------------------------------*
+
+rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList :
+  $else$ ;
+  <syntax_instruction_list> ? outElseInstructionList ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList :
+  $when$ ;
+  const @location instructionLocation := here ;
+  @semanticExpressionAST whenExpression ;
+  <expression> ? whenExpression ;
+  const @location endOfWhenExpression := here ;
+  $:$ ;
+  @syntaxInstructionList whenInstructionList ;
+  <syntax_instruction_list> ? whenInstructionList ;
+#--- Else part
+  @syntaxInstructionList elseInstructionList ;
+  <branchOfParseWhenInstruction> ? elseInstructionList ;
+  $end$ ;
+  $parse$ ;
+  $;$ ;
+  outElseInstructionList := [@syntaxInstructionList emptyList] ;
+  outElseInstructionList += ![@parseWhenInstruction new
+    !instructionLocation
+    !whenExpression
+    !endOfWhenExpression
+    !whenInstructionList
+    !elseInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $parse$ ;
   const @location instructionLocation := here ;
-  @whenBranchList whenBranchList [emptyList] ;
-  repeat
-    $when$ ;
-    @semanticExpressionAST whenExpression ;
-    <expression> ? whenExpression ;
-    $:$ ;
-    @syntaxInstructionList instructionList ;
-    <syntax_instruction_list> ? instructionList ;
-    whenBranchList += !whenExpression !instructionList ;
-  while
-  end repeat ;
-  $else$ ;
+  $when$ ;
+  @semanticExpressionAST whenExpression ;
+  <expression> ? whenExpression ;
+  const @location endOfWhenExpression := here ;
+  $:$ ;
+  @syntaxInstructionList whenInstructionList ;
+  <syntax_instruction_list> ? whenInstructionList ;
+#--- Else part
   @syntaxInstructionList elseInstructionList ;
-  <syntax_instruction_list> ? elseInstructionList ;
+  <branchOfParseWhenInstruction> ? elseInstructionList ;
   $end$ ;
   $parse$ ;
   $;$ ;
   outInstruction := [@parseWhenInstruction new
     !instructionLocation
-    !whenBranchList
+    !whenExpression
+    !endOfWhenExpression
+    !whenInstructionList
     !elseInstructionList
   ] ;
 end rule ;

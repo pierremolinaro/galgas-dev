@@ -147,15 +147,10 @@ class @parseLoopInstruction extends @syntaxInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @whenBranchList {
-  @semanticExpressionAST mWhenExpression ;
-  @syntaxInstructionList mParseDoBranchList ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @parseWhenInstruction extends @syntaxInstructionAST {
-  @whenBranchList mWhenBranchList ;
+  @semanticExpressionAST mWhenExpression ;
+  @location mEndOfWhenExpression ;
+  @syntaxInstructionList mWhenInstructionList ;
   @syntaxInstructionList mElseInstructionList ;
 }
 
