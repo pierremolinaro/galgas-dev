@@ -92,6 +92,7 @@ project all_galgas:
   semantics "syntaxMetamodel.gSemantics" : makefile ;
   syntax    "syntaxModelBuilder.gSyntax" : makefile ;
   grammar   "syntaxSLRgrammar.gGrammar" : makefile ;
+  semantics "syntaxSignature.gSemantics" : makefile ;
   semantics "semanticAnalysisOfSyntaxComponent.gSemantics" : makefile ;
   semantics "syntaxCompilation.gSemantics" : makefile ;
 

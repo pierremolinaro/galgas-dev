@@ -1,0 +1,134 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Syntax component semantic analysis                                       *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics syntaxSignature :
+import "semanticsCompilation.gSemantics" ;
+import "lexiqueCompilation.gSemantics" ;
+
+import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
+import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
+import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S Y N T A X    S I G N A T U R E                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticInstructionForGeneration appendSyntaxSignature
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+function syntaxSignatureOfInstructionList
+  ??@semanticInstructionListForGeneration inInstructionList
+  ->@semanticInstructionListForGeneration outResult
+:
+  outResult := [@semanticInstructionListForGeneration emptyList] ;
+  foreach inInstructionList do
+    [mInstruction appendSyntaxSignature !?outResult] ;
+  end foreach ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+override method @nonterminalInstructionForGeneration appendSyntaxSignature
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+:
+  ioInstructionListForGeneration += ![@nonterminalInstructionForGeneration new
+    !mInstructionLocation
+    !mNonterminalName
+    !"parse"
+    ![@actualParameterListForGeneration emptyList]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @terminalCheckInstructionForGeneration appendSyntaxSignature
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+:
+  ioInstructionListForGeneration += !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @repeatInstructionForGeneration appendSyntaxSignature
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+:
+  const @semanticInstructionListForGeneration repeated_instructionList := syntaxSignatureOfInstructionList [!m_repeated_instructionList] ;
+  @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
+  foreach mListOfSemanticInstructionListForGeneration do
+    listOfSemanticInstructionListForGeneration +=
+      !syntaxSignatureOfInstructionList [!mInstructionList]
+    ;
+  end foreach ;
+#---
+  ioInstructionListForGeneration += ![@repeatInstructionForGeneration new
+    !mSyntaxComponentName
+    !mChoiceIndex
+    !repeated_instructionList
+    !listOfSemanticInstructionListForGeneration
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selectInstructionForGeneration appendSyntaxSignature
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+:
+  @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
+  foreach mListOfSemanticInstructionListForGeneration do
+    listOfSemanticInstructionListForGeneration +=
+      !syntaxSignatureOfInstructionList [!mInstructionList]
+    ;
+  end foreach ;
+  ioInstructionListForGeneration += ![@selectInstructionForGeneration new
+    !mSyntaxComponentName
+    !mChoiceIndex
+    !listOfSemanticInstructionListForGeneration
+ ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @parseDoInstructionForGeneration appendSyntaxSignature
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @parseLoopInstructionForGeneration appendSyntaxSignature
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @parseWhenInstructionForGeneration appendSyntaxSignature
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+:
+  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!mInstructionList] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
