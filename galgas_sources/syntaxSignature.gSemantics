@@ -65,7 +65,12 @@ end method ;
 override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
-  ioInstructionListForGeneration += !self ;
+  ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
+    !mInstructionLocation
+    !mTerminalName
+    !mLexiqueIdentifier
+    ![@terminalCheckAssignementList emptyList]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -78,13 +83,16 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
   foreach mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList [!mInstructionList]
+      !mEndOfInstructionList
     ;
   end foreach ;
 #---
   ioInstructionListForGeneration += ![@repeatInstructionForGeneration new
+    !mInstructionLocation
     !mSyntaxComponentName
     !mChoiceIndex
     !repeated_instructionList
+    !mEndOfRepeatedInstructions
     !listOfSemanticInstructionListForGeneration
   ] ;
 end method ;
@@ -98,9 +106,11 @@ override method @selectInstructionForGeneration appendSyntaxSignature
   foreach mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList [!mInstructionList]
+      !mEndOfInstructionList
     ;
   end foreach ;
   ioInstructionListForGeneration += ![@selectInstructionForGeneration new
+    !mInstructionLocation
     !mSyntaxComponentName
     !mChoiceIndex
     !listOfSemanticInstructionListForGeneration
@@ -110,15 +120,19 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseDoInstructionForGeneration appendSyntaxSignature
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
+  @semanticInstructionListForGeneration instructionList ;
+  [mListOfSemanticInstructionListForGeneration first ?instructionList ?*] ;
+  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!instructionList] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseLoopInstructionForGeneration appendSyntaxSignature
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
+  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!mInstructionList] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -128,6 +142,191 @@ override method @parseWhenInstructionForGeneration appendSyntaxSignature
 :
   ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!mInstructionList] ;
 end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S Y N T A X    S I G N A T U R E    C O M P A R I S O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticInstructionForGeneration compareSyntaxInstruction
+  ??@semanticInstructionForGeneration unused inTestedInstruction
+  ->@bool outOk
+:
+  outOk := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+function compareSyntaxSignature
+  ??@semanticInstructionListForGeneration inReferenceSignature
+  ??@semanticInstructionListForGeneration inTestedSignature
+  ??@location inErrorLocation
+  ->@bool outOk
+:
+  outOk := true ;
+  foreach inReferenceSignature prefixedby ref_, inTestedSignature prefixedby test_ while outOk do
+     outOk := [ref_mInstruction compareSyntaxInstruction !test_mInstruction] ;
+  end foreach ;
+  if outOk & ([inReferenceSignature length] < [inTestedSignature length]) then
+    @semanticInstructionForGeneration instruction := [inTestedSignature mInstructionAtIndex ![inReferenceSignature length]] ;
+    cast instruction:
+    when >= @syntaxInstructionForGeneration si do
+      error [si mInstructionLocation]
+      :"syntax signature error, exceeding instruction; this branch has more syntax instructions than reference branch"
+      ;
+    else
+      error inErrorLocation : "internal error" ;
+    end cast ;
+  elsif outOk & ([inReferenceSignature length] > [inTestedSignature length]) then
+    error inErrorLocation
+    :"syntax signature error, missing instruction; this branch has less syntax instructions than reference branch"
+    ;
+    @semanticInstructionForGeneration instruction := [inReferenceSignature mInstructionAtIndex ![inTestedSignature length]] ;
+    cast instruction:
+    when >= @syntaxInstructionForGeneration si do
+      error [si mInstructionLocation]
+      :"this is the syntax instruction in reference branch that corresponds to the first missing instruction"
+      ;
+    else
+      error inErrorLocation : "internal error" ;
+    end cast ;
+  end if ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+override reader @terminalCheckInstructionForGeneration compareSyntaxInstruction
+  ??@semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk
+:
+  cast inTestedInstruction:
+  when == @terminalCheckInstructionForGeneration si do
+    outOk := mTerminalName == [si mTerminalName] ;
+    if not outOk then
+      error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '$" . mTerminalName . "$' terminal check"
+      ;
+    end if ;
+  when >= @syntaxInstructionForGeneration si do
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '$" . mTerminalName . "$' terminal check"
+      ;
+    outOk := false ;
+  else
+    error mInstructionLocation : "internal error" ;
+    outOk := false ;
+  end cast ;
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+    ;
+  end if ;  
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @nonterminalInstructionForGeneration compareSyntaxInstruction
+  ??@semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk
+:
+  cast inTestedInstruction:
+  when == @nonterminalInstructionForGeneration si do
+    outOk := mNonterminalName == [si mNonterminalName] ;
+    if not outOk then
+      error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '<" . mNonterminalName . ">' nonterminal invocation"
+      ;
+    end if ;
+  when >= @syntaxInstructionForGeneration si do
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '<" . mNonterminalName . ">' nonterminal invocation"
+      ;
+    outOk := false ;
+  else
+    error mInstructionLocation : "internal error" ;
+    outOk := false ;
+  end cast ;
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+    ;
+  end if ;  
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @repeatInstructionForGeneration compareSyntaxInstruction
+  ??@semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk
+:
+  cast inTestedInstruction:
+  when == @repeatInstructionForGeneration si do
+    outOk := compareSyntaxSignature [!m_repeated_instructionList ![si m_repeated_instructionList] ![si mEndOfRepeatedInstructions]] ;
+    if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
+      error [si mInstructionLocation]
+        :"syntax signature error; the reference 'repeat' instruction has "
+        . [[mListOfSemanticInstructionListForGeneration length] string]
+        . " 'while' branche(s), but this instruction has "
+        . [[[si mListOfSemanticInstructionListForGeneration] length] string]
+        ;
+      outOk := false ;
+    end if ;
+    foreach mListOfSemanticInstructionListForGeneration prefixedby ref_, [si mListOfSemanticInstructionListForGeneration] prefixedby test_ while outOk do
+      outOk := compareSyntaxSignature [!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList] ;    
+    end foreach ;
+  when >= @syntaxInstructionForGeneration si do
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction"
+      ;
+    outOk := false ;
+  else
+    error mInstructionLocation : "internal error" ;
+    outOk := false ;
+  end cast ;
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+    ;
+  end if ;  
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @selectInstructionForGeneration compareSyntaxInstruction
+  ??@semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk
+:
+  cast inTestedInstruction:
+  when == @selectInstructionForGeneration si do
+    outOk := true ;
+    if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
+      error [si mInstructionLocation]
+        :"syntax signature error; the reference 'select' instruction has "
+        . [[mListOfSemanticInstructionListForGeneration length] string]
+        . " 'while' branche(s), but this instruction has "
+        . [[[si mListOfSemanticInstructionListForGeneration] length] string]
+        ;
+      outOk := false ;
+    end if ;
+    foreach mListOfSemanticInstructionListForGeneration prefixedby ref_, [si mListOfSemanticInstructionListForGeneration] prefixedby test_ while outOk do
+      outOk := compareSyntaxSignature [!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList] ;    
+    end foreach ;
+  when >= @syntaxInstructionForGeneration si do
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
+      ;
+    outOk := false ;
+  else
+    error mInstructionLocation : "internal error" ;
+    outOk := false ;
+  end cast ;
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+    ;
+  end if ;  
+end reader ;
 
 #---------------------------------------------------------------------------*
 

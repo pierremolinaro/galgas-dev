@@ -435,9 +435,7 @@ rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionLi
 #--- Else part
   @syntaxInstructionList elseInstructionList ;
   <branchOfParseWhenInstruction> ? elseInstructionList ;
-  $end$ ;
-  $parse$ ;
-  $;$ ;
+  const @location endOfElseInstructions := here ;
   outElseInstructionList := [@syntaxInstructionList emptyList] ;
   outElseInstructionList += ![@parseWhenInstruction new
     !instructionLocation
@@ -445,6 +443,7 @@ rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionLi
     !endOfWhenExpression
     !whenInstructionList
     !elseInstructionList
+    !endOfElseInstructions
   ] ;
 end rule ;
 
@@ -463,6 +462,7 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
 #--- Else part
   @syntaxInstructionList elseInstructionList ;
   <branchOfParseWhenInstruction> ? elseInstructionList ;
+  const @location endOfElseInstructions := here ;
   $end$ ;
   $parse$ ;
   $;$ ;
@@ -472,6 +472,7 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
     !endOfWhenExpression
     !whenInstructionList
     !elseInstructionList
+    !endOfElseInstructions
   ] ;
 end rule ;
 
