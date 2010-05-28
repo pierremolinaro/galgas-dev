@@ -152,6 +152,7 @@ class @parseWhenInstruction extends @syntaxInstructionAST {
   @location mEndOfWhenExpression ;
   @syntaxInstructionList mWhenInstructionList ;
   @syntaxInstructionList mElseInstructionList ;
+  @location mEndOfElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*

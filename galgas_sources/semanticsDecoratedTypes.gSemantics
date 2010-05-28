@@ -430,6 +430,7 @@ list @semanticInstructionListForGeneration {
 
 list @listOfSemanticInstructionListForGeneration {
   @semanticInstructionListForGeneration mInstructionList ;
+  @location mEndOfInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -928,10 +929,15 @@ list @terminalCheckAssignementList {
 
 #---------------------------------------------------------------------------*
 
-class @terminalCheckInstructionForGeneration extends @semanticInstructionForGeneration {
+abstract class @syntaxInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @terminalCheckInstructionForGeneration extends @syntaxInstructionForGeneration {
   @lstring mTerminalName ;
   @string mLexiqueIdentifier ;
-  @location mInstructionLocation ;
   @terminalCheckAssignementList mTerminalCheckAssignementList ;
 }
 
@@ -941,8 +947,7 @@ class @terminalCheckInstructionForGeneration extends @semanticInstructionForGene
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @nonterminalInstructionForGeneration extends @semanticInstructionForGeneration {
-  @location mInstructionLocation ;
+class @nonterminalInstructionForGeneration extends @syntaxInstructionForGeneration {
   @string mNonterminalName ;
   @string mLabelName ;
   @actualParameterListForGeneration mActualParameterList ;
@@ -954,10 +959,11 @@ class @nonterminalInstructionForGeneration extends @semanticInstructionForGenera
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @repeatInstructionForGeneration extends @semanticInstructionForGeneration {
+class @repeatInstructionForGeneration extends @syntaxInstructionForGeneration {
   @string mSyntaxComponentName ;
   @uint mChoiceIndex ;
   @semanticInstructionListForGeneration m_repeated_instructionList ;
+  @location mEndOfRepeatedInstructions ;
   @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration ;
 }
 
@@ -967,7 +973,7 @@ class @repeatInstructionForGeneration extends @semanticInstructionForGeneration 
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @selectInstructionForGeneration extends @semanticInstructionForGeneration {
+class @selectInstructionForGeneration extends @syntaxInstructionForGeneration {
   @string mSyntaxComponentName ;
   @uint mChoiceIndex ;
   @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration ;
@@ -979,7 +985,8 @@ class @selectInstructionForGeneration extends @semanticInstructionForGeneration 
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @parseDoInstructionForGeneration extends @semanticInstructionForGeneration {
+class @parseDoInstructionForGeneration extends @syntaxInstructionForGeneration {
+  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration ;
 }
 
 #---------------------------------------------------------------------------*
@@ -988,7 +995,10 @@ class @parseDoInstructionForGeneration extends @semanticInstructionForGeneration
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @parseLoopInstructionForGeneration extends @semanticInstructionForGeneration {
+class @parseLoopInstructionForGeneration extends @syntaxInstructionForGeneration {
+  @semanticExpressionForGeneration mVariantExpression ;
+  @semanticExpressionForGeneration mWhileExpression ;
+  @semanticInstructionListForGeneration mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -997,7 +1007,7 @@ class @parseLoopInstructionForGeneration extends @semanticInstructionForGenerati
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @parseWhenInstructionForGeneration extends @semanticInstructionForGeneration {
+class @parseWhenInstructionForGeneration extends @syntaxInstructionForGeneration {
   @semanticExpressionForGeneration mWhenExpression ;
   @semanticInstructionListForGeneration mInstructionList ;
   @semanticInstructionListForGeneration mElseInstructionList ;

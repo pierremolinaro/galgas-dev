@@ -213,6 +213,21 @@ routine compileSyntaxComponent
           !lexiqueCppName
         ] ;
       end foreach ;
+      if mHasParseLabel then
+        @semanticInstructionListForGeneration instructionList ;
+        [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
+        const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+        . "::rule_" . [componentName identifierRepresentation] . "_"
+        . [mNonterminalName identifierRepresentation]
+        . "_i" . [mRuleIndex string] . "_parse" ;
+        implementationString .= generateProcedure [
+          !ruleName
+          ![@formalParameterListForGeneration emptyList]
+          !syntaxSignatureOfInstructionList [!instructionList]
+          !false
+          !lexiqueCppName
+        ] ;
+      end if ;
     end foreach ;
     [@string generateFile
       !inOutputDirectory

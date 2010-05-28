@@ -17,11 +17,9 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticAnalysisOfSyntaxComponent :
-import "semanticsCompilation.gSemantics" ;
-import "lexiqueCompilation.gSemantics" ;
+import "syntaxSignature.gSemantics" ;
 
-import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
-import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
+import semantics syntaxSignature in "syntaxSignature.gSemantics" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -400,9 +398,9 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   end foreach ;
 #---
   ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
+    !mInstructionLocation
     !mTerminalName
     !inLexiqueName
-    !mInstructionLocation
     !terminalCheckAssignementList
   ] ;
 end method ;
@@ -526,15 +524,17 @@ override method @repeatInstruction analyzeSyntaxInstruction
       !?ioSelectMethodCount
       ?instructionList
     ;
-    listOfSemanticInstructionListForGeneration += !instructionList ;
+    listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions ;
   end foreach ;
 #--- End block
   [!?ioVariableMap endOverride !mEndOf_repeat_instruction] ;
 #---
   ioInstructionListForGeneration += ![@repeatInstructionForGeneration new
+    !mInstructionLocation
     !inComponentName
     !choiceIndex
     !repeated_instructionList
+    !mEndOf_repeat_instruction
     !listOfSemanticInstructionListForGeneration
   ] ;
 end method ;
@@ -611,11 +611,12 @@ override method @selectInstruction analyzeSyntaxInstruction
       !?ioSelectMethodCount
       ?instructionList
     ;
-    listOfSemanticInstructionListForGeneration += !instructionList ;
+    listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions ;
   end foreach ;
 #--- End block
   [!?ioVariableMap endOverride !mEndOf_select_instruction] ;
   ioInstructionListForGeneration += ![@selectInstructionForGeneration new
+    !mInstructionLocation
     !inComponentName
     !choiceIndex
     !listOfSemanticInstructionListForGeneration
@@ -629,7 +630,8 @@ override method @selectInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
- ioGeneratedCode .= "//-------- \n" ;
+  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= "switch (select_" . [mSyntaxComponentName identifierRepresentation] . "_" . [mChoiceIndex string] . " (" . compilerCppName [] . ")) {\n" ;
   foreach mListOfSemanticInstructionListForGeneration index IDX do
     ioGeneratedCode .= "case " . [IDX + 1 string] . ": {\n" ;
@@ -662,7 +664,8 @@ override method @parseDoInstruction analyzeSyntaxInstruction
 :
 #--- Begin block
   [!?ioVariableMap beginOverrideForSelectBlock] ;
-#--- 'or' blocks
+#--- 'do' blocks
+  @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
   foreach mParseDoBranchList do
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
@@ -678,22 +681,52 @@ override method @parseDoInstruction analyzeSyntaxInstruction
       !?ioSelectMethodCount
       ?instructionList
     ;
+    listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions ;
   end foreach ;
 #--- End block
   [!?ioVariableMap endOverride !mEndOfParseDoInstruction] ;
+#--- Check syntax signature of branches
+  @listOfSemanticInstructionListForGeneration tempListOfBranches := listOfSemanticInstructionListForGeneration ;
+  @semanticInstructionListForGeneration instructionList ;
+  [!?tempListOfBranches popFirst ?instructionList ?*] ;
+  const @semanticInstructionListForGeneration referenceSignature := syntaxSignatureOfInstructionList [!instructionList] ;
+  @bool ok := true ;
+  foreach tempListOfBranches while ok do
+    ok := compareSyntaxSignature [
+      !referenceSignature
+      !syntaxSignatureOfInstructionList [!mInstructionList]
+      !mEndOfInstructionList
+    ] ;
+  end foreach ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@parseDoInstructionForGeneration new
+    !mInstructionLocation
+    !listOfSemanticInstructionListForGeneration
   ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseDoInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@parseDoInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "//-------- @parseDoInstructionForGeneration\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  const @string parsingContextVar := "parsingContext_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "const C_parsingContext " . parsingContextVar . " = " . compilerCppName [] . "->parsingContext () ;\n" ;
+  foreach mListOfSemanticInstructionListForGeneration index IDX
+  do
+    generateInstructionList
+      !mInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !?ioGeneratedCode
+    ;
+  between 
+    ioGeneratedCode .= compilerCppName [] . "->setParsingContext (" . parsingContextVar . ") ; // rewind " . [IDX + 1 string] . "\n" ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -760,17 +793,78 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   [!?ioVariableMap endOverride !mEndOfInstructionList] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@parseLoopInstructionForGeneration new
+    !mInstructionLocation
+    !variant_expression
+    !while_expression
+    !instructionList
   ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseLoopInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@parseLoopInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "//-------- @parseLoopInstructionForGeneration\n" ;
+#--- Variant
+  @string variantVarCppName ;
+  [mVariantExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantVarCppName] ;
+#--- Loop variable
+  const @string executeParseVar := "executeParse_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "bool " . executeParseVar . " = NULL == " . variantVarCppName . " ;\n" ;
+  ioGeneratedCode .= "if (! " . executeParseVar . ") {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  const @string variantVar := "variant_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantVarCppName . "->uintValue () ;\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . variantVarCppName . ") ; // Release 'parse loop' variant\n" ;
+#--- Condition (at the beginning of the loop)
+  @string whileVarCppName ;
+  [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName] ;
+  ioGeneratedCode .= executeParseVar . " = (NULL == " . whileVarCppName . ") || ! " . whileVarCppName . "->boolValue () ;\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . whileVarCppName . ") ; // Release 'parse loop' first evaluation of 'while' expression\n" ;
+  ioGeneratedCode .= "if (! " . executeParseVar . ") {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  const @string loopVar := "loop_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "bool " . loopVar . " = true ;\n" ;
+  ioGeneratedCode .= "while (" . loopVar . ") {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  ioGeneratedCode .= loopVar . " = false ;\n" ;
+  ioGeneratedCode .= executeParseVar . " = 0 == " . variantVar . " ;\n" ;
+  ioGeneratedCode .= "if (! " . executeParseVar . ") {\n" ;
+  ioGeneratedCode .= "  " . variantVar . " -- ; // Decrement variant\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .= "  const C_parsingContext parsingContext = " . compilerCppName [] . "->parsingContext () ;\n" ;
+  generateInstructionList
+    !mInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
+#--- Condition (at the end of the loop)
+  [!?ioGeneratedCode incIndentation !2] ;
+  ioGeneratedCode .= compilerCppName [] . "->setParsingContext (parsingContext) ;\n" ;
+  [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName] ;
+  ioGeneratedCode .= loopVar . " = (NULL != " . whileVarCppName . ") && " . whileVarCppName . "->boolValue () ;\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . whileVarCppName . ") ; // Release 'parse loop' evaluation of 'while' expression\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+#--- Execute 'parse' part
+  ioGeneratedCode .= "if (" . executeParseVar . ") {\n" ;
+  generateInstructionList
+    !syntaxSignatureOfInstructionList [!mInstructionList]
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -828,12 +922,17 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
       !?ioLocalVariableCppNameList
     ] ;
   end foreach ;
+#--- Check syntax signature
+  const @bool ok := compareSyntaxSignature [!when_instructionListForGeneration !else_instructionListForGeneration !mEndOfElseInstructionList] ;
 #--- Generate instruction
-  ioInstructionListForGeneration += ![@parseWhenInstructionForGeneration new
-    !when_expression
-    !when_instructionListForGeneration
-    !else_instructionListForGeneration
-  ] ;
+  if ok then
+    ioInstructionListForGeneration += ![@parseWhenInstructionForGeneration new
+      !mInstructionLocation
+      !when_expression
+      !when_instructionListForGeneration
+      !else_instructionListForGeneration
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
