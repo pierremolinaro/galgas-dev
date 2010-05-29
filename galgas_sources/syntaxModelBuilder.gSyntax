@@ -221,6 +221,7 @@ rule <syntax_rule_label>
     !mFormalParameters
     !endOfArguments
     !mSyntaxInstructionList
+    !here
   ;
 end rule ;
 

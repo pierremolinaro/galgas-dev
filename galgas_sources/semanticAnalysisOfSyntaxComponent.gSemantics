@@ -326,7 +326,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
     ioGeneratedCode .= mValue . ", " ;
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-  ioGeneratedCode .=  compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  ioGeneratedCode .=  compilerCppName [] . ") ;\n" ;
 #--- Release temporary variables
   foreach jokerParametersToReleaseList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
@@ -998,6 +998,7 @@ routine semanticAnalysisOfRuleLabel
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string inComponentName
+  ??@location inEndOfInstructionList
   ?!@uint ioSelectMethodCount
   !@formalParameterListForGeneration outSignatureForGeneration
   !@formalParameterSignature outSignature
@@ -1033,6 +1034,8 @@ routine semanticAnalysisOfRuleLabel
       !?localVariableCppNameList
     ] ;
   end foreach ;
+#---
+  [variableMap checkAutomatonStates !inEndOfInstructionList] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -1098,6 +1101,7 @@ routine semanticAnalysisOfSyntaxComponent
         !inLexiqueName
         !nonterminalMap
         !inComponentName
+        !mEndOfInstructionList
         !?localSelectMethodCount
         ?signatureForGeneration
         ?signature

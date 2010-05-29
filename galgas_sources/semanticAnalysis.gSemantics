@@ -526,7 +526,7 @@ override method @externFunctionDeclarationAST performSemanticAnalysis
   foreach mFormalArgumentList do
     formalArgumentList +=
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
-      !mFormalArgumentName
+      ![mFormalArgumentName string]
       !mIsUnused
     ;
   end foreach ;
@@ -746,22 +746,29 @@ routine analyzeFunctionBody
   outSignatureForGeneration := [@formalInputParameterListForGeneration emptyList] ;
   foreach inFunctionSignature do
     const @unifiedTypeMapProxy parameterType [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
-    outSignatureForGeneration +=
-      !parameterType
-      !mFormalArgumentName
-      !mIsUnused
-    ;
     if mIsConstant then
+      const @string cppName := "constinArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      outSignatureForGeneration +=
+        !parameterType
+        !cppName
+        !mIsUnused
+      ;
       if mIsUnused then
-        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !"prefixe_"] ;
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName] ;
       else
-        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !parameterType !"prefixe_"] ;
+        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !parameterType !cppName] ;
       end if ;
     else
+      const @string cppName := "inArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      outSignatureForGeneration +=
+        !parameterType
+        !cppName
+        !mIsUnused
+      ;
       if mIsUnused then
-        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !"prefixe_"] ;
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName] ;
       else
-        [!?variableMap insertInputFormalArgument !mFormalArgumentName !parameterType !"prefixe_"] ;
+        [!?variableMap insertInputFormalArgument !mFormalArgumentName !parameterType !cppName] ;
       end if ;
     end if ;
   end foreach ;

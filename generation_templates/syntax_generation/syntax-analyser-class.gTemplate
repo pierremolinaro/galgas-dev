@@ -14,7 +14,7 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
   %  protected : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
     foreach label_mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * const constinArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -24,11 +24,11 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
       end if
       %,\n%!^ 
     end foreach
-  %C_Lexique_%!LEXIQUE_NAME% * const inLexique) = 0 ;\n\n%
+  %C_Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
   end foreach
   
   if mHasParseLabel then
-    %  protected : virtual void nt_%![lkey identifierRepresentation]%_parse (%?^%C_Lexique_%!LEXIQUE_NAME% * const inLexique) = 0 ;\n\n%
+    %  protected : virtual void nt_%![lkey identifierRepresentation]%_parse (%?^%C_Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
   end if
 end foreach%
 //--- Rule declarations
@@ -37,7 +37,7 @@ end foreach%
     %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_%![mLabelName identifierRepresentation]% (%?^
     foreach mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * const constinArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -50,7 +50,7 @@ end foreach%
     %C_Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end foreach
   if mHasParseLabel then
-    %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_parse (%?^%C_Lexique_%!LEXIQUE_NAME% * const inLexique) ;\n\n%
+    %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_parse (%?^%C_Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end if
 end foreach%
 

@@ -14,6 +14,19 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOC
 
 //---------------------------------------------------------------------------*
 
+GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOverride (%?^%GALGAS_%!TYPE_IDENTIFIER% * inMapToOverride
+                                                   %!^%COMMA_LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
+  if (NULL != inMapToOverride) {
+    macroValidObject (inMapToOverride, GALGAS_%!TYPE_IDENTIFIER%) ;
+    macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
+    result->mOverridenMap = inMapToOverride ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioObject
                 %!^%COMMA_LOCATION_ARGS) {
   if (ioObject->retainCount () > 1) {

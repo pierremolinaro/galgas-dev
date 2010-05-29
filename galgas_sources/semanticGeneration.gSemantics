@@ -34,6 +34,7 @@ function generateProcedure
   ??@semanticInstructionListForGeneration inInstructionList
   ??@bool inProcedureIsConst
   ??@string inCompilerTypeName
+  ??@bool inGenerateLocationArgs
   ->@string outGeneratedCode
 :
 #--- Build unused variable set
@@ -61,7 +62,7 @@ function generateProcedure
   foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentConstantIn :
-      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * const " ;
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * " ;
     when argumentInOut :
       outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * & " ;
     when argumentOut :
@@ -84,9 +85,12 @@ function generateProcedure
   else
     outGeneratedCode .= compilerCppName [] ;
   end if ;
-  outGeneratedCode .= "\n" ;
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
-  outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS)" ;
+  if inGenerateLocationArgs then
+    outGeneratedCode .= "\n" ;
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+    outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS" ;
+  end if ;
+  outGeneratedCode .= ")" ;
   if inProcedureIsConst then
     outGeneratedCode .= " const" ;
   end if ;
@@ -112,6 +116,71 @@ function generateProcedure
     when argumentOut, argumentInOut :
     end switch ;
   end foreach ;
+#---
+  outGeneratedCode .= "}\n\n" ;
+end function ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# F U N C T I O N    I M P L E M E N A T I O N                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+function generateFunction
+  ??@string inProcedureName
+  ??@formalInputParameterListForGeneration inFormalArgumentList
+  ??@semanticInstructionListForGeneration inInstructionList
+  ??@string inCompilerTypeName
+  ??@string inResultTypeName # Empty string if returns void
+  ??@string inResultVariableCppName
+  ->@string outGeneratedCode
+:
+#--- Build unused variable set
+  @stringset unusedVariableCppNameSet [emptySet] ;
+  unusedVariableCppNameSet += !compilerCppName [] ;
+#--- Generate body
+  @uint temporaryVariableIndex := 0 ;
+  @string routineBody := "" ;
+  [!?routineBody incIndentation !2] ;
+  foreach inInstructionList do
+    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+  end foreach ;
+  [!?routineBody decIndentation !2] ;
+#--- Generate header
+  outGeneratedCode := "GALGAS_" . [inResultTypeName identifierRepresentation] . " * " ;
+  outGeneratedCode .= inProcedureName . " (" ;
+  const @uint colRef := [outGeneratedCode currentColumn] ;
+#---
+  foreach inFormalArgumentList do
+    outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * " ;
+    outGeneratedCode .= mFormalArgumentCppName ;
+    outGeneratedCode .= ",\n" ;
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  end foreach ;
+#--- Compiler argument
+  outGeneratedCode .= inCompilerTypeName . " * " ;
+  if [unusedVariableCppNameSet hasKey !compilerCppName []] then
+    outGeneratedCode .= "/* " . compilerCppName [] . " */" ;
+  else
+    outGeneratedCode .= compilerCppName [] ;
+  end if ;
+  outGeneratedCode .= "\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS)" ;
+  outGeneratedCode .= " {\n" ;
+#--- Declare returned variable
+  outGeneratedCode .= "  GALGAS_" . [inResultTypeName identifierRepresentation]
+                   .  " * " . inResultVariableCppName . " = NULL ; // Returned variable\n" ;
+#--- Generate routine body
+  outGeneratedCode .= routineBody ;
+#--- Release 'in' and 'const in' arguments at the end of the routine
+  foreach inFormalArgumentList do
+    outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release input argument\n" ;
+  end foreach ;
+#--- Generate return instruction
+  outGeneratedCode .= "//---\n" ;
+  outGeneratedCode .= "  return " . inResultVariableCppName . " ;\n" ;
+#---
   outGeneratedCode .= "}\n\n" ;
 end function ;
 
@@ -258,6 +327,10 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string ROUTINE_IMPLEMENTATION
   ;
 
+  template functionImplementation "function-implementation.cpp.gTemplate"
+    ?@string FUNCTION_NAME
+    ?@string FUNCTION_IMPLEMENTATION
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -492,6 +565,23 @@ override reader @routineImplementationForGeneration appendSpecificImplementation
       !mRoutineInstructionList
       !false # Do not generate 'const' qualifier
       !"C_Compiler"
+      !true # Generate location Argument
+    ]
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @functionImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.functionImplementation
+    !mFunctionName
+    !generateFunction [
+      !"function_" . [mFunctionName identifierRepresentation]
+      !mFormalArgumentList
+      !mFunctionInstructionList
+      !"C_Compiler"
+      ![mReturnType key]
+      !mResultVariableCppName
     ]
   ] ; 
 end reader ;
