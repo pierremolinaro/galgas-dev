@@ -64,13 +64,12 @@ end method ;
 
 override method @inputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
-  ?!@string ioImplementation
+  ?!@string unused ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
-  ioImplementation .= "macroReleaseObject (" . outCppName . ") ; // Release input parameter\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
 end method ;
 

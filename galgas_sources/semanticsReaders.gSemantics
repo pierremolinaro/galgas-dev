@@ -445,16 +445,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @objectPredefinedTypeAST getReaderMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap
-:
-  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"objectType" !"type" !false ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @dataPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
@@ -473,7 +463,7 @@ override method @functionPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"name" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"resultType" !"type" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"formalParameterTypeList" !"typelist" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"location" !"object" !true ;
+#  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"location" !"object" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -85,7 +85,6 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string"] ;
   ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location"] ;
   ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset"] ;
-  ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object"] ;
   ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function"] ;
   ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type"] ;
   ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset"] ;
@@ -94,7 +93,6 @@ routine appendPredefinedTypesASTs
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"luint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint64" ;
-  appendPredefinedListTypeAST !?ioDeclarationListASTs !"object" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"function" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"string" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"lstring" ;

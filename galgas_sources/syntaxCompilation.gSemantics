@@ -212,6 +212,7 @@ routine compileSyntaxComponent
           !false
           !lexiqueCppName
           !false # Do not generate location Argument
+          !true # Release input arguments
         ] ;
       end foreach ;
       if mHasParseLabel then
@@ -228,6 +229,7 @@ routine compileSyntaxComponent
           !false
           !lexiqueCppName
           !false # Do not generate location Argument
+          !true # Release input arguments
         ] ;
       end if ;
     end foreach ;

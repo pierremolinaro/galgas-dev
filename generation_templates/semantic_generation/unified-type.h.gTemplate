@@ -122,7 +122,7 @@ end if
 %if (SUPPORTED_OPERATORS & generateDescriptionReaderUtilityMethod []) != 0 then
   %//--------------------------------- Implementation of reader 'description'\n%
   %  public : virtual void description (C_String & ioString,\n%
-  %                                     const PMSInt32 inIndentation) const ;\n%
+  %                                     const PMSInt32 inIndentation) ;\n%
 end if
 
 %//--------------------------------- Modifier invocation\n%
@@ -491,7 +491,10 @@ end foreach
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 %//--------------------------------- Enumeration helper methods
   protected : virtual void populateEnumerationArray (GALGAS_root * ioEnumerationArray [],
-                                                     const bool inAscending) const ;
+                                                     #ifndef DO_NOT_GENERATE_CHECKINGS
+                                                       const PMUInt32 inArraySize,
+                                                     #endif
+                                                     const bool inAscending) ;
   public : virtual PMUInt32 count (void) const ;
 
 %end if
@@ -516,7 +519,7 @@ end if
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Enumerator declaration
   public : class cEnumerator : public AC_GALGAS_Enumerator {
-    public : cEnumerator (const GALGAS_%!TYPE_IDENTIFIER% * inEnumeratedObject,
+    public : cEnumerator (GALGAS_%!TYPE_IDENTIFIER% * inEnumeratedObject,
                           const bool inAscending) ;
   
   //--- Attribute access\n%

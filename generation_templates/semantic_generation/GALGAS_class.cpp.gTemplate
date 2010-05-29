@@ -60,7 +60,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
-  %                              %!^%const PMSInt32 /* inIndentation */) const {\n%
+  %                              %!^%const PMSInt32 /* inIndentation */) {\n%
   %  ioString << "<class @"\n%
   %           << typeDescriptor ()->mGalgasTypeName\n%
   %           << ">" ;\n%
@@ -98,7 +98,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
-  %                              %!^%const PMSInt32 /* inIndentation */) const {\n%
+  %                              %!^%const PMSInt32 /* inIndentation */) {\n%
   %  ioString << "<class @"\n%
   %           << typeDescriptor ()->mGalgasTypeName\n%
   %           << ":" ;\n%
@@ -137,6 +137,7 @@ foreach CONCRETE_METHOD_LIST do
     !false # Method is not const
     !"C_Compiler"
     !true # Generate location Argument
+    !false # Do not release input arguments
   ]
 end foreach
 

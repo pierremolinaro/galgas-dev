@@ -35,6 +35,7 @@ function generateProcedure
   ??@bool inProcedureIsConst
   ??@string inCompilerTypeName
   ??@bool inGenerateLocationArgs
+  ??@bool inReleaseInputArguments
   ->@string outGeneratedCode
 :
 #--- Build unused variable set
@@ -43,6 +44,9 @@ function generateProcedure
   foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentConstantIn, argumentOut, argumentIn :
+      if not inReleaseInputArguments then
+        unusedVariableCppNameSet += !mFormalArgumentCppName ;
+      end if ;
     when argumentInOut :
       unusedVariableCppNameSet += !mFormalArgumentCppName ;
     end switch ;
@@ -107,15 +111,17 @@ function generateProcedure
 #--- Generate routine body
   outGeneratedCode .= routineBody ;
 #--- Release 'in' and 'const in' arguments at the end of the routine
-  foreach inFormalArgumentList index IDX do
-    switch mFormalArgumentPassingMode 
-    when argumentIn :
-      outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release 'in' argument\n" ;
-    when argumentConstantIn :
-      outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release 'const in' argument\n" ;
-    when argumentOut, argumentInOut :
-    end switch ;
-  end foreach ;
+  if inReleaseInputArguments then
+    foreach inFormalArgumentList index IDX do
+      switch mFormalArgumentPassingMode 
+      when argumentIn :
+        outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release 'in' argument\n" ;
+      when argumentConstantIn :
+        outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release 'const in' argument\n" ;
+      when argumentOut, argumentInOut :
+      end switch ;
+    end foreach ;
+  end if ;
 #---
   outGeneratedCode .= "}\n\n" ;
 end function ;
@@ -566,6 +572,7 @@ override reader @routineImplementationForGeneration appendSpecificImplementation
       !false # Do not generate 'const' qualifier
       !"C_Compiler"
       !true # Generate location Argument
+      !true # Release input arguments
     ]
   ] ; 
 end reader ;

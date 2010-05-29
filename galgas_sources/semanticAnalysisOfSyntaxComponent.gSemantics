@@ -413,10 +413,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @terminalCheckInstructionForGeneration\n" ;
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-  ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"
-                  . mLexiqueIdentifier . "::kToken_" . [mTerminalName identifierRepresentation]
-                  . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+#--- Get sinthetized attributes
   foreach mTerminalCheckAssignementList do
     if mTypeName != "" then
       ioGeneratedCode .= "GALGAS_" . [mTypeName identifierRepresentation] . " * " ;
@@ -427,6 +424,11 @@ override method @terminalCheckInstructionForGeneration generateInstruction
                     . [mSourceLexicalAttributeName identifierRepresentation]
                     . " () ;\n" ;
   end foreach ;
+#--- Check terminal symbol
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"
+                  . mLexiqueIdentifier . "::kToken_" . [mTerminalName identifierRepresentation]
+                  . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

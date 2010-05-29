@@ -289,16 +289,6 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @objectPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-:
-  outFlags := generateNativeNewConstructor [] | generateVirtualDestructor []
-   | generateDescriptionReaderUtilityMethod []
-   | generateCppConstructorWithNativeAttributeList [] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
 override reader @dataPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
@@ -413,13 +403,6 @@ override reader @locationPredefinedTypeAST getNativeAttributeList -> @nativeAttr
   outList += !"C_LocationInSource" !false !"mStartLocationInSource" !true !"startLocation" !"" ;
   outList += !"C_LocationInSource" !false !"mEndLocationInSource" !true !"endLocation" !"" ;
   outList += !"C_SourceTextInString" !true !"mSourceText" !false !"sourceText" !"" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @objectPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"GALGAS_root" !true !"mEmbeddedObject" !false !"embeddedObject" !"NULL" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

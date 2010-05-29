@@ -68,6 +68,8 @@ routine getGALGAS_2_source_file_list
   !@stringlist out_fileList
 :
   out_fileList := [@stringlist emptyList] ;
+  out_fileList += !"cObjectArray.cpp" ;
+  out_fileList += !"cObjectArray.h" ;
   out_fileList += !"GALGAS_root.cpp" ;
   out_fileList += !"GALGAS_root.h" ;
   out_fileList += !"GALGAS_struct.cpp" ;
@@ -93,7 +95,6 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"GALGAS_double.cpp" ;
   out_fileList += !"GALGAS_function.cpp" ;
   out_fileList += !"GALGAS_location.cpp" ;
-  out_fileList += !"GALGAS_object.cpp" ;
   out_fileList += !"GALGAS_sint.cpp" ;
   out_fileList += !"GALGAS_sint_36__34_.cpp" ;
   out_fileList += !"GALGAS_string.cpp" ;
