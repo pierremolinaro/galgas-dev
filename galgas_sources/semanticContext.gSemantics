@@ -1085,13 +1085,15 @@ override method @classDeclarationAST enterType
       ] ; 
     end foreach ;
   #--- Add reader to access super object
-    [!?readerMap insertKey
-      !mSuperClassName
-      ![@unifiedTypeMapProxyList emptyList]
-      !false
-      !superClassIndex
-      ![@readerQualifier isBasic]
-    ] ; 
+    if (not mIsAbstract) & ([mSuperClassName string] != "class") then
+      [!?readerMap insertKey
+        !mSuperClassName
+        ![@unifiedTypeMapProxyList emptyList]
+        !false
+        !superClassIndex
+        ![@readerQualifier isBasic]
+      ] ;
+    end if ;
   end if ;
 #--- Build attribute Map and constructor argument list
   @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;

@@ -221,9 +221,8 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "      verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;\n"
                     "      " << inProgramComponentName << "_prologue (* _commonLexique, sourceFilesArray) ;\n"
                     "      for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
-                    "        try {\n"
-                    "          const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
-                    "          PMSInt16 r = 0 ;\n" ;
+                    "        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
+                    "        PMSInt16 r = 0 ;\n" ;
   generatedZone2.incIndentation (+10) ;
   PMUInt32 grammarIndex = 0 ;
   GGS_ruleDescriptorForProgramList::cEnumerator currentRule (inRuleDescriptorForProgramList, true) ;
@@ -233,10 +232,10 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
     }
     PMSInt32 prototypeIndex = 0 ;
     generatedZone2 << "if (fileExtension.compare (\"" << currentRule._mSourceExtension (HERE) << "\") == 0) {\n"
-                      "  C_Compiler & inLexique = * _commonLexique ;\n"
-                      "  const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
-                      "  const GGS_location _here (inLexique) ;\n"
-                      "  const GGS_lstring var_cas_"
+                      "C_Compiler & inLexique = * _commonLexique ;\n"
+                      "const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
+                      "const GGS_location _here (inLexique) ;\n"
+                      "const GGS_lstring var_cas_"
                    << currentRule._mSourceFileName (HERE)
                    << " (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;\n" ;
     generateInstructionListForList (currentRule._mInstructionList (HERE),
@@ -245,49 +244,46 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                                     prototypeIndex,
                                     false, // inGenerateDebug,
                                     true) ; // inGenerateSemanticInstructions
-    generatedZone2 << "  if (verboseOptionOn) {\n"
-                      "    co << \"Analysis of '\" << sourceFilesArray (i COMMA_HERE).lastPathComponent () << \"' completed. \" ;\n"
-                      "    switch (_commonLexique->totalErrorCount ()) {\n"
-                      "    case 0 :\n"
-                      "      co << \"No error, \" ;\n"
-                      "      break ;\n"
-                      "    case 1 :\n"
-                      "      co << \"1 error, \" ;\n"
-                      "      returnCode = 1 ; // Error code\n"
-                      "      break ;\n"
-                      "    default :\n"
-                      "      co << cStringWithSigned (_commonLexique->totalErrorCount ()) << \" errors, \" ;\n"
-                      "      returnCode = 1 ; // Error code\n"
-                      "      break ;\n"
-                      "    }\n"
-                      "    switch (_commonLexique->totalWarningCount ()) {\n"
-                      "    case 0 :\n"
-                      "      co << \"no warning\" ;\n"
-                      "      break ;\n"
-                      "    case 1 :\n"
-                      "      co << \"1 warning\" ;\n"
-                      "      break ;\n"
-                      "    default :\n"
-                      "      co << cStringWithSigned (_commonLexique->totalWarningCount ()) << \" warnings\" ;\n"
-                      "      break ;\n"
-                      "    }\n"
-                      "    if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {\n"
-                      "      co << \".\\n\" ;\n"
-                      "    }\n"
-                      "  }\n" ;
+    generatedZone2 << "if (verboseOptionOn) {\n"
+                      "  co << \"Analysis of '\" << sourceFilesArray (i COMMA_HERE).lastPathComponent () << \"' completed. \" ;\n"
+                      "  switch (_commonLexique->totalErrorCount ()) {\n"
+                      "  case 0 :\n"
+                      "    co << \"No error, \" ;\n"
+                      "    break ;\n"
+                      "  case 1 :\n"
+                      "    co << \"1 error, \" ;\n"
+                      "    returnCode = 1 ; // Error code\n"
+                      "    break ;\n"
+                      "  default :\n"
+                      "    co << cStringWithSigned (_commonLexique->totalErrorCount ()) << \" errors, \" ;\n"
+                      "    returnCode = 1 ; // Error code\n"
+                      "    break ;\n"
+                      "  }\n"
+                      "  switch (_commonLexique->totalWarningCount ()) {\n"
+                      "  case 0 :\n"
+                      "    co << \"no warning\" ;\n"
+                      "    break ;\n"
+                      "  case 1 :\n"
+                      "    co << \"1 warning\" ;\n"
+                      "    break ;\n"
+                      "  default :\n"
+                      "    co << cStringWithSigned (_commonLexique->totalWarningCount ()) << \" warnings\" ;\n"
+                      "    break ;\n"
+                      "  }\n"
+                      "  if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {\n"
+                      "    co << \".\\n\" ;\n"
+                      "  }\n"
+                      "}\n" ;
     currentRule.next () ;
     grammarIndex ++ ;
   }
   generatedZone2.incIndentation (-10) ;
-  generatedZone2 << "          }else{\n"
-                    "            printf (\"*** Error: unhandled extension for file '%s' ***\\n\", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;\n"
-                    "            r = 1 ;\n"
-                    "          }\n"
-                    "          if (r != 0) {\n"
-                    "            returnCode = r ;\n"
-                    "          }\n"
-                    "        }catch (C_ScanOrParseOnlyExceptionEX) { // Raised when scan only or parse only options are set\n"
-                    "          // Do nothing: accept silently exception\n"
+  generatedZone2 << "        }else{\n"
+                    "          printf (\"*** Error: unhandled extension for file '%s' ***\\n\", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;\n"
+                    "          r = 1 ;\n"
+                    "        }\n"
+                    "        if (r != 0) {\n"
+                    "          returnCode = r ;\n"
                     "        }\n"
                     "      }\n"
                     "    //--- Error or warnings ?\n"

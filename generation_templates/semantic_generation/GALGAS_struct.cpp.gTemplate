@@ -6,14 +6,10 @@ foreach ATTRIBUTE_LIST
   between %,\n%!^
 end foreach% \n%!^%COMMA_LOCATION_ARGS) :
 GALGAS_struct (THERE)%
-foreach ATTRIBUTE_LIST
-  do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (NULL)%
+foreach ATTRIBUTE_LIST do index IDX
+  %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (inOperand%![IDX string]%)%
 end foreach% {
-%foreach ATTRIBUTE_LIST
-  do index IDX %  macroAssignObjectThere (mAttribute_%![mAttributeName identifierRepresentation]%, (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) inOperand%![IDX string]%) ;\n%
-end foreach
-%}
-
+}
 
 //---------------------------------------------------------------------------*
 

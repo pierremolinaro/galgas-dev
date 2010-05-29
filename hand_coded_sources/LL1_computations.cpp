@@ -988,7 +988,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
-                          "GALGAS_lstring * const inFilePath" ;
+                          "GALGAS_lstring * inFilePath" ;
         GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
         PMSInt16 numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1015,9 +1015,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  if (NULL != inFilePath) {\n"
-                          "    GALGAS_string * s = readerCall_string (inFilePath COMMA_HERE) ;\n"
-                          "    C_String filePath = s->stringValue () ;\n"
-                          "    macroReleaseObject (s) ;\n"
+                          "    C_String filePath = inFilePath->stringValue () ;\n"
                           "    if (! filePath.isAbsolutePath ()) {\n"
                           "      filePath = inCompiler->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                           "    }\n"
@@ -1069,8 +1067,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    C_String message ;\n"
                           "    message << \"the '\" << filePath << \"' file does not exist\" ;\n"
                           "    GALGAS_location * errorLocation = readerCall_location (inFilePath COMMA_THERE) ;\n"
-                          "    inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
-                          "    macroReleaseObject (errorLocation) ;\n" ;
+                          "    inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1083,6 +1080,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "    }\n"
                           "  }\n"
+                          "  macroReleaseObject (inFilePath) ; // Release input argument\n"
                           "}\n\n" ;
       //--- Define string parsing static method
         generatedZone3.appendCppHyphenLineComment () ;

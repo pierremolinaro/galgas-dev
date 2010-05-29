@@ -211,6 +211,7 @@ routine compileSyntaxComponent
           !mInstructionListForGeneration
           !false
           !lexiqueCppName
+          !false # Do not generate location Argument
         ] ;
       end foreach ;
       if mHasParseLabel then
@@ -226,6 +227,7 @@ routine compileSyntaxComponent
           !syntaxSignatureOfInstructionList [!instructionList]
           !false
           !lexiqueCppName
+          !false # Do not generate location Argument
         ] ;
       end if ;
     end foreach ;

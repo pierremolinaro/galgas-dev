@@ -52,6 +52,7 @@ list @syntaxRuleLabelListAST {
   @formalParameterListAST mFormalArguments ;
   @location mEndOfArgumentLocation ;
   @syntaxInstructionList mSyntaxInstructionList ;
+  @location mEndOfInstructionList ;
 }
 
 #---------------------------------------------------------------------------*

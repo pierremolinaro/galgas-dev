@@ -379,7 +379,7 @@ routine buildRuleList
     @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap ;
     [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?nonTerminalIndex ?nonterminalSymbolParametersMap] ;
   #--- Retrieve instruction list from first label
-    @syntaxInstructionList parsedSyntaxInstructionList ; [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList] ;
+    @syntaxInstructionList parsedSyntaxInstructionList ; [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*] ;
   #--- Transform instruction list
     @syntaxInstructionListForGrammarAnalysis instructionList [emptyList] ;
     transformInstructionList

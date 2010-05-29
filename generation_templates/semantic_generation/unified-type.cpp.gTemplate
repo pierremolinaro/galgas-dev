@@ -25,6 +25,7 @@ GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation]% (THERE)%
     do %    %!mAttributeName% = inObject->%!mGetterName% () ;\n%
   end foreach
 %  }
+  macroReleaseObject (inObject) ; // Release input argument
 }
 
 %

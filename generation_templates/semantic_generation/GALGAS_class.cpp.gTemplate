@@ -45,13 +45,10 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
   end if
   foreach CURRENT_ATTRIBUTE_LIST do
     %,\n%
-    %mAttribute_%![mAttributeName identifierRepresentation]% (NULL)%
+    %mAttribute_%![mAttributeName identifierRepresentation]% (constinAttribute_%![mAttributeName identifierRepresentation]%)%
   end foreach
 % {
-% foreach CURRENT_ATTRIBUTE_LIST do
-    %  macroAssignObject (mAttribute_%![mAttributeName identifierRepresentation]%, (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) constinAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
-  end foreach
-%}
+}
 
 %
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
@@ -139,6 +136,7 @@ foreach CONCRETE_METHOD_LIST do
     !mInstructionList
     !false # Method is not const
     !"C_Compiler"
+    !true # Generate location Argument
   ]
 end foreach
 
