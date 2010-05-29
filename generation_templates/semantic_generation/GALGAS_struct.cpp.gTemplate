@@ -48,7 +48,7 @@ end foreach
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-                             %!^%const PMSInt32 inIndentation) const {
+                             %!^%const PMSInt32 inIndentation) {
   ioString << "<struct @%!TYPE_NAME%:" ;
 %
 foreach ATTRIBUTE_LIST

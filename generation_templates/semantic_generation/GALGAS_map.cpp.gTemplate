@@ -142,8 +142,8 @@ foreach ATTRIBUTE_LIST do index IDX
 end foreach 
 %//---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (const GALGAS_%!TYPE_IDENTIFIER% * inEnumeratedObject,
-                                             const bool inAscending) :
+GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (%?^%GALGAS_%!TYPE_IDENTIFIER% * inEnumeratedObject,
+                                             %!^%const bool inAscending) :
 AC_GALGAS_Enumerator (inEnumeratedObject, inAscending) {
 }
 

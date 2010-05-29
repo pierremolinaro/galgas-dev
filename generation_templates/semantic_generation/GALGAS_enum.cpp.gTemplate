@@ -42,7 +42,7 @@ end foreach%
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-%                                       !^%const PMSInt32 /* inIndentation */) const {
+%                                       !^%const PMSInt32 /* inIndentation */) {
   ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnumValue] << ">" ;
 }
 
