@@ -1167,7 +1167,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
     ;
   else
   #--- Generate expression
-    outExpression := [@rightShiftExpressionForGeneration new
+    outExpression := [@leftShiftExpressionForGeneration new
       !leftType
       !mOperatorLocation
       !leftExpression
