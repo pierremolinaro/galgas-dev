@@ -490,10 +490,7 @@ end foreach
 
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 %//--------------------------------- Enumeration helper methods
-  protected : virtual void populateEnumerationArray (GALGAS_root * ioEnumerationArray [],
-                                                     #ifndef DO_NOT_GENERATE_CHECKINGS
-                                                       const PMUInt32 inArraySize,
-                                                     #endif
+  protected : virtual void populateEnumerationArray (cRootObjectArray & ioEnumerationArray,
                                                      const bool inAscending) ;
   public : virtual PMUInt32 count (void) const ;
 
