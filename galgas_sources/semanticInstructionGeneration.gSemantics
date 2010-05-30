@@ -740,7 +740,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName] ;
-  ioGeneratedCode .= "GALGAS_root ** " . mObjectArrayCppName . " = readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
+  ioGeneratedCode .= "cRootObjectArray * " . mObjectArrayCppName . " = readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
                   .  ", " . mReceiverVariableCppName . ", " . keyVarCppName . " COMMA_HERE) ;\n"
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n" ;
   generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
