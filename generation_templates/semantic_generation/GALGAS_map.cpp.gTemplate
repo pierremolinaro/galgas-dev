@@ -70,10 +70,10 @@ foreach SEARCH_METHOD_LIST do
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
   block 2 :
-    %GALGAS_root ** attributes = performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% COMMA_THERE) ;\n%
+    %cRootObjectArray * attributes = performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% COMMA_THERE) ;\n%
     %if (NULL != attributes) {\n%
     foreach ATTRIBUTE_LIST do index IDX
-      %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes [%![IDX + 1 string]%] ;\n%
+      %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes->objectAtIndex (%![IDX + 1 string]% COMMA_HERE) ;\n%
       %  macroValidObject (outArgument%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
     end foreach
     %}\n%
@@ -92,13 +92,13 @@ foreach REMOVE_METHOD_LIST do
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
   block 2 :
     %const utf32 kRemoveErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
-    %GALGAS_root ** attributes = performRemove (inKey, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
-    %if (NULL != attributes) {\n%
+    %cRootObjectArray attributes ;
+    performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
+    %if (attributes.count () != 0) {\n%
     foreach ATTRIBUTE_LIST do index IDX
-      %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes [%![IDX + 1 string]%] ;\n%
+      %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes.objectAtIndex (%![IDX + 1 string]% COMMA_HERE) ;\n%
       %  macroValidObject (outArgument%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
     end foreach
-    %  macroMyDeletePODArray (attributes) ;\n%
     %}\n%
   end block
   %}\n\n%
@@ -151,11 +151,11 @@ AC_GALGAS_Enumerator (inEnumeratedObject, inAscending) {
 
 foreach WITH_ACCESSOR_MAP do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_root ** readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+  %cRootObjectArray * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
   !^%GALGAS_%!TYPE_IDENTIFIER% * & ioMap,\n%
   !^%GALGAS_%![mArgumentType identifierRepresentation]% * inKey\n%
   !^%COMMA_LOCATION_ARGS) {\n%
-  %  GALGAS_root ** result = NULL ;\n%
+  %  cRootObjectArray * result = NULL ;\n%
   %  if ((NULL != ioMap) && (NULL != inKey)) {\n%
   %    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioMap COMMA_THERE) ;\n%
   if [lkey string] == "hasKey" then
@@ -164,7 +164,6 @@ foreach WITH_ACCESSOR_MAP do
   %    result = ioMap->performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% COMMA_THERE) ;\n%
   end if
   %  }\n%
-  %  macroReleaseObject (inKey) ; // Release 'in' argument\n%
   %  return result ;\n%
   %}\n\n%
 end foreach
