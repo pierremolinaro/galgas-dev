@@ -37,9 +37,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
                 %!^%COMMA_LOCATION_ARGS) {
   if (ioObject->retainCount () > 1) {
     GALGAS_%!TYPE_IDENTIFIER% * source = ioObject ;
-    release (ioObject COMMA_THERE) ;
+    macroReleaseObject (ioObject) ;
     ioObject = constructor_emptyList (THERE) ;
-    retain (ioObject COMMA_THERE) ;
     ioObject->copyFrom (source) ;
   }
 }

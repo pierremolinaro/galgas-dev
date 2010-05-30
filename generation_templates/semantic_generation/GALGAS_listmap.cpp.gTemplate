@@ -20,7 +20,6 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
     GALGAS_%!TYPE_IDENTIFIER% * source = ioObject ;
     macroReleaseObjectThere (ioObject) ;
     ioObject = constructor_emptyMap (THERE) ;
-    macroRetainObjectThere (ioObject) ;
     ioObject->copyFrom (source) ;
   }
 }
