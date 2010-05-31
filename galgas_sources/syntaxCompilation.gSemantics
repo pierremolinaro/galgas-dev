@@ -175,6 +175,9 @@ routine compileSyntaxComponent
       ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
+      headerString .= [mDeclaration appendAutoPointerClassDeclaration] ;
+    end foreach ;
+    foreach decoratedDeclarationListForGeneration do
       headerString .= [mDeclaration appendDeclaration] ;
     end foreach ;
     [@string generateFile
@@ -194,6 +197,7 @@ routine compileSyntaxComponent
       !implementationIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
+      implementationString .= [mDeclaration appendAutoPointerClassImplementation] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       implementationString .= [mDeclaration appendSpecificImplementation] ;
     end foreach ;

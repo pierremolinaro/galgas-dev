@@ -198,6 +198,18 @@ end function ;
 
 filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
+  template autoPointerClassHeader "GALGASap_type.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+  ;
+
+  template autoPointerClassImplementation "GALGASap_type.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+  ;
+
   template genericTypeHeader "generic-type.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -401,6 +413,54 @@ override reader @genericTypeForGeneration appendDeclaration -> @string outHeader
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
   ] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     A U T O    P O I N T E R     C L A S S    D E C L A R A T I O N       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationForGeneration appendAutoPointerClassDeclaration -> @string outHeader :
+  outHeader := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @semanticTypeForGeneration appendAutoPointerClassDeclaration -> @string outHeader :
+  if [mTypeIndex key] == "root" then
+    outHeader := "" ;
+  else
+    outHeader := [filewrapper semanticComponentGenerationTemplate.autoPointerClassHeader
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      ![[mTypeIndex mSuperType] identifierRepresentation]
+    ] ;
+  end if ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   A U T O    P O I N T E R     C L A S S    I M P L E M E N T A T I O N   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationForGeneration appendAutoPointerClassImplementation -> @string outImplementation :
+  outImplementation := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @semanticTypeForGeneration appendAutoPointerClassImplementation -> @string outImplementation :
+  if [mTypeIndex key] == "root" then
+    outImplementation := "" ;
+  else
+    outImplementation := [filewrapper semanticComponentGenerationTemplate.autoPointerClassImplementation
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      ![[mTypeIndex mSuperType] identifierRepresentation]
+    ] ;
+  end if ;
 end reader ;
 
 #---------------------------------------------------------------------------*

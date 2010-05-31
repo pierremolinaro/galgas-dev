@@ -287,6 +287,9 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         ![semanticContext->mTypeMap allKeys]
       ] ;
       foreach decoratedDeclarationListForGeneration do
+        generatedCode .= [mDeclaration appendAutoPointerClassDeclaration] ;
+      end foreach ;
+      foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendDeclaration] ;
       end foreach ;
       if [@uint errorCount] == 0 then
@@ -303,6 +306,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
     #------ Generate implementation
       generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation] ;
       foreach decoratedDeclarationListForGeneration do
+        generatedCode .= [mDeclaration appendAutoPointerClassImplementation] ;
         generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
         generatedCode .= [mDeclaration appendSpecificImplementation] ;
       end foreach ;
