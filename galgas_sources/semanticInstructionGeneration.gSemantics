@@ -230,6 +230,7 @@ override method @dropInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @dropInstructionForGeneration\n" ;
   foreach mDropList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // " . mComment . "\n" ;
+    ioGeneratedCode .= mValue . " = NULL ;\n" ;
   end foreach ;
 end method ;
 
@@ -248,7 +249,7 @@ override method @appendInstructionForGeneration generateInstruction
   end foreach ;
   ioGeneratedCode .= "dotAssign_operation (" . mTargetVariableCppName . ", " . sourceVar
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
-  ioGeneratedCode .= "macroReleaseObject (" . sourceVar . ") ;\n" ;
+#  ioGeneratedCode .= "macroReleaseObject (" . sourceVar . ") ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName] ;
 end method ;
 
@@ -282,6 +283,7 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
 #--- Release temporary variables
   foreach jokerParametersToReleaseList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
+    ioGeneratedCode .= mValue . " = NULL ;\n" ;
   end foreach ;
 end method ;
 
@@ -315,6 +317,7 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
 #--- Release temporary variables
   foreach jokerParametersToReleaseList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
+    ioGeneratedCode .= mValue . " = NULL ;\n" ;
   end foreach ;
 end method ;
 
@@ -335,7 +338,7 @@ override method @ifInstructionForGeneration generateInstruction
   ioGeneratedCode .= "macroValidObject (" . cppVarName . ", GALGAS_bool) ;\n" ;
   const @string testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "const bool " . testVar . " = " . cppVarName . "->boolValue () ;\n" ;
-  ioGeneratedCode .= "macroReleaseObject (" . cppVarName . ") ; // Release test temporary variable\n" ;
+  ioGeneratedCode .= "macroReleaseObject (" . cppVarName . ") ;\n" ;
   ioGeneratedCode .= "if (" . testVar . ") {\n" ;
   generateInstructionList !m_then_instructionList !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   if [m_else_instructionList length] > 0 then
@@ -377,6 +380,7 @@ override method @errorInstructionForGeneration generateInstruction
 #--- Release dropped variables
   foreach mBuiltVariableCppNameList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release error dropped variable\n" ;
+    ioGeneratedCode .= mValue . " = NULL ; // Release error dropped variable\n" ;
   end foreach ;
 end method ;
 
@@ -444,6 +448,7 @@ override method @methodCallInstructionForGeneration generateInstruction
 #--- Release temporary variables
   foreach jokerParametersToReleaseList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
+    ioGeneratedCode .= mValue . " = NULL ;\n" ;
   end foreach ;
 end method ;
 
@@ -473,6 +478,7 @@ override method @routineCallInstructionForGeneration generateInstruction
 #--- Release temporary variables
   foreach jokerParametersToReleaseList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
+    ioGeneratedCode .= mValue . " = NULL ;\n" ;
   end foreach ;
 end method ;
 
@@ -524,6 +530,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
 #--- Release temporary variables
   foreach jokerParametersToReleaseList do
     ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
+    ioGeneratedCode .= mValue . " = NULL ;\n" ;
   end foreach ;
 end method ;
 
@@ -613,9 +620,9 @@ override method @addAssignInstructionForGeneration generateInstruction
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"  ;
 #--- Release temporary parameters
-  foreach parameterList do
-    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release add assign temporary parameter\n" ;
-  end foreach ;
+#  foreach parameterList do
+#    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release add assign temporary parameter\n" ;
+#  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*

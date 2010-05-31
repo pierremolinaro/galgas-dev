@@ -195,7 +195,7 @@ foreach INSTANCE_METHOD_MAP do
       end if
     end if
     %) ;\n% 
-    %    macroReleaseObjectThere (inObject) ;\n%
+    %    macroReleaseObject (inObject) ;\n%
     %  }\n%
     %//---\n%
     foreach mParameterList do index IDX

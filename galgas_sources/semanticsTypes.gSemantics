@@ -199,6 +199,7 @@ list @nativeAttributeList {
   @bool mUseReferenceForConstructor ;
   @string mGetterName ;
   @string mDefaultValue ;
+  @bool mIsConst ;
 }
 
 #---------------------------------------------------------------------------*
