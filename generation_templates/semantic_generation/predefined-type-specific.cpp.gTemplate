@@ -3,12 +3,12 @@
  | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0) then
 %//---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOperand
+void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand
 %                                   !^%COMMA_LOCATION_ARGS) {
-  if (ioOperand->retainCount () > 1) {
-    GALGAS_%!TYPE_IDENTIFIER% * p = GALGAS_%!TYPE_IDENTIFIER%::constructor_new(%
+  if (ioOperand.ptr (HERE)->retainCount () > 1) {
+    ioOperand = GALGAS_%!TYPE_IDENTIFIER%::constructor_new(%
     foreach NATIVE_ATTRIBUTE_LIST
-      do %ioOperand->%!mAttributeName
+      do %ioOperand.ptr (HERE)->%!mAttributeName
       between %, %
     end foreach
     if [NATIVE_ATTRIBUTE_LIST length] == 0 then
@@ -17,9 +17,6 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOp
       % COMMA_THERE%
     end if
     %) ;
-    macroRetainObject (p) ;
-    macroReleaseObject (ioOperand) ;
-    ioOperand = p ;
   }
 }
 %end if%

@@ -4,13 +4,20 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (GALGASap_%!TYPE_IDENTIFIER% & inSource) :
+GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_%!TYPE_IDENTIFIER% & inSource) :
 GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSource) {
 }
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% & GALGASap_%!TYPE_IDENTIFIER%::operator = (GALGASap_%!TYPE_IDENTIFIER% & inSource) {
+GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_root & inSource) :
+GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSource) {
+  macroNullOrValidObject (mPtr, GALGASap_%!TYPE_IDENTIFIER%) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGASap_%!TYPE_IDENTIFIER% & GALGASap_%!TYPE_IDENTIFIER%::operator = (const GALGASap_%!TYPE_IDENTIFIER% & inSource) {
   macroRetainObject (inSource.mPtr) ;
   macroReleaseObject (mPtr) ;
   mPtr = inSource.mPtr ;

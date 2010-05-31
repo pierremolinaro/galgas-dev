@@ -246,8 +246,10 @@ end routine ;
 
 filewrapper predefinedTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
-  template predefinedTypesHeader "types-predeclaration.h.gTemplate"
+  template predefinedTypesHeaderPrologue "types-predeclaration-prologue.h.gTemplate"
     ?@stringset TYPE_LIST
+  ;
+  template predefinedTypesHeaderEpilogue "types-predeclaration-epilogue.h.gTemplate"
   ;
 
   template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
@@ -283,7 +285,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         ?decoratedDeclarationListForGeneration
       ;
     #------ Generate Code
-      @string generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeader
+      @string generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderPrologue
         ![semanticContext->mTypeMap allKeys]
       ] ;
       foreach decoratedDeclarationListForGeneration do
@@ -292,6 +294,8 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendDeclaration] ;
       end foreach ;
+      generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderEpilogue
+      ] ;
       if [@uint errorCount] == 0 then
         [@string generateFile
           !inDirectory
