@@ -336,101 +336,100 @@ end method ;
 
 override reader @boolPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"bool" !false !"mBoolValue" !false !"boolValue" !"false" ;
+  outList += !"bool" !false !"mBoolValue" !false !"boolValue" !"false" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @stringsetPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"cStringsetNode" !true !"mRoot" !false !"" !"NULL" ;
-  outList += !"PMUInt32" !false !"mCount" !false !"" !"0" ;
+  outList += !"cStringsetNode" !true !"mRoot" !false !"" !"NULL" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @charPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"utf32" !false !"mCharValue" !false !"charValue" !"TO_UNICODE (0)" ;
+  outList += !"utf32" !false !"mCharValue" !false !"charValue" !"TO_UNICODE (0)" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @stringPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_String" !false !"mString" !true !"stringValue" !"\"\"" ;
+  outList += !"C_String" !false !"mString" !true !"stringValue" !"\"\"" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @uintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"PMUInt32" !false !"mUIntValue" !false !"uintValue" !"0" ;
+  outList += !"PMUInt32" !false !"mUIntValue" !false !"uintValue" !"0" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @sintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"PMSInt32" !false !"mSIntValue" !false !"sintValue" !"0" ;
+  outList += !"PMSInt32" !false !"mSIntValue" !false !"sintValue" !"0" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @uint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"PMUInt64" !false !"mUInt64Value" !false !"uint64Value" !"0" ;
+  outList += !"PMUInt64" !false !"mUInt64Value" !false !"uint64Value" !"0" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @sint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"PMSInt64" !false !"mSInt64Value" !false !"sint64Value" !"0" ;
+  outList += !"PMSInt64" !false !"mSInt64Value" !false !"sint64Value" !"0" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @doublePredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"double" !false !"mDoubleValue" !false !"doubleValue" !"0.0" ;
+  outList += !"double" !false !"mDoubleValue" !false !"doubleValue" !"0.0" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @locationPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_LocationInSource" !false !"mStartLocationInSource" !true !"startLocation" !"" ;
-  outList += !"C_LocationInSource" !false !"mEndLocationInSource" !true !"endLocation" !"" ;
-  outList += !"C_SourceTextInString" !true !"mSourceText" !false !"sourceText" !"" ;
+  outList += !"C_LocationInSource" !false !"mStartLocationInSource" !true !"startLocation" !"" !false ;
+  outList += !"C_LocationInSource" !false !"mEndLocationInSource" !true !"endLocation" !"" !false ;
+  outList += !"C_SourceTextInString" !true !"mSourceText" !false !"sourceText" !"" !true ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @typePredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_galgas_type_descriptor" !true !"mTypeDescriptor" !false !"embeddedTypeDescriptor" !"NULL" ;
+  outList += !"C_galgas_type_descriptor" !true !"mTypeDescriptor" !false !"embeddedTypeDescriptor" !"NULL" !true ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @functionPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_galgas_function_descriptor" !true !"mFunctionDescriptor" !false !"functionDescriptor" !"NULL" ;
+  outList += !"C_galgas_function_descriptor" !true !"mFunctionDescriptor" !false !"functionDescriptor" !"NULL" !true ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @binarysetPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_BDD" !false !"mBDD" !true !"bdd" !"" ;
+  outList += !"C_BDD" !false !"mBDD" !true !"bdd" !"" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @dataPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
   outList := [@nativeAttributeList emptyList] ;
-  outList += !"uint8Array" !false !"mData" !true !"" !"" ;
+  outList += !"uint8Array" !false !"mData" !true !"" !"" !false ;
 end reader ;
 
 #---------------------------------------------------------------------------*

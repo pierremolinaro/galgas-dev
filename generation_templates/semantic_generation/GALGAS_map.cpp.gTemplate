@@ -31,7 +31,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOb
                 %!^%COMMA_LOCATION_ARGS) {
   if (ioObject->retainCount () > 1) {
     GALGAS_%!TYPE_IDENTIFIER% * source = ioObject ;
-    macroReleaseObjectThere (ioObject) ;
+    macroReleaseObject (ioObject) ;
     ioObject = constructor_emptyMap (THERE) ;
     ioObject->copyFrom (source) ;
   }
