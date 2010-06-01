@@ -231,11 +231,21 @@ end foreach
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
     %//---------------------------------------------------------------------------*\n%
     %//%!["@" . TYPE_NAME . " " . [TYPE_KIND kind] . " enumeration" stringByLeftAndRightPadding !75 !' ']%*\n%
-  foreach ENUMERATION_DESCRIPTOR_LIST do index IDX
     %//---------------------------------------------------------------------------*\n\n%
-    %GALGASap_%![mEnumeratedType identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::attribute_%![mEnumerationName identifierRepresentation]% (void) {\n%
-    %  return GALGASap_%![mEnumeratedType identifierRepresentation]% (directAccess (%![IDX string]% COMMA_HERE)) ;\n%
+    %GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (%?^%GALGASap_%!TYPE_IDENTIFIER% & inEnumeratedObject,\n%
+                                  !^%const bool inAscending) :\n%
+    %AC_GALGAS_Enumerator (inEnumeratedObject.ptrNoVerif (), inAscending)%
+    foreach ENUMERATION_DESCRIPTOR_LIST do index IDX
+      %,\n%
+      %attribute_%![mEnumerationName identifierRepresentation]% ()%
+    end foreach    
+    % {\n%
     %}\n\n%
-  end foreach
+    %//---------------------------------------------------------------------------*\n\n%
+    %void GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::updateAttributeProxies (void) {\n%
+    foreach ENUMERATION_DESCRIPTOR_LIST do index IDX
+      %  attribute_%![mEnumerationName identifierRepresentation]% = directAccess (%![IDX string]% COMMA_HERE) ;\n%
+    end foreach
+    %}\n\n%
 end if
 

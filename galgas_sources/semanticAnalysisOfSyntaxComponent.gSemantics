@@ -329,7 +329,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
   ioGeneratedCode .=  compilerCppName [] . ") ;\n" ;
 #--- Release temporary variables
   foreach jokerParametersToReleaseList do
-    ioGeneratedCode .= "macroReleaseObject (" . mValue . ") ; // Release temporary input variables (joker in source)\n" ;
+    ioGeneratedCode .= mValue . ".drop () ; // Release temporary input variables (joker in source)\n" ;
   end foreach ;
 end method ;
 
@@ -413,12 +413,11 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @terminalCheckInstructionForGeneration\n" ;
-#--- Get sinthetized attributes
+#--- Get synthetized attributes
   foreach mTerminalCheckAssignementList do
     if mTypeName != "" then
-      ioGeneratedCode .= "GALGAS_" . [mTypeName identifierRepresentation] . " * " ;
+      ioGeneratedCode .= "GALGAS_ap" . [mTypeName identifierRepresentation] . " " ;
     else
-      ioGeneratedCode .= "macroReleaseObject (" . mTargetVarCppName . ") ;\n" ;
     end if ;
     ioGeneratedCode .= mTargetVarCppName . " = " . compilerCppName [] . "->synthetizedAttribute_"
                     . [mSourceLexicalAttributeName identifierRepresentation]
@@ -815,17 +814,17 @@ override method @parseLoopInstructionForGeneration generateInstruction
   [mVariantExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantVarCppName] ;
 #--- Loop variable
   const @string executeParseVar := "executeParse_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "bool " . executeParseVar . " = NULL == " . variantVarCppName . " ;\n" ;
+  ioGeneratedCode .= "bool " . executeParseVar . " = ! " . variantVarCppName . ".isValid () ;\n" ;
   ioGeneratedCode .= "if (! " . executeParseVar . ") {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   const @string variantVar := "variant_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantVarCppName . "->uintValue () ;\n" ;
-  ioGeneratedCode .= "macroReleaseObject (" . variantVarCppName . ") ; // Release 'parse loop' variant\n" ;
+  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantVarCppName . ".ptr (HERE)->uintValue () ;\n" ;
+  ioGeneratedCode .= variantVarCppName . ".drop () ; // Release 'parse loop' variant\n" ;
 #--- Condition (at the beginning of the loop)
   @string whileVarCppName ;
   [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName] ;
-  ioGeneratedCode .= executeParseVar . " = (NULL == " . whileVarCppName . ") || ! " . whileVarCppName . "->boolValue () ;\n" ;
-  ioGeneratedCode .= "macroReleaseObject (" . whileVarCppName . ") ; // Release 'parse loop' first evaluation of 'while' expression\n" ;
+  ioGeneratedCode .= executeParseVar . " = (! " . whileVarCppName . ".isValid ()) || ! " . whileVarCppName . ".ptr (HERE)->boolValue () ;\n" ;
+  ioGeneratedCode .= whileVarCppName . ".drop () ; // Release 'parse loop' first evaluation of 'while' expression\n" ;
   ioGeneratedCode .= "if (! " . executeParseVar . ") {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   const @string loopVar := "loop_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
@@ -848,8 +847,8 @@ override method @parseLoopInstructionForGeneration generateInstruction
   [!?ioGeneratedCode incIndentation !2] ;
   ioGeneratedCode .= compilerCppName [] . "->setParsingContext (parsingContext) ;\n" ;
   [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName] ;
-  ioGeneratedCode .= loopVar . " = (NULL != " . whileVarCppName . ") && " . whileVarCppName . "->boolValue () ;\n" ;
-  ioGeneratedCode .= "macroReleaseObject (" . whileVarCppName . ") ; // Release 'parse loop' evaluation of 'while' expression\n" ;
+  ioGeneratedCode .= loopVar . " = " . whileVarCppName . ".isValid () && " . whileVarCppName . ".ptr (HERE)->boolValue () ;\n" ;
+  ioGeneratedCode .= whileVarCppName . ".drop () ; // Release 'parse loop' evaluation of 'while' expression\n" ;
   [!?ioGeneratedCode decIndentation !2] ;
   ioGeneratedCode .= "}\n" ;
   [!?ioGeneratedCode decIndentation !2] ;
@@ -948,8 +947,8 @@ override method @parseWhenInstructionForGeneration generateInstruction
   @string sourceVar ;
   [mWhenExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   const @string boolVarCppName := "parseWhen_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "const bool " . boolVarCppName . " = (NULL != " . sourceVar . ") && (" . sourceVar . "->boolValue ()) ;\n" ;
-  ioGeneratedCode .= "macroReleaseObject (" . sourceVar . ") ; // Release 'when' expression\n" ;
+  ioGeneratedCode .= "const bool " . boolVarCppName . " = " . sourceVar . ".isValid () && (" . sourceVar . ".ptr (HERE)->boolValue ()) ;\n" ;
+  ioGeneratedCode .= sourceVar . ".drop () ; // Release 'when' expression\n" ;
   ioGeneratedCode .= "if (" . boolVarCppName . ") {\n" ;
   generateInstructionList
     !mInstructionList

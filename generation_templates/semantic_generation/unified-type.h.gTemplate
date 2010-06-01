@@ -517,10 +517,13 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
   public : class cEnumerator : public AC_GALGAS_Enumerator {
     public : cEnumerator (GALGASap_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                           const bool inAscending) ;
+
+  //--- Update attribute proxies
+    public : void updateAttributeProxies (void) ;
   
-  //--- Attribute access\n%
+  //--- Current attribute proxies\n%
     foreach ENUMERATION_DESCRIPTOR_LIST do
-%    public : GALGASap_%![mEnumeratedType identifierRepresentation]% attribute_%![mEnumerationName identifierRepresentation]% (void) ;\n%
+%    public : GALGASap_%![mEnumeratedType identifierRepresentation]% attribute_%![mEnumerationName identifierRepresentation]% ;\n%
     end foreach%
   } ;
 %

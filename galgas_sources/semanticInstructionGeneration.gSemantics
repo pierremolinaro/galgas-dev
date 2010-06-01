@@ -239,7 +239,7 @@ override method @appendInstructionForGeneration generateInstruction
   foreach mStructAttributeList do
     ioGeneratedCode .= "(TO DO handle field in @appendInstructionForGeneration)\n" ;
   end foreach ;
-  ioGeneratedCode .= "dotAssign_operation (" . mTargetVariableCppName . ", " . sourceVar
+  ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation] . "::dotAssign_operation (" . mTargetVariableCppName . ", " . sourceVar
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
 #  ioGeneratedCode .= "macroReleaseObject (" . sourceVar . ") ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName] ;
@@ -538,12 +538,12 @@ override method @structuredCastInstructionForGeneration generateInstruction
   [!?ioGeneratedCode incIndentation !2] ;
   foreach mCastBranchList do
     if mUseKindOfClass then
-      ioGeneratedCode .= "if (NULL != dynamic_cast <GALGAS_" . [mType identifierRepresentation] . " *> (" . castCppVarName . ")) {\n" ;
+      ioGeneratedCode .= "if (NULL != dynamic_cast <GALGAS_" . [mType identifierRepresentation] . " *> (" . castCppVarName . ".ptr (HERE))) {\n" ;
     else
-      ioGeneratedCode .= "if (" . castCppVarName . "->typeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
+      ioGeneratedCode .= "if (" . castCppVarName . ".ptr (HERE)->typeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
     end if ;
     if [mCastedVarCppName length] > 0 then
-      ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " * " . mCastedVarCppName . " = (GALGAS_" . [mType identifierRepresentation] . " *) " . castCppVarName . " ;\n" ;
+      ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " = " . castCppVarName . " ;\n" ;
     end if ;
     generateInstructionList
       !mInstructionList
@@ -592,7 +592,7 @@ override method @addAssignInstructionForGeneration generateInstruction
     ioGeneratedCode .= "(handle fields)\n" ;
   end foreach ;
 #--- Call add assign (+=) operator
-  ioGeneratedCode .= "addAssign_operation (" . mReceiverCppName ;
+  ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation] . "::addAssign_operation (" . mReceiverCppName ;
   foreach parameterList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
@@ -759,7 +759,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= "//--- complex foreach instruction\n" ;
   #--- Index
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGAS_uint * " . mIndexVariableCppName . " = GALGAS_uint::constructor_new (0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "GALGASap_uint " . mIndexVariableCppName . " = GALGAS_uint::constructor_new (0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     const @string boolVarCppName := "bool_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
     if whileExpressionIsAllwaysTrue then
@@ -767,7 +767,7 @@ override method @foreachInstructionForGeneration generateInstruction
     else
       @string whileVar ;
       [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
-      ioGeneratedCode .= "bool " . boolVarCppName . " = (NULL == " . whileVar . ") ? false : " . whileVar . "->boolValue () ;\n" ;
+      ioGeneratedCode .= "bool " . boolVarCppName . " = " . whileVar . ".isValid () ? " . whileVar . ".ptr (HERE)->boolValue () : false ;\n" ;
 #      ioGeneratedCode .= "macroReleaseObject (" . whileVar . ") ;\n" ;
     end if ;
     ioGeneratedCode .= "if (" ;
@@ -788,6 +788,9 @@ override method @foreachInstructionForGeneration generateInstruction
       between ioGeneratedCode .= " && " ;
     end foreach ;
     ioGeneratedCode .= ") {\n" ;
+    foreach mEnumeratedObjectList
+      do ioGeneratedCode .= "  " . mEnumeratorCppName . ".updateAttributeProxies () ;\n" ;
+    end foreach ;
   #--- Generate 'do' instruction
     generateInstructionList
       !mDoInstructionList
@@ -799,7 +802,7 @@ override method @foreachInstructionForGeneration generateInstruction
     if not whileExpressionIsAllwaysTrue then
       @string whileVar ;
       [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
-      ioGeneratedCode .= boolVarCppName . " = (NULL == " . whileVar . ") ? false : " . whileVar . "->boolValue () ;\n" ;
+      ioGeneratedCode .= boolVarCppName . " = " . whileVar . ".isValid () ? " . whileVar . ".ptr (HERE)->boolValue () : false ;\n" ;
 #      ioGeneratedCode .= "macroReleaseObject (" . whileVar . ") ;\n" ;
     end if ;
   #--- Generate 'between' instruction
@@ -848,6 +851,9 @@ override method @foreachInstructionForGeneration generateInstruction
       between ioGeneratedCode .= " && " ;
     end foreach ;
     ioGeneratedCode .= ") {\n" ;
+    foreach mEnumeratedObjectList
+      do ioGeneratedCode .= "  " . mEnumeratorCppName . ".updateAttributeProxies () ;\n" ;
+    end foreach ;
   #--- Generate 'do' instruction
     generateInstructionList
       !mDoInstructionList

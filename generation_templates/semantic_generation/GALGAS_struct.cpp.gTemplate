@@ -2,7 +2,7 @@
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end foreach% \n%!^%COMMA_LOCATION_ARGS) :
 GALGAS_struct (THERE)%
@@ -13,15 +13,15 @@ end foreach% {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
+GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end foreach% \n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
   if (%
 foreach ATTRIBUTE_LIST
-  do index IDX %(NULL != inOperand%![IDX string]%)%
+  do index IDX %inOperand%![IDX string]%.isValid ()%
   between % && %
 end foreach
 %) {
@@ -39,11 +39,7 @@ end foreach
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
-%
-foreach ATTRIBUTE_LIST
-  do index IDX %  macroReleaseObject (mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
-end foreach
-%}
+}
 
 //---------------------------------------------------------------------------*
 
@@ -52,7 +48,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
   ioString << "<struct @%!TYPE_NAME%:" ;
 %
 foreach ATTRIBUTE_LIST
-  do index IDX %  mAttribute_%![mAttributeName identifierRepresentation]%->description (ioString, inIndentation  + 1) ;\n%
+  do index IDX %  mAttribute_%![mAttributeName identifierRepresentation]%.ptr (HERE)->description (ioString, inIndentation  + 1) ;\n%
   between %  ioString << ", " ;\n%
 end foreach
 %  ioString << ">" ;
@@ -61,21 +57,19 @@ end foreach
 %
 foreach ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) {\n%
+  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) {\n%
   %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach
 
 %//---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand1,
-                                      %!^%const GALGAS_%!TYPE_IDENTIFIER% * inOperand2) {
-  macroValidObject (inOperand1, const GALGAS_%!TYPE_IDENTIFIER%) ;
-  macroValidObject (inOperand2, const GALGAS_%!TYPE_IDENTIFIER%) ;
+PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+                                      %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {
   PMSInt32 result = 0 ;
 %foreach ATTRIBUTE_LIST do
   %  if (result == 0) {\n%
-  %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+  %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
   %  }\n%
 end foreach
 %  return result ;
