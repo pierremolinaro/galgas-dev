@@ -576,6 +576,7 @@ class @dropInstructionForGeneration extends @semanticInstructionForGeneration {
 
 class @appendInstructionForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
+  @unifiedTypeMapProxy mTargetType ;
   @string mTargetVariableCppName ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionForGeneration mSourceExpression ;
@@ -807,6 +808,7 @@ class @structuredCastInstructionForGeneration extends @semanticInstructionForGen
 
 class @addAssignInstructionForGeneration extends @semanticInstructionForGeneration {
   @string mReceiverCppName ;
+  @unifiedTypeMapProxy mTargetType ;
   @location mInstructionLocation ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionListForGeneration mExpressionList ;

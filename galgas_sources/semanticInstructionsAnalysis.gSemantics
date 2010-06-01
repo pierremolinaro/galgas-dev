@@ -795,6 +795,7 @@ override method @appendInstructionAST analyzeSemanticInstruction
 #--- Generate instruction
   ioInstructionListForGeneration += ![@appendInstructionForGeneration new
     !mInstructionLocation
+    !targetType
     !targetVariableCppName
     !mStructAttributeList
     !expression
@@ -847,6 +848,7 @@ override method @addInstructionAST analyzeSemanticInstruction # +=
   #--- Generate instruction
     ioInstructionListForGeneration += ![@addAssignInstructionForGeneration new
       !targetVariableCppName
+      !targetType
       !mInstructionLocation
       !mStructAttributeList
       !effectiveParameterList
@@ -1083,7 +1085,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
        [!?ioVariableMap insertUsedLocalConstant
          ![@lstring new ![mPrefix string] . mEnumerationName !mEndOfEnumerationExpression]
          !mEnumeratedType
-         !enumeratorCppName .".attribute_" . [mEnumerationName identifierRepresentation]. " ()"
+         !enumeratorCppName .".attribute_" . [mEnumerationName identifierRepresentation]
        ] ;
       end foreach ;
     elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
@@ -1109,7 +1111,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
           if foundType != mEnumeratedType then
             error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
           end if ;
-          [!?ioVariableMap insertUsedLocalConstant !mConstantName !mEnumeratedType !enumeratorCppName .".attribute_" . [mEnumerationName identifierRepresentation]. " ()"] ;
+          [!?ioVariableMap insertUsedLocalConstant !mConstantName !mEnumeratedType !enumeratorCppName .".attribute_" . [mEnumerationName identifierRepresentation]] ;
         end if ;
       end foreach ;
     end if ;

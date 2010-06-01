@@ -82,18 +82,17 @@ foreach REMOVE_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGASap_lstring inKey%
     foreach ATTRIBUTE_LIST
-      do index IDX %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% * outArgument%![IDX string]
+      do index IDX %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & outArgument%![IDX string]
     end foreach
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
   block 2 :
     %const utf32 kRemoveErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
-    %cRootObjectArray attributes ;
-    performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
+    %cRootObjectArray attributes ;\n%
+    %  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
     %if (attributes.count () != 0) {\n%
     foreach ATTRIBUTE_LIST do index IDX
-      %  outArgument%![IDX string]% = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributes.objectAtIndex (%![IDX + 1 string]% COMMA_HERE) ;\n%
-      %  macroValidObject (outArgument%![IDX string]%, GALGAS_%![mAttributeTypeIndex identifierRepresentation]%) ;\n%
+      %  outArgument%![IDX string]% = attributes.objectAtIndex (%![IDX + 1 string]% COMMA_HERE) ;\n%
     end foreach
     %}\n%
   end block
@@ -134,14 +133,6 @@ foreach ATTRIBUTE_LIST do index IDX
   %  writeAttributeForKey (inKey, inAttributeValue, inCompiler, %![IDX + 1 string]% COMMA_THERE) ;\n%
   %}\n\n%
 end foreach 
-%//---------------------------------------------------------------------------*
-
-GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (%?^%GALGASap_%!TYPE_IDENTIFIER% & inEnumeratedObject,
-                                             %!^%const bool inAscending) :
-AC_GALGAS_Enumerator (inEnumeratedObject.ptrNoVerif (), inAscending) {
-}
-
-%
 
 foreach WITH_ACCESSOR_MAP do
   %//---------------------------------------------------------------------------*\n\n%

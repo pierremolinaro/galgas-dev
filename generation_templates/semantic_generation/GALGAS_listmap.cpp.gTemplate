@@ -44,10 +44,3 @@ void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
   }
 }
 
-//---------------------------------------------------------------------------*
-
-GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (%?^%GALGAS_%!TYPE_IDENTIFIER% * inEnumeratedObject,
-                                             %!^%const bool inAscending) :
-AC_GALGAS_Enumerator (inEnumeratedObject, inAscending) {
-}
-

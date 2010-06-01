@@ -658,7 +658,7 @@ override method @multiplicationExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation] . " * " . outCppName
+  ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation] . " " . outCppName
                   . " (GALGAS_" . [mType identifierRepresentation] . "::multiply_operation ("
                   . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
@@ -681,7 +681,7 @@ override method @divisionExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation] . " * " . outCppName
+  ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation] . " " . outCppName
                   . " (GALGAS_" . [mType identifierRepresentation] . "::divide_operation ("
                   . leftTemporaryOperand . ", " . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;

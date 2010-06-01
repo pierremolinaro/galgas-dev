@@ -41,7 +41,9 @@ function generateProcedure
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
   foreach inFormalArgumentList do
-    unusedVariableCppNameSet += !mFormalArgumentCppName ;
+    if mFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
+      unusedVariableCppNameSet += !mFormalArgumentCppName ;
+    end if ;
   end foreach ;
 #--- Generate body
   @uint temporaryVariableIndex := 0 ;

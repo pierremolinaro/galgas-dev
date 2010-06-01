@@ -68,6 +68,8 @@ routine getGALGAS_2_source_file_list
   !@stringlist out_fileList
 :
   out_fileList := [@stringlist emptyList] ;
+  out_fileList += !"GALGASap_root.cpp" ;
+  out_fileList += !"GALGASap_root.h" ;
   out_fileList += !"cObjectArray.cpp" ;
   out_fileList += !"cObjectArray.h" ;
   out_fileList += !"GALGAS_root.cpp" ;
@@ -104,6 +106,7 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"GALGAS_uint_36__34_.cpp" ;
   out_fileList += !"predefined-types.cpp" ;
   out_fileList += !"predefined-types.h" ;
+  out_fileList += !"predefined-ap-types.h" ;
 end routine ;
 
 #---------------------------------------------------------------------------*
