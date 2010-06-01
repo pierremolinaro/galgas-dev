@@ -246,6 +246,9 @@ end routine ;
 
 filewrapper predefinedTypeGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
+  template predefinedAPTypesHeaderPrologue "types-ap-predeclaration-prologue.h.gTemplate"
+    ?@stringset TYPE_LIST
+  ;
   template predefinedTypesHeaderPrologue "types-predeclaration-prologue.h.gTemplate"
     ?@stringset TYPE_LIST
   ;
@@ -284,18 +287,33 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         !semanticContext
         ?decoratedDeclarationListForGeneration
       ;
-    #------ Generate Code
-      @string generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderPrologue
+    #------ Generate predefined auto pointer types declaration file
+      @string generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedAPTypesHeaderPrologue
         ![semanticContext->mTypeMap allKeys]
       ] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendAutoPointerClassDeclaration] ;
       end foreach ;
+      generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderEpilogue
+      ] ;
+      if [@uint errorCount] == 0 then
+        [@string generateFile
+          !inDirectory
+          !"predefined-ap-types.h"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !generatedCode
+          !"\n\n" # Defaut user zone2
+          !"#endif\n"
+        ] ;
+      end if ;
+    #------ Generate predefined types declaration file
+      generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderPrologue
+        ![semanticContext->mTypeMap allKeys]
+      ] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendDeclaration] ;
       end foreach ;
-      generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderEpilogue
-      ] ;
       if [@uint errorCount] == 0 then
         [@string generateFile
           !inDirectory
@@ -307,7 +325,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
           !"#endif\n"
         ] ;
       end if ;
-    #------ Generate implementation
+    #------ Generate predefined types implementation
       generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendAutoPointerClassImplementation] ;

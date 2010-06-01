@@ -418,7 +418,7 @@ end if
 
 if (SUPPORTED_OPERATORS & unaryMinusOperator []) != 0 then
   %//--------------------------------- unary - operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% GALGASap_operator_unary_minus (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  public : static GALGASap_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
@@ -446,14 +446,14 @@ end if
 
 if (SUPPORTED_OPERATORS & dotAssignOperator []) != 0 then
   %//--------------------------------- .= operator\n%
-  %  friend void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,\n%
-  %                                   GALGASap_%!TYPE_IDENTIFIER% inOperand\n%
-  %                                   COMMA_LOCATION_ARGS) ;\n\n%
+  %  public : static void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,\n%
+  %                                            GALGASap_%!TYPE_IDENTIFIER% inOperand\n%
+  %                                            COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
   %//--------------------------------- += operator
-  friend void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+    public : static void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
   foreach ADD_ASSIGN_ARGUMENT_LIST do index IDX
     %,\n%!^%GALGASap_%![mType identifierRepresentation]% inOperand%![IDX string]
   end foreach
@@ -527,4 +527,22 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 end if
 #---------------- END OF CLASS DECLARATION
 %} ;
+
+//--------------------------------- Reader invocation declaration
+%
+foreach READER_MAP do
+  if mQualifier == [@readerQualifier isBasic] then
+    %GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?^
+    %GALGASap_%!TYPE_IDENTIFIER% & inObject%
+    foreach mArgumentTypeList
+      do index IDX %,\n% !^ %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
+    end foreach
+    if mHasCompilerArgument then
+      %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+    else
+      %\n% !^ %COMMA_LOCATION_ARGS%
+    end if
+    %) ;\n\n%
+  end if
+end foreach
 
