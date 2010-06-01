@@ -35,21 +35,13 @@ function generateProcedure
   ??@bool inProcedureIsConst
   ??@string inCompilerTypeName
   ??@bool inGenerateLocationArgs
-  ??@bool inReleaseInputArguments
   ->@string outGeneratedCode
 :
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
   foreach inFormalArgumentList do
-    switch mFormalArgumentPassingMode 
-    when argumentConstantIn, argumentOut, argumentIn :
-      if not inReleaseInputArguments then
-        unusedVariableCppNameSet += !mFormalArgumentCppName ;
-      end if ;
-    when argumentInOut :
-      unusedVariableCppNameSet += !mFormalArgumentCppName ;
-    end switch ;
+    unusedVariableCppNameSet += !mFormalArgumentCppName ;
   end foreach ;
 #--- Generate body
   @uint temporaryVariableIndex := 0 ;
@@ -66,13 +58,13 @@ function generateProcedure
   foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentConstantIn :
-      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * " ;
+      outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " " ;
     when argumentInOut :
-      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * & " ;
+      outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     when argumentOut :
-      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * & " ;
+      outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     when argumentIn :
-      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * " ;
+      outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " " ;
     end switch ;
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
@@ -103,25 +95,12 @@ function generateProcedure
   foreach inFormalArgumentList index IDX do
     switch mFormalArgumentPassingMode 
     when argumentOut :
-      outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release 'out' argument\n" ;
-      outGeneratedCode .= "  " . mFormalArgumentCppName . " = NULL ;\n" ;
+      outGeneratedCode .= "  " . mFormalArgumentCppName . ".drop () ; // Release 'out' argument\n" ;
     when argumentConstantIn, argumentIn, argumentInOut :
     end switch ;
   end foreach ;
 #--- Generate routine body
   outGeneratedCode .= routineBody ;
-#--- Release 'in' and 'const in' arguments at the end of the routine
-  if inReleaseInputArguments then
-    foreach inFormalArgumentList index IDX do
-      switch mFormalArgumentPassingMode 
-      when argumentIn :
-        outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release 'in' argument\n" ;
-      when argumentConstantIn :
-        outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release 'const in' argument\n" ;
-      when argumentOut, argumentInOut :
-      end switch ;
-    end foreach ;
-  end if ;
 #---
   outGeneratedCode .= "}\n\n" ;
 end function ;
@@ -137,13 +116,17 @@ function generateFunction
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ??@string inCompilerTypeName
-  ??@string inResultTypeName # Empty string if returns void
+  ??@string inResultTypeName
   ??@string inResultVariableCppName
   ->@string outGeneratedCode
 :
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
+#--- Release 'in' and 'const in' arguments at the end of the routine
+  foreach inFormalArgumentList do
+    unusedVariableCppNameSet += !mFormalArgumentCppName ;
+  end foreach ;
 #--- Generate body
   @uint temporaryVariableIndex := 0 ;
   @string routineBody := "" ;
@@ -153,13 +136,17 @@ function generateFunction
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
-  outGeneratedCode := "GALGAS_" . [inResultTypeName identifierRepresentation] . " * " ;
+  outGeneratedCode := "GALGASap_" . [inResultTypeName identifierRepresentation] . " " ;
   outGeneratedCode .= inProcedureName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
   foreach inFormalArgumentList do
-    outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " * " ;
-    outGeneratedCode .= mFormalArgumentCppName ;
+    outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
+      outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
+    else
+      outGeneratedCode .= mFormalArgumentCppName ;
+    end if ;
     outGeneratedCode .= ",\n" ;
     [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
   end foreach ;
@@ -175,14 +162,10 @@ function generateFunction
   outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS)" ;
   outGeneratedCode .= " {\n" ;
 #--- Declare returned variable
-  outGeneratedCode .= "  GALGAS_" . [inResultTypeName identifierRepresentation]
-                   .  " * " . inResultVariableCppName . " = NULL ; // Returned variable\n" ;
+  outGeneratedCode .= "  GALGASap_" . [inResultTypeName identifierRepresentation]
+                   .  " " . inResultVariableCppName . " ; // Returned variable\n" ;
 #--- Generate routine body
   outGeneratedCode .= routineBody ;
-#--- Release 'in' and 'const in' arguments at the end of the routine
-  foreach inFormalArgumentList do
-    outGeneratedCode .= "  macroReleaseObject (" . mFormalArgumentCppName . ") ; // Release input argument\n" ;
-  end foreach ;
 #--- Generate return instruction
   outGeneratedCode .= "//---\n" ;
   outGeneratedCode .= "  return " . inResultVariableCppName . " ;\n" ;
@@ -632,7 +615,6 @@ override reader @routineImplementationForGeneration appendSpecificImplementation
       !false # Do not generate 'const' qualifier
       !"C_Compiler"
       !true # Generate location Argument
-      !true # Release input arguments
     ]
   ] ; 
 end reader ;

@@ -4,9 +4,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GALGAS_%!RETURN_TYPE_IDENTIFIER% * function_%![FUNCTION_NAME identifierRepresentation]% (%?^
+GALGASap_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%?^
   foreach FORMAL_ARGUMENT_LIST do index IDX
-    %GALGAS_% ![mFormalArgumentType identifierRepresentation] % * constinArgument% ![IDX string]%,\n%!^
+    %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]%,\n%!^
   end foreach
   %C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;
