@@ -3,41 +3,42 @@
 GALGASap_string readerCall_description (GALGASap_root & inObject
                                         COMMA_LOCATION_ARGS) ;
 
+//---------------------------------------------------------------------------*
 
 PMSInt32 genericObjectCompareFunction (const C_galgas_type_descriptor * inComparisonTypeDescriptor,
-                                       const GALGAS_root * inOperand1,
-                                       const GALGAS_root * inOperand2) ;
+                                       GALGASap_root & inOperand1,
+                                       GALGASap_root & inOperand2) ;
 
 //---------------------------------------------------------------------------*
 
 GALGASap_bool operator_isEqual (const C_galgas_type_descriptor * inComparisonTypeDescriptor,
-                                GALGAS_root * inOperand1,
-                                GALGAS_root * inOperand2
+                                GALGASap_root & inOperand1,
+                                GALGASap_root & inOperand2
                                 COMMA_LOCATION_ARGS) ;
 
 GALGASap_bool operator_isNotEqual (const C_galgas_type_descriptor * inComparisonTypeDescriptor,
-                                   GALGAS_root * inOperand1,
-                                   GALGAS_root * inOperand2
+                                   GALGASap_root & inOperand1,
+                                   GALGASap_root & inOperand2
                                    COMMA_LOCATION_ARGS) ;
 
 GALGASap_bool operator_infOrEqual (const C_galgas_type_descriptor * inComparisonTypeDescriptor,
-                                   GALGAS_root * inOperand1,
-                                   GALGAS_root * inOperand2
+                                   GALGASap_root & inOperand1,
+                                   GALGASap_root & inOperand2
                                    COMMA_LOCATION_ARGS) ;
 
 GALGASap_bool operator_supOrEqual (const C_galgas_type_descriptor * inComparisonTypeDescriptor,
-                                   GALGAS_root * inOperand1,
-                                   GALGAS_root * inOperand2
+                                   GALGASap_root & inOperand1,
+                                   GALGASap_root & inOperand2
                                    COMMA_LOCATION_ARGS) ;
 
 GALGASap_bool operator_strictInf (const C_galgas_type_descriptor * inComparisonTypeDescriptor,
-                                  GALGAS_root * inOperand1,
-                                  GALGAS_root * inOperand2
+                                  GALGASap_root & inOperand1,
+                                  GALGASap_root & inOperand2
                                   COMMA_LOCATION_ARGS) ;
 
 GALGASap_bool operator_strictSup (const C_galgas_type_descriptor * inComparisonTypeDescriptor,
-                                  GALGAS_root * inOperand1,
-                                  GALGAS_root * inOperand2
+                                  GALGASap_root & inOperand1,
+                                  GALGASap_root & inOperand2
                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
