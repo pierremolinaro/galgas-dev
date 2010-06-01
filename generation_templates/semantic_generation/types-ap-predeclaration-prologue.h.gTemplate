@@ -1,0 +1,16 @@
+
+#ifndef GALGAS2_PREDEFINED_AP_TYPES
+#define GALGAS2_PREDEFINED_AP_TYPES
+
+//---------------------------------------------------------------------------*
+
+#include "galgas2/GALGASap_root.h"
+
+//---------------------------------------------------------------------------*
+
+%
+foreach TYPE_LIST do
+  %class GALGAS_%![key identifierRepresentation]% ;\n%
+end foreach
+%class C_Compiler ;
+

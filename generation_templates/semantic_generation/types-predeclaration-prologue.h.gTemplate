@@ -29,9 +29,5 @@ typedef TC_Array <PMUInt8> uint8Array ;
 
 //---------------------------------------------------------------------------*
 
-%
-foreach TYPE_LIST do
-  %class GALGAS_%![key identifierRepresentation]% ;\n%
-end foreach
-%class C_Compiler ;
+class C_Compiler ;
 

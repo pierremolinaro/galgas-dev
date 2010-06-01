@@ -42,7 +42,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOb
 
 //---------------------------------------------------------------------------*
 
-void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
   foreach ATTRIBUTE_LIST
   do index IDX %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
   end foreach
@@ -87,14 +87,10 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
-    foreach ATTRIBUTE_LIST
-      do %NULL%
-      between %, %
-    end foreach %} ;
+  GALGASap_root attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
   removeFirstObject (attributeArray, inCompiler COMMA_THERE) ;
 % foreach ATTRIBUTE_LIST do index IDX
-    %  outOperand%![IDX string] % = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributeArray [%![IDX string]%] ;\n%
+    %  outOperand%![IDX string] % = attributeArray [%![IDX string]%] ;\n%
   end foreach
 %}
 
@@ -106,14 +102,10 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
-    foreach ATTRIBUTE_LIST
-      do %NULL%
-      between %, %
-    end foreach %} ;
+  GALGASap_root attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
   removeLastObject (attributeArray, inCompiler COMMA_THERE) ;
 % foreach ATTRIBUTE_LIST do index IDX
-    %  outOperand%![IDX string] % = (GALGAS_%![mAttributeTypeIndex identifierRepresentation]% *) attributeArray [%![IDX string]%] ;\n%
+    %  outOperand%![IDX string] % = attributeArray [%![IDX string]%] ;\n%
   end foreach
 %}
 
@@ -125,19 +117,12 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  cRootObjectArray * attributeArrayPtr = readFirst (inCompiler COMMA_THERE) ;
-  if (NULL == attributeArrayPtr) {
-%
-  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] %.drop () ;\n%
+  GALGASap_root attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
+  readFirst (attributeArray, inCompiler COMMA_THERE) ;
+%  foreach ATTRIBUTE_LIST do index IDX
+    %  outOperand%![IDX string] % = attributeArray [%![IDX string]%] ;\n%
   end foreach
-%  }else{
-%
-  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = attributeArrayPtr->objectAtIndex (%![IDX string]% COMMA_HERE) ;\n%
-  end foreach
-%  }
-}
+%}
 
 //---------------------------------------------------------------------------*
 
@@ -147,19 +132,12 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  cRootObjectArray * attributeArrayPtr = readLast (inCompiler COMMA_THERE) ;
-  if (NULL == attributeArrayPtr) {
-%
-  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] %.drop () ;\n%
+  GALGASap_root attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
+  readLast (attributeArray, inCompiler COMMA_THERE) ;
+%  foreach ATTRIBUTE_LIST do index IDX
+    %  outOperand%![IDX string] % = attributeArray [%![IDX string]%] ;\n%
   end foreach
-%  }else{
-%
-  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = attributeArrayPtr->objectAtIndex (%![IDX string]% COMMA_HERE) ;\n%
-  end foreach
-%  }
-}
+%}
 
 //---------------------------------------------------------------------------*
 
@@ -209,9 +187,9 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (
 
 //---------------------------------------------------------------------------*
 
-void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,
-                          GALGASap_%!TYPE_IDENTIFIER% inOperand
-                          COMMA_LOCATION_ARGS) {
+void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult,
+                          %!^%GALGASap_%!TYPE_IDENTIFIER% inOperand
+                          %!^%COMMA_LOCATION_ARGS) {
   if (ioResult.isValid () && inOperand.isValid ()) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
     ioResult.ptr (HERE)->appendList (inOperand.ptr (HERE)) ;
