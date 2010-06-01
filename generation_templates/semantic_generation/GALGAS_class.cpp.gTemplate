@@ -8,7 +8,11 @@
 else
   %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   %                                           %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {\n%
-  %  PMSInt32 result = GALGAS_%!SUPER_TYPE_IDENTIFIER%::objectCompare (inOperand1, inOperand2) ;\n%
+  if SUPER_TYPE_IDENTIFIER == "class" then
+    %  PMSInt32 result = 0 ;\n%
+  else
+    %  PMSInt32 result = GALGAS_%!SUPER_TYPE_IDENTIFIER%::objectCompare (inOperand1, inOperand2) ;\n%
+  end if
   foreach CURRENT_ATTRIBUTE_LIST do
      %  if (0 == result) {\n%
      %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
@@ -117,7 +121,7 @@ if (not IS_ABSTRACT) & (SUPER_TYPE_IDENTIFIER != "class") then
 %//---------------------------------------------------------------------------*
 
 GALGASap_%!SUPER_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_%!SUPER_TYPE_IDENTIFIER% (UNUSED_LOCATION_ARGS) {
-  return GALGASap_%!SUPER_TYPE_IDENTIFIER% (this) ; // PB
+  return GALGASap_%!SUPER_TYPE_IDENTIFIER% (this) ;
 }
 
 %end if
@@ -131,7 +135,6 @@ foreach CONCRETE_METHOD_LIST do
     !false # Method is not const
     !"C_Compiler"
     !true # Generate location Argument
-    !false # Do not release input arguments
   ]
 end foreach
 
