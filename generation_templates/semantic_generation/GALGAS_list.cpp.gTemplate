@@ -1,7 +1,17 @@
 //---------------------------------------------------------------------------*
 
+static const C_galgas_type_descriptor * kFieldList_%!TYPE_IDENTIFIER% [%![[ATTRIBUTE_LIST length] string]%] = {
+%  foreach ATTRIBUTE_LIST
+  do index IDX %  & kTypeDescriptor_GALGAS_%![mAttributeTypeIndex identifierRepresentation]
+  between %,\n%
+  end foreach
+%
+} ;
+
+//---------------------------------------------------------------------------*
+
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
-GALGAS_list (%![[ATTRIBUTE_LIST length] string]% COMMA_THERE) {
+GALGAS_list (%![[ATTRIBUTE_LIST length] string]%, kFieldList_%!TYPE_IDENTIFIER% COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------*
