@@ -12,7 +12,7 @@ GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSource) {
 
 GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_root & inSource) :
 GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSource) {
-  macroNullOrValidObject (mPtr, GALGASap_%!TYPE_IDENTIFIER%) ;
+  macroNullOrValidObject (mPtr, GALGAS_%!TYPE_IDENTIFIER%) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -37,7 +37,6 @@ GALGASap_%!TYPE_IDENTIFIER% & GALGASap_%!TYPE_IDENTIFIER%::operator = (const GAL
 
 GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) :
 GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSourcePtr) {
-  macroRetainObject (mPtr) ;
 }
 
 //---------------------------------------------------------------------------*

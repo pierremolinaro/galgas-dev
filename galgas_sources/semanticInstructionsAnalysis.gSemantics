@@ -1509,7 +1509,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     localInitializedVariableList +=
       !mAttributeTypeIndex
       ![@lstring new ![mPrefix string] . mAttributeName ![mAccessName location]]
-      !"(GALGAS_" . [mAttributeTypeIndex identifierRepresentation] . " * &) (" . objectArrayCppName . "->referenceAtIndex (" . [IDX+1 string] . " /* " . [mAttributeName identifierRepresentation] . " */ COMMA_HERE))"
+      !"* ((GALGASap_" . [mAttributeTypeIndex identifierRepresentation] . " *) " . objectArrayCppName . "->pointerAtIndex (" . [IDX+1 string] . " /* " . [mAttributeName identifierRepresentation] . " */ COMMA_HERE))"
     ;
   end foreach ;
   @semanticInstructionListForGeneration do_instructionList ;

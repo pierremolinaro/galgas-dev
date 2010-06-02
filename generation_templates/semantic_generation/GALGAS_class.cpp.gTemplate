@@ -1,23 +1,27 @@
 //---------------------------------------------------------------------------*
 
 %if [CURRENT_ATTRIBUTE_LIST length] == 0 then
-  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_%!TYPE_IDENTIFIER% & /* inOperand1 */,\n%
-  %                                           %!^%GALGASap_%!TYPE_IDENTIFIER% & /* inOperand2 */) {\n%
+  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_root & /* inOperand1 */,\n%
+  %                                           %!^%GALGASap_root & /* inOperand2 */) {\n%
   %  return 0 ;\n%
   %}\n\n%
 else
-  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
-  %                                           %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {\n%
+  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_root & inOperand1,\n%
+  %                                           %!^%GALGASap_root & inOperand2) {\n%
   if SUPER_TYPE_IDENTIFIER == "class" then
     %  PMSInt32 result = 0 ;\n%
   else
     %  PMSInt32 result = GALGAS_%!SUPER_TYPE_IDENTIFIER%::objectCompare (inOperand1, inOperand2) ;\n%
   end if
-  foreach CURRENT_ATTRIBUTE_LIST do
-     %  if (0 == result) {\n%
-     %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
-     %  }\n%
-  end foreach
+  if [CURRENT_ATTRIBUTE_LIST length] > 0 then
+    %  GALGASap_%!TYPE_IDENTIFIER% operand1 = inOperand1 ;\n%
+    %  GALGASap_%!TYPE_IDENTIFIER% operand2 = inOperand2 ;\n%
+    foreach CURRENT_ATTRIBUTE_LIST do
+      %  if (0 == result) {\n%
+      %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (operand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, operand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+      %  }\n%
+    end foreach
+  end if
   %  return result ;\n%
   %}\n\n%
 end if

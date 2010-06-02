@@ -64,12 +64,14 @@ end foreach
 
 %//---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
-                                      %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {
+PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_root & inOperand1,
+                                      %!^%GALGASap_root & inOperand2) {
   PMSInt32 result = 0 ;
+  GALGASap_%!TYPE_IDENTIFIER% operand1 = inOperand1 ;
+  GALGASap_%!TYPE_IDENTIFIER% operand2 = inOperand2 ;
 %foreach ATTRIBUTE_LIST do
   %  if (result == 0) {\n%
-  %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+  %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (operand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, operand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
   %  }\n%
 end foreach
 %  return result ;
