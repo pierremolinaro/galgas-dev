@@ -453,7 +453,7 @@ end if
 
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
   %//--------------------------------- += operator
-    public : static void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+    friend void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
   foreach ADD_ASSIGN_ARGUMENT_LIST do index IDX
     %,\n%!^%GALGASap_%![mType identifierRepresentation]% inOperand%![IDX string]
   end foreach
@@ -611,5 +611,14 @@ if [WITH_ACCESSOR_MAP count] > 0 then
     !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%
   end foreach
+end if
+
+if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
+  %//--------------------------------- += operator\n%
+  %void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+  foreach ADD_ASSIGN_ARGUMENT_LIST do index IDX
+    %,\n%!^%GALGASap_%![mType identifierRepresentation]% inOperand%![IDX string]
+  end foreach
+  %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 

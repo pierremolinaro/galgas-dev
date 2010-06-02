@@ -52,7 +52,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOb
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
   foreach ATTRIBUTE_LIST
   do index IDX %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
   end foreach
