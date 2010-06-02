@@ -420,19 +420,20 @@ void C_Grammar_guiGrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
     ? _inFileName.string ()
     : inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;
   if (sourceFileName.fileExists ()) {
-    C_Lexique_galgas_5F_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, C_Lexique_galgas_5F_scanner (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
-    if (scanner_->needsCompiling ()) {
-      if (scanner_->sourceText () != NULL) {
-        scanner_->mPerformGeneration = inCompiler.mPerformGeneration ;
-        const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,
+    C_Lexique_galgas_5F_scanner * scanner = NULL ;
+    macroMyNew (scanner, C_Lexique_galgas_5F_scanner (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
+    macroRetainObject (scanner) ;
+    if (scanner->needsCompiling ()) {
+      if (scanner->sourceText () != NULL) {
+        scanner->mPerformGeneration = inCompiler.mPerformGeneration ;
+        const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                           gActionTableIndex, gSuccessorTable,
                                                           gProductionsTable) ;
-        if (ok && ! scanner_->mParseOnlyFlag) {
+        if (ok && ! scanner->mParseOnlyFlag) {
           C_Grammar_guiGrammar _grammar ;
-          _grammar.nt_gui_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1) ;
+          _grammar.nt_gui_5F_component_5F_start_5F_symbol_ (*scanner, parameter_1) ;
           if (inSentStringPtr != NULL) {
-            inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
+            inSentStringPtr->dotAssign_operation (scanner->sentStringEX ()) ;
           }
         }
       }else{
@@ -442,7 +443,7 @@ void C_Grammar_guiGrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
       parameter_1.drop () ;
       }
     }
-    macroReleaseObject (scanner_) ;
+    macroReleaseObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -458,22 +459,23 @@ void C_Grammar_guiGrammar::_performSourceStringParsing_ (C_Compiler & inCompiler
                                 const GGS_string _inSourceString,
                                 GGS_guiComponentAST & parameter_1
                                 COMMA_UNUSED_LOCATION_ARGS) {
-  C_Lexique_galgas_5F_scanner * scanner_ = NULL ;
-  macroMyNew (scanner_, C_Lexique_galgas_5F_scanner (& inCompiler, inCompiler.ioParametersPtr (), _inSourceString.string (), "Error when parsing dynamic string" COMMA_HERE)) ;
-  if (scanner_->sourceText () != NULL) {
-    scanner_->mPerformGeneration = inCompiler.mPerformGeneration ;
-    const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (& inCompiler, inCompiler.ioParametersPtr (), _inSourceString.string (), "Error when parsing dynamic string" COMMA_HERE)) ;
+  macroRetainObject (scanner) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->mPerformGeneration = inCompiler.mPerformGeneration ;
+    const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                       gActionTableIndex, gSuccessorTable,
                                                       gProductionsTable) ;
-    if (ok && ! scanner_->mParseOnlyFlag) {
+    if (ok && ! scanner->mParseOnlyFlag) {
       C_Grammar_guiGrammar _grammar ;
-      _grammar.nt_gui_5F_component_5F_start_5F_symbol_ (*scanner_, parameter_1) ;
+      _grammar.nt_gui_5F_component_5F_start_5F_symbol_ (*scanner, parameter_1) ;
       if (inSentStringPtr != NULL) {
-        inSentStringPtr->dotAssign_operation (scanner_->sentStringEX ()) ;
+        inSentStringPtr->dotAssign_operation (scanner->sentStringEX ()) ;
       }
     }
   }
-  macroReleaseObject (scanner_) ;
+  macroReleaseObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*
