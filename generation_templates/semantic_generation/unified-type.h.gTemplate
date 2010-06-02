@@ -549,3 +549,67 @@ foreach READER_MAP do
   end if
 end foreach
 
+%//--------------------------------- Mofifier invocation declaration
+%
+foreach MODIFIER_MAP do
+  if mQualifier == [@readerQualifier isBasic] then
+    %  void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+    foreach mParameterList do index IDX
+      %,\n%!^
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      end if
+    end foreach
+    if mHasCompilerArgument then
+      %,\n%!^%C_Compiler * inCompiler\n%
+      !^%COMMA_LOCATION_ARGS%
+    else
+      %\n%!^%COMMA_LOCATION_ARGS%
+    end if  
+    %) ;\n\n%
+  end if
+end foreach
+
+%
+//--------------------------------- Instance Method Invocation\n%
+foreach INSTANCE_METHOD_MAP do
+  if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isBasic]) then
+    %void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% inObject%
+    foreach mParameterList do index IDX
+      %,\n%!^
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      end if
+    end foreach
+    if mHasCompilerArgument then
+      %,\n%!^%C_Compiler * inCompiler\n%
+      !^%COMMA_LOCATION_ARGS%
+    else
+      %\n%!^%COMMA_LOCATION_ARGS%
+    end if  
+    %) ;\n\n%
+  end if
+end foreach
+
+if [WITH_ACCESSOR_MAP count] > 0 then
+  %//--------------------------------- 'with' accessors\n%
+  foreach WITH_ACCESSOR_MAP do
+    %cRootObjectArray * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    !^%GALGASap_%!TYPE_IDENTIFIER% & ioMap,\n%
+    !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
+    !^%COMMA_LOCATION_ARGS) ;\n\n%
+  end foreach
+end if
+
