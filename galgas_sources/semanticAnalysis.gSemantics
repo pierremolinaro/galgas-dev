@@ -504,13 +504,6 @@ routine analyzeRoutineBody
       !?localVariableCppNameList
     ] ;
    end foreach ;
-#--- Drop all local variables
-  if [localVariableCppNameList length] > 0 then
-    outSemanticInstructionListForGeneration += ![@dropInstructionForGeneration new
-      !localVariableCppNameList
-      !"end of scope"
-    ] ;  
-  end if ;
 #---
   [variableMap checkAutomatonStates !inEndOfMethodLocation] ;
 end routine ;
@@ -788,13 +781,6 @@ routine analyzeFunctionBody
       !?localVariableCppNameList
     ] ;
    end foreach ;
-#--- Drop all local variables
-  if [localVariableCppNameList length] > 0 then
-    outSemanticInstructionListForGeneration += ![@dropInstructionForGeneration new
-      !localVariableCppNameList
-      !"end of scope"
-    ] ;  
-  end if ;
 #---
   [variableMap checkAutomatonStates !inEndOfFunctionLocation] ;
 end routine ;

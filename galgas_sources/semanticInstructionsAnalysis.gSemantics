@@ -90,13 +90,6 @@ routine analyzeSemanticInstructionList
       !?localVariableCppNameList
     ] ;
   end foreach ;
-#--- Drop local variables
-  if [localVariableCppNameList length] > 0 then
-    outInstructionListForGeneration += ![@dropInstructionForGeneration new
-      !localVariableCppNameList
-      !"end of scope"
-    ] ;  
-  end if ;
 #--- Branch end
   [!?ioVariableMap endBranch !inEndOfBranchLocation] ;
 end routine ;
