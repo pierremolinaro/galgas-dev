@@ -48,8 +48,10 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
-                                      %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {
-  return ((PMSInt32) inOperand1.ptr (HERE)->mEnumValue) - ((PMSInt32) inOperand2.ptr (HERE)->mEnumValue) ;
+PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_root & inOperand1,
+                                      %!^%GALGASap_root & inOperand2) {
+  GALGASap_%!TYPE_IDENTIFIER% operand1 = inOperand1 ;
+  GALGASap_%!TYPE_IDENTIFIER% operand2 = inOperand2 ;
+  return ((PMSInt32) operand1.ptr (HERE)->mEnumValue) - ((PMSInt32) operand2.ptr (HERE)->mEnumValue) ;
 }
 

@@ -471,8 +471,8 @@ end if
 
 if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
 %//--------------------------------- Comparison
-  public : static PMSInt32 objectCompare (GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
-                                          GALGASap_%!TYPE_IDENTIFIER% & inOperand2) ;
+  public : static PMSInt32 objectCompare (GALGASap_root & inOperand1,
+                                          GALGASap_root & inOperand2) ;
 %end if%
 //--------------------------------- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
