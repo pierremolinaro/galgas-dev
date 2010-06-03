@@ -35,11 +35,14 @@ function generateProcedure
   ??@bool inProcedureIsConst
   ??@string inCompilerTypeName
   ??@bool inGenerateLocationArgs
+  ??@bool inGenerateResetTemplateString
   ->@string outGeneratedCode
 :
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
-  unusedVariableCppNameSet += !compilerCppName [] ;
+  if not inGenerateResetTemplateString then
+    unusedVariableCppNameSet += !compilerCppName [] ;
+  end if ;
   foreach inFormalArgumentList do
     if mFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
       unusedVariableCppNameSet += !mFormalArgumentCppName ;
@@ -103,6 +106,10 @@ function generateProcedure
   end foreach ;
 #--- Generate routine body
   outGeneratedCode .= routineBody ;
+#---
+  if inGenerateResetTemplateString then
+    outGeneratedCode .= "  " . compilerCppName [] . "->resetTemplateString () ;\n" ;
+  end if ;
 #---
   outGeneratedCode .= "}\n\n" ;
 end function ;
@@ -187,12 +194,16 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
+    ?@uint SUPPORTED_OPERATORS
+    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
   template autoPointerClassImplementation "GALGASap_type.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
+    ?@uint SUPPORTED_OPERATORS
+    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
   template genericTypeHeader "generic-type.h.gTemplate"
@@ -420,6 +431,8 @@ override reader @semanticTypeForGeneration appendAutoPointerClassDeclaration -> 
       ![mTypeIndex key]
       ![mTypeIndex identifierRepresentation]
       ![[mTypeIndex mSuperType] identifierRepresentation]
+      ![mTypeIndex mHandledOperatorFlags]
+      ![mTypeIndex mNativeAttributeList]
     ] ;
   end if ;
 end reader ;
@@ -444,6 +457,8 @@ override reader @semanticTypeForGeneration appendAutoPointerClassImplementation 
       ![mTypeIndex key]
       ![mTypeIndex identifierRepresentation]
       ![[mTypeIndex mSuperType] identifierRepresentation]
+      ![mTypeIndex mHandledOperatorFlags]
+      ![mTypeIndex mNativeAttributeList]
     ] ;
   end if ;
 end reader ;
@@ -617,6 +632,7 @@ override reader @routineImplementationForGeneration appendSpecificImplementation
       !false # Do not generate 'const' qualifier
       !"C_Compiler"
       !true # Generate location Argument
+      !false # Do not generate 'resetTemplateString'
     ]
   ] ; 
 end reader ;

@@ -827,7 +827,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= "}\n" ;
   #--- Generate 'after' instruction
     generateInstructionList
-      !mBeforeInstructionList
+      !mAfterInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
@@ -837,7 +837,7 @@ override method @foreachInstructionForGeneration generateInstruction
   else #----- foreach instruction without 'before', 'after', while expression
     ioGeneratedCode .= "//--- simple foreach instruction\n" ;
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGAS_uint * " . mIndexVariableCppName . " = GALGAS_uint::constructor_new (0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "GALGASap_uint " . mIndexVariableCppName . " (0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     ioGeneratedCode .= "while (" ;
     foreach mEnumeratedObjectList

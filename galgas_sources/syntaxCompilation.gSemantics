@@ -216,6 +216,7 @@ routine compileSyntaxComponent
           !false
           !lexiqueCppName
           !false # Do not generate location Argument
+          !false # Do not generate 'resetTemplateString'
         ] ;
       end foreach ;
       if mHasParseLabel then
@@ -232,6 +233,7 @@ routine compileSyntaxComponent
           !false
           !lexiqueCppName
           !false # Do not generate location Argument
+          !true # Generate 'resetTemplateString'
         ] ;
       end if ;
     end foreach ;

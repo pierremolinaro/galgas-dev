@@ -139,6 +139,7 @@ foreach CONCRETE_METHOD_LIST do
     !false # Method is not const
     !"C_Compiler"
     !true # Generate location Argument
+    !false # Generate 'resetTemplateString'
   ]
 end foreach
 
