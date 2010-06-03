@@ -165,7 +165,8 @@ override reader @stringPredefinedTypeAST getSupportedOperatorFlags
   outFlags := binaryConcatOperator [] | dotAssignOperator [] | generateNativeNewConstructor []
     | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject [] ;
+    | generateConstructorWithSelfObject []
+    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -175,7 +176,8 @@ override reader @charPredefinedTypeAST getSupportedOperatorFlags
 :
   outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
    | generateCppConstructorWithNativeAttributeList [] | isComparable []
-   | generateConstructorWithSelfObject [] ;
+   | generateConstructorWithSelfObject []
+   | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -186,7 +188,8 @@ override reader @boolPredefinedTypeAST getSupportedOperatorFlags
   outFlags := binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryNotOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject [] ;
+    | generateConstructorWithSelfObject []
+    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -199,7 +202,8 @@ override reader @uintPredefinedTypeAST getSupportedOperatorFlags
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject [] ;
+    | generateConstructorWithSelfObject []
+    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -212,7 +216,8 @@ override reader @sintPredefinedTypeAST getSupportedOperatorFlags
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []  | incDecOperator []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject [] ;
+    | generateConstructorWithSelfObject []
+    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -225,7 +230,8 @@ override reader @uint64PredefinedTypeAST getSupportedOperatorFlags
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject [] ;
+    | generateConstructorWithSelfObject []
+    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -250,7 +256,8 @@ override reader @doublePredefinedTypeAST getSupportedOperatorFlags
     | unaryPlusOperator [] | unaryMinusOperator []
     |generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject [] ;
+    | generateConstructorWithSelfObject []
+    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*

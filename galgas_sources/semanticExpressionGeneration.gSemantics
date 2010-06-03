@@ -98,8 +98,9 @@ override method @trueExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @trueExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_bool " . outCppName
-                   . " (GALGAS_bool::constructor_new (true COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+#  ioGeneratedCode .= "GALGASap_bool " . outCppName
+#                   . " (GALGAS_bool::constructor_new (true COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (true COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -112,8 +113,9 @@ override method @falseExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @falseExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_bool " . outCppName
-                   . " (GALGAS_bool::constructor_new (false COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+#  ioGeneratedCode .= "GALGASap_bool " . outCppName
+#                   . " (GALGAS_bool::constructor_new (false COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (false COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -126,8 +128,10 @@ override method @literalCharExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @literalCharExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#  ioGeneratedCode .= "GALGASap_char " . outCppName
+#                   . " (GALGAS_char::constructor_new (TO_UNICODE (" . [[mCharacter uint] string] . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_char " . outCppName
-                   . " (GALGAS_char::constructor_new (TO_UNICODE (" . [[mCharacter uint] string] . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+                   . " (TO_UNICODE (" . [[mCharacter uint] string] . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -139,13 +143,17 @@ override method @literalStringExpressionForGeneration generateExpression
   !@string outCppName
 :
   ioGeneratedCode .= "//--- @literalStringExpressionForGeneration\n" ;
-  ioGeneratedCode .= "static const char kString_" . [[mLocation locationIndex] string] . " ["
-                   . [[mString length] + 1 string] . "] = " . [mString utf8Representation] . ";\n" ;
+#  ioGeneratedCode .= "static const char kString_" . [[mLocation locationIndex] string] . " ["
+#                   . [[mString length] + 1 string] . "] = " . [mString utf8Representation] . ";\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#  ioGeneratedCode .= "GALGASap_string " . outCppName
+#                   . " (GALGAS_string::constructor_new (kString_"
+#                   . [[mLocation locationIndex] string]
+#                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_string " . outCppName
-                   . " (GALGAS_string::constructor_new (kString_"
-                   . [[mLocation locationIndex] string]
-                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+                   . " ("
+                   . [mString utf8Representation]
+                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -158,8 +166,10 @@ override method @literalDoubleExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @literalDoubleExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#  ioGeneratedCode .= "GALGASap_double " . outCppName
+#                   . " (GALGAS_double::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_double " . outCppName
-                   . " (GALGAS_double::constructor_new (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+                   . " (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -172,8 +182,10 @@ override method @literalUIntExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @literalUIntExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#  ioGeneratedCode .= "GALGASap_uint " . outCppName
+#                   . " (GALGAS_uint::constructor_new (" . [mValue string]. "U COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_uint " . outCppName
-                   . " (GALGAS_uint::constructor_new (" . [mValue string]. "U COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+                   . " (" . [mValue string]. "U COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -186,8 +198,10 @@ override method @literalUInt64ExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @literalUInt64ExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#  ioGeneratedCode .= "GALGASap_uint_36__34_ " . outCppName
+#                   . " (GALGAS_uint_36__34_::constructor_new (" . [mValue string]. "ULL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_uint_36__34_ " . outCppName
-                   . " (GALGAS_uint_36__34_::constructor_new (" . [mValue string]. "ULL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+                   . " (" . [mValue string]. "ULL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -200,8 +214,10 @@ override method @literalSIntExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @literalSIntExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#  ioGeneratedCode .= "GALGASap_sint " . outCppName
+#                   . " (GALGAS_sint::constructor_new (" . [mValue string]. "L COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_sint " . outCppName
-                   . " (GALGAS_sint::constructor_new (" . [mValue string]. "L COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+                   . " ((PMSInt32) " . [mValue string]. "L COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -214,8 +230,10 @@ override method @literalSInt64ExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @literalSInt64ExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#  ioGeneratedCode .= "GALGASap_sint_36__34_ " . outCppName
+#                   . " (GALGAS_sint_36__34_::constructor_new (" . [mValue string]. "LL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_sint_36__34_ " . outCppName
-                   . " (GALGAS_sint_36__34_::constructor_new (" . [mValue string]. "LL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+                   . " ((PMSInt64) " . [mValue string]. "LL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
