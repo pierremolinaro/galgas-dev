@@ -323,19 +323,13 @@ override method @ifInstructionForGeneration generateInstruction
 #--- Generate test expression
   @string cppVarName ;
   [mIFexpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppVarName] ;
-#--- If test expression is not valuated, skip if instruction
-  ioGeneratedCode .= "if (" . cppVarName . ".isValid ()) {\n" ;
-  [!?ioGeneratedCode incIndentation !2] ;
-  const @string testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "const bool " . testVar . " = " . cppVarName . ".ptr (HERE)->boolValue () ;\n" ;
-  ioGeneratedCode .= "if (" . testVar . ") {\n" ;
+#--- If test expression is not valuated or false, execute 'else' part
+  ioGeneratedCode .= "if (isValidAndTrue (" . cppVarName . ")) {\n" ;
   generateInstructionList !m_then_instructionList !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   if [m_else_instructionList length] > 0 then
     ioGeneratedCode .= "}else{\n" ;
     generateInstructionList !m_else_instructionList !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   end if ;
-  ioGeneratedCode .= "}\n" ;
-  [!?ioGeneratedCode decIndentation !2] ;
   ioGeneratedCode .= "}\n" ;
 end method ;
 
