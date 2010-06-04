@@ -1016,7 +1016,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  if (inFilePath.isValid ()) {\n"
-                          "    C_String filePath = inFilePath.ptr (HERE)->stringValue () ;\n"
+                          "    GALGASap_string filePathAsString = readerCall_string (inFilePath COMMA_HERE) ;\n"
+                          "    C_String filePath = filePathAsString.ptr (HERE)->stringValue () ;\n"
                           "    if (! filePath.isAbsolutePath ()) {\n"
                           "      filePath = inCompiler->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                           "    }\n"

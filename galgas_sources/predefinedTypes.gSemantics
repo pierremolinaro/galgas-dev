@@ -46,11 +46,12 @@ routine appendClassASTForTypeWithLocation
   ??@string inElementTypeName
 :
   @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] ;
   attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] ;
   ioDeclarationListASTs += ![@classDeclarationAST new
     !false # Is concrete
     ![@lstring new !"l" . inElementTypeName !here]
-    ![@lstring new !inElementTypeName !here] # Super class
+    ![@lstring new !"" !here] # Super class
     ![@lstringlist emptyList] # No feature
     !attributeList
     ![@abstractMethodDefinitionListAST emptyList]
