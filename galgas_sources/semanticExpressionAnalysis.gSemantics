@@ -733,6 +733,7 @@ routine checkDiadicOperator
   ??@bool inOperandIsHandled
   ??@string inOperatorNameForErrorMessage
   ??@location inErrorLocation
+  ?!@semanticExpressionForGeneration ioRightExpression
 :
   if not inOperandIsHandled then
     error inErrorLocation
@@ -745,11 +746,34 @@ routine checkDiadicOperator
       rightType := [rightType mSuperType] ;
       ok := inLeftType == rightType ;
     end loop ;
+    
     if not ok then
-      error inErrorLocation
-      : "left operand type of '" . inOperatorNameForErrorMessage . "' operator is '@" . [inLeftType key]
-      . "', right operand type is '@" . [inRightType key] . "', it should be the same or inherits from left operand type"
-      ;
+    #--- Check if there is a conversion reader
+      if [[inRightType mReaderMap] hasKey ![inLeftType key]] then
+        @unifiedTypeMapProxyList argumentTypeList ;
+        @bool hasCompilerArgument ;
+        @unifiedTypeMapProxy returnedType ;
+        [[inRightType mReaderMap] searchKey ![inLeftType lkey] ?argumentTypeList ?hasCompilerArgument ?returnedType ?*] ;
+        ok := ([argumentTypeList length] == 0) & (returnedType == inLeftType) ;
+     #--- Add conversion expression
+        @semanticExpressionForGeneration conversionExpression := [@readerCallExpressionForGeneration new
+          !inLeftType
+          !inErrorLocation
+          !ioRightExpression
+          ![inLeftType key]
+          ![@semanticExpressionListForGeneration emptyList]
+          !hasCompilerArgument
+        ] ;
+        ioRightExpression := conversionExpression ;
+      end if ;
+      if not ok then
+        error inErrorLocation
+        : "left operand type of '" . inOperatorNameForErrorMessage . "' operator is '@" . [inLeftType key]
+        . "', right operand type is '@" . [inRightType key]
+        . "', it should be either the same, either inherits from left operand type, either have a '"
+        . [inLeftType key] . "' reader without argument that returns a '@" . [inLeftType key] . "' object"
+        ;
+      end if ;
     end if ;
   end if ;
 end routine ;
@@ -776,6 +800,7 @@ override method @concatExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binaryConcatOperator []) != 0
     !"."
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@concatExpressionForGeneration new
@@ -808,6 +833,7 @@ override method @orExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binaryOrOperator []) != 0
     !"|"
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@orExpressionForGeneration new
@@ -840,6 +866,7 @@ override method @andExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binaryAndOperator []) != 0
     !"&"
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@andExpressionForGeneration new
@@ -872,6 +899,7 @@ override method @xorExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binaryXorOperator []) != 0
     !"^"
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@xorExpressionForGeneration new
@@ -1198,6 +1226,7 @@ override method @addExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binaryAddOperator []) != 0
     !"+"
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@addExpressionForGeneration new
@@ -1230,6 +1259,7 @@ override method @subExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binarySubOperator []) != 0
     !"-"
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@subExpressionForGeneration new
@@ -1262,6 +1292,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binaryMulOperator []) != 0
     !"*"
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@multiplicationExpressionForGeneration new
@@ -1294,6 +1325,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binaryDivOperator []) != 0
     !"/"
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@divisionExpressionForGeneration new
@@ -1326,6 +1358,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !([leftType mHandledOperatorFlags] & binaryModOperator []) != 0
     !"mod"
     !mOperatorLocation
+    !?rightExpression
   ;  
 #--- Generate expression
   outExpression := [@moduloExpressionForGeneration new
