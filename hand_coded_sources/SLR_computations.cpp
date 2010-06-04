@@ -1008,7 +1008,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                          "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inCompiler->ioParametersPtr (), inSourceString.ptr (HERE)->stringValue (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+                          "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
+                       << " (inCompiler, inCompiler->ioParametersPtr (), inSourceString.ptr (HERE)->stringValue (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  macroRetainObject (scanner) ;\n"
                           "  if (scanner->sourceText () != NULL) {\n"
                           "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
