@@ -151,9 +151,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
-                                %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2
-                                %!^%COMMA_UNUSED_LOCATION_ARGS) {
+GALGASap_%!TYPE_IDENTIFIER% operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+                     %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2
+                     %!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result ;
   if (inOperand1.isValid () && inOperand2.isValid ()) {
     result = inOperand1 ;
@@ -197,9 +197,9 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult,
-                          %!^%GALGASap_%!TYPE_IDENTIFIER% inOperand
-                          %!^%COMMA_LOCATION_ARGS) {
+void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,
+                          GALGASap_%!TYPE_IDENTIFIER% inOperand
+                          COMMA_LOCATION_ARGS) {
   if (ioResult.isValid () && inOperand.isValid ()) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
     ioResult.ptr (HERE)->appendList (inOperand.ptr (HERE)) ;

@@ -89,9 +89,9 @@ void dotAssign_operation (GALGAS_%!TYPE_IDENTIFIER% * & ioResult,
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::operator_concat (%?^%GALGAS_%!TYPE_IDENTIFIER% * inOperand1,
-                                                    %!^%GALGAS_%!TYPE_IDENTIFIER% * inOperand2
-                                                    %!^%COMMA_LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% * operator_concat (%?^%GALGAS_%!TYPE_IDENTIFIER% * inOperand1,
+                                %!^%GALGAS_%!TYPE_IDENTIFIER% * inOperand2
+                                %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
   if ((NULL != inOperand1) && (NULL != inOperand2)) {
     result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE) ;

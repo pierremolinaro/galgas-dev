@@ -338,47 +338,47 @@ end foreach
 
 if (SUPPORTED_OPERATORS & binaryAndOperator []) != 0 then
   %//--------------------------------- & operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% operator_and (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% operator_and (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & binaryOrOperator []) != 0 then
   %//--------------------------------- | operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% operator_or (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% operator_or (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & binaryXorOperator []) != 0 then
   %//--------------------------------- ^ operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% operator_xor (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% operator_xor (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & unaryNotOperator []) != 0 then
   %//--------------------------------- & operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% operator_not (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% operator_not (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & unaryTildeOperator []) != 0 then
   %//--------------------------------- ~ operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% operator_tilde (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% operator_tilde (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & binaryConcatOperator []) != 0 then
   %//--------------------------------- . (concat) operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
        !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2\n%
        !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & binaryAddOperator []) != 0 then
   %//--------------------------------- + operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% add_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% add_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
@@ -386,7 +386,7 @@ end if
 
 if (SUPPORTED_OPERATORS & binarySubOperator []) != 0 then
   %//--------------------------------- - operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% substract_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% substract_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
@@ -394,7 +394,7 @@ end if
 
 if (SUPPORTED_OPERATORS & binaryMulOperator []) != 0 then
   %//--------------------------------- * operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% multiply_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% multiply_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
@@ -402,7 +402,7 @@ end if
 
 if (SUPPORTED_OPERATORS & binaryDivOperator []) != 0 then
   %//--------------------------------- / operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% divide_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% divide_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
@@ -410,7 +410,7 @@ end if
 
 if (SUPPORTED_OPERATORS & binaryModOperator []) != 0 then
   %//--------------------------------- mod operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% modulo_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% modulo_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
@@ -418,27 +418,27 @@ end if
 
 if (SUPPORTED_OPERATORS & unaryMinusOperator []) != 0 then
   %//--------------------------------- unary - operator\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & incDecOperator []) != 0 then
   %//--------------------------------- ++, -- operators\n%
-  %  public : static void increment_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand,\n%
+  %  friend void increment_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand,\n%
         !^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
-  %  public : static void decrement_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand,\n%
+  %  friend void decrement_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand,\n%
         !^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
   %//--------------------------------- << and >> shift operators\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% left_shift_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% left_shift_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%GALGASap_uint & inShiftOperand\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
-  %  public : static GALGASap_%!TYPE_IDENTIFIER% right_shift_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  friend GALGASap_%!TYPE_IDENTIFIER% right_shift_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%GALGASap_uint & inShiftOperand\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
@@ -446,9 +446,9 @@ end if
 
 if (SUPPORTED_OPERATORS & dotAssignOperator []) != 0 then
   %//--------------------------------- .= operator\n%
-  %  public : static void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,\n%
-  %                                            GALGASap_%!TYPE_IDENTIFIER% inOperand\n%
-  %                                            COMMA_LOCATION_ARGS) ;\n\n%
+  %  friend void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,\n%
+  %                                   GALGASap_%!TYPE_IDENTIFIER% inOperand\n%
+  %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
@@ -622,3 +622,116 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
   %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
+if (SUPPORTED_OPERATORS & dotAssignOperator []) != 0 then
+  %//--------------------------------- .= operator\n%
+  %void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,\n%
+  %                          GALGASap_%!TYPE_IDENTIFIER% inOperand\n%
+  %                         COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
+  %//--------------------------------- << and >> shift operators\n%
+  %GALGASap_%!TYPE_IDENTIFIER% left_shift_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  !^%GALGASap_uint & inShiftOperand\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+  %GALGASap_%!TYPE_IDENTIFIER% right_shift_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  !^%GALGASap_uint & inShiftOperand\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryAndOperator []) != 0 then
+  %//--------------------------------- & operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% operator_and (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryOrOperator []) != 0 then
+  %//--------------------------------- | operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% operator_or (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryXorOperator []) != 0 then
+  %//--------------------------------- ^ operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% operator_xor (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & unaryNotOperator []) != 0 then
+  %//--------------------------------- & operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% operator_not (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & unaryTildeOperator []) != 0 then
+  %//--------------------------------- ~ operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% operator_tilde (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
+        !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryConcatOperator []) != 0 then
+  %//--------------------------------- . (concat) operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+       !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2\n%
+       !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryAddOperator []) != 0 then
+  %//--------------------------------- + operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% add_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binarySubOperator []) != 0 then
+  %//--------------------------------- - operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% substract_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryMulOperator []) != 0 then
+  %//--------------------------------- * operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% multiply_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryDivOperator []) != 0 then
+  %//--------------------------------- / operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% divide_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryModOperator []) != 0 then
+  %//--------------------------------- mod operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% modulo_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  !^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & unaryMinusOperator []) != 0 then
+  %//--------------------------------- unary - operator\n%
+  %GALGASap_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & incDecOperator []) != 0 then
+  %//--------------------------------- ++, -- operators\n%
+  %void increment_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand,\n%
+        !^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS) ;\n\n%
+  %void decrement_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand,\n%
+        !^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if

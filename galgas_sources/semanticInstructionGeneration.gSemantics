@@ -239,7 +239,7 @@ override method @appendInstructionForGeneration generateInstruction
   foreach mStructAttributeList do
     ioGeneratedCode .= "(TO DO handle field in @appendInstructionForGeneration)\n" ;
   end foreach ;
-  ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation] . "::dotAssign_operation (" . mTargetVariableCppName . ", " . sourceVar
+  ioGeneratedCode .= "dotAssign_operation (" . mTargetVariableCppName . ", " . sourceVar
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName] ;
 end method ;
@@ -613,8 +613,7 @@ override method @incrementInstructionForGeneration generateInstruction
     ioGeneratedCode .= "(handle fields)\n" ;
   end foreach ;
 #--- Invoke incrementation
-  ioGeneratedCode .= "GALGAS_" . [mReceiverType identifierRepresentation]
-                  . "::increment_operation (" . mReceiverCppName
+  ioGeneratedCode .= "increment_operation (" . mReceiverCppName
                   . ", " . compilerCppName []
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
@@ -634,8 +633,7 @@ override method @decrementInstructionForGeneration generateInstruction
     ioGeneratedCode .= "(handle fields)\n" ;
   end foreach ;
 #--- Invoke incrementation
-  ioGeneratedCode .= "GALGAS_" . [mReceiverType identifierRepresentation]
-                  . "::decrement_operation (" . mReceiverCppName
+  ioGeneratedCode .= "decrement_operation (" . mReceiverCppName
                   . ", " . compilerCppName []
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
