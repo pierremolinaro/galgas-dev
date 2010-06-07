@@ -241,7 +241,7 @@ override method @listmapDeclarationAST performSemanticAnalysis
 #--- Check associated list is actually a list
   @typeKindEnum typeKindEnum ;
   @typedAttributeList listTypeAttributeList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?16*] ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?17*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@listmapTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
@@ -401,7 +401,7 @@ override method @mapProxyDeclarationAST performSemanticAnalysis
 #--- Get attribute list of associated map
   @typedAttributeList listTypeAttributeList ;
   @mapSearchMethodListAST searchMethodList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedMapTypeName ?5* ?listTypeAttributeList ?11* ?searchMethodList ?2*] ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedMapTypeName ?5* ?listTypeAttributeList ?12* ?searchMethodList ?2*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@mapProxyTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]

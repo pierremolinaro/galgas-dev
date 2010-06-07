@@ -746,42 +746,28 @@ class @routineCallInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @matchEntryAST {
-}
-
-#---------------------------------------------------------------------------*
-
 list @matchEntryListAST {
-  @matchEntryAST mEntry ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @constantMatchEntryAST extends @matchEntryAST {
-  @lstring mConstantName ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @classMatchEntryAST extends @matchEntryAST {
-  @lstring mClassName ;
-  @foreachInstructionEnumeratedObjectElementListAST mElements ;
-  @bool mEndsWithEllipsis ;
+  @bool mIsType ; # true if type, false if enum
+  @lstring mTypeNameOrEnumerationConstantName ;
+  @lstring mLocalConstantName ; # Empty string if no constant
 }
 
 #---------------------------------------------------------------------------*
 
 list @matchInstructionBranchListAST {
   @matchEntryListAST mMatchEntryList ;
+  @location mEndOfMatchEntryList ;
   @semanticInstructionListAST mMatchBranchInstructionList ;
+  @location mEndOf_instructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @matchInstructionAST extends @semanticInstructionAST {
-  @lstringlist mMatchedVariableNameList ;
+  @semanticExpressionListAST mMatchedExpressionList ;
   @matchInstructionBranchListAST mMatchInstructionBranchList ;
   @semanticInstructionListAST mElseInstructionList ;
+  @location mEndOf_match_instruction ;
 }
 
 #---------------------------------------------------------------------------*
