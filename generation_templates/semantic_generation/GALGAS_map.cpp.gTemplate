@@ -43,7 +43,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOb
     end foreach
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
-  %  GALGASap_root attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
+  %  GALGASap_object attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
   foreach ATTRIBUTE_LIST
     do index IDX %, inArgument%![IDX string]
   end foreach
@@ -106,7 +106,7 @@ if HAS_INSERT_OR_REPLACE then
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inArgument%![IDX string]
     end foreach
     %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-  %  GALGAS_root * attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
+  %  GALGAS_object * attributes [%![[ATTRIBUTE_LIST length] + 1 string]%] = {inKey%
   foreach ATTRIBUTE_LIST
     do index IDX %, inArgument%![IDX string]
   end foreach

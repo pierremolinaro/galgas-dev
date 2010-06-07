@@ -10,7 +10,7 @@ GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSource) {
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_root & inSource) :
+GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSource) :
 GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSource) {
   macroNullOrValidObject (mPtr, GALGAS_%!TYPE_IDENTIFIER%) ;
 }

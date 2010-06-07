@@ -210,21 +210,21 @@ routine performProjectGlobalCheckings
   #--- A given abstract multi method id defined only once for a class
     foreach abstractCategoryMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
-      foreach object do
+      foreach mList do
         [!?multiMethodMap insertKey !mAbstractMultiMethodName] ;
       end foreach ;
     end foreach ;  
   #--- A given base multi method id defined only once for a class
     foreach categoryMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
-      foreach object do
+      foreach mList do
         [!?multiMethodMap insertKey !mMultiMethodName] ;
       end foreach ;
     end foreach ;  
   #--- A given overriding multi method id defined only once for a class
     foreach overridingCategoryMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
-      foreach object do
+      foreach mList do
         [!?multiMethodMap insertKey !mOverridingMultiMethodMethodName] ;
       end foreach ;
     end foreach ;  
@@ -232,7 +232,7 @@ routine performProjectGlobalCheckings
   #------ Check that for every abstract multi method, an overridden multi method
   #    defined in an concrete subclass
     foreach abstractCategoryMethodListMap do
-      foreach object do
+      foreach mList do
         checkMultiMethodDefinitionForClass
           !key
           !key
@@ -258,27 +258,27 @@ routine performProjectGlobalCheckings
   #--- A given abstract multi reader id defined only once for a class
     foreach abstractCategoryReaderListMap do
       @multiReaderMap multiReaderMap [emptyMap] ;
-      foreach object do
+      foreach mList do
         [!?multiReaderMap insertKey !mAbstractMultiReaderName] ;
       end foreach ;
     end foreach ;  
   #--- A given base multi reader id defined only once for a class
     foreach categoryReaderListMap do
       @multiReaderMap multiReaderMap [emptyMap] ;
-      foreach object do
+      foreach mList do
         [!?multiReaderMap insertKey !mMultiReaderName] ;
       end foreach ;
     end foreach ;  
   #--- A given overriding multi reader id defined only once for a class
     foreach overridingCategoryReaderListMap do
       @multiReaderMap multiReaderMap [emptyMap] ;
-      foreach object do
+      foreach mList do
         [!?multiReaderMap insertKey !mOverridingMultiReaderName] ;
       end foreach ;
     end foreach ;  
   #--- Check every abstract multi reader is implemented by every inherited concrete type
     foreach abstractCategoryReaderListMap do
-      foreach object do
+      foreach mList do
         checkMultiReaderDefinitionForClass
           !key
           !key

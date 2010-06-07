@@ -1291,6 +1291,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   const @location instructionLocation := here ;
   @semanticExpressionAST switchExpression ;
   <expression> ? switchExpression ;
+  const @location endOfSwitchExpression := here ;
   @switchBranchesAST switchBranches [emptyList] ;
   repeat
     $when$ ;
@@ -1304,16 +1305,19 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $:$ ;
     @semanticInstructionListAST instructions ;
     <semantic_instruction_list> ? instructions ;
-    switchBranches += !constantNameList !instructions ;
+    switchBranches += !constantNameList !instructions !here ;
   while
   end repeat ;
   $end$ ;
   $switch$ ;
+  const @location endOfSwitchInstruction := here ;
   $;$ ;
   outInstruction := [@switchInstructionAST new
     !instructionLocation
     !switchExpression
+    !endOfSwitchExpression
     !switchBranches
+    !endOfSwitchInstruction
   ] ;
 end rule ;
 

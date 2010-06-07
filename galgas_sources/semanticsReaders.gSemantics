@@ -179,8 +179,17 @@ routine commonReaderMapForAllTypes
   outMap := [@readerMap emptyMap] ;
   enterInheritedReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"description" !"string" !false ;
   enterInheritedReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"object" !"object" !false ;
-  enterInheritedReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"dynamicType" !"type" !false ;
+  enterInheritedReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"objectDynamicType" !"type" !false ;
 end routine ;
+
+#---------------------------------------------------------------------------*
+
+#override method @objectPredefinedTypeAST getReaderMap
+#  ?!@unifiedTypeMap ioUnifiedTypeMap
+#  !@readerMap outMap
+#:
+#  commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
+#end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -463,7 +472,7 @@ override method @functionPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"name" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"resultType" !"type" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"formalParameterTypeList" !"typelist" !false ;
-#  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"location" !"object" !true ;
+  enterBaseReaderWith2Arguments  !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"location" !"object" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*

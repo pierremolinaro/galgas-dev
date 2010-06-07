@@ -471,8 +471,8 @@ end if
 
 if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
 %//--------------------------------- Comparison
-  public : static PMSInt32 objectCompare (GALGASap_root & inOperand1,
-                                          GALGASap_root & inOperand2) ;
+  public : static PMSInt32 objectCompare (GALGASap_object & inOperand1,
+                                          GALGASap_object & inOperand2) ;
 %end if%
 //--------------------------------- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
@@ -497,8 +497,8 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 
 if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
 %//--------------------------------- Abstract method for comparing two sorted list elements
-  protected : virtual PMSInt32 compareSortedListElements (GALGASap_root & inLeftAttributeList [],
-                                                          GALGASap_root & inRightAttributeList []) const ;
+  protected : virtual PMSInt32 compareSortedListElements (GALGASap_object & inLeftAttributeList [],
+                                                          GALGASap_object & inRightAttributeList []) const ;
 
 %end if
 

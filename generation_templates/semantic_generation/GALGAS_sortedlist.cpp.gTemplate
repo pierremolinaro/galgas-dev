@@ -6,8 +6,8 @@ GALGAS_sortedlist (%![[ATTRIBUTE_LIST length] string]% COMMA_THERE) {
 
 //---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%GALGAS_root * inLeftAttributeList [],
-                                                %!^%GALGAS_root * inRightAttributeList []) const {
+PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%GALGAS_object * inLeftAttributeList [],
+                                                %!^%GALGAS_object * inRightAttributeList []) const {
   PMSInt32 result = 0 ;
 % foreach SORT_ATTRIBUTE_LIST do
     %  if (result == 0) {\n%
@@ -46,7 +46,7 @@ GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWit
   end foreach
   %\n%!COL0%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE) ;
-  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+  GALGAS_object * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
   foreach ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]
   between %, %
@@ -66,7 +66,7 @@ void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
     %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (ioResult != NULL) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_HERE) ;
-    GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    GALGAS_object * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %
@@ -114,7 +114,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
     %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
     %  outOperand%![IDX string] % = NULL ;\n%
   end foreach
-%  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+%  GALGAS_object * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
       between %, %
@@ -139,7 +139,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
     %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
     %  outOperand%![IDX string] % = NULL ;\n%
   end foreach
-%  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+%  GALGAS_object * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
       between %, %
@@ -164,7 +164,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
     %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
     %  outOperand%![IDX string] % = NULL ;\n%
   end foreach
-%  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+%  GALGAS_object * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
       between %, %
@@ -189,7 +189,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
     %  macroReleaseObject (outOperand%![IDX string] %) ;\n%
     %  outOperand%![IDX string] % = NULL ;\n%
   end foreach
-%  GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+%  GALGAS_object * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
       do %NULL%
       between %, %

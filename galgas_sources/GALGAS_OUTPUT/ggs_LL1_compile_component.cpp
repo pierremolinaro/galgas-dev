@@ -323,7 +323,7 @@ cAbstractDictionaryEnumerator (inListMap, inAscending) {
 //---------------------------------------------------------------------------*
 
 const GGS_stringlist & GGS_EXtargetFileListMap::cEnumerator::
-_object (LOCATION_ARGS) const {
+_mList (LOCATION_ARGS) const {
   cPtrDictionary * dictPtr = macroPtr (mEnumeratedDictionary, cPtrDictionary)  ;
   MF_AssertThere (currentIndex () >= 0, "Access with negative index %d", currentIndex (), 0) ;
   MF_AssertThere (currentIndex () < dictPtr->count (), "Access with index %d >= count %d", currentIndex (), dictPtr->count ()) ;

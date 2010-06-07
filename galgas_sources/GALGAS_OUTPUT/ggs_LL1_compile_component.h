@@ -110,7 +110,7 @@ class GGS_EXtargetFileListMap : public AC_GGS_listmap {
     public : cEnumerator (const GGS_EXtargetFileListMap & inListMap,
                           const bool inAscending) ;
   //--- Associated object accessor
-    public : const GGS_stringlist & _object (LOCATION_ARGS) const ;
+    public : const GGS_stringlist & _mList (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
   public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
