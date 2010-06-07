@@ -272,6 +272,7 @@ map @unifiedTypeMap {
   @uint mHandledOperatorFlags ;
   @unifiedTypeMapProxyList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
   @nativeAttributeList mNativeAttributeList ; # Generating type declaration
+  @stringset mEnumConstantSet ;
   @lstringlist mEnumConstantList ;
   @typedAttributeList mPrivateDataMemberList ;
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods

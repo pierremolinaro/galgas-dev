@@ -499,7 +499,7 @@ routine analyzeConstructorInvocation
 :
 #--- Get constructor map from type map
   @constructorMap constructorMap ;
-  [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?13*] ;
+  [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?14*] ;
 #--- Search contructor
   @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
   with constructorMap hasKey ![inConstructorName string] do
@@ -1562,7 +1562,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 :
 #--- Get constructor map from type map
-  [inSemanticContext->mTypeMap searchKey !mLiteralTypeName ?20*] ;
+  [inSemanticContext->mTypeMap searchKey !mLiteralTypeName ?21*] ;
 #---
   outExpression := [@literalTypeInExpressionForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"type" !here]]

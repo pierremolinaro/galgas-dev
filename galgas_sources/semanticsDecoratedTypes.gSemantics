@@ -741,43 +741,26 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#abstract class @matchEntryForGeneration {
-#}
+list @matchListForGeneration {
+  @bool mIsType ;
+  @string mTypeNameOrEnumerationConstantName ;
+  @string mLocalConstantName ; # Empy string if no variable
+}
 
 #---------------------------------------------------------------------------*
 
-#list @matchEntryListForGeneration {
-#  @matchEntryForGeneration mEntry ;
-#}
+list @matchInstructionBranchListForGeneration {
+  @matchListForGeneration mMatchListForGeneration ;
+  @semanticInstructionListForGeneration mMatchBranchInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 
-#class @constantMatchEntryForGeneration extends @matchEntryForGeneration {
-#  @lstring mConstantName ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @classMatchEntryForGeneration extends @matchEntryForGeneration {
-#  @lstring mClassName ;
-#  @foreachInstructionEnumeratedObjectElementListForGeneration mElements ;
-#  @bool mEndsWithEllipsis ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#list @matchInstructionBranchListForGeneration {
-#  @matchEntryListForGeneration mMatchEntryList ;
-#  @semanticInstructionListForGeneration mMatchBranchInstructionList ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @matchInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @lstringlist mMatchedVariableNameList ;
-#  @matchInstructionBranchListForGeneration mMatchInstructionBranchList ;
-#  @semanticInstructionListForGeneration mElseInstructionList ;
-#}
+class @matchInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionListForGeneration mMatchedExpressionList ;
+  @matchInstructionBranchListForGeneration mMatchInstructionBranchList ;
+  @semanticInstructionListForGeneration mElseInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
