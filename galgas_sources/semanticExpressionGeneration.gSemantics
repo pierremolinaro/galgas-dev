@@ -797,6 +797,17 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @castInExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppName
+:
+  outCppName := "(@castInExpressionForGeneration generateExpression)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @functionCallExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@uint ioTemporaryVariableIndex
