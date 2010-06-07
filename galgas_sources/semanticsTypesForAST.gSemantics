@@ -953,13 +953,16 @@ class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
 list @switchBranchesAST {
   @lstringlist mSwitchConstantList ;
   @semanticInstructionListAST mInstructions ;
+  @location mEndOfBranch ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @switchInstructionAST extends @semanticInstructionAST {
   @semanticExpressionAST mSwitchExpression ;
+  @location mEndOfSwitchExpression ;
   @switchBranchesAST mBranches ;
+  @location mEndOf_switch_instruction ;
 }
 
 #---------------------------------------------------------------------------*

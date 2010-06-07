@@ -424,7 +424,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @semanticTypeForGeneration appendAutoPointerClassDeclaration -> @string outHeader :
-  if [mTypeIndex key] == "root" then
+  if [mTypeIndex key] == "object" then
     outHeader := "" ;
   else
     outHeader := [filewrapper semanticComponentGenerationTemplate.autoPointerClassHeader
@@ -450,7 +450,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @semanticTypeForGeneration appendAutoPointerClassImplementation -> @string outImplementation :
-  if [mTypeIndex key] == "root" then
+  if [mTypeIndex key] == "object" then
     outImplementation := "" ;
   else
     outImplementation := [filewrapper semanticComponentGenerationTemplate.autoPointerClassImplementation

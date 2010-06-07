@@ -64,8 +64,8 @@ end foreach
 
 %//---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_root & inOperand1,
-                                      %!^%GALGASap_root & inOperand2) {
+PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_object & inOperand1,
+                                      %!^%GALGASap_object & inOperand2) {
   PMSInt32 result = 0 ;
   GALGASap_%!TYPE_IDENTIFIER% operand1 = inOperand1 ;
   GALGASap_%!TYPE_IDENTIFIER% operand2 = inOperand2 ;

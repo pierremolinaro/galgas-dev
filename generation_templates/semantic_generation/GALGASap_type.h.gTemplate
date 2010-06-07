@@ -12,7 +12,7 @@ class GALGASap_%!TYPE_IDENTIFIER% : public GALGASap_%!SUPER_TYPE_IDENTIFIER% {
   public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
 
 //--- Constructor from generic object
-  public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_root & inSource) ;
+  public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSource) ;
 
 %if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeListInAutoPointerClass []) != 0 then
 %//--------------------------------- C++ constructor (with native attributes)\n%

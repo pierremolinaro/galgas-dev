@@ -113,7 +113,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : cEnumerator (const GGS_" << mListmapTypeName << " & inListMap,\n"
              "                          const bool inAscending) ;\n"
              "  //--- Associated object accessor\n"
-             "    public : const GGS_" << mListTypename << " & _object (LOCATION_ARGS) const ;\n"
+             "    public : const GGS_" << mListTypename << " & _mList (LOCATION_ARGS) const ;\n"
              "  } ;\n"
 
 //--- Introspection
@@ -341,7 +341,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "const GGS_" << mListTypename << " & GGS_" << mListmapTypeName << "::cEnumerator::\n"
-               "_object (LOCATION_ARGS) const {\n"
+               "_mList (LOCATION_ARGS) const {\n"
                "  cPtrDictionary * dictPtr = macroPtr (mEnumeratedDictionary, cPtrDictionary)  ;\n"
                "  MF_AssertThere (currentIndex () >= 0, \"Access with negative index %d\", currentIndex (), 0) ;\n"
                "  MF_AssertThere (currentIndex () < dictPtr->count (), \"Access with index %d >= count %d\", currentIndex (), dictPtr->count ()) ;\n"

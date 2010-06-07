@@ -889,4 +889,14 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @switchInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "@switchInstructionForGeneration generateInstruction\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

@@ -301,12 +301,12 @@ class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
   @lstringlist mStructFieldList ;
 }
 
-##---------------------------------------------------------------------------*
-#
-#class @literalTypeInExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lstring mVarName ;
-#}
-#
+#---------------------------------------------------------------------------*
+
+class @literalTypeInExpressionForGeneration extends @semanticExpressionForGeneration {
+  @string mTypeName ;
+}
+
 #---------------------------------------------------------------------------*
 
 #class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
@@ -1021,17 +1021,17 @@ class @parseWhenInstructionForGeneration extends @syntaxInstructionForGeneration
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#list @switchBranchesForGeneration {
-#  @lstringlist mSwitchConstantList ;
-#  @semanticInstructionListForGeneration mInstructions ;
-#}
+list @switchBranchesForGeneration {
+  @lstringlist mSwitchConstantList ;
+  @semanticInstructionListForGeneration mInstructions ;
+}
 
 #---------------------------------------------------------------------------*
 
-#class @switchInstructionForGeneration extends @semanticInstructionForGeneration {
-#  @semanticExpressionForGeneration mSwitchExpression ;
-#  @switchBranchesForGeneration mBranches ;
-#}
+class @switchInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mSwitchExpression ;
+  @switchBranchesForGeneration mBranches ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

@@ -171,6 +171,14 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @objectPredefinedTypeAST collectType
+  ?!@collectedTypeMap ioCollectedTypeMap
+:
+  [!?ioCollectedTypeMap insertKey ![@lstring new !"object" !here]] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @predefinedTypeAST collectType
   ?!@collectedTypeMap ioCollectedTypeMap
 :
@@ -297,7 +305,6 @@ override method @predefinedTypeAST enterType
     !true # Concrete Type
     !superTypeProxy
     ![@typeKindEnum classType]
-#    ![@typedAttributeList emptyList]
     ![@typedAttributeList listWithValue !selfTypeProxy ![@lstring new !mPredefinedTypeName !here]]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -335,7 +342,6 @@ override method @genericTypeTypeAST enterType
   @constructorMap constructorMap [emptyMap] ;
 #--- Readers
   @readerMap readerMap [emptyMap] ;
-#  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"length" !"uint" !false ;
 #--- Modifiers
   @modifierMap modifierMap [emptyMap] ;
 #--- Instance methods
@@ -345,6 +351,46 @@ override method @genericTypeTypeAST enterType
     ![@lstring new !mTypeName !here]
     !false # Abstract Type
     !superTypeProxy
+    ![@typeKindEnum listType]
+    ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+    !0
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@nativeAttributeList emptyList]
+    ![@lstringlist emptyList]
+    ![@typedAttributeList emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @objectPredefinedTypeAST enterType
+  ?!@semanticContext ioSemanticContext
+:
+#--- Constructors
+  @constructorMap constructorMap [emptyMap] ;
+#--- Readers
+  @readerMap readerMap ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap ;
+#--- Modifiers
+  @modifierMap modifierMap [emptyMap] ;
+#--- Instance methods
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+#--- Enter in type map
+  [!?ioSemanticContext->mTypeMap insertKey
+    ![@lstring new !"object" !here]
+    !false # Abstract Type
+    ![@unifiedTypeMapProxy null]
     ![@typeKindEnum listType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
@@ -1364,6 +1410,15 @@ override method @predefinedTypeAST enterOrderedDeclaration
 :
   @predefinedTypeAST t := self ; # Bug in GALGAS 1
   ioPartiallyOrderedDeclarationList += ![t getSuperTypeName] !mPredefinedTypeName !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @objectPredefinedTypeAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  @objectPredefinedTypeAST t := self ; # Bug in GALGAS 1
+  ioPartiallyOrderedDeclarationList += !"" !"object" !self ;
 end method ;
 
 #---------------------------------------------------------------------------*

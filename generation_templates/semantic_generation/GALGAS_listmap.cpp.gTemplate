@@ -34,7 +34,7 @@ void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (ioResult != NULL) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-    GALGAS_root * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    GALGAS_object * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
     foreach ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %

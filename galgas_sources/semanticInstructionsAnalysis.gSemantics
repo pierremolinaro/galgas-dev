@@ -1559,15 +1559,79 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @switchInstructionAST analyzeSemanticInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
   ?!@stringlist unused ioLocalVariableCppNameList
 :
-  error mInstructionLocation
-  : "unhandled instruction @switchInstructionAST"
-  ;
+#--- Analyze switch expression
+  @semanticExpressionForGeneration switchExpression ;
+  [mSwitchExpression analyzeSemanticExpression
+    !inSemanticContext
+    !inPredefinedTypes
+    !?ioVariableMap
+    ?switchExpression
+  ] ;
+#--- Check switch expression type is and enum instance
+  if [[switchExpression mType] mTypeKindEnum] != [@typeKindEnum enumType] then
+    error mEndOfSwitchExpression
+    : "the switch expression type should be an instance of an enumeration type (the '@" . [[switchExpression mType] key] . "' type is not an enumeration type)" ;
+  end if ;
+#--- Enum constant stringset
+  @stringset enumConstantStringSet [emptySet] ;
+  foreach [[switchExpression mType] mEnumConstantList] do
+    enumConstantStringSet += ![mValue string] ;
+  end foreach ;
+  @stringset constantsNamedInSwitchInstruction [emptySet] ;
+#--- Analyze branches
+  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  @switchBranchesForGeneration switchBranchesForGeneration [emptyList] ;
+  foreach mBranches do
+    foreach mSwitchConstantList do
+      if [enumConstantStringSet hasKey ![mValue string]] then
+        if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
+          error mValue
+          :"the '" . mValue . "' constant is already named in this switch instruction"
+          ;
+        end if ;
+        constantsNamedInSwitchInstruction += ![mValue string] ;
+      else
+        error mValue
+        :"'" . mValue . "' is not a constant of '@" . [[switchExpression mType] key] . "' enumeration type"
+        ;
+      end if ;
+    end foreach ;
+    @semanticInstructionListForGeneration instructionList ;
+    analyzeSemanticInstructionList
+      !inSemanticContext
+      !inPredefinedTypes
+      ![@localConstantList emptyList]
+      ![@localInitializedVariableList emptyList]
+      !mInstructions
+      !mEndOfBranch
+      !?ioVariableMap
+      ?instructionList
+    ;
+    switchBranchesForGeneration += !mSwitchConstantList !instructionList ;
+  end foreach ;
+  [!?ioVariableMap endOverride !mEndOf_switch_instruction] ;
+#--- Check all constants have been named
+  const @stringset forgottenConstants := enumConstantStringSet - constantsNamedInSwitchInstruction ;
+  if [forgottenConstants count] > 0 then
+    @string s := "" ;
+    foreach forgottenConstants do
+      s .= "\n  - " . key ;
+    end foreach ;
+    error mEndOf_switch_instruction
+    : "the switch instruction should name all enumeration constants; missing constants are:" . s
+    ;
+  end if ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@switchInstructionForGeneration new
+    !switchExpression
+    !switchBranchesForGeneration
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

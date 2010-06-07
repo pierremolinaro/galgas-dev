@@ -97,7 +97,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  GALGASap_root attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
+  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
   removeFirstObject (attributeArray, inCompiler COMMA_THERE) ;
 % foreach ATTRIBUTE_LIST do index IDX
     %  outOperand%![IDX string] % = attributeArray [%![IDX string]%] ;\n%
@@ -112,7 +112,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  GALGASap_root attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
+  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
   removeLastObject (attributeArray, inCompiler COMMA_THERE) ;
 % foreach ATTRIBUTE_LIST do index IDX
     %  outOperand%![IDX string] % = attributeArray [%![IDX string]%] ;\n%
@@ -127,7 +127,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  GALGASap_root attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
+  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
   readFirst (attributeArray, inCompiler COMMA_THERE) ;
 %  foreach ATTRIBUTE_LIST do index IDX
     %  outOperand%![IDX string] % = attributeArray [%![IDX string]%] ;\n%
@@ -142,7 +142,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  GALGASap_root attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
+  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
   readLast (attributeArray, inCompiler COMMA_THERE) ;
 %  foreach ATTRIBUTE_LIST do index IDX
     %  outOperand%![IDX string] % = attributeArray [%![IDX string]%] ;\n%

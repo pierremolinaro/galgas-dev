@@ -1,13 +1,13 @@
 //---------------------------------------------------------------------------*
 
 %if [CURRENT_ATTRIBUTE_LIST length] == 0 then
-  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_root & /* inOperand1 */,\n%
-  %                                           %!^%GALGASap_root & /* inOperand2 */) {\n%
+  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_object & /* inOperand1 */,\n%
+  %                                           %!^%GALGASap_object & /* inOperand2 */) {\n%
   %  return 0 ;\n%
   %}\n\n%
 else
-  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_root & inOperand1,\n%
-  %                                           %!^%GALGASap_root & inOperand2) {\n%
+  %PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%GALGASap_object & inOperand1,\n%
+  %                                           %!^%GALGASap_object & inOperand2) {\n%
   if SUPER_TYPE_IDENTIFIER == "class" then
     %  PMSInt32 result = 0 ;\n%
   else

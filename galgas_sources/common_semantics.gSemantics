@@ -2563,7 +2563,7 @@ class @typeGalgasListmapType extends @AC_galgasType {
     outNewStyle := true ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += ![@typeGalgas_string new] ![@lstring new !"key" !here] ;
-    outForeachList += !mListType ![@lstring new !"object" !here] ;
+    outForeachList += !mListType ![@lstring new !"mList" !here] ;
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end method ;
 

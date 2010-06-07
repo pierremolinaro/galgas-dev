@@ -1556,15 +1556,19 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalTypeInExpressionAST analyzeSemanticExpression
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  error mLiteralTypeName
-  : "unhandled @literalTypeInExpressionAST expression"
-  : outExpression
-  ;
+#--- Get constructor map from type map
+  [inSemanticContext->mTypeMap searchKey !mLiteralTypeName ?20*] ;
+#---
+  outExpression := [@literalTypeInExpressionForGeneration new
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"type" !here]]
+    ![mLiteralTypeName location]
+    ![mLiteralTypeName string]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

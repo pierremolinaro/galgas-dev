@@ -305,6 +305,8 @@ abstract class @predefinedTypeAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
+class @objectPredefinedTypeAST extends @semanticDeclarationAST {}
+
 class @binarysetPredefinedTypeAST extends @predefinedTypeAST {}
 
 class @boolPredefinedTypeAST extends @predefinedTypeAST {}
@@ -338,8 +340,8 @@ class @dataPredefinedTypeAST extends @predefinedTypeAST {}
 reader @predefinedTypeAST getSuperTypeName
   ->@string outSuperTypeName
 :
-#--- By default, super type is the @root type
-  outSuperTypeName := "root" ;
+#--- By default, super type is the @object type
+  outSuperTypeName := "object" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

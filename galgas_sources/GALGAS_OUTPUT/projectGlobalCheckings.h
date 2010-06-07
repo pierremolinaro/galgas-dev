@@ -115,7 +115,7 @@ class GGS_descendantClassListMap : public AC_GGS_listmap {
     public : cEnumerator (const GGS_descendantClassListMap & inListMap,
                           const bool inAscending) ;
   //--- Associated object accessor
-    public : const GGS_unifiedTypeMapProxyList & _object (LOCATION_ARGS) const ;
+    public : const GGS_unifiedTypeMapProxyList & _mList (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
   public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
@@ -461,7 +461,7 @@ class GGS_targetFileListMap : public AC_GGS_listmap {
     public : cEnumerator (const GGS_targetFileListMap & inListMap,
                           const bool inAscending) ;
   //--- Associated object accessor
-    public : const GGS_stringlist & _object (LOCATION_ARGS) const ;
+    public : const GGS_stringlist & _mList (LOCATION_ARGS) const ;
   } ;
 //--- Introspection
   public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;
