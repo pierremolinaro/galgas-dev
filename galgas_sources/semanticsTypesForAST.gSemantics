@@ -316,6 +316,7 @@ class @castInExpressionAST extends @semanticExpressionAST {
   @bool mUseKindOfClass ;
   @lstring mTypeName ;
   @semanticExpressionAST mErrorLocationExpression ;
+  @location mEndOfErrorLocationExpression ;
 }
 
 #---------------------------------------------------------------------------*

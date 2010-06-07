@@ -1295,7 +1295,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   @castInstructionBranchListForGeneration castBranchList [emptyList] ;
   foreach mCastInstructionBranchList do
   #--- Get named type
-    const @unifiedTypeMapProxy type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+    const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mTypeName] ;
   #--- Check named type is a descendant of receiver type
     @unifiedTypeMapProxy t := type ;
     @bool found := t == [castExpression mType] ;

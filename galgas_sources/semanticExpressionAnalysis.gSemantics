@@ -1574,15 +1574,65 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @castInExpressionAST analyzeSemanticExpression
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@variableMap unused ioVariableMap
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  error mEndOfReceiverExpression
-  : "unhandled @castInExpressionAST expression"
-  : outExpression
-  ;
+#--- Receiver expression analysis
+  @semanticExpressionForGeneration expression ;
+  [mReceiverExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?expression] ;
+#--- Get type information
+   const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check expression type is a descendant of named type
+  @unifiedTypeMapProxy t := type ;
+  @bool found := t == [expression mType] ;
+  loop [inSemanticContext->mTypeMap count] + 1 :
+  while (not found) & not [[t mSuperType] isNull] do
+    t := [t mSuperType] ;
+    found := t == [expression mType] ;
+  end loop ;
+  if not found then
+    error mTypeName
+    :"the '@" . mTypeName . "' is not a descendant of the '@" . [[expression mType] key] . "' type of the cast expression"
+    ;
+  end if ;
+#--- Error location expression
+  @semanticExpressionForGeneration errorLocationExpression ;
+  [mErrorLocationExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?errorLocationExpression] ;
+#--- Check location expression type is either @location either has a correct location reader
+  const @bool useLocationReader := [errorLocationExpression mType] != inPredefinedTypes->mLocationType ;
+  if useLocationReader then
+    const @readerMap readerMap := [[errorLocationExpression mType] mReaderMap] ;
+    with readerMap hasKey !"location" do
+      if [mArgumentTypeList length] != 0 then
+        error mEndOfErrorLocationExpression
+        :"the error location expression type is '@" . [[errorLocationExpression mType] key]
+        . "' and defines a 'location' reader with arguments; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
+        ;      
+      elsif mReturnedType != inPredefinedTypes->mLocationType then
+        error mEndOfErrorLocationExpression
+        :"the error location expression type is '@" . [[errorLocationExpression mType] key]
+        . "' and defines a 'location' reader that returns an '@" . [mReturnedType key]
+        . "' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
+        ;      
+      end if ;
+    else
+      error mEndOfErrorLocationExpression
+      :"the error location expression type is '@" . [[errorLocationExpression mType] key]
+      . "' and does not define a 'location' reader; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
+      ;
+    end with ;
+  end if ;
+#--- Generate expression
+  outExpression := [@castInExpressionForGeneration new
+    !type
+    ![mTypeName location]
+    !expression
+    !mUseKindOfClass
+    ![mTypeName string]
+    !errorLocationExpression
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

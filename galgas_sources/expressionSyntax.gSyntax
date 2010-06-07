@@ -318,6 +318,7 @@ rule <factor> !@semanticExpressionAST outExpression :
       !useKindOfClass
       !typeName
       !errorLocationExpression
+      !here
     ] ;
   end select ;
   $)$ ;
