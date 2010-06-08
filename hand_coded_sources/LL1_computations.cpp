@@ -274,7 +274,11 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
       const PMSInt32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
       inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
-      fichierCPP << "  switch (inLexique.nextProductionIndex ()) {\n" ;
+      if (gOption_galgas_5F_cli_5F_options_newCodeGeneration.mValue) {
+        fichierCPP << "  switch (inLexique->nextProductionIndex ()) {\n" ;
+      }else{
+        fichierCPP << "  switch (inLexique.nextProductionIndex ()) {\n" ;
+      }
       for (PMSInt32 j=first ; j<=derniere ; j++) {
         fichierCPP << "  case " << cStringWithSigned ((PMSInt32)(j - first + 1)) << " :\n  " ;
         const PMSInt32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;

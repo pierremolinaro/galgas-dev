@@ -6,8 +6,8 @@ GALGAS_sortedlist (%![[ATTRIBUTE_LIST length] string]% COMMA_THERE) {
 
 //---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%GALGAS_object * inLeftAttributeList [],
-                                                %!^%GALGAS_object * inRightAttributeList []) const {
+PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%cRootObjectArray & inLeftAttributeList,
+                                                %!^%cRootObjectArray & inRightAttributeList) const {
   PMSInt32 result = 0 ;
 % foreach SORT_ATTRIBUTE_LIST do
     %  if (result == 0) {\n%
@@ -19,22 +19,21 @@ PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%GALGAS_object
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioOperand
+void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand
                      %!^%COMMA_LOCATION_ARGS) {
-  if ((ioOperand != NULL) && (ioOperand->retainCount () > 1)) {
-    GALGAS_%!TYPE_IDENTIFIER% * p = NULL ;
-    macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
-    p->copyFrom (ioOperand) ;
-    macroAssignObject (ioOperand, p) ;
+  if (ioOperand.isValid () && (ioOperand.ptr (HERE)->retainCount () > 1)) {
+    GALGASap_%!TYPE_IDENTIFIER% p (GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE)) ;
+    p.ptr (HERE)->copyFrom (ioOperand.ptr (HERE)) ;
+    ioOperand = p ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
-  macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
-  return result ;
+GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% * p = NULL ;
+  macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
+  return GALGASap_%!TYPE_IDENTIFIER% (p) ;
 }
 
 //---------------------------------------------------------------------------*

@@ -494,14 +494,12 @@ routine analyzeRoutineBody
   ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
-  @stringlist localVariableCppNameList [emptyList] ;
   foreach inInstructionList do
     [mInstruction analyzeSemanticInstruction
       !inSemanticContext
       !inPredefinedTypes
       !?outSemanticInstructionListForGeneration
       !?variableMap
-      !?localVariableCppNameList
     ] ;
    end foreach ;
 #---
@@ -771,14 +769,12 @@ routine analyzeFunctionBody
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName] ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
-  @stringlist localVariableCppNameList [emptyList] ;
   foreach inInstructionList do
     [mInstruction analyzeSemanticInstruction
       !inSemanticContext
       !inPredefinedTypes
       !?outSemanticInstructionListForGeneration
       !?variableMap
-      !?localVariableCppNameList
     ] ;
    end foreach ;
 #---

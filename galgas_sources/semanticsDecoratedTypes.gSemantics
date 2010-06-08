@@ -966,11 +966,11 @@ class @selectInstructionForGeneration extends @syntaxInstructionForGeneration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  P A R S E    D O    I N S T R U C T I O N                                *
+#  P A R S E    R E W I N D    I N S T R U C T I O N                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @parseDoInstructionForGeneration extends @syntaxInstructionForGeneration {
+class @parseRewindInstructionForGeneration extends @syntaxInstructionForGeneration {
   @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration ;
 }
 

@@ -118,12 +118,12 @@ class @selectInstruction extends @syntaxInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   P A R S E   D O    I N S T R U C T I O N                                *
+#   P A R S E   R E W I N D    I N S T R U C T I O N                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @parseDoInstruction extends @syntaxInstructionAST {
-  @listOfSyntaxInstructionList mParseDoBranchList ;
+class @parseRewindInstruction extends @syntaxInstructionAST {
+  @listOfSyntaxInstructionList mParseRewindBranchList ;
   @location mEndOfParseDoInstruction ;
 }
 
@@ -152,6 +152,7 @@ class @parseWhenInstruction extends @syntaxInstructionAST {
   @semanticExpressionAST mWhenExpression ;
   @location mEndOfWhenExpression ;
   @syntaxInstructionList mWhenInstructionList ;
+  @location mEndOfWhenInstructionList ;
   @syntaxInstructionList mElseInstructionList ;
   @location mEndOfElseInstructionList ;
 }
