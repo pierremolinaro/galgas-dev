@@ -113,8 +113,6 @@ override method @falseExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @falseExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-#  ioGeneratedCode .= "GALGASap_bool " . outCppName
-#                   . " (GALGAS_bool::constructor_new (false COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_bool " . outCppName . " (false COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
@@ -776,12 +774,33 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @ifExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  outCppName := "(@ifExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @ifExpressionForGeneration\n" ;
+#--- 'if' expression
+  @string ifExpression ;
+  [mIfExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifExpression] ;
+#--- Result variable
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGASap_" . [[mThenExpression mType] identifierRepresentation] . " " . outCppName . " ;\n" ;
+  ioGeneratedCode .= "if (isValidAndTrue (" . ifExpression . ")) {\n" ;
+#--- 'then' expression
+  @string thenExpression ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  [mThenExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?thenExpression] ;
+  ioGeneratedCode .= outCppName . " = " . thenExpression . " ;\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+#--- 'else' expression
+  ioGeneratedCode .= "}else{\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  @string elseExpression ;
+  [mElseExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?elseExpression] ;
+  ioGeneratedCode .= outCppName . " = " . elseExpression . " ;\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
