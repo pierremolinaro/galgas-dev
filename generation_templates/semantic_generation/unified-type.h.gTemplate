@@ -12,7 +12,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%![SUPER_TYPE_INDEX identifierRe
 %
 if [ENUM_CONSTANT_LIST length] > 0 then
 %//--------------------------------- Enumeration type declaration
-  private : typedef enum {%
+  public : typedef enum {%
   foreach ENUM_CONSTANT_LIST
     do %kEnum_%![mValue identifierRepresentation]
     between %, %
@@ -21,6 +21,7 @@ if [ENUM_CONSTANT_LIST length] > 0 then
 
 //--------------------------------- Private attribute
   private : enumeration mEnumValue ;
+  public : inline enumeration enumValue (void) const { return mEnumValue ; }
 
 //--------------------------------- C++ constructor (for enumeration type)
   public : GALGAS_%!TYPE_IDENTIFIER% (const enumeration inValue COMMA_LOCATION_ARGS) ;
