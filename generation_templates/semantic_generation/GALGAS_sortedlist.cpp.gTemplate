@@ -1,7 +1,17 @@
 //---------------------------------------------------------------------------*
 
+static const C_galgas_type_descriptor * kFieldList_%!TYPE_IDENTIFIER% [%![[ATTRIBUTE_LIST length] string]%] = {
+%  foreach ATTRIBUTE_LIST
+  do index IDX %  & kTypeDescriptor_GALGAS_%![mAttributeTypeIndex identifierRepresentation]
+  between %,\n%
+  end foreach
+%
+} ;
+
+//---------------------------------------------------------------------------*
+
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
-GALGAS_sortedlist (%![[ATTRIBUTE_LIST length] string]% COMMA_THERE) {
+GALGAS_sortedlist (%![[ATTRIBUTE_LIST length] string]%, kFieldList_%!TYPE_IDENTIFIER% COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -11,7 +21,9 @@ PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%cRootObjectAr
   PMSInt32 result = 0 ;
 % foreach SORT_ATTRIBUTE_LIST do
     %  if (result == 0) {\n%
-    %    result = % if mAscendingOrder then else %- % end if%genericObjectCompareFunction (inLeftAttributeList [%![mAttributeIndex string]%], inRightAttributeList [%![mAttributeIndex string]%]) ;\n%
+    %    GALGASap_object object1 = inLeftAttributeList.objectAtIndex (%![mAttributeIndex string]% COMMA_HERE) ;\n%
+    %    GALGASap_object object2 = inRightAttributeList.objectAtIndex (%![mAttributeIndex string]% COMMA_HERE) ;\n%
+    %    result = % if mAscendingOrder then else %- % end if%genericObjectCompareFunction (mFieldTypeList [%![mAttributeIndex string]%], object1, object2) ;\n%
     %  }\n%
   end foreach
 %  return result ;
