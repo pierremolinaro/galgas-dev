@@ -35,6 +35,16 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOb
   }
 }
 
+//---------------------------------------------------------------------------*
+
+GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (LOCATION_ARGS) {
+  GALGASap_%!TYPE_IDENTIFIER% result = mOverridenMap ;
+  if (! result.isValid ()) {
+    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (THERE) ;
+  }
+  return result ;
+}
+
 %foreach INSERT_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGASap_lstring inKey%
@@ -126,8 +136,8 @@ end foreach
 
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGASap_string inKey,\n%
-  %                           %!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inAttributeValue,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inAttributeValue,\n%
+  %                           %!^%GALGASap_string inKey,\n%
   %                           %!^%C_Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%
   %  writeAttributeForKey (inKey, inAttributeValue, inCompiler, %![IDX + 1 string]% COMMA_THERE) ;\n%

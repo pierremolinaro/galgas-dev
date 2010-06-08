@@ -443,6 +443,7 @@ override method @mapDeclarationAST enterType
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyList" !"lstringlist" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
+  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !false ;
   enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"overriddenMap" ![mMapTypeName string] !false ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -524,8 +525,8 @@ override method @mapDeclarationAST enterType
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
-    accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
     accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
     [!?modifierMap insertOrReplace
       !accessorName
       !accessorFormalArgumentList
@@ -1143,15 +1144,15 @@ override method @classDeclarationAST enterType
       ] ; 
     end foreach ;
   #--- Add reader to access super object
-    if (not mIsAbstract) & ([mSuperClassName string] != "class") then
-      [!?readerMap insertKey
-        !mSuperClassName
-        ![@unifiedTypeMapProxyList emptyList]
-        !false
-        !superClassIndex
-        ![@readerQualifier isBasic]
-      ] ;
-    end if ;
+#    if (not mIsAbstract) & ([mSuperClassName string] != "class") then
+#      [!?readerMap insertKey
+#        !mSuperClassName
+#        ![@unifiedTypeMapProxyList emptyList]
+#        !false
+#        !superClassIndex
+#        ![@readerQualifier isBasic]
+#      ] ;
+#    end if ;
   end if ;
 #--- Build attribute Map and constructor argument list
   @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
@@ -1243,6 +1244,13 @@ override method @classDeclarationAST enterType
       !attributeTypeIndex # Returned type
       ![@readerQualifier isBasic]
     ] ;
+  #--- set...attribute modifier
+    [!?modifierMap insertKey
+      ![@lstring new !"set". [mAttributeName stringByCapitalizingFirstCharacter] !here]
+      ![@formalParameterSignature listWithValue !attributeTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      !false # No compiler argument
+      ![@readerQualifier isBasic]
+    ] ; 
   end foreach ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey

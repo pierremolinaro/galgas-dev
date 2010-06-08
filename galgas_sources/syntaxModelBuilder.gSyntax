@@ -378,7 +378,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   P A R S E    D O    I N S T R U C T I O N                               *
+#   P A R S E    R E W I N D    I N S T R U C T I O N                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -400,7 +400,7 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   const @location endOfInstruction := here ;
   $parse$ ;
   $;$ ;
-  outInstruction := [@parseDoInstruction new
+  outInstruction := [@parseRewindInstruction new
     !instructionLocation
     !mParseDoBranchList
     !endOfInstruction
@@ -433,6 +433,7 @@ rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionLi
   $:$ ;
   @syntaxInstructionList whenInstructionList ;
   <syntax_instruction_list> ? whenInstructionList ;
+  const @location endOfWhenInstructions := here ;
 #--- Else part
   @syntaxInstructionList elseInstructionList ;
   <branchOfParseWhenInstruction> ? elseInstructionList ;
@@ -443,6 +444,7 @@ rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionLi
     !whenExpression
     !endOfWhenExpression
     !whenInstructionList
+    !endOfWhenInstructions
     !elseInstructionList
     !endOfElseInstructions
   ] ;
@@ -460,6 +462,7 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $:$ ;
   @syntaxInstructionList whenInstructionList ;
   <syntax_instruction_list> ? whenInstructionList ;
+  const @location endOfWhenInstructions := here ;
 #--- Else part
   @syntaxInstructionList elseInstructionList ;
   <branchOfParseWhenInstruction> ? elseInstructionList ;
@@ -472,6 +475,7 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
     !whenExpression
     !endOfWhenExpression
     !whenInstructionList
+    !endOfWhenInstructions
     !elseInstructionList
     !endOfElseInstructions
   ] ;

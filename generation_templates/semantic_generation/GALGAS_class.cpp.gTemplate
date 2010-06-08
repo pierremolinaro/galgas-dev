@@ -121,15 +121,6 @@ end if
 GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
 }\n\n%
 
-if (not IS_ABSTRACT) & (SUPER_TYPE_IDENTIFIER != "class") then
-%//---------------------------------------------------------------------------*
-
-GALGASap_%!SUPER_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_%!SUPER_TYPE_IDENTIFIER% (UNUSED_LOCATION_ARGS) {
-  return GALGASap_%!SUPER_TYPE_IDENTIFIER% (this) ;
-}
-
-%end if
-
 foreach CONCRETE_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
   !generateProcedure [

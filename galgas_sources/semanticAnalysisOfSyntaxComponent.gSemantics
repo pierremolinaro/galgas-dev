@@ -226,7 +226,6 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
-  ?!@stringlist ioLocalVariableCppNameList
 ;
 
 #---------------------------------------------------------------------------*
@@ -241,7 +240,6 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
-  ?!@stringlist ioLocalVariableCppNameList
 :
   @semanticInstructionAST t := self ; # Bug in GALGAS 1
   [t analyzeSemanticInstruction
@@ -249,7 +247,6 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
     !inPredefinedTypes
     !?ioInstructionListForGeneration
     !?ioVariableMap
-    !?ioLocalVariableCppNameList
   ] ;
 end method ;
 
@@ -265,8 +262,8 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
-  ?!@stringlist unused ioLocalVariableCppNameList
 :
+#  message "Analyze <" . mNonterminalName . "> " . mLabelName . "\n" ;
   @nonterminalLabelMap labelMap ;
   @bool hasParseLabel ;
   [inNonterminalMap searchKey !mNonterminalName ?labelMap ?hasParseLabel] ;
@@ -345,7 +342,6 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
-  ?!@stringlist ioLocalVariableCppNameList
 :
   @lexicalSentValueList sentAttributeList ;
   [inTerminalMap searchKey !mTerminalName ?sentAttributeList] ;
@@ -369,7 +365,6 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
         cppName := "var_" . [mActualParameterName identifierRepresentation] ;
         type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mActualParameterTypeName] ;
         [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName] ;
-        ioLocalVariableCppNameList += !cppName ;
       else
         [!?ioVariableMap searchForWriteAccess !mActualParameterName ?type ?cppName] ;
       end if ;
@@ -416,7 +411,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 #--- Get synthetized attributes
   foreach mTerminalCheckAssignementList do
     if mTypeName != "" then
-      ioGeneratedCode .= "GALGAS_ap" . [mTypeName identifierRepresentation] . " " ;
+      ioGeneratedCode .= "GALGASap_" . [mTypeName identifierRepresentation] . " " ;
     else
     end if ;
     ioGeneratedCode .= mTargetVarCppName . " = " . compilerCppName [] . "->synthetizedAttribute_"
@@ -439,7 +434,7 @@ routine analyzeSyntaxInstructionList
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string  inComponentName
-  ??@syntaxInstructionList inSemanticInstructionListAST
+  ??@syntaxInstructionList inSyntaxInstructionListAST
   ??@location inEndOfBranchLocation
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -449,8 +444,7 @@ routine analyzeSyntaxInstructionList
 #--- Begin branch
   [!?ioVariableMap beginBranch] ;
 #--- Instruction list
-  @stringlist localVariableCppNameList [emptyList] ;
-  foreach inSemanticInstructionListAST do
+  foreach inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
       !inSemanticContext
       !inPredefinedTypes
@@ -461,16 +455,8 @@ routine analyzeSyntaxInstructionList
       !?outInstructionListForGeneration
       !?ioVariableMap
       !?ioSelectMethodCount
-      !?localVariableCppNameList
     ] ;
   end foreach ;
-#--- Drop local variables
-  if [localVariableCppNameList length] > 0 then
-    outInstructionListForGeneration += ![@dropInstructionForGeneration new
-      !localVariableCppNameList
-      !"end of scope"
-    ] ;  
-  end if ;
 #--- Branch end
   [!?ioVariableMap endBranch !inEndOfBranchLocation] ;
 end routine ;
@@ -487,7 +473,6 @@ override method @repeatInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
-  ?!@stringlist unused ioLocalVariableCppNameList
 :
   const @uint choiceIndex := ioSelectMethodCount ;
   ioSelectMethodCount ++ ;
@@ -589,7 +574,6 @@ override method @selectInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
-  ?!@stringlist unused ioLocalVariableCppNameList
 :
   const @uint choiceIndex := ioSelectMethodCount ;
   ioSelectMethodCount ++ ;
@@ -651,7 +635,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @parseDoInstruction analyzeSyntaxInstruction
+override method @parseRewindInstruction analyzeSyntaxInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap  inTerminalMap
@@ -661,31 +645,28 @@ override method @parseDoInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
-  ?!@stringlist unused ioLocalVariableCppNameList
 :
-#--- Begin block
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
-#--- 'do' blocks
+#--- 'Rewind' blocks
   @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
-  foreach mParseDoBranchList do
-    @semanticInstructionListForGeneration instructionList ;
-    analyzeSyntaxInstructionList
-      !inSemanticContext
-      !inPredefinedTypes
-      !inTerminalMap
-      !inLexiqueName
-      !inNonterminalMap
-      !inComponentName
-      !mSyntaxInstructionList
-      !mEndOf_instructions
-      !?ioVariableMap
-      !?ioSelectMethodCount
-      ?instructionList
-    ;
+  const @uint referenceSelectMethodCount := ioSelectMethodCount ;
+  foreach mParseRewindBranchList do
+    ioSelectMethodCount := referenceSelectMethodCount ;
+    @semanticInstructionListForGeneration instructionList [emptyList] ;
+    foreach mSyntaxInstructionList do
+      [mInstruction analyzeSyntaxInstruction
+        !inSemanticContext
+        !inPredefinedTypes
+        !inTerminalMap
+        !inLexiqueName
+        !inNonterminalMap
+        !inComponentName
+        !?instructionList
+        !?ioVariableMap
+        !?ioSelectMethodCount
+      ] ;
+    end foreach ;
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions ;
   end foreach ;
-#--- End block
-  [!?ioVariableMap endOverride !mEndOfParseDoInstruction] ;
 #--- Check syntax signature of branches
   @listOfSemanticInstructionListForGeneration tempListOfBranches := listOfSemanticInstructionListForGeneration ;
   @semanticInstructionListForGeneration instructionList ;
@@ -700,7 +681,7 @@ override method @parseDoInstruction analyzeSyntaxInstruction
     ] ;
   end foreach ;
 #--- Generate instruction
-  ioInstructionListForGeneration += ![@parseDoInstructionForGeneration new
+  ioInstructionListForGeneration += ![@parseRewindInstructionForGeneration new
     !mInstructionLocation
     !listOfSemanticInstructionListForGeneration
   ] ;
@@ -708,7 +689,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @parseDoInstructionForGeneration generateInstruction
+override method @parseRewindInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -742,7 +723,6 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
-  ?!@stringlist unused ioLocalVariableCppNameList
 :
 #--- Variant expression
   @semanticExpressionForGeneration variant_expression ;
@@ -880,7 +860,6 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
-  ?!@stringlist ioLocalVariableCppNameList
 :
 #--- When expression
   @semanticExpressionForGeneration when_expression ;
@@ -890,41 +869,47 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     !?ioVariableMap
     ?when_expression
   ] ;
+#--- Begin block
+  [!?ioVariableMap beginOverrideForRepeatBlock] ;
 #--- 'when' branch
   @uint localSelectMethodCount := ioSelectMethodCount ;
-  @semanticInstructionListForGeneration when_instructionListForGeneration [emptyList] ;
-  foreach mWhenInstructionList do
-    [mInstruction analyzeSyntaxInstruction
-      !inSemanticContext
-      !inPredefinedTypes
-      !inTerminalMap
-      !inLexiqueName
-      !inNonterminalMap
-      !inComponentName
-      !?when_instructionListForGeneration
-      !?ioVariableMap
-      !?localSelectMethodCount
-      !?ioLocalVariableCppNameList
-    ] ;
-  end foreach ;
+  @semanticInstructionListForGeneration when_instructionListForGeneration ;
+  analyzeSyntaxInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !inTerminalMap
+    !inLexiqueName
+    !inNonterminalMap
+    !inComponentName
+    !mWhenInstructionList
+    !mEndOfWhenInstructionList
+    !?ioVariableMap
+    !?localSelectMethodCount
+    ?when_instructionListForGeneration
+  ;
 #--- 'else' branch
-  @semanticInstructionListForGeneration else_instructionListForGeneration [emptyList] ;
-  foreach mElseInstructionList do
-    [mInstruction analyzeSyntaxInstruction
-      !inSemanticContext
-      !inPredefinedTypes
-      !inTerminalMap
-      !inLexiqueName
-      !inNonterminalMap
-      !inComponentName
-      !?else_instructionListForGeneration
-      !?ioVariableMap
-      !?ioSelectMethodCount
-      !?ioLocalVariableCppNameList
-    ] ;
-  end foreach ;
+  @semanticInstructionListForGeneration else_instructionListForGeneration ;
+  analyzeSyntaxInstructionList
+    !inSemanticContext
+    !inPredefinedTypes
+    !inTerminalMap
+    !inLexiqueName
+    !inNonterminalMap
+    !inComponentName
+    !mElseInstructionList
+    !mEndOfElseInstructionList
+    !?ioVariableMap
+    !?ioSelectMethodCount
+    ?else_instructionListForGeneration
+  ;
+#--- End block
+  [!?ioVariableMap endOverride !mEndOfElseInstructionList] ;
 #--- Check syntax signature
-  const @bool ok := compareSyntaxSignature [!when_instructionListForGeneration !else_instructionListForGeneration !mEndOfElseInstructionList] ;
+  const @bool ok := compareSyntaxSignature [
+    !syntaxSignatureOfInstructionList [!when_instructionListForGeneration]
+    !syntaxSignatureOfInstructionList [!else_instructionListForGeneration]
+    !mEndOfElseInstructionList
+  ] ;
 #--- Generate instruction
   if ok then
     ioInstructionListForGeneration += ![@parseWhenInstructionForGeneration new
@@ -978,7 +963,6 @@ override method @blockInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap
   ?!@uint unused ioSelectMethodCount
-  ?!@stringlist unused ioLocalVariableCppNameList
 :
   error mBlockMethodName
   : "'block' instruction is not handled in GALGAS 2\n" ;
@@ -1032,7 +1016,6 @@ routine semanticAnalysisOfRuleLabel
       !?outInstructionListForGeneration
       !?variableMap
       !?ioSelectMethodCount
-      !?localVariableCppNameList
     ] ;
   end foreach ;
 #---

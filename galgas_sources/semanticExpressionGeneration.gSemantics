@@ -828,10 +828,8 @@ override method @functionCallExpressionForGeneration generateExpression
                    . " (function_" . [mFunctionName identifierRepresentation]
                    . " (" ;
   foreach parameterList
-    do ioGeneratedCode .= mValue ;
-    between ioGeneratedCode .= ", " ;
+    do ioGeneratedCode .= mValue . ", " ;
   end foreach ;
-  ioGeneratedCode .= ", " ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;

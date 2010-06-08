@@ -497,8 +497,8 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 
 if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
 %//--------------------------------- Abstract method for comparing two sorted list elements
-  protected : virtual PMSInt32 compareSortedListElements (GALGASap_object & inLeftAttributeList [],
-                                                          GALGASap_object & inRightAttributeList []) const ;
+  protected : virtual PMSInt32 compareSortedListElements (cRootObjectArray & inLeftAttributeList,
+                                                          cRootObjectArray & inRightAttributeList) const ;
 
 %end if
 

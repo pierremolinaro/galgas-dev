@@ -294,14 +294,14 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @parseDoInstruction transformInstruction
+override method @parseRewindInstruction transformInstruction
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   @syntaxInstructionList syntaxInstructionList ;
-  [mParseDoBranchList first ?syntaxInstructionList ?*] ;
+  [mParseRewindBranchList first ?syntaxInstructionList ?*] ;
 
   transformInstructionList
     !syntaxInstructionList
