@@ -582,11 +582,34 @@ override method @addAssignInstructionForGeneration generateInstruction
   end foreach ;
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
-  foreach mStructAttributeList do
-    ioGeneratedCode .= "(handle fields)\n" ;
-  end foreach ;
+#  foreach mStructAttributeList do
+#    ioGeneratedCode .= "(handle fields)\n" ;
+#  end foreach ;
+
+
+  @string receiverCppName := mReceiverCppName ;
+  @string okVar := "" ;
+  if [mStructAttributeList length] > 0 then
+    okVar := "ok_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+    ioGeneratedCode .= "bool " . okVar . " = " . mReceiverCppName . ".isValid () ;  // Handle field access\n" ;
+    @string accessorPath := mReceiverCppName ;
+    foreach mStructAttributeList do
+      accessorPath .= ".ptr (HERE)->mAttribute_" . [mValue identifierRepresentation] ;
+      ioGeneratedCode .= "if (" . okVar . ") {\n"
+                      .  "  " . okVar . " = " . accessorPath . ".isValid () ;\n"
+                      .  "}\n" ;
+    end foreach ;
+    const @string nullVar := "nullVar_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+    ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " " . nullVar . " ;\n" ;
+    receiverCppName := "modifierReceiver_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+    ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " & " . receiverCppName . " = "
+                    . okVar . " ? (" . accessorPath . ") : " . nullVar . "  ;\n" ;
+  end if ;
+
+
+
 #--- Call add assign (+=) operator
-  ioGeneratedCode .= "addAssign_operation (" . mReceiverCppName ;
+  ioGeneratedCode .= "addAssign_operation (" . receiverCppName ;
   foreach parameterList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
@@ -814,7 +837,7 @@ override method @foreachInstructionForGeneration generateInstruction
     end foreach ;
     if mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-      ioGeneratedCode .= "GALGAS_uint::increment_operation (" . mIndexVariableCppName . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "increment_operation (" . mIndexVariableCppName . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     ioGeneratedCode .= "}\n" ;
   #--- Generate 'after' instruction
@@ -852,7 +875,7 @@ override method @foreachInstructionForGeneration generateInstruction
       [!?ioGeneratedCode incIndentation !2] ;
       ioGeneratedCode .= "if (" ;
       foreach mEnumeratedObjectList
-        do ioGeneratedCode .= "  " . mEnumeratorCppName . ".hasNext ()" ;
+        do ioGeneratedCode .= mEnumeratorCppName . ".hasNext ()" ;
         between ioGeneratedCode .= " && " ;
       end foreach ;
       ioGeneratedCode .= ") {\n" ;
@@ -871,7 +894,7 @@ override method @foreachInstructionForGeneration generateInstruction
     end foreach ;
     if mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-      ioGeneratedCode .= "GALGAS_uint::increment_operation (" . mIndexVariableCppName . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "increment_operation (" . mIndexVariableCppName . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     ioGeneratedCode .= "}\n" ;
   end if ;
@@ -890,11 +913,59 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @switchInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@switchInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "//------- @switchInstructionForGeneration\n" ;
+#--- Switch expression
+  @string switchVar ;
+  [mSwitchExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?switchVar] ;
+  ioGeneratedCode .= "if (" . switchVar . ".isValid ()) {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  ioGeneratedCode .= "switch (" . switchVar . ".ptr (HERE)->enumValue ()) {\n" ;
+  foreach mBranches do
+    foreach mSwitchConstantList do
+      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [mValue identifierRepresentation] . ": " ;
+    end foreach ;
+    ioGeneratedCode .= "{\n" ;
+    generateInstructionList
+      !mInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !?ioGeneratedCode
+    ;
+    ioGeneratedCode .= "  } break ;\n" ;
+  end foreach ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @matchInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//------- @matchInstructionForGeneration\n" ;
+  @stringlist receiverList [emptyList] ;
+  foreach mMatchedExpressionList do
+    @string var ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?var] ;
+    receiverList += !var ;
+  end foreach ;
+  ioGeneratedCode .= "if (" ;
+  foreach receiverList
+    do ioGeneratedCode .= mValue . ".isValid ()" ;
+    between ioGeneratedCode .= " && " ;
+  end foreach ;
+  ioGeneratedCode .= ") {\n" ;
+  foreach mMatchInstructionBranchList do
+  
+  end foreach ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
