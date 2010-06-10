@@ -380,6 +380,16 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @onceFunctionDeclarationForGeneration appendDeclaration -> @string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
+    !mFunctionName
+    ![@formalInputParameterListForGeneration emptyList]
+    ![mReturnType identifierRepresentation]
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @semanticTypeForGeneration appendDeclaration -> @string outHeader :
   outHeader := [filewrapper semanticComponentGenerationTemplate.unifiedTypeHeader
     ![mTypeIndex key]
@@ -653,6 +663,24 @@ override reader @functionImplementationForGeneration appendSpecificImplementatio
       !mResultVariableCppName
     ]
     !mFormalArgumentList
+    ![mReturnType identifierRepresentation]
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @onceFunctionDeclarationForGeneration appendSpecificImplementation -> @string outImplementation :
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.functionImplementation
+    !mFunctionName
+    !generateFunction [
+      !"function_" . [mFunctionName identifierRepresentation]
+      ![@formalInputParameterListForGeneration emptyList]
+      !mFunctionInstructionList
+      !"C_Compiler"
+      ![mReturnType key]
+      !mResultVariableCppName
+    ]
+    ![@formalInputParameterListForGeneration emptyList]
     ![mReturnType identifierRepresentation]
   ] ; 
 end reader ;

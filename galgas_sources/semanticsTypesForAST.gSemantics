@@ -552,11 +552,12 @@ class @functionDeclarationAST extends @externFunctionDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @lazyFunctionDeclarationAST extends @semanticDeclarationAST {
+class @onceFunctionDeclarationAST extends @semanticDeclarationAST {
   @lstring mFunctionName ;
   @lstring mResultTypeName ;
   @lstring mResultVariableName ;
   @semanticInstructionListAST mFunctionInstructionList ;
+  @location mEndOfFunctionInstructionList ;
 }
 
 #---------------------------------------------------------------------------*

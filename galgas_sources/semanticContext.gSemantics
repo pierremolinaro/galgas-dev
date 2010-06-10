@@ -1310,10 +1310,9 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lazyFunctionDeclarationAST enterType
+override method @onceFunctionDeclarationAST enterType
   ?!@semanticContext ioSemanticContext
 :
-#  message "@lazyFunctionDeclarationAST enterType\n" ;
 #--- Result type
   @unifiedTypeMapProxy resultTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mResultTypeName string] ?resultTypeIndex] ;

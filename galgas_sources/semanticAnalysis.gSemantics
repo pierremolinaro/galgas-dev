@@ -817,6 +817,39 @@ override method @functionDeclarationAST performSemanticAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @onceFunctionDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Analyse function body  
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  @unifiedTypeMapProxy returnType ;
+  @string resultVariableCppName ;
+  analyzeFunctionBody
+    !inSemanticContext
+    !inPredefinedTypes
+    ![@formalInputParameterListAST emptyList]
+    !mFunctionInstructionList
+    !mResultVariableName
+    !mResultTypeName
+    !mEndOfFunctionInstructionList
+    ?*
+    ?returnType
+    ?resultVariableCppName
+    ?semanticInstructionListForGeneration
+  ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@onceFunctionDeclarationForGeneration new
+    ![mFunctionName string]
+    !returnType
+    !resultVariableCppName
+    !semanticInstructionListForGeneration
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    P R E D E F I N E D    T Y P E S                                       *
 #                                                                           *
