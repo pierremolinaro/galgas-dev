@@ -189,12 +189,14 @@ rule <semantic_declaration>
     <semantic_instruction_list> ? mRoutineInstructionList ;
     $end$ ;
     $once$ ;
+    const @location endOfFunctionInstructionList := here ;
     $;$ ;
-    ioSemanticDeclarations->mSemanticDeclarationList += ![@lazyFunctionDeclarationAST new
+    ioSemanticDeclarations->mSemanticDeclarationList += ![@onceFunctionDeclarationAST new
       !mRoutineName
       !resultTypeName
       !resultVariableName
       !mRoutineInstructionList
+      !endOfFunctionInstructionList
     ] ;
   end select ;
 end rule ;

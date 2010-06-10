@@ -505,12 +505,12 @@ class @functionImplementationForGeneration extends @functionPrototypeDeclaration
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#class @lazyFunctionDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @lstring mFunctionName ;
-#  @lstring mResultTypeName ;
-#  @lstring mResultVariableName ;
-#  @semanticInstructionListForGeneration mFunctionInstructionList ;
-#}
+class @onceFunctionDeclarationForGeneration extends @semanticDeclarationForGeneration {
+  @string mFunctionName ;
+  @unifiedTypeMapProxy mReturnType ;
+  @string mResultVariableCppName ;
+  @semanticInstructionListForGeneration mFunctionInstructionList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
