@@ -494,12 +494,13 @@ routine analyzeConstructorInvocation
   ??@lstring inConstructorName
   ??@semanticExpressionListAST inConstuctorEffectiveParameterExpressions
   !@unifiedTypeMapProxy outReturnedType
+  !@unifiedTypeMapProxy outConstructorType
   !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
   !@bool outHasCompilerArgument
 :
+  outConstructorType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !inTypeName] ;
 #--- Get constructor map from type map
-  @constructorMap constructorMap ;
-  [inSemanticContext->mTypeMap searchKey !inTypeName ?6* ?constructorMap ?14*] ;
+  const @constructorMap constructorMap := [outConstructorType mConstructorMap] ;
 #--- Search contructor
   @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
   with constructorMap hasKey ![inConstructorName string] do
@@ -556,6 +557,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 :
   @unifiedTypeMapProxy returnedType ;
+  @unifiedTypeMapProxy constructorType ;
   @semanticExpressionListForGeneration constructorEffectiveParameterList ;
   @bool hasCompilerArgument ;
   analyzeConstructorInvocation
@@ -566,6 +568,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
     !mConstructorName
     !mExpressions
     ?returnedType
+    ?constructorType
     ?constructorEffectiveParameterList
     ?hasCompilerArgument
   ;
@@ -573,6 +576,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
   outExpression := [@constructorExpressionForGeneration new
     !returnedType
     ![mConstructorName location]
+    !constructorType
     ![mConstructorName string]
     !constructorEffectiveParameterList
     !hasCompilerArgument
@@ -1617,6 +1621,14 @@ override method @castInExpressionAST analyzeSemanticExpression
         . "' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
         ;      
       end if ;
+      errorLocationExpression := [@readerCallExpressionForGeneration new
+        !inPredefinedTypes->mLocationType
+        !mEndOfErrorLocationExpression
+        !errorLocationExpression
+        !"location"
+        ![@semanticExpressionListForGeneration emptyList]
+        !mHasCompilerArgument
+      ] ;
     else
       error mEndOfErrorLocationExpression
       :"the error location expression type is '@" . [[errorLocationExpression mType] key]

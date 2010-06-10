@@ -344,6 +344,8 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
   template functionImplementation "function-implementation.cpp.gTemplate"
     ?@string FUNCTION_NAME
     ?@string FUNCTION_IMPLEMENTATION
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@string RETURN_TYPE_IDENTIFIER
   ;
 }
 
@@ -650,6 +652,8 @@ override reader @functionImplementationForGeneration appendSpecificImplementatio
       ![mReturnType key]
       !mResultVariableCppName
     ]
+    !mFormalArgumentList
+    ![mReturnType identifierRepresentation]
   ] ; 
 end reader ;
 

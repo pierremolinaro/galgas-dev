@@ -1124,14 +1124,14 @@ override method @classDeclarationAST enterType
     end if ;
   #--- Mark all modifiers as inherited
     modifierMap := [@modifierMap emptyMap] ;
-    foreach inheritedModifierMap do
-      [!?modifierMap insertKey
-        !lkey
-        !mParameterList
-        !mHasCompilerArgument
-        ![@readerQualifier isInherited]
-      ] ; 
-    end foreach ;
+#    foreach inheritedModifierMap do
+#      [!?modifierMap insertKey
+#        !lkey
+#        !mParameterList
+#        !mHasCompilerArgument
+#        ![@readerQualifier isInherited]
+#      ] ; 
+#    end foreach ;
   #--- Mark all readers as inherited
     readerMap := [@readerMap emptyMap] ;
     foreach inheritedReaderMap do
@@ -1143,16 +1143,6 @@ override method @classDeclarationAST enterType
         ![@readerQualifier isInherited]
       ] ; 
     end foreach ;
-  #--- Add reader to access super object
-#    if (not mIsAbstract) & ([mSuperClassName string] != "class") then
-#      [!?readerMap insertKey
-#        !mSuperClassName
-#        ![@unifiedTypeMapProxyList emptyList]
-#        !false
-#        !superClassIndex
-#        ![@readerQualifier isBasic]
-#      ] ;
-#    end if ;
   end if ;
 #--- Build attribute Map and constructor argument list
   @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
@@ -1244,14 +1234,18 @@ override method @classDeclarationAST enterType
       !attributeTypeIndex # Returned type
       ![@readerQualifier isBasic]
     ] ;
-  #--- set...attribute modifier
-    [!?modifierMap insertKey
-      ![@lstring new !"set". [mAttributeName stringByCapitalizingFirstCharacter] !here]
-      ![@formalParameterSignature listWithValue !attributeTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
-      !false # No compiler argument
-      ![@readerQualifier isBasic]
-    ] ; 
   end foreach ;
+  #--- set...attribute modifier
+  if not mIsAbstract then
+    foreach allTypedAttributeList do
+      [!?modifierMap insertKey
+        ![@lstring new !"set". [mAttributeName stringByCapitalizingFirstCharacter] !here]
+        ![@formalParameterSignature listWithValue !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+        !false # No compiler argument
+        ![@readerQualifier isBasic]
+      ] ; 
+    end foreach ;
+  end if ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mClassTypeName

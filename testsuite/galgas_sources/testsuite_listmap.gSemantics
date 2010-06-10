@@ -39,7 +39,7 @@ routine testsuite_listmap :
   message "--- test foreach for listmap\n" ;
   foreach m do
     log key ;
-    log object ;
+    log mList ;
   end foreach ;
 end routine ;
 

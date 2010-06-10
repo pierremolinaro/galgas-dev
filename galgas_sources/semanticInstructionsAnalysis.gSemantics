@@ -111,6 +111,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     !mConstructorName
     !mConstructorExpressions
     ?returnedType
+    ?*
     ?constructorEffectiveParameterList
     ?hasCompilerArgument
   ;
@@ -226,6 +227,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@assignmentInstructionForGeneration new
+    !targetType
     !targetVariableCppName
     !mStructAttributeList
     !expression
@@ -1658,6 +1660,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
             :"a type that inherits from '@" . [[mExpression mType] key] . "' class is expected here"
             ;
           end if ;
+          matchListForGeneration += !true ![mTypeNameOrEnumerationConstantName string] ![mLocalConstantName string] ;
         elsif [type mTypeKindEnum] == [@typeKindEnum enumType] then
           if mIsType then
             error mTypeNameOrEnumerationConstantName
@@ -1668,10 +1671,14 @@ override method @matchInstructionAST analyzeSemanticInstruction
             :"the '" . mTypeNameOrEnumerationConstantName . "' symbol is not a constant of the '@" . [[mExpression mType] key] . "' enumeration type"
             ;
           end if ;
+          matchListForGeneration +=
+            !false
+            ![mTypeNameOrEnumerationConstantName string]
+            ![[mExpression mType] key]
+          ;
         else
-        
+          error mTypeNameOrEnumerationConstantName: "internal error" ;
         end if ;
-        matchListForGeneration += !mIsType ![mTypeNameOrEnumerationConstantName string] ![mLocalConstantName string] ;
       end foreach ;
     else
       error mEndOfMatchEntryList
