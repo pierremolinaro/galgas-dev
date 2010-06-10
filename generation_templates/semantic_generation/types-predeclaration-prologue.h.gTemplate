@@ -14,6 +14,7 @@
 #include "strings/C_String.h"
 #include "collections/TC_Array.h"
 #include "galgas-utilities/C_LocationInSource.h"
+#include "galgas-utilities/C_galgas_function_descriptor.h"
 #include "bdd/C_BDD.h"
 
 //---------------------------------------------------------------------------*

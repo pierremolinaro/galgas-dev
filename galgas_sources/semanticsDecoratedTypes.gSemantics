@@ -85,13 +85,13 @@ class @literalUInt64ExpressionForGeneration extends @semanticExpressionForGenera
   @uint64 mValue ;
 }
 
-##---------------------------------------------------------------------------*
+#---------------------------------------------------------------------------*
 
 class @literalSIntExpressionForGeneration extends @semanticExpressionForGeneration {
   @sint mValue ;
 }
 
-##---------------------------------------------------------------------------*
+#---------------------------------------------------------------------------*
 
 class @literalSInt64ExpressionForGeneration extends @semanticExpressionForGeneration {
   @sint64 mValue ;
@@ -100,12 +100,13 @@ class @literalSInt64ExpressionForGeneration extends @semanticExpressionForGenera
 #---------------------------------------------------------------------------*
 
 class @constructorExpressionForGeneration extends @semanticExpressionForGeneration {
+  @unifiedTypeMapProxy mConstructorType ;
   @string mConstructorName ;
   @semanticExpressionListForGeneration mEffectiveParameterList ;
   @bool mHasCompilerArgument ;
 }
 
-##---------------------------------------------------------------------------*
+#---------------------------------------------------------------------------*
 
 class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
@@ -550,6 +551,7 @@ class @localVariableOrConstantDeclarationWithConstructorCallForGeneration extend
 #---------------------------------------------------------------------------*
 
 class @assignmentInstructionForGeneration extends @semanticInstructionForGeneration {
+  @unifiedTypeMapProxy mTargetType ;
   @string mTargetCppName ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionForGeneration mSourceExpression ;

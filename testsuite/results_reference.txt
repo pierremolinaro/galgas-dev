@@ -1,7 +1,3 @@
-*************************************** GALGAS 2 Tests
-*** Test on list
-LOGGING 'n':<@uint:2>
-*** GALGAS 2 Test Done
 *************************************** begin of foreach instruction test 1
   before
   do 'a'
@@ -162,7 +158,7 @@ LOGGING mm: <listmap @myListMap (5 objects):
 >
 --- test foreach for listmap
 LOGGING key: <@string:"a">
-LOGGING object: <list @aList 3 objects 
+LOGGING mList: <list @aList 3 objects 
 |-at 0 
 | |-<@string:"b">
 | |-<@uint:23>
@@ -174,7 +170,7 @@ LOGGING object: <list @aList 3 objects
 | |-<@uint:14>
 >
 LOGGING key: <@string:"b">
-LOGGING object: <list @aList 3 objects 
+LOGGING mList: <list @aList 3 objects 
 |-at 0 
 | |-<@string:"z">
 | |-<@uint:9>
@@ -186,13 +182,13 @@ LOGGING object: <list @aList 3 objects
 | |-<@uint:19>
 >
 LOGGING key: <@string:"c">
-LOGGING object: <list @aList 1 object 
+LOGGING mList: <list @aList 1 object 
 |-at 0 
 | |-<@string:"f">
 | |-<@uint:11>
 >
 LOGGING key: <@string:"d">
-LOGGING object: <list @aList 1 object 
+LOGGING mList: <list @aList 1 object 
 |-at 0 
 | |-<@string:"g">
 | |-<@uint:37>

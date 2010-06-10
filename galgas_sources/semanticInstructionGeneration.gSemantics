@@ -206,10 +206,31 @@ override method @assignmentInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @assignmentInstructionForGeneration\n" ;
   @string sourceVar ;
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
-  foreach mStructAttributeList do
-    ioGeneratedCode .= "(TO DO handle field in @assignmentInstructionForGeneration)\n" ;
-  end foreach ;
-  ioGeneratedCode .= mTargetCppName . " = " . sourceVar . " ;\n" ;
+  @string receiverCppName := mTargetCppName ;
+  @string okVar := "" ;
+  if [mStructAttributeList length] > 0 then
+    okVar := "ok_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+    ioGeneratedCode .= "bool " . okVar . " = " . mTargetCppName . ".isValid () ;  // Handle field access\n" ;
+    @string accessorPath := mTargetCppName ;
+    foreach mStructAttributeList do
+      accessorPath .= ".ptr (HERE)->mAttribute_" . [mValue identifierRepresentation] ;
+      ioGeneratedCode .= "if (" . okVar . ") {\n"
+                      .  "  " . okVar . " = " . accessorPath . ".isValid () ;\n"
+                      .  "}\n" ;
+    end foreach ;
+    const @string nullVar := "nullVar_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+    ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " " . nullVar . " ;\n" ;
+    receiverCppName := "modifierReceiver_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+    ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " & " . receiverCppName . " = "
+                    . okVar . " ? (" . accessorPath . ") : " . nullVar . "  ;\n" ;
+  end if ;
+
+
+
+#  foreach mStructAttributeList do
+#    ioGeneratedCode .= "(TO DO handle field in @assignmentInstructionForGeneration)\n" ;
+#  end foreach ;
+  ioGeneratedCode .= receiverCppName . " = " . sourceVar . " ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName] ;
 end method ;
 
@@ -770,7 +791,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= "//--- complex foreach instruction\n" ;
   #--- Index
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGASap_uint " . mIndexVariableCppName . " = GALGAS_uint::constructor_new (0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "GALGASap_uint " . mIndexVariableCppName . " ((PMUInt32) 0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     const @string boolVarCppName := "bool_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
     if whileExpressionIsAllwaysTrue then
@@ -852,7 +873,7 @@ override method @foreachInstructionForGeneration generateInstruction
   else #----- foreach instruction without 'before', 'after', while expression
     ioGeneratedCode .= "//--- simple foreach instruction\n" ;
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGASap_uint " . mIndexVariableCppName . " (0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "GALGASap_uint " . mIndexVariableCppName . " ((PMUInt32) 0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     ioGeneratedCode .= "while (" ;
     foreach mEnumeratedObjectList
@@ -962,9 +983,38 @@ override method @matchInstructionForGeneration generateInstruction
     between ioGeneratedCode .= " && " ;
   end foreach ;
   ioGeneratedCode .= ") {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
   foreach mMatchInstructionBranchList do
-  
+    ioGeneratedCode .= "if (" ;
+    foreach mMatchListForGeneration, receiverList do
+      if mIsType then
+        ioGeneratedCode .= "(NULL != dynamic_cast <GALGAS_" . [mTypeNameOrEnumerationConstantName identifierRepresentation]
+                        . " *> (" . mValue . ".ptr (HERE)))" ;
+      else
+        ioGeneratedCode .= "(" . mValue . ".ptr (HERE)->enumValue () == GALGAS_"
+                        . [mLocalConstantName identifierRepresentation]
+                        . "::kEnum_" . [mTypeNameOrEnumerationConstantName identifierRepresentation] . ")" ;
+      end if ;
+      between ioGeneratedCode .= " && " ;
+    end foreach ;
+    ioGeneratedCode .= ") {\n" ;
+    generateInstructionList
+      !mMatchBranchInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !?ioGeneratedCode
+    ;
+  between ioGeneratedCode .= "}else " ;
   end foreach ;
+  ioGeneratedCode .= "}else{\n" ;
+  generateInstructionList
+    !mElseInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
   ioGeneratedCode .= "}\n" ;
 end method ;
 
