@@ -28,15 +28,28 @@ class GALGASap_%!TYPE_IDENTIFIER% : public GALGASap_%!SUPER_TYPE_IDENTIFIER% {
   end if
 end if
 
+if TYPE_IDENTIFIER == "bool" then
+%//--------------------------------- Comparison constructor
+  public : GALGASap_bool (const enumGalgasComparison inComparisonKind,
+                          const PMSInt32 inComparisonResult
+                          COMMA_LOCATION_ARGS) ;
+%
+
+end if
+
 %//--- Assignment operator
   public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
 
 //--- Get pointer  
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) ;
+    public : const GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) const ;
   #else
     public : inline GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) {
       return (GALGAS_%!TYPE_IDENTIFIER% *) mPtr ;
+    }
+    public : inline const GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) const {
+      return (const GALGAS_%!TYPE_IDENTIFIER% *) mPtr ;
     }
   #endif
 

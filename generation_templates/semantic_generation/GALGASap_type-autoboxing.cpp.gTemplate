@@ -1,0 +1,44 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_NAME . " auto boxing" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_%!TYPE_IDENTIFIER% & inSource) :
+%
+foreach CURRENT_ATTRIBUTE_LIST do
+  %mAttribute_%![mAttributeName identifierRepresentation]% (inSource.mAttribute_%![mAttributeName identifierRepresentation]%)%
+  between %,\n%!^
+end foreach
+% {
+}
+
+//---------------------------------------------------------------------------*
+
+GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSource) :
+%
+foreach CURRENT_ATTRIBUTE_LIST do
+  %mAttribute_%![mAttributeName identifierRepresentation]% ()%
+  between %,\n%!^
+end foreach
+% {
+  const GALGAS_object * object = inSource.ptrNoVerif () ;
+  if (NULL != object) {
+    macroValidObject (object, const GALGAS_%!TYPE_IDENTIFIER%) ;
+    const GALGAS_%!TYPE_IDENTIFIER% * p = (GALGAS_%!TYPE_IDENTIFIER% *) object ;
+%
+  foreach CURRENT_ATTRIBUTE_LIST do
+    %    mAttribute_%![mAttributeName identifierRepresentation]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  end foreach
+%  }
+}
+
+%
+foreach CURRENT_ATTRIBUTE_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% readerCall_%![mAttributeName identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & inObject\n%
+                                                         !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
+  %  return inObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %}\n\n%
+end foreach
+%

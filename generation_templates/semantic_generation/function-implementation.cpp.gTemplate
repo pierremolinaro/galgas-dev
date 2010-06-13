@@ -5,7 +5,6 @@
 //---------------------------------------------------------------------------*
 
 %!FUNCTION_IMPLEMENTATION%
-
 //---------------------------------------------------------------------------*
 //  Introspection                                                            *
 //---------------------------------------------------------------------------*
@@ -35,11 +34,12 @@ static GALGASap_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepr
 %  foreach FORMAL_ARGUMENT_LIST do index IDX
      %    GALGASap_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_THERE) ;\n%
    end foreach
-%    result = function_%![FUNCTION_NAME identifierRepresentation]% (%
+%    GALGASap_%!RETURN_TYPE_IDENTIFIER% r = function_%![FUNCTION_NAME identifierRepresentation]% (%
      foreach FORMAL_ARGUMENT_LIST do index IDX
        %operand%![IDX string]%, %
      end foreach
      %inCompiler COMMA_THERE) ;
+    result = r.ptrNoVerif () ;
   }
   return result ;
 }

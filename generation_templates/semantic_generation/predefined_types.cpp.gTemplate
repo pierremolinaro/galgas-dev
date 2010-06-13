@@ -3,3 +3,41 @@
 #include "galgas2/predefined-types.h"
 #include "galgas-utilities/C_Compiler.h"
 
+//---------------------------------------------------------------------------*
+
+class cCollectionElement_stringset : public cCollectionElement {
+//--- Attribute
+  public : GALGASap_lstring mAttribute_key ;
+
+//--- Constructor
+  protected : cCollectionElement_stringset (GALGASap_string & inKey
+                                            COMMA_LOCATION_ARGS) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+cCollectionElement_stringset::cCollectionElement_stringset (GALGASap_string & inKey
+                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mAttribute_key (inKey) {
+}
+
+//---------------------------------------------------------------------------*
+
+class cCollectionElement_data : public cCollectionElement {
+//--- Attribute
+  public : GALGASap_uint mAttribute_data ;
+
+//--- Constructor
+  protected : cCollectionElement_data (GALGASap_uint & inData
+                                       COMMA_LOCATION_ARGS) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+cCollectionElement_data::cCollectionElement_data (GALGASap_uint & inData
+                                                  COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mAttribute_data (inData) {
+}
+

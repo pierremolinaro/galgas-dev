@@ -343,8 +343,8 @@ routine compileSemanticsComponent
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendAutoPointerClassImplementation] ;
-      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       implementationString .= [mDeclaration appendSpecificImplementation] ;
+      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
     end foreach ;
     [@string generateFile
       !inOutputDirectory

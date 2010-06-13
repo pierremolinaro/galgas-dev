@@ -59,6 +59,15 @@ end if
 
 //---------------------------------------------------------------------------*
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  const GALGAS_%!TYPE_IDENTIFIER% * GALGASap_%!TYPE_IDENTIFIER%::ptr (LOCATION_ARGS) const {
+    macroValidObjectThere (mPtr, const GALGAS_%!TYPE_IDENTIFIER%) ;
+    return (const GALGAS_%!TYPE_IDENTIFIER% *) mPtr ;
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+
 GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) :
 GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSourcePtr) {
 }

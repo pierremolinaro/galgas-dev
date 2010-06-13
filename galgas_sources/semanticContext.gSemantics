@@ -1066,7 +1066,7 @@ override method @structDeclarationAST enterType
     ![@enumerationDescriptorList emptyList]
     !generateVirtualDestructor []
       | generateCppConstructorWithCurrentAttributeList []
-      | generateDescriptionReaderUtilityMethod []
+      | generateDescriptionReaderUtilityMethod [] | autoBoxing []
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]

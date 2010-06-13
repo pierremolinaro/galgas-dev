@@ -255,6 +255,18 @@
 		CF31B5420DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5440DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5460DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
+		CF337C9811C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
+		CF337C9911C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
+		CF337C9A11C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
+		CF337C9B11C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
+		CF337C9C11C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
+		CF337C9D11C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
+		CF337CB311C3FAAF007E7736 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
+		CF337CB411C3FAAF007E7736 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
+		CF337CB511C3FAAF007E7736 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
+		CF337CB611C3FAAF007E7736 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
+		CF337CB711C3FAAF007E7736 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
+		CF337CB811C3FAAF007E7736 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
 		CF34D4B911ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
 		CF34D4BA11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
 		CF34D4BB11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
@@ -1683,6 +1695,10 @@
 		CF2DEAA61101C4C400AE8D35 /* semanticsTypeFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsTypeFeatures.h; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
+		CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = capCollectionElementArray.cpp; sourceTree = "<group>"; };
+		CF337C9711C3F8C7007E7736 /* capCollectionElementArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capCollectionElementArray.h; sourceTree = "<group>"; };
+		CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cCollectionElement.cpp; sourceTree = "<group>"; };
+		CF337CB211C3FAAF007E7736 /* cCollectionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCollectionElement.h; sourceTree = "<group>"; };
 		CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = programComponentCompilation.cpp; sourceTree = "<group>"; };
 		CF34D4B811ABD1EA0020730A /* programComponentCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = programComponentCompilation.h; sourceTree = "<group>"; };
 		CF3CDED011B1A69000AD26B4 /* cRootObjectArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cRootObjectArray.cpp; sourceTree = "<group>"; };
@@ -2903,6 +2919,10 @@
 		CFA5890010D285C800B7E541 /* galgas2 */ = {
 			isa = PBXGroup;
 			children = (
+				CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */,
+				CF337CB211C3FAAF007E7736 /* cCollectionElement.h */,
+				CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */,
+				CF337C9711C3F8C7007E7736 /* capCollectionElementArray.h */,
 				CF8C3E1111B400EC0093C2BD /* GALGASap_object.cpp */,
 				CF8C3E1011B400EC0093C2BD /* GALGASap_object.h */,
 				CF24DF09114C29F300ACF6DE /* GALGAS_object.cpp */,
@@ -4215,6 +4235,8 @@
 				CF22211811AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CF3CDED211B1A69000AD26B4 /* cRootObjectArray.cpp in Sources */,
 				CF8C3E1411B400EC0093C2BD /* GALGASap_object.cpp in Sources */,
+				CF337C9811C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */,
+				CF337CB311C3FAAF007E7736 /* cCollectionElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4449,6 +4471,8 @@
 				CF22211A11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CF3CDED411B1A69000AD26B4 /* cRootObjectArray.cpp in Sources */,
 				CF8C3E1511B400EC0093C2BD /* GALGASap_object.cpp in Sources */,
+				CF337C9A11C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */,
+				CF337CB511C3FAAF007E7736 /* cCollectionElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4683,6 +4707,8 @@
 				CF22211B11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CF3CDED511B1A69000AD26B4 /* cRootObjectArray.cpp in Sources */,
 				CF8C3E1211B400EC0093C2BD /* GALGASap_object.cpp in Sources */,
+				CF337C9B11C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */,
+				CF337CB611C3FAAF007E7736 /* cCollectionElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4956,6 +4982,8 @@
 				CF22211911AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CF3CDED311B1A69000AD26B4 /* cRootObjectArray.cpp in Sources */,
 				CF8C3E1311B400EC0093C2BD /* GALGASap_object.cpp in Sources */,
+				CF337C9911C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */,
+				CF337CB411C3FAAF007E7736 /* cCollectionElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5190,6 +5218,8 @@
 				CF22211C11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CF3CDED611B1A69000AD26B4 /* cRootObjectArray.cpp in Sources */,
 				CF8C3E1611B400EC0093C2BD /* GALGASap_object.cpp in Sources */,
+				CF337C9C11C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */,
+				CF337CB711C3FAAF007E7736 /* cCollectionElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5424,6 +5454,8 @@
 				CF22211D11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CF3CDED711B1A69000AD26B4 /* cRootObjectArray.cpp in Sources */,
 				CF8C3E1711B400EC0093C2BD /* GALGASap_object.cpp in Sources */,
+				CF337C9D11C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */,
+				CF337CB811C3FAAF007E7736 /* cCollectionElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -198,12 +198,26 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
+  template autoBoxingClassHeader "GALGASap_type-autoboxing.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@uint SUPPORTED_OPERATORS
+    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
+  ;
+
   template autoPointerClassImplementation "GALGASap_type.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
     ?@uint SUPPORTED_OPERATORS
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
+  ;
+
+  template autoBoxingClassImplementation "GALGASap_type-autoboxing.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@uint SUPPORTED_OPERATORS
+    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
   ;
 
   template genericTypeHeader "generic-type.h.gTemplate"
@@ -438,6 +452,13 @@ end reader ;
 override reader @semanticTypeForGeneration appendAutoPointerClassDeclaration -> @string outHeader :
   if [mTypeIndex key] == "object" then
     outHeader := "" ;
+  elsif ([mTypeIndex mHandledOperatorFlags] & autoBoxing []) != 0 then
+    outHeader := [filewrapper semanticComponentGenerationTemplate.autoBoxingClassHeader
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      ![mTypeIndex mHandledOperatorFlags]
+      ![mTypeIndex mCurrentTypedAttributeList]
+    ] ;
   else
     outHeader := [filewrapper semanticComponentGenerationTemplate.autoPointerClassHeader
       ![mTypeIndex key]
@@ -464,6 +485,13 @@ end reader ;
 override reader @semanticTypeForGeneration appendAutoPointerClassImplementation -> @string outImplementation :
   if [mTypeIndex key] == "object" then
     outImplementation := "" ;
+  elsif ([mTypeIndex mHandledOperatorFlags] & autoBoxing []) != 0 then
+    outImplementation := [filewrapper semanticComponentGenerationTemplate.autoBoxingClassImplementation
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      ![mTypeIndex mHandledOperatorFlags]
+      ![mTypeIndex mCurrentTypedAttributeList]
+    ] ;
   else
     outImplementation := [filewrapper semanticComponentGenerationTemplate.autoPointerClassImplementation
       ![mTypeIndex key]

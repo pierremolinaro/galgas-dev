@@ -53,7 +53,7 @@ end if
 
 if (SUPPORTED_OPERATORS & generateCppConstructorWithCurrentAttributeList []) != 0 then%
 //--------------------------------- C++ constructor (with current attributes)\n%
-  %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
+  %  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach CURRENT_TYPE_ATTRIBUTE_LIST
     do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
     between %,\n%!^
@@ -67,7 +67,7 @@ end if
 
 if (SUPPORTED_OPERATORS & generateCppConstructorWithAllAttributeList []) != 0 then%
 //--------------------------------- C++ constructor\n%
-  %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
+  %  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach INHERITED_ATTRIBUTE_LIST
     do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
     between %,\n%!^
@@ -472,8 +472,8 @@ end if
 
 if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
 %//--------------------------------- Comparison
-  public : static PMSInt32 objectCompare (GALGASap_object & inOperand1,
-                                          GALGASap_object & inOperand2) ;
+  public : static PMSInt32 objectCompare (const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+                                          const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) ;
 %end if%
 //--------------------------------- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
@@ -491,22 +491,22 @@ end foreach
 
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 %//--------------------------------- Enumeration helper methods
-  protected : virtual void populateEnumerationArray (cRootObjectArray & ioEnumerationArray,
+  protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                                      const bool inAscending) ;
 
 %end if
 
 if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
 %//--------------------------------- Abstract method for comparing two sorted list elements
-  protected : virtual PMSInt32 compareSortedListElements (cRootObjectArray & inLeftAttributeList,
-                                                          cRootObjectArray & inRightAttributeList) const ;
+  protected : virtual PMSInt32 compareSortedListElements (const capCollectionElement & inLeftAttributeList,
+                                                          const capCollectionElement & inRightAttributeList) const ;
 
 %end if
 
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
-    %  friend cRootObjectArray * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    %  friend capCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
     !^%GALGASap_%!TYPE_IDENTIFIER% & ioMap,\n%
     !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%
@@ -529,8 +529,12 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
   } ;
 %
 end if
-#---------------- END OF CLASS DECLARATION
-%} ;
+%  
+
+//--- Friend class
+  friend class GALGASap_%!TYPE_IDENTIFIER% ;
+} ;
+
 
 //--------------------------------- Reader invocation declaration
 %
@@ -554,7 +558,7 @@ end foreach
 %
 foreach MODIFIER_MAP do
   if mQualifier == [@readerQualifier isBasic] then
-    %  void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+    %void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
     foreach mParameterList do index IDX
       %,\n%!^
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -607,7 +611,7 @@ end foreach
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
-    %cRootObjectArray * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    %capCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
     !^%GALGASap_%!TYPE_IDENTIFIER% & ioMap,\n%
     !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%

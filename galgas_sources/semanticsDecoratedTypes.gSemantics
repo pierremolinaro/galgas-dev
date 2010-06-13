@@ -1271,7 +1271,8 @@ class @structTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 list @sortDescriptorListForGeneration {
-  @uint mAttributeIndex ;
+  @unifiedTypeMapProxy mAttributeTypeIndex ;
+  @string mAttributeName ;
   @bool mAscendingOrder ;
 }
 
