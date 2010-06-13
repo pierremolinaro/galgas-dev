@@ -1,4 +1,87 @@
 //---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Class for element of '@" . TYPE_IDENTIFIER . "' list" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
+//--- List attributes
+%
+    foreach ATTRIBUTE_LIST
+      do %  public : GALGASap_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    end foreach
+%
+//--- Constructor
+  public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^
+  foreach ATTRIBUTE_LIST
+    do %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+%) ;
+
+//--- Virtual method For comparing elements
+  public : virtual PMSInt32 compare (const cCollectionElement * inOperand) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^
+  foreach ATTRIBUTE_LIST
+    do %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+%) :
+cCollectionElement (HERE)%
+foreach ATTRIBUTE_LIST
+  do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
+end foreach
+% {
+}
+
+//---------------------------------------------------------------------------*
+
+bool cCollectionElement_%!TYPE_IDENTIFIER%::isValid (void) const {
+  return %
+    foreach ATTRIBUTE_LIST
+      do %mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
+      between % && %
+    end foreach
+  % ;
+}
+
+//---------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
+    foreach ATTRIBUTE_LIST
+      do %mAttribute_%![mAttributeName identifierRepresentation]
+      between %, %
+    end foreach
+  %)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+PMSInt32 cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) {
+  cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
+  PMSInt32 result = 0 ;
+%  foreach ATTRIBUTE_LIST do
+     %  if (0 == result) {\n%
+     %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%, operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+     %  }\n%
+   end foreach
+%  return result ;
+}
+
+//---------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * kFieldList_%!TYPE_IDENTIFIER% [%![[ATTRIBUTE_LIST length] string]%] = {
 %  foreach ATTRIBUTE_LIST
@@ -11,19 +94,22 @@ static const C_galgas_type_descriptor * kFieldList_%!TYPE_IDENTIFIER% [%![[ATTRI
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
-GALGAS_sortedlist (%![[ATTRIBUTE_LIST length] string]%, kFieldList_%!TYPE_IDENTIFIER% COMMA_THERE) {
+GALGAS_sortedlist (kFieldList_%!TYPE_IDENTIFIER% COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%cRootObjectArray & inLeftAttributeList,
-                                                %!^%cRootObjectArray & inRightAttributeList) const {
+PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%const capCollectionElement & inLeftAttributeList,
+                                                %!^%const capCollectionElement & inRightAttributeList) const {
   PMSInt32 result = 0 ;
+  const cCollectionElement_%!TYPE_IDENTIFIER% * p1 = (const cCollectionElement_%!TYPE_IDENTIFIER% *) inLeftAttributeList.ptrNoVerif () ;
+  macroValidObject (p1, const cCollectionElement_%!TYPE_IDENTIFIER% *) ;
+  const cCollectionElement_%!TYPE_IDENTIFIER% * p2 = (const cCollectionElement_%!TYPE_IDENTIFIER% *) inRightAttributeList.ptrNoVerif () ;
+  macroValidObject (p2, const cCollectionElement_%!TYPE_IDENTIFIER% *) ;
 % foreach SORT_ATTRIBUTE_LIST do
     %  if (result == 0) {\n%
-    %    GALGASap_object object1 = inLeftAttributeList.objectAtIndex (%![mAttributeIndex string]% COMMA_HERE) ;\n%
-    %    GALGASap_object object2 = inRightAttributeList.objectAtIndex (%![mAttributeIndex string]% COMMA_HERE) ;\n%
-    %    result = % if mAscendingOrder then else %- % end if%genericObjectCompareFunction (mFieldTypeList [%![mAttributeIndex string]%], object1, object2) ;\n%
+    %    result = % if mAscendingOrder then else %- % end if
+    %GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (p1->mAttribute_%![mAttributeName identifierRepresentation]%, p2->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
     %  }\n%
   end foreach
 %  return result ;
@@ -57,13 +143,15 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWit
   end foreach
   %\n%!COL0%COMMA_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE) ;
-  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+  cCollectionElement * p = NULL ;
+  macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
   foreach ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]
   between %, %
   end foreach
-%} ;
-  result.ptr (HERE)->addObject (attributeArray) ;
+  %)) ;
+  capCollectionElement attributes (p) ;
+  result.ptr (HERE)->addObject (attributes) ;
   return result ;
 }
 
@@ -77,13 +165,15 @@ void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
     %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (ioResult.isValid ()) {
     GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_HERE) ;
-    GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
     foreach ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %
     end foreach
-    %} ;
-    ioResult.ptr (HERE)->addObject (attributeArray) ;
+    %)) ;
+    capCollectionElement attributes (p) ;
+    ioResult.ptr (HERE)->addObject (attributes) ;
   }
 }
 
@@ -120,16 +210,22 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
   end foreach
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeSmallestObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  if (NULL == p) {
 %
-  foreach ATTRIBUTE_LIST do index IDX
-    %  outOperand%![IDX string] %.drop () ;\n%
+ foreach ATTRIBUTE_LIST do index IDX
+    %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
-%  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
-  removeSmallestObject (attributeArray, inCompiler COMMA_THERE) ;\n%
-  foreach ATTRIBUTE_LIST do index IDX
-%  outOperand%![IDX string]% = attributeArray [%![IDX string]%] ;\n%
+%  }else{
+    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+%
+ foreach ATTRIBUTE_LIST do index IDX
+    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
-%}
+%  }
+}
 
 //---------------------------------------------------------------------------*
 
@@ -139,16 +235,22 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
   end foreach
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeGreatestObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  if (NULL == p) {
 %
-  foreach ATTRIBUTE_LIST do index IDX
-    %  outOperand%![IDX string] %.drop () ;\n%
+ foreach ATTRIBUTE_LIST do index IDX
+    %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
-%  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
-  removeGreatestObject (attributeArray, inCompiler COMMA_THERE) ;\n%
-  foreach ATTRIBUTE_LIST do index IDX
-%  outOperand%![IDX string]% = attributeArray [%![IDX string]%] ;\n%
+%  }else{
+    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+%
+ foreach ATTRIBUTE_LIST do index IDX
+    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
-%}
+%  }
+}
 
 //---------------------------------------------------------------------------*
 
@@ -158,20 +260,22 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
   end foreach
      %C_Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  smallestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  if (NULL == p) {
 %
-  foreach ATTRIBUTE_LIST do index IDX
-    %  outOperand%![IDX string] %.drop () ;\n%
+ foreach ATTRIBUTE_LIST do index IDX
+    %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
-%  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
-    foreach ATTRIBUTE_LIST
-      do %NULL%
-      between %, %
-    end foreach %} ;
-  smallestObjectAttributeList (attributeArray, inCompiler COMMA_THERE) ;
-%  foreach ATTRIBUTE_LIST do index IDX
-%  outOperand%![IDX string]% = attributeArray [%![IDX string]%] ;\n%
+%  }else{
+    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+%
+ foreach ATTRIBUTE_LIST do index IDX
+    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
-%}
+%  }
+}
 
 //---------------------------------------------------------------------------*
 
@@ -181,14 +285,20 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
   end foreach
      %C_Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  greatestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  if (NULL == p) {
 %
-  foreach ATTRIBUTE_LIST do index IDX
-    %  outOperand%![IDX string] %.drop () ;\n%
+ foreach ATTRIBUTE_LIST do index IDX
+    %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
-%  GALGASap_object attributeArray [%![[ATTRIBUTE_LIST length] string]%] ;
-  greatestObjectAttributeList (attributeArray, inCompiler COMMA_THERE) ;
-%  foreach ATTRIBUTE_LIST do index IDX
-%  outOperand%![IDX string]% = attributeArray [%![IDX string]%] ;\n%
+%  }else{
+    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+%
+ foreach ATTRIBUTE_LIST do index IDX
+    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
-%}
+%  }
+}
 

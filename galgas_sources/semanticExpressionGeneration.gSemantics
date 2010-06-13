@@ -449,8 +449,8 @@ override method @equalExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (operator_isEqual (& kTypeDescriptor_GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . ", "
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (kOperator_isEqual, GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . "::objectCompare ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -470,8 +470,8 @@ override method @notEqualExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (operator_isNotEqual (& kTypeDescriptor_GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . ", "
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (kOperator_isNotEqual, GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . "::objectCompare ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -491,8 +491,8 @@ override method @lowerOrEqualExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (operator_infOrEqual (& kTypeDescriptor_GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . ", "
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (kOperator_infOrEqual, GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . "::objectCompare ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -512,8 +512,8 @@ override method @greaterOrEqualExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (operator_supOrEqual (& kTypeDescriptor_GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . ", "
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (kOperator_supOrEqual, GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . "::objectCompare ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -533,8 +533,8 @@ override method @strictGreaterExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (operator_strictSup (& kTypeDescriptor_GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . ", "
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (kOperator_strictSup, GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . "::objectCompare ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -554,8 +554,8 @@ override method @strictLowerExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (operator_strictInf (& kTypeDescriptor_GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . ", "
-                   . leftTemporaryOperand . ", " . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGASap_bool " . outCppName . " (kOperator_strictInf, GALGAS_" . [[mLeftExpression mType] identifierRepresentation] . "::objectCompare ("
+                   . leftTemporaryOperand . ", " . rightTemporaryOperand . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

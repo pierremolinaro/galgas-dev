@@ -1,0 +1,48 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_NAME . " auto boxing" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGASap_%!TYPE_IDENTIFIER% {
+//--- Public attributes
+%
+  foreach CURRENT_ATTRIBUTE_LIST do
+    %  public : GALGASap_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  end foreach
+
+%
+//--- Default constructor
+  public : GALGASap_%!TYPE_IDENTIFIER% (void) ;
+
+//--- Copy constructor
+  public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
+
+//--- Assignment operator
+  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
+
+//--- IsValid
+  public : bool isValid (void) const ;
+
+//--- Drop
+  public : void drop (void) ;
+
+//--------------------------------- C++ constructor (with native attributes)\n%
+%  public : GALGASap_%!TYPE_IDENTIFIER% (%?^
+foreach CURRENT_ATTRIBUTE_LIST do
+  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+  between %,\n%!^
+end foreach
+%\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+%
+
+//--- Construction from root object
+  public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSourceObject) ;
+
+//--- Assignment from root object
+  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_object & inSourceObject) ;
+
+//--- Return object pointer
+  public : GALGAS_object * ptrNoVerif (void) ;
+} ;
+

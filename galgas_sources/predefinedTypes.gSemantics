@@ -332,8 +332,8 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendAutoPointerClassImplementation] ;
-        generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
         generatedCode .= [mDeclaration appendSpecificImplementation] ;
+        generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFile

@@ -8,6 +8,17 @@
 
 //---------------------------------------------------------------------------*
 
+typedef enum {
+  kOperator_isEqual,
+  kOperator_isNotEqual,
+  kOperator_infOrEqual,
+  kOperator_supOrEqual,
+  kOperator_strictSup,
+  kOperator_strictInf
+} enumGalgasComparison ;
+  
+//---------------------------------------------------------------------------*
+
 %
 foreach TYPE_LIST do
   %class GALGAS_%![key identifierRepresentation]% ;\n%

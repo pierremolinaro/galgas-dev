@@ -207,29 +207,9 @@ override method @assignmentInstructionForGeneration generateInstruction
   @string sourceVar ;
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   @string receiverCppName := mTargetCppName ;
-  @string okVar := "" ;
-  if [mStructAttributeList length] > 0 then
-    okVar := "ok_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "bool " . okVar . " = " . mTargetCppName . ".isValid () ;  // Handle field access\n" ;
-    @string accessorPath := mTargetCppName ;
-    foreach mStructAttributeList do
-      accessorPath .= ".ptr (HERE)->mAttribute_" . [mValue identifierRepresentation] ;
-      ioGeneratedCode .= "if (" . okVar . ") {\n"
-                      .  "  " . okVar . " = " . accessorPath . ".isValid () ;\n"
-                      .  "}\n" ;
-    end foreach ;
-    const @string nullVar := "nullVar_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " " . nullVar . " ;\n" ;
-    receiverCppName := "modifierReceiver_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " & " . receiverCppName . " = "
-                    . okVar . " ? (" . accessorPath . ") : " . nullVar . "  ;\n" ;
-  end if ;
-
-
-
-#  foreach mStructAttributeList do
-#    ioGeneratedCode .= "(TO DO handle field in @assignmentInstructionForGeneration)\n" ;
-#  end foreach ;
+  foreach mStructAttributeList do
+    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+  end foreach ;
   ioGeneratedCode .= receiverCppName . " = " . sourceVar . " ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName] ;
 end method ;
@@ -603,32 +583,10 @@ override method @addAssignInstructionForGeneration generateInstruction
   end foreach ;
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
-#  foreach mStructAttributeList do
-#    ioGeneratedCode .= "(handle fields)\n" ;
-#  end foreach ;
-
-
   @string receiverCppName := mReceiverCppName ;
-  @string okVar := "" ;
-  if [mStructAttributeList length] > 0 then
-    okVar := "ok_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "bool " . okVar . " = " . mReceiverCppName . ".isValid () ;  // Handle field access\n" ;
-    @string accessorPath := mReceiverCppName ;
-    foreach mStructAttributeList do
-      accessorPath .= ".ptr (HERE)->mAttribute_" . [mValue identifierRepresentation] ;
-      ioGeneratedCode .= "if (" . okVar . ") {\n"
-                      .  "  " . okVar . " = " . accessorPath . ".isValid () ;\n"
-                      .  "}\n" ;
-    end foreach ;
-    const @string nullVar := "nullVar_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " " . nullVar . " ;\n" ;
-    receiverCppName := "modifierReceiver_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " & " . receiverCppName . " = "
-                    . okVar . " ? (" . accessorPath . ") : " . nullVar . "  ;\n" ;
-  end if ;
-
-
-
+  foreach mStructAttributeList do
+    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+  end foreach ;
 #--- Call add assign (+=) operator
   ioGeneratedCode .= "addAssign_operation (" . receiverCppName ;
   foreach parameterList do
@@ -647,11 +605,12 @@ override method @incrementInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @incrementInstructionForGeneration\n" ;
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
+  @string receiverCppName := mReceiverCppName ;
   foreach mStructAttributeList do
-    ioGeneratedCode .= "(handle fields)\n" ;
+    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
   end foreach ;
 #--- Invoke incrementation
-  ioGeneratedCode .= "increment_operation (" . mReceiverCppName
+  ioGeneratedCode .= "increment_operation (" . receiverCppName
                   . ", " . compilerCppName []
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
@@ -667,11 +626,12 @@ override method @decrementInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @decrementInstructionForGeneration\n" ;
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
+  @string receiverCppName := mReceiverCppName ;
   foreach mStructAttributeList do
-    ioGeneratedCode .= "(handle fields)\n" ;
+    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
   end foreach ;
 #--- Invoke incrementation
-  ioGeneratedCode .= "decrement_operation (" . mReceiverCppName
+  ioGeneratedCode .= "decrement_operation (" . receiverCppName
                   . ", " . compilerCppName []
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
@@ -743,8 +703,9 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @readWriteWithInstructionForGeneration\n" ;
+  @string receiverCppName := mReceiverVariableCppName ;
   foreach mStructAttributeList do
-    ioGeneratedCode .= "(handle fields)\n" ;
+    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
   end foreach ;
 #--- key expression
   @string keyVarCppName ;
@@ -755,8 +716,10 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName] ;
-  ioGeneratedCode .= "cRootObjectArray * " . mObjectArrayCppName . " = readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
-                  .  ", " . mReceiverVariableCppName . ", " . keyVarCppName . " COMMA_HERE) ;\n"
+  ioGeneratedCode .= "cCollectionElement_" . [mReceiverType identifierRepresentation]
+                  . " * " . mObjectArrayCppName . " = (cCollectionElement_" . [mReceiverType identifierRepresentation]
+                  . " *) readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
+                  .  ", " . receiverCppName . ", " . keyVarCppName . " COMMA_HERE) ;\n"
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n" ;
   generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   if [mElseBranchInstructions length] > 0 then

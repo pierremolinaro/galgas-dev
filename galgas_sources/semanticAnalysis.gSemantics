@@ -85,7 +85,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 map @attributeIndexMap {
-  @uint mIndex ;
+  @unifiedTypeMapProxy mAttributeTypeIndex ;
   insert insertKey error message "the '%K' attribute is already declared" ;
   search searchKey error message "the '%K' attribute is not declared" ;
 }
@@ -100,11 +100,12 @@ override method @listDeclarationAST performSemanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
+    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     typedAttributeList +=
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !t
       !mAttributeName
     ;
-    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
+    [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
@@ -124,19 +125,20 @@ override method @sortedListDeclarationAST performSemanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
+    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     typedAttributeList +=
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !t
       !mAttributeName
     ;
-    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
+    [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
 #--- Sort descriptor
   @stringset attributesUsedForSorting [emptySet] ;
   @sortDescriptorListForGeneration sortDescriptorList [emptyList] ;
   foreach mSortDescriptorList do
-    @uint attributeIndex ;
-    [attributeMap searchKey !mSortedAttributeName ?attributeIndex] ;
-    sortDescriptorList += !attributeIndex !mAscending ;
+    @unifiedTypeMapProxy type ;
+    [attributeMap searchKey !mSortedAttributeName ?type] ;
+    sortDescriptorList += !type ![mSortedAttributeName string] !mAscending ;
     if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
       error mSortedAttributeName : "the '" . mSortedAttributeName . "' is already used for sorting" ;
     end if ;
@@ -161,11 +163,12 @@ override method @structDeclarationAST performSemanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
+    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     typedAttributeList +=
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !t
       !mAttributeName
     ;
-    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
+    [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
@@ -285,11 +288,12 @@ override method @mapDeclarationAST performSemanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
+    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     typedAttributeList +=
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !t
       !mAttributeName
     ;
-    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
+    [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
 #--- Enter insert modifiers
   @insertMethodMap insertMethodMap [emptyMap] ;
@@ -600,15 +604,16 @@ override method @classDeclarationAST performSemanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
+    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     typedAttributeList +=
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !t
       !mAttributeName
     ;
     allAttributeList +=
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName]
+      !t
       !mAttributeName
     ;
-    [!?attributeMap insertKey !mAttributeName ![attributeMap count]] ;
+    [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
 #------ Check a method is defined once within class
   @declaredMethodMap classMethodMap [emptyMap] ;
