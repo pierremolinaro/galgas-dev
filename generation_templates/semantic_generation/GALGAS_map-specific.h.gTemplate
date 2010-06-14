@@ -27,5 +27,8 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElementForMap {
 
 //--- Virtual method that returns a copy of current object
   public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) ;
 } ;
 

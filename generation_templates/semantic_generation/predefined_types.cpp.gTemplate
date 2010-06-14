@@ -33,6 +33,13 @@ cCollectionElement * cCollectionElement_stringset::copy (void) {
   return p ;
 }
 
+
+//---------------------------------------------------------------------------*
+
+void cCollectionElement_stringset::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) {
+//  mAttribute_key.description (ioString, inIndentation) ;
+}
+
 //---------------------------------------------------------------------------*
 
 cCollectionElement_data::cCollectionElement_data (GALGASap_uint & inData
@@ -61,5 +68,11 @@ cCollectionElement * cCollectionElement_data::copy (void) {
   cCollectionElement_data * p = NULL ;
   macroMyNew (p, cCollectionElement_data (mAttribute_data COMMA_HERE)) ;
   return p ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cCollectionElement_data::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) {
+//  mAttribute_key.description (ioString, inIndentation) ;
 }
 

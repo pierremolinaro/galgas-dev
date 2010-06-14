@@ -28,6 +28,9 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -69,6 +72,15 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   % COMMA_HERE)) ;
   return result ;
 }
+
+//---------------------------------------------------------------------------*
+
+void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) {
+%
+  foreach ATTRIBUTE_LIST
+    do %// mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+  end foreach
+%}
 
 //---------------------------------------------------------------------------*
 

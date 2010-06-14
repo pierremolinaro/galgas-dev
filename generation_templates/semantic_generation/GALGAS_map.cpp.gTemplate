@@ -41,6 +41,15 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //---------------------------------------------------------------------------*
 
+void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) {
+%
+  foreach ATTRIBUTE_LIST
+    do %// mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+  end foreach
+%}
+
+//---------------------------------------------------------------------------*
+
 enumComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) {
   cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
   enumComparisonResult result = GALGAS_lstring::objectCompare (mAttribute_lkey, operand->mAttribute_lkey) ;
