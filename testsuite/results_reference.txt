@@ -21,16 +21,6 @@
   between
   do 'b'
   after
---- begin of foreach instruction test 5
-  before (idx: 0)
-  do 'a' (idx: 0)
-  between (idx: 1)
-  do 'b' (idx: 1)
-  between (idx: 2)
-  do 'c' (idx: 2)
-  between (idx: 3)
-  do 'd' (idx: 3)
-  after (idx: 4)
 --- begin of foreach instruction test 6
   do 'a' (idx: 0)
   do 'b' (idx: 1)
@@ -44,7 +34,7 @@ LOGGING s: <@string:"d">
 --- test .= operator on list
 LOGGING s: <@string:"d">
 *************************************** begin of struct logging
-LOGGING s: <struct @struct
+LOGGING s: <struct @structTest
 | mString <@string:"az">
 | mInt <@uint:34>
 >
@@ -223,26 +213,10 @@ LOGGING m: <map @aMap 1 object
 *************************************** begin of function test
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
-*************************************** begin of domain test
---- relation
-  A2 B0
-  A0 B1
-  A0 B2
-  A2 B5
-  A2 B7
-  A16 B7
---- triple
-  A0 B1 C0
-  A2 B7 C0
-  A0 B2 C1
-  A16 B7 C1
-  A2 B0 C2
-  A2 B5 C3
 *************************************** begin of introspection test
---- Type list (45 types)
+--- Type list (44 types)
   @A
   @B
-  @MyDomain
   @aList
   @aMap
   @binaryset
@@ -277,7 +251,7 @@ LOGGING r: <@uint:5>
   @string3list
   @stringlist
   @stringset
-  @struct
+  @structTest
   @system
   @type
   @typelist
@@ -292,6 +266,4 @@ Function 'foo' exists:false
 Function 'functionTest' exists:true
 LOGGING object: <@object: <@uint:2>>
 LOGGING y: <@uint:2>
-LOGGING t: <@type: @uint>
-LOGGING t: <@type: @B>
 LOGGING result: <@object: <@uint:8>>
