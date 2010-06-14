@@ -30,9 +30,11 @@ end if
 
 if TYPE_IDENTIFIER == "bool" then
 %//--------------------------------- Comparison constructor
-  public : GALGASap_bool (const enumGalgasComparison inComparisonKind,
-                          const PMSInt32 inComparisonResult
+  public : GALGASap_bool (const enumComparisonKind,
+                          const enumComparisonResult
                           COMMA_LOCATION_ARGS) ;
+
+
 %
 
 end if

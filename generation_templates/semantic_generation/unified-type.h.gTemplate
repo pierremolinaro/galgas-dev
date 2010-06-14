@@ -472,8 +472,8 @@ end if
 
 if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
 %//--------------------------------- Comparison
-  public : static PMSInt32 objectCompare (const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
-                                          const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) ;
+  public : static enumComparisonResult objectCompare (const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+                                                      const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) ;
 %end if%
 //--------------------------------- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
@@ -482,7 +482,10 @@ if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
 foreach NATIVE_ATTRIBUTE_LIST do
   %  private : %if mIsConst then %const % end if !mCppClassName % % if mIsPointer then %* % end if !mAttributeName% ;\n%
   if [mGetterName length] > 0 then
-    %  public : inline %if mIsConst then %const % end if!mCppClassName % % if mIsPointer then % * % end if !mGetterName% (void) const { return %!mAttributeName% ; }\n%
+    if not mIsConst then
+      %  public : inline %!mCppClassName % % if mIsPointer then % * % end if !mGetterName% (void) { return %!mAttributeName% ; }\n%
+    end if
+    %  public : inline const %!mCppClassName % % if mIsPointer then % * % end if !mGetterName% (void) const { return %!mAttributeName% ; }\n%
   end if
 end foreach
 foreach PRIVATE_DATA_NUMBER_TYPED_LIST do
@@ -498,8 +501,8 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 
 if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
 %//--------------------------------- Abstract method for comparing two sorted list elements
-  protected : virtual PMSInt32 compareSortedListElements (const capCollectionElement & inLeftAttributeList,
-                                                          const capCollectionElement & inRightAttributeList) const ;
+  protected : virtual enumComparisonResult compareSortedListElements (const capCollectionElement & inLeftAttributeList,
+                                                                      const capCollectionElement & inRightAttributeList) const ;
 
 %end if
 

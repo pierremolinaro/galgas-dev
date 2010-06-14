@@ -1470,11 +1470,11 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap beginOverrideForSelectBlock] ;
 #--- 'do' branch
   @localInitializedVariableList localInitializedVariableList [emptyList] ;
-  foreach [targetType mCurrentTypedAttributeList] index IDX do
+  foreach [targetType mCurrentTypedAttributeList] do
     localInitializedVariableList +=
       !mAttributeTypeIndex
       ![@lstring new ![mPrefix string] . mAttributeName ![mAccessName location]]
-      !"* ((GALGASap_" . [mAttributeTypeIndex identifierRepresentation] . " *) " . objectArrayCppName . "->pointerAtIndex (" . [IDX+1 string] . " /* " . [mAttributeName identifierRepresentation] . " */ COMMA_HERE))"
+      !objectArrayCppName . "->mAttribute_" . [mAttributeName identifierRepresentation]
     ;
   end foreach ;
   @semanticInstructionListForGeneration do_instructionList ;

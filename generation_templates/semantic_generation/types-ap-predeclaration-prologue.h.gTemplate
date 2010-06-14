@@ -9,14 +9,14 @@
 //---------------------------------------------------------------------------*
 
 typedef enum {
-  kOperator_isEqual,
-  kOperator_isNotEqual,
-  kOperator_infOrEqual,
-  kOperator_supOrEqual,
-  kOperator_strictSup,
-  kOperator_strictInf
-} enumGalgasComparison ;
-  
+  kIsEqual,
+  kIsNotEqual,
+  kIsSupOrEqual,
+  kIsInfOrEqual,
+  kIsStrictSup,
+  kIsStrictInf
+} enumComparisonKind ;
+
 //---------------------------------------------------------------------------*
 
 %

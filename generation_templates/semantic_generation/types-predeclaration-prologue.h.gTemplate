@@ -19,6 +19,46 @@
 
 //---------------------------------------------------------------------------*
 
+class cCollectionElement_stringset : public cCollectionElement {
+//--- Attribute
+  public : GALGASap_string mAttribute_key ;
+
+//--- Constructor
+  public : cCollectionElement_stringset (GALGASap_string & inKey
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method for comparing elements
+  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+class cCollectionElement_data : public cCollectionElement {
+//--- Attribute
+  public : GALGASap_uint mAttribute_data ;
+
+//--- Constructor
+  public : cCollectionElement_data (GALGASap_uint & inData
+                                    COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method for comparing elements
+  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
 class C_galgas_function_descriptor ;
 class C_galgas_type_descriptor ;
 class C_SourceTextInString ;
