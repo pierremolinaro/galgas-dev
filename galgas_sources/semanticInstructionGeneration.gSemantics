@@ -883,6 +883,19 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @logInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @logInstructionForGeneration\n" ;
+  @string logVar ;
+  [mLogExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?logVar] ;
+  ioGeneratedCode .= logVar . ".log (" . [mLogMessage utf8Representation] . ") ;\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @switchInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet

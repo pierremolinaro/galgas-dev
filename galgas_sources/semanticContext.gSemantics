@@ -439,12 +439,12 @@ override method @mapDeclarationAST enterType
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
   enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] ![mMapTypeName string] !false ;
 #--- Readers
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyList" !"lstringlist" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
   enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"overriddenMap" ![mMapTypeName string] !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
@@ -1356,12 +1356,15 @@ override method @listmapDeclarationAST enterType
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"string" ?stringTypeIndex] ;
 #--- readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keyList" !"stringlist" !false ;
+  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"listForKey" !"string" ![mAssociatedListTypeName string] !false ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mListmapTypeName string] !false ;
 #--- Enumerator description
   @enumerationDescriptorList enumeratorDescriptor [emptyList] ;
   enumeratorDescriptor += !stringTypeIndex !"key" ;
-  enumeratorDescriptor += !associatedListTypeIndex !"value" ;
+  enumeratorDescriptor += !associatedListTypeIndex !"mList" ;
 #--- Add assign operator description
   @unifiedTypeMapProxyList addAssignOperatorDescription [emptyList] ;
   addAssignOperatorDescription += !stringTypeIndex ;
@@ -1385,7 +1388,7 @@ override method @listmapDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumeratorDescriptor
-    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
+    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList [] | binaryConcatOperator [] | dotAssignOperator []
     !addAssignOperatorDescription
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
