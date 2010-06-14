@@ -298,6 +298,11 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+  template mapTypeSpecificDeclaration "GALGAS_map-specific.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
   template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
@@ -469,6 +474,26 @@ override reader @semanticTypeForGeneration appendAutoPointerClassDeclaration -> 
     ] ;
   end if ;
 end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    S P E C I F I C    D E C L A R A T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationForGeneration appendSpecificDeclaration -> @string outHeader :
+  outHeader := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapTypeForGeneration appendSpecificDeclaration ->@string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.mapTypeSpecificDeclaration
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+ end reader ;
+
 
 #---------------------------------------------------------------------------*
 #                                                                           *

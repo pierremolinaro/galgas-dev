@@ -33,8 +33,7 @@ foreach CURRENT_ATTRIBUTE_LIST do
   %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   between %,\n%!^
 end foreach
-%\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
-%
+%) ;
 
 //--- Construction from root object
   public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSourceObject) ;

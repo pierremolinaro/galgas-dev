@@ -296,6 +296,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       ] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendAutoPointerClassDeclaration] ;
+        generatedCode .= [mDeclaration appendSpecificDeclaration] ;
       end foreach ;
       generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderEpilogue
       ] ;

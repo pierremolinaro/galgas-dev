@@ -17,10 +17,11 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
     do %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
-%) ;
+%\n%
+!^%COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method For comparing elements
-  public : virtual PMSInt32 compare (const cCollectionElement * inOperand) ;
+//--- Virtual method for comparing elements
+  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -36,8 +37,9 @@ cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?
     do %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
-%) :
-cCollectionElement (HERE)%
+%\n%
+!^%COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE)%
 foreach ATTRIBUTE_LIST
   do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
 end foreach
@@ -64,17 +66,17 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
       do %mAttribute_%![mAttributeName identifierRepresentation]
       between %, %
     end foreach
-  %)) ;
+  % COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
-PMSInt32 cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) {
+enumComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) {
   cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  PMSInt32 result = 0 ;
+  enumComparisonResult result = kOperandEqual ;
 %  foreach ATTRIBUTE_LIST do
-     %  if (0 == result) {\n%
+     %  if (kOperandEqual == result) {\n%
      %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%, operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
      %  }\n%
    end foreach
@@ -120,7 +122,7 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue
   do index IDX %inOperand%![IDX string]
   between %, %
   end foreach
-  %)) ;
+  % COMMA_THERE)) ;
   capCollectionElement attributes (p) ;
   result.ptr (HERE)->addObject (attributes) ;
   return result ;
@@ -152,7 +154,7 @@ void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
     do index IDX %inOperand%![IDX string]
     between %, %
     end foreach
-    %)) ;
+    % COMMA_THERE)) ;
     capCollectionElement attributes (p) ;
     ioResult.ptr (HERE)->addObject (attributes) ;
   }
@@ -165,7 +167,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
   do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
   between %,\n%!^
   end foreach
-  %\n%!^%COMMA_UNUSED_LOCATION_ARGS) {
+  %\n%!^%COMMA_LOCATION_ARGS) {
   if (%
     foreach ATTRIBUTE_LIST
       do index IDX %inOperand%![IDX string]%.isValid ()%
@@ -178,7 +180,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
     do index IDX %inOperand%![IDX string]
     between %, %
     end foreach
-    %)) ;
+    % COMMA_THERE)) ;
     capCollectionElement attributes (p) ;
     prependAttributeArray (attributes) ;
   }

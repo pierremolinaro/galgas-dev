@@ -738,7 +738,7 @@ override method @enumDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
-    !generateDescriptionReaderUtilityMethod []
+    !generateDescriptionReaderUtilityMethod [] | isComparable []
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     !constantSet

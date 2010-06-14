@@ -100,11 +100,11 @@ end foreach
 
 %//---------------------------------------------------------------------------*
 
-PMSInt32 GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
                         %!^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {
-   PMSInt32 result = 0 ;
+   enumComparisonResult result = kOperandEqual ;
 %foreach ATTRIBUTE_LIST do
-  %  if (result == 0) {\n%
+  %  if (result == kOperandEqual) {\n%
   %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
   %  }\n%
 end foreach

@@ -4,38 +4,13 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElementForMap {
-//--- Map attributes
-%
-    foreach ATTRIBUTE_LIST
-      do %  public : GALGASap_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-    end foreach
-%
-//--- Constructor
-  public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^%GALGASap_lstring & inKey%
-  foreach ATTRIBUTE_LIST
-    do %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
-  end foreach
-%) ;
-
-//--- Virtual method For comparing elements
-  public : virtual PMSInt32 compare (const cCollectionElement * inOperand) ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-} ;
-
-//---------------------------------------------------------------------------*
-
 cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^%GALGASap_lstring & inKey%
   foreach ATTRIBUTE_LIST
     do %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   end foreach
-%) :
-cCollectionElementForMap (inKey)%
+%\n%
+!^%COMMA_LOCATION_ARGS) :
+cCollectionElementForMap (inKey COMMA_THERE)%
 foreach ATTRIBUTE_LIST
   do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
 end foreach
@@ -60,17 +35,17 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
     foreach ATTRIBUTE_LIST
       do %, mAttribute_%![mAttributeName identifierRepresentation]
     end foreach
-  %)) ;
+  % COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
-PMSInt32 cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) {
+enumComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) {
   cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  PMSInt32 result = GALGAS_lstring::objectCompare (mAttribute_lkey, operand->mAttribute_lkey) ;
+  enumComparisonResult result = GALGAS_lstring::objectCompare (mAttribute_lkey, operand->mAttribute_lkey) ;
 %  foreach ATTRIBUTE_LIST do
-     %  if (0 == result) {\n%
+     %  if (kOperandEqual == result) {\n%
      %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%, operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
      %  }\n%
    end foreach
