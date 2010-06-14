@@ -35,6 +35,9 @@ class cCollectionElement_stringset : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -55,6 +58,9 @@ class cCollectionElement_data : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) ;
 } ;
 
 //---------------------------------------------------------------------------*
