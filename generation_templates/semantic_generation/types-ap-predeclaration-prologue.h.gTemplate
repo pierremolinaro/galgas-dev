@@ -22,6 +22,7 @@ typedef enum {
 %
 foreach TYPE_LIST do
   %class GALGAS_%![key identifierRepresentation]% ;\n%
+  %class GALGASap_%![key identifierRepresentation]% ;\n%
 end foreach
 %class C_Compiler ;
 

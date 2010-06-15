@@ -193,16 +193,45 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
   template autoPointerClassHeader "GALGASap_type.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
+    ?@bool IS_CONCRETE # false if abstract class
+    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
+    ?@typeKindEnum TYPE_KIND
+    ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
+    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
+    ?@constructorMap CONSTRUCTOR_MAP
+    ?@readerMap READER_MAP
+    ?@modifierMap MODIFIER_MAP
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
+    ?@classMethodMap CLASS_METHOD_MAP
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@uint SUPPORTED_OPERATORS
+    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
+    ?@lstringlist ENUM_CONSTANT_LIST
+    ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
+    ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
 
   template autoBoxingClassHeader "GALGASap_type-autoboxing.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@uint SUPPORTED_OPERATORS
+    ?@bool IS_CONCRETE # false if abstract class
+    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
+    ?@typeKindEnum TYPE_KIND
     ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
+    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
+    ?@constructorMap CONSTRUCTOR_MAP
+    ?@readerMap READER_MAP
+    ?@modifierMap MODIFIER_MAP
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
+    ?@classMethodMap CLASS_METHOD_MAP
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
+    ?@uint SUPPORTED_OPERATORS
+    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
+    ?@lstringlist ENUM_CONSTANT_LIST
+    ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
+    ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
 
   template autoPointerClassImplementation "GALGASap_type.cpp.gTemplate"
@@ -251,7 +280,6 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@lstringlist ENUM_CONSTANT_LIST
     ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
     ?@withAccessorMap WITH_ACCESSOR_MAP
-
   ;
 
   template unifiedTypeImplementation "unified-type.cpp.gTemplate"
@@ -461,16 +489,45 @@ override reader @semanticTypeForGeneration appendAutoPointerClassDeclaration -> 
     outHeader := [filewrapper semanticComponentGenerationTemplate.autoBoxingClassHeader
       ![mTypeIndex key]
       ![mTypeIndex identifierRepresentation]
-      ![mTypeIndex mHandledOperatorFlags]
+      ![mTypeIndex mIsConcrete]
+      ![mTypeIndex mSuperType]
+      ![mTypeIndex mTypeKindEnum]
       ![mTypeIndex mCurrentTypedAttributeList]
+      ![mTypeIndex mInheritedTypedAttributeList]
+      ![mTypeIndex mConstructorMap]
+      ![mTypeIndex mReaderMap]
+      ![mTypeIndex mModifierMap]
+      ![mTypeIndex mInstanceMethodMap]
+      ![mTypeIndex mClassMethodMap]
+      ![mTypeIndex mEnumerationDescriptor]
+      ![mTypeIndex mHandledOperatorFlags]
+      ![mTypeIndex mAddAssignOperatorArguments]
+      ![mTypeIndex mNativeAttributeList]
+      ![mTypeIndex mEnumConstantList]
+      ![mTypeIndex mPrivateDataMemberList]
+      ![mTypeIndex mWithAccessorMap]
     ] ;
   else
     outHeader := [filewrapper semanticComponentGenerationTemplate.autoPointerClassHeader
       ![mTypeIndex key]
       ![mTypeIndex identifierRepresentation]
-      ![[mTypeIndex mSuperType] identifierRepresentation]
+      ![mTypeIndex mIsConcrete]
+      ![mTypeIndex mSuperType]
+      ![mTypeIndex mTypeKindEnum]
+      ![mTypeIndex mCurrentTypedAttributeList]
+      ![mTypeIndex mInheritedTypedAttributeList]
+      ![mTypeIndex mConstructorMap]
+      ![mTypeIndex mReaderMap]
+      ![mTypeIndex mModifierMap]
+      ![mTypeIndex mInstanceMethodMap]
+      ![mTypeIndex mClassMethodMap]
+      ![mTypeIndex mEnumerationDescriptor]
       ![mTypeIndex mHandledOperatorFlags]
+      ![mTypeIndex mAddAssignOperatorArguments]
       ![mTypeIndex mNativeAttributeList]
+      ![mTypeIndex mEnumConstantList]
+      ![mTypeIndex mPrivateDataMemberList]
+      ![mTypeIndex mWithAccessorMap]
     ] ;
   end if ;
 end reader ;
