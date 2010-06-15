@@ -51,8 +51,8 @@ map @constructorMap {
 
 #---------------------------------------------------------------------------*
 
-enum @readerQualifier {
-  isAbstract, isBasic, isInherited, isOverriding, isOverridingAbstract
+enum @methodQualifier {
+  isAbstract, isBasic, isBasicFinal, isInherited, isOverriding, isOverridingAbstract
 }{
 }
 
@@ -66,7 +66,7 @@ map @readerMap {
   @unifiedTypeMapProxyList mArgumentTypeList ;
   @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
-  @readerQualifier mQualifier ;
+  @methodQualifier mQualifier ;
   insert insertKey error message "the '%K' reader is already declared" ;
   search searchKey error message "the '%K' reader is not declared" ;
   insert or replace ;
@@ -88,7 +88,7 @@ list @formalParameterSignature {
 map @modifierMap {
   @formalParameterSignature mParameterList ;
   @bool mHasCompilerArgument ;
-  @readerQualifier mQualifier ;
+  @methodQualifier mQualifier ;
   insert or replace ;
   insert insertKey error message "the '%K' modifier is already declared" ;
   search searchKey error message "the '%K' modifier is not declared" ;
@@ -104,7 +104,7 @@ map @instanceMethodMap {
   @formalParameterSignature mParameterList ;
   @location mDeclarationLocation ;
   @bool mHasCompilerArgument ;
-  @readerQualifier mQualifier ;
+  @methodQualifier mQualifier ;
   insert insertKey error message "the '%K' instance method is already declared" ;
   search searchKey error message "the '%K' instance method is not declared" ;
   search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class" ;

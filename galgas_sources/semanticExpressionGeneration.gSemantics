@@ -284,16 +284,23 @@ override method @readerCallExpressionForGeneration generateExpression
 #--- Generate Reader call
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation] . " " . outCppName
-                   . " (readerCall_" . [mReaderName identifierRepresentation] . " ("
-                   . receiverCppName ;
-  foreach readerArgumentCppNameList do
-    ioGeneratedCode .= ", " . mValue ;
+                   . " (" . receiverCppName . ".readerCall_" . [mReaderName identifierRepresentation] . " (" ;
+  foreach readerArgumentCppNameList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
   end foreach ;
-  if mHasCompilerArgument then
+  if [readerArgumentCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+      ioGeneratedCode .= compilerCppName [] . " COMMA_" ;
+    end if ;
+  elsif mHasCompilerArgument then
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-    ioGeneratedCode .= ", " . compilerCppName [] ;
+    ioGeneratedCode .= ", " . compilerCppName [] . " COMMA_" ;
+  else
+    ioGeneratedCode .= " COMMA_" ;
   end if ;
-  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

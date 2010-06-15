@@ -171,14 +171,15 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWit
 
 //---------------------------------------------------------------------------*
 
-void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+void GALGASap_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
+  do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
+  between %,\n%!^
   end foreach
 %
     %!^%COMMA_LOCATION_ARGS) {
-  if (ioResult.isValid ()) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_HERE) ;
+  if (isValid ()) {
+    GALGAS_%!TYPE_IDENTIFIER%::insulate (*this COMMA_HERE) ;
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
     foreach ATTRIBUTE_LIST
@@ -187,31 +188,29 @@ void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
     end foreach
     % COMMA_THERE)) ;
     capCollectionElement attributes (p) ;
-    ioResult.ptr (HERE)->addObject (attributes) ;
+    ptr (HERE)->addObject (attributes) ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
-void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,
-                          GALGASap_%!TYPE_IDENTIFIER% inOperand
-                          COMMA_LOCATION_ARGS) {
-  if (ioResult.isValid () && inOperand.isValid ()) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-    ioResult.ptr (HERE)->appendSortedList (inOperand.ptr (HERE)) ;
+void GALGASap_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% inOperand
+                          %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    GALGAS_%!TYPE_IDENTIFIER%::insulate (*this COMMA_THERE) ;
+    ptr (HERE)->appendSortedList (inOperand.ptr (HERE)) ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
-                                %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand
                                 %!^%COMMA_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result ;
-  if (inOperand1.isValid () && inOperand2.isValid ()) {
+  if (isValid () && inOperand.isValid ()) {
     result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE) ;
-    result.ptr (HERE)->appendSortedList (inOperand1.ptr (HERE)) ;
-    result.ptr (HERE)->appendSortedList (inOperand2.ptr (HERE)) ;
+    result.ptr (HERE)->appendSortedList (ptr (HERE)) ;
+    result.ptr (HERE)->appendSortedList (inOperand.ptr (HERE)) ;
   }
   return result ;
 }

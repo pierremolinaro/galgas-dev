@@ -468,7 +468,7 @@ override method @mapDeclarationAST enterType
         !mMethodName
         !insertMethodFormalArgumentList
         !true
-        ![@readerQualifier isBasic]
+        ![@methodQualifier isBasic]
       ] ;
     end if ;
   end foreach ;
@@ -481,7 +481,7 @@ override method @mapDeclarationAST enterType
         !mMethodName
         !removeMethodFormalArgumentList
         !true
-        ![@readerQualifier isBasic]
+        ![@methodQualifier isBasic]
       ] ;
     end if ;
   end foreach ;
@@ -492,7 +492,7 @@ override method @mapDeclarationAST enterType
       !removeMethodFormalArgumentList
       ![mMethodName location]
       !true
-      ![@readerQualifier isBasic]
+      ![@methodQualifier isBasic]
     ] ;
   end foreach ;
 #--- Enter "attributeForKey" readers
@@ -505,7 +505,7 @@ override method @mapDeclarationAST enterType
       ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]
       !true
       !attributeTypeIndex
-      ![@readerQualifier isBasic]
+      ![@methodQualifier isBasic]
     ] ;
   end foreach ;
 #---------- Handle "insertOrReplace" modifier
@@ -516,7 +516,7 @@ override method @mapDeclarationAST enterType
       ![@lstring new !"insertOrReplace" !insertOrReplaceLocation]
       !insertMethodFormalArgumentList
       !false
-      ![@readerQualifier isBasic]
+      ![@methodQualifier isBasic]
     ] ;
   end if ;
 #---------- Enter "set...Attribute...forKey" modifiers
@@ -531,7 +531,7 @@ override method @mapDeclarationAST enterType
       !accessorName
       !accessorFormalArgumentList
       !true
-      ![@readerQualifier isBasic]
+      ![@methodQualifier isBasic]
     ] ;
   end foreach ;
 #--- Enter 'with' accessors
@@ -662,7 +662,7 @@ override method @mapProxyDeclarationAST enterType
         ![@unifiedTypeMapProxyList emptyList]
         !true
         !mAttributeTypeIndex
-        ![@readerQualifier isBasic]
+        ![@methodQualifier isBasic]
       ] ;
     end if ;
   end foreach ;
@@ -828,7 +828,7 @@ override method @listDeclarationAST enterType
       ![@unifiedTypeMapProxyList listWithValue !uintType]
       !true
       !mAttributeTypeIndex
-      ![@readerQualifier isBasic]
+      ![@methodQualifier isBasic]
     ] ;
   end foreach ;
 #--- Modifiers
@@ -837,19 +837,19 @@ override method @listDeclarationAST enterType
     ![@lstring new !"popFirst" !here]
     !modifierOutputFormalArgumentList
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popLast" !here]
     !modifierOutputFormalArgumentList
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"prependValue" !here]
     !modifierInputFormalArgumentList
     !false
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
   foreach typedAttributeList do
     @formalParameterSignature setterFormalArgumentList [emptyList] ;
@@ -859,7 +859,7 @@ override method @listDeclarationAST enterType
       ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
       !setterFormalArgumentList
       !true
-      ![@readerQualifier isBasic]
+      ![@methodQualifier isBasic]
     ] ;
   end foreach ;
 #--- Instance methods
@@ -869,14 +869,14 @@ override method @listDeclarationAST enterType
     !modifierOutputFormalArgumentList
     !here
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"last" !here]
     !modifierOutputFormalArgumentList
     !here
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 #--- Enter in type map
   @unifiedTypeMapProxy superTypeProxy ;
@@ -949,13 +949,13 @@ override method @sortedListDeclarationAST enterType
     ![@lstring new !"popGreatest" !here]
     !modifierFormalArgumentList
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popSmallest" !here]
     !modifierFormalArgumentList
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
@@ -964,14 +964,14 @@ override method @sortedListDeclarationAST enterType
     !modifierFormalArgumentList
     !here
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"smallest" !here]
     !modifierFormalArgumentList
     !here
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 #--- Enter in type map
   @unifiedTypeMapProxy superTypeProxy ;
@@ -1035,13 +1035,13 @@ override method @structDeclarationAST enterType
   foreach mAttributeList do
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
-    [!?readerMap insertOrReplace
-      !mAttributeName
-      ![@unifiedTypeMapProxyList emptyList]
+    enterBaseFinalReaderWithoutArgument
+      !?readerMap
+      !?ioSemanticContext->mTypeMap 
+      ![mAttributeName string]
+      ![mAttributeTypeName string]
       !false
-      !attributeTypeIndex
-      ![@readerQualifier isBasic]
-    ] ;
+    ;
   end foreach ;
 #--- Modifiers
   @modifierMap modifierMap [emptyMap] ;
@@ -1129,7 +1129,7 @@ override method @classDeclarationAST enterType
 #        !lkey
 #        !mParameterList
 #        !mHasCompilerArgument
-#        ![@readerQualifier isInherited]
+#        ![@methodQualifier isInherited]
 #      ] ; 
 #    end foreach ;
   #--- Mark all readers as inherited
@@ -1140,7 +1140,7 @@ override method @classDeclarationAST enterType
         !mArgumentTypeList
         !mHasCompilerArgument
         !mReturnedType
-        ![@readerQualifier isInherited]
+        ![@methodQualifier isInherited]
       ] ; 
     end foreach ;
   end if ;
@@ -1176,7 +1176,7 @@ override method @classDeclarationAST enterType
       !mParameterList
       !mDeclarationLocation
       !mHasCompilerArgument
-      ![@readerQualifier isInherited]
+      ![@methodQualifier isInherited]
     ] ;
   end foreach ;
 #------------------------ Abstract methods
@@ -1188,14 +1188,14 @@ override method @classDeclarationAST enterType
       formalArgumentList += !typeIndex !mFormalArgumentPassingMode ;
     end foreach ;
     with !?instanceMethodMap hasKey ![mMethodName string] do
-      mQualifier := [@readerQualifier isOverridingAbstract] ;
+      mQualifier := [@methodQualifier isOverridingAbstract] ;
     else
       [!?instanceMethodMap insertKey
         !mMethodName
         !formalArgumentList
         ![mMethodName location]
         !true
-        ![@readerQualifier isAbstract]
+        ![@methodQualifier isAbstract]
       ] ;
       end with ;
   end foreach ;
@@ -1208,14 +1208,14 @@ override method @classDeclarationAST enterType
       formalArgumentList += !typeIndex !mFormalArgumentPassingMode ;
     end foreach ;
     with !?instanceMethodMap hasKey ![mMethodName string] do
-      mQualifier := [@readerQualifier isOverriding] ;
+      mQualifier := [@methodQualifier isOverriding] ;
     else
       [!?instanceMethodMap insertKey
         !mMethodName
         !formalArgumentList
         ![mMethodName location]
         !true
-        ![@readerQualifier isBasic]
+        ![@methodQualifier isBasic]
       ] ;
     end with ;
   end foreach ;
@@ -1232,7 +1232,7 @@ override method @classDeclarationAST enterType
       ![@unifiedTypeMapProxyList emptyList] # No argument
       !false # No Compiler argument
       !attributeTypeIndex # Returned type
-      ![@readerQualifier isBasic]
+      ![@methodQualifier isBasic]
     ] ;
   end foreach ;
   #--- set...attribute modifier
@@ -1242,7 +1242,7 @@ override method @classDeclarationAST enterType
         ![@lstring new !"set". [mAttributeName stringByCapitalizingFirstCharacter] !here]
         ![@formalParameterSignature listWithValue !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
         !false # No compiler argument
-        ![@readerQualifier isBasic]
+        ![@methodQualifier isBasic]
       ] ; 
     end foreach ;
   end if ;

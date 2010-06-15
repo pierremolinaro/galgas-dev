@@ -23,6 +23,26 @@ semantics semanticsReaders :
 
 #---------------------------------------------------------------------------*
 
+routine enterBaseFinalReaderWithoutArgument
+  ?!@readerMap ioReaderMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inReaderName
+  ??@string inReturnedTypeName
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @unifiedTypeMapProxy returnedTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  [!?ioReaderMap insertOrReplace
+    ![@lstring new !inReaderName !here]
+    ![@unifiedTypeMapProxyList emptyList]
+    !inHasLexiqueAndLocationArguments
+    !returnedTypeIndex
+    ![@methodQualifier isBasicFinal]
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine enterInheritedReaderWithoutArgument
   ?!@readerMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -37,7 +57,7 @@ routine enterInheritedReaderWithoutArgument
     ![@unifiedTypeMapProxyList emptyList]
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
-    ![@readerQualifier isInherited]
+    ![@methodQualifier isInherited]
   ] ;
 end routine ;
 
@@ -62,7 +82,7 @@ routine enterInheritedReaderWithArgument
     !argList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
-    ![@readerQualifier isInherited]
+    ![@methodQualifier isInherited]
   ] ;
 end routine ;
 
@@ -82,7 +102,7 @@ routine enterBaseReaderWithoutArgument
     ![@unifiedTypeMapProxyList emptyList]
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -107,7 +127,7 @@ routine enterBaseReaderWithArgument
     !argList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -135,7 +155,7 @@ routine enterBaseReaderWith2Arguments
     !argList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -166,7 +186,7 @@ routine enterBaseReaderWith3Arguments
     !argList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 

@@ -65,7 +65,6 @@ end routine ;
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
-#  ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object"] ; # Type, super type
   ioDeclarationListASTs += ![@objectPredefinedTypeAST new] ; # Type, super type
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"object"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"class" !"object"] ;

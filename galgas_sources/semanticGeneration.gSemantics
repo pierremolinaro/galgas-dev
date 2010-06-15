@@ -239,6 +239,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
     ?@uint SUPPORTED_OPERATORS
+    ?@readerMap READER_MAP
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
   ;
 
@@ -580,6 +581,7 @@ override reader @semanticTypeForGeneration appendAutoPointerClassImplementation 
       ![mTypeIndex identifierRepresentation]
       ![[mTypeIndex mSuperType] identifierRepresentation]
       ![mTypeIndex mHandledOperatorFlags]
+      ![mTypeIndex mReaderMap]
       ![mTypeIndex mNativeAttributeList]
     ] ;
   end if ;

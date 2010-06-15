@@ -149,7 +149,7 @@ override method @stringsetPredefinedTypeAST getModifierMap
     ![@lstring new !"removeKey" !here]
     ![@formalParameterSignature listWithValue !stringType ![@formalArgumentPassingModeAST argumentIn]]
     !false # No Compiler argument
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end method ;
 
