@@ -4,9 +4,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGASap_%!TYPE_IDENTIFIER% : public GALGASap_%!SUPER_TYPE_IDENTIFIER% {
+class GALGASap_%!TYPE_IDENTIFIER% : public GALGASap_%![SUPER_TYPE_INDEX identifierRepresentation]% {
 //--- Default constructor
-  public : inline GALGASap_%!TYPE_IDENTIFIER% (void) : GALGASap_%!SUPER_TYPE_IDENTIFIER% () {}
+  public : inline GALGASap_%!TYPE_IDENTIFIER% (void) : GALGASap_%![SUPER_TYPE_INDEX identifierRepresentation]% () {}
 
 //--- Copy constructor
   public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
@@ -38,6 +38,115 @@ if TYPE_IDENTIFIER == "bool" then
 %
 
 end if
+
+if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
+  %//--------------------------------- << and >> shift operators\n%
+  %public : GALGASap_%!TYPE_IDENTIFIER% left_shift_operation (%?^%GALGASap_uint & inShiftOperand\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+  %public : GALGASap_%!TYPE_IDENTIFIER% right_shift_operation (%?^%GALGASap_uint & inShiftOperand\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & dotAssignOperator []) != 0 then
+  %//--------------------------------- .= operator\n%
+  %public : void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% inOperand\n%
+  %                                   COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryAndOperator []) != 0 then
+  %//--------------------------------- & operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% operator_and (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryOrOperator []) != 0 then
+  %//--------------------------------- | operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% operator_or (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryXorOperator []) != 0 then
+  %//--------------------------------- ^ operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% operator_xor (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & unaryNotOperator []) != 0 then
+  %//--------------------------------- & operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% operator_not (LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & unaryTildeOperator []) != 0 then
+  %//--------------------------------- ~ operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% operator_tilde (LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryConcatOperator []) != 0 then
+  %//--------------------------------- . (concat) operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand\n%
+       !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryAddOperator []) != 0 then
+  %//--------------------------------- + operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% add_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binarySubOperator []) != 0 then
+  %//--------------------------------- - operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% substract_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryMulOperator []) != 0 then
+  %//--------------------------------- * operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% multiply_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryDivOperator []) != 0 then
+  %//--------------------------------- / operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% divide_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & binaryModOperator []) != 0 then
+  %//--------------------------------- mod operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% modulo_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand,\n%
+  !^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & unaryMinusOperator []) != 0 then
+  %//--------------------------------- unary - operator\n%
+  %  public : GALGASap_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if (SUPPORTED_OPERATORS & incDecOperator []) != 0 then
+  %//--------------------------------- ++, -- operators\n%
+  %  public : void increment_operation (%?^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS) ;\n\n%
+  %  public : void decrement_operation (%?^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS) ;\n\n%
+end if
+
+if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
+  %//--------------------------------- += operator
+  public : void addAssign_operation (%?^
+  foreach ADD_ASSIGN_ARGUMENT_LIST do index IDX
+    %GALGASap_%![mType identifierRepresentation]% inOperand%![IDX string]
+    between %,\n%!^
+  end foreach
+  %\n%!^%COMMA_LOCATION_ARGS) ;
+%
+end if
+
 
 %//--- Assignment operator
   public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;

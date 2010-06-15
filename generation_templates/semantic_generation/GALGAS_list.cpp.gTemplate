@@ -153,13 +153,14 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOb
 
 //---------------------------------------------------------------------------*
 
-void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+void GALGASap_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
+  do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
+  between %,\n%!^
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
-  if (ioResult.isValid ()) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
+  if (isValid ()) {
+    GALGAS_%!TYPE_IDENTIFIER%::insulate (*this COMMA_THERE) ;
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
     foreach ATTRIBUTE_LIST
@@ -168,7 +169,7 @@ void addAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
     end foreach
     % COMMA_THERE)) ;
     capCollectionElement attributes (p) ;
-    ioResult.ptr (HERE)->addObject (attributes) ;
+    ptr (HERE)->addObject (attributes) ;
   }
 }
 
@@ -300,13 +301,12 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
-                     %!^%GALGASap_%!TYPE_IDENTIFIER% & inOperand2
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand
                      %!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result ;
-  if (inOperand1.isValid () && inOperand2.isValid ()) {
-    result = inOperand1 ;
-    result.ptr (HERE)->appendList (inOperand2.ptr (HERE)) ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    ptr (HERE)->appendList (inOperand.ptr (HERE)) ;
   }
   return result ;
 }
@@ -346,12 +346,11 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (
 
 //---------------------------------------------------------------------------*
 
-void dotAssign_operation (GALGASap_%!TYPE_IDENTIFIER% & ioResult,
-                          GALGASap_%!TYPE_IDENTIFIER% inOperand
-                          COMMA_LOCATION_ARGS) {
-  if (ioResult.isValid () && inOperand.isValid ()) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
-    ioResult.ptr (HERE)->appendList (inOperand.ptr (HERE)) ;
+void GALGASap_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% inOperand
+                          %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    GALGAS_%!TYPE_IDENTIFIER%::insulate (*this COMMA_THERE) ;
+    ptr (HERE)->appendList (inOperand.ptr (HERE)) ;
   }
 }
 %

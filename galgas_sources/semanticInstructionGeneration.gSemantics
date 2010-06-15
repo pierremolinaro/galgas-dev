@@ -240,7 +240,7 @@ override method @appendInstructionForGeneration generateInstruction
   foreach mStructAttributeList do
     ioGeneratedCode .= "(TO DO handle field in @appendInstructionForGeneration)\n" ;
   end foreach ;
-  ioGeneratedCode .= "dotAssign_operation (" . mTargetVariableCppName . ", " . sourceVar
+  ioGeneratedCode .= mTargetVariableCppName . ".dotAssign_operation (" . sourceVar
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName] ;
 end method ;
@@ -574,9 +574,10 @@ override method @addAssignInstructionForGeneration generateInstruction
     receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
   end foreach ;
 #--- Call add assign (+=) operator
-  ioGeneratedCode .= "addAssign_operation (" . receiverCppName ;
-  foreach parameterList do
-    ioGeneratedCode .= ", " . mValue ;
+  ioGeneratedCode .= receiverCppName . ".addAssign_operation (" ;
+  foreach parameterList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"  ;
 end method ;
@@ -596,8 +597,7 @@ override method @incrementInstructionForGeneration generateInstruction
     receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
   end foreach ;
 #--- Invoke incrementation
-  ioGeneratedCode .= "increment_operation (" . receiverCppName
-                  . ", " . compilerCppName []
+  ioGeneratedCode .= receiverCppName . ".increment_operation (" . compilerCppName []
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
@@ -617,8 +617,7 @@ override method @decrementInstructionForGeneration generateInstruction
     receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
   end foreach ;
 #--- Invoke incrementation
-  ioGeneratedCode .= "decrement_operation (" . receiverCppName
-                  . ", " . compilerCppName []
+  ioGeneratedCode .= receiverCppName . ".decrement_operation (" . compilerCppName []
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
