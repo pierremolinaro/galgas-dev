@@ -48,6 +48,53 @@ GALGASap_%!TYPE_IDENTIFIER% & GALGASap_%!TYPE_IDENTIFIER%::operator = (const GAL
   %}\n\n%
 end if
 
+foreach READER_MAP do
+  if mQualifier == [@methodQualifier isBasic] then
+    %//---------------------------------------------------------------------------*\n\n%
+    %GALGASap_% ![mReturnedType identifierRepresentation] % GALGASap_%!TYPE_IDENTIFIER%::readerCall_% ![lkey identifierRepresentation] % (%?^
+    foreach mArgumentTypeList
+      do index IDX %GALGASap_%![mType identifierRepresentation]% & inOperand_% ![IDX string]
+      between %,\n% !^
+    end foreach
+    if [mArgumentTypeList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+      else
+        %LOCATION_ARGS%
+      end if
+    elsif mHasCompilerArgument then
+      %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+    else
+      %\n% !^ %COMMA_LOCATION_ARGS%
+    end if
+    %) {\n%
+    %  GALGASap_%![mReturnedType identifierRepresentation]% result ;\n%
+    %  if (isValid ()) {\n%
+    %    result = ptr (HERE)->reader_%![lkey identifierRepresentation]% (%
+    foreach mArgumentTypeList
+      do index IDX %inOperand_% ![IDX string]
+      between %, %
+    end foreach
+    if [mArgumentTypeList length] > 0 then
+      if mHasCompilerArgument then
+        %, inCompiler COMMA_THERE%
+      else
+        % COMMA_THERE%
+      end if
+    else
+      if mHasCompilerArgument then
+        %inCompiler COMMA_THERE%
+      else
+        %THERE%
+      end if
+    end if
+    %) ;\n%
+    %  }\n%
+    %  return result ;\n%
+    %}\n\n%
+  end if
+end foreach
+
 %//---------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS

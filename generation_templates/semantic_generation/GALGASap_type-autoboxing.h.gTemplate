@@ -143,6 +143,28 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %
 end if
 
+%//--------------------------------- Reader invocation declaration\n%
+foreach READER_MAP do
+  if (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
+    %public : GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?^
+    foreach mArgumentTypeList
+      do index IDX %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
+      between %,\n% !^
+    end foreach
+    if [mArgumentTypeList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+      else
+        %LOCATION_ARGS%
+      end if
+    elsif mHasCompilerArgument then
+      %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+    else
+      %\n% !^ %COMMA_LOCATION_ARGS%
+    end if
+    %) ;\n\n%
+  end if
+end foreach
 
 %
 //--- Construction from root object

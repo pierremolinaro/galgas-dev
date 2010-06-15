@@ -351,7 +351,7 @@ override method @errorInstructionForGeneration generateInstruction
 #--- Use location reader ?
   if mUseLocationReader then
     const @string locationVar := "location_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGASap_location " . locationVar . " (readerCall_location (" . receiverCppVarName . " COMMA_HERE)) ; // Implicit use of 'location' reader\n" ;
+    ioGeneratedCode .= "GALGASap_location " . locationVar . " (" . receiverCppVarName . ".readerCall_location (HERE)) ; // Implicit use of 'location' reader\n" ;
     receiverCppVarName := locationVar ;
   end if ;
 #--- Generate error instruction
@@ -381,7 +381,7 @@ override method @warningInstructionForGeneration generateInstruction
 #--- Use location reader ?
   if mUseLocationReader then
     const @string locationVar := "location_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGASap_location " . locationVar . " (readerCall_location (" . receiverCppVarName . " COMMA_HERE)) ; // Implicit use of 'location' reader\n" ;
+    ioGeneratedCode .= "GALGASap_location " . locationVar . " (" . receiverCppVarName . ".readerCall_location (HERE)) ; // Implicit use of 'location' reader\n" ;
     receiverCppVarName := locationVar ;
   end if ;
 #--- Generate warning instruction
@@ -807,7 +807,7 @@ override method @foreachInstructionForGeneration generateInstruction
     end foreach ;
     if mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-      ioGeneratedCode .= "increment_operation (" . mIndexVariableCppName . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "  " . mIndexVariableCppName . ".increment_operation (" . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     ioGeneratedCode .= "}\n" ;
   #--- Generate 'after' instruction
@@ -864,7 +864,7 @@ override method @foreachInstructionForGeneration generateInstruction
     end foreach ;
     if mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-      ioGeneratedCode .= "increment_operation (" . mIndexVariableCppName . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "  " . mIndexVariableCppName . ".increment_operation (" . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     ioGeneratedCode .= "}\n" ;
   end if ;

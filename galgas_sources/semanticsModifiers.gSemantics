@@ -38,7 +38,7 @@ routine enterModifierWithInputArgument
     ![@lstring new !inModifierName !here]
     !argList
     !inHasCompilerArgument
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -59,7 +59,7 @@ routine enterModifierWithOutputArgument
     ![@lstring new !inModifierName !here]
     !argList
     !inHasCompilerArgument
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -83,7 +83,7 @@ routine enterModifierWith2InputArguments
     ![@lstring new !inModifierName !here]
     !argList
     !inHasCompilerArgument
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -98,7 +98,7 @@ routine enterModifierWithoutArgument
     ![@lstring new !inModifierName !here]
     ![@formalParameterSignature emptyList]
     !inHasCompilerArgument
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 

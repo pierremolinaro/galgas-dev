@@ -1020,7 +1020,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  if (inFilePath.isValid ()) {\n"
-                          "    GALGASap_string filePathAsString = readerCall_string (inFilePath COMMA_HERE) ;\n"
+                          "    GALGASap_string filePathAsString = inFilePath.readerCall_string (HERE) ;\n"
                           "    C_String filePath = filePathAsString.ptr (HERE)->stringValue () ;\n"
                           "    if (! filePath.isAbsolutePath ()) {\n"
                           "      filePath = inCompiler->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
@@ -1054,7 +1054,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "      }else{\n"
                           "        C_String message ;\n"
                           "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
-                          "        GALGASap_location errorLocation (readerCall_location (inFilePath COMMA_THERE)) ;\n"
+                          "        GALGASap_location errorLocation (inFilePath.readerCall_location (THERE)) ;\n"
                           "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1071,7 +1071,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << filePath << \"' file does not exist\" ;\n"
-                          "    GALGASap_location errorLocation (readerCall_location (inFilePath COMMA_THERE)) ;\n"
+                          "    GALGASap_location errorLocation (inFilePath.readerCall_location (THERE)) ;\n"
                           "    inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;

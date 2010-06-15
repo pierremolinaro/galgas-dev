@@ -702,7 +702,7 @@ override method @classDeclarationAST performSemanticAnalysis
 #------ Check a concrete class has no abstract method
   if not mIsAbstract then
     foreach inheritedInstanceMethodMap do
-      if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isOverridingAbstract]) then
+      if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isOverridingAbstract]) then
         if not [definedMethodSet hasKey ![lkey string]] then
           error lkey : "the '@" . mClassTypeName . "' class is declared concrete, but the '" . lkey . "' method declared in a super class is not implemented" ;
         end if ;    

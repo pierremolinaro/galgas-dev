@@ -33,7 +33,7 @@ routine enterInstanceMethodWithoutArgument
     ![@formalParameterSignature emptyList]
     ![inInstanceMethodName location]
     !inHasCompilerArgument
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -55,7 +55,7 @@ routine enterInstanceMethodWithInputArgument
     !argList
     ![inInstanceMethodName location]
     !inHasCompilerArgument
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -77,7 +77,7 @@ routine enterInstanceMethodWithOutputArgument
     !argList
     ![inInstanceMethodName location]
     !inHasCompilerArgument
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end routine ;
 
@@ -113,7 +113,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !argList
     !here
     !true
-    ![@readerQualifier isBasic]
+    ![@methodQualifier isBasic]
   ] ;
 end method ;
 

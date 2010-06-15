@@ -128,7 +128,7 @@ end if
 
 %//--------------------------------- Modifier invocation\n%
 foreach MODIFIER_MAP do
-  if mQualifier == [@readerQualifier isBasic] then
+  if mQualifier == [@methodQualifier isBasic] then
     %  friend void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
     foreach mParameterList do index IDX
       %,\n%!^
@@ -156,7 +156,7 @@ end foreach
 //--------------------------------- Modifiers
 %
 foreach MODIFIER_MAP do
-  if mQualifier != [@readerQualifier isInherited] then
+  if mQualifier != [@methodQualifier isInherited] then
     %  protected : void modifier_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -192,7 +192,7 @@ end foreach
 //--------------------------------- Instance Methods
 %
 foreach INSTANCE_METHOD_MAP do
-  if mQualifier != [@readerQualifier isInherited] then
+  if mQualifier != [@methodQualifier isInherited] then
     %  protected : virtual void method_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -222,7 +222,7 @@ foreach INSTANCE_METHOD_MAP do
       end if  
     end if
     %) %
-    if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isOverridingAbstract]) then
+    if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isOverridingAbstract]) then
       %= 0 %
     end if
     %;\n\n%
@@ -231,7 +231,7 @@ end foreach
 %
 //--------------------------------- Instance Method Invocation\n%
 foreach INSTANCE_METHOD_MAP do
-  if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isBasic]) then
+  if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then
     %  friend void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% inObject%
     foreach mParameterList do index IDX
       %,\n%!^
@@ -293,7 +293,7 @@ end foreach
 //--------------------------------- Readers
 %
 foreach READER_MAP do
-  if mQualifier != [@readerQualifier isInherited] then
+  if (mQualifier != [@methodQualifier isInherited]) & (mQualifier != [@methodQualifier isBasicFinal]) then
     %  protected : virtual GALGASap_% ![mReturnedType identifierRepresentation] % reader_% ![lkey identifierRepresentation] % (%?^
     foreach mArgumentTypeList
       do index IDX %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
@@ -313,27 +313,10 @@ foreach READER_MAP do
       end if
     end if
     %) %
-    if mQualifier == [@readerQualifier isAbstract] then
+    if mQualifier == [@methodQualifier isAbstract] then
       % = 0%
     end if
     % ;\n\n%
-  end if
-end foreach
-
-%//--------------------------------- Reader invocation declaration\n%
-foreach READER_MAP do
-  if mQualifier == [@readerQualifier isBasic] then
-    %  friend GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?^
-    %GALGASap_%!TYPE_IDENTIFIER% & inObject%
-    foreach mArgumentTypeList
-      do index IDX %,\n% !^ %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
-    end foreach
-    if mHasCompilerArgument then
-      %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
-    else
-      %\n% !^ %COMMA_LOCATION_ARGS%
-    end if
-    %) ;\n\n%
   end if
 end foreach
 
@@ -413,29 +396,10 @@ end if
   friend class GALGASap_%!TYPE_IDENTIFIER% ;
 } ;
 
-
-//--------------------------------- Reader invocation declaration
-%
-foreach READER_MAP do
-  if mQualifier == [@readerQualifier isBasic] then
-    %GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?^
-    %GALGASap_%!TYPE_IDENTIFIER% & inObject%
-    foreach mArgumentTypeList
-      do index IDX %,\n% !^ %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
-    end foreach
-    if mHasCompilerArgument then
-      %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
-    else
-      %\n% !^ %COMMA_LOCATION_ARGS%
-    end if
-    %) ;\n\n%
-  end if
-end foreach
-
-%//--------------------------------- Mofifier invocation declaration
+//--------------------------------- Mofifier invocation declaration
 %
 foreach MODIFIER_MAP do
-  if mQualifier == [@readerQualifier isBasic] then
+  if mQualifier == [@methodQualifier isBasic] then
     %void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
     foreach mParameterList do index IDX
       %,\n%!^
@@ -462,7 +426,7 @@ end foreach
 %
 //--------------------------------- Instance Method Invocation\n%
 foreach INSTANCE_METHOD_MAP do
-  if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isBasic]) then
+  if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then
     %void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% inObject%
     foreach mParameterList do index IDX
       %,\n%!^

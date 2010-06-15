@@ -61,7 +61,7 @@ end if
 
 if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
   foreach MODIFIER_MAP do
-    if mQualifier == [@readerQualifier isBasic] then
+    if mQualifier == [@methodQualifier isBasic] then
       %//---------------------------------------------------------------------------*\n\n%
       %void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
       foreach mParameterList do index IDX
@@ -126,7 +126,7 @@ if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
 end if
 
 foreach INSTANCE_METHOD_MAP do
-  if (mQualifier == [@readerQualifier isAbstract]) | (mQualifier == [@readerQualifier isBasic]) then
+  if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then
     %//---------------------------------------------------------------------------*\n\n%
     %void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% inObject%
     foreach mParameterList do index IDX
@@ -187,49 +187,6 @@ foreach INSTANCE_METHOD_MAP do
     %}\n\n%
   end if
 end foreach
-
-if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
-  foreach READER_MAP do
-    if mQualifier == [@readerQualifier isBasic] then
-      %//---------------------------------------------------------------------------*\n\n%
-      %GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?COL
-      %GALGASap_%!TYPE_IDENTIFIER% & inObject%
-      foreach mArgumentTypeList
-        do index IDX %,\n% !COL %GALGASap_%![mType identifierRepresentation]% & inOperand_% ![IDX string]
-      end foreach
-      if mHasCompilerArgument then
-        %,\n% !COL %C_Compiler * inCompiler\n% !COL %COMMA_LOCATION_ARGS%
-      else
-        %\n% !COL %COMMA_LOCATION_ARGS%
-      end if
-      %) {\n%
-      %  GALGASap_%![mReturnedType identifierRepresentation]% result ;\n%
-      %  if (inObject.isValid ()) {\n%
-      %    result = inObject.ptr (HERE)->reader_%![lkey identifierRepresentation]% (%
-      foreach mArgumentTypeList
-        do index IDX %inOperand_% ![IDX string]
-        between %, %
-      end foreach
-      if [mArgumentTypeList length] > 0 then
-        if mHasCompilerArgument then
-          %, inCompiler COMMA_THERE%
-        else
-          % COMMA_THERE%
-        end if
-      else
-        if mHasCompilerArgument then
-          %inCompiler COMMA_THERE%
-        else
-          %THERE%
-        end if
-      end if
-      %) ;\n%
-      %  }\n%
-      %  return result ;\n%
-      %}\n\n%
-    end if
-  end foreach
-end if
 
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
     %//---------------------------------------------------------------------------*\n%

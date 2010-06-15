@@ -33,12 +33,3 @@ end foreach
 %  }
 }
 
-%
-foreach CURRENT_ATTRIBUTE_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% readerCall_%![mAttributeName identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & inObject\n%
-                                                         !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-  %  return inObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  %}\n\n%
-end foreach
-%

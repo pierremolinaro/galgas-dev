@@ -11,10 +11,28 @@ class GALGASap_%!TYPE_IDENTIFIER% : public GALGASap_%![SUPER_TYPE_INDEX identifi
 //--- Copy constructor
   public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
 
+//--- Assignment operator
+  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
+
+//--- Get pointer  
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public : GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) ;
+    public : const GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) const ;
+  #else
+    public : inline GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) {
+      return (GALGAS_%!TYPE_IDENTIFIER% *) mPtr ;
+    }
+    public : inline const GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) const {
+      return (const GALGAS_%!TYPE_IDENTIFIER% *) mPtr ;
+    }
+  #endif
+
 //--- Constructor from generic object
   public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSource) ;
 
-%if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeListInAutoPointerClass []) != 0 then
+%
+
+if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeListInAutoPointerClass []) != 0 then
 %//--------------------------------- C++ constructor (with native attributes)\n%
   %  public : GALGASap_%!TYPE_IDENTIFIER% (%?^
   foreach NATIVE_ATTRIBUTE_LIST
@@ -34,9 +52,26 @@ if TYPE_IDENTIFIER == "bool" then
                           const enumComparisonResult
                           COMMA_LOCATION_ARGS) ;
 
+%
+elsif TYPE_IDENTIFIER == "list" then
+%//--------------------------------- Comparison constructor
+  public : GALGASap_uint readerCall_length (LOCATION_ARGS) ;
 
 %
+elsif TYPE_IDENTIFIER == "sortedlist" then
+%//--------------------------------- Comparison constructor
+  public : GALGASap_uint readerCall_length (LOCATION_ARGS) ;
 
+%
+elsif TYPE_IDENTIFIER == "map" then
+%//--------------------------------- Comparison constructor
+  public : GALGASap_bool readerCall_hasKey (GALGASap_string & inKey COMMA_LOCATION_ARGS) ;
+  public : GALGASap_uint readerCall_count (LOCATION_ARGS) ;
+  public : GALGASap_stringset readerCall_allKeys (LOCATION_ARGS) ;
+  public : GALGASap_lstringlist readerCall_allKeyList (LOCATION_ARGS) ;
+  public : GALGASap_location readerCall_locationForKey (GALGASap_string & inKey, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+%
 end if
 
 if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
@@ -147,24 +182,30 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %
 end if
 
+%//--------------------------------- Reader invocation declaration\n%
+foreach READER_MAP do
+  if (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
+    %public : GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?^
+    foreach mArgumentTypeList
+      do index IDX %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
+      between %,\n% !^
+    end foreach
+    if [mArgumentTypeList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+      else
+        %LOCATION_ARGS%
+      end if
+    elsif mHasCompilerArgument then
+      %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+    else
+      %\n% !^ %COMMA_LOCATION_ARGS%
+    end if
+    %) ;\n\n%
+  end if
+end foreach
 
-%//--- Assignment operator
-  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
-
-//--- Get pointer  
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public : GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) ;
-    public : const GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) const ;
-  #else
-    public : inline GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) {
-      return (GALGAS_%!TYPE_IDENTIFIER% *) mPtr ;
-    }
-    public : inline const GALGAS_%!TYPE_IDENTIFIER% * ptr (LOCATION_ARGS) const {
-      return (const GALGAS_%!TYPE_IDENTIFIER% *) mPtr ;
-    }
-  #endif
-
-//--- Construction from pointer
+%//--- Construction from pointer
   public : GALGASap_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 
 //--- Assignment from pointer
