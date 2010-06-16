@@ -134,9 +134,8 @@ end if
 foreach INSTANCE_METHOD_MAP do
   if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then
     %//---------------------------------------------------------------------------*\n\n%
-    %void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% inObject%
+    %void GALGASap_%!TYPE_IDENTIFIER%::instanceMethodCall_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
-      %,\n%!^
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -146,10 +145,16 @@ foreach INSTANCE_METHOD_MAP do
       else # argumentIn
         %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
       end if
+    between %,\n%!^
     end foreach
-    if mHasCompilerArgument then
-      %,\n%!^%C_Compiler * inCompiler\n%
-      !^%COMMA_LOCATION_ARGS%
+    if [mParameterList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS%
+      else
+        %LOCATION_ARGS%
+      end if  
+    elsif mHasCompilerArgument then
+      %,\n%!^%C_Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS%
     else
       %\n%!^%COMMA_LOCATION_ARGS%
     end if  
@@ -161,8 +166,8 @@ foreach INSTANCE_METHOD_MAP do
       end if
     end foreach
     %//---\n%
-    %  if (inObject.isValid ()) {\n%
-    %    inObject.ptr (HERE)->method_%![lkey identifierRepresentation]% (%
+    %  if (isValid ()) {\n%
+    %    ptr (HERE)->method_%![lkey identifierRepresentation]% (%
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %constinArgument% ![IDX string]
