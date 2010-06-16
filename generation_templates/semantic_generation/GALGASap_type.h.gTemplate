@@ -61,21 +61,21 @@ if TYPE_IDENTIFIER == "bool" then
 %
 elsif TYPE_IDENTIFIER == "list" then
 %//--------------------------------- Comparison constructor
-  public : GALGASap_uint readerCall_length (LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGASap_uint readerCall_length (LOCATION_ARGS) ;
 
 %
 elsif TYPE_IDENTIFIER == "sortedlist" then
 %//--------------------------------- Comparison constructor
-  public : GALGASap_uint readerCall_length (LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGASap_uint readerCall_length (LOCATION_ARGS) ;
 
 %
 elsif TYPE_IDENTIFIER == "map" then
 %//--------------------------------- Comparison constructor
-  public : GALGASap_bool readerCall_hasKey (GALGASap_string & inKey COMMA_LOCATION_ARGS) ;
-  public : GALGASap_uint readerCall_count (LOCATION_ARGS) ;
-  public : GALGASap_stringset readerCall_allKeys (LOCATION_ARGS) ;
-  public : GALGASap_lstringlist readerCall_allKeyList (LOCATION_ARGS) ;
-  public : GALGASap_location readerCall_locationForKey (GALGASap_string & inKey, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGASap_bool readerCall_hasKey (GALGASap_string & inKey COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGASap_uint readerCall_count (LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGASap_stringset readerCall_allKeys (LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGASap_lstringlist readerCall_allKeyList (LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGASap_location readerCall_locationForKey (GALGASap_string & inKey, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 %
 end if
@@ -191,7 +191,7 @@ end if
 %//--------------------------------- Reader invocation declaration\n%
 foreach READER_MAP do
   if (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
-    %public : GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?^
+    %public : VIRTUAL_IN_DEBUG GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?^
     foreach mArgumentTypeList
       do index IDX %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
       between %,\n% !^
@@ -221,7 +221,7 @@ end if
 %//--------------------------------- Modifier invocation\n%
 foreach MODIFIER_MAP do
   if mQualifier == [@methodQualifier isBasic] then
-    %public : void modifierCall_%![lkey identifierRepresentation]% (%?^
+    %public : VIRTUAL_IN_DEBUG void modifierCall_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
@@ -252,7 +252,7 @@ end foreach
 //--------------------------------- Instance Method Invocation\n%
 foreach INSTANCE_METHOD_MAP do
   if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then
-    %public : void instanceMethodCall_%![lkey identifierRepresentation]% (%?^
+    %public : VIRTUAL_IN_DEBUG void instanceMethodCall_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
