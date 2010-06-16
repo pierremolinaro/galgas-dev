@@ -131,12 +131,11 @@ enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%c
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand
-                     %!^%COMMA_LOCATION_ARGS) {
-  if (ioOperand.isValid () && (ioOperand.ptr (HERE)->retainCount () > 1)) {
+void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
+  if (isValid () && (ptr (HERE)->retainCount () > 1)) {
     GALGASap_%!TYPE_IDENTIFIER% p (GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE)) ;
-    p.ptr (HERE)->copyFrom (ioOperand.ptr (HERE)) ;
-    ioOperand = p ;
+    p.ptr (HERE)->copyFrom (ptr (HERE)) ;
+    *this = p ;
   }
 }
 
@@ -179,7 +178,7 @@ void GALGASap_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 %
     %!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (*this COMMA_HERE) ;
+    insulate (HERE) ;
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
     foreach ATTRIBUTE_LIST
@@ -197,7 +196,7 @@ void GALGASap_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 void GALGASap_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% inOperand
                           %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    GALGAS_%!TYPE_IDENTIFIER%::insulate (*this COMMA_THERE) ;
+    insulate (THERE) ;
     ptr (HERE)->appendSortedList (inOperand.ptr (HERE)) ;
   }
 }
