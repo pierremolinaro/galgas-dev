@@ -126,32 +126,6 @@ end if
   %                                     const PMSInt32 inIndentation) ;\n%
 end if
 
-%//--------------------------------- Modifier invocation\n%
-foreach MODIFIER_MAP do
-  if mQualifier == [@methodQualifier isBasic] then
-    %  friend void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
-    foreach mParameterList do index IDX
-      %,\n%!^
-      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-      else # argumentIn
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-      end if
-    end foreach
-    if mHasCompilerArgument then
-      %,\n%!^%C_Compiler * inCompiler\n%
-      !^%COMMA_LOCATION_ARGS%
-    else
-      %\n%!^%COMMA_LOCATION_ARGS%
-    end if  
-    %) ;\n\n%
-  end if
-end foreach
-
 %
 //--------------------------------- Modifiers
 %
@@ -388,34 +362,7 @@ end if
   friend class GALGASap_%!TYPE_IDENTIFIER% ;
 } ;
 
-//--------------------------------- Mofifier invocation declaration
-%
-foreach MODIFIER_MAP do
-  if mQualifier == [@methodQualifier isBasic] then
-    %void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
-    foreach mParameterList do index IDX
-      %,\n%!^
-      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-      else # argumentIn
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-      end if
-    end foreach
-    if mHasCompilerArgument then
-      %,\n%!^%C_Compiler * inCompiler\n%
-      !^%COMMA_LOCATION_ARGS%
-    else
-      %\n%!^%COMMA_LOCATION_ARGS%
-    end if  
-    %) ;\n\n%
-  end if
-end foreach
 
-%
 //--------------------------------- Instance Method Invocation\n%
 foreach INSTANCE_METHOD_MAP do
   if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then

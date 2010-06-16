@@ -63,9 +63,8 @@ if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
   foreach MODIFIER_MAP do
     if mQualifier == [@methodQualifier isBasic] then
       %//---------------------------------------------------------------------------*\n\n%
-      %void modifierCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioResult%
+      %void GALGASap_%!TYPE_IDENTIFIER%::modifierCall_%![lkey identifierRepresentation]% (%?^
       foreach mParameterList do index IDX
-        %,\n%!^
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -75,8 +74,15 @@ if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
         else # argumentIn
           %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
         end if
+      between %,\n%!^
       end foreach
-      if mHasCompilerArgument then
+      if [mParameterList length] == 0 then
+        if mHasCompilerArgument then
+          %C_Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS%
+        else
+          %LOCATION_ARGS%
+        end if  
+      elsif mHasCompilerArgument then
         %,\n%!^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS%
       else
@@ -90,9 +96,9 @@ if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
         end if
       end foreach
       %//---\n%
-      %  if (ioResult.isValid ()) {\n%
-      %    ioResult.insulate (THERE) ;\n%
-      %    ioResult.ptr (HERE)->modifier_%![lkey identifierRepresentation]% (%
+      %  if (isValid ()) {\n%
+      %    insulate (THERE) ;\n%
+      %    ptr (HERE)->modifier_%![lkey identifierRepresentation]% (%
       foreach mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %constinArgument% ![IDX string]
