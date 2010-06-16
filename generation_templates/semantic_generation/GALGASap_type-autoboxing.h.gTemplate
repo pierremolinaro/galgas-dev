@@ -27,6 +27,15 @@ class GALGASap_%!TYPE_IDENTIFIER% {
 //--- Drop
   public : void drop (void) ;
 
+//--- Construction from root object
+  public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSourceObject) ;
+
+//--- Assignment from root object
+  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_object & inSourceObject) ;
+
+//--- Return object pointer
+  public : GALGAS_object * ptrNoVerif (void) ;
+
 //--------------------------------- C++ constructor (with native attributes)\n%
 %  public : GALGASap_%!TYPE_IDENTIFIER% (%?^
 foreach CURRENT_ATTRIBUTE_LIST do
@@ -166,14 +175,37 @@ foreach READER_MAP do
   end if
 end foreach
 
-%
-//--- Construction from root object
-  public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSourceObject) ;
 
-//--- Assignment from root object
-  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_object & inSourceObject) ;
+%//--------------------------------- Modifier invocation\n%
+foreach MODIFIER_MAP do
+  if mQualifier == [@methodQualifier isBasic] then
+    %public : void modifierCall_%![lkey identifierRepresentation]% (%?^
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      end if
+    between %,\n%!^
+    end foreach
+    if [mParameterList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS%
+      else
+        %LOCATION_ARGS%
+      end if  
+    elsif mHasCompilerArgument then
+      %,\n%!^%C_Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS%
+    else
+      %\n%!^%COMMA_LOCATION_ARGS%
+    end if  
+    %) ;\n\n%
+  end if
+end foreach
 
-//--- Return object pointer
-  public : GALGAS_object * ptrNoVerif (void) ;
-} ;
+%} ;
 

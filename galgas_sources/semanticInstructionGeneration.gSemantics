@@ -464,7 +464,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "{ //-------- @typeMethodInstructionForGeneration\n" ;
+  ioGeneratedCode .= "{ //-------- @modifierCallInstructionForGeneration\n" ;
   @string receiverCppName := mReceiverCppName ;
   foreach mReceiverStructAttributes do
     receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
@@ -479,19 +479,22 @@ override method @modifierCallInstructionForGeneration generateInstruction
   end foreach ;
 #--- Generate method call
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
-  ioGeneratedCode .= "modifierCall_" . [mModifierName identifierRepresentation] . " (" . receiverCppName ;
-  foreach parameterCppNameList do
-    ioGeneratedCode .= ", "  . mValue ;
+  ioGeneratedCode .= receiverCppName . ".modifierCall_" . [mModifierName identifierRepresentation] . " (" ;
+  foreach parameterCppNameList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
   end foreach ;
   if mHasCompilerArgument then
+    if [parameterCppNameList length] != 0 then
+      ioGeneratedCode .=  ", " ;
+    end if ;
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-    ioGeneratedCode .=  ", " . compilerCppName [] ;
+    ioGeneratedCode .=  compilerCppName [] ;
+    ioGeneratedCode .= " COMMA_" ;
+  elsif [parameterCppNameList length] != 0 then
+    ioGeneratedCode .= " COMMA_" ;
   end if ;
-  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
-#--- Release temporary variables
-#  foreach jokerParametersToReleaseList do
-#    ioGeneratedCode .= mValue . ".drop () ; // Release temporary input variables (joker in source)\n" ;
-#  end foreach ;
+  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
   ioGeneratedCode .= "} //-------- END @typeMethodInstructionForGeneration\n" ;
 end method ;
 

@@ -30,6 +30,12 @@ class GALGASap_%!TYPE_IDENTIFIER% : public GALGASap_%![SUPER_TYPE_INDEX identifi
 //--- Constructor from generic object
   public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSource) ;
 
+//--- Construction from pointer
+  public : GALGASap_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) ;
+
+//--- Assignment from pointer
+  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) ;
+
 %
 
 if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeListInAutoPointerClass []) != 0 then
@@ -212,11 +218,36 @@ if ((SUPPORTED_OPERATORS & (incDecOperator [] | dotAssignOperator [])) != 0)
   %  public : void insulate (LOCATION_ARGS) ;\n\n%
 end if
 
+%//--------------------------------- Modifier invocation\n%
+foreach MODIFIER_MAP do
+  if mQualifier == [@methodQualifier isBasic] then
+    %public : void modifierCall_%![lkey identifierRepresentation]% (%?^
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      end if
+    between %,\n%!^
+    end foreach
+    if [mParameterList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS%
+      else
+        %LOCATION_ARGS%
+      end if  
+    elsif mHasCompilerArgument then
+      %,\n%!^%C_Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS%
+    else
+      %\n%!^%COMMA_LOCATION_ARGS%
+    end if  
+    %) ;\n\n%
+  end if
+end foreach
 
-%//--- Construction from pointer
-  public : GALGASap_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) ;
-
-//--- Assignment from pointer
-  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) ;
-} ;
+%} ;
 
