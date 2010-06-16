@@ -410,20 +410,25 @@ override method @methodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= "instanceMethodCall_" . [mMethodName identifierRepresentation] . " ("
-                    . receiverVar ;
-  foreach parameterCppNameList do
-    ioGeneratedCode .= ", " . mValue ;
+  ioGeneratedCode .= receiverVar . ".instanceMethodCall_" . [mMethodName identifierRepresentation] . " (" ;
+  foreach parameterCppNameList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
   end foreach ;
-  if mHasCompilerArgument then
+  if [parameterCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+      ioGeneratedCode .= compilerCppName [] ;
+      ioGeneratedCode .= " COMMA_" ;
+    end if ;
+  elsif mHasCompilerArgument then
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
     ioGeneratedCode .= ", " . compilerCppName [] ;
+    ioGeneratedCode .= " COMMA_" ;
+  else
+    ioGeneratedCode .= " COMMA_" ;
   end if ;
-  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
-#--- Release temporary variables
-#  foreach jokerParametersToReleaseList do
-#    ioGeneratedCode .= mValue . ".drop () ; // Release temporary input variables (joker in source)\n" ;
-#  end foreach ;
+  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   ioGeneratedCode .= "} //-------- END @methodCallInstructionForGeneration\n" ;
 end method ;
 

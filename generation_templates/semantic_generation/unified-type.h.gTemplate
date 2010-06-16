@@ -202,35 +202,7 @@ foreach INSTANCE_METHOD_MAP do
     %;\n\n%
   end if
 end foreach
-%
-//--------------------------------- Instance Method Invocation\n%
-foreach INSTANCE_METHOD_MAP do
-  if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then
-    %  friend void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% inObject%
-    foreach mParameterList do index IDX
-      %,\n%!^
-      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-      else # argumentIn
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-      end if
-    end foreach
-    if mHasCompilerArgument then
-      %,\n%!^%C_Compiler * inCompiler\n%
-      !^%COMMA_LOCATION_ARGS%
-    else
-      %\n%!^%COMMA_LOCATION_ARGS%
-    end if  
-    %) ;\n\n%
-  end if
-end foreach
-
-%
-//--------------------------------- Class Methods
+%//--------------------------------- Class Methods
 %
 foreach CLASS_METHOD_MAP do
   %  public : static void class_method_%![lkey identifierRepresentation]% (%?^
@@ -362,33 +334,7 @@ end if
   friend class GALGASap_%!TYPE_IDENTIFIER% ;
 } ;
 
-
-//--------------------------------- Instance Method Invocation\n%
-foreach INSTANCE_METHOD_MAP do
-  if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then
-    %void instanceMethodCall_%![lkey identifierRepresentation]% (%?^%GALGASap_%!TYPE_IDENTIFIER% inObject%
-    foreach mParameterList do index IDX
-      %,\n%!^
-      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-      else # argumentIn
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-      end if
-    end foreach
-    if mHasCompilerArgument then
-      %,\n%!^%C_Compiler * inCompiler\n%
-      !^%COMMA_LOCATION_ARGS%
-    else
-      %\n%!^%COMMA_LOCATION_ARGS%
-    end if  
-    %) ;\n\n%
-  end if
-end foreach
-
+%
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
