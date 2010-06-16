@@ -3,12 +3,11 @@
  | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0) then
 %//---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand
-%                                   !^%COMMA_LOCATION_ARGS) {
-  if (ioOperand.ptr (HERE)->retainCount () > 1) {
-    ioOperand = GALGAS_%!TYPE_IDENTIFIER%::constructor_new(%
+void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
+  if (ptr (HERE)->retainCount () > 1) {
+    *this = GALGAS_%!TYPE_IDENTIFIER%::constructor_new(%
     foreach NATIVE_ATTRIBUTE_LIST
-      do %ioOperand.ptr (HERE)->%!mAttributeName
+      do %ptr (HERE)->%!mAttributeName
       between %, %
     end foreach
     if [NATIVE_ATTRIBUTE_LIST length] == 0 then

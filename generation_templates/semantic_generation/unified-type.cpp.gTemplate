@@ -91,7 +91,7 @@ if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
       end foreach
       %//---\n%
       %  if (ioResult.isValid ()) {\n%
-      %    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;\n%
+      %    ioResult.insulate (THERE) ;\n%
       %    ioResult.ptr (HERE)->modifier_%![lkey identifierRepresentation]% (%
       foreach mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then

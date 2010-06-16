@@ -320,14 +320,6 @@ foreach READER_MAP do
   end if
 end foreach
 
-if ((SUPPORTED_OPERATORS & (incDecOperator [] | dotAssignOperator [])) != 0)
- | ([MODIFIER_MAP count] > 0)
- | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0) then
-  %//--------------------------------- Modifier utility method\n%
-  %  public : static void insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioOperand\n%
-        !^%COMMA_LOCATION_ARGS) ;\n\n%
-end if
-
 if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
 %//--------------------------------- Comparison
   public : static enumComparisonResult objectCompare (const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,

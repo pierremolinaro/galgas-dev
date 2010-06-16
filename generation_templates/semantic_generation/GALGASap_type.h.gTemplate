@@ -205,6 +205,14 @@ foreach READER_MAP do
   end if
 end foreach
 
+if ((SUPPORTED_OPERATORS & (incDecOperator [] | dotAssignOperator [])) != 0)
+ | ([MODIFIER_MAP count] > 0)
+ | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0) then
+  %//--------------------------------- Modifier utility method\n%
+  %  public : void insulate (LOCATION_ARGS) ;\n\n%
+end if
+
+
 %//--- Construction from pointer
   public : GALGASap_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 

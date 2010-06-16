@@ -119,16 +119,15 @@ GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
 
 if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::insulate (%?^%GALGASap_%!TYPE_IDENTIFIER% & ioObject\n%
-        !^%COMMA_LOCATION_ARGS) {\n%
-  %  if (ioObject.isValid () && (ioObject.ptr (HERE)->retainCount () > 1)) {\n%
+  %void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {\n%
+  %  if (isValid () && (ptr (HERE)->retainCount () > 1)) {\n%
   %    GALGASap_%!TYPE_IDENTIFIER% p = GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%
   foreach ALL_ATTRIBUTE_LIST
-    do %ioObject.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]
+    do %ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]
     between %, %
   end foreach
   % COMMA_THERE) ;\n%
-  %    ioObject = p ;\n%
+  %    *this = p ;\n%
   %  }\n%
   %}\n\n%
 end if
