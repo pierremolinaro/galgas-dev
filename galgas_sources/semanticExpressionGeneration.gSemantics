@@ -98,8 +98,6 @@ override method @trueExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @trueExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-#  ioGeneratedCode .= "GALGASap_bool " . outCppName
-#                   . " (GALGAS_bool::constructor_new (true COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_bool " . outCppName . " (true COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
@@ -142,10 +140,6 @@ override method @literalStringExpressionForGeneration generateExpression
 #  ioGeneratedCode .= "static const char kString_" . [[mLocation locationIndex] string] . " ["
 #                   . [[mString length] + 1 string] . "] = " . [mString utf8Representation] . ";\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-#  ioGeneratedCode .= "GALGASap_string " . outCppName
-#                   . " (GALGAS_string::constructor_new (kString_"
-#                   . [[mLocation locationIndex] string]
-#                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   ioGeneratedCode .= "GALGASap_string " . outCppName
                    . " ("
                    . [mString utf8Representation]
@@ -239,7 +233,7 @@ override method @constructorExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation]
                    . " " . outCppName
-                   . " (GALGAS_"  . [mConstructorType identifierRepresentation]
+                   . " (GALGASap_"  . [mConstructorType identifierRepresentation]
                    . "::constructor_" . [mConstructorName identifierRepresentation]
                    . " (" ;
   foreach parameterList
@@ -314,7 +308,7 @@ override method @optionValueExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @optionValueExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation] . " " . outCppName 
-                  . " (GALGAS_" . [mType identifierRepresentation] . "::constructor_new (gOption_" . [mOptionComponentName identifierRepresentation]
+                  . " (GALGASap_" . [mType identifierRepresentation] . "::constructor_new (gOption_" . [mOptionComponentName identifierRepresentation]
                   . "_" . [mOptionEntryName identifierRepresentation] . ".mValue COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
 end method ;
 
@@ -826,7 +820,7 @@ override method @literalTypeInExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @literalTypeInExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGASap_type " . outCppName . " (GALGAS_type::constructor_new (& kTypeDescriptor_GALGAS_"
+  ioGeneratedCode .= "GALGASap_type " . outCppName . " (GALGASap_type::constructor_new (& kTypeDescriptor_GALGAS_"
                   . [mTypeName identifierRepresentation]
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
 end method ;

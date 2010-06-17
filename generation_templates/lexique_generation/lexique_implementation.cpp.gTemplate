@@ -381,9 +381,9 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
     %GALGASap_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
     %  macroValidObject (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER%) ;\n%
-    %  GALGASap_location currentLocation (GALGAS_location::constructor_new (ptr->mStartLocation, ptr->mEndLocation, sourceText () COMMA_HERE)) ;\n%
-    %  GALGASap_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% value (GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (ptr->mLexicalAttribute_%![lkey identifierRepresentation]% COMMA_HERE)) ;\n%
-    %  GALGASap_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% result (GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (value, currentLocation COMMA_HERE)) ;\n%
+    %  GALGASap_location currentLocation (GALGASap_location::constructor_new (ptr->mStartLocation, ptr->mEndLocation, sourceText () COMMA_HERE)) ;\n%
+    %  GALGASap_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% value (GALGASap_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (ptr->mLexicalAttribute_%![lkey identifierRepresentation]% COMMA_HERE)) ;\n%
+    %  GALGASap_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% result (GALGASap_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]%::constructor_new (value, currentLocation COMMA_HERE)) ;\n%
     %  return result ;\n%
     %}\n\n%
   end foreach

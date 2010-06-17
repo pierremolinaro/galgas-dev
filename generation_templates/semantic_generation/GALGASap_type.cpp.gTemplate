@@ -34,7 +34,7 @@ GALGASap_%!TYPE_IDENTIFIER% & GALGASap_%!TYPE_IDENTIFIER%::operator = (const GAL
   else
     %\n%!^ %COMMA_LOCATION_ARGS) :\n%
   end if
-  %GALGASap_%!SUPER_TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%
+  %GALGASap_%!SUPER_TYPE_IDENTIFIER% (constructor_new (%
   foreach NATIVE_ATTRIBUTE_LIST
     do %inOperand_%!mAttributeName
     between %, %

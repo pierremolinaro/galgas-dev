@@ -69,7 +69,7 @@ GALGAS_map (THERE) {
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
   macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
   return result ;
@@ -77,11 +77,11 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOC
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOverride (%?^%GALGASap_%!TYPE_IDENTIFIER% & inMapToOverride
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOverride (%?^%GALGASap_%!TYPE_IDENTIFIER% & inMapToOverride
                                                    %!^%COMMA_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result ;
   if (inMapToOverride.isValid ()) {
-    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (THERE) ;
+    result = constructor_emptyMap (THERE) ;
     result.ptr (HERE)->mOverridenMap = inMapToOverride ;
   }
   return result ;
@@ -91,7 +91,7 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToO
 
 void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   if (ptr (HERE)->retainCount () > 1) {
-    GALGASap_%!TYPE_IDENTIFIER% newMap (GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (THERE)) ;
+    GALGASap_%!TYPE_IDENTIFIER% newMap (constructor_emptyMap (THERE)) ;
     newMap.ptr (HERE)->copyFrom (ptr(HERE)) ;
     *this = newMap ;
   }
@@ -102,7 +102,7 @@ void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
 GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result = mOverridenMap ;
   if (! result.isValid ()) {
-    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (THERE) ;
+    result = GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyMap (THERE) ;
   }
   return result ;
 }

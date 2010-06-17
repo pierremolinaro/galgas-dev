@@ -173,7 +173,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
   end foreach ;
   ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation]
                    . " " . mTargetVariableCppName
-                   . " (GALGAS_"  . [mTargetType identifierRepresentation]
+                   . " (GALGASap_"  . [mTargetType identifierRepresentation]
                    . "::constructor_" . [mConstructorName identifierRepresentation]
                    . " (" ;
   foreach parameterList
