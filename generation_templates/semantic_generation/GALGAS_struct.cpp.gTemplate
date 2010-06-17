@@ -10,9 +10,20 @@ end foreach% {
 
 //---------------------------------------------------------------------------*
 
+GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_%!TYPE_IDENTIFIER% & inSource) :
+%
+foreach ATTRIBUTE_LIST do
+  %mAttribute_%![mAttributeName identifierRepresentation]% (inSource.mAttribute_%![mAttributeName identifierRepresentation]%)%
+  between %,\n%!^
+end foreach
+% {
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 foreach ATTRIBUTE_LIST
-  do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end foreach% \n%!^%COMMA_LOCATION_ARGS) :
 GALGAS_struct (THERE)%
@@ -35,7 +46,7 @@ end foreach
 
 GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_new (%?^
 foreach ATTRIBUTE_LIST
-  do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end foreach% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result ;
@@ -60,7 +71,7 @@ end foreach
 
 GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (%?^
 foreach ATTRIBUTE_LIST
-  do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end foreach
 %) :
@@ -132,7 +143,27 @@ void GALGASap_%!TYPE_IDENTIFIER%::drop (void) {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_object * GALGASap_%!TYPE_IDENTIFIER%::ptrNoVerif (void) {
+GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSource) :
+%
+foreach ATTRIBUTE_LIST do
+  %mAttribute_%![mAttributeName identifierRepresentation]% ()%
+  between %,\n%!^
+end foreach
+% {
+  const GALGAS_object * object = inSource.ptrNoVerif () ;
+  if (NULL != object) {
+    macroValidObject (object, const GALGAS_%!TYPE_IDENTIFIER%) ;
+    const GALGAS_%!TYPE_IDENTIFIER% * p = (GALGAS_%!TYPE_IDENTIFIER% *) object ;
+%
+  foreach ATTRIBUTE_LIST do
+    %    mAttribute_%![mAttributeName identifierRepresentation]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  end foreach
+%  }
+}
+
+//---------------------------------------------------------------------------*
+
+GALGASap_object GALGASap_%!TYPE_IDENTIFIER%::embedObject (void) const {
   GALGAS_object * result = NULL ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (%
@@ -142,6 +173,6 @@ GALGAS_object * GALGASap_%!TYPE_IDENTIFIER%::ptrNoVerif (void) {
     end foreach
     % COMMA_HERE)) ;
   }
-  return result ;
+  return GALGASap_object (result) ;
 }
 

@@ -55,7 +55,7 @@ if (SUPPORTED_OPERATORS & generateCppConstructorWithCurrentAttributeList []) != 
 //--------------------------------- C++ constructor (with current attributes)\n%
   %  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach CURRENT_TYPE_ATTRIBUTE_LIST
-    do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
+    do index IDX %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   if [CURRENT_TYPE_ATTRIBUTE_LIST length] == 0 then
@@ -69,7 +69,7 @@ if (SUPPORTED_OPERATORS & generateCppConstructorWithAllAttributeList []) != 0 th
 //--------------------------------- C++ constructor\n%
   %  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach INHERITED_ATTRIBUTE_LIST
-    do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
+    do index IDX %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   if [INHERITED_ATTRIBUTE_LIST length] == 0 then

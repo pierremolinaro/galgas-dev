@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//%!["@" . TYPE_NAME . " auto boxing" stringByLeftAndRightPadding !75 !' ']%*
+//%!["@" . TYPE_NAME . " " . [TYPE_KIND kind] . " type" stringByLeftAndRightPadding !75 !' ']%*
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -32,19 +32,16 @@ class GALGASap_%!TYPE_IDENTIFIER% {
 //--- Drop
   public : void drop (void) ;
 
-//--- Construction from root object
+//--- Construction from embedded object
   public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSourceObject) ;
 
-//--- Assignment from root object
-  public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_object & inSourceObject) ;
-
-//--- Return object pointer
-  public : GALGAS_object * ptrNoVerif (void) ;
+//--- Return embedded object
+  public : GALGASap_object embedObject (void) const ;
 
 //--------------------------------- C++ constructor (with native attributes)\n%
 %  public : GALGASap_%!TYPE_IDENTIFIER% (%?^
 foreach CURRENT_ATTRIBUTE_LIST do
-  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+  %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   between %,\n%!^
 end foreach
 %) ;
@@ -55,7 +52,7 @@ if [CONSTRUCTOR_MAP count] > 0 then
   foreach CONSTRUCTOR_MAP do
     %  public : static GALGASap_%![mReturnedType identifierRepresentation]% constructor_%![lkey identifierRepresentation]% (%?^
     foreach mArgumentTypeList
-      do index IDX %GALGASap_% ![mType identifierRepresentation] % & inOperand%![IDX string]
+      do index IDX %const GALGASap_% ![mType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end foreach
     if mHasCompilerArgument & ([mArgumentTypeList length] > 0) then
