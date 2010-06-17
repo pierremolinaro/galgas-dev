@@ -1,21 +1,21 @@
 //---------------------------------------------------------------------------*
 
 %if [CURRENT_ATTRIBUTE_LIST length] == 0 then
-  %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %enumComparisonResult GALGASap_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   %                        %!^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {\n%
   %  return (inOperand1.isValid () && inOperand2.isValid ()) ? kOperandEqual : kOperandNotValid ;\n%
   %}\n\n%
 else
-  %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
+  %enumComparisonResult GALGASap_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,\n%
   %                        %!^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {\n%
   if SUPER_TYPE_IDENTIFIER == "class" then
     %  enumComparisonResult result = (inOperand1.isValid () && inOperand2.isValid ()) ? kOperandEqual : kOperandNotValid ;\n%
   else
-    %  enumComparisonResult result = GALGAS_%!SUPER_TYPE_IDENTIFIER%::objectCompare (inOperand1, inOperand2) ;\n%
+    %  enumComparisonResult result = GALGASap_%!SUPER_TYPE_IDENTIFIER%::objectCompare (inOperand1, inOperand2) ;\n%
   end if
   foreach CURRENT_ATTRIBUTE_LIST do
     %  if (kOperandEqual == result) {\n%
-    %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+    %    result = GALGASap_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
     %  }\n%
   end foreach
   %  return result ;\n%

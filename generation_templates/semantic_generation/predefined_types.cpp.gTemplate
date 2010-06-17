@@ -22,7 +22,7 @@ bool cCollectionElement_stringset::isValid (void) const {
 enumComparisonResult cCollectionElement_stringset::compare (const cCollectionElement * inOperand) {
   const cCollectionElement_stringset * operand = (const cCollectionElement_stringset *) inOperand ;
   macroValidObject (operand, const cCollectionElement_stringset) ;
-  return GALGAS_string::objectCompare (mAttribute_key, operand->mAttribute_key) ;
+  return GALGASap_string::objectCompare (mAttribute_key, operand->mAttribute_key) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -59,7 +59,7 @@ bool cCollectionElement_data::isValid (void) const {
 enumComparisonResult cCollectionElement_data::compare (const cCollectionElement * inOperand) {
   const cCollectionElement_data * operand = (const cCollectionElement_data *) inOperand ;
   macroValidObject (operand, const cCollectionElement_data) ;
-  return GALGAS_uint::objectCompare (mAttribute_data, operand->mAttribute_data) ;
+  return GALGASap_uint::objectCompare (mAttribute_data, operand->mAttribute_data) ;
 }
 
 //---------------------------------------------------------------------------*

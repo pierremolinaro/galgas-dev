@@ -266,11 +266,7 @@ foreach READER_MAP do
   end if
 end foreach
 
-if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
-%//--------------------------------- Comparison
-  public : static enumComparisonResult objectCompare (const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
-                                                      const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) ;
-%end if%
+%
 //--------------------------------- Introspection
   public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
 

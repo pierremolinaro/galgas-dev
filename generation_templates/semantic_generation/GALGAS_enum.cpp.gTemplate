@@ -48,7 +48,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+enumComparisonResult GALGASap_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
                         %!^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {
   enumComparisonResult result = kOperandNotValid ;
   if (inOperand1.isValid () && inOperand2.isValid ()) {

@@ -89,7 +89,7 @@ enumComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cColl
   enumComparisonResult result = kOperandEqual ;
 %  foreach ATTRIBUTE_LIST do
      %  if (kOperandEqual == result) {\n%
-     %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%, operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+     %    result = GALGASap_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%, operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
      %  }\n%
    end foreach
 %  return result ;

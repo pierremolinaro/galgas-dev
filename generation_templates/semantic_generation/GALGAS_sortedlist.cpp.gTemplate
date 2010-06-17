@@ -89,7 +89,7 @@ enumComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cColl
   enumComparisonResult result = kOperandEqual ;
 %  foreach ATTRIBUTE_LIST do
      %  if (kOperandEqual == result) {\n%
-     %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%, operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+     %    result = GALGASap_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%, operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
      %  }\n%
    end foreach
 %  return result ;
@@ -123,7 +123,7 @@ enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%c
 % foreach SORT_ATTRIBUTE_LIST do
     %  if (result == kOperandEqual) {\n%
     %    result = % if mAscendingOrder then else %complementComparison % end if
-    %(GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (p1->mAttribute_%![mAttributeName identifierRepresentation]%, p2->mAttribute_%![mAttributeName identifierRepresentation]%)) ;\n%
+    %(GALGASap_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (p1->mAttribute_%![mAttributeName identifierRepresentation]%, p2->mAttribute_%![mAttributeName identifierRepresentation]%)) ;\n%
     %  }\n%
   end foreach
 %  return result ;

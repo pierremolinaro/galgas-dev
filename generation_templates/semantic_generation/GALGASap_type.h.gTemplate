@@ -177,6 +177,12 @@ if (SUPPORTED_OPERATORS & incDecOperator []) != 0 then
         !^%COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
+if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
+%//--------------------------------- Comparison
+  public : static enumComparisonResult objectCompare (const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+                                                      const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) ;
+%end if
+
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
   %//--------------------------------- += operator
   public : void addAssign_operation (%?^
