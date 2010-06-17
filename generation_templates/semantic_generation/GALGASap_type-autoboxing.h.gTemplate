@@ -157,6 +157,12 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %
 end if
 
+if ((SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0) then
+%//--------------------------------- Comparison
+  public : static enumComparisonResult objectCompare (const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+                                                      const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) ;
+%end if
+
 %//--------------------------------- Reader invocation declaration\n%
 foreach READER_MAP do
   if (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then

@@ -100,12 +100,12 @@ end foreach
 
 %//---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+enumComparisonResult GALGASap_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
                         %!^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {
    enumComparisonResult result = kOperandEqual ;
 %foreach ATTRIBUTE_LIST do
   %  if (result == kOperandEqual) {\n%
-  %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+  %    result = GALGASap_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
   %  }\n%
 end foreach
 %  return result ;
