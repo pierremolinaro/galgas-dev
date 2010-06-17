@@ -26,7 +26,7 @@ end if
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach ALL_ATTRIBUTE_LIST
-    do %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & constinAttribute_%![mAttributeName identifierRepresentation]
+    do %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & constinAttribute_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   if [ALL_ATTRIBUTE_LIST length] > 0 then
