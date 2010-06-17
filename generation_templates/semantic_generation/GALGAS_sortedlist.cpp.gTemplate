@@ -133,7 +133,7 @@ enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::compareSortedListElements (%?^%c
 
 void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   if (isValid () && (ptr (HERE)->retainCount () > 1)) {
-    GALGASap_%!TYPE_IDENTIFIER% p (GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE)) ;
+    GALGASap_%!TYPE_IDENTIFIER% p (constructor_emptySortedList (THERE)) ;
     p.ptr (HERE)->copyFrom (ptr (HERE)) ;
     *this = p ;
   }
@@ -141,7 +141,7 @@ void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (LOCATION_ARGS) {
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_emptySortedList (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * p = NULL ;
   macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
   return GALGASap_%!TYPE_IDENTIFIER% (p) ;
@@ -149,13 +149,13 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedLi
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithValue (%?COL0
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_sortedListWithValue (%?COL0
   foreach ATTRIBUTE_LIST
   do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!COL0
   end foreach
   %\n%!COL0%COMMA_LOCATION_ARGS) {
-  GALGASap_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE) ;
+  GALGASap_%!TYPE_IDENTIFIER% result = constructor_emptySortedList (THERE) ;
   cCollectionElement * p = NULL ;
   macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
   foreach ATTRIBUTE_LIST
@@ -207,7 +207,7 @@ GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::operator_concat (%?^%GA
                                 %!^%COMMA_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (THERE) ;
+    result = constructor_emptySortedList (THERE) ;
     result.ptr (HERE)->appendSortedList (ptr (HERE)) ;
     result.ptr (HERE)->appendSortedList (inOperand.ptr (HERE)) ;
   }

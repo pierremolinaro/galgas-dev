@@ -94,9 +94,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       routine_before (commonLexique COMMA_HERE) ;
       for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
         const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
-        GALGASap_string sfp = GALGAS_string::constructor_new (sourceFilesArray (i COMMA_HERE) COMMA_HERE) ;
+        GALGASap_string sfp = GALGASap_string::constructor_new (sourceFilesArray (i COMMA_HERE) COMMA_HERE) ;
         GALGASap_location location = commonLexique->here (HERE) ;
-        GALGASap_lstring sourceFilePath = GALGAS_lstring::constructor_new (sfp, location COMMA_HERE) ;
+        GALGASap_lstring sourceFilePath = GALGASap_lstring::constructor_new (sfp, location COMMA_HERE) ;
         PMSInt16 r = 0 ;
         %
  foreach PROGRAM_RULE_LIST 

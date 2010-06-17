@@ -113,7 +113,7 @@ GALGAS_list (kFieldList_%!TYPE_IDENTIFIER% COMMA_THERE) {
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (LOCATION_ARGS) {
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyList (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
   macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
   return result ;
@@ -121,13 +121,13 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (LO
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (%?^
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_listWithValue (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
-  GALGASap_%!TYPE_IDENTIFIER% result (GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE)) ;
+  GALGASap_%!TYPE_IDENTIFIER% result (constructor_emptyList (THERE)) ;
   cCollectionElement * p = NULL ;
   macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
   foreach ATTRIBUTE_LIST
@@ -144,7 +144,7 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue
 
 void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   if (ptr (HERE)->retainCount () > 1) {
-    GALGASap_%!TYPE_IDENTIFIER% newList (GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE)) ;
+    GALGASap_%!TYPE_IDENTIFIER% newList (constructor_emptyList (THERE)) ;
     newList.ptr (HERE)->copyFrom (ptr (HERE)) ;
     *this = newList ;
   }
@@ -318,7 +318,7 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (
                                                %!^%COMMA_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
+    result = GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
     const bool ok = subListWithRange (result.ptr (HERE), inOperand0, inOperand1, inCompiler COMMA_THERE) ;
     if (! ok) {
       result.drop () ;
@@ -334,7 +334,7 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (
                                                %!^%COMMA_LOCATION_ARGS) {
   GALGASap_%!TYPE_IDENTIFIER% result ;
   if (inIndex.isValid ()) {
-    result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
+    result = GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
     const bool ok = subListFromIndex (result.ptr (HERE), inIndex, inCompiler COMMA_THERE) ;
     if (! ok) {
       result.drop () ;
