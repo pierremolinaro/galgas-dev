@@ -27,9 +27,9 @@ void GALGASap_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & io
 //---------------------------------------------------------------------------*
 
 void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
-      %,\n%!^%GALGAS_string * inKey%
+      %,\n%!^%const GALGAS_string * inKey%
   foreach ATTRIBUTE_LIST
-  do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (ioResult != NULL) {
