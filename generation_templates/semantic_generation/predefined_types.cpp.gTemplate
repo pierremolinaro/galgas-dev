@@ -5,7 +5,7 @@
 
 //---------------------------------------------------------------------------*
 
-cCollectionElement_stringset::cCollectionElement_stringset (GALGASap_string & inKey
+cCollectionElement_stringset::cCollectionElement_stringset (const GALGASap_string & inKey
                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mAttribute_key (inKey) {
@@ -42,7 +42,7 @@ void cCollectionElement_stringset::description (C_String & /* ioString */, const
 
 //---------------------------------------------------------------------------*
 
-cCollectionElement_data::cCollectionElement_data (GALGASap_uint & inData
+cCollectionElement_data::cCollectionElement_data (const GALGASap_uint & inData
                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mAttribute_data (inData) {

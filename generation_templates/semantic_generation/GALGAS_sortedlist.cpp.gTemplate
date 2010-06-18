@@ -14,7 +14,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 //--- Constructor
   public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   foreach ATTRIBUTE_LIST
-    do %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
 %\n%
@@ -37,7 +37,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   foreach ATTRIBUTE_LIST
-    do %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
 %\n%
@@ -172,7 +172,7 @@ GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_sortedListW
 
 void GALGASap_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
+  do index IDX %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
   between %,\n%!^
   end foreach
 %
@@ -193,7 +193,7 @@ void GALGASap_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 
 //---------------------------------------------------------------------------*
 
-void GALGASap_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%GALGASap_%!TYPE_IDENTIFIER% inOperand
+void GALGASap_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%const GALGASap_%!TYPE_IDENTIFIER% inOperand
                           %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     insulate (THERE) ;
@@ -203,8 +203,8 @@ void GALGASap_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%GALGASap_%!TYPE_IDENT
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::operator_concat (%?^%GALGASap_%!TYPE_IDENTIFIER% & inOperand
-                                %!^%COMMA_LOCATION_ARGS) {
+GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::operator_concat (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand
+                                %!^%COMMA_LOCATION_ARGS) const {
   GALGASap_%!TYPE_IDENTIFIER% result ;
   if (isValid () && inOperand.isValid ()) {
     result = constructor_emptySortedList (THERE) ;

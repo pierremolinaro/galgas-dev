@@ -24,7 +24,7 @@ class cCollectionElement_stringset : public cCollectionElement {
   public : GALGASap_string mAttribute_key ;
 
 //--- Constructor
-  public : cCollectionElement_stringset (GALGASap_string & inKey
+  public : cCollectionElement_stringset (const GALGASap_string & inKey
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
@@ -47,7 +47,7 @@ class cCollectionElement_data : public cCollectionElement {
   public : GALGASap_uint mAttribute_data ;
 
 //--- Constructor
-  public : cCollectionElement_data (GALGASap_uint & inData
+  public : cCollectionElement_data (const GALGASap_uint & inData
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid

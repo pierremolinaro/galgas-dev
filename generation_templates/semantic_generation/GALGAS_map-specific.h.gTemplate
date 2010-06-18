@@ -12,9 +12,9 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElementForMap {
     end foreach
 %
 //--- Constructor
-  public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^%GALGASap_lstring & inKey%
+  public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^%const GALGASap_lstring & inKey%
   foreach ATTRIBUTE_LIST
-    do %,\n%!^%GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %,\n%!^%const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   end foreach
 %\n%
 !^%COMMA_LOCATION_ARGS) ;
