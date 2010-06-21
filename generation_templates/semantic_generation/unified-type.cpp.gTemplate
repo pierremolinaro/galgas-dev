@@ -203,7 +203,7 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
     %//---------------------------------------------------------------------------*\n%
     %//%!["@" . TYPE_NAME . " " . [TYPE_KIND kind] . " enumeration" stringByLeftAndRightPadding !75 !' ']%*\n%
     %//---------------------------------------------------------------------------*\n\n%
-    %GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (%?^%GALGASap_%!TYPE_IDENTIFIER% & inEnumeratedObject,\n%
+    %GALGAS_%!TYPE_IDENTIFIER%::cEnumerator::cEnumerator (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inEnumeratedObject,\n%
                                   !^%const bool inAscending) :\n%
     %AC_GALGAS_Enumerator (inEnumeratedObject.ptrNoVerif (), inAscending)%
     foreach ENUMERATION_DESCRIPTOR_LIST do index IDX

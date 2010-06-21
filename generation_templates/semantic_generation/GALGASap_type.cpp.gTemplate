@@ -53,7 +53,7 @@ foreach READER_MAP do
     %//---------------------------------------------------------------------------*\n\n%
     %GALGASap_% ![mReturnedType identifierRepresentation] % GALGASap_%!TYPE_IDENTIFIER%::readerCall_% ![lkey identifierRepresentation] % (%?^
     foreach mArgumentTypeList
-      do index IDX %GALGASap_%![mType identifierRepresentation]% & inOperand_% ![IDX string]
+      do index IDX %const GALGASap_%![mType identifierRepresentation]% & inOperand_% ![IDX string]
       between %,\n% !^
     end foreach
     if [mArgumentTypeList length] == 0 then
@@ -67,7 +67,7 @@ foreach READER_MAP do
     else
       %\n% !^ %COMMA_LOCATION_ARGS%
     end if
-    %) {\n%
+    %) const {\n%
     %  GALGASap_%![mReturnedType identifierRepresentation]% result ;\n%
     %  if (isValid ()) {\n%
     %    result = ptr (HERE)->reader_%![lkey identifierRepresentation]% (%
@@ -115,7 +115,7 @@ end foreach
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) :
+GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% * inSourcePtr) :
 GALGASap_%!SUPER_TYPE_IDENTIFIER% (inSourcePtr) {
 }
 

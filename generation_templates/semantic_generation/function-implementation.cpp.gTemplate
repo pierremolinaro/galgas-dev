@@ -21,7 +21,7 @@ static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifier
 
 static GALGASap_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,
                                                  %!^%cRootObjectArray & inEffectiveParameterArray,
-                                                 %!^%GALGASap_location & inErrorLocation
+                                                 %!^%const GALGASap_location & inErrorLocation
                                                  %!^%COMMA_LOCATION_ARGS) {
   const bool ok = inCompiler->checkFunctionCallArguments (%![FUNCTION_NAME utf8Representation]%,
                                                           %![[FORMAL_ARGUMENT_LIST length] string]%,

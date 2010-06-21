@@ -62,7 +62,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
-  %                              %!^%const PMSInt32 /* inIndentation */) {\n%
+  %                              %!^%const PMSInt32 /* inIndentation */) const {\n%
   %  ioString << "<class @"\n%
   %           << typeDescriptor ()->mGalgasTypeName\n%
   %           << ">" ;\n%
@@ -100,7 +100,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
-  %                              %!^%const PMSInt32 /* inIndentation */) {\n%
+  %                              %!^%const PMSInt32 /* inIndentation */) const {\n%
   %  ioString << "<class @"\n%
   %           << typeDescriptor ()->mGalgasTypeName\n%
   %           << ":" ;\n%
@@ -147,7 +147,7 @@ end foreach
 
 foreach CURRENT_ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) {\n%
+  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach

@@ -36,7 +36,7 @@ cCollectionElement * cCollectionElement_stringset::copy (void) {
 
 //---------------------------------------------------------------------------*
 
-void cCollectionElement_stringset::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) {
+void cCollectionElement_stringset::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {
 //  mAttribute_key.description (ioString, inIndentation) ;
 }
 
@@ -72,7 +72,7 @@ cCollectionElement * cCollectionElement_data::copy (void) {
 
 //---------------------------------------------------------------------------*
 
-void cCollectionElement_data::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) {
+void cCollectionElement_data::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {
 //  mAttribute_key.description (ioString, inIndentation) ;
 }
 

@@ -91,7 +91,7 @@ end if
 %if (SUPPORTED_OPERATORS & generateDescriptionReaderUtilityMethod []) != 0 then
   %//--------------------------------- Implementation of reader 'description'\n%
   %  public : virtual void description (C_String & ioString,\n%
-  %                                     const PMSInt32 inIndentation) ;\n%
+  %                                     const PMSInt32 inIndentation) const ;\n%
 end if
 
 %
@@ -210,7 +210,7 @@ foreach READER_MAP do
   if (mQualifier != [@methodQualifier isInherited]) & (mQualifier != [@methodQualifier isBasicFinal]) then
     %  protected : virtual GALGASap_% ![mReturnedType identifierRepresentation] % reader_% ![lkey identifierRepresentation] % (%?^
     foreach mArgumentTypeList
-      do index IDX %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
+      do index IDX %const GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
       between %,\n% !^
     end foreach
     if [mArgumentTypeList length] == 0 then
@@ -230,7 +230,7 @@ foreach READER_MAP do
     if mQualifier == [@methodQualifier isAbstract] then
       % = 0%
     end if
-    % ;\n\n%
+    % const ;\n\n%
   end if
 end foreach
 
@@ -255,7 +255,7 @@ end foreach
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 %//--------------------------------- Enumeration helper methods
   protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                     const bool inAscending) ;
+                                                     const bool inAscending) const ;
 
 %end if
 
@@ -279,7 +279,7 @@ end if
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Enumerator declaration
   public : class cEnumerator : public AC_GALGAS_Enumerator {
-    public : cEnumerator (GALGASap_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+    public : cEnumerator (const GALGASap_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                           const bool inAscending) ;
 
   //--- Update attribute proxies
