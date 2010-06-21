@@ -188,7 +188,7 @@ foreach READER_MAP do
   if (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
     %public : VIRTUAL_IN_DEBUG GALGASap_% ![mReturnedType identifierRepresentation] % readerCall_% ![lkey identifierRepresentation] % (%?^
     foreach mArgumentTypeList
-      do index IDX %GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
+      do index IDX %const GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
       between %,\n% !^
     end foreach
     if [mArgumentTypeList length] == 0 then
@@ -202,7 +202,7 @@ foreach READER_MAP do
     else
       %\n% !^ %COMMA_LOCATION_ARGS%
     end if
-    %) ;\n\n%
+    %) const ;\n\n%
   end if
 end foreach
 

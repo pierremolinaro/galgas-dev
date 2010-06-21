@@ -1,5 +1,0 @@
-//---------------------------------------------------------------------------*
-
-GALGASap_string readerCall_description (GALGASap_object & inObject
-                                        COMMA_LOCATION_ARGS) ;
-

@@ -91,7 +91,7 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-                             %!^%const PMSInt32 inIndentation) {
+                             %!^%const PMSInt32 inIndentation) const {
   ioString << "<struct @%!TYPE_NAME%:" ;
 %
 foreach ATTRIBUTE_LIST
@@ -104,7 +104,7 @@ end foreach
 %
 foreach ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGASap_%!TYPE_IDENTIFIER%::readerCall_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) {\n%
+  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGASap_%!TYPE_IDENTIFIER%::readerCall_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach

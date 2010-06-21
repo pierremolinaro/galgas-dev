@@ -37,7 +37,7 @@ class cCollectionElement_stringset : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) ;
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -60,7 +60,7 @@ class cCollectionElement_data : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) ;
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*

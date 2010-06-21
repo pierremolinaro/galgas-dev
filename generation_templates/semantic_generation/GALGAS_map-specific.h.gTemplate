@@ -29,6 +29,6 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElementForMap {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) ;
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
 } ;
 

@@ -28,7 +28,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeRegularProxy (%?^%GALGAS_string
 %foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
-  %                                       %!^%COMMA_LOCATION_ARGS) {\n%
+  %                                       %!^%COMMA_LOCATION_ARGS) const {\n%
   %  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * result = NULL ;\n%
   %  GALGAS_object * * attributeList = getAttributeList (inCompiler COMMA_THERE) ;\n%
   %  if (NULL != attributeList) {\n%

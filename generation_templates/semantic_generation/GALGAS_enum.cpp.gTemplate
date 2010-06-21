@@ -25,7 +25,7 @@ foreach ENUM_MESSAGE_LIST do
   end foreach
   %\n} ;\n\n%
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_string GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) {\n%
+  %GALGASap_string GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  return GALGASap_string::constructor_new (gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [mEnumValue] COMMA_THERE) ;\n%
   %}\n\n%
 end foreach
@@ -42,7 +42,7 @@ end foreach%
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-%                                       !^%const PMSInt32 /* inIndentation */) {
+%                                       !^%const PMSInt32 /* inIndentation */) const {
   ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnumValue] << ">" ;
 }
 

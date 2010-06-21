@@ -41,7 +41,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //---------------------------------------------------------------------------*
 
-void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) {
+void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {
 %
   foreach ATTRIBUTE_LIST
     do %// mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
@@ -99,7 +99,7 @@ void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (LOCATION_ARGS) {
+GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (LOCATION_ARGS) const {
   GALGASap_%!TYPE_IDENTIFIER% result = mOverridenMap ;
   if (! result.isValid ()) {
     result = GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyMap (THERE) ;
@@ -195,9 +195,9 @@ end if
 
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%GALGASap_string & inKey,\n%
+  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%const GALGASap_string & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
-  %                                               %!^%COMMA_LOCATION_ARGS) {\n%
+  %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
   %  capCollectionElement attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;\n%
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;\n%
   %  GALGASap_%![mAttributeTypeIndex identifierRepresentation]% result ;\n%

@@ -30,7 +30,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) ;
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -75,7 +75,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //---------------------------------------------------------------------------*
 
-void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) {
+void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {
 %
   foreach ATTRIBUTE_LIST
     do %// mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
@@ -312,10 +312,10 @@ GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::operator_concat (%?^%co
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (%?^%GALGASap_uint & inOperand0,
-                                               %!^%GALGASap_uint & inOperand1,
+GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (%?^%const GALGASap_uint & inOperand0,
+                                               %!^%const GALGASap_uint & inOperand1,
                                                %!^%C_Compiler * inCompiler
-                                               %!^%COMMA_LOCATION_ARGS) {
+                                               %!^%COMMA_LOCATION_ARGS) const {
   GALGASap_%!TYPE_IDENTIFIER% result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
@@ -329,9 +329,9 @@ GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (%?^%GALGASap_uint & inIndex,
+GALGASap_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (%?^%const GALGASap_uint & inIndex,
                                                %!^%C_Compiler * inCompiler
-                                               %!^%COMMA_LOCATION_ARGS) {
+                                               %!^%COMMA_LOCATION_ARGS) const {
   GALGASap_%!TYPE_IDENTIFIER% result ;
   if (inIndex.isValid ()) {
     result = GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
@@ -370,9 +370,9 @@ end foreach
 %
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%GALGASap_uint & inIndex,\n%
+  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGASap_uint & inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
-  %                                              %!^%COMMA_LOCATION_ARGS) {\n%
+  %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
   %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;\n%
   %  GALGASap_%![mAttributeTypeIndex identifierRepresentation]% result ;\n%
