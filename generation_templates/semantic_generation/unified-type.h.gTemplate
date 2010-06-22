@@ -269,7 +269,7 @@ if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
-    %  friend capCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    %  friend cCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
     !^%GALGASap_%!TYPE_IDENTIFIER% & ioMap,\n%
     !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%
@@ -302,7 +302,7 @@ end if
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
-    %capCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    %cCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
     !^%GALGASap_%!TYPE_IDENTIFIER% & ioMap,\n%
     !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%

@@ -217,7 +217,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %                           %!^%COMMA_LOCATION_ARGS) {\n%
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;\n%
   %  if (NULL != p) {\n%
-  %    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    MF_Assert (dynamic_cast <cCollectionElement_%!TYPE_IDENTIFIER% *> (p) != NULL, "p is not an instance of cCollectionElement_%!TYPE_IDENTIFIER% *", 0, 0) ;\n%
   %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inAttributeValue ;\n%
   %  }\n%
   %}\n\n%
@@ -225,11 +225,11 @@ end foreach
 
 foreach WITH_ACCESSOR_MAP do
   %//---------------------------------------------------------------------------*\n\n%
-  %capCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+  %cCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
   !^%GALGASap_%!TYPE_IDENTIFIER% & ioMap,\n%
   !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
   !^%COMMA_LOCATION_ARGS) {\n%
-  %  capCollectionElement * result = NULL ;\n%
+  %  cCollectionElement * result = NULL ;\n%
   %  if (ioMap.isValid () && inKey.isValid ()) {\n%
   %    ioMap.insulate (THERE) ;\n%
   if [lkey string] == "hasKey" then
