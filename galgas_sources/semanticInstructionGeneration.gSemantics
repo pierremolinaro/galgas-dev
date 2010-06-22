@@ -272,10 +272,6 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-#--- Release temporary variables
-#  foreach jokerParametersToReleaseList do
-#    ioGeneratedCode .= mValue . ".drop () ; // Release temporary input variables (joker in source)\n" ;
-#  end foreach ;
   ioGeneratedCode .= "} //-------- END @grammarInstructionWithSourceFileForGeneration\n" ;
 end method ;
 
@@ -306,10 +302,6 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-#--- Release temporary variables
-#  foreach jokerParametersToReleaseList do
-#    ioGeneratedCode .= mValue . ".drop () ; // Release temporary input variables (joker in source)\n" ;
-#  end foreach ;
   ioGeneratedCode .= "} //---- END @grammarInstructionWithSourceExpressionForGeneration\n" ;
 end method ;
 
@@ -455,10 +447,6 @@ override method @routineCallInstructionForGeneration generateInstruction
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .=  compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[[mRoutineName location] line] string] . ")) ;\n" ;
-#--- Release temporary variables
-#  foreach jokerParametersToReleaseList do
-#    ioGeneratedCode .= mValue . ".drop () ; // Release temporary input variables (joker in source)\n" ;
-#  end foreach ; 
   ioGeneratedCode .= "} //-------- @routineCallInstructionForGeneration\n" ;
 end method ;
 
