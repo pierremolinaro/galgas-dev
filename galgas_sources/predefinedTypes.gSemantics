@@ -124,9 +124,6 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/semanti
   template predefinedTypesHeaderPrologue "types-predeclaration-prologue.h.gTemplate"
     ?@stringset TYPE_LIST
   ;
-  template predefinedTypesHeaderEpilogue "types-predeclaration-epilogue.h.gTemplate"
-  ;
-
   template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
   ;
 }
@@ -167,8 +164,6 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         generatedCode .= [mDeclaration appendAutoPointerClassDeclaration] ;
         generatedCode .= [mDeclaration appendSpecificDeclaration] ;
       end foreach ;
-      generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderEpilogue
-      ] ;
       if [@uint errorCount] == 0 then
         [@string generateFile
           !inDirectory
