@@ -1437,6 +1437,7 @@ routine generateXcodeProject
   ;
 #--- Target settings
   @stringlist debugToolTargetSettings [emptyList] ;
+  debugToolTargetSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES;" ;
   debugToolTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 0;" ;
   debugToolTargetSettings  += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;" ;
 #---
