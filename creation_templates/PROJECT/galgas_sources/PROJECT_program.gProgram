@@ -1,6 +1,9 @@
 program PROJECT_program "version 1.0.0":
+#--- Import clauses (GALGAS 2)
+import "PROJECT_semantics.gSemantics" ;
+import "PROJECT_grammar.gGrammar" ;
 
-#--- Import clauses
+#--- Import clauses (GALGAS 1)
 import semantics PROJECT_semantics in "PROJECT_semantics.gSemantics" ;
 import grammar PROJECT_grammar in "PROJECT_grammar.gGrammar" ;
 

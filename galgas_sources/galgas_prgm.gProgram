@@ -55,30 +55,30 @@ before {
 
 #---------------------------------------------------------------------------*
 
-when . "ggs"
-message "a '.ggs' GALGAS source file"
-??@lstring inSourceFile {
-  @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
-  @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
-  @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
-  @M_grammarComponents grammarComponentsMap [emptyMap] ;
-  @M_optionComponents optionComponentsMap [emptyMap] ;
-  @EXsemanticContext semanticContext [new
-    ![@M_filewrappers emptyMap]
-    ![@stringset emptySet]
-    ![@EXcategoryMethodMap emptyMap]
-    ![@EXcategoryReaderMap emptyMap]
-    ![@EXcategoryTemplateMap emptyMap]
-  ] ;
-  grammar galgas_LL1_grammar in inSourceFile dependency "galgas-dep" in "DEPENDENCIES"
-    !?lexiqueMapForUse
-    !?semanticsComponentsMap
-    !?syntaxComponentsMap
-    !?grammarComponentsMap
-    !?optionComponentsMap
-    !?semanticContext
-  ;
-}
+#when . "ggs"
+#message "a '.ggs' GALGAS source file"
+#??@lstring inSourceFile {
+#  @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+#  @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+#  @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+#  @M_grammarComponents grammarComponentsMap [emptyMap] ;
+#  @M_optionComponents optionComponentsMap [emptyMap] ;
+#  @EXsemanticContext semanticContext [new
+#    ![@M_filewrappers emptyMap]
+#    ![@stringset emptySet]
+#    ![@EXcategoryMethodMap emptyMap]
+#    ![@EXcategoryReaderMap emptyMap]
+#    ![@EXcategoryTemplateMap emptyMap]
+#  ] ;
+#  grammar galgas_LL1_grammar in inSourceFile dependency "galgas-dep" in "DEPENDENCIES"
+#    !?lexiqueMapForUse
+#    !?semanticsComponentsMap
+#    !?syntaxComponentsMap
+#    !?grammarComponentsMap
+#    !?optionComponentsMap
+#    !?semanticContext
+#  ;
+#}
 
 #---------------------------------------------------------------------------*
 
@@ -490,9 +490,9 @@ message "a GALGAS project source file"
       message "****** Cannot update Xcode project, more than one project exist in '" . XcodeProjectDir . "' directory. ********\n" ;
     elsif [xcodeProjects length] == 1 then
       @string name ; [xcodeProjects first ?name] ;
-      @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
+      const @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
     #--- Update intermediate file
-      @string intermediateFilePath := outputDirectory . "/file_list_for_xcode_project.txt" ;
+      const @string intermediateFilePath := outputDirectory . "/file_list_for_xcode_project.txt" ;
     #--- Update Xcode project
       @stringset externSourceSet_tool [emptySet] ;
       @stringset guiSourceSet_tool [emptySet] ;
