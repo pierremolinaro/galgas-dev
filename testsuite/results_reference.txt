@@ -38,151 +38,6 @@ LOGGING s: <struct @structTest
 | mString <@string:"az">
 | mInt <@uint:34>
 >
-*************************************** begin of listmap
-LOGGING m: <listmap @myListMap (3 objects):
-|- key 'a', object: <list @aList 2 objects 
-| |-at 0 
-| | |-<@string:"b">
-| | |-<@uint:23>
-| |-at 1 
-| | |-<@string:"c">
-| | |-<@uint:98>
-| >
-|- key 'c', object: <list @aList 1 object 
-| |-at 0 
-| | |-<@string:"f">
-| | |-<@uint:11>
-| >
-|- key 'd', object: <list @aList 1 object 
-| |-at 0 
-| | |-<@string:"g">
-| | |-<@uint:37>
-| >
->
-LOGGING c: <@uint:3>
-LOGGING s: <@stringset (3 objects): 'a', 'c', 'd'>
-LOGGING sl: <list @stringlist 3 objects 
-|-at 0 
-| |-<@string:"a">
-|-at 1 
-| |-<@string:"c">
-|-at 2 
-| |-<@string:"d">
->
-LOGGING aList: <list @aList 2 objects 
-|-at 0 
-| |-<@string:"b">
-| |-<@uint:23>
-|-at 1 
-| |-<@string:"c">
-| |-<@uint:98>
->
---- test .= operator listmap
-LOGGING m: <listmap @myListMap (4 objects):
-|- key 'a', object: <list @aList 3 objects 
-| |-at 0 
-| | |-<@string:"b">
-| | |-<@uint:23>
-| |-at 1 
-| | |-<@string:"c">
-| | |-<@uint:98>
-| |-at 2 
-| | |-<@string:"q">
-| | |-<@uint:14>
-| >
-|- key 'b', object: <list @aList 1 object 
-| |-at 0 
-| | |-<@string:"z">
-| | |-<@uint:9>
-| >
-|- key 'c', object: <list @aList 1 object 
-| |-at 0 
-| | |-<@string:"f">
-| | |-<@uint:11>
-| >
-|- key 'd', object: <list @aList 1 object 
-| |-at 0 
-| | |-<@string:"g">
-| | |-<@uint:37>
-| >
->
---- test . operator listmap
-LOGGING mm: <listmap @myListMap (5 objects):
-|- key 'a', object: <list @aList 3 objects 
-| |-at 0 
-| | |-<@string:"b">
-| | |-<@uint:23>
-| |-at 1 
-| | |-<@string:"c">
-| | |-<@uint:98>
-| |-at 2 
-| | |-<@string:"q">
-| | |-<@uint:14>
-| >
-|- key 'b', object: <list @aList 3 objects 
-| |-at 0 
-| | |-<@string:"z">
-| | |-<@uint:9>
-| |-at 1 
-| | |-<@string:"w">
-| | |-<@uint:7>
-| |-at 2 
-| | |-<@string:"x">
-| | |-<@uint:19>
-| >
-|- key 'c', object: <list @aList 1 object 
-| |-at 0 
-| | |-<@string:"f">
-| | |-<@uint:11>
-| >
-|- key 'd', object: <list @aList 1 object 
-| |-at 0 
-| | |-<@string:"g">
-| | |-<@uint:37>
-| >
-|- key 'e', object: <list @aList 1 object 
-| |-at 0 
-| | |-<@string:"r">
-| | |-<@uint:2>
-| >
->
---- test foreach for listmap
-LOGGING key: <@string:"a">
-LOGGING mList: <list @aList 3 objects 
-|-at 0 
-| |-<@string:"b">
-| |-<@uint:23>
-|-at 1 
-| |-<@string:"c">
-| |-<@uint:98>
-|-at 2 
-| |-<@string:"q">
-| |-<@uint:14>
->
-LOGGING key: <@string:"b">
-LOGGING mList: <list @aList 3 objects 
-|-at 0 
-| |-<@string:"z">
-| |-<@uint:9>
-|-at 1 
-| |-<@string:"w">
-| |-<@uint:7>
-|-at 2 
-| |-<@string:"x">
-| |-<@uint:19>
->
-LOGGING key: <@string:"c">
-LOGGING mList: <list @aList 1 object 
-|-at 0 
-| |-<@string:"f">
-| |-<@uint:11>
->
-LOGGING key: <@string:"d">
-LOGGING mList: <list @aList 1 object 
-|-at 0 
-| |-<@string:"g">
-| |-<@uint:37>
->
 *************************************** begin of map
 LOGGING m: <map @aMap 1 object 
 |-key 0:<@lstring:'g' at '':1:1>
@@ -214,10 +69,9 @@ LOGGING m: <map @aMap 1 object
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (44 types)
+--- Type list (42 types)
   @A
   @B
-  @aList
   @aMap
   @binaryset
   @bool
@@ -241,7 +95,6 @@ LOGGING r: <@uint:5>
   @luint64
   @luintlist
   @myList
-  @myListMap
   @object
   @objectlist
   @sint
