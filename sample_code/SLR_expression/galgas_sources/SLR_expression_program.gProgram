@@ -1,5 +1,6 @@
 program SLR_expression_program "version 1.0.0":
 import grammar SLR_expression_grammar in "SLR_expression_grammar.gGrammar" ;
+import "SLR_expression_grammar.gGrammar" ;
 
 before {
 }

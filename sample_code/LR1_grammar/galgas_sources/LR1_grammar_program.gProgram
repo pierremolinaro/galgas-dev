@@ -1,5 +1,6 @@
 program LR1_grammar_program "version 1.0.0":
 import grammar LR1_grammar_grammar in "LR1_grammar_grammar.gGrammar" ;
+import "LR1_grammar_grammar.gGrammar" ;
 
 before {
 }

@@ -1,4 +1,8 @@
 program xml_parsing_program "version 1.0.0":
+import "xml_parsing_semantics.gSemantics" ;
+import "xml_types.gSemantics" ;
+import "xml_parsing_options.gOption" ;
+import "xml_parsing_grammar.gGrammar" ;
 
 #--- Import clauses
 import semantics xml_parsing_semantics in "xml_parsing_semantics.gSemantics" ;

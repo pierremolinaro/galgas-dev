@@ -5145,10 +5145,10 @@ routine handleReaderCall
     elsif [inReaderName string] == "allKeyList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := EXbuild_lstringlist_type [] ;
-    elsif [inReaderName string] == "unsolvedIndexCount" then
+    elsif [inReaderName string] == "unsolvedProxyCount" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := [@typeGalgas_uint new] ;
-    elsif [inReaderName string] == "unsolvedIndexKeyStringList" then
+    elsif [inReaderName string] == "unsolvedProxyKeyList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outReturnedType := EXbuild_stringlist_type [] ;
     elsif [inReaderName string] == "overriddenMap" then
