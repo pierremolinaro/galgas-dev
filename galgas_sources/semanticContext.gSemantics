@@ -445,6 +445,8 @@ override method @mapDeclarationAST enterType
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
   enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"overriddenMap" ![mMapTypeName string] !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyCount" !"uint" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyKeyList" !"stringlist" !false ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
@@ -616,8 +618,8 @@ override method @mapProxyDeclarationAST enterType
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mMapProxyTypeName string] ?mapProxyTypeProxy] ;
 #--- class method
   @formalParameterSignature argList [emptyList] ;
-  argList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !associatedMapTypeIndex ![@formalArgumentPassingModeAST argumentInOut] ;
+  argList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !mapProxyTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
   [!?classMethodMap insertKey
     ![@lstring new !"makeRegularProxy" !here]
@@ -642,9 +644,9 @@ override method @mapProxyDeclarationAST enterType
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isSolved" !"bool" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isNull" !"bool" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isRegular" !"bool" !false ;
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"key" !"lstring" !false ;
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keyString" !"string" !false ;
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"identifierRepresentation" !"string" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"lkey" !"lstring" !true ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"key" !"string" !true ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"identifierRepresentation" !"string" !true ;
 #--- Enter associated map attribute names as readers
   const @readerMap inheritedReaderMap := readerMap ;
   foreach mapTypedAttributeList do
@@ -1553,7 +1555,7 @@ routine buildSemanticContext
     [mSemanticDeclaration collectType !?collectedTypeMap] ;
   end foreach ;
 #--- Check there is no undefined type
-  @stringlist undefinedClasses := [collectedTypeMap unsolvedIndexKeyStringList] ;
+  @stringlist undefinedClasses := [collectedTypeMap unsolvedProxyKeyList] ;
   if [undefinedClasses length] == 1 then
     @string errorMessage := "there is 1 undefined type:" ;
     foreach undefinedClasses do

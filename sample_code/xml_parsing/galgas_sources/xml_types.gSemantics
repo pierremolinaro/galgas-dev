@@ -23,7 +23,7 @@ list @xmlNodeList ;
 
 class @xmlNode {
   @xmlNodeType mType;
-  @lstring name ;
+  @string name ;
   @xmlAttributeMap attributeMap ;
   @xmlNodeList nodeList ;
 }
@@ -45,10 +45,7 @@ routine internal_logXMLNodes
     ioString .= inIndentationString ;
     switch [node mType]
     when element :
-      ioString.= "ELEMENT '" . [node name] . "' " ;
-      ioString .= [[[[node name] location] line] string] ;
-      ioString .= ":" . [[[[node name] location] column] string] ;
-      ioString .= ":" . [[[[node name] location] locationIndex] string] . " {" ;
+      ioString.= "ELEMENT '" . [node name] . "' {" ;
       foreach [node attributeMap] do
         ioString .= "'" . lkey . "' " ;
         ioString .= [[[lkey location] line] string] ;
@@ -63,15 +60,9 @@ routine internal_logXMLNodes
       ioString .= "}\n" ;
       internal_logXMLNodes ![node nodeList] ! inIndentationString . " " !?ioString ;
     when text :
-      ioString .= "TEXT '" . [node name] . "' " ;
-      ioString .= [[[[node name] location] line] string] ;
-      ioString .= ":" . [[[[node name] location] column] string] ;
-      ioString .= ":" . [[[[node name] location] locationIndex] string] . "\n" ;
+      ioString .= "TEXT '" . [node name] . "'\n" ;
     when comment :
-      ioString.= "COMMENT '" . [node name] . "' " ;
-      ioString .= [[[[node name] location] line] string] ;
-      ioString .= ":" . [[[[node name] location] column] string] ;
-      ioString .= ":" . [[[[node name] location] locationIndex] string] . "\n" ;
+      ioString.= "COMMENT '" . [node name] . "'\n" ;
     end switch ;
   end foreach ;
 end routine ;

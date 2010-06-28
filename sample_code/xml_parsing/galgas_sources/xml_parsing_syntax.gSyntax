@@ -2,6 +2,7 @@ syntax xml_parsing_syntax :
 with "xml_parsing_lexique.gLexique" ;
 import lexique xml_parsing_lexique in "xml_parsing_lexique.gLexique" ;
 import semantics xml_types in "xml_types.gSemantics" ;
+import "xml_types.gSemantics" ;
 
 #----------------------------------------------------------------------------*
 
@@ -35,7 +36,7 @@ rule <start_symbol>
   ??@bool inDoNotCondenseWhiteSpaces
   ??@bool inPrintDuringParsing
 :
-  @lstring s := [@lstring retrieveAndResetTemplateString] ;
+  @string s := [@string retrieveAndResetTemplateString] ;
   if [s length] > 0 then
     error here: "No character is allowed before XML header" ;
   end if ;
@@ -68,14 +69,14 @@ routine addText
   ??@bool inPrintDuringParsing
   ??@string inIndendation
 :
-  @lstring s := [@lstring retrieveAndResetTemplateString] ;
+  @string s := [@string retrieveAndResetTemplateString] ;
   @string trimmedString := [s stringByTrimmingWhiteSpaces] ;
   if [trimmedString length] > 0 then
-    @lstring ls ;
+    @string ls ;
     if inDoNotCondenseWhiteSpaces then
       ls := s ;
     else
-      ls := [@lstring new !trimmedString ![s location]] ;
+      ls := trimmedString ;
     end if ;
     @xmlNode node [new
       ![@xmlNodeType text]
@@ -85,10 +86,7 @@ routine addText
     ] ;
     ioNodes += !node ;
     if inPrintDuringParsing then
-      @string s := inIndendation . "TEXT " . "'" . ls . "' " ;
-      s .= [[[ls location] line] string] ;
-      s .= ":" . [[[ls location] column] string] ;
-      s .= ":" . [[[ls location] locationIndex] string] . "\n" ;
+      @string s := inIndendation . "TEXT " . "'" . ls . "'\n" ;
       message s ;
     end if ;
   end if ;
@@ -134,7 +132,7 @@ rule <element>
   if inIncludeComments then
     @xmlNode node [new
       ![@xmlNodeType comment]
-      ! commentString
+      ![commentString string]
       ![@xmlAttributeMap emptyMap]
       ![@xmlNodeList emptyList]
     ] ;
@@ -223,7 +221,7 @@ rule <element>
   end select ;
   @xmlNode node [new
     ![@xmlNodeType element]
-    !name
+    ![name string]
     !attributeMap
     !nodeList
   ] ;

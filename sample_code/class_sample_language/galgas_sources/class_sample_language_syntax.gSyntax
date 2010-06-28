@@ -3,6 +3,8 @@ with "class_sample_language_lexique.gLexique" ;
 import lexique class_sample_language_lexique in "class_sample_language_lexique.gLexique" ;
 import option class_sample_language_options in "class_sample_language_options.gOption" ;
 import semantics class_sample_language_semantics in "class_sample_language_semantics.gSemantics" ;
+import "class_sample_language_options.gOption" ;
+import "class_sample_language_semantics.gSemantics" ;
 
 nonterminal <start_symbol> ;
 
@@ -27,18 +29,18 @@ rule <start_symbol> :
     $;$ ;
   end repeat ;
 #--- Check all classes are defined
-  @uint undefinedClassCount := [classMap unsolvedIndexCount] ;
+  @uint undefinedClassCount := [classMap unsolvedProxyCount] ;
   @bool noError := undefinedClassCount == 0 ;
   if undefinedClassCount == 1 then
     @string s := "1 class is undefined:" ;
-    @stringlist undefinedClasses := [classMap unsolvedIndexKeyStringList] ;
+    @stringlist undefinedClasses := [classMap unsolvedProxyKeyList] ;
     foreach undefinedClasses (@string kClassName) do
       s.= "\n- " . kClassName ;
     end foreach ;
     error here: s ;
   elsif undefinedClassCount > 1 then
     @string s := [undefinedClassCount string] . " classes are undefined:" ;
-    @stringlist undefinedClasses := [classMap unsolvedIndexKeyStringList] ;
+    @stringlist undefinedClasses := [classMap unsolvedProxyKeyList] ;
     foreach undefinedClasses (@string kClassName) do
       s.= "\n- " . kClassName ;
     end foreach ;

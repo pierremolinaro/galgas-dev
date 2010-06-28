@@ -494,11 +494,38 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @typeMethodInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "@typeMethodInstructionForGeneration generateInstruction\n" ;
+  ioGeneratedCode .= "{ //-------- @typeMethodInstructionForGeneration\n" ;
+#--- Parameters
+  @stringlist parameterCppNameList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+#--- Generate method call
+  ioGeneratedCode .= "GALGAS_" . [mTypeName identifierRepresentation]
+                  . "::class_method_" . [mMethodName identifierRepresentation] . " (" ;
+  foreach parameterCppNameList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
+  end foreach ;
+  if mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    if [parameterCppNameList length] > 0 then
+      ioGeneratedCode .= ", " ;
+    end if ;
+    ioGeneratedCode .=  compilerCppName [] ;
+  end if ;
+  if mHasCompilerArgument | ([parameterCppNameList length] > 0) then
+    ioGeneratedCode .= " COMMA_" ;
+  end if ;
+  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mMethodName location] line] string] . ")) ;\n" ;
+  ioGeneratedCode .= "} //-------- @routineCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

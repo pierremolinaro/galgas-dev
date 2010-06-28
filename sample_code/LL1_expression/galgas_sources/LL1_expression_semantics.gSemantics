@@ -1,5 +1,6 @@
 semantics LL1_expression_semantics :
 import option LL1_expression_options in "LL1_expression_options.gOption" ;
+import "LL1_expression_options.gOption" ;
 
 abstract class @cExpression {
 }

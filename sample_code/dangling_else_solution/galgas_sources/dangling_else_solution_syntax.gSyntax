@@ -3,6 +3,8 @@ with "dangling_else_solution_lexique.gLexique" ;
 import lexique dangling_else_solution_lexique in "dangling_else_solution_lexique.gLexique" ;
 import option dangling_else_solution_options in "dangling_else_solution_options.gOption" ;
 import semantics dangling_else_solution_semantics in "dangling_else_solution_semantics.gSemantics" ;
+import "dangling_else_solution_options.gOption" ;
+import "dangling_else_solution_semantics.gSemantics" ;
 
 nonterminal <S> ;
 nonterminal <non_closed_instruction> ;

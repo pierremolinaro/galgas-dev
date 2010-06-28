@@ -108,6 +108,18 @@ elsif TYPE_IDENTIFIER == "map" then
   public : VIRTUAL_IN_DEBUG GALGASap_stringset readerCall_allKeys (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGASap_lstringlist readerCall_allKeyList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGASap_location readerCall_locationForKey (const GALGASap_string & inKey, C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGASap_uint readerCall_unsolvedProxyCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGASap_stringlist readerCall_unsolvedProxyKeyList (LOCATION_ARGS) const ;
+
+%
+elsif TYPE_IDENTIFIER == "mapproxy" then
+%//--------------------------------- Comparison constructor
+  public : VIRTUAL_IN_DEBUG GALGASap_lstring readerCall_lkey (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGASap_string readerCall_key (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGASap_string readerCall_identifierRepresentation (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGASap_bool readerCall_isRegular (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGASap_bool readerCall_isNull (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGASap_bool readerCall_isSolved (LOCATION_ARGS) const ;
 
 %
 end if

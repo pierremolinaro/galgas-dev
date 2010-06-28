@@ -1,5 +1,6 @@
 program dangling_else_solution_program "version 1.0.0":
 import grammar dangling_else_solution_grammar in "dangling_else_solution_grammar.gGrammar" ;
+import "dangling_else_solution_grammar.gGrammar" ;
 
 before {
 }
