@@ -315,34 +315,46 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @optionCharExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  outCppName := "(@optionCharExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @optionCharExpressionForGeneration\n" ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGASap_char " . outCppName 
+                  . "  = gOption_" . [mOptionComponentName identifierRepresentation]
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".invocationChar (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @optionStringExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  outCppName := "(@optionStringExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @optionStringExpressionForGeneration\n" ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGASap_string " . outCppName 
+                  . "  = gOption_" . [mOptionComponentName identifierRepresentation]
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".invocationString (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @optionCommentExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  outCppName := "(@optionCommentExpressionForGeneration generateExpression)" ;
+  ioGeneratedCode .= "//--- @optionCommentExpressionForGeneration\n" ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGASap_string " . outCppName 
+                  . "  = gOption_" . [mOptionComponentName identifierRepresentation]
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".commentString (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -893,16 +905,16 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @varInExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
+  ?!@string unused ioGeneratedCode
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  foreach mStructFieldList do
-    ioGeneratedCode .= "(handle field in @varInExpressionForGeneration)\n" ;
-  end foreach ;
   outCppName := mCppVarName ;
-  [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
+  foreach mStructFieldList do
+    outCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+  end foreach ;
+  [!?ioUnusedVariableCppNameSet removeKey !mCppVarName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
