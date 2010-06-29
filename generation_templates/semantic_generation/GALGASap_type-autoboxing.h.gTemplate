@@ -21,16 +21,19 @@ class GALGASap_%!TYPE_IDENTIFIER% {
 //--- Assignment operator
   public : GALGASap_%!TYPE_IDENTIFIER% & operator = (const GALGASap_%!TYPE_IDENTIFIER% & inSource) ;
 
-//--- Virtual destructor (only in debug mode)
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public : virtual ~GALGASap_%!TYPE_IDENTIFIER% (void) {}
-  #endif
+//--- destructor (virtual only in debug mode)
+  public : VIRTUAL_IN_DEBUG ~GALGASap_%!TYPE_IDENTIFIER% (void) ;
 
 //--- IsValid
   public : bool isValid (void) const ;
 
 //--- Drop
   public : void drop (void) ;
+
+//--- Log instruction
+  public : VIRTUAL_IN_DEBUG void log (const char * inMessage) const ;
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const PMSInt32 inIndentation) const ;
 
 //--- Construction from embedded object
   public : GALGASap_%!TYPE_IDENTIFIER% (const GALGASap_object & inSourceObject) ;
