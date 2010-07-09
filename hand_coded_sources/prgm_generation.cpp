@@ -162,10 +162,8 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  PMSInt16 returnCode = 0 ; // No error\n"
                     "//--- Fix parameters for BDD package\n"
                     "  C_BDD::setHashMapSize (19) ;\n"
-                    "  C_BDD::setITEcacheSize (17) ;\n"
                     "  C_BDD::setANDcacheSize (1) ;\n"
                     "  C_BDD::forAllOnBitsGreaterCacheSize (18) ;\n"
-                    "  C_PrologueEpilogue::runPrologueActions () ;\n"
                     "  {\n"
                     "  //--- Input/output parameters\n"
                     "    const char * extensions [] = {" ;
@@ -310,13 +308,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    macroReleaseObject (galgasIOptr) ;\n"
                     "    macroReleaseObject (commonLexique) ;\n"
                     "  }\n"
-                    "  C_PrologueEpilogue::runEpilogueActions () ;\n"
-                    "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "    C_Object::checkAllObjectsHaveBeenReleased () ;\n"
-                    "  #endif\n"
-                    "  displayAllocationStats () ;\n"
-                    "  displayAllocatedBlockSizeStats () ;\n"
-                    "  displayAllocatedBlocksInfo () ;\n"
                     "  return returnCode ;\n"
                     "}\n\n" ;
 //--- Generate file

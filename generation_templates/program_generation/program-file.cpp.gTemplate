@@ -11,6 +11,7 @@
 #include "utilities/F_DisplayException.h"
 #include "utilities/basic-allocation.h"
 #include "utilities/cpp-allocation.h"
+#include "command_line_interface/mainForLIBPM.h"
 
 //---------------------------------------------------------------------------*
 
@@ -38,10 +39,8 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   PMSInt16 returnCode = 0 ; // No error
 //--- Fix parameters for BDD package
   C_BDD::setHashMapSize (19) ;
-  C_BDD::setITEcacheSize (17) ;
-  C_BDD::setANDcacheSize (1) ;
+  C_BDD::setANDcacheSize (17) ;
   C_BDD::forAllOnBitsGreaterCacheSize (18) ;
-  C_PrologueEpilogue::runPrologueActions () ;
   {
   //--- Input/output parameters
     const char * extensions [] = {
@@ -135,13 +134,6 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     macroReleaseObject (galgasIOptr) ;
     macroReleaseObject (commonLexique) ;
   }
-  C_PrologueEpilogue::runEpilogueActions () ;
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    C_Object::checkAllObjectsHaveBeenReleased () ;
-  #endif
-  displayAllocationStats () ;
-  displayAllocatedBlockSizeStats () ;
-  displayAllocatedBlocksInfo () ;
   return returnCode ;
 }
 
