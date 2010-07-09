@@ -18,6 +18,8 @@ routine build_LIBPM_BDD_group
   append_cpp_h_files !?fileList !"C_BDD_Set3" ;
   append_cpp_h_files !?fileList !"C_BDD" ;
   append_cpp_h_files !?fileList !"C_Display_BDD" ;
+  append_cpp_h_files !?fileList !"C_PrimeCache2" ;
+  append_cpp_h_files !?fileList !"C_PrimeCache3" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -39,6 +41,8 @@ routine build_LIBPM_BDD_source_files_for_sources_build_phase
   fileList += !"C_BDD_Set3.cpp" ;
   fileList += !"C_BDD.cpp" ;
   fileList += !"C_Display_BDD.cpp" ;
+  fileList += !"C_PrimeCache2.cpp" ;
+  fileList += !"C_PrimeCache3.cpp" ;
 #---
   enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
@@ -479,44 +483,6 @@ routine build_LIBPM_COLLECTIONS_group
    !?ioXcodeProjectDescription
    !fileList
    !?ioFileListForGroup
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_CACHE_group
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@XcodeObjectReferenceList ioFileListForGroup
-:
-  @stringlist fileList [emptyList] ;
-  append_cpp_h_files !?fileList !"C_PrimeCache2" ;
-  append_cpp_h_files !?fileList !"C_PrimeCache3" ;
-  fileList += !"TC_prime_cache2.h" ;
-  fileList += !"TC_prime_cache3.h" ;
-  fileList += !"TC_prime_cache4.h" ;
-#---
-  enter_files_in_group
-   !?ioXcodeProjectDescription
-   !fileList
-   !?ioFileListForGroup
-  ;
-end routine ;
-
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_CACHE_files_for_sources_build_phase
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist fileList [emptyList] ;
-  fileList += !"C_PrimeCache2.cpp" ;
-  fileList += !"C_PrimeCache3.cpp" ;
-#---
-  enter_file_list_for_sources_build_phase
-   !?ioXcodeProjectDescription
-   !fileList
-   !?ioBuildPhaseList
   ;
 end routine ;
 
@@ -1039,20 +1005,6 @@ routine generateXcodeProject
     !fileListOf_LIBPM_BDD_group
     !?libpmGroupChildrenList
   ;
-#---------- LIBPM / CACHES
-  @XcodeObjectReferenceList fileListOf_LIBPM_CACHE_group [emptyList] ;
-  build_LIBPM_CACHE_group
-    !?XcodeProjectDescription
-    !?fileListOf_LIBPM_CACHE_group
-  ;
-#---
-  enter_subgroup
-    !?XcodeProjectDescription
-    !"Caches"
-    !"cache"
-    !fileListOf_LIBPM_CACHE_group
-    !?libpmGroupChildrenList
-  ;
 #---------- LIBPM / Cocoa Debug
   @XcodeObjectReferenceList fileListOf_LIBPM_COCOA_DEBUG_group [emptyList] ;
   build_LIBPM_COCOA_DEBUG_group
@@ -1286,11 +1238,6 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !?listForSourceBuildPhaseOfTool
   ;
-# LIBPM / CACHES
-  build_LIBPM_CACHE_files_for_sources_build_phase
-    !?XcodeProjectDescription
-    !?listForSourceBuildPhaseOfTool
-  ;
 # LIBPM / COMMAND LINE INTERFACE
   build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
     !?XcodeProjectDescription
@@ -1375,11 +1322,6 @@ routine generateXcodeProject
   ;
 # LIBPM / BDD
   build_LIBPM_BDD_source_files_for_sources_build_phase
-    !?XcodeProjectDescription
-    !?listForSourceBuildPhaseOfDebugTool
-  ;
-# LIBPM / CACHES
-  build_LIBPM_CACHE_files_for_sources_build_phase
     !?XcodeProjectDescription
     !?listForSourceBuildPhaseOfDebugTool
   ;
