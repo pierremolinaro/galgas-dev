@@ -160,10 +160,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
                     "  bool verboseOptionOn = true ;\n"
                     "  PMSInt16 returnCode = 0 ; // No error\n"
-                    "//--- Fix parameters for BDD package\n"
-                    "  C_BDD::setHashMapSize (19) ;\n"
-                    "  C_BDD::setANDcacheSize (1) ;\n"
-                    "  C_BDD::forAllOnBitsGreaterCacheSize (18) ;\n"
                     "  {\n"
                     "  //--- Input/output parameters\n"
                     "    const char * extensions [] = {" ;
