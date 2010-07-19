@@ -616,6 +616,7 @@ analyzeGrammar (C_Compiler & inLexique,
 
 //--- Final step ---------------------------------------------------------------------
   C_BDD::markAndSweepUnusedNodes () ;
+  C_BDD::checkAllBDDsAreWellFormed (HERE) ;
   if (errorFlag != kNoError) {
     C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((PMUInt16) errorFlag) ;
     if (HTMLfile != NULL) {
@@ -691,6 +692,7 @@ routine_analyzeGrammar (C_Compiler & inLexique,
       printf ("MARK AND SWEEP BDD NODES\n") ; fflush (stdout) ;
     #endif
     C_BDD::markAndSweepUnusedNodes () ;
+    C_BDD::checkAllBDDsAreWellFormed (HERE) ;
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
     #endif
