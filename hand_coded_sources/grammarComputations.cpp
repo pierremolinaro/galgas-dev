@@ -615,8 +615,9 @@ analyzeGrammar (C_Compiler & inLexique,
   }
 
 //--- Final step ---------------------------------------------------------------------
+//  C_BDD::checkAllBDDsAreWellFormed (HERE) ;
   C_BDD::markAndSweepUnusedNodes () ;
-  C_BDD::checkAllBDDsAreWellFormed (HERE) ;
+//  C_BDD::checkAllBDDsAreWellFormed (HERE) ;
   if (errorFlag != kNoError) {
     C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((PMUInt16) errorFlag) ;
     if (HTMLfile != NULL) {
