@@ -1663,20 +1663,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @filewrapperInExpressionAST analyzeSemanticExpression
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-:
-  error mFilewrapperName
-  : "unhandled @filewrapperInExpressionAST expression"
-  : outExpression
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
@@ -1685,6 +1671,20 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
 :
   error mFilewrapperName
   : "unhandled @filewrapperTemplateInExpressionAST expression"
+  : outExpression
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperInExpressionAST analyzeSemanticExpression
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+  error mFilewrapperName
+  : "unhandled @filewrapperInExpressionAST expression"
   : outExpression
   ;
 end method ;
