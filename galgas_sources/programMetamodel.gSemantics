@@ -43,7 +43,7 @@ struct @programComponentAST {
   @semanticInstructionListAST mEpilogueInstructionList ;
   @location mEndOfEpilogue ;
   @programRuleList mProgramRules ;
-  @semanticDeclarationStructAST mSemanticDeclarations ;
+  @semanticDeclarationListAST mSemanticDeclarationList ;
   @location mEndOfSourceFile ;
 }
 

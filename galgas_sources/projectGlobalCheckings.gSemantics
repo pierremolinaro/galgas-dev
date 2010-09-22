@@ -42,45 +42,12 @@ semantics projectGlobalCheckings :
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
-
-list @abstracMultiMethodListAST {
-  @lstring mAbstractMultiMethodName ;
-  @formalParameterListAST mAbstractCategoryFormalParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-
-listmap @abstractMultiMethodListMapAST (@abstracMultiMethodListAST) ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
-#        M U L T I -  M E T H O D    D E C L A R A T I O N                  *
+#        M U L T I - M E T H O D   L I S T M A P                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @multiMethodListAST {
-  @lstring mMultiMethodName ;
-  @formalParameterListAST mCategoryFormalParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-
-listmap @multiMethodListMapAST (@multiMethodListAST) ; # Key is class
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  O V E R R I D I N G   M U L T I -  M E T H O D   D E C L A R A T I O N   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @overridingMultiMethodListAST {
-  @lstring mOverridingMultiMethodMethodName ;
-  @formalParameterListAST mOverridingCategoryFormalParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-
-listmap @overridingMultiMethodListMapAST (@overridingMultiMethodListAST) ;
+listmap @genericMultiMethodListMap (@lstringlist) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -89,51 +56,108 @@ listmap @overridingMultiMethodListMapAST (@overridingMultiMethodListAST) ;
 #---------------------------------------------------------------------------*
 
 method @semanticDeclarationAST buildMultiMethodListMaps
-  ?!@abstractMultiMethodListMapAST unused ioAbstractMultiMethodListMapAST
-  ?!@multiMethodListMapAST unused ioMultiMethodListMap
-  ?!@overridingMultiMethodListMapAST unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
+  ?!@genericMultiMethodListMap unused ioMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiReaderListMap
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @abstracMultiMethodAST buildMultiMethodListMaps
-  ?!@abstractMultiMethodListMapAST ioAbstractMultiMethodListMapAST
-  ?!@multiMethodListMapAST unused ioMultiMethodListMap
-  ?!@overridingMultiMethodListMapAST unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap ioAbstractMultiMethodListMapAST
+  ?!@genericMultiMethodListMap unused ioMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiReaderListMap
 :
   ioAbstractMultiMethodListMapAST +=
     ![mTypeName string]
     !mAbstractMultiMethodName
-    !mAbstractCategoryFormalParameterList
   ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @multiMethodAST buildMultiMethodListMaps
-  ?!@abstractMultiMethodListMapAST unused ioAbstractMultiMethodListMapAST
-  ?!@multiMethodListMapAST ioMultiMethodListMap
-  ?!@overridingMultiMethodListMapAST unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
+  ?!@genericMultiMethodListMap ioMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiReaderListMap
 :
   ioMultiMethodListMap +=
     ![mTypeName string]
     !mMultiMethodName
-    !mCategoryFormalParameterList
   ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @overridingMultiMethodAST buildMultiMethodListMaps
-  ?!@abstractMultiMethodListMapAST unused ioAbstractMultiMethodListMapAST
-  ?!@multiMethodListMapAST unused ioMultiMethodListMap
-  ?!@overridingMultiMethodListMapAST ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
+  ?!@genericMultiMethodListMap unused ioMultiMethodListMap
+  ?!@genericMultiMethodListMap ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiReaderListMap
 :
   ioOverridingMultiMethodListMap +=
     ![mTypeName string]
     !mOverridingMultiMethodMethodName
-    !mOverridingCategoryFormalParameterList
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @abstractMultiReaderAST buildMultiMethodListMaps
+  ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
+  ?!@genericMultiMethodListMap unused ioMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap ioAbstractMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiReaderListMap
+:
+  ioAbstractMultiReaderListMap +=
+    ![mTypeName string]
+    !mAbstractMultiReaderName
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @multiReaderAST buildMultiMethodListMaps
+  ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
+  ?!@genericMultiMethodListMap unused ioMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiReaderListMap
+  ?!@genericMultiMethodListMap ioMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiReaderListMap
+:
+  ioMultiReaderListMap +=
+    ![mTypeName string]
+    !mMultiReaderName
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingMultiReaderAST buildMultiMethodListMaps
+  ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
+  ?!@genericMultiMethodListMap unused ioMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
+  ?!@genericMultiMethodListMap unused ioAbstractMultiReaderListMap
+  ?!@genericMultiMethodListMap unused ioMultiReaderListMap
+  ?!@genericMultiMethodListMap ioOverridingMultiReaderListMap
+:
+  ioOverridingMultiReaderListMap +=
+    ![mTypeName string]
+    !mOverridingMultiReaderName
   ;
 end method ;
 
@@ -189,16 +213,16 @@ routine checkMultiMethodDefinitionForClass
   ??@string inClassName
   ??@lstring inAbstractMultiMethodName
   ??@descendantClassListMap inDescendantClassListMap
-  ??@overridingMultiMethodListMapAST inOverridingMultiMethodListMap
+  ??@genericMultiMethodListMap inOverridingMultiMethodListMap
   ??@unifiedTypeMap inUnifiedTypeMap
 :
   const @unifiedTypeMapProxyList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
     const @lstring descendantClassName := [mType lkey] ;
-    @overridingMultiMethodListAST overridingMethods := [inOverridingMultiMethodListMap listForKey ![descendantClassName string]] ;
+    @lstringlist overridingMethods := [inOverridingMultiMethodListMap listForKey ![descendantClassName string]] ;
     @bool found := false ;
     foreach overridingMethods while not found do
-      found := [inAbstractMultiMethodName string] == [mOverridingMultiMethodMethodName string] ;
+      found := [inAbstractMultiMethodName string] == [mValue string] ;
     end foreach ;
     if not found then
       @bool isConcrete ;
@@ -229,16 +253,16 @@ routine checkMultiReaderDefinitionForClass
   ??@string inClassName
   ??@lstring inAbstractMultiReaderName
   ??@descendantClassListMap inDescendantClassListMap
-  ??@overridingMultiReaderListMapAST inOverridingMultiReaderListMap
+  ??@genericMultiMethodListMap inOverridingMultiReaderListMap
   ??@unifiedTypeMap inUnifiedTypeMap
 :
   const @unifiedTypeMapProxyList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
     @lstring descendantClassName := [mType lkey] ;
-    @overridingMultiReaderListAST overridingReaders := [inOverridingMultiReaderListMap listForKey ![descendantClassName string]] ;
+    @lstringlist overridingReaders := [inOverridingMultiReaderListMap listForKey ![descendantClassName string]] ;
     @bool found := false ;
     foreach overridingReaders while not found do
-      found := [inAbstractMultiReaderName string] == [mOverridingMultiReaderName string] ;
+      found := [inAbstractMultiReaderName string] == [mValue string] ;
     end foreach ;
     if not found then
       @bool isConcrete ;
@@ -273,7 +297,7 @@ routine performProjectGlobalCheckings
   appendPredefinedTypesASTs !?semanticDeclarationList ;
 #--- Build all declaration list
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-    semanticDeclarationList .= [[mRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+    semanticDeclarationList .= [mRoot mSemanticDeclarationList] ;
   end foreach ;
 #------ Generate declarations
   @semanticContext semanticContext ;
@@ -294,15 +318,21 @@ routine performProjectGlobalCheckings
      end if ;
   end foreach ;
 #--- Build multi method listmaps
-  @abstractMultiMethodListMapAST abstractMultiMethodListMap [emptyMap] ;
-  @multiMethodListMapAST multiMethodListMap [emptyMap] ;
-  @overridingMultiMethodListMapAST overridingMultiMethodListMap [emptyMap];
+  @genericMultiMethodListMap abstractMultiMethodListMap [emptyMap] ;
+  @genericMultiMethodListMap multiMethodListMap [emptyMap] ;
+  @genericMultiMethodListMap overridingMultiMethodListMap [emptyMap];
+  @genericMultiMethodListMap abstractMultiReaderListMap [emptyMap] ;
+  @genericMultiMethodListMap multiReaderListMap [emptyMap] ;
+  @genericMultiMethodListMap overridingMultiReaderListMap [emptyMap];
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-    foreach [[mRoot mSemanticDeclarations] mSemanticDeclarationList] do
+    foreach [mRoot mSemanticDeclarationList] do
       [mSemanticDeclaration buildMultiMethodListMaps
         !?abstractMultiMethodListMap
         !?multiMethodListMap
         !?overridingMultiMethodListMap
+        !?abstractMultiReaderListMap
+        !?multiReaderListMap
+        !?overridingMultiReaderListMap
       ] ;
     end foreach ;
   end foreach ;
@@ -312,21 +342,21 @@ routine performProjectGlobalCheckings
     foreach abstractMultiMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
       foreach mList do
-        [!?multiMethodMap insertKey !mAbstractMultiMethodName] ;
+        [!?multiMethodMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- A given base multi method id defined only once for a class
     foreach multiMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
       foreach mList do
-        [!?multiMethodMap insertKey !mMultiMethodName] ;
+        [!?multiMethodMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- A given overriding multi method id defined only once for a class
     foreach overridingMultiMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
       foreach mList do
-        [!?multiMethodMap insertKey !mOverridingMultiMethodMethodName] ;
+        [!?multiMethodMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
 #    log abstractMultiMethodListMap ;
@@ -337,7 +367,7 @@ routine performProjectGlobalCheckings
         checkMultiMethodDefinitionForClass
           !key
           !key
-          !mAbstractMultiMethodName
+          !mValue
           !descendantClassListMap
           !overridingMultiMethodListMap
           !semanticContext->mTypeMap
@@ -347,34 +377,25 @@ routine performProjectGlobalCheckings
   #------ Check multi readers
 ##--- Check that for every abstract category reader, an overridden category reader
 ##    defined in an concrete subclass
-  #--- Get all readers
-    @abstractMultiReaderListMapAST abstractMultiReaderListMap [emptyMap] ;
-    @multiReaderListMapAST categoryReaderListMap [emptyMap] ;
-    @overridingMultiReaderListMapAST overridingMultiReaderListMap [emptyMap];
-    foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-      abstractMultiReaderListMap .= [[mRoot mSemanticDeclarations] mAbstractMultiReaderListMap] ;
-      categoryReaderListMap .= [[mRoot mSemanticDeclarations] mMultiReaderListMap] ;
-      overridingMultiReaderListMap .= [[mRoot mSemanticDeclarations] mOverridingMultiReaderListMap] ;
-    end foreach ;
   #--- A given abstract multi reader id defined only once for a class
     foreach abstractMultiReaderListMap do
       @multiReaderMap multiReaderMap [emptyMap] ;
       foreach mList do
-        [!?multiReaderMap insertKey !mAbstractMultiReaderName] ;
+        [!?multiReaderMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- A given base multi reader id defined only once for a class
-    foreach categoryReaderListMap do
+    foreach multiReaderListMap do
       @multiReaderMap multiReaderMap [emptyMap] ;
       foreach mList do
-        [!?multiReaderMap insertKey !mMultiReaderName] ;
+        [!?multiReaderMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- A given overriding multi reader id defined only once for a class
     foreach overridingMultiReaderListMap do
       @multiReaderMap multiReaderMap [emptyMap] ;
       foreach mList do
-        [!?multiReaderMap insertKey !mOverridingMultiReaderName] ;
+        [!?multiReaderMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- Check every abstract multi reader is implemented by every inherited concrete type
@@ -383,7 +404,7 @@ routine performProjectGlobalCheckings
         checkMultiReaderDefinitionForClass
           !key
           !key
-          !mAbstractMultiReaderName
+          !mValue
           !descendantClassListMap
           !overridingMultiReaderListMap
           !semanticContext->mTypeMap

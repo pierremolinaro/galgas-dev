@@ -115,7 +115,7 @@ routine recursivelyImportSemanticComponent
         ;
         ioHeaderIncludeList += ![[semanticsComponentRoot mSemanticsComponentName] string] ;
       #--- Add declaration to declaration list
-        ioSemanticDeclarationList .= [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+        ioSemanticDeclarationList .= [semanticsComponentRoot mSemanticDeclarationList] ;
       #--- Import semantic components named in this file
         recursivelyImportSemanticComponent
           !?ioParsedComponentStruct
@@ -267,7 +267,7 @@ routine compileSemanticsComponent
     ;
   end if ; 
 #--- Recursively parse all imported files
-  @semanticDeclarationListAST semanticDeclarationList := [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+  @semanticDeclarationListAST semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
@@ -308,7 +308,7 @@ routine compileSemanticsComponent
 #------ Semantic Analysis
   @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
-    ![[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList]
+    ![semanticsComponentRoot mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;

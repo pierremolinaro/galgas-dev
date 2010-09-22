@@ -183,7 +183,7 @@ routine compileProgramComponent
     ;
   end if ; 
 #--- Recursively parse all imported files
-  @semanticDeclarationListAST semanticDeclarationList := [[programComponentAST mSemanticDeclarations] mSemanticDeclarationList] ;
+  @semanticDeclarationListAST semanticDeclarationList := [programComponentAST mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
@@ -224,7 +224,7 @@ routine compileProgramComponent
 #------ Semantic Analysis
   @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
-    ![[programComponentAST mSemanticDeclarations] mSemanticDeclarationList]
+    ![programComponentAST mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;

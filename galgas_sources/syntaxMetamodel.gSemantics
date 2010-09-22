@@ -179,7 +179,7 @@ struct @syntaxComponentAST {
   @lstringlist mImportedComponentFileNameList ;
   @nonterminalDeclarationListAST mNonterminalDeclarationList ;
   @syntaxRuleListAST mRuleList ;
-  @semanticDeclarationStructAST mSemanticDeclarations ;
+  @semanticDeclarationListAST mSemanticDeclarationList ;
   @location mEndOfSourceFile ;
 }
 

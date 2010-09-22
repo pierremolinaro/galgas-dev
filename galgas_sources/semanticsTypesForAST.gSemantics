@@ -1009,15 +1009,12 @@ class @overridingMultiMethodAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @abstractMultiReaderListAST {
+class @abstractMultiReaderAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
   @lstring mAbstractMultiReaderName ;
   @formalInputParameterListAST mAbstractCategoryFormalInputParameterList ;
   @lstring mReturnedTypeName ;
 }
-
-#---------------------------------------------------------------------------*
-
-listmap @abstractMultiReaderListMapAST (@abstractMultiReaderListAST) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1025,7 +1022,8 @@ listmap @abstractMultiReaderListMapAST (@abstractMultiReaderListAST) ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @multiReaderListAST {
+class @multiReaderAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
   @lstring mMultiReaderName ;
   @formalInputParameterListAST mReaderCategoryFormalInputParameterList ;
   @lstring mReturnedTypeName ;
@@ -1034,39 +1032,18 @@ list @multiReaderListAST {
 }
 
 #---------------------------------------------------------------------------*
-
-listmap @multiReaderListMapAST (@multiReaderListAST) ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N*
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @overridingMultiReaderListAST {
+class @overridingMultiReaderAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
   @lstring mOverridingMultiReaderName ;
   @formalInputParameterListAST mOverridingReaderFormalInputParameterList ;
   @lstring mReturnedTypeName ;
   @lstring mReturnedVariableName ;
   @semanticInstructionListAST mRoutineInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
-listmap @overridingMultiReaderListMapAST (@overridingMultiReaderListAST) ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#           S E M A N T I C   D E C L A R A T I O N S                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-struct @semanticDeclarationStructAST {
-  @semanticDeclarationListAST mSemanticDeclarationList ;
-#--- Multi readers
-  @abstractMultiReaderListMapAST mAbstractMultiReaderListMap ;
-  @multiReaderListMapAST mMultiReaderListMap ;
-  @overridingMultiReaderListMapAST mOverridingMultiReaderListMap ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1323,7 +1300,7 @@ class @filewrapperDeclarationAST extends @semanticDeclarationAST {
 class @semanticsComponentAST {
   @lstring mSemanticsComponentName  ;
   @lstringlist mImportedComponentFileNameList ;
-  @semanticDeclarationStructAST mSemanticDeclarations  ;
+  @semanticDeclarationListAST mSemanticDeclarationList  ;
   @location mEndOfSourceFile  ;
 }
 

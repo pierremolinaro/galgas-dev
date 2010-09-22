@@ -96,7 +96,7 @@ routine compileSyntaxComponent
     ;
   end if ; 
 #--- Recursively parse all imported files
-  @semanticDeclarationListAST semanticDeclarationList := [[syntaxComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+  @semanticDeclarationListAST semanticDeclarationList := [syntaxComponentRoot mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
@@ -165,7 +165,7 @@ routine compileSyntaxComponent
 #------ Semantic Analysis
   @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
-    ![[syntaxComponentRoot mSemanticDeclarations] mSemanticDeclarationList]
+    ![syntaxComponentRoot mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;
