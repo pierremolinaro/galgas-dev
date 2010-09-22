@@ -50,7 +50,7 @@ nonterminal <output_expression_list>
 ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 ;
 
 #---------------------------------------------------------------------------*
@@ -76,7 +76,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $routine$ ;
   $identifier$ ? @lstring mRoutineName ;
@@ -89,7 +89,7 @@ rule <semantic_declaration>
   const @location endOfInstructionList := here ;
   $routine$ ;
   $;$ ;
-  ioSemanticDeclarations->mSemanticDeclarationList += ![@routineDeclarationAST new
+  ioSemanticDeclarations += ![@routineDeclarationAST new
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -104,7 +104,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $extern$ ;
   $routine$ ;
@@ -112,7 +112,7 @@ rule <semantic_declaration>
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  ioSemanticDeclarations->mSemanticDeclarationList += ![@externRoutineDeclarationAST new
+  ioSemanticDeclarations += ![@externRoutineDeclarationAST new
     !mActionName
     !mFormalParameterList
   ] ;
@@ -125,7 +125,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStructAST unused ioSemanticDeclarations
+ ?!@semanticDeclarationListAST unused ioSemanticDeclarations
 :
 #--- For compatibility with GALGAS 1
   $routine$ ;
@@ -141,7 +141,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $function$ ;
   $identifier$ ? @lstring mRoutineName ;
@@ -157,7 +157,7 @@ rule <semantic_declaration>
   const @location endOfFunctionInstructionList := here ;
   $function$ ;
   $;$ ;
-  ioSemanticDeclarations->mSemanticDeclarationList += ![@functionDeclarationAST new
+  ioSemanticDeclarations += ![@functionDeclarationAST new
     !mRoutineName
     !formalInputParameterList
     !resultTypeName
@@ -174,7 +174,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $once$ ;
   $identifier$ ? @lstring mRoutineName ;
@@ -191,7 +191,7 @@ rule <semantic_declaration>
     $once$ ;
     const @location endOfFunctionInstructionList := here ;
     $;$ ;
-    ioSemanticDeclarations->mSemanticDeclarationList += ![@onceFunctionDeclarationAST new
+    ioSemanticDeclarations += ![@onceFunctionDeclarationAST new
       !mRoutineName
       !resultTypeName
       !resultVariableName
@@ -208,7 +208,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $extern$ ;
   $function$ ;
@@ -219,7 +219,7 @@ rule <semantic_declaration>
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
   $;$ ;
-  ioSemanticDeclarations->mSemanticDeclarationList += ![@externFunctionDeclarationAST new
+  ioSemanticDeclarations += ![@externFunctionDeclarationAST new
     !mActionName
     !formalInputParameterList
     !resultTypeName

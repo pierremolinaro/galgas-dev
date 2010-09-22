@@ -31,7 +31,7 @@ nonterminal <program_component_start_symbol> !@programComponentAST outProgramCom
 nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 ;
 
 #---------------------------------------------------------------------------*
@@ -89,12 +89,7 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
   const @location endOfPrologue := here ;
   $}$ ;
 #--- Program rules
-  @semanticDeclarationStructAST mSemanticDeclarations [new
-    ![@semanticDeclarationListAST emptyList]
-    ![@abstractMultiReaderListMapAST emptyMap]
-    ![@multiReaderListMapAST emptyMap]
-    ![@overridingMultiReaderListMapAST emptyMap]
-  ] ;
+  @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
   @programRuleList mProgramRules [emptyList] ;
   repeat
   while

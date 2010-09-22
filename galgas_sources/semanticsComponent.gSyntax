@@ -34,7 +34,7 @@ nonterminal <semantics_component_start_symbol>
 ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationStructAST ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 ;
 
 nonterminal <obsolete_declaration> ;
@@ -50,12 +50,7 @@ rule <semantics_component_start_symbol>
   $:$ ;
 #--- Loop on import and semantics declarations
   @lstringlist mImportedComponentFileNameList [emptyList] ;
-  @semanticDeclarationStructAST mSemanticDeclarations [new
-    ![@semanticDeclarationListAST emptyList]
-    ![@abstractMultiReaderListMapAST emptyMap]
-    ![@multiReaderListMapAST emptyMap]
-    ![@overridingMultiReaderListMapAST emptyMap]
-  ] ;
+  @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
   repeat
   while
     $import$ ;
