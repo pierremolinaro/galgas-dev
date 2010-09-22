@@ -91,9 +91,6 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
 #--- Program rules
   @semanticDeclarationStructAST mSemanticDeclarations [new
     ![@semanticDeclarationListAST emptyList]
-    ![@abstractMultiMethodListMapAST emptyMap]
-    ![@multiMethodListMapAST emptyMap]
-    ![@overridingMultiMethodListMapAST emptyMap]
     ![@abstractMultiReaderListMapAST emptyMap]
     ![@multiReaderListMapAST emptyMap]
     ![@overridingMultiReaderListMapAST emptyMap]

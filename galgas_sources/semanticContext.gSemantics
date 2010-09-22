@@ -491,6 +491,7 @@ override method @mapDeclarationAST enterType
   foreach mSearchMethodList do
     [!?instanceMethodMap insertKey
       !mMethodName
+      !false # is not a category
       !removeMethodFormalArgumentList
       ![mMethodName location]
       !true
@@ -504,6 +505,7 @@ override method @mapDeclarationAST enterType
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     [!?readerMap insertOrReplace
       !accessorName
+      !false # Is not a category
       ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]
       !true
       !attributeTypeIndex
@@ -661,6 +663,7 @@ override method @mapProxyDeclarationAST enterType
     else
       [!?readerMap insertKey
         !mAttributeName
+        !false # Is not a category
         ![@unifiedTypeMapProxyList emptyList]
         !true
         !mAttributeTypeIndex
@@ -827,6 +830,7 @@ override method @listDeclarationAST enterType
   foreach typedAttributeList do
     [!?readerMap insertOrReplace
       ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
+      !false # Is not a category
       ![@unifiedTypeMapProxyList listWithValue !uintType]
       !true
       !mAttributeTypeIndex
@@ -868,6 +872,7 @@ override method @listDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"first" !here]
+    !false # is not a category
     !modifierOutputFormalArgumentList
     !here
     !true
@@ -875,6 +880,7 @@ override method @listDeclarationAST enterType
   ] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"last" !here]
+    !false # is not a category
     !modifierOutputFormalArgumentList
     !here
     !true
@@ -963,6 +969,7 @@ override method @sortedListDeclarationAST enterType
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"greatest" !here]
+    !false # is not a category
     !modifierFormalArgumentList
     !here
     !true
@@ -970,6 +977,7 @@ override method @sortedListDeclarationAST enterType
   ] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"smallest" !here]
+    !false # is not a category
     !modifierFormalArgumentList
     !here
     !true
@@ -1139,6 +1147,7 @@ override method @classDeclarationAST enterType
     foreach inheritedReaderMap do
       [!?readerMap insertKey
         !lkey
+        !mIsCategory
         !mArgumentTypeList
         !mHasCompilerArgument
         !mReturnedType
@@ -1175,6 +1184,7 @@ override method @classDeclarationAST enterType
   foreach inheritedInstanceMethodMap do
     [!?instanceMethodMap insertKey
       !lkey
+      !false # is not a category
       !mParameterList
       !mDeclarationLocation
       !mHasCompilerArgument
@@ -1194,6 +1204,7 @@ override method @classDeclarationAST enterType
     else
       [!?instanceMethodMap insertKey
         !mMethodName
+        !false # is not a category
         !formalArgumentList
         ![mMethodName location]
         !true
@@ -1214,6 +1225,7 @@ override method @classDeclarationAST enterType
     else
       [!?instanceMethodMap insertKey
         !mMethodName
+        !false # is not a category
         !formalArgumentList
         ![mMethodName location]
         !true
@@ -1231,6 +1243,7 @@ override method @classDeclarationAST enterType
     allTypedAttributeList += !attributeTypeIndex !mAttributeName ;
     [!?readerMap insertKey
       !mAttributeName
+      !false # Is not a category
       ![@unifiedTypeMapProxyList emptyList] # No argument
       !false # No Compiler argument
       !attributeTypeIndex # Returned type

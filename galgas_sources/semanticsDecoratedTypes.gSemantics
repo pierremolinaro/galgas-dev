@@ -109,6 +109,7 @@ class @constructorExpressionForGeneration extends @semanticExpressionForGenerati
 #---------------------------------------------------------------------------*
 
 class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
+  @bool mIsCategory ;
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;
@@ -718,6 +719,7 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
   @location mInstructionLocation ;
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mMethodName ;
+  @bool mIsCategory ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
 }
