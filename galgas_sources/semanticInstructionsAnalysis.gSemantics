@@ -671,7 +671,8 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?routineSignature ?* ?hasCompilerArgument ?*] ;
+  @bool isCategory ;
+  [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -689,6 +690,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !receiverExpression
     ![mMethodName string]
+    !isCategory
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;

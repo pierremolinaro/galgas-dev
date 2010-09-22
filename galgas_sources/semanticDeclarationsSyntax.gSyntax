@@ -801,7 +801,11 @@ rule <semantic_declaration>
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  ioSemanticDeclarations->mAbstractCategoryMethodListMap += ![mClassName string] !mMethodName !mFormalParameterList ;
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@abstracMultiMethodAST new
+    !mClassName
+    !mMethodName
+    !mFormalParameterList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -824,12 +828,12 @@ rule <semantic_declaration>
   $end$ ;
   $method$ ;
   $;$ ;
-  ioSemanticDeclarations->mCategoryMethodListMap +=
-    ![mClassName string]
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@multiMethodAST new
+    !mClassName
     !mMethodName
     !mFormalParameterList
     !mRoutineInstructionList
-  ;
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -853,12 +857,12 @@ rule <semantic_declaration>
   $end$ ;
   $method$ ;
   $;$ ;
-  ioSemanticDeclarations->mOverridingCategoryMethodListMap +=
-    ![mClassName string]
+  ioSemanticDeclarations->mSemanticDeclarationList += ![@overridingMultiMethodAST new
+    !mClassName
     !mMethodName
     !mFormalParameterList
     !mRoutineInstructionList
-  ;
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -880,7 +884,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
   $;$ ;
-  ioSemanticDeclarations->mAbstractCategoryReaderListMap +=
+  ioSemanticDeclarations->mAbstractMultiReaderListMap +=
     ![mClassName string]
     !mReaderName
     !mFormalInputParameterList
@@ -911,7 +915,7 @@ rule <semantic_declaration>
   $end$ ;
   $reader$ ;
   $;$ ;
-  ioSemanticDeclarations->mCategoryReaderListMap +=
+  ioSemanticDeclarations->mMultiReaderListMap +=
     ![mClassName string]
     !mMethodName
     !mFormalInputParameterList
@@ -945,7 +949,7 @@ rule <semantic_declaration>
   $end$ ;
   $reader$ ;
   $;$ ;
-  ioSemanticDeclarations->mOverridingCategoryReaderListMap +=
+  ioSemanticDeclarations->mOverridingMultiReaderListMap +=
     ![mClassName string]
     !mMethodName
     !mFormalInputParameterList

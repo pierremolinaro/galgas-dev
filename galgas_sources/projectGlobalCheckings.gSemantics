@@ -42,6 +42,102 @@ semantics projectGlobalCheckings :
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
+
+list @abstracMultiMethodListAST {
+  @lstring mAbstractMultiMethodName ;
+  @formalParameterListAST mAbstractCategoryFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @abstractMultiMethodListMapAST (@abstracMultiMethodListAST) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        M U L T I -  M E T H O D    D E C L A R A T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @multiMethodListAST {
+  @lstring mMultiMethodName ;
+  @formalParameterListAST mCategoryFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @multiMethodListMapAST (@multiMethodListAST) ; # Key is class
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O V E R R I D I N G   M U L T I -  M E T H O D   D E C L A R A T I O N   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @overridingMultiMethodListAST {
+  @lstring mOverridingMultiMethodMethodName ;
+  @formalParameterListAST mOverridingCategoryFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @overridingMultiMethodListMapAST (@overridingMultiMethodListAST) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  B U I L D    M U L T I - M E T H O D S    L I S M A P S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationAST buildMultiMethodListMaps
+  ?!@abstractMultiMethodListMapAST unused ioAbstractMultiMethodListMapAST
+  ?!@multiMethodListMapAST unused ioMultiMethodListMap
+  ?!@overridingMultiMethodListMapAST unused ioOverridingMultiMethodListMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @abstracMultiMethodAST buildMultiMethodListMaps
+  ?!@abstractMultiMethodListMapAST ioAbstractMultiMethodListMapAST
+  ?!@multiMethodListMapAST unused ioMultiMethodListMap
+  ?!@overridingMultiMethodListMapAST unused ioOverridingMultiMethodListMap
+:
+  ioAbstractMultiMethodListMapAST +=
+    ![mTypeName string]
+    !mAbstractMultiMethodName
+    !mAbstractCategoryFormalParameterList
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @multiMethodAST buildMultiMethodListMaps
+  ?!@abstractMultiMethodListMapAST unused ioAbstractMultiMethodListMapAST
+  ?!@multiMethodListMapAST ioMultiMethodListMap
+  ?!@overridingMultiMethodListMapAST unused ioOverridingMultiMethodListMap
+:
+  ioMultiMethodListMap +=
+    ![mTypeName string]
+    !mMultiMethodName
+    !mCategoryFormalParameterList
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingMultiMethodAST buildMultiMethodListMaps
+  ?!@abstractMultiMethodListMapAST unused ioAbstractMultiMethodListMapAST
+  ?!@multiMethodListMapAST unused ioMultiMethodListMap
+  ?!@overridingMultiMethodListMapAST ioOverridingMultiMethodListMap
+:
+  ioOverridingMultiMethodListMap +=
+    ![mTypeName string]
+    !mOverridingMultiMethodMethodName
+    !mOverridingCategoryFormalParameterList
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    D E S C E N D A N T    C L A S S    L I S T M A P                      *
 #                                                                           *
@@ -91,18 +187,18 @@ end function ;
 routine checkMultiMethodDefinitionForClass
   ??@string inClassNameForErrorSignaling
   ??@string inClassName
-  ??@lstring inAbstractCategoryMethodName
+  ??@lstring inAbstractMultiMethodName
   ??@descendantClassListMap inDescendantClassListMap
-  ??@overridingMultiMethodListMapAST inOverridingCategoryMethodListMap
+  ??@overridingMultiMethodListMapAST inOverridingMultiMethodListMap
   ??@unifiedTypeMap inUnifiedTypeMap
 :
   const @unifiedTypeMapProxyList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
     const @lstring descendantClassName := [mType lkey] ;
-    @overridingMultiMethodListAST overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
+    @overridingMultiMethodListAST overridingMethods := [inOverridingMultiMethodListMap listForKey ![descendantClassName string]] ;
     @bool found := false ;
     foreach overridingMethods while not found do
-      found := [inAbstractCategoryMethodName string] == [mOverridingMultiMethodMethodName string] ;
+      found := [inAbstractMultiMethodName string] == [mOverridingMultiMethodMethodName string] ;
     end foreach ;
     if not found then
       @bool isConcrete ;
@@ -112,13 +208,13 @@ routine checkMultiMethodDefinitionForClass
         checkMultiMethodDefinitionForClass
           !inClassNameForErrorSignaling
           ![descendantClassName string]
-          !inAbstractCategoryMethodName
+          !inAbstractMultiMethodName
           !inDescendantClassListMap
-          !inOverridingCategoryMethodListMap
+          !inOverridingMultiMethodListMap
           !inUnifiedTypeMap
         ;
       else
-        error inAbstractCategoryMethodName: "an abstract multi method '" . inAbstractCategoryMethodName . "' is defined for abstract class '@"
+        error inAbstractMultiMethodName: "an abstract multi method '" . inAbstractMultiMethodName . "' is defined for abstract class '@"
         . inClassNameForErrorSignaling
         . "', but concrete descendant class '@" . descendantClassName . "' does not implement this method" ; 
       end if ;
@@ -131,18 +227,18 @@ end routine ;
 routine checkMultiReaderDefinitionForClass
   ??@string inClassNameForErrorSignaling
   ??@string inClassName
-  ??@lstring inAbstractCategoryReaderName
+  ??@lstring inAbstractMultiReaderName
   ??@descendantClassListMap inDescendantClassListMap
-  ??@overridingMultiReaderListMapAST inOverridingCategoryReaderListMap
+  ??@overridingMultiReaderListMapAST inOverridingMultiReaderListMap
   ??@unifiedTypeMap inUnifiedTypeMap
 :
   const @unifiedTypeMapProxyList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
     @lstring descendantClassName := [mType lkey] ;
-    @overridingMultiReaderListAST overridingReaders := [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]] ;
+    @overridingMultiReaderListAST overridingReaders := [inOverridingMultiReaderListMap listForKey ![descendantClassName string]] ;
     @bool found := false ;
     foreach overridingReaders while not found do
-      found := [inAbstractCategoryReaderName string] == [mOverridingMultiReaderName string] ;
+      found := [inAbstractMultiReaderName string] == [mOverridingMultiReaderName string] ;
     end foreach ;
     if not found then
       @bool isConcrete ;
@@ -152,13 +248,13 @@ routine checkMultiReaderDefinitionForClass
         checkMultiReaderDefinitionForClass
           !inClassNameForErrorSignaling
           ![descendantClassName string]
-          !inAbstractCategoryReaderName
+          !inAbstractMultiReaderName
           !inDescendantClassListMap
-          !inOverridingCategoryReaderListMap
+          !inOverridingMultiReaderListMap
           !inUnifiedTypeMap
         ;
       else
-        error inAbstractCategoryReaderName: "an abstract category reader '" . inAbstractCategoryReaderName . "' is defined for abstract class '@"
+        error inAbstractMultiReaderName: "an abstract category reader '" . inAbstractMultiReaderName . "' is defined for abstract class '@"
         . inClassNameForErrorSignaling
         . "', but concrete descendant class '@" . descendantClassName . "' does not implement this reader" ; 
       end if ;
@@ -188,57 +284,62 @@ routine performProjectGlobalCheckings
   ;
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
-    @descendantClassListMap descendantClassListMap [emptyMap] ;
-    foreach semanticContext->mTypeMap do
-       if not [mSuperType isNull] then
-         descendantClassListMap +=
-           ![mSuperType key]
-           ![@unifiedTypeMapProxy searchKey !semanticContext->mTypeMap !lkey]
-         ;
-       end if ;
+  @descendantClassListMap descendantClassListMap [emptyMap] ;
+  foreach semanticContext->mTypeMap do
+     if not [mSuperType isNull] then
+       descendantClassListMap +=
+         ![mSuperType key]
+         ![@unifiedTypeMapProxy searchKey !semanticContext->mTypeMap !lkey]
+       ;
+     end if ;
+  end foreach ;
+#--- Build multi method listmaps
+  @abstractMultiMethodListMapAST abstractMultiMethodListMap [emptyMap] ;
+  @multiMethodListMapAST multiMethodListMap [emptyMap] ;
+  @overridingMultiMethodListMapAST overridingMultiMethodListMap [emptyMap];
+  foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+    foreach [[mRoot mSemanticDeclarations] mSemanticDeclarationList] do
+      [mSemanticDeclaration buildMultiMethodListMaps
+        !?abstractMultiMethodListMap
+        !?multiMethodListMap
+        !?overridingMultiMethodListMap
+      ] ;
     end foreach ;
+  end foreach ;
 #------ Check multi methods
   if [@uint errorCount] == 0 then
-    @abstractMultiMethodListMapAST abstractCategoryMethodListMap [emptyMap] ;
-    @multiMethodListMapAST categoryMethodListMap [emptyMap] ;
-    @overridingMultiMethodListMapAST overridingCategoryMethodListMap [emptyMap];
-    foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-      abstractCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryMethodListMap] ;
-      categoryMethodListMap .= [[mRoot mSemanticDeclarations] mCategoryMethodListMap] ;
-      overridingCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryMethodListMap] ;
-    end foreach ;
   #--- A given abstract multi method id defined only once for a class
-    foreach abstractCategoryMethodListMap do
+    foreach abstractMultiMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
       foreach mList do
         [!?multiMethodMap insertKey !mAbstractMultiMethodName] ;
       end foreach ;
     end foreach ;  
   #--- A given base multi method id defined only once for a class
-    foreach categoryMethodListMap do
+    foreach multiMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
       foreach mList do
         [!?multiMethodMap insertKey !mMultiMethodName] ;
       end foreach ;
     end foreach ;  
   #--- A given overriding multi method id defined only once for a class
-    foreach overridingCategoryMethodListMap do
+    foreach overridingMultiMethodListMap do
       @multiMethodMap multiMethodMap [emptyMap] ;
       foreach mList do
         [!?multiMethodMap insertKey !mOverridingMultiMethodMethodName] ;
       end foreach ;
     end foreach ;  
-#    log abstractCategoryMethodListMap ;
+#    log abstractMultiMethodListMap ;
   #------ Check that for every abstract multi method, an overridden multi method
   #    defined in an concrete subclass
-    foreach abstractCategoryMethodListMap do
+    foreach abstractMultiMethodListMap do
       foreach mList do
         checkMultiMethodDefinitionForClass
           !key
           !key
           !mAbstractMultiMethodName
           !descendantClassListMap
-          !overridingCategoryMethodListMap
+          !overridingMultiMethodListMap
           !semanticContext->mTypeMap
         ;
       end foreach ;
@@ -247,16 +348,16 @@ routine performProjectGlobalCheckings
 ##--- Check that for every abstract category reader, an overridden category reader
 ##    defined in an concrete subclass
   #--- Get all readers
-    @abstractMultiReaderListMapAST abstractCategoryReaderListMap [emptyMap] ;
+    @abstractMultiReaderListMapAST abstractMultiReaderListMap [emptyMap] ;
     @multiReaderListMapAST categoryReaderListMap [emptyMap] ;
-    @overridingMultiReaderListMapAST overridingCategoryReaderListMap [emptyMap];
+    @overridingMultiReaderListMapAST overridingMultiReaderListMap [emptyMap];
     foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-      abstractCategoryReaderListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryReaderListMap] ;
-      categoryReaderListMap .= [[mRoot mSemanticDeclarations] mCategoryReaderListMap] ;
-      overridingCategoryReaderListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryReaderListMap] ;
+      abstractMultiReaderListMap .= [[mRoot mSemanticDeclarations] mAbstractMultiReaderListMap] ;
+      categoryReaderListMap .= [[mRoot mSemanticDeclarations] mMultiReaderListMap] ;
+      overridingMultiReaderListMap .= [[mRoot mSemanticDeclarations] mOverridingMultiReaderListMap] ;
     end foreach ;
   #--- A given abstract multi reader id defined only once for a class
-    foreach abstractCategoryReaderListMap do
+    foreach abstractMultiReaderListMap do
       @multiReaderMap multiReaderMap [emptyMap] ;
       foreach mList do
         [!?multiReaderMap insertKey !mAbstractMultiReaderName] ;
@@ -270,21 +371,21 @@ routine performProjectGlobalCheckings
       end foreach ;
     end foreach ;  
   #--- A given overriding multi reader id defined only once for a class
-    foreach overridingCategoryReaderListMap do
+    foreach overridingMultiReaderListMap do
       @multiReaderMap multiReaderMap [emptyMap] ;
       foreach mList do
         [!?multiReaderMap insertKey !mOverridingMultiReaderName] ;
       end foreach ;
     end foreach ;  
   #--- Check every abstract multi reader is implemented by every inherited concrete type
-    foreach abstractCategoryReaderListMap do
+    foreach abstractMultiReaderListMap do
       foreach mList do
         checkMultiReaderDefinitionForClass
           !key
           !key
           !mAbstractMultiReaderName
           !descendantClassListMap
-          !overridingCategoryReaderListMap
+          !overridingMultiReaderListMap
           !semanticContext->mTypeMap
         ;
       end foreach ;

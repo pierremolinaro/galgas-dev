@@ -967,50 +967,41 @@ class @typeMethodCallInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-# A B S T R A C T   C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
+# A B S T R A C T   M U L T I -  M E T H O D    D E C L A R A T I O N       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @abstracMultiMethodListAST {
+class @abstracMultiMethodAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
   @lstring mAbstractMultiMethodName ;
   @formalParameterListAST mAbstractCategoryFormalParameterList ;
 }
 
 #---------------------------------------------------------------------------*
-
-listmap @abstractMultiMethodListMapAST (@abstracMultiMethodListAST) ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
-#        C A T E G O R Y    M E T H O D    D E C L A R A T I O N            *
+#        M U L T I -  M E T H O D    D E C L A R A T I O N                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @multiMethodListAST {
+class @multiMethodAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
   @lstring mMultiMethodName ;
   @formalParameterListAST mCategoryFormalParameterList ;
   @semanticInstructionListAST mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
-
-listmap @multiMethodListMapAST (@multiMethodListAST) ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
-#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N*
+#  O V E R R I D I N G   M U L T I -  M E T H O D   D E C L A R A T I O N   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @overridingMultiMethodListAST {
+class @overridingMultiMethodAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
   @lstring mOverridingMultiMethodMethodName ;
   @formalParameterListAST mOverridingCategoryFormalParameterList ;
   @semanticInstructionListAST mRoutineInstructionList ;
 }
-
-#---------------------------------------------------------------------------*
-
-listmap @overridingMultiMethodListMapAST (@overridingMultiMethodListAST) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1072,14 +1063,10 @@ listmap @overridingMultiReaderListMapAST (@overridingMultiReaderListAST) ;
 
 struct @semanticDeclarationStructAST {
   @semanticDeclarationListAST mSemanticDeclarationList ;
-#--- Multi Methods
-  @abstractMultiMethodListMapAST mAbstractCategoryMethodListMap ;
-  @multiMethodListMapAST mCategoryMethodListMap ;
-  @overridingMultiMethodListMapAST mOverridingCategoryMethodListMap ;
 #--- Multi readers
-  @abstractMultiReaderListMapAST mAbstractCategoryReaderListMap ;
-  @multiReaderListMapAST mCategoryReaderListMap ;
-  @overridingMultiReaderListMapAST mOverridingCategoryReaderListMap ;
+  @abstractMultiReaderListMapAST mAbstractMultiReaderListMap ;
+  @multiReaderListMapAST mMultiReaderListMap ;
+  @overridingMultiReaderListMapAST mOverridingMultiReaderListMap ;
 }
 
 #---------------------------------------------------------------------------*

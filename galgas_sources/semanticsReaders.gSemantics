@@ -34,6 +34,7 @@ routine enterBaseFinalReaderWithoutArgument
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
+    !false
     ![@unifiedTypeMapProxyList emptyList]
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -54,6 +55,7 @@ routine enterInheritedReaderWithoutArgument
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
+    !false
     ![@unifiedTypeMapProxyList emptyList]
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -79,6 +81,7 @@ routine enterInheritedReaderWithArgument
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
+    !false
     !argList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -99,6 +102,7 @@ routine enterBaseReaderWithoutArgument
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
+    !false
     ![@unifiedTypeMapProxyList emptyList]
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -124,6 +128,7 @@ routine enterBaseReaderWithArgument
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
+    !false
     !argList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -152,6 +157,7 @@ routine enterBaseReaderWith2Arguments
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
+    !false
     !argList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -183,6 +189,7 @@ routine enterBaseReaderWith3Arguments
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
+    !false
     !argList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex

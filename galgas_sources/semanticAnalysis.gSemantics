@@ -646,7 +646,7 @@ override method @classDeclarationAST performSemanticAnalysis
     if mIsOverriding then
       @formalParameterSignature inheritedSignature ;
       @location inheritedDeclarationLocation ;
-      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedSignature ?inheritedDeclarationLocation ?2*] ;
+      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?2*] ;
       checkMethodSignatures
         !formalParameterListForGeneration
         ![mMethodName location]
@@ -680,13 +680,17 @@ override method @classDeclarationAST performSemanticAnalysis
     if mIsOverriding then
       @formalParameterSignature inheritedSignature ;
       @location inheritedDeclarationLocation ;
-      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedSignature ?inheritedDeclarationLocation ?2*] ;
+      @bool inheritedIsCategory ;
+      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedIsCategory ?inheritedSignature ?inheritedDeclarationLocation ?2*] ;
       checkMethodSignatures
         !formalParameterListForGeneration
         ![mMethodName location]
         !inheritedSignature
         !inheritedDeclarationLocation
       ;
+      if inheritedIsCategory then
+        error mMethodName : "this method is declared in class, but overriden method is declared as multi-method" ;
+      end if ;
     elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
       error mMethodName : "this method should be declared as overridding, as it is already declared in super class" ;
     end if ;

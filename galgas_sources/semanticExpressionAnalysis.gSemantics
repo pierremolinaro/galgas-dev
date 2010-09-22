@@ -599,17 +599,19 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   const @readerMap readerMap := [receiverType mReaderMap] ;
 #--- Search contructor
   @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
+  @bool isCategory ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
   with readerMap hasKey ![mReaderName string] do
     readerFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
+    isCategory := mIsCategory ;
   else
     if [readerMap count] == 0 then
       error mReaderName
       : "the '@". [receiverType key] . "' type does not define any reader"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
       ;
     else
       @string s := "" ;
@@ -624,7 +626,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       : "the '@". [receiverType key] . "' type does not define the '" . mReaderName . "' reader; available "
       . if [readerMap count] > 1 then "readers are" else "reader is" end
       . ":" . s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
       ;
     end if ;
   end with ;
@@ -644,6 +646,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
     outExpression := [@readerCallExpressionForGeneration new
       !returnedType
       ![mReaderName location]
+      !isCategory
       !receiverExpression
       ![mReaderName string]
       !constructorEffectiveParameterList
@@ -757,12 +760,14 @@ routine checkDiadicOperator
         @unifiedTypeMapProxyList argumentTypeList ;
         @bool hasCompilerArgument ;
         @unifiedTypeMapProxy returnedType ;
-        [[inRightType mReaderMap] searchKey ![inLeftType lkey] ?argumentTypeList ?hasCompilerArgument ?returnedType ?*] ;
+        @bool isCategory ;
+        [[inRightType mReaderMap] searchKey ![inLeftType lkey] ?isCategory ?argumentTypeList ?hasCompilerArgument ?returnedType ?*] ;
         ok := ([argumentTypeList length] == 0) & (returnedType == inLeftType) ;
      #--- Add conversion expression
         @semanticExpressionForGeneration conversionExpression := [@readerCallExpressionForGeneration new
           !inLeftType
           !inErrorLocation
+          !isCategory
           !ioRightExpression
           ![inLeftType key]
           ![@semanticExpressionListForGeneration emptyList]
@@ -1624,6 +1629,7 @@ override method @castInExpressionAST analyzeSemanticExpression
       errorLocationExpression := [@readerCallExpressionForGeneration new
         !inPredefinedTypes->mLocationType
         !mEndOfErrorLocationExpression
+        !false
         !errorLocationExpression
         !"location"
         ![@semanticExpressionListForGeneration emptyList]

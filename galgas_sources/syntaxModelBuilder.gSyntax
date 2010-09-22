@@ -109,9 +109,6 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   @syntaxRuleListAST mRuleList [emptyList] ;
   @semanticDeclarationStructAST mSemanticDeclarations [new
     ![@semanticDeclarationListAST emptyList]
-    ![@abstractMultiMethodListMapAST emptyMap]
-    ![@multiMethodListMapAST emptyMap]
-    ![@overridingMultiMethodListMapAST emptyMap]
     ![@abstractMultiReaderListMapAST emptyMap]
     ![@multiReaderListMapAST emptyMap]
     ![@overridingMultiReaderListMapAST emptyMap]
