@@ -974,7 +974,7 @@ class @typeMethodCallInstructionAST extends @semanticInstructionAST {
 class @abstracMultiMethodAST extends @semanticDeclarationAST {
   @lstring mTypeName ;
   @lstring mAbstractMultiMethodName ;
-  @formalParameterListAST mAbstractCategoryFormalParameterList ;
+  @formalParameterListAST mAbstractMultiMethodFormalParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -986,7 +986,7 @@ class @abstracMultiMethodAST extends @semanticDeclarationAST {
 class @multiMethodAST extends @semanticDeclarationAST {
   @lstring mTypeName ;
   @lstring mMultiMethodName ;
-  @formalParameterListAST mCategoryFormalParameterList ;
+  @formalParameterListAST mMultiMethodFormalParameterList ;
   @semanticInstructionListAST mRoutineInstructionList ;
 }
 
@@ -999,7 +999,7 @@ class @multiMethodAST extends @semanticDeclarationAST {
 class @overridingMultiMethodAST extends @semanticDeclarationAST {
   @lstring mTypeName ;
   @lstring mOverridingMultiMethodMethodName ;
-  @formalParameterListAST mOverridingCategoryFormalParameterList ;
+  @formalParameterListAST mOverridingMultiMethodFormalParameterList ;
   @semanticInstructionListAST mRoutineInstructionList ;
 }
 
@@ -1012,7 +1012,7 @@ class @overridingMultiMethodAST extends @semanticDeclarationAST {
 class @abstractMultiReaderAST extends @semanticDeclarationAST {
   @lstring mTypeName ;
   @lstring mAbstractMultiReaderName ;
-  @formalInputParameterListAST mAbstractCategoryFormalInputParameterList ;
+  @formalInputParameterListAST mAbstractMultiMethodFormalInputParameterList ;
   @lstring mReturnedTypeName ;
 }
 
@@ -1025,7 +1025,7 @@ class @abstractMultiReaderAST extends @semanticDeclarationAST {
 class @multiReaderAST extends @semanticDeclarationAST {
   @lstring mTypeName ;
   @lstring mMultiReaderName ;
-  @formalInputParameterListAST mReaderCategoryFormalInputParameterList ;
+  @formalInputParameterListAST mReaderMultiMethodFormalInputParameterList ;
   @lstring mReturnedTypeName ;
   @lstring mReturnedVariableName ;
   @semanticInstructionListAST mRoutineInstructionList ;

@@ -176,7 +176,7 @@ listmap @descendantClassListMap (@unifiedTypeMapProxyList) ;
 # Used for checking a multi-method is defined once for a type               *
 #---------------------------------------------------------------------------*
 
-map @multiMethodMap {
+map @multiMethodMapForGlobalCheckings {
   insert insertKey error message "the '%K' multi method is already declared in %L" ;
 }
 
@@ -187,7 +187,7 @@ map @multiMethodMap {
 # Used for checking a multi-method is defined once for a type               *
 #---------------------------------------------------------------------------*
 
-map @multiReaderMap {
+map @multiReaderMapForGlobalCheckings {
   insert insertKey error message "the '%K' multi reader is already declared in %L" ;
 }
 
@@ -340,21 +340,21 @@ routine performProjectGlobalCheckings
   if [@uint errorCount] == 0 then
   #--- A given abstract multi method id defined only once for a class
     foreach abstractMultiMethodListMap do
-      @multiMethodMap multiMethodMap [emptyMap] ;
+      @multiMethodMapForGlobalCheckings multiMethodMap [emptyMap] ;
       foreach mList do
         [!?multiMethodMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- A given base multi method id defined only once for a class
     foreach multiMethodListMap do
-      @multiMethodMap multiMethodMap [emptyMap] ;
+      @multiMethodMapForGlobalCheckings multiMethodMap [emptyMap] ;
       foreach mList do
         [!?multiMethodMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- A given overriding multi method id defined only once for a class
     foreach overridingMultiMethodListMap do
-      @multiMethodMap multiMethodMap [emptyMap] ;
+      @multiMethodMapForGlobalCheckings multiMethodMap [emptyMap] ;
       foreach mList do
         [!?multiMethodMap insertKey !mValue] ;
       end foreach ;
@@ -379,21 +379,21 @@ routine performProjectGlobalCheckings
 ##    defined in an concrete subclass
   #--- A given abstract multi reader id defined only once for a class
     foreach abstractMultiReaderListMap do
-      @multiReaderMap multiReaderMap [emptyMap] ;
+      @multiReaderMapForGlobalCheckings multiReaderMap [emptyMap] ;
       foreach mList do
         [!?multiReaderMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- A given base multi reader id defined only once for a class
     foreach multiReaderListMap do
-      @multiReaderMap multiReaderMap [emptyMap] ;
+      @multiReaderMapForGlobalCheckings multiReaderMap [emptyMap] ;
       foreach mList do
         [!?multiReaderMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
   #--- A given overriding multi reader id defined only once for a class
     foreach overridingMultiReaderListMap do
-      @multiReaderMap multiReaderMap [emptyMap] ;
+      @multiReaderMapForGlobalCheckings multiReaderMap [emptyMap] ;
       foreach mList do
         [!?multiReaderMap insertKey !mValue] ;
       end foreach ;
