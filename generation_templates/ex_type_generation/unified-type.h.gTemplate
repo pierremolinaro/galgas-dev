@@ -1,0 +1,314 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_NAME . " " . [TYPE_KIND kind] . " type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
+
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation]% {
+%
+if [ENUM_CONSTANT_LIST length] > 0 then
+%//--------------------------------- Enumeration type declaration
+  public : typedef enum {%
+  foreach ENUM_CONSTANT_LIST
+    do %kEnum_%![mValue identifierRepresentation]
+    between %, %
+  end foreach
+  %} enumeration ;
+
+//--------------------------------- Private attribute
+  private : enumeration mEnumValue ;
+  public : inline enumeration enumValue (void) const { return mEnumValue ; }
+
+//--------------------------------- C++ constructor (for enumeration type)
+  public : GALGAS_%!TYPE_IDENTIFIER% (const enumeration inValue COMMA_LOCATION_ARGS) ;
+
+%
+end if
+
+if (SUPPORTED_OPERATORS & generateConstructorWithSelfObject []) != 0 then%
+//--------------------------------- C++ constructor (for inheritance for predefined type)
+  protected : GALGAS_%!TYPE_IDENTIFIER% (GALGASap_%!TYPE_IDENTIFIER% & inObject COMMA_LOCATION_ARGS) ;
+
+%
+end if
+
+if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeList []) != 0 then%
+//--------------------------------- C++ constructor (with native attributes)\n%
+  %  protected : GALGAS_%!TYPE_IDENTIFIER% (%?^
+  foreach NATIVE_ATTRIBUTE_LIST
+    do %const %!mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
+    between %,\n%!^
+  end foreach
+  if [NATIVE_ATTRIBUTE_LIST length] == 0 then
+    %LOCATION_ARGS) ;\n\n%
+  else
+    %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+  end if
+end if
+
+
+if (SUPPORTED_OPERATORS & generateCppConstructorWithCurrentAttributeList []) != 0 then%
+//--------------------------------- C++ constructor (with current attributes)\n%
+  %  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
+  foreach CURRENT_TYPE_ATTRIBUTE_LIST
+    do index IDX %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+  if [CURRENT_TYPE_ATTRIBUTE_LIST length] == 0 then
+    %LOCATION_ARGS) ;\n\n%
+  else
+    %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+  end if
+end if
+
+if (SUPPORTED_OPERATORS & generateCppConstructorWithAllAttributeList []) != 0 then%
+//--------------------------------- C++ constructor\n%
+  %  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
+  foreach INHERITED_ATTRIBUTE_LIST
+    do index IDX %const GALGASap_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+  if [INHERITED_ATTRIBUTE_LIST length] == 0 then
+    %LOCATION_ARGS) ;\n\n%
+  else
+    %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+  end if
+end if
+
+if (SUPPORTED_OPERATORS & generateVirtualDestructor []) != 0 then
+%//--------------------------------- Virtual destructor
+  protected : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;\n\n%
+end if
+
+%//--------------------------------- No copy
+  private : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% &) ;
+  private : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% &) ;
+
+%if (SUPPORTED_OPERATORS & generateDescriptionReaderUtilityMethod []) != 0 then
+  %//--------------------------------- Implementation of reader 'description'\n%
+  %  public : virtual void description (C_String & ioString,\n%
+  %                                     const PMSInt32 inIndentation) const ;\n%
+end if
+
+%
+//--------------------------------- Modifiers
+%
+foreach MODIFIER_MAP do
+  if mQualifier != [@methodQualifier isInherited] then
+    %  protected : void modifier_%![lkey identifierRepresentation]% (%?^
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      end if
+    between %,\n%!^
+    end foreach
+    if [mParameterList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        !^%LOCATION_ARGS%
+      end if  
+    else
+      if mHasCompilerArgument then
+        %,\n%!^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        %\n%!^%COMMA_LOCATION_ARGS%
+      end if  
+    end if
+    %) ;\n\n%
+  end if
+end foreach
+%
+//--------------------------------- Instance Methods
+%
+foreach INSTANCE_METHOD_MAP do
+  if mQualifier != [@methodQualifier isInherited] then
+    %  protected : virtual void method_%![lkey identifierRepresentation]% (%?^
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      end if
+    between %,\n%!^
+    end foreach
+    if [mParameterList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        !^%LOCATION_ARGS%
+      end if  
+    else
+      if mHasCompilerArgument then
+        %,\n%!^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        %\n%!^%COMMA_LOCATION_ARGS%
+      end if  
+    end if
+    %) %
+    if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isOverridingAbstract]) then
+      %= 0 %
+    end if
+    %;\n\n%
+  end if
+end foreach
+%//--------------------------------- Class Methods
+%
+foreach CLASS_METHOD_MAP do
+  %  public : static void class_method_%![lkey identifierRepresentation]% (%?^
+  foreach mParameterList do index IDX
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+      %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+      %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+      %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+    else # argumentIn
+      %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+    end if
+  between %,\n%!^
+  end foreach
+  if [mParameterList length] == 0 then
+    if mHasCompilerArgument then
+      %C_Compiler * inCompiler\n%
+      !^%COMMA_LOCATION_ARGS%
+    else
+      !^%LOCATION_ARGS%
+    end if  
+  else
+    if mHasCompilerArgument then
+      %,\n%!^%C_Compiler * inCompiler\n%
+      !^%COMMA_LOCATION_ARGS%
+    else
+      %\n%!^%COMMA_LOCATION_ARGS%
+    end if  
+  end if
+  %) ;\n\n%
+end foreach
+%
+//--------------------------------- Readers
+%
+foreach READER_MAP do
+  if (mQualifier != [@methodQualifier isInherited]) & (mQualifier != [@methodQualifier isBasicFinal]) then
+    %  protected : virtual GALGASap_% ![mReturnedType identifierRepresentation] % reader_% ![lkey identifierRepresentation] % (%?^
+    foreach mArgumentTypeList
+      do index IDX %const GALGASap_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
+      between %,\n% !^
+    end foreach
+    if [mArgumentTypeList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+      else
+        %LOCATION_ARGS%
+      end if
+    else
+      if mHasCompilerArgument then
+        %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+      else
+        %\n% !^ %COMMA_LOCATION_ARGS%
+      end if
+    end if
+    %) %
+    if mQualifier == [@methodQualifier isAbstract] then
+      % = 0%
+    end if
+    % const ;\n\n%
+  end if
+end foreach
+
+%
+//--------------------------------- Introspection
+  public : virtual const C_galgas_type_descriptor * typeDescriptor (void) const ;
+
+//--------------------------------- Private data member(s)\n%
+foreach NATIVE_ATTRIBUTE_LIST do
+  %  private : %if mIsConst then %const % end if !mCppClassName % % if mIsPointer then %* % end if !mAttributeName% ;\n%
+  if [mGetterName length] > 0 then
+    if not mIsConst then
+      %  public : inline %!mCppClassName % % if mIsPointer then % * % end if !mGetterName% (void) { return %!mAttributeName% ; }\n%
+    end if
+    if mIsPointer then
+      %  public : inline const %!mCppClassName % * % !mGetterName% (void) const { return %!mAttributeName% ; }\n%
+    else
+      %  public : inline %!mCppClassName % % !mGetterName% (void) const { return %!mAttributeName% ; }\n%
+    end if
+  end if
+end foreach
+foreach PRIVATE_DATA_NUMBER_TYPED_LIST do
+  %  public : GALGASap_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+end foreach
+
+if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
+%//--------------------------------- Enumeration helper methods
+  protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
+                                                     const bool inAscending) const ;
+
+%end if
+
+if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
+%//--------------------------------- Abstract method for comparing two sorted list elements
+  protected : virtual enumComparisonResult compareSortedListElements (const capCollectionElement & inLeftAttributeList,
+                                                                      const capCollectionElement & inRightAttributeList) const ;
+
+%end if
+
+if [WITH_ACCESSOR_MAP count] > 0 then
+  %//--------------------------------- 'with' accessors\n%
+  foreach WITH_ACCESSOR_MAP do
+    %  friend cCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    !^%GALGASap_%!TYPE_IDENTIFIER% & ioMap,\n%
+    !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
+    !^%COMMA_LOCATION_ARGS) ;\n\n%
+  end foreach
+end if
+
+if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
+%//--------------------------------- Enumerator declaration
+  public : class cEnumerator : public AC_GALGAS_Enumerator {
+    public : cEnumerator (const GALGASap_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+                          const bool inAscending) ;
+
+  //--- Update attribute proxies
+    public : void updateAttributeProxies (void) ;
+  
+  //--- Current attribute proxies\n%
+    foreach ENUMERATION_DESCRIPTOR_LIST do
+%    public : GALGASap_%![mEnumeratedType identifierRepresentation]% attribute_%![mEnumerationName identifierRepresentation]% ;\n%
+    end foreach%
+  } ;
+%
+end if
+%  
+
+//--- Friend class
+  friend class GALGASap_%!TYPE_IDENTIFIER% ;
+} ;
+
+%
+if [WITH_ACCESSOR_MAP count] > 0 then
+  %//--------------------------------- 'with' accessors\n%
+  foreach WITH_ACCESSOR_MAP do
+    %cCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    !^%GALGASap_%!TYPE_IDENTIFIER% & ioMap,\n%
+    !^%GALGASap_%![mArgumentType identifierRepresentation]% & inKey\n%
+    !^%COMMA_LOCATION_ARGS) ;\n\n%
+  end foreach
+end if

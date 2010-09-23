@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@location type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% {
+//--------------------------------- Private data members
+  private : C_LocationInSource & mStartLocationInSource ;
+  private : const C_LocationInSource & mEndLocationInSource ;
+  private : const C_SourceTextInString * mSourceText ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mSourceText != NULL ; }
+  public : inline void drop (void) { macroReleaseObject (mSourceText) ; }
+
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (const C_Compiler * inValue) ;
+
+%
+
