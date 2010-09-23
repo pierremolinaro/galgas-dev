@@ -78,6 +78,8 @@ override method @predefinedTypeAST performSemanticAnalysis
 :
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
+    !mPredefinedTypeName
+    !mKind
   ] ;
 
 end method ;

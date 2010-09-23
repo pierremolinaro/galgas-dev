@@ -174,7 +174,21 @@ enum @typeKindEnum {
   mapType,
   mapProxyType,
   listMapType,
-  structType
+  structType,
+  predefined_uint,
+  predefined_uint64,
+  predefined_sint,
+  predefined_sint64,
+  predefined_char,
+  predefined_double,
+  predefined_string,
+  predefined_stringset,
+  predefined_bool,
+  predefined_binaryset,
+  predefined_function,
+  predefined_location,
+  predefined_type,
+  predefined_data
 }{
   reader kind :
   classType -> "class" ;
@@ -185,6 +199,20 @@ enum @typeKindEnum {
   mapProxyType -> "map proxy" ;
   listMapType -> "list map" ;
   structType -> "struct" ;
+  predefined_uint -> "@uint" ;
+  predefined_uint64 -> "@uint64" ;
+  predefined_sint -> "@sint" ;
+  predefined_sint64 -> "@sint64" ;
+  predefined_char -> "@char" ;
+  predefined_double -> "@double" ;
+  predefined_string -> "@string" ;
+  predefined_stringset -> "@stringset" ;
+  predefined_bool -> "@bool" ;
+  predefined_binaryset -> "@binaryset" ;
+  predefined_function -> "@function" ;
+  predefined_location -> "@location" ;
+  predefined_type -> "@type" ;
+  predefined_data -> "@data" ;
   end reader ;
 }
 
@@ -231,6 +259,8 @@ function unaryNotOperator -> @uint outMask : outMask := 1 << 13 ; end function ;
 function binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end function ; # exp1 . exp2
 function dotAssignOperator -> @uint outMask : outMask := 1 << 15 ; end function ; # var .= exp ;
 function isComparable -> @uint outMask : outMask := 1 << 16 ; end function ; # Supports <, <=, >, >= operators
+
+function generateCopyConstructorAndAssignmentOperator -> @uint outMask : outMask := 1 << 19 ; end function ;
 
 function autoBoxing -> @uint outMask : outMask := 1 << 20 ; end function ;
 function generateCppConstructorWithNativeAttributeListInAutoPointerClass -> @uint outMask : outMask := 1 << 21 ; end function ;
@@ -305,6 +335,7 @@ class @genericTypeTypeAST extends @semanticDeclarationAST {
 
 abstract class @predefinedTypeAST extends @semanticDeclarationAST {
   @string mPredefinedTypeName ;
+  @typeKindEnum mKind ;
 }
 
 #---------------------------------------------------------------------------*

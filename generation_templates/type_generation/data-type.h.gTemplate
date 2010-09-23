@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@data type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% {
+//--------------------------------- Private data members
+  private : bool mIsValid ;
+  private : uint8Array & inOperand_mData mDataValue ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mIsValid ; }
+  public : inline void drop (void) { mIsValid = false ; }
+  public : inline uint8Array dataValue (void) const { return mDataValue ; }
+
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (const uint8Array & inValue) ;
+
+%
+

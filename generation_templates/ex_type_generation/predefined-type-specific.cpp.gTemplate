@@ -1,0 +1,22 @@
+%if ((SUPPORTED_OPERATORS & (incDecOperator [] | dotAssignOperator [])) != 0)
+ | ([MODIFIER_MAP count] > 0)
+ | ([ADD_ASSIGN_ARGUMENT_LIST length] > 0) then
+%//---------------------------------------------------------------------------*
+
+void GALGASap_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
+  if (ptr (HERE)->retainCount () > 1) {
+    *this = constructor_new (%
+    foreach NATIVE_ATTRIBUTE_LIST
+      do %ptr (HERE)->%!mAttributeName
+      between %, %
+    end foreach
+    if [NATIVE_ATTRIBUTE_LIST length] == 0 then
+      %THERE%
+    else
+      % COMMA_THERE%
+    end if
+    %) ;
+  }
+}
+%end if%
+

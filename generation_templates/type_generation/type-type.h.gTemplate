@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@function type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% {
+//--------------------------------- Private data members
+  private : bool mIsValid ;
+  private : C_galgas_type_descriptor * mTypeDescriptor ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mIsValid ; }
+  public : inline void drop (void) { mIsValid = false ; }
+  public : inline C_galgas_type_descriptor * typeValue (void) const { return mTypeDescriptor ; }
+
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (const C_galgas_type_descriptor * inValue) ;
+
+%
+

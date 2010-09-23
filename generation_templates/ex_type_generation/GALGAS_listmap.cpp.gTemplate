@@ -1,0 +1,46 @@
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
+GALGAS_listmap ((GALGAS_list * (*) (LOCATION_ARGS)) GALGASap_uintlist::constructor_emptyList COMMA_THERE) {
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% * GALGASap_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
+  macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGASap_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioObject
+                %!^%COMMA_LOCATION_ARGS) {
+  if (ioObject->retainCount () > 1) {
+    GALGAS_%!TYPE_IDENTIFIER% * source = ioObject ;
+    macroReleaseObject (ioObject) ;
+    ioObject = constructor_emptyMap (THERE) ;
+    ioObject->copyFrom (source) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void addAssign_operation (%?^%GALGAS_%!TYPE_IDENTIFIER% * & ioResult%
+      %,\n%!^%const GALGAS_string * inKey%
+  foreach ATTRIBUTE_LIST
+  do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% * inOperand%![IDX string]
+  end foreach
+  %\n%!^%COMMA_LOCATION_ARGS) {
+  if (ioResult != NULL) {
+    GALGAS_%!TYPE_IDENTIFIER%::insulate (ioResult COMMA_THERE) ;
+    GALGAS_object * attributeArray [%![[ATTRIBUTE_LIST length] string]%] = {%
+    foreach ATTRIBUTE_LIST
+    do index IDX %inOperand%![IDX string]
+    between %, %
+    end foreach
+    %} ;
+    ioResult->addObject (inKey, attributeArray) ;
+  }
+}
+

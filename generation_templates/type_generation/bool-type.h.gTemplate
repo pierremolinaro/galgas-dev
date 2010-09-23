@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@bool type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% {
+//--------------------------------- Private data members
+  private : bool mIsValid ;
+  private : bool mBoolValue ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mIsValid ; }
+  public : inline void drop (void) { mIsValid = false ; }
+  public : inline bool boolValue (void) const { return mBoolValue ; }
+
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (const bool inValue) ;
+
+%
+

@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@uint type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% {
+//--------------------------------- Private data members
+  private : bool mIsValid ;
+  private : PMUInt32 mUIntValue ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mIsValid ; }
+  public : inline void drop (void) { mIsValid = false ; }
+  public : inline PMUInt32 uintValue (void) const { return mUIntValue ; }
+
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (const PMUInt32 inValue) ;
+
+%
+

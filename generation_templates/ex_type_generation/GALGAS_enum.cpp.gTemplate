@@ -1,0 +1,65 @@
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^%const enumeration inValue
+%                                         !^%COMMA_LOCATION_ARGS) :
+GALGAS_enum (THERE),
+mEnumValue (inValue) {
+}
+
+%
+foreach CONSTANT_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (LOCATION_ARGS) {\n%
+  %  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;\n%
+  %  macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (GALGAS_%!TYPE_IDENTIFIER%::kEnum_%![mValue identifierRepresentation]% COMMA_THERE)) ;\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach
+
+foreach ENUM_MESSAGE_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [%![[CONSTANT_LIST length] string]%] = {%
+  foreach mMessageAssociationList
+     do %\n  %![mMessage utf8Representation]
+     between %,%
+  end foreach
+  %\n} ;\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGASap_string GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  return GALGASap_string::constructor_new (gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [mEnumValue] COMMA_THERE) ;\n%
+  %}\n\n%
+end foreach
+
+%//---------------------------------------------------------------------------*
+
+static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] string]%] = {%
+foreach CONSTANT_LIST
+   do %\n  %![mValue utf8Representation]
+   between %,%
+end foreach%
+} ;
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+%                                       !^%const PMSInt32 /* inIndentation */) const {
+  ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnumValue] << ">" ;
+}
+
+//---------------------------------------------------------------------------*
+
+enumComparisonResult GALGASap_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand1,
+                        %!^%const GALGASap_%!TYPE_IDENTIFIER% & inOperand2) {
+  enumComparisonResult result = kOperandNotValid ;
+  if (inOperand1.isValid () && inOperand2.isValid ()) {
+    if (inOperand1.ptr (HERE)->mEnumValue < (PMSInt32) inOperand2.ptr (HERE)->mEnumValue) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (inOperand1.ptr (HERE)->mEnumValue > (PMSInt32) inOperand2.ptr (HERE)->mEnumValue) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+

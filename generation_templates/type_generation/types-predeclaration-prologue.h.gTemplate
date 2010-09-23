@@ -1,0 +1,87 @@
+
+#ifndef GALGAS2_PREDEFINED_TYPES
+#define GALGAS2_PREDEFINED_TYPES
+
+//---------------------------------------------------------------------------*
+
+#include "galgas2-new/GALGAS_list.h"
+#include "galgas2-new/GALGAS_sortedlist.h"
+#include "galgas2-new/GALGAS_struct.h"
+#include "galgas2-new/GALGAS_enum.h"
+#include "galgas2-new/GALGAS_class.h"
+#include "galgas2-new/GALGAS_map.h"
+#include "galgas2-new/GALGAS_listmap.h"
+#include "strings/C_String.h"
+#include "collections/TC_Array.h"
+#include "galgas-utilities/C_LocationInSource.h"
+#include "galgas-utilities/C_galgas_function_descriptor.h"
+#include "bdd/C_BDD.h"
+
+//---------------------------------------------------------------------------*
+
+class cCollectionElement_stringset : public cCollectionElement {
+//--- Attribute
+  public : GALGAS_string mAttribute_key ;
+
+//--- Constructor
+  public : cCollectionElement_stringset (const GALGAS_string & inKey
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method for comparing elements
+  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+class cCollectionElement_data : public cCollectionElement {
+//--- Attribute
+  public : GALGAS_uint mAttribute_data ;
+
+//--- Constructor
+  public : cCollectionElement_data (const GALGAS_uint & inData
+                                    COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method for comparing elements
+  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+class C_galgas_function_descriptor ;
+class C_galgas_type_descriptor ;
+class C_SourceTextInString ;
+class cStringsetNode ;
+
+//---------------------------------------------------------------------------*
+
+typedef TC_Array <PMUInt8> uint8Array ;
+
+//---------------------------------------------------------------------------*
+
+class C_Compiler ;
+
+//---------------------------------------------------------------------------*
+
+%
+foreach TYPE_LIST do
+  %class GALGAS_%![key identifierRepresentation]% ;\n%
+end foreach
+
