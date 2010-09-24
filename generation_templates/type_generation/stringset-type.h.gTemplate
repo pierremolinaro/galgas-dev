@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//%!["@data type" stringByLeftAndRightPadding !75 !' ']%*
+//%!["@stringset type" stringByLeftAndRightPadding !75 !' ']%*
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -8,25 +8,20 @@
 
 //---------------------------------------------------------------------------*
 
-typedef TC_Array <PMUInt8> uint8Array ;
+class cStringsetNode ;
 
 //---------------------------------------------------------------------------*
 
 class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_enumerable {
 //--------------------------------- Private data members
-  private : bool mIsValid ;
-  private : uint8Array mDataValue ;
+  private : cStringsetNode * mRoot ;
 
 //--------------------------------- Accessors
-  public : inline bool isValid (void) const { return mIsValid ; }
-  public : inline void drop (void) { mIsValid = false ; }
-  public : inline uint8Array dataValue (void) const { return mDataValue ; }
+  public : inline bool isValid (void) const { return mRoot != NULL ; }
+  public : void drop (void) ;
 
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
-
-//--------------------------------- Native constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (const uint8Array & inValue) ;
 
 %
 

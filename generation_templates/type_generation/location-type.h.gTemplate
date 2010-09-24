@@ -4,6 +4,10 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+class C_SourceTextInString ;
+
+//---------------------------------------------------------------------------*
+
 class GALGAS_%!TYPE_IDENTIFIER% {
 //--------------------------------- Private data members
   private : C_LocationInSource & mStartLocationInSource ;
@@ -12,7 +16,7 @@ class GALGAS_%!TYPE_IDENTIFIER% {
 
 //--------------------------------- Accessors
   public : inline bool isValid (void) const { return mSourceText != NULL ; }
-  public : inline void drop (void) { macroReleaseObject (mSourceText) ; }
+  public : void drop (void) ;
 
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;

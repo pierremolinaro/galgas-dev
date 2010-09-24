@@ -162,19 +162,11 @@ list @typedAttributeList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  T Y P E    K I N D    E N U M E R A T I O N                              *
+#  P R E D E F I N E D    T Y P E    K I N D    E N U M E R A T I O N       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-enum @typeKindEnum {
-  classType,
-  enumType,
-  listType,
-  sortedListType,
-  mapType,
-  mapProxyType,
-  listMapType,
-  structType,
+enum @predefinedTypeKindEnum {
   predefined_uint,
   predefined_uint64,
   predefined_sint,
@@ -190,6 +182,25 @@ enum @typeKindEnum {
   predefined_type,
   predefined_data
 }{
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    K I N D    E N U M E R A T I O N                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @typeKindEnum {
+  classType,
+  enumType,
+  listType,
+  sortedListType,
+  mapType,
+  mapProxyType,
+  listMapType,
+  structType,
+  predefinedType
+}{
   reader kind :
   classType -> "class" ;
   enumType -> "enumeration" ;
@@ -199,20 +210,7 @@ enum @typeKindEnum {
   mapProxyType -> "map proxy" ;
   listMapType -> "list map" ;
   structType -> "struct" ;
-  predefined_uint -> "@uint" ;
-  predefined_uint64 -> "@uint64" ;
-  predefined_sint -> "@sint" ;
-  predefined_sint64 -> "@sint64" ;
-  predefined_char -> "@char" ;
-  predefined_double -> "@double" ;
-  predefined_string -> "@string" ;
-  predefined_stringset -> "@stringset" ;
-  predefined_bool -> "@bool" ;
-  predefined_binaryset -> "@binaryset" ;
-  predefined_function -> "@function" ;
-  predefined_location -> "@location" ;
-  predefined_type -> "@type" ;
-  predefined_data -> "@data" ;
+  predefinedType -> "predefined" ;
   end reader ;
 }
 
@@ -335,7 +333,7 @@ class @genericTypeTypeAST extends @semanticDeclarationAST {
 
 abstract class @predefinedTypeAST extends @semanticDeclarationAST {
   @string mPredefinedTypeName ;
-  @typeKindEnum mKind ;
+  @predefinedTypeKindEnum mKind ;
 }
 
 #---------------------------------------------------------------------------*

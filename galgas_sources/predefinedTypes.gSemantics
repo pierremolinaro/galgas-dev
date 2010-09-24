@@ -70,20 +70,20 @@ routine appendPredefinedTypesASTs
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
   ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
 
-  ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool" ![@typeKindEnum predefined_bool]] ;
-  ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint" ![@typeKindEnum predefined_uint]] ;
-  ioDeclarationListASTs += ![@uint64PredefinedTypeAST new !"uint64" ![@typeKindEnum predefined_uint64]] ;
-  ioDeclarationListASTs += ![@sintPredefinedTypeAST new !"sint" ![@typeKindEnum predefined_sint]] ;
-  ioDeclarationListASTs += ![@sint64PredefinedTypeAST new !"sint64" ![@typeKindEnum predefined_sint64]] ;
-  ioDeclarationListASTs += ![@charPredefinedTypeAST new !"char" ![@typeKindEnum predefined_char]] ;
-  ioDeclarationListASTs += ![@doublePredefinedTypeAST new !"double" ![@typeKindEnum predefined_double]] ;
-  ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string" ![@typeKindEnum predefined_string]] ;
-  ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location" ![@typeKindEnum predefined_location]] ;
-  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset" ![@typeKindEnum predefined_stringset]] ;
-  ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function" ![@typeKindEnum predefined_function]] ;
-  ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type" ![@typeKindEnum predefined_type]] ;
-  ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset" ![@typeKindEnum predefined_binaryset]] ;
-  ioDeclarationListASTs += ![@dataPredefinedTypeAST new !"data" ![@typeKindEnum predefined_data]] ;
+  ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool" ![@predefinedTypeKindEnum predefined_bool]] ;
+  ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint" ![@predefinedTypeKindEnum predefined_uint]] ;
+  ioDeclarationListASTs += ![@uint64PredefinedTypeAST new !"uint64" ![@predefinedTypeKindEnum predefined_uint64]] ;
+  ioDeclarationListASTs += ![@sintPredefinedTypeAST new !"sint" ![@predefinedTypeKindEnum predefined_sint]] ;
+  ioDeclarationListASTs += ![@sint64PredefinedTypeAST new !"sint64" ![@predefinedTypeKindEnum predefined_sint64]] ;
+  ioDeclarationListASTs += ![@charPredefinedTypeAST new !"char" ![@predefinedTypeKindEnum predefined_char]] ;
+  ioDeclarationListASTs += ![@doublePredefinedTypeAST new !"double" ![@predefinedTypeKindEnum predefined_double]] ;
+  ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string" ![@predefinedTypeKindEnum predefined_string]] ;
+  ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location" ![@predefinedTypeKindEnum predefined_location]] ;
+  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset" ![@predefinedTypeKindEnum predefined_stringset]] ;
+  ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function" ![@predefinedTypeKindEnum predefined_function]] ;
+  ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type" ![@predefinedTypeKindEnum predefined_type]] ;
+  ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset" ![@predefinedTypeKindEnum predefined_binaryset]] ;
+  ioDeclarationListASTs += ![@dataPredefinedTypeAST new !"data" ![@predefinedTypeKindEnum predefined_data]] ;
 
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"luint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
@@ -112,12 +112,6 @@ end routine ;
 
 filewrapper predefinedTypeGenerationTemplateEX in "../generation_templates/ex_type_generation" {
 } {
-#  template predefinedAPTypesHeaderPrologue "types-ap-predeclaration-prologue.h.gTemplate"
-#    ?@stringset TYPE_LIST
-#  ;
-#  template predefinedTypesHeaderPrologue "types-predeclaration-prologue.h.gTemplate"
-#    ?@stringset TYPE_LIST
-#  ;
   template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
   ;
 }
@@ -126,15 +120,158 @@ filewrapper predefinedTypeGenerationTemplateEX in "../generation_templates/ex_ty
 
 filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
 } {
-#  template predefinedAPTypesHeaderPrologue "types-ap-predeclaration-prologue.h.gTemplate"
-#    ?@stringset TYPE_LIST
-#  ;
+  template primitiveTypesHeaderPrologue "primitive-types-predeclaration-prologue.h.gTemplate"
+    ?@stringset TYPE_LIST
+  ;
+
   template predefinedTypesHeaderPrologue "types-predeclaration-prologue.h.gTemplate"
     ?@stringset TYPE_LIST
   ;
-#  template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
-#  ;
+
+  template sint_type "sint-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template sint64_type "sint64-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template uint_type "uint-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template uint64_type "uint64-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template bool_type "bool-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template binaryset_type "binaryset-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template function_type "function-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template type_type "type-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template location_type "location-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template data_type "data-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template char_type "char-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template double_type "double-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template string_type "string-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
+  
+  template stringset_type "stringset-type.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+  ;
 }
+
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string outHeader :
+  outHeader := "" ;end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @string outHeader :
+  switch mKind
+  when predefined_uint :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.uint_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_uint64 :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.uint64_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_sint :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.sint_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_sint64 :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.sint64_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_char :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.char_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_double :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.double_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_string :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.string_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_stringset :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.stringset_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_bool :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.bool_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_binaryset :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.binaryset_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_function :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.function_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_location :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.location_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_type :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.type_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  when predefined_data :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.data_type
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  end switch ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mSuperType]
+    ![mTypeIndex mCurrentTypedAttributeList]
+    ![mTypeIndex mInheritedTypedAttributeList]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mNativeAttributeList]
+    ![mTypeIndex mEnumConstantList]
+    ![mTypeIndex mPrivateDataMemberList]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -164,27 +301,26 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         !semanticContext
         ?decoratedDeclarationListForGeneration
       ;
-    #------ Generate predefined auto pointer types declaration file
-#      @string generatedCode := [filewrapper predefinedTypeGenerationTemplateEX.predefinedAPTypesHeaderPrologue
-#        ![semanticContext->mTypeMap allKeys]
-#      ] ;
-#      foreach decoratedDeclarationListForGeneration do
-#        generatedCode .= [mDeclaration appendAutoPointerClassDeclaration] ;
-#        generatedCode .= [mDeclaration appendSpecificDeclaration] ;
-#      end foreach ;
-#      if [@uint errorCount] == 0 then
-#        [@string generateFile
-#          !inDirectory
-#          !"predefined-ap-types.h"
-#          !"//"
-#          !"\n\n" # Defaut user zone1
-#          !generatedCode
-#          !"\n\n" # Defaut user zone2
-#          !"#endif\n"
-#        ] ;
-#      end if ;
+    #------ Generate primitive types declaration file
+      @string generatedCode := [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue
+        ![semanticContext->mTypeMap allKeys]
+      ] ;
+      foreach decoratedDeclarationListForGeneration do
+        generatedCode .= [mDeclaration appendPrimitiveTypeDeclaration] ;
+      end foreach ;
+      if [@uint errorCount] == 0 then
+        [@string generateFile
+          !inDirectory
+          !"primitive-types.h"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !generatedCode
+          !"\n\n" # Defaut user zone2
+          !"#endif\n"
+        ] ;
+      end if ;
     #------ Generate predefined types declaration file
-      @string generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderPrologue
+      generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderPrologue
         ![semanticContext->mTypeMap allKeys]
       ] ;
       foreach decoratedDeclarationListForGeneration do

@@ -7,7 +7,7 @@
 class GALGAS_%!TYPE_IDENTIFIER% {
 //--------------------------------- Private data members
   private : bool mIsValid ;
-  private : PMSInt32 mUIntValue ;
+  private : PMSInt32 mSIntValue ;
 
 //--------------------------------- Accessors
   public : inline bool isValid (void) const { return mIsValid ; }

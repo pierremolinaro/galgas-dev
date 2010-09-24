@@ -51,7 +51,7 @@ end if
 
 if (SUPPORTED_OPERATORS & generateVirtualDestructor []) != 0 then
 %//--------------------------------- Virtual destructor
-  protected : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;\n\n%
+  public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & generateCopyConstructorAndAssignmentOperator []) != 0 then
@@ -70,8 +70,8 @@ end if
 
 if (SUPPORTED_OPERATORS & dotAssignOperator []) != 0 then
   %//--------------------------------- .= operator\n%
-  %public : void dotAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand\n%
-  %                                   COMMA_LOCATION_ARGS) ;\n\n%
+  %  public : void dotAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand\n%
+  %                                     COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
 if (SUPPORTED_OPERATORS & binaryAndOperator []) != 0 then

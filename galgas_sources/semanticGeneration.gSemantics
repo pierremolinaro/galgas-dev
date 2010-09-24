@@ -190,57 +190,6 @@ end function ;
 
 filewrapper typeGenerationTemplate in "../generation_templates/type_generation" {
 } {
-  template sint_type "sint-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template sint64_type "sint64-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template uint_type "uint-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template uint64_type "uint64-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template bool_type "bool-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template binaryset_type "binaryset-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template function_type "function-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template type_type "type-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template location_type "location-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template data_type "data-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template char_type "char-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template double_type "double-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
-  
-  template string_type "string-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
   
   template unifiedClassBodyForType "unified-class-body-for-type.h.gTemplate"
     ?@string TYPE_NAME
@@ -262,6 +211,18 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
     ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
+
+  template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+  template listTypeSpecificImplementation "GALGAS_list.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
 }
 
 #---------------------------------------------------------------------------*
@@ -387,11 +348,6 @@ filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generat
     ?@enumMessageListForGeneration ENUM_MESSAGE_LIST
   ;
 
-  template listTypeSpecificImplementation "GALGAS_list.cpp.gTemplate"
-    ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
-  ;
-
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_LISTTYPE_IDENTIFIER
@@ -417,12 +373,6 @@ filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generat
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
-  ;
-
-  template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
   template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.gTemplate"
@@ -548,89 +498,6 @@ override reader @genericTypeForGeneration appendDeclaration -> @string outHeader
   outHeader := [filewrapper typeGenerationTemplateEX.genericTypeHeader
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
-  ] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @primitiveTypeForGeneration appendDeclaration -> @string outHeader :
-  switch mKind
-  when classType, enumType, listType, sortedListType, mapType, mapProxyType, listMapType, structType :
-    outHeader := "" ;
-  when predefined_uint :
-    outHeader := [filewrapper typeGenerationTemplate.uint_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_uint64 :
-    outHeader := [filewrapper typeGenerationTemplate.uint64_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_sint :
-    outHeader := [filewrapper typeGenerationTemplate.sint_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_sint64 :
-    outHeader := [filewrapper typeGenerationTemplate.sint64_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_char :
-    outHeader := [filewrapper typeGenerationTemplate.char_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_double :
-    outHeader := [filewrapper typeGenerationTemplate.double_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_string :
-    outHeader := [filewrapper typeGenerationTemplate.string_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_stringset :
-    outHeader := "" ;
-  when predefined_bool :
-    outHeader := [filewrapper typeGenerationTemplate.bool_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_binaryset :
-    outHeader := [filewrapper typeGenerationTemplate.binaryset_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_function :
-    outHeader := [filewrapper typeGenerationTemplate.function_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_location :
-    outHeader := [filewrapper typeGenerationTemplate.location_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_type :
-    outHeader := [filewrapper typeGenerationTemplate.type_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  when predefined_data :
-    outHeader := [filewrapper typeGenerationTemplate.data_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
-  end switch ;
-  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mSuperType]
-    ![mTypeIndex mCurrentTypedAttributeList]
-    ![mTypeIndex mInheritedTypedAttributeList]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mNativeAttributeList]
-    ![mTypeIndex mEnumConstantList]
-    ![mTypeIndex mPrivateDataMemberList]
-    ![mTypeIndex mWithAccessorMap]
   ] ;
 end reader ;
 
@@ -814,7 +681,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.listTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
   ] ;
@@ -857,7 +724,7 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
 #---------------------------------------------------------------------------*
 
 override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.structTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
