@@ -370,15 +370,6 @@ class @dataPredefinedTypeAST extends @predefinedTypeAST {}
 
 #---------------------------------------------------------------------------*
 
-reader @predefinedTypeAST getSuperTypeName
-  ->@string outSuperTypeName
-:
-#--- By default, super type is the @object type
-  outSuperTypeName := "object" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
 method @predefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@constructorMap outConstructorMap

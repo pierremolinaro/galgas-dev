@@ -343,7 +343,6 @@ routine compileSemanticsComponent
       !implementationIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      implementationString .= [mDeclaration appendAutoPointerClassImplementation] ;
       implementationString .= [mDeclaration appendSpecificImplementation] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
     end foreach ;
