@@ -60,15 +60,15 @@ routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
   ioDeclarationListASTs += ![@objectPredefinedTypeAST new] ; # Type, super type
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"object"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"class" !"object"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"struct" !"object"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enum" !"object"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"mapproxy" !"object"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
-  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"object"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"class" !"object"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"struct" !"object"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enum" !"object"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"mapproxy" !"object"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
+#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
 
   ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool" ![@predefinedTypeKindEnum predefined_bool]] ;
   ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint" ![@predefinedTypeKindEnum predefined_uint]] ;
@@ -340,7 +340,6 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
     #------ Generate predefined types implementation
       generatedCode := [filewrapper predefinedTypeGenerationTemplateEX.predefinedTypesImplementation] ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendAutoPointerClassImplementation] ;
         generatedCode .= [mDeclaration appendSpecificImplementation] ;
         generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
       end foreach ;

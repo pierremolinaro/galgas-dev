@@ -282,7 +282,6 @@ routine compileProgramComponent
       ![programComponentAST mProgramRules]
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      implementationString .= [mDeclaration appendAutoPointerClassImplementation] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       implementationString .= [mDeclaration appendSpecificImplementation] ;
     end foreach ;

@@ -585,35 +585,6 @@ override reader @mapTypeForGeneration appendSpecificDeclaration ->@string outHea
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   A U T O    P O I N T E R     C L A S S    I M P L E M E N T A T I O N   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @semanticDeclarationForGeneration appendAutoPointerClassImplementation -> @string outImplementation :
-  outImplementation := "" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @semanticTypeForGeneration appendAutoPointerClassImplementation -> @string outImplementation :
-  if [mTypeIndex key] == "object" then
-    outImplementation := "" ;
-  elsif ([mTypeIndex mHandledOperatorFlags] & autoBoxing []) == 0 then
-    outImplementation := [filewrapper typeGenerationTemplateEX.autoPointerClassImplementation
-      ![mTypeIndex key]
-      ![mTypeIndex identifierRepresentation]
-      ![[mTypeIndex mSuperType] identifierRepresentation]
-      ![mTypeIndex mHandledOperatorFlags]
-      ![mTypeIndex mReaderMap]
-      ![mTypeIndex mNativeAttributeList]
-    ] ;
-  else
-    outImplementation := "" ;
-  end if ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 # A P P E N D    G E N E R I C    T Y P E    I M P L E M E N T A T I O N    *
 #                                                                           *
 #  This code is common for all types                                        *

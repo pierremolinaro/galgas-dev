@@ -418,14 +418,12 @@ override method @predefinedTypeAST enterType
   [t getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?addAssignArgumentList] ;
   @enumerationDescriptorList enumerationList ;
   [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList] ;
-  @unifiedTypeMapProxy superTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![t getSuperTypeName] ?superTypeProxy] ;
   @unifiedTypeMapProxy selfTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mPredefinedTypeName ?selfTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
-    !superTypeProxy
+    ![@unifiedTypeMapProxy null]
     ![@typeKindEnum predefinedType]
     ![@typedAttributeList listWithValue !selfTypeProxy ![@lstring new !mPredefinedTypeName !here]]
     ![@attributeMap emptyMap]
@@ -1189,12 +1187,10 @@ override method @structDeclarationAST enterType
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Enter in type map
-  @unifiedTypeMapProxy superTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"struct" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mStructTypeName
     !true # Concrete Type
-    !superTypeProxy
+    ![@unifiedTypeMapProxy null]
     ![@typeKindEnum structType]
     ![@typedAttributeList emptyList]
     !attributeMap
@@ -1237,7 +1233,7 @@ override method @classDeclarationAST enterType
 #--- Handle super class
   @unifiedTypeMapProxy superClassIndex ;
   if [mSuperClassName string] == "" then
-    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"class" ?superClassIndex] ;
+    superClassIndex := [@unifiedTypeMapProxy null] ;
     readerMap := [@readerMap emptyMap] ;
     modifierMap := [@modifierMap emptyMap] ;
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
@@ -1599,7 +1595,7 @@ override method @predefinedTypeAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
   @predefinedTypeAST t := self ; # Bug in GALGAS 1
-  ioPartiallyOrderedDeclarationList += ![t getSuperTypeName] !mPredefinedTypeName !self ;
+  ioPartiallyOrderedDeclarationList += !"" !mPredefinedTypeName !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1616,7 +1612,7 @@ end method ;
 override method @stringsetPredefinedTypeAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"enumerable" !mPredefinedTypeName !self ;
+  ioPartiallyOrderedDeclarationList += !"" !mPredefinedTypeName !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1632,7 +1628,7 @@ end method ;
 override method @classDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  const @string actualSuperTypeName := if [mSuperClassName string] == "" then "class" else [mSuperClassName string] end ;
+  const @string actualSuperTypeName := [mSuperClassName string] ;
   ioPartiallyOrderedDeclarationList += !actualSuperTypeName ![mClassTypeName string] !self ;
 end method ;
 
@@ -1641,7 +1637,7 @@ end method ;
 override method @listDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"list" ![mListTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mListTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1649,7 +1645,7 @@ end method ;
 override method @structDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"struct" ![mStructTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mStructTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1657,7 +1653,7 @@ end method ;
 override method @enumDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"enum" ![mEnumTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mEnumTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1665,7 +1661,7 @@ end method ;
 override method @sortedListDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"sortedlist" ![mSortedListTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mSortedListTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1681,7 +1677,7 @@ end method ;
 override method @mapDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"map" ![mMapTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mMapTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
