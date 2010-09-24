@@ -1236,7 +1236,7 @@ class @listmapTypeForGeneration extends @semanticTypeForGeneration {
 
 class @primitiveTypeForGeneration extends @semanticTypeForGeneration {
   @string mPredefinedTypeName ;
-  @typeKindEnum mKind ;
+  @predefinedTypeKindEnum mKind ;
 }
 
 #---------------------------------------------------------------------------*

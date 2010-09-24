@@ -426,7 +426,7 @@ override method @predefinedTypeAST enterType
     ![@lstring new !mPredefinedTypeName !here]
     !true # Concrete Type
     !superTypeProxy
-    !mKind
+    ![@typeKindEnum predefinedType]
     ![@typedAttributeList listWithValue !selfTypeProxy ![@lstring new !mPredefinedTypeName !here]]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]

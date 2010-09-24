@@ -65,17 +65,6 @@ class cCollectionElement_data : public cCollectionElement {
 
 //---------------------------------------------------------------------------*
 
-class C_galgas_function_descriptor ;
-class C_galgas_type_descriptor ;
-class C_SourceTextInString ;
-class cStringsetNode ;
-
-//---------------------------------------------------------------------------*
-
-typedef TC_Array <PMUInt8> uint8Array ;
-
-//---------------------------------------------------------------------------*
-
 class C_Compiler ;
 
 //---------------------------------------------------------------------------*
