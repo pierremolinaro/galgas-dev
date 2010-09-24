@@ -320,9 +320,6 @@ routine compileSemanticsComponent
       ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendAutoPointerClassDeclaration] ;
-    end foreach ;
-    foreach decoratedDeclarationListForGeneration do
       headerString .= [mDeclaration appendDeclaration] ;
       headerString .= [mDeclaration appendSpecificDeclaration] ;
     end foreach ;

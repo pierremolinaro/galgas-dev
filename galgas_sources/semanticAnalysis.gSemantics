@@ -257,18 +257,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @genericTypeTypeAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-:
-  ioSemanticDeclarationListForGeneration += ![@genericTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mTypeName !here]]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 map @insertMethodMap {
   insert insertKey error message "the '%K' insert modifier is already declared" ;
 }

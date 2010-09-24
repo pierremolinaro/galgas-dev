@@ -60,15 +60,6 @@ routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
   ioDeclarationListASTs += ![@objectPredefinedTypeAST new] ; # Type, super type
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enumerable" !"object"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"class" !"object"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"struct" !"object"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"enum" !"object"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"mapproxy" !"object"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"list" !"enumerable"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"sortedlist" !"enumerable"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"map" !"enumerable"] ;
-#  ioDeclarationListASTs += ![@genericTypeTypeAST new !"listmap" !"enumerable"] ;
 
   ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool" ![@predefinedTypeKindEnum predefined_bool]] ;
   ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint" ![@predefinedTypeKindEnum predefined_uint]] ;
@@ -136,6 +127,8 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
     ?@string TYPE_IDENTIFIER
   ;
   
+  template object_type "object-type.h.gTemplate" ;
+  
   template uint_type "uint-type.h.gTemplate"
     ?@string TYPE_IDENTIFIER
   ;
@@ -194,6 +187,8 @@ reader @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @stri
 
 override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @string outHeader :
   switch mKind
+  when predefined_object :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.object_type] ;
   when predefined_uint :
     outHeader := [filewrapper predefinedTypeGenerationTemplate.uint_type
       ![mTypeIndex identifierRepresentation]
@@ -255,9 +250,6 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mSuperType]
-    ![mTypeIndex mCurrentTypedAttributeList]
-    ![mTypeIndex mInheritedTypedAttributeList]
     ![mTypeIndex mConstructorMap]
     ![mTypeIndex mReaderMap]
     ![mTypeIndex mModifierMap]
@@ -266,9 +258,6 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     ![mTypeIndex mEnumerationDescriptor]
     ![mTypeIndex mHandledOperatorFlags]
     ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mNativeAttributeList]
-    ![mTypeIndex mEnumConstantList]
-    ![mTypeIndex mPrivateDataMemberList]
     ![mTypeIndex mWithAccessorMap]
   ] ;
 end reader ;
@@ -323,9 +312,11 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderPrologue
         ![semanticContext->mTypeMap allKeys]
       ] ;
+      message "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendDeclaration] ;
+#        generatedCode .= [mDeclaration appendDeclaration] ;
       end foreach ;
+      message "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" ;
       if [@uint errorCount] == 0 then
         [@string generateFile
           !inDirectory

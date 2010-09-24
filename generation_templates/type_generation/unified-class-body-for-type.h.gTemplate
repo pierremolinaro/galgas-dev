@@ -21,34 +21,6 @@ if [CONSTRUCTOR_MAP count] > 0 then
   end foreach
 end if
 
-if (SUPPORTED_OPERATORS & generateCppConstructorWithCurrentAttributeList []) != 0 then%
-//--------------------------------- C++ constructor (with current attributes)\n%
-  %  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
-  foreach CURRENT_TYPE_ATTRIBUTE_LIST
-    do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
-    between %,\n%!^
-  end foreach
-  if [CURRENT_TYPE_ATTRIBUTE_LIST length] == 0 then
-    %LOCATION_ARGS) ;\n\n%
-  else
-    %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
-  end if
-end if
-
-if (SUPPORTED_OPERATORS & generateCppConstructorWithAllAttributeList []) != 0 then%
-//--------------------------------- C++ constructor\n%
-  %  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
-  foreach INHERITED_ATTRIBUTE_LIST
-    do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_% ![mAttributeName identifierRepresentation]
-    between %,\n%!^
-  end foreach
-  if [INHERITED_ATTRIBUTE_LIST length] == 0 then
-    %LOCATION_ARGS) ;\n\n%
-  else
-    %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
-  end if
-end if
-
 if (SUPPORTED_OPERATORS & generateVirtualDestructor []) != 0 then
 %//--------------------------------- Virtual destructor
   public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;\n\n%

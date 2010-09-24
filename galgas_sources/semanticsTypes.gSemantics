@@ -180,6 +180,7 @@ enum @predefinedTypeKindEnum {
   predefined_function,
   predefined_location,
   predefined_type,
+  predefined_object,
   predefined_data
 }{
 }
@@ -322,13 +323,6 @@ mapproxy @unifiedTypeMapProxy (@unifiedTypeMap) ;
 #                                                                           *
 #  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S        *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-class @genericTypeTypeAST extends @semanticDeclarationAST {
-  @string mTypeName ;
-  @string mSuperTypeName ;
-}
-
 #---------------------------------------------------------------------------*
 
 abstract class @predefinedTypeAST extends @semanticDeclarationAST {

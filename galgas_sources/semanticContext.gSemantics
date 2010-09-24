@@ -180,18 +180,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @genericTypeTypeAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey ![@lstring new !mTypeName !here]] ;
-  if mSuperTypeName != "" then
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap !mSuperTypeName ?*] ;
-  end if ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @abstracMultiMethodAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
   ?!@multiMethodMapForBuildingContext ioMultiMethodMapForBuildingContext
@@ -437,55 +425,6 @@ override method @predefinedTypeAST enterType
     ![t getSupportedOperatorFlags]
     !addAssignArgumentList
     ![t getNativeAttributeList]
-    ![@stringset emptySet]
-    ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
-    ![@mapSearchMethodListAST emptyList]
-    ![@mapSearchMethodListAST emptyList]
-    ![@withAccessorMap emptyMap]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @genericTypeTypeAST enterType
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
-  ?!@semanticContext ioSemanticContext
-:
-#  message "@genericTypeTypeAST enterType\n" ;
-#--- Super type index
-  @unifiedTypeMapProxy superTypeProxy ;
-  if mSuperTypeName == "" then
-    superTypeProxy := [@unifiedTypeMapProxy null] ;
-  else
-    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mSuperTypeName ?superTypeProxy] ;
-  end if ;
-#--- Constructors
-  @constructorMap constructorMap [emptyMap] ;
-#--- Readers
-  @readerMap readerMap [emptyMap] ;
-#--- Modifiers
-  @modifierMap modifierMap [emptyMap] ;
-#--- Instance methods
-  @instanceMethodMap instanceMethodMap [emptyMap] ;
-#--- Enter in type map
-  [!?ioSemanticContext->mTypeMap insertKey
-    ![@lstring new !mTypeName !here]
-    !false # Abstract Type
-    !superTypeProxy
-    ![@typeKindEnum listType]
-    ![@typedAttributeList emptyList]
-    ![@attributeMap emptyMap]
-    ![@typedAttributeList emptyList]
-    !constructorMap
-    !readerMap
-    !modifierMap
-    !instanceMethodMap
-    ![@classMethodMap emptyMap]
-    ![@enumerationDescriptorList emptyList]
-    !0
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     ![@typedAttributeList emptyList]
@@ -1613,14 +1552,6 @@ override method @stringsetPredefinedTypeAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
   ioPartiallyOrderedDeclarationList += !"" !mPredefinedTypeName !self ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @genericTypeTypeAST enterOrderedDeclaration
-  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
-:
-  ioPartiallyOrderedDeclarationList += !mSuperTypeName !mTypeName !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
