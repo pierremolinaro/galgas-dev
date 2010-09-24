@@ -17,6 +17,17 @@ class C_Compiler ;
 //---------------------------------------------------------------------------*
 
 typedef enum {
+  kIsEqual,
+  kIsNotEqual,
+  kIsSupOrEqual,
+  kIsInfOrEqual,
+  kIsStrictSup,
+  kIsStrictInf
+} enumComparisonKind ;
+
+//---------------------------------------------------------------------------*
+
+typedef enum {
   kOperandNotValid,
   kFirstOperandLowerThanSecond,
   kOperandEqual,

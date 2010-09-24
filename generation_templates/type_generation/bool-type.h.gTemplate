@@ -4,21 +4,26 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% {
+class GALGAS_bool {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : bool mBoolValue ;
 
 //--------------------------------- Accessors
   public : inline bool isValid (void) const { return mIsValid ; }
+  public : inline bool isValidAndTrue (void) const { return mIsValid && mBoolValue ; }
   public : inline void drop (void) { mIsValid = false ; }
   public : inline bool boolValue (void) const { return mBoolValue ; }
 
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public : GALGAS_bool (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (const bool inValue) ;
+  public : GALGAS_bool (const bool inValue) ;
+
+//--------------------------------- Constructor for comparison result
+  public : GALGAS_bool (const enumComparisonKind inComparisonKind,
+                        const enumComparisonResult inComparisonResult) ;
 
 %
 

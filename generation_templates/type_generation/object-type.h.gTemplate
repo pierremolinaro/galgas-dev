@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@object type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_object {
+//--------------------------------- Private data member
+  private : C_Object * mObject ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mObject != NULL ; }
+  public : void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_object (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_object (const C_Object * inObject) ;
+
+%
+
