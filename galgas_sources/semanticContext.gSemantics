@@ -730,7 +730,6 @@ override method @enumDeclarationAST enterType
 #  message "@enumDeclarationAST enterType\n" ;
 #---
   @constructorMap constructorMap [emptyMap] ;
-  @readerMap readerMap [emptyMap] ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
@@ -744,17 +743,16 @@ override method @enumDeclarationAST enterType
     enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap ![mValue string] ![mEnumTypeName string] !false ;
   end foreach ;
 #--- readers
+  @readerMap readerMap ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap  ;
   foreach mEnumMessageList do
     enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap ![mEnumMessageName string] !"string" !false ;
   end foreach ;
 #--- Enter type in type map
-#log mEnumTypeName ;
-  @unifiedTypeMapProxy superTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"enum" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mEnumTypeName
     !true # Concrete Type
-    !superTypeProxy
+    ![@unifiedTypeMapProxy null]
     ![@typeKindEnum enumType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]

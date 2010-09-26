@@ -206,6 +206,13 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
 
+  template genericTypeImplementation "generic-type.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
+  ;
+
+#---------- STRUCTURE
   template structTypeHeader "GALGAS_struct.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -218,6 +225,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+#---------- LIST
   template listTypeHeader "GALGAS_list.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -230,10 +238,18 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
-  template genericTypeImplementation "generic-type.cpp.gTemplate"
+#---------- ENUM
+  template enumTypeHeader "GALGAS_enum.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
+    ?@stringlist CONSTANT_LIST
+  ;
+
+  template enumTypeSpecificImplementation "GALGAS_enum.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@stringlist CONSTANT_LIST
+    ?@enumMessageListForGeneration ENUM_MESSAGE_LIST
   ;
 }
 
@@ -274,13 +290,6 @@ filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generat
     ?@uint SUPPORTED_OPERATORS
     ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-  ;
-
-  template enumTypeSpecificImplementation "GALGAS_enum.cpp.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@stringlist CONSTANT_LIST
-    ?@enumMessageListForGeneration ENUM_MESSAGE_LIST
   ;
 
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
@@ -449,6 +458,31 @@ override reader @listTypeForGeneration appendDeclaration ->@string outHeader :
   ] ;
  end reader ;
 
+
+#---------------------------------------------------------------------------*
+
+override reader @enumTypeForGeneration appendDeclaration ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.enumTypeHeader
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mConstantList
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+ end reader ;
+
 #---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    G E N E R I C    T Y P E    I M P L E M E N T A T I O N    *
@@ -518,7 +552,7 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
 #---------------------------------------------------------------------------*
 
 override reader @enumTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.enumTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mConstantList

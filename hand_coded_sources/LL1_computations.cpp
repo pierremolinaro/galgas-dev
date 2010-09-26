@@ -655,7 +655,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "  if (sourceFileName.fileExists ()) {\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
-                          "    macroRetainObject (scanner) ;\n"
+                          "    // macroRetainObject (scanner) ;\n"
                           "    if (scanner->needsCompiling ()) {\n"
                           "      if (scanner->sourceText () != NULL) {\n"
                           "        scanner->mPerformGeneration = inCompiler.mPerformGeneration ;\n" ;
@@ -734,7 +734,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (& inCompiler, inCompiler.ioParametersPtr (), inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
-                          "  macroRetainObject (scanner) ;\n"
+                          "  // macroRetainObject (scanner) ;\n"
                           "  scanner->mPerformGeneration = inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                   gFirstProductionIndexes, gDecision, gDecisionIndexes, "
@@ -1028,7 +1028,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    if (filePath.fileExists ()) {\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;\n"
-                          "    macroRetainObject (scanner) ;\n"
+                          "    // macroRetainObject (scanner) ;\n"
                           "    if (scanner->needsCompiling ()) {\n"
                           "      if (scanner->sourceText () != NULL) {\n"
                           "        scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
@@ -1120,7 +1120,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    const C_String sourceString = inSourceString.ptr (HERE)->stringValue () ;\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inCompiler->ioParametersPtr (), sourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
-                          "    macroRetainObject (scanner) ;\n"
+                          "    // macroRetainObject (scanner) ;\n"
                           "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
         generatedZone3 << "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, "

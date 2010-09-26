@@ -92,6 +92,23 @@ routine appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"char" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
+
+#--- Enumeration predefined type (used only for testing type generation)
+  @lstringlist constantList [emptyList] ;
+  constantList += ![@lstring new !"zero" !here] ;
+  constantList += ![@lstring new !"un" !here] ;
+  constantList += ![@lstring new !"deux" !here] ;
+  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
+  enumMessageAssociationListAST += ![@lstring new !"deux" !here] ![@lstring new !"message deux" !here] ;
+  enumMessageAssociationListAST += ![@lstring new !"un" !here] ![@lstring new !"message un" !here] ;
+  enumMessageAssociationListAST += ![@lstring new !"zero" !here] ![@lstring new !"message zero" !here]  ;
+  @enumMessageListAST enumMessageListAST [emptyList] ;
+  enumMessageListAST += ![@lstring new !"test" !here] !enumMessageAssociationListAST ;
+  ioDeclarationListASTs += ![@enumDeclarationAST new
+    ![@lstring new !"0enum" !here]
+    !constantList
+    !enumMessageListAST
+  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
