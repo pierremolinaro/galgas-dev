@@ -59,8 +59,7 @@ end routine ;
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
-  ioDeclarationListASTs += ![@objectPredefinedTypeAST new] ; # Type, super type
-
+  ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object" ![@predefinedTypeKindEnum predefined_object]] ;
   ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool" ![@predefinedTypeKindEnum predefined_bool]] ;
   ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint" ![@predefinedTypeKindEnum predefined_uint]] ;
   ioDeclarationListASTs += ![@uint64PredefinedTypeAST new !"uint64" ![@predefinedTypeKindEnum predefined_uint64]] ;
@@ -101,16 +100,11 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-filewrapper predefinedTypeGenerationTemplateEX in "../generation_templates/ex_type_generation" {
-} {
-  template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
-  ;
-}
-
-#---------------------------------------------------------------------------*
-
 filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
 } {
+  template predefinedTypesImplementation "predefined_types.cpp.gTemplate" ;
+
+
   template primitiveTypesHeaderPrologue "primitive-types-predeclaration-prologue.h.gTemplate"
     ?@stringset TYPE_LIST
   ;
@@ -119,63 +113,35 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
     ?@stringset TYPE_LIST
   ;
 
-  template sint_type "sint-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template sint_type "sint-type.h.gTemplate" ;
   
-  template sint64_type "sint64-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template sint64_type "sint64-type.h.gTemplate" ;
   
   template object_type "object-type.h.gTemplate" ;
   
-  template uint_type "uint-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template uint_type "uint-type.h.gTemplate" ;
   
-  template uint64_type "uint64-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template uint64_type "uint64-type.h.gTemplate" ;
   
-  template bool_type "bool-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template bool_type "bool-type.h.gTemplate" ;
   
-  template binaryset_type "binaryset-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template binaryset_type "binaryset-type.h.gTemplate" ;
   
-  template function_type "function-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template function_type "function-type.h.gTemplate" ;
   
-  template type_type "type-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template type_type "type-type.h.gTemplate" ;
   
-  template location_type "location-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template location_type "location-type.h.gTemplate" ;
   
-  template data_type "data-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template data_type "data-type.h.gTemplate" ;
   
-  template char_type "char-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template char_type "char-type.h.gTemplate" ;
   
-  template double_type "double-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template double_type "double-type.h.gTemplate" ;
   
-  template string_type "string-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template string_type "string-type.h.gTemplate" ;
   
-  template stringset_type "stringset-type.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-  ;
+  template stringset_type "stringset-type.h.gTemplate" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -190,61 +156,33 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
   when predefined_object :
     outHeader := [filewrapper predefinedTypeGenerationTemplate.object_type] ;
   when predefined_uint :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.uint_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.uint_type] ;
   when predefined_uint64 :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.uint64_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.uint64_type] ;
   when predefined_sint :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.sint_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.sint_type] ;
   when predefined_sint64 :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.sint64_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.sint64_type] ;
   when predefined_char :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.char_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.char_type] ;
   when predefined_double :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.double_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.double_type] ;
   when predefined_string :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.string_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.string_type] ;
   when predefined_stringset :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.stringset_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.stringset_type] ;
   when predefined_bool :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.bool_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.bool_type] ;
   when predefined_binaryset :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.binaryset_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.binaryset_type] ;
   when predefined_function :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.function_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.function_type] ;
   when predefined_location :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.location_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.location_type] ;
   when predefined_type :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.type_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.type_type] ;
   when predefined_data :
-    outHeader := [filewrapper predefinedTypeGenerationTemplate.data_type
-      ![mTypeIndex identifierRepresentation]
-    ] ;
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.data_type] ;
   end switch ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeIndex key]
@@ -297,26 +235,9 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendPrimitiveTypeDeclaration] ;
       end foreach ;
-      if [@uint errorCount] == 0 then
-        [@string generateFile
-          !inDirectory
-          !"primitive-types.h"
-          !"//"
-          !"\n\n" # Defaut user zone1
-          !generatedCode
-          !"\n\n" # Defaut user zone2
-          !"#endif\n"
-        ] ;
-      end if ;
-    #------ Generate predefined types declaration file
-      generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesHeaderPrologue
-        ![semanticContext->mTypeMap allKeys]
-      ] ;
-      message "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" ;
       foreach decoratedDeclarationListForGeneration do
-#        generatedCode .= [mDeclaration appendDeclaration] ;
+        generatedCode .= [mDeclaration appendDeclaration] ;
       end foreach ;
-      message "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" ;
       if [@uint errorCount] == 0 then
         [@string generateFile
           !inDirectory
@@ -329,10 +250,10 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         ] ;
       end if ;
     #------ Generate predefined types implementation
-      generatedCode := [filewrapper predefinedTypeGenerationTemplateEX.predefinedTypesImplementation] ;
+      generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation] ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendSpecificImplementation] ;
         generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
+        generatedCode .= [mDeclaration appendSpecificImplementation] ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFile

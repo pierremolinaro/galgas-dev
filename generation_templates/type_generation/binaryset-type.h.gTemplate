@@ -4,21 +4,29 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% {
+#include "bdd/C_BDD.h"
+
+//---------------------------------------------------------------------------*
+
+class GALGAS_binaryset
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  : public GALGAS__root
+#endif
+ {
 //--------------------------------- Private data members
   private : bool mIsValid ;
-  private : C_BDD mBDDValue ;
+  private : C_BDD mBDD ;
 
 //--------------------------------- Accessors
-  public : inline bool isValid (void) const { return mIsValid ; }
-  public : inline void drop (void) { mIsValid = false ; }
-  public : inline C_BDD bddValue (void) const { return mBDDValue ; }
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
+  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
+  public : inline C_BDD bddValue (void) const { return mBDD ; }
 
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public : GALGAS_binaryset (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (const C_BDD & inValue) ;
+  public : GALGAS_binaryset (const C_BDD & inValue) ;
 
 %
 

@@ -584,13 +584,18 @@ override method @classDeclarationAST performSemanticAnalysis
   const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName] ;
 #------ Super type
   @unifiedTypeMapProxy superClassProxy ;
+  @typedAttributeList allAttributeList ;
+  @instanceMethodMap inheritedInstanceMethodMap ;
   if [mSuperClassName string] == "" then
-    superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"class" !here]] ;
+    superClassProxy := [@unifiedTypeMapProxy null] ;
+    allAttributeList := [@typedAttributeList emptyList] ;
+    inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   else
     superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
+    allAttributeList := [superClassProxy mInheritedTypedAttributeList] ;
+    inheritedInstanceMethodMap := [superClassProxy mInstanceMethodMap] ;
   end if ;
 #------ Enter attributes
-  @typedAttributeList allAttributeList := [superClassProxy mInheritedTypedAttributeList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
@@ -613,8 +618,6 @@ override method @classDeclarationAST performSemanticAnalysis
   foreach mMethodList do
    [!?classMethodMap insertKey !mMethodName] ;
   end foreach ;
-#------ Inherited instance methods
-  @instanceMethodMap inheritedInstanceMethodMap := [superClassProxy mInstanceMethodMap] ;
 #------ Abstract methods
   @abstractMethodDefinitionListForGeneration abstractMethodList [emptyList] ;
   foreach mAbstractMethodList do

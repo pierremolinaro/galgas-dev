@@ -5,34 +5,15 @@
 //---------------------------------------------------------------------------*
 
 #include "strings/C_String.h"
-#include "collections/TC_Array.h"
-#include "galgas-utilities/C_LocationInSource.h"
-#include "galgas-utilities/C_galgas_function_descriptor.h"
-#include "bdd/C_BDD.h"
+#include "GALGAS__root.h"
+#include "C_galgas_type_descriptor.h"
+#include "enumComparisonResult.h"
+#include "AC_GALGAS_Enumerator.h"
+#include "GALGAS_list.h"
 
 //---------------------------------------------------------------------------*
 
 class C_Compiler ;
-
-//---------------------------------------------------------------------------*
-
-typedef enum {
-  kIsEqual,
-  kIsNotEqual,
-  kIsSupOrEqual,
-  kIsInfOrEqual,
-  kIsStrictSup,
-  kIsStrictInf
-} enumComparisonKind ;
-
-//---------------------------------------------------------------------------*
-
-typedef enum {
-  kOperandNotValid,
-  kFirstOperandLowerThanSecond,
-  kOperandEqual,
-  kFirstOperandGreaterThanSecond
-} enumComparisonResult ;
 
 //---------------------------------------------------------------------------*
 
@@ -41,3 +22,5 @@ foreach TYPE_LIST do
   %class GALGAS_%![key identifierRepresentation]% ;\n%
 end foreach
 
+%
+%

@@ -1,0 +1,36 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_IDENTIFIER . " struct" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER%
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  : public GALGAS__root
+#endif
+ {
+//--------------------------------- Public data members
+%
+foreach ATTRIBUTE_LIST
+  do %  public : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+end foreach%
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  #endif
+
+//--------------------------------- Native constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
+foreach ATTRIBUTE_LIST
+  do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+  between %,\n%!^
+end foreach%) ;
+

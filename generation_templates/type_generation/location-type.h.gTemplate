@@ -8,21 +8,34 @@ class C_SourceTextInString ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% {
+#include "galgas-utilities/C_LocationInSource.h"
+
+//---------------------------------------------------------------------------*
+
+class GALGAS_location
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  : public GALGAS__root
+#endif
+ {
 //--------------------------------- Private data members
-  private : C_LocationInSource & mStartLocationInSource ;
-  private : const C_LocationInSource & mEndLocationInSource ;
-  private : const C_SourceTextInString * mSourceText ;
+  private : C_LocationInSource mStartLocationInSource ;
+  private : C_LocationInSource mEndLocationInSource ;
+  private : C_SourceTextInString * mSourceText ;
 
 //--------------------------------- Accessors
-  public : inline bool isValid (void) const { return mSourceText != NULL ; }
-  public : void drop (void) ;
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSourceText != NULL ; }
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public : GALGAS_location (void) ;
+
+//--------------------------------- Destructor (virtual in debug mode
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_location (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (const C_Compiler * inValue) ;
+  public : GALGAS_location (const C_LocationInSource & inStartLocationInSource,
+                            const C_LocationInSource & inEndLocationInSource,
+                            C_SourceTextInString * inSourceText) ;
 
 %
 

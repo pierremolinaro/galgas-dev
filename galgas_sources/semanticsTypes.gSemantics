@@ -259,10 +259,6 @@ function binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end functi
 function dotAssignOperator -> @uint outMask : outMask := 1 << 15 ; end function ; # var .= exp ;
 function isComparable -> @uint outMask : outMask := 1 << 16 ; end function ; # Supports <, <=, >, >= operators
 
-function generateCopyConstructorAndAssignmentOperator -> @uint outMask : outMask := 1 << 19 ; end function ;
-
-function autoBoxing -> @uint outMask : outMask := 1 << 20 ; end function ;
-function generateCppConstructorWithNativeAttributeListInAutoPointerClass -> @uint outMask : outMask := 1 << 21 ; end function ;
 function generateConstructorWithSelfObject -> @uint outMask : outMask := 1 << 22 ; end function ;
 function generateSortedListComparisonMethod -> @uint outMask : outMask := 1 << 23 ; end function ;
 function generateEnumerationHelperMethods -> @uint outMask : outMask := 1 << 24 ; end function ;
@@ -272,7 +268,7 @@ function generateCppConstructorWithNativeAttributeList -> @uint outMask : outMas
 function doNotGenererateObjectCompare -> @uint outMask : outMask := 1 << 28 ; end function ;
 function generateDescriptionReaderUtilityMethod -> @uint outMask : outMask := 1 << 29 ; end function ;
 function generateNativeNewConstructor -> @uint outMask : outMask := 1 << 30 ; end function ;
-function generateVirtualDestructor -> @uint outMask : outMask := 1 << 31 ; end function ;
+function generateCopyConstructorAndAssignmentOperator -> @uint outMask : outMask := 1 << 31 ; end function ;
 
 #---------------------------------------------------------------------------*
 
@@ -332,7 +328,7 @@ abstract class @predefinedTypeAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
-class @objectPredefinedTypeAST extends @semanticDeclarationAST {}
+class @objectPredefinedTypeAST extends @predefinedTypeAST {}
 
 class @binarysetPredefinedTypeAST extends @predefinedTypeAST {}
 

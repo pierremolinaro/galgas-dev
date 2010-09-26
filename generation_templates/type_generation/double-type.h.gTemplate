@@ -4,21 +4,25 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% {
+class GALGAS_double
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  : public GALGAS__root
+#endif
+ {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : double mDoubleValue ;
 
 //--------------------------------- Accessors
-  public : inline bool isValid (void) const { return mIsValid ; }
-  public : inline void drop (void) { mIsValid = false ; }
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
+  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
   public : inline double doubleValue (void) const { return mDoubleValue ; }
 
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public : GALGAS_double (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (const double inValue) ;
+  public : GALGAS_double (const double inValue) ;
 
 %
 

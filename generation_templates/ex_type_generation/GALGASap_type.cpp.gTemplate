@@ -22,31 +22,7 @@ GALGASap_%!TYPE_IDENTIFIER% & GALGASap_%!TYPE_IDENTIFIER%::operator = (const GAL
   return * this ;
 }
 
-%if (SUPPORTED_OPERATORS & generateCppConstructorWithNativeAttributeListInAutoPointerClass []) != 0 then
-%//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%!TYPE_IDENTIFIER%::GALGASap_%!TYPE_IDENTIFIER% (%?^
-  foreach NATIVE_ATTRIBUTE_LIST
-    do %const %!mCppClassName if mIsPointer then % *% end if if mUseReferenceForConstructor then % &% end if % inOperand_%!mAttributeName
-    between %,\n%!^
-  end foreach
-  if [NATIVE_ATTRIBUTE_LIST length] == 0 then
-    %LOCATION_ARGS) :\n%
-  else
-    %\n%!^ %COMMA_LOCATION_ARGS) :\n%
-  end if
-  %GALGASap_%!SUPER_TYPE_IDENTIFIER% (constructor_new (%
-  foreach NATIVE_ATTRIBUTE_LIST
-    do %inOperand_%!mAttributeName
-    between %, %
-  end foreach
-  if [NATIVE_ATTRIBUTE_LIST length] == 0 then
-    %THERE%
-  else
-    % COMMA_THERE%
-  end if
-  %)) {\n%
-  %}\n\n%
-end if
+%
 
 foreach READER_MAP do
   if mQualifier == [@methodQualifier isBasic] then
