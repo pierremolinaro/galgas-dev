@@ -206,7 +206,19 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
 
+  template structTypeHeader "GALGAS_struct.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
   template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+  template listTypeHeader "GALGAS_list.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
@@ -217,56 +229,17 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+  template genericTypeImplementation "generic-type.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
+  ;
 }
 
 #---------------------------------------------------------------------------*
 
 filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generation" {
 } {
-  template autoPointerClassHeader "GALGASap_type.h.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@bool IS_CONCRETE # false if abstract class
-    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
-    ?@typeKindEnum TYPE_KIND
-    ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
-    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
-    ?@constructorMap CONSTRUCTOR_MAP
-    ?@readerMap READER_MAP
-    ?@modifierMap MODIFIER_MAP
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
-    ?@classMethodMap CLASS_METHOD_MAP
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
-    ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-    ?@lstringlist ENUM_CONSTANT_LIST
-    ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
-    ?@withAccessorMap WITH_ACCESSOR_MAP
-  ;
-
-  template autoBoxingClassHeader "GALGASap_type-autoboxing.h.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@bool IS_CONCRETE # false if abstract class
-    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
-    ?@typeKindEnum TYPE_KIND
-    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
-    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
-    ?@constructorMap CONSTRUCTOR_MAP
-    ?@readerMap READER_MAP
-    ?@modifierMap MODIFIER_MAP
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
-    ?@classMethodMap CLASS_METHOD_MAP
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
-    ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-    ?@lstringlist ENUM_CONSTANT_LIST
-    ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
-    ?@withAccessorMap WITH_ACCESSOR_MAP
-  ;
-
   template autoPointerClassImplementation "GALGASap_type.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -274,39 +247,6 @@ filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generat
     ?@uint SUPPORTED_OPERATORS
     ?@readerMap READER_MAP
     ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-  ;
-
-  template genericTypeHeader "generic-type.h.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-  ;
-
-  template genericTypeImplementation "generic-type.cpp.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
-  ;
-
-  template unifiedTypeHeader "unified-type.h.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@bool IS_CONCRETE # false if abstract class
-    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
-    ?@typeKindEnum TYPE_KIND
-    ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
-    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
-    ?@constructorMap CONSTRUCTOR_MAP
-    ?@readerMap READER_MAP
-    ?@modifierMap MODIFIER_MAP
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
-    ?@classMethodMap CLASS_METHOD_MAP
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
-    ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-    ?@lstringlist ENUM_CONSTANT_LIST
-    ?@typedAttributeList PRIVATE_DATA_NUMBER_TYPED_LIST
-    ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
 
   template unifiedTypeImplementation "unified-type.cpp.gTemplate"
@@ -462,15 +402,16 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @semanticTypeForGeneration appendDeclaration -> @string outHeader :
-  outHeader := [filewrapper typeGenerationTemplateEX.unifiedTypeHeader
+override reader @structTypeForGeneration appendDeclaration ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.structTypeHeader
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mSuperType]
-    ![mTypeIndex mTypeKindEnum]
-    ![mTypeIndex mCurrentTypedAttributeList]
-    ![mTypeIndex mInheritedTypedAttributeList]
     ![mTypeIndex mConstructorMap]
     ![mTypeIndex mReaderMap]
     ![mTypeIndex mModifierMap]
@@ -479,41 +420,33 @@ override reader @semanticTypeForGeneration appendDeclaration -> @string outHeade
     ![mTypeIndex mEnumerationDescriptor]
     ![mTypeIndex mHandledOperatorFlags]
     ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mNativeAttributeList]
-    ![mTypeIndex mEnumConstantList]
-    ![mTypeIndex mPrivateDataMemberList]
     ![mTypeIndex mWithAccessorMap]
-  ] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @genericTypeForGeneration appendDeclaration -> @string outHeader :
-  outHeader := [filewrapper typeGenerationTemplateEX.genericTypeHeader
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-  ] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# A P P E N D    S P E C I F I C    D E C L A R A T I O N                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-reader @semanticDeclarationForGeneration appendSpecificDeclaration -> @string outHeader :
-  outHeader := "" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @mapTypeForGeneration appendSpecificDeclaration ->@string outHeader :
-  outHeader := [filewrapper typeGenerationTemplateEX.mapTypeSpecificDeclaration
-    ![mTypeIndex identifierRepresentation]
-    !mTypedAttributeList
   ] ;
  end reader ;
 
+#---------------------------------------------------------------------------*
+
+override reader @listTypeForGeneration appendDeclaration ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.listTypeHeader
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+ end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -529,7 +462,11 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
-  outImplementation := "" ;
+  outImplementation := [filewrapper typeGenerationTemplate.genericTypeImplementation
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mSuperType]
+  ] ;
 #  outImplementation := [filewrapper typeGenerationTemplateEX.unifiedTypeImplementation
 #    ![mTypeIndex key]
 #    ![mTypeIndex identifierRepresentation]
@@ -551,16 +488,6 @@ end reader ;
 
 
 #---------------------------------------------------------------------------*
-
-override reader @genericTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.genericTypeImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mSuperType]
-  ] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    S P E C I F I C    I M P L E M E N T A T I O N             *
 #                                                                           *
@@ -572,24 +499,24 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @primitiveTypeForGeneration appendSpecificImplementation -> @string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.predefinedTypeSpecificImplementation
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mNativeAttributeList]
-  ] ;
-end reader ;
+#override reader @primitiveTypeForGeneration appendSpecificImplementation -> @string outImplementation :
+#  outImplementation := [filewrapper typeGenerationTemplateEX.predefinedTypeSpecificImplementation
+#    ![mTypeIndex identifierRepresentation]
+#    ![mTypeIndex mModifierMap]
+#    ![mTypeIndex mHandledOperatorFlags]
+#    ![mTypeIndex mAddAssignOperatorArguments]
+#    ![mTypeIndex mNativeAttributeList]
+#  ] ;
+#end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
-    ![mTypeIndex identifierRepresentation]
-    !mTypedAttributeList
-  ] ;
- end reader ;
+#override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
+#    ![mTypeIndex identifierRepresentation]
+#    !mTypedAttributeList
+#  ] ;
+# end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -622,16 +549,6 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
     !mSortDescriptorList
-  ] ;
- end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    !mTypedAttributeList
   ] ;
  end reader ;
 
@@ -670,6 +587,16 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
     ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
     !mIsAbstract
     !mMethodList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
   ] ;
  end reader ;
 

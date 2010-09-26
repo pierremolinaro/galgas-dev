@@ -59,7 +59,6 @@ GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_new (%?^
 %
 end if
 
-if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
   foreach MODIFIER_MAP do
     if mQualifier == [@methodQualifier isBasic] then
       %//---------------------------------------------------------------------------*\n\n%
@@ -129,7 +128,6 @@ if (SUPPORTED_OPERATORS & autoBoxing []) == 0 then
       %}\n\n%
     end if
   end foreach
-end if
 
 foreach INSTANCE_METHOD_MAP do
   if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) then

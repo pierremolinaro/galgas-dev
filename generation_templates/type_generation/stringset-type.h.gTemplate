@@ -12,16 +12,16 @@ class cStringsetNode ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_enumerable {
+class GALGAS_stringset : public GALGAS_enumerable {
 //--------------------------------- Private data members
   private : cStringsetNode * mRoot ;
 
 //--------------------------------- Accessors
-  public : inline bool isValid (void) const { return mRoot != NULL ; }
-  public : void drop (void) ;
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mRoot != NULL ; }
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public : GALGAS_stringset (void) ;
 
 %
 

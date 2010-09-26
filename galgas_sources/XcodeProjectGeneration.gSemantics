@@ -63,8 +63,6 @@ routine getGALGAS_UTILITIES_source_file_list
   out_cpp_and_h_fileList += !"C_Compiler" ;
   out_cpp_and_h_fileList += !"C_Lexique" ;
   out_cpp_and_h_fileList += !"C_galgas_io" ;
-  out_cpp_and_h_fileList += !"C_galgas_function_descriptor" ;
-  out_cpp_and_h_fileList += !"C_galgas_type_descriptor" ;
   out_cpp_and_h_fileList += !"C_LocationInSource" ;
   out_cpp_and_h_fileList += !"C_SourceTextInString" ;
 end routine ;
@@ -79,6 +77,10 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"cCollectionElement.h" ;
   out_fileList += !"capCollectionElementArray.cpp" ;
   out_fileList += !"capCollectionElementArray.h" ;
+  out_fileList += !"C_galgas_function_descriptor.cpp" ;
+  out_fileList += !"C_galgas_function_descriptor.h" ;
+  out_fileList += !"C_galgas_type_descriptor.cpp" ;
+  out_fileList += !"C_galgas_type_descriptor.h" ;
   out_fileList += !"GALGAS_object.cpp" ;
   out_fileList += !"GALGAS_object.h" ;
   out_fileList += !"GALGASap_object.cpp" ;

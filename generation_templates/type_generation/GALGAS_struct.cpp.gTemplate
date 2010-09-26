@@ -10,19 +10,19 @@ end foreach% {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
-}
+//GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
+//}
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
+/* GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
 %
 foreach ATTRIBUTE_LIST do
-  %mAttribute_%![mAttributeName identifierRepresentation]% (inSource.mAttribute_%![mAttributeName identifierRepresentation]%)%
+  %//mAttribute_%![mAttributeName identifierRepresentation]% (inSource.mAttribute_%![mAttributeName identifierRepresentation]%)%
   between %,\n%!^
 end foreach
 % {
-}
+} */
 
 //---------------------------------------------------------------------------*
 
@@ -30,22 +30,22 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
-end foreach% \n%!^%COMMA_LOCATION_ARGS) :
-GALGAS_struct (THERE)%
+end foreach%) :\n%
 foreach ATTRIBUTE_LIST do index IDX
-  %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (inOperand%![IDX string]%)%
+  %mAttribute_%![mAttributeName identifierRepresentation]% (inOperand%![IDX string]%)%
+  between %,\n%
 end foreach% {
 }
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) {
+/* GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) {
 %
 foreach ATTRIBUTE_LIST do index IDX
   %  mAttribute_%![mAttributeName identifierRepresentation]% = inOperand.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
 end foreach
 %  return *this ;
-}
+} */
 
 //---------------------------------------------------------------------------*
 
@@ -74,22 +74,6 @@ end foreach
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
-foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
-  between %,\n%!^
-end foreach
-%) :
-%
-foreach ATTRIBUTE_LIST
-  do index IDX %mAttribute_%![mAttributeName identifierRepresentation]% (inOperand%![IDX string]%)%
-  between %,\n%
-end foreach
-% {
-}
-
-//---------------------------------------------------------------------------*
-
 GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 }
 
@@ -106,41 +90,20 @@ void GALGAS_%!TYPE_IDENTIFIER%::log (const char * inMessage) const {
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
                               %!^%const PMSInt32 inIndentation) const {
+  ioString << "<struct @%!TYPE_NAME%:" ;
   if (! isValid ()) {
-    ioString << "not built" ;
+    ioString << " not built" ;
   }else{
-    ioString << "<struct @%!TYPE_NAME%:" ;
 %
 foreach ATTRIBUTE_LIST
-  do index IDX %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
+  do index IDX %    mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
   between %    ioString << ", " ;\n%
 end foreach
-%    ioString << ">" ;
-  }
+%  }
+  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------*
-
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-                             %!^%const PMSInt32 inIndentation) const {
-  ioString << "<struct @%!TYPE_NAME%:" ;
-%
-foreach ATTRIBUTE_LIST
-  do index IDX %  mAttribute_%![mAttributeName identifierRepresentation]%.ptr (HERE)->description (ioString, inIndentation  + 1) ;\n%
-  between %  ioString << ", " ;\n%
-end foreach
-%  ioString << ">" ;
-}
-
-%
-foreach ATTRIBUTE_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::readerCall_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  %}\n\n%
-end foreach
-
-%//---------------------------------------------------------------------------*
 
 enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand1,
                         %!^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand2) {
@@ -174,7 +137,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_object & inSource) :
+/* GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_object & inSource) :
 %
 foreach ATTRIBUTE_LIST do
   %mAttribute_%![mAttributeName identifierRepresentation]% ()%
@@ -190,11 +153,11 @@ end foreach
     %    mAttribute_%![mAttributeName identifierRepresentation]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
-}
+} */
 
 //---------------------------------------------------------------------------*
 
-GALGAS_object GALGAS_%!TYPE_IDENTIFIER%::embedObject (void) const {
+/* GALGAS_object GALGAS_%!TYPE_IDENTIFIER%::embedObject (void) const {
   GALGAS_object * result = NULL ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (%
@@ -205,5 +168,5 @@ GALGAS_object GALGAS_%!TYPE_IDENTIFIER%::embedObject (void) const {
     % COMMA_HERE)) ;
   }
   return GALGAS_object (result) ;
-}
+} */
 

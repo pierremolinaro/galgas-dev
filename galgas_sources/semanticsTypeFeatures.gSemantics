@@ -75,14 +75,21 @@ end method ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+override reader @objectPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateDescriptionReaderUtilityMethod [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @stringPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binaryConcatOperator [] | dotAssignOperator [] | generateNativeNewConstructor []
-    | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor []
+    | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject []
-    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
+    | generateConstructorWithSelfObject [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -92,8 +99,7 @@ override reader @charPredefinedTypeAST getSupportedOperatorFlags
 :
   outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
    | generateCppConstructorWithNativeAttributeList [] | isComparable []
-   | generateConstructorWithSelfObject []
-   | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
+   | generateConstructorWithSelfObject [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -104,8 +110,7 @@ override reader @boolPredefinedTypeAST getSupportedOperatorFlags
   outFlags := binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryNotOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject []
-    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
+    | generateConstructorWithSelfObject [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -118,8 +123,7 @@ override reader @uintPredefinedTypeAST getSupportedOperatorFlags
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject []
-    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
+    | generateConstructorWithSelfObject [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -132,8 +136,7 @@ override reader @sintPredefinedTypeAST getSupportedOperatorFlags
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []  | incDecOperator []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject []
-    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
+    | generateConstructorWithSelfObject [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -146,8 +149,7 @@ override reader @uint64PredefinedTypeAST getSupportedOperatorFlags
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject []
-    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
+    | generateConstructorWithSelfObject [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -160,8 +162,7 @@ override reader @sint64PredefinedTypeAST getSupportedOperatorFlags
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor []  | incDecOperator []  | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject []
-    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
+    | generateConstructorWithSelfObject [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -173,8 +174,7 @@ override reader @doublePredefinedTypeAST getSupportedOperatorFlags
     | unaryPlusOperator [] | unaryMinusOperator []
     |generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
-    | generateConstructorWithSelfObject []
-    | generateCppConstructorWithNativeAttributeListInAutoPointerClass [] ;
+    | generateConstructorWithSelfObject [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -184,7 +184,7 @@ override reader @stringsetPredefinedTypeAST getSupportedOperatorFlags
 :
   outFlags := unaryPlusOperator [] | unaryMinusOperator [] | binarySubOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
-    | generateDescriptionReaderUtilityMethod [] | generateVirtualDestructor []
+    | generateDescriptionReaderUtilityMethod []
     | generateNativeNewConstructor []
     | generateCppConstructorWithNativeAttributeList []
     | generateEnumerationHelperMethods [] | isComparable [] ;
@@ -196,7 +196,7 @@ override reader @binarysetPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
-    | generateNativeNewConstructor [] | generateVirtualDestructor []
+    | generateNativeNewConstructor []
     | unaryTildeOperator [] | binaryShiftOperator []
     | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] ;
@@ -216,7 +216,7 @@ end reader ;
 override reader @dataPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateNativeNewConstructor [] | generateVirtualDestructor []
+  outFlags := generateNativeNewConstructor []
     | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList []
     | generateEnumerationHelperMethods [] ;
@@ -236,8 +236,7 @@ end reader ;
 override reader @locationPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := generateVirtualDestructor []
-    | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
+  outFlags := generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod []
     | generateCppConstructorWithNativeAttributeList [] ;
 end reader ;
 
@@ -251,110 +250,6 @@ override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
   outAddAssignArgumentList := [@unifiedTypeMapProxyList listWithValue !stringTypeIndex] ;
 end method ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  G E T    N A T I V E    A T T R I B U T E    L I S T                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-override reader @boolPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"bool" !false !"mBoolValue" !false !"boolValue" !"false" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @stringsetPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"cStringsetNode" !true !"mRoot" !false !"root" !"NULL" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @charPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"utf32" !false !"mCharValue" !false !"charValue" !"TO_UNICODE (0)" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @stringPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_String" !false !"mString" !true !"stringValue" !"\"\"" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"PMUInt32" !false !"mUIntValue" !false !"uintValue" !"0" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sintPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"PMSInt32" !false !"mSIntValue" !false !"sintValue" !"0" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @uint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"PMUInt64" !false !"mUInt64Value" !false !"uint64Value" !"0" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @sint64PredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"PMSInt64" !false !"mSInt64Value" !false !"sint64Value" !"0" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @doublePredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"double" !false !"mDoubleValue" !false !"doubleValue" !"0.0" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @locationPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_LocationInSource" !false !"mStartLocationInSource" !true !"startLocation" !"" !false ;
-  outList += !"C_LocationInSource" !false !"mEndLocationInSource" !true !"endLocation" !"" !false ;
-  outList += !"C_SourceTextInString" !true !"mSourceText" !false !"sourceText" !"" !true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @typePredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_galgas_type_descriptor" !true !"mTypeDescriptor" !false !"embeddedTypeDescriptor" !"NULL" !true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @functionPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_galgas_function_descriptor" !true !"mFunctionDescriptor" !false !"functionDescriptor" !"NULL" !true ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @binarysetPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"C_BDD" !false !"mBDD" !true !"bdd" !"" !false ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @dataPredefinedTypeAST getNativeAttributeList -> @nativeAttributeList outList :
-  outList := [@nativeAttributeList emptyList] ;
-  outList += !"uint8Array" !false !"mData" !true !"" !"" !false ;
-end reader ;
 
 #---------------------------------------------------------------------------*
 

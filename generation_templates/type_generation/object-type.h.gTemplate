@@ -4,13 +4,17 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_object {
+class GALGAS_object
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  : public GALGAS__root
+#endif
+ {
 //--------------------------------- Private data member
   private : C_Object * mObject ;
 
 //--------------------------------- Accessors
-  public : inline bool isValid (void) const { return mObject != NULL ; }
-  public : void drop (void) ;
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mObject != NULL ; }
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
   public : GALGAS_object (void) ;
