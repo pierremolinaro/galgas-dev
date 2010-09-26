@@ -187,7 +187,8 @@ override reader @stringsetPredefinedTypeAST getSupportedOperatorFlags
     | generateDescriptionReaderUtilityMethod []
     | generateNativeNewConstructor []
     | generateCppConstructorWithNativeAttributeList []
-    | generateEnumerationHelperMethods [] | isComparable [] ;
+    | generateEnumerationHelperMethods [] | isComparable []
+    | generateCopyConstructorAndAssignmentOperator [] ;
 end reader ;
 
 #---------------------------------------------------------------------------*

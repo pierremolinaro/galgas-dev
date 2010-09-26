@@ -225,6 +225,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   ;
 
   template listTypeSpecificImplementation "GALGAS_list.cpp.gTemplate"
+    ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
@@ -467,23 +468,6 @@ override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@st
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mSuperType]
   ] ;
-#  outImplementation := [filewrapper typeGenerationTemplateEX.unifiedTypeImplementation
-#    ![mTypeIndex key]
-#    ![mTypeIndex identifierRepresentation]
-#    ![mTypeIndex mIsConcrete]
-#    ![mTypeIndex mSuperType]
-#    ![mTypeIndex mTypeKindEnum]
-#    ![mTypeIndex mCurrentTypedAttributeList]
-#    ![mTypeIndex mConstructorMap]
-#    ![mTypeIndex mReaderMap]
-#    ![mTypeIndex mModifierMap]
-#    ![mTypeIndex mInstanceMethodMap]
-#    ![mTypeIndex mClassMethodMap]
-#    ![mTypeIndex mEnumerationDescriptor]
-#    ![mTypeIndex mHandledOperatorFlags]
-#    ![mTypeIndex mAddAssignOperatorArguments]
-#    ![mTypeIndex mNativeAttributeList]
-#  ] ;
 end reader ;
 
 
@@ -496,27 +480,6 @@ end reader ;
 reader @semanticDeclarationForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := "" ;
 end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @primitiveTypeForGeneration appendSpecificImplementation -> @string outImplementation :
-#  outImplementation := [filewrapper typeGenerationTemplateEX.predefinedTypeSpecificImplementation
-#    ![mTypeIndex identifierRepresentation]
-#    ![mTypeIndex mModifierMap]
-#    ![mTypeIndex mHandledOperatorFlags]
-#    ![mTypeIndex mAddAssignOperatorArguments]
-#    ![mTypeIndex mNativeAttributeList]
-#  ] ;
-#end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
-#    ![mTypeIndex identifierRepresentation]
-#    !mTypedAttributeList
-#  ] ;
-# end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -594,6 +557,16 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
 
 override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList

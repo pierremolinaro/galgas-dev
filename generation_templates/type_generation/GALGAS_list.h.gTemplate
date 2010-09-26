@@ -12,11 +12,3 @@ class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_list {
   public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
   public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
 
-//--------------------------------- += operator
-  public : VIRTUAL_IN_DEBUG void addAssign_operation (%?^
-  foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
-  between %,\n%!^
-  end foreach
-  %\n%!^%COMMA_LOCATION_ARGS) ;
-
