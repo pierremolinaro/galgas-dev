@@ -229,11 +229,7 @@ foreach INSTANCE_METHOD_MAP do
         %\n%!^%COMMA_LOCATION_ARGS%
       end if  
     end if
-    %) %
-    if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isOverridingAbstract]) then
-      %= 0 %
-    end if
-    %;\n\n%
+    %) const ;\n\n%
   end if
 end foreach
 %//--------------------------------- Class Methods

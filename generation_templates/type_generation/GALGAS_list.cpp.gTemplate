@@ -245,7 +245,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end foreach
   %C_Compiler * inCompiler
-  %!^%COMMA_LOCATION_ARGS) {
+  %!^%COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
@@ -270,7 +270,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end foreach
   %C_Compiler * inCompiler
-  %!^%COMMA_LOCATION_ARGS) {
+  %!^%COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
