@@ -105,11 +105,7 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
   template predefinedTypesImplementation "predefined_types.cpp.gTemplate" ;
 
 
-  template primitiveTypesHeaderPrologue "primitive-types-predeclaration-prologue.h.gTemplate"
-    ?@stringset TYPE_LIST
-  ;
-
-  template predefinedTypesHeaderPrologue "types-predeclaration-prologue.h.gTemplate"
+  template primitiveTypesHeaderPrologue "predefined-types-file-header.h.gTemplate"
     ?@stringset TYPE_LIST
   ;
 

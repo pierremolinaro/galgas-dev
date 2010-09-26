@@ -8,20 +8,35 @@
 
 //---------------------------------------------------------------------------*
 
-class cStringsetNode ;
+class cSharedStringsetRoot ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_stringset : public GALGAS_enumerable {
+class GALGAS_stringset
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  : public GALGAS__root
+#endif
+ {
 //--------------------------------- Private data members
-  private : cStringsetNode * mRoot ;
+  private : cSharedStringsetRoot * mSharedRoot ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mRoot != NULL ; }
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedRoot != NULL ; }
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
   public : GALGAS_stringset (void) ;
+
+//--------------------------------- Destructor (virtual in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_stringset (void) ;
+
+//--------------------------------- In debug mode : check method
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    protected : void checkStringset (LOCATION_ARGS) const ;
+  #endif
+
+//--------------------------------- Insulate
+  protected : void insulate (LOCATION_ARGS) ;
 
 %
 

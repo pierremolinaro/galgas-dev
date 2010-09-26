@@ -41,6 +41,17 @@ if (SUPPORTED_OPERATORS & dotAssignOperator []) != 0 then
   %                                                      COMMA_LOCATION_ARGS) ;\n\n%
 end if
 
+if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
+%//--------------------------------- += operator
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (%?^
+  foreach ADD_ASSIGN_ARGUMENT_LIST
+  do index IDX %const GALGAS_%![mType identifierRepresentation]% & inOperand%![IDX string]
+  between %,\n%!^
+  end foreach
+  %\n%!^%COMMA_LOCATION_ARGS) ;
+%
+end if
+
 if (SUPPORTED_OPERATORS & binaryAndOperator []) != 0 then
   %//--------------------------------- & operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_and (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
@@ -141,8 +152,14 @@ if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 //--------------------------------- Modifiers
 %
 foreach MODIFIER_MAP do
-  if mQualifier != [@methodQualifier isInherited] then
-    %  protected : void modifier_%![lkey identifierRepresentation]% (%?^
+  if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
+    %  public :%
+    if mQualifier == [@methodQualifier isBasicFinal] then
+      % VIRTUAL_IN_DEBUG %
+    else
+      % virtual %
+    end if
+    %void modifier_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -177,8 +194,14 @@ end foreach
 //--------------------------------- Instance Methods
 %
 foreach INSTANCE_METHOD_MAP do
-  if mQualifier != [@methodQualifier isInherited] then
-    %  protected : virtual void method_%![lkey identifierRepresentation]% (%?^
+  if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
+    %  public :%
+    if mQualifier == [@methodQualifier isBasicFinal] then
+      % VIRTUAL_IN_DEBUG %
+    else
+      % virtual %
+    end if
+    %void method_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
