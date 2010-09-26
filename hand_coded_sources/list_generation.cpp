@@ -498,7 +498,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                                "
                "COMMA_THERE)) ;\n" 
-               "  macroRetainObject (newElement) ;\n"
                "  internalAppendItem (newElement) ;\n" 
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
@@ -531,7 +530,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                                "
                "COMMA_THERE)) ;\n" 
-               "  macroRetainObject (newElement) ;\n"
                "  internalPrependItem (newElement) ;\n" 
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;

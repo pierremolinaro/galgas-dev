@@ -1,0 +1,31 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_IDENTIFIER . " enum" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER%
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  : public GALGAS__root
+#endif
+ {
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Enumeration
+  public : typedef enum {
+    kNotBuilt%
+    foreach CONSTANT_LIST do
+      %,\n    kEnum_%![mValue identifierRepresentation]
+    end foreach
+%
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private : enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
+  public : VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
+  public : inline enumeration enumValue (void) const { return mEnum ; }
+

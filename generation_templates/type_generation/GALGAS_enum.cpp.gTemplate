@@ -1,0 +1,67 @@
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+mEnum (kNotBuilt) {
+}
+
+%
+foreach CONSTANT_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (LOCATION_ARGS) {\n%
+  %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
+  %  result.mEnum = kEnum_%![mValue identifierRepresentation]% ;\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach
+
+foreach ENUM_MESSAGE_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [%![[CONSTANT_LIST length] + 1 string]%] = {\n%
+  %  ""%
+  foreach mMessageAssociationList
+     do %,\n  %![mMessage utf8Representation]
+  end foreach
+  %\n} ;\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_string GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  GALGAS_string result ;\n%
+  %  if (isValid ()) {\n%
+  %    result = GALGAS_string (gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [mEnum]) ;\n%
+  %  }\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach
+
+%//---------------------------------------------------------------------------*
+
+static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] + 1 string]%] = {
+  "(not built)"%
+foreach CONSTANT_LIST
+   do %,\n  %![mValue utf8Representation]
+end foreach%
+} ;
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+%                                       !^%const PMSInt32 /* inIndentation */) const {
+  ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum] << ">" ;
+}
+
+//---------------------------------------------------------------------------*
+
+enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand1,
+                        %!^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand2) {
+  enumComparisonResult result = kOperandNotValid ;
+  if (inOperand1.isValid () && inOperand2.isValid ()) {
+    if (inOperand1.mEnum < inOperand2.mEnum) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (inOperand1.mEnum > inOperand2.mEnum) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
