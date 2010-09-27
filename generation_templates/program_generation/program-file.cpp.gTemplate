@@ -58,9 +58,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   //--- Analyze Command Line Options
     F_Analyze_CLI_Options (argc, argv,
       #ifndef DO_NOT_GENERATE_CHECKINGS
-        "version GALGAS_BETA_VERSION" " [debug]",
+        "version " %![VERSION utf8Representation]% " [debug]",
       #else
-        "version GALGAS_BETA_VERSION",
+        "version " %![VERSION utf8Representation]%,
       #endif
                            sourceFilesArray,
                            extensions,
@@ -68,11 +68,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   //--- Build galgas io object
     C_galgas_io * galgasIOptr = NULL ;
     macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;
-    macroRetainObject (galgasIOptr) ;
   //--- Common lexique object
     C_Compiler * commonLexique = NULL ;
     macroMyNew (commonLexique, C_Compiler (NULL, "", "", galgasIOptr COMMA_HERE)) ;
-    macroRetainObject (commonLexique) ;
   //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)
     #ifdef SIOUX_IS_IMPLEMENTED
       SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;
@@ -90,9 +88,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       routine_before (commonLexique COMMA_HERE) ;
       for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
         const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
-        GALGASap_string sfp = GALGASap_string::constructor_new (sourceFilesArray (i COMMA_HERE) COMMA_HERE) ;
-        GALGASap_location location = commonLexique->here (HERE) ;
-        GALGASap_lstring sourceFilePath = GALGASap_lstring::constructor_new (sfp, location COMMA_HERE) ;
+        const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
+        const GALGAS_location location = commonLexique->here (HERE) ;
+        const GALGAS_lstring sourceFilePath = GALGASap_lstring (sfp, location) ;
         PMSInt16 r = 0 ;
         %
  foreach PROGRAM_RULE_LIST 

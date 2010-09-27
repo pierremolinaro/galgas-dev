@@ -9,26 +9,6 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>ggs</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>Galgas Source</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
 				<string>gSemantics</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>

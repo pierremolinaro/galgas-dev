@@ -819,7 +819,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (NULL == aListeTousAttributsNonExternes.firstObject ()) {
       inCppFile << "  if (NULL == gSingleton_" << aNomClasse << ") {\n"
                    "    macroMyNew (gSingleton_" << aNomClasse << ", cPtr_" << aNomClasse << " (THERE)) ;\n"
-                   "    macroRetainObject (gSingleton_" << aNomClasse << ") ;\n"
                    "  }\n"
                    "  macroAssignObject (result.mPointer, gSingleton_" << aNomClasse << ") ;\n" ;
     }else{
@@ -840,8 +839,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << "THERE" ;
       }
-      inCppFile << ")) ;\n"
-                   "  macroRetainObject (result.mPointer) ;\n" ;
+      inCppFile << ")) ;\n" ;
     }
     inCppFile << "  return result ;\n"
                  "}\n\n" ;

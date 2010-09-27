@@ -1365,12 +1365,12 @@
 		CFF664090B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
 		CFF6640B0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
 		CFF6640F0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
-		CFF991AA110B6CA40055EE27 /* C_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_Object.cpp */; };
-		CFF991AB110B6CA40055EE27 /* C_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_Object.cpp */; };
-		CFF991AC110B6CA40055EE27 /* C_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_Object.cpp */; };
-		CFF991AD110B6CA40055EE27 /* C_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_Object.cpp */; };
-		CFF991AE110B6CA40055EE27 /* C_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_Object.cpp */; };
-		CFF991AF110B6CA40055EE27 /* C_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_Object.cpp */; };
+		CFF991AA110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
+		CFF991AB110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
+		CFF991AC110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
+		CFF991AD110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
+		CFF991AE110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
+		CFF991AF110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
 		CFF991C0110B6CC20055EE27 /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991B1110B6CC20055EE27 /* C_Compiler.cpp */; };
 		CFF991C1110B6CC20055EE27 /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991B3110B6CC20055EE27 /* C_Lexique.cpp */; };
 		CFF991C2110B6CC20055EE27 /* C_LocationInSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991B5110B6CC20055EE27 /* C_LocationInSource.cpp */; };
@@ -2331,8 +2331,8 @@
 		CFF664020B6769FF00E97917 /* GGS_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_binaryset.h; sourceTree = "<group>"; };
 		CFF98D73058CCD4700176BCE /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF98D7C058CCDE200176BCE /* galgas.1 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.man; path = galgas.1; sourceTree = "<group>"; };
-		CFF991A8110B6CA40055EE27 /* C_Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Object.cpp; sourceTree = "<group>"; };
-		CFF991A9110B6CA40055EE27 /* C_Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Object.h; sourceTree = "<group>"; };
+		CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_SharedObject.cpp; sourceTree = "<group>"; };
+		CFF991A9110B6CA40055EE27 /* C_SharedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_SharedObject.h; sourceTree = "<group>"; };
 		CFF991B1110B6CC20055EE27 /* C_Compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Compiler.cpp; sourceTree = "<group>"; };
 		CFF991B2110B6CC20055EE27 /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Compiler.h; sourceTree = "<group>"; };
 		CFF991B3110B6CC20055EE27 /* C_Lexique.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Lexique.cpp; sourceTree = "<group>"; };
@@ -3442,8 +3442,8 @@
 		CFF5381F057A549B00854C83 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CFF991A8110B6CA40055EE27 /* C_Object.cpp */,
-				CFF991A9110B6CA40055EE27 /* C_Object.h */,
+				CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */,
+				CFF991A9110B6CA40055EE27 /* C_SharedObject.h */,
 				CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */,
 				CF63B55010FC6A5E00B5E41F /* C_PrologueEpilogue.h */,
 				CF0676430E7EE037008B9D1F /* md5.cpp */,
@@ -4091,7 +4091,7 @@
 				CF64D65D10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55110FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF2DEAA71101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */,
-				CFF991AC110B6CA40055EE27 /* C_Object.cpp in Sources */,
+				CFF991AC110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
 				CFF991CE110B6CC20055EE27 /* C_Compiler.cpp in Sources */,
 				CFF991CF110B6CC20055EE27 /* C_Lexique.cpp in Sources */,
 				CFF991D0110B6CC20055EE27 /* C_LocationInSource.cpp in Sources */,
@@ -4333,7 +4333,7 @@
 				CF64D65910D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF2DEAA91101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */,
-				CFF991AB110B6CA40055EE27 /* C_Object.cpp in Sources */,
+				CFF991AB110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
 				CFF991C7110B6CC20055EE27 /* C_Compiler.cpp in Sources */,
 				CFF991C8110B6CC20055EE27 /* C_Lexique.cpp in Sources */,
 				CFF991C9110B6CC20055EE27 /* C_LocationInSource.cpp in Sources */,
@@ -4542,7 +4542,7 @@
 				CF63B55410FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF2DEAAA1101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */,
 				CFD2224C11085764003C83A5 /* GGS_function.cpp in Sources */,
-				CFF991AA110B6CA40055EE27 /* C_Object.cpp in Sources */,
+				CFF991AA110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
 				CFF991C0110B6CC20055EE27 /* C_Compiler.cpp in Sources */,
 				CFF991C1110B6CC20055EE27 /* C_Lexique.cpp in Sources */,
 				CFF991C2110B6CC20055EE27 /* C_LocationInSource.cpp in Sources */,
@@ -4785,7 +4785,7 @@
 				CF64D65E10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55210FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF2DEAA81101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */,
-				CFF991AD110B6CA40055EE27 /* C_Object.cpp in Sources */,
+				CFF991AD110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
 				CFF991D5110B6CC30055EE27 /* C_Compiler.cpp in Sources */,
 				CFF991D6110B6CC30055EE27 /* C_Lexique.cpp in Sources */,
 				CFF991D7110B6CC30055EE27 /* C_LocationInSource.cpp in Sources */,
@@ -5037,7 +5037,7 @@
 				CF64D65B10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55510FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF2DEAAB1101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */,
-				CFF991AE110B6CA40055EE27 /* C_Object.cpp in Sources */,
+				CFF991AE110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
 				CFF991DC110B6CC30055EE27 /* C_Compiler.cpp in Sources */,
 				CFF991DD110B6CC30055EE27 /* C_Lexique.cpp in Sources */,
 				CFF991DE110B6CC30055EE27 /* C_LocationInSource.cpp in Sources */,
@@ -5264,7 +5264,7 @@
 				CF64D65C10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */,
 				CF63B55610FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF2DEAAC1101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */,
-				CFF991AF110B6CA40055EE27 /* C_Object.cpp in Sources */,
+				CFF991AF110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
 				CFF991E3110B6CC30055EE27 /* C_Compiler.cpp in Sources */,
 				CFF991E4110B6CC30055EE27 /* C_Lexique.cpp in Sources */,
 				CFF991E5110B6CC30055EE27 /* C_LocationInSource.cpp in Sources */,

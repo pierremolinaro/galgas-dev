@@ -566,7 +566,7 @@ routine build_LIBPM_UTILITIES_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
-  append_cpp_h_files !?fileList !"C_Object" ;
+  append_cpp_h_files !?fileList !"C_SharedObject" ;
   append_cpp_h_files !?fileList !"md5" ;
   append_cpp_h_files !?fileList !"F_GetPrime" ;
   append_cpp_h_files !?fileList !"F_DisplayException" ;
@@ -594,7 +594,7 @@ routine build_LIBPM_UTILITIES_files_for_sources_build_phase
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList [emptyList] ;
-  fileList += !"C_Object.cpp" ;
+  fileList += !"C_SharedObject.cpp" ;
   fileList += !"C_PrologueEpilogue.cpp" ;
   fileList += !"md5.cpp" ;
   fileList += !"F_GetPrime.cpp" ;
