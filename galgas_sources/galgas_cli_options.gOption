@@ -24,7 +24,7 @@ option galgas_cli_options :
   @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
   @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions" ;
   @bool newCodeGeneration : '\0', "new-code-generation" -> "Generate GALGAS 2 Code [under development]" ;
-  @string generateHeadersOfBuiltinTypes: '\0', "generate-builtin-type-headers" -> "Generate header files of builtin types (reserved for GALGAS development)" ;
+  @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate header files of builtin types (reserved for GALGAS development)" ;
 end option ;
 
 #---------------------------------------------------------------------------*

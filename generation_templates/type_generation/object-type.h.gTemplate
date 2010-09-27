@@ -10,7 +10,7 @@ class GALGAS_object
 #endif
  {
 //--------------------------------- Private data member
-  private : C_Object * mObject ;
+  private : C_SharedObject * mObject ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mObject != NULL ; }
@@ -20,7 +20,7 @@ class GALGAS_object
   public : GALGAS_object (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_object (const C_Object * inObject) ;
+  public : GALGAS_object (const C_SharedObject * inObject) ;
 
 %
 

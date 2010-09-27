@@ -42,6 +42,7 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
     ?@programRuleList PROGRAM_RULE_LIST
+    ?@string VERSION
   ;
 
 }
@@ -277,6 +278,7 @@ routine compileProgramComponent
       ![componentName string]
       !implementationIncludeList
       ![programComponentAST mProgramRules]
+      ![[programComponentAST mVersionString] string]
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;

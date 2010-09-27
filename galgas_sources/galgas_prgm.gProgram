@@ -49,7 +49,7 @@ before {
     printPredefinedLexicalActions ;
   end if ;
   generatePredefinedTypeFiles
-    ![option galgas_cli_options.generateHeadersOfBuiltinTypes value]
+    ![option galgas_cli_options.generatePredefinedTypes value]
   ;
 }
 

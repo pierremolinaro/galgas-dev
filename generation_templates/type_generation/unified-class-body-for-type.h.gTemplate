@@ -1,3 +1,5 @@
+//-- Start of generic part --*
+
 %
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%
@@ -143,8 +145,7 @@ end if
 
 if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 %//--------------------------------- Comparison
-  public : static enumComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand1,
-                                                      const GALGAS_%!TYPE_IDENTIFIER% & inOperand2) ;
+  public : VIRTUAL_IN_DEBUG enumComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
 %end if
 
 

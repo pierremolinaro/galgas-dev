@@ -50,13 +50,12 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand1,
-                        %!^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand2) {
+enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
   enumComparisonResult result = kOperandNotValid ;
-  if (inOperand1.isValid () && inOperand2.isValid ()) {
-    if (inOperand1.mEnum < inOperand2.mEnum) {
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
       result = kFirstOperandLowerThanSecond ;
-    }else if (inOperand1.mEnum > inOperand2.mEnum) {
+    }else if (mEnum > inOperand.mEnum) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
       result = kOperandEqual ;
