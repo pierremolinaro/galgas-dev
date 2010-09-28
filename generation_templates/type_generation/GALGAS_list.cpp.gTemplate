@@ -132,7 +132,9 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
     between %, %
     end foreach
     % COMMA_THERE)) ;
-    capCollectionElement attributes (p) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroReleaseObject (p) ;
     result.addObject (attributes) ;
   }
   return result ;
@@ -158,7 +160,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
     between %, %
     end foreach
     % COMMA_THERE)) ;
-    capCollectionElement attributes (p) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroReleaseObject (p) ;
     addObject (attributes) ;
   }
 }
@@ -183,7 +187,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
     between %, %
     end foreach
     % COMMA_THERE)) ;
-    capCollectionElement attributes (p) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroReleaseObject (p) ;
     prependAttributeArray (attributes) ;
   }
 }
@@ -335,7 +341,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %                                              %!^%GALGAS_uint inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
-  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) writeObjectAccessAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
+  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
   %  if (NULL != p) {\n%
   %    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
