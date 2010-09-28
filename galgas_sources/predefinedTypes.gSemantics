@@ -109,6 +109,20 @@ routine appendPredefinedTypesASTs
     !constantList
     !enumMessageListAST
   ] ;
+
+#--- Sorted list predefined type (used only for testing type generation)
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
+  attributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
+  attributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
+  @sortedListSortDescriptorListAST sortDescriptorList [emptyList] ;
+  sortDescriptorList += ![@lstring new !"mThird" !here] !true ;
+  sortDescriptorList += ![@lstring new !"mFirst" !here] !false ;
+  ioDeclarationListASTs += ![@sortedListDeclarationAST new
+    ![@lstring new !"0sortedlist" !here]
+    !attributeList
+    !sortDescriptorList
+  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
