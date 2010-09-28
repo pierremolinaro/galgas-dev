@@ -10,6 +10,7 @@
 #include "enumComparisonResult.h"
 #include "AC_GALGAS_Enumerator.h"
 #include "GALGAS_list.h"
+#include "GALGAS_sortedlist.h"
 
 //---------------------------------------------------------------------------*
 
