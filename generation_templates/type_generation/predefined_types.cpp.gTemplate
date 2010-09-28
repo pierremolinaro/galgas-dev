@@ -1,5 +1,7 @@
 //---------------------------------------------------------------------------*
 
 #include "predefined-types.h"
+#include "cCollectionElement.h"
+#include "cSortedListElement.h"
 #include "galgas-utilities/C_Compiler.h"
 

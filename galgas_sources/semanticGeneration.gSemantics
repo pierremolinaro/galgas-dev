@@ -238,6 +238,19 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+#---------- SORTED LIST
+  template sortedlistTypeHeader "GALGAS_sortedlist.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
+  ;
+
 #---------- ENUM
   template enumTypeHeader "GALGAS_enum.h.gTemplate"
     ?@string TYPE_NAME
@@ -311,12 +324,6 @@ filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generat
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE 
     ?@withAccessorMap WITH_ACCESSOR_MAP
-  ;
-
-  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.gTemplate"
-    ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
-    ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
   ;
 
   template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.gTemplate"
@@ -458,6 +465,29 @@ override reader @listTypeForGeneration appendDeclaration ->@string outHeader :
   ] ;
  end reader ;
 
+#---------------------------------------------------------------------------*
+
+override reader @sortedListTypeForGeneration appendDeclaration ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.sortedlistTypeHeader
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+ end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -542,7 +572,7 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
 #---------------------------------------------------------------------------*
 
 override reader @sortedListTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.sortedlistTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
     !mSortDescriptorList
