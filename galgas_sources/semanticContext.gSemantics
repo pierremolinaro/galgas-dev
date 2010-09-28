@@ -1005,12 +1005,10 @@ override method @sortedListDeclarationAST enterType
     ![@methodQualifier isBasic]
   ] ;
 #--- Enter in type map
-  @unifiedTypeMapProxy superTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"sortedlist" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mSortedListTypeName
     !true # Concrete Type
-    !superTypeProxy
+    ![@unifiedTypeMapProxy null]
     ![@typeKindEnum sortedListType]
     !typedAttributeList
     ![@attributeMap emptyMap]
