@@ -3,5 +3,6 @@
 #include "predefined-types.h"
 #include "cCollectionElement.h"
 #include "cSortedListElement.h"
+#include "capSortedListElement.h"
 #include "galgas-utilities/C_Compiler.h"
 

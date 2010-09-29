@@ -36,7 +36,7 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
  public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
-  public : virtual enumComparisonResult compareForSorting (const cSortedListElement * inOperand) ;
+  public : virtual enumComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -100,7 +100,8 @@ enumComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cSort
      %      result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
      %    }\n%
    end foreach
-%  return result ;
+%  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -111,16 +112,19 @@ GALGAS_sortedlist () {
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
+enumComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
   enumComparisonResult result = kOperandEqual ;
-  const cSortedListElement_%!TYPE_IDENTIFIER% * p1 = (const cSortedListElement_%!TYPE_IDENTIFIER% *) inLeftAttributeList.ptrNoVerif () ;
-  macroValidObject (p1, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
-  const cSortedListElement_%!TYPE_IDENTIFIER% * p2 = (const cSortedListElement_%!TYPE_IDENTIFIER% *) inRightAttributeList.ptrNoVerif () ;
-  macroValidObject (p2, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
+  const cSortedListElement_%!TYPE_IDENTIFIER% * operand = (const cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
+  macroValidObject (operand, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
 % foreach SORT_ATTRIBUTE_LIST do
     %  if (result == kOperandEqual) {\n%
-    %    result = % if mAscendingOrder then else %complementComparison % end if
-    %(GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (p1->mAttribute_%![mAttributeName identifierRepresentation]%, p2->mAttribute_%![mAttributeName identifierRepresentation]%)) ;\n%
+    %    result = %
+    if mAscendingOrder then
+      %mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%)%
+    else
+      %operand->mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%)%
+    end if
+    % ;\n%
     %  }\n%
   end foreach
 %  return result ;
@@ -128,27 +132,17 @@ enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::compareForSorting (const cSorted
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
-  if (isValid () && (ptr (HERE)->retainCount () > 1)) {
-    GALGAS_%!TYPE_IDENTIFIER% p (constructor_emptySortedList (THERE)) ;
-    p.ptr (HERE)->copyFrom (ptr (HERE)) ;
-    *this = p ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% * p = NULL ;
-  macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
-  return GALGAS_%!TYPE_IDENTIFIER% (p) ;
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  result.createNewEmptySortedList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithValue (%?COL0
   foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!COL0
   end foreach
   %\n%!COL0%COMMA_LOCATION_ARGS) {
@@ -160,8 +154,10 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
   between %, %
   end foreach
   % COMMA_THERE)) ;
-  capCollectionElement attributes (p) ;
-  result.ptr (HERE)->addObject (attributes) ;
+  capSortedListElement attributes ;
+  attributes.setPointer (p) ;
+  macroReleaseObject (p) ;
+  result.addObject (attributes) ;
   return result ;
 }
 
@@ -169,13 +165,12 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end foreach
 %
     %!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    insulate (HERE) ;
     cSortedListElement * p = NULL ;
     macroMyNew (p, cSortedListElement_%!TYPE_IDENTIFIER% (%
     foreach ATTRIBUTE_LIST
@@ -183,8 +178,10 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
     between %, %
     end foreach
     % COMMA_THERE)) ;
-    capCollectionElement attributes (p) ;
-    ptr (HERE)->addObject (attributes) ;
+    capSortedListElement attributes ;
+    attributes.setPointer (p) ;
+    macroReleaseObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -192,9 +189,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand
                           %!^%COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    insulate (THERE) ;
-    ptr (HERE)->appendSortedList (inOperand.ptr (HERE)) ;
+  if (isValid ()) {
+    appendSortedList (inOperand) ;
   }
 }
 
@@ -205,8 +201,8 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_concat (%?^%const 
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (isValid () && inOperand.isValid ()) {
     result = constructor_emptySortedList (THERE) ;
-    result.ptr (HERE)->appendSortedList (ptr (HERE)) ;
-    result.ptr (HERE)->appendSortedList (inOperand.ptr (HERE)) ;
+    result = *this ;
+    result.appendSortedList (inOperand) ;
   }
   return result ;
 }
@@ -219,7 +215,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
   end foreach
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
+  capSortedListElement attributes ;
   removeSmallestObject (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
   if (NULL == p) {
@@ -244,7 +240,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
   end foreach
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
+  capSortedListElement attributes ;
   removeGreatestObject (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
   if (NULL == p) {
@@ -268,8 +264,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
   do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end foreach
      %C_Compiler * inCompiler\n%
-     !^%COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
+     !^%COMMA_LOCATION_ARGS) const {
+  capSortedListElement attributes ;
   smallestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
   if (NULL == p) {
@@ -293,8 +289,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
   do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end foreach
      %C_Compiler * inCompiler\n%
-     !^%COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
+     !^%COMMA_LOCATION_ARGS) const {
+  capSortedListElement attributes ;
   greatestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
   if (NULL == p) {
