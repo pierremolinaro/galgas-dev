@@ -307,3 +307,21 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
 %  }
 }
 
+//---------------------------------------------------------------------------*
+
+cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+                   %!^%const bool inAscending) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inAscending) ;
+}
+
+%foreach ATTRIBUTE_LIST do index IDX
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
+  %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr () ;\n%
+  %  macroValidObject (p, const cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %}\n\n%
+end foreach
+%
+

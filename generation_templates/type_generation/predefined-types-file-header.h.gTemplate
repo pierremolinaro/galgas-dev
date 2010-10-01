@@ -8,7 +8,7 @@
 #include "GALGAS__root.h"
 #include "C_galgas_type_descriptor.h"
 #include "enumComparisonResult.h"
-#include "AC_GALGAS_Enumerator.h"
+#include "cGenericAbstractEnumerator.h"
 #include "GALGAS_list.h"
 #include "GALGAS_sortedlist.h"
 

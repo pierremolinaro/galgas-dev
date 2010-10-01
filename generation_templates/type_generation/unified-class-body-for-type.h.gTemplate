@@ -328,7 +328,7 @@ if [WITH_ACCESSOR_MAP count] > 0 then
 end if
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Friend\n
-  friend class GALGAS_%!TYPE_IDENTIFIER%_cEnumerator ;
+  friend class cEnumerator_%!TYPE_IDENTIFIER% ;
 %end if
 % 
 } ; // End of GALGAS_%!TYPE_IDENTIFIER% class
@@ -338,8 +338,8 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 //   Enumerator declaration                                                  *
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER%_cEnumerator : public AC_GALGAS_Enumerator {
-  public : GALGAS_%!TYPE_IDENTIFIER%_cEnumerator (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
+  public : cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
      %!^%const bool inAscending) ;
 
 //--- Current element access\n%
