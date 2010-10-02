@@ -21,7 +21,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 !^%COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) ;
+  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -84,7 +84,7 @@ void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) {
+enumComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
   enumComparisonResult result = kOperandEqual ;
 %  foreach ATTRIBUTE_LIST do

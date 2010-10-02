@@ -568,12 +568,10 @@ override method @mapDeclarationAST enterType
     ] ;
   end foreach ;
 #--- Enter in type map
-  @unifiedTypeMapProxy superTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"map" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapTypeName
     !true # Concrete Type
-    !superTypeProxy
+    ![@unifiedTypeMapProxy null]
     ![@typeKindEnum mapType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
@@ -693,12 +691,10 @@ override method @mapProxyDeclarationAST enterType
     end if ;
   end foreach ;
 #--- Enter type in type map
-  @unifiedTypeMapProxy superTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"mapproxy" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapProxyTypeName
     !true # Concrete Type
-    !superTypeProxy
+    ![@unifiedTypeMapProxy null]
     ![@typeKindEnum mapProxyType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
@@ -1433,12 +1429,10 @@ override method @listmapDeclarationAST enterType
     addAssignOperatorDescription += !mAttributeTypeIndex ;
   end foreach ;
 #--- Enter type in type map
-  @unifiedTypeMapProxy superTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"listmap" ?superTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
     !mListmapTypeName
     !true # Concrete Type
-    !superTypeProxy
+    ![@unifiedTypeMapProxy null]
     ![@typeKindEnum listMapType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]

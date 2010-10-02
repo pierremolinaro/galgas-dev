@@ -320,9 +320,8 @@ if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
-    %  friend cCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
-    !^%GALGAS_%!TYPE_IDENTIFIER% & ioMap,\n%
-    !^%GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
+    %  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    !^%const GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%
   end foreach
 end if

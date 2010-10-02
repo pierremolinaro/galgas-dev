@@ -1,10 +1,14 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//%!["@" . TYPE_IDENTIFIER . " list" stringByLeftAndRightPadding !75 !' ']%*
+//%!["@" . TYPE_NAME . " map" stringByLeftAndRightPadding !75 !' ']%*
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_list {
+class cMapElement_%!TYPE_IDENTIFIER% ;
+
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_map {
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 

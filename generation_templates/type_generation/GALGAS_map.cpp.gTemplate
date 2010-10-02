@@ -1,0 +1,254 @@
+//---------------------------------------------------------------------------*
+
+cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
+  foreach ATTRIBUTE_LIST
+    do %,\n%!^%const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+  end foreach
+%\n%
+!^%COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE)%
+foreach ATTRIBUTE_LIST
+  do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
+end foreach
+% {
+}
+
+//---------------------------------------------------------------------------*
+
+bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
+  return mAttribute_lkey.isValid ()%
+    foreach ATTRIBUTE_LIST
+      do % && mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
+    end foreach
+  % ;
+}
+
+//---------------------------------------------------------------------------*
+
+cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
+  cMapElement * result = NULL ;
+  macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mAttribute_lkey%
+    foreach ATTRIBUTE_LIST
+      do %, mAttribute_%![mAttributeName identifierRepresentation]
+    end foreach
+  % COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {
+%
+  foreach ATTRIBUTE_LIST
+    do %// mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+  end foreach
+%}
+
+//---------------------------------------------------------------------------*
+
+enumComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
+  cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
+  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+%  foreach ATTRIBUTE_LIST do
+     %  if (kOperandEqual == result) {\n%
+     %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+     %  }\n%
+   end foreach
+%  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+GALGAS_map () {
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  result.createNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
+                                                   %!^%COMMA_LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  result.createNewEmptyMap (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (LOCATION_ARGS) const {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  overridenMap (result) ;
+  return result ;
+}
+
+%foreach INSERT_METHOD_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+    foreach ATTRIBUTE_LIST
+      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inArgument%![IDX string]
+    end foreach
+    %,\n %!^%C_Compiler * inCompiler%
+    %\n %!^%COMMA_LOCATION_ARGS) {\n%
+    %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
+    %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
+  foreach ATTRIBUTE_LIST
+    do index IDX %, inArgument%![IDX string]
+  end foreach
+  % COMMA_HERE)) ;\n%
+  %    capCollectionElement attributes ;\n%
+  %  attributes.setPointer (p) ;\n%
+  %  macroReleaseObject (p) ;\n%
+  block 2 :
+    %const utf32 kInsertErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
+    %const utf32 kShadowErrorMessage [%![[mShadowErrorMessage length] + 1 string]%] = %![mShadowErrorMessage utf32Representation]% ;\n%
+    %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+  end block
+  %}\n\n%
+end foreach
+
+foreach SEARCH_METHOD_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %static const utf32 kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+    foreach ATTRIBUTE_LIST
+      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outArgument%![IDX string]
+    end foreach
+    %,\n %!^%C_Compiler * inCompiler%
+    %\n %!^%COMMA_LOCATION_ARGS) const {\n%
+  block 2 :
+    %cCollectionElement * attributes = performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% COMMA_THERE) ;\n%
+    %cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
+    %if (NULL != p) {\n%
+    %  macroValidObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+    foreach ATTRIBUTE_LIST do index IDX
+      %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    end foreach
+    %}\n%
+  end block
+  %}\n\n%
+end foreach
+
+
+foreach REMOVE_METHOD_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+    foreach ATTRIBUTE_LIST
+      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outArgument%![IDX string]
+    end foreach
+    %,\n %!^%C_Compiler * inCompiler%
+    %\n %!^%COMMA_LOCATION_ARGS) {\n%
+  block 2 :
+    %const utf32 kRemoveErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
+    %capCollectionElement attributes ;\n%
+    %performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
+    %cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;\n%
+    %if (NULL != p) {\n%
+    %  macroValidObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+    foreach ATTRIBUTE_LIST do index IDX
+      %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    end foreach
+    %}\n%
+  end block
+  %}\n\n%
+end foreach
+
+if HAS_INSERT_OR_REPLACE then
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertOrReplace (%?^%GALGAS_lstring inKey%
+  foreach ATTRIBUTE_LIST
+    do index IDX %,\n%!^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inArgument%![IDX string]
+  end foreach
+  %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
+  %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
+  %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
+  foreach ATTRIBUTE_LIST
+    do index IDX %, inArgument%![IDX string]
+  end foreach
+  % COMMA_HERE)) ;\n%
+  %  capCollectionElement attributes ;\n%
+  %  attributes.setPointer (p) ;\n%
+  %  macroReleaseObject (p) ;\n%
+  %  performInsertOrReplace (attributes) ;\n%
+  %}\n\n%
+end if
+
+foreach ATTRIBUTE_LIST do index IDX
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
+  %                                               %!^%C_Compiler * inCompiler\n%
+  %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
+  %  cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;\n%
+  %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
+  %  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% result ;\n%
+  %  if (NULL != p) {\n%
+  %    macroValidObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  }\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach 
+
+foreach ATTRIBUTE_LIST do index IDX
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inAttributeValue,\n%
+  %                           %!^%GALGAS_string inKey,\n%
+  %                           %!^%C_Compiler * inCompiler\n%
+  %                           %!^%COMMA_LOCATION_ARGS) {\n%
+  %  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;\n%
+  %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
+  %  if (NULL != p) {\n%
+  %    macroValidObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inAttributeValue ;\n%
+  %  }\n%
+  %}\n\n%
+end foreach 
+
+foreach WITH_ACCESSOR_MAP do
+  %//---------------------------------------------------------------------------*\n\n%
+  %cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+  !^%const GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
+  !^%COMMA_LOCATION_ARGS) {\n%
+  if [lkey string] == "hasKey" then
+  %  cMapElement * p = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;\n%
+  else
+  %  cMapElement * p = searchForReadWriteAttribute (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% COMMA_THERE) ;\n%
+  end if
+  %  cMapElement_%!TYPE_IDENTIFIER% * result = (cMapElement_%!TYPE_IDENTIFIER% *) p ;\n%
+  %  macroNullOrValidObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return result ;\n%
+  %}\n\n%
+end foreach
+%//---------------------------------------------------------------------------*
+
+cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+                       %!^%const bool inAscending) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inAscending) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (void) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr () ;
+  macroValidObject (p, const cMapElement) ;
+  return p->mAttribute_lkey ;
+}
+
+%foreach ATTRIBUTE_LIST do index IDX
+  %//---------------------------------------------------------------------------*\n\n%
+  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
+  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr () ;\n%
+  %  macroValidObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %}\n\n%
+end foreach 
+%
+

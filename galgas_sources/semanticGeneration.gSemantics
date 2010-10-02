@@ -213,7 +213,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   ;
 
 #---------- STRUCTURE
-  template structTypeHeader "GALGAS_struct.h.gTemplate"
+  template structTypeHeader1 "GALGAS_struct.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
@@ -226,7 +226,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   ;
 
 #---------- LIST
-  template listTypeHeader "GALGAS_list.h.gTemplate"
+  template listTypeHeader1 "GALGAS_list.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
@@ -239,7 +239,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   ;
 
 #---------- SORTED LIST
-  template sortedlistTypeHeader "GALGAS_sortedlist.h.gTemplate"
+  template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
@@ -252,7 +252,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   ;
 
 #---------- ENUM
-  template enumTypeHeader "GALGAS_enum.h.gTemplate"
+  template enumTypeHeader1 "GALGAS_enum.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@stringlist CONSTANT_LIST
@@ -263,6 +263,29 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@stringlist CONSTANT_LIST
     ?@enumMessageListForGeneration ENUM_MESSAGE_LIST
+  ;
+
+#---------- MAP
+  template mapTypeHeader1 "GALGAS_map.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+  template mapTypeHeader2 "GALGAS_map.h2.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+  template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@insertMethodListAST INSERT_METHOD_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+    ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
+    ?@bool HAS_INSERT_OR_REPLACE 
+    ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
 }
 
@@ -309,21 +332,6 @@ filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generat
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_LISTTYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
-  ;
-
-  template mapTypeSpecificDeclaration "GALGAS_map-specific.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
-  ;
-
-  template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
-    ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
-    ?@insertMethodListAST INSERT_METHOD_LIST
-    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-    ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
-    ?@bool HAS_INSERT_OR_REPLACE 
-    ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
 
   template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.gTemplate"
@@ -380,17 +388,17 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-# A P P E N D    D E C L A R A T I O N                                      *
+# A P P E N D    D E C L A R A T I O N    1                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticDeclarationForGeneration appendDeclaration -> @string outHeader :
+reader @semanticDeclarationForGeneration appendDeclaration1 -> @string outHeader :
   outHeader := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @routinePrototypeDeclarationForGeneration appendDeclaration -> @string outHeader :
+override reader @routinePrototypeDeclarationForGeneration appendDeclaration1 -> @string outHeader :
   outHeader := [filewrapper semanticComponentGenerationTemplate.routineDeclaration
     !mRoutineName
     !mFormalArgumentList
@@ -399,7 +407,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionPrototypeDeclarationForGeneration appendDeclaration -> @string outHeader :
+override reader @functionPrototypeDeclarationForGeneration appendDeclaration1 -> @string outHeader :
   outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
     !mFunctionName
     !mFormalArgumentList
@@ -409,7 +417,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @onceFunctionDeclarationForGeneration appendDeclaration -> @string outHeader :
+override reader @onceFunctionDeclarationForGeneration appendDeclaration1 -> @string outHeader :
   outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
     !mFunctionName
     ![@formalInputParameterListForGeneration emptyList]
@@ -419,8 +427,8 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @structTypeForGeneration appendDeclaration ->@string outHeader :
-  outHeader := [filewrapper typeGenerationTemplate.structTypeHeader
+override reader @mapTypeForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader1
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
@@ -443,8 +451,8 @@ override reader @structTypeForGeneration appendDeclaration ->@string outHeader :
 
 #---------------------------------------------------------------------------*
 
-override reader @listTypeForGeneration appendDeclaration ->@string outHeader :
-  outHeader := [filewrapper typeGenerationTemplate.listTypeHeader
+override reader @structTypeForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.structTypeHeader1
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
@@ -467,8 +475,8 @@ override reader @listTypeForGeneration appendDeclaration ->@string outHeader :
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedListTypeForGeneration appendDeclaration ->@string outHeader :
-  outHeader := [filewrapper typeGenerationTemplate.sortedlistTypeHeader
+override reader @listTypeForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.listTypeHeader1
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
@@ -491,8 +499,32 @@ override reader @sortedListTypeForGeneration appendDeclaration ->@string outHead
 
 #---------------------------------------------------------------------------*
 
-override reader @enumTypeForGeneration appendDeclaration ->@string outHeader :
-  outHeader := [filewrapper typeGenerationTemplate.enumTypeHeader
+override reader @sortedListTypeForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.sortedlistTypeHeader1
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @enumTypeForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.enumTypeHeader1
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mConstantList
@@ -510,6 +542,26 @@ override reader @enumTypeForGeneration appendDeclaration ->@string outHeader :
     ![mTypeIndex mHandledOperatorFlags]
     ![mTypeIndex mAddAssignOperatorArguments]
     ![mTypeIndex mWithAccessorMap]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    D E C L A R A T I O N    2                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationForGeneration appendDeclaration2 -> @string outHeader :
+  outHeader := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapTypeForGeneration appendDeclaration2 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader2
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
   ] ;
  end reader ;
 
@@ -558,7 +610,7 @@ override reader @listmapTypeForGeneration appendSpecificImplementation ->@string
 #---------------------------------------------------------------------------*
 
 override reader @mapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.mapTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
     !mInsertMethodList

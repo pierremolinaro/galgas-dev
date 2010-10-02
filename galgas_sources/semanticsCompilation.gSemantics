@@ -320,7 +320,10 @@ routine compileSemanticsComponent
       ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration] ;
+      headerString .= [mDeclaration appendDeclaration1] ;
+    end foreach ;
+    foreach decoratedDeclarationListForGeneration do
+      headerString .= [mDeclaration appendDeclaration2] ;
     end foreach ;
     [@string generateFile
       !inOutputDirectory
