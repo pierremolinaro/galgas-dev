@@ -4,6 +4,13 @@
 #include "cCollectionElement.h"
 #include "cSortedListElement.h"
 #include "capSortedListElement.h"
-#include "cMapElement.h"
 #include "galgas-utilities/C_Compiler.h"
+
+//---------------------------------------------------------------------------*
+
+cMapElement::cMapElement (const GALGAS_lstring & inLKey
+                          COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mAttribute_lkey (inLKey) {
+}
 
