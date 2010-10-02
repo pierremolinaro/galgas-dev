@@ -1,4 +1,19 @@
 //---------------------------------------------------------------------------*
 
-#include "cMapElement.h"
+#include "cCollectionElement.h"
+
+//---------------------------------------------------------------------------*
+
+class cMapElement : public cCollectionElement {
+//--- Attribut
+  public : GALGAS_lstring mAttribute_lkey ;
+
+//--- Default constructor
+  public : cMapElement (const GALGAS_lstring & inLKey
+                        COMMA_LOCATION_ARGS) ;
+
+//--- No copy
+  private : cMapElement (const cMapElement &) ;
+  private : cMapElement & operator = (const cMapElement &) ;
+} ;
 
