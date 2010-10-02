@@ -111,17 +111,51 @@ routine appendPredefinedTypesASTs
   ] ;
 
 #--- Sorted list predefined type (used only for testing type generation)
-  @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
-  attributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
-  attributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
+  @attributeInCollectionListAST sortedListAttributeList [emptyList] ;
+  sortedListAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
+  sortedListAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
+  sortedListAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
   @sortedListSortDescriptorListAST sortDescriptorList [emptyList] ;
   sortDescriptorList += ![@lstring new !"mThird" !here] !true ;
   sortDescriptorList += ![@lstring new !"mFirst" !here] !false ;
   ioDeclarationListASTs += ![@sortedListDeclarationAST new
     ![@lstring new !"0sortedlist" !here]
-    !attributeList
+    !sortedListAttributeList
     !sortDescriptorList
+  ] ;
+
+#--- Map predefined type (used only for testing type generation)
+  @attributeInCollectionListAST mapAttributeList [emptyList] ;
+  mapAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
+  mapAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
+  mapAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
+  @insertMethodListAST insertMethodList [emptyList] ;
+  insertMethodList +=
+    ![@lstring new !"insert" !here]
+    ![@lstring new !"insert error message" !here]
+    ![@lstring new !"shadow error message" !here]
+    ![@lstring new !"" !here]
+  ;
+  @mapSearchMethodListAST mapSearchMethodListAST [emptyList] ;
+  mapSearchMethodListAST +=
+    ![@lstring new !"search" !here]
+    ![@lstring new !"search error message" !here]
+    ![@lstring new !"" !here]
+  ;
+  @mapRemoveMethodListAST mapRemoveMethodListAST [emptyList] ;
+  mapRemoveMethodListAST +=
+    ![@lstring new !"remove" !here]
+    ![@lstring new !"remove error message" !here]
+  ;
+  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
+  ioDeclarationListASTs += ![@mapDeclarationAST new
+    ![@lstring new !"0map" !here]
+    !mapAttributeList
+    !insertMethodList
+    !mapSearchMethodListAST
+    !mapRemoveMethodListAST
+    !insertOrReplaceDeclarationListAST
+    ![@mapStateList emptyList]
   ] ;
 end routine ;
 
@@ -139,6 +173,8 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
   template primitiveTypesHeaderPrologue "predefined-types-file-header.h.gTemplate"
     ?@stringset TYPE_LIST
   ;
+
+  template predefinedTypeSeparation "predefined-types-separation.h.gTemplate"  ;
 
   template sint_type "sint-type.h.gTemplate" ;
   
@@ -263,7 +299,11 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         generatedCode .= [mDeclaration appendPrimitiveTypeDeclaration] ;
       end foreach ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendDeclaration] ;
+        generatedCode .= [mDeclaration appendDeclaration1] ;
+      end foreach ;
+      generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation] ;
+      foreach decoratedDeclarationListForGeneration do
+        generatedCode .= [mDeclaration appendDeclaration2] ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFile

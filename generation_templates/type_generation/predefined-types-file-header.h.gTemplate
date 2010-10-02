@@ -11,6 +11,7 @@
 #include "cGenericAbstractEnumerator.h"
 #include "GALGAS_list.h"
 #include "GALGAS_sortedlist.h"
+#include "GALGAS_map.h"
 
 //---------------------------------------------------------------------------*
 

@@ -105,7 +105,7 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
 
 #---------------------------------------------------------------------------*
 
-override reader @syntaxDeclarationForGeneration appendDeclaration -> @string outHeader :
+override reader @syntaxDeclarationForGeneration appendDeclaration1 -> @string outHeader :
   @uintlist selectMethodList [emptyList] ;
   @uint idx := 0 ;
   loop mSelectMethodCount + 1 :

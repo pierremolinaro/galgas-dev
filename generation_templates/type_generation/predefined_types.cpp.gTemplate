@@ -4,5 +4,6 @@
 #include "cCollectionElement.h"
 #include "cSortedListElement.h"
 #include "capSortedListElement.h"
+#include "cMapElement.h"
 #include "galgas-utilities/C_Compiler.h"
 
