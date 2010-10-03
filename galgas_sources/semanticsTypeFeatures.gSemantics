@@ -119,7 +119,7 @@ override reader @uintPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
-    | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
+    | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
@@ -145,7 +145,7 @@ override reader @uint64PredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
-    | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator [] | unaryMinusOperator []
+    | binaryModOperator [] | binaryShiftOperator [] | unaryPlusOperator []
     | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator [] | unaryTildeOperator []
     | generateNativeNewConstructor [] | generateDescriptionReaderUtilityMethod [] | incDecOperator []
     | generateCppConstructorWithNativeAttributeList [] | isComparable []
@@ -182,8 +182,8 @@ end reader ;
 override reader @stringsetPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := unaryPlusOperator [] | unaryMinusOperator [] | binarySubOperator []
-    | binaryAndOperator [] | binaryOrOperator [] | binaryXorOperator []
+  outFlags := binarySubOperator []
+    | binaryAndOperator [] | binaryOrOperator []
     | generateDescriptionReaderUtilityMethod []
     | generateNativeNewConstructor []
     | generateCppConstructorWithNativeAttributeList []

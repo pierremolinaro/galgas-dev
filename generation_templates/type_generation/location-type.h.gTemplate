@@ -25,12 +25,19 @@ class GALGAS_location
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSourceText != NULL ; }
   public : VIRTUAL_IN_DEBUG void drop (void) ;
+  public : C_LocationInSource startLocation (void) const { return mStartLocationInSource ; }
+  public : C_LocationInSource endLocation (void) const { return mEndLocationInSource ; }
+  public : C_SourceTextInString * sourceText (void) const { return mSourceText ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_location (void) ;
 
-//--------------------------------- Destructor (virtual in debug mode
+//--------------------------------- Destructor (virtual in debug mode)
   public : VIRTUAL_IN_DEBUG ~ GALGAS_location (void) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_location (const GALGAS_location & inSource) ;
+  public : GALGAS_location & operator = (const GALGAS_location & inSource) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_location (const C_LocationInSource & inStartLocationInSource,

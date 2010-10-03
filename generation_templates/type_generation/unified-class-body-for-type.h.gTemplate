@@ -154,13 +154,7 @@ if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 %
 foreach MODIFIER_MAP do
   if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
-    %  public :%
-    if mQualifier == [@methodQualifier isBasicFinal] then
-      % VIRTUAL_IN_DEBUG %
-    else
-      % virtual %
-    end if
-    %void modifier_%![lkey identifierRepresentation]% (%?^
+    %  public : VIRTUAL_IN_DEBUG void modifier_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -196,13 +190,7 @@ end foreach
 %
 foreach INSTANCE_METHOD_MAP do
   if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
-    %  public :%
-    if mQualifier == [@methodQualifier isBasicFinal] then
-      % VIRTUAL_IN_DEBUG %
-    else
-      % virtual %
-    end if
-    %void method_%![lkey identifierRepresentation]% (%?^
+    %  public : VIRTUAL_IN_DEBUG void method_%![lkey identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -271,13 +259,7 @@ end foreach
 %
 foreach READER_MAP do
   if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
-    %  public :%
-    if mQualifier == [@methodQualifier isBasicFinal] then
-      % VIRTUAL_IN_DEBUG %
-    else
-      % virtual %
-    end if
-    %GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![lkey identifierRepresentation] % (%?^
+    %  public : VIRTUAL_IN_DEBUG GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![lkey identifierRepresentation] % (%?^
     foreach mArgumentTypeList
       do index IDX %const GALGAS_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
       between %,\n% !^
@@ -305,15 +287,8 @@ end foreach
 %
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 %//--------------------------------- Enumeration helper methods
-  protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                     const bool inAscending) const ;
-
-%end if
-
-if ((SUPPORTED_OPERATORS & generateSortedListComparisonMethod []) != 0) then
-%//--------------------------------- Abstract method for comparing two sorted list elements
-  protected : virtual enumComparisonResult compareSortedListElements (const capCollectionElement & inLeftAttributeList,
-                                                                      const capCollectionElement & inRightAttributeList) const ;
+  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
+                                                              const bool inAscending) const ;
 
 %end if
 

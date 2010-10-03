@@ -9,6 +9,6 @@ class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_list {
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
-  public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+//  public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+//  public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
 

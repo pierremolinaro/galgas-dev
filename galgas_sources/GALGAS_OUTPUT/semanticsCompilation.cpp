@@ -130,7 +130,7 @@ template_filewrapper_semanticFileGenerationTemplate_semanticFileHeader (C_Compil
       result << "class GALGAS_" ;
       result << operand_485->mValue.ggs_string ().reader_identifierRepresentation () ;
       result << " ;\n"
-        "class GALGASap_" ;
+        "class GALGAS_" ;
       result << operand_485->mValue.ggs_string ().reader_identifierRepresentation () ;
       result << " ;\n" ;
     }

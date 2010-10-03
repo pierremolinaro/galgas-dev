@@ -19,8 +19,15 @@ class GALGAS_object
 //--------------------------------- Default constructor
   public : GALGAS_object (void) ;
 
+//--------------------------------- Destructor (virtual in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_object (void) ;
+
 //--------------------------------- Native constructor
-  public : GALGAS_object (const C_SharedObject * inObject) ;
+  public : GALGAS_object (C_SharedObject * inObject) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_object (const GALGAS_object & inSource) ;
+  public : GALGAS_object & operator = (const GALGAS_object & inSource) ;
 
 %
 

@@ -265,14 +265,14 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 
 
 //--- Assign from attribute (v2)
-  public : GALGASap_lchar synthetizedAttribute_charValue (void) const ;
-  public : GALGASap_ldouble synthetizedAttribute_floatValue (void) const ;
-  public : GALGASap_lstring synthetizedAttribute_identifierString (void) const ;
-  public : GALGASap_lsint synthetizedAttribute_sint_33__32_value (void) const ;
-  public : GALGASap_lsint_36__34_ synthetizedAttribute_sint_36__34_value (void) const ;
-  public : GALGASap_lstring synthetizedAttribute_tokenString (void) const ;
-  public : GALGASap_luint synthetizedAttribute_uint_33__32_value (void) const ;
-  public : GALGASap_luint_36__34_ synthetizedAttribute_uint_36__34_value (void) const ;
+  public : GALGAS_lchar synthetizedAttribute_charValue (void) const ;
+  public : GALGAS_ldouble synthetizedAttribute_floatValue (void) const ;
+  public : GALGAS_lstring synthetizedAttribute_identifierString (void) const ;
+  public : GALGAS_lsint synthetizedAttribute_sint_33__32_value (void) const ;
+  public : GALGAS_lsint_36__34_ synthetizedAttribute_sint_36__34_value (void) const ;
+  public : GALGAS_lstring synthetizedAttribute_tokenString (void) const ;
+  public : GALGAS_luint synthetizedAttribute_uint_33__32_value (void) const ;
+  public : GALGAS_luint_36__34_ synthetizedAttribute_uint_36__34_value (void) const ;
 
 
 //--- Attribute access
