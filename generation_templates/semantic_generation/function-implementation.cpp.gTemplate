@@ -19,9 +19,9 @@ static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifier
 
 //---------------------------------------------------------------------------*
 
-static GALGASap_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,
                                                  %!^%cRootObjectArray & inEffectiveParameterArray,
-                                                 %!^%const GALGASap_location & inErrorLocation
+                                                 %!^%const GALGAS_location & inErrorLocation
                                                  %!^%COMMA_LOCATION_ARGS) {
   const bool ok = inCompiler->checkFunctionCallArguments (%![FUNCTION_NAME utf8Representation]%,
                                                           %![[FORMAL_ARGUMENT_LIST length] string]%,
@@ -29,10 +29,10 @@ static GALGASap_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepr
                                                           inEffectiveParameterArray,
                                                           inErrorLocation
                                                           COMMA_THERE) ;
-  GALGASap_object result ;
+  GALGAS_object result ;
   if (ok) {
 %  foreach FORMAL_ARGUMENT_LIST do index IDX
-     %    GALGASap_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_THERE) ;\n%
+     %    GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_THERE) ;\n%
    end foreach
 %    result = function_%![FUNCTION_NAME identifierRepresentation]% (%
      foreach FORMAL_ARGUMENT_LIST do index IDX

@@ -83,7 +83,7 @@ override method @inputJokerParameterForGeneration generateActualParameter
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
-  ioImplementation .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " " . outCppName . " ; // Joker input parameter\n" ;
+  ioImplementation .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " . outCppName . " ; // Joker input parameter\n" ;
   ioJokerParametersToReleaseList += !mInputActualCppName ;
 end method ;
 
@@ -142,7 +142,7 @@ override method @localVariableOrConstantDeclarationWithSourceExpressionForGenera
   ioGeneratedCode .= "//-------- @localVariableOrConstantDeclarationWithSourceExpressionForGeneration\n" ;
   @string sourceVar ;
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
-  ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation] . " " . mCppVariableName
+  ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation] . " " . mCppVariableName
                     . " (" . sourceVar . ") ;\n" ;
 end method ;
 
@@ -154,7 +154,7 @@ override method @localVariableDeclarationForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @localVariableDeclarationForGeneration\n" ;
-  ioGeneratedCode .= "GALGASap_" . [mVariableType identifierRepresentation] . " " . mCppVariableName . " ;\n" ;
+  ioGeneratedCode .= "GALGAS_" . [mVariableType identifierRepresentation] . " " . mCppVariableName . " ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -171,9 +171,9 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
     [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter] ;
     parameterList += !parameter ;  
   end foreach ;
-  ioGeneratedCode .= "GALGASap_" . [mTargetType identifierRepresentation]
+  ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation]
                    . " " . mTargetVariableCppName
-                   . " (GALGASap_"  . [mTargetType identifierRepresentation]
+                   . " (GALGAS_"  . [mTargetType identifierRepresentation]
                    . "::constructor_" . [mConstructorName identifierRepresentation]
                    . " (" ;
   foreach parameterList
@@ -343,7 +343,7 @@ override method @errorInstructionForGeneration generateInstruction
 #--- Use location reader ?
   if mUseLocationReader then
     const @string locationVar := "location_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGASap_location " . locationVar . " (" . receiverCppVarName . ".readerCall_location (HERE)) ; // Implicit use of 'location' reader\n" ;
+    ioGeneratedCode .= "GALGAS_location " . locationVar . " (" . receiverCppVarName . ".readerCall_location (HERE)) ; // Implicit use of 'location' reader\n" ;
     receiverCppVarName := locationVar ;
   end if ;
 #--- Generate error instruction
@@ -373,7 +373,7 @@ override method @warningInstructionForGeneration generateInstruction
 #--- Use location reader ?
   if mUseLocationReader then
     const @string locationVar := "location_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGASap_location " . locationVar . " (" . receiverCppVarName . ".readerCall_location (HERE)) ; // Implicit use of 'location' reader\n" ;
+    ioGeneratedCode .= "GALGAS_location " . locationVar . " (" . receiverCppVarName . ".readerCall_location (HERE)) ; // Implicit use of 'location' reader\n" ;
     receiverCppVarName := locationVar ;
   end if ;
 #--- Generate warning instruction
@@ -549,7 +549,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
       ioGeneratedCode .= "if (" . castCppVarName . ".ptr (HERE)->typeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
     end if ;
     if [mCastedVarCppName length] > 0 then
-      ioGeneratedCode .= "GALGASap_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " = " . castCppVarName . " ;\n" ;
+      ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " = " . castCppVarName . " ;\n" ;
     end if ;
     generateInstructionList
       !mInstructionList
@@ -763,7 +763,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= "//--- complex foreach instruction\n" ;
   #--- Index
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGASap_uint " . mIndexVariableCppName . " ((PMUInt32) 0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((PMUInt32) 0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     const @string boolVarCppName := "bool_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
     if whileExpressionIsAllwaysTrue then
@@ -845,7 +845,7 @@ override method @foreachInstructionForGeneration generateInstruction
   else #----- foreach instruction without 'before', 'after', while expression
     ioGeneratedCode .= "//--- simple foreach instruction\n" ;
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGASap_uint " . mIndexVariableCppName . " ((PMUInt32) 0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((PMUInt32) 0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
     end if ;
     ioGeneratedCode .= "while (" ;
     foreach mEnumeratedObjectList
