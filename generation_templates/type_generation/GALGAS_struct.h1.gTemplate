@@ -23,9 +23,7 @@ end foreach%
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
-  #endif
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (%?^

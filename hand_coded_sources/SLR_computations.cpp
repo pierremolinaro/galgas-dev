@@ -833,7 +833,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal2._mFormalParametersList (HERE), true) ;
       PMSInt16 numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
-        generatedZone3 << "GALGASap_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
+        generatedZone3 << "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
         switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
           generatedZone3 << " " ;
@@ -886,12 +886,12 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
-                          "GALGASap_lstring inFilePath" ;
+                          "GALGAS_lstring inFilePath" ;
         GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
         PMSInt32 numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                "
-                            "GALGASap_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
+                            "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
           switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
             generatedZone3 << " " ;
@@ -912,7 +912,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  if (inFilePath.isValid ()) {\n"
-                          "    GALGASap_string filePathAsString = inFilePath.readerCall_string (HERE) ;\n"
+                          "    GALGAS_string filePathAsString = inFilePath.readerCall_string (HERE) ;\n"
                           "    C_String filePath = filePathAsString.ptr (HERE)->stringValue () ;\n"
                           "    if (! filePath.isAbsolutePath ()) {\n"
                           "      filePath = inCompiler->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
@@ -944,7 +944,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "        }else{\n"
                           "          C_String message ;\n"
                           "          message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
-                          "          GALGASap_location errorLocation (inFilePath.readerCall_location (THERE)) ;\n"
+                          "          GALGAS_location errorLocation (inFilePath.readerCall_location (THERE)) ;\n"
                           "          inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -961,7 +961,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << filePath << \"' file does not exist\" ;\n"
-                          "    GALGASap_location errorLocation (inFilePath.readerCall_location (THERE)) ;\n"
+                          "    GALGAS_location errorLocation (inFilePath.readerCall_location (THERE)) ;\n"
                           "    inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -981,12 +981,12 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
-                          "GALGASap_string inSourceString" ;
+                          "GALGAS_string inSourceString" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                "
-                            "GALGASap_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
+                            "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
           switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
             generatedZone3 << " " ;

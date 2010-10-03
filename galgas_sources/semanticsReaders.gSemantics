@@ -292,8 +292,8 @@ routine commonReaderMapForAllTypes
 :
   outMap := [@readerMap emptyMap] ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"description" !"string" !false ;
-  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"object" !"object" !false ;
-  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"objectDynamicType" !"type" !false ;
+#  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"object" !"object" !false ;
+#  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"objectDynamicType" !"type" !false ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -458,7 +458,7 @@ override method @uint64PredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint" !"sint" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint64" !"sint64" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uint" !"uint" !true ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintSlice" !"uint" !"uint" !"uint" !true ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintSlice" !"uint" !"uint" !"uint" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"string" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"hexString" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"xString" !"string" !false ;

@@ -330,8 +330,8 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (%?
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand
-                          %!^%COMMA_LOCATION_ARGS) {
-  appendList (inOperand COMMA_THERE) ;
+                          %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 %

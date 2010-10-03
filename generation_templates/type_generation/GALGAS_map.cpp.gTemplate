@@ -82,7 +82,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOve
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (LOCATION_ARGS) const {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (UNUSED_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   overridenMap (result) ;
   return result ;
@@ -124,10 +124,10 @@ foreach SEARCH_METHOD_LIST do
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) const {\n%
   block 2 :
-    %cCollectionElement * attributes = performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% COMMA_THERE) ;\n%
-    %cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
+    %const cCollectionElement * attributes = performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% COMMA_THERE) ;\n%
+    %const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
     %if (NULL != p) {\n%
-    %  macroValidObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+    %  macroValidObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end foreach
@@ -185,11 +185,11 @@ foreach ATTRIBUTE_LIST do index IDX
   %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
   %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;\n%
-  %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
+  %  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;\n%
+  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
   %  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% result ;\n%
   %  if (NULL != p) {\n%
-  %    macroValidObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    macroValidObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %  }\n%
   %  return result ;\n%

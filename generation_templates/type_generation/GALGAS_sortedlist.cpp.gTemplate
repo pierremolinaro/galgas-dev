@@ -186,7 +186,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 //---------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand
-                          %!^%COMMA_LOCATION_ARGS) {
+                          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     appendSortedList (inOperand) ;
   }

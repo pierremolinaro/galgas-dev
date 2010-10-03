@@ -13,17 +13,23 @@ class GALGAS_function
   : public GALGAS__root
 #endif
  {
-//--------------------------------- Private data members
-  private : bool mIsValid ;
-  private : C_galgas_function_descriptor * mFunctionDescriptor ;
+//--------------------------------- Private data member
+  private : const C_galgas_function_descriptor * mFunctionDescriptor ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
-  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline C_galgas_function_descriptor * functionValue (void) const { return mFunctionDescriptor ; }
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return NULL != mFunctionDescriptor ; }
+  public : VIRTUAL_IN_DEBUG inline void drop (void) { mFunctionDescriptor = NULL ; }
+  public : VIRTUAL_IN_DEBUG inline const C_galgas_function_descriptor * functionValue (void) const { return mFunctionDescriptor ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_function (void) ;
+
+//--------------------------------- Destructor (virtual in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_function (void) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_function (const GALGAS_function & inSource) ;
+  public : GALGAS_function & operator = (const GALGAS_function & inSource) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_function (const C_galgas_function_descriptor * inValue) ;

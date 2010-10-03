@@ -1016,7 +1016,7 @@ override method @sortedListDeclarationAST enterType
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
-      | generateCppConstructorWithNativeAttributeList [] | generateSortedListComparisonMethod []
+      | generateCppConstructorWithNativeAttributeList []
     !constructorAttributeTypeList
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
@@ -1057,10 +1057,8 @@ override method @structDeclarationAST enterType
     !structTypeIndex
   ] ;
 #--- Readers
-  @readerMap readerMap [emptyMap] ;
-  enterBaseFinalReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"description" !"string" !false ;
-  enterBaseFinalReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"object" !"object" !false ;
-  enterBaseFinalReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"objectDynamicType" !"type" !false ;
+  @readerMap readerMap ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap ;
   foreach mAttributeList do
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
