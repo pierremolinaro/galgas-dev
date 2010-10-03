@@ -73,6 +73,7 @@ routine getGALGAS_2_source_file_list
   !@stringlist out_fileList
 :
   out_fileList := [@stringlist emptyList] ;
+  out_fileList += !"enumComparisonResult.h" ;
   out_fileList += !"cCollectionElement.cpp" ;
   out_fileList += !"cCollectionElement.h" ;
   out_fileList += !"capCollectionElementArray.cpp" ;
@@ -82,23 +83,20 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"C_galgas_type_descriptor.cpp" ;
   out_fileList += !"C_galgas_type_descriptor.h" ;
   out_fileList += !"GALGAS_object.cpp" ;
-  out_fileList += !"GALGAS_object.h" ;
-  out_fileList += !"GALGASap_object.cpp" ;
-  out_fileList += !"GALGASap_object.h" ;
-  out_fileList += !"cRootObjectArray.cpp" ;
-  out_fileList += !"cRootObjectArray.h" ;
-  out_fileList += !"GALGAS_struct.cpp" ;
-  out_fileList += !"GALGAS_struct.h" ;
+  out_fileList += !"cGenericAbstractEnumerator.cpp" ;
+  out_fileList += !"cGenericAbstractEnumerator.h" ;
+  out_fileList += !"capSortedListElement.cpp" ;
+  out_fileList += !"capSortedListElement.h" ;
+  out_fileList += !"capCollectionElement.cpp" ;
+  out_fileList += !"capCollectionElement.h" ;
   out_fileList += !"GALGAS_map.cpp" ;
   out_fileList += !"GALGAS_map.h" ;
-  out_fileList += !"GALGAS_listmap.cpp" ;
-  out_fileList += !"GALGAS_listmap.h" ;
-  out_fileList += !"GALGAS_enum.cpp" ;
-  out_fileList += !"GALGAS_enum.h" ;
-  out_fileList += !"GALGAS_class.cpp" ;
-  out_fileList += !"GALGAS_class.h" ;
-  out_fileList += !"GALGAS_enumerable.cpp" ;
-  out_fileList += !"GALGAS_enumerable.h" ;
+#  out_fileList += !"GALGAS_listmap.cpp" ;
+#  out_fileList += !"GALGAS_listmap.h" ;
+  out_fileList += !"cSortedListElement.cpp" ;
+  out_fileList += !"cSortedListElement.h" ;
+  out_fileList += !"GALGAS__root.cpp" ;
+  out_fileList += !"GALGAS__root.h" ;
   out_fileList += !"GALGAS_list.cpp" ;
   out_fileList += !"GALGAS_list.h" ;
   out_fileList += !"GALGAS_sortedlist.cpp" ;
@@ -119,7 +117,6 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"GALGAS_uint_36__34_.cpp" ;
   out_fileList += !"predefined-types.cpp" ;
   out_fileList += !"predefined-types.h" ;
-  out_fileList += !"predefined-ap-types.h" ;
 end routine ;
 
 #---------------------------------------------------------------------------*

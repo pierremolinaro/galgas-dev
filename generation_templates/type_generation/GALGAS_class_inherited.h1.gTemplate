@@ -1,0 +1,8 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_IDENTIFIER . " class" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%!SUPER_TYPE_IDENTIFIER% {
+

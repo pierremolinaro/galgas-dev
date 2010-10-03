@@ -63,13 +63,13 @@ function generateProcedure
   foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentConstantIn :
-      outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " " ;
+      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
     when argumentInOut :
-      outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     when argumentOut :
-      outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     when argumentIn :
-      outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " " ;
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
     end switch ;
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
@@ -145,12 +145,12 @@ function generateFunction
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
-  outGeneratedCode := "GALGASap_" . [inResultTypeName identifierRepresentation] . " " ;
+  outGeneratedCode := "GALGAS_" . [inResultTypeName identifierRepresentation] . " " ;
   outGeneratedCode .= inProcedureName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
   foreach inFormalArgumentList do
-    outGeneratedCode .= "GALGASap_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
     else
@@ -171,7 +171,7 @@ function generateFunction
   outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS)" ;
   outGeneratedCode .= " {\n" ;
 #--- Declare returned variable
-  outGeneratedCode .= "  GALGASap_" . [inResultTypeName identifierRepresentation]
+  outGeneratedCode .= "  GALGAS_" . [inResultTypeName identifierRepresentation]
                    .  " " . inResultVariableCppName . " ; // Returned variable\n" ;
 #--- Generate routine body
   outGeneratedCode .= routineBody ;
@@ -287,47 +287,45 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@bool HAS_INSERT_OR_REPLACE 
     ?@withAccessorMap WITH_ACCESSOR_MAP
   ;
+
+#---------- Class
+  template rootClassTypeHeader1 "GALGAS_class_root.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+  ;
+
+  template inheritedClassTypeHeader1 "GALGAS_class_inherited.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+  ;
+
+  template rootClassTypeSpecificImplementation "GALGAS_class_root.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
+    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
+  ;
+
+  template inheritedClassTypeSpecificImplementation "GALGAS_class_inherited.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
+    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
+  ;
 }
 
 #---------------------------------------------------------------------------*
 
 filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generation" {
 } {
-  template autoPointerClassImplementation "GALGASap_type.cpp.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@uint SUPPORTED_OPERATORS
-    ?@readerMap READER_MAP
-    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-  ;
-
-  template unifiedTypeImplementation "unified-type.cpp.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@bool IS_CONCRETE # false if abstract class
-    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
-    ?@typeKindEnum TYPE_KIND
-    ?@typedAttributeList CURRENT_TYPE_ATTRIBUTE_LIST
-    ?@constructorMap CONSTRUCTOR_MAP
-    ?@readerMap READER_MAP
-    ?@modifierMap MODIFIER_MAP
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
-    ?@classMethodMap CLASS_METHOD_MAP
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
-    ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-  ;
-
-  template predefinedTypeSpecificImplementation "predefined-type-specific.cpp.gTemplate"
-    ?@string TYPE_IDENTIFIER
-    ?@modifierMap MODIFIER_MAP
-    ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@nativeAttributeList NATIVE_ATTRIBUTE_LIST
-  ;
-
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_LISTTYPE_IDENTIFIER
@@ -342,16 +340,6 @@ filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generat
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
   ;
 
-  template classTypeSpecificImplementation "GALGAS_class.cpp.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
-    ?@typedAttributeList ALL_ATTRIBUTE_LIST
-    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
-    ?@bool IS_ABSTRACT
-    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
-  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -424,6 +412,37 @@ override reader @onceFunctionDeclarationForGeneration appendDeclaration1 -> @str
     ![mReturnType identifierRepresentation]
   ] ; 
 end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @classTypeForGeneration appendDeclaration1 ->@string outHeader :
+  if [mSuperClass isNull] then
+    outHeader := [filewrapper typeGenerationTemplate.rootClassTypeHeader1
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+    ] ;
+  else
+    outHeader := [filewrapper typeGenerationTemplate.inheritedClassTypeHeader1
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      ![mSuperClass identifierRepresentation]
+    ] ;
+  end if ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+ end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -657,16 +676,28 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@strin
 #---------------------------------------------------------------------------*
 
 override reader @classTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.classTypeSpecificImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    !if [mSuperClass isNull] then "class" else [mSuperClass identifierRepresentation] end
-    !mTypedAttributeList
-    !mAllTypedAttributeList
-    ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
-    !mIsAbstract
-    !mMethodList
-  ] ;
+  if [mSuperClass isNull] then
+    outImplementation := [filewrapper typeGenerationTemplate.rootClassTypeSpecificImplementation
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
+      !mIsAbstract
+      !mMethodList
+    ] ;
+ else
+    outImplementation := [filewrapper typeGenerationTemplate.inheritedClassTypeSpecificImplementation
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      ![mSuperClass identifierRepresentation]
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
+      !mIsAbstract
+      !mMethodList
+    ] ;
+ end if ;
  end reader ;
 
 #---------------------------------------------------------------------------*

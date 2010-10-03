@@ -7,13 +7,13 @@
 void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^
   foreach FORMAL_ARGUMENT_LIST do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+      %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
     else # argumentIn
-      %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
     end if
     %,\n%!^
   end foreach
