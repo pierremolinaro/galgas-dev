@@ -14,13 +14,13 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
   %  protected : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
     foreach label_mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+        %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
       else # argumentIn
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
       end if
       %,\n%!^ 
     end foreach
@@ -37,13 +37,13 @@ end foreach%
     %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_%![mLabelName identifierRepresentation]% (%?^
     foreach mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+        %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
       else # argumentIn
-        %GALGASap_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
       end if
       %,\n%!^
     end foreach

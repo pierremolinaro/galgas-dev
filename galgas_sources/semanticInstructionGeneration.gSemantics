@@ -317,7 +317,7 @@ override method @ifInstructionForGeneration generateInstruction
   @string cppVarName ;
   [mIFexpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppVarName] ;
 #--- If test expression is not valuated or false, execute 'else' part
-  ioGeneratedCode .= "if (isValidAndTrue (" . cppVarName . ")) {\n" ;
+  ioGeneratedCode .= "if (" . cppVarName . ".isValidAndTrue ()) {\n" ;
   generateInstructionList !m_then_instructionList !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   if [m_else_instructionList length] > 0 then
     ioGeneratedCode .= "}else{\n" ;
@@ -343,7 +343,7 @@ override method @errorInstructionForGeneration generateInstruction
 #--- Use location reader ?
   if mUseLocationReader then
     const @string locationVar := "location_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGAS_location " . locationVar . " (" . receiverCppVarName . ".readerCall_location (HERE)) ; // Implicit use of 'location' reader\n" ;
+    ioGeneratedCode .= "GALGAS_location " . locationVar . " (" . receiverCppVarName . ".reader_location (HERE)) ; // Implicit use of 'location' reader\n" ;
     receiverCppVarName := locationVar ;
   end if ;
 #--- Generate error instruction
@@ -373,7 +373,7 @@ override method @warningInstructionForGeneration generateInstruction
 #--- Use location reader ?
   if mUseLocationReader then
     const @string locationVar := "location_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-    ioGeneratedCode .= "GALGAS_location " . locationVar . " (" . receiverCppVarName . ".readerCall_location (HERE)) ; // Implicit use of 'location' reader\n" ;
+    ioGeneratedCode .= "GALGAS_location " . locationVar . " (" . receiverCppVarName . ".reader_location (HERE)) ; // Implicit use of 'location' reader\n" ;
     receiverCppVarName := locationVar ;
   end if ;
 #--- Generate warning instruction
@@ -402,7 +402,7 @@ override method @methodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= receiverVar . ".instanceMethodCall_" . [mMethodName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= receiverVar . ".method_" . [mMethodName identifierRepresentation] . " (" ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -472,7 +472,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
   end foreach ;
 #--- Generate method call
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
-  ioGeneratedCode .= receiverCppName . ".modifierCall_" . [mModifierName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= receiverCppName . ".modifier_" . [mModifierName identifierRepresentation] . " (" ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -544,12 +544,12 @@ override method @structuredCastInstructionForGeneration generateInstruction
   [!?ioGeneratedCode incIndentation !2] ;
   foreach mCastBranchList do
     if mUseKindOfClass then
-      ioGeneratedCode .= "if (NULL != dynamic_cast <GALGAS_" . [mType identifierRepresentation] . " *> (" . castCppVarName . ".ptr (HERE))) {\n" ;
+      ioGeneratedCode .= "if (NULL != dynamic_cast <const cPtr_" . [mType identifierRepresentation] . " *> (" . castCppVarName . ".ptr ())) {\n" ;
     else
-      ioGeneratedCode .= "if (" . castCppVarName . ".ptr (HERE)->typeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
+      ioGeneratedCode .= "if (" . castCppVarName . ".typeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
     end if ;
     if [mCastedVarCppName length] > 0 then
-      ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " = " . castCppVarName . " ;\n" ;
+      ioGeneratedCode .= "  GALGAS_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " (" . castCppVarName . ") ;\n" ;
     end if ;
     generateInstructionList
       !mInstructionList
@@ -676,7 +676,7 @@ override method @loopInstructionForGeneration generateInstruction
   ioGeneratedCode .= "if (" . variantCppVarName . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   const @string variantVar := "variant_" . [[mInstructionLocation locationIndex] string] ;
-  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantCppVarName . ".ptr (HERE)->uintValue () ;\n" ;
+  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantCppVarName . ".uintValue () ;\n" ;
   const @string loopVar := "loop_" . [[mInstructionLocation locationIndex] string] ;
   ioGeneratedCode .= "bool " . loopVar . " = true ;\n"
                   . "while (" . loopVar . ") {\n" ;
@@ -686,7 +686,7 @@ override method @loopInstructionForGeneration generateInstruction
   [mLoopExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?loopExpressionVar] ;
   ioGeneratedCode .= loopVar . " = " . loopExpressionVar . ".isValid () ;\n"
                    . "if (" . loopVar . ") {\n"
-                   . "  " . loopVar . " = " . loopExpressionVar . ".ptr (HERE)->boolValue () ;\n"
+                   . "  " . loopVar . " = " . loopExpressionVar . ".boolValue () ;\n"
                    . "}\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= "if (" . loopVar . " && (0 == " . variantVar . ")) {\n"
@@ -753,7 +753,7 @@ override method @foreachInstructionForGeneration generateInstruction
     enumerationVarCppNameList += !enumerationVar ;
   end foreach ;
   foreach mEnumeratedObjectList, enumerationVarCppNameList do
-    ioGeneratedCode .= "GALGAS_" . [[mEnumeratedExpression mType] identifierRepresentation] . "::cEnumerator " . mEnumeratorCppName . " (" . mValue . ", "
+    ioGeneratedCode .= "cEnumerator_" . [[mEnumeratedExpression mType] identifierRepresentation] . " " . mEnumeratorCppName . " (" . mValue . ", "
                     . [mIsAscending cString] . ") ;\n" ;
   end foreach ;
 #--- Analyse 'while' expression
@@ -771,7 +771,7 @@ override method @foreachInstructionForGeneration generateInstruction
     else
       @string whileVar ;
       [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
-      ioGeneratedCode .= "bool " . boolVarCppName . " = " . whileVar . ".isValid () ? " . whileVar . ".ptr (HERE)->boolValue () : false ;\n" ;
+      ioGeneratedCode .= "bool " . boolVarCppName . " = " . whileVar . ".isValid () ? " . whileVar . ".boolValue () : false ;\n" ;
     end if ;
     ioGeneratedCode .= "if (" ;
     foreach mEnumeratedObjectList do
@@ -791,9 +791,6 @@ override method @foreachInstructionForGeneration generateInstruction
       between ioGeneratedCode .= " && " ;
     end foreach ;
     ioGeneratedCode .= ") {\n" ;
-    foreach mEnumeratedObjectList
-      do ioGeneratedCode .= "  " . mEnumeratorCppName . ".updateAttributeProxies () ;\n" ;
-    end foreach ;
   #--- Generate 'do' instruction
     generateInstructionList
       !mDoInstructionList
@@ -805,14 +802,14 @@ override method @foreachInstructionForGeneration generateInstruction
     if not whileExpressionIsAllwaysTrue then
       @string whileVar ;
       [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
-      ioGeneratedCode .= boolVarCppName . " = " . whileVar . ".isValid () ? " . whileVar . ".ptr (HERE)->boolValue () : false ;\n" ;
+      ioGeneratedCode .= boolVarCppName . " = " . whileVar . ".isValid () ? " . whileVar . ".boolValue () : false ;\n" ;
     end if ;
   #--- Generate 'between' instruction
     if [mBetweenInstructionList length] > 0 then
       [!?ioGeneratedCode incIndentation !2] ;
       ioGeneratedCode .= "if (" ;
       foreach mEnumeratedObjectList do
-        ioGeneratedCode .= mEnumeratorCppName . ".hasNext () && " ;
+        ioGeneratedCode .= mEnumeratorCppName . ".hasNextObject () && " ;
       end foreach ;
       ioGeneratedCode .= boolVarCppName . ") {\n" ;
       generateInstructionList
@@ -826,7 +823,7 @@ override method @foreachInstructionForGeneration generateInstruction
     end if ;
   #--- End of foreach instruction
     foreach mEnumeratedObjectList do
-      ioGeneratedCode .= "  " . mEnumeratorCppName . ".next() ;\n" ;
+      ioGeneratedCode .= "  " . mEnumeratorCppName . ".gotoNextObject () ;\n" ;
     end foreach ;
     if mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
@@ -853,9 +850,6 @@ override method @foreachInstructionForGeneration generateInstruction
       between ioGeneratedCode .= " && " ;
     end foreach ;
     ioGeneratedCode .= ") {\n" ;
-    foreach mEnumeratedObjectList
-      do ioGeneratedCode .= "  " . mEnumeratorCppName . ".updateAttributeProxies () ;\n" ;
-    end foreach ;
   #--- Generate 'do' instruction
     generateInstructionList
       !mDoInstructionList
@@ -868,7 +862,7 @@ override method @foreachInstructionForGeneration generateInstruction
       [!?ioGeneratedCode incIndentation !2] ;
       ioGeneratedCode .= "if (" ;
       foreach mEnumeratedObjectList
-        do ioGeneratedCode .= mEnumeratorCppName . ".hasNext ()" ;
+        do ioGeneratedCode .= mEnumeratorCppName . ".hasNextObject ()" ;
         between ioGeneratedCode .= " && " ;
       end foreach ;
       ioGeneratedCode .= ") {\n" ;
@@ -883,7 +877,7 @@ override method @foreachInstructionForGeneration generateInstruction
     end if ;
   #--- End of foreach instruction
     foreach mEnumeratedObjectList do
-      ioGeneratedCode .= "  " . mEnumeratorCppName . ".next() ;\n" ;
+      ioGeneratedCode .= "  " . mEnumeratorCppName . ".gotoNextObject () ;\n" ;
     end foreach ;
     if mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
@@ -929,7 +923,7 @@ override method @switchInstructionForGeneration generateInstruction
   [mSwitchExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?switchVar] ;
   ioGeneratedCode .= "if (" . switchVar . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
-  ioGeneratedCode .= "switch (" . switchVar . ".ptr (HERE)->enumValue ()) {\n" ;
+  ioGeneratedCode .= "switch (" . switchVar . ".enumValue ()) {\n" ;
   foreach mBranches do
     foreach mSwitchConstantList do
       ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [mValue identifierRepresentation] . ": " ;
@@ -973,10 +967,10 @@ override method @matchInstructionForGeneration generateInstruction
     ioGeneratedCode .= "if (" ;
     foreach mMatchListForGeneration, receiverList do
       if mIsType then
-        ioGeneratedCode .= "(NULL != dynamic_cast <GALGAS_" . [mTypeNameOrEnumerationConstantName identifierRepresentation]
-                        . " *> (" . mValue . ".ptr (HERE)))" ;
+        ioGeneratedCode .= "(NULL != dynamic_cast <const cPtr_" . [mTypeNameOrEnumerationConstantName identifierRepresentation]
+                        . " *> (" . mValue . ".ptr ()))" ;
       else
-        ioGeneratedCode .= "(" . mValue . ".ptr (HERE)->enumValue () == GALGAS_"
+        ioGeneratedCode .= "(" . mValue . ".enumValue () == GALGAS_"
                         . [mLocalConstantName identifierRepresentation]
                         . "::kEnum_" . [mTypeNameOrEnumerationConstantName identifierRepresentation] . ")" ;
       end if ;

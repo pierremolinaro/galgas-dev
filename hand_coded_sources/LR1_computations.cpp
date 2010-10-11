@@ -1306,10 +1306,16 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
       GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal2._mFormalParametersList (HERE), true) ;
       PMSInt16 numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
+        switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+        case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
+          generatedZone3 << "const " ;
+          break ;
+        default : break ;
+        }
         generatedZone3 << "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
         switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
-          generatedZone3 << " " ;
+          generatedZone3 << " & " ;
           break ;
         case GGS_formalArgumentPassingModeAST::enum_argumentIn :
           generatedZone3 << " " ;
@@ -1364,11 +1370,17 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
         PMSInt16 numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          generatedZone3 << ",\n                                "
-                            "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
+          generatedZone3 << ",\n                                " ;
           switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
-            generatedZone3 << " " ;
+            generatedZone3 << "const " ;
+            break ;
+          default : break ;
+          }
+          generatedZone3 << "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
+          switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+          case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
+            generatedZone3 << " & " ;
             break ;
           case GGS_formalArgumentPassingModeAST::enum_argumentIn :
             generatedZone3 << " " ;
@@ -1386,8 +1398,8 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  if (inFilePath.isValid ()) {\n"
-                          "    GALGAS_string filePathAsString = inFilePath.readerCall_string (HERE) ;\n"
-                          "    C_String filePath = filePathAsString.ptr (HERE)->stringValue () ;\n"
+                          "    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;\n"
+                          "    C_String filePath = filePathAsString.stringValue () ;\n"
                           "    if (! filePath.isAbsolutePath ()) {\n"
                           "      filePath = inCompiler->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                           "    }\n"
@@ -1418,7 +1430,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "        }else{\n"
                           "          C_String message ;\n"
                           "          message << \"the '\" << filePath << \"' file exits, but cannot be read\" ;\n"
-                          "          GALGAS_location errorLocation (inFilePath.readerCall_location (THERE)) ;\n"
+                          "          const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
                           "          inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1435,7 +1447,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "    }else{\n"
                           "      C_String message ;\n"
                           "      message << \"the '\" << filePath << \"' file does not exist\" ;\n"
-                          "      GALGAS_location errorLocation (inFilePath.readerCall_location (THERE)) ;\n"
+                          "      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
                           "      inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
          parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1458,11 +1470,17 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          generatedZone3 << ",\n                                "
-                           "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
+          generatedZone3 << ",\n                                " ;
           switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
-            generatedZone3 << " " ;
+            generatedZone3 << "const " ;
+            break ;
+          default : break ;
+          }
+          generatedZone3 << "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
+          switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+          case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
+            generatedZone3 << " & " ;
             break ;
           case GGS_formalArgumentPassingModeAST::enum_argumentIn :
             generatedZone3 << " " ;
@@ -1481,7 +1499,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
-                       << " (inCompiler, inCompiler->ioParametersPtr (), inSourceString.ptr (HERE)->stringValue (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+                       << " (inCompiler, inCompiler->ioParametersPtr (), inSourceString.stringValue (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                   gActionTableIndex, gSuccessorTable,\n"

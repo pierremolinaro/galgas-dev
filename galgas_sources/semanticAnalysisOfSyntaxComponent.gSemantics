@@ -799,12 +799,12 @@ end method ;
 #  ioGeneratedCode .= "if (! " . executeParseVar . ") {\n" ;
 #  [!?ioGeneratedCode incIndentation !2] ;
 #  const @string variantVar := "variant_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-#  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantVarCppName . ".ptr (HERE)->uintValue () ;\n" ;
+#  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantVarCppName . ".uintValue () ;\n" ;
 #  ioGeneratedCode .= variantVarCppName . ".drop () ; // Release 'parse loop' variant\n" ;
 ##--- Condition (at the beginning of the loop)
 #  @string whileVarCppName ;
 #  [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName] ;
-#  ioGeneratedCode .= executeParseVar . " = (! " . whileVarCppName . ".isValid ()) || ! " . whileVarCppName . ".ptr (HERE)->boolValue () ;\n" ;
+#  ioGeneratedCode .= executeParseVar . " = (! " . whileVarCppName . ".isValid ()) || ! " . whileVarCppName . ".boolValue () ;\n" ;
 #  ioGeneratedCode .= whileVarCppName . ".drop () ; // Release 'parse loop' first evaluation of 'while' expression\n" ;
 #  ioGeneratedCode .= "if (! " . executeParseVar . ") {\n" ;
 #  [!?ioGeneratedCode incIndentation !2] ;
@@ -828,7 +828,7 @@ end method ;
 #  [!?ioGeneratedCode incIndentation !2] ;
 #  ioGeneratedCode .= compilerCppName [] . "->setParsingContext (parsingContext) ;\n" ;
 #  [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName] ;
-#  ioGeneratedCode .= loopVar . " = " . whileVarCppName . ".isValid () && " . whileVarCppName . ".ptr (HERE)->boolValue () ;\n" ;
+#  ioGeneratedCode .= loopVar . " = " . whileVarCppName . ".isValid () && " . whileVarCppName . ".boolValue () ;\n" ;
 #  ioGeneratedCode .= whileVarCppName . ".drop () ; // Release 'parse loop' evaluation of 'while' expression\n" ;
 #  ioGeneratedCode .= executeParseVar . " = true ;\n" ;
 #  [!?ioGeneratedCode decIndentation !2] ;
@@ -867,7 +867,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode .= "if (" . variantVarCppName . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   const @string variantVar := "variant_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantVarCppName . ".ptr (HERE)->uintValue () ;\n" ;
+  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantVarCppName . ".uintValue () ;\n" ;
 #--- loop
   const @string loopVar := "loop_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "bool " . loopVar . " = true ;\n" ;
@@ -876,7 +876,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode .= loopVar . " = false ;\n" ;
   @string whileVarCppName ;
   [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName] ;
-  ioGeneratedCode .= "if (isValidAndTrue (" . whileVarCppName . ")) {\n" ;
+  ioGeneratedCode .= "if (" . whileVarCppName . ".isValidAndTrue ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   ioGeneratedCode .= loopVar . " = true ;\n" ;
   ioGeneratedCode .= variantVar . " -- ; // Decrement variant\n" ;
@@ -989,7 +989,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//--------- @parseWhenInstructionForGeneration\n" ;
   @string sourceVar ;
   [mWhenExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
-  ioGeneratedCode .= "if (isValidAndTrue (" . sourceVar . ")) {\n" ;
+  ioGeneratedCode .= "if (" . sourceVar . ".isValidAndTrue ()) {\n" ;
   generateInstructionList
     !mInstructionList
     !?ioTemporaryVariableIndex

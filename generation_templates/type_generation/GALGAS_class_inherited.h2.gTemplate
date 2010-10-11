@@ -1,0 +1,68 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Pointer class for @" . TYPE_NAME . " class" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class cPtr_%!TYPE_IDENTIFIER% : public cPtr_%!SUPER_TYPE_IDENTIFIER% {
+//--- Attributes
+%
+  foreach CURRENT_ATTRIBUTE_LIST do
+    %  protected : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  end foreach
+%
+//--- Constructor
+  public : cPtr_%!TYPE_IDENTIFIER% (%?^
+  foreach ALL_ATTRIBUTE_LIST
+    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+  if [ALL_ATTRIBUTE_LIST length] > 0 then
+    %\n%!^%COMMA_LOCATION_ARGS%
+  else
+    %LOCATION_ARGS%
+  end if
+%) ;
+%
+foreach ABSTRACT_METHOD_LIST do
+  %//--- Abstract method %![mMethodName string]%\n%
+  %  private : virtual void method_%![mMethodName identifierRepresentation]% (%?^
+  foreach mSignature do
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% %
+    end if
+    !mFormalArgumentCppName%,\n%!^
+  end foreach
+  %C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) const = 0 ;\n\n%
+end foreach
+
+foreach CONCRETE_METHOD_LIST do
+  %//--- Concrete method %![mMethodName string]%\n%
+  %  private : virtual void method_%![mMethodName identifierRepresentation]% (%?^
+  foreach mSignature do
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% %
+    end if
+    !mFormalArgumentCppName%,\n%!^
+  end foreach
+  %C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) const ;\n\n%
+end foreach
+%
+//--- Friend class
+  friend class GALGAS_%!TYPE_IDENTIFIER% ;
+} ;
+

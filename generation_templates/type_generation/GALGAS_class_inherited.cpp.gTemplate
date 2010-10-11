@@ -1,26 +1,42 @@
-//---------------------------------------------------------------------------*
-
 %if [CURRENT_ATTRIBUTE_LIST length] == 0 then
-  %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand1,\n%
-  %                        %!^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand2) {\n%
-  %  return (inOperand1.isValid () && inOperand2.isValid ()) ? kOperandEqual : kOperandNotValid ;\n%
+  %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
+  %  return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;\n%
   %}\n\n%
 else
-  %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand1,\n%
-  %                        %!^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand2) {\n%
-  %  enumComparisonResult result = GALGAS_%!SUPER_TYPE_IDENTIFIER%::objectCompare (inOperand1, inOperand2) ;\n%
-  foreach CURRENT_ATTRIBUTE_LIST do
-    %  if (kOperandEqual == result) {\n%
-    %    result = GALGAS_%![mAttributeTypeIndex identifierRepresentation]%::objectCompare (inOperand1.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%, inOperand2.ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
-    %  }\n%
-  end foreach
+  %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
+  %  enumComparisonResult result = inherited::objectCompare (inOperand) ;\n%
+  if [CURRENT_ATTRIBUTE_LIST length] > 0 then
+    %  const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
+    %  macroNullOrValidObject (p, const cPtr_%!TYPE_IDENTIFIER% *) ;\n%
+    %  const cPtr_%!TYPE_IDENTIFIER% * q = (const cPtr_%!TYPE_IDENTIFIER% *) inOperand.mObjectPtr ;\n%
+    %  macroNullOrValidObject (q, const cPtr_%!TYPE_IDENTIFIER% *) ;\n%
+    foreach CURRENT_ATTRIBUTE_LIST do
+      %  if (kOperandEqual == result) {\n%
+      %    result = p->mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (q->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+      %  }\n%
+    end foreach
+  end if
   %  return result ;\n%
   %}\n\n%
 end if
 %
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+GALGAS_%!SUPER_TYPE_IDENTIFIER% () {
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!BASE_CLASS_IDENTIFIER% & inSource) :
+GALGAS_%!SUPER_TYPE_IDENTIFIER% (inSource) {
+  macroNullOrValidObject (mObjectPtr, cPtr_%!TYPE_IDENTIFIER%) ;
+}
+
+
+//---------------------------------------------------------------------------*
+
+/*GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
   foreach ALL_ATTRIBUTE_LIST
     do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & constinAttribute_%![mAttributeName identifierRepresentation]
     between %,\n%!^
@@ -46,14 +62,14 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
     %mAttribute_%![mAttributeName identifierRepresentation]% (constinAttribute_%![mAttributeName identifierRepresentation]%)%
   end foreach
 % {
-}
+}*/
 
 %
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (LOCATION_ARGS) {\n%
-  %  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;\n%
-  %  macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;\n%
+  %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
+  %  macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (THERE)) ;\n%
   %  return result ;\n%
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
@@ -69,7 +85,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
   foreach ALL_ATTRIBUTE_LIST
-    do %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   if [ALL_ATTRIBUTE_LIST length] == 0 then
@@ -78,14 +94,14 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
     %\n%!^%COMMA_LOCATION_ARGS%
   end if
   %) {
-  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
+  GALGAS_%!TYPE_IDENTIFIER% result ;
   if (%
     foreach ALL_ATTRIBUTE_LIST
       do %inAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
       between % && %
     end foreach
   %) {
-    macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (%
+    macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (%
     foreach ALL_ATTRIBUTE_LIST
       do %inAttribute_%![mAttributeName identifierRepresentation]
       between %, %
@@ -110,20 +126,24 @@ end if
 
 %//---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
-}\n\n%
+/* GALGAS_%!TYPE_IDENTIFIER%::~GALGAS_%!TYPE_IDENTIFIER% (void) {
+} */\n\n%
 
 if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {\n%
-  %  if (isValid () && (ptr (HERE)->retainCount () > 1)) {\n%
-  %    GALGAS_%!TYPE_IDENTIFIER% p = constructor_new (%
+  %  if (isValid () && (mObjectPtr->retainCount () > 1)) {\n%
+  %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
+  %    macroValidObject (p, const cPtr_%!TYPE_IDENTIFIER% *) ;\n%
+  %    cPtr_%!TYPE_IDENTIFIER% * r = NULL ;\n%
+  %    macroMyNew (r, cPtr_%!TYPE_IDENTIFIER% (%
   foreach ALL_ATTRIBUTE_LIST
-    do %ptr (HERE)->mAttribute_%![mAttributeName identifierRepresentation]
+    do %p->mAttribute_%![mAttributeName identifierRepresentation]
     between %, %
   end foreach
-  % COMMA_THERE) ;\n%
-  %    *this = p ;\n%
+  % COMMA_THERE)) ;\n%
+  %    macroAssignObject (mObjectPtr, r) ;\n%
+  %    macroReleaseObject (r) ;\n%
   %  }\n%
   %}\n\n%
 end if
@@ -131,10 +151,10 @@ end if
 foreach CONCRETE_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
   !generateProcedure [
-    !"GALGAS_" . TYPE_IDENTIFIER . "::method_" . [mMethodName identifierRepresentation]
+    !"cPtr_" . TYPE_IDENTIFIER . "::method_" . [mMethodName identifierRepresentation]
     !mSignature
     !mInstructionList
-    !false # Method is not const
+    !true # Method is const
     !"C_Compiler"
     !true # Generate location Argument
     !false # Generate 'resetTemplateString'
@@ -144,16 +164,58 @@ end foreach
 foreach CURRENT_ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% result ;\n%
+  %  if (NULL != mObjectPtr) {\n%
+  %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
+  %    macroValidObject (p, const cPtr_%!TYPE_IDENTIFIER% *) ;\n%
+  %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  }\n%
+  %  return result ;\n%
   %}\n\n%
 end foreach
 
-if not IS_ABSTRACT then
-  foreach ALL_ATTRIBUTE_LIST do
-    %//---------------------------------------------------------------------------*\n\n%
-    %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inValue\n%
-                          !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-    %  mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
-    %}\n\n%
+foreach CURRENT_ATTRIBUTE_LIST do
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inValue\n%
+                        !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
+  %  if (NULL != mObjectPtr) {\n%
+  %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
+  %    macroValidObject (p, cPtr_%!TYPE_IDENTIFIER% *) ;\n%
+  %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
+  %  }\n%
+  %}\n\n%
+end foreach
+
+%//---------------------------------------------------------------------------*
+//%!["Pointer class for @" . TYPE_NAME . " class" stringByLeftAndRightPadding !75 !' ']%*
+//---------------------------------------------------------------------------*
+
+cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
+  foreach ALL_ATTRIBUTE_LIST
+    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
   end foreach
-end if
+  if [ALL_ATTRIBUTE_LIST length] > 0 then
+    %\n%!^%COMMA_LOCATION_ARGS%
+  else
+    %LOCATION_ARGS%
+  end if
+%) :
+cPtr_%!SUPER_TYPE_IDENTIFIER% (%
+  foreach INHERITED_ATTRIBUTE_LIST
+    do %in_%![mAttributeName identifierRepresentation]
+    between %, %
+  end foreach
+  if [INHERITED_ATTRIBUTE_LIST length] > 0 then
+    % COMMA_THERE%
+  else
+    %THERE%
+  end if
+%)%
+  foreach CURRENT_ATTRIBUTE_LIST
+    do %,\n% %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
+  end foreach
+% {
+}
+
+
