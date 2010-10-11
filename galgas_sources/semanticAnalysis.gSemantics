@@ -586,14 +586,22 @@ override method @classDeclarationAST performSemanticAnalysis
   @unifiedTypeMapProxy superClassProxy ;
   @typedAttributeList allAttributeList ;
   @instanceMethodMap inheritedInstanceMethodMap ;
+  @unifiedTypeMapProxy baseClassProxy ;
   if [mSuperClassName string] == "" then
     superClassProxy := [@unifiedTypeMapProxy null] ;
     allAttributeList := [@typedAttributeList emptyList] ;
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
+    baseClassProxy := [@unifiedTypeMapProxy null] ;
   else
     superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
     allAttributeList := [superClassProxy mInheritedTypedAttributeList] ;
     inheritedInstanceMethodMap := [superClassProxy mInstanceMethodMap] ;
+    baseClassProxy := superClassProxy ;
+    loop
+      [inSemanticContext->mTypeMap count] + 1 :
+    while not [[baseClassProxy mSuperType] isNull] do
+      baseClassProxy := [baseClassProxy mSuperType] ;
+    end loop ;
   end if ;
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -712,6 +720,7 @@ override method @classDeclarationAST performSemanticAnalysis
     !mIsAbstract
     !mClassTypeName
     !superClassProxy
+    !baseClassProxy
     !allAttributeList
     !typedAttributeList
     !abstractMethodList

@@ -63,7 +63,7 @@ function generateProcedure
   foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentConstantIn :
-      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     when argumentInOut :
       outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     when argumentOut :
@@ -150,7 +150,7 @@ function generateFunction
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
   foreach inFormalArgumentList do
-    outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
     else
@@ -292,12 +292,37 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template rootClassTypeHeader1 "GALGAS_class_root.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+  ;
+
+  template rootClassTypeHeader2 "GALGAS_class_root.h2.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
+    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
   ;
 
   template inheritedClassTypeHeader1 "GALGAS_class_inherited.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
+    ?@string BASE_CLASS_IDENTIFIER
+    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+  ;
+
+  template inheritedClassTypeHeader2 "GALGAS_class_inherited.h2.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@string BASE_CLASS_IDENTIFIER
+    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
+    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+    ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
+    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
   ;
 
   template rootClassTypeSpecificImplementation "GALGAS_class_root.cpp.gTemplate"
@@ -307,6 +332,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
+    ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
     ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
   ;
 
@@ -314,10 +340,12 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
+    ?@string BASE_CLASS_IDENTIFIER
     ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
+    ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
     ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
   ;
 }
@@ -420,12 +448,17 @@ override reader @classTypeForGeneration appendDeclaration1 ->@string outHeader :
     outHeader := [filewrapper typeGenerationTemplate.rootClassTypeHeader1
       ![mTypeIndex key]
       ![mTypeIndex identifierRepresentation]
+      !mAllTypedAttributeList
+      !mIsAbstract
     ] ;
   else
     outHeader := [filewrapper typeGenerationTemplate.inheritedClassTypeHeader1
       ![mTypeIndex key]
       ![mTypeIndex identifierRepresentation]
       ![mSuperClass identifierRepresentation]
+      ![mBaseClass identifierRepresentation]
+      !mAllTypedAttributeList
+      !mIsAbstract
     ] ;
   end if ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
@@ -585,6 +618,32 @@ override reader @mapTypeForGeneration appendDeclaration2 ->@string outHeader :
  end reader ;
 
 #---------------------------------------------------------------------------*
+
+override reader @classTypeForGeneration appendDeclaration2 ->@string outHeader :
+  if [mSuperClass isNull] then
+    outHeader := [filewrapper typeGenerationTemplate.rootClassTypeHeader2
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      !mAllTypedAttributeList
+      !mAbstractMethodList
+      !mMethodList
+    ] ;
+  else
+    outHeader := [filewrapper typeGenerationTemplate.inheritedClassTypeHeader2
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      ![mSuperClass identifierRepresentation]
+      ![mBaseClass identifierRepresentation]
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+      !mAbstractMethodList
+      !mMethodList
+    ] ;
+  end if ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    G E N E R I C    T Y P E    I M P L E M E N T A T I O N    *
 #                                                                           *
@@ -684,21 +743,24 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
       !mAllTypedAttributeList
       ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
       !mIsAbstract
+      !mAbstractMethodList
       !mMethodList
     ] ;
- else
+  else
     outImplementation := [filewrapper typeGenerationTemplate.inheritedClassTypeSpecificImplementation
       ![mTypeIndex key]
       ![mTypeIndex identifierRepresentation]
       ![mSuperClass identifierRepresentation]
+      ![mBaseClass identifierRepresentation]
       !mTypedAttributeList
       !mAllTypedAttributeList
       ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
       !mIsAbstract
+      !mAbstractMethodList
       !mMethodList
     ] ;
- end if ;
- end reader ;
+  end if ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 

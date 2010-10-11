@@ -16,6 +16,7 @@ class GALGAS_%!TYPE_IDENTIFIER%
 
 //--------------------------------- Attribute
   protected : cPtr_%!TYPE_IDENTIFIER% * mObjectPtr ;
+  public : inline const cPtr_%!TYPE_IDENTIFIER% * ptr (void) const { return mObjectPtr ; }
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return NULL != mObjectPtr ; }
@@ -31,3 +32,7 @@ class GALGAS_%!TYPE_IDENTIFIER%
   public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
   public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
 
+%if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
+  %//--------------------------------- Insulate\n%
+  %  private : virtual void insulate (LOCATION_ARGS) ;\n\n%
+end if

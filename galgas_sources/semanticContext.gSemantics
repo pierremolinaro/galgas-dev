@@ -1149,14 +1149,14 @@ override method @classDeclarationAST enterType
     end if ;
   #--- Mark all modifiers as inherited
     modifierMap := [@modifierMap emptyMap] ;
-#    foreach inheritedModifierMap do
-#      [!?modifierMap insertKey
-#        !lkey
-#        !mParameterList
-#        !mHasCompilerArgument
-#        ![@methodQualifier isInherited]
-#      ] ; 
-#    end foreach ;
+    foreach inheritedModifierMap do
+      [!?modifierMap insertKey
+        !lkey
+        !mParameterList
+        !mHasCompilerArgument
+        ![@methodQualifier isInherited]
+      ] ; 
+    end foreach ;
   #--- Mark all readers as inherited
     readerMap := [@readerMap emptyMap] ;
     foreach inheritedReaderMap do
@@ -1286,17 +1286,15 @@ override method @classDeclarationAST enterType
       ![@methodQualifier isBasic]
     ] ;
   end foreach ;
-  #--- set...attribute modifier
-  if not mIsAbstract then
-    foreach allTypedAttributeList do
-      [!?modifierMap insertKey
-        ![@lstring new !"set". [mAttributeName stringByCapitalizingFirstCharacter] !here]
-        ![@formalParameterSignature listWithValue !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
-        !false # No compiler argument
-        ![@methodQualifier isBasic]
-      ] ; 
-    end foreach ;
-  end if ;
+#--- set...attribute modifier
+  foreach currentClassTypedAttributeList do
+    [!?modifierMap insertKey
+      ![@lstring new !"set". [mAttributeName stringByCapitalizingFirstCharacter] !here]
+      ![@formalParameterSignature listWithValue !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      !false # No compiler argument
+      ![@methodQualifier isBasicFinal]
+    ] ; 
+  end foreach ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mClassTypeName

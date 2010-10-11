@@ -1056,7 +1056,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
        [!?ioVariableMap insertUsedLocalConstant
          ![@lstring new ![mPrefix string] . mEnumerationName !mEndOfEnumerationExpression]
          !mEnumeratedType
-         !enumeratorCppName .".attribute_" . [mEnumerationName identifierRepresentation]
+         !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " ()"
        ] ;
       end foreach ;
     elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
@@ -1082,7 +1082,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
           if foundType != mEnumeratedType then
             error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
           end if ;
-          [!?ioVariableMap insertUsedLocalConstant !mConstantName !mEnumeratedType !enumeratorCppName .".attribute_" . [mEnumerationName identifierRepresentation]] ;
+          [!?ioVariableMap insertUsedLocalConstant !mConstantName !mEnumeratedType !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " ()"] ;
         end if ;
       end foreach ;
     end if ;
