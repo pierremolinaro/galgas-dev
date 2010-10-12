@@ -17,6 +17,7 @@ class GALGAS_%!TYPE_IDENTIFIER%
 //--------------------------------- Attribute
   protected : cPtr_%!TYPE_IDENTIFIER% * mObjectPtr ;
   public : inline const cPtr_%!TYPE_IDENTIFIER% * ptr (void) const { return mObjectPtr ; }
+  public : inline cPtr_%!TYPE_IDENTIFIER% * ptr (void) { return mObjectPtr ; }
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return NULL != mObjectPtr ; }
@@ -25,12 +26,18 @@ class GALGAS_%!TYPE_IDENTIFIER%
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
+//--------------------------------- Constructor from pointer
+  public : GALGAS_%!TYPE_IDENTIFIER% (cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
+
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Handle copy
   public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
   public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+
+//--------------------------------- Reader description
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_description (UNUSED_LOCATION_ARGS) const ;
 
 %if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
   %//--------------------------------- Insulate\n%

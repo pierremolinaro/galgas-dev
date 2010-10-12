@@ -1,8 +1,19 @@
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  : public GALGAS__root
+  GALGAS__root (),
 #endif
 mObjectPtr (NULL) {
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  GALGAS__root (),
+#endif
+mObjectPtr (NULL) {
+  macroAssignObject (mObjectPtr, inSourcePtr) ;
+  macroNullOrValidObject (mObjectPtr, cPtr_%!TYPE_IDENTIFIER%) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -21,7 +32,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  : public GALGAS__root
+  GALGAS__root (),
 #endif
 mObjectPtr (NULL) {
   macroAssignObject (mObjectPtr, inSource.mObjectPtr) ;
@@ -32,6 +43,33 @@ mObjectPtr (NULL) {
 GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) {
   macroAssignObject (mObjectPtr, inSource.mObjectPtr) ;
   return * this ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_%!TYPE_IDENTIFIER%::reader_description (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s ;
+    description (s, 0) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+                           %!^%const PMSInt32 inIndentation) const {
+  ioString << "<@"
+           << typeDescriptor ()->mGalgasTypeName
+           << ":" ;
+  if (isValid ()) {
+    mObjectPtr->description (ioString, inIndentation) ;
+  }else{
+    ioString << "not built" ;
+  }
+  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -58,13 +96,6 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
   %  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;\n%
   %  macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;\n%
   %  return result ;\n%
-  %}\n\n%
-  %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
-  %                              %!^%const PMSInt32 /* inIndentation */) const {\n%
-  %  ioString << "<class @"\n%
-  %           << typeDescriptor ()->mGalgasTypeName\n%
-  %           << ">" ;\n%
   %}\n\n%
 end if
 
@@ -96,18 +127,6 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
     % COMMA_THERE)) ;\n%
   %  }\n%
   %  return result ;\n%
-  %}\n\n%
-  %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
-  %                              %!^%const PMSInt32 /* inIndentation */) const {\n%
-  %  ioString << "<class @"\n%
-  %           << typeDescriptor ()->mGalgasTypeName\n%
-  %           << ":" ;\n%
-  foreach CURRENT_ATTRIBUTE_LIST
-    do %//  mAttribute_%![mAttributeName identifierRepresentation]%->description (ioString, inIndentation + 1) ;\n%
-    between %  ioString << ", " ;\n%
-  end foreach
-  %  ioString << ">" ;\n%
   %}\n\n%
 end if
 
@@ -178,7 +197,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
     %LOCATION_ARGS%
   end if
 %) :
-C_SharedObject (THERE)%
+cPtr_class (THERE)%
   foreach ALL_ATTRIBUTE_LIST
     do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
   end foreach

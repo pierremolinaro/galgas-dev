@@ -302,6 +302,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
     ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
+    ?@bool IS_ABSTRACT
   ;
 
   template inheritedClassTypeHeader1 "GALGAS_class_inherited.h1.gTemplate"
@@ -627,6 +628,7 @@ override reader @classTypeForGeneration appendDeclaration2 ->@string outHeader :
       !mAllTypedAttributeList
       !mAbstractMethodList
       !mMethodList
+      !mIsAbstract
     ] ;
   else
     outHeader := [filewrapper typeGenerationTemplate.inheritedClassTypeHeader2
