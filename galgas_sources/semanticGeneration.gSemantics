@@ -335,6 +335,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@bool IS_ABSTRACT
     ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
     ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
   ;
 
   template inheritedClassTypeSpecificImplementation "GALGAS_class_inherited.cpp.gTemplate"
@@ -348,6 +349,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@bool IS_ABSTRACT
     ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
     ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
   ;
 }
 
@@ -747,6 +749,7 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
       !mIsAbstract
       !mAbstractMethodList
       !mMethodList
+      !mInstanceMethodMap
     ] ;
   else
     outImplementation := [filewrapper typeGenerationTemplate.inheritedClassTypeSpecificImplementation
@@ -760,6 +763,7 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
       !mIsAbstract
       !mAbstractMethodList
       !mMethodList
+      !mInstanceMethodMap
     ] ;
   end if ;
 end reader ;

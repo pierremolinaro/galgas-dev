@@ -1108,7 +1108,6 @@ override method @classDeclarationAST enterType
   ??@multiMethodMapForBuildingContext inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@classDeclarationAST enterType\n" ;
   @unifiedTypeMapProxy uintType ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"uint" ?uintType] ;
 #---

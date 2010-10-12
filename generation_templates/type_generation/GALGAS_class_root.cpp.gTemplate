@@ -74,6 +74,15 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
+void GALGAS_%!TYPE_IDENTIFIER%::log (const char * inMessage) const {
+  printf ("LOGGING '\%s': ", inMessage) ;
+  C_String s ;
+  description (s, 0) ;
+  printf ("\%s\\n", s.cString (HERE)) ;
+}
+
+//---------------------------------------------------------------------------*
+
 %if [CURRENT_ATTRIBUTE_LIST length] == 0 then
   %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
   %  return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;\n%
@@ -182,6 +191,57 @@ foreach CURRENT_ATTRIBUTE_LIST do
   %}\n\n%
 end foreach
 
+foreach INSTANCE_METHOD_MAP do
+  if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
+    %//---------------------------------------------------------------------------*\n\n%
+    %void GALGAS_%!TYPE_IDENTIFIER%::method_%![lkey identifierRepresentation]% (%?^
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      end if
+    between %,\n%!^
+    end foreach
+    if [mParameterList length] == 0 then
+      if mHasCompilerArgument then
+        %C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        !^%LOCATION_ARGS%
+      end if  
+    else
+      if mHasCompilerArgument then
+        %,\n%!^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS%
+      else
+        %\n%!^%COMMA_LOCATION_ARGS%
+      end if  
+    end if
+    %) const {\n%
+    %  if (mObjectPtr != NULL) {\n%
+    %    mObjectPtr->method_%![lkey identifierRepresentation]% (%
+    foreach mParameterList do index IDX
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %constinArgument% ![IDX string]%, %
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %ioArgument% ![IDX string]%, %
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %outArgument% ![IDX string]%, %
+      else # argumentIn
+        %inArgument% ![IDX string]%, %
+      end if
+    end foreach
+    %inCompiler COMMA_THERE) ;\n%
+    %  }\n%
+    %}\n\n%
+  end if
+end foreach
+
 %//---------------------------------------------------------------------------*
 //%!["Pointer class for @" . TYPE_NAME . " class" stringByLeftAndRightPadding !75 !' ']%*
 //---------------------------------------------------------------------------*
@@ -203,4 +263,27 @@ cPtr_class (THERE)%
   end foreach
 % {
 }
+%
+if not IS_ABSTRACT then
+%//---------------------------------------------------------------------------*
+
+%
+if [ALL_ATTRIBUTE_LIST length] == 0 then
+%void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+                           %!^%const PMSInt32 /* inIndentation */) const {
+  ioString << "[@%!TYPE_NAME%]" ;
+}%
+else
+%void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+                           %!^%const PMSInt32 inIndentation) const {
+  ioString << "[@%!TYPE_NAME%:" ;
+% foreach ALL_ATTRIBUTE_LIST
+    do %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
+    between %  ioString << ", " ;\n%
+  end foreach
+%  ioString << "]" ;
+}%
+end if
+end if
+%
 

@@ -85,7 +85,7 @@ override method @hereExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_location " . outCppName 
-                   . " (" . compilerCppName [] . "->here (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+                   . " (" . compilerCppName [] . "->here ()) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

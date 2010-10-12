@@ -145,7 +145,7 @@ end if
 
 if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 %//--------------------------------- Comparison
-  public : VIRTUAL_IN_DEBUG enumComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
+  public : enumComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
 %end if
 
 
