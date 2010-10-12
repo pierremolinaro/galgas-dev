@@ -21,9 +21,10 @@ class GALGAS_location
   private : C_LocationInSource mStartLocationInSource ;
   private : C_LocationInSource mEndLocationInSource ;
   private : C_SourceTextInString * mSourceText ;
+  private : bool mIsValid ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSourceText != NULL ; }
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG void drop (void) ;
   public : C_LocationInSource startLocation (void) const { return mStartLocationInSource ; }
   public : C_LocationInSource endLocation (void) const { return mEndLocationInSource ; }

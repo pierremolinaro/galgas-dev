@@ -12,7 +12,7 @@ foreach NON_TERMINAL_MAP do
     %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
     foreach label_mFormalParametersList do index IDX
       if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & inArgument% ![IDX string]
+        %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
       elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
         %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
@@ -29,7 +29,7 @@ foreach NON_TERMINAL_MAP do
       foreach label_mFormalParametersList do index IDX
         %,\n%!^
         if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
-          %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & inArgument% ![IDX string]
+          %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
         elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
           %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
         elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
@@ -44,7 +44,7 @@ foreach NON_TERMINAL_MAP do
       foreach label_mFormalParametersList do index IDX
         %,\n%!^
         if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
-          %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & inArgument% ![IDX string]
+          %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
         elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
           %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
         elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then

@@ -1315,7 +1315,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
         switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
-          generatedZone3 << " & " ;
+          generatedZone3 << " " ;
           break ;
         case GGS_formalArgumentPassingModeAST::enum_argumentIn :
           generatedZone3 << " " ;
@@ -1380,7 +1380,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
           switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
-            generatedZone3 << " & " ;
+            generatedZone3 << " " ;
             break ;
           case GGS_formalArgumentPassingModeAST::enum_argumentIn :
             generatedZone3 << " " ;
@@ -1480,7 +1480,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "GALGAS_" << parametre._mGalgasTypeNameForGrammarAnalysis (HERE).identifierRepresentation () ;
           switch (parametre._mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GGS_formalArgumentPassingModeAST::enum_argumentConstantIn :
-            generatedZone3 << " & " ;
+            generatedZone3 << " " ;
             break ;
           case GGS_formalArgumentPassingModeAST::enum_argumentIn :
             generatedZone3 << " " ;

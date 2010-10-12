@@ -63,7 +63,7 @@ function generateProcedure
   foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentConstantIn :
-      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
     when argumentInOut :
       outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
     when argumentOut :
@@ -210,6 +210,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
+    ?@uint SUPPORTED_OPERATORS
   ;
 
 #---------- STRUCTURE
@@ -665,6 +666,7 @@ override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@st
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mTypeIndex mSuperType]
+    ![mTypeIndex mHandledOperatorFlags]
   ] ;
 end reader ;
 
