@@ -1216,6 +1216,7 @@ class @classTypeForGeneration extends @semanticTypeForGeneration {
 #  @classMessageDefinitionListForGeneration mMessageList ;
 #  @lazyAttributeListForGeneration mLazyAttributeList ;
 #  @string mClassMessage ;
+  @instanceMethodMap mInstanceMethodMap ;
 }
 
 #---------------------------------------------------------------------------*

@@ -725,6 +725,7 @@ override method @classDeclarationAST performSemanticAnalysis
     !typedAttributeList
     !abstractMethodList
     !methodList
+    ![selfType mInstanceMethodMap]
   ] ;
 end method ;
 

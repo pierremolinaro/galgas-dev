@@ -89,7 +89,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
         const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
         const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
-        const GALGAS_location location = commonLexique->here (HERE) ;
+        const GALGAS_location location = commonLexique->here () ;
         const GALGAS_lstring sourceFilePath (sfp, location) ;
         PMSInt16 r = 0 ;
         %
