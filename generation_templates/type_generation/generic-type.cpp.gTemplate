@@ -8,9 +8,11 @@ const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% (%?^%"%!TYPE_NAME%",
                        %!^ if [SUPER_TYPE_INDEX isNull] then %NULL% else %& kTypeDescriptor_GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation] end if %) ;
 
-//---------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::typeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
-}
+%
+if ((SUPPORTED_OPERATORS & doNotGenerateTypeDescriptorMethod []) == 0) then
+  %//---------------------------------------------------------------------------*\n\n%
+  %const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::typeDescriptor (void) const {\n%
+  %  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;\n%
+  %}\n\n%
+end if
 

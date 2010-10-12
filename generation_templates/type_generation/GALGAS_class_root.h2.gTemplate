@@ -29,7 +29,7 @@ foreach ABSTRACT_METHOD_LIST do
   %  private : virtual void method_%![mMethodName identifierRepresentation]% (%?^
   foreach mSignature do
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% %
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -48,7 +48,7 @@ foreach CONCRETE_METHOD_LIST do
   %  private : virtual void method_%![mMethodName identifierRepresentation]% (%?^
   foreach mSignature do
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% %
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -67,6 +67,7 @@ if not IS_ABSTRACT then
   public : virtual void description (%?^%C_String & ioString,
                            %!^%const PMSInt32 inIndentation) const ;
 
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 %
 end if
 

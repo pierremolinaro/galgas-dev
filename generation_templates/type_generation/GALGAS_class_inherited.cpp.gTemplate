@@ -1,3 +1,11 @@
+const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::typeDescriptor (void) const {
+  const C_galgas_type_descriptor * result = NULL ;
+  if (NULL != mObjectPtr) {
+    result = mObjectPtr->classDescriptor () ;
+  }
+  return result ;
+}
+
 %if [CURRENT_ATTRIBUTE_LIST length] == 0 then
   %//---------------------------------------------------------------------------*\n\n%
   %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
@@ -262,25 +270,27 @@ cPtr_%!SUPER_TYPE_IDENTIFIER% (%
 
 %
 if not IS_ABSTRACT then
-%//---------------------------------------------------------------------------*
-
-%
-if [ALL_ATTRIBUTE_LIST length] == 0 then
-%void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-                           %!^%const PMSInt32 /* inIndentation */) const {
-  ioString << "[@%!TYPE_NAME%]" ;
-}%
-else
-%void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-                           %!^%const PMSInt32 inIndentation) const {
-  ioString << "[@%!TYPE_NAME%:" ;
-% foreach ALL_ATTRIBUTE_LIST
-    do %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
-    between %  ioString << ", " ;\n%
-  end foreach
-%  ioString << "]" ;
-}%
-end if
+  %//---------------------------------------------------------------------------*\n\n%
+  %const C_galgas_type_descriptor * cPtr_%!TYPE_IDENTIFIER%::classDescriptor (void) const {\n%
+  %  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;\n%
+  %}\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  if [ALL_ATTRIBUTE_LIST length] == 0 then
+    %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
+                               !^%const PMSInt32 /* inIndentation */) const {\n%
+    %  ioString << "[@%!TYPE_NAME%]" ;\n%
+    %}\n\n%
+  else
+    %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
+                               !^%const PMSInt32 inIndentation) const {\n%
+    %  ioString << "[@%!TYPE_NAME%:" ;\n%
+    foreach ALL_ATTRIBUTE_LIST
+      do %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
+      between %  ioString << ", " ;\n%
+    end foreach
+    %  ioString << "]" ;\n%
+    %}\n\n%
+  end if
 end if
 %
 
