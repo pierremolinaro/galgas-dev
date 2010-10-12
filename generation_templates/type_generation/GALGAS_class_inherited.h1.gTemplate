@@ -4,14 +4,18 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+class cPtr_%!TYPE_IDENTIFIER% ;
+
+//---------------------------------------------------------------------------*
+
 class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%!SUPER_TYPE_IDENTIFIER% {
   private : typedef GALGAS_%!SUPER_TYPE_IDENTIFIER% inherited ;
 
 //--- Constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
-//--- Constructor for reverse polymorphic assignement
-  public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!BASE_CLASS_IDENTIFIER% & inSource) ;
+//--------------------------------- Constructor from pointer
+  public : GALGAS_%!TYPE_IDENTIFIER% (cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 
 %if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
 %//--- Insulate\n%

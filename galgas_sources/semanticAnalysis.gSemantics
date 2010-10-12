@@ -670,7 +670,7 @@ override method @classDeclarationAST performSemanticAnalysis
       !inSemanticContext
       !inPredefinedTypes
       !mSignature
-      ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"(self)"]
+      ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"GALGAS_" . [mClassTypeName identifierRepresentation] . " ((cPtr_" . [mClassTypeName identifierRepresentation] . " *) this)"]
       !allAttributeList
       !mInstructionList
       !mEndOfMethodLocation

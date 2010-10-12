@@ -5,13 +5,14 @@
 //---------------------------------------------------------------------------*
 
 #include "strings/C_String.h"
-#include "GALGAS__root.h"
-#include "C_galgas_type_descriptor.h"
-#include "enumComparisonResult.h"
-#include "cGenericAbstractEnumerator.h"
-#include "GALGAS_list.h"
-#include "GALGAS_sortedlist.h"
-#include "GALGAS_map.h"
+#include "galgas2/GALGAS__root.h"
+#include "galgas2/C_galgas_type_descriptor.h"
+#include "galgas2/enumComparisonResult.h"
+#include "galgas2/cGenericAbstractEnumerator.h"
+#include "galgas2/GALGAS_list.h"
+#include "galgas2/GALGAS_sortedlist.h"
+#include "galgas2/GALGAS_map.h"
+#include "galgas2/cPtr_class.h"
 
 //---------------------------------------------------------------------------*
 

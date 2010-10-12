@@ -549,7 +549,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
       ioGeneratedCode .= "if (" . castCppVarName . ".typeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
     end if ;
     if [mCastedVarCppName length] > 0 then
-      ioGeneratedCode .= "  GALGAS_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " (" . castCppVarName . ") ;\n" ;
+      ioGeneratedCode .= "  GALGAS_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " ((cPtr_" . [mType identifierRepresentation] . " *) " . castCppVarName . ".ptr ()) ;\n" ;
     end if ;
     generateInstructionList
       !mInstructionList
@@ -724,12 +724,12 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName] ;
-  ioGeneratedCode .= "cCollectionElement_" . [mReceiverType identifierRepresentation]
-                  . " * " . mObjectArrayCppName . " = (cCollectionElement_" . [mReceiverType identifierRepresentation]
-                  . " *) readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
-                  .  ", " . receiverCppName . ", " . keyVarCppName . " COMMA_HERE) ;\n"
+  ioGeneratedCode .= "cMapElement_" . [mReceiverType identifierRepresentation]
+                  . " * " . mObjectArrayCppName . " = (cMapElement_" . [mReceiverType identifierRepresentation]
+                  . " *) " . receiverCppName . ".readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
+                  .  ", " . keyVarCppName . " COMMA_HERE) ;\n"
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n"
-                  .  "    macroValidObject (" . mObjectArrayCppName . ", cCollectionElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
+                  .  "    macroValidObject (" . mObjectArrayCppName . ", cMapElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   if [mElseBranchInstructions length] > 0 then
     ioGeneratedCode .= "}else{\n" ;

@@ -71,7 +71,7 @@ override method @selfInExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  outCppName := "this" ;
+  outCppName := mSelfCppName ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -98,7 +98,7 @@ override method @trueExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @trueExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGAS_bool " . outCppName . " (true COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+  ioGeneratedCode .= "GALGAS_bool " . outCppName . " (true) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -111,7 +111,7 @@ override method @falseExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @falseExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGAS_bool " . outCppName . " (false COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+  ioGeneratedCode .= "GALGAS_bool " . outCppName . " (false) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -125,7 +125,7 @@ override method @literalCharExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalCharExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_char " . outCppName
-                   . " (TO_UNICODE (" . [[mCharacter uint] string] . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " (TO_UNICODE (" . [[mCharacter uint] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -143,7 +143,7 @@ override method @literalStringExpressionForGeneration generateExpression
   ioGeneratedCode .= "GALGAS_string " . outCppName
                    . " ("
                    . [mString utf8Representation]
-                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -157,7 +157,7 @@ override method @literalDoubleExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalDoubleExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_double " . outCppName
-                   . " (" . [mValue string]. " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " (" . [mValue string]. ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -171,7 +171,7 @@ override method @literalUIntExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalUIntExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_uint " . outCppName
-                   . " ((PMUInt32) " . [mValue string]. "U COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " ((PMUInt32) " . [mValue string]. "U) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -185,7 +185,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalUInt64ExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_uint_36__34_ " . outCppName
-                   . " ((PMUInt64) " . [mValue string]. "ULL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " ((PMUInt64) " . [mValue string]. "ULL) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -199,7 +199,7 @@ override method @literalSIntExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalSIntExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_sint " . outCppName
-                   . " ((PMSInt32) " . [mValue string]. "L COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " ((PMSInt32) " . [mValue string]. "L) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -213,7 +213,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @literalSInt64ExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_sint_36__34_ " . outCppName
-                   . " ((PMSInt64) " . [mValue string]. "LL COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                   . " ((PMSInt64) " . [mValue string]. "LL) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -4,7 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_%!TYPE_IDENTIFIER% : public C_SharedObject {
+class cPtr_%!TYPE_IDENTIFIER% : public cPtr_class {
 //--- Attributes
 %
   foreach ALL_ATTRIBUTE_LIST do
@@ -61,7 +61,15 @@ foreach CONCRETE_METHOD_LIST do
   %C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end foreach
+
+if not IS_ABSTRACT then
+%//--- Description
+  public : virtual void description (%?^%C_String & ioString,
+                           %!^%const PMSInt32 inIndentation) const ;
+
 %
-//--- Friend class
+end if
+
+%//--- Friend class
   friend class GALGAS_%!TYPE_IDENTIFIER% ;
 } ;
