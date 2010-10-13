@@ -4,11 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_char
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  : public GALGAS__root
-#endif
- {
+class GALGAS_char : public GALGAS__root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : utf32 mCharValue ;

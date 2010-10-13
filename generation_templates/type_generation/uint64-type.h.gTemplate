@@ -4,10 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_uint_36__34_
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  : public GALGAS__root
-#endif
+class GALGAS_uint_36__34_ : public GALGAS__root
  {
 //--------------------------------- Private data members
   private : bool mIsValid ;

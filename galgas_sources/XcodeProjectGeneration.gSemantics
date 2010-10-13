@@ -91,6 +91,8 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"capCollectionElement.h" ;
   out_fileList += !"GALGAS_map.cpp" ;
   out_fileList += !"GALGAS_map.h" ;
+  out_fileList += !"GALGAS_class.cpp" ;
+  out_fileList += !"GALGAS_class.h" ;
   out_fileList += !"cPtr_class.cpp" ;
   out_fileList += !"cPtr_class.h" ;
   out_fileList += !"cSortedListElement.cpp" ;

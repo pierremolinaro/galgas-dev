@@ -94,69 +94,69 @@ routine appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 
 #--- Enumeration predefined type (used only for testing type generation)
-  @lstringlist constantList [emptyList] ;
-  constantList += ![@lstring new !"zero" !here] ;
-  constantList += ![@lstring new !"un" !here] ;
-  constantList += ![@lstring new !"deux" !here] ;
-  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
-  enumMessageAssociationListAST += ![@lstring new !"deux" !here] ![@lstring new !"message deux" !here] ;
-  enumMessageAssociationListAST += ![@lstring new !"un" !here] ![@lstring new !"message un" !here] ;
-  enumMessageAssociationListAST += ![@lstring new !"zero" !here] ![@lstring new !"message zero" !here]  ;
-  @enumMessageListAST enumMessageListAST [emptyList] ;
-  enumMessageListAST += ![@lstring new !"test" !here] !enumMessageAssociationListAST ;
-  ioDeclarationListASTs += ![@enumDeclarationAST new
-    ![@lstring new !"0enum" !here]
-    !constantList
-    !enumMessageListAST
-  ] ;
+#  @lstringlist constantList [emptyList] ;
+#  constantList += ![@lstring new !"zero" !here] ;
+#  constantList += ![@lstring new !"un" !here] ;
+#  constantList += ![@lstring new !"deux" !here] ;
+#  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
+#  enumMessageAssociationListAST += ![@lstring new !"deux" !here] ![@lstring new !"message deux" !here] ;
+#  enumMessageAssociationListAST += ![@lstring new !"un" !here] ![@lstring new !"message un" !here] ;
+#  enumMessageAssociationListAST += ![@lstring new !"zero" !here] ![@lstring new !"message zero" !here]  ;
+#  @enumMessageListAST enumMessageListAST [emptyList] ;
+#  enumMessageListAST += ![@lstring new !"test" !here] !enumMessageAssociationListAST ;
+#  ioDeclarationListASTs += ![@enumDeclarationAST new
+#    ![@lstring new !"0enum" !here]
+#    !constantList
+#    !enumMessageListAST
+#  ] ;
 
 #--- Sorted list predefined type (used only for testing type generation)
-  @attributeInCollectionListAST sortedListAttributeList [emptyList] ;
-  sortedListAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
-  sortedListAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
-  sortedListAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
-  @sortedListSortDescriptorListAST sortDescriptorList [emptyList] ;
-  sortDescriptorList += ![@lstring new !"mThird" !here] !true ;
-  sortDescriptorList += ![@lstring new !"mFirst" !here] !false ;
-  ioDeclarationListASTs += ![@sortedListDeclarationAST new
-    ![@lstring new !"0sortedlist" !here]
-    !sortedListAttributeList
-    !sortDescriptorList
-  ] ;
+#  @attributeInCollectionListAST sortedListAttributeList [emptyList] ;
+#  sortedListAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
+#  sortedListAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
+#  sortedListAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
+#  @sortedListSortDescriptorListAST sortDescriptorList [emptyList] ;
+#  sortDescriptorList += ![@lstring new !"mThird" !here] !true ;
+#  sortDescriptorList += ![@lstring new !"mFirst" !here] !false ;
+#  ioDeclarationListASTs += ![@sortedListDeclarationAST new
+#    ![@lstring new !"0sortedlist" !here]
+#    !sortedListAttributeList
+#    !sortDescriptorList
+#  ] ;
 
 #--- Map predefined type (used only for testing type generation)
-  @attributeInCollectionListAST mapAttributeList [emptyList] ;
-  mapAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
-  mapAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
-  mapAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
-  @insertMethodListAST insertMethodList [emptyList] ;
-  insertMethodList +=
-    ![@lstring new !"insert" !here]
-    ![@lstring new !"insert error message" !here]
-    ![@lstring new !"shadow error message" !here]
-    ![@lstring new !"" !here]
-  ;
-  @mapSearchMethodListAST mapSearchMethodListAST [emptyList] ;
-  mapSearchMethodListAST +=
-    ![@lstring new !"search" !here]
-    ![@lstring new !"search error message" !here]
-    ![@lstring new !"" !here]
-  ;
-  @mapRemoveMethodListAST mapRemoveMethodListAST [emptyList] ;
-  mapRemoveMethodListAST +=
-    ![@lstring new !"remove" !here]
-    ![@lstring new !"remove error message" !here]
-  ;
-  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
-  ioDeclarationListASTs += ![@mapDeclarationAST new
-    ![@lstring new !"0map" !here]
-    !mapAttributeList
-    !insertMethodList
-    !mapSearchMethodListAST
-    !mapRemoveMethodListAST
-    !insertOrReplaceDeclarationListAST
-    ![@mapStateList emptyList]
-  ] ;
+#  @attributeInCollectionListAST mapAttributeList [emptyList] ;
+#  mapAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
+#  mapAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
+#  mapAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
+#  @insertMethodListAST insertMethodList [emptyList] ;
+#  insertMethodList +=
+#    ![@lstring new !"insert" !here]
+#    ![@lstring new !"insert error message" !here]
+#    ![@lstring new !"shadow error message" !here]
+#    ![@lstring new !"" !here]
+#  ;
+#  @mapSearchMethodListAST mapSearchMethodListAST [emptyList] ;
+#  mapSearchMethodListAST +=
+#    ![@lstring new !"search" !here]
+#    ![@lstring new !"search error message" !here]
+#    ![@lstring new !"" !here]
+#  ;
+#  @mapRemoveMethodListAST mapRemoveMethodListAST [emptyList] ;
+#  mapRemoveMethodListAST +=
+#    ![@lstring new !"remove" !here]
+#    ![@lstring new !"remove error message" !here]
+#  ;
+#  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
+#  ioDeclarationListASTs += ![@mapDeclarationAST new
+#    ![@lstring new !"0map" !here]
+#    !mapAttributeList
+#    !insertMethodList
+#    !mapSearchMethodListAST
+#    !mapRemoveMethodListAST
+#    !insertOrReplaceDeclarationListAST
+#    ![@mapStateList emptyList]
+#  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

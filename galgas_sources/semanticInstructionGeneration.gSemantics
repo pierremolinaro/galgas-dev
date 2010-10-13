@@ -546,7 +546,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
     if mUseKindOfClass then
       ioGeneratedCode .= "if (NULL != dynamic_cast <const cPtr_" . [mType identifierRepresentation] . " *> (" . castCppVarName . ".ptr ())) {\n" ;
     else
-      ioGeneratedCode .= "if (" . castCppVarName . ".typeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
+      ioGeneratedCode .= "if (" . castCppVarName . ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
     end if ;
     if [mCastedVarCppName length] > 0 then
       ioGeneratedCode .= "  GALGAS_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " ((cPtr_" . [mType identifierRepresentation] . " *) " . castCppVarName . ".ptr ()) ;\n" ;

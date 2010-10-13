@@ -1207,7 +1207,6 @@ class @classTypeForGeneration extends @semanticTypeForGeneration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
   @unifiedTypeMapProxy mSuperClass ; # Null if no super class
-  @unifiedTypeMapProxy mBaseClass ; # Null if no super class
 #  @lstringlist mClassFeatureList ;
   @typedAttributeList mAllTypedAttributeList ; # Inherited followed by current attributes
   @typedAttributeList mTypedAttributeList ;
