@@ -1,5 +1,11 @@
 //-- Start of generic part --*
 
+//--------------------------------- Object cloning
+  protected : virtual GALGAS__root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_%!TYPE_IDENTIFIER% extractObject (const GALGAS_object & inObject, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 %
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%

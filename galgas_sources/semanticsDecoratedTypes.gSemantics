@@ -318,6 +318,13 @@ class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mErrorLocationExpression ;
 }
 
+#---------------------------------------------------------------------------*
+
+class @extractObjectInExpressionForGeneration extends @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
+  @string mTypeName ;
+}
+
 ##---------------------------------------------------------------------------*
 #
 #class @filewrapperObjectInstanciationInExpressionForGeneration extends @semanticExpressionForGeneration {

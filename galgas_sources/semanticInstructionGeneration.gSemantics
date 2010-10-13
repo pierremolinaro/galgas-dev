@@ -763,7 +763,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= "//--- complex foreach instruction\n" ;
   #--- Index
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((PMUInt32) 0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((PMUInt32) 0) ;\n" ;
     end if ;
     const @string boolVarCppName := "bool_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
     if whileExpressionIsAllwaysTrue then
@@ -842,7 +842,7 @@ override method @foreachInstructionForGeneration generateInstruction
   else #----- foreach instruction without 'before', 'after', while expression
     ioGeneratedCode .= "//--- simple foreach instruction\n" ;
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((PMUInt32) 0 COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((PMUInt32) 0) ;\n" ;
     end if ;
     ioGeneratedCode .= "while (" ;
     foreach mEnumeratedObjectList
@@ -924,6 +924,8 @@ override method @switchInstructionForGeneration generateInstruction
   ioGeneratedCode .= "if (" . switchVar . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   ioGeneratedCode .= "switch (" . switchVar . ".enumValue ()) {\n" ;
+  ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kNotBuilt:\n" ;
+  ioGeneratedCode .= "  break ;\n" ;
   foreach mBranches do
     foreach mSwitchConstantList do
       ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [mValue identifierRepresentation] . ": " ;

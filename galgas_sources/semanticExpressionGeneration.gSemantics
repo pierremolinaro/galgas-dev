@@ -820,9 +820,28 @@ override method @literalTypeInExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @literalTypeInExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGAS_type " . outCppName . " (GALGAS_type::constructor_new (& kTypeDescriptor_GALGAS_"
-                  . [mTypeName identifierRepresentation]
-                  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
+  ioGeneratedCode .= "GALGAS_type " . outCppName . " (& kTypeDescriptor_GALGAS_"
+                  . [mTypeName identifierRepresentation] . ") ;\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @extractObjectInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppName
+:
+  ioGeneratedCode .= "//--- @extractObjectInExpressionForGeneration\n" ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#--- Receiver expression
+  @string receiverExpression ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverExpression] ;
+#--- Generate code
+  ioGeneratedCode .= "const GALGAS_" . [mType identifierRepresentation] . " " . outCppName
+                  . " = GALGAS_" . [mType identifierRepresentation] . "::extractObject (" . receiverExpression
+                  . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
 #---------------------------------------------------------------------------*

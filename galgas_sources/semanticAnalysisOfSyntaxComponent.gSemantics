@@ -411,7 +411,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 #--- Get synthetized attributes
   foreach mTerminalCheckAssignementList do
     if mTypeName != "" then
-      ioGeneratedCode .= "GALGASap_" . [mTypeName identifierRepresentation] . " " ;
+      ioGeneratedCode .= "GALGAS_" . [mTypeName identifierRepresentation] . " " ;
     else
     end if ;
     ioGeneratedCode .= mTargetVarCppName . " = " . compilerCppName [] . "->synthetizedAttribute_"

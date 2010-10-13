@@ -105,41 +105,6 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 
 //---------------------------------------------------------------------------*
 
-/* GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_object & inSource) :
-%
-foreach ATTRIBUTE_LIST do
-  %mAttribute_%![mAttributeName identifierRepresentation]% ()%
-  between %,\n%!^
-end foreach
-% {
-  const GALGAS_object * object = inSource.ptrNoVerif () ;
-  if (NULL != object) {
-    macroValidObject (object, const GALGAS_%!TYPE_IDENTIFIER%) ;
-    const GALGAS_%!TYPE_IDENTIFIER% * p = (GALGAS_%!TYPE_IDENTIFIER% *) object ;
-%
-  foreach ATTRIBUTE_LIST do
-    %    mAttribute_%![mAttributeName identifierRepresentation]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end foreach
-%  }
-} */
-
-//---------------------------------------------------------------------------*
-
-/* GALGAS_object GALGAS_%!TYPE_IDENTIFIER%::embedObject (void) const {
-  GALGAS_object * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (%
-    foreach ATTRIBUTE_LIST
-      do %mAttribute_%![mAttributeName identifierRepresentation]
-      between %, %
-    end foreach
-    % COMMA_HERE)) ;
-  }
-  return GALGAS_object (result) ;
-} */
-
-//---------------------------------------------------------------------------*
-
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
                               %!^%const PMSInt32 inIndentation) const {
   ioString << "<struct @%!TYPE_NAME%:" ;

@@ -4,26 +4,34 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+class cPtr_object ;
+
+//---------------------------------------------------------------------------*
+
 class GALGAS_object : public GALGAS__root {
 //--------------------------------- Private data member
-  private : C_SharedObject * mObject ;
+  private : cPtr_object * mSharedObject ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mObject != NULL ; }
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedObject != NULL ; }
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
   public : GALGAS_object (void) ;
 
+//--------------------------------- Constructor from pointer
+  public : GALGAS_object (GALGAS__root * inObjectPointer
+                          COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Destructor (virtual in debug mode)
   public : VIRTUAL_IN_DEBUG ~ GALGAS_object (void) ;
-
-//--------------------------------- Native constructor
-  public : GALGAS_object (C_SharedObject * inObject) ;
 
 //--------------------------------- Handle copy
   public : GALGAS_object (const GALGAS_object & inSource) ;
   public : GALGAS_object & operator = (const GALGAS_object & inSource) ;
+
+//--------------------------------- Embedded Object
+  public : const GALGAS__root * embeddedObject (void) const ;
 
 %
 

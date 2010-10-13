@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 
-#include "cCollectionElement.h"
+#include "galgas2/cCollectionElement.h"
 
 //---------------------------------------------------------------------------*
 
@@ -16,4 +16,10 @@ class cMapElement : public cCollectionElement {
   private : cMapElement (const cMapElement &) ;
   private : cMapElement & operator = (const cMapElement &) ;
 } ;
+
+//---------------------------------------------------------------------------*
+
+#include "galgas2/cSortedListElement.h"
+#include "galgas2/capSortedListElement.h"
+
 
