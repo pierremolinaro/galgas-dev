@@ -140,15 +140,6 @@ end foreach
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::log (const char * inMessage) const {
-  printf ("LOGGING '\%s': ", inMessage) ;
-  C_String s ;
-  description (s, 0) ;
-  printf ("\%s\\n", s.cString (HERE)) ;
-}
-
-//---------------------------------------------------------------------------*
-
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
                               %!^%const PMSInt32 inIndentation) const {
   ioString << "<struct @%!TYPE_NAME%:" ;
@@ -162,18 +153,6 @@ foreach ATTRIBUTE_LIST
 end foreach
 %  }
   ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_%!TYPE_IDENTIFIER%::reader_description (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (isValid ()) {
-    C_String s ;
-    description (s, 0) ;
-    result = GALGAS_string (s) ;
-  }
-  return result ;
 }
 
 %foreach ATTRIBUTE_LIST do

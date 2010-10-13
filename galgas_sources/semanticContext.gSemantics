@@ -1309,7 +1309,7 @@ override method @classDeclarationAST enterType
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
-    !generateCppConstructorWithAllAttributeList [] | doNotGenerateTypeDescriptorMethod [] | if [superClassIndex isNull] then generateDescriptionReaderUtilityMethod [] else 0 end
+    !generateCppConstructorWithAllAttributeList []
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]

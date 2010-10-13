@@ -4,11 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_bool
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  : public GALGAS__root
-#endif
- {
+class GALGAS_bool : public GALGAS__root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : bool mBoolValue ;

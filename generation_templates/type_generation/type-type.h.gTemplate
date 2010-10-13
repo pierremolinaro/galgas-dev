@@ -4,10 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_type
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  : public GALGAS__root
-#endif
+class GALGAS_type : public GALGAS__root
  {
 //--------------------------------- Private data members
   private : const C_galgas_type_descriptor * mTypeDescriptor ;

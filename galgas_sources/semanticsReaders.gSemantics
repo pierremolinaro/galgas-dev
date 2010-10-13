@@ -291,7 +291,7 @@ routine commonReaderMapForAllTypes
   !@readerMap outMap
 :
   outMap := [@readerMap emptyMap] ;
-  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"description" !"string" !false ;
+  enterInheritedReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"description" !"string" !false ;
 #  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"object" !"object" !false ;
 #  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"objectDynamicType" !"type" !false ;
 end routine ;

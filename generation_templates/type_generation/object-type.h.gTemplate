@@ -4,11 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_object
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  : public GALGAS__root
-#endif
- {
+class GALGAS_object : public GALGAS__root {
 //--------------------------------- Private data member
   private : C_SharedObject * mObject ;
 

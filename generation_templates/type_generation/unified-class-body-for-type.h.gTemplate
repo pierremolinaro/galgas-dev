@@ -138,7 +138,6 @@ if (SUPPORTED_OPERATORS & incDecOperator []) != 0 then
 end if
 if (SUPPORTED_OPERATORS & generateDescriptionReaderUtilityMethod []) != 0 then
   %//--------------------------------- Implementation of reader 'description'\n%
-  %  public : VIRTUAL_IN_DEBUG void log (const char * inMessage) const ;\n\n%
   %  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,\n%
   %                                              const PMSInt32 inIndentation) const ;\n%
 end if
@@ -283,7 +282,7 @@ end foreach
 
 %
 //--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * typeDescriptor (void) const ;
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 %
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 %//--------------------------------- Enumeration helper methods

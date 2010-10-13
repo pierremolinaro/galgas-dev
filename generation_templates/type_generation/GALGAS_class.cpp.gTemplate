@@ -1,11 +1,3 @@
-const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::typeDescriptor (void) const {
-  const C_galgas_type_descriptor * result = NULL ;
-  if (NULL != mObjectPtr) {
-    result = mObjectPtr->classDescriptor () ;
-  }
-  return result ;
-}
-
 %if [CURRENT_ATTRIBUTE_LIST length] == 0 then
   %//---------------------------------------------------------------------------*\n\n%
   %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
@@ -14,7 +6,11 @@ const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::typeDescriptor (void
 else
   %//---------------------------------------------------------------------------*\n\n%
   %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
-  %  enumComparisonResult result = inherited::objectCompare (inOperand) ;\n%
+  if SUPER_TYPE_IDENTIFIER == "class" then
+    %  enumComparisonResult result = kOperandEqual ;\n%
+  else
+    %  enumComparisonResult result = inherited::objectCompare (inOperand) ;\n%
+  end if
   if [CURRENT_ATTRIBUTE_LIST length] > 0 then
     %  const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
     %  macroNullOrValidObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
@@ -42,13 +38,6 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (cPtr_%!TYPE_IDENTIFIER% * 
 GALGAS_%!SUPER_TYPE_IDENTIFIER% (inSourcePtr) {
   macroNullOrValidObject (inSourcePtr, cPtr_%!TYPE_IDENTIFIER%) ;
 }
-
-//---------------------------------------------------------------------------*
-
-/* GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!BASE_CLASS_IDENTIFIER% & inSource) :
-GALGAS_%!SUPER_TYPE_IDENTIFIER% (inSource) {
-  macroNullOrValidObject (mObjectPtr, cPtr_%!TYPE_IDENTIFIER%) ;
-}*/
 
 //---------------------------------------------------------------------------*
 
@@ -274,7 +263,6 @@ if not IS_ABSTRACT then
   %const C_galgas_type_descriptor * cPtr_%!TYPE_IDENTIFIER%::classDescriptor (void) const {\n%
   %  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;\n%
   %}\n\n%
-  %//---------------------------------------------------------------------------*\n\n%
   if [ALL_ATTRIBUTE_LIST length] == 0 then
     %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
                                !^%const PMSInt32 /* inIndentation */) const {\n%

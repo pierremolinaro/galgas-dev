@@ -12,6 +12,7 @@
 #include "galgas2/GALGAS_list.h"
 #include "galgas2/GALGAS_sortedlist.h"
 #include "galgas2/GALGAS_map.h"
+#include "galgas2/GALGAS_class.h"
 #include "galgas2/cPtr_class.h"
 
 //---------------------------------------------------------------------------*

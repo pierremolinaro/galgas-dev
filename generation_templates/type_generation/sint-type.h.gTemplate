@@ -4,11 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_sint
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  : public GALGAS__root
-#endif
- {
+class GALGAS_sint : public GALGAS__root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : PMSInt32 mSIntValue ;

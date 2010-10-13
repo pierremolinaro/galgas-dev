@@ -50,26 +50,6 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::log (const char * inMessage) const {
-  printf ("LOGGING '\%s': ", inMessage) ;
-  C_String s ;
-  description (s, 0) ;
-  printf ("\%s\\n", s.cString (HERE)) ;
-}
-
-//---------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_%!TYPE_IDENTIFIER%::reader_description (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (isValid ()) {
-    C_String s ;
-    description (s, 0) ;
-    result = GALGAS_string (s) ;
-  }
-  return result ;
-}
-//---------------------------------------------------------------------------*
-
 enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
   enumComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
