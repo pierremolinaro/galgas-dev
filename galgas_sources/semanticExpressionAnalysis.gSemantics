@@ -1582,6 +1582,28 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @extractObjectInExpressionAST analyzeSemanticExpression
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Receiver expression analysis
+  @semanticExpressionForGeneration expression ;
+  [mReceiverExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?expression] ;
+#--- Search type
+  const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#---
+  outExpression := [@extractObjectInExpressionForGeneration new
+    !t
+    !mEndOfReceiverExpression
+    !expression
+    ![mTypeName string]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @castInExpressionAST analyzeSemanticExpression
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
