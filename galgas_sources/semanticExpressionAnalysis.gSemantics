@@ -1582,28 +1582,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @extractObjectInExpressionAST analyzeSemanticExpression
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
-  ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-:
-#--- Receiver expression analysis
-  @semanticExpressionForGeneration expression ;
-  [mReceiverExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?expression] ;
-#--- Search type
-  const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mTypeName] ;
-#---
-  outExpression := [@extractObjectInExpressionForGeneration new
-    !t
-    !mEndOfReceiverExpression
-    !expression
-    ![mTypeName string]
-  ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @castInExpressionAST analyzeSemanticExpression
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
@@ -1615,18 +1593,24 @@ override method @castInExpressionAST analyzeSemanticExpression
   [mReceiverExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?expression] ;
 #--- Get type information
    const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mTypeName] ;
-#--- Check expression type is a descendant of named type
-  @unifiedTypeMapProxy t := type ;
-  @bool found := t == [expression mType] ;
-  loop [inSemanticContext->mTypeMap count] + 1 :
-  while (not found) & not [[t mSuperType] isNull] do
-    t := [t mSuperType] ;
-    found := t == [expression mType] ;
-  end loop ;
-  if not found then
-    error mTypeName
-    :"the '@" . mTypeName . "' is not a descendant of the '@" . [[expression mType] key] . "' type of the cast expression"
-    ;
+#--- This type is either a class or the @object type
+  if [[expression mType] mTypeKindEnum] == [@typeKindEnum classType] then
+  #--- Check expression type is a descendant of named type
+    @unifiedTypeMapProxy t := type ;
+    @bool found := t == [expression mType] ;
+    loop [inSemanticContext->mTypeMap count] + 1 :
+    while (not found) & not [[t mSuperType] isNull] do
+      t := [t mSuperType] ;
+      found := t == [expression mType] ;
+    end loop ;
+    if not found then
+      error mTypeName
+      :"the '@" . mTypeName . "' is not a descendant of the '@" . [[expression mType] key] . "' type of the cast expression"
+      ;
+    end if ;
+  elsif [[expression mType] key] != "object" then
+    error [expression mLocation]: "cast expression should be an @object or a class instance: it is an @"
+     .  [[expression mType] key] . " instance" ;
   end if ;
 #--- Error location expression
   @semanticExpressionForGeneration errorLocationExpression ;
@@ -1665,14 +1649,24 @@ override method @castInExpressionAST analyzeSemanticExpression
     end with ;
   end if ;
 #--- Generate expression
-  outExpression := [@castInExpressionForGeneration new
-    !type
-    ![mTypeName location]
-    !expression
-    !mUseKindOfClass
-    ![mTypeName string]
-    !errorLocationExpression
-  ] ;
+  if [[expression mType] key] == "object" then
+    outExpression := [@extractObjectInExpressionForGeneration new
+      !type
+      !mEndOfReceiverExpression
+      !expression
+      ![mTypeName string]
+      !errorLocationExpression
+    ] ;
+  else
+    outExpression := [@castInExpressionForGeneration new
+      !type
+      ![mTypeName location]
+      !expression
+      !mUseKindOfClass
+      ![mTypeName string]
+      !errorLocationExpression
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -837,10 +837,13 @@ override method @extractObjectInExpressionForGeneration generateExpression
 #--- Receiver expression
   @string receiverExpression ;
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverExpression] ;
+#--- Error expression
+  @string errorLocationExpression ;
+  [mErrorLocationExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?errorLocationExpression] ;
 #--- Generate code
   ioGeneratedCode .= "const GALGAS_" . [mType identifierRepresentation] . " " . outCppName
                   . " = GALGAS_" . [mType identifierRepresentation] . "::extractObject (" . receiverExpression
-                  . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                  . ", " . compilerCppName [] . ", " . errorLocationExpression  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 

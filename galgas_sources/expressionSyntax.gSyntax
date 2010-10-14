@@ -622,28 +622,6 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#                         F A C T O R                                          *
-#                                                                              *
-#   extract exp to @aType                                                      *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <factor> !@semanticExpressionAST outExpression :
-  $extract$ ;
-  @semanticExpressionAST receiverExpression ;
-  <expression> ? receiverExpression ;
-  const @location endOfExpression := here ;
-  $:$ ;
-  $type_name$ ? @lstring typeName ;
-  outExpression := [@extractObjectInExpressionAST new
-    !receiverExpression
-    !endOfExpression
-    !typeName
-  ] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
 #   O U T P U T    E X P R E S S I O N    L I S T                              *
 #                                                                              *
 #------------------------------------------------------------------------------*
