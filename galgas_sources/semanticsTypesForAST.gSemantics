@@ -321,14 +321,6 @@ class @castInExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
-class @extractObjectInExpressionAST extends @semanticExpressionAST {
-  @semanticExpressionAST mReceiverExpression ;
-  @location mEndOfReceiverExpression ;
-  @lstring mTypeName ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @filewrapperObjectInstanciationInExpressionAST extends @semanticExpressionAST {
   @lstring mFilewrapperName ;
 }

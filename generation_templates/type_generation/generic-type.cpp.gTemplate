@@ -26,14 +26,17 @@ GALGAS__root * GALGAS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::extractObject (const GALGAS_object & inObject, C_Compiler * inCompiler COMMA_LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::extractObject (%?^%const GALGAS_object & inObject,
+               %!^%C_Compiler * inCompiler,
+               %!^%const GALGAS_location & inErrorLocation
+               %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   const GALGAS_%!TYPE_IDENTIFIER% * p = (const GALGAS_%!TYPE_IDENTIFIER% *) inObject.embeddedObject () ;
   if (NULL != p) {
     if (NULL != dynamic_cast <const GALGAS_%!TYPE_IDENTIFIER% *> (p)) {
       result = *p ;
     }else{
-      inCompiler->extractObjectError ("%!TYPE_NAME%", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->extractObjectError (inErrorLocation, "%!TYPE_NAME%", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
