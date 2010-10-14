@@ -9,46 +9,45 @@
 //  Function introspection                                                   *
 //---------------------------------------------------------------------------*
 
-/*static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifierRepresentation]% [%![[FORMAL_ARGUMENT_LIST length] + 1 string]%] = {
+static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifierRepresentation]% [%![[FORMAL_ARGUMENT_LIST length] + 1 string]%] = {
 %
   foreach FORMAL_ARGUMENT_LIST do
     %  & kTypeDescriptor_GALGAS_%![mFormalArgumentType identifierRepresentation]%,\n%
   end foreach
 %  NULL
-} ;*/
+} ;
 
 //---------------------------------------------------------------------------*
 
-/*static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,
-                                                 %!^%cRootObjectArray & inEffectiveParameterArray,
-                                                 %!^%const GALGAS_location & inErrorLocation
-                                                 %!^%COMMA_LOCATION_ARGS) {
-  const bool ok = inCompiler->checkFunctionCallArguments (%![FUNCTION_NAME utf8Representation]%,
-                                                          %![[FORMAL_ARGUMENT_LIST length] string]%,
-                                                          functionArgs_%![FUNCTION_NAME identifierRepresentation]%,
-                                                          inEffectiveParameterArray,
-                                                          inErrorLocation
-                                                          COMMA_THERE) ;
-  GALGAS_object result ;
-  if (ok) {
-%  foreach FORMAL_ARGUMENT_LIST do index IDX
-     %    GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_THERE) ;\n%
-   end foreach
-%    result = function_%![FUNCTION_NAME identifierRepresentation]% (%
-     foreach FORMAL_ARGUMENT_LIST do index IDX
-       %operand%![IDX string]%, %
-     end foreach
-     %inCompiler COMMA_THERE).embedObject () ;
-  }
-  return result ;
-}*/
-
+%
+if [FORMAL_ARGUMENT_LIST length] == 0 then
+  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+                                             !^%const cObjectArray & /* inEffectiveParameterArray */,\n%
+                                             !^%const GALGAS_location & /* inErrorLocation */\n%
+                                             !^%COMMA_LOCATION_ARGS) {\n%
+  %  return function_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE).reader_object (THERE) ;\n%
+  %}\n%
+else
+  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+                                             !^%const cObjectArray & inEffectiveParameterArray,\n%
+                                             !^%const GALGAS_location & inErrorLocation\n%
+                                             !^%COMMA_LOCATION_ARGS) {\n%
+  foreach FORMAL_ARGUMENT_LIST do index IDX
+    %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]%::extractObject (inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE), inCompiler, inErrorLocation COMMA_THERE) ;\n%
+  end foreach
+  %  return function_%![FUNCTION_NAME identifierRepresentation]% (%
+  foreach FORMAL_ARGUMENT_LIST do index IDX
+    %operand%![IDX string]%, %
+  end foreach
+  %inCompiler COMMA_THERE).reader_object (THERE) ;\n%
+  %}\n%
+end if
+%
 //---------------------------------------------------------------------------*
 
-/*C_galgas_function_descriptor functionDescriptor_%![FUNCTION_NAME identifierRepresentation]% (%?^![FUNCTION_NAME utf8Representation]%,\n%
+C_galgas_function_descriptor functionDescriptor_%![FUNCTION_NAME identifierRepresentation]% (%?^![FUNCTION_NAME utf8Representation]%,\n%
                                             !^%functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]%,\n%
                                             !^%& kTypeDescriptor_GALGAS_%!RETURN_TYPE_IDENTIFIER%,\n%
                                             !^![[FORMAL_ARGUMENT_LIST length] string]%,\n%
-                                            !^%functionArgs_%![FUNCTION_NAME identifierRepresentation]%) ; */
-
+                                            !^%functionArgs_%![FUNCTION_NAME identifierRepresentation]%) ;
 

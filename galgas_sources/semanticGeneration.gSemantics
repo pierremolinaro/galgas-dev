@@ -321,12 +321,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
     ?@instanceMethodMap INSTANCE_METHOD_MAP
   ;
-}
 
-#---------------------------------------------------------------------------*
-
-filewrapper typeGenerationTemplateEX in "../generation_templates/ex_type_generation" {
-} {
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_LISTTYPE_IDENTIFIER
@@ -631,7 +626,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @listmapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.listmapTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     ![mAssociatedListTypeIndex identifierRepresentation]
     !mAssociatedListTypedAttributeList
@@ -676,7 +671,7 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
 #---------------------------------------------------------------------------*
 
 override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-  outImplementation := [filewrapper typeGenerationTemplateEX.mapProxyTypeSpecificImplementation
+  outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     ![mAssociatedMapTypeProxy identifierRepresentation]
