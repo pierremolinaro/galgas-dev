@@ -21,5 +21,7 @@ class cMapElement : public cCollectionElement {
 
 #include "galgas2/cSortedListElement.h"
 #include "galgas2/capSortedListElement.h"
+#include "galgas2/C_galgas_function_descriptor.h"
+#include "galgas2/cObjectArray.h"
 
 

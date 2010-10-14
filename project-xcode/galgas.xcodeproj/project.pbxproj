@@ -26,6 +26,12 @@
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		CF01558D1267796800917801 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01558B1267796800917801 /* cObjectArray.cpp */; };
+		CF01558E1267796800917801 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01558B1267796800917801 /* cObjectArray.cpp */; };
+		CF01558F1267796800917801 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01558B1267796800917801 /* cObjectArray.cpp */; };
+		CF0155901267796800917801 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01558B1267796800917801 /* cObjectArray.cpp */; };
+		CF0155911267796800917801 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01558B1267796800917801 /* cObjectArray.cpp */; };
+		CF0155921267796800917801 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01558B1267796800917801 /* cObjectArray.cpp */; };
 		CF01E4310E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
 		CF01E4350E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
 		CF01E4390E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
@@ -1636,6 +1642,8 @@
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D15AC370486D014006FF6A4 /* cocoaGalgas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF01558B1267796800917801 /* cObjectArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cObjectArray.cpp; sourceTree = "<group>"; };
+		CF01558C1267796800917801 /* cObjectArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cObjectArray.h; sourceTree = "<group>"; };
 		CF019276114C305400BCB475 /* GALGAS_enum.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_enum.cpp.gTemplate; sourceTree = "<group>"; };
 		CF019278114C305400BCB475 /* GALGAS_list.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_list.cpp.gTemplate; sourceTree = "<group>"; };
 		CF01927A114C305400BCB475 /* GALGAS_sortedlist.cpp.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GALGAS_sortedlist.cpp.gTemplate; sourceTree = "<group>"; };
@@ -2929,6 +2937,8 @@
 		CFA5890010D285C800B7E541 /* galgas2 */ = {
 			isa = PBXGroup;
 			children = (
+				CF01558B1267796800917801 /* cObjectArray.cpp */,
+				CF01558C1267796800917801 /* cObjectArray.h */,
 				CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */,
 				CFF8BEFD126614D9001B7E61 /* cPtr_object.h */,
 				CFB89F041265DD710037AE5B /* GALGAS_class.cpp */,
@@ -4239,6 +4249,7 @@
 				CF245B3B126458E3007B55A3 /* cPtr_class.cpp in Sources */,
 				CFB89F081265DD710037AE5B /* GALGAS_class.cpp in Sources */,
 				CFF8BEFE126614D9001B7E61 /* cPtr_object.cpp in Sources */,
+				CF01558D1267796800917801 /* cObjectArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4477,6 +4488,7 @@
 				CF245B3C126458E3007B55A3 /* cPtr_class.cpp in Sources */,
 				CFB89F091265DD710037AE5B /* GALGAS_class.cpp in Sources */,
 				CFF8BF00126614D9001B7E61 /* cPtr_object.cpp in Sources */,
+				CF01558F1267796800917801 /* cObjectArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4715,6 +4727,7 @@
 				CF245B39126458E3007B55A3 /* cPtr_class.cpp in Sources */,
 				CFB89F061265DD710037AE5B /* GALGAS_class.cpp in Sources */,
 				CFF8BF01126614D9001B7E61 /* cPtr_object.cpp in Sources */,
+				CF0155901267796800917801 /* cObjectArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4992,6 +5005,7 @@
 				CF245B3A126458E3007B55A3 /* cPtr_class.cpp in Sources */,
 				CFB89F071265DD710037AE5B /* GALGAS_class.cpp in Sources */,
 				CFF8BEFF126614D9001B7E61 /* cPtr_object.cpp in Sources */,
+				CF01558E1267796800917801 /* cObjectArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5230,6 +5244,7 @@
 				CF245B3D126458E3007B55A3 /* cPtr_class.cpp in Sources */,
 				CFB89F0A1265DD710037AE5B /* GALGAS_class.cpp in Sources */,
 				CFF8BF02126614D9001B7E61 /* cPtr_object.cpp in Sources */,
+				CF0155911267796800917801 /* cObjectArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5468,6 +5483,7 @@
 				CF245B3E126458E3007B55A3 /* cPtr_class.cpp in Sources */,
 				CFB89F0B1265DD710037AE5B /* GALGAS_class.cpp in Sources */,
 				CFF8BF03126614D9001B7E61 /* cPtr_object.cpp in Sources */,
+				CF0155921267796800917801 /* cObjectArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
