@@ -2174,15 +2174,15 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 #--- Handle operator "+=" call
   override method handleAddAssignOperatorCall
-    ??@location inErrorLocation
+    ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
-      [self handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
-    if not mAcceptAddAssignOperatorCall then
-      [super handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
-    else
+#    [self handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
+#    if not mAcceptAddAssignOperatorCall then
+#      [super handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
+#    else
       outParametersList := mAddAssignOperatorCallTypeList ;
-    end if ;
+#    end if ;
   end method ;
 
 #--- Message

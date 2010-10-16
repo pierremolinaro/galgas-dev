@@ -648,6 +648,50 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  " T H I S "    M E T H O D    C A L L    I N S T R U C T I O N           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $[$ ;
+  $this$ ;
+  const @location instructionLocation := here ;
+  $identifier$ ?@lstring mMethodName ;
+  @actualParameterListAST mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
+  $]$ ;
+  $;$ ;
+  outInstruction := [@thisMethodCallInstructionAST new
+    !instructionLocation
+    !mMethodName
+    !mActualParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  " S U P E R "    M E T H O D    C A L L    I N S T R U C T I O N         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $[$ ;
+  $super$ ;
+  const @location instructionLocation := here ;
+  $identifier$ ?@lstring mMethodName ;
+  @actualParameterListAST mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
+  $]$ ;
+  $;$ ;
+  outInstruction := [@superMethodCallInstructionAST new
+    !instructionLocation
+    !mMethodName
+    !mActualParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    M O D I F I E R    C A L L    I N S T R U C T I O N                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -673,6 +717,52 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     !instructionLocation
     !mReceiverName
     !mReceiverStructAttributes
+    !mModifierName
+    !mActualParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    " T H I S "   M O D I F I E R    C A L L    I N S T R U C T I O N      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $[$ ;
+  const @location instructionLocation := here ;
+  $!?$ ;
+  $this$ ;
+  $identifier$ ?@lstring mModifierName ;
+  @actualParameterListAST mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
+  $]$ ;
+  $;$ ;
+  outInstruction := [@thisModifierCallInstructionAST new
+    !instructionLocation
+    !mModifierName
+    !mActualParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    " S U P E R "   M O D I F I E R    C A L L    I N S T R U C T I O N    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $[$ ;
+  const @location instructionLocation := here ;
+  $!?$ ;
+  $super$ ;
+  $identifier$ ?@lstring mModifierName ;
+  @actualParameterListAST mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
+  $]$ ;
+  $;$ ;
+  outInstruction := [@superModifierCallInstructionAST new
+    !instructionLocation
     !mModifierName
     !mActualParameterList
   ] ;

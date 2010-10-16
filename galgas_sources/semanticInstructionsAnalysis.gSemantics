@@ -698,6 +698,125 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @thisMethodCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze this, as receiver expression
+  @unifiedTypeMapProxy thisTypeProxy ;
+  if [ioVariableMap hasKey !"self"] then
+    [!?ioVariableMap searchForReadAccess ![@lstring new !"self" !here] ?thisTypeProxy ?*] ;
+  else
+    error mInstructionLocation: "'this' can be used only in methods, modifiers and readers":thisTypeProxy ;
+  end if ;
+#--- Get type method signature
+  @formalParameterSignature routineSignature ;
+  @bool hasCompilerArgument ;
+  @bool isCategory ;
+  [[thisTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?*] ;
+#--- Check effective parameters
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mMethodName
+    !"'" . mMethodName . "' instance method header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@thisMethodCallInstructionForGeneration new
+    !mInstructionLocation
+    ![mMethodName string]
+    !isCategory
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+function checkMethodImplementationInSuperClasses
+  ??@lstring inMethodName
+  ??@unifiedTypeMapProxy inSuperClass
+  -> @string outResult
+:
+  if [inSuperClass isNull] then
+    outResult := "" ;
+  else
+    @methodQualifier qualifier ;
+    [[inSuperClass mInstanceMethodMap] searchKey !inMethodName ?* ?* ?* ?* ?qualifier] ;
+    switch qualifier
+    when isAbstract :
+      outResult := "" ;
+    when isBasic, isBasicFinal, isOverriding : # Ok
+      outResult := [inSuperClass key] ;
+    when isInherited, isOverridingAbstract :
+      outResult := checkMethodImplementationInSuperClasses [!inMethodName ![inSuperClass mSuperType]] ;
+    end switch ;
+  end if ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+override method @superMethodCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze super, as receiver expression
+  @unifiedTypeMapProxy superTypeProxy ;
+  if [ioVariableMap hasKey !"self"] then
+    @unifiedTypeMapProxy thisTypeProxy ;
+    [!?ioVariableMap searchForReadAccess ![@lstring new !"self" !here] ?thisTypeProxy ?*] ;
+    if [[thisTypeProxy mSuperType] isNull] then
+      error mInstructionLocation: "'super' cannot be used, current class has no super class":superTypeProxy ;
+    else
+      superTypeProxy := [thisTypeProxy mSuperType] ;
+    end if ;
+  else
+    error mInstructionLocation: "'super' can be used only in methods, modifiers and readers":superTypeProxy ;
+  end if ;
+#--- Get type method signature
+  @formalParameterSignature routineSignature ;
+  @bool hasCompilerArgument ;
+  @bool isCategory ;
+  [[superTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?*] ;
+#--- Check the method is actually implemented by the super class, or by one of its super classes
+  const @string superClassThatImplementsMethod := checkMethodImplementationInSuperClasses [!mMethodName !superTypeProxy] ;
+  if superClassThatImplementsMethod == "" then
+    error mMethodName: "the '" . mMethodName . "' method is not implemented by super class(es)" ;
+  end if ;
+#--- Check effective parameters
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mMethodName
+    !"'" . mMethodName . "' instance method header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@superMethodCallInstructionForGeneration new
+    !mInstructionLocation
+    !superClassThatImplementsMethod
+    ![mMethodName string]
+    !isCategory
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @modifierCallInstructionAST analyzeSemanticInstruction
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
@@ -733,6 +852,121 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !receiverVariableCppName
     !mReceiverStructAttributes
     !receiverType
+    !mModifierName
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @thisModifierCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze this, as receiver expression
+  @unifiedTypeMapProxy thisTypeProxy ;
+  if [ioVariableMap hasKey !"self"] then
+    [!?ioVariableMap searchForReadAccess ![@lstring new !"self" !here] ?thisTypeProxy ?*] ;
+  else
+    error mInstructionLocation: "'this' can be used only in methods, modifiers and readers":thisTypeProxy ;
+  end if ;
+#--- Get modifier signature
+  @formalParameterSignature routineSignature ;
+  @bool hasCompilerArgument ;
+  [[thisTypeProxy mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?*] ;
+#--- Check effective parameters
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mModifierName
+    !"'" . mModifierName . "' modifier header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@thisModifierCallInstructionForGeneration new
+    !thisTypeProxy
+    !mModifierName
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+function checkModifierImplementationInSuperClasses
+  ??@lstring inModifierName
+  ??@unifiedTypeMapProxy inSuperClass
+  -> @string outResult
+:
+  if [inSuperClass isNull] then
+    outResult := "" ;
+  else
+    @methodQualifier qualifier ;
+    [[inSuperClass mModifierMap] searchKey !inModifierName ?* ?* ?qualifier] ;
+    switch qualifier
+    when isAbstract :
+      outResult := "" ;
+    when isBasic, isBasicFinal, isOverriding : # Ok
+      outResult := [inSuperClass key] ;
+    when isInherited, isOverridingAbstract :
+      outResult := checkModifierImplementationInSuperClasses [!inModifierName ![inSuperClass mSuperType]] ;
+    end switch ;
+  end if ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+override method @superModifierCallInstructionAST analyzeSemanticInstruction
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze super, as receiver expression
+  @unifiedTypeMapProxy superTypeProxy ;
+  if [ioVariableMap hasKey !"self"] then
+    @unifiedTypeMapProxy thisTypeProxy ;
+    [!?ioVariableMap searchForReadAccess ![@lstring new !"self" !here] ?thisTypeProxy ?*] ;
+    if [[thisTypeProxy mSuperType] isNull] then
+      error mInstructionLocation: "'super' cannot be used, current class has no super class":superTypeProxy ;
+    else
+      superTypeProxy := [thisTypeProxy mSuperType] ;
+    end if ;
+  else
+    error mInstructionLocation: "'super' can be used only in methods, modifiers and readers":superTypeProxy ;
+  end if ;
+#--- Get modifier signature
+  @formalParameterSignature routineSignature ;
+  @bool hasCompilerArgument ;
+  [[superTypeProxy mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?*] ;
+#--- Check the modifier is actually implemented by the super class, or by one of its super classes
+  const @string superClassThatImplementsModifier := checkModifierImplementationInSuperClasses [!mModifierName !superTypeProxy] ;
+  if superClassThatImplementsModifier == "" then
+    error mModifierName: "the '" . mModifierName . "' modifier is not implemented by super class(es)" ;
+  end if ;
+#--- Check effective parameters
+  @actualParameterListForGeneration actualParameterListForGeneration ;
+  analyzeRoutineArguments
+    !inSemanticContext
+    !inPredefinedTypes
+    !mModifierName
+    !"'" . mModifierName . "' modifier header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    ?actualParameterListForGeneration
+  ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@superModifierCallInstructionForGeneration new
+    !superTypeProxy
+    !superClassThatImplementsModifier
     !mModifierName
     !actualParameterListForGeneration
     !hasCompilerArgument

@@ -657,6 +657,189 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @thisReaderCallExpressionAST analyzeSemanticExpression
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Analyze this, as receiver expression
+  @unifiedTypeMapProxy thisTypeProxy ;
+  if [ioVariableMap hasKey !"self"] then
+    [!?ioVariableMap searchForReadAccess ![@lstring new !"self" !here] ?thisTypeProxy ?*] ;
+  else
+    error mLocation: "'this' can be used only in methods, modifiers and readers":thisTypeProxy ;
+  end if ;
+#--- Get reader map
+  const @readerMap readerMap := [thisTypeProxy mReaderMap] ;
+#--- Search reader
+  @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
+  @bool isCategory ;
+  @bool hasCompilerArgument ;
+  @unifiedTypeMapProxy returnedType ;
+  with readerMap hasKey ![mReaderName string] do
+    readerFormalArgumentTypeList := mArgumentTypeList ;
+    hasCompilerArgument := mHasCompilerArgument ;
+    returnedType := mReturnedType ;
+    isCategory := mIsCategory ;
+  else
+    if [readerMap count] == 0 then
+      error mReaderName
+      : "the '@". [thisTypeProxy key] . "' type does not define any reader"
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+      ;
+    else
+      @string s := "" ;
+      foreach readerMap do
+        s .= "\n  - " . lkey ;
+        foreach mArgumentTypeList do
+          s .= " ?@" . [mType key] ;
+        end foreach ;
+        s .= " -> @" . [mReturnedType key] ;
+      end foreach ;
+      error mReaderName
+      : "the '@". [thisTypeProxy key] . "' type does not define the '" . mReaderName . "' reader; available "
+      . if [readerMap count] > 1 then "readers are" else "reader is" end
+      . ":" . s
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+      ;
+    end if ;
+  end with ;
+#--- Analysis arguments
+  if [mExpressions length] != [readerFormalArgumentTypeList length] then
+    error mReaderName: "calling the '" . mReaderName . "' reader of '@" . [thisTypeProxy key] . "' requires "
+    . [[readerFormalArgumentTypeList length] string] . " parameter(s), while this call has "
+    . [[mExpressions length] string] . " parameter(s)" : outExpression ;
+  else
+    @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
+    foreach mExpressions, readerFormalArgumentTypeList do
+      @semanticExpressionForGeneration exp ;
+      [mExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?exp] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      constructorEffectiveParameterList += !exp ;
+    end foreach ;
+    outExpression := [@thisReaderCallExpressionForGeneration new
+      !returnedType
+      ![mReaderName location]
+      !isCategory
+      ![mReaderName string]
+      !constructorEffectiveParameterList
+      !hasCompilerArgument
+    ] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+function checkReaderImplementationInSuperClasses
+  ??@lstring inReaderName
+  ??@unifiedTypeMapProxy inSuperClass
+  -> @string outResult
+:
+  if [inSuperClass isNull] then
+    outResult := "" ;
+  else
+    @methodQualifier qualifier ;
+    [[inSuperClass mModifierMap] searchKey !inReaderName ?* ?* ?qualifier] ;
+    switch qualifier
+    when isAbstract :
+      outResult := "" ;
+    when isBasic, isBasicFinal, isOverriding : # Ok
+      outResult := [inSuperClass key] ;
+    when isInherited, isOverridingAbstract :
+      outResult := checkReaderImplementationInSuperClasses [!inReaderName ![inSuperClass mSuperType]] ;
+    end switch ;
+  end if ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+override method @superReaderCallExpressionAST analyzeSemanticExpression
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Analyze super, as receiver expression
+  @unifiedTypeMapProxy superTypeProxy ;
+  if [ioVariableMap hasKey !"self"] then
+    @unifiedTypeMapProxy thisTypeProxy ;
+    [!?ioVariableMap searchForReadAccess ![@lstring new !"self" !here] ?thisTypeProxy ?*] ;
+    if [[thisTypeProxy mSuperType] isNull] then
+      error mLocation: "'super' cannot be used, current class has no super class":superTypeProxy ;
+    else
+      superTypeProxy := [thisTypeProxy mSuperType] ;
+    end if ;
+  else
+    error mLocation: "'super' can be used only in methods, modifiers and readers":superTypeProxy ;
+  end if ;
+#--- Get reader map
+  const @readerMap readerMap := [superTypeProxy mReaderMap] ;
+#--- Search reader
+  @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
+  @bool isCategory ;
+  @bool hasCompilerArgument ;
+  @unifiedTypeMapProxy returnedType ;
+  @string superClassThatImplementsReader  ;
+  with readerMap hasKey ![mReaderName string] do
+    readerFormalArgumentTypeList := mArgumentTypeList ;
+    hasCompilerArgument := mHasCompilerArgument ;
+    returnedType := mReturnedType ;
+    isCategory := mIsCategory ;
+    superClassThatImplementsReader := checkReaderImplementationInSuperClasses [!mReaderName !superTypeProxy] ;
+    if superClassThatImplementsReader == "" then
+      error mReaderName: "the '" . mReaderName . "' reader is not implemented by super class(es)" ;
+    end if ;
+  else
+    if [readerMap count] == 0 then
+      error mReaderName
+      : "the '@". [superTypeProxy key] . "' type does not define any reader"
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory, superClassThatImplementsReader
+      ;
+    else
+      @string s := "" ;
+      foreach readerMap do
+        s .= "\n  - " . lkey ;
+        foreach mArgumentTypeList do
+          s .= " ?@" . [mType key] ;
+        end foreach ;
+        s .= " -> @" . [mReturnedType key] ;
+      end foreach ;
+      error mReaderName
+      : "the '@". [superTypeProxy key] . "' type does not define the '" . mReaderName . "' reader; available "
+      . if [readerMap count] > 1 then "readers are" else "reader is" end
+      . ":" . s
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory, superClassThatImplementsReader
+      ;
+    end if ;
+  end with ;
+#--- Analysis arguments
+  if [mExpressions length] != [readerFormalArgumentTypeList length] then
+    error mReaderName: "calling the '" . mReaderName . "' reader of '@" . [superTypeProxy key] . "' requires "
+    . [[readerFormalArgumentTypeList length] string] . " parameter(s), while this call has "
+    . [[mExpressions length] string] . " parameter(s)" : outExpression ;
+  else
+    @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
+    foreach mExpressions, readerFormalArgumentTypeList do
+      @semanticExpressionForGeneration exp ;
+      [mExpression analyzeSemanticExpression !inSemanticContext !inPredefinedTypes !?ioVariableMap ?exp] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      constructorEffectiveParameterList += !exp ;
+    end foreach ;
+    outExpression := [@superReaderCallExpressionForGeneration new
+      !returnedType
+      ![mReaderName location]
+      !isCategory
+      !superClassThatImplementsReader
+      ![mReaderName string]
+      !constructorEffectiveParameterList
+      !hasCompilerArgument
+    ] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @optionExpressionAST analyzeSemanticExpression
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
