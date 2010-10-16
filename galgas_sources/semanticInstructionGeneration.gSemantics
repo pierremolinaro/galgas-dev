@@ -389,7 +389,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "{ //-------- @methodCallInstructionForGeneration\n" ;
+  ioGeneratedCode .= "//-------- @methodCallInstructionForGeneration\n" ;
 #--- Receiver expression
   @string receiverVar ;
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverVar] ;
@@ -421,7 +421,85 @@ override method @methodCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= " COMMA_" ;
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
-  ioGeneratedCode .= "} //-------- END @methodCallInstructionForGeneration\n" ;
+  ioGeneratedCode .= "//-------- END @methodCallInstructionForGeneration\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @thisMethodCallInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @thisMethodCallInstructionForGeneration\n" ;
+#---
+  @stringlist parameterCppNameList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+#--- Generate method call
+  ioGeneratedCode .= "method_" . [mMethodName identifierRepresentation] . " (" ;
+  foreach parameterCppNameList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
+  end foreach ;
+  if [parameterCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+      ioGeneratedCode .= compilerCppName [] ;
+      ioGeneratedCode .= " COMMA_" ;
+    end if ;
+  elsif mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    ioGeneratedCode .= ", " . compilerCppName [] ;
+    ioGeneratedCode .= " COMMA_" ;
+  else
+    ioGeneratedCode .= " COMMA_" ;
+  end if ;
+  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  ioGeneratedCode .= "//-------- END @thisMethodCallInstructionForGeneration\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @superMethodCallInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @superMethodCallInstructionForGeneration\n" ;
+#---
+  @stringlist parameterCppNameList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+#--- Generate method call
+  ioGeneratedCode .= "cPtr_" . [mSuperClassThatImplementsMethod identifierRepresentation] . "::method_" . [mMethodName identifierRepresentation] . " (" ;
+  foreach parameterCppNameList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
+  end foreach ;
+  if [parameterCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+      ioGeneratedCode .= compilerCppName [] ;
+      ioGeneratedCode .= " COMMA_" ;
+    end if ;
+  elsif mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    ioGeneratedCode .= ", " . compilerCppName [] ;
+    ioGeneratedCode .= " COMMA_" ;
+  else
+    ioGeneratedCode .= " COMMA_" ;
+  end if ;
+  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  ioGeneratedCode .= "//-------- END @superMethodCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -489,6 +567,78 @@ override method @modifierCallInstructionForGeneration generateInstruction
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
   ioGeneratedCode .= "} //-------- END @typeMethodInstructionForGeneration\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @thisModifierCallInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "{ //-------- @thisModifierCallInstructionForGeneration\n" ;
+#--- Parameters
+  @stringlist parameterCppNameList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+#--- Generate method call
+  ioGeneratedCode .= "modifier_" . [mModifierName identifierRepresentation] . " (" ;
+  foreach parameterCppNameList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
+  end foreach ;
+  if mHasCompilerArgument then
+    if [parameterCppNameList length] != 0 then
+      ioGeneratedCode .=  ", " ;
+    end if ;
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    ioGeneratedCode .=  compilerCppName [] ;
+    ioGeneratedCode .= " COMMA_" ;
+  elsif [parameterCppNameList length] != 0 then
+    ioGeneratedCode .= " COMMA_" ;
+  end if ;
+  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
+  ioGeneratedCode .= "} //-------- END @thisModifierCallInstructionForGeneration\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @superModifierCallInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "{ //-------- @superModifierCallInstructionForGeneration\n" ;
+#--- Parameters
+  @stringlist parameterCppNameList [emptyList] ;
+  @stringlist jokerParametersToReleaseList [emptyList] ;
+  foreach mActualParameterList do
+    @string parameterCppName ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    parameterCppNameList += !parameterCppName ;
+  end foreach ;
+#--- Generate method call
+  ioGeneratedCode .= "cPtr_" . [mSuperClassThatImplementsModifier identifierRepresentation] . "::modifier_" . [mModifierName identifierRepresentation] . " (" ;
+  foreach parameterCppNameList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
+  end foreach ;
+  if mHasCompilerArgument then
+    if [parameterCppNameList length] != 0 then
+      ioGeneratedCode .=  ", " ;
+    end if ;
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    ioGeneratedCode .=  compilerCppName [] ;
+    ioGeneratedCode .= " COMMA_" ;
+  elsif [parameterCppNameList length] != 0 then
+    ioGeneratedCode .= " COMMA_" ;
+  end if ;
+  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
+  ioGeneratedCode .= "} //-------- END @superModifierCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

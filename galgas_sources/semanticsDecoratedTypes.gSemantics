@@ -118,6 +118,25 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
 
 #---------------------------------------------------------------------------*
 
+class @thisReaderCallExpressionForGeneration extends @semanticExpressionForGeneration {
+  @bool mIsCategory ;
+  @string mReaderName ;
+  @semanticExpressionListForGeneration mExpressions ;
+  @bool mHasCompilerArgument ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @superReaderCallExpressionForGeneration extends @semanticExpressionForGeneration {
+  @bool mIsCategory ;
+  @string mSuperClassThatImplementsReader ;
+  @string mReaderName ;
+  @semanticExpressionListForGeneration mExpressions ;
+  @bool mHasCompilerArgument ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @optionValueExpressionForGeneration extends @semanticExpressionForGeneration {
   @string mOptionComponentName ;
   @string mOptionEntryName ;
@@ -734,6 +753,35 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  " T H I S "    M E T H O D    C A L L    I N S T R U C T I O N           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @thisMethodCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
+  @string mMethodName ;
+  @bool mIsCategory ;
+  @actualParameterListForGeneration mActualParameterList ;
+  @bool mHasCompilerArgument ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  " S U P E R "    M E T H O D    C A L L    I N S T R U C T I O N         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @superMethodCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
+  @string mSuperClassThatImplementsMethod ;
+  @string mMethodName ;
+  @bool mIsCategory ;
+  @actualParameterListForGeneration mActualParameterList ;
+  @bool mHasCompilerArgument ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  M O D I F I E R    C A L L    I N S T R U C T I O N                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -742,6 +790,33 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
   @string mReceiverCppName ;
   @lstringlist mReceiverStructAttributes ;
   @unifiedTypeMapProxy mReceiverType ;
+  @lstring mModifierName ;
+  @actualParameterListForGeneration mActualParameterList ;
+  @bool mHasCompilerArgument ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  " T H I S "    M O D I F I E R    C A L L    I N S T R U C T I O N       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @thisModifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @unifiedTypeMapProxy mReceiverType ;
+  @lstring mModifierName ;
+  @actualParameterListForGeneration mActualParameterList ;
+  @bool mHasCompilerArgument ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  " S U P E R "    M O D I F I E R    C A L L    I N S T R U C T I O N     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @superModifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @unifiedTypeMapProxy mReceiverType ;
+  @string mSuperClassThatImplementsModifier ;
   @lstring mModifierName ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
