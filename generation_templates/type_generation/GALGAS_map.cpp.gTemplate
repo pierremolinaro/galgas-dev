@@ -60,19 +60,19 @@ enumComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionE
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-GALGAS_map () {
+AC_GALGAS_map () {
 }
 
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
-GALGAS_map (inSource) {
+AC_GALGAS_map (inSource) {
 }
 
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) {
-  * ((GALGAS_map *) this) = inSource ;
+  * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 

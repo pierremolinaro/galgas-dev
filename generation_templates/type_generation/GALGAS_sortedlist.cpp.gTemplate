@@ -105,7 +105,7 @@ enumComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cColl
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-GALGAS_sortedlist () {
+AC_GALGAS_sortedlist () {
 }
 
 //---------------------------------------------------------------------------*

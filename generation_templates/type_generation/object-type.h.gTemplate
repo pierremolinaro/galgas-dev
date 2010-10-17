@@ -8,7 +8,7 @@ class cPtr_object ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_object : public GALGAS__root {
+class GALGAS_object : public AC_GALGAS_root {
 //--------------------------------- Private data member
   private : cPtr_object * mSharedObject ;
 
@@ -20,7 +20,7 @@ class GALGAS_object : public GALGAS__root {
   public : GALGAS_object (void) ;
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_object (GALGAS__root * inObjectPointer
+  public : GALGAS_object (AC_GALGAS_root * inObjectPointer
                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
@@ -31,7 +31,7 @@ class GALGAS_object : public GALGAS__root {
   public : GALGAS_object & operator = (const GALGAS_object & inSource) ;
 
 //--------------------------------- Embedded Object
-  public : const GALGAS__root * embeddedObject (void) const ;
+  public : const AC_GALGAS_root * embeddedObject (void) const ;
 
 %
 

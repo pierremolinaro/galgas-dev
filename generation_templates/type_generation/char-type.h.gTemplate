@@ -4,7 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_char : public GALGAS__root {
+class GALGAS_char : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : utf32 mCharValue ;

@@ -1,7 +1,7 @@
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
-  protected : virtual GALGAS__root * clonedObject (void) const ;
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
   public : static GALGAS_%!TYPE_IDENTIFIER% extractObject (%?^%const GALGAS_object & inObject,

@@ -8,7 +8,7 @@ class cSharedStringsetRoot ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_stringset : public GALGAS__root
+class GALGAS_stringset : public AC_GALGAS_root
  {
 //--------------------------------- Private data members
   private : cSharedStringsetRoot * mSharedRoot ;

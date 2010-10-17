@@ -12,7 +12,7 @@ class C_SourceTextInString ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_location : public GALGAS__root {
+class GALGAS_location : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : C_LocationInSource mStartLocationInSource ;
   private : C_LocationInSource mEndLocationInSource ;

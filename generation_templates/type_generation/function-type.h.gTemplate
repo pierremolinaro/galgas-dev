@@ -8,7 +8,7 @@ class C_galgas_function_descriptor ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_function : public GALGAS__root {
+class GALGAS_function : public AC_GALGAS_root {
 //--------------------------------- Private data member
   private : const C_galgas_function_descriptor * mFunctionDescriptor ;
 
