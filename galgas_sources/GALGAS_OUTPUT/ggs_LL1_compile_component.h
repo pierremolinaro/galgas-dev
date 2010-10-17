@@ -341,7 +341,7 @@ class GGS_EXsourceFileMap : public AC_GGS_map {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const cDirectoryWrapper gWrapperDirectory_0_EXfileListTemplateFileWrapper ;
+extern const cDirectoryWrapperEx gWrapperDirectory_0_EXfileListTemplateFileWrapper ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

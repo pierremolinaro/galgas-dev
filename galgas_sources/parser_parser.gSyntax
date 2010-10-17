@@ -311,7 +311,7 @@ rule <galgas_component>
   @ModelMap modelMap ;
   @ActionMap actionMap ;
   @EXsemanticContext semanticContext [new
-    ![@M_filewrappers emptyMap]
+    ![@M_filewrappersEX emptyMap]
     ![@stringset emptySet]
     ![@EXcategoryMethodMap emptyMap]
     ![@EXcategoryReaderMap emptyMap]

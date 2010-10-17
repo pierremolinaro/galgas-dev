@@ -1,0 +1,13 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Filewrapper '" . FILEWRAPPER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+%
+foreach FILE_INDEX_STRING_LIST do
+  %extern const char * gWrapperFileContent_%!mValue%_%![FILEWRAPPER_NAME identifierRepresentation]% ;\n%
+end foreach
+%
+extern const cDirectoryWrapper gWrapperDirectory_0_%![FILEWRAPPER_NAME identifierRepresentation]% ;
+

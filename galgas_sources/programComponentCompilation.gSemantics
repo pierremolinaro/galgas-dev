@@ -207,6 +207,7 @@ routine compileProgramComponent
 #------ Build semantic context
   @semanticContext semanticContext ;
   buildSemanticContext
+    ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
     ![programComponentAST mEndOfSourceFile]
     ?semanticContext

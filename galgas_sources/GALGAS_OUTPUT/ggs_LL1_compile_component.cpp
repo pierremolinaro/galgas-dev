@@ -59,7 +59,7 @@
 
 //--- All files of '' directory
 
-static const cRegularFileWrapper * gWrapperAllFiles_EXfileListTemplateFileWrapper_0 [1] = {
+static const cRegularFileWrapperEx * gWrapperAllFiles_EXfileListTemplateFileWrapper_0 [1] = {
   NULL
 } ;
 
@@ -67,7 +67,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_EXfileListTemplateFileWrappe
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_EXfileListTemplateFileWrapper_0 [1] = {
+static const cDirectoryWrapperEx * gWrapperAllDirectories_EXfileListTemplateFileWrapper_0 [1] = {
   NULL
 } ;
 
@@ -75,7 +75,7 @@ static const cDirectoryWrapper * gWrapperAllDirectories_EXfileListTemplateFileWr
 
 //--- Directory ''
 
-const cDirectoryWrapper gWrapperDirectory_0_EXfileListTemplateFileWrapper (
+const cDirectoryWrapperEx gWrapperDirectory_0_EXfileListTemplateFileWrapper (
   "",
   0,
   gWrapperAllFiles_EXfileListTemplateFileWrapper_0,

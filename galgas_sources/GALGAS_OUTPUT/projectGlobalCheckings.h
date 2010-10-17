@@ -811,7 +811,7 @@ class elementOf_GGS_sourceFileMap : public AC_galgas_map_element {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const cDirectoryWrapper gWrapperDirectory_0_fileListTemplateFileWrapper ;
+extern const cDirectoryWrapperEx gWrapperDirectory_0_fileListTemplateFileWrapper ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

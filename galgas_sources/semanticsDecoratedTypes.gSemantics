@@ -345,19 +345,13 @@ class @extractObjectInExpressionForGeneration extends @semanticExpressionForGene
   @semanticExpressionForGeneration mErrorLocationExpression ;
 }
 
-##---------------------------------------------------------------------------*
-#
-#class @filewrapperObjectInstanciationInExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lstring mFilewrapperName ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @filewrapperInExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lstring mFilewrapperName ;
-#  @lstring mFilewrapperPath ;
-#}
-#
+#---------------------------------------------------------------------------*
+
+class @filewrapperInExpressionForGeneration extends @semanticExpressionForGeneration {
+  @string mFilewrapperName ;
+  @string mFilewrapperPath ;
+}
+
 ##---------------------------------------------------------------------------*
 #
 #class @filewrapperTemplateInExpressionForGeneration extends @semanticExpressionForGeneration {
@@ -1395,6 +1389,44 @@ class @enumTypeForGeneration extends @semanticTypeForGeneration {
 #    F I L E W R A P P E R    D E C L A R A T I O N                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
+
+sortedlist @wrapperFileSortedList {
+  @string mRegularFileName ;
+  @string mAbsoluteFilePath ;
+  @uint mWrapperDirectoryIndex ;
+  @uint mWrapperFileIndex ;
+}{
+  mRegularFileName <
+}
+
+#---------------------------------------------------------------------------*
+
+sortedlist @wrapperDirectorySortedList ;
+
+sortedlist @wrapperDirectorySortedList {
+  @string mDirectoryName ;
+  @wrapperFileSortedList mRegularFileSortedList ;
+  @wrapperDirectorySortedList mDirectorySortedList ;
+  @uint mWrapperDirectoryIndex ;
+}{
+  mDirectoryName <
+}
+
+#---------------------------------------------------------------------------*
+
+map @wrapperExtensionMap {
+  insert insertKey error message "the '%K' extension has been already declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperDeclarationForGeneration extends @semanticDeclarationForGeneration {
+  @string mFilewrapperName ;
+  @string mFilewrapperAbsolutePath ;
+  @wrapperExtensionMap mExtensionMap ;
+  @wrapperFileSortedList mFilewrapperFileSortedList ;
+  @wrapperDirectorySortedList mFilewrapperDirectorySortedList ;
+}
 
 #list @filewrapperTemplateListForGeneration {
 #  @lstring mFilewrapperTemplateName ;
