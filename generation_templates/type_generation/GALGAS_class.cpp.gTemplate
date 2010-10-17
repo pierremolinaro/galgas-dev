@@ -6,10 +6,10 @@
 else
   %//---------------------------------------------------------------------------*\n\n%
   %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
-  if SUPER_TYPE_IDENTIFIER == "class" then
+  if SUPER_TYPE_IDENTIFIER == "" then
     %  enumComparisonResult result = kOperandEqual ;\n%
   else
-    %  enumComparisonResult result = inherited::objectCompare (inOperand) ;\n%
+    %  enumComparisonResult result = %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if%::objectCompare (inOperand) ;\n%
   end if
   if [CURRENT_ATTRIBUTE_LIST length] > 0 then
     %  const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
@@ -29,45 +29,15 @@ end if
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-GALGAS_%!SUPER_TYPE_IDENTIFIER% () {
+%if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if% () {
 }
 
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
-GALGAS_%!SUPER_TYPE_IDENTIFIER% (inSourcePtr) {
+%if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if% (inSourcePtr) {
   macroNullOrValidObject (inSourcePtr, cPtr_%!TYPE_IDENTIFIER%) ;
 }
-
-//---------------------------------------------------------------------------*
-
-/*GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
-  foreach ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & constinAttribute_%![mAttributeName identifierRepresentation]
-    between %,\n%!^
-  end foreach
-  if [ALL_ATTRIBUTE_LIST length] > 0 then
-    %\n%!^%COMMA_LOCATION_ARGS%
-  else
-    %LOCATION_ARGS%
-  end if
-  %) :\n%
-  %GALGAS_%!SUPER_TYPE_IDENTIFIER% (%
-  foreach INHERITED_ATTRIBUTE_LIST
-    do %constinAttribute_%![mAttributeName identifierRepresentation]
-    between %, %
-  end foreach
-  if [INHERITED_ATTRIBUTE_LIST length] > 0 then
-    % COMMA_THERE)%
-  else
-    %THERE)%
-  end if
-  foreach CURRENT_ATTRIBUTE_LIST do
-    %,\n%
-    %mAttribute_%![mAttributeName identifierRepresentation]% (constinAttribute_%![mAttributeName identifierRepresentation]%)%
-  end foreach
-% {
-}*/
 
 %
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
@@ -240,7 +210,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
     %LOCATION_ARGS%
   end if
 %) :
-cPtr_%!SUPER_TYPE_IDENTIFIER% (%
+%if SUPER_TYPE_IDENTIFIER == "" then %acPtr_class% else %cPtr_%!SUPER_TYPE_IDENTIFIER end if% (%
   foreach INHERITED_ATTRIBUTE_LIST
     do %in_%![mAttributeName identifierRepresentation]
     between %, %

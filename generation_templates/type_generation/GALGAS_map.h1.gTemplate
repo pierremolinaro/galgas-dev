@@ -8,7 +8,7 @@ class cMapElement_%!TYPE_IDENTIFIER% ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_map {
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_map {
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 

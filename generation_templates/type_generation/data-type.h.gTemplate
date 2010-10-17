@@ -8,7 +8,7 @@ typedef TC_Array <PMUInt8> uint8Array ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_data : public GALGAS__root {
+class GALGAS_data : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : uint8Array mData ;

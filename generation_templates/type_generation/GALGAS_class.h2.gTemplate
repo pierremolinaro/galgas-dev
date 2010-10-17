@@ -4,7 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_%!TYPE_IDENTIFIER% : public cPtr_%!SUPER_TYPE_IDENTIFIER% {
+class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acPtr_class% else %cPtr_%!SUPER_TYPE_IDENTIFIER end if% {
 
 //--- Attributes
 %

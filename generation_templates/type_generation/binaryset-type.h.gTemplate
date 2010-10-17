@@ -8,7 +8,7 @@
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_binaryset : public GALGAS__root {
+class GALGAS_binaryset : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : C_BDD mBDD ;

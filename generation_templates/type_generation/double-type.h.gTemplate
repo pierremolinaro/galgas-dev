@@ -4,7 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_double : public GALGAS__root {
+class GALGAS_double : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : double mDoubleValue ;

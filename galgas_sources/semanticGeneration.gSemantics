@@ -415,7 +415,7 @@ override reader @classTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.classTypeHeader1
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
-    !if [mSuperClass isNull] then "class" else [mSuperClass identifierRepresentation] end
+    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
     !mAllTypedAttributeList
     !mIsAbstract
   ] ;
@@ -581,7 +581,7 @@ override reader @classTypeForGeneration appendDeclaration2 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.classTypeHeader2
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
-    !if [mSuperClass isNull] then "class" else [mSuperClass identifierRepresentation] end
+    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
     !mTypedAttributeList
     !mAllTypedAttributeList
     !mIsAbstract
@@ -686,7 +686,7 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
   outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
-    !if [mSuperClass isNull] then "class" else [mSuperClass identifierRepresentation] end
+    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
     !mTypedAttributeList
     !mAllTypedAttributeList
     ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]

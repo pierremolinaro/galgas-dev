@@ -1,19 +1,19 @@
 
-#ifndef GALGAS2_PRIMITIVE_TYPES
-#define GALGAS2_PRIMITIVE_TYPES
+#ifndef GALGAS2_PREDEFINED_TYPES
+#define GALGAS2_PREDEFINED_TYPES
 
 //---------------------------------------------------------------------------*
 
 #include "strings/C_String.h"
-#include "galgas2/GALGAS__root.h"
+#include "galgas2/AC_GALGAS_root.h"
 #include "galgas2/C_galgas_type_descriptor.h"
 #include "galgas2/enumComparisonResult.h"
 #include "galgas2/cGenericAbstractEnumerator.h"
-#include "galgas2/GALGAS_list.h"
-#include "galgas2/GALGAS_sortedlist.h"
-#include "galgas2/GALGAS_map.h"
-#include "galgas2/GALGAS_class.h"
-#include "galgas2/cPtr_class.h"
+#include "galgas2/AC_GALGAS_list.h"
+#include "galgas2/AC_GALGAS_sortedlist.h"
+#include "galgas2/AC_GALGAS_map.h"
+#include "galgas2/AC_GALGAS_class.h"
+#include "galgas2/acPtr_class.h"
 
 //---------------------------------------------------------------------------*
 

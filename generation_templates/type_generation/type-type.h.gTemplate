@@ -4,7 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_type : public GALGAS__root
+class GALGAS_type : public AC_GALGAS_root
  {
 //--------------------------------- Private data members
   private : const C_galgas_type_descriptor * mTypeDescriptor ;

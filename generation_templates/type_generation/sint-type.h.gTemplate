@@ -4,7 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_sint : public GALGAS__root {
+class GALGAS_sint : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : PMSInt32 mSIntValue ;

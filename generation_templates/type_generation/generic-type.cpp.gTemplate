@@ -16,8 +16,8 @@ const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::staticTypeDescriptor
 
 //---------------------------------------------------------------------------*
 
-GALGAS__root * GALGAS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
-  GALGAS__root * result = NULL ;
+AC_GALGAS_root * GALGAS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (*this)) ;
   }

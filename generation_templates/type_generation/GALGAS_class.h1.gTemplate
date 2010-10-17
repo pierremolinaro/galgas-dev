@@ -8,9 +8,7 @@ class cPtr_%!TYPE_IDENTIFIER% ;
 
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public GALGAS_%!SUPER_TYPE_IDENTIFIER% {
-  private : typedef GALGAS_%!SUPER_TYPE_IDENTIFIER% inherited ;
-
+class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if% {
 //--- Constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 

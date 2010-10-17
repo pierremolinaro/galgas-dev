@@ -98,7 +98,7 @@ enumComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cColl
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-GALGAS_list () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------*
