@@ -27,10 +27,10 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 //---------------------------------------------------------------------------*
 
 static PMSInt32
-wrapperFileCount (const GGS_wrapperFileSortedList & inRegularFileSortedList,
-                  const GGS_wrapperDirectorySortedList & inDirectorySortedList) {
+wrapperFileCount (const GGS_wrapperFileSortedListEX & inRegularFileSortedList,
+                  const GGS_wrapperDirectorySortedListEX & inDirectorySortedList) {
   PMSInt32 count = inRegularFileSortedList.count () ;
-  GGS_wrapperDirectorySortedList::cEnumerator d (inDirectorySortedList, true) ;
+  GGS_wrapperDirectorySortedListEX::cEnumerator d (inDirectorySortedList, true) ;
   while (d.hasCurrentObject ()) {
     count += wrapperFileCount (d._mRegularFileSortedList (HERE),
                                d._mDirectorySortedList (HERE)) ;
@@ -52,7 +52,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
             << "_" << mWrapperName
             << " ;\n" ;
   }
-  inHfile << "extern const cDirectoryWrapper gWrapperDirectory_0_" << mWrapperName << " ;\n\n" ;
+  inHfile << "extern const cDirectoryWrapperEx gWrapperDirectory_0_" << mWrapperName << " ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -80,14 +80,14 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 
 static void
 generateWrapperContents (AC_OutputStream & inCppFile,
-                         const GGS_wrapperFileSortedList & inRegularFileSortedList,
-                         const GGS_wrapperDirectorySortedList & inDirectorySortedList,
+                         const GGS_wrapperFileSortedListEX & inRegularFileSortedList,
+                         const GGS_wrapperDirectorySortedListEX & inDirectorySortedList,
                          const C_String & inWrapperName,
                          const C_String & inWrapperDirectory,
                          const PMUInt32 inWrapperDirectoryIndex) {
 //--- Recursively generate sub directories
   TC_UniqueArray <PMUInt32> subDirectories ;
-  GGS_wrapperDirectorySortedList::cEnumerator d (inDirectorySortedList, true) ;
+  GGS_wrapperDirectorySortedListEX::cEnumerator d (inDirectorySortedList, true) ;
   while (d.hasCurrentObject ()) {
     generateWrapperContents (inCppFile,
                              d._mRegularFileSortedList (HERE),
@@ -100,7 +100,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   }
 //--- Generate regular files
   TC_UniqueArray <PMUInt32> wrapperFileIndexes ;
-  GGS_wrapperFileSortedList::cEnumerator f (inRegularFileSortedList, true) ;
+  GGS_wrapperFileSortedListEX::cEnumerator f (inRegularFileSortedList, true) ;
   while (f.hasCurrentObject ()) {
     TC_UniqueArray <unsigned char> binaryData ;
     const bool ok = f._mAbsoluteFilePath (HERE).string ().binaryDataWithContentOfFile (binaryData) ;
@@ -146,7 +146,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
       inCppFile << "\"\n" ;
     }
     inCppFile << ";\n\n"
-                 "static const cRegularFileWrapper gWrapperFile_" ;
+                 "static const cRegularFileWrapperEx gWrapperFile_" ;
     inCppFile.appendUnsigned (f._mWrapperFileIndex (HERE).uintValue ()) ;
     inCppFile << "_" << inWrapperName
               << " (\n"
@@ -161,7 +161,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
 //--- Generate all File wrapper list
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- All files of '" << inWrapperDirectory << "' directory\n\n"
-               "static const cRegularFileWrapper * gWrapperAllFiles_" << inWrapperName
+               "static const cRegularFileWrapperEx * gWrapperAllFiles_" << inWrapperName
             << "_" ;
   inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
   inCppFile << " [" ;
@@ -178,7 +178,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
 //--- Generate all directory wrapper list
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- All sub-directories of '" << inWrapperDirectory << "' directory\n\n"
-               "static const cDirectoryWrapper * gWrapperAllDirectories_" << inWrapperName
+               "static const cDirectoryWrapperEx * gWrapperAllDirectories_" << inWrapperName
             << "_" ;
   inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
   inCppFile << " [" ;
@@ -194,7 +194,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
 //--- Generate directory wrapper
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- Directory '" << inWrapperDirectory << "'\n\n"
-               "const cDirectoryWrapper gWrapperDirectory_" ;
+               "const cDirectoryWrapperEx gWrapperDirectory_" ;
   inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
   inCppFile << "_" << inWrapperName
             << " (\n"

@@ -59,6 +59,7 @@ end routine ;
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
+  ioDeclarationListASTs += ![@filewrapperPredefinedTypeAST new !"filewrapper" ![@predefinedTypeKindEnum predefined_filewrapper]] ;
   ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object" ![@predefinedTypeKindEnum predefined_object]] ;
   ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool" ![@predefinedTypeKindEnum predefined_bool]] ;
   ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint" ![@predefinedTypeKindEnum predefined_uint]] ;
@@ -205,6 +206,8 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
   template string_type "string-type.h.gTemplate" ;
   
   template stringset_type "stringset-type.h.gTemplate" ;
+
+  template filewrapper_type "filewrapper-type.h.gTemplate" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -246,6 +249,8 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     outHeader := [filewrapper predefinedTypeGenerationTemplate.type_type] ;
   when predefined_data :
     outHeader := [filewrapper predefinedTypeGenerationTemplate.data_type] ;
+  when predefined_filewrapper :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.filewrapper_type] ;
   end switch ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeIndex key]
@@ -280,6 +285,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
     #------ Build Semantic Context
       @semanticContext semanticContext ;
       buildSemanticContext
+        !""
         !predefinedTypeASTlist
         !here
         ?semanticContext

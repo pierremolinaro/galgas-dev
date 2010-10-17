@@ -3775,7 +3775,7 @@ map @M_semanticsComponents {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_regularFiles {
+map @M_regularFilesEX {
   @uint mWrapperDirectoryIndex ;
   @uint mWrapperFileIndex ;
   insert insertKey error message "a regular file named '%K' is already declared in %L" ;
@@ -3792,8 +3792,8 @@ map @filewrapperTemplateMapEX {
 
 #---------------------------------------------------------------------------*
 
-map @M_filewrappers {
-  @M_regularFiles mRegularFileMap ;
+map @M_filewrappersEX {
+  @M_regularFilesEX mRegularFileMap ;
   @filewrapperTemplateMapEX mTemplateMap ;
   insert insertKey error message "a file wrapper named '%K' is already declared in %L" ;
   search searchKey error message "there is no file wrapper named '%K'" ;
@@ -5721,7 +5721,7 @@ class @templateInstructionIf extends @templateInstruction {
 #---------------------------------------------------------------------------*
 
 struct @EXsemanticContext {
-  @M_filewrappers mFilewrappers ;
+  @M_filewrappersEX mFilewrappers ;
   @stringset mImportedSemanticComponents ;
   @EXcategoryMethodMap mCategoryMethodMap ;
   @EXcategoryReaderMap mCategoryReaderMap ;

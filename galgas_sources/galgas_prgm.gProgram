@@ -107,7 +107,7 @@ message "a GALGAS semantics source file"
     @M_grammarComponents grammarComponentsMap [emptyMap] ;
     @M_optionComponents optionComponentsMap [emptyMap] ;
     @EXsemanticContext semanticContext [new
-      ![@M_filewrappers emptyMap]
+      ![@M_filewrappersEX emptyMap]
       ![@stringset emptySet]
       ![@EXcategoryMethodMap emptyMap]
       ![@EXcategoryReaderMap emptyMap]
@@ -146,7 +146,7 @@ message "a GALGAS syntax source file"
     @M_grammarComponents grammarComponentsMap [emptyMap] ;
     @M_optionComponents optionComponentsMap [emptyMap] ;
     @EXsemanticContext semanticContext [new
-      ![@M_filewrappers emptyMap]
+      ![@M_filewrappersEX emptyMap]
       ![@stringset emptySet]
       ![@EXcategoryMethodMap emptyMap]
       ![@EXcategoryReaderMap emptyMap]
@@ -221,7 +221,7 @@ message "a GALGAS program source file"
     @M_grammarComponents grammarComponentsMap [emptyMap] ;
     @M_optionComponents optionComponentsMap [emptyMap] ;
     @EXsemanticContext semanticContext [new
-      ![@M_filewrappers emptyMap]
+      ![@M_filewrappersEX emptyMap]
       ![@stringset emptySet]
       ![@EXcategoryMethodMap emptyMap]
       ![@EXcategoryReaderMap emptyMap]
@@ -317,7 +317,7 @@ message "a GALGAS project source file"
           @M_grammarComponents grammarComponentsMap [emptyMap] ;
           @M_optionComponents optionComponentsMap [emptyMap] ;
           @EXsemanticContext semanticContext [new
-            ![@M_filewrappers emptyMap]
+            ![@M_filewrappersEX emptyMap]
             ![@stringset emptySet]
             ![@EXcategoryMethodMap emptyMap]
             ![@EXcategoryReaderMap emptyMap]
@@ -346,7 +346,7 @@ message "a GALGAS project source file"
           @M_grammarComponents grammarComponentsMap [emptyMap] ;
           @M_optionComponents optionComponentsMap [emptyMap] ;
           @EXsemanticContext semanticContext [new
-            ![@M_filewrappers emptyMap]
+            ![@M_filewrappersEX emptyMap]
             ![@stringset emptySet]
             ![@EXcategoryMethodMap emptyMap]
             ![@EXcategoryReaderMap emptyMap]
@@ -386,7 +386,7 @@ message "a GALGAS project source file"
           @M_grammarComponents grammarComponentsMap [emptyMap] ;
           @M_optionComponents optionComponentsMap [emptyMap] ;
           @EXsemanticContext semanticContext [new
-            ![@M_filewrappers emptyMap]
+            ![@M_filewrappersEX emptyMap]
             ![@stringset emptySet]
             ![@EXcategoryMethodMap emptyMap]
             ![@EXcategoryReaderMap emptyMap]

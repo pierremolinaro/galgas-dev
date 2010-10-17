@@ -1602,7 +1602,7 @@ list @ruleDescriptorForProgramList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-sortedlist @wrapperFileSortedList {
+sortedlist @wrapperFileSortedListEX {
   @string mRegularFileName ;
   @string mAbsoluteFilePath ;
   @uint mWrapperDirectoryIndex ;
@@ -1613,12 +1613,12 @@ sortedlist @wrapperFileSortedList {
 
 #---------------------------------------------------------------------------*
 
-sortedlist @wrapperDirectorySortedList ;
+sortedlist @wrapperDirectorySortedListEX ;
 
-sortedlist @wrapperDirectorySortedList {
+sortedlist @wrapperDirectorySortedListEX {
   @string mDirectoryName ;
-  @wrapperFileSortedList mRegularFileSortedList ;
-  @wrapperDirectorySortedList mDirectorySortedList ;
+  @wrapperFileSortedListEX mRegularFileSortedList ;
+  @wrapperDirectorySortedListEX mDirectorySortedList ;
   @uint mWrapperDirectoryIndex ;
 }{
   mDirectoryName <
@@ -1626,7 +1626,7 @@ sortedlist @wrapperDirectorySortedList {
 
 #---------------------------------------------------------------------------*
 
-map @wrapperExtensionMap {
+map @wrapperExtensionMapEX {
   insert insertKey error message "the '%K' extension has been already declared" ;
 }
 
@@ -1635,9 +1635,9 @@ map @wrapperExtensionMap {
 class @C_wrapperToImplement extends @typeEntityToGenerate {
   @lstring mWrapperName feature nogetter ;
   @string mSourceDirectory feature nogetter ; # Used for comment in generated code
-  @wrapperExtensionMap mExtensionMap feature nogetter ; # Used for comment in generated code
-  @wrapperFileSortedList mRegularFileSortedList feature nogetter ;
-  @wrapperDirectorySortedList mDirectorySortedList feature nogetter ;
+  @wrapperExtensionMapEX mExtensionMap feature nogetter ; # Used for comment in generated code
+  @wrapperFileSortedListEX mRegularFileSortedList feature nogetter ;
+  @wrapperDirectorySortedListEX mDirectorySortedList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

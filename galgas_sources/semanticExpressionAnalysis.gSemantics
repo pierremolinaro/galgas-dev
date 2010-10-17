@@ -1855,15 +1855,23 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
-  ??@semanticContext unused inSemanticContext
+  ??@semanticContext inSemanticContext
   ??@predefinedTypes unused  inPredefinedTypes
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  error mFilewrapperName
-  : "unhandled @filewrapperObjectInstanciationInExpressionAST expression"
-  : outExpression
-  ;
+#--- Search for filewrapper name in filewrapper map
+  @lstring filewrapperPath ;
+  @lstringlist filewrapperExtensionList ;
+  @filewrapperTemplateMap filewrapperTemplateMap ;
+  [inSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?filewrapperPath ?filewrapperExtensionList ?filewrapperTemplateMap] ;
+#---
+  outExpression := [@filewrapperInExpressionForGeneration new
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"filewrapper" ![mFilewrapperName location]]]
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    ![filewrapperPath string]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

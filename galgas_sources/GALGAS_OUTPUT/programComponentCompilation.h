@@ -91,7 +91,7 @@ void routine_compileProgramComponent (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-extern const cDirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate ;
+extern const cDirectoryWrapperEx gWrapperDirectory_0_programFileGenerationTemplate ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

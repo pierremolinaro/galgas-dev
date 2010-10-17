@@ -618,7 +618,7 @@ rule <galgas_component>
     @typeTableEnAvant UNUSED_tableEnAvant := tableEnAvant ;
     @M_semanticsEntitiesForUse UNUSED_componentSemanticsEntitiesMap := componentEntitiesMap ;
     @EXsemanticContext UNUSED_semanticContext [new
-      ![@M_filewrappers emptyMap]
+      ![@M_filewrappersEX emptyMap]
       ![@stringset emptySet]
       ![@EXcategoryMethodMap emptyMap]
       ![@EXcategoryReaderMap emptyMap]
@@ -8152,21 +8152,21 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine recursivelyEnumerateDirectories
+routine recursivelyEnumerateDirectoriesEX
   ??@string inAbsoluteSourcePath
   ??@string inPathInWrapper
-  ??@wrapperExtensionMap inExtensionMap
-  !@wrapperFileSortedList outWrapperFileSortedList
-  !@wrapperDirectorySortedList outWrapperDirectorySortedList
+  ??@wrapperExtensionMapEX inExtensionMap
+  !@wrapperFileSortedListEX outWrapperFileSortedList
+  !@wrapperDirectorySortedListEX outWrapperDirectorySortedList
   ?!@uint ioWrapperFileIndex
   ?!@uint ioWrapperDirectoryIndex
-  ?!@M_regularFiles ioRegularFileMap
+  ?!@M_regularFilesEX ioRegularFileMap
 :
   @uint currentDirectoryIndex := ioWrapperDirectoryIndex ;
   ioWrapperDirectoryIndex ++ ;
 #--- Enumerates regular files
   @stringlist files := [inAbsoluteSourcePath regularFiles !false] ;
-  outWrapperFileSortedList := [@wrapperFileSortedList emptySortedList] ;
+  outWrapperFileSortedList := [@wrapperFileSortedListEX emptySortedList] ;
   foreach files do
     if [inExtensionMap hasKey ![mValue pathExtension]] then
       @string absoluteFilePath := inAbsoluteSourcePath . "/" . mValue ;
@@ -8187,12 +8187,12 @@ routine recursivelyEnumerateDirectories
   end foreach ;
 #--- Enumerates regular directories
   @stringlist directories := [inAbsoluteSourcePath directories !false] ;
-  outWrapperDirectorySortedList := [@wrapperDirectorySortedList emptySortedList] ;
+  outWrapperDirectorySortedList := [@wrapperDirectorySortedListEX emptySortedList] ;
   foreach directories do
-    @wrapperFileSortedList internalWrapperFileSortedList ;
-    @wrapperDirectorySortedList internalWrapperDirectorySortedList ;
+    @wrapperFileSortedListEX internalWrapperFileSortedList ;
+    @wrapperDirectorySortedListEX internalWrapperDirectorySortedList ;
     @uint theDirectoryIndex := ioWrapperDirectoryIndex ;
-    recursivelyEnumerateDirectories
+    recursivelyEnumerateDirectoriesEX
       !inAbsoluteSourcePath . "/" . mValue
       !inPathInWrapper . mValue . "/"
       !inExtensionMap
@@ -8229,7 +8229,7 @@ rule <semantics_declaration>
   @lstring sourcePath ;
   $literal_string$ ? sourcePath ;
   ${$ ;
-  @wrapperExtensionMap extensionMap [emptyMap] ;
+  @wrapperExtensionMapEX extensionMap [emptyMap] ;
   select
   or
     repeat
@@ -8242,7 +8242,7 @@ rule <semantics_declaration>
   end select ;
   $}$ ;
 #--- Build absolute path
-  @M_regularFiles regularFileMap [emptyMap] ;
+  @M_regularFilesEX regularFileMap [emptyMap] ;
   @string absoluteSourcePath ;
   if [sourcePath firstCharacterOrNul] == '/' then
     absoluteSourcePath := [sourcePath string] ;
@@ -8253,11 +8253,11 @@ rule <semantics_declaration>
     error sourcePath: "The '" . absoluteSourcePath . "' directory does not exist" ;
   else
   #--- Enumerate pathes
-    @wrapperFileSortedList wrapperFileSortedList ;
-    @wrapperDirectorySortedList wrapperDirectorySortedList ;
+    @wrapperFileSortedListEX wrapperFileSortedList ;
+    @wrapperDirectorySortedListEX wrapperDirectorySortedList ;
     @uint wrapperFileIndex := 0 ;
     @uint wrapperDirectoryIndex := 0 ;
-    recursivelyEnumerateDirectories
+    recursivelyEnumerateDirectoriesEX
      !absoluteSourcePath
      !"/"
      !extensionMap
@@ -8365,7 +8365,7 @@ label importSemantics
   @lstring sourcePath ;
   $literal_string$ ? sourcePath ;
   ${$ ;
-  @wrapperExtensionMap extensionMap [emptyMap] ;
+  @wrapperExtensionMapEX extensionMap [emptyMap] ;
   select
   or
     repeat
@@ -8377,7 +8377,7 @@ label importSemantics
     end repeat ;
   end select ;
   $}$ ;
-  @M_regularFiles regularFileMap [emptyMap] ;
+  @M_regularFilesEX regularFileMap [emptyMap] ;
   if not [[ioSemanticContext mFilewrappers] hasKey ![wrapperName string]] then
   #--- Build absolute path
     @string absoluteSourcePath ;
@@ -8390,11 +8390,11 @@ label importSemantics
       error sourcePath: "The '" . absoluteSourcePath . "' directory does not exist" ;
     else
     #--- Enumerate pathes
-      @wrapperFileSortedList wrapperFileSortedList ;
-      @wrapperDirectorySortedList wrapperDirectorySortedList ;
+      @wrapperFileSortedListEX wrapperFileSortedList ;
+      @wrapperDirectorySortedListEX wrapperDirectorySortedList ;
       @uint wrapperFileIndex := 0 ;
       @uint wrapperDirectoryIndex := 0 ;
-      recursivelyEnumerateDirectories
+      recursivelyEnumerateDirectoriesEX
         !absoluteSourcePath
         !"/"
         !extensionMap

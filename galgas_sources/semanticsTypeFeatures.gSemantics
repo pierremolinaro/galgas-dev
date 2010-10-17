@@ -243,6 +243,14 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @filewrapperPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateDescriptionReaderUtilityMethod [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@unifiedTypeMapProxyList outAddAssignArgumentList

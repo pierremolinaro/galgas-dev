@@ -1,0 +1,65 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@uint type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class cRegularFileWrapper {
+  public : const char * mName ;
+  public : const char * mExtension ;
+  public : const char * mContents ;
+
+//--- Constructor
+  public : cRegularFileWrapper (const char * inName,
+                                const char * inExtension,
+                                const char * inContents) ;
+
+//--- No copy
+  private : cRegularFileWrapper (const cRegularFileWrapper &) ;
+  private : cRegularFileWrapper & operator = (const cRegularFileWrapper &) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+class cDirectoryWrapper {
+  public : const char * mDirectoryName ;
+  public : const PMUInt32 mFileCount ;
+  public : const cRegularFileWrapper * * const mFiles ;
+  public : const PMUInt32 mDirectoryCount ;
+  public : const cDirectoryWrapper * * mDirectories ;
+
+//--- Constructor
+  public : cDirectoryWrapper (const char * inDirectoryName,
+                              const PMUInt32 inFileCount,
+                              const cRegularFileWrapper * * const inFiles,
+                              const PMUInt32 inDirectoryCount,
+                              const cDirectoryWrapper * * inDirectories) ;
+
+//--- No copy
+  private : cDirectoryWrapper (const cDirectoryWrapper &) ;
+  private : cDirectoryWrapper & operator = (const cDirectoryWrapper &) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+class GALGAS_filewrapper : public AC_GALGAS_root {
+//--------------------------------- Private data members
+  private : const cDirectoryWrapper * mRootDirectoryPtr ;
+  private : C_String mCurrentDirectory ;
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return NULL != mRootDirectoryPtr ; }
+  public : VIRTUAL_IN_DEBUG inline void drop (void) { mRootDirectoryPtr = NULL ; }
+
+//--------------------------------- Default constructor
+  public : GALGAS_filewrapper (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_filewrapper (const cDirectoryWrapper & inRootDirectory) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_filewrapper (const GALGAS_filewrapper & inSource) ;
+  public : GALGAS_filewrapper & operator = (const GALGAS_filewrapper & inSource) ;
+
+%
+

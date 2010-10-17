@@ -117,6 +117,7 @@ map @optionComponentMapForSemanticAnalysis {
 #---------------------------------------------------------------------------*
 
 struct @semanticContext {
+  @string mSourceFileAbsolutePath ;
   @unifiedTypeMap mTypeMap ;
   @routineMap mRoutineMap ;
   @functionMap mFunctionMap ;
@@ -278,6 +279,15 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @filewrapperPredefinedTypeAST collectTypes
+  ?!@collectedTypeMap ioCollectedTypeMap
+  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+:
+  [!?ioCollectedTypeMap insertKey ![@lstring new !"filewrapper" !here]] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @predefinedTypeAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
   ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
@@ -350,6 +360,9 @@ override method @classDeclarationAST collectTypes
   ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mClassTypeName] ;
+  if [mSuperClassName string] != "" then
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mSuperClassName string] ?*] ;
+  end if ;
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
   foreach mAbstractMethodList do
     foreach mSignature do
@@ -379,18 +392,18 @@ end method ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclarationAST enterType
+abstract method @semanticDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @predefinedTypeAST enterType
+override method @predefinedTypeAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@predefinedTypeAST enterType\n" ;
+#  message "@predefinedTypeAST enterInSemanticContext\n" ;
   @constructorMap constructorMap ;
   @readerMap readerMap ;
   @modifierMap modifierMap ;
@@ -436,7 +449,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapDeclarationAST enterType
+override method @mapDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
@@ -596,11 +609,11 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapProxyDeclarationAST enterType
+override method @mapProxyDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@mapProxyDeclarationAST enterType\n" ;
+#  message "@mapProxyDeclarationAST enterInSemanticContext\n" ;
 #--- Check associated map is really a map
   @typedAttributeList mapTypedAttributeList ;
   @typeKindEnum typeKindEnum ;
@@ -719,11 +732,11 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @enumDeclarationAST enterType
+override method @enumDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@enumDeclarationAST enterType\n" ;
+#  message "@enumDeclarationAST enterInSemanticContext\n" ;
 #---
   @constructorMap constructorMap [emptyMap] ;
   @modifierMap modifierMap [emptyMap] ;
@@ -773,11 +786,10 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @filewrapperDeclarationAST enterType
+override method @filewrapperDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@filewrapperDeclarationAST enterType\n" ;
   @filewrapperTemplateMap filewrapperTemplateMap [emptyMap] ;
   foreach mFilewrapperTemplateList do
     @unifiedTypeMapProxyList templateSignature [emptyList] ;
@@ -802,11 +814,11 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listDeclarationAST enterType
+override method @listDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@listDeclarationAST enterType\n" ;
+#  message "@listDeclarationAST enterInSemanticContext\n" ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
@@ -933,11 +945,11 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclarationAST enterType
+override method @sortedListDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@sortedListDeclarationAST enterType\n" ;
+#  message "@sortedListDeclarationAST enterInSemanticContext\n" ;
   @unifiedTypeMapProxy uintType ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"uint" ?uintType] ;
 #--- Element type index
@@ -1030,11 +1042,11 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @structDeclarationAST enterType
+override method @structDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@structDeclarationAST enterType\n" ;
+#  message "@structDeclarationAST enterInSemanticContext\n" ;
 #--- Struct type index
   @unifiedTypeMapProxy structTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mStructTypeName string] ?structTypeIndex] ;
@@ -1104,7 +1116,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @classDeclarationAST enterType
+override method @classDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
@@ -1323,7 +1335,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externRoutineDeclarationAST enterType # Handles also routine declaration
+override method @externRoutineDeclarationAST enterInSemanticContext # Handles also routine declaration
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
@@ -1340,7 +1352,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externFunctionDeclarationAST enterType # Handles also function declaration
+override method @externFunctionDeclarationAST enterInSemanticContext # Handles also function declaration
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
@@ -1360,7 +1372,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @onceFunctionDeclarationAST enterType
+override method @onceFunctionDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
@@ -1373,11 +1385,11 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listmapDeclarationAST enterType
+override method @listmapDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@listmapDeclarationAST enterType: @" . [mListmapTypeName string] . "\n" ;
+#  message "@listmapDeclarationAST enterInSemanticContext: @" . [mListmapTypeName string] . "\n" ;
 #--- Check associated map is really a list
   @typedAttributeList listTypedAttributeList ;
   @typeKindEnum typeKindEnum ;
@@ -1491,6 +1503,15 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @filewrapperPredefinedTypeAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  @filewrapperPredefinedTypeAST t := self ; # Bug in GALGAS 1
+  ioPartiallyOrderedDeclarationList += !"" !"filewrapper" !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @stringsetPredefinedTypeAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
@@ -1579,12 +1600,21 @@ override method @externRoutineDeclarationAST enterOrderedDeclaration
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @filewrapperDeclarationAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  ioPartiallyOrderedDeclarationList += !"" !"" !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    B U I L D    S E M A N T I C    C O N T E X T                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 routine buildSemanticContext
+  ??@string inSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
   ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
@@ -1656,6 +1686,7 @@ routine buildSemanticContext
     else
     #--- Build initial semantic context
       outSemanticContext := [@semanticContext new
+        !inSourceFile
         ![@unifiedTypeMap emptyMap]
         ![@routineMap emptyMap]
         ![@functionMap emptyMap]
@@ -1665,7 +1696,7 @@ routine buildSemanticContext
       ] ;
     #--- Loop throught all declarations
       foreach orderedSemanticDeclarationListAST do
-        [mSemanticDeclaration enterType !multiMethodMapForBuildingContext !?outSemanticContext] ;
+        [mSemanticDeclaration enterInSemanticContext !multiMethodMapForBuildingContext !?outSemanticContext] ;
       end foreach ;
     end if ;
   end if ;

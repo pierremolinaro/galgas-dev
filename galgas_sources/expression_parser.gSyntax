@@ -1900,7 +1900,7 @@ rule <primary>
   $filewrapper$ ;
 #--- Get filewrapper name
   $identifier$ ?@lstring filewrapperName ;
-  @M_regularFiles regularFileMap ;
+  @M_regularFilesEX regularFileMap ;
   @filewrapperTemplateMapEX templateMap ;
   [[inSemanticContext mFilewrappers] searchKey !filewrapperName ?regularFileMap ?templateMap] ;
   select

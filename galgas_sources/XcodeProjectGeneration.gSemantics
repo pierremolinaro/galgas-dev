@@ -111,6 +111,7 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"GALGAS_char.cpp" ;
   out_fileList += !"GALGAS_data.cpp" ;
   out_fileList += !"GALGAS_double.cpp" ;
+  out_fileList += !"GALGAS_filewrapper.cpp" ;
   out_fileList += !"GALGAS_function.cpp" ;
   out_fileList += !"GALGAS_location.cpp" ;
   out_fileList += !"GALGAS_object.cpp" ;

@@ -4,8 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_uint : public AC_GALGAS_root
- {
+class GALGAS_uint : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : PMUInt32 mUIntValue ;

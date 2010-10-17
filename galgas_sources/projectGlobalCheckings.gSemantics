@@ -302,6 +302,7 @@ routine performProjectGlobalCheckings
 #------ Generate declarations
   @semanticContext semanticContext ;
   buildSemanticContext
+    !""
     !semanticDeclarationList
     !inEndOfSourceFile
     ?semanticContext

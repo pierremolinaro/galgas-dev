@@ -152,7 +152,7 @@ label compileFile
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
   @M_optionComponents optionsComponentsMap [emptyMap] ;
   @EXsemanticContext semanticContext [new
-    ![@M_filewrappers emptyMap]
+    ![@M_filewrappersEX emptyMap]
     ![@stringset emptySet]
     ![@EXcategoryMethodMap emptyMap]
     ![@EXcategoryReaderMap emptyMap]

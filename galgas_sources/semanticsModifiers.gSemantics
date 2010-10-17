@@ -133,4 +133,14 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @filewrapperPredefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@modifierMap outModifierMap
+:
+  outModifierMap := [@modifierMap emptyMap] ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"string" !"setCurrentDirectory" !true ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

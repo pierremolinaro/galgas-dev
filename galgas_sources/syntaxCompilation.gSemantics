@@ -119,6 +119,7 @@ routine compileSyntaxComponent
 #------ Build semantic context
   @semanticContext semanticContext ;
   buildSemanticContext
+    ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
     ![syntaxComponentRoot mEndOfSourceFile]
     ?semanticContext
