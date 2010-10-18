@@ -937,7 +937,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
 :
   ioGeneratedCode .= "//--- @filewrapperInExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= outCppName . " = (@filewrapperInExpressionForGeneration) ;\n" ;
+  ioGeneratedCode .= "GALGAS_filewrapper " . outCppName . " (gWrapperDirectory_0_" . [mFilewrapperName identifierRepresentation] . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
