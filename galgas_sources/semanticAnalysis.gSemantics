@@ -976,6 +976,81 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @abstracMultiMethodAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Compute method signature
+  @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+  foreach mAbstractMultiMethodFormalParameterList do
+    formalParameterListForGeneration +=
+      !mFormalArgumentPassingMode
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      !mFormalArgumentName
+      ![mFormalArgumentName string]
+    ;
+  end foreach ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@abstractCategoryMethodForGeneration new
+    ![mTypeName string]
+    ![mAbstractMultiMethodName string]
+    !formalParameterListForGeneration
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @multiMethodAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  message "**** @multiMethodAST performSemanticAnalysis ***\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingMultiMethodAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  message "**** @overridingMultiMethodAST performSemanticAnalysis ***\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @abstractMultiReaderAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  message "**** @abstractMultiReaderAST performSemanticAnalysis ***\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @multiReaderAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  message "**** @multiReaderAST performSemanticAnalysis ***\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingMultiReaderAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+:
+  message "**** @overridingMultiReaderAST performSemanticAnalysis ***\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    P R E D E F I N E D    T Y P E S                                       *
 #                                                                           *

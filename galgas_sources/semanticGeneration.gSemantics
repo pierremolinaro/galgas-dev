@@ -346,6 +346,12 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 
 filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
+  template abstractCategoryMethodDeclaration "abstract-category-method-declaration.h.gTemplate"
+    ?@string CLASS_NAME
+    ?@string METHOD_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+  
   template filewrapperDeclaration "filewrapper-declaration.h.gTemplate"
     ?@stringlist FILE_INDEX_STRING_LIST
     ?@string FILEWRAPPER_NAME
@@ -600,6 +606,16 @@ override reader @filewrapperDeclarationForGeneration appendDeclaration1 -> @stri
 end reader ;
 
 #---------------------------------------------------------------------------*
+
+override reader @abstractCategoryMethodForGeneration appendDeclaration1 -> @string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodDeclaration
+    !mTypeName
+    !mAbstractCategoryMethodName
+    !mAbstractCategoryMethodFormalParameterList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    D E C L A R A T I O N    2                                 *
 #                                                                           *
@@ -812,6 +828,12 @@ override reader @onceFunctionDeclarationForGeneration appendSpecificImplementati
     ![@formalInputParameterListForGeneration emptyList]
     ![mReturnType identifierRepresentation]
   ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @abstractCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+  outImplementation := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
