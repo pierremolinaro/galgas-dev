@@ -1386,6 +1386,18 @@ class @enumTypeForGeneration extends @semanticTypeForGeneration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# A B S T R A C T   C A T E G O R Y    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryMethodForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mAbstractCategoryMethodName ;
+  @formalParameterListForGeneration mAbstractCategoryMethodFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    F I L E W R A P P E R    D E C L A R A T I O N                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
