@@ -67,7 +67,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstracMultiMethodAST buildMultiMethodListMaps
+override method @abstractCategoryMethodAST buildMultiMethodListMaps
   ?!@genericMultiMethodListMap ioAbstractMultiMethodListMapAST
   ?!@genericMultiMethodListMap unused ioMultiMethodListMap
   ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
@@ -77,13 +77,13 @@ override method @abstracMultiMethodAST buildMultiMethodListMaps
 :
   ioAbstractMultiMethodListMapAST +=
     ![mTypeName string]
-    !mAbstractMultiMethodName
+    !mAbstractCategoryMethodName
   ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @multiMethodAST buildMultiMethodListMaps
+override method @categoryMethodAST buildMultiMethodListMaps
   ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
   ?!@genericMultiMethodListMap ioMultiMethodListMap
   ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
@@ -93,13 +93,13 @@ override method @multiMethodAST buildMultiMethodListMaps
 :
   ioMultiMethodListMap +=
     ![mTypeName string]
-    !mMultiMethodName
+    !mCategoryMethodName
   ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingMultiMethodAST buildMultiMethodListMaps
+override method @overridingCategoryMethodAST buildMultiMethodListMaps
   ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
   ?!@genericMultiMethodListMap unused ioMultiMethodListMap
   ?!@genericMultiMethodListMap ioOverridingMultiMethodListMap
@@ -109,13 +109,13 @@ override method @overridingMultiMethodAST buildMultiMethodListMaps
 :
   ioOverridingMultiMethodListMap +=
     ![mTypeName string]
-    !mOverridingMultiMethodMethodName
+    !mOverridingCategoryMethodMethodName
   ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractMultiReaderAST buildMultiMethodListMaps
+override method @abstractCategoryReaderAST buildMultiMethodListMaps
   ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
   ?!@genericMultiMethodListMap unused ioMultiMethodListMap
   ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
@@ -125,13 +125,13 @@ override method @abstractMultiReaderAST buildMultiMethodListMaps
 :
   ioAbstractMultiReaderListMap +=
     ![mTypeName string]
-    !mAbstractMultiReaderName
+    !mAbstractCategoryReaderName
   ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @multiReaderAST buildMultiMethodListMaps
+override method @categoryReaderAST buildMultiMethodListMaps
   ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
   ?!@genericMultiMethodListMap unused ioMultiMethodListMap
   ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
@@ -141,13 +141,13 @@ override method @multiReaderAST buildMultiMethodListMaps
 :
   ioMultiReaderListMap +=
     ![mTypeName string]
-    !mMultiReaderName
+    !mCategoryReaderName
   ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingMultiReaderAST buildMultiMethodListMaps
+override method @overridingCategoryReaderAST buildMultiMethodListMaps
   ?!@genericMultiMethodListMap unused ioAbstractMultiMethodListMapAST
   ?!@genericMultiMethodListMap unused ioMultiMethodListMap
   ?!@genericMultiMethodListMap unused ioOverridingMultiMethodListMap
@@ -157,7 +157,7 @@ override method @overridingMultiReaderAST buildMultiMethodListMaps
 :
   ioOverridingMultiReaderListMap +=
     ![mTypeName string]
-    !mOverridingMultiReaderName
+    !mOverridingCategoryReaderName
   ;
 end method ;
 

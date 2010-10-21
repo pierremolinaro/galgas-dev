@@ -801,7 +801,7 @@ rule <semantic_declaration>
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  ioSemanticDeclarations += ![@abstracMultiMethodAST new
+  ioSemanticDeclarations += ![@abstractCategoryMethodAST new
     !mClassName
     !mMethodName
     !mFormalParameterList
@@ -828,7 +828,7 @@ rule <semantic_declaration>
   $end$ ;
   $method$ ;
   $;$ ;
-  ioSemanticDeclarations += ![@multiMethodAST new
+  ioSemanticDeclarations += ![@categoryMethodAST new
     !mClassName
     !mMethodName
     !mFormalParameterList
@@ -857,7 +857,7 @@ rule <semantic_declaration>
   $end$ ;
   $method$ ;
   $;$ ;
-  ioSemanticDeclarations += ![@overridingMultiMethodAST new
+  ioSemanticDeclarations += ![@overridingCategoryMethodAST new
     !mClassName
     !mMethodName
     !mFormalParameterList
@@ -884,7 +884,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
   $;$ ;
-  ioSemanticDeclarations += ![@abstractMultiReaderAST new
+  ioSemanticDeclarations += ![@abstractCategoryReaderAST new
     !mClassName
     !mReaderName
     !mFormalInputParameterList
@@ -915,7 +915,7 @@ rule <semantic_declaration>
   $end$ ;
   $reader$ ;
   $;$ ;
-  ioSemanticDeclarations += ![@multiReaderAST new
+  ioSemanticDeclarations += ![@categoryReaderAST new
     !mClassName
     !mMethodName
     !mFormalInputParameterList
@@ -949,7 +949,7 @@ rule <semantic_declaration>
   $end$ ;
   $reader$ ;
   $;$ ;
-  ioSemanticDeclarations += ![@overridingMultiReaderAST new
+  ioSemanticDeclarations += ![@overridingCategoryReaderAST new
     !mClassName
     !mMethodName
     !mFormalInputParameterList

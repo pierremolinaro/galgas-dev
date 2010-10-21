@@ -977,14 +977,14 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstracMultiMethodAST performSemanticAnalysis
+override method @abstractCategoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Compute method signature
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
-  foreach mAbstractMultiMethodFormalParameterList do
+  foreach mAbstractCategoryMethodFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalArgumentPassingMode
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
@@ -995,14 +995,14 @@ override method @abstracMultiMethodAST performSemanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration += ![@abstractCategoryMethodForGeneration new
     ![mTypeName string]
-    ![mAbstractMultiMethodName string]
+    ![mAbstractCategoryMethodName string]
     !formalParameterListForGeneration
   ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @multiMethodAST performSemanticAnalysis
+override method @categoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -1012,7 +1012,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingMultiMethodAST performSemanticAnalysis
+override method @overridingCategoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -1022,7 +1022,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractMultiReaderAST performSemanticAnalysis
+override method @abstractCategoryReaderAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -1032,7 +1032,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @multiReaderAST performSemanticAnalysis
+override method @categoryReaderAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
@@ -1042,7 +1042,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingMultiReaderAST performSemanticAnalysis
+override method @overridingCategoryReaderAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration

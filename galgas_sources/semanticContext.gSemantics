@@ -181,12 +181,12 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstracMultiMethodAST collectTypes
+override method @abstractCategoryMethodAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
   ?!@multiMethodMapForBuildingContext ioMultiMethodMapForBuildingContext
 :
 #--- Enter parameter types
-  foreach mAbstractMultiMethodFormalParameterList do
+  foreach mAbstractCategoryMethodFormalParameterList do
     [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
   end foreach ;
 #---
@@ -198,20 +198,20 @@ override method @abstracMultiMethodAST collectTypes
   end if ;
   with !?ioMultiMethodMapForBuildingContext searchKey !mTypeName do
     [!?mMultiMethodMapForType insertOrReplace
-      !mAbstractMultiMethodName
-      !mAbstractMultiMethodFormalParameterList
+      !mAbstractCategoryMethodName
+      !mAbstractCategoryMethodFormalParameterList
     ] ;
   end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @multiMethodAST collectTypes
+override method @categoryMethodAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
   ?!@multiMethodMapForBuildingContext ioMultiMethodMapForBuildingContext
 :
 #--- Enter parameter types
-  foreach mMultiMethodFormalParameterList do
+  foreach mCategoryMethodFormalParameterList do
     [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
   end foreach ;
 #---
@@ -223,49 +223,49 @@ override method @multiMethodAST collectTypes
   end if ;
   with !?ioMultiMethodMapForBuildingContext searchKey !mTypeName do
     [!?mMultiMethodMapForType insertOrReplace
-      !mMultiMethodName
-      !mMultiMethodFormalParameterList
+      !mCategoryMethodName
+      !mCategoryMethodFormalParameterList
     ] ;
   end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingMultiMethodAST collectTypes
+override method @overridingCategoryMethodAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
   ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
 :
 #--- Enter parameter types
-  foreach mOverridingMultiMethodFormalParameterList do
+  foreach mOverridingCategoryMethodFormalParameterList do
     [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
   end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractMultiReaderAST collectTypes
+override method @abstractCategoryReaderAST collectTypes
   ?!@collectedTypeMap unused ioCollectedTypeMap
   ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
 :
-  error mAbstractMultiReaderName : "@abstractMultiReaderAST collectTypes\n" ;
+  error mAbstractCategoryReaderName : "@abstractMultiReaderAST collectTypes\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @multiReaderAST collectTypes
+override method @categoryReaderAST collectTypes
   ?!@collectedTypeMap unused ioCollectedTypeMap
   ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
 :
-  error mMultiReaderName : "@multiReaderAST collectTypes\n" ;
+  error mCategoryReaderName : "@multiReaderAST collectTypes\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingMultiReaderAST collectTypes
+override method @overridingCategoryReaderAST collectTypes
   ?!@collectedTypeMap unused ioCollectedTypeMap
   ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
 :
-  error mOverridingMultiReaderName : "@overridingMultiReaderAST collectTypes\n" ;
+  error mOverridingCategoryReaderName : "@overridingMultiReaderAST collectTypes\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
