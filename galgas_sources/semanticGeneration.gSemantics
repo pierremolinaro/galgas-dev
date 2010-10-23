@@ -335,7 +335,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
   ;
-
 }
 
 #---------------------------------------------------------------------------*
@@ -346,10 +345,36 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 
 filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
-  template abstractCategoryMethodDeclaration "abstract-category-method-declaration.h.gTemplate"
+  template abstractCategoryMethodDeclaration "abstract-category-method.h.gTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+  
+  template abstractCategoryMethodImplementation "abstract-category-method.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string METHOD_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+  
+  template categoryMethodDeclaration "category-method.h.gTemplate"
+    ?@string CLASS_NAME
+    ?@string METHOD_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+
+  template categoryMethodImplementation "category-method.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string METHOD_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@string METHOD_IMPLEMENTATION
+  ;
+  
+  template overridingCategoryMethodImplementation "overriding-category-method.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string BASE_CLASS_NAME
+    ?@string METHOD_NAME
+    ?@string METHOD_IMPLEMENTATION
   ;
   
   template filewrapperDeclaration "filewrapper-declaration.h.gTemplate"
@@ -616,6 +641,16 @@ override reader @abstractCategoryMethodForGeneration appendDeclaration1 -> @stri
 end reader ;
 
 #---------------------------------------------------------------------------*
+
+override reader @categoryMethodForGeneration appendDeclaration1 -> @string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
+    !mTypeName
+    !mCategoryMethodName
+    !mCategoryMethodFormalParameterList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    D E C L A R A T I O N    2                                 *
 #                                                                           *
@@ -833,7 +868,169 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
-  outImplementation := "" ;
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodImplementation
+    !mTypeName
+    !mAbstractCategoryMethodName
+    !mAbstractCategoryMethodFormalParameterList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C A T E G O R Y    M E T H O D    I M P L E M E N A T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+function generateCategoryMethod
+  ??@string inClassName
+  ??@string inBaseClassName
+  ??@string inMethodName
+  ??@formalParameterListForGeneration inFormalArgumentList
+  ??@typedAttributeList inTypedAttributeList
+  ??@semanticInstructionListForGeneration inInstructionList
+  ->@string outGeneratedCode
+:
+#--- Build unused variable set
+  @stringset unusedVariableCppNameSet [emptySet] ;
+  unusedVariableCppNameSet += !compilerCppName [] ;
+  if inBaseClassName == "" then
+    unusedVariableCppNameSet += !"(* inObject)" ;
+  else
+    unusedVariableCppNameSet += !"(* object)" ;
+  end if ;
+  foreach inTypedAttributeList do
+    if inBaseClassName == "" then
+      unusedVariableCppNameSet += !"inObject->mAttribute_" . [mAttributeName identifierRepresentation] ;
+    else
+      unusedVariableCppNameSet += !"object->mAttribute_" . [mAttributeName identifierRepresentation] ;
+    end if ;
+  end foreach ;
+  foreach inFormalArgumentList do
+    if mFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
+      unusedVariableCppNameSet += !mFormalArgumentCppName ;
+    end if ;
+  end foreach ;
+#--- Generate body
+  @uint temporaryVariableIndex := 0 ;
+  @string routineBody := "" ;
+  [!?routineBody incIndentation !2] ;
+  foreach inInstructionList do
+    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+  end foreach ;
+  [!?routineBody decIndentation !2] ;
+#--- Generate header
+  outGeneratedCode := "static void categoryMethod_" . [inClassName identifierRepresentation] . "_" . [inMethodName identifierRepresentation] . " (" ;
+  const @uint colRef := [outGeneratedCode currentColumn] ;
+  if inBaseClassName == "" then
+    outGeneratedCode .= "const cPtr_" . [inClassName identifierRepresentation] . " * " ;
+  else
+    outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
+  end if ;
+  @bool currentObjectIsUnused ;
+  if inBaseClassName == "" then
+    currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"(* inObject)"] ;
+  else
+    currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"(* object)"] ;
+  end if ;
+  foreach inTypedAttributeList while currentObjectIsUnused do
+    if inBaseClassName == "" then
+      currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"inObject->mAttribute_" . [mAttributeName identifierRepresentation]] ;
+    else
+      currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"object->mAttribute_" . [mAttributeName identifierRepresentation]] ;
+    end if ;
+  end foreach ;
+  if currentObjectIsUnused then
+    outGeneratedCode .= "/* inObject */" ;
+  else
+    outGeneratedCode .= "inObject" ;
+  end if ;
+#---
+  foreach inFormalArgumentList do
+    outGeneratedCode .= ",\n" ;
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+    switch mFormalArgumentPassingMode 
+    when argumentConstantIn :
+      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+    when argumentInOut :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    when argumentOut :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    when argumentIn :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+    end switch ;
+    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
+      outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
+    else
+      outGeneratedCode .= mFormalArgumentCppName ;
+    end if ;
+  end foreach ;
+#--- Compiler argument
+  outGeneratedCode .= ",\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "C_Compiler * " ;
+  if [unusedVariableCppNameSet hasKey !compilerCppName []] then
+    outGeneratedCode .= "/* " . compilerCppName [] . " */" ;
+  else
+    outGeneratedCode .= compilerCppName [] ;
+  end if ;
+  outGeneratedCode .= "\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS" ;
+  outGeneratedCode .= ") {\n" ;
+#--- Release 'out' arguments
+  foreach inFormalArgumentList index IDX do
+    switch mFormalArgumentPassingMode 
+    when argumentOut :
+      outGeneratedCode .= "  " . mFormalArgumentCppName . ".drop () ; // Release 'out' argument\n" ;
+    when argumentConstantIn, argumentIn, argumentInOut :
+    end switch ;
+  end foreach ;
+#--- Generate routine body
+  if (inBaseClassName != "") & not currentObjectIsUnused then
+    outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
+    outGeneratedCode .= "  macroValidObject (object, const cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
+  end if ;
+  outGeneratedCode .= routineBody ;
+#---
+  outGeneratedCode .= "}" ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+override reader @categoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+  const @string methodImplementation := generateCategoryMethod [
+    !mTypeName
+    !""
+    !mCategoryMethodName
+    !mCategoryMethodFormalParameterList
+    !mTypedAttributeList
+    !mSemanticInstructionListForGeneration
+  ] ;
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodImplementation
+    !mTypeName
+    !mCategoryMethodName
+    !mCategoryMethodFormalParameterList
+    !methodImplementation
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overridingCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+  const @string methodImplementation := generateCategoryMethod [
+    !mTypeName
+    !mBaseTypeName
+    !mCategoryMethodName
+    !mCategoryMethodFormalParameterList
+    !mTypedAttributeList
+    !mSemanticInstructionListForGeneration
+  ] ;
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryMethodImplementation
+    !mTypeName
+    !mBaseTypeName
+    !mCategoryMethodName
+    !methodImplementation
+  ] ; 
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -894,7 +1091,7 @@ routine generateWrapperContents
   . "} ;\n\n" ;
 #--- Generate directory wrapper
   ioImplementation .= "//--- Directory '" . inFilewrapperDirectory . "'\n\n"
-  . "const cDirectoryWrapper gWrapperDirectory_" . [inFilewrapperDirectoryIndex string]
+  . "const cDirectoryWrapper gWrapperDirectory_" . [inFilewrapperDirectoryIndex string] . "_"
   . [inFilewrapperName identifierRepresentation] . " (\n"
   . "  " . [inFilewrapperDirectory utf8Representation] . ",\n"
   . "  " . [[inFilewrapperRegularFileSortedList length] string] . ",\n"

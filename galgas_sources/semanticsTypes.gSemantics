@@ -288,7 +288,7 @@ map @unifiedTypeMap {
   @bool mIsConcrete ; # false if abstract class
   @unifiedTypeMapProxy mSuperType ;
   @typeKindEnum mTypeKindEnum ;
-  @typedAttributeList mInheritedTypedAttributeList ;
+  @typedAttributeList mAllTypedAttributeList ;
   @attributeMap mAttributeMap ; # struct, class
   @typedAttributeList mCurrentTypedAttributeList ;
   @constructorMap mConstructorMap ;

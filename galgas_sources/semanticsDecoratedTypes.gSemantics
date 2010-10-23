@@ -1386,7 +1386,7 @@ class @enumTypeForGeneration extends @semanticTypeForGeneration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-# A B S T R A C T   C A T E G O R Y    D E C L A R A T I O N                *
+# A B S T R A C T   C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1394,6 +1394,35 @@ class @abstractCategoryMethodForGeneration extends @semanticDeclarationForGenera
   @string mTypeName ;
   @string mAbstractCategoryMethodName ;
   @formalParameterListForGeneration mAbstractCategoryMethodFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C A T E G O R Y    M E T H O D    D E C L A R A T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryMethodForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mCategoryMethodName ;
+  @formalParameterListForGeneration mCategoryMethodFormalParameterList ;
+  @typedAttributeList mTypedAttributeList ;
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    C A T E G O R Y    M E T H O D    D E C .          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingCategoryMethodForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mBaseTypeName ;
+  @string mCategoryMethodName ;
+  @formalParameterListForGeneration mCategoryMethodFormalParameterList ;
+  @typedAttributeList mTypedAttributeList ;
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration ;
 }
 
 #---------------------------------------------------------------------------*

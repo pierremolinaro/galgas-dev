@@ -1048,6 +1048,7 @@ class @categoryMethodAST extends @semanticDeclarationAST {
   @lstring mCategoryMethodName ;
   @formalParameterListAST mCategoryMethodFormalParameterList ;
   @semanticInstructionListAST mCategoryMethodInstructionList ;
+  @location mEndOfMethodLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1058,9 +1059,10 @@ class @categoryMethodAST extends @semanticDeclarationAST {
 
 class @overridingCategoryMethodAST extends @semanticDeclarationAST {
   @lstring mTypeName ;
-  @lstring mOverridingCategoryMethodMethodName ;
+  @lstring mOverridingCategoryMethodName ;
   @formalParameterListAST mOverridingCategoryMethodFormalParameterList ;
   @semanticInstructionListAST mOverridingCategoryMethodInstructionList ;
+  @location mEndOfMethodLocation ;
 }
 
 #---------------------------------------------------------------------------*

@@ -66,6 +66,7 @@ routine compileBeforeClause
     ![@formalParameterListAST emptyList] # Routine signature : no argument
     ![@localConstantList emptyList] # No local constant
     ![@typedAttributeList emptyList] # No attribute (not a method)
+    !""
     ![inProgramComponentAST mPrologueInstructionList]
     ![inProgramComponentAST mEndOfPrologue]
     ?semanticInstructionListForGeneration
@@ -107,6 +108,7 @@ routine compileProgramRules
       !argumentList
       ![@localConstantList emptyList] # No local constant
       ![@typedAttributeList emptyList] # No attribute (not a method)
+      !""
       !mInstructionList
       !mEndOfInstructionList
       ?semanticInstructionListForGeneration
@@ -140,6 +142,7 @@ routine compileAfterClause
     ![@formalParameterListAST emptyList] # Routine signature : no argument
     ![@localConstantList emptyList] # No local constant
     ![@typedAttributeList emptyList] # No attribute (not a method)
+    !""
     ![inProgramComponentAST mEpilogueInstructionList]
     ![inProgramComponentAST mEndOfEpilogue]
     ?semanticInstructionListForGeneration
