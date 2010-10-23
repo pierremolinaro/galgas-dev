@@ -461,6 +461,7 @@ routine analyzeRoutineBody
   ??@formalParameterListAST inRoutineSignatureAST
   ??@localConstantList inLocalConstantList
   ??@typedAttributeList inTypedAttributeList
+  ??@string inAttributeVariableNamePrefix
   ??@semanticInstructionListAST inInstructionList
   ??@location inEndOfMethodLocation
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
@@ -477,7 +478,7 @@ routine analyzeRoutineBody
   end foreach ;
 #--- Enter instance attributes
   foreach inTypedAttributeList do
-    [!?variableMap insertNonMutableAttribute !mAttributeName !mAttributeTypeIndex !"mAttribute_". [mAttributeName identifierRepresentation]] ;
+    [!?variableMap insertNonMutableAttribute !mAttributeName !mAttributeTypeIndex !inAttributeVariableNamePrefix . "mAttribute_". [mAttributeName identifierRepresentation]] ;
   end foreach ;
 #--- Enter formal arguments
   buildLocalVariableMapAndSignature
@@ -560,6 +561,7 @@ override method @routineDeclarationAST performSemanticAnalysis
     !mFormalArgumentList
     ![@localConstantList emptyList]
     ![@typedAttributeList emptyList]
+    !""
     !mRoutineInstructionList
     !mEndOfRoutineInstructionList
     ?instructionList
@@ -592,7 +594,7 @@ override method @classDeclarationAST performSemanticAnalysis
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   else
     superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
-    allAttributeList := [superClassProxy mInheritedTypedAttributeList] ;
+    allAttributeList := [superClassProxy mAllTypedAttributeList] ;
     inheritedInstanceMethodMap := [superClassProxy mInstanceMethodMap] ;
   end if ;
 #------ Enter attributes
@@ -664,6 +666,7 @@ override method @classDeclarationAST performSemanticAnalysis
       !mSignature
       ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"GALGAS_" . [mClassTypeName identifierRepresentation] . " ((cPtr_" . [mClassTypeName identifierRepresentation] . " *) this)"]
       !allAttributeList
+      !""
       !mInstructionList
       !mEndOfMethodLocation
       ?semanticInstructionListForGeneration
@@ -1004,20 +1007,83 @@ end method ;
 
 override method @categoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
+  ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
-  message "**** @multiMethodAST performSemanticAnalysis ***\n" ;
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Analyze instruction list
+  @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  analyzeRoutineBody
+    !inSemanticContext
+    !inPredefinedTypes
+    !mCategoryMethodFormalParameterList
+    ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"(* inObject)"]
+    ![selfType mAllTypedAttributeList]
+    !"inObject->"
+    !mCategoryMethodInstructionList
+    !mEndOfMethodLocation
+    ?semanticInstructionListForGeneration
+    ?formalParameterListForGeneration
+  ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@categoryMethodForGeneration new
+    ![mTypeName string]
+    ![mCategoryMethodName string]
+    !formalParameterListForGeneration
+    ![selfType mAllTypedAttributeList]
+    !semanticInstructionListForGeneration
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
+  ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 :
-  message "**** @overridingMultiMethodAST performSemanticAnalysis ***\n" ;
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Find base type name
+  @string baseTypeName := "" ;
+  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  loop [inSemanticContext->mTypeMap count] + 1 :
+  while (not [superType isNull]) & (baseTypeName == "") do
+    if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
+      @methodQualifier qualifier ;
+      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?* ?* ?* ?qualifier] ;
+      if qualifier <= [@methodQualifier isBasicFinal] then
+        baseTypeName := [superType key] ;
+      end if ;
+    end if ;
+    superType := [superType mSuperType] ;
+  end loop ;
+#--- Analyze instruction list
+  @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  analyzeRoutineBody
+    !inSemanticContext
+    !inPredefinedTypes
+    !mOverridingCategoryMethodFormalParameterList
+    ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"(* object)"]
+    ![selfType mAllTypedAttributeList]
+    !"object->"
+    !mOverridingCategoryMethodInstructionList
+    !mEndOfMethodLocation
+    ?semanticInstructionListForGeneration
+    ?formalParameterListForGeneration
+  ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@overridingCategoryMethodForGeneration new
+    ![mTypeName string]
+    !baseTypeName
+    ![mOverridingCategoryMethodName string]
+    !formalParameterListForGeneration
+    ![selfType mAllTypedAttributeList]
+    !semanticInstructionListForGeneration
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

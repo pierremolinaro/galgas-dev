@@ -1210,7 +1210,7 @@ override method @classDeclarationAST enterInSemanticContext
   foreach inheritedInstanceMethodMap do
     [!?instanceMethodMap insertKey
       !lkey
-      !false # is not a category
+      !mIsCategory
       !mParameterList
       !mDeclarationLocation
       !mHasCompilerArgument
@@ -1259,7 +1259,7 @@ override method @classDeclarationAST enterInSemanticContext
       ] ;
     end with ;
   end foreach ;
-#------------------------ Multi-methods
+#------------------------  Category methods
   if [inMultiMethodMapForBuildingContext hasKey ![mClassTypeName string]] then
     @multiMethodMapForType multiMethodMapForType ;
     [inMultiMethodMapForBuildingContext searchKey !mClassTypeName ?multiMethodMapForType] ;

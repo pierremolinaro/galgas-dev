@@ -402,7 +402,11 @@ override method @methodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= receiverVar . ".method_" . [mMethodName identifierRepresentation] . " (" ;
+  if mIsCategory then
+    ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation] . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverVar . ".ptr (), " ;
+  else
+    ioGeneratedCode .= receiverVar . ".method_" . [mMethodName identifierRepresentation] . " (" ;
+  end if ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -921,7 +925,7 @@ override method @foreachInstructionForGeneration generateInstruction
     else
       @string whileVar ;
       [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
-      ioGeneratedCode .= "bool " . boolVarCppName . " = " . whileVar . ".isValid () ? " . whileVar . ".boolValue () : false ;\n" ;
+      ioGeneratedCode .= "bool " . boolVarCppName . " = " . whileVar . ".isValidAndTrue () ;\n" ;
     end if ;
     ioGeneratedCode .= "if (" ;
     foreach mEnumeratedObjectList do
@@ -936,11 +940,10 @@ override method @foreachInstructionForGeneration generateInstruction
     ;
     [!?ioGeneratedCode incIndentation !2] ;
     ioGeneratedCode .= "while (" ;
-    foreach mEnumeratedObjectList
-      do ioGeneratedCode .= mEnumeratorCppName . ".hasCurrentObject ()" ;
-      between ioGeneratedCode .= " && " ;
+    foreach mEnumeratedObjectList do
+      ioGeneratedCode .= mEnumeratorCppName . ".hasCurrentObject () && " ;
     end foreach ;
-    ioGeneratedCode .= ") {\n" ;
+    ioGeneratedCode .= boolVarCppName . ") {\n" ;
   #--- Generate 'do' instruction
     generateInstructionList
       !mDoInstructionList
@@ -952,7 +955,7 @@ override method @foreachInstructionForGeneration generateInstruction
     if not whileExpressionIsAllwaysTrue then
       @string whileVar ;
       [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
-      ioGeneratedCode .= boolVarCppName . " = " . whileVar . ".isValid () ? " . whileVar . ".boolValue () : false ;\n" ;
+      ioGeneratedCode .= "  " . boolVarCppName . " = " . whileVar . ".isValidAndTrue () ;\n" ;
     end if ;
   #--- Generate 'between' instruction
     if [mBetweenInstructionList length] > 0 then

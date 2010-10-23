@@ -9,7 +9,7 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acP
 //--- Attributes
 %
   foreach CURRENT_ATTRIBUTE_LIST do
-    %  protected : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %  public : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %
 //--- Constructor
@@ -27,7 +27,7 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acP
 %
 foreach ABSTRACT_METHOD_LIST do
   %//--- Abstract method %![mMethodName string]%\n%
-  %  protected : virtual void method_%![mMethodName identifierRepresentation]% (%?^
+  %  public : virtual void method_%![mMethodName identifierRepresentation]% (%?^
   foreach mSignature do
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_%![mFormalArgumentType identifierRepresentation]% %
@@ -46,7 +46,7 @@ end foreach
 
 foreach CONCRETE_METHOD_LIST do
   %//--- Concrete method %![mMethodName string]%\n%
-  %  protected : virtual void method_%![mMethodName identifierRepresentation]% (%?^
+  %  public : virtual void method_%![mMethodName identifierRepresentation]% (%?^
   foreach mSignature do
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_%![mFormalArgumentType identifierRepresentation]% %
@@ -74,6 +74,6 @@ end if
 
 %
 //--- Friend class
-  friend class GALGAS_%!TYPE_IDENTIFIER% ;
+//  friend class GALGAS_%!TYPE_IDENTIFIER% ;
 } ;
 

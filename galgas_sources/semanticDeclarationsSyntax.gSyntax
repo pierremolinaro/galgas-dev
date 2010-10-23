@@ -826,6 +826,7 @@ rule <semantic_declaration>
   @semanticInstructionListAST mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $end$ ;
+  const @location endOfMethodLocation := here ;
   $method$ ;
   $;$ ;
   ioSemanticDeclarations += ![@categoryMethodAST new
@@ -833,6 +834,7 @@ rule <semantic_declaration>
     !mMethodName
     !mFormalParameterList
     !mRoutineInstructionList
+    !endOfMethodLocation
   ] ;
 end rule ;
 
@@ -855,6 +857,7 @@ rule <semantic_declaration>
   @semanticInstructionListAST mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $end$ ;
+  const @location endOfMethodLocation := here ;
   $method$ ;
   $;$ ;
   ioSemanticDeclarations += ![@overridingCategoryMethodAST new
@@ -862,6 +865,7 @@ rule <semantic_declaration>
     !mMethodName
     !mFormalParameterList
     !mRoutineInstructionList
+    !endOfMethodLocation
   ] ;
 end rule ;
 
