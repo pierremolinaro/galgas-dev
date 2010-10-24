@@ -989,7 +989,7 @@ rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
     or
       $...$ ;
     end select ;
-    if [option galgas_cli_options.newCodeGeneration value] then
+    if not [option galgas_cli_options.legacyCodeGeneration value] then
       warning here : "old style 'match' instruction" ;
     end if ;
     $)$ ;

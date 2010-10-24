@@ -85,7 +85,7 @@ engendrerAppelProduction (const PMSInt16 nombreDeParametres,
              << "_" << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE).identifierRepresentation ()
              << "_i" << cStringWithUnsigned (mProductionIndex)
              << "_" << inAltName.identifierRepresentation () << "(" ;
-  if (gOption_galgas_5F_cli_5F_options_newCodeGeneration.mValue) {
+  if (! gOption_galgas_5F_cli_5F_options_legacyCodeGeneration.mValue) {
     for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
        fichierCPP << "parameter_" << cStringWithSigned (i)  << ", " ;
     }

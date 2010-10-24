@@ -1039,7 +1039,7 @@ class @abstractCategoryMethodAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#        C A T E G O R Y  M E T H O D    D E C L A R A T I O N              *
+#        C A T E G O R Y    M E T H O D    D E C L A R A T I O N            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1053,7 +1053,7 @@ class @categoryMethodAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  O V E R R I D I N G   M U L T I -  M E T H O D   D E C L A R A T I O N   *
+#  O V E R R I D I N G    C A T E G O R Y    M E T H O D    D E C L .       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1063,6 +1063,18 @@ class @overridingCategoryMethodAST extends @semanticDeclarationAST {
   @formalParameterListAST mOverridingCategoryMethodFormalParameterList ;
   @semanticInstructionListAST mOverridingCategoryMethodInstructionList ;
   @location mEndOfMethodLocation ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O V E R R I D I N G    A B S T R A C T    C A T E G O R Y    M E T H O D *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingAbstractCategoryMethodAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
+  @lstring mOverridingCategoryMethodName ;
+  @formalParameterListAST mOverridingCategoryMethodFormalParameterList ;
 }
 
 #---------------------------------------------------------------------------*

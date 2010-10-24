@@ -463,8 +463,11 @@ abstract class @semanticDeclarationForGeneration {
 
 #---------------------------------------------------------------------------*
 
-list @semanticDeclarationListForGeneration {
+sortedlist @semanticDeclarationSortedListForGeneration {
   @semanticDeclarationForGeneration mDeclaration ;
+  @string mSortKey ;
+}{
+  mSortKey <
 }
 
 #---------------------------------------------------------------------------*

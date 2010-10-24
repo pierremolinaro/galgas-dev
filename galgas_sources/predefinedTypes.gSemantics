@@ -291,7 +291,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         ?semanticContext
       ;
     #------ Semantic Analysis
-      @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+      @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
       performSemanticAnalysis
         !predefinedTypeASTlist
         !semanticContext

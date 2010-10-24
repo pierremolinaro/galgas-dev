@@ -1766,7 +1766,7 @@ SLR_computations (C_Compiler & inLexique,
   }
 //--- Generate C++ file
   if (conflictCount == 0) {
-    if (gOption_galgas_5F_cli_5F_options_newCodeGeneration.mValue) {
+    if (! gOption_galgas_5F_cli_5F_options_legacyCodeGeneration.mValue) {
       generate_SLR_grammar_cpp_file (inLexique,
                                      inProductionRules,
                                      inVocabulary,

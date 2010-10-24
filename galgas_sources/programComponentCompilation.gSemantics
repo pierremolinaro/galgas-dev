@@ -57,7 +57,7 @@ routine compileBeforeClause
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@programComponentAST inProgramComponentAST
-  ?!@semanticDeclarationListForGeneration ioDecoratedDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   analyzeRoutineBody
@@ -76,7 +76,9 @@ routine compileBeforeClause
     !"before"
     ![@formalParameterListForGeneration emptyList]
     !semanticInstructionListForGeneration
-  ] ;
+  ]
+  !""
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -89,7 +91,7 @@ routine compileProgramRules
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@programComponentAST inProgramComponentAST
-  ?!@semanticDeclarationListForGeneration ioDecoratedDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
   @uint ruleIndex := 0 ;
   foreach [inProgramComponentAST mProgramRules] do
@@ -118,7 +120,9 @@ routine compileProgramRules
       !"programRule_" . [ruleIndex string]
       !routineSignature
       !semanticInstructionListForGeneration
-    ] ;
+    ]
+  !""
+  ;
     ruleIndex ++ ;
   end foreach ;
 end routine ;
@@ -133,7 +137,7 @@ routine compileAfterClause
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@programComponentAST inProgramComponentAST
-  ?!@semanticDeclarationListForGeneration ioDecoratedDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   analyzeRoutineBody
@@ -152,7 +156,9 @@ routine compileAfterClause
     !"after"
     ![@formalParameterListForGeneration emptyList]
     !semanticInstructionListForGeneration
-  ] ;
+  ]
+  !""
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -227,7 +233,7 @@ routine compileProgramComponent
     !?semanticContext->mOptionComponentMapForSemanticAnalysis
   ;
 #------ Semantic Analysis
-  @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+  @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
     ![programComponentAST mSemanticDeclarationList]
     !semanticContext
