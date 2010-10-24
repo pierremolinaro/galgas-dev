@@ -654,7 +654,7 @@ end rule ;
 
 rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $[$ ;
-  $this$ ;
+  $self$ ;
   const @location instructionLocation := here ;
   $identifier$ ?@lstring mMethodName ;
   @actualParameterListAST mActualParameterList ;
@@ -732,7 +732,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $[$ ;
   const @location instructionLocation := here ;
   $!?$ ;
-  $this$ ;
+  $self$ ;
   $identifier$ ?@lstring mModifierName ;
   @actualParameterListAST mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;

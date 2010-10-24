@@ -36,7 +36,7 @@ list @semanticExpressionListForGeneration {
 
 #---------------------------------------------------------------------------*
 
-class @selfInExpressionForGeneration extends @semanticExpressionForGeneration {
+class @selfCopyInExpressionForGeneration extends @semanticExpressionForGeneration {
   @string mSelfCppName ;
 }
 
@@ -319,6 +319,7 @@ class @functionCallExpressionForGeneration extends @semanticExpressionForGenerat
 
 class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
   @string mCppVarName ;
+  @string mNameForCheckingFormalParameterUsing ;
   @lstringlist mStructFieldList ;
 }
 
@@ -755,6 +756,7 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
 #---------------------------------------------------------------------------*
 
 class @thisMethodCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mCurrentObjectCppPointer ;
   @location mInstructionLocation ;
   @string mMethodName ;
   @bool mIsCategory ;

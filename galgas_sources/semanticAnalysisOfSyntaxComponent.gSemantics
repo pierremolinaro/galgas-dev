@@ -217,8 +217,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -231,8 +230,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
 #---------------------------------------------------------------------------*
 
 override method @semanticInstructionAST analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap unused inTerminalMap
   ??@string unused inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
@@ -243,8 +241,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
 :
   @semanticInstructionAST t := self ; # Bug in GALGAS 1
   [t analyzeSemanticInstruction
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !?ioInstructionListForGeneration
     !?ioVariableMap
   ] ;
@@ -253,8 +250,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @nonterminalCallInstruction analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap unused inTerminalMap
   ??@string unused inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -283,8 +279,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
 #--- call arguments
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !mNonterminalName
     !"'<" . mNonterminalName . ">' nonterminal declaration"
     !signature
@@ -333,8 +328,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @terminalCheckInstruction analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
@@ -363,20 +357,20 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
       @string cppName ;
       if [mActualParameterTypeName length] > 0 then
         cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-        type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mActualParameterTypeName] ;
-        [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName] ;
+        type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+        [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
       else
-        [!?ioVariableMap searchForWriteAccess !mActualParameterName ?type ?cppName] ;
+        [!?ioVariableMap searchForWriteAccess !mActualParameterName ?type ?cppName ?*] ;
       end if ;
       @unifiedTypeMapProxy expectedType ;
       switch mLexicalType
-      when lexicalType_string : expectedType := inPredefinedTypes->mLStringType ;
-      when lexicalType_char : expectedType := inPredefinedTypes->mLCharType ;
-      when lexicalType_uint : expectedType := inPredefinedTypes->mLUIntType ;
-      when lexicalType_uint64 : expectedType := inPredefinedTypes->mLUInt64Type ;
-      when lexicalType_sint : expectedType := inPredefinedTypes->mLSIntType ;
-      when lexicalType_sint64 : expectedType := inPredefinedTypes->mLSInt64Type ;
-      when lexicalType_double : expectedType := inPredefinedTypes->mLDoubleType ;
+      when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
+      when lexicalType_char : expectedType := inAnalysisContext->mPredefinedTypes->mLCharType ;
+      when lexicalType_uint : expectedType := inAnalysisContext->mPredefinedTypes->mLUIntType ;
+      when lexicalType_uint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLUInt64Type ;
+      when lexicalType_sint : expectedType := inAnalysisContext->mPredefinedTypes->mLSIntType ;
+      when lexicalType_sint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLSInt64Type ;
+      when lexicalType_double : expectedType := inAnalysisContext->mPredefinedTypes->mLDoubleType ;
       end switch ;
       if expectedType != type then
         error mActualParameterName
@@ -428,8 +422,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 routine analyzeSyntaxInstructionList
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -446,8 +439,7 @@ routine analyzeSyntaxInstructionList
 #--- Instruction list
   foreach inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
-      !inSemanticContext
-      !inPredefinedTypes
+      !inAnalysisContext
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -464,8 +456,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @repeatInstruction analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -481,8 +472,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #--- Repeated instructions
   @semanticInstructionListForGeneration repeated_instructionList ;
   analyzeSyntaxInstructionList
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -498,8 +488,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   foreach mRepeatBranchList do
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
-      !inSemanticContext
-      !inPredefinedTypes
+      !inAnalysisContext
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -565,8 +554,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @selectInstruction analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -584,8 +572,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   foreach mSelectBranchList do
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
-      !inSemanticContext
-      !inPredefinedTypes
+      !inAnalysisContext
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -636,8 +623,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseRewindInstruction analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap  inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -654,8 +640,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
     @semanticInstructionListForGeneration instructionList [emptyList] ;
     foreach mSyntaxInstructionList do
       [mInstruction analyzeSyntaxInstruction
-        !inSemanticContext
-        !inPredefinedTypes
+        !inAnalysisContext
         !inTerminalMap
         !inLexiqueName
         !inNonterminalMap
@@ -715,8 +700,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseLoopInstruction analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -728,29 +712,27 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- Variant expression
   @semanticExpressionForGeneration variant_expression ;
   [mVariantExpression analyzeSemanticExpression
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !?ioVariableMap
     ?variant_expression
   ] ;
-  if [variant_expression mType] != inPredefinedTypes->mUIntType then
+  if [variant_expression mType] != inAnalysisContext->mPredefinedTypes->mUIntType then
     error mEndOfVariantExpression
     :"the variant expression type is '@" . [[variant_expression mType] key]
-    . "', but it should be '@" . [inPredefinedTypes->mUIntType key] . "' type"
+    . "', but it should be '@" . [inAnalysisContext->mPredefinedTypes->mUIntType key] . "' type"
     ;
   end if ;
 #--- While expression
   @semanticExpressionForGeneration while_expression ;
   [mWhileExpression analyzeSemanticExpression
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !?ioVariableMap
     ?while_expression
   ] ;
-  if [while_expression mType] != inPredefinedTypes->mBoolType then
+  if [while_expression mType] != inAnalysisContext->mPredefinedTypes->mBoolType then
     error mEndOfWhileExpression
     :"the variant expression type is '@" . [[variant_expression mType] key]
-    . "', but it should be '@" . [inPredefinedTypes->mBoolType key] . "' type"
+    . "', but it should be '@" . [inAnalysisContext->mPredefinedTypes->mBoolType key] . "' type"
     ;
   end if ;
 #--- 'do' instructions
@@ -759,8 +741,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- 'or' blocks
   @semanticInstructionListForGeneration instructionList ;
   analyzeSyntaxInstructionList
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -909,8 +890,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseWhenInstruction analyzeSyntaxInstruction
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -922,8 +902,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #--- When expression
   @semanticExpressionForGeneration when_expression ;
   [mWhenExpression analyzeSemanticExpression
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !?ioVariableMap
     ?when_expression
   ] ;
@@ -933,8 +912,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   @uint localSelectMethodCount := ioSelectMethodCount ;
   @semanticInstructionListForGeneration when_instructionListForGeneration ;
   analyzeSyntaxInstructionList
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -948,8 +926,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #--- 'else' branch
   @semanticInstructionListForGeneration else_instructionListForGeneration ;
   analyzeSyntaxInstructionList
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -1009,8 +986,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @blockInstruction analyzeSyntaxInstruction
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
+  ??@analysisContext unused inAnalysisContext
   ??@terminalMap unused inTerminalMap
   ??@string unused inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
@@ -1032,8 +1008,7 @@ end method ;
 routine semanticAnalysisOfRuleLabel
   ??@formalParameterListAST inFormalArguments
   ??@syntaxInstructionList inSyntaxInstructionList
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -1046,7 +1021,7 @@ routine semanticAnalysisOfRuleLabel
 :
   @variableMap variableMap [emptyMap] ;
   buildLocalVariableMapAndSignature
-    !inSemanticContext
+    !inAnalysisContext->mSemanticContext
     !inFormalArguments
     !?variableMap
     ?outSignatureForGeneration
@@ -1055,15 +1030,13 @@ routine semanticAnalysisOfRuleLabel
   outSignature := [@formalParameterSignature emptyList] ;
   foreach outSignatureForGeneration do
     outSignature += !mFormalArgumentType !mFormalArgumentPassingMode ;
-
   end foreach ;
 #--- Semantic analysis of instruction list
   outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
   @stringlist localVariableCppNameList [emptyList] ;
   foreach inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
-      !inSemanticContext
-      !inPredefinedTypes
+      !inAnalysisContext
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -1119,6 +1092,13 @@ routine semanticAnalysisOfSyntaxComponent
       enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !false !?nonterminalMap ;
     end with ;
   end foreach ;
+#--- Analysis context
+  const @analysisContext analysisContext [new
+    !inSemanticContext
+    !inPredefinedTypes
+    ![@unifiedTypeMapProxy null]
+    !""
+  ] ;
 #--- Rule list
   @uint selectMethodCount := 0 ;
   @ruleDeclarationList ruleDeclarationList [emptyList] ;
@@ -1134,8 +1114,7 @@ routine semanticAnalysisOfSyntaxComponent
       semanticAnalysisOfRuleLabel
         !mFormalArguments
         !mSyntaxInstructionList
-        !inSemanticContext
-        !inPredefinedTypes
+        !analysisContext
         !inTerminalMap
         !inLexiqueName
         !nonterminalMap

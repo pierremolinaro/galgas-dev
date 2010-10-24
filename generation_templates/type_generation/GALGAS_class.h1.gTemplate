@@ -13,7 +13,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %A
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_%!TYPE_IDENTIFIER% (cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
+  public : GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 
 %if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
 %//--- Insulate\n%

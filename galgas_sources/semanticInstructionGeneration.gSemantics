@@ -437,6 +437,7 @@ override method @thisMethodCallInstructionForGeneration generateInstruction
 :
   ioGeneratedCode .= "//-------- @thisMethodCallInstructionForGeneration\n" ;
 #---
+  [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
   foreach mActualParameterList do
@@ -445,7 +446,11 @@ override method @thisMethodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= "method_" . [mMethodName identifierRepresentation] . " (" ;
+  if mIsCategory then
+    ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+  else
+    ioGeneratedCode .= mCurrentObjectCppPointer . "->method_" . [mMethodName identifierRepresentation] . " (" ;
+  end if ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;

@@ -54,15 +54,13 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
 #---------------------------------------------------------------------------*
 
 routine compileBeforeClause
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   analyzeRoutineBody
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     ![@formalParameterListAST emptyList] # Routine signature : no argument
     ![@localConstantList emptyList] # No local constant
     ![@typedAttributeList emptyList] # No attribute (not a method)
@@ -88,8 +86,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine compileProgramRules
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
@@ -105,8 +102,7 @@ routine compileProgramRules
     @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
     @formalParameterListForGeneration routineSignature ;
     analyzeRoutineBody
-      !inSemanticContext
-      !inPredefinedTypes
+      !inAnalysisContext
       !argumentList
       ![@localConstantList emptyList] # No local constant
       ![@typedAttributeList emptyList] # No attribute (not a method)
@@ -134,15 +130,13 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine compileAfterClause
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   analyzeRoutineBody
-    !inSemanticContext
-    !inPredefinedTypes
+    !inAnalysisContext
     ![@formalParameterListAST emptyList] # Routine signature : no argument
     ![@localConstantList emptyList] # No local constant
     ![@typedAttributeList emptyList] # No attribute (not a method)
@@ -239,26 +233,28 @@ routine compileProgramComponent
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;
-#--- Predefined types
-  const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
+#--- Analysis context
+  const @analysisContext analysisContext [new
+    !semanticContext
+    !buildPredefinedTypes [!semanticContext]
+    ![@unifiedTypeMapProxy null]
+    !""
+  ] ;
 #--- Analyse 'before' instructions
   compileBeforeClause
-    !semanticContext
-    !predefinedTypes
+    !analysisContext
     !programComponentAST
     !?decoratedDeclarationListForGeneration
   ;
 #--- Analyse program rules
   compileProgramRules
-    !semanticContext
-    !predefinedTypes
+    !analysisContext
     !programComponentAST
     !?decoratedDeclarationListForGeneration
   ;
 #--- Analyse 'after' instructions
   compileAfterClause
-    !semanticContext
-    !predefinedTypes
+    !analysisContext
     !programComponentAST
     !?decoratedDeclarationListForGeneration
   ;

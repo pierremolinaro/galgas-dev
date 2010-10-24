@@ -271,13 +271,13 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    S E L F                                                *
+#   F A C T O R    :    S E L F C O P Y                                        *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression :
-  $self$ ;
-  outExpression := [@selfInExpressionAST new !here] ;
+  $selfcopy$ ;
+  outExpression := [@selfCopyInExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -525,7 +525,7 @@ rule <factor> !@semanticExpressionAST outExpression :
     outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
   or
   #---
-    $this$ ;
+    $self$ ;
     const @location loc := here ;
   #--- Get reader name
     @lstring readerName ;
