@@ -37,7 +37,6 @@ nonterminal <expression>
   ??@templateVariableMap inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
-label parse
 ;
 
 nonterminal <concatenation_term>
@@ -47,7 +46,6 @@ nonterminal <concatenation_term>
   ??@templateVariableMap inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
-label parse
 ;
 
 nonterminal <relation_term>
@@ -57,7 +55,6 @@ nonterminal <relation_term>
   ??@templateVariableMap inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
-label parse
 ;
 
 nonterminal <relation_factor>
@@ -67,7 +64,6 @@ nonterminal <relation_factor>
   ??@templateVariableMap inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
-label parse
 ;
 
 nonterminal <simple_expression>
@@ -77,7 +73,6 @@ nonterminal <simple_expression>
   ??@templateVariableMap inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
-label parse
 ;
 
 nonterminal <term>
@@ -87,7 +82,6 @@ nonterminal <term>
   ??@templateVariableMap inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
-label parse
 ;
 
 nonterminal <factor>
@@ -97,7 +91,6 @@ nonterminal <factor>
   ??@templateVariableMap inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
-label parse
 ;
 
 nonterminal <read_access>
@@ -105,7 +98,6 @@ nonterminal <read_access>
   !@typeCplusPlusName nomCppEntite
   !@AC_galgasType typeEntite
   ??@templateVariableMap inTemplateVariableMap
-label parse
 ;
 
 nonterminal <output_expression_list>
@@ -115,7 +107,6 @@ nonterminal <output_expression_list>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@templateVariableMap inTemplateVariableMap
-label parse
 ;
 
 #---------------------------------------------------------------------------*

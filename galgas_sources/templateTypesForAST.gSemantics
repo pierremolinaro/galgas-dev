@@ -1,0 +1,444 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Template Abstract Syntax Tree types                                      *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics templateTypesForAST :
+
+#---------------------------------------------------------------------------*
+
+abstract class @templateInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionListAST {
+  @templateInstructionAST mInstruction ;
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   E X P R E S S I O N                                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+abstract class @templateExpressionAST {
+}
+ 
+#---------------------------------------------------------------------------*
+
+list @templateExpressionListAST {
+  @templateExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#   R E A D E R    C A L L    O P E R A N D                                 *
+#---------------------------------------------------------------------------*
+
+class @templateReaderCallInExpressionAST extends @templateExpressionAST {
+  @templateExpressionAST mExpressionValue ;
+  @lstring mReaderName ;
+  @templateExpressionListAST mExpressionList ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   C O N S T R U C T O R                                                   *
+#---------------------------------------------------------------------------*
+
+class @templateConstructorAST extends @templateExpressionAST {
+  @lstring mTypeName ;
+  @lstring mConstructorName ;
+  @templateExpressionListAST mExpressionList ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H              *
+#---------------------------------------------------------------------------*
+
+class @templateFileWrapperWithStaticPathAST extends @templateExpressionAST {
+  @lstring mFileWrapperName ;
+  @uint mFileIndex ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   F I L E W R A P P E R    T E M P L A T E     C A L L                    *
+#---------------------------------------------------------------------------*
+
+class @templateFileWrapperTemplateCallAST extends @templateExpressionAST {
+  @lstring mFileWrapperName ;
+  @lstring mTemplateName ;
+  @templateExpressionListAST mOutExpressionList ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   C A T E G O R Y    T E M P L A T E     C A L L                          *
+#---------------------------------------------------------------------------*
+
+class @templateCategoryTemplateCallAST extends @templateExpressionAST {
+  @templateExpressionAST mExpressionValue ;
+  @lstring mTemplateName ;
+  @templateExpressionListAST mOutExpressionList ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   B O O L E A N    O P E R A T I O N S                                    *
+#---------------------------------------------------------------------------*
+
+class @templateAndOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateOrOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateXorOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateConcatOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateTrueBoolAST extends @templateExpressionAST {
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateFalseBoolAST extends @templateExpressionAST {
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralStringExpressionAST extends @templateExpressionAST {
+  @stringlist mLiteralStringList ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralUIntExpressionAST extends @templateExpressionAST {
+  @luint mLiteralInt ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralSIntExpressionAST extends @templateExpressionAST {
+  @lsint mLiteralInt ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralUInt64ExpressionAST extends @templateExpressionAST {
+  @luint64 mLiteralInt ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralSInt64ExpressionAST extends @templateExpressionAST {
+  @lsint64 mLiteralInt ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralCharExpressionAST extends @templateExpressionAST {
+  @lchar mLiteralChar ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralDoubleExpressionAST extends @templateExpressionAST {
+  @ldouble mLiteralDouble ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateIfThenElseExpressionAST extends @templateExpressionAST {
+  @templateExpressionAST mIfExpression ;
+  @templateExpressionAST mThenExpression ;
+  @templateExpressionAST mElseExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateTestComplementAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLogicalNegateAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateOptionAccessAST extends @templateExpressionAST {
+  @lstring mOptionComponentName ;
+  @lstring mOptionName ;
+  @lstring mReaderName ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   F U N C T I O N    C A L L                                              *
+#---------------------------------------------------------------------------*
+
+class @templateFunctionCallAST extends @templateExpressionAST {
+  @lstring mFunctionName ;
+  @templateExpressionListAST mExpressionList ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   S I M P L E    V A R I A B L E                                          *
+#---------------------------------------------------------------------------*
+
+class @templateVarInExpressionAST extends @templateExpressionAST {
+  @lstring mVarName ;
+  @lstringlist mStructAttributeList ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   A D D I T I O N    O P E R A T I O N                                    *
+#---------------------------------------------------------------------------*
+
+class @templateAddOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   S U B S T R A C T I O N    O P E R A T I O N                            *
+#---------------------------------------------------------------------------*
+
+class @templateSubOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   M U L T I P L I C A T I O N    O P E R A T I O N                        *
+#---------------------------------------------------------------------------*
+
+class @templateMultiplyOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   D I V I S I O N    O P E R A T I O N                                    *
+#---------------------------------------------------------------------------*
+
+class @templateDivideOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   M O D U L O    O P E R A T I O N                                        *
+#---------------------------------------------------------------------------*
+
+class @templateModuloOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   U N A R Y   -    O P E R A T I O N                                      *
+#---------------------------------------------------------------------------*
+
+class @templateUnaryMinusOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+#  ==    O P E R A T I O N                                                  *
+#---------------------------------------------------------------------------*
+
+class @templateEqualTestAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateNonEqualTestAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateStrictInfTestAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateInfOrEqualTestAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateStrictSupTestAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateSupOrEqualTestAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLeftShiftOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateRightShiftOperationAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mLeftExpression ;
+  @templateExpressionAST mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateClassToTypeOperandAST extends @templateExpressionAST {
+  @lstring mTypeName ;
+}
+ 
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N S T R U C T I O N S                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @templateInstructionStringAST extends @templateInstructionAST {
+  @string mTemplateString ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionExpressionAST extends @templateInstructionAST {
+  @templateExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateBlockInstructionAST extends @templateInstructionAST {
+  @templateExpressionAST mExpression ;
+  @location mMagicNumber ;
+  @templateInstructionListAST mBlockInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionConstantAST extends @templateInstructionAST {
+  @lstring mIdentifier ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionGetColumnLocationAST extends @templateInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionGotoColumnLocationAST extends @templateInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionForeachAST extends @templateInstructionAST {
+  @bool mIsAscending ;
+  @templateExpressionAST mExpression ;
+  @templateInstructionListAST mBeforeInstructionList ;
+  @templateInstructionListAST mDoInstructionList ;
+  @lstring mIndexIdentifier ;
+  @templateInstructionListAST mBetweenInstructionList ;
+  @templateInstructionListAST mAfterInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionIfBranchListAST {
+  @templateExpressionAST mExpression ;
+  @templateInstructionListAST mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionIfAST extends @templateInstructionAST {
+  @templateInstructionIfBranchListAST mTemplateInstructionIfBranchList ;
+  @templateInstructionListAST mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionSwitchBranchListAST {
+  @lstringlist mConstantList ;
+  @templateInstructionListAST mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionSwitchAST extends @templateInstructionAST {
+  @templateExpressionAST mSwitchExpression ;
+  @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

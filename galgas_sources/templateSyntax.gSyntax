@@ -1,0 +1,848 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Template parser                                                          *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax templateSyntax :
+with "galgasTemplateScanner.gLexique" ;
+
+import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
+import semantics templateTypesForAST in "templateTypesForAST.gSemantics" ;
+
+nonterminal <template_parser_start_symbol>
+  !@templateInstructionListAST outResultingInstructionList
+;
+
+nonterminal <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList
+;
+
+nonterminal <expression>
+  !@templateExpressionAST outExpression
+;
+
+nonterminal <concatenation_term>
+  !@templateExpressionAST outExpression
+;
+
+nonterminal <relation_term>
+  !@templateExpressionAST outExpression
+;
+
+nonterminal <relation_factor>
+  !@templateExpressionAST outExpression
+;
+
+nonterminal <simple_expression>
+  !@templateExpressionAST outExpression
+;
+
+nonterminal <term>
+  !@templateExpressionAST outExpression
+;
+
+nonterminal <factor>
+  !@templateExpressionAST outExpression
+;
+
+nonterminal <output_expression_list>
+  !@templateExpressionListAST outExpressionList 
+;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   E X P R E S S I O N                                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <expression>
+  !@templateExpressionAST outExpression
+:
+  <concatenation_term> ?outExpression ;
+  repeat
+  while
+    @location operatorLocation := here ;
+    $.$ ;
+    @templateExpressionAST rightOperand ;
+    <concatenation_term> ?rightOperand  ;
+    outExpression := [@templateConcatOperationAST new !operatorLocation !outExpression !rightOperand] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   C O N C A T E N A T I O N    T E R M                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <concatenation_term>
+  !@templateExpressionAST outExpression
+:
+  <relation_term> ?outExpression ;
+  repeat
+  while
+    @location operatorLocation := here ;
+    $|$ ;
+    @templateExpressionAST leftOperand := outExpression ;
+    @templateExpressionAST rightOperand ;
+    <relation_term> ?rightOperand ;
+    outExpression := [@templateOrOperationAST new !operatorLocation !leftOperand !rightOperand] ;
+  while
+    @location operatorLocation := here ;
+    $^$ ;
+    @templateExpressionAST leftOperand := outExpression ;
+    @templateExpressionAST rightOperand ;
+    <relation_term> ?rightOperand ;
+    outExpression := [@templateXorOperationAST new !operatorLocation !leftOperand !rightOperand] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E L A T I O N    T E R M                                                 *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <relation_term>
+  !@templateExpressionAST outExpression
+:
+  <relation_factor> ?outExpression ;
+  repeat
+  while
+    @location operatorLocation := here ;
+    $&$ ;
+    @templateExpressionAST leftOperand := outExpression ;
+    @templateExpressionAST rightOperand ;
+    <relation_factor> ?rightOperand ;
+    outExpression := [@templateAndOperationAST new !operatorLocation !leftOperand !rightOperand] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E L A T I O N    F A C T O R                                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <relation_factor>
+  !@templateExpressionAST outExpression
+:
+  <simple_expression> ?outExpression ;
+  select
+  or
+    @location operatorLocation := here ;
+    $==$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <simple_expression> ?rightExpression ;
+    outExpression := [@templateEqualTestAST new !operatorLocation !leftExpression !rightExpression] ;
+  or
+    @location operatorLocation := here ;
+    $!=$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <simple_expression> ?rightExpression ;
+    outExpression := [@templateNonEqualTestAST new !operatorLocation !leftExpression !rightExpression] ;
+  or
+    @location operatorLocation := here ;
+    $<=$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <simple_expression> ?rightExpression ;
+    outExpression := [@templateInfOrEqualTestAST new !operatorLocation !leftExpression !rightExpression] ;
+  or
+    @location operatorLocation := here ;
+    $>=$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <simple_expression> ?rightExpression ;
+    outExpression := [@templateSupOrEqualTestAST new !operatorLocation !leftExpression !rightExpression] ;
+  or
+    @location operatorLocation := here ;
+    $>$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <simple_expression> ?rightExpression ;
+    outExpression := [@templateStrictSupTestAST new !operatorLocation !leftExpression !rightExpression] ;
+  or
+    @location operatorLocation := here ;
+    $<$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <simple_expression> ?rightExpression ;
+    outExpression := [@templateStrictInfTestAST new !operatorLocation !leftExpression !rightExpression] ;
+  end select ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S I M P L E    E X P R E S S I O N                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <simple_expression>
+  !@templateExpressionAST outExpression
+:
+  <term> ?outExpression ;
+  repeat
+  while 
+    @location operatorLocation := here ;
+    $<<$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <term> ?rightExpression ;
+    outExpression := [@templateLeftShiftOperationAST new !operatorLocation !leftExpression !rightExpression] ;
+  while 
+    @location operatorLocation := here ;
+    $>>$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <term> ?rightExpression ;
+    outExpression := [@templateRightShiftOperationAST new !operatorLocation !leftExpression !rightExpression] ;
+  while 
+    @location operatorLocation := here ;
+    $+$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <term> ?rightExpression ;
+    outExpression := [@templateAddOperationAST new !operatorLocation !leftExpression !rightExpression] ;
+  while 
+    @location operatorLocation := here ;
+    $-$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <term> ?rightExpression ;
+    outExpression := [@templateSubOperationAST new !operatorLocation !leftExpression !rightExpression] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   T E R M                                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <term>
+  !@templateExpressionAST outExpression
+:
+  <factor> ?outExpression ;
+  repeat
+  while 
+    @location operatorLocation := here ;
+    $*$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <factor> ?rightExpression ;
+    outExpression := [@templateMultiplyOperationAST new !operatorLocation !leftExpression !rightExpression] ;
+  while 
+    @location operatorLocation := here ;
+    $/$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <factor> ?rightExpression ;
+    outExpression := [@templateDivideOperationAST new !operatorLocation !leftExpression !rightExpression] ;
+  while 
+    @location operatorLocation := here ;
+    $mod$ ;
+    @templateExpressionAST leftExpression := outExpression ;
+    @templateExpressionAST rightExpression ;
+    <factor> ?rightExpression ;
+    outExpression := [@templateModuloOperationAST new !operatorLocation !leftExpression !rightExpression] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    - factor                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @location operatorLocation := here ;
+  $-$ ;
+  @templateExpressionAST expression ;
+  <factor> ?expression ;
+  outExpression := [@templateUnaryMinusOperationAST new !operatorLocation !expression] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    <var>                                                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  $identifier$ ? @lstring identifier ;
+  outExpression := [@templateVarInExpressionAST new !identifier ![@lstringlist emptyList]] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    ( EXPRESSION )                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  $($ ;
+  <expression> ?outExpression ;
+  $)$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    not FACTOR                                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @location operatorLocation := here ;
+  $not$ ;
+  @templateExpressionAST ifCondition ;
+  <factor> ?ifCondition ;
+  outExpression := [@templateTestComplementAST new !operatorLocation !ifCondition] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    ~ FACTOR                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @location operatorLocation := here ;
+  $~$ ;
+  @templateExpressionAST ifCondition ;
+  <factor> ?ifCondition ;
+  outExpression := [@templateLogicalNegateAST new !operatorLocation !ifCondition] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    true                                                   *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  $true$ ;
+  outExpression := [@templateTrueBoolAST new] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    false                                                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  $false$ ;
+  outExpression := [@templateFalseBoolAST new] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a 32-bit unsigned literal integer value                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @luint literalInt ;
+  $unsigned_literal_integer$ ?literalInt ;
+  outExpression := [@templateLiteralUIntExpressionAST new !literalInt] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a 32-bit signed literal integer value                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @lsint literalInt ;
+  $signed_literal_integer$ ?literalInt ;
+  outExpression := [@templateLiteralSIntExpressionAST new !literalInt] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a 64-bit unsigned literal integer value                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @luint64 literalInt ;
+  $unsigned_literal_integer64$ ?literalInt ;
+  outExpression := [@templateLiteralUInt64ExpressionAST new !literalInt] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a 64-bit signed literal integer value                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @lsint64 literalInt ;
+  $signed_literal_integer64$ ?literalInt ;
+  outExpression := [@templateLiteralSInt64ExpressionAST new !literalInt] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a double value                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @ldouble literalDouble ;
+  $literal_double$ ? literalDouble ?* ;
+  outExpression := [@templateLiteralDoubleExpressionAST new !literalDouble] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a literal character value                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  $literal_char$ ?@lchar literalChar ;
+  outExpression := [@templateLiteralCharExpressionAST new !literalChar] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a literal character value                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  @stringlist literalStringList [emptyList] ;
+  repeat
+    @lstring literalString ;
+    $literal_string$ ?literalString ;
+    literalStringList += ![literalString string] ;
+  while
+  end repeat ;
+  outExpression := [@templateLiteralStringExpressionAST new !literalStringList] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#   description          :   [expression description]                          *
+#   reader call          :   [expression reader !... ]                         *
+#   constructor call     :   [@class constructor !... ]                        *
+#   option value         :   [option option_component_name.option_name]        *
+#   filewrapper template :   [filewrapper fw.template_name !...]               *
+#   category template    :   [template expression template_name !...]          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  $[$ ;
+  select
+  #--------------------------------- Template
+    $template$ ;
+    @templateExpressionAST receiverExpression ;
+    <expression> ?receiverExpression ;
+    $identifier$ ? @lstring templateName ;
+    @templateExpressionListAST expressionList ;
+    <output_expression_list> ?expressionList ;
+    outExpression := [@templateCategoryTemplateCallAST new
+      !receiverExpression
+      !templateName
+      !expressionList
+    ] ;
+  or #------------ Constructor call
+    $type_name$ ?@lstring typeName ;
+    $identifier$ ? @lstring constructorName ;
+    @templateExpressionListAST expressionList ;
+    <output_expression_list> ?expressionList ;
+    outExpression := [@templateConstructorAST new
+      !typeName
+      !constructorName
+      !expressionList
+    ] ;
+  or #--------------------------------- Filewrapper
+    $filewrapper$ ;
+    $identifier$ ?@lstring filewrapperName ;
+    $.$ ;
+    $identifier$ ?@lstring templateName ;
+    @templateExpressionListAST expressionList ;
+    <output_expression_list> ?expressionList ;
+    outExpression := [@templateFileWrapperTemplateCallAST new !filewrapperName !templateName !expressionList] ;
+  or #--------------------------------- Reader call
+    @templateExpressionAST receiverExpression ;
+    <expression> ?receiverExpression ;
+    $identifier$ ? @lstring readerName ;
+    @templateExpressionListAST expressionList ;
+    <output_expression_list> ?expressionList ;
+    outExpression := [@templateReaderCallInExpressionAST new
+      !receiverExpression
+      !readerName
+      !expressionList
+    ] ;
+  or
+    $option$ ;
+    select
+      $.$ ;
+      $identifier$ ?@lstring optionName ;
+      $identifier$ ?@lstring readerName ;
+      outExpression := [@templateOptionAccessAST new ![@lstring new !"galgas_cli_options" !here] !optionName !readerName] ;
+    or
+      $identifier$ ?@lstring optionComponentName ;
+      $.$ ;
+      $identifier$ ?@lstring optionName ;
+      $identifier$ ?@lstring readerName ;
+      outExpression := [@templateOptionAccessAST new !optionComponentName !optionName !readerName] ;
+    end select ;
+  end select ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#   function call        :   function_name [!... ]                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  $identifier$ ?@lstring functionName ;
+  @templateExpressionListAST expressionList ;
+  $[$ ;
+  <output_expression_list> ?expressionList ;
+  $]$ ;
+  outExpression := [@templateFunctionCallAST new !functionName !expressionList] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   O U T P U T    E X P R E S S I O N    L I S T                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <output_expression_list>
+  !@templateExpressionListAST outExpressionList 
+:
+  outExpressionList := [@templateExpressionListAST emptyList] ;
+  repeat
+  while
+    $!$ ;
+    @templateExpressionAST expression ;
+    <expression> ?expression;
+    outExpressionList += !expression ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N S T R U C T I O N S                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine enterTemplateString
+  ?!@templateInstructionListAST outResultingInstructionList
+:
+  @lstring s := [@lstring retrieveAndResetTemplateString]  ;
+  if [s length] > 0 then
+    outResultingInstructionList += ![@templateInstructionStringAST new ![s string]] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList
+:
+  $!$ ;
+  @templateExpressionAST expression ;
+  <expression> ?expression ;
+  ioResultingInstructionList += ![@templateInstructionExpressionAST new !expression] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList
+:
+  $?^$ ;
+  ioResultingInstructionList += ![@templateInstructionGetColumnLocationAST new] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList
+:
+  $!^$ ;
+  ioResultingInstructionList += ![@templateInstructionGotoColumnLocationAST new] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList
+:
+  $block$ ;
+  @templateExpressionAST expression ;
+  <expression> ?expression ;
+  $:$ ;
+#--- Instruction list
+  @templateInstructionListAST blockInstructionList [emptyList] ;
+  enterTemplateString !? blockInstructionList ;
+  repeat
+  while
+    <template_instruction> !?blockInstructionList ;
+    enterTemplateString !?blockInstructionList ;
+  end repeat ;
+#---
+  $end$ ;
+  $block$ ;
+  ioResultingInstructionList += ![@templateBlockInstructionAST new
+   !expression
+   !here
+   !blockInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList
+:
+  $foreach$ ;
+  @bool ascending ;
+  select
+    ascending := true ;
+  or
+    $<$ ;
+    ascending := true ;
+  or
+    $>$ ;
+    ascending := false ;
+  end select ;
+  @templateExpressionAST expression ;
+  <expression> ? expression ;
+  @string foreachPrefix ;
+  select
+    foreachPrefix := "" ;
+  or
+    $prefixedby$ ;
+    $identifier$ ? @lstring prefixString ;
+    foreachPrefix := [prefixString string] ;
+  end select ;
+#--- before block
+  @templateInstructionListAST beforeInstructionList [emptyList] ;
+  select
+  or
+    $before$ ;
+    enterTemplateString !? beforeInstructionList ;
+    repeat
+    while
+      <template_instruction> !?beforeInstructionList ;
+      enterTemplateString !? beforeInstructionList ;
+    end repeat ;
+  end select ;
+#--- Do block
+  $do$ ;
+  @lstring indexIdentifier ;
+  select
+    indexIdentifier := [@lstring new !"" !here] ;
+  or
+    $index$ ;
+    $identifier$ ? indexIdentifier ;
+  end select ;
+  @templateInstructionListAST doInstructionList [emptyList] ;
+  enterTemplateString !?doInstructionList ;
+  repeat
+  while
+    <template_instruction> !?doInstructionList ;
+    enterTemplateString !?doInstructionList ;
+  end repeat ;
+#--- between block
+  @templateInstructionListAST betweenInstructionList [emptyList] ;
+  select
+  or
+    $between$ ;
+    enterTemplateString !? betweenInstructionList ;
+    repeat
+    while
+      <template_instruction> !?betweenInstructionList ;
+      enterTemplateString !?betweenInstructionList ;
+    end repeat ;
+  end select ;
+#--- after block
+  @templateInstructionListAST afterInstructionList [emptyList] ;
+  select
+  or
+    $after$ ;
+    enterTemplateString !?afterInstructionList ;
+    repeat
+    while
+      <template_instruction> !?beforeInstructionList ;
+      enterTemplateString !?afterInstructionList ;
+    end repeat ;
+  end select ;
+#---
+  $end$ ;
+  $foreach$ ;
+  ioResultingInstructionList += ![@templateInstructionForeachAST new
+   !ascending
+   !expression
+   !beforeInstructionList
+   !doInstructionList
+   !indexIdentifier
+   !betweenInstructionList
+   !afterInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList
+:
+  $if$ ;
+  @templateInstructionIfBranchListAST templateInstructionIfBranchList [emptyList] ;
+  repeat
+    @templateExpressionAST expression ;
+    <expression> ?expression ;
+    $then$ ;
+    @templateInstructionListAST instructionList [emptyList] ;
+    enterTemplateString !? instructionList ;
+    repeat
+    while
+      <template_instruction> !?instructionList ;
+      enterTemplateString !? instructionList ;
+    end repeat ;
+    templateInstructionIfBranchList += !expression !instructionList ;
+  while
+    $elsif$ ;
+  end repeat ;
+#--- else
+  @templateInstructionListAST elseInstructionList [emptyList] ;
+  select
+  or
+    $else$ ;
+    enterTemplateString !?elseInstructionList ;
+    repeat
+    while
+      <template_instruction> !?elseInstructionList ;
+      enterTemplateString !?elseInstructionList ;
+    end repeat ;
+  end select ;
+#---
+  $end$ ;
+  $if$ ;
+  ioResultingInstructionList += ![@templateInstructionIfAST new
+    !templateInstructionIfBranchList
+    !elseInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList
+:
+  $switch$ ;
+#--- Switch expression
+  @templateExpressionAST switchExpression ;
+  <expression> ?switchExpression ;
+#--- Loop on "when' clauses
+  @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList [emptyList] ;
+  repeat
+  while
+    $when$ ;
+    @lstringlist constantList [emptyList] ;
+    repeat
+      $identifier$ ?@lstring constantName ;
+      constantList += !constantName ;
+    while
+      $,$ ;
+    end repeat ;
+    $:$ ;
+    @templateInstructionListAST instructionList [emptyList] ;
+    enterTemplateString !? instructionList ;
+    repeat
+    while
+      <template_instruction> !?instructionList ;
+      enterTemplateString !? instructionList ;
+    end repeat ;
+    templateInstructionSwitchBranchList += !constantList !instructionList ;
+  end repeat ;
+#---
+  $end$ ;
+  $switch$ ;
+  ioResultingInstructionList += ![@templateInstructionSwitchAST new
+    !switchExpression
+    !templateInstructionSwitchBranchList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_parser_start_symbol>
+  !@templateInstructionListAST outResultingInstructionList
+:
+  outResultingInstructionList := [@templateInstructionListAST emptyList] ;
+  enterTemplateString !?outResultingInstructionList ;
+  repeat
+  while
+    <template_instruction>
+      !?outResultingInstructionList
+    ;
+    enterTemplateString !?outResultingInstructionList ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

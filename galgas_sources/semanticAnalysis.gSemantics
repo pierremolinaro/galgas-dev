@@ -19,7 +19,11 @@
 
 semantics semanticAnalysis :
   import "semanticInstructionsAnalysis.gSemantics" ;
+  import "templateGrammar.gGrammar" ;
+
   import semantics semanticInstructionsAnalysis in "semanticInstructionsAnalysis.gSemantics" ;
+  import semantics templateTypesForAST in "templateTypesForAST.gSemantics" ;
+  import grammar templateGrammar in "templateGrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1032,9 +1036,9 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
       else
         absoluteTemplatePath := [[inSemanticContext mSourceFileAbsolutePath] stringByDeletingLastPathComponent] . "/" . [mFilewrapperTemplatePath string] ;
       end if ;
-      if not [absoluteTemplatePath fileExists] then
-        error mFilewrapperTemplatePath: "The '" . absoluteTemplatePath . "' file does not exist" ;
-      end if ;    
+      @templateInstructionListAST resultingInstructionList ;
+      grammar templateGrammar in [@lstring new !absoluteTemplatePath ![mFilewrapperTemplatePath location]] ?resultingInstructionList ;
+      log resultingInstructionList ;
     end foreach ;
   #---- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration += ![@filewrapperDeclarationForGeneration new
