@@ -127,8 +127,10 @@ function generateFunction
   ??@string inCompilerTypeName
   ??@string inResultTypeName
   ??@string inResultVariableCppName
+  ??@bool inIsStatic
   ->@string outGeneratedCode
 :
+  outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -145,7 +147,10 @@ function generateFunction
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
-  outGeneratedCode := "GALGAS_" . [inResultTypeName identifierRepresentation] . " " ;
+  if inIsStatic then
+    outGeneratedCode .= "static " ;
+  end if ;
+  outGeneratedCode .= "GALGAS_" . [inResultTypeName identifierRepresentation] . " " ;
   outGeneratedCode .= inProcedureName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
@@ -403,6 +408,13 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
   ;
 
   template functionImplementation "function-implementation.cpp.gTemplate"
+    ?@string FUNCTION_NAME
+    ?@string FUNCTION_IMPLEMENTATION
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@string RETURN_TYPE_IDENTIFIER
+  ;
+
+  template onceFunctionImplementation "once-function-implementation.cpp.gTemplate"
     ?@string FUNCTION_NAME
     ?@string FUNCTION_IMPLEMENTATION
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
@@ -840,6 +852,7 @@ override reader @functionImplementationForGeneration appendSpecificImplementatio
       !"C_Compiler"
       ![mReturnType key]
       !mResultVariableCppName
+      !false # is not static
     ]
     !mFormalArgumentList
     ![mReturnType identifierRepresentation]
@@ -849,15 +862,16 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @onceFunctionDeclarationForGeneration appendSpecificImplementation -> @string outImplementation :
-  outImplementation := [filewrapper semanticComponentGenerationTemplate.functionImplementation
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
     !mFunctionName
     !generateFunction [
-      !"function_" . [mFunctionName identifierRepresentation]
+      !"onceFunction_" . [mFunctionName identifierRepresentation]
       ![@formalInputParameterListForGeneration emptyList]
       !mFunctionInstructionList
       !"C_Compiler"
       ![mReturnType key]
       !mResultVariableCppName
+      !true # is static
     ]
     ![@formalInputParameterListForGeneration emptyList]
     ![mReturnType identifierRepresentation]
@@ -885,7 +899,6 @@ function generateCategoryMethod
   ??@string inBaseClassName
   ??@string inMethodName
   ??@formalParameterListForGeneration inFormalArgumentList
-  ??@typedAttributeList inTypedAttributeList
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
@@ -893,17 +906,8 @@ function generateCategoryMethod
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
   unusedVariableCppNameSet += !selfMarkName [] ;
-  foreach inTypedAttributeList do
-    if inBaseClassName == "" then
-      unusedVariableCppNameSet += !"inObject->mAttribute_" . [mAttributeName identifierRepresentation] ;
-    else
-      unusedVariableCppNameSet += !"object->mAttribute_" . [mAttributeName identifierRepresentation] ;
-    end if ;
-  end foreach ;
   foreach inFormalArgumentList do
-    if mFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
-      unusedVariableCppNameSet += !mFormalArgumentCppName ;
-    end if ;
+    unusedVariableCppNameSet += !mFormalArgumentCppName ;
   end foreach ;
 #--- Generate body
   @uint temporaryVariableIndex := 0 ;
@@ -921,14 +925,7 @@ function generateCategoryMethod
   else
     outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
   end if ;
-  @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []];
-  foreach inTypedAttributeList while currentObjectIsUnused do
-    if inBaseClassName == "" then
-      currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"inObject->mAttribute_" . [mAttributeName identifierRepresentation]] ;
-    else
-      currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"object->mAttribute_" . [mAttributeName identifierRepresentation]] ;
-    end if ;
-  end foreach ;
+  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []] ;
   if currentObjectIsUnused then
     outGeneratedCode .= "/* inObject */" ;
   else
@@ -967,17 +964,13 @@ function generateCategoryMethod
   [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
   outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS" ;
   outGeneratedCode .= ") {\n" ;
-#--- Release 'out' arguments
-  foreach inFormalArgumentList index IDX do
-    switch mFormalArgumentPassingMode 
-    when argumentOut :
-      outGeneratedCode .= "  " . mFormalArgumentCppName . ".drop () ; // Release 'out' argument\n" ;
-    when argumentConstantIn, argumentIn, argumentInOut :
-    end switch ;
-  end foreach ;
 #--- Generate routine body
-  if (inBaseClassName != "") & not currentObjectIsUnused then
-    outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
+  if not currentObjectIsUnused then
+    if inBaseClassName == "" then
+      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = inObject ;\n" ;
+    else
+      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
+    end if ;
     outGeneratedCode .= "  macroValidObject (object, const cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
   end if ;
   outGeneratedCode .= routineBody ;
@@ -993,7 +986,6 @@ override reader @categoryMethodForGeneration appendSpecificImplementation -> @st
     !""
     !mCategoryMethodName
     !mCategoryMethodFormalParameterList
-    !mTypedAttributeList
     !mSemanticInstructionListForGeneration
   ] ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodImplementation
@@ -1012,7 +1004,6 @@ override reader @overridingCategoryMethodForGeneration appendSpecificImplementat
     !mBaseTypeName
     !mCategoryMethodName
     !mCategoryMethodFormalParameterList
-    !mTypedAttributeList
     !mSemanticInstructionListForGeneration
   ] ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryMethodImplementation

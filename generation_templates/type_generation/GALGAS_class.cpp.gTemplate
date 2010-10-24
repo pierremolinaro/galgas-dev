@@ -34,9 +34,9 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
 %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if% (inSourcePtr) {
-  macroNullOrValidObject (inSourcePtr, cPtr_%!TYPE_IDENTIFIER%) ;
+  macroNullOrValidObject (inSourcePtr, const cPtr_%!TYPE_IDENTIFIER%) ;
 }
 
 %

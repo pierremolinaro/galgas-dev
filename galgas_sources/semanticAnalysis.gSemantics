@@ -443,26 +443,26 @@ routine buildLocalVariableMapAndSignature
     when argumentIn :
       formalArgumentCppName := "inArgument_" . [mFormalArgumentName identifierRepresentation] ;
       if mIsUnused then
-        [!?ioVariableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
+        [!?ioVariableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       else
-        [!?ioVariableMap insertInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
+        [!?ioVariableMap insertInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       end if ;
     when argumentOut :
       formalArgumentCppName := "outArgument_" . [mFormalArgumentName identifierRepresentation] ;
-      [!?ioVariableMap insertOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
+      [!?ioVariableMap insertOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
     when argumentInOut :
       formalArgumentCppName := "ioArgument_" . [mFormalArgumentName identifierRepresentation] ;
       if mIsUnused then
-        [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
+        [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       else
-        [!?ioVariableMap insertInputOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
+        [!?ioVariableMap insertInputOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       end if ;
     when argumentConstantIn :
       formalArgumentCppName := "constinArgument_" . [mFormalArgumentName identifierRepresentation] ;
       if mIsUnused then
-        [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName] ;
+        [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       else
-        [!?ioVariableMap insertConstantInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName] ;
+        [!?ioVariableMap insertConstantInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       end if ;
     end switch ;
     outRoutineSignature += !mFormalArgumentPassingMode !type !mFormalArgumentName !formalArgumentCppName ;
@@ -472,8 +472,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine analyzeRoutineBody
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@formalParameterListAST inRoutineSignatureAST
   ??@localConstantList inLocalConstantList
   ??@typedAttributeList inTypedAttributeList
@@ -487,18 +486,23 @@ routine analyzeRoutineBody
 #--- Declare local constants
   foreach inLocalConstantList do
     if mNoWarningIfUnused then
-      [!?variableMap insertUsedLocalConstant !mName !mType !mCppName] ;
+      [!?variableMap insertUsedLocalConstant !mName !mType !mCppName !selfMarkName []] ;
     else
-      [!?variableMap insertLocalConstant !mName !mType !mCppName] ;
+      [!?variableMap insertLocalConstant !mName !mType !mCppName !selfMarkName []] ;
     end if ;
   end foreach ;
 #--- Enter instance attributes
   foreach inTypedAttributeList do
-    [!?variableMap insertNonMutableAttribute !mAttributeName !mAttributeTypeIndex !inAttributeVariableNamePrefix . "mAttribute_". [mAttributeName identifierRepresentation]] ;
+    [!?variableMap insertNonMutableAttribute
+      !mAttributeName
+      !mAttributeTypeIndex
+      !inAttributeVariableNamePrefix . "mAttribute_". [mAttributeName identifierRepresentation]
+      !selfMarkName []
+    ] ;
   end foreach ;
 #--- Enter formal arguments
   buildLocalVariableMapAndSignature
-    !inSemanticContext
+    !inAnalysisContext->mSemanticContext
     !inRoutineSignatureAST
     !?variableMap
     ?outRoutineSignature
@@ -507,8 +511,7 @@ routine analyzeRoutineBody
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
   foreach inInstructionList do
     [mInstruction analyzeSemanticInstruction
-      !inSemanticContext
-      !inPredefinedTypes
+      !inAnalysisContext
       !?outSemanticInstructionListForGeneration
       !?variableMap
     ] ;
@@ -575,9 +578,14 @@ override method @routineDeclarationAST performSemanticAnalysis
 #--- Instruction list
   @formalParameterListForGeneration formalArgumentList [emptyList] ;
   @semanticInstructionListForGeneration instructionList ;
-  analyzeRoutineBody
+  const @analysisContext analysisContext [new
     !inSemanticContext
     !inPredefinedTypes
+    ![@unifiedTypeMapProxy null]
+    !""
+  ] ;
+  analyzeRoutineBody
+    !analysisContext
     !mFormalArgumentList
     ![@localConstantList emptyList]
     ![@typedAttributeList emptyList]
@@ -678,15 +686,20 @@ override method @classDeclarationAST performSemanticAnalysis
 #------ Methods
   @methodDefinitionListForGeneration methodList [emptyList] ;
   @stringset definedMethodSet [emptySet] ;
+  const @analysisContext analysisContext [new
+    !inSemanticContext
+    !inPredefinedTypes
+    !selfType
+    !"this"
+  ] ;
   foreach mMethodList do
   #---
     @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
     @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
     analyzeRoutineBody
-      !inSemanticContext
-      !inPredefinedTypes
+      !analysisContext
       !mSignature
-      ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"GALGAS_" . [mClassTypeName identifierRepresentation] . " ((cPtr_" . [mClassTypeName identifierRepresentation] . " *) this)"]
+      ![@localConstantList emptyList]
       !allAttributeList
       !""
       !mInstructionList
@@ -758,8 +771,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 routine analyzeFunctionBody
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@analysisContext inAnalysisContext
   ??@formalInputParameterListAST inFunctionSignature
   ??@semanticInstructionListAST inInstructionList
   ??@lstring inReturnVariableName
@@ -774,7 +786,7 @@ routine analyzeFunctionBody
 #--- Enter formal parameters
   outSignatureForGeneration := [@formalInputParameterListForGeneration emptyList] ;
   foreach inFunctionSignature do
-    const @unifiedTypeMapProxy parameterType [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+    const @unifiedTypeMapProxy parameterType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
     if mIsConstant then
       const @string cppName := "constinArgument_" . [mFormalArgumentName identifierRepresentation] ;
       outSignatureForGeneration +=
@@ -783,9 +795,9 @@ routine analyzeFunctionBody
         !mIsUnused
       ;
       if mIsUnused then
-        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName] ;
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName !cppName] ;
       else
-        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !parameterType !cppName] ;
+        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !parameterType !cppName !cppName] ;
       end if ;
     else
       const @string cppName := "inArgument_" . [mFormalArgumentName identifierRepresentation] ;
@@ -795,22 +807,21 @@ routine analyzeFunctionBody
         !mIsUnused
       ;
       if mIsUnused then
-        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName] ;
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName !cppName] ;
       else
-        [!?variableMap insertInputFormalArgument !mFormalArgumentName !parameterType !cppName] ;
+        [!?variableMap insertInputFormalArgument !mFormalArgumentName !parameterType !cppName !cppName] ;
       end if ;
     end if ;
   end foreach ;
 #--- Enter return variable
-  outReturnedType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !inResultTypeName] ;
+  outReturnedType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !inResultTypeName] ;
   outResultVariableCppName := "result_" . [inResultTypeName identifierRepresentation] ;
-  [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName] ;
+  [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName] ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
   foreach inInstructionList do
     [mInstruction analyzeSemanticInstruction
-      !inSemanticContext
-      !inPredefinedTypes
+      !inAnalysisContext
       !?outSemanticInstructionListForGeneration
       !?variableMap
     ] ;
@@ -831,9 +842,14 @@ override method @functionDeclarationAST performSemanticAnalysis
   @formalInputParameterListForGeneration formalInputParameterList ;
   @unifiedTypeMapProxy returnType ;
   @string resultVariableCppName ;
-  analyzeFunctionBody
+  const @analysisContext analysisContext [new
     !inSemanticContext
     !inPredefinedTypes
+    ![@unifiedTypeMapProxy null]
+    !""
+  ] ;
+  analyzeFunctionBody
+    !analysisContext
     !mFormalArgumentList
     !mFunctionInstructionList
     !mResultVariableName
@@ -867,9 +883,14 @@ override method @onceFunctionDeclarationAST performSemanticAnalysis
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   @unifiedTypeMapProxy returnType ;
   @string resultVariableCppName ;
-  analyzeFunctionBody
+  const @analysisContext analysisContext [new
     !inSemanticContext
     !inPredefinedTypes
+    ![@unifiedTypeMapProxy null]
+    !""
+  ] ;
+  analyzeFunctionBody
+    !analysisContext
     ![@formalInputParameterListAST emptyList]
     !mFunctionInstructionList
     !mResultVariableName
@@ -1067,13 +1088,18 @@ override method @categoryMethodAST performSemanticAnalysis
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  analyzeRoutineBody
+  const @analysisContext analysisContext [new
     !inSemanticContext
     !inPredefinedTypes
+    !selfType
+    !"object"
+  ] ;
+  analyzeRoutineBody
+    !analysisContext
     !mCategoryMethodFormalParameterList
-    ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"(* inObject)"]
+    ![@localConstantList emptyList]
     ![selfType mAllTypedAttributeList]
-    !"inObject->"
+    !"object->"
     !mCategoryMethodInstructionList
     !mEndOfMethodLocation
     ?semanticInstructionListForGeneration
@@ -1123,11 +1149,16 @@ override method @overridingCategoryMethodAST performSemanticAnalysis
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  analyzeRoutineBody
+  const @analysisContext analysisContext [new
     !inSemanticContext
     !inPredefinedTypes
+    !selfType
+    !"object"
+  ] ;
+  analyzeRoutineBody
+    !analysisContext
     !mOverridingCategoryMethodFormalParameterList
-    ![@localConstantList listWithValue !selfType ![@lstring new !"self" !here] !true !"(* object)"]
+    ![@localConstantList emptyList]
     ![selfType mAllTypedAttributeList]
     !"object->"
     !mOverridingCategoryMethodInstructionList
@@ -1211,8 +1242,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 #override method @abstractCategoryReaderAST performSemanticAnalysis
-#  ??@semanticContext inSemanticContext
+#  ??@semanticContext unused inSemanticContext
 #  ??@predefinedTypes unused inPredefinedTypes
+#  ??@predefinedTypes unused inAnalysisContext->mPredefinedTypes
 #  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 #:
 #  message "**** @abstractMultiReaderAST performSemanticAnalysis ***\n" ;
@@ -1221,8 +1253,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 #override method @categoryReaderAST performSemanticAnalysis
-#  ??@semanticContext inSemanticContext
+#  ??@semanticContext unused inSemanticContext
 #  ??@predefinedTypes unused inPredefinedTypes
+#  ??@predefinedTypes unused inAnalysisContext->mPredefinedTypes
 #  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 #:
 #  message "**** @multiReaderAST performSemanticAnalysis ***\n" ;
@@ -1231,8 +1264,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 #override method @overridingCategoryReaderAST performSemanticAnalysis
-#  ??@semanticContext inSemanticContext
+#  ??@semanticContext unused inSemanticContext
 #  ??@predefinedTypes unused inPredefinedTypes
+#  ??@predefinedTypes unused inAnalysisContext->mPredefinedTypes
 #  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 #:
 #  message "**** @overridingMultiReaderAST performSemanticAnalysis ***\n" ;

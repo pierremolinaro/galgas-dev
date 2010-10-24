@@ -29,12 +29,6 @@ once compilerCppName ->@string outCompilerCppName :
 end once ;
 
 #---------------------------------------------------------------------------*
-
-once selfMarkName ->@string outCompilerCppName :
-  outCompilerCppName := "-self-" ;
-end once ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #           D E T E C T    ' T R U E '    E X P R E S S I O N               *
 #                                                                           *
@@ -71,7 +65,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @selfInExpressionForGeneration generateExpression
+override method @selfCopyInExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
@@ -928,7 +922,7 @@ override method @varInExpressionForGeneration generateExpression
   !@string outCppName
 :
   outCppName := mCppVarName ;
-  [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
   foreach mStructFieldList do
     outCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
   end foreach ;

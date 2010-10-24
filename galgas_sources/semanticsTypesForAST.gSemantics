@@ -33,7 +33,7 @@ list @semanticExpressionListAST {
 
 #---------------------------------------------------------------------------*
 
-class @selfInExpressionAST extends @semanticExpressionAST {
+class @selfCopyInExpressionAST extends @semanticExpressionAST {
   @location mSelfLocation ;
 }
 
