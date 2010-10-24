@@ -628,6 +628,73 @@ isUsingLexiqueArgument (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_templateInstructionSwitch
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_templateInstructionSwitch::
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "switch (" ;
+  mSwitchExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ".enumValue ()) {\n"
+            << "case GGS_" << mSwitchExpressionTypeName << "::kNotBuilt:\n"
+            << "break ;\n"  ;
+  GGS_templateInstructionSwitchBranchList::cEnumerator branch (mTemplateInstructionSwitchBranchList, true) ;
+  while (branch.hasCurrentObject ()) {
+    GGS_lstringlist::cEnumerator constants (branch._mConstantList (HERE), true) ;
+    while (constants.hasCurrentObject ()) {
+      ioCppFile << "case GGS_" << mSwitchExpressionTypeName << "::enum_" << constants._mValue (HERE) << ":\n" ;
+      constants.next () ;
+    }
+    ioCppFile.incIndentation (+2) ;
+    GGS_templateInstructionList::cEnumerator instruction (branch._mInstructionList (HERE), true) ;
+    while (instruction.hasCurrentObject ()) {
+      instruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+      instruction.next () ;
+    }
+    ioCppFile.incIndentation (-2) ;
+    ioCppFile << "break ;\n" ;
+    branch.next () ;
+  }
+  ioCppFile << "}\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionSwitch::isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
+  bool used = mSwitchExpression (HERE)->formalArgumentIsUsedForTest (inCppName) ;
+  GGS_templateInstructionSwitchBranchList::cEnumerator branch (mTemplateInstructionSwitchBranchList, true) ;
+  while (branch.hasCurrentObject () && ! used) {
+    GGS_templateInstructionList::cEnumerator instruction (branch._mInstructionList (HERE), true) ;
+    while (instruction.hasCurrentObject () && ! used) {
+      used = instruction._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+      instruction.next () ;
+    }
+    branch.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionSwitch::isUsingLexiqueArgument (void) const {
+  bool used = mSwitchExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  GGS_templateInstructionSwitchBranchList::cEnumerator branch (mTemplateInstructionSwitchBranchList, true) ;
+  while (branch.hasCurrentObject () && ! used) {
+    GGS_templateInstructionList::cEnumerator instruction (branch._mInstructionList (HERE), true) ;
+    while (instruction.hasCurrentObject () && ! used) {
+      used = instruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+      instruction.next () ;
+    }
+    branch.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Filewrapper template call
 #endif
 

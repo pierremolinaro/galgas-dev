@@ -1024,7 +1024,19 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
      !?wrapperDirectoryIndex
      !?regularFileMap
    ;
-  #---- Enter wrapper in generated list
+  #---- Analyze filewrapper templates
+    foreach mFilewrapperTemplateList do
+      @string absoluteTemplatePath ;
+      if [mFilewrapperTemplatePath firstCharacterOrNul] == '/' then
+        absoluteTemplatePath := [mFilewrapperTemplatePath string] ;
+      else
+        absoluteTemplatePath := [[inSemanticContext mSourceFileAbsolutePath] stringByDeletingLastPathComponent] . "/" . [mFilewrapperTemplatePath string] ;
+      end if ;
+      if not [absoluteTemplatePath fileExists] then
+        error mFilewrapperTemplatePath: "The '" . absoluteTemplatePath . "' file does not exist" ;
+      end if ;    
+    end foreach ;
+  #---- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration += ![@filewrapperDeclarationForGeneration new
       ![mFilewrapperName string]
       ![mFilewrapperPath string]

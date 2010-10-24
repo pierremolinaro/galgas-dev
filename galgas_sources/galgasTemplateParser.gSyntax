@@ -434,6 +434,86 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+rule <template_instruction>
+  ?!@templateVariableMap ioTemplateVariableMap
+  ??@EXsemanticContext inSemanticContext
+  ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@templateInstructionList ioResultingInstructionList
+  ?!@bool ioUsesColumnMarker
+:
+  $switch$ ;
+#--- Switch expression
+  @typeExpression switchExpression ;
+  @AC_galgasType switchExpressionType ;
+  <expression>
+    !inComponentSemanticsEntitiesMap
+    !inSemanticContext
+    !inOptionsComponentsMapForUse
+    !ioTemplateVariableMap
+    ?switchExpression
+    ?switchExpressionType
+  ;
+#--- Check switch expression type is an enum
+  @typeGalgas_enum x := (cast switchExpressionType if >= @typeGalgas_enum else error here) ;
+  const @enumConstantMap enumConstantesMap := [x mEnumConstantesMap] ;
+#--- Loop on "when' clauses
+  @stringset namedConstantSet [emptySet] ;
+  @templateInstructionSwitchBranchList templateInstructionSwitchBranchList [emptyList] ;
+  repeat
+  while
+    $when$ ;
+    @lstringlist constantList [emptyList] ;
+    repeat
+      $identifier$ ?@lstring constantName ;
+      [enumConstantesMap searchKey !constantName ?*] ;
+      if [namedConstantSet hasKey ![constantName string]] then
+        error constantName : "this constant is already named in the switch instruction" ;
+      end if ;
+      namedConstantSet += ![constantName string] ;
+      constantList += !constantName ;
+    while
+      $,$ ;
+    end repeat ;
+    $:$ ;
+    @templateInstructionList instructionList [emptyList] ;
+    enterTemplateString !? instructionList ;
+    @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+    repeat
+    while
+      <template_instruction>
+        !?templateVariableMap
+        !inSemanticContext
+        !inComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !?instructionList
+        !?ioUsesColumnMarker
+      ;
+      enterTemplateString !? instructionList ;
+    end repeat ;
+    templateInstructionSwitchBranchList += !constantList !instructionList ;
+  end repeat ;
+#--- Check every constant is named once
+  @stringset missingConstants := [enumConstantesMap allKeys] - namedConstantSet ;
+  if [missingConstants count] > 0 then
+    @string m := "the following constants are missing:" ;
+    foreach missingConstants do
+      m .= "\n  - '" . key . "'" ;
+    end foreach ;
+    error here : m ;
+  end if ;
+#---
+  $end$ ;
+  $switch$ ;
+  ioResultingInstructionList += ![@templateInstructionSwitch new
+    ![[x mEnumTypeName] string]
+    !switchExpression
+    !templateInstructionSwitchBranchList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <lexique_component_start_symbol>
   ??@templateVariableMap inTemplateVariableMap
   ??@EXsemanticContext inSemanticContext

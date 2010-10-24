@@ -5720,6 +5720,21 @@ class @templateInstructionIf extends @templateInstruction {
 
 #---------------------------------------------------------------------------*
 
+list @templateInstructionSwitchBranchList {
+  @lstringlist mConstantList ;
+  @templateInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionSwitch extends @templateInstruction {
+  @string mSwitchExpressionTypeName ;
+  @typeExpression mSwitchExpression ;
+  @templateInstructionSwitchBranchList mTemplateInstructionSwitchBranchList feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @EXsemanticContext {
   @M_filewrappersEX mFilewrappers ;
   @stringset mImportedSemanticComponents ;
