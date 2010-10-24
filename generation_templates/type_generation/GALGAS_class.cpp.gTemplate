@@ -143,15 +143,16 @@ foreach INSTANCE_METHOD_MAP do
       %//---------------------------------------------------------------------------*\n\n%
       %void GALGAS_%!TYPE_IDENTIFIER%::method_%![lkey identifierRepresentation]% (%?^
       foreach mParameterList do index IDX
-        if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        switch mFormalArgumentPassingMode
+        when argumentConstantIn :
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
-        elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        when argumentInOut :
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
-        elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        when argumentOut :
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-        else # argumentIn
+        when argumentIn :
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-        end if
+        end switch
       between %,\n%!^
       end foreach
       if [mParameterList length] == 0 then
