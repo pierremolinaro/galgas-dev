@@ -48,12 +48,11 @@ nonterminal <expression>
   ??@templateVariableMap inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
-label parse
 ;
 
 #---------------------------------------------------------------------------*
 
-routine enterTemplateString
+routine enterTemplateStringEX
   ?!@templateInstructionList outResultingInstructionList
 :
   @lstring s := [@lstring retrieveAndResetTemplateString]  ;
@@ -164,7 +163,7 @@ rule <template_instruction>
   $:$ ;
 #--- Instruction list
   @templateInstructionList blockInstructionList [emptyList] ;
-  enterTemplateString !? blockInstructionList ;
+  enterTemplateStringEX !? blockInstructionList ;
   @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
   repeat
   while
@@ -176,7 +175,7 @@ rule <template_instruction>
       !?blockInstructionList
       !?ioUsesColumnMarker
     ;
-    enterTemplateString !?blockInstructionList ;
+    enterTemplateStringEX !?blockInstructionList ;
   end repeat ;
 #---
   $end$ ;
@@ -247,7 +246,7 @@ rule <template_instruction>
   select
   or
     $before$ ;
-    enterTemplateString !? beforeInstructionList ;
+    enterTemplateStringEX !? beforeInstructionList ;
     @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
@@ -259,7 +258,7 @@ rule <template_instruction>
         !?beforeInstructionList
         !?ioUsesColumnMarker
       ;
-      enterTemplateString !? beforeInstructionList ;
+      enterTemplateStringEX !? beforeInstructionList ;
     end repeat ;
   end select ;
 #--- Do block
@@ -289,7 +288,7 @@ rule <template_instruction>
     [!?templateVariableMap insertKey !indexIdentifier ![@typeGalgas_uint new] !cppName] ;
   end select ;
   @templateInstructionList doInstructionList [emptyList] ;
-  enterTemplateString !?doInstructionList ;
+  enterTemplateStringEX !?doInstructionList ;
   repeat
   while
     <template_instruction>
@@ -300,14 +299,14 @@ rule <template_instruction>
       !?doInstructionList
       !?ioUsesColumnMarker
     ;
-    enterTemplateString !?doInstructionList ;
+    enterTemplateStringEX !?doInstructionList ;
   end repeat ;
 #--- between block
   @templateInstructionList betweenInstructionList [emptyList] ;
   select
   or
     $between$ ;
-    enterTemplateString !? betweenInstructionList ;
+    enterTemplateStringEX !? betweenInstructionList ;
     @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
@@ -319,7 +318,7 @@ rule <template_instruction>
         !?betweenInstructionList
         !?ioUsesColumnMarker
       ;
-      enterTemplateString !?betweenInstructionList ;
+      enterTemplateStringEX !?betweenInstructionList ;
     end repeat ;
   end select ;
 #--- after block
@@ -327,7 +326,7 @@ rule <template_instruction>
   select
   or
     $after$ ;
-    enterTemplateString !?afterInstructionList ;
+    enterTemplateStringEX !?afterInstructionList ;
     @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
@@ -339,7 +338,7 @@ rule <template_instruction>
         !?beforeInstructionList
         !?ioUsesColumnMarker
       ;
-      enterTemplateString !?afterInstructionList ;
+      enterTemplateStringEX !?afterInstructionList ;
     end repeat ;
   end select ;
 #---
@@ -385,7 +384,7 @@ rule <template_instruction>
     @typeGalgas_bool x := (cast expressionType if >= @typeGalgas_bool else error here) ;
     $then$ ;
     @templateInstructionList instructionList [emptyList] ;
-    enterTemplateString !? instructionList ;
+    enterTemplateStringEX !? instructionList ;
     @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
@@ -397,7 +396,7 @@ rule <template_instruction>
         !?instructionList
         !?ioUsesColumnMarker
       ;
-      enterTemplateString !? instructionList ;
+      enterTemplateStringEX !? instructionList ;
     end repeat ;
     templateInstructionIfBranchList += !expression !instructionList ;
   while
@@ -408,7 +407,7 @@ rule <template_instruction>
   select
   or
     $else$ ;
-    enterTemplateString !?elseInstructionList ;
+    enterTemplateStringEX !?elseInstructionList ;
     @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
@@ -420,7 +419,7 @@ rule <template_instruction>
         !?elseInstructionList
         !?ioUsesColumnMarker
       ;
-      enterTemplateString !?elseInstructionList ;
+      enterTemplateStringEX !?elseInstructionList ;
     end repeat ;
   end select ;
 #---
@@ -477,7 +476,7 @@ rule <template_instruction>
     end repeat ;
     $:$ ;
     @templateInstructionList instructionList [emptyList] ;
-    enterTemplateString !? instructionList ;
+    enterTemplateStringEX !? instructionList ;
     @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
@@ -489,7 +488,7 @@ rule <template_instruction>
         !?instructionList
         !?ioUsesColumnMarker
       ;
-      enterTemplateString !? instructionList ;
+      enterTemplateStringEX !? instructionList ;
     end repeat ;
     templateInstructionSwitchBranchList += !constantList !instructionList ;
   end repeat ;
@@ -524,7 +523,7 @@ rule <lexique_component_start_symbol>
 :
   outResultingInstructionList := [@templateInstructionList emptyList] ;
   @templateVariableMap templateVariableMap := inTemplateVariableMap ;
-  enterTemplateString !?outResultingInstructionList ;
+  enterTemplateStringEX !?outResultingInstructionList ;
   outUsesColumnMarker := false ;
   repeat
   while
@@ -536,7 +535,7 @@ rule <lexique_component_start_symbol>
       !?outResultingInstructionList
       !?outUsesColumnMarker
     ;
-    enterTemplateString !?outResultingInstructionList ;
+    enterTemplateStringEX !?outResultingInstructionList ;
   end repeat ;
 end rule ;
 

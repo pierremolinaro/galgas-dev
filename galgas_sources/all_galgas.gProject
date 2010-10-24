@@ -32,9 +32,9 @@ project all_galgas:
 
 #--- Template
   lexique   "galgasTemplateScanner.gLexique" : makefile ;
-#  syntax    "templateExpressionParser.gSyntax" : makefile ;
-#  syntax    "galgasTemplateParser.gSyntax" : makefile ;
-#  grammar   "galgasTemplateGrammar.gGrammar" : makefile ;
+  semantics "templateTypesForAST.gSemantics" : makefile ;
+  syntax    "templateSyntax.gSyntax" : makefile ;
+  grammar   "templateGrammar.gGrammar" : makefile ;
  
 #--- Lexique Component
   semantics "lexiqueTypesForAST.gSemantics" : makefile ;
