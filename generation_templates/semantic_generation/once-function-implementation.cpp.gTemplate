@@ -1,0 +1,83 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Once function '" . FUNCTION_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+%!FUNCTION_IMPLEMENTATION%
+
+//---------------------------------------------------------------------------*
+//  Function implementation                                                  *
+//---------------------------------------------------------------------------*
+
+static bool gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]% = false ;
+static GALGAS_%!RETURN_TYPE_IDENTIFIER% gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% ;
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%!^%C_Compiler * inCompiler
+              %!^%COMMA_LOCATION_ARGS) {
+  if (! gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]%) {
+    gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% = onceFunction_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]% = true ;
+  }
+  return gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% ;
+}
+
+//---------------------------------------------------------------------------*
+
+static void releaseOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% (void) {
+  gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]%.drop () ;
+}
+
+//---------------------------------------------------------------------------*
+
+C_PrologueEpilogue gEpilgueForOnceFunction_%![FUNCTION_NAME identifierRepresentation]% (%?^%NULL,
+        %!^%releaseOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]%) ;
+
+//---------------------------------------------------------------------------*
+//  Function introspection                                                   *
+//---------------------------------------------------------------------------*
+
+static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifierRepresentation]% [%![[FORMAL_ARGUMENT_LIST length] + 1 string]%] = {
+%
+  foreach FORMAL_ARGUMENT_LIST do
+    %  & kTypeDescriptor_GALGAS_%![mFormalArgumentType identifierRepresentation]%,\n%
+  end foreach
+%  NULL
+} ;
+
+//---------------------------------------------------------------------------*
+
+%
+if [FORMAL_ARGUMENT_LIST length] == 0 then
+  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+                                             !^%const cObjectArray & /* inEffectiveParameterArray */,\n%
+                                             !^%const GALGAS_location & /* inErrorLocation */\n%
+                                             !^%COMMA_LOCATION_ARGS) {\n%
+  %  return function_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE).reader_object (THERE) ;\n%
+  %}\n%
+else
+  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+                                             !^%const cObjectArray & inEffectiveParameterArray,\n%
+                                             !^%const GALGAS_location & inErrorLocation\n%
+                                             !^%COMMA_LOCATION_ARGS) {\n%
+  foreach FORMAL_ARGUMENT_LIST do index IDX
+    %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]%::extractObject (inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE), inCompiler, inErrorLocation COMMA_THERE) ;\n%
+  end foreach
+  %  return function_%![FUNCTION_NAME identifierRepresentation]% (%
+  foreach FORMAL_ARGUMENT_LIST do index IDX
+    %operand%![IDX string]%, %
+  end foreach
+  %inCompiler COMMA_THERE).reader_object (THERE) ;\n%
+  %}\n%
+end if
+%
+//---------------------------------------------------------------------------*
+
+C_galgas_function_descriptor functionDescriptor_%![FUNCTION_NAME identifierRepresentation]% (%?^![FUNCTION_NAME utf8Representation]%,\n%
+                                            !^%functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]%,\n%
+                                            !^%& kTypeDescriptor_GALGAS_%!RETURN_TYPE_IDENTIFIER%,\n%
+                                            !^![[FORMAL_ARGUMENT_LIST length] string]%,\n%
+                                            !^%functionArgs_%![FUNCTION_NAME identifierRepresentation]%) ;
+
