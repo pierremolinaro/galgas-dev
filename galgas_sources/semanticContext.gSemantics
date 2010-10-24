@@ -172,6 +172,145 @@ routine collectAttributeTypes
 end routine ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#    D I S P L A Y                                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationAST display
+  ?!@string unused ioString
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryMethodAST display
+  ?!@string ioString
+:
+  ioString .= "  - abstract category method @" . mTypeName . " " . mAbstractCategoryMethodName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @categoryMethodAST display
+  ?!@string ioString
+:
+  ioString .= "  - category method @" . mTypeName . " " . mCategoryMethodName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryMethodAST display
+  ?!@string ioString
+:
+  ioString .= "  - overriding category method @" . mTypeName . " " . mOverridingCategoryMethodName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryReaderAST display
+  ?!@string ioString
+:
+  ioString .= "  - abstract category reader @" . mTypeName . " " . mAbstractCategoryReaderName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @categoryReaderAST display
+  ?!@string ioString
+:
+  ioString .= "  - category reader @" . mTypeName . " " . mCategoryReaderName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryReaderAST display
+  ?!@string ioString
+:
+  ioString .= "  - overriding category reader @" . mTypeName . " " . mOverridingCategoryReaderName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @predefinedTypeAST display
+  ?!@string ioString
+:
+  ioString .= "  - predefined type @" . mPredefinedTypeName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - map @" . mMapTypeName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapProxyDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - map proxy @" . mMapProxyTypeName . "(for map @" . mAssociatedMapTypeName . ")\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - enum @" . mEnumTypeName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - sorted list @" . mSortedListTypeName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @structDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - struct @" . mStructTypeName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - list @" . mListTypeName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @classDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - class @" . mClassTypeName ;
+  if [mSuperClassName string] != "" then
+    ioString .= " : @" . mSuperClassName ;
+  end if ;
+  ioString .= "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listmapDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - listmap @" . mListmapTypeName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O L L E C T     T Y P E S                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
 
 method @semanticDeclarationAST collectTypes
   ?!@collectedTypeMap unused ioCollectedTypeMap
@@ -266,24 +405,6 @@ override method @overridingCategoryReaderAST collectTypes
   ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
 :
   error mOverridingCategoryReaderName : "@overridingMultiReaderAST collectTypes\n" ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @objectPredefinedTypeAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey ![@lstring new !"object" !here]] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @filewrapperPredefinedTypeAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey ![@lstring new !"filewrapper" !here]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1494,37 +1615,10 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @objectPredefinedTypeAST enterOrderedDeclaration
-  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
-:
-  @objectPredefinedTypeAST t := self ; # Bug in GALGAS 1
-  ioPartiallyOrderedDeclarationList += !"" !"object" !self ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @filewrapperPredefinedTypeAST enterOrderedDeclaration
-  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
-:
-  @filewrapperPredefinedTypeAST t := self ; # Bug in GALGAS 1
-  ioPartiallyOrderedDeclarationList += !"" !"filewrapper" !self ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @stringsetPredefinedTypeAST enterOrderedDeclaration
-  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
-:
-  ioPartiallyOrderedDeclarationList += !"" !mPredefinedTypeName !self ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @classDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  const @string actualSuperTypeName := [mSuperClassName string] ;
-  ioPartiallyOrderedDeclarationList += !actualSuperTypeName ![mClassTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += ![mSuperClassName string] ![mClassTypeName string] !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1671,6 +1765,12 @@ routine buildSemanticContext
         end if ;
       end foreach ;
     end loop ;
+  #--- Display ordered declarations
+#    @string s := "" ;
+#    foreach orderedSemanticDeclarationListAST do
+#      [mSemanticDeclaration display !?s] ;
+#    end foreach ;
+#    message "Ordered declarations:\n" . s ;
   #--- Remain in partiallyOrderedSemanticDeclarationListAST only circular definitions
     if [partiallyOrderedSemanticDeclarationListAST length] > 0 then
       @string s := "inheritance circularities involving the " ;

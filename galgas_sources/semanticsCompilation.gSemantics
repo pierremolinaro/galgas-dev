@@ -295,19 +295,19 @@ routine compileSemanticsComponent
     ![semanticsComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;
-#--- Build option component map for analysis
+#------ Build option component map for analysis
   buildOptionComponentMapForSemanticAnalysis
     !optionComponentFileNameList
     !?ioParsedComponentStruct
     !?semanticContext->mOptionComponentMapForSemanticAnalysis
   ;
-#--- Perform semantic analysis of grammar components
+#------ Perform semantic analysis of grammar components
   buildGrammarComponentMapForSemanticAnalysis
     !grammarComponentASTList
     !?semanticContext
   ;
 #------ Semantic Analysis
-  @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+  @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
     ![semanticsComponentRoot mSemanticDeclarationList]
     !semanticContext

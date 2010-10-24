@@ -571,7 +571,7 @@ routine compileGrammarComponent
   ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
-    if [option galgas_cli_options.newCodeGeneration value] then
+    if not [option galgas_cli_options.legacyCodeGeneration value] then
       const @string zone2 := [filewrapper grammarGenerationTemplate.grammarZone2Header
         !grammarComponentRoot
       ] ;

@@ -372,7 +372,6 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
   
   template overridingCategoryMethodImplementation "overriding-category-method.cpp.gTemplate"
     ?@string CLASS_NAME
-    ?@string BASE_CLASS_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
   ;
@@ -893,11 +892,7 @@ function generateCategoryMethod
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
-  if inBaseClassName == "" then
-    unusedVariableCppNameSet += !"(* inObject)" ;
-  else
-    unusedVariableCppNameSet += !"(* object)" ;
-  end if ;
+  unusedVariableCppNameSet += !selfMarkName [] ;
   foreach inTypedAttributeList do
     if inBaseClassName == "" then
       unusedVariableCppNameSet += !"inObject->mAttribute_" . [mAttributeName identifierRepresentation] ;
@@ -926,12 +921,7 @@ function generateCategoryMethod
   else
     outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
   end if ;
-  @bool currentObjectIsUnused ;
-  if inBaseClassName == "" then
-    currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"(* inObject)"] ;
-  else
-    currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"(* object)"] ;
-  end if ;
+  @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []];
   foreach inTypedAttributeList while currentObjectIsUnused do
     if inBaseClassName == "" then
       currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"inObject->mAttribute_" . [mAttributeName identifierRepresentation]] ;
@@ -1027,7 +1017,6 @@ override reader @overridingCategoryMethodForGeneration appendSpecificImplementat
   ] ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryMethodImplementation
     !mTypeName
-    !mBaseTypeName
     !mCategoryMethodName
     !methodImplementation
   ] ; 

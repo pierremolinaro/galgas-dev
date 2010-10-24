@@ -29,6 +29,12 @@ once compilerCppName ->@string outCompilerCppName :
 end once ;
 
 #---------------------------------------------------------------------------*
+
+once selfMarkName ->@string outCompilerCppName :
+  outCompilerCppName := "-self-" ;
+end once ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #           D E T E C T    ' T R U E '    E X P R E S S I O N               *
 #                                                                           *
@@ -72,7 +78,7 @@ override method @selfInExpressionForGeneration generateExpression
   !@string outCppName
 :
   outCppName := mSelfCppName ;
-  [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
+  [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
 end method ;
 
 #---------------------------------------------------------------------------*

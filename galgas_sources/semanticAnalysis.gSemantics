@@ -65,7 +65,7 @@ end routine ;
 method @semanticDeclarationAST performSemanticAnalysis
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 :
 end method ;
 
@@ -74,13 +74,15 @@ end method ;
 override method @predefinedTypeAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
     !mPredefinedTypeName
     !mKind
-  ] ;
+  ]
+  !""
+  ;
 
 end method ;
 
@@ -97,7 +99,7 @@ map @attributeIndexMap {
 override method @listDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
@@ -112,7 +114,9 @@ override method @listDeclarationAST performSemanticAnalysis
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
     !typedAttributeList
-  ] ;
+  ]
+  !""
+  ;
 
 end method ;
 
@@ -121,7 +125,7 @@ end method ;
 override method @sortedListDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Attribute
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -151,7 +155,9 @@ override method @sortedListDeclarationAST performSemanticAnalysis
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
     !typedAttributeList
     !sortDescriptorList
-  ] ;
+  ]
+  !""
+  ;
 
 end method ;
 
@@ -160,7 +166,7 @@ end method ;
 override method @structDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
@@ -175,7 +181,9 @@ override method @structDeclarationAST performSemanticAnalysis
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
     !typedAttributeList
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -191,7 +199,7 @@ map @constantIndexMap {
 override method @enumDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Constant list
   @stringlist constantList [emptyList] ;
@@ -233,7 +241,9 @@ override method @enumDeclarationAST performSemanticAnalysis
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
     !constantList
     !enumMessageList
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -241,7 +251,7 @@ end method ;
 override method @listmapDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Check associated list is actually a list
   @typeKindEnum typeKindEnum ;
@@ -252,7 +262,9 @@ override method @listmapDeclarationAST performSemanticAnalysis
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
     !listTypeAttributeList
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -272,7 +284,7 @@ map @searchMethodMap {
 override method @mapDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -382,7 +394,9 @@ override method @mapDeclarationAST performSemanticAnalysis
     !mRemoveMethodList
     !hasInsertOrReplaceModifier
     !withAccessorMap
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -390,7 +404,7 @@ end method ;
 override method @mapProxyDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Get attribute list of associated map
   @typedAttributeList listTypeAttributeList ;
@@ -402,7 +416,9 @@ override method @mapProxyDeclarationAST performSemanticAnalysis
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedMapTypeName]
     !listTypeAttributeList
     !searchMethodList
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -506,7 +522,7 @@ end routine ;
 override method @externFunctionDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
   @formalInputParameterListForGeneration formalArgumentList [emptyList] ;
   foreach mFormalArgumentList do
@@ -520,7 +536,9 @@ override method @externFunctionDeclarationAST performSemanticAnalysis
     ![mFunctionName string]
     !formalArgumentList
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mResultTypeName]
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -528,7 +546,7 @@ end method ;
 override method @externRoutineDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
   @formalParameterListForGeneration formalArgumentList [emptyList] ;
   foreach mFormalArgumentList do
@@ -536,13 +554,15 @@ override method @externRoutineDeclarationAST performSemanticAnalysis
       !mFormalArgumentPassingMode
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       !mFormalArgumentName
-      ![mFormalArgumentName string] # §
+      ![mFormalArgumentName string]
     ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@routinePrototypeDeclarationForGeneration new
     ![mRoutineName string]
     !formalArgumentList
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -550,7 +570,7 @@ end method ;
 override method @routineDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Instruction list
   @formalParameterListForGeneration formalArgumentList [emptyList] ;
@@ -572,7 +592,9 @@ override method @routineDeclarationAST performSemanticAnalysis
     ![mRoutineName string]
     !formalArgumentList
     !instructionList
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -580,7 +602,7 @@ end method ;
 override method @classDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Self type
   const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName] ;
@@ -709,6 +731,14 @@ override method @classDeclarationAST performSemanticAnalysis
       end if ;
     end foreach ;
   end if ;
+#------ Compute sort string (used for sorting generated code)
+  @string sortString := [selfType key] ;
+  @unifiedTypeMapProxy t := [selfType mSuperType] ;
+  loop [inSemanticContext->mTypeMap count] + 1 :
+  while not [t isNull] do
+    sortString := [t key] . "." . sortString ;
+    t := [t mSuperType] ;
+  end loop ;
 #------
   ioSemanticDeclarationListForGeneration += ![@classTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
@@ -720,7 +750,9 @@ override method @classDeclarationAST performSemanticAnalysis
     !abstractMethodList
     !methodList
     ![selfType mInstanceMethodMap]
-  ] ;
+  ]
+  !sortString
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -792,7 +824,7 @@ end routine ;
 override method @functionDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
@@ -819,7 +851,9 @@ override method @functionDeclarationAST performSemanticAnalysis
     !returnType
     !resultVariableCppName
     !semanticInstructionListForGeneration
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -827,7 +861,7 @@ end method ;
 override method @onceFunctionDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
@@ -852,7 +886,9 @@ override method @onceFunctionDeclarationAST performSemanticAnalysis
     !returnType
     !resultVariableCppName
     !semanticInstructionListForGeneration
-  ] ;
+  ]
+  !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -934,7 +970,7 @@ end routine ;
 override method @filewrapperDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Build extension map
   @wrapperExtensionMap extensionMap [emptyMap] ;
@@ -974,7 +1010,9 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
       !extensionMap
       !wrapperFileSortedList
       !wrapperDirectorySortedList
-    ] ;
+    ]
+  !""
+  ;
   end if ;
 end method ;
 
@@ -983,8 +1021,16 @@ end method ;
 override method @abstractCategoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is an abstract class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mAbstractCategoryMethodName: "cannot declare a category method: '@" . [selfType key] . "' is not a class" ;
+  elsif [selfType mIsConcrete] then
+    error mAbstractCategoryMethodName: "cannot declare an abstract category method: '@" . [selfType key] . "' is not an abstract class" ;
+  end if ;
 #--- Compute method signature
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   foreach mAbstractCategoryMethodFormalParameterList do
@@ -1000,7 +1046,9 @@ override method @abstractCategoryMethodAST performSemanticAnalysis
     ![mTypeName string]
     ![mAbstractCategoryMethodName string]
     !formalParameterListForGeneration
-  ] ;
+  ]
+  ![selfType key]
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1008,10 +1056,14 @@ end method ;
 override method @categoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
   const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is a class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mCategoryMethodName: "cannot declare a category method: '@" . [selfType key] . "' is not a class" ;
+  end if ;
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
@@ -1034,7 +1086,9 @@ override method @categoryMethodAST performSemanticAnalysis
     !formalParameterListForGeneration
     ![selfType mAllTypedAttributeList]
     !semanticInstructionListForGeneration
-  ] ;
+  ]
+  ![selfType key]
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1042,18 +1096,24 @@ end method ;
 override method @overridingCategoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
   const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is a class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mOverridingCategoryMethodName: "cannot declare a category method: '@" . [selfType key] . "' is not a class" ;
+  end if ;
 #--- Find base type name
   @string baseTypeName := "" ;
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @formalParameterSignature inheritedSignature [emptyList] ;
+  @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
       @methodQualifier qualifier ;
-      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?* ?* ?* ?qualifier] ;
+      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
       end if ;
@@ -1075,6 +1135,15 @@ override method @overridingCategoryMethodAST performSemanticAnalysis
     ?semanticInstructionListForGeneration
     ?formalParameterListForGeneration
   ;
+#--- Check Signature
+  if baseTypeName != "" then
+    checkMethodSignatures
+      !formalParameterListForGeneration
+      ![mOverridingCategoryMethodName location]
+      !inheritedSignature
+      !inheritedDeclarationLocation
+    ;
+  end if ;
 #---
   ioSemanticDeclarationListForGeneration += ![@overridingCategoryMethodForGeneration new
     ![mTypeName string]
@@ -1083,38 +1152,91 @@ override method @overridingCategoryMethodAST performSemanticAnalysis
     !formalParameterListForGeneration
     ![selfType mAllTypedAttributeList]
     !semanticInstructionListForGeneration
-  ] ;
+  ]
+  !"{override}"
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderAST performSemanticAnalysis
+override method @overridingAbstractCategoryMethodAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 :
-  message "**** @abstractMultiReaderAST performSemanticAnalysis ***\n" ;
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check type is an abstract class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mOverridingCategoryMethodName: "cannot declare a category method: '@" . [selfType key] . "' is not a class" ;
+  elsif [selfType mIsConcrete] then
+    error mOverridingCategoryMethodName: "cannot declare an abstract category method: '@" . [selfType key] . "' is not an abstract class" ;
+  end if ;
+#--- Find base type name
+  @string baseTypeName := "" ;
+  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @formalParameterSignature inheritedSignature [emptyList] ;
+  @location inheritedDeclarationLocation := here ;
+  loop [inSemanticContext->mTypeMap count] + 1 :
+  while (not [superType isNull]) & (baseTypeName == "") do
+    if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
+      @methodQualifier qualifier ;
+      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier] ;
+      if qualifier <= [@methodQualifier isBasicFinal] then
+        baseTypeName := [superType key] ;
+      end if ;
+    end if ;
+    superType := [superType mSuperType] ;
+  end loop ;
+#--- Analyze formal argument list
+  @variableMap variableMap [emptyMap] ;
+  @formalParameterListForGeneration formalParameterListForGeneration ;
+  buildLocalVariableMapAndSignature
+    !inSemanticContext
+    !mOverridingCategoryMethodFormalParameterList
+    !?variableMap
+    ?formalParameterListForGeneration
+  ;
+#--- Check Signature
+  if baseTypeName != "" then
+    checkMethodSignatures
+      !formalParameterListForGeneration
+      ![mOverridingCategoryMethodName location]
+      !inheritedSignature
+      !inheritedDeclarationLocation
+    ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @categoryReaderAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-:
-  message "**** @multiReaderAST performSemanticAnalysis ***\n" ;
-end method ;
+#override method @abstractCategoryReaderAST performSemanticAnalysis
+#  ??@semanticContext inSemanticContext
+#  ??@predefinedTypes unused inPredefinedTypes
+#  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+#:
+#  message "**** @abstractMultiReaderAST performSemanticAnalysis ***\n" ;
+#end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingCategoryReaderAST performSemanticAnalysis
-  ??@semanticContext inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-:
-  message "**** @overridingMultiReaderAST performSemanticAnalysis ***\n" ;
-end method ;
+#override method @categoryReaderAST performSemanticAnalysis
+#  ??@semanticContext inSemanticContext
+#  ??@predefinedTypes unused inPredefinedTypes
+#  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+#:
+#  message "**** @multiReaderAST performSemanticAnalysis ***\n" ;
+#end method ;
+
+#---------------------------------------------------------------------------*
+
+#override method @overridingCategoryReaderAST performSemanticAnalysis
+#  ??@semanticContext inSemanticContext
+#  ??@predefinedTypes unused inPredefinedTypes
+#  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+#:
+#  message "**** @overridingMultiReaderAST performSemanticAnalysis ***\n" ;
+#end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1156,10 +1278,10 @@ end function ;
 routine performSemanticAnalysis
   ??@semanticDeclarationListAST inDeclarationList
   ??@semanticContext inSemanticContext
-  !@semanticDeclarationListForGeneration outDecoratedDeclarationListForGeneration
+  !@semanticDeclarationSortedListForGeneration outDecoratedDeclarationListForGeneration
 :
   const @predefinedTypes predefinedTypes := buildPredefinedTypes [!inSemanticContext] ;
-  outDecoratedDeclarationListForGeneration := [@semanticDeclarationListForGeneration emptyList] ;
+  outDecoratedDeclarationListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   foreach inDeclarationList do
     [mSemanticDeclaration performSemanticAnalysis
       !inSemanticContext

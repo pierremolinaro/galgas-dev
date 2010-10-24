@@ -90,7 +90,7 @@ message "a GALGAS lexique source file"
 when . "gSemantics"
 message "a GALGAS semantics source file"
 ??@lstring inSourceFile {
-  if [option galgas_cli_options.newCodeGeneration value] then
+  if not [option galgas_cli_options.legacyCodeGeneration value] then
     @parsedComponentStruct parsedComponentStruct [new
       ![@parsedSemanticsComponentMap emptyMap]
       ![@parsedLexiqueComponentMap emptyMap]
@@ -129,7 +129,7 @@ message "a GALGAS semantics source file"
 when . "gSyntax"
 message "a GALGAS syntax source file"
 ??@lstring inSourceFile {
-  if [option galgas_cli_options.newCodeGeneration value] then
+  if not [option galgas_cli_options.legacyCodeGeneration value] then
     @parsedComponentStruct parsedComponentStruct [new
       ![@parsedSemanticsComponentMap emptyMap]
       ![@parsedLexiqueComponentMap emptyMap]
@@ -204,7 +204,7 @@ message "a GALGAS GUI source file"
 when . "gProgram"
 message "a GALGAS program source file"
 ??@lstring inSourceFile {
-  if [option galgas_cli_options.newCodeGeneration value] then
+  if not [option galgas_cli_options.legacyCodeGeneration value] then
     @parsedComponentStruct parsedComponentStruct [new
       ![@parsedSemanticsComponentMap emptyMap]
       ![@parsedLexiqueComponentMap emptyMap]
@@ -308,7 +308,7 @@ message "a GALGAS project source file"
       end if ;
     when semanticsSourceFile :
       if extension == "gSemantics" then
-        if [option galgas_cli_options.newCodeGeneration value] then
+        if not [option galgas_cli_options.legacyCodeGeneration value] then
           compileSemanticsComponent !fullFilePath ! outputDirectory !?parsedComponentStruct ;
         else
           @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
@@ -337,7 +337,7 @@ message "a GALGAS project source file"
       end if ;
     when syntaxSourceFile :
       if extension == "gSyntax" then
-        if [option galgas_cli_options.newCodeGeneration value] then
+        if not [option galgas_cli_options.legacyCodeGeneration value] then
           compileSyntaxComponent !fullFilePath !outputDirectory [!inSourceFile] !?parsedComponentStruct;
         else
           @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
@@ -377,7 +377,7 @@ message "a GALGAS project source file"
       end if ;
     when programSourceFile :
       if extension == "gProgram" then
-        if [option galgas_cli_options.newCodeGeneration value] then
+        if not [option galgas_cli_options.legacyCodeGeneration value] then
           compileProgramComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
         else
           @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;

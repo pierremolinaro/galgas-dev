@@ -164,13 +164,13 @@ routine compileSyntaxComponent
     ?syntaxDeclarationForGeneration
   ;
 #------ Semantic Analysis
-  @semanticDeclarationListForGeneration decoratedDeclarationListForGeneration ;
+  @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
     ![syntaxComponentRoot mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;
-  decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration ;
+  decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration !"" ;
 #------ Generate Header File
   if [@uint errorCount] == 0 then
     @string headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
