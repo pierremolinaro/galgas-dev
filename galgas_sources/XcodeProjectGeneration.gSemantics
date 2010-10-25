@@ -1197,7 +1197,7 @@ routine generateXcodeProject
   enter_group
     !?XcodeProjectDescription
     !"LIBPM"
-    !"../../libpm"
+    !"../libpm"
     !libpmGroupChildrenList
   ;
 #---------- "Project Resources" Group
@@ -1309,7 +1309,7 @@ routine generateXcodeProject
     !inProjectName
     ![inProjectName stringByCapitalizingFirstCharacter] . " Tool"
     !toolTargetSettings
-    !"../../libpm/galgas/PP_GalgasPrefix.pch"
+    !"../libpm/galgas/PP_GalgasPrefix.pch"
     !listForSourceBuildPhaseOfTool
     !listForFrameworksBuildPhaseOfTool
     ![@stringlist emptyList] # No Dependency
@@ -1452,7 +1452,7 @@ routine generateXcodeProject
     !"Cocoa" . [inProjectName stringByCapitalizingFirstCharacter]
     ![inProjectName stringByCapitalizingFirstCharacter] . " Cocoa"
     !cocoaAppTargetSettings
-    !"../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch" # Precompiled header (empty string if none)
+    !"../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch" # Precompiled header (empty string if none)
     !"Info.plist" # Info.plist file (empty string if none)
     !listForSourceBuildPhaseOfCocoaApp
     !listForFrameworksBuildPhaseOfCocoaApp
@@ -1463,7 +1463,7 @@ routine generateXcodeProject
 #-------------------------------------------------- Define project default configuration
   @stringlist pathes [emptyList] ;
   pathes += !"../galgas_sources/GALGAS_OUTPUT" ;
-  pathes += !"../../libpm" ;
+  pathes += !"../libpm" ;
   pathes += !"../hand_coded_sources/**" ;
   @stringlist projectDefaultSettings ;
   enterProjectDefaultSettings

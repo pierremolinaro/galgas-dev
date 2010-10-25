@@ -13,6 +13,7 @@ class GALGAS_uint : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
   public : inline PMUInt32 uintValue (void) const { return mUIntValue ; }
+  public : inline void increment (void) { mUIntValue ++ ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_uint (void) ;

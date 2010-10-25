@@ -509,6 +509,12 @@
 		CF5719CD1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */; };
 		CF5719CE1275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
 		CF5719CF1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */; };
+		CF571A281275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */; };
+		CF571A291275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */; };
+		CF571A2A1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */; };
+		CF571A2B1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */; };
+		CF571A2C1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */; };
+		CF571A2D1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */; };
 		CF580BDA0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
 		CF580BDB0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
 		CF580BDC0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
@@ -1868,6 +1874,8 @@
 		CF5719C11275901A00AAB8BF /* templateAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateAnalysis.h; sourceTree = "<group>"; };
 		CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateDecoratedTypes.cpp; sourceTree = "<group>"; };
 		CF5719C31275901A00AAB8BF /* templateDecoratedTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateDecoratedTypes.h; sourceTree = "<group>"; };
+		CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateCodeGeneration.cpp; sourceTree = "<group>"; };
+		CF571A271275F0B800AAB8BF /* templateCodeGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateCodeGeneration.h; sourceTree = "<group>"; };
 		CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateExpressionParser.cpp; sourceTree = "<group>"; };
 		CF580BD90FDE862F003EBACF /* templateExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateExpressionParser.h; sourceTree = "<group>"; };
 		CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarSemantics.cpp; sourceTree = "<group>"; };
@@ -3185,6 +3193,8 @@
 		CFDE72200D85C5DE00596413 /* Template Scanner */ = {
 			isa = PBXGroup;
 			children = (
+				CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */,
+				CF571A271275F0B800AAB8BF /* templateCodeGeneration.h */,
 				CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */,
 				CF5719C11275901A00AAB8BF /* templateAnalysis.h */,
 				CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */,
@@ -4316,6 +4326,7 @@
 				CFA4E80E1274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
 				CF5719C41275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
 				CF5719C51275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
+				CF571A281275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4561,6 +4572,7 @@
 				CFA4E8101274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
 				CF5719C81275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
 				CF5719C91275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
+				CF571A2A1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4806,6 +4818,7 @@
 				CFA4E8111274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
 				CF5719CA1275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
 				CF5719CB1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
+				CF571A2B1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5090,6 +5103,7 @@
 				CFA4E80F1274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
 				CF5719C61275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
 				CF5719C71275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
+				CF571A291275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5335,6 +5349,7 @@
 				CFA4E8121274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
 				CF5719CC1275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
 				CF5719CD1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
+				CF571A2C1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5580,6 +5595,7 @@
 				CFA4E8131274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
 				CF5719CE1275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
 				CF5719CF1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
+				CF571A2D1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

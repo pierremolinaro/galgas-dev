@@ -37,6 +37,7 @@ project all_galgas:
   grammar   "templateGrammar.gGrammar" : makefile ;
   semantics "templateDecoratedTypes.gSemantics" : makefile ;
   semantics "templateAnalysis.gSemantics" : makefile ;
+  semantics "templateCodeGeneration.gSemantics" : makefile ;
  
 #--- Lexique Component
   semantics "lexiqueTypesForAST.gSemantics" : makefile ;

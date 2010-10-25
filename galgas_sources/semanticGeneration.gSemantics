@@ -19,7 +19,9 @@
 
 semantics semanticGeneration :
   import "semanticInstructionGeneration.gSemantics" ;
+  import "templateCodeGeneration.gSemantics" ;
 
+  import semantics templateCodeGeneration in "templateCodeGeneration.gSemantics" ;
   import semantics semanticInstructionGeneration in "semanticInstructionGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
@@ -420,6 +422,21 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
   ;
+
+  template filewrapperTemplateDeclaration "filewrapper-template.h.gTemplate"
+    ?@string FILEWRAPPER_NAME
+    ?@string TEMPLATE_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+
+  template filewrapperTemplateImplementation "filewrapper-template.cpp.gTemplate"
+    ?@string FILEWRAPPER_NAME
+    ?@string TEMPLATE_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@bool USES_COMPILER_ARGUMENT
+    ?@bool USES_COLUMN_MARKER
+    ?@string GENERATED_INSTRUCTION_STRING
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -639,6 +656,14 @@ override reader @filewrapperDeclarationForGeneration appendDeclaration1 -> @stri
     !regularFileIndexStringList
     !mFilewrapperName
   ] ; 
+#--- template generation
+  foreach mFilewrapperTemplateListForGeneration do
+    outHeader .= [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
+      !mFilewrapperName
+      !mFilewrapperTemplateName
+      !mFilewrapperTemplateFormalInputParameters
+    ] ;
+  end foreach ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -1096,7 +1121,32 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
   outImplementation := [filewrapper semanticComponentGenerationTemplate.filewrapperImplementation
     !mFilewrapperName
     !filewrapperImplementation
-  ] ; 
+  ] ;
+#--- template generation
+  foreach mFilewrapperTemplateListForGeneration do
+  #--- Build generated code for instruction list
+    @string generatedCodeForInstructionList := "" ;
+    @uint temporaryVariableIndex := 0 ;
+    @stringset unusedVariableCppNameSet [emptySet] ;
+    unusedVariableCppNameSet += !compilerCppName [] ;
+    @bool useColumnMarker := false ;
+    templateCodeGenerationForListInstruction
+      !mTemplateInstructionListForGeneration
+      !?generatedCodeForInstructionList
+      !?temporaryVariableIndex
+      !?unusedVariableCppNameSet
+      !?useColumnMarker
+    ;
+  #---
+    outImplementation .= [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateImplementation
+      !mFilewrapperName
+      !mFilewrapperTemplateName
+      !mFilewrapperTemplateFormalInputParameters
+      !not [unusedVariableCppNameSet hasKey !compilerCppName []]
+      !useColumnMarker
+      !generatedCodeForInstructionList
+    ] ;
+  end foreach ;
 end reader ;
 
 #---------------------------------------------------------------------------*

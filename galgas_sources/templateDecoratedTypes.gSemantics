@@ -23,17 +23,6 @@ semantics templateDecoratedTypes :
 
 #---------------------------------------------------------------------------*
 
-abstract class @templateInstructionForGeneration {
-}
-
-#---------------------------------------------------------------------------*
-
-list @templateInstructionListForGeneration {
-  @templateInstructionForGeneration mInstruction ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @templateInstructionStringForGeneration extends @templateInstructionForGeneration {
   @string mTemplateString ;
 }
@@ -67,9 +56,10 @@ class @templateInstructionGotoColumnLocationForGeneration extends @templateInstr
 class @templateInstructionForeachForGeneration extends @templateInstructionForGeneration {
   @bool mIsAscending ;
   @semanticExpressionForGeneration mExpression ;
+  @string mEnumeratorCppName ;
   @templateInstructionListForGeneration mBeforeInstructionList ;
   @templateInstructionListForGeneration mDoInstructionList ;
-  @string mIndexIdentifier ;
+  @string mIndexCppName ;
   @templateInstructionListForGeneration mBetweenInstructionList ;
   @templateInstructionListForGeneration mAfterInstructionList ;
 }

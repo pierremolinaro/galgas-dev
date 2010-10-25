@@ -1287,13 +1287,26 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
 #--- Foreach expression
   @semanticExpressionForGeneration expression ;
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
+#--- Check expression is enumerable
+  const @enumerationDescriptorList enumerationDescriptor := [[expression mType] mEnumerationDescriptor] ; # Empty List if cannot be enumerated
+  if [enumerationDescriptor length] == 0 then
+    error [expression mLocation] : "expression of '@" . [[expression mType] key] . "' cannot be enumerated" ;
+  end if ;
 #--- Before instructions
   @templateInstructionListForGeneration beforeInstructionList [emptyList] ;
   templateInstructionListAnalysis !inAnalysisContext !mBeforeInstructionList !?beforeInstructionList ;
 #--- Do instructions
+  const @string enumeratorCppName := "enumerator_" . [[[mIndexIdentifier location] locationIndex] string] ;
   @templateVariableMap doVariableMap := inAnalysisContext->mTemplateVariableMap ;
   const @string cppIndexVarName := "index_" . [[[mIndexIdentifier location] locationIndex] string] . "_" . [mIndexIdentifier identifierRepresentation] ;
   [!?doVariableMap insertKey !mIndexIdentifier !inAnalysisContext->mPredefinedTypes->mUIntType !cppIndexVarName] ;
+  foreach enumerationDescriptor do
+    [!?doVariableMap insertKey
+      ![@lstring new !mEnumerationName ![expression mLocation]]
+      !mEnumeratedType
+      !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " ()"
+    ] ;
+  end foreach ;
   const @templateAnalysisContext doAnalysisContext [new
     !inAnalysisContext->mSemanticContext
     !inAnalysisContext->mPredefinedTypes
@@ -1311,6 +1324,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   ioInstructionList += ![@templateInstructionForeachForGeneration new
     !mIsAscending
     !expression
+    !enumeratorCppName
     !beforeInstructionList
     !doInstructionList
     ![mIndexIdentifier string]
