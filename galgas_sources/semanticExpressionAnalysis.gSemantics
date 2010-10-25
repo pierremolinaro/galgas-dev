@@ -1852,14 +1852,41 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
-  ??@analysisContext unused inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  error mFilewrapperName
-  : "unhandled @filewrapperTemplateInExpressionAST expression"
-  : outExpression
-  ;
+#---
+  @filewrapperTemplateMap filewrapperTemplateMap ;
+  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?* ?* ?filewrapperTemplateMap] ;
+#---
+  @unifiedTypeMapProxyList templateSignature ;
+  [filewrapperTemplateMap searchKey !mFilewrapperTemplateName ?templateSignature ?*] ;
+#--- Analysis arguments
+  @semanticExpressionListForGeneration effectiveParameterList ;
+  if [mExpressions length] != [templateSignature length] then
+    error mFilewrapperTemplateName
+    : "calling the '" . mFilewrapperTemplateName . "' template of '" . mFilewrapperName . "' filewrapper requires "
+    . [[templateSignature length] string] . " parameter(s), while this call has "
+    . [[mExpressions length] string] . " parameter(s)" 
+    : effectiveParameterList ;
+  else
+    effectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
+    foreach mExpressions, templateSignature do
+      @semanticExpressionForGeneration exp ;
+      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?exp] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      effectiveParameterList += !exp ;
+    end foreach ;
+  end if ;
+#---
+  outExpression := [@filewrapperTemplateInExpressionForGeneration new
+    !inAnalysisContext->mPredefinedTypes->mStringType
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    ![mFilewrapperTemplateName string]
+    !effectiveParameterList
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

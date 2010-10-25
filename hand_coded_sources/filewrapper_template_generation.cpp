@@ -249,64 +249,6 @@ isUsingLexiqueArgument (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cPtr_templateInstructionConstant
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_templateInstructionConstant::
-generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "result << " ;
-  mCppName(HERE)->generateCplusPlusName (ioCppFile) ;
-  ioCppFile << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_templateInstructionConstant::
-isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
-  return mCppName.isSameObjectAs (inCppName) ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_templateInstructionConstant::
-isUsingLexiqueArgument (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cPtr_templateInstructionColumnString
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_templateInstructionColumnString::
-generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "const GGS_string " ;
-  mCppName(HERE)->generateCplusPlusName (ioCppFile) ;
-  ioCppFile << " = GGS_string::stringWithColumnCount (result) ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_templateInstructionColumnString::
-isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
-  return mCppName.isSameObjectAs (inCppName) ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_templateInstructionColumnString::
-isUsingLexiqueArgument (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark cPtr_templateInstructionGetColumnLocation
 #endif
 

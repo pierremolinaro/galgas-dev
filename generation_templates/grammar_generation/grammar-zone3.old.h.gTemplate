@@ -1,36 +1,36 @@
 //---------------------------------------------------------------------------*
 
-class C_Grammar_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]% : %?COLUMN_CLASS_DECLARATION
+class C_Grammar_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]% : %?^
 foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
   do %public % ![[mValue string] stringByDeletingPathExtension]
-  between %,\n%!COLUMN_CLASS_DECLARATION
+  between %,\n%!^
 end foreach
 % {
 %
 foreach NON_TERMINAL_MAP do
   foreach mNonterminalSymbolParametersMap prefixedBy label_ do
-    %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?COLUMN1 %C_Lexique_%!LEXIQUE_CLASS% &%
+    %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^ %C_Lexique_%!LEXIQUE_CLASS% &%
     foreach label_mFormalParametersList do
-        %,\n%!COLUMN1 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
+        %,\n%!^ ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
     end foreach
     %) ;\n\n%
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
-      %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?COLUMN2%C_Compiler & inCompiler,\n%
-      !COLUMN2%const C_String & inDependancyExtension,\n%
-      !COLUMN2%const C_String & inDependancyPath,\n%
-      !COLUMN2%GGS_string * inSentStringPtr,\n%
-      !COLUMN2%const GGS_lstring inFileName%
+      %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler & inCompiler,\n%
+      !^%const C_String & inDependancyExtension,\n%
+      !^%const C_String & inDependancyPath,\n%
+      !^%GGS_string * inSentStringPtr,\n%
+      !^%const GGS_lstring inFileName%
       foreach label_mFormalParametersList do
-        %,\n%!COLUMN2 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
+        %,\n%!^ ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
       end foreach
-      %\n%!COLUMN2%COMMA_LOCATION_ARGS) ;\n\n%
-      %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?COLUMN3%C_Compiler & inCompiler,\n%
-      !COLUMN3%GGS_string * inSentStringPtr,\n%
-      !COLUMN3%const GGS_string inSourceString%
+      %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
+      %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler & inCompiler,\n%
+      !^%GGS_string * inSentStringPtr,\n%
+      !^%const GGS_string inSourceString%
       foreach label_mFormalParametersList do
-        %,\n%!COLUMN3 ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
+        %,\n%!^ ![mFormalArgumentPassingModeForGrammarAnalysis generation1ForFormalParameter]%GGS_%![mGalgasTypeNameForGrammarAnalysis string] ![mFormalArgumentPassingModeForGrammarAnalysis generation2ForFormalParameter]
       end foreach
-      %\n%!COLUMN3 %COMMA_LOCATION_ARGS) ;\n\n%
+      %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
     end if
   end foreach
 end foreach

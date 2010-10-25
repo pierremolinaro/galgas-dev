@@ -43,6 +43,7 @@ abstract class @templateExpressionAST {
 
 list @templateExpressionListAST {
   @templateExpressionAST mExpression ;
+  @location mEndOfExpressionLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -50,7 +51,7 @@ list @templateExpressionListAST {
 #---------------------------------------------------------------------------*
 
 class @templateReaderCallInExpressionAST extends @templateExpressionAST {
-  @templateExpressionAST mExpressionValue ;
+  @templateExpressionAST mReceiverExpression ;
   @lstring mReaderName ;
   @templateExpressionListAST mExpressionList ;
 }
@@ -131,17 +132,20 @@ class @templateConcatOperationAST extends @templateExpressionAST {
 #---------------------------------------------------------------------------*
 
 class @templateTrueBoolAST extends @templateExpressionAST {
+  @location mLocation ;
 }
  
 #---------------------------------------------------------------------------*
 
 class @templateFalseBoolAST extends @templateExpressionAST {
+  @location mLocation ;
 }
  
 #---------------------------------------------------------------------------*
 
 class @templateLiteralStringExpressionAST extends @templateExpressionAST {
   @stringlist mLiteralStringList ;
+  @location mLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -183,6 +187,7 @@ class @templateLiteralDoubleExpressionAST extends @templateExpressionAST {
 #---------------------------------------------------------------------------*
 
 class @templateIfThenElseExpressionAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
   @templateExpressionAST mIfExpression ;
   @templateExpressionAST mThenExpression ;
   @templateExpressionAST mElseExpression ;
@@ -373,20 +378,15 @@ class @templateInstructionStringAST extends @templateInstructionAST {
 
 class @templateInstructionExpressionAST extends @templateInstructionAST {
   @templateExpressionAST mExpression ;
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @templateBlockInstructionAST extends @templateInstructionAST {
   @templateExpressionAST mExpression ;
-  @location mMagicNumber ;
+  @location mLocation ;
   @templateInstructionListAST mBlockInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @templateInstructionConstantAST extends @templateInstructionAST {
-  @lstring mIdentifier ;
 }
 
 #---------------------------------------------------------------------------*

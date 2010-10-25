@@ -34,7 +34,7 @@ nonterminal <expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 ;
@@ -43,7 +43,7 @@ nonterminal <concatenation_term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 ;
@@ -52,7 +52,7 @@ nonterminal <relation_term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 ;
@@ -61,7 +61,7 @@ nonterminal <relation_factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 ;
@@ -70,7 +70,7 @@ nonterminal <simple_expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 ;
@@ -79,7 +79,7 @@ nonterminal <term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 ;
@@ -88,7 +88,7 @@ nonterminal <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 ;
@@ -97,7 +97,7 @@ nonterminal <read_access>
   !@lstring nomAttribut
   !@typeCplusPlusName nomCppEntite
   !@AC_galgasType typeEntite
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
 ;
 
 nonterminal <output_expression_list>
@@ -106,7 +106,7 @@ nonterminal <output_expression_list>
   ??@typeListeAttributsSemantiques inAttributesList
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
 ;
 
 #---------------------------------------------------------------------------*
@@ -605,7 +605,7 @@ rule <expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -652,7 +652,7 @@ rule <concatenation_term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -720,7 +720,7 @@ rule <relation_term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -767,7 +767,7 @@ rule <relation_factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -900,7 +900,7 @@ rule <simple_expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -994,7 +994,7 @@ rule <term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1071,7 +1071,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1101,7 +1101,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1120,7 +1120,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1146,7 +1146,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1176,7 +1176,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1206,7 +1206,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1225,7 +1225,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1244,7 +1244,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1264,7 +1264,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1284,7 +1284,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1304,7 +1304,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1324,7 +1324,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1344,7 +1344,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1363,7 +1363,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@templateVariableMap unused inTemplateVariableMap
+  ??@templateVariableMapEX unused inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1394,7 +1394,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1612,7 +1612,7 @@ rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
@@ -1667,7 +1667,7 @@ rule <read_access>
   !@lstring nomVariable
   !@typeCplusPlusName nomCppEntite
   !@AC_galgasType typeEntite
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
 :
   $identifier$ ? nomVariable ;
   [inTemplateVariableMap searchKey !nomVariable ?typeEntite ?nomCppEntite] ; 
@@ -1685,7 +1685,7 @@ rule <output_expression_list>
   ??@typeListeAttributsSemantiques inFormalAttributesList
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
 :
   @typeTypesList effectiveTypesList [emptyList] ;
   outExpressionList := [@typeExpressionList emptyList] ;

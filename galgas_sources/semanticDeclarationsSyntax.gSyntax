@@ -767,13 +767,19 @@ rule <semantic_declaration>
     $template$ ;
     $identifier$ ? @lstring mFilewrapperTemplateName ;
     $literal_string$ ? @lstring mFilewrapperTemplatePath ;
-    @formalInputParameterListAST mFilewrapperTemplateFormalInputParameters ;
-    <formal_input_parameter_list> ? mFilewrapperTemplateFormalInputParameters ;
+    @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters [emptyList] ;
+    repeat
+    while
+      $?$ ;
+      $type_name$ ? @lstring typeName ;
+      $identifier$ ? @lstring argumentName ;
+      filewrapperTemplateFormalInputParameters += !typeName !argumentName ;
+    end repeat ;
     $;$ ;
     mFilewrapperTemplateList +=
       !mFilewrapperTemplateName
       !mFilewrapperTemplatePath
-      !mFilewrapperTemplateFormalInputParameters
+      !filewrapperTemplateFormalInputParameters
     ;
   end repeat ;
   $}$ ;
