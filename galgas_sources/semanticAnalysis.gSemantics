@@ -1030,6 +1030,7 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
      !?regularFileMap
    ;
   #---- Analyze filewrapper templates
+    @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration [emptyList] ;
     foreach mFilewrapperTemplateList do
       @string absoluteTemplatePath ;
       if [mFilewrapperTemplatePath firstCharacterOrNul] == '/' then
@@ -1042,10 +1043,12 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
       grammar templateGrammar in [@lstring new !absoluteTemplatePath ![mFilewrapperTemplatePath location]] ?resultingInstructionList ;
     #--- Build template variable map
       @templateVariableMap templateVariableMap [emptyMap] ;
+      @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters [emptyList] ;
       foreach mFilewrapperTemplateFormalInputParameters do
         @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         const @string cppVarName := "in_" . [mFormalArgumentName identifierRepresentation] ;
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName] ;
+        filewrapperTemplateFormalInputParameters += !type !cppVarName !true ;
       end foreach ;
     #--- Analyze template
       @templateInstructionListForGeneration templateInstructionListForGeneration [emptyList] ;
@@ -1055,6 +1058,12 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
         !templateVariableMap
       ] ;
       templateInstructionListAnalysis !templateAnalysisContext !resultingInstructionList !?templateInstructionListForGeneration ;
+    #--- Enter in generation list
+      filewrapperTemplateListForGeneration +=
+        ![mFilewrapperTemplateName string]
+        !filewrapperTemplateFormalInputParameters
+        !templateInstructionListForGeneration
+      ;
     end foreach ;
   #---- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration += ![@filewrapperDeclarationForGeneration new
@@ -1063,6 +1072,7 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
       !extensionMap
       !wrapperFileSortedList
       !wrapperDirectorySortedList
+      !filewrapperTemplateListForGeneration
     ]
   !""
   ;

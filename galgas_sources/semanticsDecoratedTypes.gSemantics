@@ -19,7 +19,19 @@
 
 semantics semanticsDecoratedTypes :
   import "semanticContext.gSemantics" ;
+
   import semantics semanticContext in "semanticContext.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+abstract class @templateInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionListForGeneration {
+  @templateInstructionForGeneration mInstruction ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -427,17 +439,6 @@ list @actualParameterListForGeneration {
   @actualParameterForGeneration mActualParameter ;
 }
 
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#list @actualInputParameterListForGeneration {
-#  @lstring mActualParameterTypeName ; # Empty if no type
-#  @lstring mActualParameterName ;
-#}
-#
 #---------------------------------------------------------------------------*
 
 abstract class @semanticInstructionForGeneration {
@@ -1465,39 +1466,22 @@ map @wrapperExtensionMap {
 
 #---------------------------------------------------------------------------*
 
+list @filewrapperTemplateListForGeneration {
+  @string mFilewrapperTemplateName ;
+  @formalInputParameterListForGeneration mFilewrapperTemplateFormalInputParameters ;
+  @templateInstructionListForGeneration mTemplateInstructionListForGeneration ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @filewrapperDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @string mFilewrapperName ;
   @string mFilewrapperAbsolutePath ;
   @wrapperExtensionMap mExtensionMap ;
   @wrapperFileSortedList mFilewrapperFileSortedList ;
   @wrapperDirectorySortedList mFilewrapperDirectorySortedList ;
+  @filewrapperTemplateListForGeneration mFilewrapperTemplateListForGeneration ;
 }
-
-#---------------------------------------------------------------------------*
-
-#list @filewrapperTemplateListForGeneration {
-#  @lstring mFilewrapperTemplateName ;
-#  @lstring mFilewrapperTemplatePath ;
-#  @formalInputParameterListForGeneration mFilewrapperTemplateFormalInputParameters ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @filewrapperDeclarationForGeneration extends @semanticDeclarationForGeneration {
-#  @lstring mFilewrapperName ;
-#  @lstring mFilewrapperPath ;
-#  @lstringlist mFilewrapperExtensionList ;
-#  @filewrapperTemplateListForGeneration mFilewrapperTemplateList ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @semanticsComponentForGeneration {
-#  @lstring mSemanticsComponentName  ;
-#  @lstringlist mImportedComponentFileNameList  ;
-#  @semanticDeclarationStructForGeneration mSemanticDeclarations  ;
-#  @location mEndOfSourceFile ;
-#}
 
 #---------------------------------------------------------------------------*
 

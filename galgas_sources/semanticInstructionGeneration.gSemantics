@@ -984,8 +984,7 @@ override method @foreachInstructionForGeneration generateInstruction
       ioGeneratedCode .= "  " . mEnumeratorCppName . ".gotoNextObject () ;\n" ;
     end foreach ;
     if mIndexVariableCppName != "" then
-      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-      ioGeneratedCode .= "  " . mIndexVariableCppName . ".increment_operation (" . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "  " . mIndexVariableCppName . ".increment () ;\n" ;
     end if ;
     ioGeneratedCode .= "}\n" ;
   #--- Generate 'after' instruction

@@ -1,0 +1,12 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Filewrapper template '" . FILEWRAPPER_NAME . " " . TEMPLATE_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%_%![TEMPLATE_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler%
+  foreach FORMAL_ARGUMENT_LIST do
+    %,\n%!^%const GALGAS_%![mFormalArgumentType identifierRepresentation]% & %!mFormalArgumentCppName
+  end foreach
+%\n %!^%COMMA_LOCATION_ARGS) ;
+

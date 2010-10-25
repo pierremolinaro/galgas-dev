@@ -1,0 +1,27 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Filewrapper template '" . FILEWRAPPER_NAME . " " . TEMPLATE_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%_%![TEMPLATE_NAME identifierRepresentation]% (%?^%C_Compiler * %
+  if USES_COMPILER_ARGUMENT then
+    !compilerCppName []
+  else
+    %/* %!compilerCppName []% */%
+  end if
+  foreach FORMAL_ARGUMENT_LIST do
+    %,\n%!^%const GALGAS_%![mFormalArgumentType identifierRepresentation]% & %!mFormalArgumentCppName
+  end foreach
+%\n %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+%
+ if USES_COLUMN_MARKER then
+   %  PMUInt32 columnMarker = 0 ;\n%
+ end if
+ block 2 :
+ !GENERATED_INSTRUCTION_STRING
+ end block
+%  return GALGAS_string (result) ;
+}
+

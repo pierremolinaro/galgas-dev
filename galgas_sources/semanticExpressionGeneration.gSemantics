@@ -945,12 +945,27 @@ end method ;
 
 override method @filewrapperTemplateInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  ioGeneratedCode .= "(@filewrapperTemplateInExpressionForGeneration)\n" ;
-  outCppName := "(@filewrapperTemplateInExpressionForGeneration)" ;
+  ioGeneratedCode .= "//--- @filewrapperTemplateInExpressionForGeneration\n" ;
+#---
+  @stringlist parameterList [emptyList] ;
+  foreach mActualOutputParameterList do
+    @string parameter ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter] ;
+    parameterList += !parameter ;  
+  end foreach ;
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_string " . outCppName
+                  . " (filewrapperTemplate_" . [mFilewrapperName identifierRepresentation] . "_" . [mFilewrapperTemplateName identifierRepresentation]
+                  . " (" . compilerCppName [] ;
+  foreach parameterList do
+    ioGeneratedCode .= ", " . mValue ;
+  end foreach ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
