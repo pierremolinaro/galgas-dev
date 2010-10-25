@@ -24,7 +24,7 @@ import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 
 nonterminal <lexique_component_start_symbol>
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -33,7 +33,7 @@ nonterminal <lexique_component_start_symbol>
 ;
 
 nonterminal <template_instruction>
-  ?!@templateVariableMap ioTemplateVariableMap
+  ?!@templateVariableMapEX ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -45,7 +45,7 @@ nonterminal <expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 ;
@@ -64,7 +64,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 rule <template_instruction>
-  ?!@templateVariableMap ioTemplateVariableMap
+  ?!@templateVariableMapEX ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -89,29 +89,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <template_instruction>
-  ?!@templateVariableMap ioTemplateVariableMap
-  ??@EXsemanticContext unused inSemanticContext
-  ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ?!@templateInstructionList ioResultingInstructionList
-  ?!@bool unused ioUsesColumnMarker
-:
-  $?$ ;
-  @lstring columnConstantName ;
-  $identifier$ ? columnConstantName ;
-  @typeCplusPlusName cppName := [@typeAutomaticName new ![columnConstantName location] ![columnConstantName string]] ;
-  [!?ioTemplateVariableMap insertKey
-    !columnConstantName
-    ![@typeGalgas_string new]
-    !cppName
-  ] ;
-  ioResultingInstructionList += ![@templateInstructionColumnString new !cppName] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <template_instruction>
-  ?!@templateVariableMap unused ioTemplateVariableMap
+  ?!@templateVariableMapEX unused ioTemplateVariableMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -126,7 +104,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <template_instruction>
-  ?!@templateVariableMap unused ioTemplateVariableMap
+  ?!@templateVariableMapEX unused ioTemplateVariableMap
   ??@EXsemanticContext unused inSemanticContext
   ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -141,7 +119,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <template_instruction>
-  ?!@templateVariableMap ioTemplateVariableMap
+  ?!@templateVariableMapEX ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -164,7 +142,7 @@ rule <template_instruction>
 #--- Instruction list
   @templateInstructionList blockInstructionList [emptyList] ;
   enterTemplateStringEX !? blockInstructionList ;
-  @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+  @templateVariableMapEX templateVariableMap := ioTemplateVariableMap ;
   repeat
   while
     <template_instruction>
@@ -190,7 +168,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <template_instruction>
-  ?!@templateVariableMap ioTemplateVariableMap
+  ?!@templateVariableMapEX ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -247,7 +225,7 @@ rule <template_instruction>
   or
     $before$ ;
     enterTemplateStringEX !? beforeInstructionList ;
-    @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+    @templateVariableMapEX templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
       <template_instruction>
@@ -262,7 +240,7 @@ rule <template_instruction>
     end repeat ;
   end select ;
 #--- Do block
-  @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+  @templateVariableMapEX templateVariableMap := ioTemplateVariableMap ;
 #--- Build enumeration variables
   @bool mapStyle := localConstantBuildStyleEnum != [@localConstantBuildStyleEnum listStyle] ;
   @bool firstOne := true ;
@@ -307,7 +285,7 @@ rule <template_instruction>
   or
     $between$ ;
     enterTemplateStringEX !? betweenInstructionList ;
-    @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+    @templateVariableMapEX templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
       <template_instruction>
@@ -327,7 +305,7 @@ rule <template_instruction>
   or
     $after$ ;
     enterTemplateStringEX !?afterInstructionList ;
-    @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+    @templateVariableMapEX templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
       <template_instruction>
@@ -361,7 +339,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <template_instruction>
-  ?!@templateVariableMap ioTemplateVariableMap
+  ?!@templateVariableMapEX ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -385,7 +363,7 @@ rule <template_instruction>
     $then$ ;
     @templateInstructionList instructionList [emptyList] ;
     enterTemplateStringEX !? instructionList ;
-    @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+    @templateVariableMapEX templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
       <template_instruction>
@@ -408,7 +386,7 @@ rule <template_instruction>
   or
     $else$ ;
     enterTemplateStringEX !?elseInstructionList ;
-    @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+    @templateVariableMapEX templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
       <template_instruction>
@@ -434,7 +412,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <template_instruction>
-  ?!@templateVariableMap ioTemplateVariableMap
+  ?!@templateVariableMapEX ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -477,7 +455,7 @@ rule <template_instruction>
     $:$ ;
     @templateInstructionList instructionList [emptyList] ;
     enterTemplateStringEX !? instructionList ;
-    @templateVariableMap templateVariableMap := ioTemplateVariableMap ;
+    @templateVariableMapEX templateVariableMap := ioTemplateVariableMap ;
     repeat
     while
       <template_instruction>
@@ -514,7 +492,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexique_component_start_symbol>
-  ??@templateVariableMap inTemplateVariableMap
+  ??@templateVariableMapEX inTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -522,7 +500,7 @@ rule <lexique_component_start_symbol>
   !@bool outUsesColumnMarker
 :
   outResultingInstructionList := [@templateInstructionList emptyList] ;
-  @templateVariableMap templateVariableMap := inTemplateVariableMap ;
+  @templateVariableMapEX templateVariableMap := inTemplateVariableMap ;
   enterTemplateStringEX !?outResultingInstructionList ;
   outUsesColumnMarker := false ;
   repeat

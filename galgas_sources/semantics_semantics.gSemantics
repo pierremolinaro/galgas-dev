@@ -1663,7 +1663,7 @@ class @C_filewrapperTemplateToImplement extends @typeEntityToGenerate {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @templateVariableMap {
+map @templateVariableMapEX {
   @AC_galgasType mArgumentType ;
   @typeCplusPlusName mCplusPlusName ;
   insert insertKey error message "the template variable '%K' is already declared" ;

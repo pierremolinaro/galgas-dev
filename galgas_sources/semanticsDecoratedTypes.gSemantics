@@ -353,14 +353,13 @@ class @filewrapperInExpressionForGeneration extends @semanticExpressionForGenera
   @string mFilewrapperPath ;
 }
 
-##---------------------------------------------------------------------------*
-#
-#class @filewrapperTemplateInExpressionForGeneration extends @semanticExpressionForGeneration {
-#  @lstring mFilewrapperName ;
-#  @lstring mFilewrapperTemplateName ;
-#  @semanticExpressionForGeneration mActualOutputParameterList ;
-#}
-#
+#---------------------------------------------------------------------------*
+
+class @filewrapperTemplateInExpressionForGeneration extends @semanticExpressionForGeneration {
+  @string mFilewrapperName ;
+  @string mFilewrapperTemplateName ;
+  @semanticExpressionListForGeneration mActualOutputParameterList ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1473,6 +1472,8 @@ class @filewrapperDeclarationForGeneration extends @semanticDeclarationForGenera
   @wrapperFileSortedList mFilewrapperFileSortedList ;
   @wrapperDirectorySortedList mFilewrapperDirectorySortedList ;
 }
+
+#---------------------------------------------------------------------------*
 
 #list @filewrapperTemplateListForGeneration {
 #  @lstring mFilewrapperTemplateName ;

@@ -20,7 +20,9 @@
 semantics semanticAnalysis :
   import "semanticInstructionsAnalysis.gSemantics" ;
   import "templateGrammar.gGrammar" ;
+  import "templateAnalysis.gSemantics" ;
 
+  import semantics templateAnalysis in "templateAnalysis.gSemantics" ;
   import semantics semanticInstructionsAnalysis in "semanticInstructionsAnalysis.gSemantics" ;
   import semantics templateTypesForAST in "templateTypesForAST.gSemantics" ;
   import grammar templateGrammar in "templateGrammar.gGrammar" ;
@@ -949,7 +951,6 @@ routine recursivelyEnumerateDirectories
   foreach files do
     if [inExtensionMap hasKey ![mValue pathExtension]] then
       @string absoluteFilePath := inAbsoluteSourcePath . "/" . mValue ;
-      #log absoluteFilePath ;
       outWrapperFileSortedList +=
         !mValue
         !absoluteFilePath
@@ -994,7 +995,7 @@ end routine ;
 
 override method @filewrapperDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
+  ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Build extension map
@@ -1037,8 +1038,23 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
         absoluteTemplatePath := [[inSemanticContext mSourceFileAbsolutePath] stringByDeletingLastPathComponent] . "/" . [mFilewrapperTemplatePath string] ;
       end if ;
       @templateInstructionListAST resultingInstructionList ;
+    #--- Parse template
       grammar templateGrammar in [@lstring new !absoluteTemplatePath ![mFilewrapperTemplatePath location]] ?resultingInstructionList ;
-      log resultingInstructionList ;
+    #--- Build template variable map
+      @templateVariableMap templateVariableMap [emptyMap] ;
+      foreach mFilewrapperTemplateFormalInputParameters do
+        @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+        const @string cppVarName := "in_" . [mFormalArgumentName identifierRepresentation] ;
+        [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName] ;
+      end foreach ;
+    #--- Analyze template
+      @templateInstructionListForGeneration templateInstructionListForGeneration [emptyList] ;
+      const @templateAnalysisContext templateAnalysisContext [new
+        !inSemanticContext
+        !inPredefinedTypes
+        !templateVariableMap
+      ] ;
+      templateInstructionListAnalysis !templateAnalysisContext !resultingInstructionList !?templateInstructionListForGeneration ;
     end foreach ;
   #---- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration += ![@filewrapperDeclarationForGeneration new

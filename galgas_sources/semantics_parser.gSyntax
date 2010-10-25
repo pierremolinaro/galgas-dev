@@ -7524,7 +7524,7 @@ rule <semantics_declaration>
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-  @templateVariableMap categoryTemplateVariableMap [emptyMap] ;
+  @templateVariableMapEX categoryTemplateVariableMap [emptyMap] ;
 #---- Insert in template reader map ----------------------------
   const @lstring kKey [new ![className string] . ":" . [templateName string] ![templateName location]] ;
   [!?ioSemanticContext->mCategoryTemplateMap insertKey !kKey !categoryMethodKind !listeDeTypes] ;
@@ -8296,7 +8296,7 @@ rule <semantics_declaration>
   #--- Template formal arguments
     @typeListeTypesEtNomsArgMethode templateArgumentTypesList [emptyList] ;
     @typeListeAttributsSemantiques formalAttributeList [emptyList] ;
-    @templateVariableMap templateVariableMap [emptyMap] ;
+    @templateVariableMapEX templateVariableMap [emptyMap] ;
     repeat
     while
       $?$ ;

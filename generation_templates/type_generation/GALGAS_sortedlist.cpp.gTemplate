@@ -138,12 +138,12 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithValue (%?COL0
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithValue (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
-  between %,\n%!COL0
+  between %,\n%!^
   end foreach
-  %\n%!COL0%COMMA_LOCATION_ARGS) {
+  %\n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result = constructor_emptySortedList (THERE) ;
   cSortedListElement * p = NULL ;
   macroMyNew (p, cSortedListElement_%!TYPE_IDENTIFIER% (%

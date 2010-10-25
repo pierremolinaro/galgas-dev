@@ -5669,18 +5669,6 @@ class @templateBlockInstruction extends @templateInstruction {
 
 #---------------------------------------------------------------------------*
 
-class @templateInstructionConstant extends @templateInstruction {
-  @typeCplusPlusName mCppName feature nogetter ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @templateInstructionColumnString extends @templateInstruction {
-  @typeCplusPlusName mCppName feature nogetter ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @templateInstructionGetColumnLocation extends @templateInstruction {
 }
 

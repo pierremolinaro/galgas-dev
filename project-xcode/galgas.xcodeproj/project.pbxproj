@@ -497,6 +497,18 @@
 		CF546D9B0A347E450076D39C /* GGS_lsint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546D970A347E450076D39C /* GGS_lsint64.cpp */; };
 		CF546DA50A347E460076D39C /* GGS_lsint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546D970A347E450076D39C /* GGS_lsint64.cpp */; };
 		CF546DA70A347E460076D39C /* GGS_lsint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546D970A347E450076D39C /* GGS_lsint64.cpp */; };
+		CF5719C41275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
+		CF5719C51275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */; };
+		CF5719C61275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
+		CF5719C71275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */; };
+		CF5719C81275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
+		CF5719C91275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */; };
+		CF5719CA1275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
+		CF5719CB1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */; };
+		CF5719CC1275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
+		CF5719CD1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */; };
+		CF5719CE1275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
+		CF5719CF1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */; };
 		CF580BDA0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
 		CF580BDB0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
 		CF580BDC0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
@@ -1852,6 +1864,10 @@
 		CF546D6A0A347CF60076D39C /* GGS_luint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_luint64.h; sourceTree = "<group>"; };
 		CF546D970A347E450076D39C /* GGS_lsint64.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_lsint64.cpp; sourceTree = "<group>"; };
 		CF546D980A347E450076D39C /* GGS_lsint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_lsint64.h; sourceTree = "<group>"; };
+		CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateAnalysis.cpp; sourceTree = "<group>"; };
+		CF5719C11275901A00AAB8BF /* templateAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateAnalysis.h; sourceTree = "<group>"; };
+		CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateDecoratedTypes.cpp; sourceTree = "<group>"; };
+		CF5719C31275901A00AAB8BF /* templateDecoratedTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateDecoratedTypes.h; sourceTree = "<group>"; };
 		CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateExpressionParser.cpp; sourceTree = "<group>"; };
 		CF580BD90FDE862F003EBACF /* templateExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateExpressionParser.h; sourceTree = "<group>"; };
 		CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarSemantics.cpp; sourceTree = "<group>"; };
@@ -3169,6 +3185,10 @@
 		CFDE72200D85C5DE00596413 /* Template Scanner */ = {
 			isa = PBXGroup;
 			children = (
+				CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */,
+				CF5719C11275901A00AAB8BF /* templateAnalysis.h */,
+				CF5719C21275901A00AAB8BF /* templateDecoratedTypes.cpp */,
+				CF5719C31275901A00AAB8BF /* templateDecoratedTypes.h */,
 				CFA4E80C1274BD5D00C9AF35 /* templateGrammar.cpp */,
 				CFA4E80D1274BD5D00C9AF35 /* templateGrammar.h */,
 				CFA4E8021274BC4000C9AF35 /* templateSyntax.cpp */,
@@ -4294,6 +4314,8 @@
 				CFA4E7FA1274AD9400C9AF35 /* templateTypesForAST.cpp in Sources */,
 				CFA4E8041274BC4000C9AF35 /* templateSyntax.cpp in Sources */,
 				CFA4E80E1274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
+				CF5719C41275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
+				CF5719C51275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4537,6 +4559,8 @@
 				CFA4E7FC1274AD9400C9AF35 /* templateTypesForAST.cpp in Sources */,
 				CFA4E8061274BC4000C9AF35 /* templateSyntax.cpp in Sources */,
 				CFA4E8101274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
+				CF5719C81275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
+				CF5719C91275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4780,6 +4804,8 @@
 				CFA4E7FD1274AD9400C9AF35 /* templateTypesForAST.cpp in Sources */,
 				CFA4E8071274BC4000C9AF35 /* templateSyntax.cpp in Sources */,
 				CFA4E8111274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
+				CF5719CA1275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
+				CF5719CB1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5062,6 +5088,8 @@
 				CFA4E7FB1274AD9400C9AF35 /* templateTypesForAST.cpp in Sources */,
 				CFA4E8051274BC4000C9AF35 /* templateSyntax.cpp in Sources */,
 				CFA4E80F1274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
+				CF5719C61275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
+				CF5719C71275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5305,6 +5333,8 @@
 				CFA4E7FE1274AD9400C9AF35 /* templateTypesForAST.cpp in Sources */,
 				CFA4E8081274BC4000C9AF35 /* templateSyntax.cpp in Sources */,
 				CFA4E8121274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
+				CF5719CC1275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
+				CF5719CD1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5548,6 +5578,8 @@
 				CFA4E7FF1274AD9400C9AF35 /* templateTypesForAST.cpp in Sources */,
 				CFA4E8091274BC4000C9AF35 /* templateSyntax.cpp in Sources */,
 				CFA4E8131274BD5D00C9AF35 /* templateGrammar.cpp in Sources */,
+				CF5719CE1275901A00AAB8BF /* templateAnalysis.cpp in Sources */,
+				CF5719CF1275901A00AAB8BF /* templateDecoratedTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

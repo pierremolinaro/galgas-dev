@@ -350,7 +350,7 @@ rule <factor>
   !@templateExpressionAST outExpression
 :
   $true$ ;
-  outExpression := [@templateTrueBoolAST new] ;
+  outExpression := [@templateTrueBoolAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -363,7 +363,7 @@ rule <factor>
   !@templateExpressionAST outExpression
 :
   $false$ ;
-  outExpression := [@templateFalseBoolAST new] ;
+  outExpression := [@templateFalseBoolAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -465,7 +465,7 @@ rule <factor>
     literalStringList += ![literalString string] ;
   while
   end repeat ;
-  outExpression := [@templateLiteralStringExpressionAST new !literalStringList] ;
+  outExpression := [@templateLiteralStringExpressionAST new !literalStringList !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -577,7 +577,7 @@ rule <output_expression_list>
     $!$ ;
     @templateExpressionAST expression ;
     <expression> ?expression;
-    outExpressionList += !expression ;
+    outExpressionList += !expression !here ;
   end repeat ;
 end rule ;
 
@@ -604,7 +604,7 @@ rule <template_instruction>
   $!$ ;
   @templateExpressionAST expression ;
   <expression> ?expression ;
-  ioResultingInstructionList += ![@templateInstructionExpressionAST new !expression] ;
+  ioResultingInstructionList += ![@templateInstructionExpressionAST new !expression !here] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

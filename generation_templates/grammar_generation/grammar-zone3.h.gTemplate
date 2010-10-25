@@ -1,9 +1,9 @@
 //---------------------------------------------------------------------------*
 
-class cGrammar_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]% : %?COLUMN_CLASS_DECLARATION
+class cGrammar_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]% : %?^
 foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
   do %public cParser_% ![[[mValue string] stringByDeletingPathExtension] identifierRepresentation]
-  between %,\n%!COLUMN_CLASS_DECLARATION
+  between %,\n%!^
 end foreach
 % {
 %

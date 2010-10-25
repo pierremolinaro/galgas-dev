@@ -943,4 +943,16 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @filewrapperTemplateInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppName
+:
+  ioGeneratedCode .= "(@filewrapperTemplateInExpressionForGeneration)\n" ;
+  outCppName := "(@filewrapperTemplateInExpressionForGeneration)" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

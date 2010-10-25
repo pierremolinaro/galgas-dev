@@ -1,0 +1,107 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Semantic decorated types for template generation                         *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics templateDecoratedTypes :
+  import "semanticsDecoratedTypes.gSemantics" ;
+  import semantics semanticsDecoratedTypes in "semanticsDecoratedTypes.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+abstract class @templateInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionListForGeneration {
+  @templateInstructionForGeneration mInstruction ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionStringForGeneration extends @templateInstructionForGeneration {
+  @string mTemplateString ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionExpressionForGeneration extends @templateInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateBlockInstructionForGeneration extends @templateInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+  @location mLocation ;
+  @templateInstructionListForGeneration mBlockInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionGetColumnLocationForGeneration extends @templateInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionGotoColumnLocationForGeneration extends @templateInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionForeachForGeneration extends @templateInstructionForGeneration {
+  @bool mIsAscending ;
+  @semanticExpressionForGeneration mExpression ;
+  @templateInstructionListForGeneration mBeforeInstructionList ;
+  @templateInstructionListForGeneration mDoInstructionList ;
+  @string mIndexIdentifier ;
+  @templateInstructionListForGeneration mBetweenInstructionList ;
+  @templateInstructionListForGeneration mAfterInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionIfBranchListForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+  @templateInstructionListForGeneration mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionIfForGeneration extends @templateInstructionForGeneration {
+  @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList ;
+  @templateInstructionListForGeneration mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionSwitchBranchListForGeneration {
+  @lstringlist mConstantList ;
+  @templateInstructionListForGeneration mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionSwitchForGeneration extends @templateInstructionForGeneration {
+  @semanticExpressionForGeneration mSwitchExpression ;
+  @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
