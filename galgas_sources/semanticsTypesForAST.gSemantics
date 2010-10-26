@@ -1103,6 +1103,7 @@ class @categoryReaderAST extends @semanticDeclarationAST {
   @lstring mCategoryReaderReturnedTypeName ;
   @lstring mCategoryReaderReturnedVariableName ;
   @semanticInstructionListAST mCategoryReaderInstructionList ;
+  @location mEndOfReaderLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1118,6 +1119,21 @@ class @overridingCategoryReaderAST extends @semanticDeclarationAST {
   @lstring mOverridingCategoryReaderReturnedTypeName ;
   @lstring mOverridingCategoryReaderReturnedVariableName ;
   @semanticInstructionListAST mOverridingCategoryReaderInstructionList ;
+  @location mEndOfReaderLocation ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R   *
+#                     D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingAbstractCategoryReaderAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
+  @lstring mAbstractCategoryReaderName ;
+  @formalInputParameterListAST mAbstractCategoryReaderFormalInputParameterList ;
+  @lstring mAbstractCategoryReaderReturnedTypeName ;
 }
 
 #---------------------------------------------------------------------------*

@@ -1,0 +1,64 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Abstract category reader '@" . CLASS_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+static TC_UniqueArray <categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%> gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% ;
+
+//---------------------------------------------------------------------------*
+
+void enterCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
+               %!^%categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% inReader) {
+  gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+static void freeCategoryReader_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% (void) {
+  gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%.free () ;
+}
+
+//---------------------------------------------------------------------------*
+
+C_PrologueEpilogue gReader_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% (%?^%NULL,
+       %!^%freeCategoryReader_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%) ;
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+  foreach FORMAL_ARGUMENT_LIST do
+    %,\n%!^
+    %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & constin_%![mFormalArgumentName identifierRepresentation]
+  end foreach
+  %,\n%!^%C_Compiler * inCompiler%
+  %\n%!^%COMMA_LOCATION_ARGS) {
+  GALGAS_%![RETURN_TYPE identifierRepresentation]% result ;
+//--- Find Reader
+  if (NULL != inObject) {
+    macroValidObject (inObject, const cPtr_%![CLASS_NAME identifierRepresentation]%) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const PMSInt32 classIndex = info->mSlotID ;
+    categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% f = NULL ;
+    if (classIndex < gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%.count ()) {
+      f = gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%.count ()) {
+           f = gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    result = f (inObject, %
+    foreach FORMAL_ARGUMENT_LIST do
+      %constin_%![mFormalArgumentName identifierRepresentation]%, %
+    end foreach
+    %inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+

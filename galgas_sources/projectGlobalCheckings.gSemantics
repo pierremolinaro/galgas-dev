@@ -63,6 +63,7 @@ method @semanticDeclarationAST buildCategoryMethodListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap
 :
 end method ;
 
@@ -76,6 +77,7 @@ override method @abstractCategoryMethodAST buildCategoryMethodListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap
 :
   ioAbstractCategoryMethodListMapAST +=
     ![mTypeName string]
@@ -93,6 +95,7 @@ override method @categoryMethodAST buildCategoryMethodListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap
 :
   ioCategoryMethodListMap +=
     ![mTypeName string]
@@ -110,6 +113,7 @@ override method @overridingCategoryMethodAST buildCategoryMethodListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap
 :
   ioOverridingCategoryMethodListMap +=
     ![mTypeName string]
@@ -127,6 +131,7 @@ override method @overridingAbstractCategoryMethodAST buildCategoryMethodListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap
 :
   ioOverridingAbstractCategoryMethodListMap +=
     ![mTypeName string]
@@ -144,6 +149,7 @@ override method @abstractCategoryReaderAST buildCategoryMethodListMaps
   ?!@genericCategoryMethodListMap ioAbstractCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap
 :
   ioAbstractCategoryReaderListMap +=
     ![mTypeName string]
@@ -161,6 +167,7 @@ override method @categoryReaderAST buildCategoryMethodListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
   ?!@genericCategoryMethodListMap ioCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap
 :
   ioCategoryReaderListMap +=
     ![mTypeName string]
@@ -178,10 +185,29 @@ override method @overridingCategoryReaderAST buildCategoryMethodListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
   ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
   ?!@genericCategoryMethodListMap ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap
 :
   ioOverridingCategoryReaderListMap +=
     ![mTypeName string]
     !mOverridingCategoryReaderName
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryReaderAST buildCategoryMethodListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryReaderListMap
+:
+  ioOverridingAbstractCategoryReaderListMap +=
+    ![mTypeName string]
+    !mAbstractCategoryReaderName
   ;
 end method ;
 
@@ -350,6 +376,7 @@ routine performProjectGlobalCheckings
   @genericCategoryMethodListMap abstractCategoryReaderListMap [emptyMap] ;
   @genericCategoryMethodListMap categoryReaderListMap [emptyMap] ;
   @genericCategoryMethodListMap overridingCategoryReaderListMap [emptyMap];
+  @genericCategoryMethodListMap overridingAbstractCategoryReaderListMap [emptyMap] ;
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
     foreach [mRoot mSemanticDeclarationList] do
       [mSemanticDeclaration buildCategoryMethodListMaps
@@ -360,6 +387,7 @@ routine performProjectGlobalCheckings
         !?abstractCategoryReaderListMap
         !?categoryReaderListMap
         !?overridingCategoryReaderListMap
+        !?overridingAbstractCategoryReaderListMap
       ] ;
     end foreach ;
   end foreach ;
@@ -393,7 +421,6 @@ routine performProjectGlobalCheckings
         [!?categoryMethodMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
-#    log abstractCategoryMethodListMap ;
   #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
     foreach abstractCategoryMethodListMap do
       foreach mList do
@@ -423,29 +450,42 @@ routine performProjectGlobalCheckings
   #------ Check Category readers
 ##--- Check that for every abstract category reader, an overridden category reader
 ##    defined in an concrete subclass
-  #--- A given abstract Category reader id defined only once for a class
+  #--- A given abstract category reader id defined only once for a class
     foreach abstractCategoryReaderListMap do
       @categoryReaderMapForGlobalCheckings CategoryReaderMap [emptyMap] ;
       foreach mList do
         [!?CategoryReaderMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
-  #--- A given base Category reader id defined only once for a class
+  #--- A given base category reader id defined only once for a class
     foreach categoryReaderListMap do
       @categoryReaderMapForGlobalCheckings CategoryReaderMap [emptyMap] ;
       foreach mList do
         [!?CategoryReaderMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
-  #--- A given overriding Category reader id defined only once for a class
+  #--- A given overriding category reader id defined only once for a class
     foreach overridingCategoryReaderListMap do
       @categoryReaderMapForGlobalCheckings CategoryReaderMap [emptyMap] ;
       foreach mList do
         [!?CategoryReaderMap insertKey !mValue] ;
       end foreach ;
     end foreach ;  
-  #--- Check every abstract Category reader is implemented by every inherited concrete type
+  #--- Check every abstract category reader is implemented by every inherited concrete type
     foreach abstractCategoryReaderListMap do
+      foreach mList do
+        checkCategoryReaderDefinitionForClass
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
+          !semanticContext->mTypeMap
+        ;
+      end foreach ;
+    end foreach ;
+  #--- Check every abstract category reader is implemented by every inherited concrete type
+    foreach overridingAbstractCategoryReaderListMap do
       foreach mList do
         checkCategoryReaderDefinitionForClass
           !key

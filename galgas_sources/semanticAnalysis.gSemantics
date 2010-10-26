@@ -64,6 +64,43 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    C H E C K    R E A D E R    S I G N A T U R E                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine checkReaderSignatures
+  ??@formalInputParameterListForGeneration inTestedSignature
+  ??@unifiedTypeMapProxy inReturnType
+  ??@location inErrorLocation
+  ??@unifiedTypeMapProxyList inReferenceSignature
+  ??@unifiedTypeMapProxy inInheritedReturnType
+  ??@location inReferenceLocation
+:
+  if [inReturnType key] != [inInheritedReturnType key] then
+    error inErrorLocation : "the return type is '@"
+    . [inReturnType key] . "', but overriden reader names '@" 
+    . [inInheritedReturnType key] . "' as return type" ;
+    error inReferenceLocation:"overriden reader is declared here" ;
+  end if ;
+  if [inTestedSignature length] != [inReferenceSignature length] then
+    error inErrorLocation:"this reader declares " . [[inTestedSignature length] string]
+    . " formal parameter(s), but overriden reader declares " . [[inReferenceSignature length] string]
+    ;
+    error inReferenceLocation:"overriden reader is declared here" ;
+  else
+    foreach inReferenceSignature prefixedby ref_, inTestedSignature do
+      if [mFormalArgumentType key] != [ref_mType key] then
+        error mFormalArgumentName : "the '" . mFormalArgumentName . "' formal parameter has the '@"
+        . [mFormalArgumentType key] . "' type, but overriden reader declares with the '@" 
+        . [ref_mType key] . "' type" ;
+        error inReferenceLocation:"overriden reader is declared here" ;
+      end if ;
+    end foreach ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S            *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -538,6 +575,7 @@ override method @externFunctionDeclarationAST performSemanticAnalysis
     formalArgumentList +=
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       ![mFormalArgumentName string]
+      !mFormalArgumentName
       !mIsUnused
     ;
   end foreach ;
@@ -779,6 +817,8 @@ end method ;
 routine analyzeFunctionBody
   ??@analysisContext inAnalysisContext
   ??@formalInputParameterListAST inFunctionSignature
+  ??@typedAttributeList inTypedAttributeList
+  ??@string inAttributeVariableNamePrefix
   ??@semanticInstructionListAST inInstructionList
   ??@lstring inReturnVariableName
   ??@lstring inResultTypeName
@@ -789,6 +829,15 @@ routine analyzeFunctionBody
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 :
   @variableMap variableMap [emptyMap] ;
+#--- Enter instance attributes
+  foreach inTypedAttributeList do
+    [!?variableMap insertNonMutableAttribute
+      !mAttributeName
+      !mAttributeTypeIndex
+      !inAttributeVariableNamePrefix . "mAttribute_". [mAttributeName identifierRepresentation]
+      !selfMarkName []
+    ] ;
+  end foreach ;
 #--- Enter formal parameters
   outSignatureForGeneration := [@formalInputParameterListForGeneration emptyList] ;
   foreach inFunctionSignature do
@@ -798,6 +847,7 @@ routine analyzeFunctionBody
       outSignatureForGeneration +=
         !parameterType
         !cppName
+        !mFormalArgumentName
         !mIsUnused
       ;
       if mIsUnused then
@@ -810,6 +860,7 @@ routine analyzeFunctionBody
       outSignatureForGeneration +=
         !parameterType
         !cppName
+        !mFormalArgumentName
         !mIsUnused
       ;
       if mIsUnused then
@@ -857,6 +908,8 @@ override method @functionDeclarationAST performSemanticAnalysis
   analyzeFunctionBody
     !analysisContext
     !mFormalArgumentList
+    ![@typedAttributeList emptyList]
+    !""
     !mFunctionInstructionList
     !mResultVariableName
     !mResultTypeName
@@ -898,6 +951,8 @@ override method @onceFunctionDeclarationAST performSemanticAnalysis
   analyzeFunctionBody
     !analysisContext
     ![@formalInputParameterListAST emptyList]
+    ![@typedAttributeList emptyList]
+    !""
     !mFunctionInstructionList
     !mResultVariableName
     !mResultTypeName
@@ -967,7 +1022,7 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
         @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         const @string cppVarName := "in_" . [mFormalArgumentName identifierRepresentation] ;
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName] ;
-        filewrapperTemplateFormalInputParameters += !type !cppVarName !true ;
+        filewrapperTemplateFormalInputParameters += !type !cppVarName !mFormalArgumentName !true ;
       end foreach ;
     #--- Analyze template
       @templateInstructionListForGeneration templateInstructionListForGeneration [emptyList] ;
@@ -1201,36 +1256,230 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-#override method @abstractCategoryReaderAST performSemanticAnalysis
-#  ??@semanticContext unused inSemanticContext
-#  ??@predefinedTypes unused inPredefinedTypes
-#  ??@predefinedTypes unused inAnalysisContext->mPredefinedTypes
-#  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
-#:
-#  message "**** @abstractMultiReaderAST performSemanticAnalysis ***\n" ;
-#end method ;
+override method @abstractCategoryReaderAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is an abstract class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mAbstractCategoryReaderName: "cannot declare a category reader: '@" . [selfType key] . "' is not a class" ;
+  elsif [selfType mIsConcrete] then
+    error mAbstractCategoryReaderName: "cannot declare an abstract category reader: '@" . [selfType key] . "' is not an abstract class" ;
+  end if ;
+#--- Compute method signature
+  @formalInputParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+  foreach mAbstractCategoryReaderFormalInputParameterList do
+    formalParameterListForGeneration +=
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      ![mFormalArgumentName string]
+      !mFormalArgumentName
+      !mIsUnused
+    ;
+  end foreach ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@abstractCategoryReaderForGeneration new
+    ![mTypeName string]
+    ![mAbstractCategoryReaderName string]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
+    !formalParameterListForGeneration
+  ]
+  ![selfType key]
+  ;
+end method ;
+
 
 #---------------------------------------------------------------------------*
 
-#override method @categoryReaderAST performSemanticAnalysis
-#  ??@semanticContext unused inSemanticContext
-#  ??@predefinedTypes unused inPredefinedTypes
-#  ??@predefinedTypes unused inAnalysisContext->mPredefinedTypes
-#  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
-#:
-#  message "**** @multiReaderAST performSemanticAnalysis ***\n" ;
-#end method ;
+override method @categoryReaderAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is a class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mCategoryReaderName: "cannot declare a category reader: '@" . [selfType key] . "' is not a class" ;
+  end if ;
+#--- Analyze instruction list
+  const @analysisContext analysisContext [new
+    !inSemanticContext
+    !inPredefinedTypes
+    !selfType
+    !"object"
+  ] ;
+  @unifiedTypeMapProxy returnType ;
+  @string returnVariableCppName ;
+  @formalInputParameterListForGeneration formalParameterListForGeneration ;
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  analyzeFunctionBody
+    !analysisContext
+    !mCategoryReaderFormalInputParameterList
+    ![selfType mAllTypedAttributeList]
+    !"object->"
+    !mCategoryReaderInstructionList
+    !mCategoryReaderReturnedVariableName
+    !mCategoryReaderReturnedTypeName
+    !mEndOfReaderLocation
+    ?formalParameterListForGeneration
+    ?returnType
+    ?returnVariableCppName
+    ?semanticInstructionListForGeneration
+  ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@categoryReaderForGeneration new
+    ![mTypeName string]
+    ![mCategoryReaderName string]
+    !returnType
+    !returnVariableCppName
+    !formalParameterListForGeneration
+    ![selfType mAllTypedAttributeList]
+    !semanticInstructionListForGeneration
+  ]
+  ![selfType key]
+  ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-#override method @overridingCategoryReaderAST performSemanticAnalysis
-#  ??@semanticContext unused inSemanticContext
-#  ??@predefinedTypes unused inPredefinedTypes
-#  ??@predefinedTypes unused inAnalysisContext->mPredefinedTypes
-#  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
-#:
-#  message "**** @overridingMultiReaderAST performSemanticAnalysis ***\n" ;
-#end method ;
+override method @overridingCategoryReaderAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is a class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mOverridingCategoryReaderName: "cannot declare a category reader: '@" . [selfType key] . "' is not a class" ;
+  end if ;
+#--- Find base type name
+  @string baseTypeName := "" ;
+  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @unifiedTypeMapProxyList inheritedSignature [emptyList] ;
+  @unifiedTypeMapProxy inheritedReturnType [null] ;
+  @location inheritedDeclarationLocation := here ;
+  loop [inSemanticContext->mTypeMap count] + 1 :
+  while (not [superType isNull]) & (baseTypeName == "") do
+    if [[superType mReaderMap] hasKey ![mOverridingCategoryReaderName string]] then
+      @methodQualifier qualifier ;
+      [[superType mReaderMap] searchKey !mOverridingCategoryReaderName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?inheritedReturnType ?qualifier] ;
+      if qualifier <= [@methodQualifier isBasicFinal] then
+        baseTypeName := [superType key] ;
+      end if ;
+    end if ;
+    superType := [superType mSuperType] ;
+  end loop ;
+#--- Analyze instruction list
+  const @analysisContext analysisContext [new
+    !inSemanticContext
+    !inPredefinedTypes
+    !selfType
+    !"object"
+  ] ;
+  @unifiedTypeMapProxy returnType ;
+  @string returnVariableCppName ;
+  @formalInputParameterListForGeneration formalParameterListForGeneration ;
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  analyzeFunctionBody
+    !analysisContext
+    !mOverridingCategoryReaderFormalInputParameterList
+    ![selfType mAllTypedAttributeList]
+    !"object->"
+    !mOverridingCategoryReaderInstructionList
+    !mOverridingCategoryReaderReturnedVariableName
+    !mOverridingCategoryReaderReturnedTypeName
+    !mEndOfReaderLocation
+    ?formalParameterListForGeneration
+    ?returnType
+    ?returnVariableCppName
+    ?semanticInstructionListForGeneration
+  ;
+#--- Check Signature
+  if baseTypeName != "" then
+    checkReaderSignatures
+      !formalParameterListForGeneration
+      !returnType
+      ![mOverridingCategoryReaderName location]
+      !inheritedSignature
+      !inheritedReturnType
+      !inheritedDeclarationLocation
+    ;
+  end if ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@overrideCategoryReaderForGeneration new
+    ![mTypeName string]
+    !baseTypeName
+    ![mOverridingCategoryReaderName string]
+    !returnType
+    !returnVariableCppName
+    !formalParameterListForGeneration
+    ![selfType mAllTypedAttributeList]
+    !semanticInstructionListForGeneration
+  ]
+  !"{override}"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryReaderAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
+:
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Return type
+  const @unifiedTypeMapProxy returnType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName] ;
+#--- Check type is an abstract class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mAbstractCategoryReaderName: "cannot declare a category reader: '@" . [selfType key] . "' is not a class" ;
+  elsif [selfType mIsConcrete] then
+    error mAbstractCategoryReaderName: "cannot declare an abstract category reader: '@" . [selfType key] . "' is not an abstract class" ;
+  end if ;
+#--- Find base type name
+  @string baseTypeName := "" ;
+  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @unifiedTypeMapProxyList inheritedSignature [emptyList] ;
+  @unifiedTypeMapProxy inheritedReturnType [null] ;
+  @location inheritedDeclarationLocation := here ;
+  loop [inSemanticContext->mTypeMap count] + 1 :
+  while (not [superType isNull]) & (baseTypeName == "") do
+    if [[superType mReaderMap] hasKey ![mAbstractCategoryReaderName string]] then
+      @methodQualifier qualifier ;
+      [[superType mReaderMap] searchKey !mAbstractCategoryReaderName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?inheritedReturnType ?qualifier] ;
+      if qualifier <= [@methodQualifier isBasicFinal] then
+        baseTypeName := [superType key] ;
+      end if ;
+    end if ;
+    superType := [superType mSuperType] ;
+  end loop ;
+#--- Check Signature
+  if baseTypeName != "" then
+    @formalInputParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+    foreach mAbstractCategoryReaderFormalInputParameterList do
+      formalParameterListForGeneration +=
+        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+        ![mFormalArgumentName string]
+        !mFormalArgumentName
+        !mIsUnused
+      ;
+    end foreach ;
+    checkReaderSignatures
+      !formalParameterListForGeneration
+      !returnType
+      ![mAbstractCategoryReaderName location]
+      !inheritedSignature
+      !inheritedReturnType
+      !inheritedDeclarationLocation
+    ;
+  end if ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

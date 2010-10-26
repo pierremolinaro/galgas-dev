@@ -65,6 +65,7 @@ enum @methodQualifier {
 map @readerMap {
   @bool mIsCategory ;
   @unifiedTypeMapProxyList mArgumentTypeList ;
+  @location mDeclarationLocation ;
   @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
   @methodQualifier mQualifier ;
