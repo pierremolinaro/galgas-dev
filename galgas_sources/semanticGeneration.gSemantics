@@ -627,17 +627,17 @@ override reader @enumTypeForGeneration appendDeclaration1 ->@string outHeader :
 #---------------------------------------------------------------------------*
 
 routine recursivlyEnumerateRegularFile
-  ??@wrapperFileSortedList inFilewrapperFileSortedList
-  ??@wrapperDirectorySortedList inFilewrapperDirectorySortedList
+  ??@wrapperFileMap inFilewrapperFileMap
+  ??@wrapperDirectoryMap inFilewrapperDirectoryMap
   ?!@stringlist ioRegularFileIndexStringList
 :
-  foreach inFilewrapperFileSortedList do
+  foreach inFilewrapperFileMap do
     ioRegularFileIndexStringList += ![[ioRegularFileIndexStringList length] string] ;
   end foreach ;
-  foreach inFilewrapperDirectorySortedList do
+  foreach inFilewrapperDirectoryMap do
     recursivlyEnumerateRegularFile
-      !mRegularFileSortedList
-      !mDirectorySortedList
+      !mRegularFileMap
+      !mDirectoryMap
       !?ioRegularFileIndexStringList
     ;
   end foreach ;
@@ -648,8 +648,8 @@ end routine ;
 override reader @filewrapperDeclarationForGeneration appendDeclaration1 -> @string outHeader :
   @stringlist regularFileIndexStringList [emptyList] ;
   recursivlyEnumerateRegularFile
-    !mFilewrapperFileSortedList
-    !mFilewrapperDirectorySortedList
+    !mFilewrapperFileMap
+    !mFilewrapperDirectoryMap
     !?regularFileIndexStringList
   ;
   outHeader := [filewrapper semanticComponentGenerationTemplate.filewrapperDeclaration
@@ -1044,33 +1044,33 @@ routine generateWrapperContents
   ??@string inFilewrapperName
   ??@string inFilewrapperDirectory
   ??@uint inFilewrapperDirectoryIndex
-  ??@wrapperFileSortedList inFilewrapperRegularFileSortedList
-  ??@wrapperDirectorySortedList inFilewrapperDirectorySortedList
+  ??@wrapperFileMap inFilewrapperRegularFileMap
+  ??@wrapperDirectoryMap inFilewrapperDirectoryMap
   ?!@string ioImplementation
 :
 #--- Generate regular files
-  foreach inFilewrapperRegularFileSortedList do
+  foreach inFilewrapperRegularFileMap do
     const @string contents := [@string stringWithContentsOfFile !mAbsoluteFilePath] ;
-    ioImplementation .= "//--- File '" . inFilewrapperDirectory . "/" . mRegularFileName . "'\n\n"
+    ioImplementation .= "//--- File '" . inFilewrapperDirectory . "/" . lkey . "'\n\n"
     .  "const char * gWrapperFileContent_"
     . [mWrapperFileIndex string] . "_"
     . [inFilewrapperName identifierRepresentation] . " = "
     . [contents utf8Representation] . " ;\n\n"
     . "static const cRegularFileWrapper gWrapperFile_" . [mWrapperFileIndex string]. "_"
     . [inFilewrapperName identifierRepresentation] . " (\n"
-    . "  " . [mRegularFileName utf8Representation] . ",\n"
-    . "  " . [[mRegularFileName pathExtension] utf8Representation] . ",\n"
+    . "  " . [lkey utf8Representation] . ",\n"
+    . "  " . [[lkey pathExtension] utf8Representation] . ",\n"
     . "  gWrapperFileContent_" . [mWrapperFileIndex string] . "_" . [inFilewrapperName identifierRepresentation] ."\n"
     . ") ;\n\n" ;
   end foreach ;
 #--- Generate sub-directories
-  foreach inFilewrapperDirectorySortedList do
+  foreach inFilewrapperDirectoryMap do
     generateWrapperContents
       !inFilewrapperName
-      !mDirectoryName
+      ![lkey string]
       !mWrapperDirectoryIndex
-      !mRegularFileSortedList
-      !mDirectorySortedList
+      !mRegularFileMap
+      !mDirectoryMap
       !?ioImplementation
     ;
   end foreach ;
@@ -1078,8 +1078,8 @@ routine generateWrapperContents
   ioImplementation .= "//--- All files of '" . inFilewrapperDirectory . "' directory\n\n"
   . "static const cRegularFileWrapper * gWrapperAllFiles_"
   . [inFilewrapperName identifierRepresentation] . "_" . [inFilewrapperDirectoryIndex string]
-  . " [" . [[inFilewrapperRegularFileSortedList length] + 1 string] . "] = {\n" ;
-  foreach inFilewrapperRegularFileSortedList do
+  . " [" . [[inFilewrapperRegularFileMap count] + 1 string] . "] = {\n" ;
+  foreach inFilewrapperRegularFileMap do
     ioImplementation .= "  & gWrapperFile_" . [mWrapperFileIndex string] . "_" . [inFilewrapperName identifierRepresentation] . ",\n" ;
   end foreach ;  
   ioImplementation .= "  NULL\n"
@@ -1088,8 +1088,8 @@ routine generateWrapperContents
   ioImplementation .= "//--- All sub-directories of '" . inFilewrapperDirectory . "' directory\n\n"
   . "static const cDirectoryWrapper * gWrapperAllDirectories_"
   . [inFilewrapperName identifierRepresentation] . "_" . [inFilewrapperDirectoryIndex string]
-  . " [" . [[inFilewrapperDirectorySortedList length] + 1 string] . "] = {\n" ;
-  foreach inFilewrapperDirectorySortedList do
+  . " [" . [[inFilewrapperDirectoryMap count] + 1 string] . "] = {\n" ;
+  foreach inFilewrapperDirectoryMap do
     ioImplementation .= "  & gWrapperDirectory_" . [mWrapperDirectoryIndex string] . "_" . [inFilewrapperName identifierRepresentation] . ",\n" ;
   end foreach ;
   ioImplementation .= "  NULL\n"
@@ -1099,9 +1099,9 @@ routine generateWrapperContents
   . "const cDirectoryWrapper gWrapperDirectory_" . [inFilewrapperDirectoryIndex string] . "_"
   . [inFilewrapperName identifierRepresentation] . " (\n"
   . "  " . [inFilewrapperDirectory utf8Representation] . ",\n"
-  . "  " . [[inFilewrapperRegularFileSortedList length] string] . ",\n"
+  . "  " . [[inFilewrapperRegularFileMap count] string] . ",\n"
   . "  gWrapperAllFiles_" . [inFilewrapperName identifierRepresentation] . "_" . [inFilewrapperDirectoryIndex string] . ",\n"
-  . "  " . [[inFilewrapperDirectorySortedList length] string] . ",\n"
+  . "  " . [[inFilewrapperDirectoryMap count] string] . ",\n"
   . "  gWrapperAllDirectories_" . [inFilewrapperName identifierRepresentation] . "_" . [inFilewrapperDirectoryIndex string] . "\n"
   . ") ;\n\n" ;
 end routine ;
@@ -1114,8 +1114,8 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
     !mFilewrapperName
     !""
     !0
-    !mFilewrapperFileSortedList
-    !mFilewrapperDirectorySortedList
+    !mFilewrapperFileMap
+    !mFilewrapperDirectoryMap
     !?filewrapperImplementation
   ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.filewrapperImplementation

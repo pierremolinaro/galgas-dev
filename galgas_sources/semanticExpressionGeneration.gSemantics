@@ -970,4 +970,19 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @filewrapperStaticPathInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppName
+:
+  ioGeneratedCode .= "//--- @filewrapperStaticPathInExpressionForGeneration\n" ;
+#---
+  outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_string " . outCppName
+  . " (gWrapperFileContent_" . [mFilewrapperFileIndex string] . "_" . [mFilewrapperName identifierRepresentation] . ") ;\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

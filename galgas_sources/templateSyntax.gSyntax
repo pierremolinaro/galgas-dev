@@ -21,6 +21,7 @@ syntax templateSyntax :
 with "galgasTemplateScanner.gLexique" ;
 
 import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
+import "templateTypesForAST.gSemantics" ;
 import semantics templateTypesForAST in "templateTypesForAST.gSemantics" ;
 
 nonterminal <template_parser_start_symbol>
@@ -590,9 +591,9 @@ end rule ;
 routine enterTemplateString
   ?!@templateInstructionListAST outResultingInstructionList
 :
-  @lstring s := [@lstring retrieveAndResetTemplateString]  ;
+  const @string s := [@string retrieveAndResetTemplateString]  ;
   if [s length] > 0 then
-    outResultingInstructionList += ![@templateInstructionStringAST new ![s string]] ;
+    outResultingInstructionList += ![@templateInstructionStringAST new !s] ;
   end if ;
 end routine ;
 
