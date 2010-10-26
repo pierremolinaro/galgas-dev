@@ -36,6 +36,7 @@ routine enterBaseFinalReaderWithoutArgument
     ![@lstring new !inReaderName !here]
     !false
     ![@unifiedTypeMapProxyList emptyList]
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasicFinal]
@@ -57,6 +58,7 @@ routine enterInheritedReaderWithoutArgument
     ![@lstring new !inReaderName !here]
     !false
     ![@unifiedTypeMapProxyList emptyList]
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isInherited]
@@ -83,6 +85,7 @@ routine enterInheritedReaderWithArgument
     ![@lstring new !inReaderName !here]
     !false
     !argList
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isInherited]
@@ -104,6 +107,7 @@ routine enterBaseReaderWithoutArgument
     ![@lstring new !inReaderName !here]
     !false
     ![@unifiedTypeMapProxyList emptyList]
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasic]
@@ -130,6 +134,7 @@ routine enterBaseReaderWithArgument
     ![@lstring new !inReaderName !here]
     !false
     !argList
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasic]
@@ -156,6 +161,7 @@ routine enterBaseFinalReaderWithArgument
     ![@lstring new !inReaderName !here]
     !false
     !argList
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasicFinal]
@@ -185,6 +191,7 @@ routine enterBaseReaderWith2Arguments
     ![@lstring new !inReaderName !here]
     !false
     !argList
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasic]
@@ -214,6 +221,7 @@ routine enterBaseFinalReaderWith2Arguments
     ![@lstring new !inReaderName !here]
     !false
     !argList
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasicFinal]
@@ -246,6 +254,7 @@ routine enterBaseReaderWith3Arguments
     ![@lstring new !inReaderName !here]
     !false
     !argList
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasic]
@@ -278,6 +287,7 @@ routine enterBaseFinalReaderWith3Arguments
     ![@lstring new !inReaderName !here]
     !false
     !argList
+    !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasicFinal]

@@ -191,6 +191,188 @@ end function ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# C A T E G O R Y    M E T H O D    I M P L E M E N A T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+function generateCategoryMethod
+  ??@string inClassName
+  ??@string inBaseClassName
+  ??@string inMethodName
+  ??@formalParameterListForGeneration inFormalArgumentList
+  ??@semanticInstructionListForGeneration inInstructionList
+  ->@string outGeneratedCode
+:
+#--- Build unused variable set
+  @stringset unusedVariableCppNameSet [emptySet] ;
+  unusedVariableCppNameSet += !compilerCppName [] ;
+  unusedVariableCppNameSet += !selfMarkName [] ;
+  foreach inFormalArgumentList do
+    unusedVariableCppNameSet += !mFormalArgumentCppName ;
+  end foreach ;
+#--- Generate body
+  @uint temporaryVariableIndex := 0 ;
+  @string routineBody := "" ;
+  [!?routineBody incIndentation !2] ;
+  foreach inInstructionList do
+    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+  end foreach ;
+  [!?routineBody decIndentation !2] ;
+#--- Generate header
+  outGeneratedCode := "static void categoryMethod_" . [inClassName identifierRepresentation] . "_" . [inMethodName identifierRepresentation] . " (" ;
+  const @uint colRef := [outGeneratedCode currentColumn] ;
+  if inBaseClassName == "" then
+    outGeneratedCode .= "const cPtr_" . [inClassName identifierRepresentation] . " * " ;
+  else
+    outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
+  end if ;
+  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []] ;
+  if currentObjectIsUnused then
+    outGeneratedCode .= "/* inObject */" ;
+  else
+    outGeneratedCode .= "inObject" ;
+  end if ;
+#---
+  foreach inFormalArgumentList do
+    outGeneratedCode .= ",\n" ;
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+    switch mFormalArgumentPassingMode 
+    when argumentConstantIn :
+      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+    when argumentInOut :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    when argumentOut :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    when argumentIn :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+    end switch ;
+    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
+      outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
+    else
+      outGeneratedCode .= mFormalArgumentCppName ;
+    end if ;
+  end foreach ;
+#--- Compiler argument
+  outGeneratedCode .= ",\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "C_Compiler * " ;
+  if [unusedVariableCppNameSet hasKey !compilerCppName []] then
+    outGeneratedCode .= "/* " . compilerCppName [] . " */" ;
+  else
+    outGeneratedCode .= compilerCppName [] ;
+  end if ;
+  outGeneratedCode .= "\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS" ;
+  outGeneratedCode .= ") {\n" ;
+#--- Generate routine body
+  if not currentObjectIsUnused then
+    if inBaseClassName == "" then
+      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = inObject ;\n" ;
+    else
+      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
+    end if ;
+    outGeneratedCode .= "  macroValidObject (object, const cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
+  end if ;
+  outGeneratedCode .= routineBody ;
+#---
+  outGeneratedCode .= "}" ;
+end function ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C A T E G O R Y    R E A D E R    I M P L E M E N A T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+function generateCategoryReader
+  ??@string inClassName
+  ??@string inBaseClassName
+  ??@string inReaderName
+  ??@formalInputParameterListForGeneration inFormalArgumentList
+  ??@semanticInstructionListForGeneration inInstructionList
+  ??@string inCompilerTypeName
+  ??@string inResultTypeName
+  ??@string inResultVariableCppName
+  ->@string outGeneratedCode
+:
+  outGeneratedCode := "" ;
+#--- Build unused variable set
+  @stringset unusedVariableCppNameSet [emptySet] ;
+  unusedVariableCppNameSet += !compilerCppName [] ;
+  unusedVariableCppNameSet += !selfMarkName [] ;
+  foreach inFormalArgumentList do
+    unusedVariableCppNameSet += !mFormalArgumentCppName ;
+  end foreach ;
+#--- Generate body
+  @uint temporaryVariableIndex := 0 ;
+  @string routineBody := "" ;
+  [!?routineBody incIndentation !2] ;
+  foreach inInstructionList do
+    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+  end foreach ;
+  [!?routineBody decIndentation !2] ;
+#--- Generate header
+  outGeneratedCode .= "static GALGAS_" . [inResultTypeName identifierRepresentation] . " categoryReader_" ;
+  outGeneratedCode .= [inClassName identifierRepresentation] . "_" . [inReaderName identifierRepresentation] . " (" ;
+  const @uint colRef := [outGeneratedCode currentColumn] ;
+  if inBaseClassName == "" then
+    outGeneratedCode .= "const cPtr_" . [inClassName identifierRepresentation] . " * " ;
+  else
+    outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
+  end if ;
+  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []] ;
+  if currentObjectIsUnused then
+    outGeneratedCode .= "/* inObject */" ;
+  else
+    outGeneratedCode .= "inObject" ;
+  end if ;
+  outGeneratedCode .= ",\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+#---
+  foreach inFormalArgumentList do
+    outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
+      outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
+    else
+      outGeneratedCode .= mFormalArgumentCppName ;
+    end if ;
+    outGeneratedCode .= ",\n" ;
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  end foreach ;
+#--- Compiler argument
+  outGeneratedCode .= inCompilerTypeName . " * " ;
+  if [unusedVariableCppNameSet hasKey !compilerCppName []] then
+    outGeneratedCode .= "/* " . compilerCppName [] . " */" ;
+  else
+    outGeneratedCode .= compilerCppName [] ;
+  end if ;
+  outGeneratedCode .= "\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS)" ;
+  outGeneratedCode .= " {\n" ;
+#--- Declare returned variable
+  outGeneratedCode .= "  GALGAS_" . [inResultTypeName identifierRepresentation]
+                   .  " " . inResultVariableCppName . " ; // Returned variable\n" ;
+#--- Generate routine body
+  if not currentObjectIsUnused then
+    if inBaseClassName == "" then
+      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = inObject ;\n" ;
+    else
+      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
+    end if ;
+    outGeneratedCode .= "  macroValidObject (object, const cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
+  end if ;
+  outGeneratedCode .= routineBody ;
+#--- Generate return instruction
+  outGeneratedCode .= "//---\n" ;
+  outGeneratedCode .= "  return " . inResultVariableCppName . " ;\n" ;
+#---
+  outGeneratedCode .= "}\n\n" ;
+end function ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -352,6 +534,42 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 
 filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
+  template abstractCategoryReaderDeclaration "abstract-category-reader.h.gTemplate"
+    ?@string CLASS_NAME
+    ?@string READER_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@unifiedTypeMapProxy RETURN_TYPE
+  ;
+  
+  template abstractCategoryReaderImplementation "abstract-category-reader.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string READER_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@unifiedTypeMapProxy RETURN_TYPE
+  ;
+  
+  template categoryReaderDeclaration "category-reader.h.gTemplate"
+    ?@string CLASS_NAME
+    ?@string READER_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@unifiedTypeMapProxy RETURN_TYPE
+  ;
+
+  template categoryReaderImplementation "category-reader.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string READER_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@unifiedTypeMapProxy RETURN_TYPE
+    ?@string READER_IMPLEMENTATION
+  ;
+  
+  template overridingCategoryReaderImplementation "overriding-category-reader.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string READER_NAME
+    ?@unifiedTypeMapProxy RETURN_TYPE
+    ?@string READER_IMPLEMENTATION
+  ;
+  
   template abstractCategoryMethodDeclaration "abstract-category-method.h.gTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
@@ -687,6 +905,28 @@ override reader @categoryMethodForGeneration appendDeclaration1 -> @string outHe
 end reader ;
 
 #---------------------------------------------------------------------------*
+
+override reader @abstractCategoryReaderForGeneration appendDeclaration1 -> @string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderDeclaration
+    !mTypeName
+    !mAbstractCategoryReaderName
+    !mAbstractCategoryReaderFormalParameterList
+    !mResultType
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @categoryReaderForGeneration appendDeclaration1 -> @string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderDeclaration
+    !mTypeName
+    !mCategoryReaderName
+    !mCategoryReaderFormalParameterList
+    !mResultType
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    D E C L A R A T I O N    2                                 *
 #                                                                           *
@@ -914,96 +1154,6 @@ override reader @abstractCategoryMethodForGeneration appendSpecificImplementatio
 end reader ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-# C A T E G O R Y    M E T H O D    I M P L E M E N A T I O N               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-function generateCategoryMethod
-  ??@string inClassName
-  ??@string inBaseClassName
-  ??@string inMethodName
-  ??@formalParameterListForGeneration inFormalArgumentList
-  ??@semanticInstructionListForGeneration inInstructionList
-  ->@string outGeneratedCode
-:
-#--- Build unused variable set
-  @stringset unusedVariableCppNameSet [emptySet] ;
-  unusedVariableCppNameSet += !compilerCppName [] ;
-  unusedVariableCppNameSet += !selfMarkName [] ;
-  foreach inFormalArgumentList do
-    unusedVariableCppNameSet += !mFormalArgumentCppName ;
-  end foreach ;
-#--- Generate body
-  @uint temporaryVariableIndex := 0 ;
-  @string routineBody := "" ;
-  [!?routineBody incIndentation !2] ;
-  foreach inInstructionList do
-    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
-  end foreach ;
-  [!?routineBody decIndentation !2] ;
-#--- Generate header
-  outGeneratedCode := "static void categoryMethod_" . [inClassName identifierRepresentation] . "_" . [inMethodName identifierRepresentation] . " (" ;
-  const @uint colRef := [outGeneratedCode currentColumn] ;
-  if inBaseClassName == "" then
-    outGeneratedCode .= "const cPtr_" . [inClassName identifierRepresentation] . " * " ;
-  else
-    outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
-  end if ;
-  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []] ;
-  if currentObjectIsUnused then
-    outGeneratedCode .= "/* inObject */" ;
-  else
-    outGeneratedCode .= "inObject" ;
-  end if ;
-#---
-  foreach inFormalArgumentList do
-    outGeneratedCode .= ",\n" ;
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
-    switch mFormalArgumentPassingMode 
-    when argumentConstantIn :
-      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
-    when argumentInOut :
-      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
-    when argumentOut :
-      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
-    when argumentIn :
-      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
-    end switch ;
-    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
-      outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
-    else
-      outGeneratedCode .= mFormalArgumentCppName ;
-    end if ;
-  end foreach ;
-#--- Compiler argument
-  outGeneratedCode .= ",\n" ;
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
-  outGeneratedCode .= "C_Compiler * " ;
-  if [unusedVariableCppNameSet hasKey !compilerCppName []] then
-    outGeneratedCode .= "/* " . compilerCppName [] . " */" ;
-  else
-    outGeneratedCode .= compilerCppName [] ;
-  end if ;
-  outGeneratedCode .= "\n" ;
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
-  outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS" ;
-  outGeneratedCode .= ") {\n" ;
-#--- Generate routine body
-  if not currentObjectIsUnused then
-    if inBaseClassName == "" then
-      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = inObject ;\n" ;
-    else
-      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
-    end if ;
-    outGeneratedCode .= "  macroValidObject (object, const cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
-  end if ;
-  outGeneratedCode .= routineBody ;
-#---
-  outGeneratedCode .= "}" ;
-end function ;
-
-#---------------------------------------------------------------------------*
 
 override reader @categoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
   const @string methodImplementation := generateCategoryMethod [
@@ -1035,6 +1185,60 @@ override reader @overridingCategoryMethodForGeneration appendSpecificImplementat
     !mTypeName
     !mCategoryMethodName
     !methodImplementation
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @abstractCategoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
+    !mTypeName
+    !mAbstractCategoryReaderName
+    !mAbstractCategoryReaderFormalParameterList
+    !mResultType
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @categoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+  const @string categoryReaderCode := generateCategoryReader [
+    !mTypeName
+    !""
+    !mCategoryReaderName
+    !mCategoryReaderFormalParameterList
+    !mSemanticInstructionListForGeneration
+    !"C_Compiler"
+    ![mResultType key]
+    !mResultVarCppName
+  ] ;
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryReaderImplementation
+    !mTypeName
+    !mCategoryReaderName
+    !mCategoryReaderFormalParameterList
+    !mResultType
+    !categoryReaderCode
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overrideCategoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+  const @string categoryReaderCode := generateCategoryReader [
+    !mTypeName
+    !mBaseTypeName
+    !mOverridingCategoryReaderName
+    !mOverridingCategoryReaderFormalParameterList
+    !mSemanticInstructionListForGeneration
+    !"C_Compiler"
+    ![mResultType key]
+    !mResultVarCppName
+  ] ;
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryReaderImplementation
+    !mTypeName
+    !mOverridingCategoryReaderName
+    !mResultType
+    !categoryReaderCode
   ] ; 
 end reader ;
 

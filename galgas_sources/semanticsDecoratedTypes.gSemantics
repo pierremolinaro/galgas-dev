@@ -402,6 +402,7 @@ list @formalParameterListForGeneration {
 list @formalInputParameterListForGeneration {
   @unifiedTypeMapProxy mFormalArgumentType ;
   @string mFormalArgumentCppName ;
+  @lstring mFormalArgumentName ;
   @bool mIsUnused ;
 }
 
@@ -1433,6 +1434,52 @@ class @overridingCategoryMethodForGeneration extends @semanticDeclarationForGene
   @string mBaseTypeName ;
   @string mCategoryMethodName ;
   @formalParameterListForGeneration mCategoryMethodFormalParameterList ;
+  @typedAttributeList mTypedAttributeList ;
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryReaderForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mAbstractCategoryReaderName ;
+  @unifiedTypeMapProxy mResultType ;
+  @formalInputParameterListForGeneration mAbstractCategoryReaderFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C A T E G O R Y    R E A D E R    D E C L A R A T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryReaderForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mCategoryReaderName ;
+  @unifiedTypeMapProxy mResultType ;
+  @string mResultVarCppName ;
+  @formalInputParameterListForGeneration mCategoryReaderFormalParameterList ;
+  @typedAttributeList mTypedAttributeList ;
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D E    C A T E G O R Y    R E A D E R    D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overrideCategoryReaderForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mBaseTypeName ;
+  @string mOverridingCategoryReaderName ;
+  @unifiedTypeMapProxy mResultType ;
+  @string mResultVarCppName ;
+  @formalInputParameterListForGeneration mOverridingCategoryReaderFormalParameterList ;
   @typedAttributeList mTypedAttributeList ;
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration ;
 }

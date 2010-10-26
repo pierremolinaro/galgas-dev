@@ -5,7 +5,6 @@
 //---------------------------------------------------------------------------*
 
 %!METHOD_IMPLEMENTATION%
-
 //---------------------------------------------------------------------------*
 
 static void defineCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
@@ -15,5 +14,5 @@ static void defineCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![MET
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogue g_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (defineCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%, NULL) ;
+C_PrologueEpilogue gMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (defineCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%, NULL) ;
 

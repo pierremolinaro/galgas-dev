@@ -907,26 +907,26 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#rule <semantic_declaration>
-# ?!@semanticDeclarationListAST ioSemanticDeclarations
-#:
-#  $abstract$ ;
-#  $reader$ ;
-#  $type_name$ ? @lstring mClassName ;
-#  $identifier$ ? @lstring mReaderName ;
-#  @formalInputParameterListAST mFormalInputParameterList ;
-#  <formal_input_parameter_list> ? mFormalInputParameterList ;
-#  $->$ ;
-#  $type_name$ ? @lstring mReturnedTypeName ;
-#  $identifier$ ? * ;
-#  $;$ ;
-#  ioSemanticDeclarations += ![@abstractCategoryReaderAST new
-#    !mClassName
-#    !mReaderName
-#    !mFormalInputParameterList
-#    !mReturnedTypeName
-#  ] ;
-#end rule ;
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $abstract$ ;
+  $reader$ ;
+  $type_name$ ? @lstring mClassName ;
+  $identifier$ ? @lstring mReaderName ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? * ;
+  $;$ ;
+  ioSemanticDeclarations += ![@abstractCategoryReaderAST new
+    !mClassName
+    !mReaderName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+  ] ;
+end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -934,32 +934,34 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#rule <semantic_declaration>
-# ?!@semanticDeclarationListAST ioSemanticDeclarations
-#:
-#  $reader$ ;
-#  $type_name$ ? @lstring mClassName ;
-#  $identifier$ ? @lstring mMethodName ;
-#  @formalInputParameterListAST mFormalInputParameterList ;
-#  <formal_input_parameter_list> ? mFormalInputParameterList ;
-#  $->$ ;
-#  $type_name$ ? @lstring mReturnedTypeName ;
-#  $identifier$ ? @lstring mReturnedVariableName ;
-#  $:$ ;
-#  @semanticInstructionListAST mRoutineInstructionList ;
-#  <semantic_instruction_list> ? mRoutineInstructionList ;
-#  $end$ ;
-#  $reader$ ;
-#  $;$ ;
-#  ioSemanticDeclarations += ![@categoryReaderAST new
-#    !mClassName
-#    !mMethodName
-#    !mFormalInputParameterList
-#    !mReturnedTypeName
-#    !mReturnedVariableName
-#    !mRoutineInstructionList
-#  ] ;
-#end rule ;
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $reader$ ;
+  $type_name$ ? @lstring mClassName ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? @lstring mReturnedVariableName ;
+  $:$ ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  const @location endOfInstructionList := here ;
+  $reader$ ;
+  $;$ ;
+  ioSemanticDeclarations += ![@categoryReaderAST new
+    !mClassName
+    !mMethodName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+    !mReturnedVariableName
+    !mRoutineInstructionList
+    !endOfInstructionList
+  ] ;
+end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -967,33 +969,64 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#rule <semantic_declaration>
-# ?!@semanticDeclarationListAST ioSemanticDeclarations
-#:
-#  $override$ ;
-#  $reader$ ;
-#  $type_name$ ? @lstring mClassName ;
-#  $identifier$ ? @lstring mMethodName ;
-#  @formalInputParameterListAST mFormalInputParameterList ;
-#  <formal_input_parameter_list> ? mFormalInputParameterList ;
-#  $->$ ;
-#  $type_name$ ? @lstring mReturnedTypeName ;
-#  $identifier$ ? @lstring mReturnedVariableName ;
-#  $:$ ;
-#  @semanticInstructionListAST mRoutineInstructionList ;
-#  <semantic_instruction_list> ? mRoutineInstructionList ;
-#  $end$ ;
-#  $reader$ ;
-#  $;$ ;
-#  ioSemanticDeclarations += ![@overridingCategoryReaderAST new
-#    !mClassName
-#    !mMethodName
-#    !mFormalInputParameterList
-#    !mReturnedTypeName
-#    !mReturnedVariableName
-#    !mRoutineInstructionList
-#  ] ;
-#end rule ;
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $override$ ;
+  $reader$ ;
+  $type_name$ ? @lstring mClassName ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? @lstring mReturnedVariableName ;
+  $:$ ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  const @location endOfInstructionList := here ;
+  $reader$ ;
+  $;$ ;
+  ioSemanticDeclarations += ![@overridingCategoryReaderAST new
+    !mClassName
+    !mMethodName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+    !mReturnedVariableName
+    !mRoutineInstructionList
+    !endOfInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R   *
+#                     D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $override$ ;
+  $abstract$ ;
+  $reader$ ;
+  $type_name$ ? @lstring mClassName ;
+  $identifier$ ? @lstring mReaderName ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? * ;
+  $;$ ;
+  ioSemanticDeclarations += ![@overridingAbstractCategoryReaderAST new
+    !mClassName
+    !mReaderName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+  ] ;
+end rule ;
 
 #---------------------------------------------------------------------------*
 

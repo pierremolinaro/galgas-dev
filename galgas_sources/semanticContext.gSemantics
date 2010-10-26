@@ -125,6 +125,10 @@ map @filewrapperMap {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  O P T I O N   M A P                                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
 
 map @optionComponentMapForSemanticAnalysis {
   @commandLineOptionMap mBoolOptionMap ;
@@ -167,19 +171,39 @@ mapproxy @collectedTypeMapIndex (@collectedTypeMap) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    M U L T I - M E T H O D    M A P                                       *
+#    C A T E G O R Y    M E T H O D    M A P                                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @multiMethodMapForType {
+map @categoryMethodMapForType {
   @formalParameterListAST mFormalParameterList ;
   insert or replace ;
 }
 
 #---------------------------------------------------------------------------*
 
-map @multiMethodMapForBuildingContext {
-  @multiMethodMapForType mMultiMethodMapForType ;
+map @categoryMethodMapForBuildingContext {
+  @categoryMethodMapForType mCategoryMethodMapForType ;
+  insert insertKey error message "internal error" ;
+  search searchKey error message "internal error" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    R E A D E R    M A P                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @categoryReaderMapForType {
+  @lstring mResultTypeName ;
+  @formalInputParameterListAST mInputFormalParameterList ;
+  insert or replace ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @categoryReaderMapForBuildingContext {
+  @categoryReaderMapForType mCategoryReaderMapForType ;
   insert insertKey error message "internal error" ;
   search searchKey error message "internal error" ;
 }
@@ -338,7 +362,8 @@ end method ;
 
 method @semanticDeclarationAST collectTypes
   ?!@collectedTypeMap unused ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
 end method ;
 
@@ -346,21 +371,23 @@ end method ;
 
 override method @abstractCategoryMethodAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
 #--- Enter parameter types
   foreach mAbstractCategoryMethodFormalParameterList do
     [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
   end foreach ;
 #---
-  if not [ioMultiMethodMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioMultiMethodMapForBuildingContext insertKey
+  if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryMethodMapForBuildingContext insertKey
       !mTypeName
-      ![@multiMethodMapForType emptyMap]
+      ![@categoryMethodMapForType emptyMap]
     ] ;
   end if ;
-  with !?ioMultiMethodMapForBuildingContext searchKey !mTypeName do
-    [!?mMultiMethodMapForType insertOrReplace
+  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryMethodMapForType insertOrReplace
       !mAbstractCategoryMethodName
       !mAbstractCategoryMethodFormalParameterList
     ] ;
@@ -371,21 +398,23 @@ end method ;
 
 override method @categoryMethodAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
 #--- Enter parameter types
   foreach mCategoryMethodFormalParameterList do
     [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
   end foreach ;
 #---
-  if not [ioMultiMethodMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioMultiMethodMapForBuildingContext insertKey
+  if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryMethodMapForBuildingContext insertKey
       !mTypeName
-      ![@multiMethodMapForType emptyMap]
+      ![@categoryMethodMapForType emptyMap]
     ] ;
   end if ;
-  with !?ioMultiMethodMapForBuildingContext searchKey !mTypeName do
-    [!?mMultiMethodMapForType insertOrReplace
+  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryMethodMapForType insertOrReplace
       !mCategoryMethodName
       !mCategoryMethodFormalParameterList
     ] ;
@@ -396,8 +425,24 @@ end method ;
 
 override method @overridingCategoryMethodAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
+#--- Enter parameter types
+  foreach mOverridingCategoryMethodFormalParameterList do
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryMethodAST collectTypes
+  ?!@collectedTypeMap ioCollectedTypeMap
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+:
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
 #--- Enter parameter types
   foreach mOverridingCategoryMethodFormalParameterList do
     [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
@@ -407,35 +452,98 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @abstractCategoryReaderAST collectTypes
-  ?!@collectedTypeMap unused ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@collectedTypeMap ioCollectedTypeMap
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
 :
-  error mAbstractCategoryReaderName : "@abstractMultiReaderAST collectTypes\n" ;
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAbstractCategoryReaderReturnedTypeName string] ?*] ;
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
+#--- Enter parameter types
+  foreach mAbstractCategoryReaderFormalInputParameterList do
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
+  end foreach ;
+#---
+  if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryReaderMapForBuildingContext insertKey
+      !mTypeName
+      ![@categoryReaderMapForType emptyMap]
+    ] ;
+  end if ;
+  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAbstractCategoryReaderReturnedTypeName string] ?*] ;
+    [!?mCategoryReaderMapForType insertOrReplace
+      !mAbstractCategoryReaderName
+      !mAbstractCategoryReaderReturnedTypeName
+      !mAbstractCategoryReaderFormalInputParameterList
+    ] ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @categoryReaderAST collectTypes
-  ?!@collectedTypeMap unused ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@collectedTypeMap ioCollectedTypeMap
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
 :
-  error mCategoryReaderName : "@multiReaderAST collectTypes\n" ;
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mCategoryReaderReturnedTypeName string] ?*] ;
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
+#--- Enter parameter types
+  foreach mCategoryReaderFormalInputParameterList do
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
+  end foreach ;
+#---
+  if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryReaderMapForBuildingContext insertKey
+      !mTypeName
+      ![@categoryReaderMapForType emptyMap]
+    ] ;
+  end if ;
+  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryReaderMapForType insertOrReplace
+      !mCategoryReaderName
+      !mCategoryReaderReturnedTypeName
+      !mCategoryReaderFormalInputParameterList
+    ] ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryReaderAST collectTypes
-  ?!@collectedTypeMap unused ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@collectedTypeMap ioCollectedTypeMap
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
-  error mOverridingCategoryReaderName : "@overridingMultiReaderAST collectTypes\n" ;
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mOverridingCategoryReaderReturnedTypeName string] ?*] ;
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
+#--- Enter parameter types
+  foreach mOverridingCategoryReaderFormalInputParameterList do
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryReaderAST collectTypes
+  ?!@collectedTypeMap ioCollectedTypeMap
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+:
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAbstractCategoryReaderReturnedTypeName string] ?*] ;
+  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
+#--- Enter parameter types
+  foreach mAbstractCategoryReaderFormalInputParameterList do
+    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey ![@lstring new !mPredefinedTypeName !here]] ;
 end method ;
@@ -444,7 +552,8 @@ end method ;
 
 override method @mapDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mMapTypeName] ;
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
@@ -454,7 +563,8 @@ end method ;
 
 override method @mapProxyDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mMapProxyTypeName] ;
 end method ;
@@ -463,7 +573,8 @@ end method ;
 
 override method @enumDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mEnumTypeName] ;
 end method ;
@@ -472,7 +583,8 @@ end method ;
 
 override method @sortedListDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mSortedListTypeName] ;
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
@@ -482,7 +594,8 @@ end method ;
 
 override method @structDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mStructTypeName] ;
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
@@ -492,7 +605,8 @@ end method ;
 
 override method @listDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mListTypeName] ;
   collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
@@ -502,7 +616,8 @@ end method ;
 
 override method @classDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mClassTypeName] ;
   if [mSuperClassName string] != "" then
@@ -525,7 +640,8 @@ end method ;
 
 override method @listmapDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@multiMethodMapForBuildingContext unused ioMultiMethodMapForBuildingContext
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   [!?ioCollectedTypeMap insertKey !mListmapTypeName] ;
   [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAssociatedListTypeName string] ?*] ;
@@ -538,14 +654,16 @@ end method ;
 #---------------------------------------------------------------------------*
 
 abstract method @semanticDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@predefinedTypeAST enterInSemanticContext\n" ;
@@ -595,7 +713,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- string type index
@@ -685,6 +804,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !accessorName
       !false # Is not a category
       ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]
+      !here
       !true
       !attributeTypeIndex
       ![@methodQualifier isBasic]
@@ -755,7 +875,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapProxyDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@mapProxyDeclarationAST enterInSemanticContext\n" ;
@@ -842,6 +963,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
         !mAttributeName
         !false # Is not a category
         ![@unifiedTypeMapProxyList emptyList]
+        !here
         !true
         !mAttributeTypeIndex
         ![@methodQualifier isBasic]
@@ -878,7 +1000,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @enumDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@enumDeclarationAST enterInSemanticContext\n" ;
@@ -991,7 +1114,8 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Templates
@@ -1054,7 +1178,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@listDeclarationAST enterInSemanticContext\n" ;
@@ -1101,6 +1226,7 @@ override method @listDeclarationAST enterInSemanticContext
       ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
       !false # Is not a category
       ![@unifiedTypeMapProxyList listWithValue !uintType]
+      !here
       !true
       !mAttributeTypeIndex
       ![@methodQualifier isBasic]
@@ -1185,7 +1311,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@sortedListDeclarationAST enterInSemanticContext\n" ;
@@ -1282,7 +1409,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @structDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@structDeclarationAST enterInSemanticContext\n" ;
@@ -1356,7 +1484,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @classDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
   @unifiedTypeMapProxy uintType ;
@@ -1414,6 +1543,7 @@ override method @classDeclarationAST enterInSemanticContext
         !lkey
         !mIsCategory
         !mArgumentTypeList
+        !mDeclarationLocation
         !mHasCompilerArgument
         !mReturnedType
         ![@methodQualifier isInherited]
@@ -1499,10 +1629,10 @@ override method @classDeclarationAST enterInSemanticContext
     end with ;
   end foreach ;
 #------------------------  Category methods
-  if [inMultiMethodMapForBuildingContext hasKey ![mClassTypeName string]] then
-    @multiMethodMapForType multiMethodMapForType ;
-    [inMultiMethodMapForBuildingContext searchKey !mClassTypeName ?multiMethodMapForType] ;
-    foreach multiMethodMapForType do
+  if [inCategoryMethodMapForBuildingContext hasKey ![mClassTypeName string]] then
+    @categoryMethodMapForType categoryMethodMapForType ;
+    [inCategoryMethodMapForBuildingContext searchKey !mClassTypeName ?categoryMethodMapForType] ;
+    foreach categoryMethodMapForType do
       @formalParameterSignature formalArgumentList [emptyList] ;
       foreach mFormalParameterList do
         @unifiedTypeMapProxy typeIndex ;
@@ -1519,6 +1649,30 @@ override method @classDeclarationAST enterInSemanticContext
       ] ;
     end foreach ;
   end if ;
+#------------------------  Category readers
+  if [inCategoryReaderMapForBuildingContext hasKey ![mClassTypeName string]] then
+    @categoryReaderMapForType categoryReaderMapForType ;
+    [inCategoryReaderMapForBuildingContext searchKey !mClassTypeName ?categoryReaderMapForType] ;
+    foreach categoryReaderMapForType do
+      @unifiedTypeMapProxyList formalArgumentList [emptyList] ;
+      foreach mInputFormalParameterList do
+        @unifiedTypeMapProxy typeIndex ;
+        [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?typeIndex] ;
+        formalArgumentList += !typeIndex ;
+      end foreach ;
+      @unifiedTypeMapProxy returnedType ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mResultTypeName string] ?returnedType] ;
+      [!?readerMap insertKey
+        !lkey
+        !true # is a category
+        !formalArgumentList
+        ![lkey location]
+        !true
+        !returnedType
+        ![@methodQualifier isBasic]
+      ] ;
+    end foreach ;
+  end if ;
 #--- Typed attribute list
   @typedAttributeList currentClassTypedAttributeList [emptyList] ;
   @typedAttributeList allTypedAttributeList := inheritedTypedAttributeList ;
@@ -1531,6 +1685,7 @@ override method @classDeclarationAST enterInSemanticContext
       !mAttributeName
       !false # Is not a category
       ![@unifiedTypeMapProxyList emptyList] # No argument
+      !here
       !false # No Compiler argument
       !attributeTypeIndex # Returned type
       ![@methodQualifier isBasic]
@@ -1575,7 +1730,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externRoutineDeclarationAST enterInSemanticContext # Handles also routine declaration
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
@@ -1592,7 +1748,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST enterInSemanticContext # Handles also function declaration
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
@@ -1612,7 +1769,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Result type
@@ -1625,7 +1783,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST enterInSemanticContext
-  ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@listmapDeclarationAST enterInSemanticContext: @" . [mListmapTypeName string] . "\n" ;
@@ -1833,11 +1992,13 @@ routine buildSemanticContext
 :
 #--- Collect all types, for checking there is no undefined type
   @collectedTypeMap collectedTypeMap [emptyMap] ;
-  @multiMethodMapForBuildingContext multiMethodMapForBuildingContext [emptyMap] ;
+  @categoryMethodMapForBuildingContext categoryMethodMapForBuildingContext [emptyMap] ;
+  @categoryReaderMapForBuildingContext categoryReaderMapForBuildingContext [emptyMap] ;
   foreach inSemanticDeclarationList do
     [mSemanticDeclaration collectTypes
       !?collectedTypeMap
-      !?multiMethodMapForBuildingContext
+      !?categoryMethodMapForBuildingContext
+      !?categoryReaderMapForBuildingContext
     ] ;
   end foreach ;
 #--- Check there is no undefined type
@@ -1914,7 +2075,11 @@ routine buildSemanticContext
       ] ;
     #--- Loop throught all declarations
       foreach orderedSemanticDeclarationListAST do
-        [mSemanticDeclaration enterInSemanticContext !multiMethodMapForBuildingContext !?outSemanticContext] ;
+        [mSemanticDeclaration enterInSemanticContext
+          !categoryMethodMapForBuildingContext
+          !categoryReaderMapForBuildingContext
+          !?outSemanticContext
+        ] ;
       end foreach ;
     end if ;
   end if ;

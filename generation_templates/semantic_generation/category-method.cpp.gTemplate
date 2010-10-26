@@ -19,7 +19,7 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
   foreach FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]%  constin_%![mFormalArgumentName identifierRepresentation]
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% & io_%![mFormalArgumentName identifierRepresentation]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
@@ -76,7 +76,6 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
 //---------------------------------------------------------------------------*
 
 %!METHOD_IMPLEMENTATION%
-
 //---------------------------------------------------------------------------*
 
 static void defineCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
@@ -92,6 +91,6 @@ static void freeCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHO
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogue g_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%defineCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%,
+C_PrologueEpilogue gMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%defineCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%,
        %!^%freeCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
 
