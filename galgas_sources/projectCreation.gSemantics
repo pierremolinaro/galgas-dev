@@ -28,31 +28,31 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
  "command", "bat", "m", "rtf", "strings"
 } {
 #--- Project
-  template build_bat "/galgas_sources/build.bat.txt" ?@string PROJECT_NAME ;
-  template PROJECT_project "/galgas_sources/all_PROJECT.gProject" ?@string PROJECT_NAME ;
-  template PROJECT_cocoa "/galgas_sources/PROJECT_cocoa.gGui" ?@string PROJECT_NAME ;
-  template PROJECT_grammar "/galgas_sources/PROJECT_grammar.gGrammar" ?@string PROJECT_NAME ;
-  template PROJECT_lexique "/galgas_sources/PROJECT_lexique.gLexique" ?@string PROJECT_NAME ;
-  template PROJECT_options "/galgas_sources/PROJECT_options.gOption" ?@string PROJECT_NAME ;
-  template PROJECT_program "/galgas_sources/PROJECT_program.gProgram" ?@string PROJECT_NAME ;
-  template PROJECT_semantics "/galgas_sources/PROJECT_semantics.gSemantics" ?@string PROJECT_NAME ;
-  template PROJECT_syntax "/galgas_sources/PROJECT_syntax.gSyntax" ?@string PROJECT_NAME ;
-  template PROJECT_computations "/hand_coded_sources/PROJECT_computations.cpp" ?@string PROJECT_NAME ;
-  template makefile_macosx_makefile "/makefile_macosx/makefile" ?@string PROJECT_NAME ;
-  template makefile_macosx_makefile64 "/makefile_macosx/makefile64" ?@string PROJECT_NAME ;
-  template makefile_macosx_ppc_makefile "/makefile_macosx_ppc/makefile" ?@string PROJECT_NAME ;
-  template makefile_macosx_ppc_makefile64 "/makefile_macosx_ppc/makefile64" ?@string PROJECT_NAME ;
-  template makefile_macosx_i386_makefile "/makefile_macosx_i386/makefile" ?@string PROJECT_NAME ;
-  template makefile_macosx_i386_makefile64 "/makefile_macosx_i386/makefile64" ?@string PROJECT_NAME ;
-  template makefile_macosx_universal_makefile "/makefile_macosx_universal/makefile" ?@string PROJECT_NAME ;
-  template makefile_macosx_universal_makefile64 "/makefile_macosx_universal/makefile64" ?@string PROJECT_NAME ;
-  template makefile_mingw_on_macosx_makefile "/makefile_mingw_on_macosx/makefile" ?@string PROJECT_NAME ;
-  template makefile_msys_on_win32_makefile "/makefile_msys_on_win32/makefile" ?@string PROJECT_NAME ;
-  template makefile_unix_makefile "/makefile_unix/makefile" ?@string PROJECT_NAME ;
-  template makefile_unix_makefile64 "/makefile_unix/makefile64" ?@string PROJECT_NAME ;
-  template makefile_x86linux_on_macosx_makefile "/makefile_x86linux_on_macosx/makefile" ?@string PROJECT_NAME ;
-  template info_plist "/project_xcode/Info.plist" ?@string PROJECT_NAME ;
-  template cocoa_infoPlist_strings "/project_xcode/English.lproj/InfoPlist.strings" ?@string PROJECT_NAME ;
+  template build_bat "galgas_sources/build.bat.txt" ?@string PROJECT_NAME ;
+  template PROJECT_project "galgas_sources/all_PROJECT.gProject" ?@string PROJECT_NAME ;
+  template PROJECT_cocoa "galgas_sources/PROJECT_cocoa.gGui" ?@string PROJECT_NAME ;
+  template PROJECT_grammar "galgas_sources/PROJECT_grammar.gGrammar" ?@string PROJECT_NAME ;
+  template PROJECT_lexique "galgas_sources/PROJECT_lexique.gLexique" ?@string PROJECT_NAME ;
+  template PROJECT_options "galgas_sources/PROJECT_options.gOption" ?@string PROJECT_NAME ;
+  template PROJECT_program "galgas_sources/PROJECT_program.gProgram" ?@string PROJECT_NAME ;
+  template PROJECT_semantics "galgas_sources/PROJECT_semantics.gSemantics" ?@string PROJECT_NAME ;
+  template PROJECT_syntax "galgas_sources/PROJECT_syntax.gSyntax" ?@string PROJECT_NAME ;
+  template PROJECT_computations "hand_coded_sources/PROJECT_computations.cpp" ?@string PROJECT_NAME ;
+  template makefile_macosx_makefile "makefile_macosx/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_makefile64 "makefile_macosx/makefile64" ?@string PROJECT_NAME ;
+  template makefile_macosx_ppc_makefile "makefile_macosx_ppc/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_ppc_makefile64 "makefile_macosx_ppc/makefile64" ?@string PROJECT_NAME ;
+  template makefile_macosx_i386_makefile "makefile_macosx_i386/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_i386_makefile64 "makefile_macosx_i386/makefile64" ?@string PROJECT_NAME ;
+  template makefile_macosx_universal_makefile "makefile_macosx_universal/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_universal_makefile64 "makefile_macosx_universal/makefile64" ?@string PROJECT_NAME ;
+  template makefile_mingw_on_macosx_makefile "makefile_mingw_on_macosx/makefile" ?@string PROJECT_NAME ;
+  template makefile_msys_on_win32_makefile "makefile_msys_on_win32/makefile" ?@string PROJECT_NAME ;
+  template makefile_unix_makefile "makefile_unix/makefile" ?@string PROJECT_NAME ;
+  template makefile_unix_makefile64 "makefile_unix/makefile64" ?@string PROJECT_NAME ;
+  template makefile_x86linux_on_macosx_makefile "makefile_x86linux_on_macosx/makefile" ?@string PROJECT_NAME ;
+  template info_plist "project_xcode/Info.plist" ?@string PROJECT_NAME ;
+  template cocoa_infoPlist_strings "project_xcode/English.lproj/InfoPlist.strings" ?@string PROJECT_NAME ;
 }
 
 

@@ -115,38 +115,18 @@ project all_galgas_2:
   program "galgas_prgm.gProgram" : makefile ;
 
 #--- Hand coded sources
-  extern "assignment_instructions.cpp" : makefile ;
   extern "buildPureBNFgrammar.cpp" : makefile ;
-  extern "call_instructions.cpp" : makefile ;
-  extern "categoryMethods.cpp" : makefile ;
-  extern "cDecisionTableElement.cpp" : makefile ;
-  extern "class_generation.cpp" : makefile ;
   extern "cVocabulary.cpp" : makefile ;
-  extern "domain_generation.cpp" : makefile ;
-  extern "empty_strings_computations.cpp" : makefile ;
-  extern "enum_generation.cpp" : makefile ;
-  extern "extern_type_generation.cpp" : makefile ;
-  extern "filewrapper_template_generation.cpp" : makefile ;
   extern "FIRST_computations.cpp" : makefile ;
   extern "follow_by_empty_computation.cpp" : makefile ;
   extern "FOLLOW_computations.cpp" : makefile ;
   extern "foreach_instructions.cpp" : makefile ;
   extern "grammarComputations.cpp" : makefile ;
-  extern "if_instruction.cpp" : makefile ;
-  extern "list_generation.cpp" : makefile ;
   extern "LL1_computations.cpp" : makefile ;
   extern "LR1_computations.cpp" : makefile ;
-  extern "map_generation.cpp" : makefile ;
-  extern "parser_generation.cpp" : makefile ;
-  extern "parser_instructions.cpp" : makefile ;
-  extern "prgm_generation.cpp" : makefile ;
   extern "printOriginalGrammar.cpp" : makefile ;
-  extern "semantics_generation.cpp" : makefile ;
-  extern "semantics_instructions.cpp" : makefile ;
   extern "SLR_computations.cpp" : makefile ;
-  extern "struct_generation.cpp" : makefile ;
   extern "useful_symbols_computations.cpp" : makefile ;
-  extern "wrapper_generation.cpp" : makefile ;
 end project ;
 
 #---------------------------------------------------------------------------*

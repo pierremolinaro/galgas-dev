@@ -1892,10 +1892,15 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperInExpressionAST analyzeSemanticExpression
-  ??@analysisContext unused inAnalysisContext
+  ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
+#---
+  @filewrapperTemplateMap filewrapperTemplateMap ;
+  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?* ?* ?filewrapperTemplateMap] ;
+#--- Find directory
+  log mFilewrapperPath ;
   error mFilewrapperName
   : "unhandled @filewrapperInExpressionAST expression"
   : outExpression
