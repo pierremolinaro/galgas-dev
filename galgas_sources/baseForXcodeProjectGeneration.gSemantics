@@ -42,7 +42,7 @@ abstract class @Xcode_productFileReference extends @Xcode_PBXFileReference_abstr
 class @Xcode_PBXFileReference_CompiledMachOExecutable extends @Xcode_productFileReference {
 
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " = {isa = PBXFileReference; explicitFileType = \"compiled.mach-o.executable\"; includeInIndex = 0; path = "
     . mFileName . "; sourceTree = BUILT_PRODUCTS_DIR; };\n" ;
   end method ;
@@ -57,7 +57,7 @@ class @Xcode_PBXFileReference_CompiledMachOExecutable extends @Xcode_productFile
 class @Xcode_PBXFileReference_Application extends @Xcode_productFileReference {
 
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " = {isa = PBXFileReference; explicitFileType = \"compiled.wrapper.application\"; includeInIndex = 0; path = "
     . mFileName . "; sourceTree = BUILT_PRODUCTS_DIR; };\n" ;
   end method ;
@@ -71,7 +71,7 @@ class @Xcode_PBXFileReference_Application extends @Xcode_productFileReference {
 
 class @Xcode_PBXFileReference_cppSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -82,7 +82,7 @@ class @Xcode_PBXFileReference_cppSourceFile extends @Xcode_PBXFileReference_abst
 
 class @Xcode_PBXFileReference_hSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -93,7 +93,7 @@ class @Xcode_PBXFileReference_hSourceFile extends @Xcode_PBXFileReference_abstra
 
 class @Xcode_PBXFileReference_pchSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pch; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -104,7 +104,7 @@ class @Xcode_PBXFileReference_pchSourceFile extends @Xcode_PBXFileReference_abst
 
 class @Xcode_PBXFileReference_mSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -115,7 +115,7 @@ class @Xcode_PBXFileReference_mSourceFile extends @Xcode_PBXFileReference_abstra
 
 class @Xcode_PBXFileReference_mmSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -126,7 +126,7 @@ class @Xcode_PBXFileReference_mmSourceFile extends @Xcode_PBXFileReference_abstr
 
 class @Xcode_PBXFileReference_gifFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -137,7 +137,7 @@ class @Xcode_PBXFileReference_gifFile extends @Xcode_PBXFileReference_abstract  
 
 class @Xcode_PBXFileReference_tiffFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -148,7 +148,7 @@ class @Xcode_PBXFileReference_tiffFile extends @Xcode_PBXFileReference_abstract 
 
 class @Xcode_PBXFileReference_pngFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -159,7 +159,7 @@ class @Xcode_PBXFileReference_pngFile extends @Xcode_PBXFileReference_abstract  
 
 class @Xcode_PBXFileReference_plistFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -170,7 +170,7 @@ class @Xcode_PBXFileReference_plistFile extends @Xcode_PBXFileReference_abstract
 
 class @Xcode_PBXFileReference_frameworkFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -181,7 +181,7 @@ class @Xcode_PBXFileReference_frameworkFile extends @Xcode_PBXFileReference_abst
 
 class @Xcode_PBXFileReference_icnsFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
@@ -193,7 +193,7 @@ class @Xcode_PBXFileReference_icnsFile extends @Xcode_PBXFileReference_abstract 
 class @Xcode_PBXFileReference_xibFile extends @Xcode_PBXFileReference_abstract  {
   @string mFilePath ;
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xib; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFilePath . "; sourceTree = \"<group>\"; };\n" ;
@@ -205,7 +205,7 @@ class @Xcode_PBXFileReference_xibFile extends @Xcode_PBXFileReference_abstract  
 class @Xcode_PBXFileReference_plistStringFile extends @Xcode_PBXFileReference_abstract  {
   @string mFilePath ;
   override method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFileReferenceKey]
+    outString .= "\t\t" . [selfcopy PBXFileReferenceKey]
     . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFilePath . "; sourceTree = \"<group>\"; };\n" ;
@@ -236,7 +236,7 @@ class @Xcode_PBXBuildFile {
   end once ;
 
   method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXBuildFileKey] . " /* " . [mSourceFile mFileName] . " */ "
+    outString .= "\t\t" . [selfcopy PBXBuildFileKey] . " /* " . [mSourceFile mFileName] . " */ "
     . "= {isa = PBXBuildFile; fileRef = " . [mSourceFile PBXFileReferenceKey]
     . " ; settings = {ATTRIBUTES = (); }; };\n" ;
   end method ;
@@ -308,7 +308,7 @@ class @Xcode_PBXFrameworksBuildPhase {
   end once ;
 
   method buildXcodeProject ?!@string outString :
-    outString .= "\t\t" . [self PBXFrameworksBuildPhaseKey] . " /* Frameworks */ = {\n"
+    outString .= "\t\t" . [selfcopy PBXFrameworksBuildPhaseKey] . " /* Frameworks */ = {\n"
     . "\t\t\tisa = PBXFrameworksBuildPhase;\n"
     . "\t\t\tbuildActionMask = 2147483647;\n"
     . "\t\t\tfiles = (\n" ;

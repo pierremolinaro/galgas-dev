@@ -924,87 +924,23 @@ end method ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @filewrapperRegularFileMap {
-  @uint mWrapperDirectoryIndex ;
-  @uint mWrapperFileIndex ;
-  insert insertKey error message "a regular file named '%K' is already declared in %L" ;
-  search searchKey error message "there is no regular file named '%K'" ;
-}
-
-#---------------------------------------------------------------------------*
-
-routine recursivelyEnumerateDirectories
-  ??@string inAbsoluteSourcePath
-  ??@string inPathInWrapper
-  ??@wrapperExtensionMap inExtensionMap
-  !@wrapperFileSortedList outWrapperFileSortedList
-  !@wrapperDirectorySortedList outWrapperDirectorySortedList
-  ?!@uint ioWrapperFileIndex
-  ?!@uint ioWrapperDirectoryIndex
-  ?!@filewrapperRegularFileMap ioRegularFileMap
-:
-  @uint currentDirectoryIndex := ioWrapperDirectoryIndex ;
-  ioWrapperDirectoryIndex ++ ;
-#--- Enumerates regular files
-  @stringlist files := [inAbsoluteSourcePath regularFiles !false] ;
-  outWrapperFileSortedList := [@wrapperFileSortedList emptySortedList] ;
-  foreach files do
-    if [inExtensionMap hasKey ![mValue pathExtension]] then
-      @string absoluteFilePath := inAbsoluteSourcePath . "/" . mValue ;
-      outWrapperFileSortedList +=
-        !mValue
-        !absoluteFilePath
-        !currentDirectoryIndex
-        !ioWrapperFileIndex
-      ;
-      [!?ioRegularFileMap insertKey
-        ![@lstring new !inPathInWrapper . mValue !here]
-        !currentDirectoryIndex
-        !ioWrapperFileIndex
-      ] ;
-      ioWrapperFileIndex ++ ;
-    end if ;
-  end foreach ;
-#--- Enumerates regular directories
-  @stringlist directories := [inAbsoluteSourcePath directories !false] ;
-  outWrapperDirectorySortedList := [@wrapperDirectorySortedList emptySortedList] ;
-  foreach directories do
-    @wrapperFileSortedList internalWrapperFileSortedList ;
-    @wrapperDirectorySortedList internalWrapperDirectorySortedList ;
-    @uint theDirectoryIndex := ioWrapperDirectoryIndex ;
-    recursivelyEnumerateDirectories
-      !inAbsoluteSourcePath . "/" . mValue
-      !inPathInWrapper . mValue . "/"
-      !inExtensionMap
-      ?internalWrapperFileSortedList
-      ?internalWrapperDirectorySortedList
-      !?ioWrapperFileIndex
-      !?ioWrapperDirectoryIndex
-      !?ioRegularFileMap
-    ;
-    outWrapperDirectorySortedList +=
-      !mValue
-      !internalWrapperFileSortedList
-      !internalWrapperDirectorySortedList
-      !theDirectoryIndex
-    ;
-  end foreach ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 override method @filewrapperDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
-#--- Build extension map
-  @wrapperExtensionMap extensionMap [emptyMap] ;
-  foreach mFilewrapperExtensionList do
-    [!?extensionMap insertKey !mValue] ;
-  end foreach ;
+#--- Get filewrapper features
+  @wrapperFileMap wrapperFileMap ;
+  @wrapperDirectoryMap wrapperDirectoryMap ;
+  [inSemanticContext->mFilewrapperMap searchKey
+    !mFilewrapperName
+    ?*
+    ?*
+    ?wrapperFileMap
+    ?wrapperDirectoryMap
+    ?*
+  ] ;
 #--- Build absolute path
-  @filewrapperRegularFileMap regularFileMap [emptyMap] ;
   @string absoluteSourcePath ;
   if [mFilewrapperPath firstCharacterOrNul] == '/' then
     absoluteSourcePath := [mFilewrapperPath string] ;
@@ -1014,21 +950,6 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
   if not [absoluteSourcePath directoryExists] then
     error mFilewrapperPath: "The '" . absoluteSourcePath . "' directory does not exist" ;
   else
-  #--- Enumerate pathes
-    @wrapperFileSortedList wrapperFileSortedList ;
-    @wrapperDirectorySortedList wrapperDirectorySortedList ;
-    @uint wrapperFileIndex := 0 ;
-    @uint wrapperDirectoryIndex := 0 ;
-    recursivelyEnumerateDirectories
-     !absoluteSourcePath
-     !"/"
-     !extensionMap
-     ?wrapperFileSortedList
-     ?wrapperDirectorySortedList
-     !?wrapperFileIndex
-     !?wrapperDirectoryIndex
-     !?regularFileMap
-   ;
   #---- Analyze filewrapper templates
     @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration [emptyList] ;
     foreach mFilewrapperTemplateList do
@@ -1067,9 +988,8 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
     ioSemanticDeclarationListForGeneration += ![@filewrapperDeclarationForGeneration new
       ![mFilewrapperName string]
       ![mFilewrapperPath string]
-      !extensionMap
-      !wrapperFileSortedList
-      !wrapperDirectorySortedList
+      !wrapperFileMap
+      !wrapperDirectoryMap
       !filewrapperTemplateListForGeneration
     ]
   !""

@@ -83,6 +83,28 @@ map @functionMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+map @wrapperFileMap { # Key is file name
+  @string mAbsoluteFilePath ;
+  @uint mWrapperDirectoryIndex ;
+  @uint mWrapperFileIndex ;
+  insert insertKey error message "INTERNAL ERROR" ;
+  search searchKey error message "INTERNAL ERROR" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @wrapperDirectoryMap ;
+
+map @wrapperDirectoryMap { # Key is directory name
+  @wrapperFileMap mRegularFileMap ;
+  @wrapperDirectoryMap mDirectoryMap ;
+  @uint mWrapperDirectoryIndex ;
+  insert insertKey error message "INTERNAL ERROR" ;
+  search searchKey error message "INTERNAL ERROR" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @filewrapperTemplateMap {
   @unifiedTypeMapProxyList mTemplateSignature ;
   @lstring mFilewrapperTemplatePath ;
@@ -95,6 +117,8 @@ map @filewrapperTemplateMap {
 map @filewrapperMap {
   @lstring mFilewrapperPath ;
   @lstringlist mFilewrapperExtensionList ;
+  @wrapperFileMap mFilewrapperFileMap ;
+  @wrapperDirectoryMap mFilewrapperDirectoryMap ;
   @filewrapperTemplateMap mFilewrapperTemplateMap ;
   insert insertKey error message "the '%K' filewrapper has been already declared in %L" ;
   search searchKey error message "the '%K' filewrapper is not declared" ;
@@ -530,7 +554,7 @@ override method @predefinedTypeAST enterInSemanticContext
   @modifierMap modifierMap ;
   @instanceMethodMap instanceMethodMap ;
   @classMethodMap classMethodMap ;
-  @predefinedTypeAST t := self ; # Bug in GALGAS 1
+  @predefinedTypeAST t := selfcopy ; # Bug in GALGAS 1
   [t getConstructorMap !?ioSemanticContext->mTypeMap ?constructorMap] ;
   [t getReaderMap !?ioSemanticContext->mTypeMap ?readerMap] ;
   [t getModifierMap !?ioSemanticContext->mTypeMap ?modifierMap] ;
@@ -907,10 +931,70 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+map @wrapperExtensionMap {
+  insert insertKey error message "the '%K' extension has been already declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine recursivelyEnumerateDirectories
+  ??@string inAbsoluteSourcePath
+  ??@string inPathInWrapper
+  ??@wrapperExtensionMap inExtensionMap
+  !@wrapperFileMap outWrapperFileMap
+  !@wrapperDirectoryMap outWrapperDirectoryMap
+  ?!@uint ioWrapperFileIndex
+  ?!@uint ioWrapperDirectoryIndex
+:
+  @uint currentDirectoryIndex := ioWrapperDirectoryIndex ;
+  ioWrapperDirectoryIndex ++ ;
+#--- Enumerates regular files
+  @stringlist files := [inAbsoluteSourcePath regularFiles !false] ;
+  outWrapperFileMap := [@wrapperFileMap emptyMap] ;
+  foreach files do
+    if [inExtensionMap hasKey ![mValue pathExtension]] then
+      @string absoluteFilePath := inAbsoluteSourcePath . "/" . mValue ;
+      [!?outWrapperFileMap insertKey
+        ![@lstring new !mValue !here]
+        !absoluteFilePath
+        !currentDirectoryIndex
+        !ioWrapperFileIndex
+      ] ;
+      ioWrapperFileIndex ++ ;
+    end if ;
+  end foreach ;
+#--- Enumerates regular directories
+  @stringlist directories := [inAbsoluteSourcePath directories !false] ;
+  outWrapperDirectoryMap := [@wrapperDirectoryMap emptyMap] ;
+  foreach directories do
+    @wrapperFileMap internalWrapperFileMap ;
+    @wrapperDirectoryMap internalWrapperDirectoryMap ;
+    @uint theDirectoryIndex := ioWrapperDirectoryIndex ;
+    recursivelyEnumerateDirectories
+      !inAbsoluteSourcePath . "/" . mValue
+      !inPathInWrapper . mValue . "/"
+      !inExtensionMap
+      ?internalWrapperFileMap
+      ?internalWrapperDirectoryMap
+      !?ioWrapperFileIndex
+      !?ioWrapperDirectoryIndex
+    ;
+    [!?outWrapperDirectoryMap insertKey
+      ![@lstring new !mValue !here]
+      !internalWrapperFileMap
+      !internalWrapperDirectoryMap
+      !theDirectoryIndex
+    ] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 override method @filewrapperDeclarationAST enterInSemanticContext
   ??@multiMethodMapForBuildingContext unused inMultiMethodMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
+#--- Templates
   @filewrapperTemplateMap filewrapperTemplateMap [emptyMap] ;
   foreach mFilewrapperTemplateList do
     @unifiedTypeMapProxyList templateSignature [emptyList] ;
@@ -925,10 +1009,44 @@ override method @filewrapperDeclarationAST enterInSemanticContext
       !mFilewrapperTemplatePath
     ] ;
   end foreach ;
+#--- Build extension map
+  @wrapperExtensionMap extensionMap [emptyMap] ;
+  foreach mFilewrapperExtensionList do
+    [!?extensionMap insertKey !mValue] ;
+  end foreach ;
+#--- Enumerate filewrapper files
+  @wrapperFileMap regularRootFileMap ;
+  @wrapperDirectoryMap wrapperDirectoryMap ;
+  @string absoluteSourcePath ;
+  if [mFilewrapperPath firstCharacterOrNul] == '/' then
+    absoluteSourcePath := [mFilewrapperPath string] ;
+  else
+    absoluteSourcePath := [mSourceFileAbsolutePath stringByDeletingLastPathComponent] . "/" . [mFilewrapperPath string] ;
+  end if ;
+  if not [absoluteSourcePath directoryExists] then
+    error mFilewrapperPath: "The '" . absoluteSourcePath . "' directory does not exist" 
+    : regularRootFileMap, wrapperDirectoryMap ;
+  else
+  #--- Enumerate pathes
+    @uint wrapperFileIndex := 0 ;
+    @uint wrapperDirectoryIndex := 0 ;
+    recursivelyEnumerateDirectories
+     !absoluteSourcePath
+     !"/"
+     !extensionMap
+     ?regularRootFileMap
+     ?wrapperDirectoryMap
+     !?wrapperFileIndex
+     !?wrapperDirectoryIndex
+   ;
+  end if ;
+#--- Insert filewrapper
   [!?ioSemanticContext->mFilewrapperMap insertKey
     !mFilewrapperName
     !mFilewrapperPath
     !mFilewrapperExtensionList
+    !regularRootFileMap
+    !wrapperDirectoryMap
     !filewrapperTemplateMap
   ] ;
 end method ;
@@ -1609,8 +1727,8 @@ end method ;
 override method @predefinedTypeAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  @predefinedTypeAST t := self ; # Bug in GALGAS 1
-  ioPartiallyOrderedDeclarationList += !"" !mPredefinedTypeName !self ;
+  @predefinedTypeAST t := selfcopy ; # Bug in GALGAS 1
+  ioPartiallyOrderedDeclarationList += !"" !mPredefinedTypeName !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1618,7 +1736,7 @@ end method ;
 override method @classDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += ![mSuperClassName string] ![mClassTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += ![mSuperClassName string] ![mClassTypeName string] !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1626,7 +1744,7 @@ end method ;
 override method @listDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mListTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mListTypeName string] !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1634,7 +1752,7 @@ end method ;
 override method @structDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mStructTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mStructTypeName string] !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1642,7 +1760,7 @@ end method ;
 override method @enumDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mEnumTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mEnumTypeName string] !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1650,7 +1768,7 @@ end method ;
 override method @sortedListDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mSortedListTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mSortedListTypeName string] !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1658,7 +1776,7 @@ end method ;
 override method @listmapDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += ![mAssociatedListTypeName string] ![mListmapTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += ![mAssociatedListTypeName string] ![mListmapTypeName string] !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1666,7 +1784,7 @@ end method ;
 override method @mapDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" ![mMapTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += !"" ![mMapTypeName string] !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1674,7 +1792,7 @@ end method ;
 override method @mapProxyDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += ![mAssociatedMapTypeName string] ![mMapProxyTypeName string] !self ;
+  ioPartiallyOrderedDeclarationList += ![mAssociatedMapTypeName string] ![mMapProxyTypeName string] !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1682,7 +1800,7 @@ end method ;
 override method @externFunctionDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" !"" !self ;
+  ioPartiallyOrderedDeclarationList += !"" !"" !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1690,7 +1808,7 @@ end method ;
 override method @externRoutineDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" !"" !self ;
+  ioPartiallyOrderedDeclarationList += !"" !"" !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1698,7 +1816,7 @@ end method ;
 override method @filewrapperDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
-  ioPartiallyOrderedDeclarationList += !"" !"" !self ;
+  ioPartiallyOrderedDeclarationList += !"" !"" !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*

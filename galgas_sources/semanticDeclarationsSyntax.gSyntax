@@ -784,6 +784,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@filewrapperDeclarationAST new
+    ![@string stringWithSourceFilePath]
     !mFilewrapperName
     !mFilewrapperPath
     !mFilewrapperExtensionList

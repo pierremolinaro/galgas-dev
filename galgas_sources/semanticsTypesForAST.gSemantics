@@ -1370,6 +1370,7 @@ list @filewrapperTemplateListAST {
 #---------------------------------------------------------------------------*
 
 class @filewrapperDeclarationAST extends @semanticDeclarationAST {
+  @string mSourceFileAbsolutePath ;
   @lstring mFilewrapperName ;
   @lstring mFilewrapperPath ;
   @lstringlist mFilewrapperExtensionList ;

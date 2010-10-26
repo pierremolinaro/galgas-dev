@@ -491,7 +491,7 @@ abstract class @AC_galgasType feature generatedInSeparateFile {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     error inClassMethodName : "This constructor is not defined"
       : outAccessorTypesList, outHasLexiqueAndLocationArguments, outReturnedType
@@ -817,7 +817,7 @@ class @typeGalgas_uint extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if ([inClassMethodName string] == "max") |
        ([inClassMethodName string] == "errorCount") |  
@@ -857,7 +857,7 @@ class @typeGalgas_char extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     if ([inClassMethodName string] == "replacementCharacter") then
       outHasLexiqueAndLocationArguments := false ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -927,7 +927,7 @@ class @typeGalgas_string extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "stringWithVersionString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1070,7 +1070,7 @@ class @typeGalgas_sint extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "min" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1118,7 +1118,7 @@ class @typeGalgas_sint64 extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "min" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1166,7 +1166,7 @@ class @typeGalgas_uint64 extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "max" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1226,7 +1226,7 @@ class @typeGalgas_binaryset extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "binarySetWithBit" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1363,7 +1363,7 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1417,7 +1417,7 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1471,7 +1471,7 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1524,7 +1524,7 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1577,7 +1577,7 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1630,7 +1630,7 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1683,7 +1683,7 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1736,7 +1736,7 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1793,7 +1793,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptySet" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -1917,7 +1917,7 @@ class @typeGalgas_data extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptyData" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2055,7 +2055,7 @@ class @typeGalgas_function extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "functionList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2148,7 +2148,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     [mConstructorMap searchKey !inClassMethodName ?outAccessorTypesList] ;
   end method ;
@@ -2177,7 +2177,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
-#    [self handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
+#    [selfcopy handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
 #    if not mAcceptAddAssignOperatorCall then
 #      [super handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
 #    else
@@ -2487,7 +2487,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptyList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2524,7 +2524,7 @@ class @typeGalgasStructType extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := mAttributeList ;
@@ -2579,7 +2579,7 @@ class @typeGalgasListmapType extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptyMap" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2925,7 +2925,7 @@ class @typeGalgasDomainType extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "domainWithNames" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3043,7 +3043,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptySortedList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3224,7 +3224,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "emptyMap" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3265,7 +3265,7 @@ class @typeGalgasUndefinedMapindexType extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "null" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3301,7 +3301,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     if [inClassMethodName string] != "null" then
@@ -3345,7 +3345,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
            !aTableMethodesSurcharger
            !mModifierMethodMap
            !mReaderMethodMap
-         ] ## self ??
+         ] ## selfcopy ??
         ![@formalArgumentPassingModeAST argumentOut]
       ;
     else
@@ -3484,7 +3484,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     if mClassIsAbstract then
       error inClassMethodName : "an abstract class cannot be instancied" : outAccessorTypesList ;
@@ -3555,7 +3555,7 @@ class @typeGalgas_enum extends @AC_galgasType {
     !@bool outHasLexiqueAndLocationArguments
     !@AC_galgasType outReturnedType
   :
-    outReturnedType := self ;
+    outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
     [mEnumConstantesMap searchKey !inClassMethodName ?*] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;

@@ -1837,9 +1837,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
 :
 #--- Search for filewrapper name in filewrapper map
   @lstring filewrapperPath ;
-  @lstringlist filewrapperExtensionList ;
-  @filewrapperTemplateMap filewrapperTemplateMap ;
-  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?filewrapperPath ?filewrapperExtensionList ?filewrapperTemplateMap] ;
+  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?filewrapperPath ?* ?* ?* ?*] ;
 #---
   outExpression := [@filewrapperInExpressionForGeneration new
     ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new !"filewrapper" ![mFilewrapperName location]]]
@@ -1858,7 +1856,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
 :
 #---
   @filewrapperTemplateMap filewrapperTemplateMap ;
-  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?* ?* ?filewrapperTemplateMap] ;
+  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?* ?* ?* ?* ?filewrapperTemplateMap] ;
 #---
   @unifiedTypeMapProxyList templateSignature ;
   [filewrapperTemplateMap searchKey !mFilewrapperTemplateName ?templateSignature ?*] ;
@@ -1896,15 +1894,56 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
+#--- Parse filewrapper path
+  @stringlist directoryList ;
+  @string fileName ;
+  if [mFilewrapperPath length] == 0 then
+    error mFilewrapperPath : "path is empty" : directoryList, fileName ;
+  elsif [mFilewrapperPath firstCharacterOrNul] == '/' then
+    error mFilewrapperPath : "the path should not begin with '/'" : directoryList, fileName ;
+  else
+    directoryList := [mFilewrapperPath componentsSeparatedByString !"/"] ;
+    [!?directoryList popLast ?fileName] ;
+  end if ;
+#--- Get filewrapper features
+  @wrapperFileMap filewrapperFileMap ;
+  @wrapperDirectoryMap filewrapperDirectoryMap ;
+  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?* ?* ?filewrapperFileMap ?filewrapperDirectoryMap ?*] ;
+#--- Search for file
+  @string builtPath := "" ;
+  loop [filewrapperDirectoryMap count] + 1 :
+  while [directoryList length] > 0 do
+    @string directoryName ;
+    [!?directoryList popFirst ?directoryName] ;
+    builtPath .= directoryName . "/" ;
+    if [filewrapperDirectoryMap hasKey !directoryName] then
+      [filewrapperDirectoryMap searchKey
+        ![@lstring new !directoryName !here]
+        ?filewrapperFileMap
+        ?filewrapperDirectoryMap
+        ?*
+      ] ;
+    else
+      error mFilewrapperPath : "the '" . builtPath . "' path does not exists for the '" . mFilewrapperName . "' filewrapper" : filewrapperFileMap ; 
+      directoryList := [@stringlist emptyList] ; # For exiting loop
+    end if ;
+  end loop ;
+  @uint fileIndex ;
+  if [filewrapperFileMap hasKey !fileName] then
+    [filewrapperFileMap searchKey ![@lstring new !fileName !here] ?* ?* ?fileIndex] ;
+  else
+    error mFilewrapperPath
+    : "the '" . fileName . "' file does not exist in the '" . builtPath . "' directory of '" . mFilewrapperName . "' filewrapper"
+    : fileIndex
+    ;
+  end if ;
 #---
-  @filewrapperTemplateMap filewrapperTemplateMap ;
-  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?* ?* ?filewrapperTemplateMap] ;
-#--- Find directory
-  log mFilewrapperPath ;
-  error mFilewrapperName
-  : "unhandled @filewrapperInExpressionAST expression"
-  : outExpression
-  ;
+  outExpression := [@filewrapperStaticPathInExpressionForGeneration new
+    !inAnalysisContext->mPredefinedTypes->mStringType
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    !fileIndex
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

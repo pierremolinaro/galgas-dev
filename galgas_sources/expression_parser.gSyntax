@@ -1932,6 +1932,11 @@ rule <primary>
     #--- Get path
       @lstring path ;
       $literal_string$ ?path ;
+      if [path firstCharacterOrNul] == '/' then
+        warning path : "compatibility with GALGAS V2: the '" . path . "' path should not begin by '/'" ;
+      else
+        path := [@lstring new !"/" . path ![path location]] ;
+      end if ;
     #--- 
       @uint wrapperFileIndex ;
       [regularFileMap searchKey !path ?* ?wrapperFileIndex] ;
@@ -2026,12 +2031,12 @@ rule <read_access>
   !@AC_galgasType typeEntite
   ?!@typeVariablesMap ioVariablesMap
 :
-  $self$ ;
+  $selfcopy$ ;
   if [ioVariablesMap hasKey !"self"] then
     nomVariable := [@lstring new !"self" !here] ;
     [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ;
   else
-    error here: "'self' is not defined in this context"
+    error here: "'selfcopy' is not defined in this context"
      : nomVariable, nomCppEntite, typeEntite ;
   end if ;
 end rule ;
