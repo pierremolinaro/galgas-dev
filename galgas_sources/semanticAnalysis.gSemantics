@@ -1032,12 +1032,10 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
   #---- Analyze filewrapper templates
     @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration [emptyList] ;
     foreach mFilewrapperTemplateList do
-      @string absoluteTemplatePath ;
       if [mFilewrapperTemplatePath firstCharacterOrNul] == '/' then
-        absoluteTemplatePath := [mFilewrapperTemplatePath string] ;
-      else
-        absoluteTemplatePath := [[inSemanticContext mSourceFileAbsolutePath] stringByDeletingLastPathComponent] . "/" . [mFilewrapperTemplatePath string] ;
+        error mFilewrapperTemplatePath : "the path should not begin with a '/'; it is relative to filewrapper path '" . absoluteSourcePath . "'" ;
       end if ;
+      const @string absoluteTemplatePath := absoluteSourcePath . "/" . mFilewrapperTemplatePath ;
       @templateInstructionListAST resultingInstructionList ;
     #--- Parse template
       grammar templateGrammar in [@lstring new !absoluteTemplatePath ![mFilewrapperTemplatePath location]] ?resultingInstructionList ;
