@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_prgm "version GALGAS_BETA_VERSION" :
+program galgas_prgm_v1 "version GALGAS_BETA_VERSION" :
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
@@ -39,19 +39,6 @@ program galgas_prgm "version GALGAS_BETA_VERSION" :
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
-
-  import "projectCreation.gSemantics" ;
-  import "lexiqueCompilation.gSemantics" ;
-  import "predefinedTypes.gSemantics" ;
-  import "projectGlobalCheckings.gSemantics" ;
-  import "optionCompilation.gSemantics" ;
-  import "semanticsCompilation.gSemantics" ;
-  import "lexiqueCompilation.gSemantics" ;
-  import "syntaxCompilation.gSemantics" ;
-  import "guiCompilation.gSemantics" ;
-  import "programComponentCompilation.gSemantics" ;
-  import "projectLL1grammar.gGrammar" ;
-  import "XcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -103,15 +90,38 @@ message "a GALGAS lexique source file"
 when . "gSemantics"
 message "a GALGAS semantics source file"
 ??@lstring inSourceFile {
-  @parsedComponentStruct parsedComponentStruct [new
-    ![@parsedSemanticsComponentMap emptyMap]
-    ![@parsedLexiqueComponentMap emptyMap]
-    ![@parsedSyntaxComponentMap emptyMap]
-    ![@parsedOptionComponentMap emptyMap]
-    ![@parsedGrammarComponentMap emptyMap]
-    ![@parsedProgramComponentMap emptyMap]
-  ] ;
-  compileSemanticsComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  if not [option galgas_cli_options.legacyCodeGeneration value] then
+    @parsedComponentStruct parsedComponentStruct [new
+      ![@parsedSemanticsComponentMap emptyMap]
+      ![@parsedLexiqueComponentMap emptyMap]
+      ![@parsedSyntaxComponentMap emptyMap]
+      ![@parsedOptionComponentMap emptyMap]
+      ![@parsedGrammarComponentMap emptyMap]
+      ![@parsedProgramComponentMap emptyMap]
+    ] ;
+    compileSemanticsComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  else
+    @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+    @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+    @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+    @M_grammarComponents grammarComponentsMap [emptyMap] ;
+    @M_optionComponents optionComponentsMap [emptyMap] ;
+    @EXsemanticContext semanticContext [new
+      ![@M_filewrappersEX emptyMap]
+      ![@stringset emptySet]
+      ![@EXcategoryMethodMap emptyMap]
+      ![@EXcategoryReaderMap emptyMap]
+      ![@EXcategoryTemplateMap emptyMap]
+    ] ;
+    grammar galgas_LL1_grammar in inSourceFile dependency "galgas-dep" in "DEPENDENCIES"
+      !?lexiqueMapForUse
+      !?semanticsComponentsMap
+      !?syntaxComponentsMap
+      !?grammarComponentsMap
+      !?optionComponentsMap
+      !?semanticContext
+    ;
+  end if ;
 }
 
 #---------------------------------------------------------------------------*
@@ -119,15 +129,38 @@ message "a GALGAS semantics source file"
 when . "gSyntax"
 message "a GALGAS syntax source file"
 ??@lstring inSourceFile {
-  @parsedComponentStruct parsedComponentStruct [new
-    ![@parsedSemanticsComponentMap emptyMap]
-    ![@parsedLexiqueComponentMap emptyMap]
-    ![@parsedSyntaxComponentMap emptyMap]
-    ![@parsedOptionComponentMap emptyMap]
-    ![@parsedGrammarComponentMap emptyMap]
-    ![@parsedProgramComponentMap emptyMap]
-  ] ;
-  compileSyntaxComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  if not [option galgas_cli_options.legacyCodeGeneration value] then
+    @parsedComponentStruct parsedComponentStruct [new
+      ![@parsedSemanticsComponentMap emptyMap]
+      ![@parsedLexiqueComponentMap emptyMap]
+      ![@parsedSyntaxComponentMap emptyMap]
+      ![@parsedOptionComponentMap emptyMap]
+      ![@parsedGrammarComponentMap emptyMap]
+      ![@parsedProgramComponentMap emptyMap]
+    ] ;
+    compileSyntaxComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  else
+    @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+    @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+    @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+    @M_grammarComponents grammarComponentsMap [emptyMap] ;
+    @M_optionComponents optionComponentsMap [emptyMap] ;
+    @EXsemanticContext semanticContext [new
+      ![@M_filewrappersEX emptyMap]
+      ![@stringset emptySet]
+      ![@EXcategoryMethodMap emptyMap]
+      ![@EXcategoryReaderMap emptyMap]
+      ![@EXcategoryTemplateMap emptyMap]
+    ] ;
+    grammar galgas_LL1_grammar in inSourceFile dependency "galgas-dep" in "DEPENDENCIES"
+      !?lexiqueMapForUse
+      !?semanticsComponentsMap
+      !?syntaxComponentsMap
+      !?grammarComponentsMap
+      !?optionComponentsMap
+      !?semanticContext
+    ;
+  end if ;
 }
 
 #---------------------------------------------------------------------------*
@@ -171,15 +204,38 @@ message "a GALGAS GUI source file"
 when . "gProgram"
 message "a GALGAS program source file"
 ??@lstring inSourceFile {
-  @parsedComponentStruct parsedComponentStruct [new
-    ![@parsedSemanticsComponentMap emptyMap]
-    ![@parsedLexiqueComponentMap emptyMap]
-    ![@parsedSyntaxComponentMap emptyMap]
-    ![@parsedOptionComponentMap emptyMap]
-    ![@parsedGrammarComponentMap emptyMap]
-    ![@parsedProgramComponentMap emptyMap]
-  ] ;
-  compileProgramComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  if not [option galgas_cli_options.legacyCodeGeneration value] then
+    @parsedComponentStruct parsedComponentStruct [new
+      ![@parsedSemanticsComponentMap emptyMap]
+      ![@parsedLexiqueComponentMap emptyMap]
+      ![@parsedSyntaxComponentMap emptyMap]
+      ![@parsedOptionComponentMap emptyMap]
+      ![@parsedGrammarComponentMap emptyMap]
+      ![@parsedProgramComponentMap emptyMap]
+    ] ;
+    compileProgramComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  else
+    @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+    @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+    @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+    @M_grammarComponents grammarComponentsMap [emptyMap] ;
+    @M_optionComponents optionComponentsMap [emptyMap] ;
+    @EXsemanticContext semanticContext [new
+      ![@M_filewrappersEX emptyMap]
+      ![@stringset emptySet]
+      ![@EXcategoryMethodMap emptyMap]
+      ![@EXcategoryReaderMap emptyMap]
+      ![@EXcategoryTemplateMap emptyMap]
+    ] ;
+    grammar galgas_LL1_grammar in inSourceFile dependency "galgas-dep" in "DEPENDENCIES"
+      !?lexiqueMapForUse
+      !?semanticsComponentsMap
+      !?syntaxComponentsMap
+      !?grammarComponentsMap
+      !?optionComponentsMap
+      !?semanticContext
+    ;
+  end if ;
 }
 
 #----------------------------------------------------------------------------*
@@ -252,14 +308,60 @@ message "a GALGAS project source file"
       end if ;
     when semanticsSourceFile :
       if extension == "gSemantics" then
-        compileSemanticsComponent !fullFilePath ! outputDirectory !?parsedComponentStruct ;
+        if not [option galgas_cli_options.legacyCodeGeneration value] then
+          compileSemanticsComponent !fullFilePath ! outputDirectory !?parsedComponentStruct ;
+        else
+          @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+          @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+          @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+          @M_grammarComponents grammarComponentsMap [emptyMap] ;
+          @M_optionComponents optionComponentsMap [emptyMap] ;
+          @EXsemanticContext semanticContext [new
+            ![@M_filewrappersEX emptyMap]
+            ![@stringset emptySet]
+            ![@EXcategoryMethodMap emptyMap]
+            ![@EXcategoryReaderMap emptyMap]
+            ![@EXcategoryTemplateMap emptyMap]
+          ] ;
+          grammar galgas_LL1_grammar in fullFilePath dependency "galgas-dep" in "DEPENDENCIES"
+            !?lexiqueMapForUse
+            !?semanticsComponentsMap
+            !?syntaxComponentsMap
+            !?grammarComponentsMap
+            !?optionComponentsMap
+            !?semanticContext
+          ;
+        end if ;
       else
         error mFilePath:"extension of a semantics component should be '.gSemantics'." ;
       end if ;
     when syntaxSourceFile :
       if extension == "gSyntax" then
-        compileSyntaxComponent !fullFilePath !outputDirectory [!inSourceFile] !?parsedComponentStruct;
-     else
+        if not [option galgas_cli_options.legacyCodeGeneration value] then
+          compileSyntaxComponent !fullFilePath !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+        else
+          @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+          @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+          @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+          @M_grammarComponents grammarComponentsMap [emptyMap] ;
+          @M_optionComponents optionComponentsMap [emptyMap] ;
+          @EXsemanticContext semanticContext [new
+            ![@M_filewrappersEX emptyMap]
+            ![@stringset emptySet]
+            ![@EXcategoryMethodMap emptyMap]
+            ![@EXcategoryReaderMap emptyMap]
+            ![@EXcategoryTemplateMap emptyMap]
+          ] ;
+          grammar galgas_LL1_grammar in fullFilePath dependency "galgas-dep" in "DEPENDENCIES"
+            !?lexiqueMapForUse
+            !?semanticsComponentsMap
+            !?syntaxComponentsMap
+            !?grammarComponentsMap
+            !?optionComponentsMap
+            !?semanticContext
+          ;
+        end if ;
+      else
         error mFilePath:"extension of a syntax component should be '.gSyntax'." ;
       end if ;
     when grammarSourceFile :
@@ -275,7 +377,30 @@ message "a GALGAS project source file"
       end if ;
     when programSourceFile :
       if extension == "gProgram" then
-        compileProgramComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
+        if not [option galgas_cli_options.legacyCodeGeneration value] then
+          compileProgramComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
+        else
+          @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+          @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+          @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+          @M_grammarComponents grammarComponentsMap [emptyMap] ;
+          @M_optionComponents optionComponentsMap [emptyMap] ;
+          @EXsemanticContext semanticContext [new
+            ![@M_filewrappersEX emptyMap]
+            ![@stringset emptySet]
+            ![@EXcategoryMethodMap emptyMap]
+            ![@EXcategoryReaderMap emptyMap]
+            ![@EXcategoryTemplateMap emptyMap]
+          ] ;
+          grammar galgas_LL1_grammar in fullFilePath dependency "galgas-dep" in "DEPENDENCIES"
+            !?lexiqueMapForUse
+            !?semanticsComponentsMap
+            !?syntaxComponentsMap
+            !?grammarComponentsMap
+            !?optionComponentsMap
+            !?semanticContext
+          ;
+        end if ;
       else
         error mFilePath:"extension of a program component should be '.gProgram'." ;
       end if ;

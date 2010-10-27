@@ -374,7 +374,11 @@ override method @mapDeclarationAST performSemanticAnalysis
 #--- Enter search methods
   @searchMethodMap searchMethodMap [emptyMap] ;
   foreach mSearchMethodList do
-    [!?searchMethodMap insertKey !mMethodName] ;
+    if [mMapStateList length] == 0 then
+      [!?searchMethodMap insertKey !mMethodName] ;
+    else
+      [!?searchMethodMap insertKey !mMethodName] ;
+    end if ;
   #--- Check error message escape sequences : only %K or %%
     foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;

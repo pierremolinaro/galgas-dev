@@ -99,7 +99,7 @@ function generateProcedure
   end if ;
   outGeneratedCode .= " {\n" ;
 #--- Release 'out' arguments
-  foreach inFormalArgumentList index IDX do
+  foreach inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     when argumentOut :
       outGeneratedCode .= "  " . mFormalArgumentCppName . ".drop () ; // Release 'out' argument\n" ;
@@ -997,6 +997,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @listmapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@listmapTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     ![mAssociatedListTypeIndex identifierRepresentation]
@@ -1007,6 +1008,7 @@ override reader @listmapTypeForGeneration appendSpecificImplementation ->@string
 #---------------------------------------------------------------------------*
 
 override reader @mapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@mapTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
@@ -1021,6 +1023,7 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
 #---------------------------------------------------------------------------*
 
 override reader @sortedListTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@soprtedListTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
@@ -1031,6 +1034,7 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
 #---------------------------------------------------------------------------*
 
 override reader @enumTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@enumTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
@@ -1042,6 +1046,7 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
 #---------------------------------------------------------------------------*
 
 override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@mapProxyTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
@@ -1054,6 +1059,7 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@strin
 #---------------------------------------------------------------------------*
 
 override reader @classTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@classTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
@@ -1071,6 +1077,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@structTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
@@ -1081,6 +1088,7 @@ override reader @structTypeForGeneration appendSpecificImplementation ->@string 
 #---------------------------------------------------------------------------*
 
 override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@listTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
@@ -1091,6 +1099,7 @@ override reader @listTypeForGeneration appendSpecificImplementation ->@string ou
 #---------------------------------------------------------------------------*
 
 override reader @routineImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@routineImplementationForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.routineImplementation
     !mRoutineName
     !generateProcedure [
@@ -1108,6 +1117,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @functionImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@functionImplementationForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.functionImplementation
     !mFunctionName
     !generateFunction [
@@ -1127,6 +1137,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @onceFunctionDeclarationForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@onceImplementationForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
     !mFunctionName
     !generateFunction [
@@ -1146,6 +1157,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@abstractCategoryMethodForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodImplementation
     !mTypeName
     !mAbstractCategoryMethodName
@@ -1156,6 +1168,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@categoryMethodForGeneration appendSpecificImplementation\n" ;
   const @string methodImplementation := generateCategoryMethod [
     !mTypeName
     !""
@@ -1174,6 +1187,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @overridingCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@overridingCategoryMethodForGeneration appendSpecificImplementation\n" ;
   const @string methodImplementation := generateCategoryMethod [
     !mTypeName
     !mBaseTypeName
@@ -1191,6 +1205,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@abstractCategoryReaderForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
     !mTypeName
     !mAbstractCategoryReaderName
@@ -1202,6 +1217,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@categoryReaderForGeneration appendSpecificImplementation\n" ;
   const @string categoryReaderCode := generateCategoryReader [
     !mTypeName
     !""
@@ -1224,6 +1240,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @overrideCategoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+#  message "@overrideCategoryReaderForGeneration appendSpecificImplementation\n" ;
   const @string categoryReaderCode := generateCategoryReader [
     !mTypeName
     !mBaseTypeName

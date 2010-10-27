@@ -20,6 +20,7 @@ semantics semanticsCompilation :
   import "allASTTypes.gSemantics" ;
   import "predefinedTypes.gSemantics" ;
   import "grammarCompilation.gSemantics" ;
+  import "semanticsSLRgrammar.gGrammar" ;
 
   import semantics allASTTypes in "allASTTypes.gSemantics" ;
   import semantics predefinedTypes in "predefinedTypes.gSemantics" ;
@@ -345,7 +346,9 @@ routine compileSemanticsComponent
       !implementationIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
+      message "[mDeclaration appendSpecificImplementation]\n" ;
       implementationString .= [mDeclaration appendSpecificImplementation] ;
+      message "[mDeclaration appendTypeGenericImplementation]\n" ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
     end foreach ;
     [@string generateFile

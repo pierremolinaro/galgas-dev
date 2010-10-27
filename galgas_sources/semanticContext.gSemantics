@@ -784,17 +784,67 @@ override method @mapDeclarationAST enterInSemanticContext
       ] ;
     end if ;
   end foreach ;
-#--- Handle search methods
-  foreach mSearchMethodList do
-    [!?instanceMethodMap insertKey
-      !mMethodName
-      !false # is not a category
-      !removeMethodFormalArgumentList
-      ![mMethodName location]
+#--- Handle search methods (methods if no state, modifiers if states)
+  if [mMapStateList length] == 0 then
+    foreach mSearchMethodList do
+      [!?instanceMethodMap insertKey
+        !mMethodName
+        !false # is not a category
+        !removeMethodFormalArgumentList
+        ![mMethodName location]
+        !true
+        ![@methodQualifier isBasic]
+      ] ;
+    end foreach ;
+  else
+    foreach mSearchMethodList do
+      [!?modifierMap insertKey
+        !mMethodName
+        !removeMethodFormalArgumentList
+        !true
+        ![@methodQualifier isBasic]
+      ] ;
+    end foreach ;
+  end if ;
+#--- Enter "enterBranch" and "exitBranch" modifiers (only if there are states)
+  if [mMapStateList length] > 0 then
+    @unifiedTypeMapProxy locationTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
+    [!?modifierMap insertKey
+      ![@lstring new !"beginBranch" !here]
+      ![@formalParameterSignature emptyList]
       !true
       ![@methodQualifier isBasic]
     ] ;
-  end foreach ;
+    [!?modifierMap insertKey
+      ![@lstring new !"endBranch" !here]
+      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      !true
+      ![@methodQualifier isBasic]
+    ] ;
+    [!?modifierMap insertKey
+      ![@lstring new !"endOverride" !here]
+      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      !true
+      ![@methodQualifier isBasic]
+    ] ;
+    [!?instanceMethodMap insertKey
+      ![@lstring new !"checkAutomatonStates" !here]
+      !false # is not a category
+      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      !here
+      !true
+      ![@methodQualifier isBasic]
+    ] ;
+    foreach mMapOverrideBlockListAST do
+      [!?modifierMap insertKey
+        ![@lstring new !"beginOverrideFor" . [mOverrideBlockName stringByCapitalizingFirstCharacter] !here]
+        ![@formalParameterSignature emptyList]
+        !true
+        ![@methodQualifier isBasic]
+      ] ;
+    end foreach ;
+  end if ;
 #--- Enter "attributeForKey" readers
   foreach mAttributeList do
     const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;

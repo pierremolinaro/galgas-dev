@@ -120,10 +120,8 @@ project all_galgas:
   syntax    "projectModelBuilder.gSyntax" : makefile ;
   grammar   "projectLL1grammar.gGrammar" : makefile ;
 
-#--- Main program
-  program   "galgas_prgm.gProgram" : makefile ;
-
 #--- Old style components
+  program   "galgas_prgm_v1.gProgram" : makefile ;
   semantics "common_semantics.gSemantics" : makefile ;
   semantics "semantics_semantics.gSemantics" : makefile ;
   syntax    "expression_parser.gSyntax" : makefile ;
