@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@application type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_application : public AC_GALGAS_root
+ {
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return false ; }
+  public : inline void drop (void) { }
+
+//--------------------------------- Default constructor
+  public : GALGAS_application (void) ;
+
+//--------------------------------- Destructor (virtual in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_application (void) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_application (const GALGAS_application & inSource) ;
+  public : GALGAS_application & operator = (const GALGAS_application & inSource) ;
+
+%
+

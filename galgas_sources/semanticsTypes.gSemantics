@@ -183,7 +183,8 @@ enum @predefinedTypeKindEnum {
   predefined_type,
   predefined_object,
   predefined_data,
-  predefined_filewrapper
+  predefined_filewrapper,
+  predefined_application
 }{
 }
 
@@ -328,6 +329,8 @@ abstract class @predefinedTypeAST extends @semanticDeclarationAST {
 }
 
 #---------------------------------------------------------------------------*
+
+class @applicationPredefinedTypeAST extends @predefinedTypeAST {}
 
 class @objectPredefinedTypeAST extends @predefinedTypeAST {}
 

@@ -5435,11 +5435,11 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_system extends @AC_galgasType {
+class @typeGalgas_application extends @AC_galgasType {
 #--- Get type name
   override
   method getTypeName !@string outTypeName :
-    outTypeName := "system" ;
+    outTypeName := "application" ;
   end method ;
 
 #--- By default, class does not accept constructor call
@@ -5501,8 +5501,8 @@ class @typeGalgas_system extends @AC_galgasType {
   end method ;
 
 #--- Error message
-  message messageGalgasType "an @system object" ;
-  message "an @system object" ;
+  message messageGalgasType "an @application object" ;
+  message "an @application object" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -5541,8 +5541,8 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new ![@typeGalgas_location new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"location" !here] !e] ;
 
-  e := [@typeEntiteType new ![@typeGalgas_system new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"system" !here] !e] ;
+  e := [@typeEntiteType new ![@typeGalgas_application new]] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"application" !here] !e] ;
 
   e := [@typeEntiteType new ![@typeGalgas_uint new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint" !here] !e] ;

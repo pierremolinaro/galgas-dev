@@ -41,6 +41,26 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine appendPredefinedString2ListTypeAST
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+:
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList +=
+    ![@lstring new !"string" !here]
+    ![@lstring new !"mValue0" !here]
+  ;
+  attributeList +=
+    ![@lstring new !"string" !here]
+    ![@lstring new !"mValue1" !here]
+  ;
+  ioDeclarationListASTs += ![@listDeclarationAST new
+    ![@lstring new !"string2list" !here]
+    !attributeList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine appendStructASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ??@string inElementTypeName
@@ -59,6 +79,7 @@ end routine ;
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
+  ioDeclarationListASTs += ![@applicationPredefinedTypeAST new !"application" ![@predefinedTypeKindEnum predefined_application]] ;
   ioDeclarationListASTs += ![@filewrapperPredefinedTypeAST new !"filewrapper" ![@predefinedTypeKindEnum predefined_filewrapper]] ;
   ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object" ![@predefinedTypeKindEnum predefined_object]] ;
   ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool" ![@predefinedTypeKindEnum predefined_bool]] ;
@@ -93,6 +114,8 @@ routine appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"char" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
+
+  appendPredefinedString2ListTypeAST !?ioDeclarationListASTs ;
 
 #--- Enumeration predefined type (used only for testing type generation)
 #  @lstringlist constantList [emptyList] ;
@@ -208,6 +231,8 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
   template stringset_type "stringset-type.h.gTemplate" ;
 
   template filewrapper_type "filewrapper-type.h.gTemplate" ;
+
+  template application_type "application-type.h.gTemplate" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -251,6 +276,8 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     outHeader := [filewrapper predefinedTypeGenerationTemplate.data_type] ;
   when predefined_filewrapper :
     outHeader := [filewrapper predefinedTypeGenerationTemplate.filewrapper_type] ;
+  when predefined_application :
+    outHeader := [filewrapper predefinedTypeGenerationTemplate.application_type] ;
   end switch ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeIndex key]

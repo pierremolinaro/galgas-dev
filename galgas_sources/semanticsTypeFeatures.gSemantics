@@ -76,6 +76,14 @@ end method ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+override reader @applicationPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+:
+  outFlags := generateDescriptionReaderUtilityMethod [] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @objectPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :

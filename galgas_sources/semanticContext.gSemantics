@@ -661,6 +661,79 @@ abstract method @semanticDeclarationAST enterInSemanticContext
 
 #---------------------------------------------------------------------------*
 
+override method @abstractCategoryMethodAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @categoryMethodAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryMethodAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryMethodAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryReaderAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @categoryReaderAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryReaderAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryReaderAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
 override method @predefinedTypeAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
